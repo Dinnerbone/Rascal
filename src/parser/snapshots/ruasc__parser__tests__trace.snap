@@ -1,0 +1,10 @@
+---
+source: src/parser/tests.rs
+expression: "parse_document(&tokens).map_err(|e| format!(\"{e:#?}\"))"
+---
+Ok:
+  expressions:
+    - Call:
+        name: trace
+        args:
+          - String: Hello World
