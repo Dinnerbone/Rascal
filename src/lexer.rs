@@ -2,7 +2,7 @@
 mod tests;
 pub(crate) mod tokens;
 
-use crate::lexer::tokens::{Keyword, Token, TokenKind};
+use crate::lexer::tokens::{Keyword, Operator, Token, TokenKind};
 use crate::source::Span;
 use winnow::stream::{AsBStr, FindSlice, Location, Stream as _};
 
@@ -49,7 +49,7 @@ fn process_token<'a>(peek_byte: u8, stream: &mut Stream<'a>) -> Option<Token<'a>
         b'(' => lex_ascii_char(stream, TokenKind::OpenParen),
         b')' => lex_ascii_char(stream, TokenKind::CloseParen),
         b';' => lex_ascii_char(stream, TokenKind::Semicolon),
-        b'=' => lex_ascii_char(stream, TokenKind::Equals),
+        b'=' => lex_ascii_char(stream, TokenKind::Operator(Operator::Equals)),
         b'\r' => lex_crlf(stream),
         b'\n' => lex_ascii_char(stream, TokenKind::Newline),
         b'"' => lex_basic_string(stream),

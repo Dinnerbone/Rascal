@@ -56,7 +56,7 @@ impl<const LEN: usize> winnow::stream::ContainsToken<&'_ Token<'_>> for [TokenKi
 pub enum TokenKind {
     Identifier,
     Keyword(Keyword),
-    Equals,
+    Operator(Operator),
     Semicolon,
     String,
     OpenParen,
@@ -83,4 +83,9 @@ impl<'i> Parser<Tokens<'i>, &'i Token<'i>, ContextError> for TokenKind {
 #[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Debug, Serialize)]
 pub enum Keyword {
     Var,
+}
+
+#[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Debug, Serialize)]
+pub enum Operator {
+    Equals,
 }

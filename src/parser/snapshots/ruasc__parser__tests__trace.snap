@@ -4,7 +4,11 @@ expression: "parse_document(&tokens).map_err(|e| format!(\"{e:#?}\"))"
 ---
 Ok:
   expressions:
-    - Call:
-        name: trace
-        args:
-          - String: Hello World
+    - EVal:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - Constant:
+                String: Hello World

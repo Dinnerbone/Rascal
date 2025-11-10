@@ -1,11 +1,12 @@
-use crate::lexer::tokens::{Keyword, Token, TokenKind};
+use crate::lexer::tokens::{Keyword, Operator, TokenKind};
 use crate::parser::Tokens;
-use crate::parser::expr::Expr;
+use crate::parser::expr::{Constant, Eval, Expr};
 use serde::Serialize;
 use winnow::combinator::{alt, cond, cut_err, eof, fail, opt, peek, repeat_till};
 use winnow::error::{ContextError, ErrMode, StrContext};
+use winnow::stream::Stream;
 use winnow::token::any;
-use winnow::{ModalResult, Parser, dispatch};
+use winnow::{ModalResult, Parser};
 
 #[derive(Debug, Serialize)]
 pub struct Document {
@@ -19,13 +20,8 @@ pub fn document(tokens: &mut Tokens<'_>) -> ModalResult<Document> {
     Ok(Document { expressions })
 }
 
-pub(crate) fn statement(i: &mut Tokens<'_>) -> ModalResult<Expr> {
-    let expr = dispatch! { peek(any).map(|t: &Token| t.kind);
-        TokenKind::Keyword(Keyword::Var) => declaration.context(StrContext::Label("declaration")),
-        _ => expression,
-    }
-    .parse_next(i)?;
-
+fn statement(i: &mut Tokens<'_>) -> ModalResult<Expr> {
+    let expr = expr.parse_next(i)?;
     alt((TokenKind::Semicolon, TokenKind::Newline))
         .context(StrContext::Label("end of line"))
         .parse_next(i)?;
@@ -34,57 +30,82 @@ pub(crate) fn statement(i: &mut Tokens<'_>) -> ModalResult<Expr> {
     Ok(expr)
 }
 
-pub(crate) fn expression(i: &mut Tokens<'_>) -> ModalResult<Expr> {
-    dispatch! { peek(any).map(|t: &Token| t.kind);
-        TokenKind::Identifier => alt(
-            (
-                skip_newline(call).context(StrContext::Label("function call")),
-                skip_newline(identifier).context(StrContext::Label("identifier")).map(Expr::Identifier))
-            ),
-        TokenKind::String => skip_newline(string)
-            .context(StrContext::Label("string"))
-            .map(Expr::String),
-        _ => fail.context(StrContext::Label("expression (unexpected token)")),
+fn expr(i: &mut Tokens<'_>) -> ModalResult<Expr> {
+    let checkpoint = i.checkpoint();
+    let token = any.parse_next(i)?;
+    match token.kind {
+        TokenKind::Keyword(Keyword::Var) => declaration.context(StrContext::Label("declaration")),
+        _ => {
+            i.reset(&checkpoint);
+            return eval.parse_next(i).map(Expr::EVal);
+        }
     }
     .parse_next(i)
 }
 
-pub(crate) fn string(i: &mut Tokens<'_>) -> ModalResult<String> {
+fn eval(i: &mut Tokens<'_>) -> ModalResult<Eval> {
+    let token = peek(any).parse_next(i)?;
+    match token.kind {
+        TokenKind::String => {
+            let val = string.parse_next(i)?;
+            eval_next(Eval::Constant(Constant::String(val)))
+                .context(StrContext::Label("declaration"))
+        }
+        TokenKind::Identifier => {
+            let val = identifier.parse_next(i)?;
+            eval_next(Eval::Constant(Constant::Identifier(val)))
+                .context(StrContext::Label("declaration"))
+        }
+        _ => {
+            return fail.parse_next(i);
+        }
+    }
+    .parse_next(i)
+}
+
+fn eval_next<'i>(prior: Eval) -> impl Parser<Tokens<'i>, Eval, ErrMode<ContextError>> {
+    move |i: &mut Tokens<'i>| {
+        let token = peek(any).parse_next(i)?;
+        let prior = prior.clone();
+        match token.kind {
+            TokenKind::OpenParen => {
+                TokenKind::OpenParen.parse_next(i)?;
+                let args = eval_list
+                    .context(StrContext::Label("arguments"))
+                    .parse_next(i)?;
+                TokenKind::CloseParen.parse_next(i)?;
+                Ok(Eval::Call {
+                    name: Box::new(prior),
+                    args,
+                })
+            }
+            _ => Ok(prior),
+        }
+    }
+}
+
+fn string(i: &mut Tokens<'_>) -> ModalResult<String> {
     Ok(TokenKind::String.parse_next(i)?.raw.to_string())
 }
 
-pub(crate) fn identifier(i: &mut Tokens<'_>) -> ModalResult<String> {
+fn identifier(i: &mut Tokens<'_>) -> ModalResult<String> {
     Ok(TokenKind::Identifier.parse_next(i)?.raw.to_string())
 }
 
-pub(crate) fn declaration(i: &mut Tokens<'_>) -> ModalResult<Expr> {
-    let _ = skip_newline(TokenKind::Keyword(Keyword::Var)).parse_next(i)?;
+fn declaration(i: &mut Tokens<'_>) -> ModalResult<Expr> {
     let name = cut_err(skip_newline(identifier))
         .context(StrContext::Label("variable name"))
         .parse_next(i)?;
-    let equals = cut_err(opt(skip_newline(TokenKind::Equals)))
+    let equals = cut_err(opt(skip_newline(TokenKind::Operator(Operator::Equals))))
         .parse_next(i)?
         .is_some();
-    let value = cut_err(cond(equals, skip_newline(expression))).parse_next(i)?;
+    let value = cond(equals, skip_newline(eval)).parse_next(i)?;
 
-    Ok(Expr::Declare {
-        name,
-        value: value.map(Box::new),
-    })
+    Ok(Expr::Declare { name, value })
 }
 
-pub(crate) fn call(i: &mut Tokens<'_>) -> ModalResult<Expr> {
-    (
-        skip_newline(identifier),
-        skip_newline(TokenKind::OpenParen),
-        cut_err(skip_newline(expression)),
-        cut_err(skip_newline(TokenKind::CloseParen)),
-    )
-        .parse_next(i)
-        .map(|(ident, _, arg, _)| Expr::Call {
-            name: ident,
-            args: vec![arg],
-        })
+fn eval_list(i: &mut Tokens<'_>) -> ModalResult<Vec<Eval>> {
+    Ok(vec![eval.parse_next(i)?])
 }
 
 fn skip_newline<'i, O, P>(mut inner: P) -> impl Parser<Tokens<'i>, O, ErrMode<ContextError>>
