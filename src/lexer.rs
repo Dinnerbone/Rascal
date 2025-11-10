@@ -2,7 +2,7 @@
 mod tests;
 pub(crate) mod tokens;
 
-use crate::lexer::tokens::{Keyword, Operator, Token, TokenKind};
+use crate::lexer::tokens::{BinaryOperator, Keyword, Token, TokenKind};
 use crate::source::Span;
 use winnow::stream::{AsBStr, FindSlice, Location, Stream as _};
 
@@ -49,7 +49,7 @@ fn process_token<'a>(peek_byte: u8, stream: &mut Stream<'a>) -> Option<Token<'a>
         b'(' => lex_ascii_char(stream, TokenKind::OpenParen),
         b')' => lex_ascii_char(stream, TokenKind::CloseParen),
         b';' => lex_ascii_char(stream, TokenKind::Semicolon),
-        b'=' => lex_ascii_char(stream, TokenKind::Operator(Operator::Equals)),
+        b'=' | b'+' => lex_operator(stream),
         b'\r' => lex_crlf(stream),
         b'\n' => lex_ascii_char(stream, TokenKind::Newline),
         b'"' => lex_basic_string(stream),
@@ -72,6 +72,41 @@ fn lex_ascii_char<'a>(stream: &mut Stream<'a>, kind: TokenKind) -> Token<'a> {
     let end = stream.previous_token_end();
     let span = Span::new_unchecked(start, end);
     Token::new(kind, span, raw)
+}
+
+fn lex_ascii_chars<'a>(stream: &mut Stream<'a>, kind: TokenKind, len: usize) -> Token<'a> {
+    let start = stream.current_token_start();
+    let offset = len;
+    let raw = stream.next_slice(offset);
+
+    let end = stream.previous_token_end();
+    let span = Span::new_unchecked(start, end);
+    Token::new(kind, span, raw)
+}
+
+fn lex_operator<'a>(stream: &mut Stream<'a>) -> Token<'a> {
+    if stream.eof_offset() >= 2 {
+        // 2 char operators
+        let peek = stream.as_bstr().peek_slice(2);
+        match peek {
+            b"+=" => {
+                return lex_ascii_chars(
+                    stream,
+                    TokenKind::BinaryOperator(BinaryOperator::AddAssign),
+                    2,
+                );
+            }
+            _ => {}
+        }
+    }
+
+    // 1 char operators
+    let peek = stream.as_bstr().peek_slice(stream.eof_offset().min(1));
+    match peek {
+        b"+" => lex_ascii_char(stream, TokenKind::BinaryOperator(BinaryOperator::Add)),
+        b"=" => lex_ascii_char(stream, TokenKind::BinaryOperator(BinaryOperator::Assign)),
+        _ => unreachable!(), // This is true as long as we have an entry that matches the caller's peeked value
+    }
 }
 
 fn lex_crlf<'a>(stream: &mut Stream<'a>) -> Token<'a> {

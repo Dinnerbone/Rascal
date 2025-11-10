@@ -1,3 +1,4 @@
+use crate::lexer::tokens::BinaryOperator;
 use serde::Serialize;
 
 #[derive(Debug, Clone, Serialize)]
@@ -12,6 +13,7 @@ pub(crate) enum Expr {
 pub(crate) enum Eval {
     Constant(Constant),
     Call { name: Box<Eval>, args: Vec<Eval> },
+    BinaryOperator(BinaryOperator, Box<Eval>, Box<Eval>),
 }
 
 #[derive(Debug, Clone, Serialize)]

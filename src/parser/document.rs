@@ -1,4 +1,4 @@
-use crate::lexer::tokens::{Keyword, Operator, TokenKind};
+use crate::lexer::tokens::{BinaryOperator, Keyword, TokenKind};
 use crate::parser::Tokens;
 use crate::parser::expr::{Constant, Eval, Expr};
 use serde::Serialize;
@@ -79,6 +79,11 @@ fn eval_next<'i>(prior: Eval) -> impl Parser<Tokens<'i>, Eval, ErrMode<ContextEr
                     args,
                 })
             }
+            TokenKind::BinaryOperator(op) => {
+                TokenKind::BinaryOperator(op).parse_next(i)?;
+                eval.parse_next(i)
+                    .map(|next| Eval::BinaryOperator(op, Box::new(prior), Box::new(next)))
+            }
             _ => Ok(prior),
         }
     }
@@ -96,9 +101,11 @@ fn declaration(i: &mut Tokens<'_>) -> ModalResult<Expr> {
     let name = cut_err(skip_newline(identifier))
         .context(StrContext::Label("variable name"))
         .parse_next(i)?;
-    let equals = cut_err(opt(skip_newline(TokenKind::Operator(Operator::Equals))))
-        .parse_next(i)?
-        .is_some();
+    let equals = cut_err(opt(skip_newline(TokenKind::BinaryOperator(
+        BinaryOperator::Assign,
+    ))))
+    .parse_next(i)?
+    .is_some();
     let value = cond(equals, skip_newline(eval)).parse_next(i)?;
 
     Ok(Expr::Declare { name, value })

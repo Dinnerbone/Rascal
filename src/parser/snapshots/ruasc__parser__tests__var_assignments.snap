@@ -1,0 +1,41 @@
+---
+source: src/parser/tests.rs
+expression: "parse_document(&tokens).map_err(|e| format!(\"{e:#?}\"))"
+---
+Ok:
+  expressions:
+    - Declare:
+        name: message
+        value:
+          BinaryOperator:
+            - Add
+            - Constant:
+                String: Hello
+            - Constant:
+                String: " "
+    - EVal:
+        BinaryOperator:
+          - AddAssign
+          - Constant:
+              Identifier: message
+          - Constant:
+              String: World
+    - EVal:
+        BinaryOperator:
+          - Assign
+          - Constant:
+              Identifier: message
+          - BinaryOperator:
+              - Add
+              - Constant:
+                  Identifier: message
+              - Constant:
+                  String: "!"
+    - EVal:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - Constant:
+                Identifier: message

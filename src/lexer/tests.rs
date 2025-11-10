@@ -13,3 +13,10 @@ fn test_var() {
         Lexer::new(include_str!("../../samples/assign_variable_and_trace.as")).into_vec()
     );
 }
+
+#[test]
+fn test_var_assignments() {
+    insta::assert_yaml_snapshot!(
+        Lexer::new(include_str!("../../samples/assign_variable_many_ways.as")).into_vec()
+    );
+}
