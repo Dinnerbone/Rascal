@@ -56,6 +56,7 @@ fn process_token<'a>(peek_byte: u8, stream: &mut Stream<'a>) -> Option<Token<'a>
         b'\n' => Some(lex_ascii_char(stream, TokenKind::Newline)),
         b'"' => Some(lex_basic_string(stream)),
         b'a'..=b'z' | b'A'..=b'Z' | b'_' | b'$' => Some(lex_identifier_or_keyword(stream)),
+        b'0'..=b'9' | b'.' => Some(lex_integer_or_float(stream)),
         _ => {
             let start = stream.current_token_start();
             let raw = stream.next_slice(stream.eof_offset());
@@ -135,6 +136,36 @@ fn lex_ascii_chars<'a>(stream: &mut Stream<'a>, kind: TokenKind, len: usize) -> 
     let start = stream.current_token_start();
     let offset = len;
     let raw = stream.next_slice(offset);
+
+    let end = stream.previous_token_end();
+    let span = Span::new_unchecked(start, end);
+    Token::new(kind, span, raw)
+}
+
+fn lex_integer_or_float<'a>(stream: &mut Stream<'a>) -> Token<'a> {
+    let start = stream.current_token_start();
+    let start_checkpoint = stream.checkpoint();
+    if let Some(offset) = stream.as_bstr().offset_for(|b| !b.is_ascii_digit()) {
+        stream.next_slice(offset)
+    } else {
+        stream.finish()
+    };
+
+    let kind = if stream.as_bstr().first() == Some(&b'.') {
+        stream.next_slice(1); // skip the '.'
+        if let Some(offset) = stream.as_bstr().offset_for(|b| !b.is_ascii_digit()) {
+            stream.next_slice(offset)
+        } else {
+            stream.finish()
+        };
+        TokenKind::Float
+    } else {
+        TokenKind::Integer
+    };
+
+    let end = stream.previous_token_end();
+    stream.reset(&start_checkpoint);
+    let raw = stream.next_slice(end);
 
     let end = stream.previous_token_end();
     let span = Span::new_unchecked(start, end);

@@ -132,3 +132,48 @@ fn test_mixed_sequence() {
         ]
     );
 }
+
+#[test]
+fn test_single_digit() {
+    let input = "1";
+    assert_eq!(kinds(input), vec![TokenKind::Integer]);
+    assert_eq!(raws(input), vec!["1".to_string()]);
+}
+
+#[test]
+fn test_float_trailing_dot() {
+    let input = "1.";
+    assert_eq!(kinds(input), vec![TokenKind::Float]);
+    assert_eq!(raws(input), vec!["1.".to_string()]);
+}
+
+#[test]
+fn test_float_leading_dot() {
+    let input = ".1";
+    assert_eq!(kinds(input), vec![TokenKind::Float]);
+    assert_eq!(raws(input), vec![".1".to_string()]);
+}
+
+#[test]
+fn test_float() {
+    let input = "1.2";
+    assert_eq!(kinds(input), vec![TokenKind::Float]);
+    assert_eq!(raws(input), vec!["1.2".to_string()]);
+}
+
+#[test]
+fn test_long_integer_semicolon() {
+    let input = "1234567890;";
+    assert_eq!(kinds(input), vec![TokenKind::Integer, TokenKind::Semicolon]);
+    assert_eq!(raws(input), vec!["1234567890".to_string(), ";".to_string()]);
+}
+
+#[test]
+fn test_long_float_semicolon() {
+    let input = "12345.67890;";
+    assert_eq!(kinds(input), vec![TokenKind::Float, TokenKind::Semicolon]);
+    assert_eq!(
+        raws(input),
+        vec!["12345.67890".to_string(), ";".to_string()]
+    );
+}

@@ -64,6 +64,8 @@ pub enum TokenKind {
     Comma,
     Newline,
     Unknown,
+    Integer,
+    Float,
 }
 
 impl<'i> Parser<Tokens<'i>, &'i Token<'i>, ErrMode<ContextError>> for TokenKind {
