@@ -65,6 +65,36 @@ Ok:
         value:
           Constant:
             Integer: 255
+    - Declare:
+        name: eBig
+        value:
+          Constant:
+            Float: 10000000000
+    - Declare:
+        name: eSmall
+        value:
+          Constant:
+            Float: 0.0000000001
+    - Declare:
+        name: ePlus
+        value:
+          Constant:
+            Float: 2500
+    - Declare:
+        name: eLeadingDot
+        value:
+          Constant:
+            Float: 50
+    - Declare:
+        name: eTrailingDot
+        value:
+          Constant:
+            Float: 5000
+    - Declare:
+        name: eSci
+        value:
+          Constant:
+            Float: 602200000000000000000000
     - Expr:
         Call:
           name:
@@ -209,3 +239,75 @@ Ok:
                     String: "hMaxByte = "
                 - Constant:
                     Identifier: hMaxByte
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "eBig = "
+                - Constant:
+                    Identifier: eBig
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "eSmall = "
+                - Constant:
+                    Identifier: eSmall
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "ePlus = "
+                - Constant:
+                    Identifier: ePlus
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "eLeadingDot = "
+                - Constant:
+                    Identifier: eLeadingDot
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "eTrailingDot = "
+                - Constant:
+                    Identifier: eTrailingDot
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "eSci = "
+                - Constant:
+                    Identifier: eSci

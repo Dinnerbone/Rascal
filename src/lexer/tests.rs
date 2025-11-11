@@ -184,3 +184,24 @@ fn test_hex_integer_semicolon() {
     assert_eq!(kinds(input), vec![TokenKind::Integer, TokenKind::Semicolon]);
     assert_eq!(raws(input), vec!["0x1A2C".to_string(), ";".to_string()]);
 }
+
+#[test]
+fn test_float_exponent_semicolon() {
+    let input = "1.2e+3;";
+    assert_eq!(kinds(input), vec![TokenKind::Float, TokenKind::Semicolon]);
+    assert_eq!(raws(input), vec!["1.2e+3".to_string(), ";".to_string()]);
+}
+
+#[test]
+fn test_integer_exponent_semicolon() {
+    let input = "1e-3;";
+    assert_eq!(kinds(input), vec![TokenKind::Integer, TokenKind::Semicolon]);
+    assert_eq!(raws(input), vec!["1e-3".to_string(), ";".to_string()]);
+}
+
+#[test]
+fn test_integer_exponent_no_value() {
+    let input = "1e;";
+    assert_eq!(kinds(input), vec![TokenKind::Integer, TokenKind::Semicolon]);
+    assert_eq!(raws(input), vec!["1e".to_string(), ";".to_string()]);
+}

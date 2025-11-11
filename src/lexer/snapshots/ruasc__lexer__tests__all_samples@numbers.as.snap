@@ -382,505 +382,953 @@ input_file: samples/numbers.as
     start: 378
     end: 379
   raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 400
+    end: 403
+  raw: var
 - kind: Identifier
   span:
-    start: 379
-    end: 384
+    start: 404
+    end: 408
+  raw: eBig
+- kind:
+    BinaryOperator: Assign
+  span:
+    start: 409
+    end: 410
+  raw: "="
+- kind: Integer
+  span:
+    start: 411
+    end: 415
+  raw: "1e10"
+- kind: Semicolon
+  span:
+    start: 415
+    end: 416
+  raw: ;
+- kind: Newline
+  span:
+    start: 416
+    end: 417
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 417
+    end: 420
+  raw: var
+- kind: Identifier
+  span:
+    start: 421
+    end: 427
+  raw: eSmall
+- kind:
+    BinaryOperator: Assign
+  span:
+    start: 428
+    end: 429
+  raw: "="
+- kind: Integer
+  span:
+    start: 430
+    end: 435
+  raw: "1E-10"
+- kind: Semicolon
+  span:
+    start: 435
+    end: 436
+  raw: ;
+- kind: Newline
+  span:
+    start: 436
+    end: 437
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 437
+    end: 440
+  raw: var
+- kind: Identifier
+  span:
+    start: 441
+    end: 446
+  raw: ePlus
+- kind:
+    BinaryOperator: Assign
+  span:
+    start: 447
+    end: 448
+  raw: "="
+- kind: Float
+  span:
+    start: 449
+    end: 455
+  raw: "2.5e+3"
+- kind: Semicolon
+  span:
+    start: 455
+    end: 456
+  raw: ;
+- kind: Newline
+  span:
+    start: 456
+    end: 457
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 457
+    end: 460
+  raw: var
+- kind: Identifier
+  span:
+    start: 461
+    end: 472
+  raw: eLeadingDot
+- kind:
+    BinaryOperator: Assign
+  span:
+    start: 473
+    end: 474
+  raw: "="
+- kind: Float
+  span:
+    start: 475
+    end: 479
+  raw: ".5e2"
+- kind: Semicolon
+  span:
+    start: 479
+    end: 480
+  raw: ;
+- kind: Newline
+  span:
+    start: 480
+    end: 481
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 481
+    end: 484
+  raw: var
+- kind: Identifier
+  span:
+    start: 485
+    end: 497
+  raw: eTrailingDot
+- kind:
+    BinaryOperator: Assign
+  span:
+    start: 498
+    end: 499
+  raw: "="
+- kind: Float
+  span:
+    start: 500
+    end: 504
+  raw: "5.e3"
+- kind: Semicolon
+  span:
+    start: 504
+    end: 505
+  raw: ;
+- kind: Newline
+  span:
+    start: 505
+    end: 506
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 506
+    end: 509
+  raw: var
+- kind: Identifier
+  span:
+    start: 510
+    end: 514
+  raw: eSci
+- kind:
+    BinaryOperator: Assign
+  span:
+    start: 515
+    end: 516
+  raw: "="
+- kind: Float
+  span:
+    start: 517
+    end: 525
+  raw: "6.022e23"
+- kind: Semicolon
+  span:
+    start: 525
+    end: 526
+  raw: ;
+- kind: Newline
+  span:
+    start: 526
+    end: 527
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 527
+    end: 528
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 528
+    end: 533
   raw: trace
 - kind: OpenParen
   span:
-    start: 384
-    end: 385
+    start: 533
+    end: 534
   raw: (
 - kind: String
   span:
-    start: 385
-    end: 392
+    start: 534
+    end: 541
   raw: "i0 = "
 - kind:
     BinaryOperator: Add
   span:
-    start: 393
-    end: 394
+    start: 542
+    end: 543
   raw: +
 - kind: Identifier
   span:
-    start: 395
-    end: 397
+    start: 544
+    end: 546
   raw: i0
 - kind: CloseParen
   span:
-    start: 397
-    end: 398
+    start: 546
+    end: 547
   raw: )
 - kind: Semicolon
   span:
-    start: 398
-    end: 399
+    start: 547
+    end: 548
   raw: ;
 - kind: Newline
   span:
-    start: 399
-    end: 400
+    start: 548
+    end: 549
   raw: "\n"
 - kind: Identifier
   span:
-    start: 400
-    end: 405
+    start: 549
+    end: 554
   raw: trace
 - kind: OpenParen
   span:
-    start: 405
-    end: 406
+    start: 554
+    end: 555
   raw: (
 - kind: String
   span:
-    start: 406
-    end: 413
+    start: 555
+    end: 562
   raw: "i1 = "
 - kind:
     BinaryOperator: Add
   span:
-    start: 414
-    end: 415
+    start: 563
+    end: 564
   raw: +
 - kind: Identifier
   span:
-    start: 416
-    end: 418
+    start: 565
+    end: 567
   raw: i1
 - kind: CloseParen
   span:
-    start: 418
-    end: 419
+    start: 567
+    end: 568
   raw: )
 - kind: Semicolon
   span:
-    start: 419
-    end: 420
+    start: 568
+    end: 569
   raw: ;
 - kind: Newline
   span:
-    start: 420
-    end: 421
+    start: 569
+    end: 570
   raw: "\n"
 - kind: Identifier
   span:
-    start: 421
-    end: 426
+    start: 570
+    end: 575
   raw: trace
 - kind: OpenParen
   span:
-    start: 426
-    end: 427
+    start: 575
+    end: 576
   raw: (
 - kind: String
   span:
-    start: 427
-    end: 435
+    start: 576
+    end: 584
   raw: "i42 = "
 - kind:
     BinaryOperator: Add
   span:
-    start: 436
-    end: 437
+    start: 585
+    end: 586
   raw: +
 - kind: Identifier
   span:
-    start: 438
-    end: 441
+    start: 587
+    end: 590
   raw: i42
 - kind: CloseParen
   span:
-    start: 441
-    end: 442
+    start: 590
+    end: 591
   raw: )
 - kind: Semicolon
   span:
-    start: 442
-    end: 443
+    start: 591
+    end: 592
   raw: ;
 - kind: Newline
   span:
-    start: 443
-    end: 444
+    start: 592
+    end: 593
   raw: "\n"
 - kind: Identifier
   span:
-    start: 444
-    end: 449
+    start: 593
+    end: 598
   raw: trace
 - kind: OpenParen
   span:
-    start: 449
-    end: 450
+    start: 598
+    end: 599
   raw: (
 - kind: String
   span:
-    start: 450
-    end: 461
+    start: 599
+    end: 610
   raw: "iLarge = "
 - kind:
     BinaryOperator: Add
   span:
-    start: 462
-    end: 463
+    start: 611
+    end: 612
   raw: +
 - kind: Identifier
   span:
-    start: 464
-    end: 470
+    start: 613
+    end: 619
   raw: iLarge
 - kind: CloseParen
   span:
-    start: 470
-    end: 471
+    start: 619
+    end: 620
   raw: )
 - kind: Semicolon
   span:
-    start: 471
-    end: 472
+    start: 620
+    end: 621
   raw: ;
 - kind: Newline
   span:
-    start: 472
-    end: 473
+    start: 621
+    end: 622
   raw: "\n"
 - kind: Identifier
   span:
-    start: 473
-    end: 478
+    start: 622
+    end: 627
   raw: trace
 - kind: OpenParen
   span:
-    start: 478
-    end: 479
+    start: 627
+    end: 628
   raw: (
 - kind: String
   span:
-    start: 479
-    end: 497
+    start: 628
+    end: 646
   raw: "iLargePlusOne = "
 - kind:
     BinaryOperator: Add
   span:
-    start: 498
-    end: 499
+    start: 647
+    end: 648
   raw: +
 - kind: Identifier
   span:
-    start: 500
-    end: 513
+    start: 649
+    end: 662
   raw: iLargePlusOne
 - kind: CloseParen
   span:
-    start: 513
-    end: 514
+    start: 662
+    end: 663
   raw: )
 - kind: Semicolon
   span:
-    start: 514
-    end: 515
+    start: 663
+    end: 664
   raw: ;
 - kind: Newline
   span:
-    start: 515
-    end: 516
+    start: 664
+    end: 665
   raw: "\n"
 - kind: Newline
   span:
-    start: 516
-    end: 517
+    start: 665
+    end: 666
   raw: "\n"
 - kind: Identifier
   span:
-    start: 517
-    end: 522
+    start: 666
+    end: 671
   raw: trace
 - kind: OpenParen
   span:
-    start: 522
-    end: 523
+    start: 671
+    end: 672
   raw: (
 - kind: String
   span:
-    start: 523
-    end: 530
+    start: 672
+    end: 679
   raw: "f0 = "
 - kind:
     BinaryOperator: Add
   span:
-    start: 531
-    end: 532
+    start: 680
+    end: 681
   raw: +
 - kind: Identifier
   span:
-    start: 533
-    end: 535
+    start: 682
+    end: 684
   raw: f0
 - kind: CloseParen
   span:
-    start: 535
-    end: 536
+    start: 684
+    end: 685
   raw: )
 - kind: Semicolon
   span:
-    start: 536
-    end: 537
+    start: 685
+    end: 686
   raw: ;
 - kind: Newline
   span:
-    start: 537
-    end: 538
+    start: 686
+    end: 687
   raw: "\n"
 - kind: Identifier
   span:
-    start: 538
-    end: 543
+    start: 687
+    end: 692
   raw: trace
 - kind: OpenParen
   span:
-    start: 543
-    end: 544
+    start: 692
+    end: 693
   raw: (
 - kind: String
   span:
-    start: 544
-    end: 551
+    start: 693
+    end: 700
   raw: "f1 = "
 - kind:
     BinaryOperator: Add
   span:
-    start: 552
-    end: 553
+    start: 701
+    end: 702
   raw: +
 - kind: Identifier
   span:
-    start: 554
-    end: 556
+    start: 703
+    end: 705
   raw: f1
 - kind: CloseParen
   span:
-    start: 556
-    end: 557
+    start: 705
+    end: 706
   raw: )
 - kind: Semicolon
   span:
-    start: 557
-    end: 558
+    start: 706
+    end: 707
   raw: ;
 - kind: Newline
   span:
-    start: 558
-    end: 559
+    start: 707
+    end: 708
   raw: "\n"
 - kind: Identifier
   span:
-    start: 559
-    end: 564
+    start: 708
+    end: 713
   raw: trace
 - kind: OpenParen
   span:
-    start: 564
-    end: 565
+    start: 713
+    end: 714
   raw: (
 - kind: String
   span:
-    start: 565
-    end: 581
+    start: 714
+    end: 730
   raw: "fLeadingDot = "
 - kind:
     BinaryOperator: Add
   span:
-    start: 582
-    end: 583
+    start: 731
+    end: 732
   raw: +
 - kind: Identifier
   span:
-    start: 584
-    end: 595
+    start: 733
+    end: 744
   raw: fLeadingDot
 - kind: CloseParen
   span:
-    start: 595
-    end: 596
+    start: 744
+    end: 745
   raw: )
 - kind: Semicolon
   span:
-    start: 596
-    end: 597
+    start: 745
+    end: 746
   raw: ;
 - kind: Newline
   span:
-    start: 597
-    end: 598
+    start: 746
+    end: 747
   raw: "\n"
 - kind: Identifier
   span:
-    start: 598
-    end: 603
+    start: 747
+    end: 752
   raw: trace
 - kind: OpenParen
   span:
-    start: 603
-    end: 604
+    start: 752
+    end: 753
   raw: (
 - kind: String
   span:
-    start: 604
-    end: 621
+    start: 753
+    end: 770
   raw: "fTrailingDot = "
 - kind:
     BinaryOperator: Add
   span:
-    start: 622
-    end: 623
+    start: 771
+    end: 772
   raw: +
 - kind: Identifier
   span:
-    start: 624
-    end: 636
+    start: 773
+    end: 785
   raw: fTrailingDot
 - kind: CloseParen
   span:
-    start: 636
-    end: 637
+    start: 785
+    end: 786
   raw: )
 - kind: Semicolon
   span:
-    start: 637
-    end: 638
+    start: 786
+    end: 787
   raw: ;
 - kind: Newline
   span:
-    start: 638
-    end: 639
+    start: 787
+    end: 788
   raw: "\n"
 - kind: Newline
   span:
-    start: 639
-    end: 640
+    start: 788
+    end: 789
   raw: "\n"
 - kind: Identifier
   span:
-    start: 640
-    end: 645
+    start: 789
+    end: 794
   raw: trace
 - kind: OpenParen
   span:
-    start: 645
-    end: 646
+    start: 794
+    end: 795
   raw: (
 - kind: String
   span:
-    start: 646
-    end: 653
+    start: 795
+    end: 802
   raw: "h0 = "
 - kind:
     BinaryOperator: Add
   span:
-    start: 654
-    end: 655
+    start: 803
+    end: 804
   raw: +
 - kind: Identifier
   span:
-    start: 656
-    end: 658
+    start: 805
+    end: 807
   raw: h0
 - kind: CloseParen
   span:
-    start: 658
-    end: 659
+    start: 807
+    end: 808
   raw: )
 - kind: Semicolon
   span:
-    start: 659
-    end: 660
+    start: 808
+    end: 809
   raw: ;
 - kind: Newline
   span:
-    start: 660
-    end: 661
+    start: 809
+    end: 810
   raw: "\n"
 - kind: Identifier
   span:
-    start: 661
-    end: 666
+    start: 810
+    end: 815
   raw: trace
 - kind: OpenParen
   span:
-    start: 666
-    end: 667
+    start: 815
+    end: 816
   raw: (
 - kind: String
   span:
-    start: 667
-    end: 676
+    start: 816
+    end: 825
   raw: "hMix = "
 - kind:
     BinaryOperator: Add
   span:
-    start: 677
-    end: 678
+    start: 826
+    end: 827
   raw: +
 - kind: Identifier
   span:
-    start: 679
-    end: 683
+    start: 828
+    end: 832
   raw: hMix
 - kind: CloseParen
   span:
-    start: 683
-    end: 684
+    start: 832
+    end: 833
   raw: )
 - kind: Semicolon
   span:
-    start: 684
-    end: 685
+    start: 833
+    end: 834
   raw: ;
 - kind: Newline
   span:
-    start: 685
-    end: 686
+    start: 834
+    end: 835
   raw: "\n"
 - kind: Identifier
   span:
-    start: 686
-    end: 691
+    start: 835
+    end: 840
   raw: trace
 - kind: OpenParen
   span:
-    start: 691
-    end: 692
+    start: 840
+    end: 841
   raw: (
 - kind: String
   span:
-    start: 692
-    end: 705
+    start: 841
+    end: 854
   raw: "hMaxByte = "
 - kind:
     BinaryOperator: Add
   span:
-    start: 706
-    end: 707
+    start: 855
+    end: 856
   raw: +
 - kind: Identifier
   span:
-    start: 708
-    end: 716
+    start: 857
+    end: 865
   raw: hMaxByte
 - kind: CloseParen
   span:
-    start: 716
-    end: 717
+    start: 865
+    end: 866
   raw: )
 - kind: Semicolon
   span:
-    start: 717
-    end: 718
+    start: 866
+    end: 867
   raw: ;
 - kind: Newline
   span:
-    start: 718
-    end: 719
+    start: 867
+    end: 868
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 868
+    end: 869
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 869
+    end: 874
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 874
+    end: 875
+  raw: (
+- kind: String
+  span:
+    start: 875
+    end: 884
+  raw: "eBig = "
+- kind:
+    BinaryOperator: Add
+  span:
+    start: 885
+    end: 886
+  raw: +
+- kind: Identifier
+  span:
+    start: 887
+    end: 891
+  raw: eBig
+- kind: CloseParen
+  span:
+    start: 891
+    end: 892
+  raw: )
+- kind: Semicolon
+  span:
+    start: 892
+    end: 893
+  raw: ;
+- kind: Newline
+  span:
+    start: 893
+    end: 894
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 894
+    end: 899
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 899
+    end: 900
+  raw: (
+- kind: String
+  span:
+    start: 900
+    end: 911
+  raw: "eSmall = "
+- kind:
+    BinaryOperator: Add
+  span:
+    start: 912
+    end: 913
+  raw: +
+- kind: Identifier
+  span:
+    start: 914
+    end: 920
+  raw: eSmall
+- kind: CloseParen
+  span:
+    start: 920
+    end: 921
+  raw: )
+- kind: Semicolon
+  span:
+    start: 921
+    end: 922
+  raw: ;
+- kind: Newline
+  span:
+    start: 922
+    end: 923
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 923
+    end: 928
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 928
+    end: 929
+  raw: (
+- kind: String
+  span:
+    start: 929
+    end: 939
+  raw: "ePlus = "
+- kind:
+    BinaryOperator: Add
+  span:
+    start: 940
+    end: 941
+  raw: +
+- kind: Identifier
+  span:
+    start: 942
+    end: 947
+  raw: ePlus
+- kind: CloseParen
+  span:
+    start: 947
+    end: 948
+  raw: )
+- kind: Semicolon
+  span:
+    start: 948
+    end: 949
+  raw: ;
+- kind: Newline
+  span:
+    start: 949
+    end: 950
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 950
+    end: 955
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 955
+    end: 956
+  raw: (
+- kind: String
+  span:
+    start: 956
+    end: 972
+  raw: "eLeadingDot = "
+- kind:
+    BinaryOperator: Add
+  span:
+    start: 973
+    end: 974
+  raw: +
+- kind: Identifier
+  span:
+    start: 975
+    end: 986
+  raw: eLeadingDot
+- kind: CloseParen
+  span:
+    start: 986
+    end: 987
+  raw: )
+- kind: Semicolon
+  span:
+    start: 987
+    end: 988
+  raw: ;
+- kind: Newline
+  span:
+    start: 988
+    end: 989
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 989
+    end: 994
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 994
+    end: 995
+  raw: (
+- kind: String
+  span:
+    start: 995
+    end: 1012
+  raw: "eTrailingDot = "
+- kind:
+    BinaryOperator: Add
+  span:
+    start: 1013
+    end: 1014
+  raw: +
+- kind: Identifier
+  span:
+    start: 1015
+    end: 1027
+  raw: eTrailingDot
+- kind: CloseParen
+  span:
+    start: 1027
+    end: 1028
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1028
+    end: 1029
+  raw: ;
+- kind: Newline
+  span:
+    start: 1029
+    end: 1030
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1030
+    end: 1035
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1035
+    end: 1036
+  raw: (
+- kind: String
+  span:
+    start: 1036
+    end: 1045
+  raw: "eSci = "
+- kind:
+    BinaryOperator: Add
+  span:
+    start: 1046
+    end: 1047
+  raw: +
+- kind: Identifier
+  span:
+    start: 1048
+    end: 1052
+  raw: eSci
+- kind: CloseParen
+  span:
+    start: 1052
+    end: 1053
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1053
+    end: 1054
+  raw: ;
+- kind: Newline
+  span:
+    start: 1054
+    end: 1055
   raw: "\n"

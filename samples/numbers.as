@@ -16,6 +16,14 @@ var h0 = 0x0;
 var hMix = 0x1A2b;
 var hMaxByte = 0xFF;
 
+// Exponent notation
+var eBig = 1e10;
+var eSmall = 1E-10;
+var ePlus = 2.5e+3;
+var eLeadingDot = .5e2;
+var eTrailingDot = 5.e3;
+var eSci = 6.022e23;
+
 trace("i0 = " + i0);
 trace("i1 = " + i1);
 trace("i42 = " + i42);
@@ -30,3 +38,10 @@ trace("fTrailingDot = " + fTrailingDot);
 trace("h0 = " + h0);
 trace("hMix = " + hMix);
 trace("hMaxByte = " + hMaxByte);
+
+trace("eBig = " + eBig);
+trace("eSmall = " + eSmall);
+trace("ePlus = " + ePlus);
+trace("eLeadingDot = " + eLeadingDot);
+trace("eTrailingDot = " + eTrailingDot);
+trace("eSci = " + eSci);

@@ -175,6 +175,17 @@ fn lex_integer_or_float<'a>(stream: &mut Stream<'a>) -> Token<'a> {
         TokenKind::Integer
     };
 
+    if matches!(stream.as_bstr().first(), Some(b'e' | b'E')) {
+        // Optional exponent looks like e+2, E-1, e5, etc
+        stream.next_slice(1); // skip the 'e' or 'E'
+        if stream.as_bstr().first() == Some(&b'+') || stream.as_bstr().first() == Some(&b'-') {
+            stream.next_slice(1); // skip the '+' or '-'
+        }
+        if let Some(offset) = stream.as_bstr().offset_for(invalid_char) {
+            stream.next_slice(offset);
+        }
+    }
+
     let end = stream.previous_token_end();
     stream.reset(&start_checkpoint);
     let raw = stream.next_slice(end - start);
