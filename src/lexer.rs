@@ -71,7 +71,6 @@ fn process_token<'a>(peek_byte: u8, stream: &mut Stream<'a>) -> Option<Token<'a>
 }
 
 fn lex_comment_or_divide<'a>(stream: &mut Stream<'a>) -> Option<Token<'a>> {
-    // Decide between line comment, block comment, or unknown (future: division operator)
     let next = stream.as_bstr().get(1);
     match next {
         Some(b'/') => {
@@ -82,17 +81,7 @@ fn lex_comment_or_divide<'a>(stream: &mut Stream<'a>) -> Option<Token<'a>> {
             skip_block_comment(stream);
             None
         }
-        _ => {
-            // TODO this should be Divide
-            let start = stream.current_token_start();
-            let raw = stream.next_slice(1);
-            let end = stream.previous_token_end();
-            Some(Token::new(
-                TokenKind::Unknown,
-                Span::new_unchecked(start, end),
-                raw,
-            ))
-        }
+        _ => Some(lex_operator(stream)),
     }
 }
 
@@ -214,6 +203,7 @@ fn lex_operator<'a>(stream: &mut Stream<'a>) -> Token<'a> {
         b"+" => lex_ascii_char(stream, TokenKind::BinaryOperator(BinaryOperator::Add)),
         b"=" => lex_ascii_char(stream, TokenKind::BinaryOperator(BinaryOperator::Assign)),
         b"-" => lex_ascii_char(stream, TokenKind::BinaryOperator(BinaryOperator::Sub)),
+        b"/" => lex_ascii_char(stream, TokenKind::BinaryOperator(BinaryOperator::Divide)),
         _ => unreachable!(), // This is true as long as we have an entry that matches the caller's peeked value
     }
 }
