@@ -1,0 +1,572 @@
+---
+source: src/lexer/tests.rs
+expression: tokens
+input_file: samples/operators.as
+---
+- kind:
+    Keyword: Var
+  span:
+    start: 0
+    end: 3
+  raw: var
+- kind: Identifier
+  span:
+    start: 4
+    end: 5
+  raw: a
+- kind:
+    Operator: Assign
+  span:
+    start: 6
+    end: 7
+  raw: "="
+- kind: Integer
+  span:
+    start: 8
+    end: 10
+  raw: "10"
+- kind: Semicolon
+  span:
+    start: 10
+    end: 11
+  raw: ;
+- kind: Newline
+  span:
+    start: 11
+    end: 12
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 12
+    end: 15
+  raw: var
+- kind: Identifier
+  span:
+    start: 16
+    end: 17
+  raw: b
+- kind:
+    Operator: Assign
+  span:
+    start: 18
+    end: 19
+  raw: "="
+- kind: Integer
+  span:
+    start: 20
+    end: 21
+  raw: "3"
+- kind: Semicolon
+  span:
+    start: 21
+    end: 22
+  raw: ;
+- kind: Newline
+  span:
+    start: 22
+    end: 23
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 23
+    end: 24
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 24
+    end: 29
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 29
+    end: 30
+  raw: (
+- kind: String
+  span:
+    start: 30
+    end: 40
+  raw: "a + b = "
+- kind:
+    Operator: Add
+  span:
+    start: 41
+    end: 42
+  raw: +
+- kind: OpenParen
+  span:
+    start: 43
+    end: 44
+  raw: (
+- kind: Identifier
+  span:
+    start: 44
+    end: 45
+  raw: a
+- kind:
+    Operator: Add
+  span:
+    start: 46
+    end: 47
+  raw: +
+- kind: Identifier
+  span:
+    start: 48
+    end: 49
+  raw: b
+- kind: CloseParen
+  span:
+    start: 49
+    end: 50
+  raw: )
+- kind: CloseParen
+  span:
+    start: 50
+    end: 51
+  raw: )
+- kind: Semicolon
+  span:
+    start: 51
+    end: 52
+  raw: ;
+- kind: Identifier
+  span:
+    start: 59
+    end: 64
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 64
+    end: 65
+  raw: (
+- kind: String
+  span:
+    start: 65
+    end: 75
+  raw: "a - b = "
+- kind:
+    Operator: Add
+  span:
+    start: 76
+    end: 77
+  raw: +
+- kind: OpenParen
+  span:
+    start: 78
+    end: 79
+  raw: (
+- kind: Identifier
+  span:
+    start: 79
+    end: 80
+  raw: a
+- kind:
+    Operator: Sub
+  span:
+    start: 81
+    end: 82
+  raw: "-"
+- kind: Identifier
+  span:
+    start: 83
+    end: 84
+  raw: b
+- kind: CloseParen
+  span:
+    start: 84
+    end: 85
+  raw: )
+- kind: CloseParen
+  span:
+    start: 85
+    end: 86
+  raw: )
+- kind: Semicolon
+  span:
+    start: 86
+    end: 87
+  raw: ;
+- kind: Identifier
+  span:
+    start: 93
+    end: 98
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 98
+    end: 99
+  raw: (
+- kind: String
+  span:
+    start: 99
+    end: 109
+  raw: "a * b = "
+- kind:
+    Operator: Add
+  span:
+    start: 110
+    end: 111
+  raw: +
+- kind: OpenParen
+  span:
+    start: 112
+    end: 113
+  raw: (
+- kind: Identifier
+  span:
+    start: 113
+    end: 114
+  raw: a
+- kind:
+    Operator: Multiply
+  span:
+    start: 115
+    end: 116
+  raw: "*"
+- kind: Identifier
+  span:
+    start: 117
+    end: 118
+  raw: b
+- kind: CloseParen
+  span:
+    start: 118
+    end: 119
+  raw: )
+- kind: CloseParen
+  span:
+    start: 119
+    end: 120
+  raw: )
+- kind: Semicolon
+  span:
+    start: 120
+    end: 121
+  raw: ;
+- kind: Identifier
+  span:
+    start: 128
+    end: 133
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 133
+    end: 134
+  raw: (
+- kind: String
+  span:
+    start: 134
+    end: 144
+  raw: "a / b = "
+- kind:
+    Operator: Add
+  span:
+    start: 145
+    end: 146
+  raw: +
+- kind: OpenParen
+  span:
+    start: 147
+    end: 148
+  raw: (
+- kind: Identifier
+  span:
+    start: 148
+    end: 149
+  raw: a
+- kind:
+    Operator: Divide
+  span:
+    start: 150
+    end: 151
+  raw: /
+- kind: Identifier
+  span:
+    start: 152
+    end: 153
+  raw: b
+- kind: CloseParen
+  span:
+    start: 153
+    end: 154
+  raw: )
+- kind: CloseParen
+  span:
+    start: 154
+    end: 155
+  raw: )
+- kind: Semicolon
+  span:
+    start: 155
+    end: 156
+  raw: ;
+- kind: Identifier
+  span:
+    start: 173
+    end: 178
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 178
+    end: 179
+  raw: (
+- kind: String
+  span:
+    start: 179
+    end: 189
+  raw: "a % b = "
+- kind:
+    Operator: Add
+  span:
+    start: 190
+    end: 191
+  raw: +
+- kind: OpenParen
+  span:
+    start: 192
+    end: 193
+  raw: (
+- kind: Identifier
+  span:
+    start: 193
+    end: 194
+  raw: a
+- kind:
+    Operator: Modulo
+  span:
+    start: 195
+    end: 196
+  raw: "%"
+- kind: Identifier
+  span:
+    start: 197
+    end: 198
+  raw: b
+- kind: CloseParen
+  span:
+    start: 198
+    end: 199
+  raw: )
+- kind: CloseParen
+  span:
+    start: 199
+    end: 200
+  raw: )
+- kind: Semicolon
+  span:
+    start: 200
+    end: 201
+  raw: ;
+- kind: Newline
+  span:
+    start: 207
+    end: 208
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 208
+    end: 213
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 213
+    end: 214
+  raw: (
+- kind: String
+  span:
+    start: 214
+    end: 222
+  raw: "++a = "
+- kind:
+    Operator: Add
+  span:
+    start: 223
+    end: 224
+  raw: +
+- kind: OpenParen
+  span:
+    start: 225
+    end: 226
+  raw: (
+- kind:
+    Operator: Increment
+  span:
+    start: 226
+    end: 228
+  raw: ++
+- kind: Identifier
+  span:
+    start: 228
+    end: 229
+  raw: a
+- kind: CloseParen
+  span:
+    start: 229
+    end: 230
+  raw: )
+- kind: CloseParen
+  span:
+    start: 230
+    end: 231
+  raw: )
+- kind: Semicolon
+  span:
+    start: 231
+    end: 232
+  raw: ;
+- kind: Identifier
+  span:
+    start: 239
+    end: 244
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 244
+    end: 245
+  raw: (
+- kind: String
+  span:
+    start: 245
+    end: 253
+  raw: "--a = "
+- kind:
+    Operator: Add
+  span:
+    start: 254
+    end: 255
+  raw: +
+- kind: OpenParen
+  span:
+    start: 256
+    end: 257
+  raw: (
+- kind:
+    Operator: Decrement
+  span:
+    start: 257
+    end: 259
+  raw: "--"
+- kind: Identifier
+  span:
+    start: 259
+    end: 260
+  raw: a
+- kind: CloseParen
+  span:
+    start: 260
+    end: 261
+  raw: )
+- kind: CloseParen
+  span:
+    start: 261
+    end: 262
+  raw: )
+- kind: Semicolon
+  span:
+    start: 262
+    end: 263
+  raw: ;
+- kind: Identifier
+  span:
+    start: 270
+    end: 275
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 275
+    end: 276
+  raw: (
+- kind: String
+  span:
+    start: 276
+    end: 284
+  raw: "a++ = "
+- kind:
+    Operator: Add
+  span:
+    start: 285
+    end: 286
+  raw: +
+- kind: OpenParen
+  span:
+    start: 287
+    end: 288
+  raw: (
+- kind: Identifier
+  span:
+    start: 288
+    end: 289
+  raw: a
+- kind:
+    Operator: Increment
+  span:
+    start: 289
+    end: 291
+  raw: ++
+- kind: CloseParen
+  span:
+    start: 291
+    end: 292
+  raw: )
+- kind: CloseParen
+  span:
+    start: 292
+    end: 293
+  raw: )
+- kind: Semicolon
+  span:
+    start: 293
+    end: 294
+  raw: ;
+- kind: Identifier
+  span:
+    start: 313
+    end: 318
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 318
+    end: 319
+  raw: (
+- kind: String
+  span:
+    start: 319
+    end: 327
+  raw: "a-- = "
+- kind:
+    Operator: Add
+  span:
+    start: 328
+    end: 329
+  raw: +
+- kind: OpenParen
+  span:
+    start: 330
+    end: 331
+  raw: (
+- kind: Identifier
+  span:
+    start: 331
+    end: 332
+  raw: a
+- kind:
+    Operator: Decrement
+  span:
+    start: 332
+    end: 334
+  raw: "--"
+- kind: CloseParen
+  span:
+    start: 334
+    end: 335
+  raw: )
+- kind: CloseParen
+  span:
+    start: 335
+    end: 336
+  raw: )
+- kind: Semicolon
+  span:
+    start: 336
+    end: 337
+  raw: ;

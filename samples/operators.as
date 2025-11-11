@@ -1,0 +1,13 @@
+var a = 10;
+var b = 3;
+
+trace("a + b = " + (a + b)); // 13
+trace("a - b = " + (a - b)); // 7
+trace("a * b = " + (a * b)); // 30
+trace("a / b = " + (a / b)); // 3.3333333333
+trace("a % b = " + (a % b)); // 1
+
+trace("++a = " + (++a)); // 11
+trace("--a = " + (--a)); // 10
+trace("a++ = " + (a++)); // 10 (then a=11)
+trace("a-- = " + (a--)); // 11 (then a=10)

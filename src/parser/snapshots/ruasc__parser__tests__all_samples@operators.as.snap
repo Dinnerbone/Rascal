@@ -1,0 +1,162 @@
+---
+source: src/parser/tests.rs
+expression: parsed
+input_file: samples/operators.as
+---
+Ok:
+  statements:
+    - Declare:
+        name: a
+        value:
+          Constant:
+            Integer: 10
+    - Declare:
+        name: b
+        value:
+          Constant:
+            Integer: 3
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "a + b = "
+                - Parenthesis:
+                    BinaryOperator:
+                      - Add
+                      - Constant:
+                          Identifier: a
+                      - Constant:
+                          Identifier: b
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "a - b = "
+                - Parenthesis:
+                    BinaryOperator:
+                      - Sub
+                      - Constant:
+                          Identifier: a
+                      - Constant:
+                          Identifier: b
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "a * b = "
+                - Parenthesis:
+                    BinaryOperator:
+                      - Multiply
+                      - Constant:
+                          Identifier: a
+                      - Constant:
+                          Identifier: b
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "a / b = "
+                - Parenthesis:
+                    BinaryOperator:
+                      - Divide
+                      - Constant:
+                          Identifier: a
+                      - Constant:
+                          Identifier: b
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "a % b = "
+                - Parenthesis:
+                    BinaryOperator:
+                      - Modulo
+                      - Constant:
+                          Identifier: a
+                      - Constant:
+                          Identifier: b
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "++a = "
+                - Parenthesis:
+                    UnaryOperator:
+                      - Increment: Prefix
+                      - Constant:
+                          Identifier: a
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "--a = "
+                - Parenthesis:
+                    UnaryOperator:
+                      - Decrement: Prefix
+                      - Constant:
+                          Identifier: a
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "a++ = "
+                - Parenthesis:
+                    UnaryOperator:
+                      - Increment: Postfix
+                      - Constant:
+                          Identifier: a
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "a-- = "
+                - Parenthesis:
+                    UnaryOperator:
+                      - Decrement: Postfix
+                      - Constant:
+                          Identifier: a
