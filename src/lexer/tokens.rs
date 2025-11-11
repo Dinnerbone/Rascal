@@ -95,4 +95,5 @@ pub enum BinaryOperator {
     AddAssign,
     Sub,
     Divide,
+    Multiply,
 }

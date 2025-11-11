@@ -51,7 +51,7 @@ fn process_token<'a>(peek_byte: u8, stream: &mut Stream<'a>) -> Option<Token<'a>
         b',' => Some(lex_ascii_char(stream, TokenKind::Comma)),
         b')' => Some(lex_ascii_char(stream, TokenKind::CloseParen)),
         b';' => Some(lex_ascii_char(stream, TokenKind::Semicolon)),
-        b'=' | b'+' | b'-' => Some(lex_operator(stream)),
+        b'=' | b'+' | b'-' | b'*' => Some(lex_operator(stream)),
         b'\r' => Some(lex_crlf(stream)),
         b'\n' => Some(lex_ascii_char(stream, TokenKind::Newline)),
         b'"' => Some(lex_basic_string(stream)),
@@ -204,6 +204,7 @@ fn lex_operator<'a>(stream: &mut Stream<'a>) -> Token<'a> {
         b"=" => lex_ascii_char(stream, TokenKind::BinaryOperator(BinaryOperator::Assign)),
         b"-" => lex_ascii_char(stream, TokenKind::BinaryOperator(BinaryOperator::Sub)),
         b"/" => lex_ascii_char(stream, TokenKind::BinaryOperator(BinaryOperator::Divide)),
+        b"*" => lex_ascii_char(stream, TokenKind::BinaryOperator(BinaryOperator::Multiply)),
         _ => unreachable!(), // This is true as long as we have an entry that matches the caller's peeked value
     }
 }
