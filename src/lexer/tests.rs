@@ -71,7 +71,7 @@ fn test_identifiers_and_keyword() {
 #[test]
 fn test_operators_single_and_compound() {
     assert_eq!(
-        kinds("+ = += - / *"),
+        kinds("+ = += - / * %"),
         vec![
             TokenKind::BinaryOperator(BinaryOperator::Add),
             TokenKind::BinaryOperator(BinaryOperator::Assign),
@@ -79,6 +79,7 @@ fn test_operators_single_and_compound() {
             TokenKind::BinaryOperator(BinaryOperator::Sub),
             TokenKind::BinaryOperator(BinaryOperator::Divide),
             TokenKind::BinaryOperator(BinaryOperator::Multiply),
+            TokenKind::BinaryOperator(BinaryOperator::Modulo),
         ]
     );
 }

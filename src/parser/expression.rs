@@ -295,6 +295,23 @@ mod tests {
     }
 
     #[test]
+    fn test_binary_modulo() {
+        let tokens = build_tokens(&[
+            (TokenKind::Identifier, "a"),
+            (TokenKind::BinaryOperator(BinaryOperator::Modulo), "%"),
+            (TokenKind::Identifier, "b"),
+        ]);
+        assert_eq!(
+            parse_expr(&tokens),
+            Ok(Expr::BinaryOperator(
+                BinaryOperator::Modulo,
+                Box::new(Expr::Constant(Constant::Identifier("a".to_string()))),
+                Box::new(Expr::Constant(Constant::Identifier("b".to_string())))
+            ))
+        );
+    }
+
+    #[test]
     fn test_binary_right_associative() {
         // a + b + c parses as a + (b + c)
         let tokens = build_tokens(&[

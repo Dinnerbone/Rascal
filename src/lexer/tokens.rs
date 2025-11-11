@@ -96,4 +96,5 @@ pub enum BinaryOperator {
     Sub,
     Divide,
     Multiply,
+    Modulo,
 }
