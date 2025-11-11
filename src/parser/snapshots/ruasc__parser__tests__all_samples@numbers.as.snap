@@ -95,6 +95,32 @@ Ok:
         value:
           Constant:
             Float: 602200000000000000000000
+    - Declare:
+        name: nDec
+        value:
+          UnaryOperator:
+            - Sub
+            - Constant:
+                Integer: 123
+    - Declare:
+        name: nHex
+        value:
+          UnaryOperator:
+            - Sub
+            - Constant:
+                Integer: 255
+    - Declare:
+        name: nFloat
+        value:
+          UnaryOperator:
+            - Sub
+            - Constant:
+                Float: 3.14
+    - Declare:
+        name: pDec
+        value:
+          Constant:
+            Integer: 7
     - Expr:
         Call:
           name:
@@ -311,3 +337,51 @@ Ok:
                     String: "eSci = "
                 - Constant:
                     Identifier: eSci
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "nDec = "
+                - Constant:
+                    Identifier: nDec
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "nHex = "
+                - Constant:
+                    Identifier: nHex
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "nFloat = "
+                - Constant:
+                    Identifier: nFloat
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "pDec = "
+                - Constant:
+                    Identifier: pDec

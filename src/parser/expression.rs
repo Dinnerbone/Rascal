@@ -43,6 +43,12 @@ pub(crate) fn expression(i: &mut Tokens<'_>) -> ModalResult<Expr> {
                 .context(StrContext::Label("expression"))
                 .parse_next(i)
         }
+        TokenKind::BinaryOperator(BinaryOperator::Add) => {
+            TokenKind::BinaryOperator(BinaryOperator::Add).parse_next(i)?;
+            expression
+                .context(StrContext::Label("expression"))
+                .parse_next(i)
+        }
         TokenKind::String | TokenKind::Identifier | TokenKind::Float | TokenKind::Integer => {
             let val = constant
                 .context(StrContext::Label("constant"))
@@ -324,6 +330,18 @@ mod tests {
                 UnaryOperator::Sub,
                 Box::new(Expr::Constant(Constant::Identifier("a".to_string())))
             ))
+        );
+    }
+
+    #[test]
+    fn test_unary_add() {
+        let tokens = build_tokens(&[
+            (TokenKind::BinaryOperator(BinaryOperator::Add), "+"),
+            (TokenKind::Identifier, "a"),
+        ]);
+        assert_eq!(
+            parse_expr(&tokens),
+            Ok(Expr::Constant(Constant::Identifier("a".to_string())))
         );
     }
 }
