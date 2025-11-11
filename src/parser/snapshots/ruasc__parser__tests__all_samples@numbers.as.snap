@@ -20,6 +20,36 @@ Ok:
         value:
           Constant:
             Integer: 42
+    - Declare:
+        name: iLarge
+        value:
+          Constant:
+            Integer: 2147483647
+    - Declare:
+        name: iLargePlusOne
+        value:
+          Constant:
+            Float: 2147483648
+    - Declare:
+        name: f0
+        value:
+          Constant:
+            Float: 0
+    - Declare:
+        name: f1
+        value:
+          Constant:
+            Float: 1.23
+    - Declare:
+        name: fLeadingDot
+        value:
+          Constant:
+            Float: 0.5
+    - Declare:
+        name: fTrailingDot
+        value:
+          Constant:
+            Float: 5
     - Expr:
         Call:
           name:
@@ -56,3 +86,75 @@ Ok:
                     String: "i42 = "
                 - Constant:
                     Identifier: i42
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "iLarge = "
+                - Constant:
+                    Identifier: iLarge
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "iLargePlusOne = "
+                - Constant:
+                    Identifier: iLargePlusOne
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "f0 = "
+                - Constant:
+                    Identifier: f0
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "f1 = "
+                - Constant:
+                    Identifier: f1
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "fLeadingDot = "
+                - Constant:
+                    Identifier: fLeadingDot
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "fTrailingDot = "
+                - Constant:
+                    Identifier: fTrailingDot

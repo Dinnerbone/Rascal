@@ -1,7 +1,7 @@
 use crate::lexer::tokens::{BinaryOperator, TokenKind};
 use crate::parser::{Tokens, identifier, skip_newline, string};
 use serde::Serialize;
-use winnow::combinator::{fail, peek, separated};
+use winnow::combinator::{alt, fail, peek, separated};
 use winnow::error::{ContextError, ErrMode, StrContext};
 use winnow::error::{ParserError, StrContextValue};
 use winnow::stream::ParseSlice;
@@ -29,28 +29,11 @@ pub(crate) fn expression(i: &mut Tokens<'_>) -> ModalResult<Expr> {
     take_while(0.., TokenKind::Newline).parse_next(i)?;
     let token = peek(any).parse_next(i)?;
     match token.kind {
-        TokenKind::String => {
-            let val = string.context(StrContext::Label("string")).parse_next(i)?;
-            expr_next(Expr::Constant(Constant::String(val)))
-                .context(StrContext::Label("expression"))
-        }
-        TokenKind::Identifier => {
-            let val = identifier
-                .context(StrContext::Label("identifier"))
+        TokenKind::String | TokenKind::Identifier | TokenKind::Float | TokenKind::Integer => {
+            let val = constant
+                .context(StrContext::Label("constant"))
                 .parse_next(i)?;
-            expr_next(Expr::Constant(Constant::Identifier(val)))
-                .context(StrContext::Label("expression"))
-        }
-        TokenKind::Float => {
-            let val = float.context(StrContext::Label("float")).parse_next(i)?;
-            expr_next(Expr::Constant(Constant::Float(val))).context(StrContext::Label("expression"))
-        }
-        TokenKind::Integer => {
-            let val = integer
-                .context(StrContext::Label("integer"))
-                .parse_next(i)?;
-            expr_next(Expr::Constant(Constant::Integer(val)))
-                .context(StrContext::Label("expression"))
+            expr_next(Expr::Constant(val)).context(StrContext::Label("expression"))
         }
         _ => {
             return fail
@@ -68,8 +51,33 @@ pub(crate) fn expression(i: &mut Tokens<'_>) -> ModalResult<Expr> {
     .parse_next(i)
 }
 
+fn constant(i: &mut Tokens<'_>) -> ModalResult<Constant> {
+    take_while(0.., TokenKind::Newline).parse_next(i)?;
+    let token = peek(any).parse_next(i)?;
+    match token.kind {
+        TokenKind::String => string
+            .map(Constant::String)
+            .context(StrContext::Label("string"))
+            .parse_next(i),
+        TokenKind::Identifier => identifier
+            .map(Constant::Identifier)
+            .context(StrContext::Label("identifier"))
+            .parse_next(i),
+        TokenKind::Float => float
+            .map(Constant::Float)
+            .context(StrContext::Label("float"))
+            .parse_next(i),
+        TokenKind::Integer => alt((integer.map(Constant::Integer), float.map(Constant::Float)))
+            .context(StrContext::Label("integer"))
+            .parse_next(i),
+        _ => fail.parse_next(i),
+    }
+}
+
 fn float(i: &mut Tokens<'_>) -> ModalResult<f64> {
-    let raw = TokenKind::Float.parse_next(i)?.raw;
+    let raw = alt((TokenKind::Float, TokenKind::Integer))
+        .parse_next(i)?
+        .raw;
     let value = raw
         .parse_slice()
         .ok_or_else(|| ParserError::from_input(&raw))?;
