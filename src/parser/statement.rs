@@ -1,5 +1,5 @@
 use crate::lexer::tokens::{BinaryOperator, Keyword, TokenKind};
-use crate::parser::expr::{Expr, expression};
+use crate::parser::expression::{Expr, expression};
 use crate::parser::{Tokens, identifier, skip_newline};
 use serde::Serialize;
 use winnow::combinator::{alt, cond, cut_err, opt};
@@ -59,7 +59,7 @@ fn declaration(i: &mut Tokens<'_>) -> ModalResult<Statement> {
 mod stmt_tests {
     use super::*;
     use crate::lexer::tokens::{BinaryOperator, Keyword, Token, TokenKind};
-    use crate::parser::expr::{Constant, Expr};
+    use crate::parser::expression::{Constant, Expr};
     use crate::parser::tests::build_tokens;
     use winnow::stream::TokenSlice;
 

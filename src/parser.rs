@@ -7,7 +7,7 @@ use winnow::stream::TokenSlice;
 use winnow::{ModalResult, Parser};
 
 mod document;
-mod expr;
+mod expression;
 mod statement;
 #[cfg(test)]
 mod tests;
