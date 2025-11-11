@@ -4,16 +4,16 @@ use serde::Serialize;
 #[derive(Debug, Clone, Serialize, PartialEq)]
 #[allow(dead_code)]
 pub(crate) enum Statement {
-    Declare { name: String, value: Option<Eval> },
-    EVal(Eval),
+    Declare { name: String, value: Option<Expr> },
+    Expr(Expr),
 }
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
 #[allow(dead_code)]
-pub(crate) enum Eval {
+pub(crate) enum Expr {
     Constant(Constant),
-    Call { name: Box<Eval>, args: Vec<Eval> },
-    BinaryOperator(BinaryOperator, Box<Eval>, Box<Eval>),
+    Call { name: Box<Expr>, args: Vec<Expr> },
+    BinaryOperator(BinaryOperator, Box<Expr>, Box<Expr>),
 }
 
 #[derive(Debug, Clone, Serialize, PartialEq)]

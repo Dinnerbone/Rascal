@@ -1,9 +1,9 @@
 use crate::lexer::tokens::{BinaryOperator, Keyword, TokenKind};
 use crate::parser::Tokens;
-use crate::parser::expr::{Constant, Eval, Statement};
+use crate::parser::expr::{Constant, Expr, Statement};
 use serde::Serialize;
 use winnow::combinator::{alt, cond, cut_err, eof, fail, opt, peek, repeat_till, separated};
-use winnow::error::{ContextError, ErrMode, StrContext};
+use winnow::error::{ContextError, ErrMode, StrContext, StrContextValue};
 use winnow::stream::Stream;
 use winnow::token::{any, take_while};
 use winnow::{ModalResult, Parser};
@@ -30,31 +30,33 @@ fn statement(i: &mut Tokens<'_>) -> ModalResult<Statement> {
             .parse_next(i),
         _ => {
             i.reset(&checkpoint);
-            eval.parse_next(i).map(Statement::EVal)
+            expression.parse_next(i).map(Statement::Expr)
         }
     }?;
 
     if !i.is_empty() {
         alt((TokenKind::Semicolon, TokenKind::Newline))
             .context(StrContext::Label("end of line"))
+            .context(StrContext::Expected(StrContextValue::CharLiteral(';')))
             .parse_next(i)?;
     }
+
     take_while(0.., TokenKind::Newline).parse_next(i)?;
 
     Ok(result)
 }
 
-fn eval(i: &mut Tokens<'_>) -> ModalResult<Eval> {
+fn expression(i: &mut Tokens<'_>) -> ModalResult<Expr> {
     take_while(0.., TokenKind::Newline).parse_next(i)?;
     let token = peek(any).parse_next(i)?;
     match token.kind {
         TokenKind::String => {
             let val = string.parse_next(i)?;
-            eval_next(Eval::Constant(Constant::String(val))).context(StrContext::Label("string"))
+            expr_next(Expr::Constant(Constant::String(val))).context(StrContext::Label("string"))
         }
         TokenKind::Identifier => {
             let val = identifier.parse_next(i)?;
-            eval_next(Eval::Constant(Constant::Identifier(val)))
+            expr_next(Expr::Constant(Constant::Identifier(val)))
                 .context(StrContext::Label("identifier"))
         }
         _ => {
@@ -64,7 +66,7 @@ fn eval(i: &mut Tokens<'_>) -> ModalResult<Eval> {
     .parse_next(i)
 }
 
-fn eval_next<'i>(prior: Eval) -> impl Parser<Tokens<'i>, Eval, ErrMode<ContextError>> {
+fn expr_next<'i>(prior: Expr) -> impl Parser<Tokens<'i>, Expr, ErrMode<ContextError>> {
     move |i: &mut Tokens<'i>| {
         let prior = prior.clone();
         take_while(0.., TokenKind::Newline).parse_next(i)?;
@@ -75,19 +77,20 @@ fn eval_next<'i>(prior: Eval) -> impl Parser<Tokens<'i>, Eval, ErrMode<ContextEr
         match token.kind {
             TokenKind::OpenParen => {
                 TokenKind::OpenParen.parse_next(i)?;
-                let args = eval_list
+                let args = expr_list
                     .context(StrContext::Label("arguments"))
                     .parse_next(i)?;
                 TokenKind::CloseParen.parse_next(i)?;
-                Ok(Eval::Call {
+                Ok(Expr::Call {
                     name: Box::new(prior),
                     args,
                 })
             }
             TokenKind::BinaryOperator(op) => {
                 TokenKind::BinaryOperator(op).parse_next(i)?;
-                eval.parse_next(i)
-                    .map(|next| Eval::BinaryOperator(op, Box::new(prior), Box::new(next)))
+                expression
+                    .parse_next(i)
+                    .map(|next| Expr::BinaryOperator(op, Box::new(prior), Box::new(next)))
             }
             _ => Ok(prior),
         }
@@ -111,13 +114,13 @@ fn declaration(i: &mut Tokens<'_>) -> ModalResult<Statement> {
     ))))
     .parse_next(i)?
     .is_some();
-    let value = cond(equals, skip_newline(eval)).parse_next(i)?;
+    let value = cond(equals, skip_newline(expression)).parse_next(i)?;
 
     Ok(Statement::Declare { name, value })
 }
 
-fn eval_list(i: &mut Tokens<'_>) -> ModalResult<Vec<Eval>> {
-    separated(0.., skip_newline(eval), TokenKind::Comma).parse_next(i)
+fn expr_list(i: &mut Tokens<'_>) -> ModalResult<Vec<Expr>> {
+    separated(0.., skip_newline(expression), TokenKind::Comma).parse_next(i)
 }
 
 fn skip_newline<'i, O, P>(mut inner: P) -> impl Parser<Tokens<'i>, O, ErrMode<ContextError>>
@@ -153,46 +156,46 @@ mod stmt_tests {
         statement(&mut TokenSlice::new(tokens))
     }
 
-    fn parse_eval(tokens: &[Token<'_>]) -> ModalResult<Eval> {
-        eval(&mut TokenSlice::new(tokens))
+    fn parse_expr(tokens: &[Token<'_>]) -> ModalResult<Expr> {
+        expression(&mut TokenSlice::new(tokens))
     }
 
     #[test]
-    fn eval_identifier() {
+    fn expr_identifier() {
         let tokens = build_tokens(&[(TokenKind::Identifier, "foo")]);
         assert_eq!(
-            parse_eval(&tokens),
-            Ok(Eval::Constant(Constant::Identifier("foo".to_string())))
+            parse_expr(&tokens),
+            Ok(Expr::Constant(Constant::Identifier("foo".to_string())))
         );
     }
 
     #[test]
-    fn eval_string() {
+    fn expr_string() {
         let tokens = build_tokens(&[(TokenKind::String, "hello")]);
         assert_eq!(
-            parse_eval(&tokens),
-            Ok(Eval::Constant(Constant::String("hello".to_string())))
+            parse_expr(&tokens),
+            Ok(Expr::Constant(Constant::String("hello".to_string())))
         );
     }
 
     #[test]
-    fn eval_call_no_args() {
+    fn expr_call_no_args() {
         let tokens = build_tokens(&[
             (TokenKind::Identifier, "foo"),
             (TokenKind::OpenParen, "("),
             (TokenKind::CloseParen, ")"),
         ]);
         assert_eq!(
-            parse_eval(&tokens),
-            Ok(Eval::Call {
-                name: Box::new(Eval::Constant(Constant::Identifier("foo".to_string()))),
+            parse_expr(&tokens),
+            Ok(Expr::Call {
+                name: Box::new(Expr::Constant(Constant::Identifier("foo".to_string()))),
                 args: vec![]
             })
         );
     }
 
     #[test]
-    fn eval_call_two_args() {
+    fn expr_call_two_args() {
         let tokens = build_tokens(&[
             (TokenKind::Identifier, "foo"),
             (TokenKind::OpenParen, "("),
@@ -202,36 +205,36 @@ mod stmt_tests {
             (TokenKind::CloseParen, ")"),
         ]);
         assert_eq!(
-            parse_eval(&tokens),
-            Ok(Eval::Call {
-                name: Box::new(Eval::Constant(Constant::Identifier("foo".to_string()))),
+            parse_expr(&tokens),
+            Ok(Expr::Call {
+                name: Box::new(Expr::Constant(Constant::Identifier("foo".to_string()))),
                 args: vec![
-                    Eval::Constant(Constant::Identifier("a".to_string())),
-                    Eval::Constant(Constant::String("str".to_string()))
+                    Expr::Constant(Constant::Identifier("a".to_string())),
+                    Expr::Constant(Constant::String("str".to_string()))
                 ]
             })
         );
     }
 
     #[test]
-    fn eval_binary_add() {
+    fn expr_binary_add() {
         let tokens = build_tokens(&[
             (TokenKind::Identifier, "a"),
             (TokenKind::BinaryOperator(BinaryOperator::Add), "+"),
             (TokenKind::Identifier, "b"),
         ]);
         assert_eq!(
-            parse_eval(&tokens),
-            Ok(Eval::BinaryOperator(
+            parse_expr(&tokens),
+            Ok(Expr::BinaryOperator(
                 BinaryOperator::Add,
-                Box::new(Eval::Constant(Constant::Identifier("a".to_string()))),
-                Box::new(Eval::Constant(Constant::Identifier("b".to_string())))
+                Box::new(Expr::Constant(Constant::Identifier("a".to_string()))),
+                Box::new(Expr::Constant(Constant::Identifier("b".to_string())))
             ))
         );
     }
 
     #[test]
-    fn eval_binary_right_associative() {
+    fn expr_binary_right_associative() {
         // a + b + c parses as a + (b + c)
         let tokens = build_tokens(&[
             (TokenKind::Identifier, "a"),
@@ -241,14 +244,14 @@ mod stmt_tests {
             (TokenKind::Identifier, "c"),
         ]);
         assert_eq!(
-            parse_eval(&tokens),
-            Ok(Eval::BinaryOperator(
+            parse_expr(&tokens),
+            Ok(Expr::BinaryOperator(
                 BinaryOperator::Add,
-                Box::new(Eval::Constant(Constant::Identifier("a".to_string()))),
-                Box::new(Eval::BinaryOperator(
+                Box::new(Expr::Constant(Constant::Identifier("a".to_string()))),
+                Box::new(Expr::BinaryOperator(
                     BinaryOperator::Add,
-                    Box::new(Eval::Constant(Constant::Identifier("b".to_string()))),
-                    Box::new(Eval::Constant(Constant::Identifier("c".to_string())))
+                    Box::new(Expr::Constant(Constant::Identifier("b".to_string()))),
+                    Box::new(Expr::Constant(Constant::Identifier("c".to_string())))
                 ))
             ))
         );
@@ -281,7 +284,7 @@ mod stmt_tests {
             parse_stmt(&tokens),
             Ok(Statement::Declare {
                 name: "x".to_string(),
-                value: Some(Eval::Constant(Constant::String("hi".to_string())))
+                value: Some(Expr::Constant(Constant::String("hi".to_string())))
             })
         );
     }
@@ -301,21 +304,21 @@ mod stmt_tests {
             parse_stmt(&tokens),
             Ok(Statement::Declare {
                 name: "x".to_string(),
-                value: Some(Eval::Call {
-                    name: Box::new(Eval::Constant(Constant::Identifier("foo".to_string()))),
-                    args: vec![Eval::Constant(Constant::Identifier("a".to_string()))]
+                value: Some(Expr::Call {
+                    name: Box::new(Expr::Constant(Constant::Identifier("foo".to_string()))),
+                    args: vec![Expr::Constant(Constant::Identifier("a".to_string()))]
                 })
             })
         );
     }
 
     #[test]
-    fn stmt_wraps_eval() {
+    fn stmt_wraps_expr() {
         let tokens = build_tokens(&[(TokenKind::Identifier, "foo")]);
         let got = parse_stmt(&tokens);
         assert_eq!(
             got,
-            Ok(Statement::EVal(Eval::Constant(Constant::Identifier(
+            Ok(Statement::Expr(Expr::Constant(Constant::Identifier(
                 "foo".to_string()
             ))))
         );
@@ -326,7 +329,7 @@ mod stmt_tests {
         let tokens = build_tokens(&[(TokenKind::Newline, "\n"), (TokenKind::Identifier, "bar")]);
         assert_eq!(
             parse_stmt(&tokens),
-            Ok(Statement::EVal(Eval::Constant(Constant::Identifier(
+            Ok(Statement::Expr(Expr::Constant(Constant::Identifier(
                 "bar".to_string()
             ))))
         );

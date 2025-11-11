@@ -14,14 +14,14 @@ Ok:
                 String: Hello
             - Constant:
                 String: " "
-    - EVal:
+    - Expr:
         BinaryOperator:
           - AddAssign
           - Constant:
               Identifier: message
           - Constant:
               String: World
-    - EVal:
+    - Expr:
         BinaryOperator:
           - Assign
           - Constant:
@@ -32,7 +32,7 @@ Ok:
                   Identifier: message
               - Constant:
                   String: "!"
-    - EVal:
+    - Expr:
         Call:
           name:
             Constant:
