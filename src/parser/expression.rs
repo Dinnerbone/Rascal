@@ -14,6 +14,7 @@ pub(crate) enum Expr {
     Constant(Constant),
     Call { name: Box<Expr>, args: Vec<Expr> },
     BinaryOperator(BinaryOperator, Box<Expr>, Box<Expr>),
+    UnaryOperator(UnaryOperator, Box<Expr>),
 }
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
@@ -25,30 +26,42 @@ pub(crate) enum Constant {
     Integer(i32),
 }
 
+#[derive(Debug, Clone, Serialize, PartialEq)]
+#[allow(dead_code)]
+pub(crate) enum UnaryOperator {
+    Sub,
+}
+
 pub(crate) fn expression(i: &mut Tokens<'_>) -> ModalResult<Expr> {
     take_while(0.., TokenKind::Newline).parse_next(i)?;
     let token = peek(any).parse_next(i)?;
     match token.kind {
+        TokenKind::BinaryOperator(BinaryOperator::Sub) => {
+            TokenKind::BinaryOperator(BinaryOperator::Sub).parse_next(i)?;
+            expression
+                .map(|e| Expr::UnaryOperator(UnaryOperator::Sub, Box::new(e)))
+                .context(StrContext::Label("expression"))
+                .parse_next(i)
+        }
         TokenKind::String | TokenKind::Identifier | TokenKind::Float | TokenKind::Integer => {
             let val = constant
                 .context(StrContext::Label("constant"))
                 .parse_next(i)?;
-            expr_next(Expr::Constant(val)).context(StrContext::Label("expression"))
+            expr_next(Expr::Constant(val))
+                .context(StrContext::Label("expression"))
+                .parse_next(i)
         }
-        _ => {
-            return fail
-                .context(StrContext::Expected(StrContextValue::Description("string")))
-                .context(StrContext::Expected(StrContextValue::Description(
-                    "identifier",
-                )))
-                .context(StrContext::Expected(StrContextValue::Description("float")))
-                .context(StrContext::Expected(StrContextValue::Description(
-                    "integer",
-                )))
-                .parse_next(i);
-        }
+        _ => fail
+            .context(StrContext::Expected(StrContextValue::Description("string")))
+            .context(StrContext::Expected(StrContextValue::Description(
+                "identifier",
+            )))
+            .context(StrContext::Expected(StrContextValue::Description("float")))
+            .context(StrContext::Expected(StrContextValue::Description(
+                "integer",
+            )))
+            .parse_next(i),
     }
-    .parse_next(i)
 }
 
 fn constant(i: &mut Tokens<'_>) -> ModalResult<Constant> {
@@ -296,6 +309,21 @@ mod tests {
         assert_eq!(
             parse_expr(&tokens),
             Ok(Expr::Constant(Constant::Float(123.0)))
+        );
+    }
+
+    #[test]
+    fn test_unary_sub() {
+        let tokens = build_tokens(&[
+            (TokenKind::BinaryOperator(BinaryOperator::Sub), "-"),
+            (TokenKind::Identifier, "a"),
+        ]);
+        assert_eq!(
+            parse_expr(&tokens),
+            Ok(Expr::UnaryOperator(
+                UnaryOperator::Sub,
+                Box::new(Expr::Constant(Constant::Identifier("a".to_string())))
+            ))
         );
     }
 }
