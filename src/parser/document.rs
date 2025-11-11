@@ -2,10 +2,10 @@ use crate::lexer::tokens::{BinaryOperator, Keyword, TokenKind};
 use crate::parser::Tokens;
 use crate::parser::expr::{Constant, Eval, Expr};
 use serde::Serialize;
-use winnow::combinator::{alt, cond, cut_err, eof, fail, opt, peek, repeat_till};
+use winnow::combinator::{alt, cond, cut_err, eof, fail, opt, peek, repeat_till, separated};
 use winnow::error::{ContextError, ErrMode, StrContext};
 use winnow::stream::Stream;
-use winnow::token::any;
+use winnow::token::{any, take_while};
 use winnow::{ModalResult, Parser};
 
 #[derive(Debug, Serialize)]
@@ -21,16 +21,18 @@ pub fn document(tokens: &mut Tokens<'_>) -> ModalResult<Document> {
 }
 
 fn statement(i: &mut Tokens<'_>) -> ModalResult<Expr> {
+    take_while(0.., TokenKind::Newline).parse_next(i)?;
     let expr = expr.parse_next(i)?;
     alt((TokenKind::Semicolon, TokenKind::Newline))
         .context(StrContext::Label("end of line"))
         .parse_next(i)?;
-    opt(TokenKind::Newline).parse_next(i)?;
+    take_while(0.., TokenKind::Newline).parse_next(i)?;
 
     Ok(expr)
 }
 
 fn expr(i: &mut Tokens<'_>) -> ModalResult<Expr> {
+    take_while(0.., TokenKind::Newline).parse_next(i)?;
     let checkpoint = i.checkpoint();
     let token = any.parse_next(i)?;
     match token.kind {
@@ -44,6 +46,7 @@ fn expr(i: &mut Tokens<'_>) -> ModalResult<Expr> {
 }
 
 fn eval(i: &mut Tokens<'_>) -> ModalResult<Eval> {
+    take_while(0.., TokenKind::Newline).parse_next(i)?;
     let token = peek(any).parse_next(i)?;
     match token.kind {
         TokenKind::String => {
@@ -65,6 +68,7 @@ fn eval(i: &mut Tokens<'_>) -> ModalResult<Eval> {
 
 fn eval_next<'i>(prior: Eval) -> impl Parser<Tokens<'i>, Eval, ErrMode<ContextError>> {
     move |i: &mut Tokens<'i>| {
+        take_while(0.., TokenKind::Newline).parse_next(i)?;
         let token = peek(any).parse_next(i)?;
         let prior = prior.clone();
         match token.kind {
@@ -112,7 +116,7 @@ fn declaration(i: &mut Tokens<'_>) -> ModalResult<Expr> {
 }
 
 fn eval_list(i: &mut Tokens<'_>) -> ModalResult<Vec<Eval>> {
-    Ok(vec![eval.parse_next(i)?])
+    separated(0.., skip_newline(eval), TokenKind::Comma).parse_next(i)
 }
 
 fn skip_newline<'i, O, P>(mut inner: P) -> impl Parser<Tokens<'i>, O, ErrMode<ContextError>>

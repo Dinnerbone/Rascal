@@ -1,0 +1,422 @@
+---
+source: src/lexer/tests.rs
+expression: tokens
+input_file: samples/comments.as
+---
+- kind: Newline
+  span:
+    start: 107
+    end: 108
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 108
+    end: 111
+  raw: var
+- kind: Identifier
+  span:
+    start: 112
+    end: 113
+  raw: a
+- kind:
+    BinaryOperator: Assign
+  span:
+    start: 114
+    end: 115
+  raw: "="
+- kind: String
+  span:
+    start: 116
+    end: 119
+  raw: "1"
+- kind: Semicolon
+  span:
+    start: 119
+    end: 120
+  raw: ;
+- kind: Newline
+  span:
+    start: 157
+    end: 158
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 207
+    end: 208
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 240
+    end: 243
+  raw: var
+- kind: Identifier
+  span:
+    start: 244
+    end: 245
+  raw: b
+- kind:
+    BinaryOperator: Assign
+  span:
+    start: 246
+    end: 247
+  raw: "="
+- kind: String
+  span:
+    start: 248
+    end: 251
+  raw: "2"
+- kind: Semicolon
+  span:
+    start: 251
+    end: 252
+  raw: ;
+- kind: Newline
+  span:
+    start: 273
+    end: 274
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 274
+    end: 275
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 275
+    end: 278
+  raw: var
+- kind: Identifier
+  span:
+    start: 311
+    end: 312
+  raw: c
+- kind:
+    BinaryOperator: Assign
+  span:
+    start: 340
+    end: 341
+  raw: "="
+- kind: String
+  span:
+    start: 371
+    end: 374
+  raw: "3"
+- kind: Semicolon
+  span:
+    start: 374
+    end: 375
+  raw: ;
+- kind: Newline
+  span:
+    start: 385
+    end: 386
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 386
+    end: 387
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 442
+    end: 443
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 443
+    end: 446
+  raw: var
+- kind: Identifier
+  span:
+    start: 447
+    end: 448
+  raw: d
+- kind:
+    BinaryOperator: Assign
+  span:
+    start: 449
+    end: 450
+  raw: "="
+- kind: String
+  span:
+    start: 451
+    end: 454
+  raw: "4"
+- kind: Semicolon
+  span:
+    start: 454
+    end: 455
+  raw: ;
+- kind: Newline
+  span:
+    start: 504
+    end: 505
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 505
+    end: 506
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 506
+    end: 510
+  raw: test
+- kind: OpenParen
+  span:
+    start: 510
+    end: 511
+  raw: (
+- kind: Identifier
+  span:
+    start: 529
+    end: 530
+  raw: a
+- kind: Comma
+  span:
+    start: 549
+    end: 550
+  raw: ","
+- kind: Identifier
+  span:
+    start: 575
+    end: 576
+  raw: b
+- kind: CloseParen
+  span:
+    start: 577
+    end: 578
+  raw: )
+- kind: Semicolon
+  span:
+    start: 578
+    end: 579
+  raw: ;
+- kind: Newline
+  span:
+    start: 609
+    end: 610
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 648
+    end: 651
+  raw: var
+- kind: Identifier
+  span:
+    start: 652
+    end: 653
+  raw: e
+- kind:
+    BinaryOperator: Assign
+  span:
+    start: 654
+    end: 655
+  raw: "="
+- kind: String
+  span:
+    start: 656
+    end: 659
+  raw: "5"
+- kind: Semicolon
+  span:
+    start: 659
+    end: 660
+  raw: ;
+- kind: Newline
+  span:
+    start: 660
+    end: 661
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 661
+    end: 662
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 662
+    end: 665
+  raw: var
+- kind: Identifier
+  span:
+    start: 666
+    end: 667
+  raw: f
+- kind:
+    BinaryOperator: Assign
+  span:
+    start: 668
+    end: 669
+  raw: "="
+- kind: String
+  span:
+    start: 670
+    end: 688
+  raw: // not a comment
+- kind: Semicolon
+  span:
+    start: 688
+    end: 689
+  raw: ;
+- kind:
+    Keyword: Var
+  span:
+    start: 719
+    end: 722
+  raw: var
+- kind: Identifier
+  span:
+    start: 723
+    end: 724
+  raw: g
+- kind:
+    BinaryOperator: Assign
+  span:
+    start: 725
+    end: 726
+  raw: "="
+- kind: String
+  span:
+    start: 727
+    end: 748
+  raw: /* not a comment */
+- kind: Semicolon
+  span:
+    start: 748
+    end: 749
+  raw: ;
+- kind:
+    Keyword: Var
+  span:
+    start: 785
+    end: 788
+  raw: var
+- kind: Identifier
+  span:
+    start: 789
+    end: 790
+  raw: h
+- kind:
+    BinaryOperator: Assign
+  span:
+    start: 791
+    end: 792
+  raw: "="
+- kind: String
+  span:
+    start: 793
+    end: 824
+  raw: "\\\"/* still not a comment */\\\""
+- kind: Semicolon
+  span:
+    start: 824
+    end: 825
+  raw: ;
+- kind: Newline
+  span:
+    start: 865
+    end: 866
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 890
+    end: 893
+  raw: var
+- kind: Identifier
+  span:
+    start: 894
+    end: 895
+  raw: i
+- kind:
+    BinaryOperator: Assign
+  span:
+    start: 896
+    end: 897
+  raw: "="
+- kind: String
+  span:
+    start: 898
+    end: 901
+  raw: "6"
+- kind: Semicolon
+  span:
+    start: 901
+    end: 902
+  raw: ;
+- kind: Newline
+  span:
+    start: 941
+    end: 942
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 1034
+    end: 1037
+  raw: var
+- kind: Identifier
+  span:
+    start: 1038
+    end: 1039
+  raw: j
+- kind:
+    BinaryOperator: Assign
+  span:
+    start: 1040
+    end: 1041
+  raw: "="
+- kind: String
+  span:
+    start: 1042
+    end: 1045
+  raw: "7"
+- kind: Semicolon
+  span:
+    start: 1045
+    end: 1046
+  raw: ;
+- kind: Newline
+  span:
+    start: 1046
+    end: 1047
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 1047
+    end: 1048
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 1107
+    end: 1110
+  raw: var
+- kind: Identifier
+  span:
+    start: 1111
+    end: 1112
+  raw: k
+- kind:
+    BinaryOperator: Assign
+  span:
+    start: 1113
+    end: 1114
+  raw: "="
+- kind: String
+  span:
+    start: 1115
+    end: 1118
+  raw: "8"
+- kind: Semicolon
+  span:
+    start: 1118
+    end: 1119
+  raw: ;

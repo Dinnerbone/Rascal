@@ -61,6 +61,7 @@ pub enum TokenKind {
     String,
     OpenParen,
     CloseParen,
+    Comma,
     Newline,
     Unknown,
 }

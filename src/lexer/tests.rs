@@ -1,4 +1,6 @@
+use super::*;
 use crate::lexer::Lexer;
+use crate::lexer::tokens::Token;
 
 #[test]
 fn test_all_samples() {
@@ -11,4 +13,28 @@ fn test_all_samples() {
             insta::assert_yaml_snapshot!(tokens);
         }
     );
+}
+
+#[test]
+fn test_line_comment() {
+    let input = "// this is a line comment\n";
+    assert_eq!(Lexer::new(input).into_vec(), Vec::<Token>::new());
+}
+
+#[test]
+fn test_empty_line_comment() {
+    let input = "//";
+    assert_eq!(Lexer::new(input).into_vec(), Vec::<Token>::new());
+}
+
+#[test]
+fn test_block_comment() {
+    let input = "/* this is a block comment */";
+    assert_eq!(Lexer::new(input).into_vec(), Vec::<Token>::new());
+}
+
+#[test]
+fn test_non_ending_block_comment() {
+    let input = "/*";
+    assert_eq!(Lexer::new(input).into_vec(), Vec::<Token>::new());
 }

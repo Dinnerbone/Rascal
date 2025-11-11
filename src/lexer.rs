@@ -41,26 +41,83 @@ impl<'a> Iterator for Lexer<'a> {
 }
 
 fn process_token<'a>(peek_byte: u8, stream: &mut Stream<'a>) -> Option<Token<'a>> {
-    Some(match peek_byte {
+    match peek_byte {
         b' ' | b'\t' => {
             stream.next_slice(1);
-            return None;
+            None
         }
-        b'(' => lex_ascii_char(stream, TokenKind::OpenParen),
-        b')' => lex_ascii_char(stream, TokenKind::CloseParen),
-        b';' => lex_ascii_char(stream, TokenKind::Semicolon),
-        b'=' | b'+' => lex_operator(stream),
-        b'\r' => lex_crlf(stream),
-        b'\n' => lex_ascii_char(stream, TokenKind::Newline),
-        b'"' => lex_basic_string(stream),
-        b'a'..=b'z' | b'A'..=b'Z' | b'_' | b'$' => lex_identifier_or_keyword(stream),
+        b'/' => lex_comment_or_divide(stream),
+        b'(' => Some(lex_ascii_char(stream, TokenKind::OpenParen)),
+        b',' => Some(lex_ascii_char(stream, TokenKind::Comma)),
+        b')' => Some(lex_ascii_char(stream, TokenKind::CloseParen)),
+        b';' => Some(lex_ascii_char(stream, TokenKind::Semicolon)),
+        b'=' | b'+' => Some(lex_operator(stream)),
+        b'\r' => Some(lex_crlf(stream)),
+        b'\n' => Some(lex_ascii_char(stream, TokenKind::Newline)),
+        b'"' => Some(lex_basic_string(stream)),
+        b'a'..=b'z' | b'A'..=b'Z' | b'_' | b'$' => Some(lex_identifier_or_keyword(stream)),
         _ => {
             let start = stream.current_token_start();
             let raw = stream.next_slice(stream.eof_offset());
             let end = stream.previous_token_end();
-            Token::new(TokenKind::Unknown, Span::new_unchecked(start, end), raw)
+            Some(Token::new(
+                TokenKind::Unknown,
+                Span::new_unchecked(start, end),
+                raw,
+            ))
         }
-    })
+    }
+}
+
+fn lex_comment_or_divide<'a>(stream: &mut Stream<'a>) -> Option<Token<'a>> {
+    // Decide between line comment, block comment, or unknown (future: division operator)
+    let next = stream.as_bstr().get(1);
+    match next {
+        Some(b'/') => {
+            skip_line_comment(stream);
+            None
+        }
+        Some(b'*') => {
+            skip_block_comment(stream);
+            None
+        }
+        _ => {
+            // TODO this should be Divide
+            let start = stream.current_token_start();
+            let raw = stream.next_slice(1);
+            let end = stream.previous_token_end();
+            Some(Token::new(
+                TokenKind::Unknown,
+                Span::new_unchecked(start, end),
+                raw,
+            ))
+        }
+    }
+}
+
+fn skip_line_comment(stream: &mut Stream<'_>) {
+    // Consume the initial '//'
+    stream.next_slice(2);
+    if let Some(offset) = stream.as_bstr().find_slice(&b"\n"[..]) {
+        // Consume everything up to but not including the newline (so the newline is tokenized normally)
+        stream.next_slice(offset.end);
+    } else {
+        // No newline until EOF; consume the rest
+        stream.finish();
+    }
+}
+
+fn skip_block_comment(stream: &mut Stream<'_>) {
+    // Consume the initial '/*'
+    stream.next_slice(2);
+    if let Some(span) = stream.as_bstr().find_slice(&b"*/"[..]) {
+        // Consume through the closing '*/'
+        let offset = span.end;
+        stream.next_slice(offset);
+    } else {
+        // Unterminated block comment: consume to EOF for error recovery
+        stream.finish();
+    }
 }
 
 fn lex_ascii_char<'a>(stream: &mut Stream<'a>, kind: TokenKind) -> Token<'a> {
