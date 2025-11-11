@@ -121,6 +121,64 @@ Ok:
         value:
           Constant:
             Integer: 7
+    - Declare:
+        name: sum
+        value:
+          BinaryOperator:
+            - Add
+            - Constant:
+                Integer: 1
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    Integer: 2
+                - Constant:
+                    Integer: 3
+    - Declare:
+        name: diff
+        value:
+          BinaryOperator:
+            - Sub
+            - Constant:
+                Integer: 10
+            - Constant:
+                Integer: 4
+    - Declare:
+        name: prod
+        value:
+          BinaryOperator:
+            - Multiply
+            - Constant:
+                Integer: 6
+            - Constant:
+                Integer: 7
+    - Declare:
+        name: quot
+        value:
+          BinaryOperator:
+            - Divide
+            - Constant:
+                Integer: 22
+            - Constant:
+                Integer: 7
+    - Declare:
+        name: combo
+        value:
+          BinaryOperator:
+            - Multiply
+            - Parenthesis:
+                BinaryOperator:
+                  - Add
+                  - Constant:
+                      Integer: 16
+                  - Constant:
+                      Integer: 15
+            - BinaryOperator:
+                - Sub
+                - Constant:
+                    Float: 25
+                - Constant:
+                    Float: 0.75
     - Expr:
         Call:
           name:
@@ -385,3 +443,63 @@ Ok:
                     String: "pDec = "
                 - Constant:
                     Identifier: pDec
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "sum = "
+                - Constant:
+                    Identifier: sum
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "diff = "
+                - Constant:
+                    Identifier: diff
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "prod = "
+                - Constant:
+                    Identifier: prod
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "quot = "
+                - Constant:
+                    Identifier: quot
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "combo = "
+                - Constant:
+                    Identifier: combo

@@ -30,6 +30,13 @@ var nHex = -0xFF;
 var nFloat = -3.14;
 var pDec = +7; // explicit plus
 
+// Numbers in expressions
+var sum = 1 + 2 + 3;
+var diff = 10 - 4;
+var prod = 6 * 7;
+var quot = 22 / 7;
+var combo = (0x10 + 15) * 2.5e1 - .75;
+
 trace("i0 = " + i0);
 trace("i1 = " + i1);
 trace("i42 = " + i42);
@@ -56,3 +63,9 @@ trace("nDec = " + nDec);
 trace("nHex = " + nHex);
 trace("nFloat = " + nFloat);
 trace("pDec = " + pDec);
+
+trace("sum = " + sum);
+trace("diff = " + diff);
+trace("prod = " + prod);
+trace("quot = " + quot);
+trace("combo = " + combo);

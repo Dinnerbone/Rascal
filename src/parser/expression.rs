@@ -15,6 +15,7 @@ pub(crate) enum Expr {
     Call { name: Box<Expr>, args: Vec<Expr> },
     BinaryOperator(BinaryOperator, Box<Expr>, Box<Expr>),
     UnaryOperator(UnaryOperator, Box<Expr>),
+    Parenthesis(Box<Expr>),
 }
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
@@ -46,6 +47,16 @@ pub(crate) fn expression(i: &mut Tokens<'_>) -> ModalResult<Expr> {
         TokenKind::BinaryOperator(BinaryOperator::Add) => {
             TokenKind::BinaryOperator(BinaryOperator::Add).parse_next(i)?;
             expression
+                .context(StrContext::Label("expression"))
+                .parse_next(i)
+        }
+        TokenKind::OpenParen => {
+            TokenKind::OpenParen.parse_next(i)?;
+            let val = expression
+                .context(StrContext::Label("expression"))
+                .parse_next(i)?;
+            TokenKind::CloseParen.parse_next(i)?;
+            expr_next(Expr::Parenthesis(Box::new(val)))
                 .context(StrContext::Label("expression"))
                 .parse_next(i)
         }
@@ -376,6 +387,21 @@ mod tests {
         assert_eq!(
             parse_expr(&tokens),
             Ok(Expr::Constant(Constant::Identifier("a".to_string())))
+        );
+    }
+
+    #[test]
+    fn test_parenthesis() {
+        let tokens = build_tokens(&[
+            (TokenKind::OpenParen, "("),
+            (TokenKind::Identifier, "a"),
+            (TokenKind::CloseParen, ")"),
+        ]);
+        assert_eq!(
+            parse_expr(&tokens),
+            Ok(Expr::Parenthesis(Box::new(Expr::Constant(
+                Constant::Identifier("a".to_string())
+            ))))
         );
     }
 }
