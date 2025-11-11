@@ -11,6 +11,11 @@ var f1 = 1.23;
 var fLeadingDot = .5;  // leading dot
 var fTrailingDot = 5.; // trailing dot
 
+// Hex integers (case-insensitive hex digits)
+var h0 = 0x0;
+var hMix = 0x1A2b;
+var hMaxByte = 0xFF;
+
 trace("i0 = " + i0);
 trace("i1 = " + i1);
 trace("i42 = " + i42);
@@ -21,3 +26,7 @@ trace("f0 = " + f0);
 trace("f1 = " + f1);
 trace("fLeadingDot = " + fLeadingDot);
 trace("fTrailingDot = " + fTrailingDot);
+
+trace("h0 = " + h0);
+trace("hMix = " + hMix);
+trace("hMaxByte = " + hMaxByte);

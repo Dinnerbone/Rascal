@@ -177,3 +177,10 @@ fn test_long_float_semicolon() {
         vec!["12345.67890".to_string(), ";".to_string()]
     );
 }
+
+#[test]
+fn test_hex_integer_semicolon() {
+    let input = "0x1A2C;";
+    assert_eq!(kinds(input), vec![TokenKind::Integer, TokenKind::Semicolon]);
+    assert_eq!(raws(input), vec!["0x1A2C".to_string(), ";".to_string()]);
+}

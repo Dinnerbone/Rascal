@@ -86,10 +86,12 @@ fn float(i: &mut Tokens<'_>) -> ModalResult<f64> {
 
 fn integer(i: &mut Tokens<'_>) -> ModalResult<i32> {
     let raw = TokenKind::Integer.parse_next(i)?.raw;
-    let value = raw
-        .parse_slice()
-        .ok_or_else(|| ParserError::from_input(&raw))?;
-    Ok(value)
+    Ok(if let Some(raw) = raw.strip_prefix("0x") {
+        i32::from_str_radix(raw, 16)
+    } else {
+        raw.parse::<i32>()
+    }
+    .map_err(|_| ParserError::from_input(&raw)))?
 }
 
 fn expr_next<'i>(prior: Expr) -> impl Parser<Tokens<'i>, Expr, ErrMode<ContextError>> {
@@ -241,6 +243,15 @@ mod tests {
         assert_eq!(
             parse_expr(&tokens),
             Ok(Expr::Constant(Constant::Integer(123)))
+        );
+    }
+
+    #[test]
+    fn test_integer_hex() {
+        let tokens = build_tokens(&[(TokenKind::Integer, "0x1A2B3C")]);
+        assert_eq!(
+            parse_expr(&tokens),
+            Ok(Expr::Constant(Constant::Integer(0x1A2B3C)))
         );
     }
 

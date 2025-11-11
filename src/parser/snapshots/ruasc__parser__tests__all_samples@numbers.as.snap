@@ -50,6 +50,21 @@ Ok:
         value:
           Constant:
             Float: 5
+    - Declare:
+        name: h0
+        value:
+          Constant:
+            Integer: 0
+    - Declare:
+        name: hMix
+        value:
+          Constant:
+            Integer: 6699
+    - Declare:
+        name: hMaxByte
+        value:
+          Constant:
+            Integer: 255
     - Expr:
         Call:
           name:
@@ -158,3 +173,39 @@ Ok:
                     String: "fTrailingDot = "
                 - Constant:
                     Identifier: fTrailingDot
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "h0 = "
+                - Constant:
+                    Identifier: h0
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "hMix = "
+                - Constant:
+                    Identifier: hMix
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "hMaxByte = "
+                - Constant:
+                    Identifier: hMaxByte

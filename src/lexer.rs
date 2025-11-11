@@ -4,7 +4,7 @@ pub(crate) mod tokens;
 
 use crate::lexer::tokens::{BinaryOperator, Keyword, Token, TokenKind};
 use crate::source::Span;
-use winnow::stream::{AsBStr, FindSlice, Location, Stream as _};
+use winnow::stream::{AsBStr, AsChar, FindSlice, Location, Stream as _};
 
 pub(crate) type Stream<'i> = winnow::stream::LocatingSlice<&'i str>;
 
@@ -145,15 +145,27 @@ fn lex_ascii_chars<'a>(stream: &mut Stream<'a>, kind: TokenKind, len: usize) -> 
 fn lex_integer_or_float<'a>(stream: &mut Stream<'a>) -> Token<'a> {
     let start = stream.current_token_start();
     let start_checkpoint = stream.checkpoint();
-    if let Some(offset) = stream.as_bstr().offset_for(|b| !b.is_ascii_digit()) {
+
+    // Special case: if the first two characters are '0x', treat the rest as hex digits
+    let is_hex = stream.as_bstr().starts_with(b"0x");
+    if is_hex {
+        stream.next_slice(2); // skip the '0x'
+    }
+    let invalid_char: fn(u8) -> bool = if is_hex {
+        |b| !b.is_hex_digit()
+    } else {
+        |b| !b.is_ascii_digit()
+    };
+
+    if let Some(offset) = stream.as_bstr().offset_for(invalid_char) {
         stream.next_slice(offset)
     } else {
         stream.finish()
     };
 
-    let kind = if stream.as_bstr().first() == Some(&b'.') {
+    let kind = if !is_hex && stream.as_bstr().first() == Some(&b'.') {
         stream.next_slice(1); // skip the '.'
-        if let Some(offset) = stream.as_bstr().offset_for(|b| !b.is_ascii_digit()) {
+        if let Some(offset) = stream.as_bstr().offset_for(invalid_char) {
             stream.next_slice(offset)
         } else {
             stream.finish()
