@@ -1,12 +1,14 @@
-use crate::lexer::tokens::Token;
+use crate::lexer::tokens::{Token, TokenKind};
 use annotate_snippets::renderer::DecorStyle;
 use annotate_snippets::{AnnotationKind, Renderer};
-use winnow::Parser;
-use winnow::error::{ContextError, ParseError};
+use winnow::combinator::opt;
+use winnow::error::{ContextError, ErrMode, ParseError};
 use winnow::stream::TokenSlice;
+use winnow::{ModalResult, Parser};
 
 mod document;
 mod expr;
+mod statement;
 #[cfg(test)]
 mod tests;
 
@@ -57,4 +59,22 @@ pub fn parse_document<'a>(
     source: &'a [Token],
 ) -> winnow::Result<Document, ParseError<Tokens<'a>, ContextError>> {
     document::document.parse(TokenSlice::new(source))
+}
+
+fn string(i: &mut Tokens<'_>) -> ModalResult<String> {
+    Ok(TokenKind::String.parse_next(i)?.raw.to_string())
+}
+
+fn identifier(i: &mut Tokens<'_>) -> ModalResult<String> {
+    Ok(TokenKind::Identifier.parse_next(i)?.raw.to_string())
+}
+
+fn skip_newline<'i, O, P>(mut inner: P) -> impl Parser<Tokens<'i>, O, ErrMode<ContextError>>
+where
+    P: Parser<Tokens<'i>, O, ErrMode<ContextError>>,
+{
+    move |input: &mut Tokens<'i>| {
+        opt(TokenKind::Newline).parse_next(input)?;
+        inner.parse_next(input)
+    }
 }

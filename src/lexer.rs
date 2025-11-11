@@ -145,15 +145,12 @@ fn lex_operator<'a>(stream: &mut Stream<'a>) -> Token<'a> {
     if stream.eof_offset() >= 2 {
         // 2 char operators
         let peek = stream.as_bstr().peek_slice(2);
-        match peek {
-            b"+=" => {
-                return lex_ascii_chars(
-                    stream,
-                    TokenKind::BinaryOperator(BinaryOperator::AddAssign),
-                    2,
-                );
-            }
-            _ => {}
+        if peek == b"+=" {
+            return lex_ascii_chars(
+                stream,
+                TokenKind::BinaryOperator(BinaryOperator::AddAssign),
+                2,
+            );
         }
     }
 
