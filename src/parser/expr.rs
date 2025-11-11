@@ -1,14 +1,14 @@
 use crate::lexer::tokens::BinaryOperator;
 use serde::Serialize;
 
-#[derive(Debug, Clone, Serialize)]
+#[derive(Debug, Clone, Serialize, PartialEq)]
 #[allow(dead_code)]
 pub(crate) enum Expr {
     Declare { name: String, value: Option<Eval> },
     EVal(Eval),
 }
 
-#[derive(Debug, Clone, Serialize)]
+#[derive(Debug, Clone, Serialize, PartialEq)]
 #[allow(dead_code)]
 pub(crate) enum Eval {
     Constant(Constant),
@@ -16,7 +16,7 @@ pub(crate) enum Eval {
     BinaryOperator(BinaryOperator, Box<Eval>, Box<Eval>),
 }
 
-#[derive(Debug, Clone, Serialize)]
+#[derive(Debug, Clone, Serialize, PartialEq)]
 #[allow(dead_code)]
 pub(crate) enum Constant {
     String(String),
