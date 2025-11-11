@@ -2,8 +2,8 @@ use crate::lexer::tokens::{BinaryOperator, TokenKind};
 use crate::parser::{Tokens, identifier, skip_newline, string};
 use serde::Serialize;
 use winnow::combinator::{fail, peek, separated};
-use winnow::error::ParserError;
 use winnow::error::{ContextError, ErrMode, StrContext};
+use winnow::error::{ParserError, StrContextValue};
 use winnow::stream::ParseSlice;
 use winnow::token::{any, take_while};
 use winnow::{ModalResult, Parser};
@@ -30,24 +30,39 @@ pub(crate) fn expression(i: &mut Tokens<'_>) -> ModalResult<Expr> {
     let token = peek(any).parse_next(i)?;
     match token.kind {
         TokenKind::String => {
-            let val = string.parse_next(i)?;
-            expr_next(Expr::Constant(Constant::String(val))).context(StrContext::Label("string"))
+            let val = string.context(StrContext::Label("string")).parse_next(i)?;
+            expr_next(Expr::Constant(Constant::String(val)))
+                .context(StrContext::Label("expression"))
         }
         TokenKind::Identifier => {
-            let val = identifier.parse_next(i)?;
-            expr_next(Expr::Constant(Constant::Identifier(val)))
+            let val = identifier
                 .context(StrContext::Label("identifier"))
+                .parse_next(i)?;
+            expr_next(Expr::Constant(Constant::Identifier(val)))
+                .context(StrContext::Label("expression"))
         }
         TokenKind::Float => {
-            let val = float.parse_next(i)?;
-            expr_next(Expr::Constant(Constant::Float(val))).context(StrContext::Label("float"))
+            let val = float.context(StrContext::Label("float")).parse_next(i)?;
+            expr_next(Expr::Constant(Constant::Float(val))).context(StrContext::Label("expression"))
         }
         TokenKind::Integer => {
-            let val = integer.parse_next(i)?;
-            expr_next(Expr::Constant(Constant::Integer(val))).context(StrContext::Label("integer"))
+            let val = integer
+                .context(StrContext::Label("integer"))
+                .parse_next(i)?;
+            expr_next(Expr::Constant(Constant::Integer(val)))
+                .context(StrContext::Label("expression"))
         }
         _ => {
-            return fail.parse_next(i);
+            return fail
+                .context(StrContext::Expected(StrContextValue::Description("string")))
+                .context(StrContext::Expected(StrContextValue::Description(
+                    "identifier",
+                )))
+                .context(StrContext::Expected(StrContextValue::Description("float")))
+                .context(StrContext::Expected(StrContextValue::Description(
+                    "integer",
+                )))
+                .parse_next(i);
         }
     }
     .parse_next(i)
