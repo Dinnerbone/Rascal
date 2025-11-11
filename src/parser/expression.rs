@@ -214,6 +214,23 @@ mod tests {
     }
 
     #[test]
+    fn test_binary_sub() {
+        let tokens = build_tokens(&[
+            (TokenKind::Identifier, "a"),
+            (TokenKind::BinaryOperator(BinaryOperator::Sub), "-"),
+            (TokenKind::Identifier, "b"),
+        ]);
+        assert_eq!(
+            parse_expr(&tokens),
+            Ok(Expr::BinaryOperator(
+                BinaryOperator::Sub,
+                Box::new(Expr::Constant(Constant::Identifier("a".to_string()))),
+                Box::new(Expr::Constant(Constant::Identifier("b".to_string())))
+            ))
+        );
+    }
+
+    #[test]
     fn test_binary_right_associative() {
         // a + b + c parses as a + (b + c)
         let tokens = build_tokens(&[

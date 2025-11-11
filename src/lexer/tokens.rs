@@ -93,4 +93,5 @@ pub enum BinaryOperator {
     Add,
     Assign,
     AddAssign,
+    Sub,
 }
