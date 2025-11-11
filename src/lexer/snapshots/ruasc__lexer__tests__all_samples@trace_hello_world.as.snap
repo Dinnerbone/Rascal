@@ -1,6 +1,7 @@
 ---
 source: src/lexer/tests.rs
-expression: "Lexer::new(include_str!(\"../../samples/trace_hello_world.as\")).into_vec()"
+expression: tokens
+input_file: samples/trace_hello_world.as
 ---
 - kind: Identifier
   span:

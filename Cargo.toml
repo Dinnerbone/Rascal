@@ -11,7 +11,7 @@ serde = { version = "1.0.228", features = ["derive"] }
 annotate-snippets = "0.12.8"
 
 [dev-dependencies]
-insta = { version = "1.43.2", features = ["yaml"] }
+insta = { version = "1.43.2", features = ["yaml", "glob"] }
 
 [profile.dev.package]
 insta.opt-level = 3

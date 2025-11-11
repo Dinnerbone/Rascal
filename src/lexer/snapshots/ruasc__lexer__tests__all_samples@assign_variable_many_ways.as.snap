@@ -1,6 +1,7 @@
 ---
 source: src/lexer/tests.rs
-expression: "Lexer::new(include_str!(\"../../samples/assign_variable_many_ways.as\")).into_vec()"
+expression: tokens
+input_file: samples/assign_variable_many_ways.as
 ---
 - kind:
     Keyword: Var

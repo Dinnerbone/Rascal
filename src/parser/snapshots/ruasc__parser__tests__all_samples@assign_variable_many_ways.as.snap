@@ -1,6 +1,7 @@
 ---
 source: src/parser/tests.rs
-expression: "parse_document(&tokens).map_err(|e| format!(\"{e:#?}\"))"
+expression: parsed
+input_file: samples/assign_variable_many_ways.as
 ---
 Ok:
   expressions:

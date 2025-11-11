@@ -1,22 +1,14 @@
 use crate::lexer::Lexer;
 
 #[test]
-fn test_trace() {
-    insta::assert_yaml_snapshot!(
-        Lexer::new(include_str!("../../samples/trace_hello_world.as")).into_vec()
-    );
-}
-
-#[test]
-fn test_var() {
-    insta::assert_yaml_snapshot!(
-        Lexer::new(include_str!("../../samples/assign_variable_and_trace.as")).into_vec()
-    );
-}
-
-#[test]
-fn test_var_assignments() {
-    insta::assert_yaml_snapshot!(
-        Lexer::new(include_str!("../../samples/assign_variable_many_ways.as")).into_vec()
+fn test_all_samples() {
+    insta::glob!(
+        concat!(env!("CARGO_MANIFEST_DIR"), "/samples"),
+        "**/*.as",
+        |path| {
+            let src = std::fs::read_to_string(path).expect("failed to read sample");
+            let tokens = Lexer::new(&src).into_vec();
+            insta::assert_yaml_snapshot!(tokens);
+        }
     );
 }
