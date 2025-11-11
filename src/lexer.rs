@@ -165,7 +165,7 @@ fn lex_integer_or_float<'a>(stream: &mut Stream<'a>) -> Token<'a> {
 
     let end = stream.previous_token_end();
     stream.reset(&start_checkpoint);
-    let raw = stream.next_slice(end);
+    let raw = stream.next_slice(end - start);
 
     let end = stream.previous_token_end();
     let span = Span::new_unchecked(start, end);

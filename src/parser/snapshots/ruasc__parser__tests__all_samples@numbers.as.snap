@@ -1,0 +1,58 @@
+---
+source: src/parser/tests.rs
+expression: parsed
+input_file: samples/numbers.as
+---
+Ok:
+  statements:
+    - Declare:
+        name: i0
+        value:
+          Constant:
+            Integer: 0
+    - Declare:
+        name: i1
+        value:
+          Constant:
+            Integer: 1
+    - Declare:
+        name: i42
+        value:
+          Constant:
+            Integer: 42
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "i0 = "
+                - Constant:
+                    Identifier: i0
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "i1 = "
+                - Constant:
+                    Identifier: i1
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "i42 = "
+                - Constant:
+                    Identifier: i42
