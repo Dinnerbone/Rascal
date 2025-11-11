@@ -1,6 +1,5 @@
 use crate::lexer::tokens::{BinaryOperator, Keyword, TokenKind};
-use crate::parser::document::expression;
-use crate::parser::expr::Expr;
+use crate::parser::expr::{Expr, expression};
 use crate::parser::{Tokens, identifier, skip_newline};
 use serde::Serialize;
 use winnow::combinator::{alt, cond, cut_err, opt};
