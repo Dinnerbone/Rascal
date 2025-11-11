@@ -3,7 +3,7 @@ use serde::Serialize;
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
 #[allow(dead_code)]
-pub(crate) enum Expr {
+pub(crate) enum Statement {
     Declare { name: String, value: Option<Eval> },
     EVal(Eval),
 }
