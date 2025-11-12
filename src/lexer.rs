@@ -188,101 +188,50 @@ fn lex_integer_or_float<'a>(stream: &mut Stream<'a>) -> Token<'a> {
 }
 
 fn lex_operator<'a>(stream: &mut Stream<'a>) -> Token<'a> {
-    if stream.eof_offset() >= 4 {
+    // Operator lookup table: (pattern, operator)
+    const OPERATORS: &[(&[u8], Operator)] = &[
         // 4 char operators
-        if stream.as_bstr().peek_slice(4) == b">>>=" {
-            return lex_ascii_chars(
-                stream,
-                TokenKind::Operator(Operator::BitShiftRightUnsignedAssign),
-                4,
-            );
-        }
-    }
-    if stream.eof_offset() >= 3 {
+        (b">>>=", Operator::BitShiftRightUnsignedAssign),
         // 3 char operators
-        match stream.as_bstr().peek_slice(3) {
-            b">>>" => {
-                return lex_ascii_chars(
-                    stream,
-                    TokenKind::Operator(Operator::BitShiftRightUnsigned),
-                    3,
-                );
-            }
-            b">>=" => {
-                return lex_ascii_chars(
-                    stream,
-                    TokenKind::Operator(Operator::BitShiftRightAssign),
-                    3,
-                );
-            }
-            b"<<=" => {
-                return lex_ascii_chars(
-                    stream,
-                    TokenKind::Operator(Operator::BitShiftLeftAssign),
-                    3,
-                );
-            }
-            _ => {}
-        }
-    }
-    if stream.eof_offset() >= 2 {
+        (b">>>", Operator::BitShiftRightUnsigned),
+        (b">>=", Operator::BitShiftRightAssign),
+        (b"<<=", Operator::BitShiftLeftAssign),
         // 2 char operators
-        match stream.as_bstr().peek_slice(2) {
-            b"++" => {
-                return lex_ascii_chars(stream, TokenKind::Operator(Operator::Increment), 2);
-            }
-            b"--" => {
-                return lex_ascii_chars(stream, TokenKind::Operator(Operator::Decrement), 2);
-            }
-            b"+=" => {
-                return lex_ascii_chars(stream, TokenKind::Operator(Operator::AddAssign), 2);
-            }
-            b"*=" => {
-                return lex_ascii_chars(stream, TokenKind::Operator(Operator::MultiplyAssign), 2);
-            }
-            b"/=" => {
-                return lex_ascii_chars(stream, TokenKind::Operator(Operator::DivideAssign), 2);
-            }
-            b"-=" => {
-                return lex_ascii_chars(stream, TokenKind::Operator(Operator::SubAssign), 2);
-            }
-            b"%=" => {
-                return lex_ascii_chars(stream, TokenKind::Operator(Operator::ModuloAssign), 2);
-            }
-            b">>" => {
-                return lex_ascii_chars(stream, TokenKind::Operator(Operator::BitShiftRight), 2);
-            }
-            b"<<" => {
-                return lex_ascii_chars(stream, TokenKind::Operator(Operator::BitShiftLeft), 2);
-            }
-            b"&=" => {
-                return lex_ascii_chars(stream, TokenKind::Operator(Operator::BitAndAssign), 2);
-            }
-            b"|=" => {
-                return lex_ascii_chars(stream, TokenKind::Operator(Operator::BitOrAssign), 2);
-            }
-            b"^=" => {
-                return lex_ascii_chars(stream, TokenKind::Operator(Operator::BitXorAssign), 2);
-            }
-            _ => {}
-        }
-    }
+        (b"++", Operator::Increment),
+        (b"--", Operator::Decrement),
+        (b"+=", Operator::AddAssign),
+        (b"*=", Operator::MultiplyAssign),
+        (b"/=", Operator::DivideAssign),
+        (b"-=", Operator::SubAssign),
+        (b"%=", Operator::ModuloAssign),
+        (b">>", Operator::BitShiftRight),
+        (b"<<", Operator::BitShiftLeft),
+        (b"&=", Operator::BitAndAssign),
+        (b"|=", Operator::BitOrAssign),
+        (b"^=", Operator::BitXorAssign),
+        // 1 char operators
+        (b"+", Operator::Add),
+        (b"=", Operator::Assign),
+        (b"-", Operator::Sub),
+        (b"/", Operator::Divide),
+        (b"*", Operator::Multiply),
+        (b"%", Operator::Modulo),
+        (b"&", Operator::BitAnd),
+        (b"|", Operator::BitOr),
+        (b"~", Operator::BitNot),
+        (b"^", Operator::BitXor),
+    ];
 
-    // 1 char operators
-    let peek = stream.as_bstr().peek_slice(stream.eof_offset().min(1));
-    match peek {
-        b"+" => lex_ascii_char(stream, TokenKind::Operator(Operator::Add)),
-        b"=" => lex_ascii_char(stream, TokenKind::Operator(Operator::Assign)),
-        b"-" => lex_ascii_char(stream, TokenKind::Operator(Operator::Sub)),
-        b"/" => lex_ascii_char(stream, TokenKind::Operator(Operator::Divide)),
-        b"*" => lex_ascii_char(stream, TokenKind::Operator(Operator::Multiply)),
-        b"%" => lex_ascii_char(stream, TokenKind::Operator(Operator::Modulo)),
-        b"&" => lex_ascii_char(stream, TokenKind::Operator(Operator::BitAnd)),
-        b"|" => lex_ascii_char(stream, TokenKind::Operator(Operator::BitOr)),
-        b"~" => lex_ascii_char(stream, TokenKind::Operator(Operator::BitNot)),
-        b"^" => lex_ascii_char(stream, TokenKind::Operator(Operator::BitXor)),
-        _ => unreachable!(), // This is true as long as we have an entry that matches the caller's peeked value
-    }
+    let available = stream.eof_offset();
+
+    OPERATORS
+        .iter()
+        .find_map(|&(pattern, operator)| {
+            let len = pattern.len();
+            (available >= len && stream.as_bstr().peek_slice(len) == pattern)
+                .then(|| lex_ascii_chars(stream, TokenKind::Operator(operator), len))
+        })
+        .expect("operator must match one of the patterns")
 }
 
 fn lex_crlf<'a>(stream: &mut Stream<'a>) -> Token<'a> {
