@@ -9,7 +9,6 @@ use winnow::token::{any, take_while};
 use winnow::{ModalResult, Parser};
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
-#[allow(dead_code)]
 pub(crate) enum Expr {
     Constant(Constant),
     Call { name: Box<Expr>, args: Vec<Expr> },
@@ -18,8 +17,23 @@ pub(crate) enum Expr {
     Parenthesis(Box<Expr>),
 }
 
+impl Expr {
+    fn for_unary_operator(op: UnaryOperator, expr: Box<Expr>) -> Expr {
+        if let Expr::BinaryOperator(binary_op, a, b) = *expr {
+            Expr::BinaryOperator(binary_op, Box::new(Expr::for_unary_operator(op, a)), b)
+        } else {
+            Expr::UnaryOperator(op, expr)
+        }
+    }
+}
+
+impl Expr {
+    pub(crate) fn can_postfix(&self) -> bool {
+        matches!(self, Expr::Constant(_))
+    }
+}
+
 #[derive(Debug, Clone, Serialize, PartialEq)]
-#[allow(dead_code)]
 pub(crate) enum Constant {
     String(String),
     Identifier(String),
@@ -28,7 +42,6 @@ pub(crate) enum Constant {
 }
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
-#[allow(dead_code)]
 pub(crate) enum BinaryOperator {
     Add,
     Assign,
@@ -40,9 +53,16 @@ pub(crate) enum BinaryOperator {
 }
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
-#[allow(dead_code)]
 pub(crate) enum UnaryOperator {
     Sub,
+    Increment(Affix),
+    Decrement(Affix),
+}
+
+#[derive(Debug, Clone, Serialize, PartialEq)]
+pub enum Affix {
+    Postfix,
+    Prefix,
 }
 
 pub(crate) fn expression(i: &mut Tokens<'_>) -> ModalResult<Expr> {
@@ -59,6 +79,24 @@ pub(crate) fn expression(i: &mut Tokens<'_>) -> ModalResult<Expr> {
         TokenKind::Operator(Operator::Add) => {
             TokenKind::Operator(Operator::Add).parse_next(i)?;
             expression
+                .context(StrContext::Label("expression"))
+                .parse_next(i)
+        }
+        TokenKind::Operator(Operator::Increment) => {
+            TokenKind::Operator(Operator::Increment).parse_next(i)?;
+            expression
+                .map(|e| {
+                    Expr::for_unary_operator(UnaryOperator::Increment(Affix::Prefix), Box::new(e))
+                })
+                .context(StrContext::Label("expression"))
+                .parse_next(i)
+        }
+        TokenKind::Operator(Operator::Decrement) => {
+            TokenKind::Operator(Operator::Decrement).parse_next(i)?;
+            expression
+                .map(|e| {
+                    Expr::for_unary_operator(UnaryOperator::Decrement(Affix::Prefix), Box::new(e))
+                })
                 .context(StrContext::Label("expression"))
                 .parse_next(i)
         }
@@ -156,6 +194,22 @@ fn expr_next<'i>(prior: Expr) -> impl Parser<Tokens<'i>, Expr, ErrMode<ContextEr
                     args,
                 })
             }
+            TokenKind::Operator(Operator::Increment) if prior.can_postfix() => {
+                TokenKind::Operator(Operator::Increment).parse_next(i)?;
+                expr_next(Expr::UnaryOperator(
+                    UnaryOperator::Increment(Affix::Postfix),
+                    Box::new(prior),
+                ))
+                .parse_next(i)
+            }
+            TokenKind::Operator(Operator::Decrement) if prior.can_postfix() => {
+                TokenKind::Operator(Operator::Decrement).parse_next(i)?;
+                expr_next(Expr::UnaryOperator(
+                    UnaryOperator::Decrement(Affix::Postfix),
+                    Box::new(prior),
+                ))
+                .parse_next(i)
+            }
             TokenKind::Operator(_) => {
                 let op = binary_operator.parse_next(i)?;
                 expression
@@ -183,6 +237,7 @@ fn binary_operator(i: &mut Tokens<'_>) -> ModalResult<BinaryOperator> {
         Operator::Divide => BinaryOperator::Divide,
         Operator::Multiply => BinaryOperator::Multiply,
         Operator::Modulo => BinaryOperator::Modulo,
+        _ => return Err(ParserError::from_input(i)),
     })
 }
 
@@ -435,6 +490,56 @@ mod tests {
         assert_eq!(
             parse_expr(&tokens),
             Ok(Expr::Constant(Constant::Identifier("a".to_string())))
+        );
+    }
+
+    #[test]
+    fn test_unary_increment() {
+        let tokens = build_tokens(&[
+            (TokenKind::Operator(Operator::Increment), "++"),
+            (TokenKind::Identifier, "a"),
+            (TokenKind::Operator(Operator::Add), "+"),
+            (TokenKind::Identifier, "a"),
+            (TokenKind::Operator(Operator::Increment), "++"),
+        ]);
+        assert_eq!(
+            parse_expr(&tokens),
+            Ok(Expr::BinaryOperator(
+                BinaryOperator::Add,
+                Box::new(Expr::UnaryOperator(
+                    UnaryOperator::Increment(Affix::Prefix),
+                    Box::new(Expr::Constant(Constant::Identifier("a".to_string())))
+                )),
+                Box::new(Expr::UnaryOperator(
+                    UnaryOperator::Increment(Affix::Postfix),
+                    Box::new(Expr::Constant(Constant::Identifier("a".to_string())))
+                ))
+            ))
+        );
+    }
+
+    #[test]
+    fn test_unary_decrement() {
+        let tokens = build_tokens(&[
+            (TokenKind::Operator(Operator::Decrement), "--"),
+            (TokenKind::Identifier, "a"),
+            (TokenKind::Operator(Operator::Add), "+"),
+            (TokenKind::Identifier, "a"),
+            (TokenKind::Operator(Operator::Decrement), "--"),
+        ]);
+        assert_eq!(
+            parse_expr(&tokens),
+            Ok(Expr::BinaryOperator(
+                BinaryOperator::Add,
+                Box::new(Expr::UnaryOperator(
+                    UnaryOperator::Decrement(Affix::Prefix),
+                    Box::new(Expr::Constant(Constant::Identifier("a".to_string())))
+                )),
+                Box::new(Expr::UnaryOperator(
+                    UnaryOperator::Decrement(Affix::Postfix),
+                    Box::new(Expr::Constant(Constant::Identifier("a".to_string())))
+                ))
+            ))
         );
     }
 

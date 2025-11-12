@@ -187,9 +187,17 @@ fn lex_integer_or_float<'a>(stream: &mut Stream<'a>) -> Token<'a> {
 fn lex_operator<'a>(stream: &mut Stream<'a>) -> Token<'a> {
     if stream.eof_offset() >= 2 {
         // 2 char operators
-        let peek = stream.as_bstr().peek_slice(2);
-        if peek == b"+=" {
-            return lex_ascii_chars(stream, TokenKind::Operator(Operator::AddAssign), 2);
+        match stream.as_bstr().peek_slice(2) {
+            b"++" => {
+                return lex_ascii_chars(stream, TokenKind::Operator(Operator::Increment), 2);
+            }
+            b"--" => {
+                return lex_ascii_chars(stream, TokenKind::Operator(Operator::Decrement), 2);
+            }
+            b"+=" => {
+                return lex_ascii_chars(stream, TokenKind::Operator(Operator::AddAssign), 2);
+            }
+            _ => {}
         }
     }
 

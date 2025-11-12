@@ -97,4 +97,6 @@ pub enum Operator {
     Divide,
     Multiply,
     Modulo,
+    Increment,
+    Decrement,
 }

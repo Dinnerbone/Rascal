@@ -71,7 +71,7 @@ fn test_identifiers_and_keyword() {
 #[test]
 fn test_operators_single_and_compound() {
     assert_eq!(
-        kinds("+ = += - / * %"),
+        kinds("+ = += - / * % ++ --"),
         vec![
             TokenKind::Operator(Operator::Add),
             TokenKind::Operator(Operator::Assign),
@@ -80,6 +80,8 @@ fn test_operators_single_and_compound() {
             TokenKind::Operator(Operator::Divide),
             TokenKind::Operator(Operator::Multiply),
             TokenKind::Operator(Operator::Modulo),
+            TokenKind::Operator(Operator::Increment),
+            TokenKind::Operator(Operator::Decrement),
         ]
     );
 }
