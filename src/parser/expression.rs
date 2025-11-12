@@ -89,7 +89,7 @@ pub(crate) fn expression(i: &mut Tokens<'_>) -> ModalResult<Expr> {
         TokenKind::Operator(Operator::Sub) => {
             TokenKind::Operator(Operator::Sub).parse_next(i)?;
             expression
-                .map(|e| Expr::UnaryOperator(UnaryOperator::Sub, Box::new(e)))
+                .map(|e| Expr::for_unary_operator(UnaryOperator::Sub, Box::new(e)))
                 .context(StrContext::Label("expression"))
                 .parse_next(i)
         }
@@ -826,6 +826,45 @@ mod tests {
                 Box::new(Expr::Constant(Constant::Identifier("a".to_string())))
             ))
         );
+    }
+
+    #[test]
+    fn test_unary_sub_in_binary_expression() {
+        let tokens = build_tokens(&[
+            (TokenKind::Operator(Operator::Sub), "-"),
+            (TokenKind::Identifier, "a"),
+            (TokenKind::Operator(Operator::Sub), "-"),
+            (TokenKind::Identifier, "b"),
+        ]);
+        assert_eq!(
+            parse_expr(&tokens),
+            Ok(Expr::BinaryOperator(
+                BinaryOperator::Sub,
+                Box::new(Expr::UnaryOperator(
+                    UnaryOperator::Sub,
+                    Box::new(Expr::Constant(Constant::Identifier("a".to_string())))
+                )),
+                Box::new(Expr::Constant(Constant::Identifier("b".to_string())))
+            ))
+        )
+    }
+
+    #[test]
+    fn test_unary_add_in_binary_expression() {
+        let tokens = build_tokens(&[
+            (TokenKind::Operator(Operator::Add), "+"),
+            (TokenKind::Identifier, "a"),
+            (TokenKind::Operator(Operator::Add), "+"),
+            (TokenKind::Identifier, "b"),
+        ]);
+        assert_eq!(
+            parse_expr(&tokens),
+            Ok(Expr::BinaryOperator(
+                BinaryOperator::Add,
+                Box::new(Expr::Constant(Constant::Identifier("a".to_string()))),
+                Box::new(Expr::Constant(Constant::Identifier("b".to_string())))
+            ))
+        )
     }
 
     #[test]
