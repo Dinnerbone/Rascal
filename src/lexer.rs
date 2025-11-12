@@ -2,7 +2,7 @@
 mod tests;
 pub(crate) mod tokens;
 
-use crate::lexer::tokens::{BinaryOperator, Keyword, Token, TokenKind};
+use crate::lexer::tokens::{Keyword, Operator, Token, TokenKind};
 use crate::source::Span;
 use winnow::stream::{AsBStr, AsChar, FindSlice, Location, Stream as _};
 
@@ -189,23 +189,19 @@ fn lex_operator<'a>(stream: &mut Stream<'a>) -> Token<'a> {
         // 2 char operators
         let peek = stream.as_bstr().peek_slice(2);
         if peek == b"+=" {
-            return lex_ascii_chars(
-                stream,
-                TokenKind::BinaryOperator(BinaryOperator::AddAssign),
-                2,
-            );
+            return lex_ascii_chars(stream, TokenKind::Operator(Operator::AddAssign), 2);
         }
     }
 
     // 1 char operators
     let peek = stream.as_bstr().peek_slice(stream.eof_offset().min(1));
     match peek {
-        b"+" => lex_ascii_char(stream, TokenKind::BinaryOperator(BinaryOperator::Add)),
-        b"=" => lex_ascii_char(stream, TokenKind::BinaryOperator(BinaryOperator::Assign)),
-        b"-" => lex_ascii_char(stream, TokenKind::BinaryOperator(BinaryOperator::Sub)),
-        b"/" => lex_ascii_char(stream, TokenKind::BinaryOperator(BinaryOperator::Divide)),
-        b"*" => lex_ascii_char(stream, TokenKind::BinaryOperator(BinaryOperator::Multiply)),
-        b"%" => lex_ascii_char(stream, TokenKind::BinaryOperator(BinaryOperator::Modulo)),
+        b"+" => lex_ascii_char(stream, TokenKind::Operator(Operator::Add)),
+        b"=" => lex_ascii_char(stream, TokenKind::Operator(Operator::Assign)),
+        b"-" => lex_ascii_char(stream, TokenKind::Operator(Operator::Sub)),
+        b"/" => lex_ascii_char(stream, TokenKind::Operator(Operator::Divide)),
+        b"*" => lex_ascii_char(stream, TokenKind::Operator(Operator::Multiply)),
+        b"%" => lex_ascii_char(stream, TokenKind::Operator(Operator::Modulo)),
         _ => unreachable!(), // This is true as long as we have an entry that matches the caller's peeked value
     }
 }

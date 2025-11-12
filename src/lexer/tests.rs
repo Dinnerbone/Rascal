@@ -1,5 +1,5 @@
 use crate::lexer::Lexer;
-use crate::lexer::tokens::{BinaryOperator, Keyword, Token, TokenKind};
+use crate::lexer::tokens::{Keyword, Operator, Token, TokenKind};
 
 fn kinds(input: &str) -> Vec<TokenKind> {
     Lexer::new(input)
@@ -73,13 +73,13 @@ fn test_operators_single_and_compound() {
     assert_eq!(
         kinds("+ = += - / * %"),
         vec![
-            TokenKind::BinaryOperator(BinaryOperator::Add),
-            TokenKind::BinaryOperator(BinaryOperator::Assign),
-            TokenKind::BinaryOperator(BinaryOperator::AddAssign),
-            TokenKind::BinaryOperator(BinaryOperator::Sub),
-            TokenKind::BinaryOperator(BinaryOperator::Divide),
-            TokenKind::BinaryOperator(BinaryOperator::Multiply),
-            TokenKind::BinaryOperator(BinaryOperator::Modulo),
+            TokenKind::Operator(Operator::Add),
+            TokenKind::Operator(Operator::Assign),
+            TokenKind::Operator(Operator::AddAssign),
+            TokenKind::Operator(Operator::Sub),
+            TokenKind::Operator(Operator::Divide),
+            TokenKind::Operator(Operator::Multiply),
+            TokenKind::Operator(Operator::Modulo),
         ]
     );
 }
@@ -123,7 +123,7 @@ fn test_mixed_sequence() {
         vec![
             TokenKind::Keyword(Keyword::Var),
             TokenKind::Identifier,
-            TokenKind::BinaryOperator(BinaryOperator::AddAssign),
+            TokenKind::Operator(Operator::AddAssign),
             TokenKind::Identifier,
             TokenKind::Comma,
             TokenKind::OpenParen,

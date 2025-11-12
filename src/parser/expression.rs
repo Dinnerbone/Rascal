@@ -1,4 +1,4 @@
-use crate::lexer::tokens::{BinaryOperator, TokenKind};
+use crate::lexer::tokens::{Operator, Token, TokenKind};
 use crate::parser::{Tokens, identifier, skip_newline, string};
 use serde::Serialize;
 use winnow::combinator::{alt, fail, peek, separated};
@@ -29,6 +29,18 @@ pub(crate) enum Constant {
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
 #[allow(dead_code)]
+pub(crate) enum BinaryOperator {
+    Add,
+    Assign,
+    AddAssign,
+    Sub,
+    Divide,
+    Multiply,
+    Modulo,
+}
+
+#[derive(Debug, Clone, Serialize, PartialEq)]
+#[allow(dead_code)]
 pub(crate) enum UnaryOperator {
     Sub,
 }
@@ -37,15 +49,15 @@ pub(crate) fn expression(i: &mut Tokens<'_>) -> ModalResult<Expr> {
     take_while(0.., TokenKind::Newline).parse_next(i)?;
     let token = peek(any).parse_next(i)?;
     match token.kind {
-        TokenKind::BinaryOperator(BinaryOperator::Sub) => {
-            TokenKind::BinaryOperator(BinaryOperator::Sub).parse_next(i)?;
+        TokenKind::Operator(Operator::Sub) => {
+            TokenKind::Operator(Operator::Sub).parse_next(i)?;
             expression
                 .map(|e| Expr::UnaryOperator(UnaryOperator::Sub, Box::new(e)))
                 .context(StrContext::Label("expression"))
                 .parse_next(i)
         }
-        TokenKind::BinaryOperator(BinaryOperator::Add) => {
-            TokenKind::BinaryOperator(BinaryOperator::Add).parse_next(i)?;
+        TokenKind::Operator(Operator::Add) => {
+            TokenKind::Operator(Operator::Add).parse_next(i)?;
             expression
                 .context(StrContext::Label("expression"))
                 .parse_next(i)
@@ -144,8 +156,8 @@ fn expr_next<'i>(prior: Expr) -> impl Parser<Tokens<'i>, Expr, ErrMode<ContextEr
                     args,
                 })
             }
-            TokenKind::BinaryOperator(op) => {
-                TokenKind::BinaryOperator(op).parse_next(i)?;
+            TokenKind::Operator(_) => {
+                let op = binary_operator.parse_next(i)?;
                 expression
                     .parse_next(i)
                     .map(|next| Expr::BinaryOperator(op, Box::new(prior), Box::new(next)))
@@ -155,6 +167,25 @@ fn expr_next<'i>(prior: Expr) -> impl Parser<Tokens<'i>, Expr, ErrMode<ContextEr
     }
 }
 
+fn binary_operator(i: &mut Tokens<'_>) -> ModalResult<BinaryOperator> {
+    let Token {
+        kind: TokenKind::Operator(operator),
+        ..
+    } = any.parse_next(i)?
+    else {
+        return Err(ParserError::from_input(i));
+    };
+    Ok(match operator {
+        Operator::Add => BinaryOperator::Add,
+        Operator::Assign => BinaryOperator::Assign,
+        Operator::AddAssign => BinaryOperator::AddAssign,
+        Operator::Sub => BinaryOperator::Sub,
+        Operator::Divide => BinaryOperator::Divide,
+        Operator::Multiply => BinaryOperator::Multiply,
+        Operator::Modulo => BinaryOperator::Modulo,
+    })
+}
+
 pub(crate) fn expr_list(i: &mut Tokens<'_>) -> ModalResult<Vec<Expr>> {
     separated(0.., skip_newline(expression), TokenKind::Comma).parse_next(i)
 }
@@ -162,7 +193,7 @@ pub(crate) fn expr_list(i: &mut Tokens<'_>) -> ModalResult<Vec<Expr>> {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::lexer::tokens::{BinaryOperator, Token, TokenKind};
+    use crate::lexer::tokens::{Operator, Token, TokenKind};
     use crate::parser::tests::build_tokens;
     use winnow::stream::TokenSlice;
 
@@ -230,7 +261,7 @@ mod tests {
     fn test_binary_add() {
         let tokens = build_tokens(&[
             (TokenKind::Identifier, "a"),
-            (TokenKind::BinaryOperator(BinaryOperator::Add), "+"),
+            (TokenKind::Operator(Operator::Add), "+"),
             (TokenKind::Identifier, "b"),
         ]);
         assert_eq!(
@@ -247,7 +278,7 @@ mod tests {
     fn test_binary_sub() {
         let tokens = build_tokens(&[
             (TokenKind::Identifier, "a"),
-            (TokenKind::BinaryOperator(BinaryOperator::Sub), "-"),
+            (TokenKind::Operator(Operator::Sub), "-"),
             (TokenKind::Identifier, "b"),
         ]);
         assert_eq!(
@@ -264,7 +295,7 @@ mod tests {
     fn test_binary_divide() {
         let tokens = build_tokens(&[
             (TokenKind::Identifier, "a"),
-            (TokenKind::BinaryOperator(BinaryOperator::Divide), "/"),
+            (TokenKind::Operator(Operator::Divide), "/"),
             (TokenKind::Identifier, "b"),
         ]);
         assert_eq!(
@@ -281,7 +312,7 @@ mod tests {
     fn test_binary_multiply() {
         let tokens = build_tokens(&[
             (TokenKind::Identifier, "a"),
-            (TokenKind::BinaryOperator(BinaryOperator::Multiply), "*"),
+            (TokenKind::Operator(Operator::Multiply), "*"),
             (TokenKind::Identifier, "b"),
         ]);
         assert_eq!(
@@ -298,7 +329,7 @@ mod tests {
     fn test_binary_modulo() {
         let tokens = build_tokens(&[
             (TokenKind::Identifier, "a"),
-            (TokenKind::BinaryOperator(BinaryOperator::Modulo), "%"),
+            (TokenKind::Operator(Operator::Modulo), "%"),
             (TokenKind::Identifier, "b"),
         ]);
         assert_eq!(
@@ -316,9 +347,9 @@ mod tests {
         // a + b + c parses as a + (b + c)
         let tokens = build_tokens(&[
             (TokenKind::Identifier, "a"),
-            (TokenKind::BinaryOperator(BinaryOperator::Add), "+"),
+            (TokenKind::Operator(Operator::Add), "+"),
             (TokenKind::Identifier, "b"),
-            (TokenKind::BinaryOperator(BinaryOperator::Add), "+"),
+            (TokenKind::Operator(Operator::Add), "+"),
             (TokenKind::Identifier, "c"),
         ]);
         assert_eq!(
@@ -383,7 +414,7 @@ mod tests {
     #[test]
     fn test_unary_sub() {
         let tokens = build_tokens(&[
-            (TokenKind::BinaryOperator(BinaryOperator::Sub), "-"),
+            (TokenKind::Operator(Operator::Sub), "-"),
             (TokenKind::Identifier, "a"),
         ]);
         assert_eq!(
@@ -398,7 +429,7 @@ mod tests {
     #[test]
     fn test_unary_add() {
         let tokens = build_tokens(&[
-            (TokenKind::BinaryOperator(BinaryOperator::Add), "+"),
+            (TokenKind::Operator(Operator::Add), "+"),
             (TokenKind::Identifier, "a"),
         ]);
         assert_eq!(

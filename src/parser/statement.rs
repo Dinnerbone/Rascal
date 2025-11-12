@@ -1,4 +1,4 @@
-use crate::lexer::tokens::{BinaryOperator, Keyword, TokenKind};
+use crate::lexer::tokens::{Keyword, Operator, TokenKind};
 use crate::parser::expression::{Expr, expression};
 use crate::parser::{Tokens, identifier, skip_newline};
 use serde::Serialize;
@@ -45,11 +45,9 @@ fn declaration(i: &mut Tokens<'_>) -> ModalResult<Statement> {
     let name = cut_err(skip_newline(identifier))
         .context(StrContext::Label("variable name"))
         .parse_next(i)?;
-    let equals = cut_err(opt(skip_newline(TokenKind::BinaryOperator(
-        BinaryOperator::Assign,
-    ))))
-    .parse_next(i)?
-    .is_some();
+    let equals = cut_err(opt(skip_newline(TokenKind::Operator(Operator::Assign))))
+        .parse_next(i)?
+        .is_some();
     let value = cond(equals, skip_newline(expression)).parse_next(i)?;
 
     Ok(Statement::Declare { name, value })
@@ -58,7 +56,7 @@ fn declaration(i: &mut Tokens<'_>) -> ModalResult<Statement> {
 #[cfg(test)]
 mod stmt_tests {
     use super::*;
-    use crate::lexer::tokens::{BinaryOperator, Keyword, Token, TokenKind};
+    use crate::lexer::tokens::{Keyword, Operator, Token, TokenKind};
     use crate::parser::expression::{Constant, Expr};
     use crate::parser::tests::build_tokens;
     use winnow::stream::TokenSlice;
@@ -87,7 +85,7 @@ mod stmt_tests {
         let tokens = build_tokens(&[
             (TokenKind::Keyword(Keyword::Var), "var"),
             (TokenKind::Identifier, "x"),
-            (TokenKind::BinaryOperator(BinaryOperator::Assign), "="),
+            (TokenKind::Operator(Operator::Assign), "="),
             (TokenKind::String, "hi"),
         ]);
         assert_eq!(
@@ -104,7 +102,7 @@ mod stmt_tests {
         let tokens = build_tokens(&[
             (TokenKind::Keyword(Keyword::Var), "var"),
             (TokenKind::Identifier, "x"),
-            (TokenKind::BinaryOperator(BinaryOperator::Assign), "="),
+            (TokenKind::Operator(Operator::Assign), "="),
             (TokenKind::Identifier, "foo"),
             (TokenKind::OpenParen, "("),
             (TokenKind::Identifier, "a"),
