@@ -54,11 +54,18 @@ pub(crate) enum BinaryOperator {
     MultiplyAssign,
     Modulo,
     ModuloAssign,
+    BitAnd,
+    BitOr,
+    BitXor,
+    BitShiftLeft,
+    BitShiftRight,
+    BitShiftRightUnsigned,
 }
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
 pub(crate) enum UnaryOperator {
     Sub,
+    BitNot,
     Increment(Affix),
     Decrement(Affix),
 }
@@ -101,6 +108,13 @@ pub(crate) fn expression(i: &mut Tokens<'_>) -> ModalResult<Expr> {
                 .map(|e| {
                     Expr::for_unary_operator(UnaryOperator::Decrement(Affix::Prefix), Box::new(e))
                 })
+                .context(StrContext::Label("expression"))
+                .parse_next(i)
+        }
+        TokenKind::Operator(Operator::BitNot) => {
+            TokenKind::Operator(Operator::BitNot).parse_next(i)?;
+            expression
+                .map(|e| Expr::for_unary_operator(UnaryOperator::BitNot, Box::new(e)))
                 .context(StrContext::Label("expression"))
                 .parse_next(i)
         }
@@ -245,6 +259,12 @@ fn binary_operator(i: &mut Tokens<'_>) -> ModalResult<BinaryOperator> {
         Operator::MultiplyAssign => BinaryOperator::MultiplyAssign,
         Operator::Modulo => BinaryOperator::Modulo,
         Operator::ModuloAssign => BinaryOperator::ModuloAssign,
+        Operator::BitAnd => BinaryOperator::BitAnd,
+        Operator::BitOr => BinaryOperator::BitOr,
+        Operator::BitXor => BinaryOperator::BitXor,
+        Operator::BitShiftLeft => BinaryOperator::BitShiftLeft,
+        Operator::BitShiftRight => BinaryOperator::BitShiftRight,
+        Operator::BitShiftRightUnsigned => BinaryOperator::BitShiftRightUnsigned,
         _ => return Err(ParserError::from_input(i)),
     })
 }
@@ -471,6 +491,123 @@ mod tests {
                 Box::new(Expr::Constant(Constant::Identifier("b".to_string())))
             ))
         );
+    }
+
+    #[test]
+    fn test_binary_bit_not() {
+        let tokens = build_tokens(&[
+            (TokenKind::Operator(Operator::BitNot), "~"),
+            (TokenKind::Identifier, "a"),
+        ]);
+        assert_eq!(
+            parse_expr(&tokens),
+            Ok(Expr::UnaryOperator(
+                UnaryOperator::BitNot,
+                Box::new(Expr::Constant(Constant::Identifier("a".to_string())))
+            ))
+        )
+    }
+
+    #[test]
+    fn test_binary_bit_and() {
+        let tokens = build_tokens(&[
+            (TokenKind::Identifier, "a"),
+            (TokenKind::Operator(Operator::BitAnd), "&"),
+            (TokenKind::Identifier, "b"),
+        ]);
+        assert_eq!(
+            parse_expr(&tokens),
+            Ok(Expr::BinaryOperator(
+                BinaryOperator::BitAnd,
+                Box::new(Expr::Constant(Constant::Identifier("a".to_string()))),
+                Box::new(Expr::Constant(Constant::Identifier("b".to_string())))
+            ))
+        )
+    }
+
+    #[test]
+    fn test_binary_bit_or() {
+        let tokens = build_tokens(&[
+            (TokenKind::Identifier, "a"),
+            (TokenKind::Operator(Operator::BitOr), "|"),
+            (TokenKind::Identifier, "b"),
+        ]);
+        assert_eq!(
+            parse_expr(&tokens),
+            Ok(Expr::BinaryOperator(
+                BinaryOperator::BitOr,
+                Box::new(Expr::Constant(Constant::Identifier("a".to_string()))),
+                Box::new(Expr::Constant(Constant::Identifier("b".to_string())))
+            ))
+        )
+    }
+
+    #[test]
+    fn test_binary_bit_xor() {
+        let tokens = build_tokens(&[
+            (TokenKind::Identifier, "a"),
+            (TokenKind::Operator(Operator::BitXor), "^"),
+            (TokenKind::Identifier, "b"),
+        ]);
+        assert_eq!(
+            parse_expr(&tokens),
+            Ok(Expr::BinaryOperator(
+                BinaryOperator::BitXor,
+                Box::new(Expr::Constant(Constant::Identifier("a".to_string()))),
+                Box::new(Expr::Constant(Constant::Identifier("b".to_string())))
+            ))
+        )
+    }
+
+    #[test]
+    fn test_binary_bit_shift_left() {
+        let tokens = build_tokens(&[
+            (TokenKind::Identifier, "a"),
+            (TokenKind::Operator(Operator::BitShiftLeft), "<<"),
+            (TokenKind::Identifier, "b"),
+        ]);
+        assert_eq!(
+            parse_expr(&tokens),
+            Ok(Expr::BinaryOperator(
+                BinaryOperator::BitShiftLeft,
+                Box::new(Expr::Constant(Constant::Identifier("a".to_string()))),
+                Box::new(Expr::Constant(Constant::Identifier("b".to_string())))
+            ))
+        )
+    }
+
+    #[test]
+    fn test_binary_bit_shift_right() {
+        let tokens = build_tokens(&[
+            (TokenKind::Identifier, "a"),
+            (TokenKind::Operator(Operator::BitShiftRight), ">>"),
+            (TokenKind::Identifier, "b"),
+        ]);
+        assert_eq!(
+            parse_expr(&tokens),
+            Ok(Expr::BinaryOperator(
+                BinaryOperator::BitShiftRight,
+                Box::new(Expr::Constant(Constant::Identifier("a".to_string()))),
+                Box::new(Expr::Constant(Constant::Identifier("b".to_string())))
+            ))
+        )
+    }
+
+    #[test]
+    fn test_binary_bit_shift_right_unsigned() {
+        let tokens = build_tokens(&[
+            (TokenKind::Identifier, "a"),
+            (TokenKind::Operator(Operator::BitShiftRightUnsigned), ">>>"),
+            (TokenKind::Identifier, "b"),
+        ]);
+        assert_eq!(
+            parse_expr(&tokens),
+            Ok(Expr::BinaryOperator(
+                BinaryOperator::BitShiftRightUnsigned,
+                Box::new(Expr::Constant(Constant::Identifier("a".to_string()))),
+                Box::new(Expr::Constant(Constant::Identifier("b".to_string())))
+            ))
+        )
     }
 
     #[test]

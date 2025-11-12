@@ -293,3 +293,130 @@ Ok:
                           Identifier: x
                       - Constant:
                           Integer: 2
+    - Declare:
+        name: five
+        value:
+          Constant:
+            Integer: 5
+    - Declare:
+        name: three
+        value:
+          Constant:
+            Integer: 3
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "five & three = "
+                - Parenthesis:
+                    BinaryOperator:
+                      - BitAnd
+                      - Constant:
+                          Identifier: five
+                      - Constant:
+                          Identifier: three
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "five | three = "
+                - Parenthesis:
+                    BinaryOperator:
+                      - BitOr
+                      - Constant:
+                          Identifier: five
+                      - Constant:
+                          Identifier: three
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "five ^ three = "
+                - Parenthesis:
+                    BinaryOperator:
+                      - BitXor
+                      - Constant:
+                          Identifier: five
+                      - Constant:
+                          Identifier: three
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "~five = "
+                - Parenthesis:
+                    UnaryOperator:
+                      - BitNot
+                      - Constant:
+                          Identifier: five
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "five << 1 = "
+                - Parenthesis:
+                    BinaryOperator:
+                      - BitShiftLeft
+                      - Constant:
+                          Identifier: five
+                      - Constant:
+                          Integer: 1
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "five >> 1 = "
+                - Parenthesis:
+                    BinaryOperator:
+                      - BitShiftRight
+                      - Constant:
+                          Identifier: five
+                      - Constant:
+                          Integer: 1
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "five >>> 1 = "
+                - Parenthesis:
+                    BinaryOperator:
+                      - BitShiftRightUnsigned
+                      - Constant:
+                          Identifier: five
+                      - Constant:
+                          Integer: 1

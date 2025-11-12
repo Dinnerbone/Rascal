@@ -51,7 +51,9 @@ fn process_token<'a>(peek_byte: u8, stream: &mut Stream<'a>) -> Option<Token<'a>
         b',' => Some(lex_ascii_char(stream, TokenKind::Comma)),
         b')' => Some(lex_ascii_char(stream, TokenKind::CloseParen)),
         b';' => Some(lex_ascii_char(stream, TokenKind::Semicolon)),
-        b'=' | b'+' | b'-' | b'*' | b'%' => Some(lex_operator(stream)),
+        b'=' | b'+' | b'-' | b'*' | b'%' | b'&' | b'^' | b'|' | b'~' | b'>' | b'<' => {
+            Some(lex_operator(stream))
+        }
         b'\r' => Some(lex_crlf(stream)),
         b'\n' => Some(lex_ascii_char(stream, TokenKind::Newline)),
         b'"' => Some(lex_string(stream, QuoteKind::Double)),
@@ -186,6 +188,19 @@ fn lex_integer_or_float<'a>(stream: &mut Stream<'a>) -> Token<'a> {
 }
 
 fn lex_operator<'a>(stream: &mut Stream<'a>) -> Token<'a> {
+    if stream.eof_offset() >= 3 {
+        // 3 char operators
+        match stream.as_bstr().peek_slice(3) {
+            b">>>" => {
+                return lex_ascii_chars(
+                    stream,
+                    TokenKind::Operator(Operator::BitShiftRightUnsigned),
+                    3,
+                );
+            }
+            _ => {}
+        }
+    }
     if stream.eof_offset() >= 2 {
         // 2 char operators
         match stream.as_bstr().peek_slice(2) {
@@ -210,6 +225,12 @@ fn lex_operator<'a>(stream: &mut Stream<'a>) -> Token<'a> {
             b"%=" => {
                 return lex_ascii_chars(stream, TokenKind::Operator(Operator::ModuloAssign), 2);
             }
+            b">>" => {
+                return lex_ascii_chars(stream, TokenKind::Operator(Operator::BitShiftRight), 2);
+            }
+            b"<<" => {
+                return lex_ascii_chars(stream, TokenKind::Operator(Operator::BitShiftLeft), 2);
+            }
             _ => {}
         }
     }
@@ -223,6 +244,10 @@ fn lex_operator<'a>(stream: &mut Stream<'a>) -> Token<'a> {
         b"/" => lex_ascii_char(stream, TokenKind::Operator(Operator::Divide)),
         b"*" => lex_ascii_char(stream, TokenKind::Operator(Operator::Multiply)),
         b"%" => lex_ascii_char(stream, TokenKind::Operator(Operator::Modulo)),
+        b"&" => lex_ascii_char(stream, TokenKind::Operator(Operator::BitAnd)),
+        b"|" => lex_ascii_char(stream, TokenKind::Operator(Operator::BitOr)),
+        b"~" => lex_ascii_char(stream, TokenKind::Operator(Operator::BitNot)),
+        b"^" => lex_ascii_char(stream, TokenKind::Operator(Operator::BitXor)),
         _ => unreachable!(), // This is true as long as we have an entry that matches the caller's peeked value
     }
 }

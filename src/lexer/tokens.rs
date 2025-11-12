@@ -109,4 +109,11 @@ pub enum Operator {
     ModuloAssign,
     Increment,
     Decrement,
+    BitAnd,
+    BitOr,
+    BitXor,
+    BitNot,
+    BitShiftLeft,
+    BitShiftRight,
+    BitShiftRightUnsigned,
 }
