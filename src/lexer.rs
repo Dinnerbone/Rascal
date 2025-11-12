@@ -51,7 +51,7 @@ fn process_token<'a>(peek_byte: u8, stream: &mut Stream<'a>) -> Option<Token<'a>
         b',' => Some(lex_ascii_char(stream, TokenKind::Comma)),
         b')' => Some(lex_ascii_char(stream, TokenKind::CloseParen)),
         b';' => Some(lex_ascii_char(stream, TokenKind::Semicolon)),
-        b'=' | b'+' | b'-' | b'*' | b'%' | b'&' | b'^' | b'|' | b'~' | b'>' | b'<' => {
+        b'=' | b'+' | b'-' | b'*' | b'%' | b'&' | b'^' | b'|' | b'~' | b'>' | b'<' | b'!' => {
             Some(lex_operator(stream))
         }
         b'\r' => Some(lex_crlf(stream)),
@@ -196,6 +196,8 @@ fn lex_operator<'a>(stream: &mut Stream<'a>) -> Token<'a> {
         (b">>>", Operator::BitShiftRightUnsigned),
         (b">>=", Operator::BitShiftRightAssign),
         (b"<<=", Operator::BitShiftLeftAssign),
+        (b"!==", Operator::StrictNotEqual),
+        (b"===", Operator::StrictEqual),
         // 2 char operators
         (b"++", Operator::Increment),
         (b"--", Operator::Decrement),
@@ -209,6 +211,10 @@ fn lex_operator<'a>(stream: &mut Stream<'a>) -> Token<'a> {
         (b"&=", Operator::BitAndAssign),
         (b"|=", Operator::BitOrAssign),
         (b"^=", Operator::BitXorAssign),
+        (b"<=", Operator::LessThanEqual),
+        (b">=", Operator::GreaterThanEqual),
+        (b"==", Operator::Equal),
+        (b"!=", Operator::NotEqual),
         // 1 char operators
         (b"+", Operator::Add),
         (b"=", Operator::Assign),
@@ -220,6 +226,8 @@ fn lex_operator<'a>(stream: &mut Stream<'a>) -> Token<'a> {
         (b"|", Operator::BitOr),
         (b"~", Operator::BitNot),
         (b"^", Operator::BitXor),
+        (b"<", Operator::LessThan),
+        (b">", Operator::GreaterThan),
     ];
 
     let available = stream.eof_offset();

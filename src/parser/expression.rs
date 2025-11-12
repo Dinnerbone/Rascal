@@ -66,6 +66,14 @@ pub(crate) enum BinaryOperator {
     BitShiftRightAssign,
     BitShiftRightUnsigned,
     BitShiftRightUnsignedAssign,
+    Equal,
+    StrictEqual,
+    NotEqual,
+    StrictNotEqual,
+    LessThan,
+    LessThanEqual,
+    GreaterThan,
+    GreaterThanEqual,
 }
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
@@ -277,6 +285,14 @@ fn binary_operator(i: &mut Tokens<'_>) -> ModalResult<BinaryOperator> {
         Operator::BitShiftLeftAssign => BinaryOperator::BitShiftLeftAssign,
         Operator::BitShiftRightAssign => BinaryOperator::BitShiftRightAssign,
         Operator::BitShiftRightUnsignedAssign => BinaryOperator::BitShiftRightUnsignedAssign,
+        Operator::Equal => BinaryOperator::Equal,
+        Operator::StrictEqual => BinaryOperator::StrictEqual,
+        Operator::NotEqual => BinaryOperator::NotEqual,
+        Operator::StrictNotEqual => BinaryOperator::StrictNotEqual,
+        Operator::LessThan => BinaryOperator::LessThan,
+        Operator::LessThanEqual => BinaryOperator::LessThanEqual,
+        Operator::GreaterThan => BinaryOperator::GreaterThan,
+        Operator::GreaterThanEqual => BinaryOperator::GreaterThanEqual,
         _ => return Err(ParserError::from_input(i)),
     })
 }
@@ -927,6 +943,142 @@ mod tests {
                 ))
             ))
         );
+    }
+
+    #[test]
+    fn test_comparison_equal() {
+        let tokens = build_tokens(&[
+            (TokenKind::Identifier, "a"),
+            (TokenKind::Operator(Operator::Equal), "=="),
+            (TokenKind::Identifier, "b"),
+        ]);
+        assert_eq!(
+            parse_expr(&tokens),
+            Ok(Expr::BinaryOperator(
+                BinaryOperator::Equal,
+                Box::new(Expr::Constant(Constant::Identifier("a".to_string()))),
+                Box::new(Expr::Constant(Constant::Identifier("b".to_string())))
+            ))
+        )
+    }
+
+    #[test]
+    fn test_comparison_strict_equal() {
+        let tokens = build_tokens(&[
+            (TokenKind::Identifier, "a"),
+            (TokenKind::Operator(Operator::StrictEqual), "==="),
+            (TokenKind::Identifier, "b"),
+        ]);
+        assert_eq!(
+            parse_expr(&tokens),
+            Ok(Expr::BinaryOperator(
+                BinaryOperator::StrictEqual,
+                Box::new(Expr::Constant(Constant::Identifier("a".to_string()))),
+                Box::new(Expr::Constant(Constant::Identifier("b".to_string())))
+            ))
+        )
+    }
+
+    #[test]
+    fn test_comparison_not_equal() {
+        let tokens = build_tokens(&[
+            (TokenKind::Identifier, "a"),
+            (TokenKind::Operator(Operator::NotEqual), "!="),
+            (TokenKind::Identifier, "b"),
+        ]);
+        assert_eq!(
+            parse_expr(&tokens),
+            Ok(Expr::BinaryOperator(
+                BinaryOperator::NotEqual,
+                Box::new(Expr::Constant(Constant::Identifier("a".to_string()))),
+                Box::new(Expr::Constant(Constant::Identifier("b".to_string())))
+            ))
+        )
+    }
+
+    #[test]
+    fn test_comparison_strict_not_equal() {
+        let tokens = build_tokens(&[
+            (TokenKind::Identifier, "a"),
+            (TokenKind::Operator(Operator::StrictNotEqual), "!=="),
+            (TokenKind::Identifier, "b"),
+        ]);
+        assert_eq!(
+            parse_expr(&tokens),
+            Ok(Expr::BinaryOperator(
+                BinaryOperator::StrictNotEqual,
+                Box::new(Expr::Constant(Constant::Identifier("a".to_string()))),
+                Box::new(Expr::Constant(Constant::Identifier("b".to_string())))
+            ))
+        )
+    }
+
+    #[test]
+    fn test_comparison_less_than() {
+        let tokens = build_tokens(&[
+            (TokenKind::Identifier, "a"),
+            (TokenKind::Operator(Operator::LessThan), "<"),
+            (TokenKind::Identifier, "b"),
+        ]);
+        assert_eq!(
+            parse_expr(&tokens),
+            Ok(Expr::BinaryOperator(
+                BinaryOperator::LessThan,
+                Box::new(Expr::Constant(Constant::Identifier("a".to_string()))),
+                Box::new(Expr::Constant(Constant::Identifier("b".to_string())))
+            ))
+        )
+    }
+
+    #[test]
+    fn test_comparison_less_than_equal() {
+        let tokens = build_tokens(&[
+            (TokenKind::Identifier, "a"),
+            (TokenKind::Operator(Operator::LessThanEqual), "<="),
+            (TokenKind::Identifier, "b"),
+        ]);
+        assert_eq!(
+            parse_expr(&tokens),
+            Ok(Expr::BinaryOperator(
+                BinaryOperator::LessThanEqual,
+                Box::new(Expr::Constant(Constant::Identifier("a".to_string()))),
+                Box::new(Expr::Constant(Constant::Identifier("b".to_string())))
+            ))
+        )
+    }
+
+    #[test]
+    fn test_comparison_greater_than() {
+        let tokens = build_tokens(&[
+            (TokenKind::Identifier, "a"),
+            (TokenKind::Operator(Operator::GreaterThan), ">"),
+            (TokenKind::Identifier, "b"),
+        ]);
+        assert_eq!(
+            parse_expr(&tokens),
+            Ok(Expr::BinaryOperator(
+                BinaryOperator::GreaterThan,
+                Box::new(Expr::Constant(Constant::Identifier("a".to_string()))),
+                Box::new(Expr::Constant(Constant::Identifier("b".to_string())))
+            ))
+        )
+    }
+
+    #[test]
+    fn test_comparison_greater_than_equal() {
+        let tokens = build_tokens(&[
+            (TokenKind::Identifier, "a"),
+            (TokenKind::Operator(Operator::GreaterThanEqual), ">="),
+            (TokenKind::Identifier, "b"),
+        ]);
+        assert_eq!(
+            parse_expr(&tokens),
+            Ok(Expr::BinaryOperator(
+                BinaryOperator::GreaterThanEqual,
+                Box::new(Expr::Constant(Constant::Identifier("a".to_string()))),
+                Box::new(Expr::Constant(Constant::Identifier("b".to_string())))
+            ))
+        )
     }
 
     #[test]

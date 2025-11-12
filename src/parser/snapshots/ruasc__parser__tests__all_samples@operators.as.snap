@@ -576,3 +576,171 @@ Ok:
                     String: "five >>>= 1 => "
                 - Constant:
                     Identifier: five
+    - Declare:
+        name: six
+        value:
+          Constant:
+            Integer: 6
+    - Declare:
+        name: seven
+        value:
+          Constant:
+            Integer: 7
+    - Declare:
+        name: sevenStr
+        value:
+          Constant:
+            String: "7"
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "six == seven: "
+                - Parenthesis:
+                    BinaryOperator:
+                      - Equal
+                      - Constant:
+                          Identifier: six
+                      - Constant:
+                          Identifier: seven
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "six != seven: "
+                - Parenthesis:
+                    BinaryOperator:
+                      - NotEqual
+                      - Constant:
+                          Identifier: six
+                      - Constant:
+                          Identifier: seven
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "six < seven: "
+                - Parenthesis:
+                    BinaryOperator:
+                      - LessThan
+                      - Constant:
+                          Identifier: six
+                      - Constant:
+                          Identifier: seven
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "six <= seven: "
+                - Parenthesis:
+                    BinaryOperator:
+                      - LessThanEqual
+                      - Constant:
+                          Identifier: six
+                      - Constant:
+                          Identifier: seven
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "six > seven: "
+                - Parenthesis:
+                    BinaryOperator:
+                      - GreaterThan
+                      - Constant:
+                          Identifier: six
+                      - Constant:
+                          Identifier: seven
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "six >= seven: "
+                - Parenthesis:
+                    BinaryOperator:
+                      - GreaterThanEqual
+                      - Constant:
+                          Identifier: six
+                      - Constant:
+                          Identifier: seven
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "sevenStr == seven: "
+                - Parenthesis:
+                    BinaryOperator:
+                      - Equal
+                      - Constant:
+                          Identifier: sevenStr
+                      - Constant:
+                          Identifier: seven
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "sevenStr === seven: "
+                - Parenthesis:
+                    BinaryOperator:
+                      - StrictEqual
+                      - Constant:
+                          Identifier: sevenStr
+                      - Constant:
+                          Identifier: seven
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "sevenStr !== seven: "
+                - Parenthesis:
+                    BinaryOperator:
+                      - StrictNotEqual
+                      - Constant:
+                          Identifier: sevenStr
+                      - Constant:
+                          Identifier: seven

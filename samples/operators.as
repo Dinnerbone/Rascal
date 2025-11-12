@@ -62,3 +62,17 @@ trace("five >>= 1 => " + five); // 2
 five = 5; // reset
 five >>>= 1;
 trace("five >>>= 1 => " + five); // 2
+
+// Comparison operators
+var six = 6;
+var seven = 7;
+var sevenStr = "7";
+trace("six == seven: " + (six == seven)); // false
+trace("six != seven: " + (six != seven)); // true
+trace("six < seven: " + (six < seven)); // true
+trace("six <= seven: " + (six <= seven)); // true
+trace("six > seven: " + (six > seven)); // false
+trace("six >= seven: " + (six >= seven)); // false
+trace('sevenStr == seven: ' + (sevenStr == seven)); // true
+trace('sevenStr === seven: ' + (sevenStr === seven)); // false
+trace('sevenStr !== seven: ' + (sevenStr !== seven)); // true

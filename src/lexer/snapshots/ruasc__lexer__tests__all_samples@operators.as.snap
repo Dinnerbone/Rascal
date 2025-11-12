@@ -2108,3 +2108,627 @@ input_file: samples/operators.as
     start: 1614
     end: 1615
   raw: ;
+- kind: Newline
+  span:
+    start: 1621
+    end: 1622
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 1646
+    end: 1649
+  raw: var
+- kind: Identifier
+  span:
+    start: 1650
+    end: 1653
+  raw: six
+- kind:
+    Operator: Assign
+  span:
+    start: 1654
+    end: 1655
+  raw: "="
+- kind: Integer
+  span:
+    start: 1656
+    end: 1657
+  raw: "6"
+- kind: Semicolon
+  span:
+    start: 1657
+    end: 1658
+  raw: ;
+- kind: Newline
+  span:
+    start: 1658
+    end: 1659
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 1659
+    end: 1662
+  raw: var
+- kind: Identifier
+  span:
+    start: 1663
+    end: 1668
+  raw: seven
+- kind:
+    Operator: Assign
+  span:
+    start: 1669
+    end: 1670
+  raw: "="
+- kind: Integer
+  span:
+    start: 1671
+    end: 1672
+  raw: "7"
+- kind: Semicolon
+  span:
+    start: 1672
+    end: 1673
+  raw: ;
+- kind: Newline
+  span:
+    start: 1673
+    end: 1674
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 1674
+    end: 1677
+  raw: var
+- kind: Identifier
+  span:
+    start: 1678
+    end: 1686
+  raw: sevenStr
+- kind:
+    Operator: Assign
+  span:
+    start: 1687
+    end: 1688
+  raw: "="
+- kind:
+    String: Double
+  span:
+    start: 1689
+    end: 1692
+  raw: "7"
+- kind: Semicolon
+  span:
+    start: 1692
+    end: 1693
+  raw: ;
+- kind: Newline
+  span:
+    start: 1693
+    end: 1694
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1694
+    end: 1699
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1699
+    end: 1700
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1700
+    end: 1716
+  raw: "six == seven: "
+- kind:
+    Operator: Add
+  span:
+    start: 1717
+    end: 1718
+  raw: +
+- kind: OpenParen
+  span:
+    start: 1719
+    end: 1720
+  raw: (
+- kind: Identifier
+  span:
+    start: 1720
+    end: 1723
+  raw: six
+- kind:
+    Operator: Equal
+  span:
+    start: 1724
+    end: 1726
+  raw: "=="
+- kind: Identifier
+  span:
+    start: 1727
+    end: 1732
+  raw: seven
+- kind: CloseParen
+  span:
+    start: 1732
+    end: 1733
+  raw: )
+- kind: CloseParen
+  span:
+    start: 1733
+    end: 1734
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1734
+    end: 1735
+  raw: ;
+- kind: Identifier
+  span:
+    start: 1745
+    end: 1750
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1750
+    end: 1751
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1751
+    end: 1767
+  raw: "six != seven: "
+- kind:
+    Operator: Add
+  span:
+    start: 1768
+    end: 1769
+  raw: +
+- kind: OpenParen
+  span:
+    start: 1770
+    end: 1771
+  raw: (
+- kind: Identifier
+  span:
+    start: 1771
+    end: 1774
+  raw: six
+- kind:
+    Operator: NotEqual
+  span:
+    start: 1775
+    end: 1777
+  raw: "!="
+- kind: Identifier
+  span:
+    start: 1778
+    end: 1783
+  raw: seven
+- kind: CloseParen
+  span:
+    start: 1783
+    end: 1784
+  raw: )
+- kind: CloseParen
+  span:
+    start: 1784
+    end: 1785
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1785
+    end: 1786
+  raw: ;
+- kind: Identifier
+  span:
+    start: 1795
+    end: 1800
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1800
+    end: 1801
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1801
+    end: 1816
+  raw: "six < seven: "
+- kind:
+    Operator: Add
+  span:
+    start: 1817
+    end: 1818
+  raw: +
+- kind: OpenParen
+  span:
+    start: 1819
+    end: 1820
+  raw: (
+- kind: Identifier
+  span:
+    start: 1820
+    end: 1823
+  raw: six
+- kind:
+    Operator: LessThan
+  span:
+    start: 1824
+    end: 1825
+  raw: "<"
+- kind: Identifier
+  span:
+    start: 1826
+    end: 1831
+  raw: seven
+- kind: CloseParen
+  span:
+    start: 1831
+    end: 1832
+  raw: )
+- kind: CloseParen
+  span:
+    start: 1832
+    end: 1833
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1833
+    end: 1834
+  raw: ;
+- kind: Identifier
+  span:
+    start: 1843
+    end: 1848
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1848
+    end: 1849
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1849
+    end: 1865
+  raw: "six <= seven: "
+- kind:
+    Operator: Add
+  span:
+    start: 1866
+    end: 1867
+  raw: +
+- kind: OpenParen
+  span:
+    start: 1868
+    end: 1869
+  raw: (
+- kind: Identifier
+  span:
+    start: 1869
+    end: 1872
+  raw: six
+- kind:
+    Operator: LessThanEqual
+  span:
+    start: 1873
+    end: 1875
+  raw: "<="
+- kind: Identifier
+  span:
+    start: 1876
+    end: 1881
+  raw: seven
+- kind: CloseParen
+  span:
+    start: 1881
+    end: 1882
+  raw: )
+- kind: CloseParen
+  span:
+    start: 1882
+    end: 1883
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1883
+    end: 1884
+  raw: ;
+- kind: Identifier
+  span:
+    start: 1893
+    end: 1898
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1898
+    end: 1899
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1899
+    end: 1914
+  raw: "six > seven: "
+- kind:
+    Operator: Add
+  span:
+    start: 1915
+    end: 1916
+  raw: +
+- kind: OpenParen
+  span:
+    start: 1917
+    end: 1918
+  raw: (
+- kind: Identifier
+  span:
+    start: 1918
+    end: 1921
+  raw: six
+- kind:
+    Operator: GreaterThan
+  span:
+    start: 1922
+    end: 1923
+  raw: ">"
+- kind: Identifier
+  span:
+    start: 1924
+    end: 1929
+  raw: seven
+- kind: CloseParen
+  span:
+    start: 1929
+    end: 1930
+  raw: )
+- kind: CloseParen
+  span:
+    start: 1930
+    end: 1931
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1931
+    end: 1932
+  raw: ;
+- kind: Identifier
+  span:
+    start: 1942
+    end: 1947
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1947
+    end: 1948
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1948
+    end: 1964
+  raw: "six >= seven: "
+- kind:
+    Operator: Add
+  span:
+    start: 1965
+    end: 1966
+  raw: +
+- kind: OpenParen
+  span:
+    start: 1967
+    end: 1968
+  raw: (
+- kind: Identifier
+  span:
+    start: 1968
+    end: 1971
+  raw: six
+- kind:
+    Operator: GreaterThanEqual
+  span:
+    start: 1972
+    end: 1974
+  raw: ">="
+- kind: Identifier
+  span:
+    start: 1975
+    end: 1980
+  raw: seven
+- kind: CloseParen
+  span:
+    start: 1980
+    end: 1981
+  raw: )
+- kind: CloseParen
+  span:
+    start: 1981
+    end: 1982
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1982
+    end: 1983
+  raw: ;
+- kind: Identifier
+  span:
+    start: 1993
+    end: 1998
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1998
+    end: 1999
+  raw: (
+- kind:
+    String: Single
+  span:
+    start: 1999
+    end: 2020
+  raw: "sevenStr == seven: "
+- kind:
+    Operator: Add
+  span:
+    start: 2021
+    end: 2022
+  raw: +
+- kind: OpenParen
+  span:
+    start: 2023
+    end: 2024
+  raw: (
+- kind: Identifier
+  span:
+    start: 2024
+    end: 2032
+  raw: sevenStr
+- kind:
+    Operator: Equal
+  span:
+    start: 2033
+    end: 2035
+  raw: "=="
+- kind: Identifier
+  span:
+    start: 2036
+    end: 2041
+  raw: seven
+- kind: CloseParen
+  span:
+    start: 2041
+    end: 2042
+  raw: )
+- kind: CloseParen
+  span:
+    start: 2042
+    end: 2043
+  raw: )
+- kind: Semicolon
+  span:
+    start: 2043
+    end: 2044
+  raw: ;
+- kind: Identifier
+  span:
+    start: 2053
+    end: 2058
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 2058
+    end: 2059
+  raw: (
+- kind:
+    String: Single
+  span:
+    start: 2059
+    end: 2081
+  raw: "sevenStr === seven: "
+- kind:
+    Operator: Add
+  span:
+    start: 2082
+    end: 2083
+  raw: +
+- kind: OpenParen
+  span:
+    start: 2084
+    end: 2085
+  raw: (
+- kind: Identifier
+  span:
+    start: 2085
+    end: 2093
+  raw: sevenStr
+- kind:
+    Operator: StrictEqual
+  span:
+    start: 2094
+    end: 2097
+  raw: "==="
+- kind: Identifier
+  span:
+    start: 2098
+    end: 2103
+  raw: seven
+- kind: CloseParen
+  span:
+    start: 2103
+    end: 2104
+  raw: )
+- kind: CloseParen
+  span:
+    start: 2104
+    end: 2105
+  raw: )
+- kind: Semicolon
+  span:
+    start: 2105
+    end: 2106
+  raw: ;
+- kind: Identifier
+  span:
+    start: 2116
+    end: 2121
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 2121
+    end: 2122
+  raw: (
+- kind:
+    String: Single
+  span:
+    start: 2122
+    end: 2144
+  raw: "sevenStr !== seven: "
+- kind:
+    Operator: Add
+  span:
+    start: 2145
+    end: 2146
+  raw: +
+- kind: OpenParen
+  span:
+    start: 2147
+    end: 2148
+  raw: (
+- kind: Identifier
+  span:
+    start: 2148
+    end: 2156
+  raw: sevenStr
+- kind:
+    Operator: StrictNotEqual
+  span:
+    start: 2157
+    end: 2160
+  raw: "!=="
+- kind: Identifier
+  span:
+    start: 2161
+    end: 2166
+  raw: seven
+- kind: CloseParen
+  span:
+    start: 2166
+    end: 2167
+  raw: )
+- kind: CloseParen
+  span:
+    start: 2167
+    end: 2168
+  raw: )
+- kind: Semicolon
+  span:
+    start: 2168
+    end: 2169
+  raw: ;

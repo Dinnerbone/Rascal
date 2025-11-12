@@ -104,6 +104,23 @@ fn test_operators_single_and_compound() {
 }
 
 #[test]
+fn test_equality_operators() {
+    assert_eq!(
+        kinds("== != <= >= < > === !=="),
+        vec![
+            TokenKind::Operator(Operator::Equal),
+            TokenKind::Operator(Operator::NotEqual),
+            TokenKind::Operator(Operator::LessThanEqual),
+            TokenKind::Operator(Operator::GreaterThanEqual),
+            TokenKind::Operator(Operator::LessThan),
+            TokenKind::Operator(Operator::GreaterThan),
+            TokenKind::Operator(Operator::StrictEqual),
+            TokenKind::Operator(Operator::StrictNotEqual),
+        ]
+    );
+}
+
+#[test]
 fn test_punctuation_tokens() {
     assert_eq!(
         kinds("(,) );"),

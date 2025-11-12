@@ -122,4 +122,12 @@ pub enum Operator {
     BitShiftRightAssign,
     BitShiftRightUnsigned,
     BitShiftRightUnsignedAssign,
+    Equal,
+    StrictEqual,
+    NotEqual,
+    StrictNotEqual,
+    LessThan,
+    LessThanEqual,
+    GreaterThan,
+    GreaterThanEqual,
 }
