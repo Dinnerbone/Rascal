@@ -37,3 +37,28 @@ trace("~five = " + (~five)); // -6
 trace("five << 1 = " + (five << 1)); // 10
 trace("five >> 1 = " + (five >> 1)); // 2
 trace("five >>> 1 = " + (five >>> 1)); // 2
+
+// Bitwise assignment operators
+five = 5;
+five &= three;
+trace("five &= three => " + five); // 1
+
+five = 5;
+five |= three;
+trace("five |= three => " + five); // 7
+
+five = 5;
+five ^= three;
+trace("five ^= three => " + five); // 6
+
+five = 5; // reset
+five <<= 1;
+trace("five <<= 1 => " + five); // 10
+
+five = 5; // reset
+five >>= 1;
+trace("five >>= 1 => " + five); // 2
+
+five = 5; // reset
+five >>>= 1;
+trace("five >>>= 1 => " + five); // 2

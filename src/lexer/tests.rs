@@ -71,7 +71,7 @@ fn test_identifiers_and_keyword() {
 #[test]
 fn test_operators_single_and_compound() {
     assert_eq!(
-        kinds("+ = += - / * % ++ -- -= *= /= %= & ~ | >> << >>> ^"),
+        kinds("+ = += - / * % ++ -- -= *= /= %= & ~ | >> << >>> ^ &= |= ^= >>= <<= >>>="),
         vec![
             TokenKind::Operator(Operator::Add),
             TokenKind::Operator(Operator::Assign),
@@ -93,6 +93,12 @@ fn test_operators_single_and_compound() {
             TokenKind::Operator(Operator::BitShiftLeft),
             TokenKind::Operator(Operator::BitShiftRightUnsigned),
             TokenKind::Operator(Operator::BitXor),
+            TokenKind::Operator(Operator::BitAndAssign),
+            TokenKind::Operator(Operator::BitOrAssign),
+            TokenKind::Operator(Operator::BitXorAssign),
+            TokenKind::Operator(Operator::BitShiftRightAssign),
+            TokenKind::Operator(Operator::BitShiftLeftAssign),
+            TokenKind::Operator(Operator::BitShiftRightUnsignedAssign),
         ]
     );
 }

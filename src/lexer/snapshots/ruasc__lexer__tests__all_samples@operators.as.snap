@@ -1559,3 +1559,552 @@ input_file: samples/operators.as
     start: 1174
     end: 1175
   raw: ;
+- kind: Newline
+  span:
+    start: 1181
+    end: 1182
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1214
+    end: 1218
+  raw: five
+- kind:
+    Operator: Assign
+  span:
+    start: 1219
+    end: 1220
+  raw: "="
+- kind: Integer
+  span:
+    start: 1221
+    end: 1222
+  raw: "5"
+- kind: Semicolon
+  span:
+    start: 1222
+    end: 1223
+  raw: ;
+- kind: Newline
+  span:
+    start: 1223
+    end: 1224
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1224
+    end: 1228
+  raw: five
+- kind:
+    Operator: BitAndAssign
+  span:
+    start: 1229
+    end: 1231
+  raw: "&="
+- kind: Identifier
+  span:
+    start: 1232
+    end: 1237
+  raw: three
+- kind: Semicolon
+  span:
+    start: 1237
+    end: 1238
+  raw: ;
+- kind: Newline
+  span:
+    start: 1238
+    end: 1239
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1239
+    end: 1244
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1244
+    end: 1245
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1245
+    end: 1264
+  raw: "five &= three => "
+- kind:
+    Operator: Add
+  span:
+    start: 1265
+    end: 1266
+  raw: +
+- kind: Identifier
+  span:
+    start: 1267
+    end: 1271
+  raw: five
+- kind: CloseParen
+  span:
+    start: 1271
+    end: 1272
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1272
+    end: 1273
+  raw: ;
+- kind: Newline
+  span:
+    start: 1279
+    end: 1280
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1280
+    end: 1284
+  raw: five
+- kind:
+    Operator: Assign
+  span:
+    start: 1285
+    end: 1286
+  raw: "="
+- kind: Integer
+  span:
+    start: 1287
+    end: 1288
+  raw: "5"
+- kind: Semicolon
+  span:
+    start: 1288
+    end: 1289
+  raw: ;
+- kind: Newline
+  span:
+    start: 1289
+    end: 1290
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1290
+    end: 1294
+  raw: five
+- kind:
+    Operator: BitOrAssign
+  span:
+    start: 1295
+    end: 1297
+  raw: "|="
+- kind: Identifier
+  span:
+    start: 1298
+    end: 1303
+  raw: three
+- kind: Semicolon
+  span:
+    start: 1303
+    end: 1304
+  raw: ;
+- kind: Newline
+  span:
+    start: 1304
+    end: 1305
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1305
+    end: 1310
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1310
+    end: 1311
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1311
+    end: 1330
+  raw: "five |= three => "
+- kind:
+    Operator: Add
+  span:
+    start: 1331
+    end: 1332
+  raw: +
+- kind: Identifier
+  span:
+    start: 1333
+    end: 1337
+  raw: five
+- kind: CloseParen
+  span:
+    start: 1337
+    end: 1338
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1338
+    end: 1339
+  raw: ;
+- kind: Newline
+  span:
+    start: 1345
+    end: 1346
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1346
+    end: 1350
+  raw: five
+- kind:
+    Operator: Assign
+  span:
+    start: 1351
+    end: 1352
+  raw: "="
+- kind: Integer
+  span:
+    start: 1353
+    end: 1354
+  raw: "5"
+- kind: Semicolon
+  span:
+    start: 1354
+    end: 1355
+  raw: ;
+- kind: Newline
+  span:
+    start: 1355
+    end: 1356
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1356
+    end: 1360
+  raw: five
+- kind:
+    Operator: BitXorAssign
+  span:
+    start: 1361
+    end: 1363
+  raw: ^=
+- kind: Identifier
+  span:
+    start: 1364
+    end: 1369
+  raw: three
+- kind: Semicolon
+  span:
+    start: 1369
+    end: 1370
+  raw: ;
+- kind: Newline
+  span:
+    start: 1370
+    end: 1371
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1371
+    end: 1376
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1376
+    end: 1377
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1377
+    end: 1396
+  raw: "five ^= three => "
+- kind:
+    Operator: Add
+  span:
+    start: 1397
+    end: 1398
+  raw: +
+- kind: Identifier
+  span:
+    start: 1399
+    end: 1403
+  raw: five
+- kind: CloseParen
+  span:
+    start: 1403
+    end: 1404
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1404
+    end: 1405
+  raw: ;
+- kind: Newline
+  span:
+    start: 1411
+    end: 1412
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1412
+    end: 1416
+  raw: five
+- kind:
+    Operator: Assign
+  span:
+    start: 1417
+    end: 1418
+  raw: "="
+- kind: Integer
+  span:
+    start: 1419
+    end: 1420
+  raw: "5"
+- kind: Semicolon
+  span:
+    start: 1420
+    end: 1421
+  raw: ;
+- kind: Identifier
+  span:
+    start: 1431
+    end: 1435
+  raw: five
+- kind:
+    Operator: BitShiftLeftAssign
+  span:
+    start: 1436
+    end: 1439
+  raw: "<<="
+- kind: Integer
+  span:
+    start: 1440
+    end: 1441
+  raw: "1"
+- kind: Semicolon
+  span:
+    start: 1441
+    end: 1442
+  raw: ;
+- kind: Newline
+  span:
+    start: 1442
+    end: 1443
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1443
+    end: 1448
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1448
+    end: 1449
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1449
+    end: 1465
+  raw: "five <<= 1 => "
+- kind:
+    Operator: Add
+  span:
+    start: 1466
+    end: 1467
+  raw: +
+- kind: Identifier
+  span:
+    start: 1468
+    end: 1472
+  raw: five
+- kind: CloseParen
+  span:
+    start: 1472
+    end: 1473
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1473
+    end: 1474
+  raw: ;
+- kind: Newline
+  span:
+    start: 1481
+    end: 1482
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1482
+    end: 1486
+  raw: five
+- kind:
+    Operator: Assign
+  span:
+    start: 1487
+    end: 1488
+  raw: "="
+- kind: Integer
+  span:
+    start: 1489
+    end: 1490
+  raw: "5"
+- kind: Semicolon
+  span:
+    start: 1490
+    end: 1491
+  raw: ;
+- kind: Identifier
+  span:
+    start: 1501
+    end: 1505
+  raw: five
+- kind:
+    Operator: BitShiftRightAssign
+  span:
+    start: 1506
+    end: 1509
+  raw: ">>="
+- kind: Integer
+  span:
+    start: 1510
+    end: 1511
+  raw: "1"
+- kind: Semicolon
+  span:
+    start: 1511
+    end: 1512
+  raw: ;
+- kind: Newline
+  span:
+    start: 1512
+    end: 1513
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1513
+    end: 1518
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1518
+    end: 1519
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1519
+    end: 1535
+  raw: "five >>= 1 => "
+- kind:
+    Operator: Add
+  span:
+    start: 1536
+    end: 1537
+  raw: +
+- kind: Identifier
+  span:
+    start: 1538
+    end: 1542
+  raw: five
+- kind: CloseParen
+  span:
+    start: 1542
+    end: 1543
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1543
+    end: 1544
+  raw: ;
+- kind: Newline
+  span:
+    start: 1550
+    end: 1551
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1551
+    end: 1555
+  raw: five
+- kind:
+    Operator: Assign
+  span:
+    start: 1556
+    end: 1557
+  raw: "="
+- kind: Integer
+  span:
+    start: 1558
+    end: 1559
+  raw: "5"
+- kind: Semicolon
+  span:
+    start: 1559
+    end: 1560
+  raw: ;
+- kind: Identifier
+  span:
+    start: 1570
+    end: 1574
+  raw: five
+- kind:
+    Operator: BitShiftRightUnsignedAssign
+  span:
+    start: 1575
+    end: 1579
+  raw: ">>>="
+- kind: Integer
+  span:
+    start: 1580
+    end: 1581
+  raw: "1"
+- kind: Semicolon
+  span:
+    start: 1581
+    end: 1582
+  raw: ;
+- kind: Newline
+  span:
+    start: 1582
+    end: 1583
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1583
+    end: 1588
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1588
+    end: 1589
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1589
+    end: 1606
+  raw: "five >>>= 1 => "
+- kind:
+    Operator: Add
+  span:
+    start: 1607
+    end: 1608
+  raw: +
+- kind: Identifier
+  span:
+    start: 1609
+    end: 1613
+  raw: five
+- kind: CloseParen
+  span:
+    start: 1613
+    end: 1614
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1614
+    end: 1615
+  raw: ;

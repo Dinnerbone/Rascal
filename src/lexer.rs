@@ -188,6 +188,16 @@ fn lex_integer_or_float<'a>(stream: &mut Stream<'a>) -> Token<'a> {
 }
 
 fn lex_operator<'a>(stream: &mut Stream<'a>) -> Token<'a> {
+    if stream.eof_offset() >= 4 {
+        // 4 char operators
+        if stream.as_bstr().peek_slice(4) == b">>>=" {
+            return lex_ascii_chars(
+                stream,
+                TokenKind::Operator(Operator::BitShiftRightUnsignedAssign),
+                4,
+            );
+        }
+    }
     if stream.eof_offset() >= 3 {
         // 3 char operators
         match stream.as_bstr().peek_slice(3) {
@@ -195,6 +205,20 @@ fn lex_operator<'a>(stream: &mut Stream<'a>) -> Token<'a> {
                 return lex_ascii_chars(
                     stream,
                     TokenKind::Operator(Operator::BitShiftRightUnsigned),
+                    3,
+                );
+            }
+            b">>=" => {
+                return lex_ascii_chars(
+                    stream,
+                    TokenKind::Operator(Operator::BitShiftRightAssign),
+                    3,
+                );
+            }
+            b"<<=" => {
+                return lex_ascii_chars(
+                    stream,
+                    TokenKind::Operator(Operator::BitShiftLeftAssign),
                     3,
                 );
             }
@@ -230,6 +254,15 @@ fn lex_operator<'a>(stream: &mut Stream<'a>) -> Token<'a> {
             }
             b"<<" => {
                 return lex_ascii_chars(stream, TokenKind::Operator(Operator::BitShiftLeft), 2);
+            }
+            b"&=" => {
+                return lex_ascii_chars(stream, TokenKind::Operator(Operator::BitAndAssign), 2);
+            }
+            b"|=" => {
+                return lex_ascii_chars(stream, TokenKind::Operator(Operator::BitOrAssign), 2);
+            }
+            b"^=" => {
+                return lex_ascii_chars(stream, TokenKind::Operator(Operator::BitXorAssign), 2);
             }
             _ => {}
         }

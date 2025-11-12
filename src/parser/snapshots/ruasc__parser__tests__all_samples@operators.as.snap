@@ -420,3 +420,159 @@ Ok:
                           Identifier: five
                       - Constant:
                           Integer: 1
+    - Expr:
+        BinaryOperator:
+          - Assign
+          - Constant:
+              Identifier: five
+          - Constant:
+              Integer: 5
+    - Expr:
+        BinaryOperator:
+          - BitAndAssign
+          - Constant:
+              Identifier: five
+          - Constant:
+              Identifier: three
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "five &= three => "
+                - Constant:
+                    Identifier: five
+    - Expr:
+        BinaryOperator:
+          - Assign
+          - Constant:
+              Identifier: five
+          - Constant:
+              Integer: 5
+    - Expr:
+        BinaryOperator:
+          - BitOrAssign
+          - Constant:
+              Identifier: five
+          - Constant:
+              Identifier: three
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "five |= three => "
+                - Constant:
+                    Identifier: five
+    - Expr:
+        BinaryOperator:
+          - Assign
+          - Constant:
+              Identifier: five
+          - Constant:
+              Integer: 5
+    - Expr:
+        BinaryOperator:
+          - BitXorAssign
+          - Constant:
+              Identifier: five
+          - Constant:
+              Identifier: three
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "five ^= three => "
+                - Constant:
+                    Identifier: five
+    - Expr:
+        BinaryOperator:
+          - Assign
+          - Constant:
+              Identifier: five
+          - Constant:
+              Integer: 5
+    - Expr:
+        BinaryOperator:
+          - BitShiftLeftAssign
+          - Constant:
+              Identifier: five
+          - Constant:
+              Integer: 1
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "five <<= 1 => "
+                - Constant:
+                    Identifier: five
+    - Expr:
+        BinaryOperator:
+          - Assign
+          - Constant:
+              Identifier: five
+          - Constant:
+              Integer: 5
+    - Expr:
+        BinaryOperator:
+          - BitShiftRightAssign
+          - Constant:
+              Identifier: five
+          - Constant:
+              Integer: 1
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "five >>= 1 => "
+                - Constant:
+                    Identifier: five
+    - Expr:
+        BinaryOperator:
+          - Assign
+          - Constant:
+              Identifier: five
+          - Constant:
+              Integer: 5
+    - Expr:
+        BinaryOperator:
+          - BitShiftRightUnsignedAssign
+          - Constant:
+              Identifier: five
+          - Constant:
+              Integer: 1
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "five >>>= 1 => "
+                - Constant:
+                    Identifier: five
