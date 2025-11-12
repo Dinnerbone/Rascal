@@ -11,3 +11,7 @@ trace("++a = " + (++a)); // 11
 trace("--a = " + (--a)); // 10
 trace("a++ = " + (a++)); // 10 (then a=11)
 trace("a-- = " + (a--)); // 11 (then a=10)
+
+var hello = "Hello";
+var world = "World";
+trace('hello + " " + world = ' + (hello + " " + world)); // Hello World

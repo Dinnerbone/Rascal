@@ -58,7 +58,7 @@ pub enum TokenKind {
     Keyword(Keyword),
     Operator(Operator),
     Semicolon,
-    String,
+    String(QuoteKind),
     OpenParen,
     CloseParen,
     Comma,
@@ -66,6 +66,12 @@ pub enum TokenKind {
     Unknown,
     Integer,
     Float,
+}
+
+#[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Debug, Serialize)]
+pub enum QuoteKind {
+    Double,
+    Single,
 }
 
 impl<'i> Parser<Tokens<'i>, &'i Token<'i>, ErrMode<ContextError>> for TokenKind {

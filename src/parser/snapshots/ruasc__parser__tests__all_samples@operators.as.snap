@@ -160,3 +160,34 @@ Ok:
                       - Decrement: Postfix
                       - Constant:
                           Identifier: a
+    - Declare:
+        name: hello
+        value:
+          Constant:
+            String: Hello
+    - Declare:
+        name: world
+        value:
+          Constant:
+            String: World
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "hello + \" \" + world = "
+                - Parenthesis:
+                    BinaryOperator:
+                      - Add
+                      - Constant:
+                          Identifier: hello
+                      - BinaryOperator:
+                          - Add
+                          - Constant:
+                              String: " "
+                          - Constant:
+                              Identifier: world

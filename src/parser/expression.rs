@@ -110,7 +110,7 @@ pub(crate) fn expression(i: &mut Tokens<'_>) -> ModalResult<Expr> {
                 .context(StrContext::Label("expression"))
                 .parse_next(i)
         }
-        TokenKind::String | TokenKind::Identifier | TokenKind::Float | TokenKind::Integer => {
+        TokenKind::String(_) | TokenKind::Identifier | TokenKind::Float | TokenKind::Integer => {
             let val = constant
                 .context(StrContext::Label("constant"))
                 .parse_next(i)?;
@@ -135,7 +135,7 @@ fn constant(i: &mut Tokens<'_>) -> ModalResult<Constant> {
     take_while(0.., TokenKind::Newline).parse_next(i)?;
     let token = peek(any).parse_next(i)?;
     match token.kind {
-        TokenKind::String => string
+        TokenKind::String(_) => string
             .map(Constant::String)
             .context(StrContext::Label("string"))
             .parse_next(i),
@@ -248,7 +248,7 @@ pub(crate) fn expr_list(i: &mut Tokens<'_>) -> ModalResult<Vec<Expr>> {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::lexer::tokens::{Operator, Token, TokenKind};
+    use crate::lexer::tokens::{Operator, QuoteKind, Token, TokenKind};
     use crate::parser::tests::build_tokens;
     use winnow::stream::TokenSlice;
 
@@ -267,7 +267,7 @@ mod tests {
 
     #[test]
     fn test_string() {
-        let tokens = build_tokens(&[(TokenKind::String, "hello")]);
+        let tokens = build_tokens(&[(TokenKind::String(QuoteKind::Double), "hello")]);
         assert_eq!(
             parse_expr(&tokens),
             Ok(Expr::Constant(Constant::String("hello".to_string())))
@@ -297,7 +297,7 @@ mod tests {
             (TokenKind::OpenParen, "("),
             (TokenKind::Identifier, "a"),
             (TokenKind::Comma, ","),
-            (TokenKind::String, "str"),
+            (TokenKind::String(QuoteKind::Double), "str"),
             (TokenKind::CloseParen, ")"),
         ]);
         assert_eq!(

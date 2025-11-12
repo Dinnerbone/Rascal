@@ -56,7 +56,7 @@ fn declaration(i: &mut Tokens<'_>) -> ModalResult<Statement> {
 #[cfg(test)]
 mod stmt_tests {
     use super::*;
-    use crate::lexer::tokens::{Keyword, Operator, Token, TokenKind};
+    use crate::lexer::tokens::{Keyword, Operator, QuoteKind, Token, TokenKind};
     use crate::parser::expression::{Constant, Expr};
     use crate::parser::tests::build_tokens;
     use winnow::stream::TokenSlice;
@@ -86,7 +86,7 @@ mod stmt_tests {
             (TokenKind::Keyword(Keyword::Var), "var"),
             (TokenKind::Identifier, "x"),
             (TokenKind::Operator(Operator::Assign), "="),
-            (TokenKind::String, "hi"),
+            (TokenKind::String(QuoteKind::Double), "hi"),
         ]);
         assert_eq!(
             parse_stmt(&tokens),

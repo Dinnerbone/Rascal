@@ -1,5 +1,5 @@
-use crate::lexer::tokens::{Token, TokenKind};
-use winnow::combinator::opt;
+use crate::lexer::tokens::{QuoteKind, Token, TokenKind};
+use winnow::combinator::{alt, opt};
 use winnow::error::{ContextError, ErrMode, ParseError};
 use winnow::stream::TokenSlice;
 use winnow::{ModalResult, Parser};
@@ -23,7 +23,14 @@ pub fn parse_document<'a>(
 }
 
 fn string(i: &mut Tokens<'_>) -> ModalResult<String> {
-    Ok(TokenKind::String.parse_next(i)?.raw.to_string())
+    // TODO decode
+    Ok(alt((
+        TokenKind::String(QuoteKind::Double),
+        TokenKind::String(QuoteKind::Single),
+    ))
+    .parse_next(i)?
+    .raw
+    .to_string())
 }
 
 fn identifier(i: &mut Tokens<'_>) -> ModalResult<String> {

@@ -1,5 +1,5 @@
 use crate::lexer::Lexer;
-use crate::lexer::tokens::{Keyword, Operator, Token, TokenKind};
+use crate::lexer::tokens::{Keyword, Operator, QuoteKind, Token, TokenKind};
 
 fn kinds(input: &str) -> Vec<TokenKind> {
     Lexer::new(input)
@@ -109,12 +109,22 @@ fn test_newlines_variants() {
 
 #[test]
 fn test_string_literal_and_escapes() {
-    assert_eq!(kinds("\"hello\""), vec![TokenKind::String]);
+    assert_eq!(
+        kinds("\"hello\""),
+        vec![TokenKind::String(QuoteKind::Double)]
+    );
     assert_eq!(raws("\"hello\""), vec!["hello".to_string()]);
 
-    let s = "\"a\\\"b\\\\c\""; // "a\"b\\c"
-    assert_eq!(kinds(s), vec![TokenKind::String]);
-    assert_eq!(raws(s), vec!["a\\\"b\\\\c".to_string()]);
+    assert_eq!(kinds("'hello'"), vec![TokenKind::String(QuoteKind::Single)]);
+    assert_eq!(raws("'hello'"), vec!["hello".to_string()]);
+
+    let s = "\"a\\\"b'\\\\c\""; // "a\"b\\c"
+    assert_eq!(kinds(s), vec![TokenKind::String(QuoteKind::Double)]);
+    assert_eq!(raws(s), vec!["a\\\"b'\\\\c".to_string()]);
+
+    let s = "\'a\\'b\"\\\\c\'"; // 'a\'b"\c'
+    assert_eq!(kinds(s), vec![TokenKind::String(QuoteKind::Single)]);
+    assert_eq!(raws(s), vec!["a\\'b\"\\\\c".to_string()]);
 }
 
 #[test]

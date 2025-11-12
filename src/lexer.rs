@@ -2,7 +2,7 @@
 mod tests;
 pub(crate) mod tokens;
 
-use crate::lexer::tokens::{Keyword, Operator, Token, TokenKind};
+use crate::lexer::tokens::{Keyword, Operator, QuoteKind, Token, TokenKind};
 use crate::source::Span;
 use winnow::stream::{AsBStr, AsChar, FindSlice, Location, Stream as _};
 
@@ -54,7 +54,8 @@ fn process_token<'a>(peek_byte: u8, stream: &mut Stream<'a>) -> Option<Token<'a>
         b'=' | b'+' | b'-' | b'*' | b'%' => Some(lex_operator(stream)),
         b'\r' => Some(lex_crlf(stream)),
         b'\n' => Some(lex_ascii_char(stream, TokenKind::Newline)),
-        b'"' => Some(lex_basic_string(stream)),
+        b'"' => Some(lex_string(stream, QuoteKind::Double)),
+        b'\'' => Some(lex_string(stream, QuoteKind::Single)),
         b'a'..=b'z' | b'A'..=b'Z' | b'_' | b'$' => Some(lex_identifier_or_keyword(stream)),
         b'0'..=b'9' | b'.' => Some(lex_integer_or_float(stream)),
         _ => {
@@ -230,20 +231,23 @@ fn lex_crlf<'a>(stream: &mut Stream<'a>) -> Token<'a> {
     Token::new(TokenKind::Newline, span, raw)
 }
 
-pub(crate) const QUOTATION_MARK: u8 = b'"';
 pub(crate) const ESCAPE: u8 = b'\\';
-fn lex_basic_string<'a>(stream: &mut Stream<'a>) -> Token<'a> {
+fn lex_string<'a>(stream: &mut Stream<'a>, kind: QuoteKind) -> Token<'a> {
     let start = stream.current_token_start();
 
-    let offset = 1; // QUOTATION_MARK
+    let offset = 1; // quotation mark
     stream.next_slice(offset);
     let start_checkpoint = stream.checkpoint();
+    let quotation_mark = match kind {
+        QuoteKind::Double => b'"',
+        QuoteKind::Single => b'\'',
+    };
 
     loop {
         // newline is present for error recovery
-        if let Some(span) = stream.as_bstr().find_slice((QUOTATION_MARK, ESCAPE, b'\n')) {
+        if let Some(span) = stream.as_bstr().find_slice((quotation_mark, ESCAPE, b'\n')) {
             let found = stream.as_bstr()[span.start];
-            if found == QUOTATION_MARK {
+            if found == quotation_mark {
                 let offset = span.end;
                 stream.next_slice(offset);
                 break;
@@ -252,7 +256,7 @@ fn lex_basic_string<'a>(stream: &mut Stream<'a>) -> Token<'a> {
                 stream.next_slice(offset);
 
                 let peek = stream.as_bstr().peek_token();
-                if let Some(ESCAPE | QUOTATION_MARK) = peek {
+                if peek == Some(ESCAPE) || peek == Some(quotation_mark) {
                     let offset = 1; // ESCAPE / QUOTATION_MARK
                     stream.next_slice(offset);
                 }
@@ -274,7 +278,7 @@ fn lex_basic_string<'a>(stream: &mut Stream<'a>) -> Token<'a> {
     stream.next_slice(1);
 
     let span = Span::new_unchecked(start, end);
-    Token::new(TokenKind::String, span, raw)
+    Token::new(TokenKind::String(kind), span, raw)
 }
 
 fn lex_identifier_or_keyword<'a>(stream: &mut Stream<'a>) -> Token<'a> {
