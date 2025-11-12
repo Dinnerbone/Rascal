@@ -122,6 +122,11 @@ fn test_equality_operators() {
 }
 
 #[test]
+fn test_ternary_operator() {
+    assert_eq!(kinds("?:"), vec![TokenKind::Question, TokenKind::Colon]);
+}
+
+#[test]
 fn test_logic_operators() {
     assert_eq!(
         kinds("|| && !"),

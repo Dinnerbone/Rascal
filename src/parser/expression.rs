@@ -13,10 +13,18 @@ use winnow::{ModalResult, Parser};
 #[derive(Debug, Clone, Serialize, PartialEq)]
 pub(crate) enum Expr {
     Constant(Constant),
-    Call { name: Box<Expr>, args: Vec<Expr> },
+    Call {
+        name: Box<Expr>,
+        args: Vec<Expr>,
+    },
     BinaryOperator(BinaryOperator, Box<Expr>, Box<Expr>),
     UnaryOperator(UnaryOperator, Box<Expr>),
     Parenthesis(Box<Expr>),
+    Ternary {
+        condition: Box<Expr>,
+        yes: Box<Expr>,
+        no: Box<Expr>,
+    },
 }
 
 impl Expr {
@@ -196,7 +204,19 @@ fn expr_next<'i>(prior: Expr) -> impl Parser<Tokens<'i>, Expr, ErrMode<ContextEr
                 let op = operator::binary_operator.parse_next(i)?;
                 expression
                     .parse_next(i)
-                    .map(|next| Expr::BinaryOperator(op, Box::new(prior), Box::new(next)))
+                    .map(|next| Expr::for_binary_operator(op, Box::new(prior), Box::new(next)))
+            }
+            TokenKind::Question => {
+                TokenKind::Question.parse_next(i)?;
+                let yes = expression.parse_next(i)?;
+                TokenKind::Colon.parse_next(i)?;
+                let no = expression.parse_next(i)?;
+                expr_next(Expr::Ternary {
+                    condition: Box::new(prior),
+                    yes: Box::new(yes),
+                    no: Box::new(no),
+                })
+                .parse_next(i)
             }
             _ => Ok(prior),
         }
@@ -1034,6 +1054,43 @@ mod tests {
                 UnaryOperator::LogicalNot,
                 Box::new(Expr::Constant(Constant::Identifier("b".to_string())))
             ))
+        )
+    }
+
+    #[test]
+    fn test_ternary() {
+        let tokens = build_tokens(&[
+            (TokenKind::Identifier, "a"),
+            (TokenKind::Operator(Operator::GreaterThan), ">"),
+            (TokenKind::Identifier, "b"),
+            (TokenKind::Question, "?"),
+            (TokenKind::Identifier, "a"),
+            (TokenKind::Operator(Operator::Add), "+"),
+            (TokenKind::Identifier, "b"),
+            (TokenKind::Colon, ":"),
+            (TokenKind::Identifier, "a"),
+            (TokenKind::Operator(Operator::Sub), "-"),
+            (TokenKind::Identifier, "b"),
+        ]);
+        assert_eq!(
+            parse_expr(&tokens),
+            Ok(Expr::Ternary {
+                condition: Box::new(Expr::BinaryOperator(
+                    BinaryOperator::GreaterThan,
+                    Box::new(Expr::Constant(Constant::Identifier("a".to_string()))),
+                    Box::new(Expr::Constant(Constant::Identifier("b".to_string()))),
+                )),
+                yes: Box::new(Expr::BinaryOperator(
+                    BinaryOperator::Add,
+                    Box::new(Expr::Constant(Constant::Identifier("a".to_string()))),
+                    Box::new(Expr::Constant(Constant::Identifier("b".to_string()))),
+                )),
+                no: Box::new(Expr::BinaryOperator(
+                    BinaryOperator::Sub,
+                    Box::new(Expr::Constant(Constant::Identifier("a".to_string()))),
+                    Box::new(Expr::Constant(Constant::Identifier("b".to_string()))),
+                )),
+            })
         )
     }
 

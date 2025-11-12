@@ -60,6 +60,8 @@ fn process_token<'a>(peek_byte: u8, stream: &mut Stream<'a>) -> Option<Token<'a>
         b'\n' => Some(lex_ascii_char(stream, TokenKind::Newline)),
         b'"' => Some(lex_string(stream, QuoteKind::Double)),
         b'\'' => Some(lex_string(stream, QuoteKind::Single)),
+        b'?' => Some(lex_ascii_char(stream, TokenKind::Question)),
+        b':' => Some(lex_ascii_char(stream, TokenKind::Colon)),
         b'a'..=b'z' | b'A'..=b'Z' | b'_' | b'$' => Some(lex_identifier_or_keyword(stream)),
         b'0'..=b'9' | b'.' => Some(lex_integer_or_float(stream)),
         _ => {

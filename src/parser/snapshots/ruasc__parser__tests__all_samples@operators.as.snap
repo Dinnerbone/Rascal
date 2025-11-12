@@ -803,3 +803,33 @@ Ok:
                       - LogicalNot
                       - Constant:
                           Identifier: t
+    - Declare:
+        name: max
+        value:
+          Ternary:
+            condition:
+              Parenthesis:
+                BinaryOperator:
+                  - GreaterThan
+                  - Constant:
+                      Identifier: a
+                  - Constant:
+                      Identifier: b
+            "yes":
+              Constant:
+                Identifier: a
+            "no":
+              Constant:
+                Identifier: b
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "(a > b) ? a : b = "
+                - Constant:
+                    Identifier: max

@@ -44,6 +44,19 @@ pub(crate) enum BinaryOperator {
     LogicalOr,
 }
 
+impl Expr {
+    pub(crate) fn for_binary_operator(op: BinaryOperator, a: Box<Expr>, b: Box<Expr>) -> Expr {
+        match *b {
+            Expr::Ternary { condition, yes, no } => Expr::Ternary {
+                condition: Box::new(Expr::for_binary_operator(op, a, condition)),
+                yes,
+                no,
+            },
+            _ => Expr::BinaryOperator(op, a, b),
+        }
+    }
+}
+
 #[derive(Debug, Clone, Serialize, PartialEq)]
 pub(crate) enum UnaryOperator {
     Sub,
@@ -55,10 +68,16 @@ pub(crate) enum UnaryOperator {
 
 impl Expr {
     pub(crate) fn for_unary_operator(op: UnaryOperator, expr: Box<Expr>) -> Expr {
-        if let Expr::BinaryOperator(binary_op, a, b) = *expr {
-            Expr::BinaryOperator(binary_op, Box::new(Expr::for_unary_operator(op, a)), b)
-        } else {
-            Expr::UnaryOperator(op, expr)
+        match *expr {
+            Expr::BinaryOperator(binary_op, a, b) => {
+                Expr::BinaryOperator(binary_op, Box::new(Expr::for_unary_operator(op, a)), b)
+            }
+            Expr::Ternary { condition, yes, no } => Expr::Ternary {
+                condition: Box::new(Expr::for_unary_operator(op, condition)),
+                yes,
+                no,
+            },
+            _ => Expr::UnaryOperator(op, expr),
         }
     }
 }

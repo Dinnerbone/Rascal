@@ -67,6 +67,8 @@ pub enum TokenKind {
     Unknown,
     Integer,
     Float,
+    Question,
+    Colon,
 }
 
 #[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Debug, Serialize)]

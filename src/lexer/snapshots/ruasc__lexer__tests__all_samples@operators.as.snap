@@ -2975,3 +2975,113 @@ input_file: samples/operators.as
     start: 2337
     end: 2338
   raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 2358
+    end: 2361
+  raw: var
+- kind: Identifier
+  span:
+    start: 2362
+    end: 2365
+  raw: max
+- kind:
+    Operator: Assign
+  span:
+    start: 2366
+    end: 2367
+  raw: "="
+- kind: OpenParen
+  span:
+    start: 2368
+    end: 2369
+  raw: (
+- kind: Identifier
+  span:
+    start: 2369
+    end: 2370
+  raw: a
+- kind:
+    Operator: GreaterThan
+  span:
+    start: 2371
+    end: 2372
+  raw: ">"
+- kind: Identifier
+  span:
+    start: 2373
+    end: 2374
+  raw: b
+- kind: CloseParen
+  span:
+    start: 2374
+    end: 2375
+  raw: )
+- kind: Question
+  span:
+    start: 2376
+    end: 2377
+  raw: "?"
+- kind: Identifier
+  span:
+    start: 2378
+    end: 2379
+  raw: a
+- kind: Colon
+  span:
+    start: 2380
+    end: 2381
+  raw: ":"
+- kind: Identifier
+  span:
+    start: 2382
+    end: 2383
+  raw: b
+- kind: Semicolon
+  span:
+    start: 2383
+    end: 2384
+  raw: ;
+- kind: Newline
+  span:
+    start: 2384
+    end: 2385
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 2385
+    end: 2390
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 2390
+    end: 2391
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 2391
+    end: 2411
+  raw: "(a > b) ? a : b = "
+- kind:
+    Operator: Add
+  span:
+    start: 2412
+    end: 2413
+  raw: +
+- kind: Identifier
+  span:
+    start: 2414
+    end: 2417
+  raw: max
+- kind: CloseParen
+  span:
+    start: 2417
+    end: 2418
+  raw: )
+- kind: Semicolon
+  span:
+    start: 2418
+    end: 2419
+  raw: ;

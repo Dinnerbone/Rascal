@@ -84,3 +84,6 @@ trace("t && f: " + (t && f)); // false
 trace("t || f: " + (t || f)); // true
 trace("!t: " + (!t)); // false
 
+// Ternary operator
+var max = (a > b) ? a : b;
+trace("(a > b) ? a : b = " + max); // 10
