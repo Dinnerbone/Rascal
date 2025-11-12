@@ -100,9 +100,13 @@ pub enum Operator {
     Assign,
     AddAssign,
     Sub,
+    SubAssign,
     Divide,
+    DivideAssign,
     Multiply,
+    MultiplyAssign,
     Modulo,
+    ModuloAssign,
     Increment,
     Decrement,
 }

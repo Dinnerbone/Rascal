@@ -198,6 +198,18 @@ fn lex_operator<'a>(stream: &mut Stream<'a>) -> Token<'a> {
             b"+=" => {
                 return lex_ascii_chars(stream, TokenKind::Operator(Operator::AddAssign), 2);
             }
+            b"*=" => {
+                return lex_ascii_chars(stream, TokenKind::Operator(Operator::MultiplyAssign), 2);
+            }
+            b"/=" => {
+                return lex_ascii_chars(stream, TokenKind::Operator(Operator::DivideAssign), 2);
+            }
+            b"-=" => {
+                return lex_ascii_chars(stream, TokenKind::Operator(Operator::SubAssign), 2);
+            }
+            b"%=" => {
+                return lex_ascii_chars(stream, TokenKind::Operator(Operator::ModuloAssign), 2);
+            }
             _ => {}
         }
     }

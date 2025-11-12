@@ -47,9 +47,13 @@ pub(crate) enum BinaryOperator {
     Assign,
     AddAssign,
     Sub,
+    SubAssign,
     Divide,
+    DivideAssign,
     Multiply,
+    MultiplyAssign,
     Modulo,
+    ModuloAssign,
 }
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
@@ -234,9 +238,13 @@ fn binary_operator(i: &mut Tokens<'_>) -> ModalResult<BinaryOperator> {
         Operator::Assign => BinaryOperator::Assign,
         Operator::AddAssign => BinaryOperator::AddAssign,
         Operator::Sub => BinaryOperator::Sub,
+        Operator::SubAssign => BinaryOperator::SubAssign,
         Operator::Divide => BinaryOperator::Divide,
+        Operator::DivideAssign => BinaryOperator::DivideAssign,
         Operator::Multiply => BinaryOperator::Multiply,
+        Operator::MultiplyAssign => BinaryOperator::MultiplyAssign,
         Operator::Modulo => BinaryOperator::Modulo,
+        Operator::ModuloAssign => BinaryOperator::ModuloAssign,
         _ => return Err(ParserError::from_input(i)),
     })
 }
@@ -330,6 +338,23 @@ mod tests {
     }
 
     #[test]
+    fn test_binary_add_assign() {
+        let tokens = build_tokens(&[
+            (TokenKind::Identifier, "a"),
+            (TokenKind::Operator(Operator::AddAssign), "+="),
+            (TokenKind::Identifier, "b"),
+        ]);
+        assert_eq!(
+            parse_expr(&tokens),
+            Ok(Expr::BinaryOperator(
+                BinaryOperator::AddAssign,
+                Box::new(Expr::Constant(Constant::Identifier("a".to_string()))),
+                Box::new(Expr::Constant(Constant::Identifier("b".to_string())))
+            ))
+        );
+    }
+
+    #[test]
     fn test_binary_sub() {
         let tokens = build_tokens(&[
             (TokenKind::Identifier, "a"),
@@ -340,6 +365,23 @@ mod tests {
             parse_expr(&tokens),
             Ok(Expr::BinaryOperator(
                 BinaryOperator::Sub,
+                Box::new(Expr::Constant(Constant::Identifier("a".to_string()))),
+                Box::new(Expr::Constant(Constant::Identifier("b".to_string())))
+            ))
+        );
+    }
+
+    #[test]
+    fn test_binary_sub_assign() {
+        let tokens = build_tokens(&[
+            (TokenKind::Identifier, "a"),
+            (TokenKind::Operator(Operator::SubAssign), "-="),
+            (TokenKind::Identifier, "b"),
+        ]);
+        assert_eq!(
+            parse_expr(&tokens),
+            Ok(Expr::BinaryOperator(
+                BinaryOperator::SubAssign,
                 Box::new(Expr::Constant(Constant::Identifier("a".to_string()))),
                 Box::new(Expr::Constant(Constant::Identifier("b".to_string())))
             ))
@@ -364,6 +406,23 @@ mod tests {
     }
 
     #[test]
+    fn test_binary_divide_assign() {
+        let tokens = build_tokens(&[
+            (TokenKind::Identifier, "a"),
+            (TokenKind::Operator(Operator::DivideAssign), "/="),
+            (TokenKind::Identifier, "b"),
+        ]);
+        assert_eq!(
+            parse_expr(&tokens),
+            Ok(Expr::BinaryOperator(
+                BinaryOperator::DivideAssign,
+                Box::new(Expr::Constant(Constant::Identifier("a".to_string()))),
+                Box::new(Expr::Constant(Constant::Identifier("b".to_string())))
+            ))
+        );
+    }
+
+    #[test]
     fn test_binary_multiply() {
         let tokens = build_tokens(&[
             (TokenKind::Identifier, "a"),
@@ -381,6 +440,23 @@ mod tests {
     }
 
     #[test]
+    fn test_binary_multiply_assign() {
+        let tokens = build_tokens(&[
+            (TokenKind::Identifier, "a"),
+            (TokenKind::Operator(Operator::MultiplyAssign), "*="),
+            (TokenKind::Identifier, "b"),
+        ]);
+        assert_eq!(
+            parse_expr(&tokens),
+            Ok(Expr::BinaryOperator(
+                BinaryOperator::MultiplyAssign,
+                Box::new(Expr::Constant(Constant::Identifier("a".to_string()))),
+                Box::new(Expr::Constant(Constant::Identifier("b".to_string())))
+            ))
+        );
+    }
+
+    #[test]
     fn test_binary_modulo() {
         let tokens = build_tokens(&[
             (TokenKind::Identifier, "a"),
@@ -391,6 +467,23 @@ mod tests {
             parse_expr(&tokens),
             Ok(Expr::BinaryOperator(
                 BinaryOperator::Modulo,
+                Box::new(Expr::Constant(Constant::Identifier("a".to_string()))),
+                Box::new(Expr::Constant(Constant::Identifier("b".to_string())))
+            ))
+        );
+    }
+
+    #[test]
+    fn test_binary_muodulo_assign() {
+        let tokens = build_tokens(&[
+            (TokenKind::Identifier, "a"),
+            (TokenKind::Operator(Operator::ModuloAssign), "%="),
+            (TokenKind::Identifier, "b"),
+        ]);
+        assert_eq!(
+            parse_expr(&tokens),
+            Ok(Expr::BinaryOperator(
+                BinaryOperator::ModuloAssign,
                 Box::new(Expr::Constant(Constant::Identifier("a".to_string()))),
                 Box::new(Expr::Constant(Constant::Identifier("b".to_string())))
             ))

@@ -191,3 +191,105 @@ Ok:
                               String: " "
                           - Constant:
                               Identifier: world
+    - Declare:
+        name: x
+        value:
+          Constant:
+            Integer: 5
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "x = "
+                - Constant:
+                    Identifier: x
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "x += 2 => "
+                - Parenthesis:
+                    BinaryOperator:
+                      - AddAssign
+                      - Constant:
+                          Identifier: x
+                      - Constant:
+                          Integer: 2
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "x -= 2 => "
+                - Parenthesis:
+                    BinaryOperator:
+                      - SubAssign
+                      - Constant:
+                          Identifier: x
+                      - Constant:
+                          Integer: 2
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "x *= 3 => "
+                - Parenthesis:
+                    BinaryOperator:
+                      - MultiplyAssign
+                      - Constant:
+                          Identifier: x
+                      - Constant:
+                          Integer: 3
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "x /= 5 => "
+                - Parenthesis:
+                    BinaryOperator:
+                      - DivideAssign
+                      - Constant:
+                          Identifier: x
+                      - Constant:
+                          Integer: 5
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "x %= 2 => "
+                - Parenthesis:
+                    BinaryOperator:
+                      - ModuloAssign
+                      - Constant:
+                          Identifier: x
+                      - Constant:
+                          Integer: 2

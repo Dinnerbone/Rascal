@@ -15,3 +15,12 @@ trace("a-- = " + (a--)); // 11 (then a=10)
 var hello = "Hello";
 var world = "World";
 trace('hello + " " + world = ' + (hello + " " + world)); // Hello World
+
+// Assignment operators
+var x = 5;
+trace("x = " + x); // 5
+trace("x += 2 => " + (x += 2)); // 7
+trace("x -= 2 => " + (x -= 2)); // 5
+trace("x *= 3 => " + (x *= 3)); // 15
+trace("x /= 5 => " + (x /= 5)); // 3
+trace("x %= 2 => " + (x %= 2)); // 1
