@@ -744,3 +744,62 @@ Ok:
                           Identifier: sevenStr
                       - Constant:
                           Identifier: seven
+    - Declare:
+        name: t
+        value:
+          Constant:
+            Identifier: "true"
+    - Declare:
+        name: f
+        value:
+          Constant:
+            Identifier: "false"
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "t && f: "
+                - Parenthesis:
+                    BinaryOperator:
+                      - LogicalAnd
+                      - Constant:
+                          Identifier: t
+                      - Constant:
+                          Identifier: f
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "t || f: "
+                - Parenthesis:
+                    BinaryOperator:
+                      - LogicalOr
+                      - Constant:
+                          Identifier: t
+                      - Constant:
+                          Identifier: f
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "!t: "
+                - Parenthesis:
+                    UnaryOperator:
+                      - LogicalNot
+                      - Constant:
+                          Identifier: t

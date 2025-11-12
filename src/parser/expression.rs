@@ -75,6 +75,8 @@ pub(crate) enum BinaryOperator {
     LessThanEqual,
     GreaterThan,
     GreaterThanEqual,
+    LogicalAnd,
+    LogicalOr,
 }
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
@@ -83,6 +85,7 @@ pub(crate) enum UnaryOperator {
     BitNot,
     Increment(Affix),
     Decrement(Affix),
+    LogicalNot,
 }
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
@@ -130,6 +133,13 @@ pub(crate) fn expression(i: &mut Tokens<'_>) -> ModalResult<Expr> {
             TokenKind::Operator(Operator::BitNot).parse_next(i)?;
             expression
                 .map(|e| Expr::for_unary_operator(UnaryOperator::BitNot, Box::new(e)))
+                .context(StrContext::Label("expression"))
+                .parse_next(i)
+        }
+        TokenKind::Operator(Operator::LogicalNot) => {
+            TokenKind::Operator(Operator::LogicalNot).parse_next(i)?;
+            expression
+                .map(|e| Expr::for_unary_operator(UnaryOperator::LogicalNot, Box::new(e)))
                 .context(StrContext::Label("expression"))
                 .parse_next(i)
         }
@@ -294,6 +304,8 @@ fn binary_operator(i: &mut Tokens<'_>) -> ModalResult<BinaryOperator> {
         Operator::LessThanEqual => BinaryOperator::LessThanEqual,
         Operator::GreaterThan => BinaryOperator::GreaterThan,
         Operator::GreaterThanEqual => BinaryOperator::GreaterThanEqual,
+        Operator::LogicalAnd => BinaryOperator::LogicalAnd,
+        Operator::LogicalOr => BinaryOperator::LogicalOr,
         _ => return Err(ParserError::from_input(i)),
     })
 }
@@ -1078,6 +1090,55 @@ mod tests {
             Ok(Expr::BinaryOperator(
                 BinaryOperator::GreaterThanEqual,
                 Box::new(Expr::Constant(Constant::Identifier("a".to_string()))),
+                Box::new(Expr::Constant(Constant::Identifier("b".to_string())))
+            ))
+        )
+    }
+
+    #[test]
+    fn test_logical_and() {
+        let tokens = build_tokens(&[
+            (TokenKind::Identifier, "a"),
+            (TokenKind::Operator(Operator::LogicalAnd), "&&"),
+            (TokenKind::Identifier, "b"),
+        ]);
+        assert_eq!(
+            parse_expr(&tokens),
+            Ok(Expr::BinaryOperator(
+                BinaryOperator::LogicalAnd,
+                Box::new(Expr::Constant(Constant::Identifier("a".to_string()))),
+                Box::new(Expr::Constant(Constant::Identifier("b".to_string())))
+            ))
+        )
+    }
+
+    #[test]
+    fn test_logical_or() {
+        let tokens = build_tokens(&[
+            (TokenKind::Identifier, "a"),
+            (TokenKind::Operator(Operator::LogicalOr), "||"),
+            (TokenKind::Identifier, "b"),
+        ]);
+        assert_eq!(
+            parse_expr(&tokens),
+            Ok(Expr::BinaryOperator(
+                BinaryOperator::LogicalOr,
+                Box::new(Expr::Constant(Constant::Identifier("a".to_string()))),
+                Box::new(Expr::Constant(Constant::Identifier("b".to_string())))
+            ))
+        )
+    }
+
+    #[test]
+    fn test_logical_not() {
+        let tokens = build_tokens(&[
+            (TokenKind::Operator(Operator::LogicalNot), "!"),
+            (TokenKind::Identifier, "b"),
+        ]);
+        assert_eq!(
+            parse_expr(&tokens),
+            Ok(Expr::UnaryOperator(
+                UnaryOperator::LogicalNot,
                 Box::new(Expr::Constant(Constant::Identifier("b".to_string())))
             ))
         )

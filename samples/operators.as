@@ -76,3 +76,11 @@ trace("six >= seven: " + (six >= seven)); // false
 trace('sevenStr == seven: ' + (sevenStr == seven)); // true
 trace('sevenStr === seven: ' + (sevenStr === seven)); // false
 trace('sevenStr !== seven: ' + (sevenStr !== seven)); // true
+
+// Logical operators
+var t = true;
+var f = false;
+trace("t && f: " + (t && f)); // false
+trace("t || f: " + (t || f)); // true
+trace("!t: " + (!t)); // false
+

@@ -40,6 +40,9 @@ pub enum Operator {
     LessThanEqual,
     GreaterThan,
     GreaterThanEqual,
+    LogicalAnd,
+    LogicalOr,
+    LogicalNot,
 }
 
 pub(crate) fn lex_operator<'a>(stream: &mut Stream<'a>) -> Token<'a> {
@@ -70,6 +73,8 @@ pub(crate) fn lex_operator<'a>(stream: &mut Stream<'a>) -> Token<'a> {
         (b">=", Operator::GreaterThanEqual),
         (b"==", Operator::Equal),
         (b"!=", Operator::NotEqual),
+        (b"&&", Operator::LogicalAnd),
+        (b"||", Operator::LogicalOr),
         // 1 char operators
         (b"+", Operator::Add),
         (b"=", Operator::Assign),
@@ -83,6 +88,7 @@ pub(crate) fn lex_operator<'a>(stream: &mut Stream<'a>) -> Token<'a> {
         (b"^", Operator::BitXor),
         (b"<", Operator::LessThan),
         (b">", Operator::GreaterThan),
+        (b"!", Operator::LogicalNot),
     ];
 
     let available = stream.eof_offset();

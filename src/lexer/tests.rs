@@ -122,6 +122,18 @@ fn test_equality_operators() {
 }
 
 #[test]
+fn test_logic_operators() {
+    assert_eq!(
+        kinds("|| && !"),
+        vec![
+            TokenKind::Operator(Operator::LogicalOr),
+            TokenKind::Operator(Operator::LogicalAnd),
+            TokenKind::Operator(Operator::LogicalNot),
+        ]
+    );
+}
+
+#[test]
 fn test_punctuation_tokens() {
     assert_eq!(
         kinds("(,) );"),
