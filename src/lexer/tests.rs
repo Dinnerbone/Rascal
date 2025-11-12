@@ -1,5 +1,6 @@
 use crate::lexer::Lexer;
-use crate::lexer::tokens::{Keyword, Operator, QuoteKind, Token, TokenKind};
+use crate::lexer::operator::Operator;
+use crate::lexer::tokens::{Keyword, QuoteKind, Token, TokenKind};
 
 fn kinds(input: &str) -> Vec<TokenKind> {
     Lexer::new(input)

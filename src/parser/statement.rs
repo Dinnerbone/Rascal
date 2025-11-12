@@ -1,4 +1,5 @@
-use crate::lexer::tokens::{Keyword, Operator, TokenKind};
+use crate::lexer::operator::Operator;
+use crate::lexer::tokens::{Keyword, TokenKind};
 use crate::parser::expression::{Expr, expression};
 use crate::parser::{Tokens, identifier, skip_newline};
 use serde::Serialize;
@@ -56,7 +57,7 @@ fn declaration(i: &mut Tokens<'_>) -> ModalResult<Statement> {
 #[cfg(test)]
 mod stmt_tests {
     use super::*;
-    use crate::lexer::tokens::{Keyword, Operator, QuoteKind, Token, TokenKind};
+    use crate::lexer::tokens::{Keyword, QuoteKind, Token, TokenKind};
     use crate::parser::expression::{Constant, Expr};
     use crate::parser::tests::build_tokens;
     use winnow::stream::TokenSlice;

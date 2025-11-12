@@ -1,4 +1,5 @@
-use crate::lexer::tokens::{Operator, Token, TokenKind};
+use crate::lexer::operator::Operator;
+use crate::lexer::tokens::{Token, TokenKind};
 use crate::parser::{Tokens, identifier, skip_newline, string};
 use serde::Serialize;
 use winnow::combinator::{alt, fail, peek, separated};
@@ -304,7 +305,8 @@ pub(crate) fn expr_list(i: &mut Tokens<'_>) -> ModalResult<Vec<Expr>> {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::lexer::tokens::{Operator, QuoteKind, Token, TokenKind};
+    use crate::lexer::operator::Operator;
+    use crate::lexer::tokens::{QuoteKind, Token, TokenKind};
     use crate::parser::tests::build_tokens;
     use winnow::stream::TokenSlice;
 

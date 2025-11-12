@@ -1,8 +1,10 @@
+pub(crate) mod operator;
 #[cfg(test)]
 mod tests;
 pub(crate) mod tokens;
 
-use crate::lexer::tokens::{Keyword, Operator, QuoteKind, Token, TokenKind};
+use crate::lexer::operator::Operator;
+use crate::lexer::tokens::{Keyword, QuoteKind, Token, TokenKind};
 use crate::source::Span;
 use winnow::stream::{AsBStr, AsChar, FindSlice, Location, Stream as _};
 

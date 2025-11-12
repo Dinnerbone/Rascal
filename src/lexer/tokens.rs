@@ -1,3 +1,4 @@
+use crate::lexer::operator::Operator;
 use crate::parser::Tokens;
 use crate::source::Span;
 use serde::Serialize;
@@ -92,42 +93,4 @@ impl<'i> Parser<Tokens<'i>, &'i Token<'i>, ContextError> for TokenKind {
 #[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Debug, Serialize)]
 pub enum Keyword {
     Var,
-}
-
-#[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Debug, Serialize)]
-pub enum Operator {
-    Add,
-    Assign,
-    AddAssign,
-    Sub,
-    SubAssign,
-    Divide,
-    DivideAssign,
-    Multiply,
-    MultiplyAssign,
-    Modulo,
-    ModuloAssign,
-    Increment,
-    Decrement,
-    BitAnd,
-    BitAndAssign,
-    BitOr,
-    BitOrAssign,
-    BitXor,
-    BitXorAssign,
-    BitNot,
-    BitShiftLeft,
-    BitShiftLeftAssign,
-    BitShiftRight,
-    BitShiftRightAssign,
-    BitShiftRightUnsigned,
-    BitShiftRightUnsignedAssign,
-    Equal,
-    StrictEqual,
-    NotEqual,
-    StrictNotEqual,
-    LessThan,
-    LessThanEqual,
-    GreaterThan,
-    GreaterThanEqual,
 }
