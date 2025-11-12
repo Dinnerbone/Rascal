@@ -7,6 +7,7 @@ use winnow::{ModalResult, Parser};
 mod document;
 mod error;
 mod expression;
+mod operator;
 mod statement;
 #[cfg(test)]
 mod tests;
