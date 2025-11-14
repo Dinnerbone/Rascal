@@ -95,4 +95,5 @@ impl<'i> Parser<Tokens<'i>, &'i Token<'i>, ContextError> for TokenKind {
 #[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Debug, Serialize)]
 pub enum Keyword {
     Var,
+    InstanceOf,
 }

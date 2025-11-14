@@ -833,3 +833,20 @@ Ok:
                     String: "(a > b) ? a : b = "
                 - Constant:
                     Identifier: max
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "{} instanceof Object: "
+                - Parenthesis:
+                    BinaryOperator:
+                      - InstanceOf
+                      - Constant:
+                          Identifier: Object
+                      - Constant:
+                          Identifier: Object

@@ -42,6 +42,7 @@ pub(crate) enum BinaryOperator {
     GreaterThanEqual,
     LogicalAnd,
     LogicalOr,
+    InstanceOf,
 }
 
 impl Expr {

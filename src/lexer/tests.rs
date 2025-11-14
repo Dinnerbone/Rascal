@@ -58,13 +58,14 @@ fn test_non_ending_block_comment() {
 #[test]
 fn test_identifiers_and_keyword() {
     assert_eq!(
-        kinds("var x _abc $d Var"),
+        kinds("var x _abc $d Var instanceof"),
         vec![
             TokenKind::Keyword(Keyword::Var),
             TokenKind::Identifier,
             TokenKind::Identifier,
             TokenKind::Identifier,
             TokenKind::Identifier, // 'Var' is not the keyword (case-sensitive)
+            TokenKind::Keyword(Keyword::InstanceOf),
         ]
     );
 }

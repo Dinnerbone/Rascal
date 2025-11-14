@@ -87,3 +87,6 @@ trace("!t: " + (!t)); // false
 // Ternary operator
 var max = (a > b) ? a : b;
 trace("(a > b) ? a : b = " + max); // 10
+
+// Keyword based operators
+trace("{} instanceof Object: " + (Object instanceof Object));

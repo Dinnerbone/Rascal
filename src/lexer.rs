@@ -260,6 +260,7 @@ fn lex_identifier_or_keyword<'a>(stream: &mut Stream<'a>) -> Token<'a> {
 
     let kind = match raw {
         "var" => TokenKind::Keyword(Keyword::Var),
+        "instanceof" => TokenKind::Keyword(Keyword::InstanceOf),
         _ => TokenKind::Identifier,
     };
 

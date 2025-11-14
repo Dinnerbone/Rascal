@@ -1,5 +1,5 @@
 use crate::lexer::operator::Operator;
-use crate::lexer::tokens::TokenKind;
+use crate::lexer::tokens::{Keyword, TokenKind};
 use crate::parser::operator::{Affix, BinaryOperator, UnaryOperator};
 use crate::parser::{Tokens, identifier, operator, skip_newline, string};
 use serde::Serialize;
@@ -205,6 +205,16 @@ fn expr_next<'i>(prior: Expr) -> impl Parser<Tokens<'i>, Expr, ErrMode<ContextEr
                 expression
                     .parse_next(i)
                     .map(|next| Expr::for_binary_operator(op, Box::new(prior), Box::new(next)))
+            }
+            TokenKind::Keyword(Keyword::InstanceOf) => {
+                TokenKind::Keyword(Keyword::InstanceOf).parse_next(i)?;
+                expression.parse_next(i).map(|next| {
+                    Expr::for_binary_operator(
+                        BinaryOperator::InstanceOf,
+                        Box::new(prior),
+                        Box::new(next),
+                    )
+                })
             }
             TokenKind::Question => {
                 TokenKind::Question.parse_next(i)?;
@@ -1090,6 +1100,31 @@ mod tests {
                     Box::new(Expr::Constant(Constant::Identifier("a".to_string()))),
                     Box::new(Expr::Constant(Constant::Identifier("b".to_string()))),
                 )),
+            })
+        )
+    }
+
+    #[test]
+    fn test_ternary_instanceof() {
+        let tokens = build_tokens(&[
+            (TokenKind::Identifier, "a"),
+            (TokenKind::Keyword(Keyword::InstanceOf), "instanceof"),
+            (TokenKind::Identifier, "b"),
+            (TokenKind::Question, "?"),
+            (TokenKind::Identifier, "a"),
+            (TokenKind::Colon, ":"),
+            (TokenKind::Identifier, "c"),
+        ]);
+        assert_eq!(
+            parse_expr(&tokens),
+            Ok(Expr::Ternary {
+                condition: Box::new(Expr::BinaryOperator(
+                    BinaryOperator::InstanceOf,
+                    Box::new(Expr::Constant(Constant::Identifier("a".to_string()))),
+                    Box::new(Expr::Constant(Constant::Identifier("b".to_string()))),
+                )),
+                yes: Box::new(Expr::Constant(Constant::Identifier("a".to_string()))),
+                no: Box::new(Expr::Constant(Constant::Identifier("c".to_string()))),
             })
         )
     }

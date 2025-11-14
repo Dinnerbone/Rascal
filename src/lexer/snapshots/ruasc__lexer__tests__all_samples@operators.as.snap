@@ -3085,3 +3085,71 @@ input_file: samples/operators.as
     start: 2418
     end: 2419
   raw: ;
+- kind: Newline
+  span:
+    start: 2426
+    end: 2427
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 2454
+    end: 2459
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 2459
+    end: 2460
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 2460
+    end: 2484
+  raw: "{} instanceof Object: "
+- kind:
+    Operator: Add
+  span:
+    start: 2485
+    end: 2486
+  raw: +
+- kind: OpenParen
+  span:
+    start: 2487
+    end: 2488
+  raw: (
+- kind: Identifier
+  span:
+    start: 2488
+    end: 2494
+  raw: Object
+- kind:
+    Keyword: InstanceOf
+  span:
+    start: 2495
+    end: 2505
+  raw: instanceof
+- kind: Identifier
+  span:
+    start: 2506
+    end: 2512
+  raw: Object
+- kind: CloseParen
+  span:
+    start: 2512
+    end: 2513
+  raw: )
+- kind: CloseParen
+  span:
+    start: 2513
+    end: 2514
+  raw: )
+- kind: Semicolon
+  span:
+    start: 2514
+    end: 2515
+  raw: ;
+- kind: Newline
+  span:
+    start: 2515
+    end: 2516
+  raw: "\n"
