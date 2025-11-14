@@ -34,6 +34,7 @@ pub(crate) enum Expr {
     InitArray(Vec<Expr>),
     Field(Box<Expr>, Box<Expr>),
     TypeOf(Vec<Expr>),
+    Delete(Vec<Expr>),
 }
 
 impl Expr {
@@ -156,6 +157,27 @@ pub(crate) fn expression(i: &mut Tokens<'_>) -> ModalResult<Expr> {
                 value
             };
             expr_next(expr)
+                .context(StrContext::Label("expression"))
+                .parse_next(i)
+        }
+        TokenKind::Keyword(Keyword::Delete) => {
+            TokenKind::Keyword(Keyword::Delete).parse_next(i)?;
+            let values = if opt(TokenKind::OpenParen).parse_next(i)?.is_some() {
+                let values = expr_list.parse_next(i)?;
+                if values.is_empty() {
+                    return fail
+                        .context(StrContext::Label("expression"))
+                        .context(StrContext::Expected(StrContextValue::Description(
+                            "a value to delete",
+                        )))
+                        .parse_next(i);
+                }
+                TokenKind::CloseParen.parse_next(i)?;
+                values
+            } else {
+                vec![expression.parse_next(i)?]
+            };
+            expr_next(Expr::Delete(values))
                 .context(StrContext::Label("expression"))
                 .parse_next(i)
         }
@@ -1452,6 +1474,56 @@ mod tests {
                     args: vec![],
                 })
             ))
+        )
+    }
+
+    #[test]
+    fn test_delete_identifier() {
+        let tokens = build_tokens(&[
+            (TokenKind::Keyword(Keyword::Delete), "delete"),
+            (TokenKind::Identifier, "a"),
+        ]);
+        assert_eq!(
+            parse_expr(&tokens),
+            Ok(Expr::Delete(vec![Expr::Constant(Constant::Identifier(
+                "a".to_string()
+            ))]))
+        )
+    }
+
+    #[test]
+    fn test_delete_as_function() {
+        let tokens = build_tokens(&[
+            (TokenKind::Keyword(Keyword::Delete), "delete"),
+            (TokenKind::OpenParen, "("),
+            (TokenKind::Identifier, "a"),
+            (TokenKind::Comma, ","),
+            (TokenKind::Identifier, "b"),
+            (TokenKind::CloseParen, ")"),
+        ]);
+        assert_eq!(
+            parse_expr(&tokens),
+            Ok(Expr::Delete(vec![
+                Expr::Constant(Constant::Identifier("a".to_string())),
+                Expr::Constant(Constant::Identifier("b".to_string()))
+            ]))
+        )
+    }
+
+    #[test]
+    fn test_delete_field() {
+        let tokens = build_tokens(&[
+            (TokenKind::Keyword(Keyword::Delete), "delete"),
+            (TokenKind::Identifier, "a"),
+            (TokenKind::Period, "."),
+            (TokenKind::Identifier, "a"),
+        ]);
+        assert_eq!(
+            parse_expr(&tokens),
+            Ok(Expr::Delete(vec![Expr::Field(
+                Box::new(Expr::Constant(Constant::Identifier("a".to_string()))),
+                Box::new(Expr::Constant(Constant::String("a".to_string())))
+            )]))
         )
     }
 }

@@ -272,6 +272,7 @@ fn lex_identifier_or_keyword<'a>(stream: &mut Stream<'a>) -> Token<'a> {
         "instanceof" => TokenKind::Keyword(Keyword::InstanceOf),
         "new" => TokenKind::Keyword(Keyword::New),
         "typeof" => TokenKind::Keyword(Keyword::TypeOf),
+        "delete" => TokenKind::Keyword(Keyword::Delete),
         _ => TokenKind::Identifier,
     };
 

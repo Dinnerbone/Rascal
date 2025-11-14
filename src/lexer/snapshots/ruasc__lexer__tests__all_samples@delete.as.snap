@@ -1,0 +1,1068 @@
+---
+source: src/lexer/tests.rs
+expression: tokens
+input_file: samples/delete.as
+---
+- kind:
+    Keyword: Var
+  span:
+    start: 0
+    end: 3
+  raw: var
+- kind: Identifier
+  span:
+    start: 4
+    end: 7
+  raw: num
+- kind:
+    Operator: Assign
+  span:
+    start: 8
+    end: 9
+  raw: "="
+- kind: Integer
+  span:
+    start: 10
+    end: 11
+  raw: "1"
+- kind: Semicolon
+  span:
+    start: 11
+    end: 12
+  raw: ;
+- kind: Newline
+  span:
+    start: 12
+    end: 13
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 13
+    end: 16
+  raw: var
+- kind: Identifier
+  span:
+    start: 17
+    end: 20
+  raw: obj
+- kind:
+    Operator: Assign
+  span:
+    start: 21
+    end: 22
+  raw: "="
+- kind: OpenBrace
+  span:
+    start: 23
+    end: 24
+  raw: "{"
+- kind: Identifier
+  span:
+    start: 24
+    end: 27
+  raw: num
+- kind: Colon
+  span:
+    start: 27
+    end: 28
+  raw: ":"
+- kind: Integer
+  span:
+    start: 29
+    end: 30
+  raw: "1"
+- kind: CloseBrace
+  span:
+    start: 30
+    end: 31
+  raw: "}"
+- kind: Semicolon
+  span:
+    start: 31
+    end: 32
+  raw: ;
+- kind: Newline
+  span:
+    start: 32
+    end: 33
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 33
+    end: 38
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 38
+    end: 39
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 39
+    end: 53
+  raw: "delete num: "
+- kind:
+    Operator: Add
+  span:
+    start: 54
+    end: 55
+  raw: +
+- kind: OpenParen
+  span:
+    start: 56
+    end: 57
+  raw: (
+- kind:
+    Keyword: Delete
+  span:
+    start: 57
+    end: 63
+  raw: delete
+- kind: Identifier
+  span:
+    start: 64
+    end: 67
+  raw: num
+- kind: CloseParen
+  span:
+    start: 67
+    end: 68
+  raw: )
+- kind: CloseParen
+  span:
+    start: 68
+    end: 69
+  raw: )
+- kind: Semicolon
+  span:
+    start: 69
+    end: 70
+  raw: ;
+- kind: Identifier
+  span:
+    start: 79
+    end: 84
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 84
+    end: 85
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 85
+    end: 99
+  raw: "delete obj: "
+- kind:
+    Operator: Add
+  span:
+    start: 100
+    end: 101
+  raw: +
+- kind: OpenParen
+  span:
+    start: 102
+    end: 103
+  raw: (
+- kind:
+    Keyword: Delete
+  span:
+    start: 103
+    end: 109
+  raw: delete
+- kind: Identifier
+  span:
+    start: 110
+    end: 113
+  raw: obj
+- kind: CloseParen
+  span:
+    start: 113
+    end: 114
+  raw: )
+- kind: CloseParen
+  span:
+    start: 114
+    end: 115
+  raw: )
+- kind: Semicolon
+  span:
+    start: 115
+    end: 116
+  raw: ;
+- kind:
+    Keyword: Var
+  span:
+    start: 125
+    end: 128
+  raw: var
+- kind: Identifier
+  span:
+    start: 129
+    end: 132
+  raw: obj
+- kind:
+    Operator: Assign
+  span:
+    start: 133
+    end: 134
+  raw: "="
+- kind: OpenBrace
+  span:
+    start: 135
+    end: 136
+  raw: "{"
+- kind: Identifier
+  span:
+    start: 136
+    end: 139
+  raw: num
+- kind: Colon
+  span:
+    start: 139
+    end: 140
+  raw: ":"
+- kind: Integer
+  span:
+    start: 141
+    end: 142
+  raw: "1"
+- kind: CloseBrace
+  span:
+    start: 142
+    end: 143
+  raw: "}"
+- kind: Semicolon
+  span:
+    start: 143
+    end: 144
+  raw: ;
+- kind: Newline
+  span:
+    start: 144
+    end: 145
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 145
+    end: 150
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 150
+    end: 151
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 151
+    end: 169
+  raw: "delete obj.num: "
+- kind:
+    Operator: Add
+  span:
+    start: 170
+    end: 171
+  raw: +
+- kind: OpenParen
+  span:
+    start: 172
+    end: 173
+  raw: (
+- kind:
+    Keyword: Delete
+  span:
+    start: 173
+    end: 179
+  raw: delete
+- kind: Identifier
+  span:
+    start: 180
+    end: 183
+  raw: obj
+- kind: Period
+  span:
+    start: 183
+    end: 184
+  raw: "."
+- kind: Identifier
+  span:
+    start: 184
+    end: 187
+  raw: num
+- kind: CloseParen
+  span:
+    start: 187
+    end: 188
+  raw: )
+- kind: CloseParen
+  span:
+    start: 188
+    end: 189
+  raw: )
+- kind: Semicolon
+  span:
+    start: 189
+    end: 190
+  raw: ;
+- kind:
+    Keyword: Var
+  span:
+    start: 199
+    end: 202
+  raw: var
+- kind: Identifier
+  span:
+    start: 203
+    end: 206
+  raw: obj
+- kind:
+    Operator: Assign
+  span:
+    start: 207
+    end: 208
+  raw: "="
+- kind: OpenBrace
+  span:
+    start: 209
+    end: 210
+  raw: "{"
+- kind: Identifier
+  span:
+    start: 210
+    end: 213
+  raw: num
+- kind: Colon
+  span:
+    start: 213
+    end: 214
+  raw: ":"
+- kind: Integer
+  span:
+    start: 215
+    end: 216
+  raw: "1"
+- kind: CloseBrace
+  span:
+    start: 216
+    end: 217
+  raw: "}"
+- kind: Semicolon
+  span:
+    start: 217
+    end: 218
+  raw: ;
+- kind: Newline
+  span:
+    start: 218
+    end: 219
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 219
+    end: 224
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 224
+    end: 225
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 225
+    end: 247
+  raw: "delete obj.num + 1: "
+- kind:
+    Operator: Add
+  span:
+    start: 248
+    end: 249
+  raw: +
+- kind: OpenParen
+  span:
+    start: 250
+    end: 251
+  raw: (
+- kind:
+    Keyword: Delete
+  span:
+    start: 251
+    end: 257
+  raw: delete
+- kind: Identifier
+  span:
+    start: 258
+    end: 261
+  raw: obj
+- kind: Period
+  span:
+    start: 261
+    end: 262
+  raw: "."
+- kind: Identifier
+  span:
+    start: 262
+    end: 265
+  raw: num
+- kind:
+    Operator: Add
+  span:
+    start: 266
+    end: 267
+  raw: +
+- kind: Integer
+  span:
+    start: 268
+    end: 269
+  raw: "1"
+- kind: CloseParen
+  span:
+    start: 269
+    end: 270
+  raw: )
+- kind: CloseParen
+  span:
+    start: 270
+    end: 271
+  raw: )
+- kind: Semicolon
+  span:
+    start: 271
+    end: 272
+  raw: ;
+- kind:
+    Keyword: Var
+  span:
+    start: 278
+    end: 281
+  raw: var
+- kind: Identifier
+  span:
+    start: 282
+    end: 285
+  raw: obj
+- kind:
+    Operator: Assign
+  span:
+    start: 286
+    end: 287
+  raw: "="
+- kind: OpenBrace
+  span:
+    start: 288
+    end: 289
+  raw: "{"
+- kind: Identifier
+  span:
+    start: 289
+    end: 292
+  raw: num
+- kind: Colon
+  span:
+    start: 292
+    end: 293
+  raw: ":"
+- kind: Integer
+  span:
+    start: 294
+    end: 295
+  raw: "1"
+- kind: CloseBrace
+  span:
+    start: 295
+    end: 296
+  raw: "}"
+- kind: Semicolon
+  span:
+    start: 296
+    end: 297
+  raw: ;
+- kind: Newline
+  span:
+    start: 297
+    end: 298
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 298
+    end: 303
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 303
+    end: 304
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 304
+    end: 354
+  raw: "delete obj.num == \\\"number\\\" ? \\\":)\\\" : \\\":(\\\": "
+- kind:
+    Operator: Add
+  span:
+    start: 355
+    end: 356
+  raw: +
+- kind: OpenParen
+  span:
+    start: 357
+    end: 358
+  raw: (
+- kind:
+    Keyword: Delete
+  span:
+    start: 358
+    end: 364
+  raw: delete
+- kind: Identifier
+  span:
+    start: 365
+    end: 368
+  raw: obj
+- kind: Period
+  span:
+    start: 368
+    end: 369
+  raw: "."
+- kind: Identifier
+  span:
+    start: 369
+    end: 372
+  raw: num
+- kind: Question
+  span:
+    start: 373
+    end: 374
+  raw: "?"
+- kind:
+    String: Double
+  span:
+    start: 375
+    end: 379
+  raw: ":)"
+- kind: Colon
+  span:
+    start: 380
+    end: 381
+  raw: ":"
+- kind:
+    String: Double
+  span:
+    start: 382
+    end: 386
+  raw: ":("
+- kind: CloseParen
+  span:
+    start: 386
+    end: 387
+  raw: )
+- kind: CloseParen
+  span:
+    start: 387
+    end: 388
+  raw: )
+- kind: Semicolon
+  span:
+    start: 388
+    end: 389
+  raw: ;
+- kind:
+    Keyword: Var
+  span:
+    start: 396
+    end: 399
+  raw: var
+- kind: Identifier
+  span:
+    start: 400
+    end: 403
+  raw: obj
+- kind:
+    Operator: Assign
+  span:
+    start: 404
+    end: 405
+  raw: "="
+- kind: OpenBrace
+  span:
+    start: 406
+    end: 407
+  raw: "{"
+- kind: Identifier
+  span:
+    start: 407
+    end: 410
+  raw: num
+- kind: Colon
+  span:
+    start: 410
+    end: 411
+  raw: ":"
+- kind: Integer
+  span:
+    start: 412
+    end: 413
+  raw: "1"
+- kind: CloseBrace
+  span:
+    start: 413
+    end: 414
+  raw: "}"
+- kind: Semicolon
+  span:
+    start: 414
+    end: 415
+  raw: ;
+- kind: Newline
+  span:
+    start: 415
+    end: 416
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 416
+    end: 421
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 421
+    end: 422
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 422
+    end: 457
+  raw: "delete obj.num + delete obj.num: "
+- kind:
+    Operator: Add
+  span:
+    start: 458
+    end: 459
+  raw: +
+- kind: OpenParen
+  span:
+    start: 460
+    end: 461
+  raw: (
+- kind:
+    Keyword: Delete
+  span:
+    start: 461
+    end: 467
+  raw: delete
+- kind: Identifier
+  span:
+    start: 468
+    end: 471
+  raw: obj
+- kind: Period
+  span:
+    start: 471
+    end: 472
+  raw: "."
+- kind: Identifier
+  span:
+    start: 472
+    end: 475
+  raw: num
+- kind:
+    Operator: Add
+  span:
+    start: 476
+    end: 477
+  raw: +
+- kind:
+    Keyword: Delete
+  span:
+    start: 478
+    end: 484
+  raw: delete
+- kind: Identifier
+  span:
+    start: 485
+    end: 488
+  raw: obj
+- kind: Period
+  span:
+    start: 488
+    end: 489
+  raw: "."
+- kind: Identifier
+  span:
+    start: 489
+    end: 492
+  raw: num
+- kind: CloseParen
+  span:
+    start: 492
+    end: 493
+  raw: )
+- kind: CloseParen
+  span:
+    start: 493
+    end: 494
+  raw: )
+- kind: Semicolon
+  span:
+    start: 494
+    end: 495
+  raw: ;
+- kind:
+    Keyword: Var
+  span:
+    start: 501
+    end: 504
+  raw: var
+- kind: Identifier
+  span:
+    start: 505
+    end: 508
+  raw: obj
+- kind:
+    Operator: Assign
+  span:
+    start: 509
+    end: 510
+  raw: "="
+- kind: OpenBrace
+  span:
+    start: 511
+    end: 512
+  raw: "{"
+- kind: Identifier
+  span:
+    start: 512
+    end: 515
+  raw: num
+- kind: Colon
+  span:
+    start: 515
+    end: 516
+  raw: ":"
+- kind: Integer
+  span:
+    start: 517
+    end: 518
+  raw: "1"
+- kind: Comma
+  span:
+    start: 518
+    end: 519
+  raw: ","
+- kind: Identifier
+  span:
+    start: 520
+    end: 525
+  raw: trace
+- kind: Colon
+  span:
+    start: 525
+    end: 526
+  raw: ":"
+- kind: Identifier
+  span:
+    start: 527
+    end: 532
+  raw: trace
+- kind: CloseBrace
+  span:
+    start: 532
+    end: 533
+  raw: "}"
+- kind: Semicolon
+  span:
+    start: 533
+    end: 534
+  raw: ;
+- kind: Newline
+  span:
+    start: 534
+    end: 535
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 535
+    end: 540
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 540
+    end: 541
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 541
+    end: 561
+  raw: "delete obj.trace: "
+- kind:
+    Operator: Add
+  span:
+    start: 562
+    end: 563
+  raw: +
+- kind: OpenParen
+  span:
+    start: 564
+    end: 565
+  raw: (
+- kind:
+    Keyword: Delete
+  span:
+    start: 565
+    end: 571
+  raw: delete
+- kind: Identifier
+  span:
+    start: 572
+    end: 575
+  raw: obj
+- kind: Period
+  span:
+    start: 575
+    end: 576
+  raw: "."
+- kind: Identifier
+  span:
+    start: 576
+    end: 581
+  raw: trace
+- kind: CloseParen
+  span:
+    start: 581
+    end: 582
+  raw: )
+- kind: CloseParen
+  span:
+    start: 582
+    end: 583
+  raw: )
+- kind: Semicolon
+  span:
+    start: 583
+    end: 584
+  raw: ;
+- kind:
+    Keyword: Var
+  span:
+    start: 593
+    end: 596
+  raw: var
+- kind: Identifier
+  span:
+    start: 597
+    end: 600
+  raw: obj
+- kind:
+    Operator: Assign
+  span:
+    start: 601
+    end: 602
+  raw: "="
+- kind: OpenBrace
+  span:
+    start: 603
+    end: 604
+  raw: "{"
+- kind: Identifier
+  span:
+    start: 604
+    end: 607
+  raw: num
+- kind: Colon
+  span:
+    start: 607
+    end: 608
+  raw: ":"
+- kind: Integer
+  span:
+    start: 609
+    end: 610
+  raw: "1"
+- kind: Comma
+  span:
+    start: 610
+    end: 611
+  raw: ","
+- kind: Identifier
+  span:
+    start: 612
+    end: 617
+  raw: trace
+- kind: Colon
+  span:
+    start: 617
+    end: 618
+  raw: ":"
+- kind: Identifier
+  span:
+    start: 619
+    end: 624
+  raw: trace
+- kind: CloseBrace
+  span:
+    start: 624
+    end: 625
+  raw: "}"
+- kind: Semicolon
+  span:
+    start: 625
+    end: 626
+  raw: ;
+- kind: Newline
+  span:
+    start: 626
+    end: 627
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 627
+    end: 632
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 632
+    end: 633
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 633
+    end: 655
+  raw: "delete obj.trace(): "
+- kind:
+    Operator: Add
+  span:
+    start: 656
+    end: 657
+  raw: +
+- kind: OpenParen
+  span:
+    start: 658
+    end: 659
+  raw: (
+- kind:
+    Keyword: Delete
+  span:
+    start: 659
+    end: 665
+  raw: delete
+- kind: Identifier
+  span:
+    start: 666
+    end: 669
+  raw: obj
+- kind: Period
+  span:
+    start: 669
+    end: 670
+  raw: "."
+- kind: Identifier
+  span:
+    start: 670
+    end: 675
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 675
+    end: 676
+  raw: (
+- kind: CloseParen
+  span:
+    start: 676
+    end: 677
+  raw: )
+- kind: CloseParen
+  span:
+    start: 677
+    end: 678
+  raw: )
+- kind: CloseParen
+  span:
+    start: 678
+    end: 679
+  raw: )
+- kind: Semicolon
+  span:
+    start: 679
+    end: 680
+  raw: ;
+- kind: Identifier
+  span:
+    start: 690
+    end: 695
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 695
+    end: 696
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 696
+    end: 724
+  raw: "delete(nonexistent, obj): "
+- kind:
+    Operator: Add
+  span:
+    start: 725
+    end: 726
+  raw: +
+- kind: OpenParen
+  span:
+    start: 727
+    end: 728
+  raw: (
+- kind:
+    Keyword: Delete
+  span:
+    start: 728
+    end: 734
+  raw: delete
+- kind: OpenParen
+  span:
+    start: 734
+    end: 735
+  raw: (
+- kind: Identifier
+  span:
+    start: 735
+    end: 746
+  raw: nonexistent
+- kind: Comma
+  span:
+    start: 746
+    end: 747
+  raw: ","
+- kind: Identifier
+  span:
+    start: 748
+    end: 751
+  raw: obj
+- kind: CloseParen
+  span:
+    start: 751
+    end: 752
+  raw: )
+- kind: CloseParen
+  span:
+    start: 752
+    end: 753
+  raw: )
+- kind: CloseParen
+  span:
+    start: 753
+    end: 754
+  raw: )
+- kind: Semicolon
+  span:
+    start: 754
+    end: 755
+  raw: ;
