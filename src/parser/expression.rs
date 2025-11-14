@@ -31,6 +31,7 @@ pub(crate) enum Expr {
         no: Box<Expr>,
     },
     InitObject(Vec<(String, Expr)>),
+    InitArray(Vec<Expr>),
     Field(Box<Expr>, String),
     TypeOf(Vec<Expr>),
 }
@@ -176,6 +177,16 @@ pub(crate) fn expression(i: &mut Tokens<'_>) -> ModalResult<Expr> {
                 .context(StrContext::Label("expression"))
                 .parse_next(i)
         }
+        TokenKind::OpenBracket => {
+            TokenKind::OpenBracket.parse_next(i)?;
+            let definition = array_definition
+                .context(StrContext::Label("array definition"))
+                .parse_next(i)?;
+            TokenKind::CloseBracket.parse_next(i)?;
+            expr_next(Expr::InitArray(definition))
+                .context(StrContext::Label("expression"))
+                .parse_next(i)
+        }
         _ => fail
             .context(StrContext::Expected(StrContextValue::Description("string")))
             .context(StrContext::Expected(StrContextValue::Description(
@@ -196,6 +207,10 @@ fn object_definition(i: &mut Tokens<'_>) -> ModalResult<Vec<(String, Expr)>> {
         TokenKind::Comma,
     )
     .parse_next(i)
+}
+
+fn array_definition(i: &mut Tokens<'_>) -> ModalResult<Vec<Expr>> {
+    separated(0.., expression, TokenKind::Comma).parse_next(i)
 }
 
 fn constant(i: &mut Tokens<'_>) -> ModalResult<Constant> {
@@ -1350,6 +1365,41 @@ mod tests {
             Ok(Expr::TypeOf(vec![
                 Expr::Constant(Constant::Identifier("a".to_string())),
                 Expr::Constant(Constant::Identifier("b".to_string()))
+            ]))
+        )
+    }
+
+    #[test]
+    fn test_array_empty() {
+        let tokens = build_tokens(&[
+            (TokenKind::OpenBracket, "["),
+            (TokenKind::Identifier, "a"),
+            (TokenKind::CloseBracket, "]"),
+        ]);
+        assert_eq!(
+            parse_expr(&tokens),
+            Ok(Expr::InitArray(vec![Expr::Constant(Constant::Identifier(
+                "a".to_string()
+            ))]))
+        )
+    }
+
+    #[test]
+    fn test_array_complex() {
+        let tokens = build_tokens(&[
+            (TokenKind::OpenBracket, "["),
+            (TokenKind::Identifier, "a"),
+            (TokenKind::Comma, ","),
+            (TokenKind::OpenBracket, "["),
+            (TokenKind::Identifier, "b"),
+            (TokenKind::CloseBracket, "]"),
+            (TokenKind::CloseBracket, "]"),
+        ]);
+        assert_eq!(
+            parse_expr(&tokens),
+            Ok(Expr::InitArray(vec![
+                Expr::Constant(Constant::Identifier("a".to_string())),
+                Expr::InitArray(vec![Expr::Constant(Constant::Identifier("b".to_string()))]),
             ]))
         )
     }

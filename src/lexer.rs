@@ -54,8 +54,8 @@ fn process_token<'a>(peek_byte: u8, stream: &mut Stream<'a>) -> Option<Token<'a>
         b')' => Some(lex_ascii_char(stream, TokenKind::CloseParen)),
         b'{' => Some(lex_ascii_char(stream, TokenKind::OpenBrace)),
         b'}' => Some(lex_ascii_char(stream, TokenKind::CloseBrace)),
-        b'[' => Some(lex_ascii_char(stream, TokenKind::OpenBrace)),
-        b']' => Some(lex_ascii_char(stream, TokenKind::CloseBrace)),
+        b'[' => Some(lex_ascii_char(stream, TokenKind::OpenBracket)),
+        b']' => Some(lex_ascii_char(stream, TokenKind::CloseBracket)),
         b';' => Some(lex_ascii_char(stream, TokenKind::Semicolon)),
         b'=' | b'+' | b'-' | b'*' | b'%' | b'&' | b'^' | b'|' | b'~' | b'>' | b'<' | b'!' => {
             Some(lex_operator(stream))

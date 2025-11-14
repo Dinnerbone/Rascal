@@ -72,6 +72,8 @@ pub enum TokenKind {
     OpenBrace,
     CloseBrace,
     Period,
+    OpenBracket,
+    CloseBracket,
 }
 
 #[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Debug, Serialize)]
