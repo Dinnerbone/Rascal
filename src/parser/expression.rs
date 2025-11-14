@@ -17,6 +17,10 @@ pub(crate) enum Expr {
         name: Box<Expr>,
         args: Vec<Expr>,
     },
+    New {
+        name: Box<Expr>,
+        args: Vec<Expr>,
+    },
     BinaryOperator(BinaryOperator, Box<Expr>, Box<Expr>),
     UnaryOperator(UnaryOperator, Box<Expr>),
     Parenthesis(Box<Expr>),
@@ -99,6 +103,21 @@ pub(crate) fn expression(i: &mut Tokens<'_>) -> ModalResult<Expr> {
                 .parse_next(i)?;
             TokenKind::CloseParen.parse_next(i)?;
             expr_next(Expr::Parenthesis(Box::new(val)))
+                .context(StrContext::Label("expression"))
+                .parse_next(i)
+        }
+        TokenKind::Keyword(Keyword::New) => {
+            TokenKind::Keyword(Keyword::New).parse_next(i)?;
+            let val = expression.parse_next(i)?;
+            let val = if let Expr::Call { name, args } = val {
+                Expr::New { name, args }
+            } else {
+                Expr::New {
+                    name: Box::new(val),
+                    args: vec![],
+                }
+            };
+            expr_next(val)
                 .context(StrContext::Label("expression"))
                 .parse_next(i)
         }
@@ -1223,6 +1242,39 @@ mod tests {
                 Box::new(Expr::Constant(Constant::Identifier("a".to_string()))),
                 "b".to_string()
             ))
+        )
+    }
+
+    #[test]
+    fn test_new_keyword() {
+        let tokens = build_tokens(&[
+            (TokenKind::Keyword(Keyword::New), "new"),
+            (TokenKind::Identifier, "a"),
+            (TokenKind::OpenParen, "("),
+            (TokenKind::Identifier, "b"),
+            (TokenKind::CloseParen, ")"),
+        ]);
+        assert_eq!(
+            parse_expr(&tokens),
+            Ok(Expr::New {
+                name: Box::new(Expr::Constant(Constant::Identifier("a".to_string()))),
+                args: vec![Expr::Constant(Constant::Identifier("b".to_string()))],
+            })
+        )
+    }
+
+    #[test]
+    fn test_new_keyword_without_args() {
+        let tokens = build_tokens(&[
+            (TokenKind::Keyword(Keyword::New), "new"),
+            (TokenKind::Identifier, "a"),
+        ]);
+        assert_eq!(
+            parse_expr(&tokens),
+            Ok(Expr::New {
+                name: Box::new(Expr::Constant(Constant::Identifier("a".to_string()))),
+                args: vec![],
+            })
         )
     }
 }

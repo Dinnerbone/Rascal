@@ -99,4 +99,5 @@ impl<'i> Parser<Tokens<'i>, &'i Token<'i>, ContextError> for TokenKind {
 pub enum Keyword {
     Var,
     InstanceOf,
+    New,
 }

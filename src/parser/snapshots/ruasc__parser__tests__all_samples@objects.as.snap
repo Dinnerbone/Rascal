@@ -12,6 +12,9 @@ Ok:
             - - a
               - Constant:
                   Integer: 1
+            - - b
+              - Constant:
+                  Identifier: Object
     - Expr:
         Call:
           name:
@@ -26,3 +29,86 @@ Ok:
                     - Constant:
                         Identifier: o
                     - a
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "o.b: "
+                - Field:
+                    - Constant:
+                        Identifier: o
+                    - b
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "new Object(): "
+                - New:
+                    name:
+                      Constant:
+                        Identifier: Object
+                    args: []
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "new Object(1, 2, {}, false): "
+                - New:
+                    name:
+                      Constant:
+                        Identifier: Object
+                    args:
+                      - Constant:
+                          Integer: 1
+                      - Constant:
+                          Integer: 2
+                      - InitObject: []
+                      - Constant:
+                          Identifier: "false"
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "new Object: "
+                - New:
+                    name:
+                      Constant:
+                        Identifier: Object
+                    args: []
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "new o.b(): "
+                - New:
+                    name:
+                      Field:
+                        - Constant:
+                            Identifier: o
+                        - b
+                    args: []
