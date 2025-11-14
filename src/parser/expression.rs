@@ -32,7 +32,7 @@ pub(crate) enum Expr {
     },
     InitObject(Vec<(String, Expr)>),
     InitArray(Vec<Expr>),
-    Field(Box<Expr>, String),
+    Field(Box<Expr>, Box<Expr>),
     TypeOf(Vec<Expr>),
 }
 
@@ -301,7 +301,11 @@ fn expr_next<'i>(prior: Expr) -> impl Parser<Tokens<'i>, Expr, ErrMode<ContextEr
             TokenKind::Period => {
                 TokenKind::Period.parse_next(i)?;
                 let name = identifier.parse_next(i)?;
-                expr_next(Expr::Field(Box::new(prior), name)).parse_next(i)
+                expr_next(Expr::Field(
+                    Box::new(prior),
+                    Box::new(Expr::Constant(Constant::String(name))),
+                ))
+                .parse_next(i)
             }
             TokenKind::Keyword(Keyword::InstanceOf) => {
                 TokenKind::Keyword(Keyword::InstanceOf).parse_next(i)?;
@@ -1292,7 +1296,7 @@ mod tests {
             parse_expr(&tokens),
             Ok(Expr::Field(
                 Box::new(Expr::Constant(Constant::Identifier("a".to_string()))),
-                "b".to_string()
+                Box::new(Expr::Constant(Constant::String("b".to_string())))
             ))
         )
     }

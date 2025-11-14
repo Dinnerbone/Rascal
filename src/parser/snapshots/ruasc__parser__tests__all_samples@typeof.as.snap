@@ -63,7 +63,8 @@ Ok:
                       - Field:
                           - Constant:
                               Identifier: obj
-                          - num
+                          - Constant:
+                              String: num
     - Expr:
         Call:
           name:
@@ -81,7 +82,8 @@ Ok:
                           - Field:
                               - Constant:
                                   Identifier: obj
-                              - num
+                              - Constant:
+                                  String: num
                       - Constant:
                           Integer: 1
     - Expr:
@@ -103,7 +105,8 @@ Ok:
                               - Field:
                                   - Constant:
                                       Identifier: obj
-                                  - num
+                                  - Constant:
+                                      String: num
                           - Constant:
                               String: number
                       "yes":
@@ -129,12 +132,14 @@ Ok:
                           - Field:
                               - Constant:
                                   Identifier: obj
-                              - num
+                              - Constant:
+                                  String: num
                       - TypeOf:
                           - Field:
                               - Constant:
                                   Identifier: obj
-                              - num
+                              - Constant:
+                                  String: num
     - Expr:
         Call:
           name:
@@ -150,7 +155,8 @@ Ok:
                       - Field:
                           - Constant:
                               Identifier: obj
-                          - trace
+                          - Constant:
+                              String: trace
     - Expr:
         Call:
           name:
@@ -168,7 +174,8 @@ Ok:
                             Field:
                               - Constant:
                                   Identifier: obj
-                              - trace
+                              - Constant:
+                                  String: trace
                           args: []
     - Expr:
         Call:

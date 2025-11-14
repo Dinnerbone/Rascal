@@ -28,7 +28,8 @@ Ok:
                 - Field:
                     - Constant:
                         Identifier: o
-                    - a
+                    - Constant:
+                        String: a
     - Expr:
         Call:
           name:
@@ -42,7 +43,8 @@ Ok:
                 - Field:
                     - Constant:
                         Identifier: o
-                    - b
+                    - Constant:
+                        String: b
     - Expr:
         Call:
           name:
@@ -110,5 +112,6 @@ Ok:
                       Field:
                         - Constant:
                             Identifier: o
-                        - b
+                        - Constant:
+                            String: b
                     args: []
