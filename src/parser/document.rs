@@ -1,8 +1,6 @@
-use crate::parser::statement::{Statement, statement};
 use crate::parser::Tokens;
+use crate::parser::statement::{Statement, statement_list};
 use serde::Serialize;
-use winnow::combinator::{eof, repeat_till};
-use winnow::error::StrContext;
 use winnow::{ModalResult, Parser};
 
 #[derive(Debug, Serialize)]
@@ -12,7 +10,6 @@ pub struct Document {
 }
 
 pub fn document(tokens: &mut Tokens<'_>) -> ModalResult<Document> {
-    let (statements, _) = repeat_till(0.., statement.context(StrContext::Label("statement")), eof)
-        .parse_next(tokens)?;
+    let statements = statement_list(false).parse_next(tokens)?;
     Ok(Document { statements })
 }

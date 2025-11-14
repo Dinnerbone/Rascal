@@ -106,4 +106,5 @@ pub enum Keyword {
     Delete,
     In,
     Void,
+    Function,
 }

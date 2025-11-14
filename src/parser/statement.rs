@@ -3,10 +3,10 @@ use crate::lexer::tokens::{Keyword, TokenKind};
 use crate::parser::expression::{Expr, expression};
 use crate::parser::{Tokens, identifier, skip_newline};
 use serde::Serialize;
-use winnow::combinator::{alt, cond, cut_err, opt};
-use winnow::error::{StrContext, StrContextValue};
+use winnow::combinator::{cond, cut_err, opt, peek, separated};
+use winnow::error::{ContextError, ErrMode, StrContext};
 use winnow::stream::Stream;
-use winnow::token::{any, take_while};
+use winnow::token::any;
 use winnow::{ModalResult, Parser};
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
@@ -16,8 +16,15 @@ pub(crate) enum Statement {
     Expr(Expr),
 }
 
+#[derive(Debug, Clone, Serialize, PartialEq)]
+#[allow(dead_code)]
+pub(crate) struct Function {
+    pub(crate) name: Option<String>,
+    pub(crate) args: Vec<String>,
+    pub(crate) body: Vec<Statement>,
+}
+
 pub(crate) fn statement(i: &mut Tokens<'_>) -> ModalResult<Statement> {
-    take_while(0.., TokenKind::Newline).parse_next(i)?;
     let checkpoint = i.checkpoint();
     let token = any.parse_next(i)?;
     let result = match token.kind {
@@ -30,16 +37,30 @@ pub(crate) fn statement(i: &mut Tokens<'_>) -> ModalResult<Statement> {
         }
     }?;
 
-    if !i.is_empty() {
-        alt((TokenKind::Semicolon, TokenKind::Newline))
-            .context(StrContext::Label("end of line"))
-            .context(StrContext::Expected(StrContextValue::CharLiteral(';')))
-            .parse_next(i)?;
-    }
-
-    take_while(0.., TokenKind::Newline).parse_next(i)?;
-
     Ok(result)
+}
+
+pub(crate) fn statement_list<'i>(
+    is_block: bool,
+) -> impl Parser<Tokens<'i>, Vec<Statement>, ErrMode<ContextError>> {
+    move |i: &mut Tokens<'i>| {
+        let mut result = vec![];
+        while let Ok(peek) = peek(any::<_, ErrMode<ContextError>>).parse_next(i) {
+            match &peek.kind {
+                TokenKind::Newline | TokenKind::Semicolon => {
+                    any.parse_next(i)?;
+                }
+                TokenKind::CloseBrace if is_block => {
+                    break;
+                }
+                _ => {
+                    result.push(statement.parse_next(i)?);
+                }
+            }
+        }
+
+        Ok(result)
+    }
 }
 
 fn declaration(i: &mut Tokens<'_>) -> ModalResult<Statement> {
@@ -52,6 +73,18 @@ fn declaration(i: &mut Tokens<'_>) -> ModalResult<Statement> {
     let value = cond(equals, skip_newline(expression)).parse_next(i)?;
 
     Ok(Statement::Declare { name, value })
+}
+
+pub(crate) fn function(i: &mut Tokens<'_>) -> ModalResult<Function> {
+    let name = skip_newline(opt(identifier)).parse_next(i)?;
+    skip_newline(TokenKind::OpenParen).parse_next(i)?;
+    let args = separated(0.., skip_newline(identifier), TokenKind::Comma).parse_next(i)?;
+    skip_newline(TokenKind::CloseParen).parse_next(i)?;
+    skip_newline(TokenKind::OpenBrace).parse_next(i)?;
+    let body = statement_list(true).parse_next(i)?;
+    skip_newline(TokenKind::CloseBrace).parse_next(i)?;
+
+    Ok(Function { name, args, body })
 }
 
 #[cfg(test)]

@@ -1,0 +1,261 @@
+---
+source: src/lexer/tests.rs
+expression: tokens
+input_file: samples/function.as
+---
+- kind:
+    Keyword: Function
+  span:
+    start: 0
+    end: 8
+  raw: function
+- kind: Identifier
+  span:
+    start: 9
+    end: 13
+  raw: test
+- kind: OpenParen
+  span:
+    start: 13
+    end: 14
+  raw: (
+- kind: CloseParen
+  span:
+    start: 14
+    end: 15
+  raw: )
+- kind: OpenBrace
+  span:
+    start: 16
+    end: 17
+  raw: "{"
+- kind: Newline
+  span:
+    start: 17
+    end: 18
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 22
+    end: 27
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 27
+    end: 28
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 28
+    end: 42
+  raw: Test called!
+- kind: CloseParen
+  span:
+    start: 42
+    end: 43
+  raw: )
+- kind: Semicolon
+  span:
+    start: 43
+    end: 44
+  raw: ;
+- kind: Newline
+  span:
+    start: 44
+    end: 45
+  raw: "\n"
+- kind: CloseBrace
+  span:
+    start: 45
+    end: 46
+  raw: "}"
+- kind: Newline
+  span:
+    start: 46
+    end: 47
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 47
+    end: 48
+  raw: "\n"
+- kind:
+    Keyword: Function
+  span:
+    start: 48
+    end: 56
+  raw: function
+- kind: OpenParen
+  span:
+    start: 56
+    end: 57
+  raw: (
+- kind: Identifier
+  span:
+    start: 57
+    end: 58
+  raw: a
+- kind: Comma
+  span:
+    start: 58
+    end: 59
+  raw: ","
+- kind: Identifier
+  span:
+    start: 60
+    end: 61
+  raw: b
+- kind: CloseParen
+  span:
+    start: 61
+    end: 62
+  raw: )
+- kind: OpenBrace
+  span:
+    start: 62
+    end: 63
+  raw: "{"
+- kind: Newline
+  span:
+    start: 63
+    end: 64
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 68
+    end: 73
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 73
+    end: 74
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 74
+    end: 102
+  raw: Anonymous function called!
+- kind: CloseParen
+  span:
+    start: 102
+    end: 103
+  raw: )
+- kind: Semicolon
+  span:
+    start: 103
+    end: 104
+  raw: ;
+- kind: Newline
+  span:
+    start: 104
+    end: 105
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 109
+    end: 114
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 114
+    end: 115
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 115
+    end: 121
+  raw: "a = "
+- kind:
+    Operator: Add
+  span:
+    start: 122
+    end: 123
+  raw: +
+- kind: Identifier
+  span:
+    start: 124
+    end: 125
+  raw: a
+- kind:
+    Operator: Add
+  span:
+    start: 126
+    end: 127
+  raw: +
+- kind:
+    String: Double
+  span:
+    start: 128
+    end: 136
+  raw: ", b = "
+- kind:
+    Operator: Add
+  span:
+    start: 137
+    end: 138
+  raw: +
+- kind: Identifier
+  span:
+    start: 139
+    end: 140
+  raw: b
+- kind: CloseParen
+  span:
+    start: 140
+    end: 141
+  raw: )
+- kind: Semicolon
+  span:
+    start: 141
+    end: 142
+  raw: ;
+- kind: Newline
+  span:
+    start: 142
+    end: 143
+  raw: "\n"
+- kind: CloseBrace
+  span:
+    start: 143
+    end: 144
+  raw: "}"
+- kind: OpenParen
+  span:
+    start: 144
+    end: 145
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 145
+    end: 149
+  raw: aa
+- kind: Comma
+  span:
+    start: 149
+    end: 150
+  raw: ","
+- kind:
+    String: Double
+  span:
+    start: 151
+    end: 155
+  raw: bb
+- kind: CloseParen
+  span:
+    start: 155
+    end: 156
+  raw: )
+- kind: Semicolon
+  span:
+    start: 156
+    end: 157
+  raw: ;
+- kind: Newline
+  span:
+    start: 157
+    end: 158
+  raw: "\n"

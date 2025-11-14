@@ -2,6 +2,7 @@ use crate::lexer::operator::Operator;
 use crate::lexer::tokens::{Keyword, TokenKind};
 use crate::parser::expression::Constant::Integer;
 use crate::parser::operator::{Affix, BinaryOperator, UnaryOperator};
+use crate::parser::statement::{Function, function};
 use crate::parser::{Tokens, identifier, operator, skip_newline, string};
 use serde::Serialize;
 use winnow::combinator::{alt, fail, opt, peek, separated};
@@ -36,6 +37,7 @@ pub(crate) enum Expr {
     TypeOf(Vec<Expr>),
     Delete(Vec<Expr>),
     Void(Vec<Expr>),
+    Function(Function),
 }
 
 impl Expr {
@@ -223,6 +225,13 @@ pub(crate) fn expression(i: &mut Tokens<'_>) -> ModalResult<Expr> {
                 .context(StrContext::Label("expression"))
                 .parse_next(i)
         }
+        TokenKind::Keyword(Keyword::Function) => {
+            TokenKind::Keyword(Keyword::Function).parse_next(i)?;
+            let func = function.parse_next(i)?;
+            expr_next(Expr::Function(func))
+                .context(StrContext::Label("expression"))
+                .parse_next(i)
+        }
         _ => fail
             .context(StrContext::Expected(StrContextValue::Description("string")))
             .context(StrContext::Expected(StrContextValue::Description(
@@ -393,6 +402,7 @@ mod tests {
     use super::*;
     use crate::lexer::operator::Operator;
     use crate::lexer::tokens::{QuoteKind, Token, TokenKind};
+    use crate::parser::statement::Statement;
     use crate::parser::tests::build_tokens;
     use winnow::stream::TokenSlice;
 
@@ -1594,6 +1604,36 @@ mod tests {
                 Expr::Constant(Constant::Identifier("a".to_string())),
                 Expr::Constant(Constant::Identifier("b".to_string()))
             ]))
+        )
+    }
+
+    #[test]
+    fn test_function_definition() {
+        let tokens = build_tokens(&[
+            (TokenKind::Keyword(Keyword::Function), "function"),
+            (TokenKind::Identifier, "func"),
+            (TokenKind::OpenParen, "("),
+            (TokenKind::Identifier, "a"),
+            (TokenKind::Comma, ","),
+            (TokenKind::Identifier, "b"),
+            (TokenKind::CloseParen, ")"),
+            (TokenKind::OpenBrace, "{"),
+            (TokenKind::Identifier, "trace"),
+            (TokenKind::OpenParen, "("),
+            (TokenKind::Identifier, "a"),
+            (TokenKind::CloseParen, ")"),
+            (TokenKind::CloseBrace, "}"),
+        ]);
+        assert_eq!(
+            parse_expr(&tokens),
+            Ok(Expr::Function(Function {
+                name: Some("func".to_string()),
+                args: vec!["a".to_string(), "b".to_string()],
+                body: vec![Statement::Expr(Expr::Call {
+                    name: Box::new(Expr::Constant(Constant::Identifier("trace".to_string()))),
+                    args: vec![Expr::Constant(Constant::Identifier("a".to_string()))],
+                })],
+            }))
         )
     }
 }

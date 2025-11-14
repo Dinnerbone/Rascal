@@ -58,7 +58,7 @@ fn test_non_ending_block_comment() {
 #[test]
 fn test_identifiers_and_keyword() {
     assert_eq!(
-        kinds("var x _abc $d Var instanceof new typeof delete in void"),
+        kinds("var x _abc $d Var instanceof new typeof delete in void function"),
         vec![
             TokenKind::Keyword(Keyword::Var),
             TokenKind::Identifier,
@@ -71,6 +71,7 @@ fn test_identifiers_and_keyword() {
             TokenKind::Keyword(Keyword::Delete),
             TokenKind::Keyword(Keyword::In),
             TokenKind::Keyword(Keyword::Void),
+            TokenKind::Keyword(Keyword::Function),
         ]
     );
 }
