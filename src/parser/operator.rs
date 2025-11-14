@@ -62,11 +62,6 @@ pub(crate) enum BinaryOperator {
 
 impl BinaryOperator {
     pub(crate) fn should_swap(left: BinaryOperator, right: BinaryOperator) -> bool {
-        if left.precedence() == OperatorPrecedence::Other
-            || right.precedence() == OperatorPrecedence::Other
-        {
-            return false; // for now
-        }
         match right.precedence().cmp(&left.precedence()) {
             Ordering::Greater => true,
             Ordering::Equal if left.precedence() < OperatorPrecedence::Other => true,
@@ -109,7 +104,7 @@ impl BinaryOperator {
             | BinaryOperator::BitShiftLeftAssign
             | BinaryOperator::BitShiftRightAssign
             | BinaryOperator::BitShiftRightUnsignedAssign => OperatorPrecedence::Assignment,
-            _ => OperatorPrecedence::Other,
+            BinaryOperator::InstanceOf | BinaryOperator::In => OperatorPrecedence::Other,
         }
     }
 }
@@ -117,11 +112,15 @@ impl BinaryOperator {
 impl Expr {
     pub(crate) fn for_binary_operator(op: BinaryOperator, a: Box<Expr>, b: Box<Expr>) -> Expr {
         match *b {
-            Expr::Ternary { condition, yes, no } => Expr::Ternary {
-                condition: Box::new(Expr::for_binary_operator(op, a, condition)),
-                yes,
-                no,
-            },
+            Expr::Ternary { condition, yes, no }
+                if op.precedence() != OperatorPrecedence::Assignment =>
+            {
+                Expr::Ternary {
+                    condition: Box::new(Expr::for_binary_operator(op, a, condition)),
+                    yes,
+                    no,
+                }
+            }
             Expr::BinaryOperator(bop, ba, bb) if BinaryOperator::should_swap(op, bop) => {
                 Expr::BinaryOperator(bop, Box::new(Expr::for_binary_operator(op, a, ba)), bb)
             }
