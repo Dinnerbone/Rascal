@@ -329,6 +329,14 @@ fn expr_next<'i>(prior: Expr) -> impl Parser<Tokens<'i>, Expr, ErrMode<ContextEr
                 })
                 .parse_next(i)
             }
+            TokenKind::OpenBracket => {
+                TokenKind::OpenBracket.parse_next(i)?;
+                let name = expression.parse_next(i)?;
+                TokenKind::CloseBracket.parse_next(i)?;
+                expr_next(Expr::Field(Box::new(prior), Box::new(name)))
+                    .context(StrContext::Label("expression"))
+                    .parse_next(i)
+            }
             _ => Ok(prior),
         }
     }
@@ -1405,6 +1413,45 @@ mod tests {
                 Expr::Constant(Constant::Identifier("a".to_string())),
                 Expr::InitArray(vec![Expr::Constant(Constant::Identifier("b".to_string()))]),
             ]))
+        )
+    }
+
+    #[test]
+    fn test_array_access_simple() {
+        let tokens = build_tokens(&[
+            (TokenKind::Identifier, "a"),
+            (TokenKind::OpenBracket, "["),
+            (TokenKind::Identifier, "b"),
+            (TokenKind::CloseBracket, "]"),
+        ]);
+        assert_eq!(
+            parse_expr(&tokens),
+            Ok(Expr::Field(
+                Box::new(Expr::Constant(Constant::Identifier("a".to_string()))),
+                Box::new(Expr::Constant(Constant::Identifier("b".to_string())))
+            ))
+        )
+    }
+
+    #[test]
+    fn test_array_access_complex() {
+        let tokens = build_tokens(&[
+            (TokenKind::Identifier, "a"),
+            (TokenKind::OpenBracket, "["),
+            (TokenKind::Identifier, "b"),
+            (TokenKind::OpenParen, "("),
+            (TokenKind::CloseParen, ")"),
+            (TokenKind::CloseBracket, "]"),
+        ]);
+        assert_eq!(
+            parse_expr(&tokens),
+            Ok(Expr::Field(
+                Box::new(Expr::Constant(Constant::Identifier("a".to_string()))),
+                Box::new(Expr::Call {
+                    name: Box::new(Expr::Constant(Constant::Identifier("b".to_string()))),
+                    args: vec![],
+                })
+            ))
         )
     }
 }
