@@ -100,4 +100,5 @@ pub enum Keyword {
     Var,
     InstanceOf,
     New,
+    TypeOf,
 }

@@ -1,9 +1,10 @@
 use crate::lexer::operator::Operator;
 use crate::lexer::tokens::{Keyword, TokenKind};
+use crate::parser::expression::Constant::Integer;
 use crate::parser::operator::{Affix, BinaryOperator, UnaryOperator};
 use crate::parser::{Tokens, identifier, operator, skip_newline, string};
 use serde::Serialize;
-use winnow::combinator::{alt, fail, peek, separated};
+use winnow::combinator::{alt, fail, opt, peek, separated};
 use winnow::error::{ContextError, ErrMode, StrContext};
 use winnow::error::{ParserError, StrContextValue};
 use winnow::stream::ParseSlice;
@@ -31,6 +32,27 @@ pub(crate) enum Expr {
     },
     InitObject(Vec<(String, Expr)>),
     Field(Box<Expr>, String),
+    TypeOf(Vec<Expr>),
+}
+
+impl Expr {
+    pub(crate) fn rewrite_leftmost_expr<R>(&mut self, rewriter: R)
+    where
+        R: FnOnce(Expr) -> Expr,
+    {
+        let mut expr: &mut Expr = self;
+
+        loop {
+            match expr {
+                Expr::BinaryOperator(_op, left, _right) => expr = left,
+                Expr::Ternary { condition, .. } => expr = condition,
+                _ => break,
+            }
+        }
+
+        // Temporarily replaces it with something else, to appease the borrow checker
+        *expr = rewriter(std::mem::replace(expr, Expr::Constant(Integer(0))));
+    }
 }
 
 impl Expr {
@@ -118,6 +140,21 @@ pub(crate) fn expression(i: &mut Tokens<'_>) -> ModalResult<Expr> {
                 }
             };
             expr_next(val)
+                .context(StrContext::Label("expression"))
+                .parse_next(i)
+        }
+        TokenKind::Keyword(Keyword::TypeOf) => {
+            TokenKind::Keyword(Keyword::TypeOf).parse_next(i)?;
+            let expr = if opt(TokenKind::OpenParen).parse_next(i)?.is_some() {
+                let values = expr_list.parse_next(i)?;
+                TokenKind::CloseParen.parse_next(i)?;
+                Expr::TypeOf(values)
+            } else {
+                let mut value = expression.parse_next(i)?;
+                value.rewrite_leftmost_expr(|expr| Expr::TypeOf(vec![expr]));
+                value
+            };
+            expr_next(expr)
                 .context(StrContext::Label("expression"))
                 .parse_next(i)
         }
@@ -1275,6 +1312,45 @@ mod tests {
                 name: Box::new(Expr::Constant(Constant::Identifier("a".to_string()))),
                 args: vec![],
             })
+        )
+    }
+
+    #[test]
+    fn test_typeof() {
+        let tokens = build_tokens(&[
+            (TokenKind::Keyword(Keyword::TypeOf), "typeof"),
+            (TokenKind::Identifier, "a"),
+            (TokenKind::Operator(Operator::Add), "+"),
+            (TokenKind::Identifier, "b"),
+        ]);
+        assert_eq!(
+            parse_expr(&tokens),
+            Ok(Expr::BinaryOperator(
+                BinaryOperator::Add,
+                Box::new(Expr::TypeOf(vec![Expr::Constant(Constant::Identifier(
+                    "a".to_string()
+                ))])),
+                Box::new(Expr::Constant(Constant::Identifier("b".to_string()))),
+            ))
+        )
+    }
+
+    #[test]
+    fn test_typeof_as_function() {
+        let tokens = build_tokens(&[
+            (TokenKind::Keyword(Keyword::TypeOf), "typeof"),
+            (TokenKind::OpenParen, "("),
+            (TokenKind::Identifier, "a"),
+            (TokenKind::Comma, ","),
+            (TokenKind::Identifier, "b"),
+            (TokenKind::CloseParen, ")"),
+        ]);
+        assert_eq!(
+            parse_expr(&tokens),
+            Ok(Expr::TypeOf(vec![
+                Expr::Constant(Constant::Identifier("a".to_string())),
+                Expr::Constant(Constant::Identifier("b".to_string()))
+            ]))
         )
     }
 }

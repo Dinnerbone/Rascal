@@ -1,0 +1,748 @@
+---
+source: src/lexer/tests.rs
+expression: tokens
+input_file: samples/typeof.as
+---
+- kind:
+    Keyword: Var
+  span:
+    start: 0
+    end: 3
+  raw: var
+- kind: Identifier
+  span:
+    start: 4
+    end: 7
+  raw: num
+- kind:
+    Operator: Assign
+  span:
+    start: 8
+    end: 9
+  raw: "="
+- kind: Integer
+  span:
+    start: 10
+    end: 11
+  raw: "1"
+- kind: Semicolon
+  span:
+    start: 11
+    end: 12
+  raw: ;
+- kind: Newline
+  span:
+    start: 12
+    end: 13
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 13
+    end: 16
+  raw: var
+- kind: Identifier
+  span:
+    start: 17
+    end: 20
+  raw: obj
+- kind:
+    Operator: Assign
+  span:
+    start: 21
+    end: 22
+  raw: "="
+- kind: OpenBrace
+  span:
+    start: 23
+    end: 24
+  raw: "{"
+- kind: Identifier
+  span:
+    start: 24
+    end: 27
+  raw: num
+- kind: Colon
+  span:
+    start: 27
+    end: 28
+  raw: ":"
+- kind: Integer
+  span:
+    start: 29
+    end: 30
+  raw: "1"
+- kind: Comma
+  span:
+    start: 30
+    end: 31
+  raw: ","
+- kind: Identifier
+  span:
+    start: 32
+    end: 37
+  raw: trace
+- kind: Colon
+  span:
+    start: 37
+    end: 38
+  raw: ":"
+- kind: Identifier
+  span:
+    start: 39
+    end: 44
+  raw: trace
+- kind: CloseBrace
+  span:
+    start: 44
+    end: 45
+  raw: "}"
+- kind: Semicolon
+  span:
+    start: 45
+    end: 46
+  raw: ;
+- kind: Newline
+  span:
+    start: 46
+    end: 47
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 47
+    end: 52
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 52
+    end: 53
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 53
+    end: 67
+  raw: "typeof num: "
+- kind:
+    Operator: Add
+  span:
+    start: 68
+    end: 69
+  raw: +
+- kind: OpenParen
+  span:
+    start: 70
+    end: 71
+  raw: (
+- kind:
+    Keyword: TypeOf
+  span:
+    start: 71
+    end: 77
+  raw: typeof
+- kind: Identifier
+  span:
+    start: 78
+    end: 81
+  raw: num
+- kind: CloseParen
+  span:
+    start: 81
+    end: 82
+  raw: )
+- kind: CloseParen
+  span:
+    start: 82
+    end: 83
+  raw: )
+- kind: Semicolon
+  span:
+    start: 83
+    end: 84
+  raw: ;
+- kind: Identifier
+  span:
+    start: 95
+    end: 100
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 100
+    end: 101
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 101
+    end: 115
+  raw: "typeof obj: "
+- kind:
+    Operator: Add
+  span:
+    start: 116
+    end: 117
+  raw: +
+- kind: OpenParen
+  span:
+    start: 118
+    end: 119
+  raw: (
+- kind:
+    Keyword: TypeOf
+  span:
+    start: 119
+    end: 125
+  raw: typeof
+- kind: Identifier
+  span:
+    start: 126
+    end: 129
+  raw: obj
+- kind: CloseParen
+  span:
+    start: 129
+    end: 130
+  raw: )
+- kind: CloseParen
+  span:
+    start: 130
+    end: 131
+  raw: )
+- kind: Semicolon
+  span:
+    start: 131
+    end: 132
+  raw: ;
+- kind: Identifier
+  span:
+    start: 143
+    end: 148
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 148
+    end: 149
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 149
+    end: 167
+  raw: "typeof obj.num: "
+- kind:
+    Operator: Add
+  span:
+    start: 168
+    end: 169
+  raw: +
+- kind: OpenParen
+  span:
+    start: 170
+    end: 171
+  raw: (
+- kind:
+    Keyword: TypeOf
+  span:
+    start: 171
+    end: 177
+  raw: typeof
+- kind: Identifier
+  span:
+    start: 178
+    end: 181
+  raw: obj
+- kind: Period
+  span:
+    start: 181
+    end: 182
+  raw: "."
+- kind: Identifier
+  span:
+    start: 182
+    end: 185
+  raw: num
+- kind: CloseParen
+  span:
+    start: 185
+    end: 186
+  raw: )
+- kind: CloseParen
+  span:
+    start: 186
+    end: 187
+  raw: )
+- kind: Semicolon
+  span:
+    start: 187
+    end: 188
+  raw: ;
+- kind: Identifier
+  span:
+    start: 199
+    end: 204
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 204
+    end: 205
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 205
+    end: 227
+  raw: "typeof obj.num + 1: "
+- kind:
+    Operator: Add
+  span:
+    start: 228
+    end: 229
+  raw: +
+- kind: OpenParen
+  span:
+    start: 230
+    end: 231
+  raw: (
+- kind:
+    Keyword: TypeOf
+  span:
+    start: 231
+    end: 237
+  raw: typeof
+- kind: Identifier
+  span:
+    start: 238
+    end: 241
+  raw: obj
+- kind: Period
+  span:
+    start: 241
+    end: 242
+  raw: "."
+- kind: Identifier
+  span:
+    start: 242
+    end: 245
+  raw: num
+- kind:
+    Operator: Add
+  span:
+    start: 246
+    end: 247
+  raw: +
+- kind: Integer
+  span:
+    start: 248
+    end: 249
+  raw: "1"
+- kind: CloseParen
+  span:
+    start: 249
+    end: 250
+  raw: )
+- kind: CloseParen
+  span:
+    start: 250
+    end: 251
+  raw: )
+- kind: Semicolon
+  span:
+    start: 251
+    end: 252
+  raw: ;
+- kind: Identifier
+  span:
+    start: 264
+    end: 269
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 269
+    end: 270
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 270
+    end: 320
+  raw: "typeof obj.num == \\\"number\\\" ? \\\":)\\\" : \\\":(\\\": "
+- kind:
+    Operator: Add
+  span:
+    start: 321
+    end: 322
+  raw: +
+- kind: OpenParen
+  span:
+    start: 323
+    end: 324
+  raw: (
+- kind:
+    Keyword: TypeOf
+  span:
+    start: 324
+    end: 330
+  raw: typeof
+- kind: Identifier
+  span:
+    start: 331
+    end: 334
+  raw: obj
+- kind: Period
+  span:
+    start: 334
+    end: 335
+  raw: "."
+- kind: Identifier
+  span:
+    start: 335
+    end: 338
+  raw: num
+- kind:
+    Operator: Equal
+  span:
+    start: 339
+    end: 341
+  raw: "=="
+- kind:
+    String: Double
+  span:
+    start: 342
+    end: 350
+  raw: number
+- kind: Question
+  span:
+    start: 351
+    end: 352
+  raw: "?"
+- kind:
+    String: Double
+  span:
+    start: 353
+    end: 357
+  raw: ":)"
+- kind: Colon
+  span:
+    start: 358
+    end: 359
+  raw: ":"
+- kind:
+    String: Double
+  span:
+    start: 360
+    end: 364
+  raw: ":("
+- kind: CloseParen
+  span:
+    start: 364
+    end: 365
+  raw: )
+- kind: CloseParen
+  span:
+    start: 365
+    end: 366
+  raw: )
+- kind: Semicolon
+  span:
+    start: 366
+    end: 367
+  raw: ;
+- kind: Identifier
+  span:
+    start: 374
+    end: 379
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 379
+    end: 380
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 380
+    end: 415
+  raw: "typeof obj.num + typeof obj.num: "
+- kind:
+    Operator: Add
+  span:
+    start: 416
+    end: 417
+  raw: +
+- kind: OpenParen
+  span:
+    start: 418
+    end: 419
+  raw: (
+- kind:
+    Keyword: TypeOf
+  span:
+    start: 419
+    end: 425
+  raw: typeof
+- kind: Identifier
+  span:
+    start: 426
+    end: 429
+  raw: obj
+- kind: Period
+  span:
+    start: 429
+    end: 430
+  raw: "."
+- kind: Identifier
+  span:
+    start: 430
+    end: 433
+  raw: num
+- kind:
+    Operator: Add
+  span:
+    start: 434
+    end: 435
+  raw: +
+- kind:
+    Keyword: TypeOf
+  span:
+    start: 436
+    end: 442
+  raw: typeof
+- kind: Identifier
+  span:
+    start: 443
+    end: 446
+  raw: obj
+- kind: Period
+  span:
+    start: 446
+    end: 447
+  raw: "."
+- kind: Identifier
+  span:
+    start: 447
+    end: 450
+  raw: num
+- kind: CloseParen
+  span:
+    start: 450
+    end: 451
+  raw: )
+- kind: CloseParen
+  span:
+    start: 451
+    end: 452
+  raw: )
+- kind: Semicolon
+  span:
+    start: 452
+    end: 453
+  raw: ;
+- kind: Identifier
+  span:
+    start: 470
+    end: 475
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 475
+    end: 476
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 476
+    end: 496
+  raw: "typeof obj.trace: "
+- kind:
+    Operator: Add
+  span:
+    start: 497
+    end: 498
+  raw: +
+- kind: OpenParen
+  span:
+    start: 499
+    end: 500
+  raw: (
+- kind:
+    Keyword: TypeOf
+  span:
+    start: 500
+    end: 506
+  raw: typeof
+- kind: Identifier
+  span:
+    start: 507
+    end: 510
+  raw: obj
+- kind: Period
+  span:
+    start: 510
+    end: 511
+  raw: "."
+- kind: Identifier
+  span:
+    start: 511
+    end: 516
+  raw: trace
+- kind: CloseParen
+  span:
+    start: 516
+    end: 517
+  raw: )
+- kind: CloseParen
+  span:
+    start: 517
+    end: 518
+  raw: )
+- kind: Semicolon
+  span:
+    start: 518
+    end: 519
+  raw: ;
+- kind: Identifier
+  span:
+    start: 532
+    end: 537
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 537
+    end: 538
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 538
+    end: 560
+  raw: "typeof obj.trace(): "
+- kind:
+    Operator: Add
+  span:
+    start: 561
+    end: 562
+  raw: +
+- kind: OpenParen
+  span:
+    start: 563
+    end: 564
+  raw: (
+- kind:
+    Keyword: TypeOf
+  span:
+    start: 564
+    end: 570
+  raw: typeof
+- kind: Identifier
+  span:
+    start: 571
+    end: 574
+  raw: obj
+- kind: Period
+  span:
+    start: 574
+    end: 575
+  raw: "."
+- kind: Identifier
+  span:
+    start: 575
+    end: 580
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 580
+    end: 581
+  raw: (
+- kind: CloseParen
+  span:
+    start: 581
+    end: 582
+  raw: )
+- kind: CloseParen
+  span:
+    start: 582
+    end: 583
+  raw: )
+- kind: CloseParen
+  span:
+    start: 583
+    end: 584
+  raw: )
+- kind: Semicolon
+  span:
+    start: 584
+    end: 585
+  raw: ;
+- kind: Identifier
+  span:
+    start: 599
+    end: 604
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 604
+    end: 605
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 605
+    end: 633
+  raw: "typeof(nonexistent, obj): "
+- kind:
+    Operator: Add
+  span:
+    start: 634
+    end: 635
+  raw: +
+- kind: OpenParen
+  span:
+    start: 636
+    end: 637
+  raw: (
+- kind:
+    Keyword: TypeOf
+  span:
+    start: 637
+    end: 643
+  raw: typeof
+- kind: OpenParen
+  span:
+    start: 643
+    end: 644
+  raw: (
+- kind: Identifier
+  span:
+    start: 644
+    end: 655
+  raw: nonexistent
+- kind: Comma
+  span:
+    start: 655
+    end: 656
+  raw: ","
+- kind: Identifier
+  span:
+    start: 657
+    end: 660
+  raw: obj
+- kind: CloseParen
+  span:
+    start: 660
+    end: 661
+  raw: )
+- kind: CloseParen
+  span:
+    start: 661
+    end: 662
+  raw: )
+- kind: CloseParen
+  span:
+    start: 662
+    end: 663
+  raw: )
+- kind: Semicolon
+  span:
+    start: 663
+    end: 664
+  raw: ;
