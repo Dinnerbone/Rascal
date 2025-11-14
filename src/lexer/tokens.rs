@@ -69,6 +69,8 @@ pub enum TokenKind {
     Float,
     Question,
     Colon,
+    OpenBrace,
+    CloseBrace,
 }
 
 #[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Debug, Serialize)]

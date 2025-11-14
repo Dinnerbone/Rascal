@@ -1,0 +1,14 @@
+---
+source: src/parser/tests.rs
+expression: parsed
+input_file: samples/objects.as
+---
+Ok:
+  statements:
+    - Declare:
+        name: o
+        value:
+          InitObject:
+            - - a
+              - Constant:
+                  Integer: 1

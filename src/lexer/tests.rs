@@ -142,13 +142,15 @@ fn test_logic_operators() {
 #[test]
 fn test_punctuation_tokens() {
     assert_eq!(
-        kinds("(,) );"),
+        kinds("(,) ); {}"),
         vec![
             TokenKind::OpenParen,
             TokenKind::Comma,
             TokenKind::CloseParen,
             TokenKind::CloseParen,
             TokenKind::Semicolon,
+            TokenKind::OpenBrace,
+            TokenKind::CloseBrace,
         ]
     );
 }

@@ -25,6 +25,7 @@ pub(crate) enum Expr {
         yes: Box<Expr>,
         no: Box<Expr>,
     },
+    InitObject(Vec<(String, Expr)>),
 }
 
 impl Expr {
@@ -108,6 +109,16 @@ pub(crate) fn expression(i: &mut Tokens<'_>) -> ModalResult<Expr> {
                 .context(StrContext::Label("expression"))
                 .parse_next(i)
         }
+        TokenKind::OpenBrace => {
+            TokenKind::OpenBrace.parse_next(i)?;
+            let definition = object_definition
+                .context(StrContext::Label("object definition"))
+                .parse_next(i)?;
+            TokenKind::CloseBrace.parse_next(i)?;
+            expr_next(Expr::InitObject(definition))
+                .context(StrContext::Label("expression"))
+                .parse_next(i)
+        }
         _ => fail
             .context(StrContext::Expected(StrContextValue::Description("string")))
             .context(StrContext::Expected(StrContextValue::Description(
@@ -119,6 +130,15 @@ pub(crate) fn expression(i: &mut Tokens<'_>) -> ModalResult<Expr> {
             )))
             .parse_next(i),
     }
+}
+
+fn object_definition(i: &mut Tokens<'_>) -> ModalResult<Vec<(String, Expr)>> {
+    separated(
+        0..,
+        (identifier, TokenKind::Colon, expression).map(|(name, _, expr)| (name, expr)),
+        TokenKind::Comma,
+    )
+    .parse_next(i)
 }
 
 fn constant(i: &mut Tokens<'_>) -> ModalResult<Constant> {
@@ -1141,6 +1161,46 @@ mod tests {
             Ok(Expr::Parenthesis(Box::new(Expr::Constant(
                 Constant::Identifier("a".to_string())
             ))))
+        );
+    }
+
+    #[test]
+    fn test_empty_object() {
+        let tokens = build_tokens(&[(TokenKind::OpenBrace, "{"), (TokenKind::CloseBrace, "}")]);
+        assert_eq!(parse_expr(&tokens), Ok(Expr::InitObject(Vec::new())));
+    }
+
+    #[test]
+    fn test_object() {
+        let tokens = build_tokens(&[
+            (TokenKind::OpenBrace, "{"),
+            (TokenKind::Identifier, "a"),
+            (TokenKind::Colon, ":"),
+            (TokenKind::Identifier, "b"),
+            (TokenKind::Comma, ","),
+            (TokenKind::Identifier, "c"),
+            (TokenKind::Colon, ":"),
+            (TokenKind::Identifier, "d"),
+            (TokenKind::Operator(Operator::Add), "+"),
+            (TokenKind::Identifier, "e"),
+            (TokenKind::CloseBrace, "}"),
+        ]);
+        assert_eq!(
+            parse_expr(&tokens),
+            Ok(Expr::InitObject(vec![
+                (
+                    "a".to_string(),
+                    Expr::Constant(Constant::Identifier("b".to_string()))
+                ),
+                (
+                    "c".to_string(),
+                    Expr::BinaryOperator(
+                        BinaryOperator::Add,
+                        Box::new(Expr::Constant(Constant::Identifier("d".to_string()))),
+                        Box::new(Expr::Constant(Constant::Identifier("e".to_string()))),
+                    )
+                ),
+            ]))
         );
     }
 }

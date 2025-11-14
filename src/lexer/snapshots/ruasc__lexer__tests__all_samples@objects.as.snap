@@ -1,0 +1,57 @@
+---
+source: src/lexer/tests.rs
+expression: tokens
+input_file: samples/objects.as
+---
+- kind:
+    Keyword: Var
+  span:
+    start: 0
+    end: 3
+  raw: var
+- kind: Identifier
+  span:
+    start: 4
+    end: 5
+  raw: o
+- kind:
+    Operator: Assign
+  span:
+    start: 6
+    end: 7
+  raw: "="
+- kind: OpenBrace
+  span:
+    start: 8
+    end: 9
+  raw: "{"
+- kind: Identifier
+  span:
+    start: 9
+    end: 10
+  raw: a
+- kind: Colon
+  span:
+    start: 10
+    end: 11
+  raw: ":"
+- kind: Integer
+  span:
+    start: 12
+    end: 13
+  raw: "1"
+- kind: CloseBrace
+  span:
+    start: 13
+    end: 14
+  raw: "}"
+- kind: Semicolon
+  span:
+    start: 14
+    end: 15
+  raw: ;
+- kind: Newline
+  span:
+    start: 15
+    end: 16
+  raw: "\n"
