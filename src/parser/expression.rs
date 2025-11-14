@@ -35,6 +35,7 @@ pub(crate) enum Expr {
     Field(Box<Expr>, Box<Expr>),
     TypeOf(Vec<Expr>),
     Delete(Vec<Expr>),
+    Void(Vec<Expr>),
 }
 
 impl Expr {
@@ -178,6 +179,19 @@ pub(crate) fn expression(i: &mut Tokens<'_>) -> ModalResult<Expr> {
                 vec![expression.parse_next(i)?]
             };
             expr_next(Expr::Delete(values))
+                .context(StrContext::Label("expression"))
+                .parse_next(i)
+        }
+        TokenKind::Keyword(Keyword::Void) => {
+            TokenKind::Keyword(Keyword::Void).parse_next(i)?;
+            let values = if opt(TokenKind::OpenParen).parse_next(i)?.is_some() {
+                let values = expr_list.parse_next(i)?;
+                TokenKind::CloseParen.parse_next(i)?;
+                values
+            } else {
+                vec![expression.parse_next(i)?]
+            };
+            expr_next(Expr::Void(values))
                 .context(StrContext::Label("expression"))
                 .parse_next(i)
         }
@@ -1547,6 +1561,39 @@ mod tests {
                 Box::new(Expr::Constant(Constant::Identifier("a".to_string()))),
                 Box::new(Expr::Constant(Constant::Identifier("b".to_string())))
             ))
+        )
+    }
+
+    #[test]
+    fn test_void_as_keyword() {
+        let tokens = build_tokens(&[
+            (TokenKind::Keyword(Keyword::Void), "void"),
+            (TokenKind::Identifier, "a"),
+        ]);
+        assert_eq!(
+            parse_expr(&tokens),
+            Ok(Expr::Void(vec![Expr::Constant(Constant::Identifier(
+                "a".to_string()
+            ))]))
+        )
+    }
+
+    #[test]
+    fn test_void_as_function() {
+        let tokens = build_tokens(&[
+            (TokenKind::Keyword(Keyword::Void), "void"),
+            (TokenKind::OpenParen, "("),
+            (TokenKind::Identifier, "a"),
+            (TokenKind::Comma, ","),
+            (TokenKind::Identifier, "b"),
+            (TokenKind::CloseParen, ")"),
+        ]);
+        assert_eq!(
+            parse_expr(&tokens),
+            Ok(Expr::Void(vec![
+                Expr::Constant(Constant::Identifier("a".to_string())),
+                Expr::Constant(Constant::Identifier("b".to_string()))
+            ]))
         )
     }
 }

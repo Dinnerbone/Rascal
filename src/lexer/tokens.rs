@@ -105,4 +105,5 @@ pub enum Keyword {
     TypeOf,
     Delete,
     In,
+    Void,
 }
