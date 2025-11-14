@@ -55,3 +55,55 @@ input_file: samples/objects.as
     start: 15
     end: 16
   raw: "\n"
+- kind: Identifier
+  span:
+    start: 16
+    end: 21
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 21
+    end: 22
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 22
+    end: 29
+  raw: "o.a: "
+- kind:
+    Operator: Add
+  span:
+    start: 30
+    end: 31
+  raw: +
+- kind: Identifier
+  span:
+    start: 32
+    end: 33
+  raw: o
+- kind: Period
+  span:
+    start: 33
+    end: 34
+  raw: "."
+- kind: Identifier
+  span:
+    start: 34
+    end: 35
+  raw: a
+- kind: CloseParen
+  span:
+    start: 35
+    end: 36
+  raw: )
+- kind: Semicolon
+  span:
+    start: 36
+    end: 37
+  raw: ;
+- kind: Newline
+  span:
+    start: 37
+    end: 38
+  raw: "\n"

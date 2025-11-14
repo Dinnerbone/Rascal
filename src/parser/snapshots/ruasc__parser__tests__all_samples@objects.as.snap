@@ -12,3 +12,17 @@ Ok:
             - - a
               - Constant:
                   Integer: 1
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "o.a: "
+                - Field:
+                    - Constant:
+                        Identifier: o
+                    - a

@@ -26,6 +26,7 @@ pub(crate) enum Expr {
         no: Box<Expr>,
     },
     InitObject(Vec<(String, Expr)>),
+    Field(Box<Expr>, String),
 }
 
 impl Expr {
@@ -225,6 +226,11 @@ fn expr_next<'i>(prior: Expr) -> impl Parser<Tokens<'i>, Expr, ErrMode<ContextEr
                 expression
                     .parse_next(i)
                     .map(|next| Expr::for_binary_operator(op, Box::new(prior), Box::new(next)))
+            }
+            TokenKind::Period => {
+                TokenKind::Period.parse_next(i)?;
+                let name = identifier.parse_next(i)?;
+                expr_next(Expr::Field(Box::new(prior), name)).parse_next(i)
             }
             TokenKind::Keyword(Keyword::InstanceOf) => {
                 TokenKind::Keyword(Keyword::InstanceOf).parse_next(i)?;
@@ -1202,5 +1208,21 @@ mod tests {
                 ),
             ]))
         );
+    }
+
+    #[test]
+    fn test_field_access() {
+        let tokens = build_tokens(&[
+            (TokenKind::Identifier, "a"),
+            (TokenKind::Period, "."),
+            (TokenKind::Identifier, "b"),
+        ]);
+        assert_eq!(
+            parse_expr(&tokens),
+            Ok(Expr::Field(
+                Box::new(Expr::Constant(Constant::Identifier("a".to_string()))),
+                "b".to_string()
+            ))
+        )
     }
 }
