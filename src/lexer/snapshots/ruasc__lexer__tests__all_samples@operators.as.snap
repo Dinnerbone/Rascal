@@ -3090,66 +3090,183 @@ input_file: samples/operators.as
     start: 2426
     end: 2427
   raw: "\n"
-- kind: Identifier
+- kind:
+    Keyword: Var
   span:
     start: 2454
-    end: 2459
+    end: 2457
+  raw: var
+- kind: Identifier
+  span:
+    start: 2458
+    end: 2461
+  raw: obj
+- kind:
+    Operator: Assign
+  span:
+    start: 2462
+    end: 2463
+  raw: "="
+- kind: OpenBrace
+  span:
+    start: 2464
+    end: 2465
+  raw: "{"
+- kind: Identifier
+  span:
+    start: 2465
+    end: 2468
+  raw: key
+- kind: Colon
+  span:
+    start: 2468
+    end: 2469
+  raw: ":"
+- kind:
+    String: Double
+  span:
+    start: 2470
+    end: 2477
+  raw: value
+- kind: CloseBrace
+  span:
+    start: 2477
+    end: 2478
+  raw: "}"
+- kind: Semicolon
+  span:
+    start: 2478
+    end: 2479
+  raw: ;
+- kind: Newline
+  span:
+    start: 2479
+    end: 2480
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 2480
+    end: 2485
   raw: trace
 - kind: OpenParen
   span:
-    start: 2459
-    end: 2460
+    start: 2485
+    end: 2486
   raw: (
 - kind:
     String: Double
   span:
-    start: 2460
-    end: 2484
-  raw: "{} instanceof Object: "
+    start: 2486
+    end: 2511
+  raw: "obj instanceof Object: "
 - kind:
     Operator: Add
   span:
-    start: 2485
-    end: 2486
+    start: 2512
+    end: 2513
   raw: +
 - kind: OpenParen
   span:
-    start: 2487
-    end: 2488
+    start: 2514
+    end: 2515
   raw: (
 - kind: Identifier
   span:
-    start: 2488
-    end: 2494
-  raw: Object
+    start: 2515
+    end: 2518
+  raw: obj
 - kind:
     Keyword: InstanceOf
   span:
-    start: 2495
-    end: 2505
+    start: 2519
+    end: 2529
   raw: instanceof
 - kind: Identifier
   span:
-    start: 2506
-    end: 2512
+    start: 2530
+    end: 2536
   raw: Object
 - kind: CloseParen
   span:
-    start: 2512
-    end: 2513
+    start: 2536
+    end: 2537
   raw: )
 - kind: CloseParen
   span:
-    start: 2513
-    end: 2514
+    start: 2537
+    end: 2538
   raw: )
 - kind: Semicolon
   span:
-    start: 2514
-    end: 2515
+    start: 2538
+    end: 2539
   raw: ;
 - kind: Newline
   span:
-    start: 2515
-    end: 2516
+    start: 2539
+    end: 2540
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 2540
+    end: 2545
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 2545
+    end: 2546
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 2546
+    end: 2564
+  raw: "\\\"key\\\" in obj: "
+- kind:
+    Operator: Add
+  span:
+    start: 2565
+    end: 2566
+  raw: +
+- kind: OpenParen
+  span:
+    start: 2567
+    end: 2568
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 2568
+    end: 2573
+  raw: key
+- kind:
+    Keyword: In
+  span:
+    start: 2574
+    end: 2576
+  raw: in
+- kind: Identifier
+  span:
+    start: 2577
+    end: 2580
+  raw: obj
+- kind: CloseParen
+  span:
+    start: 2580
+    end: 2581
+  raw: )
+- kind: CloseParen
+  span:
+    start: 2581
+    end: 2582
+  raw: )
+- kind: Semicolon
+  span:
+    start: 2582
+    end: 2583
+  raw: ;
+- kind: Newline
+  span:
+    start: 2583
+    end: 2584
   raw: "\n"

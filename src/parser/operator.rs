@@ -43,6 +43,7 @@ pub(crate) enum BinaryOperator {
     LogicalAnd,
     LogicalOr,
     InstanceOf,
+    In,
 }
 
 impl Expr {

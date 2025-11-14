@@ -89,4 +89,6 @@ var max = (a > b) ? a : b;
 trace("(a > b) ? a : b = " + max); // 10
 
 // Keyword based operators
-trace("{} instanceof Object: " + (Object instanceof Object));
+var obj = {key: "value"};
+trace("obj instanceof Object: " + (obj instanceof Object));
+trace("\"key\" in obj: " + ("key" in obj));

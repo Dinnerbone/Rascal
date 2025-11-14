@@ -104,4 +104,5 @@ pub enum Keyword {
     New,
     TypeOf,
     Delete,
+    In,
 }

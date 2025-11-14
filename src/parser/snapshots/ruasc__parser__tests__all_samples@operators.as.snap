@@ -833,6 +833,13 @@ Ok:
                     String: "(a > b) ? a : b = "
                 - Constant:
                     Identifier: max
+    - Declare:
+        name: obj
+        value:
+          InitObject:
+            - - key
+              - Constant:
+                  String: value
     - Expr:
         Call:
           name:
@@ -842,11 +849,28 @@ Ok:
             - BinaryOperator:
                 - Add
                 - Constant:
-                    String: "{} instanceof Object: "
+                    String: "obj instanceof Object: "
                 - Parenthesis:
                     BinaryOperator:
                       - InstanceOf
                       - Constant:
-                          Identifier: Object
+                          Identifier: obj
                       - Constant:
                           Identifier: Object
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "\\\"key\\\" in obj: "
+                - Parenthesis:
+                    BinaryOperator:
+                      - In
+                      - Constant:
+                          String: key
+                      - Constant:
+                          Identifier: obj

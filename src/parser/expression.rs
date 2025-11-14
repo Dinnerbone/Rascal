@@ -339,6 +339,12 @@ fn expr_next<'i>(prior: Expr) -> impl Parser<Tokens<'i>, Expr, ErrMode<ContextEr
                     )
                 })
             }
+            TokenKind::Keyword(Keyword::In) => {
+                TokenKind::Keyword(Keyword::In).parse_next(i)?;
+                expression.parse_next(i).map(|next| {
+                    Expr::for_binary_operator(BinaryOperator::In, Box::new(prior), Box::new(next))
+                })
+            }
             TokenKind::Question => {
                 TokenKind::Question.parse_next(i)?;
                 let yes = expression.parse_next(i)?;
@@ -1524,6 +1530,23 @@ mod tests {
                 Box::new(Expr::Constant(Constant::Identifier("a".to_string()))),
                 Box::new(Expr::Constant(Constant::String("a".to_string())))
             )]))
+        )
+    }
+
+    #[test]
+    fn test_in() {
+        let tokens = build_tokens(&[
+            (TokenKind::Identifier, "a"),
+            (TokenKind::Keyword(Keyword::In), "in"),
+            (TokenKind::Identifier, "b"),
+        ]);
+        assert_eq!(
+            parse_expr(&tokens),
+            Ok(Expr::BinaryOperator(
+                BinaryOperator::In,
+                Box::new(Expr::Constant(Constant::Identifier("a".to_string()))),
+                Box::new(Expr::Constant(Constant::Identifier("b".to_string())))
+            ))
         )
     }
 }
