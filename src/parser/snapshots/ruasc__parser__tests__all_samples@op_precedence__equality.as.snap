@@ -1,0 +1,279 @@
+---
+source: src/parser/tests.rs
+expression: parsed
+input_file: samples/op_precedence/equality.as
+---
+Ok:
+  statements:
+    - Declare:
+        name: a
+        value:
+          Constant:
+            Integer: 10
+    - Declare:
+        name: b
+        value:
+          Constant:
+            String: "10"
+    - Declare:
+        name: c
+        value:
+          Constant:
+            Integer: 5
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - BinaryOperator:
+                    - Add
+                    - BinaryOperator:
+                        - Add
+                        - BinaryOperator:
+                            - Add
+                            - BinaryOperator:
+                                - Add
+                                - Constant:
+                                    String: a=
+                                - Constant:
+                                    Identifier: a
+                            - Constant:
+                                String: ", b="
+                        - Constant:
+                            Identifier: b
+                    - Constant:
+                        String: ", c="
+                - Constant:
+                    Identifier: c
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - Constant:
+                String: "----"
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "a == b = "
+                - Parenthesis:
+                    BinaryOperator:
+                      - Equal
+                      - Constant:
+                          Identifier: a
+                      - Constant:
+                          Identifier: b
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "a != b = "
+                - Parenthesis:
+                    BinaryOperator:
+                      - NotEqual
+                      - Constant:
+                          Identifier: a
+                      - Constant:
+                          Identifier: b
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - Constant:
+                String: "---"
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "a === b = "
+                - Parenthesis:
+                    BinaryOperator:
+                      - StrictEqual
+                      - Constant:
+                          Identifier: a
+                      - Constant:
+                          Identifier: b
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "a !== b = "
+                - Parenthesis:
+                    BinaryOperator:
+                      - StrictNotEqual
+                      - Constant:
+                          Identifier: a
+                      - Constant:
+                          Identifier: b
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - Constant:
+                String: "---"
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "a == b == c = "
+                - Parenthesis:
+                    BinaryOperator:
+                      - Equal
+                      - BinaryOperator:
+                          - Equal
+                          - Constant:
+                              Identifier: a
+                          - Constant:
+                              Identifier: b
+                      - Constant:
+                          Identifier: c
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "((a == b) == c) = "
+                - Parenthesis:
+                    BinaryOperator:
+                      - Equal
+                      - Parenthesis:
+                          BinaryOperator:
+                            - Equal
+                            - Constant:
+                                Identifier: a
+                            - Constant:
+                                Identifier: b
+                      - Constant:
+                          Identifier: c
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "a !== b !== c = "
+                - Parenthesis:
+                    BinaryOperator:
+                      - StrictNotEqual
+                      - BinaryOperator:
+                          - StrictNotEqual
+                          - Constant:
+                              Identifier: a
+                          - Constant:
+                              Identifier: b
+                      - Constant:
+                          Identifier: c
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "((a !== b) !== c) = "
+                - Parenthesis:
+                    BinaryOperator:
+                      - StrictNotEqual
+                      - Parenthesis:
+                          BinaryOperator:
+                            - StrictNotEqual
+                            - Constant:
+                                Identifier: a
+                            - Constant:
+                                Identifier: b
+                      - Constant:
+                          Identifier: c
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - Constant:
+                String: "---"
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "a == b > c = "
+                - Parenthesis:
+                    BinaryOperator:
+                      - Equal
+                      - Constant:
+                          Identifier: a
+                      - BinaryOperator:
+                          - GreaterThan
+                          - Constant:
+                              Identifier: b
+                          - Constant:
+                              Identifier: c
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "(a == (b > c)) = "
+                - Parenthesis:
+                    BinaryOperator:
+                      - Equal
+                      - Constant:
+                          Identifier: a
+                      - Parenthesis:
+                          BinaryOperator:
+                            - GreaterThan
+                            - Constant:
+                                Identifier: b
+                            - Constant:
+                                Identifier: c

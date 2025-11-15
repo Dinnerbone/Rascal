@@ -14,6 +14,7 @@ enum OperatorPrecedence {
     AddSub,
     BitShifts,
     Comparison,
+    Equality,
     Other,
     Assignment,
 }
@@ -86,6 +87,10 @@ impl BinaryOperator {
             | BinaryOperator::LessThanEqual
             | BinaryOperator::GreaterThan
             | BinaryOperator::GreaterThanEqual => OperatorPrecedence::Comparison,
+            BinaryOperator::Equal
+            | BinaryOperator::StrictEqual
+            | BinaryOperator::NotEqual
+            | BinaryOperator::StrictNotEqual => OperatorPrecedence::Equality,
             BinaryOperator::Assign
             | BinaryOperator::AddAssign
             | BinaryOperator::SubAssign
