@@ -3,11 +3,18 @@ use crate::lexer::tokens::{Token, TokenKind};
 use crate::parser::Tokens;
 use crate::parser::expression::Expr;
 use serde::Serialize;
+use std::cmp::Ordering;
 use winnow::error::ParserError;
 use winnow::token::any;
 use winnow::{ModalResult, Parser};
 
-#[derive(Debug, Clone, Serialize, PartialEq)]
+#[derive(Debug, Clone, Copy, Serialize, PartialEq, Eq, PartialOrd, Ord)]
+enum OperatorPrecedence {
+    MulDivMod,
+    Other,
+}
+
+#[derive(Debug, Clone, Copy, Serialize, PartialEq)]
 pub(crate) enum BinaryOperator {
     Add,
     Assign,
@@ -46,6 +53,32 @@ pub(crate) enum BinaryOperator {
     In,
 }
 
+impl BinaryOperator {
+    pub(crate) fn should_swap(left: BinaryOperator, right: BinaryOperator) -> bool {
+        match right.precedence().cmp(&left.precedence()) {
+            Ordering::Less => true,
+            Ordering::Equal
+                if left.precedence() != OperatorPrecedence::Other
+                    && right.precedence() != OperatorPrecedence::Other =>
+            {
+                true
+            }
+            _ => false,
+        }
+    }
+}
+
+impl BinaryOperator {
+    fn precedence(&self) -> OperatorPrecedence {
+        match self {
+            BinaryOperator::Multiply | BinaryOperator::Divide | BinaryOperator::Modulo => {
+                OperatorPrecedence::MulDivMod
+            }
+            _ => OperatorPrecedence::Other,
+        }
+    }
+}
+
 impl Expr {
     pub(crate) fn for_binary_operator(op: BinaryOperator, a: Box<Expr>, b: Box<Expr>) -> Expr {
         match *b {
@@ -54,6 +87,9 @@ impl Expr {
                 yes,
                 no,
             },
+            Expr::BinaryOperator(bop, ba, bb) if BinaryOperator::should_swap(op, bop) => {
+                Expr::BinaryOperator(bop, Box::new(Expr::for_binary_operator(op, a, ba)), bb)
+            }
             _ => Expr::BinaryOperator(op, a, b),
         }
     }
