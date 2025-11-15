@@ -12,6 +12,7 @@ use winnow::{ModalResult, Parser};
 enum OperatorPrecedence {
     MulDivMod,
     AddSub,
+    BitShifts,
     Other,
     Assignment,
 }
@@ -77,6 +78,9 @@ impl BinaryOperator {
                 OperatorPrecedence::MulDivMod
             }
             BinaryOperator::Add | BinaryOperator::Sub => OperatorPrecedence::AddSub,
+            BinaryOperator::BitShiftRight
+            | BinaryOperator::BitShiftLeft
+            | BinaryOperator::BitShiftRightUnsigned => OperatorPrecedence::BitShifts,
             BinaryOperator::Assign
             | BinaryOperator::AddAssign
             | BinaryOperator::SubAssign

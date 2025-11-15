@@ -1,0 +1,1320 @@
+---
+source: src/lexer/tests.rs
+expression: tokens
+input_file: samples/op_precedence/bit_shifts.as
+---
+- kind:
+    Keyword: Var
+  span:
+    start: 0
+    end: 3
+  raw: var
+- kind: Identifier
+  span:
+    start: 4
+    end: 5
+  raw: a
+- kind:
+    Operator: Assign
+  span:
+    start: 6
+    end: 7
+  raw: "="
+- kind: Integer
+  span:
+    start: 8
+    end: 10
+  raw: "16"
+- kind: Semicolon
+  span:
+    start: 10
+    end: 11
+  raw: ;
+- kind:
+    Keyword: Var
+  span:
+    start: 28
+    end: 31
+  raw: var
+- kind: Identifier
+  span:
+    start: 32
+    end: 33
+  raw: b
+- kind:
+    Operator: Assign
+  span:
+    start: 34
+    end: 35
+  raw: "="
+- kind: Integer
+  span:
+    start: 36
+    end: 37
+  raw: "2"
+- kind: Semicolon
+  span:
+    start: 37
+    end: 38
+  raw: ;
+- kind: Newline
+  span:
+    start: 38
+    end: 39
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 39
+    end: 42
+  raw: var
+- kind: Identifier
+  span:
+    start: 43
+    end: 44
+  raw: c
+- kind:
+    Operator: Assign
+  span:
+    start: 45
+    end: 46
+  raw: "="
+- kind: Integer
+  span:
+    start: 47
+    end: 48
+  raw: "1"
+- kind: Semicolon
+  span:
+    start: 48
+    end: 49
+  raw: ;
+- kind: Newline
+  span:
+    start: 49
+    end: 50
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 50
+    end: 51
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 51
+    end: 56
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 56
+    end: 57
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 57
+    end: 61
+  raw: a=
+- kind:
+    Operator: Add
+  span:
+    start: 62
+    end: 63
+  raw: +
+- kind: Identifier
+  span:
+    start: 64
+    end: 65
+  raw: a
+- kind:
+    Operator: Add
+  span:
+    start: 66
+    end: 67
+  raw: +
+- kind:
+    String: Double
+  span:
+    start: 68
+    end: 74
+  raw: ", b="
+- kind:
+    Operator: Add
+  span:
+    start: 75
+    end: 76
+  raw: +
+- kind: Identifier
+  span:
+    start: 77
+    end: 78
+  raw: b
+- kind:
+    Operator: Add
+  span:
+    start: 79
+    end: 80
+  raw: +
+- kind:
+    String: Double
+  span:
+    start: 81
+    end: 87
+  raw: ", c="
+- kind:
+    Operator: Add
+  span:
+    start: 88
+    end: 89
+  raw: +
+- kind: Identifier
+  span:
+    start: 90
+    end: 91
+  raw: c
+- kind: CloseParen
+  span:
+    start: 91
+    end: 92
+  raw: )
+- kind: Semicolon
+  span:
+    start: 92
+    end: 93
+  raw: ;
+- kind: Newline
+  span:
+    start: 93
+    end: 94
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 94
+    end: 99
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 99
+    end: 100
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 100
+    end: 106
+  raw: "----"
+- kind: CloseParen
+  span:
+    start: 106
+    end: 107
+  raw: )
+- kind: Semicolon
+  span:
+    start: 107
+    end: 108
+  raw: ;
+- kind: Newline
+  span:
+    start: 108
+    end: 109
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 109
+    end: 110
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 138
+    end: 143
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 143
+    end: 144
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 144
+    end: 160
+  raw: "a << b >> c = "
+- kind:
+    Operator: Add
+  span:
+    start: 161
+    end: 162
+  raw: +
+- kind: OpenParen
+  span:
+    start: 163
+    end: 164
+  raw: (
+- kind: Identifier
+  span:
+    start: 164
+    end: 165
+  raw: a
+- kind:
+    Operator: BitShiftLeft
+  span:
+    start: 166
+    end: 168
+  raw: "<<"
+- kind: Identifier
+  span:
+    start: 169
+    end: 170
+  raw: b
+- kind:
+    Operator: BitShiftRight
+  span:
+    start: 171
+    end: 173
+  raw: ">>"
+- kind: Identifier
+  span:
+    start: 174
+    end: 175
+  raw: c
+- kind: CloseParen
+  span:
+    start: 175
+    end: 176
+  raw: )
+- kind: CloseParen
+  span:
+    start: 176
+    end: 177
+  raw: )
+- kind: Semicolon
+  span:
+    start: 177
+    end: 178
+  raw: ;
+- kind: Identifier
+  span:
+    start: 185
+    end: 190
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 190
+    end: 191
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 191
+    end: 211
+  raw: "((a << b) >> c) = "
+- kind:
+    Operator: Add
+  span:
+    start: 212
+    end: 213
+  raw: +
+- kind: OpenParen
+  span:
+    start: 214
+    end: 215
+  raw: (
+- kind: OpenParen
+  span:
+    start: 215
+    end: 216
+  raw: (
+- kind: Identifier
+  span:
+    start: 216
+    end: 217
+  raw: a
+- kind:
+    Operator: BitShiftLeft
+  span:
+    start: 218
+    end: 220
+  raw: "<<"
+- kind: Identifier
+  span:
+    start: 221
+    end: 222
+  raw: b
+- kind: CloseParen
+  span:
+    start: 222
+    end: 223
+  raw: )
+- kind:
+    Operator: BitShiftRight
+  span:
+    start: 224
+    end: 226
+  raw: ">>"
+- kind: Identifier
+  span:
+    start: 227
+    end: 228
+  raw: c
+- kind: CloseParen
+  span:
+    start: 228
+    end: 229
+  raw: )
+- kind: CloseParen
+  span:
+    start: 229
+    end: 230
+  raw: )
+- kind: Semicolon
+  span:
+    start: 230
+    end: 231
+  raw: ;
+- kind: Identifier
+  span:
+    start: 238
+    end: 243
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 243
+    end: 244
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 244
+    end: 249
+  raw: "---"
+- kind: CloseParen
+  span:
+    start: 249
+    end: 250
+  raw: )
+- kind: Semicolon
+  span:
+    start: 250
+    end: 251
+  raw: ;
+- kind: Newline
+  span:
+    start: 251
+    end: 252
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 252
+    end: 253
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 253
+    end: 258
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 258
+    end: 259
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 259
+    end: 275
+  raw: "a >> b << c = "
+- kind:
+    Operator: Add
+  span:
+    start: 276
+    end: 277
+  raw: +
+- kind: OpenParen
+  span:
+    start: 278
+    end: 279
+  raw: (
+- kind: Identifier
+  span:
+    start: 279
+    end: 280
+  raw: a
+- kind:
+    Operator: BitShiftRight
+  span:
+    start: 281
+    end: 283
+  raw: ">>"
+- kind: Identifier
+  span:
+    start: 284
+    end: 285
+  raw: b
+- kind:
+    Operator: BitShiftLeft
+  span:
+    start: 286
+    end: 288
+  raw: "<<"
+- kind: Identifier
+  span:
+    start: 289
+    end: 290
+  raw: c
+- kind: CloseParen
+  span:
+    start: 290
+    end: 291
+  raw: )
+- kind: CloseParen
+  span:
+    start: 291
+    end: 292
+  raw: )
+- kind: Semicolon
+  span:
+    start: 292
+    end: 293
+  raw: ;
+- kind: Identifier
+  span:
+    start: 299
+    end: 304
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 304
+    end: 305
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 305
+    end: 325
+  raw: "((a >> b) << c) = "
+- kind:
+    Operator: Add
+  span:
+    start: 326
+    end: 327
+  raw: +
+- kind: OpenParen
+  span:
+    start: 328
+    end: 329
+  raw: (
+- kind: OpenParen
+  span:
+    start: 329
+    end: 330
+  raw: (
+- kind: Identifier
+  span:
+    start: 330
+    end: 331
+  raw: a
+- kind:
+    Operator: BitShiftRight
+  span:
+    start: 332
+    end: 334
+  raw: ">>"
+- kind: Identifier
+  span:
+    start: 335
+    end: 336
+  raw: b
+- kind: CloseParen
+  span:
+    start: 336
+    end: 337
+  raw: )
+- kind:
+    Operator: BitShiftLeft
+  span:
+    start: 338
+    end: 340
+  raw: "<<"
+- kind: Identifier
+  span:
+    start: 341
+    end: 342
+  raw: c
+- kind: CloseParen
+  span:
+    start: 342
+    end: 343
+  raw: )
+- kind: CloseParen
+  span:
+    start: 343
+    end: 344
+  raw: )
+- kind: Semicolon
+  span:
+    start: 344
+    end: 345
+  raw: ;
+- kind: Identifier
+  span:
+    start: 351
+    end: 356
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 356
+    end: 357
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 357
+    end: 362
+  raw: "---"
+- kind: CloseParen
+  span:
+    start: 362
+    end: 363
+  raw: )
+- kind: Semicolon
+  span:
+    start: 363
+    end: 364
+  raw: ;
+- kind: Newline
+  span:
+    start: 364
+    end: 365
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 365
+    end: 366
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 366
+    end: 371
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 371
+    end: 372
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 372
+    end: 389
+  raw: "a >>> b >> c = "
+- kind:
+    Operator: Add
+  span:
+    start: 390
+    end: 391
+  raw: +
+- kind: OpenParen
+  span:
+    start: 392
+    end: 393
+  raw: (
+- kind: Identifier
+  span:
+    start: 393
+    end: 394
+  raw: a
+- kind:
+    Operator: BitShiftRightUnsigned
+  span:
+    start: 395
+    end: 398
+  raw: ">>>"
+- kind: Identifier
+  span:
+    start: 399
+    end: 400
+  raw: b
+- kind:
+    Operator: BitShiftRight
+  span:
+    start: 401
+    end: 403
+  raw: ">>"
+- kind: Identifier
+  span:
+    start: 404
+    end: 405
+  raw: c
+- kind: CloseParen
+  span:
+    start: 405
+    end: 406
+  raw: )
+- kind: CloseParen
+  span:
+    start: 406
+    end: 407
+  raw: )
+- kind: Semicolon
+  span:
+    start: 407
+    end: 408
+  raw: ;
+- kind: Identifier
+  span:
+    start: 414
+    end: 419
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 419
+    end: 420
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 420
+    end: 441
+  raw: "((a >>> b) >> c) = "
+- kind:
+    Operator: Add
+  span:
+    start: 442
+    end: 443
+  raw: +
+- kind: OpenParen
+  span:
+    start: 444
+    end: 445
+  raw: (
+- kind: OpenParen
+  span:
+    start: 445
+    end: 446
+  raw: (
+- kind: Identifier
+  span:
+    start: 446
+    end: 447
+  raw: a
+- kind:
+    Operator: BitShiftRightUnsigned
+  span:
+    start: 448
+    end: 451
+  raw: ">>>"
+- kind: Identifier
+  span:
+    start: 452
+    end: 453
+  raw: b
+- kind: CloseParen
+  span:
+    start: 453
+    end: 454
+  raw: )
+- kind:
+    Operator: BitShiftRight
+  span:
+    start: 455
+    end: 457
+  raw: ">>"
+- kind: Identifier
+  span:
+    start: 458
+    end: 459
+  raw: c
+- kind: CloseParen
+  span:
+    start: 459
+    end: 460
+  raw: )
+- kind: CloseParen
+  span:
+    start: 460
+    end: 461
+  raw: )
+- kind: Semicolon
+  span:
+    start: 461
+    end: 462
+  raw: ;
+- kind: Identifier
+  span:
+    start: 468
+    end: 473
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 473
+    end: 474
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 474
+    end: 479
+  raw: "---"
+- kind: CloseParen
+  span:
+    start: 479
+    end: 480
+  raw: )
+- kind: Semicolon
+  span:
+    start: 480
+    end: 481
+  raw: ;
+- kind: Newline
+  span:
+    start: 481
+    end: 482
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 482
+    end: 483
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 500
+    end: 505
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 505
+    end: 506
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 506
+    end: 528
+  raw: "a << b >> c >>> b = "
+- kind:
+    Operator: Add
+  span:
+    start: 529
+    end: 530
+  raw: +
+- kind: OpenParen
+  span:
+    start: 531
+    end: 532
+  raw: (
+- kind: Identifier
+  span:
+    start: 532
+    end: 533
+  raw: a
+- kind:
+    Operator: BitShiftLeft
+  span:
+    start: 534
+    end: 536
+  raw: "<<"
+- kind: Identifier
+  span:
+    start: 537
+    end: 538
+  raw: b
+- kind:
+    Operator: BitShiftRight
+  span:
+    start: 539
+    end: 541
+  raw: ">>"
+- kind: Identifier
+  span:
+    start: 542
+    end: 543
+  raw: c
+- kind:
+    Operator: BitShiftRightUnsigned
+  span:
+    start: 544
+    end: 547
+  raw: ">>>"
+- kind: Identifier
+  span:
+    start: 548
+    end: 549
+  raw: b
+- kind: CloseParen
+  span:
+    start: 549
+    end: 550
+  raw: )
+- kind: CloseParen
+  span:
+    start: 550
+    end: 551
+  raw: )
+- kind: Semicolon
+  span:
+    start: 551
+    end: 552
+  raw: ;
+- kind: Identifier
+  span:
+    start: 558
+    end: 563
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 563
+    end: 564
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 564
+    end: 592
+  raw: "(((a << b) >> c) >>> b) = "
+- kind:
+    Operator: Add
+  span:
+    start: 593
+    end: 594
+  raw: +
+- kind: OpenParen
+  span:
+    start: 595
+    end: 596
+  raw: (
+- kind: OpenParen
+  span:
+    start: 596
+    end: 597
+  raw: (
+- kind: OpenParen
+  span:
+    start: 597
+    end: 598
+  raw: (
+- kind: Identifier
+  span:
+    start: 598
+    end: 599
+  raw: a
+- kind:
+    Operator: BitShiftLeft
+  span:
+    start: 600
+    end: 602
+  raw: "<<"
+- kind: Identifier
+  span:
+    start: 603
+    end: 604
+  raw: b
+- kind: CloseParen
+  span:
+    start: 604
+    end: 605
+  raw: )
+- kind:
+    Operator: BitShiftRight
+  span:
+    start: 606
+    end: 608
+  raw: ">>"
+- kind: Identifier
+  span:
+    start: 609
+    end: 610
+  raw: c
+- kind: CloseParen
+  span:
+    start: 610
+    end: 611
+  raw: )
+- kind:
+    Operator: BitShiftRightUnsigned
+  span:
+    start: 612
+    end: 615
+  raw: ">>>"
+- kind: Identifier
+  span:
+    start: 616
+    end: 617
+  raw: b
+- kind: CloseParen
+  span:
+    start: 617
+    end: 618
+  raw: )
+- kind: CloseParen
+  span:
+    start: 618
+    end: 619
+  raw: )
+- kind: Semicolon
+  span:
+    start: 619
+    end: 620
+  raw: ;
+- kind: Identifier
+  span:
+    start: 626
+    end: 631
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 631
+    end: 632
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 632
+    end: 637
+  raw: "---"
+- kind: CloseParen
+  span:
+    start: 637
+    end: 638
+  raw: )
+- kind: Semicolon
+  span:
+    start: 638
+    end: 639
+  raw: ;
+- kind: Newline
+  span:
+    start: 639
+    end: 640
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 640
+    end: 641
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 694
+    end: 699
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 699
+    end: 700
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 700
+    end: 715
+  raw: "a << b + c = "
+- kind:
+    Operator: Add
+  span:
+    start: 716
+    end: 717
+  raw: +
+- kind: OpenParen
+  span:
+    start: 718
+    end: 719
+  raw: (
+- kind: Identifier
+  span:
+    start: 719
+    end: 720
+  raw: a
+- kind:
+    Operator: BitShiftLeft
+  span:
+    start: 721
+    end: 723
+  raw: "<<"
+- kind: Identifier
+  span:
+    start: 724
+    end: 725
+  raw: b
+- kind:
+    Operator: Add
+  span:
+    start: 726
+    end: 727
+  raw: +
+- kind: Identifier
+  span:
+    start: 728
+    end: 729
+  raw: c
+- kind: CloseParen
+  span:
+    start: 729
+    end: 730
+  raw: )
+- kind: CloseParen
+  span:
+    start: 730
+    end: 731
+  raw: )
+- kind: Semicolon
+  span:
+    start: 731
+    end: 732
+  raw: ;
+- kind: Identifier
+  span:
+    start: 739
+    end: 744
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 744
+    end: 745
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 745
+    end: 762
+  raw: "a << (b + c) = "
+- kind:
+    Operator: Add
+  span:
+    start: 763
+    end: 764
+  raw: +
+- kind: OpenParen
+  span:
+    start: 765
+    end: 766
+  raw: (
+- kind: Identifier
+  span:
+    start: 766
+    end: 767
+  raw: a
+- kind:
+    Operator: BitShiftLeft
+  span:
+    start: 768
+    end: 770
+  raw: "<<"
+- kind: OpenParen
+  span:
+    start: 771
+    end: 772
+  raw: (
+- kind: Identifier
+  span:
+    start: 772
+    end: 773
+  raw: b
+- kind:
+    Operator: Add
+  span:
+    start: 774
+    end: 775
+  raw: +
+- kind: Identifier
+  span:
+    start: 776
+    end: 777
+  raw: c
+- kind: CloseParen
+  span:
+    start: 777
+    end: 778
+  raw: )
+- kind: CloseParen
+  span:
+    start: 778
+    end: 779
+  raw: )
+- kind: CloseParen
+  span:
+    start: 779
+    end: 780
+  raw: )
+- kind: Semicolon
+  span:
+    start: 780
+    end: 781
+  raw: ;
+- kind: Identifier
+  span:
+    start: 823
+    end: 828
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 828
+    end: 829
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 829
+    end: 834
+  raw: "---"
+- kind: CloseParen
+  span:
+    start: 834
+    end: 835
+  raw: )
+- kind: Semicolon
+  span:
+    start: 835
+    end: 836
+  raw: ;
+- kind: Newline
+  span:
+    start: 836
+    end: 837
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 837
+    end: 842
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 842
+    end: 843
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 843
+    end: 858
+  raw: "a * b << c = "
+- kind:
+    Operator: Add
+  span:
+    start: 859
+    end: 860
+  raw: +
+- kind: OpenParen
+  span:
+    start: 861
+    end: 862
+  raw: (
+- kind: Identifier
+  span:
+    start: 862
+    end: 863
+  raw: a
+- kind:
+    Operator: Multiply
+  span:
+    start: 864
+    end: 865
+  raw: "*"
+- kind: Identifier
+  span:
+    start: 866
+    end: 867
+  raw: b
+- kind:
+    Operator: BitShiftLeft
+  span:
+    start: 868
+    end: 870
+  raw: "<<"
+- kind: Identifier
+  span:
+    start: 871
+    end: 872
+  raw: c
+- kind: CloseParen
+  span:
+    start: 872
+    end: 873
+  raw: )
+- kind: CloseParen
+  span:
+    start: 873
+    end: 874
+  raw: )
+- kind: Semicolon
+  span:
+    start: 874
+    end: 875
+  raw: ;
+- kind: Identifier
+  span:
+    start: 882
+    end: 887
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 887
+    end: 888
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 888
+    end: 905
+  raw: "(a * b) << c = "
+- kind:
+    Operator: Add
+  span:
+    start: 906
+    end: 907
+  raw: +
+- kind: OpenParen
+  span:
+    start: 908
+    end: 909
+  raw: (
+- kind: OpenParen
+  span:
+    start: 909
+    end: 910
+  raw: (
+- kind: Identifier
+  span:
+    start: 910
+    end: 911
+  raw: a
+- kind:
+    Operator: Multiply
+  span:
+    start: 912
+    end: 913
+  raw: "*"
+- kind: Identifier
+  span:
+    start: 914
+    end: 915
+  raw: b
+- kind: CloseParen
+  span:
+    start: 915
+    end: 916
+  raw: )
+- kind:
+    Operator: BitShiftLeft
+  span:
+    start: 917
+    end: 919
+  raw: "<<"
+- kind: Identifier
+  span:
+    start: 920
+    end: 921
+  raw: c
+- kind: CloseParen
+  span:
+    start: 921
+    end: 922
+  raw: )
+- kind: CloseParen
+  span:
+    start: 922
+    end: 923
+  raw: )
+- kind: Semicolon
+  span:
+    start: 923
+    end: 924
+  raw: ;
