@@ -15,6 +15,7 @@ enum OperatorPrecedence {
     BitShifts,
     Comparison,
     Equality,
+    BitMath,
     Other,
     Assignment,
 }
@@ -91,6 +92,9 @@ impl BinaryOperator {
             | BinaryOperator::StrictEqual
             | BinaryOperator::NotEqual
             | BinaryOperator::StrictNotEqual => OperatorPrecedence::Equality,
+            BinaryOperator::BitAnd | BinaryOperator::BitOr | BinaryOperator::BitXor => {
+                OperatorPrecedence::BitMath
+            }
             BinaryOperator::Assign
             | BinaryOperator::AddAssign
             | BinaryOperator::SubAssign
