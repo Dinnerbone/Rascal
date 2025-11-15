@@ -43,18 +43,18 @@ Ok:
                       args:
                         - BinaryOperator:
                             - Add
-                            - Constant:
-                                String: "a = "
                             - BinaryOperator:
                                 - Add
-                                - Constant:
-                                    Identifier: a
                                 - BinaryOperator:
                                     - Add
                                     - Constant:
-                                        String: ", b = "
+                                        String: "a = "
                                     - Constant:
-                                        Identifier: b
+                                        Identifier: a
+                                - Constant:
+                                    String: ", b = "
+                            - Constant:
+                                Identifier: b
           args:
             - Constant:
                 String: aa

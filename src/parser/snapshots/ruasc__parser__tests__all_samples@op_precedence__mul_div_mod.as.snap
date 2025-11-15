@@ -28,26 +28,26 @@ Ok:
           args:
             - BinaryOperator:
                 - Add
-                - Constant:
-                    String: a=
                 - BinaryOperator:
                     - Add
-                    - Constant:
-                        Identifier: a
                     - BinaryOperator:
                         - Add
-                        - Constant:
-                            String: ", b="
                         - BinaryOperator:
                             - Add
-                            - Constant:
-                                Identifier: b
                             - BinaryOperator:
                                 - Add
                                 - Constant:
-                                    String: ", c="
+                                    String: a=
                                 - Constant:
-                                    Identifier: c
+                                    Identifier: a
+                            - Constant:
+                                String: ", b="
+                        - Constant:
+                            Identifier: b
+                    - Constant:
+                        String: ", c="
+                - Constant:
+                    Identifier: c
     - Expr:
         Call:
           name:

@@ -126,14 +126,14 @@ Ok:
         value:
           BinaryOperator:
             - Add
-            - Constant:
-                Integer: 1
             - BinaryOperator:
                 - Add
                 - Constant:
-                    Integer: 2
+                    Integer: 1
                 - Constant:
-                    Integer: 3
+                    Integer: 2
+            - Constant:
+                Integer: 3
     - Declare:
         name: diff
         value:
@@ -165,20 +165,20 @@ Ok:
         name: combo
         value:
           BinaryOperator:
-            - Multiply
-            - Parenthesis:
-                BinaryOperator:
-                  - Add
-                  - Constant:
-                      Integer: 16
-                  - Constant:
-                      Integer: 15
+            - Sub
             - BinaryOperator:
-                - Sub
+                - Multiply
+                - Parenthesis:
+                    BinaryOperator:
+                      - Add
+                      - Constant:
+                          Integer: 16
+                      - Constant:
+                          Integer: 15
                 - Constant:
                     Float: 25
-                - Constant:
-                    Float: 0.75
+            - Constant:
+                Float: 0.75
     - Expr:
         Call:
           name:

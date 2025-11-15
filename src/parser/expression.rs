@@ -859,30 +859,6 @@ mod tests {
     }
 
     #[test]
-    fn test_binary_right_associative() {
-        // a + b + c parses as a + (b + c)
-        let tokens = build_tokens(&[
-            (TokenKind::Identifier, "a"),
-            (TokenKind::Operator(Operator::Add), "+"),
-            (TokenKind::Identifier, "b"),
-            (TokenKind::Operator(Operator::Add), "+"),
-            (TokenKind::Identifier, "c"),
-        ]);
-        assert_eq!(
-            parse_expr(&tokens),
-            Ok(Expr::BinaryOperator(
-                BinaryOperator::Add,
-                Box::new(Expr::Constant(Constant::Identifier("a".to_string()))),
-                Box::new(Expr::BinaryOperator(
-                    BinaryOperator::Add,
-                    Box::new(Expr::Constant(Constant::Identifier("b".to_string()))),
-                    Box::new(Expr::Constant(Constant::Identifier("c".to_string())))
-                ))
-            ))
-        );
-    }
-
-    #[test]
     fn test_integer() {
         let tokens = build_tokens(&[(TokenKind::Integer, "0123")]);
         assert_eq!(

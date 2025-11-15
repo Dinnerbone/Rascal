@@ -183,14 +183,14 @@ Ok:
                 - Parenthesis:
                     BinaryOperator:
                       - Add
-                      - Constant:
-                          Identifier: hello
                       - BinaryOperator:
                           - Add
                           - Constant:
-                              String: " "
+                              Identifier: hello
                           - Constant:
-                              Identifier: world
+                              String: " "
+                      - Constant:
+                          Identifier: world
     - Declare:
         name: x
         value:

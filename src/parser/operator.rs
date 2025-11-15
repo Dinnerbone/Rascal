@@ -11,7 +11,9 @@ use winnow::{ModalResult, Parser};
 #[derive(Debug, Clone, Copy, Serialize, PartialEq, Eq, PartialOrd, Ord)]
 enum OperatorPrecedence {
     MulDivMod,
+    AddSub,
     Other,
+    Assignment,
 }
 
 #[derive(Debug, Clone, Copy, Serialize, PartialEq)]
@@ -55,14 +57,14 @@ pub(crate) enum BinaryOperator {
 
 impl BinaryOperator {
     pub(crate) fn should_swap(left: BinaryOperator, right: BinaryOperator) -> bool {
+        if left.precedence() == OperatorPrecedence::Other
+            || right.precedence() == OperatorPrecedence::Other
+        {
+            return false; // for now
+        }
         match right.precedence().cmp(&left.precedence()) {
-            Ordering::Less => true,
-            Ordering::Equal
-                if left.precedence() != OperatorPrecedence::Other
-                    && right.precedence() != OperatorPrecedence::Other =>
-            {
-                true
-            }
+            Ordering::Greater => true,
+            Ordering::Equal if left.precedence() < OperatorPrecedence::Other => true,
             _ => false,
         }
     }
@@ -74,6 +76,19 @@ impl BinaryOperator {
             BinaryOperator::Multiply | BinaryOperator::Divide | BinaryOperator::Modulo => {
                 OperatorPrecedence::MulDivMod
             }
+            BinaryOperator::Add | BinaryOperator::Sub => OperatorPrecedence::AddSub,
+            BinaryOperator::Assign
+            | BinaryOperator::AddAssign
+            | BinaryOperator::SubAssign
+            | BinaryOperator::DivideAssign
+            | BinaryOperator::MultiplyAssign
+            | BinaryOperator::ModuloAssign
+            | BinaryOperator::BitAndAssign
+            | BinaryOperator::BitOrAssign
+            | BinaryOperator::BitXorAssign
+            | BinaryOperator::BitShiftLeftAssign
+            | BinaryOperator::BitShiftRightAssign
+            | BinaryOperator::BitShiftRightUnsignedAssign => OperatorPrecedence::Assignment,
             _ => OperatorPrecedence::Other,
         }
     }
