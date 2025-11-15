@@ -278,6 +278,7 @@ fn lex_identifier_or_keyword<'a>(stream: &mut Stream<'a>) -> Token<'a> {
         "void" => TokenKind::Keyword(Keyword::Void),
         "function" => TokenKind::Keyword(Keyword::Function),
         "return" => TokenKind::Keyword(Keyword::Return),
+        "for" => TokenKind::Keyword(Keyword::For),
         _ => TokenKind::Identifier,
     };
 

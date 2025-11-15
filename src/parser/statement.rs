@@ -3,7 +3,7 @@ use crate::lexer::tokens::{Keyword, TokenKind};
 use crate::parser::expression::{Expr, expr_list, expression};
 use crate::parser::{Tokens, identifier, skip_newline};
 use serde::Serialize;
-use winnow::combinator::{cond, cut_err, opt, peek, separated};
+use winnow::combinator::{alt, cond, cut_err, opt, peek, separated};
 use winnow::error::{ContextError, ErrMode, StrContext};
 use winnow::stream::Stream;
 use winnow::token::any;
@@ -15,6 +15,26 @@ pub(crate) enum Statement {
     Return(Vec<Expr>),
     Expr(Expr),
     Block(Vec<Statement>),
+    ForIn {
+        condition: ForCondition,
+        body: Box<Statement>,
+    },
+}
+
+#[derive(Debug, Clone, Serialize, PartialEq)]
+pub(crate) enum ForCondition {
+    Enumerate {
+        variable: String,
+        declare: bool,
+        object: Expr,
+    },
+    Classic {
+        initialize: Option<Box<Statement>>,
+        // This is technically incorrect, we treat `a++, b++` as two different expressions, but they should be one (and we'd have a `Next(a, b)` expression)
+        // Unfortunately that seems difficult to implement _correctly_, so this is a good stopgap (did anyone even use `,` in regular code, outside for loops?)
+        condition: Vec<Expr>,
+        update: Vec<Expr>,
+    },
 }
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
@@ -49,6 +69,9 @@ pub(crate) fn statement(i: &mut Tokens<'_>) -> ModalResult<Statement> {
             };
             Statement::Return(values)
         }
+        TokenKind::Keyword(Keyword::For) => for_loop
+            .context(StrContext::Label("for loop"))
+            .parse_next(i)?,
         TokenKind::OpenBrace => {
             let statements = statement_list(true).parse_next(i)?;
             TokenKind::CloseBrace.parse_next(i)?;
@@ -104,6 +127,48 @@ fn declaration(i: &mut Tokens<'_>) -> ModalResult<Declaration> {
     Ok(Declaration { name, value })
 }
 
+fn for_loop(i: &mut Tokens<'_>) -> ModalResult<Statement> {
+    TokenKind::OpenParen.parse_next(i)?;
+    let condition = if let Some((var, name, _)) = opt((
+        opt(TokenKind::Keyword(Keyword::Var)),
+        identifier,
+        TokenKind::Keyword(Keyword::In),
+    ))
+    .parse_next(i)?
+    {
+        ForCondition::Enumerate {
+            variable: name.to_string(),
+            declare: var.is_some(),
+            object: expression.parse_next(i)?,
+        }
+    } else {
+        let (init, _, cond, _, next) = (
+            opt(alt((
+                expression.map(Statement::Expr),
+                (TokenKind::Keyword(Keyword::Var), declaration_list).map(|v| v.1),
+            ))),
+            TokenKind::Semicolon,
+            separated(0.., expression, TokenKind::Comma),
+            TokenKind::Semicolon,
+            separated(0.., expression, TokenKind::Comma),
+        )
+            .parse_next(i)?;
+        ForCondition::Classic {
+            initialize: init.map(Box::new),
+            condition: cond,
+            update: next,
+        }
+    };
+    TokenKind::CloseParen.parse_next(i)?;
+
+    // Braces are optional, so a body is just one statement - which is _usually_ a block of other statements
+    let body = statement.parse_next(i)?;
+    Ok(Statement::ForIn {
+        condition,
+        body: Box::new(body),
+    })
+}
+
 pub(crate) fn function(i: &mut Tokens<'_>) -> ModalResult<Function> {
     let name = skip_newline(opt(identifier)).parse_next(i)?;
     skip_newline(TokenKind::OpenParen).parse_next(i)?;
@@ -121,6 +186,7 @@ mod stmt_tests {
     use super::*;
     use crate::lexer::tokens::{Keyword, QuoteKind, Token, TokenKind};
     use crate::parser::expression::{Constant, Expr};
+    use crate::parser::operator::{Affix, BinaryOperator, UnaryOperator};
     use crate::parser::tests::build_tokens;
     use winnow::stream::TokenSlice;
 
@@ -242,6 +308,88 @@ mod stmt_tests {
                 Expr::Constant(Constant::Identifier("a".to_string())),
                 Expr::Constant(Constant::Identifier("b".to_string()))
             ]))
+        )
+    }
+
+    #[test]
+    fn test_for_classic() {
+        let tokens = build_tokens(&[
+            (TokenKind::Keyword(Keyword::For), "for"),
+            (TokenKind::OpenParen, "("),
+            (TokenKind::Keyword(Keyword::Var), "var"),
+            (TokenKind::Identifier, "i"),
+            (TokenKind::Operator(Operator::Assign), "="),
+            (TokenKind::Identifier, "0"),
+            (TokenKind::Semicolon, ";"),
+            (TokenKind::Identifier, "i"),
+            (TokenKind::Operator(Operator::LessThan), "<"),
+            (TokenKind::Identifier, "10"),
+            (TokenKind::Semicolon, ";"),
+            (TokenKind::Identifier, "i"),
+            (TokenKind::Operator(Operator::Increment), "++"),
+            (TokenKind::CloseParen, ")"),
+            (TokenKind::OpenBrace, "{"),
+            (TokenKind::Identifier, "trace"),
+            (TokenKind::OpenParen, "("),
+            (TokenKind::Identifier, "i"),
+            (TokenKind::CloseParen, ")"),
+            (TokenKind::CloseBrace, "}"),
+        ]);
+        assert_eq!(
+            parse_stmt(&tokens),
+            Ok(Statement::ForIn {
+                condition: ForCondition::Classic {
+                    initialize: Some(Box::new(Statement::Declare(vec![Declaration {
+                        name: "i".to_string(),
+                        value: Some(Expr::Constant(Constant::Identifier("0".to_string())))
+                    }]))),
+                    condition: vec![Expr::BinaryOperator(
+                        BinaryOperator::LessThan,
+                        Box::new(Expr::Constant(Constant::Identifier("i".to_string()))),
+                        Box::new(Expr::Constant(Constant::Identifier("10".to_string())))
+                    )],
+                    update: vec![Expr::UnaryOperator(
+                        UnaryOperator::Increment(Affix::Postfix),
+                        Box::new(Expr::Constant(Constant::Identifier("i".to_string())))
+                    )]
+                },
+                body: Box::new(Statement::Block(vec![Statement::Expr(Expr::Call {
+                    name: Box::new(Expr::Constant(Constant::Identifier("trace".to_string()))),
+                    args: vec![Expr::Constant(Constant::Identifier("i".to_string()))]
+                })]))
+            })
+        )
+    }
+
+    #[test]
+    fn test_for_enumerate() {
+        let tokens = build_tokens(&[
+            (TokenKind::Keyword(Keyword::For), "for"),
+            (TokenKind::OpenParen, "("),
+            (TokenKind::Identifier, "a"),
+            (TokenKind::Keyword(Keyword::In), "in"),
+            (TokenKind::Identifier, "b"),
+            (TokenKind::CloseParen, ")"),
+            (TokenKind::OpenBrace, "{"),
+            (TokenKind::Identifier, "trace"),
+            (TokenKind::OpenParen, "("),
+            (TokenKind::Identifier, "a"),
+            (TokenKind::CloseParen, ")"),
+            (TokenKind::CloseBrace, "}"),
+        ]);
+        assert_eq!(
+            parse_stmt(&tokens),
+            Ok(Statement::ForIn {
+                condition: ForCondition::Enumerate {
+                    variable: "a".to_string(),
+                    declare: false,
+                    object: Expr::Constant(Constant::Identifier("b".to_string()))
+                },
+                body: Box::new(Statement::Block(vec![Statement::Expr(Expr::Call {
+                    name: Box::new(Expr::Constant(Constant::Identifier("trace".to_string()))),
+                    args: vec![Expr::Constant(Constant::Identifier("a".to_string()))]
+                })]))
+            })
         )
     }
 }

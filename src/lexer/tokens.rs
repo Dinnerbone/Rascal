@@ -108,4 +108,5 @@ pub enum Keyword {
     Void,
     Function,
     Return,
+    For,
 }
