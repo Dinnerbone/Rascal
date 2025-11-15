@@ -13,6 +13,7 @@ enum OperatorPrecedence {
     MulDivMod,
     AddSub,
     BitShifts,
+    Comparison,
     Other,
     Assignment,
 }
@@ -81,6 +82,10 @@ impl BinaryOperator {
             BinaryOperator::BitShiftRight
             | BinaryOperator::BitShiftLeft
             | BinaryOperator::BitShiftRightUnsigned => OperatorPrecedence::BitShifts,
+            BinaryOperator::LessThan
+            | BinaryOperator::LessThanEqual
+            | BinaryOperator::GreaterThan
+            | BinaryOperator::GreaterThanEqual => OperatorPrecedence::Comparison,
             BinaryOperator::Assign
             | BinaryOperator::AddAssign
             | BinaryOperator::SubAssign
