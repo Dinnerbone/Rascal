@@ -1,0 +1,221 @@
+---
+source: src/lexer/tests.rs
+expression: tokens
+input_file: samples/block.as
+---
+- kind:
+    Keyword: Var
+  span:
+    start: 93
+    end: 96
+  raw: var
+- kind: Identifier
+  span:
+    start: 97
+    end: 104
+  raw: outside
+- kind:
+    Operator: Assign
+  span:
+    start: 105
+    end: 106
+  raw: "="
+- kind:
+    String: Double
+  span:
+    start: 107
+    end: 116
+  raw: visible
+- kind: Semicolon
+  span:
+    start: 116
+    end: 117
+  raw: ;
+- kind: Newline
+  span:
+    start: 117
+    end: 118
+  raw: "\n"
+- kind: OpenBrace
+  span:
+    start: 118
+    end: 119
+  raw: "{"
+- kind: Newline
+  span:
+    start: 119
+    end: 120
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 124
+    end: 127
+  raw: var
+- kind: Identifier
+  span:
+    start: 128
+    end: 134
+  raw: inside
+- kind:
+    Operator: Assign
+  span:
+    start: 135
+    end: 136
+  raw: "="
+- kind:
+    String: Double
+  span:
+    start: 137
+    end: 146
+  raw: visible
+- kind: Semicolon
+  span:
+    start: 146
+    end: 147
+  raw: ;
+- kind: Newline
+  span:
+    start: 147
+    end: 148
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 152
+    end: 157
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 157
+    end: 158
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 158
+    end: 169
+  raw: "outside: "
+- kind:
+    Operator: Add
+  span:
+    start: 170
+    end: 171
+  raw: +
+- kind: Identifier
+  span:
+    start: 172
+    end: 179
+  raw: outside
+- kind:
+    Operator: Add
+  span:
+    start: 180
+    end: 181
+  raw: +
+- kind:
+    String: Double
+  span:
+    start: 182
+    end: 194
+  raw: ", inside: "
+- kind:
+    Operator: Add
+  span:
+    start: 195
+    end: 196
+  raw: +
+- kind: Identifier
+  span:
+    start: 197
+    end: 203
+  raw: inside
+- kind: CloseParen
+  span:
+    start: 203
+    end: 204
+  raw: )
+- kind: Semicolon
+  span:
+    start: 204
+    end: 205
+  raw: ;
+- kind: Newline
+  span:
+    start: 205
+    end: 206
+  raw: "\n"
+- kind: CloseBrace
+  span:
+    start: 206
+    end: 207
+  raw: "}"
+- kind: Newline
+  span:
+    start: 207
+    end: 208
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 208
+    end: 213
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 213
+    end: 214
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 214
+    end: 225
+  raw: "outside: "
+- kind:
+    Operator: Add
+  span:
+    start: 226
+    end: 227
+  raw: +
+- kind: Identifier
+  span:
+    start: 228
+    end: 235
+  raw: outside
+- kind:
+    Operator: Add
+  span:
+    start: 236
+    end: 237
+  raw: +
+- kind:
+    String: Double
+  span:
+    start: 238
+    end: 250
+  raw: ", inside: "
+- kind:
+    Operator: Add
+  span:
+    start: 251
+    end: 252
+  raw: +
+- kind: Identifier
+  span:
+    start: 253
+    end: 259
+  raw: inside
+- kind: CloseParen
+  span:
+    start: 259
+    end: 260
+  raw: )
+- kind: Semicolon
+  span:
+    start: 260
+    end: 261
+  raw: ;
+- kind: Newline
+  span:
+    start: 261
+    end: 262
+  raw: "\n"

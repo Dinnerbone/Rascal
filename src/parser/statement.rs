@@ -15,6 +15,7 @@ pub(crate) enum Statement {
     Declare { name: String, value: Option<Expr> },
     Return(Vec<Expr>),
     Expr(Expr),
+    Block(Vec<Statement>),
 }
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
@@ -43,6 +44,11 @@ pub(crate) fn statement(i: &mut Tokens<'_>) -> ModalResult<Statement> {
                 vec![]
             };
             Statement::Return(values)
+        }
+        TokenKind::OpenBrace => {
+            let statements = statement_list(true).parse_next(i)?;
+            TokenKind::CloseBrace.parse_next(i)?;
+            Statement::Block(statements)
         }
         _ => {
             i.reset(&checkpoint);
