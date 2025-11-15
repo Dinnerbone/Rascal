@@ -1,0 +1,329 @@
+use crate::lexer::tokens::{ActionName, Token, TokenKind};
+use crate::parser::Tokens;
+use crate::pcode::{Action, Actions, PushValue};
+use winnow::combinator::{alt, eof, fail, peek, separated};
+use winnow::error::{ParserError, StrContext, StrContextValue};
+use winnow::stream::Stream;
+use winnow::token::{any, take_while};
+use winnow::{ModalResult, Parser};
+
+pub(crate) fn actions(i: &mut Tokens<'_>) -> ModalResult<Actions> {
+    let mut actions = Actions::empty();
+
+    take_while(0.., TokenKind::Newline).parse_next(i)?;
+
+    while !i.is_empty() {
+        let next = peek(any).parse_next(i)?;
+
+        if next.kind == TokenKind::Identifier {
+            let identifier = label.parse_next(i)?;
+            TokenKind::Colon.parse_next(i)?;
+            actions.push_label(identifier);
+            continue;
+        }
+        actions.push(action.parse_next(i)?);
+        if !i.is_empty() {
+            take_while(1.., TokenKind::Newline).parse_next(i)?;
+        }
+    }
+    eof.parse_next(i)?;
+
+    Ok(actions)
+}
+
+pub(crate) fn action(i: &mut Tokens<'_>) -> ModalResult<Action> {
+    let Token {
+        kind: TokenKind::ActionName(name),
+        ..
+    } = any.parse_next(i)?
+    else {
+        return fail.context(StrContext::Label("action name")).parse_next(i);
+    };
+
+    Ok(match name {
+        ActionName::Add => Action::Add,
+        ActionName::Add2 => Action::Add2,
+        ActionName::BitAnd => Action::BitAnd,
+        ActionName::BitLShift => Action::BitLShift,
+        ActionName::BitOr => Action::BitOr,
+        ActionName::BitRShift => Action::BitRShift,
+        ActionName::BitURShift => Action::BitURShift,
+        ActionName::BitXor => Action::BitXor,
+        ActionName::ConstantPool => constant_pool.parse_next(i)?,
+        ActionName::DefineLocal => Action::DefineLocal,
+        ActionName::DefineLocal2 => Action::DefineLocal2,
+        ActionName::Divide => Action::Divide,
+        ActionName::Equals2 => Action::Equals2,
+        ActionName::GetVariable => Action::GetVariable,
+        ActionName::If => if_.parse_next(i)?,
+        ActionName::Jump => jump.parse_next(i)?,
+        ActionName::Modulo => Action::Modulo,
+        ActionName::Not => Action::Not,
+        ActionName::Pop => Action::Pop,
+        ActionName::Push => push.parse_next(i)?,
+        ActionName::RandomNumber => Action::RandomNumber,
+        ActionName::SetVariable => Action::SetVariable,
+        ActionName::Subtract => Action::Subtract,
+        ActionName::Trace => Action::Trace,
+    })
+}
+
+pub fn if_(i: &mut Tokens<'_>) -> ModalResult<Action> {
+    let label = label.parse_next(i)?;
+    Ok(Action::If(label))
+}
+
+pub fn jump(i: &mut Tokens<'_>) -> ModalResult<Action> {
+    let label = label.parse_next(i)?;
+    Ok(Action::Jump(label))
+}
+
+pub fn push(i: &mut Tokens<'_>) -> ModalResult<Action> {
+    let values = separated(0.., push_value, TokenKind::Comma).parse_next(i)?;
+    Ok(Action::Push(values))
+}
+
+pub fn constant_pool(i: &mut Tokens<'_>) -> ModalResult<Action> {
+    let values = separated(0.., string, TokenKind::Comma).parse_next(i)?;
+    Ok(Action::ConstantPool(values))
+}
+
+pub fn string(i: &mut Tokens<'_>) -> ModalResult<String> {
+    // TODO parse
+    TokenKind::String.parse_next(i).map(|t| t.raw.to_owned())
+}
+
+pub fn label(i: &mut Tokens<'_>) -> ModalResult<String> {
+    TokenKind::Identifier
+        .context(StrContext::Label("label"))
+        .parse_next(i)
+        .map(|t| t.raw.to_owned())
+}
+
+fn integer_or_float(i: &mut Tokens<'_>) -> ModalResult<PushValue> {
+    let raw = alt((TokenKind::Integer, TokenKind::Float))
+        .parse_next(i)?
+        .raw;
+    if let Ok(n) = raw.parse::<i32>() {
+        return Ok(PushValue::Integer(n));
+    }
+    raw.parse::<f64>()
+        .map_err(|_| ParserError::from_input(&raw))
+        .map(PushValue::Float)
+}
+
+fn float(i: &mut Tokens<'_>) -> ModalResult<f64> {
+    let raw = TokenKind::Float.parse_next(i)?.raw;
+    raw.parse::<f64>()
+        .map_err(|_| ParserError::from_input(&raw))
+}
+
+pub(crate) fn push_value(i: &mut Tokens<'_>) -> ModalResult<PushValue> {
+    let checkpoint = i.checkpoint();
+    let token = any.parse_next(i)?;
+    match token.kind {
+        TokenKind::String => {
+            i.reset(&checkpoint);
+            string.parse_next(i).map(PushValue::String)
+        }
+        TokenKind::Register(n) => Ok(PushValue::Register(n)),
+        TokenKind::Constant(n) => Ok(PushValue::Constant(n)),
+        TokenKind::False => Ok(PushValue::False),
+        TokenKind::True => Ok(PushValue::True),
+        TokenKind::Undefined => Ok(PushValue::Undefined),
+        TokenKind::Null => Ok(PushValue::Null),
+        TokenKind::Integer => {
+            i.reset(&checkpoint);
+            integer_or_float.parse_next(i)
+        }
+        TokenKind::Float => {
+            i.reset(&checkpoint);
+            float.parse_next(i).map(PushValue::Float)
+        }
+        _ => fail
+            .context(StrContext::Label("value"))
+            .context(StrContext::Expected(StrContextValue::Description("string")))
+            .context(StrContext::Expected(StrContextValue::Description(
+                "constant",
+            )))
+            .context(StrContext::Expected(StrContextValue::Description(
+                "register",
+            )))
+            .context(StrContext::Expected(StrContextValue::Description(
+                "integer",
+            )))
+            .context(StrContext::Expected(StrContextValue::Description("float")))
+            .context(StrContext::Expected(StrContextValue::StringLiteral("true")))
+            .context(StrContext::Expected(StrContextValue::StringLiteral(
+                "false",
+            )))
+            .context(StrContext::Expected(StrContextValue::StringLiteral("null")))
+            .context(StrContext::Expected(StrContextValue::StringLiteral(
+                "undefined",
+            )))
+            .parse_next(i),
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use crate::lexer::tokens::{ActionName, TokenKind};
+    use crate::parser::parse_actions;
+    use crate::parser::tests::build_tokens;
+    use crate::pcode::{Action, Actions, PushValue};
+    use indexmap::IndexMap;
+
+    macro_rules! trivial_action_tests {
+        ($($test_name:ident => $action_name:ident),* $(,)?) => {
+            $(
+                #[test]
+                fn $test_name() {
+                    let tokens = [(TokenKind::ActionName(ActionName::$action_name), "")];
+                    let tokens = build_tokens(&tokens);
+                    assert_eq!(
+                        parse_actions(&tokens),
+                        Ok(Actions {
+                            actions: vec![Action::$action_name],
+                            label_positions: Default::default()
+                        })
+                    )
+                }
+            )*
+        }
+    }
+
+    trivial_action_tests! {
+        test_add => Add,
+        test_add2 => Add2,
+        test_bitand => BitAnd,
+        test_bitlshift => BitLShift,
+        test_bitor => BitOr,
+        test_bitrshift => BitRShift,
+        test_biturshift => BitURShift,
+        test_bitxor => BitXor,
+        test_define_local => DefineLocal,
+        test_definelocal2 => DefineLocal2,
+        test_divide => Divide,
+        test_equals2 => Equals2,
+        test_get_variable => GetVariable,
+        test_modulo => Modulo,
+        test_not => Not,
+        test_pop => Pop,
+        test_random_number => RandomNumber,
+        test_set_variable => SetVariable,
+        test_subtract => Subtract,
+        test_trace => Trace,
+    }
+
+    #[test]
+    fn test_multiple_labels() {
+        let tokens = build_tokens(&[
+            (TokenKind::Identifier, "start"),
+            (TokenKind::Colon, ":"),
+            (TokenKind::Identifier, "end"),
+            (TokenKind::Colon, ":"),
+            (TokenKind::ActionName(ActionName::Trace), "trace"),
+        ]);
+        assert_eq!(
+            parse_actions(&tokens),
+            Ok(Actions {
+                actions: vec![Action::Trace],
+                label_positions: IndexMap::from([("start".to_owned(), 0), ("end".to_owned(), 0)])
+            })
+        )
+    }
+
+    #[test]
+    fn test_constant_pool() {
+        let tokens = build_tokens(&[
+            (
+                TokenKind::ActionName(ActionName::ConstantPool),
+                "constantPool",
+            ),
+            (TokenKind::String, "foo"),
+            (TokenKind::Comma, ","),
+            (TokenKind::String, "bar"),
+        ]);
+        assert_eq!(
+            parse_actions(&tokens),
+            Ok(Actions {
+                actions: vec![Action::ConstantPool(vec![
+                    "foo".to_owned(),
+                    "bar".to_owned()
+                ])],
+                label_positions: Default::default()
+            })
+        )
+    }
+
+    #[test]
+    fn test_push_all_values() {
+        let tokens = build_tokens(&[
+            (TokenKind::ActionName(ActionName::Push), "push"),
+            (TokenKind::Register(0), "0"),
+            (TokenKind::Comma, ","),
+            (TokenKind::String, "foo"),
+            (TokenKind::Comma, ","),
+            (TokenKind::Integer, "1"),
+            (TokenKind::Comma, ","),
+            (TokenKind::Float, "1.0"),
+            (TokenKind::Comma, ","),
+            (TokenKind::True, "true"),
+            (TokenKind::Comma, ","),
+            (TokenKind::False, "false"),
+            (TokenKind::Comma, ","),
+            (TokenKind::Null, "null"),
+            (TokenKind::Comma, ","),
+            (TokenKind::Undefined, "undefined"),
+            (TokenKind::Comma, ","),
+            (TokenKind::Constant(1), "1"),
+        ]);
+        assert_eq!(
+            parse_actions(&tokens),
+            Ok(Actions {
+                actions: vec![Action::Push(vec![
+                    PushValue::Register(0),
+                    PushValue::String("foo".to_owned()),
+                    PushValue::Integer(1),
+                    PushValue::Float(1.0),
+                    PushValue::True,
+                    PushValue::False,
+                    PushValue::Null,
+                    PushValue::Undefined,
+                    PushValue::Constant(1),
+                ])],
+                label_positions: Default::default(),
+            })
+        )
+    }
+
+    #[test]
+    fn test_if() {
+        let tokens = build_tokens(&[
+            (TokenKind::ActionName(ActionName::If), "if"),
+            (TokenKind::Identifier, "end"),
+        ]);
+        assert_eq!(
+            parse_actions(&tokens),
+            Ok(Actions {
+                actions: vec![Action::If("end".to_owned())],
+                label_positions: Default::default()
+            })
+        )
+    }
+
+    #[test]
+    fn test_jump() {
+        let tokens = build_tokens(&[
+            (TokenKind::ActionName(ActionName::Jump), "jump"),
+            (TokenKind::Identifier, "end"),
+        ]);
+        assert_eq!(
+            parse_actions(&tokens),
+            Ok(Actions {
+                actions: vec![Action::Jump("end".to_owned())],
+                label_positions: Default::default()
+            })
+        )
+    }
+}

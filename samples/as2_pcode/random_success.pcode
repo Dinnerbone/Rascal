@@ -1,0 +1,24 @@
+ConstantPool "success", "Success! Hurrah!", "Failed :(", "-- end --"
+Push constant0
+Push true
+DefineLocal
+Push 2
+RandomNumber
+Push 0
+Equals2
+Not
+If loc0064
+Push constant0
+Push false
+SetVariable
+loc0064:Push constant0
+GetVariable
+Not
+If loc007b
+Push constant1
+Trace
+Jump loc0081
+loc007b:Push constant2
+Trace
+loc0081:Push constant3
+Trace

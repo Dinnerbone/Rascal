@@ -1,0 +1,49 @@
+---
+source: crates/as2_pcode/src/parser/tests.rs
+expression: parsed
+input_file: samples/as2_pcode/random_success.pcode
+---
+Ok:
+  actions:
+    - ConstantPool:
+        - success
+        - Success! Hurrah!
+        - "Failed :("
+        - "-- end --"
+    - Push:
+        - Constant: 0
+    - Push:
+        - "True"
+    - DefineLocal
+    - Push:
+        - Integer: 2
+    - RandomNumber
+    - Push:
+        - Integer: 0
+    - Equals2
+    - Not
+    - If: loc0064
+    - Push:
+        - Constant: 0
+    - Push:
+        - "False"
+    - SetVariable
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Not
+    - If: loc007b
+    - Push:
+        - Constant: 1
+    - Trace
+    - Jump: loc0081
+    - Push:
+        - Constant: 2
+    - Trace
+    - Push:
+        - Constant: 3
+    - Trace
+  label_positions:
+    loc0064: 13
+    loc007b: 20
+    loc0081: 22
