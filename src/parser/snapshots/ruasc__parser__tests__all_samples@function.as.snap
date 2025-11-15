@@ -18,6 +18,9 @@ Ok:
                   args:
                     - Constant:
                         String: Test called!
+            - Return:
+                - Constant:
+                    String: ":)"
     - Expr:
         Call:
           name:
@@ -60,3 +63,21 @@ Ok:
                 String: aa
             - Constant:
                 String: bb
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Call:
+                    name:
+                      Constant:
+                        Identifier: test
+                    args: []
+                - Call:
+                    name:
+                      Constant:
+                        Identifier: test
+                    args: []

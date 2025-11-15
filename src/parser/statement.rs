@@ -1,6 +1,6 @@
 use crate::lexer::operator::Operator;
 use crate::lexer::tokens::{Keyword, TokenKind};
-use crate::parser::expression::{Expr, expression};
+use crate::parser::expression::{Expr, expr_list, expression};
 use crate::parser::{Tokens, identifier, skip_newline};
 use serde::Serialize;
 use winnow::combinator::{cond, cut_err, opt, peek, separated};
@@ -13,6 +13,7 @@ use winnow::{ModalResult, Parser};
 #[allow(dead_code)]
 pub(crate) enum Statement {
     Declare { name: String, value: Option<Expr> },
+    Return(Vec<Expr>),
     Expr(Expr),
 }
 
@@ -30,12 +31,24 @@ pub(crate) fn statement(i: &mut Tokens<'_>) -> ModalResult<Statement> {
     let result = match token.kind {
         TokenKind::Keyword(Keyword::Var) => declaration
             .context(StrContext::Label("declaration"))
-            .parse_next(i),
+            .parse_next(i)?,
+        TokenKind::Keyword(Keyword::Return) => {
+            let values = if opt(TokenKind::OpenParen).parse_next(i)?.is_some() {
+                let values = expr_list.parse_next(i)?;
+                TokenKind::CloseParen.parse_next(i)?;
+                values
+            } else if let Some(expr) = opt(expression).parse_next(i)? {
+                vec![expr]
+            } else {
+                vec![]
+            };
+            Statement::Return(values)
+        }
         _ => {
             i.reset(&checkpoint);
-            expression.parse_next(i).map(Statement::Expr)
+            expression.parse_next(i).map(Statement::Expr)?
         }
-    }?;
+    };
 
     Ok(result)
 }
@@ -175,5 +188,44 @@ mod stmt_tests {
                 "bar".to_string()
             ))))
         );
+    }
+
+    #[test]
+    fn test_return_no_value() {
+        let tokens = build_tokens(&[(TokenKind::Keyword(Keyword::Return), "return")]);
+        assert_eq!(parse_stmt(&tokens), Ok(Statement::Return(vec![])))
+    }
+
+    #[test]
+    fn test_return_regular_value() {
+        let tokens = build_tokens(&[
+            (TokenKind::Keyword(Keyword::Return), "return"),
+            (TokenKind::Identifier, "a"),
+        ]);
+        assert_eq!(
+            parse_stmt(&tokens),
+            Ok(Statement::Return(vec![Expr::Constant(
+                Constant::Identifier("a".to_string())
+            )]))
+        )
+    }
+
+    #[test]
+    fn test_return_as_function() {
+        let tokens = build_tokens(&[
+            (TokenKind::Keyword(Keyword::Return), "return"),
+            (TokenKind::OpenParen, "("),
+            (TokenKind::Identifier, "a"),
+            (TokenKind::Comma, ","),
+            (TokenKind::Identifier, "b"),
+            (TokenKind::CloseParen, ")"),
+        ]);
+        assert_eq!(
+            parse_stmt(&tokens),
+            Ok(Statement::Return(vec![
+                Expr::Constant(Constant::Identifier("a".to_string())),
+                Expr::Constant(Constant::Identifier("b".to_string()))
+            ]))
+        )
     }
 }

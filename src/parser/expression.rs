@@ -3,7 +3,7 @@ use crate::lexer::tokens::{Keyword, TokenKind};
 use crate::parser::expression::Constant::Integer;
 use crate::parser::operator::{Affix, BinaryOperator, UnaryOperator};
 use crate::parser::statement::{Function, function};
-use crate::parser::{Tokens, identifier, operator, skip_newline, string};
+use crate::parser::{Tokens, identifier, operator, string};
 use serde::Serialize;
 use winnow::combinator::{alt, fail, opt, peek, separated};
 use winnow::error::{ContextError, ErrMode, StrContext};
@@ -316,10 +316,11 @@ fn expr_next<'i>(prior: Expr) -> impl Parser<Tokens<'i>, Expr, ErrMode<ContextEr
                     .context(StrContext::Label("arguments"))
                     .parse_next(i)?;
                 TokenKind::CloseParen.parse_next(i)?;
-                Ok(Expr::Call {
+                expr_next(Expr::Call {
                     name: Box::new(prior),
                     args,
                 })
+                .parse_next(i)
             }
             TokenKind::Operator(Operator::Increment) if prior.can_postfix() => {
                 TokenKind::Operator(Operator::Increment).parse_next(i)?;
@@ -394,7 +395,7 @@ fn expr_next<'i>(prior: Expr) -> impl Parser<Tokens<'i>, Expr, ErrMode<ContextEr
 }
 
 pub(crate) fn expr_list(i: &mut Tokens<'_>) -> ModalResult<Vec<Expr>> {
-    separated(0.., skip_newline(expression), TokenKind::Comma).parse_next(i)
+    separated(0.., expression, TokenKind::Comma).parse_next(i)
 }
 
 #[cfg(test)]
