@@ -153,7 +153,7 @@ fn lex_integer_or_float<'a>(stream: &mut Stream<'a>) -> Token<'a> {
         stream.finish()
     };
 
-    let mut kind = if !is_hex && stream.as_bstr().first() == Some(&b'.') {
+    let kind = if !is_hex && stream.as_bstr().first() == Some(&b'.') {
         stream.next_slice(1); // skip the '.'
         if let Some(offset) = stream.as_bstr().offset_for(invalid_char) {
             stream.next_slice(offset)
@@ -180,9 +180,10 @@ fn lex_integer_or_float<'a>(stream: &mut Stream<'a>) -> Token<'a> {
     stream.reset(&start_checkpoint);
     let raw = stream.next_slice(end - start);
 
-    if raw == "." {
-        // Super special case: '.' is a field accessor, not a decimal point
-        kind = TokenKind::Period;
+    if raw.starts_with('.') && !raw.contains(|c: char| c.is_ascii_digit()) {
+        // Super special case: No digits and starts with a period? Let's just treat it as a period
+        stream.reset(&start_checkpoint);
+        return lex_ascii_char(stream, TokenKind::Period);
     }
 
     let end = stream.previous_token_end();

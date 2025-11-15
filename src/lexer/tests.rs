@@ -284,3 +284,10 @@ fn test_integer_exponent_no_value() {
     assert_eq!(kinds(input), vec![TokenKind::Integer, TokenKind::Semicolon]);
     assert_eq!(raws(input), vec!["1e".to_string(), ";".to_string()]);
 }
+
+#[test]
+fn test_float_exponent_no_digits() {
+    let input = ".e";
+    assert_eq!(kinds(input), vec![TokenKind::Period, TokenKind::Identifier]);
+    assert_eq!(raws(input), vec![".".to_string(), "e".to_string()]);
+}
