@@ -1,0 +1,129 @@
+---
+source: crates/as2_pcode/src/codegen/tests.rs
+expression: builder
+input_file: samples/as2/op_precedence/add_sub.as
+---
+Push "a"
+Push 10
+DefineLocal
+Push "b"
+Push 5
+DefineLocal
+Push "c"
+Push 2
+DefineLocal
+Push "a="
+Push "a"
+GetVariable
+Add2
+Push ", b="
+Add2
+Push "b"
+GetVariable
+Add2
+Push ", c="
+Add2
+Push "c"
+GetVariable
+Add2
+Trace
+Push "----"
+Trace
+Push "a + b - c = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+Add2
+Push "c"
+GetVariable
+Subtract
+Add2
+Trace
+Push "(a + b) - c = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+Add2
+Push "c"
+GetVariable
+Subtract
+Add2
+Trace
+Push "---"
+Trace
+Push "a - b + c = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+Subtract
+Push "c"
+GetVariable
+Add2
+Add2
+Trace
+Push "(a - b) + c = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+Subtract
+Push "c"
+GetVariable
+Add2
+Add2
+Trace
+Push "---"
+Trace
+Push "a + b - c + b = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+Add2
+Push "c"
+GetVariable
+Subtract
+Push "b"
+GetVariable
+Add2
+Add2
+Trace
+Push "(((a + b) - c) + b) = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+Add2
+Push "c"
+GetVariable
+Subtract
+Push "b"
+GetVariable
+Add2
+Add2
+Trace
+Push "---"
+Trace
+Push "a + -b = "
+Push "a"
+GetVariable
+Push 0
+Push "b"
+GetVariable
+Subtract
+Add2
+Add2
+Trace
+Push "a - -b = "
+Push "a"
+GetVariable
+Push 0
+Push "b"
+GetVariable
+Subtract
+Subtract
+Add2
+Trace

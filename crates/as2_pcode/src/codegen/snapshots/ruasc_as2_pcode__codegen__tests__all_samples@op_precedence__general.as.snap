@@ -1,0 +1,630 @@
+---
+source: crates/as2_pcode/src/codegen/tests.rs
+expression: builder
+input_file: samples/as2/op_precedence/general.as
+---
+Push "one"
+Push 1
+DefineLocal
+Push "two"
+Push 2
+DefineLocal
+Push "three"
+Push 3
+DefineLocal
+Push "four"
+Push 4
+DefineLocal
+Push "five"
+Push 5
+DefineLocal
+Push "ten"
+Push 10
+DefineLocal
+Push "zero"
+Push 0
+DefineLocal
+Push "negOne"
+Push -1
+DefineLocal
+Push "a"
+DefineLocal2
+Push "b"
+DefineLocal2
+Push "c"
+DefineLocal2
+Push "p"
+DefineLocal2
+Push "s"
+Push "s"
+DefineLocal
+Push "t"
+Push "t"
+DefineLocal
+Push "one + two * three = "
+Push "one"
+GetVariable
+Push "two"
+GetVariable
+Push "three"
+GetVariable
+Multiply
+Add2
+Add2
+Trace
+Push "(one + two) * three = "
+Push "one"
+GetVariable
+Push "two"
+GetVariable
+Add2
+Push "three"
+GetVariable
+Multiply
+Add2
+Trace
+Push "-one * two = "
+Push 0
+Push "one"
+GetVariable
+Subtract
+Push "two"
+GetVariable
+Multiply
+Add2
+Trace
+Push "-(one * two) = "
+Push 0
+Push "one"
+GetVariable
+Push "two"
+GetVariable
+Multiply
+Subtract
+Add2
+Trace
+Push "p"
+Push "one"
+GetVariable
+SetVariable
+Push "++p + p++ = "
+Push "p"
+Push "p"
+GetVariable
+Increment
+StoreRegister 0
+SetVariable
+Push register0
+Push "p"
+GetVariable
+Push "p"
+Push "p"
+GetVariable
+Increment
+SetVariable
+Add2
+Add2
+Trace
+Push "p"
+Push "two"
+GetVariable
+SetVariable
+Push "p++ * 2 = "
+Push "p"
+GetVariable
+Push "p"
+Push "p"
+GetVariable
+Increment
+SetVariable
+Push 2
+Multiply
+Add2
+Trace
+Push "p"
+Push "two"
+GetVariable
+SetVariable
+Push "2 * ++p = "
+Push 2
+Push "p"
+Push "p"
+GetVariable
+Increment
+StoreRegister 0
+SetVariable
+Push register0
+Multiply
+Add2
+Trace
+Push "four / two * two = "
+Push "four"
+GetVariable
+Push "two"
+GetVariable
+Divide
+Push "two"
+GetVariable
+Multiply
+Add2
+Trace
+Push "one + two << one = "
+Push "one"
+GetVariable
+Push "two"
+GetVariable
+Add2
+Push "one"
+GetVariable
+BitLShift
+Add2
+Trace
+Push "(one + two) << one = "
+Push "one"
+GetVariable
+Push "two"
+GetVariable
+Add2
+Push "one"
+GetVariable
+BitLShift
+Add2
+Trace
+Push "one + (two << one) = "
+Push "one"
+GetVariable
+Push "two"
+GetVariable
+Push "one"
+GetVariable
+BitLShift
+Add2
+Add2
+Trace
+Push "one + two < five = "
+Push "one"
+GetVariable
+Push "two"
+GetVariable
+Add2
+Push "five"
+GetVariable
+Less2
+Add2
+Trace
+Push "(one + two) < five = "
+Push "one"
+GetVariable
+Push "two"
+GetVariable
+Add2
+Push "five"
+GetVariable
+Less2
+Add2
+Trace
+Push "one + (two < five) = "
+Push "one"
+GetVariable
+Push "two"
+GetVariable
+Push "five"
+GetVariable
+Less2
+Add2
+Add2
+Trace
+Push "one + two == three = "
+Push "one"
+GetVariable
+Push "two"
+GetVariable
+Add2
+Push "three"
+GetVariable
+Equals2
+Add2
+Trace
+Push "(one + two) == three = "
+Push "one"
+GetVariable
+Push "two"
+GetVariable
+Add2
+Push "three"
+GetVariable
+Equals2
+Add2
+Trace
+Push "one + (two == three) = "
+Push "one"
+GetVariable
+Push "two"
+GetVariable
+Push "three"
+GetVariable
+Equals2
+Add2
+Add2
+Trace
+Push "one | two == three = "
+Push "one"
+GetVariable
+Push "two"
+GetVariable
+Push "three"
+GetVariable
+Equals2
+BitOr
+Add2
+Trace
+Push "(one | two) == three = "
+Push "one"
+GetVariable
+Push "two"
+GetVariable
+BitOr
+Push "three"
+GetVariable
+Equals2
+Add2
+Trace
+Push "one | (two == three) = "
+Push "one"
+GetVariable
+Push "two"
+GetVariable
+Push "three"
+GetVariable
+Equals2
+BitOr
+Add2
+Trace
+Push "one & three | two = "
+Push "one"
+GetVariable
+Push "three"
+GetVariable
+BitAnd
+Push "two"
+GetVariable
+BitOr
+Add2
+Trace
+Push "(one & three) | two = "
+Push "one"
+GetVariable
+Push "three"
+GetVariable
+BitAnd
+Push "two"
+GetVariable
+BitOr
+Add2
+Trace
+Push "one & (three | two) = "
+Push "one"
+GetVariable
+Push "three"
+GetVariable
+Push "two"
+GetVariable
+BitOr
+BitAnd
+Add2
+Trace
+Push "~one = "
+Push "one"
+GetVariable
+Push -1
+BitXor
+Add2
+Trace
+Push "-~one = "
+Push 0
+Push "one"
+GetVariable
+Push -1
+BitXor
+Subtract
+Add2
+Trace
+Push "(one < two && three > two) = "
+Push "one"
+GetVariable
+Push "two"
+GetVariable
+Less2
+PushDuplicate
+Not
+If loc0000
+Pop
+Push "three"
+GetVariable
+Push "two"
+GetVariable
+Greater
+loc0000: Add2
+Trace
+Push "(one > two || three > two) = "
+Push "one"
+GetVariable
+Push "two"
+GetVariable
+Greater
+PushDuplicate
+If loc0001
+Pop
+Push "three"
+GetVariable
+Push "two"
+GetVariable
+Greater
+loc0001: Add2
+Trace
+Push "one & three && two > zero = "
+Push "one"
+GetVariable
+Push "three"
+GetVariable
+BitAnd
+PushDuplicate
+Not
+If loc0002
+Pop
+Push "two"
+GetVariable
+Push "zero"
+GetVariable
+Greater
+loc0002: Add2
+Trace
+Push "one < two ? five : ten = "
+Push "one"
+GetVariable
+Push "two"
+GetVariable
+Less2
+Not
+If loc0004
+Push "five"
+GetVariable
+Jump loc0003
+loc0004: Push "ten"
+GetVariable
+loc0003: Add2
+Trace
+Push "one + two < three ? five : ten = "
+Push "one"
+GetVariable
+Push "two"
+GetVariable
+Add2
+Push "three"
+GetVariable
+Less2
+Not
+If loc0006
+Push "five"
+GetVariable
+Jump loc0005
+loc0006: Push "ten"
+GetVariable
+loc0005: Add2
+Trace
+Push "a"
+Push 0
+SetVariable
+Push "b"
+Push 0
+SetVariable
+Push "c"
+Push "five"
+GetVariable
+SetVariable
+Push "a"
+Push "b"
+Push "c"
+GetVariable
+StoreRegister 0
+SetVariable
+Push register0
+SetVariable
+Push "a after a = b = c -> "
+Push "a"
+GetVariable
+Add2
+Trace
+Push "b after a = b = c -> "
+Push "b"
+GetVariable
+Add2
+Trace
+Push "a"
+Push 1
+SetVariable
+Push "b"
+Push 2
+SetVariable
+Push "c"
+Push 3
+SetVariable
+Push "a"
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+Push "c"
+GetVariable
+Multiply
+Add2
+SetVariable
+Push "a after a += b * c = "
+Push "a"
+GetVariable
+Add2
+Trace
+Push "obj"
+Push 0
+Push "Object"
+NewObject
+DefineLocal
+Push "obj"
+GetVariable
+Push "x"
+Push 2
+SetMember
+Push "obj.x + two = "
+Push "obj"
+GetVariable
+Push "x"
+GetMember
+Push "two"
+GetVariable
+Add2
+Add2
+Trace
+Push "typeof one = "
+Push "one"
+GetVariable
+TypeOf
+Add2
+Trace
+Push "typeof s = "
+Push "s"
+GetVariable
+TypeOf
+Add2
+Trace
+Push "a"
+Push 1
+SetVariable
+Push "b"
+Push 2
+SetVariable
+Push "c"
+Push 3
+SetVariable
+Push "a"
+Push "b"
+GetVariable
+Push "c"
+GetVariable
+Greater
+Not
+If loc0008
+Push "b"
+GetVariable
+Jump loc0007
+loc0008: Push "c"
+GetVariable
+loc0007: SetVariable
+Push "a after a = (b>c)?b:c = "
+Push "a"
+GetVariable
+Add2
+Trace
+Push "a"
+Push 1
+SetVariable
+Push "b"
+Push 2
+SetVariable
+Push "c"
+Push 3
+SetVariable
+Push "a + b * c << one & three == ((a + (b * c)) << one & three) ? five : ten = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+Push "c"
+GetVariable
+Multiply
+Add2
+Push "one"
+GetVariable
+BitLShift
+Push "three"
+GetVariable
+BitAnd
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+Push "c"
+GetVariable
+Multiply
+Add2
+Push "one"
+GetVariable
+BitLShift
+Push "three"
+GetVariable
+BitAnd
+Equals2
+Not
+If loc000a
+Push "five"
+GetVariable
+Jump loc0009
+loc000a: Push "ten"
+GetVariable
+loc0009: Add2
+Trace
+Push "+one + +two = "
+Push "one"
+GetVariable
+Push "two"
+GetVariable
+Add2
+Add2
+Trace
+Push "-one + -two = "
+Push 0
+Push "one"
+GetVariable
+Subtract
+Push 0
+Push "two"
+GetVariable
+Subtract
+Add2
+Add2
+Trace
+Push "ten % three + one = "
+Push "ten"
+GetVariable
+Push "three"
+GetVariable
+Modulo
+Push "one"
+GetVariable
+Add2
+Add2
+Trace
+Push "(ten % three) + one = "
+Push "ten"
+GetVariable
+Push "three"
+GetVariable
+Modulo
+Push "one"
+GetVariable
+Add2
+Add2
+Trace
+Push "one + two * three > four = "
+Push "one"
+GetVariable
+Push "two"
+GetVariable
+Push "three"
+GetVariable
+Multiply
+Add2
+Push "four"
+GetVariable
+Greater
+Add2
+Trace

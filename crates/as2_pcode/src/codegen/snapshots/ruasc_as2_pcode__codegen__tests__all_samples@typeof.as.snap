@@ -1,0 +1,102 @@
+---
+source: crates/as2_pcode/src/codegen/tests.rs
+expression: builder
+input_file: samples/as2/typeof.as
+---
+Push "num"
+Push 1
+DefineLocal
+Push "obj"
+Push "trace"
+Push "trace"
+GetVariable
+Push "num"
+Push 1
+Push 2
+InitObject
+DefineLocal
+Push "typeof num: "
+Push "num"
+GetVariable
+TypeOf
+Add2
+Trace
+Push "typeof obj: "
+Push "obj"
+GetVariable
+TypeOf
+Add2
+Trace
+Push "typeof obj.num: "
+Push "obj"
+GetVariable
+Push "num"
+GetMember
+TypeOf
+Add2
+Trace
+Push "typeof obj.num + 1: "
+Push "obj"
+GetVariable
+Push "num"
+GetMember
+TypeOf
+Push 1
+Add2
+Add2
+Trace
+Push "typeof obj.num == \"number\" ? \":)\" : \":(\": "
+Push "obj"
+GetVariable
+Push "num"
+GetMember
+TypeOf
+Push "number"
+Equals2
+Not
+If loc0001
+Push ":)"
+Jump loc0000
+loc0001: Push ":("
+loc0000: Add2
+Trace
+Push "typeof obj.num + typeof obj.num: "
+Push "obj"
+GetVariable
+Push "num"
+GetMember
+TypeOf
+Push "obj"
+GetVariable
+Push "num"
+GetMember
+TypeOf
+Add2
+Add2
+Trace
+Push "typeof obj.trace: "
+Push "obj"
+GetVariable
+Push "trace"
+GetMember
+TypeOf
+Add2
+Trace
+Push "typeof obj.trace(): "
+Push 0
+Push "obj"
+GetVariable
+Push "trace"
+CallMethod
+TypeOf
+Add2
+Trace
+Push "typeof(nonexistent, obj): "
+Push "nonexistent"
+GetVariable
+Pop
+Push "obj"
+GetVariable
+TypeOf
+Add2
+Trace

@@ -1,0 +1,171 @@
+---
+source: crates/as2_pcode/src/codegen/tests.rs
+expression: builder
+input_file: samples/as2/op_precedence/comparison.as
+---
+Push "a"
+Push 10
+DefineLocal
+Push "b"
+Push 5
+DefineLocal
+Push "c"
+Push 7
+DefineLocal
+Push "a="
+Push "a"
+GetVariable
+Add2
+Push ", b="
+Add2
+Push "b"
+GetVariable
+Add2
+Push ", c="
+Add2
+Push "c"
+GetVariable
+Add2
+Trace
+Push "----"
+Trace
+Push "a > b = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+Greater
+Add2
+Trace
+Push "a < b = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+Less2
+Add2
+Trace
+Push "a >= b = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+Less2
+Not
+Add2
+Trace
+Push "a <= b = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+Greater
+Not
+Add2
+Trace
+Push "---"
+Trace
+Push "a > b >= c = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+Greater
+Push "c"
+GetVariable
+Less2
+Not
+Add2
+Trace
+Push "((a > b) >= c) = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+Greater
+Push "c"
+GetVariable
+Less2
+Not
+Add2
+Trace
+Push "---"
+Trace
+Push "a < b <= c = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+Less2
+Push "c"
+GetVariable
+Greater
+Not
+Add2
+Trace
+Push "((a < b) <= c) = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+Less2
+Push "c"
+GetVariable
+Greater
+Not
+Add2
+Trace
+Push "---"
+Trace
+Push "a + b > c = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+Add2
+Push "c"
+GetVariable
+Greater
+Add2
+Trace
+Push "((a + b) > c) = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+Add2
+Push "c"
+GetVariable
+Greater
+Add2
+Trace
+Push "---"
+Trace
+Push "a * b <= c + 5 = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+Multiply
+Push "c"
+GetVariable
+Push 5
+Add2
+Greater
+Not
+Add2
+Trace
+Push "((a * b) <= (c + 5)) = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+Multiply
+Push "c"
+GetVariable
+Push 5
+Add2
+Greater
+Not
+Add2
+Trace

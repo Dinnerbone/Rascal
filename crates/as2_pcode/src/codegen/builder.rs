@@ -1,0 +1,83 @@
+use crate::pcode::{Action, Actions};
+use serde::Serialize;
+
+#[derive(Debug, Serialize)]
+pub(crate) struct CodeBuilder {
+    actions: Actions,
+    next_label: usize,
+    stack_size: u32,
+    break_label: Option<String>,
+    continue_label: Option<String>,
+}
+
+impl CodeBuilder {
+    pub fn new() -> Self {
+        Self {
+            actions: Actions::empty(),
+            next_label: 0,
+            stack_size: 0,
+            break_label: None,
+            continue_label: None,
+        }
+    }
+
+    pub fn into_actions(self) -> Actions {
+        self.actions
+    }
+
+    pub fn stack_size(&self) -> u32 {
+        self.stack_size
+    }
+
+    pub fn truncate_stack(&mut self, stack_size: u32) {
+        let delta = self.stack_size.saturating_sub(stack_size);
+        for _ in 0..delta {
+            self.action(Action::Pop);
+        }
+    }
+
+    pub fn assume_stack_delta(&mut self, delta: i32) {
+        // It's fine for stack to go negative - flash does this too. It's weird, though.
+        let stack_size = ((self.stack_size as i32) + delta).max(0);
+        self.stack_size = stack_size as u32;
+    }
+
+    pub fn create_label(&mut self) -> String {
+        let id = self.next_label;
+        self.next_label += 1;
+        format!("loc{:04x}", id)
+    }
+
+    pub fn mark_label(&mut self, label: String) {
+        if self.actions.label_positions().contains_key(&label) {
+            panic!("Label already exists");
+        }
+        self.actions.push_label(label);
+    }
+
+    pub fn action(&mut self, action: Action) {
+        let delta = action.stack_delta();
+        self.action_with_stack_delta(action, delta);
+    }
+
+    pub fn action_with_stack_delta(&mut self, action: Action, stack_delta: i32) {
+        self.assume_stack_delta(stack_delta);
+        self.actions.push(action);
+    }
+
+    pub fn break_label(&self) -> Option<String> {
+        self.break_label.clone()
+    }
+
+    pub fn continue_label(&self) -> Option<String> {
+        self.continue_label.clone()
+    }
+
+    pub fn set_break_label(&mut self, label: Option<String>) -> Option<String> {
+        std::mem::replace(&mut self.break_label, label)
+    }
+
+    pub fn set_continue_label(&mut self, label: Option<String>) -> Option<String> {
+        std::mem::replace(&mut self.continue_label, label)
+    }
+}

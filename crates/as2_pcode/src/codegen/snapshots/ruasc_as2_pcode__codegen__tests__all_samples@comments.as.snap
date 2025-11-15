@@ -1,0 +1,46 @@
+---
+source: crates/as2_pcode/src/codegen/tests.rs
+expression: builder
+input_file: samples/as2/comments.as
+---
+Push "a"
+Push "1"
+DefineLocal
+Push "b"
+Push "2"
+DefineLocal
+Push "c"
+Push "3"
+DefineLocal
+Push "d"
+Push "4"
+DefineLocal
+Push "b"
+GetVariable
+Push "a"
+GetVariable
+Push 2
+Push "test"
+CallFunction
+Pop
+Push "e"
+Push "5"
+DefineLocal
+Push "f"
+Push "// not a comment"
+DefineLocal
+Push "g"
+Push "/* not a comment */"
+DefineLocal
+Push "h"
+Push "\"/* still not a comment */\""
+DefineLocal
+Push "i"
+Push "6"
+DefineLocal
+Push "j"
+Push "7"
+DefineLocal
+Push "k"
+Push "8"
+DefineLocal

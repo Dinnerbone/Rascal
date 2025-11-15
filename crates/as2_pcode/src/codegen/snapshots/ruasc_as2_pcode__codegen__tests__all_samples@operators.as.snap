@@ -1,0 +1,466 @@
+---
+source: crates/as2_pcode/src/codegen/tests.rs
+expression: builder
+input_file: samples/as2/operators.as
+---
+Push "a"
+Push 10
+DefineLocal
+Push "b"
+Push 3
+DefineLocal
+Push "a + b = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+Add2
+Add2
+Trace
+Push "a - b = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+Subtract
+Add2
+Trace
+Push "a * b = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+Multiply
+Add2
+Trace
+Push "a / b = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+Divide
+Add2
+Trace
+Push "a % b = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+Modulo
+Add2
+Trace
+Push "++a = "
+Push "a"
+Push "a"
+GetVariable
+Increment
+StoreRegister 0
+SetVariable
+Push register0
+Add2
+Trace
+Push "--a = "
+Push "a"
+Push "a"
+GetVariable
+Decrement
+StoreRegister 0
+SetVariable
+Push register0
+Add2
+Trace
+Push "a++ = "
+Push "a"
+GetVariable
+Push "a"
+Push "a"
+GetVariable
+Increment
+SetVariable
+Add2
+Trace
+Push "a-- = "
+Push "a"
+GetVariable
+Push "a"
+Push "a"
+GetVariable
+Decrement
+SetVariable
+Add2
+Trace
+Push "hello"
+Push "Hello"
+DefineLocal
+Push "world"
+Push "World"
+DefineLocal
+Push "hello + " " + world = "
+Push "hello"
+GetVariable
+Push " "
+Add2
+Push "world"
+GetVariable
+Add2
+Add2
+Trace
+Push "x"
+Push 5
+DefineLocal
+Push "x = "
+Push "x"
+GetVariable
+Add2
+Trace
+Push "x += 2 => "
+Push "x"
+Push "x"
+GetVariable
+Push 2
+Add2
+StoreRegister 0
+SetVariable
+Push register0
+Add2
+Trace
+Push "x -= 2 => "
+Push "x"
+Push "x"
+GetVariable
+Push 2
+Subtract
+StoreRegister 0
+SetVariable
+Push register0
+Add2
+Trace
+Push "x *= 3 => "
+Push "x"
+Push "x"
+GetVariable
+Push 3
+Multiply
+StoreRegister 0
+SetVariable
+Push register0
+Add2
+Trace
+Push "x /= 5 => "
+Push "x"
+Push "x"
+GetVariable
+Push 5
+Divide
+StoreRegister 0
+SetVariable
+Push register0
+Add2
+Trace
+Push "x %= 2 => "
+Push "x"
+Push "x"
+GetVariable
+Push 2
+Modulo
+StoreRegister 0
+SetVariable
+Push register0
+Add2
+Trace
+Push "five"
+Push 5
+DefineLocal
+Push "three"
+Push 3
+DefineLocal
+Push "five & three = "
+Push "five"
+GetVariable
+Push "three"
+GetVariable
+BitAnd
+Add2
+Trace
+Push "five | three = "
+Push "five"
+GetVariable
+Push "three"
+GetVariable
+BitOr
+Add2
+Trace
+Push "five ^ three = "
+Push "five"
+GetVariable
+Push "three"
+GetVariable
+BitXor
+Add2
+Trace
+Push "~five = "
+Push "five"
+GetVariable
+Push -1
+BitXor
+Add2
+Trace
+Push "five << 1 = "
+Push "five"
+GetVariable
+Push 1
+BitLShift
+Add2
+Trace
+Push "five >> 1 = "
+Push "five"
+GetVariable
+Push 1
+BitRShift
+Add2
+Trace
+Push "five >>> 1 = "
+Push "five"
+GetVariable
+Push 1
+BitURShift
+Add2
+Trace
+Push "five"
+Push 5
+SetVariable
+Push "five"
+Push "five"
+GetVariable
+Push "three"
+GetVariable
+BitAnd
+SetVariable
+Push "five &= three => "
+Push "five"
+GetVariable
+Add2
+Trace
+Push "five"
+Push 5
+SetVariable
+Push "five"
+Push "five"
+GetVariable
+Push "three"
+GetVariable
+BitOr
+SetVariable
+Push "five |= three => "
+Push "five"
+GetVariable
+Add2
+Trace
+Push "five"
+Push 5
+SetVariable
+Push "five"
+Push "five"
+GetVariable
+Push "three"
+GetVariable
+BitXor
+SetVariable
+Push "five ^= three => "
+Push "five"
+GetVariable
+Add2
+Trace
+Push "five"
+Push 5
+SetVariable
+Push "five"
+Push "five"
+GetVariable
+Push 1
+BitLShift
+SetVariable
+Push "five <<= 1 => "
+Push "five"
+GetVariable
+Add2
+Trace
+Push "five"
+Push 5
+SetVariable
+Push "five"
+Push "five"
+GetVariable
+Push 1
+BitRShift
+SetVariable
+Push "five >>= 1 => "
+Push "five"
+GetVariable
+Add2
+Trace
+Push "five"
+Push 5
+SetVariable
+Push "five"
+Push "five"
+GetVariable
+Push 1
+BitURShift
+SetVariable
+Push "five >>>= 1 => "
+Push "five"
+GetVariable
+Add2
+Trace
+Push "six"
+Push 6
+DefineLocal
+Push "seven"
+Push 7
+DefineLocal
+Push "sevenStr"
+Push "7"
+DefineLocal
+Push "six == seven: "
+Push "six"
+GetVariable
+Push "seven"
+GetVariable
+Equals2
+Add2
+Trace
+Push "six != seven: "
+Push "six"
+GetVariable
+Push "seven"
+GetVariable
+Equals2
+Not
+Add2
+Trace
+Push "six < seven: "
+Push "six"
+GetVariable
+Push "seven"
+GetVariable
+Less2
+Add2
+Trace
+Push "six <= seven: "
+Push "six"
+GetVariable
+Push "seven"
+GetVariable
+Greater
+Not
+Add2
+Trace
+Push "six > seven: "
+Push "six"
+GetVariable
+Push "seven"
+GetVariable
+Greater
+Add2
+Trace
+Push "six >= seven: "
+Push "six"
+GetVariable
+Push "seven"
+GetVariable
+Less2
+Not
+Add2
+Trace
+Push "sevenStr == seven: "
+Push "sevenStr"
+GetVariable
+Push "seven"
+GetVariable
+Equals2
+Add2
+Trace
+Push "sevenStr === seven: "
+Push "sevenStr"
+GetVariable
+Push "seven"
+GetVariable
+StrictEquals
+Add2
+Trace
+Push "sevenStr !== seven: "
+Push "sevenStr"
+GetVariable
+Push "seven"
+GetVariable
+StrictEquals
+Not
+Add2
+Trace
+Push "t"
+Push true
+DefineLocal
+Push "f"
+Push false
+DefineLocal
+Push "t && f: "
+Push "t"
+GetVariable
+PushDuplicate
+Not
+If loc0000
+Pop
+Push "f"
+GetVariable
+loc0000: Add2
+Trace
+Push "t || f: "
+Push "t"
+GetVariable
+PushDuplicate
+If loc0001
+Pop
+Push "f"
+GetVariable
+loc0001: Add2
+Trace
+Push "!t: "
+Push "t"
+GetVariable
+Not
+Add2
+Trace
+Push "max"
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+Greater
+Not
+If loc0003
+Push "a"
+GetVariable
+Jump loc0002
+loc0003: Push "b"
+GetVariable
+loc0002: DefineLocal
+Push "(a > b) ? a : b = "
+Push "max"
+GetVariable
+Add2
+Trace
+Push "obj"
+Push "key"
+Push "value"
+Push 1
+InitObject
+DefineLocal
+Push "obj instanceof Object: "
+Push "obj"
+GetVariable
+Push "Object"
+GetVariable
+InstanceOf
+Add2
+Trace

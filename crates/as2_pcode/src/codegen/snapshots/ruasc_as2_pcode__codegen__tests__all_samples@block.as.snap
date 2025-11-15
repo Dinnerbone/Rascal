@@ -1,0 +1,31 @@
+---
+source: crates/as2_pcode/src/codegen/tests.rs
+expression: builder
+input_file: samples/as2/block.as
+---
+Push "outside"
+Push "visible"
+DefineLocal
+Push "inside"
+Push "visible"
+DefineLocal
+Push "outside: "
+Push "outside"
+GetVariable
+Add2
+Push ", inside: "
+Add2
+Push "inside"
+GetVariable
+Add2
+Trace
+Push "outside: "
+Push "outside"
+GetVariable
+Add2
+Push ", inside: "
+Add2
+Push "inside"
+GetVariable
+Add2
+Trace

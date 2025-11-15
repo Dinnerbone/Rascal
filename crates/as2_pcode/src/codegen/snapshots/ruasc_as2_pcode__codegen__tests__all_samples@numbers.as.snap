@@ -1,0 +1,237 @@
+---
+source: crates/as2_pcode/src/codegen/tests.rs
+expression: builder
+input_file: samples/as2/numbers.as
+---
+Push "i0"
+Push 0
+DefineLocal
+Push "i1"
+Push 1
+DefineLocal
+Push "i42"
+Push 42
+DefineLocal
+Push "iLarge"
+Push 2147483647
+DefineLocal
+Push "iLargePlusOne"
+Push 2147483648.0
+DefineLocal
+Push "f0"
+Push 0.0
+DefineLocal
+Push "f1"
+Push 1.23
+DefineLocal
+Push "fLeadingDot"
+Push 0.5
+DefineLocal
+Push "fTrailingDot"
+Push 5.0
+DefineLocal
+Push "h0"
+Push 0
+DefineLocal
+Push "hMix"
+Push 6699
+DefineLocal
+Push "hMaxByte"
+Push 255
+DefineLocal
+Push "eBig"
+Push 10000000000.0
+DefineLocal
+Push "eSmall"
+Push 0.0000000001
+DefineLocal
+Push "ePlus"
+Push 2500.0
+DefineLocal
+Push "eLeadingDot"
+Push 50.0
+DefineLocal
+Push "eTrailingDot"
+Push 5000.0
+DefineLocal
+Push "eSci"
+Push 602200000000000000000000.0
+DefineLocal
+Push "nDec"
+Push -123
+DefineLocal
+Push "nHex"
+Push -255
+DefineLocal
+Push "nFloat"
+Push -3.14
+DefineLocal
+Push "pDec"
+Push 7
+DefineLocal
+Push "sum"
+Push 1
+Push 2
+Add2
+Push 3
+Add2
+DefineLocal
+Push "diff"
+Push 10
+Push 4
+Subtract
+DefineLocal
+Push "prod"
+Push 6
+Push 7
+Multiply
+DefineLocal
+Push "quot"
+Push 22
+Push 7
+Divide
+DefineLocal
+Push "combo"
+Push 16
+Push 15
+Add2
+Push 25.0
+Multiply
+Push 0.75
+Subtract
+DefineLocal
+Push "i0 = "
+Push "i0"
+GetVariable
+Add2
+Trace
+Push "i1 = "
+Push "i1"
+GetVariable
+Add2
+Trace
+Push "i42 = "
+Push "i42"
+GetVariable
+Add2
+Trace
+Push "iLarge = "
+Push "iLarge"
+GetVariable
+Add2
+Trace
+Push "iLargePlusOne = "
+Push "iLargePlusOne"
+GetVariable
+Add2
+Trace
+Push "f0 = "
+Push "f0"
+GetVariable
+Add2
+Trace
+Push "f1 = "
+Push "f1"
+GetVariable
+Add2
+Trace
+Push "fLeadingDot = "
+Push "fLeadingDot"
+GetVariable
+Add2
+Trace
+Push "fTrailingDot = "
+Push "fTrailingDot"
+GetVariable
+Add2
+Trace
+Push "h0 = "
+Push "h0"
+GetVariable
+Add2
+Trace
+Push "hMix = "
+Push "hMix"
+GetVariable
+Add2
+Trace
+Push "hMaxByte = "
+Push "hMaxByte"
+GetVariable
+Add2
+Trace
+Push "eBig = "
+Push "eBig"
+GetVariable
+Add2
+Trace
+Push "eSmall = "
+Push "eSmall"
+GetVariable
+Add2
+Trace
+Push "ePlus = "
+Push "ePlus"
+GetVariable
+Add2
+Trace
+Push "eLeadingDot = "
+Push "eLeadingDot"
+GetVariable
+Add2
+Trace
+Push "eTrailingDot = "
+Push "eTrailingDot"
+GetVariable
+Add2
+Trace
+Push "eSci = "
+Push "eSci"
+GetVariable
+Add2
+Trace
+Push "nDec = "
+Push "nDec"
+GetVariable
+Add2
+Trace
+Push "nHex = "
+Push "nHex"
+GetVariable
+Add2
+Trace
+Push "nFloat = "
+Push "nFloat"
+GetVariable
+Add2
+Trace
+Push "pDec = "
+Push "pDec"
+GetVariable
+Add2
+Trace
+Push "sum = "
+Push "sum"
+GetVariable
+Add2
+Trace
+Push "diff = "
+Push "diff"
+GetVariable
+Add2
+Trace
+Push "prod = "
+Push "prod"
+GetVariable
+Add2
+Trace
+Push "quot = "
+Push "quot"
+GetVariable
+Add2
+Trace
+Push "combo = "
+Push "combo"
+GetVariable
+Add2
+Trace

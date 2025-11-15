@@ -1,0 +1,48 @@
+---
+source: crates/as2_pcode/src/codegen/tests.rs
+expression: builder
+input_file: samples/as2/assign_variable_many_ways.as
+---
+Push "message"
+Push "Hello"
+Push " "
+Add2
+DefineLocal
+Push "message"
+Push "message"
+GetVariable
+Push "World"
+Add2
+SetVariable
+Push "message"
+Push "message"
+GetVariable
+Push "!"
+Add2
+SetVariable
+Push "message"
+GetVariable
+Trace
+Push "a"
+Push 1
+DefineLocal
+Push "b"
+DefineLocal2
+Push "c"
+Push 3
+DefineLocal
+Push "a: "
+Push "a"
+GetVariable
+Add2
+Trace
+Push "b: "
+Push "b"
+GetVariable
+Add2
+Trace
+Push "c: "
+Push "c"
+GetVariable
+Add2
+Trace

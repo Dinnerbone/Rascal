@@ -1,0 +1,173 @@
+---
+source: crates/as2_pcode/src/codegen/tests.rs
+expression: builder
+input_file: samples/as2/op_precedence/bit_math.as
+---
+Push "a"
+Push 12
+DefineLocal
+Push "b"
+Push 5
+DefineLocal
+Push "c"
+Push 3
+DefineLocal
+Push "a="
+Push "a"
+GetVariable
+Add2
+Push ", b="
+Add2
+Push "b"
+GetVariable
+Add2
+Push ", c="
+Add2
+Push "c"
+GetVariable
+Add2
+Trace
+Push "----"
+Trace
+Push "a & b = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+BitAnd
+Add2
+Trace
+Push "a & b & c = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+BitAnd
+Push "c"
+GetVariable
+BitAnd
+Add2
+Trace
+Push "((a & b) & c) = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+BitAnd
+Push "c"
+GetVariable
+BitAnd
+Add2
+Trace
+Push "---"
+Trace
+Push "a ^ b = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+BitXor
+Add2
+Trace
+Push "a ^ b ^ c = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+BitXor
+Push "c"
+GetVariable
+BitXor
+Add2
+Trace
+Push "((a ^ b) ^ c) = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+BitXor
+Push "c"
+GetVariable
+BitXor
+Add2
+Trace
+Push "---"
+Trace
+Push "a | b = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+BitOr
+Add2
+Trace
+Push "a | b | c = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+BitOr
+Push "c"
+GetVariable
+BitOr
+Add2
+Trace
+Push "((a | b) | c) = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+BitOr
+Push "c"
+GetVariable
+BitOr
+Add2
+Trace
+Push "---"
+Trace
+Push "a & b ^ c = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+BitAnd
+Push "c"
+GetVariable
+BitXor
+Add2
+Trace
+Push "((a & b) ^ c) = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+BitAnd
+Push "c"
+GetVariable
+BitXor
+Add2
+Trace
+Push "---"
+Trace
+Push "a ^ b | c = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+BitXor
+Push "c"
+GetVariable
+BitOr
+Add2
+Trace
+Push "((a ^ b) | c) = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+BitXor
+Push "c"
+GetVariable
+BitOr
+Add2
+Trace

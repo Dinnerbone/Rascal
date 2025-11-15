@@ -1,0 +1,30 @@
+---
+source: crates/as2_pcode/src/codegen/tests.rs
+expression: builder
+input_file: samples/as2/random_success.as
+---
+Push "success"
+Push true
+DefineLocal
+Push 2
+Push 1
+Push "random"
+CallFunction
+Push 0
+Equals2
+Not
+If loc0000
+Push "success"
+Push false
+SetVariable
+loc0000: Push "success"
+GetVariable
+Not
+If loc0002
+Push "Success! Hurrah!"
+Trace
+Jump loc0001
+loc0002: Push "Failed :("
+Trace
+loc0001: Push "-- end --"
+Trace

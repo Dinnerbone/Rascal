@@ -1,0 +1,203 @@
+---
+source: crates/as2_pcode/src/codegen/tests.rs
+expression: builder
+input_file: samples/as2/op_precedence/mul_div_mod.as
+---
+Push "a"
+Push 20
+DefineLocal
+Push "b"
+Push 6
+DefineLocal
+Push "c"
+Push 4
+DefineLocal
+Push "a="
+Push "a"
+GetVariable
+Add2
+Push ", b="
+Add2
+Push "b"
+GetVariable
+Add2
+Push ", c="
+Add2
+Push "c"
+GetVariable
+Add2
+Trace
+Push "----"
+Trace
+Push "a * b / c = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+Multiply
+Push "c"
+GetVariable
+Divide
+Add2
+Trace
+Push "(a * b) / c = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+Multiply
+Push "c"
+GetVariable
+Divide
+Add2
+Trace
+Push "---"
+Trace
+Push "a / b * c = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+Divide
+Push "c"
+GetVariable
+Multiply
+Add2
+Trace
+Push "(a / b) * c = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+Divide
+Push "c"
+GetVariable
+Multiply
+Add2
+Trace
+Push "---"
+Trace
+Push "a % b * c = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+Modulo
+Push "c"
+GetVariable
+Multiply
+Add2
+Trace
+Push "(a % b) * c = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+Modulo
+Push "c"
+GetVariable
+Multiply
+Add2
+Trace
+Push "---"
+Trace
+Push "a * b % c = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+Multiply
+Push "c"
+GetVariable
+Modulo
+Add2
+Trace
+Push "(a * b) % c = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+Multiply
+Push "c"
+GetVariable
+Modulo
+Add2
+Trace
+Push "---"
+Trace
+Push "a % b / c = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+Modulo
+Push "c"
+GetVariable
+Divide
+Add2
+Trace
+Push "(a % b) / c = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+Modulo
+Push "c"
+GetVariable
+Divide
+Add2
+Trace
+Push "---"
+Trace
+Push "a / b % c = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+Divide
+Push "c"
+GetVariable
+Modulo
+Add2
+Trace
+Push "(a / b) % c = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+Divide
+Push "c"
+GetVariable
+Modulo
+Add2
+Trace
+Push "---"
+Trace
+Push "Nested: a * b / c * b = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+Multiply
+Push "c"
+GetVariable
+Divide
+Push "b"
+GetVariable
+Multiply
+Add2
+Trace
+Push "Nested reference: (((a * b) / c) * b) = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+Multiply
+Push "c"
+GetVariable
+Divide
+Push "b"
+GetVariable
+Multiply
+Add2
+Trace

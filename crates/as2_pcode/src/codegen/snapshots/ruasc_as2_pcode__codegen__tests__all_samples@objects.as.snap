@@ -1,0 +1,59 @@
+---
+source: crates/as2_pcode/src/codegen/tests.rs
+expression: builder
+input_file: samples/as2/objects.as
+---
+Push "o"
+Push "b"
+Push "Object"
+GetVariable
+Push "a"
+Push 1
+Push 2
+InitObject
+DefineLocal
+Push "o.a: "
+Push "o"
+GetVariable
+Push "a"
+GetMember
+Add2
+Trace
+Push "o.b: "
+Push "o"
+GetVariable
+Push "b"
+GetMember
+Add2
+Trace
+Push "new Object(): "
+Push 0
+Push "Object"
+NewObject
+Add2
+Trace
+Push "new Object(1, 2, {}, false): "
+Push false
+Push 0
+InitObject
+Push 2
+Push 1
+Push 4
+Push "Object"
+NewObject
+Add2
+Trace
+Push "new Object: "
+Push 0
+Push "Object"
+NewObject
+Add2
+Trace
+Push "new o.b(): "
+Push 0
+Push "o"
+GetVariable
+Push "b"
+NewMethod
+Add2
+Trace

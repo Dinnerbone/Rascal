@@ -111,6 +111,54 @@ pub enum Action {
     TypeOf,
 }
 
+impl Action {
+    pub(crate) fn stack_delta(&self) -> i32 {
+        match self {
+            Action::Add => -1,
+            Action::Add2 => -1,
+            Action::BitAnd => -1,
+            Action::BitLShift => -1,
+            Action::BitOr => -1,
+            Action::BitRShift => -1,
+            Action::BitURShift => -1,
+            Action::BitXor => -1,
+            Action::Decrement => -1,
+            Action::DefineFunction { .. } => 1,
+            Action::DefineLocal => -2,
+            Action::DefineLocal2 => -1,
+            Action::Delete => -2,
+            Action::Delete2 => -1,
+            Action::Divide => -1,
+            Action::Enumerate2 => 0,
+            Action::Equals2 => -1,
+            Action::GetMember => -1,
+            Action::GetVariable => 0,
+            Action::Greater => -1,
+            Action::If(_) => -1,
+            Action::Increment => -1,
+            Action::InstanceOf => -1,
+            Action::Jump(_) => 0,
+            Action::Less2 => -1,
+            Action::Modulo => -1,
+            Action::Multiply => -1,
+            Action::NewObject => 1,
+            Action::Not => 0,
+            Action::Pop => -1,
+            Action::Push(values) => values.len() as i32,
+            Action::PushDuplicate => 1,
+            Action::Return => -1,
+            Action::SetMember => -3,
+            Action::SetVariable => -2,
+            Action::StrictEquals => -1,
+            Action::StoreRegister(_) => 0,
+            Action::Subtract => -1,
+            Action::Trace => -1,
+            Action::TypeOf => 0,
+            _ => todo!("missing stack size delta for {:?}", self),
+        }
+    }
+}
+
 impl std::fmt::Display for Action {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {

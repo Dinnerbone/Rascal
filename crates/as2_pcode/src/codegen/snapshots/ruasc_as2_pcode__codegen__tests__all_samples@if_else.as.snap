@@ -1,0 +1,152 @@
+---
+source: crates/as2_pcode/src/codegen/tests.rs
+expression: builder
+input_file: samples/as2/if_else.as
+---
+Push "condition"
+Push true
+DefineLocal
+Push "x"
+Push 1
+DefineLocal
+Push "y"
+Push -1
+DefineLocal
+Push "condition"
+GetVariable
+Not
+If loc0000
+Push 0
+Push "doSomething"
+CallFunction
+Pop
+loc0000: Push "x"
+GetVariable
+Push 0
+Greater
+Not
+If loc0002
+Push "positive"
+Trace
+Jump loc0001
+loc0002: Push "negative"
+Trace
+loc0001: Push "x"
+GetVariable
+Push 0
+Less2
+Not
+If loc0004
+Push "negative"
+Trace
+Jump loc0003
+loc0004: Push "x"
+GetVariable
+Push 0
+Greater
+Not
+If loc0006
+Push "positive"
+Trace
+Jump loc0005
+loc0006: Push "x"
+GetVariable
+Push 0
+Equals2
+Not
+If loc0008
+Push "zero"
+Trace
+Jump loc0007
+loc0008: Push "undefined"
+Trace
+loc0007: loc0005: loc0003: Push "condition"
+GetVariable
+Not
+If loc0009
+loc0009: Push "condition"
+GetVariable
+Not
+If loc000b
+Jump loc000a
+loc000b: loc000a: Push "condition"
+GetVariable
+Not
+If loc000d
+Push "single"
+Trace
+Jump loc000c
+loc000d: loc000c: Push "x"
+GetVariable
+Push 0
+Greater
+Not
+If loc000e
+Push "y"
+GetVariable
+Push 0
+Greater
+Not
+If loc0010
+Push "both positive"
+Trace
+Jump loc000f
+loc0010: Push "y"
+GetVariable
+Push 0
+Less2
+Not
+If loc0012
+Push "x positive, y negative"
+Trace
+Jump loc0011
+loc0012: Push "x positive, y zero"
+Trace
+loc0011: loc000f: loc000e: Push "condition"
+GetVariable
+Not
+If loc0014
+Push 0
+Push "doSomething"
+CallFunction
+Pop
+Jump loc0013
+loc0014: Push "otherCondition"
+GetVariable
+Not
+If loc0016
+Push 0
+Push "doSomethingElse"
+CallFunction
+Pop
+Jump loc0015
+loc0016: Push 0
+Push "doFinal"
+CallFunction
+Pop
+loc0015: loc0013: Push "condition"
+GetVariable
+Not
+If loc0017
+Push 0
+Push "statement1"
+CallFunction
+Pop
+loc0017: Push 0
+Push "statement2"
+CallFunction
+Pop
+Push "x"
+GetVariable
+Not
+If loc0018
+Push "y"
+GetVariable
+Not
+If loc001a
+Push "y"
+Trace
+Jump loc0019
+loc001a: Push "ambiguous else"
+Trace
+loc0019: loc0018:

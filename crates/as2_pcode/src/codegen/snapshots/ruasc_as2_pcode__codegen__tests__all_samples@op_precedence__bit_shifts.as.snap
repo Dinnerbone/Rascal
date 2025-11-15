@@ -1,0 +1,179 @@
+---
+source: crates/as2_pcode/src/codegen/tests.rs
+expression: builder
+input_file: samples/as2/op_precedence/bit_shifts.as
+---
+Push "a"
+Push 16
+DefineLocal
+Push "b"
+Push 2
+DefineLocal
+Push "c"
+Push 1
+DefineLocal
+Push "a="
+Push "a"
+GetVariable
+Add2
+Push ", b="
+Add2
+Push "b"
+GetVariable
+Add2
+Push ", c="
+Add2
+Push "c"
+GetVariable
+Add2
+Trace
+Push "----"
+Trace
+Push "a << b >> c = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+BitLShift
+Push "c"
+GetVariable
+BitRShift
+Add2
+Trace
+Push "((a << b) >> c) = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+BitLShift
+Push "c"
+GetVariable
+BitRShift
+Add2
+Trace
+Push "---"
+Trace
+Push "a >> b << c = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+BitRShift
+Push "c"
+GetVariable
+BitLShift
+Add2
+Trace
+Push "((a >> b) << c) = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+BitRShift
+Push "c"
+GetVariable
+BitLShift
+Add2
+Trace
+Push "---"
+Trace
+Push "a >>> b >> c = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+BitURShift
+Push "c"
+GetVariable
+BitRShift
+Add2
+Trace
+Push "((a >>> b) >> c) = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+BitURShift
+Push "c"
+GetVariable
+BitRShift
+Add2
+Trace
+Push "---"
+Trace
+Push "a << b >> c >>> b = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+BitLShift
+Push "c"
+GetVariable
+BitRShift
+Push "b"
+GetVariable
+BitURShift
+Add2
+Trace
+Push "(((a << b) >> c) >>> b) = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+BitLShift
+Push "c"
+GetVariable
+BitRShift
+Push "b"
+GetVariable
+BitURShift
+Add2
+Trace
+Push "---"
+Trace
+Push "a << b + c = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+Push "c"
+GetVariable
+Add2
+BitLShift
+Add2
+Trace
+Push "a << (b + c) = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+Push "c"
+GetVariable
+Add2
+BitLShift
+Add2
+Trace
+Push "---"
+Trace
+Push "a * b << c = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+Multiply
+Push "c"
+GetVariable
+BitLShift
+Add2
+Trace
+Push "(a * b) << c = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+Multiply
+Push "c"
+GetVariable
+BitLShift
+Add2
+Trace

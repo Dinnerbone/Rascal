@@ -1,0 +1,338 @@
+---
+source: crates/as2_pcode/src/codegen/tests.rs
+expression: builder
+input_file: samples/as2/for_loop.as
+---
+Push "for_classic"
+Trace
+Push "i"
+Push 0
+DefineLocal
+loc0001: Push "i"
+GetVariable
+Push 3
+Less2
+Not
+If loc0000
+Push "i"
+GetVariable
+Trace
+Push "i"
+Push "i"
+GetVariable
+Increment
+SetVariable
+Jump loc0001
+loc0000: Push "for_no_init"
+Trace
+Push "j"
+Push 3
+DefineLocal
+Push "start"
+Trace
+loc0003: Push "j"
+GetVariable
+Push 6
+Less2
+Not
+If loc0002
+Push "j"
+GetVariable
+Trace
+Push "j"
+Push "j"
+GetVariable
+Increment
+SetVariable
+Jump loc0003
+loc0002: Push "end"
+Trace
+Push "for_no_condition"
+Trace
+Push "k"
+Push 0
+DefineLocal
+loc0005: Push "k"
+GetVariable
+Trace
+Push "k"
+GetVariable
+Push 3
+Less2
+Not
+Not
+If loc0006
+Jump loc0004
+loc0006: Push "k"
+Push "k"
+GetVariable
+Increment
+SetVariable
+Jump loc0005
+loc0004: Push "for_no_update"
+Trace
+Push "n"
+Push 0
+DefineLocal
+loc0008: Push "n"
+GetVariable
+Push 3
+Less2
+Not
+If loc0007
+Push "n"
+GetVariable
+Trace
+Push "n"
+Push "n"
+GetVariable
+Increment
+SetVariable
+Jump loc0008
+loc0007: Push "for_all_omitted"
+Trace
+Push "count"
+Push 0
+DefineLocal
+loc000a: Push "loop"
+Trace
+Push "count"
+Push "count"
+GetVariable
+Increment
+SetVariable
+Push "count"
+GetVariable
+Push 3
+Equals2
+Not
+If loc000b
+Jump loc0009
+loc000b: Jump loc000a
+loc0009: Push "done"
+Trace
+Push "for_in_object"
+Trace
+Push "obj"
+Push 0
+InitObject
+DefineLocal
+Push "obj"
+GetVariable
+Push "a"
+Push 10
+SetMember
+Push "obj"
+GetVariable
+Push "b"
+Push 20
+SetMember
+Push "obj"
+GetVariable
+Enumerate2
+loc000d: StoreRegister 0
+Push null
+Equals2
+If loc000c
+Push "key"
+Push register0
+DefineLocal
+Push "key"
+GetVariable
+Push "="
+Add2
+Push "obj"
+GetVariable
+Push "key"
+GetVariable
+GetMember
+Add2
+Trace
+Jump loc000d
+loc000c: Push "for_in_array"
+Trace
+Push "arr"
+Push 7
+Push 6
+Push 5
+Push 3
+InitArray
+DefineLocal
+Push "idx"
+DefineLocal2
+Push "arr"
+GetVariable
+Enumerate2
+loc000f: StoreRegister 0
+Push null
+Equals2
+If loc000e
+Push "idx"
+Push register0
+SetVariable
+Push "idx"
+GetVariable
+Push "="
+Add2
+Push "arr"
+GetVariable
+Push "idx"
+GetVariable
+GetMember
+Add2
+Trace
+Jump loc000f
+loc000e: Push "for_multiple_clauses"
+Trace
+Push "a"
+Push 0
+DefineLocal
+Push "b"
+Push 3
+DefineLocal
+loc0011: Push "a"
+GetVariable
+Push "b"
+GetVariable
+Less2
+Not
+If loc0010
+Push "a"
+GetVariable
+Push ","
+Add2
+Push "b"
+GetVariable
+Add2
+Trace
+Push "a"
+Push "a"
+GetVariable
+Increment
+SetVariable
+Push "b"
+Push "b"
+GetVariable
+Decrement
+SetVariable
+Jump loc0011
+loc0010: Push "for_continue_break"
+Trace
+Push "x"
+Push 0
+DefineLocal
+loc0013: Push "x"
+GetVariable
+Push 10
+Less2
+Not
+If loc0012
+Push "x"
+GetVariable
+Push 5
+Equals2
+Not
+If loc0014
+Jump loc0012
+loc0014: Push "x"
+GetVariable
+Push 2
+Modulo
+Push 1
+Equals2
+Not
+If loc0015
+Jump loc0013
+loc0015: Push "x"
+GetVariable
+Trace
+Push "x"
+Push "x"
+GetVariable
+Increment
+SetVariable
+Jump loc0013
+loc0012: Push "for_nested"
+Trace
+Push "outer"
+Push 0
+DefineLocal
+loc0017: Push "outer"
+GetVariable
+Push 2
+Less2
+Not
+If loc0016
+Push "inner"
+Push 0
+DefineLocal
+loc0019: Push "inner"
+GetVariable
+Push 2
+Less2
+Not
+If loc0018
+Push "outer"
+GetVariable
+Push ","
+Add2
+Push "inner"
+GetVariable
+Add2
+Trace
+Push "inner"
+Push "inner"
+GetVariable
+Increment
+SetVariable
+Jump loc0019
+loc0018: Push "outer"
+Push "outer"
+GetVariable
+Increment
+SetVariable
+Jump loc0017
+loc0016: Push "for_existing_var"
+Trace
+Push "z"
+DefineLocal2
+Push "z"
+Push 1
+SetVariable
+loc001b: Push "z"
+GetVariable
+Push 3
+Greater
+Not
+Not
+If loc001a
+Push "z"
+GetVariable
+Trace
+Push "z"
+Push "z"
+GetVariable
+Increment
+SetVariable
+Jump loc001b
+loc001a: Push "for_single_statement_body"
+Trace
+Push "q"
+Push 0
+DefineLocal
+loc001d: Push "q"
+GetVariable
+Push 3
+Less2
+Not
+If loc001c
+Push "q"
+GetVariable
+Trace
+Push "q"
+Push "q"
+GetVariable
+Increment
+SetVariable
+Jump loc001d
+loc001c:

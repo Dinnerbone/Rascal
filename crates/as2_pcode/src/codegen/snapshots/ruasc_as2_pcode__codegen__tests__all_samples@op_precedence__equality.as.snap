@@ -1,0 +1,141 @@
+---
+source: crates/as2_pcode/src/codegen/tests.rs
+expression: builder
+input_file: samples/as2/op_precedence/equality.as
+---
+Push "a"
+Push 10
+DefineLocal
+Push "b"
+Push "10"
+DefineLocal
+Push "c"
+Push 5
+DefineLocal
+Push "a="
+Push "a"
+GetVariable
+Add2
+Push ", b="
+Add2
+Push "b"
+GetVariable
+Add2
+Push ", c="
+Add2
+Push "c"
+GetVariable
+Add2
+Trace
+Push "----"
+Trace
+Push "a == b = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+Equals2
+Add2
+Trace
+Push "a != b = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+Equals2
+Not
+Add2
+Trace
+Push "---"
+Trace
+Push "a === b = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+StrictEquals
+Add2
+Trace
+Push "a !== b = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+StrictEquals
+Not
+Add2
+Trace
+Push "---"
+Trace
+Push "a == b == c = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+Equals2
+Push "c"
+GetVariable
+Equals2
+Add2
+Trace
+Push "((a == b) == c) = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+Equals2
+Push "c"
+GetVariable
+Equals2
+Add2
+Trace
+Push "a !== b !== c = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+StrictEquals
+Not
+Push "c"
+GetVariable
+StrictEquals
+Not
+Add2
+Trace
+Push "((a !== b) !== c) = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+StrictEquals
+Not
+Push "c"
+GetVariable
+StrictEquals
+Not
+Add2
+Trace
+Push "---"
+Trace
+Push "a == b > c = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+Push "c"
+GetVariable
+Greater
+Equals2
+Add2
+Trace
+Push "(a == (b > c)) = "
+Push "a"
+GetVariable
+Push "b"
+GetVariable
+Push "c"
+GetVariable
+Greater
+Equals2
+Add2
+Trace

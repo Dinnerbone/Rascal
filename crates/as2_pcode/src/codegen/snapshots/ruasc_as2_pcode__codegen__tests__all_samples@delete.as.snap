@@ -1,0 +1,130 @@
+---
+source: crates/as2_pcode/src/codegen/tests.rs
+expression: builder
+input_file: samples/as2/delete.as
+---
+Push "num"
+Push 1
+DefineLocal
+Push "obj"
+Push "num"
+Push 1
+Push 1
+InitObject
+DefineLocal
+Push "delete num: "
+Push "num"
+Delete2
+Add2
+Trace
+Push "delete obj: "
+Push "obj"
+Delete2
+Add2
+Trace
+Push "obj"
+Push "num"
+Push 1
+Push 1
+InitObject
+DefineLocal
+Push "delete obj.num: "
+Push "obj"
+GetVariable
+Push "num"
+Delete
+Add2
+Trace
+Push "obj"
+Push "num"
+Push 1
+Push 1
+InitObject
+DefineLocal
+Push "delete obj.num + 1: "
+Push "obj"
+GetVariable
+Push "num"
+Delete
+Push 1
+Add2
+Add2
+Trace
+Push "obj"
+Push "num"
+Push 1
+Push 1
+InitObject
+DefineLocal
+Push "delete obj.num == \"number\" ? \":)\" : \":(\": "
+Push "obj"
+GetVariable
+Push "num"
+Delete
+Not
+If loc0001
+Push ":)"
+Jump loc0000
+loc0001: Push ":("
+loc0000: Add2
+Trace
+Push "obj"
+Push "num"
+Push 1
+Push 1
+InitObject
+DefineLocal
+Push "delete obj.num + delete obj.num: "
+Push "obj"
+GetVariable
+Push "num"
+Delete
+Push "obj"
+GetVariable
+Push "num"
+Delete
+Add2
+Add2
+Trace
+Push "obj"
+Push "trace"
+Push "trace"
+GetVariable
+Push "num"
+Push 1
+Push 2
+InitObject
+DefineLocal
+Push "delete obj.trace: "
+Push "obj"
+GetVariable
+Push "trace"
+Delete
+Add2
+Trace
+Push "obj"
+Push "trace"
+Push "trace"
+GetVariable
+Push "num"
+Push 1
+Push 2
+InitObject
+DefineLocal
+Push "delete obj.trace(): "
+Push 0
+Push "obj"
+GetVariable
+Push "trace"
+CallMethod
+Delete2
+Add2
+Trace
+Push "delete(nonexistent, obj): "
+Push "nonexistent"
+GetVariable
+Pop
+Push "obj"
+Delete2
+Add2
+Trace

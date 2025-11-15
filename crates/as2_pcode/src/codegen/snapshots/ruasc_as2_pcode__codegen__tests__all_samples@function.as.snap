@@ -1,0 +1,39 @@
+---
+source: crates/as2_pcode/src/codegen/tests.rs
+expression: builder
+input_file: samples/as2/function.as
+---
+DefineFunction "test", 0 {
+Push "Test called!"
+Trace
+Push ":)"
+Return
+}
+Pop
+Push "bb"
+Push "aa"
+Push 2
+DefineFunction "", 2, "a", "b" {
+Push "Anonymous function called!"
+Trace
+Push "a = "
+Push "a"
+GetVariable
+Add2
+Push ", b = "
+Add2
+Push "b"
+GetVariable
+Add2
+Trace
+}
+CallFunction
+Pop
+Push 0
+Push "test"
+CallFunction
+Push 0
+Push "test"
+CallFunction
+Add2
+Trace
