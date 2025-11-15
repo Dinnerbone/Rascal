@@ -1,0 +1,1330 @@
+---
+source: src/lexer/tests.rs
+expression: tokens
+input_file: samples/op_precedence/logic.as
+---
+- kind:
+    Keyword: Var
+  span:
+    start: 13
+    end: 16
+  raw: var
+- kind: Identifier
+  span:
+    start: 17
+    end: 18
+  raw: a
+- kind:
+    Operator: Assign
+  span:
+    start: 19
+    end: 20
+  raw: "="
+- kind: Identifier
+  span:
+    start: 21
+    end: 25
+  raw: "true"
+- kind: Semicolon
+  span:
+    start: 25
+    end: 26
+  raw: ;
+- kind: Newline
+  span:
+    start: 26
+    end: 27
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 27
+    end: 30
+  raw: var
+- kind: Identifier
+  span:
+    start: 31
+    end: 32
+  raw: b
+- kind:
+    Operator: Assign
+  span:
+    start: 33
+    end: 34
+  raw: "="
+- kind: Identifier
+  span:
+    start: 35
+    end: 40
+  raw: "false"
+- kind: Semicolon
+  span:
+    start: 40
+    end: 41
+  raw: ;
+- kind: Newline
+  span:
+    start: 41
+    end: 42
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 42
+    end: 45
+  raw: var
+- kind: Identifier
+  span:
+    start: 46
+    end: 47
+  raw: c
+- kind:
+    Operator: Assign
+  span:
+    start: 48
+    end: 49
+  raw: "="
+- kind: Identifier
+  span:
+    start: 50
+    end: 54
+  raw: "true"
+- kind: Semicolon
+  span:
+    start: 54
+    end: 55
+  raw: ;
+- kind: Newline
+  span:
+    start: 55
+    end: 56
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 56
+    end: 57
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 57
+    end: 62
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 62
+    end: 63
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 63
+    end: 67
+  raw: a=
+- kind:
+    Operator: Add
+  span:
+    start: 68
+    end: 69
+  raw: +
+- kind: Identifier
+  span:
+    start: 70
+    end: 71
+  raw: a
+- kind:
+    Operator: Add
+  span:
+    start: 72
+    end: 73
+  raw: +
+- kind:
+    String: Double
+  span:
+    start: 74
+    end: 80
+  raw: ", b="
+- kind:
+    Operator: Add
+  span:
+    start: 81
+    end: 82
+  raw: +
+- kind: Identifier
+  span:
+    start: 83
+    end: 84
+  raw: b
+- kind:
+    Operator: Add
+  span:
+    start: 85
+    end: 86
+  raw: +
+- kind:
+    String: Double
+  span:
+    start: 87
+    end: 93
+  raw: ", c="
+- kind:
+    Operator: Add
+  span:
+    start: 94
+    end: 95
+  raw: +
+- kind: Identifier
+  span:
+    start: 96
+    end: 97
+  raw: c
+- kind: CloseParen
+  span:
+    start: 97
+    end: 98
+  raw: )
+- kind: Semicolon
+  span:
+    start: 98
+    end: 99
+  raw: ;
+- kind: Newline
+  span:
+    start: 99
+    end: 100
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 100
+    end: 105
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 105
+    end: 106
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 106
+    end: 112
+  raw: "----"
+- kind: CloseParen
+  span:
+    start: 112
+    end: 113
+  raw: )
+- kind: Semicolon
+  span:
+    start: 113
+    end: 114
+  raw: ;
+- kind: Newline
+  span:
+    start: 114
+    end: 115
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 115
+    end: 116
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 137
+    end: 142
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 142
+    end: 143
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 143
+    end: 154
+  raw: "a && b = "
+- kind:
+    Operator: Add
+  span:
+    start: 155
+    end: 156
+  raw: +
+- kind: OpenParen
+  span:
+    start: 157
+    end: 158
+  raw: (
+- kind: Identifier
+  span:
+    start: 158
+    end: 159
+  raw: a
+- kind:
+    Operator: LogicalAnd
+  span:
+    start: 160
+    end: 162
+  raw: "&&"
+- kind: Identifier
+  span:
+    start: 163
+    end: 164
+  raw: b
+- kind: CloseParen
+  span:
+    start: 164
+    end: 165
+  raw: )
+- kind: CloseParen
+  span:
+    start: 165
+    end: 166
+  raw: )
+- kind: Semicolon
+  span:
+    start: 166
+    end: 167
+  raw: ;
+- kind: Identifier
+  span:
+    start: 177
+    end: 182
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 182
+    end: 183
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 183
+    end: 194
+  raw: "b && c = "
+- kind:
+    Operator: Add
+  span:
+    start: 195
+    end: 196
+  raw: +
+- kind: OpenParen
+  span:
+    start: 197
+    end: 198
+  raw: (
+- kind: Identifier
+  span:
+    start: 198
+    end: 199
+  raw: b
+- kind:
+    Operator: LogicalAnd
+  span:
+    start: 200
+    end: 202
+  raw: "&&"
+- kind: Identifier
+  span:
+    start: 203
+    end: 204
+  raw: c
+- kind: CloseParen
+  span:
+    start: 204
+    end: 205
+  raw: )
+- kind: CloseParen
+  span:
+    start: 205
+    end: 206
+  raw: )
+- kind: Semicolon
+  span:
+    start: 206
+    end: 207
+  raw: ;
+- kind: Identifier
+  span:
+    start: 217
+    end: 222
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 222
+    end: 223
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 223
+    end: 228
+  raw: "---"
+- kind: CloseParen
+  span:
+    start: 228
+    end: 229
+  raw: )
+- kind: Semicolon
+  span:
+    start: 229
+    end: 230
+  raw: ;
+- kind: Newline
+  span:
+    start: 230
+    end: 231
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 231
+    end: 232
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 252
+    end: 257
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 257
+    end: 258
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 258
+    end: 269
+  raw: "a || b = "
+- kind:
+    Operator: Add
+  span:
+    start: 270
+    end: 271
+  raw: +
+- kind: OpenParen
+  span:
+    start: 272
+    end: 273
+  raw: (
+- kind: Identifier
+  span:
+    start: 273
+    end: 274
+  raw: a
+- kind:
+    Operator: LogicalOr
+  span:
+    start: 275
+    end: 277
+  raw: "||"
+- kind: Identifier
+  span:
+    start: 278
+    end: 279
+  raw: b
+- kind: CloseParen
+  span:
+    start: 279
+    end: 280
+  raw: )
+- kind: CloseParen
+  span:
+    start: 280
+    end: 281
+  raw: )
+- kind: Semicolon
+  span:
+    start: 281
+    end: 282
+  raw: ;
+- kind: Identifier
+  span:
+    start: 291
+    end: 296
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 296
+    end: 297
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 297
+    end: 308
+  raw: "b || c = "
+- kind:
+    Operator: Add
+  span:
+    start: 309
+    end: 310
+  raw: +
+- kind: OpenParen
+  span:
+    start: 311
+    end: 312
+  raw: (
+- kind: Identifier
+  span:
+    start: 312
+    end: 313
+  raw: b
+- kind:
+    Operator: LogicalOr
+  span:
+    start: 314
+    end: 316
+  raw: "||"
+- kind: Identifier
+  span:
+    start: 317
+    end: 318
+  raw: c
+- kind: CloseParen
+  span:
+    start: 318
+    end: 319
+  raw: )
+- kind: CloseParen
+  span:
+    start: 319
+    end: 320
+  raw: )
+- kind: Semicolon
+  span:
+    start: 320
+    end: 321
+  raw: ;
+- kind: Identifier
+  span:
+    start: 330
+    end: 335
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 335
+    end: 336
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 336
+    end: 341
+  raw: "---"
+- kind: CloseParen
+  span:
+    start: 341
+    end: 342
+  raw: )
+- kind: Semicolon
+  span:
+    start: 342
+    end: 343
+  raw: ;
+- kind: Newline
+  span:
+    start: 343
+    end: 344
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 344
+    end: 345
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 392
+    end: 397
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 397
+    end: 398
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 398
+    end: 414
+  raw: "a && c && b = "
+- kind:
+    Operator: Add
+  span:
+    start: 415
+    end: 416
+  raw: +
+- kind: OpenParen
+  span:
+    start: 417
+    end: 418
+  raw: (
+- kind: Identifier
+  span:
+    start: 418
+    end: 419
+  raw: a
+- kind:
+    Operator: LogicalAnd
+  span:
+    start: 420
+    end: 422
+  raw: "&&"
+- kind: Identifier
+  span:
+    start: 423
+    end: 424
+  raw: c
+- kind:
+    Operator: LogicalAnd
+  span:
+    start: 425
+    end: 427
+  raw: "&&"
+- kind: Identifier
+  span:
+    start: 428
+    end: 429
+  raw: b
+- kind: CloseParen
+  span:
+    start: 429
+    end: 430
+  raw: )
+- kind: CloseParen
+  span:
+    start: 430
+    end: 431
+  raw: )
+- kind: Semicolon
+  span:
+    start: 431
+    end: 432
+  raw: ;
+- kind: Identifier
+  span:
+    start: 443
+    end: 448
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 448
+    end: 449
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 449
+    end: 469
+  raw: "((a && c) && b) = "
+- kind:
+    Operator: Add
+  span:
+    start: 470
+    end: 471
+  raw: +
+- kind: OpenParen
+  span:
+    start: 472
+    end: 473
+  raw: (
+- kind: OpenParen
+  span:
+    start: 473
+    end: 474
+  raw: (
+- kind: Identifier
+  span:
+    start: 474
+    end: 475
+  raw: a
+- kind:
+    Operator: LogicalAnd
+  span:
+    start: 476
+    end: 478
+  raw: "&&"
+- kind: Identifier
+  span:
+    start: 479
+    end: 480
+  raw: c
+- kind: CloseParen
+  span:
+    start: 480
+    end: 481
+  raw: )
+- kind:
+    Operator: LogicalAnd
+  span:
+    start: 482
+    end: 484
+  raw: "&&"
+- kind: Identifier
+  span:
+    start: 485
+    end: 486
+  raw: b
+- kind: CloseParen
+  span:
+    start: 486
+    end: 487
+  raw: )
+- kind: CloseParen
+  span:
+    start: 487
+    end: 488
+  raw: )
+- kind: Semicolon
+  span:
+    start: 488
+    end: 489
+  raw: ;
+- kind: Identifier
+  span:
+    start: 499
+    end: 504
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 504
+    end: 505
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 505
+    end: 510
+  raw: "---"
+- kind: CloseParen
+  span:
+    start: 510
+    end: 511
+  raw: )
+- kind: Semicolon
+  span:
+    start: 511
+    end: 512
+  raw: ;
+- kind: Newline
+  span:
+    start: 512
+    end: 513
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 513
+    end: 514
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 514
+    end: 519
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 519
+    end: 520
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 520
+    end: 536
+  raw: "a || b || c = "
+- kind:
+    Operator: Add
+  span:
+    start: 537
+    end: 538
+  raw: +
+- kind: OpenParen
+  span:
+    start: 539
+    end: 540
+  raw: (
+- kind: Identifier
+  span:
+    start: 540
+    end: 541
+  raw: a
+- kind:
+    Operator: LogicalOr
+  span:
+    start: 542
+    end: 544
+  raw: "||"
+- kind: Identifier
+  span:
+    start: 545
+    end: 546
+  raw: b
+- kind:
+    Operator: LogicalOr
+  span:
+    start: 547
+    end: 549
+  raw: "||"
+- kind: Identifier
+  span:
+    start: 550
+    end: 551
+  raw: c
+- kind: CloseParen
+  span:
+    start: 551
+    end: 552
+  raw: )
+- kind: CloseParen
+  span:
+    start: 552
+    end: 553
+  raw: )
+- kind: Semicolon
+  span:
+    start: 553
+    end: 554
+  raw: ;
+- kind: Identifier
+  span:
+    start: 563
+    end: 568
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 568
+    end: 569
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 569
+    end: 589
+  raw: "((a || b) || c) = "
+- kind:
+    Operator: Add
+  span:
+    start: 590
+    end: 591
+  raw: +
+- kind: OpenParen
+  span:
+    start: 592
+    end: 593
+  raw: (
+- kind: OpenParen
+  span:
+    start: 593
+    end: 594
+  raw: (
+- kind: Identifier
+  span:
+    start: 594
+    end: 595
+  raw: a
+- kind:
+    Operator: LogicalOr
+  span:
+    start: 596
+    end: 598
+  raw: "||"
+- kind: Identifier
+  span:
+    start: 599
+    end: 600
+  raw: b
+- kind: CloseParen
+  span:
+    start: 600
+    end: 601
+  raw: )
+- kind:
+    Operator: LogicalOr
+  span:
+    start: 602
+    end: 604
+  raw: "||"
+- kind: Identifier
+  span:
+    start: 605
+    end: 606
+  raw: c
+- kind: CloseParen
+  span:
+    start: 606
+    end: 607
+  raw: )
+- kind: CloseParen
+  span:
+    start: 607
+    end: 608
+  raw: )
+- kind: Semicolon
+  span:
+    start: 608
+    end: 609
+  raw: ;
+- kind: Identifier
+  span:
+    start: 618
+    end: 623
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 623
+    end: 624
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 624
+    end: 629
+  raw: "---"
+- kind: CloseParen
+  span:
+    start: 629
+    end: 630
+  raw: )
+- kind: Semicolon
+  span:
+    start: 630
+    end: 631
+  raw: ;
+- kind: Newline
+  span:
+    start: 631
+    end: 632
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 632
+    end: 633
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 681
+    end: 686
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 686
+    end: 687
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 687
+    end: 703
+  raw: "a || b && c = "
+- kind:
+    Operator: Add
+  span:
+    start: 704
+    end: 705
+  raw: +
+- kind: OpenParen
+  span:
+    start: 706
+    end: 707
+  raw: (
+- kind: Identifier
+  span:
+    start: 707
+    end: 708
+  raw: a
+- kind:
+    Operator: LogicalOr
+  span:
+    start: 709
+    end: 711
+  raw: "||"
+- kind: Identifier
+  span:
+    start: 712
+    end: 713
+  raw: b
+- kind:
+    Operator: LogicalAnd
+  span:
+    start: 714
+    end: 716
+  raw: "&&"
+- kind: Identifier
+  span:
+    start: 717
+    end: 718
+  raw: c
+- kind: CloseParen
+  span:
+    start: 718
+    end: 719
+  raw: )
+- kind: CloseParen
+  span:
+    start: 719
+    end: 720
+  raw: )
+- kind: Semicolon
+  span:
+    start: 720
+    end: 721
+  raw: ;
+- kind: Identifier
+  span:
+    start: 731
+    end: 736
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 736
+    end: 737
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 737
+    end: 757
+  raw: "(a || (b && c)) = "
+- kind:
+    Operator: Add
+  span:
+    start: 758
+    end: 759
+  raw: +
+- kind: OpenParen
+  span:
+    start: 760
+    end: 761
+  raw: (
+- kind: Identifier
+  span:
+    start: 761
+    end: 762
+  raw: a
+- kind:
+    Operator: LogicalOr
+  span:
+    start: 763
+    end: 765
+  raw: "||"
+- kind: OpenParen
+  span:
+    start: 766
+    end: 767
+  raw: (
+- kind: Identifier
+  span:
+    start: 767
+    end: 768
+  raw: b
+- kind:
+    Operator: LogicalAnd
+  span:
+    start: 769
+    end: 771
+  raw: "&&"
+- kind: Identifier
+  span:
+    start: 772
+    end: 773
+  raw: c
+- kind: CloseParen
+  span:
+    start: 773
+    end: 774
+  raw: )
+- kind: CloseParen
+  span:
+    start: 774
+    end: 775
+  raw: )
+- kind: CloseParen
+  span:
+    start: 775
+    end: 776
+  raw: )
+- kind: Semicolon
+  span:
+    start: 776
+    end: 777
+  raw: ;
+- kind: Identifier
+  span:
+    start: 786
+    end: 791
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 791
+    end: 792
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 792
+    end: 797
+  raw: "---"
+- kind: CloseParen
+  span:
+    start: 797
+    end: 798
+  raw: )
+- kind: Semicolon
+  span:
+    start: 798
+    end: 799
+  raw: ;
+- kind: Newline
+  span:
+    start: 799
+    end: 800
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 800
+    end: 801
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 821
+    end: 824
+  raw: var
+- kind: Identifier
+  span:
+    start: 825
+    end: 826
+  raw: x
+- kind:
+    Operator: Assign
+  span:
+    start: 827
+    end: 828
+  raw: "="
+- kind: Identifier
+  span:
+    start: 829
+    end: 834
+  raw: "false"
+- kind: Semicolon
+  span:
+    start: 834
+    end: 835
+  raw: ;
+- kind: Newline
+  span:
+    start: 835
+    end: 836
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 836
+    end: 839
+  raw: var
+- kind: Identifier
+  span:
+    start: 840
+    end: 841
+  raw: y
+- kind:
+    Operator: Assign
+  span:
+    start: 842
+    end: 843
+  raw: "="
+- kind: Identifier
+  span:
+    start: 844
+    end: 848
+  raw: "true"
+- kind: Semicolon
+  span:
+    start: 848
+    end: 849
+  raw: ;
+- kind: Newline
+  span:
+    start: 849
+    end: 850
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 850
+    end: 853
+  raw: var
+- kind: Identifier
+  span:
+    start: 854
+    end: 855
+  raw: z
+- kind:
+    Operator: Assign
+  span:
+    start: 856
+    end: 857
+  raw: "="
+- kind: Identifier
+  span:
+    start: 858
+    end: 863
+  raw: "false"
+- kind: Semicolon
+  span:
+    start: 863
+    end: 864
+  raw: ;
+- kind: Newline
+  span:
+    start: 864
+    end: 865
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 865
+    end: 870
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 870
+    end: 871
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 871
+    end: 887
+  raw: "x && y || z = "
+- kind:
+    Operator: Add
+  span:
+    start: 888
+    end: 889
+  raw: +
+- kind: OpenParen
+  span:
+    start: 890
+    end: 891
+  raw: (
+- kind: Identifier
+  span:
+    start: 891
+    end: 892
+  raw: x
+- kind:
+    Operator: LogicalAnd
+  span:
+    start: 893
+    end: 895
+  raw: "&&"
+- kind: Identifier
+  span:
+    start: 896
+    end: 897
+  raw: y
+- kind:
+    Operator: LogicalOr
+  span:
+    start: 898
+    end: 900
+  raw: "||"
+- kind: Identifier
+  span:
+    start: 901
+    end: 902
+  raw: z
+- kind: CloseParen
+  span:
+    start: 902
+    end: 903
+  raw: )
+- kind: CloseParen
+  span:
+    start: 903
+    end: 904
+  raw: )
+- kind: Semicolon
+  span:
+    start: 904
+    end: 905
+  raw: ;
+- kind: Identifier
+  span:
+    start: 915
+    end: 920
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 920
+    end: 921
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 921
+    end: 941
+  raw: "((x && y) || z) = "
+- kind:
+    Operator: Add
+  span:
+    start: 942
+    end: 943
+  raw: +
+- kind: OpenParen
+  span:
+    start: 944
+    end: 945
+  raw: (
+- kind: OpenParen
+  span:
+    start: 945
+    end: 946
+  raw: (
+- kind: Identifier
+  span:
+    start: 946
+    end: 947
+  raw: x
+- kind:
+    Operator: LogicalAnd
+  span:
+    start: 948
+    end: 950
+  raw: "&&"
+- kind: Identifier
+  span:
+    start: 951
+    end: 952
+  raw: y
+- kind: CloseParen
+  span:
+    start: 952
+    end: 953
+  raw: )
+- kind:
+    Operator: LogicalOr
+  span:
+    start: 954
+    end: 956
+  raw: "||"
+- kind: Identifier
+  span:
+    start: 957
+    end: 958
+  raw: z
+- kind: CloseParen
+  span:
+    start: 958
+    end: 959
+  raw: )
+- kind: CloseParen
+  span:
+    start: 959
+    end: 960
+  raw: )
+- kind: Semicolon
+  span:
+    start: 960
+    end: 961
+  raw: ;

@@ -16,6 +16,7 @@ enum OperatorPrecedence {
     Comparison,
     Equality,
     BitMath,
+    Logic,
     Other,
     Assignment,
 }
@@ -95,6 +96,7 @@ impl BinaryOperator {
             BinaryOperator::BitAnd | BinaryOperator::BitOr | BinaryOperator::BitXor => {
                 OperatorPrecedence::BitMath
             }
+            BinaryOperator::LogicalOr | BinaryOperator::LogicalAnd => OperatorPrecedence::Logic,
             BinaryOperator::Assign
             | BinaryOperator::AddAssign
             | BinaryOperator::SubAssign
