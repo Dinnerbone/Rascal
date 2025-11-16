@@ -24,6 +24,8 @@ pub(crate) enum Statement {
         yes: Box<Statement>,
         no: Option<Box<Statement>>,
     },
+    Break,
+    Continue,
 }
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
@@ -81,6 +83,8 @@ pub(crate) fn statement(i: &mut Tokens<'_>) -> ModalResult<Statement> {
         TokenKind::Keyword(Keyword::If) => if_else
             .context(StrContext::Label("if statement"))
             .parse_next(i)?,
+        TokenKind::Keyword(Keyword::Break) => Statement::Break,
+        TokenKind::Keyword(Keyword::Continue) => Statement::Continue,
         TokenKind::OpenBrace => {
             let statements = statement_list(true).parse_next(i)?;
             TokenKind::CloseBrace.parse_next(i)?;
@@ -480,5 +484,17 @@ mod stmt_tests {
                 })))
             })
         )
+    }
+
+    #[test]
+    fn test_break() {
+        let tokens = build_tokens(&[(TokenKind::Keyword(Keyword::Break), "break")]);
+        assert_eq!(parse_stmt(&tokens), Ok(Statement::Break))
+    }
+
+    #[test]
+    fn test_continue() {
+        let tokens = build_tokens(&[(TokenKind::Keyword(Keyword::Continue), "continue")]);
+        assert_eq!(parse_stmt(&tokens), Ok(Statement::Continue))
     }
 }

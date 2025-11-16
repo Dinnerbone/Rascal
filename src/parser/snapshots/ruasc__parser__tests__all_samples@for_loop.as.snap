@@ -142,9 +142,7 @@ Ok:
                         Integer: 3
                 "yes":
                   Block:
-                    - Expr:
-                        Constant:
-                          Identifier: break
+                    - Break
                 "no": ~
     - Expr:
         Call:
@@ -230,9 +228,7 @@ Ok:
                         Integer: 3
                 "yes":
                   Block:
-                    - Expr:
-                        Constant:
-                          Identifier: break
+                    - Break
                 "no": ~
     - Expr:
         Call:
@@ -446,9 +442,7 @@ Ok:
                         Integer: 5
                 "yes":
                   Block:
-                    - Expr:
-                        Constant:
-                          Identifier: break
+                    - Break
                 "no": ~
             - If:
                 condition:
@@ -464,9 +458,7 @@ Ok:
                         Integer: 1
                 "yes":
                   Block:
-                    - Expr:
-                        Constant:
-                          Identifier: continue
+                    - Continue
                 "no": ~
             - Expr:
                 Call:

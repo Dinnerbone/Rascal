@@ -107,4 +107,6 @@ pub enum Keyword {
     For,
     If,
     Else,
+    Break,
+    Continue,
 }
