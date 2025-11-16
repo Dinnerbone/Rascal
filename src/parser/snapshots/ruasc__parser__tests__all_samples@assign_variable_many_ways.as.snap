@@ -6,14 +6,14 @@ input_file: samples/assign_variable_many_ways.as
 Ok:
   statements:
     - Declare:
-        name: message
-        value:
-          BinaryOperator:
-            - Add
-            - Constant:
-                String: Hello
-            - Constant:
-                String: " "
+        - name: message
+          value:
+            BinaryOperator:
+              - Add
+              - Constant:
+                  String: Hello
+              - Constant:
+                  String: " "
     - Expr:
         BinaryOperator:
           - AddAssign
@@ -40,3 +40,50 @@ Ok:
           args:
             - Constant:
                 Identifier: message
+    - Declare:
+        - name: a
+          value:
+            Constant:
+              Integer: 1
+        - name: b
+          value: ~
+        - name: c
+          value:
+            Constant:
+              Integer: 3
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "a: "
+                - Constant:
+                    Identifier: a
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "b: "
+                - Constant:
+                    Identifier: b
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "c: "
+                - Constant:
+                    Identifier: c

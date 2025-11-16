@@ -6,20 +6,20 @@ input_file: samples/op_precedence/bit_math.as
 Ok:
   statements:
     - Declare:
-        name: a
-        value:
-          Constant:
-            Integer: 12
+        - name: a
+          value:
+            Constant:
+              Integer: 12
     - Declare:
-        name: b
-        value:
-          Constant:
-            Integer: 5
+        - name: b
+          value:
+            Constant:
+              Integer: 5
     - Declare:
-        name: c
-        value:
-          Constant:
-            Integer: 3
+        - name: c
+          value:
+            Constant:
+              Integer: 3
     - Expr:
         Call:
           name:

@@ -143,3 +143,182 @@ input_file: samples/assign_variable_many_ways.as
     start: 89
     end: 90
   raw: "\n"
+- kind: Newline
+  span:
+    start: 90
+    end: 91
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 91
+    end: 94
+  raw: var
+- kind: Identifier
+  span:
+    start: 95
+    end: 96
+  raw: a
+- kind:
+    Operator: Assign
+  span:
+    start: 96
+    end: 97
+  raw: "="
+- kind: Integer
+  span:
+    start: 97
+    end: 98
+  raw: "1"
+- kind: Comma
+  span:
+    start: 98
+    end: 99
+  raw: ","
+- kind: Identifier
+  span:
+    start: 100
+    end: 101
+  raw: b
+- kind: Comma
+  span:
+    start: 101
+    end: 102
+  raw: ","
+- kind: Identifier
+  span:
+    start: 103
+    end: 104
+  raw: c
+- kind:
+    Operator: Assign
+  span:
+    start: 104
+    end: 105
+  raw: "="
+- kind: Integer
+  span:
+    start: 105
+    end: 106
+  raw: "3"
+- kind: Semicolon
+  span:
+    start: 106
+    end: 107
+  raw: ;
+- kind: Newline
+  span:
+    start: 107
+    end: 108
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 108
+    end: 113
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 113
+    end: 114
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 114
+    end: 119
+  raw: "a: "
+- kind:
+    Operator: Add
+  span:
+    start: 120
+    end: 121
+  raw: +
+- kind: Identifier
+  span:
+    start: 122
+    end: 123
+  raw: a
+- kind: CloseParen
+  span:
+    start: 123
+    end: 124
+  raw: )
+- kind: Semicolon
+  span:
+    start: 124
+    end: 125
+  raw: ;
+- kind: Identifier
+  span:
+    start: 131
+    end: 136
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 136
+    end: 137
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 137
+    end: 142
+  raw: "b: "
+- kind:
+    Operator: Add
+  span:
+    start: 143
+    end: 144
+  raw: +
+- kind: Identifier
+  span:
+    start: 145
+    end: 146
+  raw: b
+- kind: CloseParen
+  span:
+    start: 146
+    end: 147
+  raw: )
+- kind: Semicolon
+  span:
+    start: 147
+    end: 148
+  raw: ;
+- kind: Identifier
+  span:
+    start: 162
+    end: 167
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 167
+    end: 168
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 168
+    end: 173
+  raw: "c: "
+- kind:
+    Operator: Add
+  span:
+    start: 174
+    end: 175
+  raw: +
+- kind: Identifier
+  span:
+    start: 176
+    end: 177
+  raw: c
+- kind: CloseParen
+  span:
+    start: 177
+    end: 178
+  raw: )
+- kind: Semicolon
+  span:
+    start: 178
+    end: 179
+  raw: ;

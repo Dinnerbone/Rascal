@@ -6,16 +6,16 @@ input_file: samples/block.as
 Ok:
   statements:
     - Declare:
-        name: outside
-        value:
-          Constant:
-            String: visible
+        - name: outside
+          value:
+            Constant:
+              String: visible
     - Block:
         - Declare:
-            name: inside
-            value:
-              Constant:
-                String: visible
+            - name: inside
+              value:
+                Constant:
+                  String: visible
         - Expr:
             Call:
               name:

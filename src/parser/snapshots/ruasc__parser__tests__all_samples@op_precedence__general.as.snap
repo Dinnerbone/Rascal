@@ -6,69 +6,69 @@ input_file: samples/op_precedence/general.as
 Ok:
   statements:
     - Declare:
-        name: one
-        value:
-          Constant:
-            Integer: 1
+        - name: one
+          value:
+            Constant:
+              Integer: 1
     - Declare:
-        name: two
-        value:
-          Constant:
-            Integer: 2
+        - name: two
+          value:
+            Constant:
+              Integer: 2
     - Declare:
-        name: three
-        value:
-          Constant:
-            Integer: 3
+        - name: three
+          value:
+            Constant:
+              Integer: 3
     - Declare:
-        name: four
-        value:
-          Constant:
-            Integer: 4
+        - name: four
+          value:
+            Constant:
+              Integer: 4
     - Declare:
-        name: five
-        value:
-          Constant:
-            Integer: 5
+        - name: five
+          value:
+            Constant:
+              Integer: 5
     - Declare:
-        name: ten
-        value:
-          Constant:
-            Integer: 10
+        - name: ten
+          value:
+            Constant:
+              Integer: 10
     - Declare:
-        name: zero
-        value:
-          Constant:
-            Integer: 0
+        - name: zero
+          value:
+            Constant:
+              Integer: 0
     - Declare:
-        name: negOne
-        value:
-          UnaryOperator:
-            - Sub
-            - Constant:
-                Integer: 1
+        - name: negOne
+          value:
+            UnaryOperator:
+              - Sub
+              - Constant:
+                  Integer: 1
     - Declare:
-        name: a
-        value: ~
+        - name: a
+          value: ~
     - Declare:
-        name: b
-        value: ~
+        - name: b
+          value: ~
     - Declare:
-        name: c
-        value: ~
+        - name: c
+          value: ~
     - Declare:
-        name: p
-        value: ~
+        - name: p
+          value: ~
     - Declare:
-        name: s
-        value:
-          Constant:
-            String: s
+        - name: s
+          value:
+            Constant:
+              String: s
     - Declare:
-        name: t
-        value:
-          Constant:
-            String: t
+        - name: t
+          value:
+            Constant:
+              String: t
     - Expr:
         Call:
           name:
@@ -841,13 +841,13 @@ Ok:
                 - Constant:
                     Identifier: a
     - Declare:
-        name: obj
-        value:
-          New:
-            name:
-              Constant:
-                Identifier: Object
-            args: []
+        - name: obj
+          value:
+            New:
+              name:
+                Constant:
+                  Identifier: Object
+              args: []
     - Expr:
         BinaryOperator:
           - Assign

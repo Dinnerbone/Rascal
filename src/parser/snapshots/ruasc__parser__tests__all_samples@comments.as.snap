@@ -6,25 +6,25 @@ input_file: samples/comments.as
 Ok:
   statements:
     - Declare:
-        name: a
-        value:
-          Constant:
-            String: "1"
+        - name: a
+          value:
+            Constant:
+              String: "1"
     - Declare:
-        name: b
-        value:
-          Constant:
-            String: "2"
+        - name: b
+          value:
+            Constant:
+              String: "2"
     - Declare:
-        name: c
-        value:
-          Constant:
-            String: "3"
+        - name: c
+          value:
+            Constant:
+              String: "3"
     - Declare:
-        name: d
-        value:
-          Constant:
-            String: "4"
+        - name: d
+          value:
+            Constant:
+              String: "4"
     - Expr:
         Call:
           name:
@@ -36,37 +36,37 @@ Ok:
             - Constant:
                 Identifier: b
     - Declare:
-        name: e
-        value:
-          Constant:
-            String: "5"
+        - name: e
+          value:
+            Constant:
+              String: "5"
     - Declare:
-        name: f
-        value:
-          Constant:
-            String: // not a comment
+        - name: f
+          value:
+            Constant:
+              String: // not a comment
     - Declare:
-        name: g
-        value:
-          Constant:
-            String: /* not a comment */
+        - name: g
+          value:
+            Constant:
+              String: /* not a comment */
     - Declare:
-        name: h
-        value:
-          Constant:
-            String: "\\\"/* still not a comment */\\\""
+        - name: h
+          value:
+            Constant:
+              String: "\\\"/* still not a comment */\\\""
     - Declare:
-        name: i
-        value:
-          Constant:
-            String: "6"
+        - name: i
+          value:
+            Constant:
+              String: "6"
     - Declare:
-        name: j
-        value:
-          Constant:
-            String: "7"
+        - name: j
+          value:
+            Constant:
+              String: "7"
     - Declare:
-        name: k
-        value:
-          Constant:
-            String: "8"
+        - name: k
+          value:
+            Constant:
+              String: "8"

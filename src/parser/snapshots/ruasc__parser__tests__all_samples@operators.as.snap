@@ -6,15 +6,15 @@ input_file: samples/operators.as
 Ok:
   statements:
     - Declare:
-        name: a
-        value:
-          Constant:
-            Integer: 10
+        - name: a
+          value:
+            Constant:
+              Integer: 10
     - Declare:
-        name: b
-        value:
-          Constant:
-            Integer: 3
+        - name: b
+          value:
+            Constant:
+              Integer: 3
     - Expr:
         Call:
           name:
@@ -161,15 +161,15 @@ Ok:
                       - Constant:
                           Identifier: a
     - Declare:
-        name: hello
-        value:
-          Constant:
-            String: Hello
+        - name: hello
+          value:
+            Constant:
+              String: Hello
     - Declare:
-        name: world
-        value:
-          Constant:
-            String: World
+        - name: world
+          value:
+            Constant:
+              String: World
     - Expr:
         Call:
           name:
@@ -192,10 +192,10 @@ Ok:
                       - Constant:
                           Identifier: world
     - Declare:
-        name: x
-        value:
-          Constant:
-            Integer: 5
+        - name: x
+          value:
+            Constant:
+              Integer: 5
     - Expr:
         Call:
           name:
@@ -294,15 +294,15 @@ Ok:
                       - Constant:
                           Integer: 2
     - Declare:
-        name: five
-        value:
-          Constant:
-            Integer: 5
+        - name: five
+          value:
+            Constant:
+              Integer: 5
     - Declare:
-        name: three
-        value:
-          Constant:
-            Integer: 3
+        - name: three
+          value:
+            Constant:
+              Integer: 3
     - Expr:
         Call:
           name:
@@ -577,20 +577,20 @@ Ok:
                 - Constant:
                     Identifier: five
     - Declare:
-        name: six
-        value:
-          Constant:
-            Integer: 6
+        - name: six
+          value:
+            Constant:
+              Integer: 6
     - Declare:
-        name: seven
-        value:
-          Constant:
-            Integer: 7
+        - name: seven
+          value:
+            Constant:
+              Integer: 7
     - Declare:
-        name: sevenStr
-        value:
-          Constant:
-            String: "7"
+        - name: sevenStr
+          value:
+            Constant:
+              String: "7"
     - Expr:
         Call:
           name:
@@ -745,15 +745,15 @@ Ok:
                       - Constant:
                           Identifier: seven
     - Declare:
-        name: t
-        value:
-          Constant:
-            Identifier: "true"
+        - name: t
+          value:
+            Constant:
+              Identifier: "true"
     - Declare:
-        name: f
-        value:
-          Constant:
-            Identifier: "false"
+        - name: f
+          value:
+            Constant:
+              Identifier: "false"
     - Expr:
         Call:
           name:
@@ -804,23 +804,23 @@ Ok:
                       - Constant:
                           Identifier: t
     - Declare:
-        name: max
-        value:
-          Ternary:
-            condition:
-              Parenthesis:
-                BinaryOperator:
-                  - GreaterThan
-                  - Constant:
-                      Identifier: a
-                  - Constant:
-                      Identifier: b
-            "yes":
-              Constant:
-                Identifier: a
-            "no":
-              Constant:
-                Identifier: b
+        - name: max
+          value:
+            Ternary:
+              condition:
+                Parenthesis:
+                  BinaryOperator:
+                    - GreaterThan
+                    - Constant:
+                        Identifier: a
+                    - Constant:
+                        Identifier: b
+              "yes":
+                Constant:
+                  Identifier: a
+              "no":
+                Constant:
+                  Identifier: b
     - Expr:
         Call:
           name:
@@ -834,12 +834,12 @@ Ok:
                 - Constant:
                     Identifier: max
     - Declare:
-        name: obj
-        value:
-          InitObject:
-            - - key
-              - Constant:
-                  String: value
+        - name: obj
+          value:
+            InitObject:
+              - - key
+                - Constant:
+                    String: value
     - Expr:
         Call:
           name:

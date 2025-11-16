@@ -6,20 +6,20 @@ input_file: samples/typeof.as
 Ok:
   statements:
     - Declare:
-        name: num
-        value:
-          Constant:
-            Integer: 1
+        - name: num
+          value:
+            Constant:
+              Integer: 1
     - Declare:
-        name: obj
-        value:
-          InitObject:
-            - - num
-              - Constant:
-                  Integer: 1
-            - - trace
-              - Constant:
-                  Identifier: trace
+        - name: obj
+          value:
+            InitObject:
+              - - num
+                - Constant:
+                    Integer: 1
+              - - trace
+                - Constant:
+                    Identifier: trace
     - Expr:
         Call:
           name:

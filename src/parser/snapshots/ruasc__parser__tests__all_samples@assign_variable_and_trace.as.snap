@@ -6,10 +6,10 @@ input_file: samples/assign_variable_and_trace.as
 Ok:
   statements:
     - Declare:
-        name: message
-        value:
-          Constant:
-            String: Hello World
+        - name: message
+          value:
+            Constant:
+              String: Hello World
     - Expr:
         Call:
           name:

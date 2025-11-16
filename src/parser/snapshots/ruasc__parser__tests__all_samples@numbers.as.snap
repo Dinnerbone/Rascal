@@ -6,179 +6,179 @@ input_file: samples/numbers.as
 Ok:
   statements:
     - Declare:
-        name: i0
-        value:
-          Constant:
-            Integer: 0
+        - name: i0
+          value:
+            Constant:
+              Integer: 0
     - Declare:
-        name: i1
-        value:
-          Constant:
-            Integer: 1
+        - name: i1
+          value:
+            Constant:
+              Integer: 1
     - Declare:
-        name: i42
-        value:
-          Constant:
-            Integer: 42
+        - name: i42
+          value:
+            Constant:
+              Integer: 42
     - Declare:
-        name: iLarge
-        value:
-          Constant:
-            Integer: 2147483647
+        - name: iLarge
+          value:
+            Constant:
+              Integer: 2147483647
     - Declare:
-        name: iLargePlusOne
-        value:
-          Constant:
-            Float: 2147483648
+        - name: iLargePlusOne
+          value:
+            Constant:
+              Float: 2147483648
     - Declare:
-        name: f0
-        value:
-          Constant:
-            Float: 0
+        - name: f0
+          value:
+            Constant:
+              Float: 0
     - Declare:
-        name: f1
-        value:
-          Constant:
-            Float: 1.23
+        - name: f1
+          value:
+            Constant:
+              Float: 1.23
     - Declare:
-        name: fLeadingDot
-        value:
-          Constant:
-            Float: 0.5
+        - name: fLeadingDot
+          value:
+            Constant:
+              Float: 0.5
     - Declare:
-        name: fTrailingDot
-        value:
-          Constant:
-            Float: 5
+        - name: fTrailingDot
+          value:
+            Constant:
+              Float: 5
     - Declare:
-        name: h0
-        value:
-          Constant:
-            Integer: 0
+        - name: h0
+          value:
+            Constant:
+              Integer: 0
     - Declare:
-        name: hMix
-        value:
-          Constant:
-            Integer: 6699
+        - name: hMix
+          value:
+            Constant:
+              Integer: 6699
     - Declare:
-        name: hMaxByte
-        value:
-          Constant:
-            Integer: 255
+        - name: hMaxByte
+          value:
+            Constant:
+              Integer: 255
     - Declare:
-        name: eBig
-        value:
-          Constant:
-            Float: 10000000000
+        - name: eBig
+          value:
+            Constant:
+              Float: 10000000000
     - Declare:
-        name: eSmall
-        value:
-          Constant:
-            Float: 0.0000000001
+        - name: eSmall
+          value:
+            Constant:
+              Float: 0.0000000001
     - Declare:
-        name: ePlus
-        value:
-          Constant:
-            Float: 2500
+        - name: ePlus
+          value:
+            Constant:
+              Float: 2500
     - Declare:
-        name: eLeadingDot
-        value:
-          Constant:
-            Float: 50
+        - name: eLeadingDot
+          value:
+            Constant:
+              Float: 50
     - Declare:
-        name: eTrailingDot
-        value:
-          Constant:
-            Float: 5000
+        - name: eTrailingDot
+          value:
+            Constant:
+              Float: 5000
     - Declare:
-        name: eSci
-        value:
-          Constant:
-            Float: 602200000000000000000000
+        - name: eSci
+          value:
+            Constant:
+              Float: 602200000000000000000000
     - Declare:
-        name: nDec
-        value:
-          UnaryOperator:
-            - Sub
-            - Constant:
-                Integer: 123
+        - name: nDec
+          value:
+            UnaryOperator:
+              - Sub
+              - Constant:
+                  Integer: 123
     - Declare:
-        name: nHex
-        value:
-          UnaryOperator:
-            - Sub
-            - Constant:
-                Integer: 255
+        - name: nHex
+          value:
+            UnaryOperator:
+              - Sub
+              - Constant:
+                  Integer: 255
     - Declare:
-        name: nFloat
-        value:
-          UnaryOperator:
-            - Sub
-            - Constant:
-                Float: 3.14
+        - name: nFloat
+          value:
+            UnaryOperator:
+              - Sub
+              - Constant:
+                  Float: 3.14
     - Declare:
-        name: pDec
-        value:
-          Constant:
-            Integer: 7
+        - name: pDec
+          value:
+            Constant:
+              Integer: 7
     - Declare:
-        name: sum
-        value:
-          BinaryOperator:
-            - Add
-            - BinaryOperator:
-                - Add
-                - Constant:
-                    Integer: 1
-                - Constant:
-                    Integer: 2
-            - Constant:
-                Integer: 3
+        - name: sum
+          value:
+            BinaryOperator:
+              - Add
+              - BinaryOperator:
+                  - Add
+                  - Constant:
+                      Integer: 1
+                  - Constant:
+                      Integer: 2
+              - Constant:
+                  Integer: 3
     - Declare:
-        name: diff
-        value:
-          BinaryOperator:
-            - Sub
-            - Constant:
-                Integer: 10
-            - Constant:
-                Integer: 4
+        - name: diff
+          value:
+            BinaryOperator:
+              - Sub
+              - Constant:
+                  Integer: 10
+              - Constant:
+                  Integer: 4
     - Declare:
-        name: prod
-        value:
-          BinaryOperator:
-            - Multiply
-            - Constant:
-                Integer: 6
-            - Constant:
-                Integer: 7
+        - name: prod
+          value:
+            BinaryOperator:
+              - Multiply
+              - Constant:
+                  Integer: 6
+              - Constant:
+                  Integer: 7
     - Declare:
-        name: quot
-        value:
-          BinaryOperator:
-            - Divide
-            - Constant:
-                Integer: 22
-            - Constant:
-                Integer: 7
+        - name: quot
+          value:
+            BinaryOperator:
+              - Divide
+              - Constant:
+                  Integer: 22
+              - Constant:
+                  Integer: 7
     - Declare:
-        name: combo
-        value:
-          BinaryOperator:
-            - Sub
-            - BinaryOperator:
-                - Multiply
-                - Parenthesis:
-                    BinaryOperator:
-                      - Add
-                      - Constant:
-                          Integer: 16
-                      - Constant:
-                          Integer: 15
-                - Constant:
-                    Float: 25
-            - Constant:
-                Float: 0.75
+        - name: combo
+          value:
+            BinaryOperator:
+              - Sub
+              - BinaryOperator:
+                  - Multiply
+                  - Parenthesis:
+                      BinaryOperator:
+                        - Add
+                        - Constant:
+                            Integer: 16
+                        - Constant:
+                            Integer: 15
+                  - Constant:
+                      Float: 25
+              - Constant:
+                  Float: 0.75
     - Expr:
         Call:
           name:

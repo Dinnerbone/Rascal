@@ -6,20 +6,20 @@ input_file: samples/op_precedence/logic.as
 Ok:
   statements:
     - Declare:
-        name: a
-        value:
-          Constant:
-            Identifier: "true"
+        - name: a
+          value:
+            Constant:
+              Identifier: "true"
     - Declare:
-        name: b
-        value:
-          Constant:
-            Identifier: "false"
+        - name: b
+          value:
+            Constant:
+              Identifier: "false"
     - Declare:
-        name: c
-        value:
-          Constant:
-            Identifier: "true"
+        - name: c
+          value:
+            Constant:
+              Identifier: "true"
     - Expr:
         Call:
           name:
@@ -294,20 +294,20 @@ Ok:
             - Constant:
                 String: "---"
     - Declare:
-        name: x
-        value:
-          Constant:
-            Identifier: "false"
+        - name: x
+          value:
+            Constant:
+              Identifier: "false"
     - Declare:
-        name: y
-        value:
-          Constant:
-            Identifier: "true"
+        - name: y
+          value:
+            Constant:
+              Identifier: "true"
     - Declare:
-        name: z
-        value:
-          Constant:
-            Identifier: "false"
+        - name: z
+          value:
+            Constant:
+              Identifier: "false"
     - Expr:
         Call:
           name:

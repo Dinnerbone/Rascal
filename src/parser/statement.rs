@@ -11,7 +11,7 @@ use winnow::{ModalResult, Parser};
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
 pub(crate) enum Statement {
-    Declare(Declaration),
+    Declare(Vec<Declaration>),
     Return(Vec<Expr>),
     Expr(Expr),
     Block(Vec<Statement>),
@@ -34,7 +34,7 @@ pub(crate) fn statement(i: &mut Tokens<'_>) -> ModalResult<Statement> {
     let checkpoint = i.checkpoint();
     let token = any.parse_next(i)?;
     let result = match token.kind {
-        TokenKind::Keyword(Keyword::Var) => declaration
+        TokenKind::Keyword(Keyword::Var) => declaration_list
             .context(StrContext::Label("declaration"))
             .parse_next(i)?,
         TokenKind::Keyword(Keyword::Return) => {
@@ -86,7 +86,13 @@ pub(crate) fn statement_list<'i>(
     }
 }
 
-fn declaration(i: &mut Tokens<'_>) -> ModalResult<Statement> {
+fn declaration_list(i: &mut Tokens<'_>) -> ModalResult<Statement> {
+    let declarations = separated(0.., declaration, TokenKind::Comma).parse_next(i)?;
+
+    Ok(Statement::Declare(declarations))
+}
+
+fn declaration(i: &mut Tokens<'_>) -> ModalResult<Declaration> {
     let name = cut_err(skip_newline(identifier))
         .context(StrContext::Label("variable name"))
         .parse_next(i)?;
@@ -95,7 +101,7 @@ fn declaration(i: &mut Tokens<'_>) -> ModalResult<Statement> {
         .is_some();
     let value = cond(equals, skip_newline(expression)).parse_next(i)?;
 
-    Ok(Statement::Declare(Declaration { name, value }))
+    Ok(Declaration { name, value })
 }
 
 pub(crate) fn function(i: &mut Tokens<'_>) -> ModalResult<Function> {
@@ -130,10 +136,10 @@ mod stmt_tests {
         ]);
         assert_eq!(
             parse_stmt(&tokens),
-            Ok(Statement::Declare(Declaration {
+            Ok(Statement::Declare(vec![Declaration {
                 name: "x".to_string(),
                 value: None
-            }))
+            }]))
         );
     }
 
@@ -147,10 +153,10 @@ mod stmt_tests {
         ]);
         assert_eq!(
             parse_stmt(&tokens),
-            Ok(Statement::Declare(Declaration {
+            Ok(Statement::Declare(vec![Declaration {
                 name: "x".to_string(),
                 value: Some(Expr::Constant(Constant::String("hi".to_string())))
-            }))
+            }]))
         );
     }
 
@@ -167,13 +173,13 @@ mod stmt_tests {
         ]);
         assert_eq!(
             parse_stmt(&tokens),
-            Ok(Statement::Declare(Declaration {
+            Ok(Statement::Declare(vec![Declaration {
                 name: "x".to_string(),
                 value: Some(Expr::Call {
                     name: Box::new(Expr::Constant(Constant::Identifier("foo".to_string()))),
                     args: vec![Expr::Constant(Constant::Identifier("a".to_string()))]
                 })
-            }))
+            }]))
         );
     }
 

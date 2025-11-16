@@ -6,20 +6,20 @@ input_file: samples/op_precedence/bit_shifts.as
 Ok:
   statements:
     - Declare:
-        name: a
-        value:
-          Constant:
-            Integer: 16
+        - name: a
+          value:
+            Constant:
+              Integer: 16
     - Declare:
-        name: b
-        value:
-          Constant:
-            Integer: 2
+        - name: b
+          value:
+            Constant:
+              Integer: 2
     - Declare:
-        name: c
-        value:
-          Constant:
-            Integer: 1
+        - name: c
+          value:
+            Constant:
+              Integer: 1
     - Expr:
         Call:
           name:

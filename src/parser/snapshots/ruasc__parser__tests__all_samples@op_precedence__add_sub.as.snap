@@ -6,20 +6,20 @@ input_file: samples/op_precedence/add_sub.as
 Ok:
   statements:
     - Declare:
-        name: a
-        value:
-          Constant:
-            Integer: 10
+        - name: a
+          value:
+            Constant:
+              Integer: 10
     - Declare:
-        name: b
-        value:
-          Constant:
-            Integer: 5
+        - name: b
+          value:
+            Constant:
+              Integer: 5
     - Declare:
-        name: c
-        value:
-          Constant:
-            Integer: 2
+        - name: c
+          value:
+            Constant:
+              Integer: 2
     - Expr:
         Call:
           name:

@@ -6,15 +6,15 @@ input_file: samples/objects.as
 Ok:
   statements:
     - Declare:
-        name: o
-        value:
-          InitObject:
-            - - a
-              - Constant:
-                  Integer: 1
-            - - b
-              - Constant:
-                  Identifier: Object
+        - name: o
+          value:
+            InitObject:
+              - - a
+                - Constant:
+                    Integer: 1
+              - - b
+                - Constant:
+                    Identifier: Object
     - Expr:
         Call:
           name:

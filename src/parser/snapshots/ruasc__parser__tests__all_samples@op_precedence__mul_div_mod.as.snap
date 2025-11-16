@@ -6,20 +6,20 @@ input_file: samples/op_precedence/mul_div_mod.as
 Ok:
   statements:
     - Declare:
-        name: a
-        value:
-          Constant:
-            Integer: 20
+        - name: a
+          value:
+            Constant:
+              Integer: 20
     - Declare:
-        name: b
-        value:
-          Constant:
-            Integer: 6
+        - name: b
+          value:
+            Constant:
+              Integer: 6
     - Declare:
-        name: c
-        value:
-          Constant:
-            Integer: 4
+        - name: c
+          value:
+            Constant:
+              Integer: 4
     - Expr:
         Call:
           name:
