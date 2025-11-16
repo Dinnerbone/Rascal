@@ -3,7 +3,7 @@ use crate::lexer::tokens::{Keyword, TokenKind};
 use crate::parser::expression::Constant::Integer;
 use crate::parser::operator::{Affix, BinaryOperator, UnaryOperator};
 use crate::parser::statement::{Function, function};
-use crate::parser::{Tokens, identifier, operator, string};
+use crate::parser::{Tokens, identifier, operator, skip_newlines, string};
 use serde::Serialize;
 use winnow::combinator::{alt, fail, opt, peek, separated};
 use winnow::error::{ContextError, ErrMode, StrContext};
@@ -75,7 +75,7 @@ pub(crate) enum Constant {
 }
 
 pub(crate) fn expression(i: &mut Tokens<'_>) -> ModalResult<Expr> {
-    take_while(0.., TokenKind::Newline).parse_next(i)?;
+    skip_newlines(i)?;
     let token = peek(any).parse_next(i)?;
     match token.kind {
         TokenKind::Operator(Operator::Sub) => {
@@ -259,7 +259,7 @@ fn array_definition(i: &mut Tokens<'_>) -> ModalResult<Vec<Expr>> {
 }
 
 fn constant(i: &mut Tokens<'_>) -> ModalResult<Constant> {
-    take_while(0.., TokenKind::Newline).parse_next(i)?;
+    skip_newlines(i)?;
     let token = peek(any).parse_next(i)?;
     match token.kind {
         TokenKind::String(_) => string
@@ -304,7 +304,7 @@ fn integer(i: &mut Tokens<'_>) -> ModalResult<i32> {
 fn expr_next<'i>(prior: Expr) -> impl Parser<Tokens<'i>, Expr, ErrMode<ContextError>> {
     move |i: &mut Tokens<'i>| {
         let prior = prior.clone();
-        take_while(0.., TokenKind::Newline).parse_next(i)?;
+        skip_newlines(i)?;
         if i.is_empty() {
             return Ok(prior);
         }

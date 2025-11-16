@@ -46,9 +46,13 @@ where
     P: Parser<Tokens<'i>, O, ErrMode<ContextError>>,
 {
     move |input: &mut Tokens<'i>| {
-        repeat(0.., literal(TokenKind::Newline))
-            .map(|()| ())
-            .parse_next(input)?;
+        skip_newlines(input)?;
         inner.parse_next(input)
     }
+}
+
+pub(crate) fn skip_newlines(i: &mut Tokens<'_>) -> ModalResult<()> {
+    repeat(0.., literal(TokenKind::Newline))
+        .map(|()| ())
+        .parse_next(i)
 }
