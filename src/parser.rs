@@ -25,6 +25,7 @@ pub fn parse_document<'a>(
 }
 
 fn string(i: &mut Tokens<'_>) -> ModalResult<String> {
+    skip_newlines(i)?;
     // TODO decode
     Ok(alt((
         TokenKind::String(QuoteKind::Double),
@@ -36,6 +37,7 @@ fn string(i: &mut Tokens<'_>) -> ModalResult<String> {
 }
 
 fn identifier(i: &mut Tokens<'_>) -> ModalResult<String> {
+    skip_newlines(i)?;
     Ok(TokenKind::Identifier.parse_next(i)?.raw.to_string())
 }
 

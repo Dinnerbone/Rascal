@@ -9,7 +9,7 @@ use winnow::combinator::{alt, fail, opt, peek, separated};
 use winnow::error::{ContextError, ErrMode, StrContext};
 use winnow::error::{ParserError, StrContextValue};
 use winnow::stream::ParseSlice;
-use winnow::token::{any, take_while};
+use winnow::token::any;
 use winnow::{ModalResult, Parser};
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
@@ -282,6 +282,7 @@ fn constant(i: &mut Tokens<'_>) -> ModalResult<Constant> {
 }
 
 fn float(i: &mut Tokens<'_>) -> ModalResult<f64> {
+    skip_newlines(i)?;
     let raw = alt((TokenKind::Float, TokenKind::Integer))
         .parse_next(i)?
         .raw;
@@ -292,6 +293,7 @@ fn float(i: &mut Tokens<'_>) -> ModalResult<f64> {
 }
 
 fn integer(i: &mut Tokens<'_>) -> ModalResult<i32> {
+    skip_newlines(i)?;
     let raw = TokenKind::Integer.parse_next(i)?.raw;
     Ok(if let Some(raw) = raw.strip_prefix("0x") {
         i32::from_str_radix(raw, 16)
