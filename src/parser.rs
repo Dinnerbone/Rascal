@@ -39,7 +39,7 @@ fn identifier(i: &mut Tokens<'_>) -> ModalResult<String> {
     Ok(TokenKind::Identifier.parse_next(i)?.raw.to_string())
 }
 
-pub(crate) fn skip_newline<'i, O, P>(
+pub(crate) fn ignore_newlines<'i, O, P>(
     mut inner: P,
 ) -> impl Parser<Tokens<'i>, O, ErrMode<ContextError>>
 where

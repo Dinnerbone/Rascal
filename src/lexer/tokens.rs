@@ -1,5 +1,5 @@
 use crate::lexer::operator::Operator;
-use crate::parser::{Tokens, skip_newline};
+use crate::parser::{Tokens, ignore_newlines};
 use crate::source::Span;
 use serde::Serialize;
 use winnow::Parser;
@@ -87,7 +87,7 @@ impl<'i> Parser<Tokens<'i>, &'i Token<'i>, ErrMode<ContextError>> for TokenKind 
         &mut self,
         input: &mut Tokens<'i>,
     ) -> winnow::Result<&'i Token<'i>, ErrMode<ContextError>> {
-        skip_newline(literal(*self))
+        ignore_newlines(literal(*self))
             .parse_next(input)
             .map(|t| &t[0])
     }
