@@ -119,7 +119,7 @@ fn declaration(i: &mut Tokens<'_>) -> ModalResult<Declaration> {
     let name = cut_err(skip_newline(identifier))
         .context(StrContext::Label("variable name"))
         .parse_next(i)?;
-    let equals = cut_err(opt(skip_newline(TokenKind::Operator(Operator::Assign))))
+    let equals = cut_err(opt(TokenKind::Operator(Operator::Assign)))
         .parse_next(i)?
         .is_some();
     let value = cond(equals, skip_newline(expression)).parse_next(i)?;
@@ -171,12 +171,12 @@ fn for_loop(i: &mut Tokens<'_>) -> ModalResult<Statement> {
 
 pub(crate) fn function(i: &mut Tokens<'_>) -> ModalResult<Function> {
     let name = skip_newline(opt(identifier)).parse_next(i)?;
-    skip_newline(TokenKind::OpenParen).parse_next(i)?;
+    TokenKind::OpenParen.parse_next(i)?;
     let args = separated(0.., skip_newline(identifier), TokenKind::Comma).parse_next(i)?;
-    skip_newline(TokenKind::CloseParen).parse_next(i)?;
-    skip_newline(TokenKind::OpenBrace).parse_next(i)?;
+    TokenKind::CloseParen.parse_next(i)?;
+    TokenKind::OpenBrace.parse_next(i)?;
     let body = statement_list(true).parse_next(i)?;
-    skip_newline(TokenKind::CloseBrace).parse_next(i)?;
+    TokenKind::CloseBrace.parse_next(i)?;
 
     Ok(Function { name, args, body })
 }

@@ -1,7 +1,8 @@
 use crate::lexer::tokens::{QuoteKind, Token, TokenKind};
-use winnow::combinator::{alt, opt};
+use winnow::combinator::{alt, repeat};
 use winnow::error::{ContextError, ErrMode, ParseError};
 use winnow::stream::TokenSlice;
+use winnow::token::literal;
 use winnow::{ModalResult, Parser};
 
 mod document;
@@ -38,12 +39,16 @@ fn identifier(i: &mut Tokens<'_>) -> ModalResult<String> {
     Ok(TokenKind::Identifier.parse_next(i)?.raw.to_string())
 }
 
-fn skip_newline<'i, O, P>(mut inner: P) -> impl Parser<Tokens<'i>, O, ErrMode<ContextError>>
+pub(crate) fn skip_newline<'i, O, P>(
+    mut inner: P,
+) -> impl Parser<Tokens<'i>, O, ErrMode<ContextError>>
 where
     P: Parser<Tokens<'i>, O, ErrMode<ContextError>>,
 {
     move |input: &mut Tokens<'i>| {
-        opt(TokenKind::Newline).parse_next(input)?;
+        repeat(0.., literal(TokenKind::Newline))
+            .map(|()| ())
+            .parse_next(input)?;
         inner.parse_next(input)
     }
 }
