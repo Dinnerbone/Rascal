@@ -132,22 +132,20 @@ Ok:
                   args:
                     - Constant:
                         Identifier: k
-            - Expr:
-                Call:
-                  name:
-                    Constant:
-                      Identifier: if
-                  args:
-                    - BinaryOperator:
-                        - GreaterThanEqual
-                        - Constant:
-                            Identifier: k
-                        - Constant:
-                            Integer: 3
-            - Block:
-                - Expr:
-                    Constant:
-                      Identifier: break
+            - If:
+                condition:
+                  BinaryOperator:
+                    - GreaterThanEqual
+                    - Constant:
+                        Identifier: k
+                    - Constant:
+                        Integer: 3
+                "yes":
+                  Block:
+                    - Expr:
+                        Constant:
+                          Identifier: break
+                "no": ~
     - Expr:
         Call:
           name:
@@ -222,22 +220,20 @@ Ok:
                   - Increment: Postfix
                   - Constant:
                       Identifier: count
-            - Expr:
-                Call:
-                  name:
-                    Constant:
-                      Identifier: if
-                  args:
-                    - BinaryOperator:
-                        - Equal
-                        - Constant:
-                            Identifier: count
-                        - Constant:
-                            Integer: 3
-            - Block:
-                - Expr:
-                    Constant:
-                      Identifier: break
+            - If:
+                condition:
+                  BinaryOperator:
+                    - Equal
+                    - Constant:
+                        Identifier: count
+                    - Constant:
+                        Integer: 3
+                "yes":
+                  Block:
+                    - Expr:
+                        Constant:
+                          Identifier: break
+                "no": ~
     - Expr:
         Call:
           name:
@@ -440,42 +436,38 @@ Ok:
                       Identifier: x
         body:
           Block:
-            - Expr:
-                Call:
-                  name:
-                    Constant:
-                      Identifier: if
-                  args:
+            - If:
+                condition:
+                  BinaryOperator:
+                    - Equal
+                    - Constant:
+                        Identifier: x
+                    - Constant:
+                        Integer: 5
+                "yes":
+                  Block:
+                    - Expr:
+                        Constant:
+                          Identifier: break
+                "no": ~
+            - If:
+                condition:
+                  BinaryOperator:
+                    - Equal
                     - BinaryOperator:
-                        - Equal
+                        - Modulo
                         - Constant:
                             Identifier: x
                         - Constant:
-                            Integer: 5
-            - Block:
-                - Expr:
-                    Constant:
-                      Identifier: break
-            - Expr:
-                Call:
-                  name:
-                    Constant:
-                      Identifier: if
-                  args:
-                    - BinaryOperator:
-                        - Equal
-                        - BinaryOperator:
-                            - Modulo
-                            - Constant:
-                                Identifier: x
-                            - Constant:
-                                Integer: 2
-                        - Constant:
-                            Integer: 1
-            - Block:
-                - Expr:
-                    Constant:
-                      Identifier: continue
+                            Integer: 2
+                    - Constant:
+                        Integer: 1
+                "yes":
+                  Block:
+                    - Expr:
+                        Constant:
+                          Identifier: continue
+                "no": ~
             - Expr:
                 Call:
                   name:

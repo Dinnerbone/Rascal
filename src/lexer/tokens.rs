@@ -105,4 +105,6 @@ pub enum Keyword {
     Function,
     Return,
     For,
+    If,
+    Else,
 }

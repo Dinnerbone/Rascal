@@ -6,7 +6,7 @@ use serde::Serialize;
 use winnow::combinator::{alt, cond, cut_err, opt, peek, separated};
 use winnow::error::{ContextError, ErrMode, StrContext};
 use winnow::stream::Stream;
-use winnow::token::any;
+use winnow::token::{any, take_while};
 use winnow::{ModalResult, Parser};
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
@@ -18,6 +18,11 @@ pub(crate) enum Statement {
     ForIn {
         condition: ForCondition,
         body: Box<Statement>,
+    },
+    If {
+        condition: Expr,
+        yes: Box<Statement>,
+        no: Option<Box<Statement>>,
     },
 }
 
@@ -73,6 +78,9 @@ pub(crate) fn statement(i: &mut Tokens<'_>) -> ModalResult<Statement> {
         TokenKind::Keyword(Keyword::For) => for_loop
             .context(StrContext::Label("for loop"))
             .parse_next(i)?,
+        TokenKind::Keyword(Keyword::If) => if_else
+            .context(StrContext::Label("if statement"))
+            .parse_next(i)?,
         TokenKind::OpenBrace => {
             let statements = statement_list(true).parse_next(i)?;
             TokenKind::CloseBrace.parse_next(i)?;
@@ -127,6 +135,25 @@ fn declaration(i: &mut Tokens<'_>) -> ModalResult<Declaration> {
     let value = cond(equals, expression).parse_next(i)?;
 
     Ok(Declaration { name, value })
+}
+
+fn if_else(i: &mut Tokens<'_>) -> ModalResult<Statement> {
+    TokenKind::OpenParen.parse_next(i)?;
+    let condition = expression.parse_next(i)?;
+    TokenKind::CloseParen.parse_next(i)?;
+    let yes = Box::new(statement.parse_next(i)?);
+    take_while(0.., TokenKind::Semicolon).parse_next(i)?;
+
+    let no = if opt(TokenKind::Keyword(Keyword::Else))
+        .parse_next(i)?
+        .is_some()
+    {
+        Some(Box::new(statement.parse_next(i)?))
+    } else {
+        None
+    };
+
+    Ok(Statement::If { condition, yes, no })
 }
 
 fn for_loop(i: &mut Tokens<'_>) -> ModalResult<Statement> {
@@ -391,6 +418,66 @@ mod stmt_tests {
                     name: Box::new(Expr::Constant(Constant::Identifier("trace".to_string()))),
                     args: vec![Expr::Constant(Constant::Identifier("a".to_string()))]
                 })]))
+            })
+        )
+    }
+
+    #[test]
+    fn test_if_no_else() {
+        let tokens = build_tokens(&[
+            (TokenKind::Keyword(Keyword::If), "if"),
+            (TokenKind::OpenParen, "("),
+            (TokenKind::Identifier, "a"),
+            (TokenKind::CloseParen, ")"),
+            (TokenKind::OpenBrace, "{"),
+            (TokenKind::Identifier, "trace"),
+            (TokenKind::OpenParen, "("),
+            (TokenKind::Identifier, "a"),
+            (TokenKind::CloseParen, ")"),
+            (TokenKind::CloseBrace, "}"),
+        ]);
+        assert_eq!(
+            parse_stmt(&tokens),
+            Ok(Statement::If {
+                condition: Expr::Constant(Constant::Identifier("a".to_string())),
+                yes: Box::new(Statement::Block(vec![Statement::Expr(Expr::Call {
+                    name: Box::new(Expr::Constant(Constant::Identifier("trace".to_string()))),
+                    args: vec![Expr::Constant(Constant::Identifier("a".to_string()))]
+                })])),
+                no: None,
+            })
+        )
+    }
+
+    #[test]
+    fn test_if_else() {
+        let tokens = build_tokens(&[
+            (TokenKind::Keyword(Keyword::If), "if"),
+            (TokenKind::OpenParen, "("),
+            (TokenKind::Identifier, "a"),
+            (TokenKind::CloseParen, ")"),
+            (TokenKind::Identifier, "trace"),
+            (TokenKind::OpenParen, "("),
+            (TokenKind::Identifier, "a"),
+            (TokenKind::CloseParen, ")"),
+            (TokenKind::Keyword(Keyword::Else), "else"),
+            (TokenKind::Identifier, "trace"),
+            (TokenKind::OpenParen, "("),
+            (TokenKind::Identifier, "b"),
+            (TokenKind::CloseParen, ")"),
+        ]);
+        assert_eq!(
+            parse_stmt(&tokens),
+            Ok(Statement::If {
+                condition: Expr::Constant(Constant::Identifier("a".to_string())),
+                yes: Box::new(Statement::Expr(Expr::Call {
+                    name: Box::new(Expr::Constant(Constant::Identifier("trace".to_string()))),
+                    args: vec![Expr::Constant(Constant::Identifier("a".to_string()))]
+                })),
+                no: Some(Box::new(Statement::Expr(Expr::Call {
+                    name: Box::new(Expr::Constant(Constant::Identifier("trace".to_string()))),
+                    args: vec![Expr::Constant(Constant::Identifier("b".to_string()))]
+                })))
             })
         )
     }
