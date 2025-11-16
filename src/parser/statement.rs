@@ -10,20 +10,24 @@ use winnow::token::any;
 use winnow::{ModalResult, Parser};
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
-#[allow(dead_code)]
 pub(crate) enum Statement {
-    Declare { name: String, value: Option<Expr> },
+    Declare(Declaration),
     Return(Vec<Expr>),
     Expr(Expr),
     Block(Vec<Statement>),
 }
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
-#[allow(dead_code)]
 pub(crate) struct Function {
     pub(crate) name: Option<String>,
     pub(crate) args: Vec<String>,
     pub(crate) body: Vec<Statement>,
+}
+
+#[derive(Debug, Clone, Serialize, PartialEq)]
+pub(crate) struct Declaration {
+    pub(crate) name: String,
+    pub(crate) value: Option<Expr>,
 }
 
 pub(crate) fn statement(i: &mut Tokens<'_>) -> ModalResult<Statement> {
@@ -91,7 +95,7 @@ fn declaration(i: &mut Tokens<'_>) -> ModalResult<Statement> {
         .is_some();
     let value = cond(equals, skip_newline(expression)).parse_next(i)?;
 
-    Ok(Statement::Declare { name, value })
+    Ok(Statement::Declare(Declaration { name, value }))
 }
 
 pub(crate) fn function(i: &mut Tokens<'_>) -> ModalResult<Function> {
@@ -126,10 +130,10 @@ mod stmt_tests {
         ]);
         assert_eq!(
             parse_stmt(&tokens),
-            Ok(Statement::Declare {
+            Ok(Statement::Declare(Declaration {
                 name: "x".to_string(),
                 value: None
-            })
+            }))
         );
     }
 
@@ -143,10 +147,10 @@ mod stmt_tests {
         ]);
         assert_eq!(
             parse_stmt(&tokens),
-            Ok(Statement::Declare {
+            Ok(Statement::Declare(Declaration {
                 name: "x".to_string(),
                 value: Some(Expr::Constant(Constant::String("hi".to_string())))
-            })
+            }))
         );
     }
 
@@ -163,13 +167,13 @@ mod stmt_tests {
         ]);
         assert_eq!(
             parse_stmt(&tokens),
-            Ok(Statement::Declare {
+            Ok(Statement::Declare(Declaration {
                 name: "x".to_string(),
                 value: Some(Expr::Call {
                     name: Box::new(Expr::Constant(Constant::Identifier("foo".to_string()))),
                     args: vec![Expr::Constant(Constant::Identifier("a".to_string()))]
                 })
-            })
+            }))
         );
     }
 
