@@ -1,0 +1,258 @@
+---
+source: crates/as2_pcode/src/parser/tests.rs
+expression: parsed
+input_file: samples/as2_pcode/op_precedence/comparison.pcode
+---
+Ok:
+  actions:
+    - ConstantPool:
+        - a
+        - b
+        - c
+        - a=
+        - ", b="
+        - ", c="
+        - "----"
+        - "a > b = "
+        - "a < b = "
+        - "a >= b = "
+        - "a <= b = "
+        - "---"
+        - "a > b >= c = "
+        - "((a > b) >= c) = "
+        - "a < b <= c = "
+        - "((a < b) <= c) = "
+        - "a + b > c = "
+        - "((a + b) > c) = "
+        - "a * b <= c + 5 = "
+        - "((a * b) <= (c + 5)) = "
+    - Push:
+        - Constant: 0
+    - Push:
+        - Integer: 10
+    - DefineLocal
+    - Push:
+        - Constant: 1
+    - Push:
+        - Integer: 5
+    - DefineLocal
+    - Push:
+        - Constant: 2
+    - Push:
+        - Integer: 7
+    - DefineLocal
+    - Push:
+        - Constant: 3
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Add2
+    - Push:
+        - Constant: 4
+    - Add2
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Add2
+    - Push:
+        - Constant: 5
+    - Add2
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 6
+    - Trace
+    - Push:
+        - Constant: 7
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Greater
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 8
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Less2
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 9
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Less2
+    - Not
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 10
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Greater
+    - Not
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 11
+    - Trace
+    - Push:
+        - Constant: 12
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Greater
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Less2
+    - Not
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 13
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Greater
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Less2
+    - Not
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 11
+    - Trace
+    - Push:
+        - Constant: 14
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Less2
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Greater
+    - Not
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 15
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Less2
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Greater
+    - Not
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 11
+    - Trace
+    - Push:
+        - Constant: 16
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Add2
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Greater
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 17
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Add2
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Greater
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 11
+    - Trace
+    - Push:
+        - Constant: 18
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Multiply
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Push:
+        - Integer: 5
+    - Add2
+    - Greater
+    - Not
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 19
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Multiply
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Push:
+        - Integer: 5
+    - Add2
+    - Greater
+    - Not
+    - Add2
+    - Trace
+  label_positions: {}

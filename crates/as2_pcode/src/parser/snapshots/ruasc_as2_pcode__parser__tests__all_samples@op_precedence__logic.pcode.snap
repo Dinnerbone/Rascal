@@ -1,0 +1,333 @@
+---
+source: crates/as2_pcode/src/parser/tests.rs
+expression: parsed
+input_file: samples/as2_pcode/op_precedence/logic.pcode
+---
+Ok:
+  actions:
+    - ConstantPool:
+        - a
+        - b
+        - c
+        - a=
+        - ", b="
+        - ", c="
+        - "----"
+        - "a && b = "
+        - "b && c = "
+        - "---"
+        - "a || b = "
+        - "b || c = "
+        - "a && c && b = "
+        - "((a && c) && b) = "
+        - "a || b || c = "
+        - "((a || b) || c) = "
+        - "a || b && c = "
+        - "(a || (b && c)) = "
+        - x
+        - y
+        - z
+        - "x && y || z = "
+        - "((x && y) || z) = "
+    - Push:
+        - Constant: 0
+    - Push:
+        - "True"
+    - DefineLocal
+    - Push:
+        - Constant: 1
+    - Push:
+        - "False"
+    - DefineLocal
+    - Push:
+        - Constant: 2
+    - Push:
+        - "True"
+    - DefineLocal
+    - Push:
+        - Constant: 3
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Add2
+    - Push:
+        - Constant: 4
+    - Add2
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Add2
+    - Push:
+        - Constant: 5
+    - Add2
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 6
+    - Trace
+    - Push:
+        - Constant: 7
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - PushDuplicate
+    - Not
+    - If: loc013e
+    - Pop
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 8
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - PushDuplicate
+    - Not
+    - If: loc0159
+    - Pop
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 9
+    - Trace
+    - Push:
+        - Constant: 10
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - PushDuplicate
+    - If: loc0179
+    - Pop
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 11
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - PushDuplicate
+    - If: loc0193
+    - Pop
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 9
+    - Trace
+    - Push:
+        - Constant: 12
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - PushDuplicate
+    - Not
+    - If: loc01b4
+    - Pop
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - PushDuplicate
+    - Not
+    - If: loc01c2
+    - Pop
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 13
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - PushDuplicate
+    - Not
+    - If: loc01dd
+    - Pop
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - PushDuplicate
+    - Not
+    - If: loc01eb
+    - Pop
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 9
+    - Trace
+    - Push:
+        - Constant: 14
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - PushDuplicate
+    - If: loc020b
+    - Pop
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - PushDuplicate
+    - If: loc0218
+    - Pop
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 15
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - PushDuplicate
+    - If: loc0232
+    - Pop
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - PushDuplicate
+    - If: loc023f
+    - Pop
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 9
+    - Trace
+    - Push:
+        - Constant: 16
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - PushDuplicate
+    - If: loc026d
+    - Pop
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - PushDuplicate
+    - Not
+    - If: loc026d
+    - Pop
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 17
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - PushDuplicate
+    - If: loc0295
+    - Pop
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - PushDuplicate
+    - Not
+    - If: loc0295
+    - Pop
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 9
+    - Trace
+    - Push:
+        - Constant: 18
+    - Push:
+        - "False"
+    - DefineLocal
+    - Push:
+        - Constant: 19
+    - Push:
+        - "True"
+    - DefineLocal
+    - Push:
+        - Constant: 20
+    - Push:
+        - "False"
+    - DefineLocal
+    - Push:
+        - Constant: 21
+    - Push:
+        - Constant: 18
+    - GetVariable
+    - PushDuplicate
+    - Not
+    - If: loc02d7
+    - Pop
+    - Push:
+        - Constant: 19
+    - GetVariable
+    - PushDuplicate
+    - If: loc02e4
+    - Pop
+    - Push:
+        - Constant: 20
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 22
+    - Push:
+        - Constant: 18
+    - GetVariable
+    - PushDuplicate
+    - Not
+    - If: loc02ff
+    - Pop
+    - Push:
+        - Constant: 19
+    - GetVariable
+    - PushDuplicate
+    - If: loc030c
+    - Pop
+    - Push:
+        - Constant: 20
+    - GetVariable
+    - Add2
+    - Trace
+  label_positions:
+    loc013e: 36
+    loc0159: 47
+    loc0179: 59
+    loc0193: 69
+    loc01b4: 82
+    loc01c2: 88
+    loc01dd: 99
+    loc01eb: 105
+    loc020b: 117
+    loc0218: 122
+    loc0232: 132
+    loc023f: 137
+    loc026d: 155
+    loc0295: 171
+    loc02d7: 193
+    loc02e4: 198
+    loc02ff: 209
+    loc030c: 214

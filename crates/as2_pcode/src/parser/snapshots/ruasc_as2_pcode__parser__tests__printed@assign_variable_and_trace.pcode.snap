@@ -1,0 +1,12 @@
+---
+source: crates/as2_pcode/src/parser/tests.rs
+expression: "parsed.unwrap_or_else(|_| Actions::empty())"
+input_file: samples/as2_pcode/assign_variable_and_trace.pcode
+---
+ConstantPool "message", "Hello World"
+Push constant0
+Push constant1
+DefineLocal
+Push constant0
+GetVariable
+Trace

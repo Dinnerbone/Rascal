@@ -1,0 +1,2530 @@
+---
+source: crates/as2_pcode/src/lexer/tests.rs
+expression: tokens
+input_file: samples/as2_pcode/op_precedence/bit_shifts.pcode
+---
+- kind:
+    ActionName: ConstantPool
+  span:
+    start: 0
+    end: 12
+  raw: ConstantPool
+- kind: String
+  span:
+    start: 13
+    end: 16
+  raw: a
+- kind: Comma
+  span:
+    start: 16
+    end: 17
+  raw: ","
+- kind: String
+  span:
+    start: 18
+    end: 21
+  raw: b
+- kind: Comma
+  span:
+    start: 21
+    end: 22
+  raw: ","
+- kind: String
+  span:
+    start: 23
+    end: 26
+  raw: c
+- kind: Comma
+  span:
+    start: 26
+    end: 27
+  raw: ","
+- kind: String
+  span:
+    start: 28
+    end: 32
+  raw: a=
+- kind: Comma
+  span:
+    start: 32
+    end: 33
+  raw: ","
+- kind: String
+  span:
+    start: 34
+    end: 40
+  raw: ", b="
+- kind: Comma
+  span:
+    start: 40
+    end: 41
+  raw: ","
+- kind: String
+  span:
+    start: 42
+    end: 48
+  raw: ", c="
+- kind: Comma
+  span:
+    start: 48
+    end: 49
+  raw: ","
+- kind: String
+  span:
+    start: 50
+    end: 56
+  raw: "----"
+- kind: Comma
+  span:
+    start: 56
+    end: 57
+  raw: ","
+- kind: String
+  span:
+    start: 58
+    end: 74
+  raw: "a << b >> c = "
+- kind: Comma
+  span:
+    start: 74
+    end: 75
+  raw: ","
+- kind: String
+  span:
+    start: 76
+    end: 96
+  raw: "((a << b) >> c) = "
+- kind: Comma
+  span:
+    start: 96
+    end: 97
+  raw: ","
+- kind: String
+  span:
+    start: 98
+    end: 103
+  raw: "---"
+- kind: Comma
+  span:
+    start: 103
+    end: 104
+  raw: ","
+- kind: String
+  span:
+    start: 105
+    end: 121
+  raw: "a >> b << c = "
+- kind: Comma
+  span:
+    start: 121
+    end: 122
+  raw: ","
+- kind: String
+  span:
+    start: 123
+    end: 143
+  raw: "((a >> b) << c) = "
+- kind: Comma
+  span:
+    start: 143
+    end: 144
+  raw: ","
+- kind: String
+  span:
+    start: 145
+    end: 162
+  raw: "a >>> b >> c = "
+- kind: Comma
+  span:
+    start: 162
+    end: 163
+  raw: ","
+- kind: String
+  span:
+    start: 164
+    end: 185
+  raw: "((a >>> b) >> c) = "
+- kind: Comma
+  span:
+    start: 185
+    end: 186
+  raw: ","
+- kind: String
+  span:
+    start: 187
+    end: 209
+  raw: "a << b >> c >>> b = "
+- kind: Comma
+  span:
+    start: 209
+    end: 210
+  raw: ","
+- kind: String
+  span:
+    start: 211
+    end: 239
+  raw: "(((a << b) >> c) >>> b) = "
+- kind: Comma
+  span:
+    start: 239
+    end: 240
+  raw: ","
+- kind: String
+  span:
+    start: 241
+    end: 256
+  raw: "a << b + c = "
+- kind: Comma
+  span:
+    start: 256
+    end: 257
+  raw: ","
+- kind: String
+  span:
+    start: 258
+    end: 275
+  raw: "a << (b + c) = "
+- kind: Comma
+  span:
+    start: 275
+    end: 276
+  raw: ","
+- kind: String
+  span:
+    start: 277
+    end: 292
+  raw: "a * b << c = "
+- kind: Comma
+  span:
+    start: 292
+    end: 293
+  raw: ","
+- kind: String
+  span:
+    start: 294
+    end: 311
+  raw: "(a * b) << c = "
+- kind: Newline
+  span:
+    start: 311
+    end: 312
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 312
+    end: 316
+  raw: Push
+- kind:
+    Constant: 0
+  span:
+    start: 317
+    end: 326
+  raw: constant0
+- kind: Newline
+  span:
+    start: 326
+    end: 327
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 327
+    end: 331
+  raw: Push
+- kind: Integer
+  span:
+    start: 332
+    end: 334
+  raw: "16"
+- kind: Newline
+  span:
+    start: 334
+    end: 335
+  raw: "\n"
+- kind:
+    ActionName: DefineLocal
+  span:
+    start: 335
+    end: 346
+  raw: DefineLocal
+- kind: Newline
+  span:
+    start: 346
+    end: 347
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 347
+    end: 351
+  raw: Push
+- kind:
+    Constant: 1
+  span:
+    start: 352
+    end: 361
+  raw: constant1
+- kind: Newline
+  span:
+    start: 361
+    end: 362
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 362
+    end: 366
+  raw: Push
+- kind: Integer
+  span:
+    start: 367
+    end: 368
+  raw: "2"
+- kind: Newline
+  span:
+    start: 368
+    end: 369
+  raw: "\n"
+- kind:
+    ActionName: DefineLocal
+  span:
+    start: 369
+    end: 380
+  raw: DefineLocal
+- kind: Newline
+  span:
+    start: 380
+    end: 381
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 381
+    end: 385
+  raw: Push
+- kind:
+    Constant: 2
+  span:
+    start: 386
+    end: 395
+  raw: constant2
+- kind: Newline
+  span:
+    start: 395
+    end: 396
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 396
+    end: 400
+  raw: Push
+- kind: Integer
+  span:
+    start: 401
+    end: 402
+  raw: "1"
+- kind: Newline
+  span:
+    start: 402
+    end: 403
+  raw: "\n"
+- kind:
+    ActionName: DefineLocal
+  span:
+    start: 403
+    end: 414
+  raw: DefineLocal
+- kind: Newline
+  span:
+    start: 414
+    end: 415
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 415
+    end: 419
+  raw: Push
+- kind:
+    Constant: 3
+  span:
+    start: 420
+    end: 429
+  raw: constant3
+- kind: Newline
+  span:
+    start: 429
+    end: 430
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 430
+    end: 434
+  raw: Push
+- kind:
+    Constant: 0
+  span:
+    start: 435
+    end: 444
+  raw: constant0
+- kind: Newline
+  span:
+    start: 444
+    end: 445
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 445
+    end: 456
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 456
+    end: 457
+  raw: "\n"
+- kind:
+    ActionName: Add2
+  span:
+    start: 457
+    end: 461
+  raw: Add2
+- kind: Newline
+  span:
+    start: 461
+    end: 462
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 462
+    end: 466
+  raw: Push
+- kind:
+    Constant: 4
+  span:
+    start: 467
+    end: 476
+  raw: constant4
+- kind: Newline
+  span:
+    start: 476
+    end: 477
+  raw: "\n"
+- kind:
+    ActionName: Add2
+  span:
+    start: 477
+    end: 481
+  raw: Add2
+- kind: Newline
+  span:
+    start: 481
+    end: 482
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 482
+    end: 486
+  raw: Push
+- kind:
+    Constant: 1
+  span:
+    start: 487
+    end: 496
+  raw: constant1
+- kind: Newline
+  span:
+    start: 496
+    end: 497
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 497
+    end: 508
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 508
+    end: 509
+  raw: "\n"
+- kind:
+    ActionName: Add2
+  span:
+    start: 509
+    end: 513
+  raw: Add2
+- kind: Newline
+  span:
+    start: 513
+    end: 514
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 514
+    end: 518
+  raw: Push
+- kind:
+    Constant: 5
+  span:
+    start: 519
+    end: 528
+  raw: constant5
+- kind: Newline
+  span:
+    start: 528
+    end: 529
+  raw: "\n"
+- kind:
+    ActionName: Add2
+  span:
+    start: 529
+    end: 533
+  raw: Add2
+- kind: Newline
+  span:
+    start: 533
+    end: 534
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 534
+    end: 538
+  raw: Push
+- kind:
+    Constant: 2
+  span:
+    start: 539
+    end: 548
+  raw: constant2
+- kind: Newline
+  span:
+    start: 548
+    end: 549
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 549
+    end: 560
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 560
+    end: 561
+  raw: "\n"
+- kind:
+    ActionName: Add2
+  span:
+    start: 561
+    end: 565
+  raw: Add2
+- kind: Newline
+  span:
+    start: 565
+    end: 566
+  raw: "\n"
+- kind:
+    ActionName: Trace
+  span:
+    start: 566
+    end: 571
+  raw: Trace
+- kind: Newline
+  span:
+    start: 571
+    end: 572
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 572
+    end: 576
+  raw: Push
+- kind:
+    Constant: 6
+  span:
+    start: 577
+    end: 586
+  raw: constant6
+- kind: Newline
+  span:
+    start: 586
+    end: 587
+  raw: "\n"
+- kind:
+    ActionName: Trace
+  span:
+    start: 587
+    end: 592
+  raw: Trace
+- kind: Newline
+  span:
+    start: 592
+    end: 593
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 593
+    end: 597
+  raw: Push
+- kind:
+    Constant: 7
+  span:
+    start: 598
+    end: 607
+  raw: constant7
+- kind: Newline
+  span:
+    start: 607
+    end: 608
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 608
+    end: 612
+  raw: Push
+- kind:
+    Constant: 0
+  span:
+    start: 613
+    end: 622
+  raw: constant0
+- kind: Newline
+  span:
+    start: 622
+    end: 623
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 623
+    end: 634
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 634
+    end: 635
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 635
+    end: 639
+  raw: Push
+- kind:
+    Constant: 1
+  span:
+    start: 640
+    end: 649
+  raw: constant1
+- kind: Newline
+  span:
+    start: 649
+    end: 650
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 650
+    end: 661
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 661
+    end: 662
+  raw: "\n"
+- kind:
+    ActionName: BitLShift
+  span:
+    start: 662
+    end: 671
+  raw: BitLShift
+- kind: Newline
+  span:
+    start: 671
+    end: 672
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 672
+    end: 676
+  raw: Push
+- kind:
+    Constant: 2
+  span:
+    start: 677
+    end: 686
+  raw: constant2
+- kind: Newline
+  span:
+    start: 686
+    end: 687
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 687
+    end: 698
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 698
+    end: 699
+  raw: "\n"
+- kind:
+    ActionName: BitRShift
+  span:
+    start: 699
+    end: 708
+  raw: BitRShift
+- kind: Newline
+  span:
+    start: 708
+    end: 709
+  raw: "\n"
+- kind:
+    ActionName: Add2
+  span:
+    start: 709
+    end: 713
+  raw: Add2
+- kind: Newline
+  span:
+    start: 713
+    end: 714
+  raw: "\n"
+- kind:
+    ActionName: Trace
+  span:
+    start: 714
+    end: 719
+  raw: Trace
+- kind: Newline
+  span:
+    start: 719
+    end: 720
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 720
+    end: 724
+  raw: Push
+- kind:
+    Constant: 8
+  span:
+    start: 725
+    end: 734
+  raw: constant8
+- kind: Newline
+  span:
+    start: 734
+    end: 735
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 735
+    end: 739
+  raw: Push
+- kind:
+    Constant: 0
+  span:
+    start: 740
+    end: 749
+  raw: constant0
+- kind: Newline
+  span:
+    start: 749
+    end: 750
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 750
+    end: 761
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 761
+    end: 762
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 762
+    end: 766
+  raw: Push
+- kind:
+    Constant: 1
+  span:
+    start: 767
+    end: 776
+  raw: constant1
+- kind: Newline
+  span:
+    start: 776
+    end: 777
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 777
+    end: 788
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 788
+    end: 789
+  raw: "\n"
+- kind:
+    ActionName: BitLShift
+  span:
+    start: 789
+    end: 798
+  raw: BitLShift
+- kind: Newline
+  span:
+    start: 798
+    end: 799
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 799
+    end: 803
+  raw: Push
+- kind:
+    Constant: 2
+  span:
+    start: 804
+    end: 813
+  raw: constant2
+- kind: Newline
+  span:
+    start: 813
+    end: 814
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 814
+    end: 825
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 825
+    end: 826
+  raw: "\n"
+- kind:
+    ActionName: BitRShift
+  span:
+    start: 826
+    end: 835
+  raw: BitRShift
+- kind: Newline
+  span:
+    start: 835
+    end: 836
+  raw: "\n"
+- kind:
+    ActionName: Add2
+  span:
+    start: 836
+    end: 840
+  raw: Add2
+- kind: Newline
+  span:
+    start: 840
+    end: 841
+  raw: "\n"
+- kind:
+    ActionName: Trace
+  span:
+    start: 841
+    end: 846
+  raw: Trace
+- kind: Newline
+  span:
+    start: 846
+    end: 847
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 847
+    end: 851
+  raw: Push
+- kind:
+    Constant: 9
+  span:
+    start: 852
+    end: 861
+  raw: constant9
+- kind: Newline
+  span:
+    start: 861
+    end: 862
+  raw: "\n"
+- kind:
+    ActionName: Trace
+  span:
+    start: 862
+    end: 867
+  raw: Trace
+- kind: Newline
+  span:
+    start: 867
+    end: 868
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 868
+    end: 872
+  raw: Push
+- kind:
+    Constant: 10
+  span:
+    start: 873
+    end: 883
+  raw: constant10
+- kind: Newline
+  span:
+    start: 883
+    end: 884
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 884
+    end: 888
+  raw: Push
+- kind:
+    Constant: 0
+  span:
+    start: 889
+    end: 898
+  raw: constant0
+- kind: Newline
+  span:
+    start: 898
+    end: 899
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 899
+    end: 910
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 910
+    end: 911
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 911
+    end: 915
+  raw: Push
+- kind:
+    Constant: 1
+  span:
+    start: 916
+    end: 925
+  raw: constant1
+- kind: Newline
+  span:
+    start: 925
+    end: 926
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 926
+    end: 937
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 937
+    end: 938
+  raw: "\n"
+- kind:
+    ActionName: BitRShift
+  span:
+    start: 938
+    end: 947
+  raw: BitRShift
+- kind: Newline
+  span:
+    start: 947
+    end: 948
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 948
+    end: 952
+  raw: Push
+- kind:
+    Constant: 2
+  span:
+    start: 953
+    end: 962
+  raw: constant2
+- kind: Newline
+  span:
+    start: 962
+    end: 963
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 963
+    end: 974
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 974
+    end: 975
+  raw: "\n"
+- kind:
+    ActionName: BitLShift
+  span:
+    start: 975
+    end: 984
+  raw: BitLShift
+- kind: Newline
+  span:
+    start: 984
+    end: 985
+  raw: "\n"
+- kind:
+    ActionName: Add2
+  span:
+    start: 985
+    end: 989
+  raw: Add2
+- kind: Newline
+  span:
+    start: 989
+    end: 990
+  raw: "\n"
+- kind:
+    ActionName: Trace
+  span:
+    start: 990
+    end: 995
+  raw: Trace
+- kind: Newline
+  span:
+    start: 995
+    end: 996
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 996
+    end: 1000
+  raw: Push
+- kind:
+    Constant: 11
+  span:
+    start: 1001
+    end: 1011
+  raw: constant11
+- kind: Newline
+  span:
+    start: 1011
+    end: 1012
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1012
+    end: 1016
+  raw: Push
+- kind:
+    Constant: 0
+  span:
+    start: 1017
+    end: 1026
+  raw: constant0
+- kind: Newline
+  span:
+    start: 1026
+    end: 1027
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 1027
+    end: 1038
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 1038
+    end: 1039
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1039
+    end: 1043
+  raw: Push
+- kind:
+    Constant: 1
+  span:
+    start: 1044
+    end: 1053
+  raw: constant1
+- kind: Newline
+  span:
+    start: 1053
+    end: 1054
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 1054
+    end: 1065
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 1065
+    end: 1066
+  raw: "\n"
+- kind:
+    ActionName: BitRShift
+  span:
+    start: 1066
+    end: 1075
+  raw: BitRShift
+- kind: Newline
+  span:
+    start: 1075
+    end: 1076
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1076
+    end: 1080
+  raw: Push
+- kind:
+    Constant: 2
+  span:
+    start: 1081
+    end: 1090
+  raw: constant2
+- kind: Newline
+  span:
+    start: 1090
+    end: 1091
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 1091
+    end: 1102
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 1102
+    end: 1103
+  raw: "\n"
+- kind:
+    ActionName: BitLShift
+  span:
+    start: 1103
+    end: 1112
+  raw: BitLShift
+- kind: Newline
+  span:
+    start: 1112
+    end: 1113
+  raw: "\n"
+- kind:
+    ActionName: Add2
+  span:
+    start: 1113
+    end: 1117
+  raw: Add2
+- kind: Newline
+  span:
+    start: 1117
+    end: 1118
+  raw: "\n"
+- kind:
+    ActionName: Trace
+  span:
+    start: 1118
+    end: 1123
+  raw: Trace
+- kind: Newline
+  span:
+    start: 1123
+    end: 1124
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1124
+    end: 1128
+  raw: Push
+- kind:
+    Constant: 9
+  span:
+    start: 1129
+    end: 1138
+  raw: constant9
+- kind: Newline
+  span:
+    start: 1138
+    end: 1139
+  raw: "\n"
+- kind:
+    ActionName: Trace
+  span:
+    start: 1139
+    end: 1144
+  raw: Trace
+- kind: Newline
+  span:
+    start: 1144
+    end: 1145
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1145
+    end: 1149
+  raw: Push
+- kind:
+    Constant: 12
+  span:
+    start: 1150
+    end: 1160
+  raw: constant12
+- kind: Newline
+  span:
+    start: 1160
+    end: 1161
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1161
+    end: 1165
+  raw: Push
+- kind:
+    Constant: 0
+  span:
+    start: 1166
+    end: 1175
+  raw: constant0
+- kind: Newline
+  span:
+    start: 1175
+    end: 1176
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 1176
+    end: 1187
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 1187
+    end: 1188
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1188
+    end: 1192
+  raw: Push
+- kind:
+    Constant: 1
+  span:
+    start: 1193
+    end: 1202
+  raw: constant1
+- kind: Newline
+  span:
+    start: 1202
+    end: 1203
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 1203
+    end: 1214
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 1214
+    end: 1215
+  raw: "\n"
+- kind:
+    ActionName: BitURShift
+  span:
+    start: 1215
+    end: 1225
+  raw: BitURShift
+- kind: Newline
+  span:
+    start: 1225
+    end: 1226
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1226
+    end: 1230
+  raw: Push
+- kind:
+    Constant: 2
+  span:
+    start: 1231
+    end: 1240
+  raw: constant2
+- kind: Newline
+  span:
+    start: 1240
+    end: 1241
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 1241
+    end: 1252
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 1252
+    end: 1253
+  raw: "\n"
+- kind:
+    ActionName: BitRShift
+  span:
+    start: 1253
+    end: 1262
+  raw: BitRShift
+- kind: Newline
+  span:
+    start: 1262
+    end: 1263
+  raw: "\n"
+- kind:
+    ActionName: Add2
+  span:
+    start: 1263
+    end: 1267
+  raw: Add2
+- kind: Newline
+  span:
+    start: 1267
+    end: 1268
+  raw: "\n"
+- kind:
+    ActionName: Trace
+  span:
+    start: 1268
+    end: 1273
+  raw: Trace
+- kind: Newline
+  span:
+    start: 1273
+    end: 1274
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1274
+    end: 1278
+  raw: Push
+- kind:
+    Constant: 13
+  span:
+    start: 1279
+    end: 1289
+  raw: constant13
+- kind: Newline
+  span:
+    start: 1289
+    end: 1290
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1290
+    end: 1294
+  raw: Push
+- kind:
+    Constant: 0
+  span:
+    start: 1295
+    end: 1304
+  raw: constant0
+- kind: Newline
+  span:
+    start: 1304
+    end: 1305
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 1305
+    end: 1316
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 1316
+    end: 1317
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1317
+    end: 1321
+  raw: Push
+- kind:
+    Constant: 1
+  span:
+    start: 1322
+    end: 1331
+  raw: constant1
+- kind: Newline
+  span:
+    start: 1331
+    end: 1332
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 1332
+    end: 1343
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 1343
+    end: 1344
+  raw: "\n"
+- kind:
+    ActionName: BitURShift
+  span:
+    start: 1344
+    end: 1354
+  raw: BitURShift
+- kind: Newline
+  span:
+    start: 1354
+    end: 1355
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1355
+    end: 1359
+  raw: Push
+- kind:
+    Constant: 2
+  span:
+    start: 1360
+    end: 1369
+  raw: constant2
+- kind: Newline
+  span:
+    start: 1369
+    end: 1370
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 1370
+    end: 1381
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 1381
+    end: 1382
+  raw: "\n"
+- kind:
+    ActionName: BitRShift
+  span:
+    start: 1382
+    end: 1391
+  raw: BitRShift
+- kind: Newline
+  span:
+    start: 1391
+    end: 1392
+  raw: "\n"
+- kind:
+    ActionName: Add2
+  span:
+    start: 1392
+    end: 1396
+  raw: Add2
+- kind: Newline
+  span:
+    start: 1396
+    end: 1397
+  raw: "\n"
+- kind:
+    ActionName: Trace
+  span:
+    start: 1397
+    end: 1402
+  raw: Trace
+- kind: Newline
+  span:
+    start: 1402
+    end: 1403
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1403
+    end: 1407
+  raw: Push
+- kind:
+    Constant: 9
+  span:
+    start: 1408
+    end: 1417
+  raw: constant9
+- kind: Newline
+  span:
+    start: 1417
+    end: 1418
+  raw: "\n"
+- kind:
+    ActionName: Trace
+  span:
+    start: 1418
+    end: 1423
+  raw: Trace
+- kind: Newline
+  span:
+    start: 1423
+    end: 1424
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1424
+    end: 1428
+  raw: Push
+- kind:
+    Constant: 14
+  span:
+    start: 1429
+    end: 1439
+  raw: constant14
+- kind: Newline
+  span:
+    start: 1439
+    end: 1440
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1440
+    end: 1444
+  raw: Push
+- kind:
+    Constant: 0
+  span:
+    start: 1445
+    end: 1454
+  raw: constant0
+- kind: Newline
+  span:
+    start: 1454
+    end: 1455
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 1455
+    end: 1466
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 1466
+    end: 1467
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1467
+    end: 1471
+  raw: Push
+- kind:
+    Constant: 1
+  span:
+    start: 1472
+    end: 1481
+  raw: constant1
+- kind: Newline
+  span:
+    start: 1481
+    end: 1482
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 1482
+    end: 1493
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 1493
+    end: 1494
+  raw: "\n"
+- kind:
+    ActionName: BitLShift
+  span:
+    start: 1494
+    end: 1503
+  raw: BitLShift
+- kind: Newline
+  span:
+    start: 1503
+    end: 1504
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1504
+    end: 1508
+  raw: Push
+- kind:
+    Constant: 2
+  span:
+    start: 1509
+    end: 1518
+  raw: constant2
+- kind: Newline
+  span:
+    start: 1518
+    end: 1519
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 1519
+    end: 1530
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 1530
+    end: 1531
+  raw: "\n"
+- kind:
+    ActionName: BitRShift
+  span:
+    start: 1531
+    end: 1540
+  raw: BitRShift
+- kind: Newline
+  span:
+    start: 1540
+    end: 1541
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1541
+    end: 1545
+  raw: Push
+- kind:
+    Constant: 1
+  span:
+    start: 1546
+    end: 1555
+  raw: constant1
+- kind: Newline
+  span:
+    start: 1555
+    end: 1556
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 1556
+    end: 1567
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 1567
+    end: 1568
+  raw: "\n"
+- kind:
+    ActionName: BitURShift
+  span:
+    start: 1568
+    end: 1578
+  raw: BitURShift
+- kind: Newline
+  span:
+    start: 1578
+    end: 1579
+  raw: "\n"
+- kind:
+    ActionName: Add2
+  span:
+    start: 1579
+    end: 1583
+  raw: Add2
+- kind: Newline
+  span:
+    start: 1583
+    end: 1584
+  raw: "\n"
+- kind:
+    ActionName: Trace
+  span:
+    start: 1584
+    end: 1589
+  raw: Trace
+- kind: Newline
+  span:
+    start: 1589
+    end: 1590
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1590
+    end: 1594
+  raw: Push
+- kind:
+    Constant: 15
+  span:
+    start: 1595
+    end: 1605
+  raw: constant15
+- kind: Newline
+  span:
+    start: 1605
+    end: 1606
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1606
+    end: 1610
+  raw: Push
+- kind:
+    Constant: 0
+  span:
+    start: 1611
+    end: 1620
+  raw: constant0
+- kind: Newline
+  span:
+    start: 1620
+    end: 1621
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 1621
+    end: 1632
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 1632
+    end: 1633
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1633
+    end: 1637
+  raw: Push
+- kind:
+    Constant: 1
+  span:
+    start: 1638
+    end: 1647
+  raw: constant1
+- kind: Newline
+  span:
+    start: 1647
+    end: 1648
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 1648
+    end: 1659
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 1659
+    end: 1660
+  raw: "\n"
+- kind:
+    ActionName: BitLShift
+  span:
+    start: 1660
+    end: 1669
+  raw: BitLShift
+- kind: Newline
+  span:
+    start: 1669
+    end: 1670
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1670
+    end: 1674
+  raw: Push
+- kind:
+    Constant: 2
+  span:
+    start: 1675
+    end: 1684
+  raw: constant2
+- kind: Newline
+  span:
+    start: 1684
+    end: 1685
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 1685
+    end: 1696
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 1696
+    end: 1697
+  raw: "\n"
+- kind:
+    ActionName: BitRShift
+  span:
+    start: 1697
+    end: 1706
+  raw: BitRShift
+- kind: Newline
+  span:
+    start: 1706
+    end: 1707
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1707
+    end: 1711
+  raw: Push
+- kind:
+    Constant: 1
+  span:
+    start: 1712
+    end: 1721
+  raw: constant1
+- kind: Newline
+  span:
+    start: 1721
+    end: 1722
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 1722
+    end: 1733
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 1733
+    end: 1734
+  raw: "\n"
+- kind:
+    ActionName: BitURShift
+  span:
+    start: 1734
+    end: 1744
+  raw: BitURShift
+- kind: Newline
+  span:
+    start: 1744
+    end: 1745
+  raw: "\n"
+- kind:
+    ActionName: Add2
+  span:
+    start: 1745
+    end: 1749
+  raw: Add2
+- kind: Newline
+  span:
+    start: 1749
+    end: 1750
+  raw: "\n"
+- kind:
+    ActionName: Trace
+  span:
+    start: 1750
+    end: 1755
+  raw: Trace
+- kind: Newline
+  span:
+    start: 1755
+    end: 1756
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1756
+    end: 1760
+  raw: Push
+- kind:
+    Constant: 9
+  span:
+    start: 1761
+    end: 1770
+  raw: constant9
+- kind: Newline
+  span:
+    start: 1770
+    end: 1771
+  raw: "\n"
+- kind:
+    ActionName: Trace
+  span:
+    start: 1771
+    end: 1776
+  raw: Trace
+- kind: Newline
+  span:
+    start: 1776
+    end: 1777
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1777
+    end: 1781
+  raw: Push
+- kind:
+    Constant: 16
+  span:
+    start: 1782
+    end: 1792
+  raw: constant16
+- kind: Newline
+  span:
+    start: 1792
+    end: 1793
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1793
+    end: 1797
+  raw: Push
+- kind:
+    Constant: 0
+  span:
+    start: 1798
+    end: 1807
+  raw: constant0
+- kind: Newline
+  span:
+    start: 1807
+    end: 1808
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 1808
+    end: 1819
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 1819
+    end: 1820
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1820
+    end: 1824
+  raw: Push
+- kind:
+    Constant: 1
+  span:
+    start: 1825
+    end: 1834
+  raw: constant1
+- kind: Newline
+  span:
+    start: 1834
+    end: 1835
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 1835
+    end: 1846
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 1846
+    end: 1847
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1847
+    end: 1851
+  raw: Push
+- kind:
+    Constant: 2
+  span:
+    start: 1852
+    end: 1861
+  raw: constant2
+- kind: Newline
+  span:
+    start: 1861
+    end: 1862
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 1862
+    end: 1873
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 1873
+    end: 1874
+  raw: "\n"
+- kind:
+    ActionName: Add2
+  span:
+    start: 1874
+    end: 1878
+  raw: Add2
+- kind: Newline
+  span:
+    start: 1878
+    end: 1879
+  raw: "\n"
+- kind:
+    ActionName: BitLShift
+  span:
+    start: 1879
+    end: 1888
+  raw: BitLShift
+- kind: Newline
+  span:
+    start: 1888
+    end: 1889
+  raw: "\n"
+- kind:
+    ActionName: Add2
+  span:
+    start: 1889
+    end: 1893
+  raw: Add2
+- kind: Newline
+  span:
+    start: 1893
+    end: 1894
+  raw: "\n"
+- kind:
+    ActionName: Trace
+  span:
+    start: 1894
+    end: 1899
+  raw: Trace
+- kind: Newline
+  span:
+    start: 1899
+    end: 1900
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1900
+    end: 1904
+  raw: Push
+- kind:
+    Constant: 17
+  span:
+    start: 1905
+    end: 1915
+  raw: constant17
+- kind: Newline
+  span:
+    start: 1915
+    end: 1916
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1916
+    end: 1920
+  raw: Push
+- kind:
+    Constant: 0
+  span:
+    start: 1921
+    end: 1930
+  raw: constant0
+- kind: Newline
+  span:
+    start: 1930
+    end: 1931
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 1931
+    end: 1942
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 1942
+    end: 1943
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1943
+    end: 1947
+  raw: Push
+- kind:
+    Constant: 1
+  span:
+    start: 1948
+    end: 1957
+  raw: constant1
+- kind: Newline
+  span:
+    start: 1957
+    end: 1958
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 1958
+    end: 1969
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 1969
+    end: 1970
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1970
+    end: 1974
+  raw: Push
+- kind:
+    Constant: 2
+  span:
+    start: 1975
+    end: 1984
+  raw: constant2
+- kind: Newline
+  span:
+    start: 1984
+    end: 1985
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 1985
+    end: 1996
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 1996
+    end: 1997
+  raw: "\n"
+- kind:
+    ActionName: Add2
+  span:
+    start: 1997
+    end: 2001
+  raw: Add2
+- kind: Newline
+  span:
+    start: 2001
+    end: 2002
+  raw: "\n"
+- kind:
+    ActionName: BitLShift
+  span:
+    start: 2002
+    end: 2011
+  raw: BitLShift
+- kind: Newline
+  span:
+    start: 2011
+    end: 2012
+  raw: "\n"
+- kind:
+    ActionName: Add2
+  span:
+    start: 2012
+    end: 2016
+  raw: Add2
+- kind: Newline
+  span:
+    start: 2016
+    end: 2017
+  raw: "\n"
+- kind:
+    ActionName: Trace
+  span:
+    start: 2017
+    end: 2022
+  raw: Trace
+- kind: Newline
+  span:
+    start: 2022
+    end: 2023
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 2023
+    end: 2027
+  raw: Push
+- kind:
+    Constant: 9
+  span:
+    start: 2028
+    end: 2037
+  raw: constant9
+- kind: Newline
+  span:
+    start: 2037
+    end: 2038
+  raw: "\n"
+- kind:
+    ActionName: Trace
+  span:
+    start: 2038
+    end: 2043
+  raw: Trace
+- kind: Newline
+  span:
+    start: 2043
+    end: 2044
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 2044
+    end: 2048
+  raw: Push
+- kind:
+    Constant: 18
+  span:
+    start: 2049
+    end: 2059
+  raw: constant18
+- kind: Newline
+  span:
+    start: 2059
+    end: 2060
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 2060
+    end: 2064
+  raw: Push
+- kind:
+    Constant: 0
+  span:
+    start: 2065
+    end: 2074
+  raw: constant0
+- kind: Newline
+  span:
+    start: 2074
+    end: 2075
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 2075
+    end: 2086
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 2086
+    end: 2087
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 2087
+    end: 2091
+  raw: Push
+- kind:
+    Constant: 1
+  span:
+    start: 2092
+    end: 2101
+  raw: constant1
+- kind: Newline
+  span:
+    start: 2101
+    end: 2102
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 2102
+    end: 2113
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 2113
+    end: 2114
+  raw: "\n"
+- kind:
+    ActionName: Multiply
+  span:
+    start: 2114
+    end: 2122
+  raw: Multiply
+- kind: Newline
+  span:
+    start: 2122
+    end: 2123
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 2123
+    end: 2127
+  raw: Push
+- kind:
+    Constant: 2
+  span:
+    start: 2128
+    end: 2137
+  raw: constant2
+- kind: Newline
+  span:
+    start: 2137
+    end: 2138
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 2138
+    end: 2149
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 2149
+    end: 2150
+  raw: "\n"
+- kind:
+    ActionName: BitLShift
+  span:
+    start: 2150
+    end: 2159
+  raw: BitLShift
+- kind: Newline
+  span:
+    start: 2159
+    end: 2160
+  raw: "\n"
+- kind:
+    ActionName: Add2
+  span:
+    start: 2160
+    end: 2164
+  raw: Add2
+- kind: Newline
+  span:
+    start: 2164
+    end: 2165
+  raw: "\n"
+- kind:
+    ActionName: Trace
+  span:
+    start: 2165
+    end: 2170
+  raw: Trace
+- kind: Newline
+  span:
+    start: 2170
+    end: 2171
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 2171
+    end: 2175
+  raw: Push
+- kind:
+    Constant: 19
+  span:
+    start: 2176
+    end: 2186
+  raw: constant19
+- kind: Newline
+  span:
+    start: 2186
+    end: 2187
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 2187
+    end: 2191
+  raw: Push
+- kind:
+    Constant: 0
+  span:
+    start: 2192
+    end: 2201
+  raw: constant0
+- kind: Newline
+  span:
+    start: 2201
+    end: 2202
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 2202
+    end: 2213
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 2213
+    end: 2214
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 2214
+    end: 2218
+  raw: Push
+- kind:
+    Constant: 1
+  span:
+    start: 2219
+    end: 2228
+  raw: constant1
+- kind: Newline
+  span:
+    start: 2228
+    end: 2229
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 2229
+    end: 2240
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 2240
+    end: 2241
+  raw: "\n"
+- kind:
+    ActionName: Multiply
+  span:
+    start: 2241
+    end: 2249
+  raw: Multiply
+- kind: Newline
+  span:
+    start: 2249
+    end: 2250
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 2250
+    end: 2254
+  raw: Push
+- kind:
+    Constant: 2
+  span:
+    start: 2255
+    end: 2264
+  raw: constant2
+- kind: Newline
+  span:
+    start: 2264
+    end: 2265
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 2265
+    end: 2276
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 2276
+    end: 2277
+  raw: "\n"
+- kind:
+    ActionName: BitLShift
+  span:
+    start: 2277
+    end: 2286
+  raw: BitLShift
+- kind: Newline
+  span:
+    start: 2286
+    end: 2287
+  raw: "\n"
+- kind:
+    ActionName: Add2
+  span:
+    start: 2287
+    end: 2291
+  raw: Add2
+- kind: Newline
+  span:
+    start: 2291
+    end: 2292
+  raw: "\n"
+- kind:
+    ActionName: Trace
+  span:
+    start: 2292
+    end: 2297
+  raw: Trace
+- kind: Newline
+  span:
+    start: 2297
+    end: 2298
+  raw: "\n"

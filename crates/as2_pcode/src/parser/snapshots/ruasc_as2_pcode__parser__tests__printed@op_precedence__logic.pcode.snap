@@ -1,0 +1,221 @@
+---
+source: crates/as2_pcode/src/parser/tests.rs
+expression: "parsed.unwrap_or_else(|_| Actions::empty())"
+input_file: samples/as2_pcode/op_precedence/logic.pcode
+---
+ConstantPool "a", "b", "c", "a=", ", b=", ", c=", "----", "a && b = ", "b && c = ", "---", "a || b = ", "b || c = ", "a && c && b = ", "((a && c) && b) = ", "a || b || c = ", "((a || b) || c) = ", "a || b && c = ", "(a || (b && c)) = ", "x", "y", "z", "x && y || z = ", "((x && y) || z) = "
+Push constant0
+Push true
+DefineLocal
+Push constant1
+Push false
+DefineLocal
+Push constant2
+Push true
+DefineLocal
+Push constant3
+Push constant0
+GetVariable
+Add2
+Push constant4
+Add2
+Push constant1
+GetVariable
+Add2
+Push constant5
+Add2
+Push constant2
+GetVariable
+Add2
+Trace
+Push constant6
+Trace
+Push constant7
+Push constant0
+GetVariable
+PushDuplicate
+Not
+If loc013e
+Pop
+Push constant1
+GetVariable
+loc013e: Add2
+Trace
+Push constant8
+Push constant1
+GetVariable
+PushDuplicate
+Not
+If loc0159
+Pop
+Push constant2
+GetVariable
+loc0159: Add2
+Trace
+Push constant9
+Trace
+Push constant10
+Push constant0
+GetVariable
+PushDuplicate
+If loc0179
+Pop
+Push constant1
+GetVariable
+loc0179: Add2
+Trace
+Push constant11
+Push constant1
+GetVariable
+PushDuplicate
+If loc0193
+Pop
+Push constant2
+GetVariable
+loc0193: Add2
+Trace
+Push constant9
+Trace
+Push constant12
+Push constant0
+GetVariable
+PushDuplicate
+Not
+If loc01b4
+Pop
+Push constant2
+GetVariable
+loc01b4: PushDuplicate
+Not
+If loc01c2
+Pop
+Push constant1
+GetVariable
+loc01c2: Add2
+Trace
+Push constant13
+Push constant0
+GetVariable
+PushDuplicate
+Not
+If loc01dd
+Pop
+Push constant2
+GetVariable
+loc01dd: PushDuplicate
+Not
+If loc01eb
+Pop
+Push constant1
+GetVariable
+loc01eb: Add2
+Trace
+Push constant9
+Trace
+Push constant14
+Push constant0
+GetVariable
+PushDuplicate
+If loc020b
+Pop
+Push constant1
+GetVariable
+loc020b: PushDuplicate
+If loc0218
+Pop
+Push constant2
+GetVariable
+loc0218: Add2
+Trace
+Push constant15
+Push constant0
+GetVariable
+PushDuplicate
+If loc0232
+Pop
+Push constant1
+GetVariable
+loc0232: PushDuplicate
+If loc023f
+Pop
+Push constant2
+GetVariable
+loc023f: Add2
+Trace
+Push constant9
+Trace
+Push constant16
+Push constant0
+GetVariable
+PushDuplicate
+If loc026d
+Pop
+Push constant1
+GetVariable
+PushDuplicate
+Not
+If loc026d
+Pop
+Push constant2
+GetVariable
+loc026d: Add2
+Trace
+Push constant17
+Push constant0
+GetVariable
+PushDuplicate
+If loc0295
+Pop
+Push constant1
+GetVariable
+PushDuplicate
+Not
+If loc0295
+Pop
+Push constant2
+GetVariable
+loc0295: Add2
+Trace
+Push constant9
+Trace
+Push constant18
+Push false
+DefineLocal
+Push constant19
+Push true
+DefineLocal
+Push constant20
+Push false
+DefineLocal
+Push constant21
+Push constant18
+GetVariable
+PushDuplicate
+Not
+If loc02d7
+Pop
+Push constant19
+GetVariable
+loc02d7: PushDuplicate
+If loc02e4
+Pop
+Push constant20
+GetVariable
+loc02e4: Add2
+Trace
+Push constant22
+Push constant18
+GetVariable
+PushDuplicate
+Not
+If loc02ff
+Pop
+Push constant19
+GetVariable
+loc02ff: PushDuplicate
+If loc030c
+Pop
+Push constant20
+GetVariable
+loc030c: Add2
+Trace

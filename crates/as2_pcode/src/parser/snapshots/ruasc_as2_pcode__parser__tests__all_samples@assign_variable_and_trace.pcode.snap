@@ -1,0 +1,20 @@
+---
+source: crates/as2_pcode/src/parser/tests.rs
+expression: parsed
+input_file: samples/as2_pcode/assign_variable_and_trace.pcode
+---
+Ok:
+  actions:
+    - ConstantPool:
+        - message
+        - Hello World
+    - Push:
+        - Constant: 0
+    - Push:
+        - Constant: 1
+    - DefineLocal
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Trace
+  label_positions: {}

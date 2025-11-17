@@ -1,0 +1,271 @@
+---
+source: crates/as2_pcode/src/parser/tests.rs
+expression: parsed
+input_file: samples/as2_pcode/op_precedence/bit_shifts.pcode
+---
+Ok:
+  actions:
+    - ConstantPool:
+        - a
+        - b
+        - c
+        - a=
+        - ", b="
+        - ", c="
+        - "----"
+        - "a << b >> c = "
+        - "((a << b) >> c) = "
+        - "---"
+        - "a >> b << c = "
+        - "((a >> b) << c) = "
+        - "a >>> b >> c = "
+        - "((a >>> b) >> c) = "
+        - "a << b >> c >>> b = "
+        - "(((a << b) >> c) >>> b) = "
+        - "a << b + c = "
+        - "a << (b + c) = "
+        - "a * b << c = "
+        - "(a * b) << c = "
+    - Push:
+        - Constant: 0
+    - Push:
+        - Integer: 16
+    - DefineLocal
+    - Push:
+        - Constant: 1
+    - Push:
+        - Integer: 2
+    - DefineLocal
+    - Push:
+        - Constant: 2
+    - Push:
+        - Integer: 1
+    - DefineLocal
+    - Push:
+        - Constant: 3
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Add2
+    - Push:
+        - Constant: 4
+    - Add2
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Add2
+    - Push:
+        - Constant: 5
+    - Add2
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 6
+    - Trace
+    - Push:
+        - Constant: 7
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - BitLShift
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - BitRShift
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 8
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - BitLShift
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - BitRShift
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 9
+    - Trace
+    - Push:
+        - Constant: 10
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - BitRShift
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - BitLShift
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 11
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - BitRShift
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - BitLShift
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 9
+    - Trace
+    - Push:
+        - Constant: 12
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - BitURShift
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - BitRShift
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 13
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - BitURShift
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - BitRShift
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 9
+    - Trace
+    - Push:
+        - Constant: 14
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - BitLShift
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - BitRShift
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - BitURShift
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 15
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - BitLShift
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - BitRShift
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - BitURShift
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 9
+    - Trace
+    - Push:
+        - Constant: 16
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Add2
+    - BitLShift
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 17
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Add2
+    - BitLShift
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 9
+    - Trace
+    - Push:
+        - Constant: 18
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Multiply
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - BitLShift
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 19
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Multiply
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - BitLShift
+    - Add2
+    - Trace
+  label_positions: {}

@@ -1,0 +1,172 @@
+---
+source: crates/as2_pcode/src/parser/tests.rs
+expression: "parsed.unwrap_or_else(|_| Actions::empty())"
+input_file: samples/as2_pcode/op_precedence/comparison.pcode
+---
+ConstantPool "a", "b", "c", "a=", ", b=", ", c=", "----", "a > b = ", "a < b = ", "a >= b = ", "a <= b = ", "---", "a > b >= c = ", "((a > b) >= c) = ", "a < b <= c = ", "((a < b) <= c) = ", "a + b > c = ", "((a + b) > c) = ", "a * b <= c + 5 = ", "((a * b) <= (c + 5)) = "
+Push constant0
+Push 10
+DefineLocal
+Push constant1
+Push 5
+DefineLocal
+Push constant2
+Push 7
+DefineLocal
+Push constant3
+Push constant0
+GetVariable
+Add2
+Push constant4
+Add2
+Push constant1
+GetVariable
+Add2
+Push constant5
+Add2
+Push constant2
+GetVariable
+Add2
+Trace
+Push constant6
+Trace
+Push constant7
+Push constant0
+GetVariable
+Push constant1
+GetVariable
+Greater
+Add2
+Trace
+Push constant8
+Push constant0
+GetVariable
+Push constant1
+GetVariable
+Less2
+Add2
+Trace
+Push constant9
+Push constant0
+GetVariable
+Push constant1
+GetVariable
+Less2
+Not
+Add2
+Trace
+Push constant10
+Push constant0
+GetVariable
+Push constant1
+GetVariable
+Greater
+Not
+Add2
+Trace
+Push constant11
+Trace
+Push constant12
+Push constant0
+GetVariable
+Push constant1
+GetVariable
+Greater
+Push constant2
+GetVariable
+Less2
+Not
+Add2
+Trace
+Push constant13
+Push constant0
+GetVariable
+Push constant1
+GetVariable
+Greater
+Push constant2
+GetVariable
+Less2
+Not
+Add2
+Trace
+Push constant11
+Trace
+Push constant14
+Push constant0
+GetVariable
+Push constant1
+GetVariable
+Less2
+Push constant2
+GetVariable
+Greater
+Not
+Add2
+Trace
+Push constant15
+Push constant0
+GetVariable
+Push constant1
+GetVariable
+Less2
+Push constant2
+GetVariable
+Greater
+Not
+Add2
+Trace
+Push constant11
+Trace
+Push constant16
+Push constant0
+GetVariable
+Push constant1
+GetVariable
+Add2
+Push constant2
+GetVariable
+Greater
+Add2
+Trace
+Push constant17
+Push constant0
+GetVariable
+Push constant1
+GetVariable
+Add2
+Push constant2
+GetVariable
+Greater
+Add2
+Trace
+Push constant11
+Trace
+Push constant18
+Push constant0
+GetVariable
+Push constant1
+GetVariable
+Multiply
+Push constant2
+GetVariable
+Push 5
+Add2
+Greater
+Not
+Add2
+Trace
+Push constant19
+Push constant0
+GetVariable
+Push constant1
+GetVariable
+Multiply
+Push constant2
+GetVariable
+Push 5
+Add2
+Greater
+Not
+Add2
+Trace

@@ -1,0 +1,2868 @@
+---
+source: crates/as2_pcode/src/lexer/tests.rs
+expression: tokens
+input_file: samples/as2_pcode/op_precedence/mul_div_mod.pcode
+---
+- kind:
+    ActionName: ConstantPool
+  span:
+    start: 0
+    end: 12
+  raw: ConstantPool
+- kind: String
+  span:
+    start: 13
+    end: 16
+  raw: a
+- kind: Comma
+  span:
+    start: 16
+    end: 17
+  raw: ","
+- kind: String
+  span:
+    start: 18
+    end: 21
+  raw: b
+- kind: Comma
+  span:
+    start: 21
+    end: 22
+  raw: ","
+- kind: String
+  span:
+    start: 23
+    end: 26
+  raw: c
+- kind: Comma
+  span:
+    start: 26
+    end: 27
+  raw: ","
+- kind: String
+  span:
+    start: 28
+    end: 32
+  raw: a=
+- kind: Comma
+  span:
+    start: 32
+    end: 33
+  raw: ","
+- kind: String
+  span:
+    start: 34
+    end: 40
+  raw: ", b="
+- kind: Comma
+  span:
+    start: 40
+    end: 41
+  raw: ","
+- kind: String
+  span:
+    start: 42
+    end: 48
+  raw: ", c="
+- kind: Comma
+  span:
+    start: 48
+    end: 49
+  raw: ","
+- kind: String
+  span:
+    start: 50
+    end: 56
+  raw: "----"
+- kind: Comma
+  span:
+    start: 56
+    end: 57
+  raw: ","
+- kind: String
+  span:
+    start: 58
+    end: 72
+  raw: "a * b / c = "
+- kind: Comma
+  span:
+    start: 72
+    end: 73
+  raw: ","
+- kind: String
+  span:
+    start: 74
+    end: 90
+  raw: "(a * b) / c = "
+- kind: Comma
+  span:
+    start: 90
+    end: 91
+  raw: ","
+- kind: String
+  span:
+    start: 92
+    end: 97
+  raw: "---"
+- kind: Comma
+  span:
+    start: 97
+    end: 98
+  raw: ","
+- kind: String
+  span:
+    start: 99
+    end: 113
+  raw: "a / b * c = "
+- kind: Comma
+  span:
+    start: 113
+    end: 114
+  raw: ","
+- kind: String
+  span:
+    start: 115
+    end: 131
+  raw: "(a / b) * c = "
+- kind: Comma
+  span:
+    start: 131
+    end: 132
+  raw: ","
+- kind: String
+  span:
+    start: 133
+    end: 147
+  raw: "a % b * c = "
+- kind: Comma
+  span:
+    start: 147
+    end: 148
+  raw: ","
+- kind: String
+  span:
+    start: 149
+    end: 165
+  raw: "(a % b) * c = "
+- kind: Comma
+  span:
+    start: 165
+    end: 166
+  raw: ","
+- kind: String
+  span:
+    start: 167
+    end: 181
+  raw: "a * b % c = "
+- kind: Comma
+  span:
+    start: 181
+    end: 182
+  raw: ","
+- kind: String
+  span:
+    start: 183
+    end: 199
+  raw: "(a * b) % c = "
+- kind: Comma
+  span:
+    start: 199
+    end: 200
+  raw: ","
+- kind: String
+  span:
+    start: 201
+    end: 215
+  raw: "a % b / c = "
+- kind: Comma
+  span:
+    start: 215
+    end: 216
+  raw: ","
+- kind: String
+  span:
+    start: 217
+    end: 233
+  raw: "(a % b) / c = "
+- kind: Comma
+  span:
+    start: 233
+    end: 234
+  raw: ","
+- kind: String
+  span:
+    start: 235
+    end: 249
+  raw: "a / b % c = "
+- kind: Comma
+  span:
+    start: 249
+    end: 250
+  raw: ","
+- kind: String
+  span:
+    start: 251
+    end: 267
+  raw: "(a / b) % c = "
+- kind: Comma
+  span:
+    start: 267
+    end: 268
+  raw: ","
+- kind: String
+  span:
+    start: 269
+    end: 295
+  raw: "Nested: a * b / c * b = "
+- kind: Comma
+  span:
+    start: 295
+    end: 296
+  raw: ","
+- kind: String
+  span:
+    start: 297
+    end: 339
+  raw: "Nested reference: (((a * b) / c) * b) = "
+- kind: Newline
+  span:
+    start: 339
+    end: 340
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 340
+    end: 344
+  raw: Push
+- kind:
+    Constant: 0
+  span:
+    start: 345
+    end: 354
+  raw: constant0
+- kind: Newline
+  span:
+    start: 354
+    end: 355
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 355
+    end: 359
+  raw: Push
+- kind: Integer
+  span:
+    start: 360
+    end: 362
+  raw: "20"
+- kind: Newline
+  span:
+    start: 362
+    end: 363
+  raw: "\n"
+- kind:
+    ActionName: DefineLocal
+  span:
+    start: 363
+    end: 374
+  raw: DefineLocal
+- kind: Newline
+  span:
+    start: 374
+    end: 375
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 375
+    end: 379
+  raw: Push
+- kind:
+    Constant: 1
+  span:
+    start: 380
+    end: 389
+  raw: constant1
+- kind: Newline
+  span:
+    start: 389
+    end: 390
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 390
+    end: 394
+  raw: Push
+- kind: Integer
+  span:
+    start: 395
+    end: 396
+  raw: "6"
+- kind: Newline
+  span:
+    start: 396
+    end: 397
+  raw: "\n"
+- kind:
+    ActionName: DefineLocal
+  span:
+    start: 397
+    end: 408
+  raw: DefineLocal
+- kind: Newline
+  span:
+    start: 408
+    end: 409
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 409
+    end: 413
+  raw: Push
+- kind:
+    Constant: 2
+  span:
+    start: 414
+    end: 423
+  raw: constant2
+- kind: Newline
+  span:
+    start: 423
+    end: 424
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 424
+    end: 428
+  raw: Push
+- kind: Integer
+  span:
+    start: 429
+    end: 430
+  raw: "4"
+- kind: Newline
+  span:
+    start: 430
+    end: 431
+  raw: "\n"
+- kind:
+    ActionName: DefineLocal
+  span:
+    start: 431
+    end: 442
+  raw: DefineLocal
+- kind: Newline
+  span:
+    start: 442
+    end: 443
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 443
+    end: 447
+  raw: Push
+- kind:
+    Constant: 3
+  span:
+    start: 448
+    end: 457
+  raw: constant3
+- kind: Newline
+  span:
+    start: 457
+    end: 458
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 458
+    end: 462
+  raw: Push
+- kind:
+    Constant: 0
+  span:
+    start: 463
+    end: 472
+  raw: constant0
+- kind: Newline
+  span:
+    start: 472
+    end: 473
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 473
+    end: 484
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 484
+    end: 485
+  raw: "\n"
+- kind:
+    ActionName: Add2
+  span:
+    start: 485
+    end: 489
+  raw: Add2
+- kind: Newline
+  span:
+    start: 489
+    end: 490
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 490
+    end: 494
+  raw: Push
+- kind:
+    Constant: 4
+  span:
+    start: 495
+    end: 504
+  raw: constant4
+- kind: Newline
+  span:
+    start: 504
+    end: 505
+  raw: "\n"
+- kind:
+    ActionName: Add2
+  span:
+    start: 505
+    end: 509
+  raw: Add2
+- kind: Newline
+  span:
+    start: 509
+    end: 510
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 510
+    end: 514
+  raw: Push
+- kind:
+    Constant: 1
+  span:
+    start: 515
+    end: 524
+  raw: constant1
+- kind: Newline
+  span:
+    start: 524
+    end: 525
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 525
+    end: 536
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 536
+    end: 537
+  raw: "\n"
+- kind:
+    ActionName: Add2
+  span:
+    start: 537
+    end: 541
+  raw: Add2
+- kind: Newline
+  span:
+    start: 541
+    end: 542
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 542
+    end: 546
+  raw: Push
+- kind:
+    Constant: 5
+  span:
+    start: 547
+    end: 556
+  raw: constant5
+- kind: Newline
+  span:
+    start: 556
+    end: 557
+  raw: "\n"
+- kind:
+    ActionName: Add2
+  span:
+    start: 557
+    end: 561
+  raw: Add2
+- kind: Newline
+  span:
+    start: 561
+    end: 562
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 562
+    end: 566
+  raw: Push
+- kind:
+    Constant: 2
+  span:
+    start: 567
+    end: 576
+  raw: constant2
+- kind: Newline
+  span:
+    start: 576
+    end: 577
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 577
+    end: 588
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 588
+    end: 589
+  raw: "\n"
+- kind:
+    ActionName: Add2
+  span:
+    start: 589
+    end: 593
+  raw: Add2
+- kind: Newline
+  span:
+    start: 593
+    end: 594
+  raw: "\n"
+- kind:
+    ActionName: Trace
+  span:
+    start: 594
+    end: 599
+  raw: Trace
+- kind: Newline
+  span:
+    start: 599
+    end: 600
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 600
+    end: 604
+  raw: Push
+- kind:
+    Constant: 6
+  span:
+    start: 605
+    end: 614
+  raw: constant6
+- kind: Newline
+  span:
+    start: 614
+    end: 615
+  raw: "\n"
+- kind:
+    ActionName: Trace
+  span:
+    start: 615
+    end: 620
+  raw: Trace
+- kind: Newline
+  span:
+    start: 620
+    end: 621
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 621
+    end: 625
+  raw: Push
+- kind:
+    Constant: 7
+  span:
+    start: 626
+    end: 635
+  raw: constant7
+- kind: Newline
+  span:
+    start: 635
+    end: 636
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 636
+    end: 640
+  raw: Push
+- kind:
+    Constant: 0
+  span:
+    start: 641
+    end: 650
+  raw: constant0
+- kind: Newline
+  span:
+    start: 650
+    end: 651
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 651
+    end: 662
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 662
+    end: 663
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 663
+    end: 667
+  raw: Push
+- kind:
+    Constant: 1
+  span:
+    start: 668
+    end: 677
+  raw: constant1
+- kind: Newline
+  span:
+    start: 677
+    end: 678
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 678
+    end: 689
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 689
+    end: 690
+  raw: "\n"
+- kind:
+    ActionName: Multiply
+  span:
+    start: 690
+    end: 698
+  raw: Multiply
+- kind: Newline
+  span:
+    start: 698
+    end: 699
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 699
+    end: 703
+  raw: Push
+- kind:
+    Constant: 2
+  span:
+    start: 704
+    end: 713
+  raw: constant2
+- kind: Newline
+  span:
+    start: 713
+    end: 714
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 714
+    end: 725
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 725
+    end: 726
+  raw: "\n"
+- kind:
+    ActionName: Divide
+  span:
+    start: 726
+    end: 732
+  raw: Divide
+- kind: Newline
+  span:
+    start: 732
+    end: 733
+  raw: "\n"
+- kind:
+    ActionName: Add2
+  span:
+    start: 733
+    end: 737
+  raw: Add2
+- kind: Newline
+  span:
+    start: 737
+    end: 738
+  raw: "\n"
+- kind:
+    ActionName: Trace
+  span:
+    start: 738
+    end: 743
+  raw: Trace
+- kind: Newline
+  span:
+    start: 743
+    end: 744
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 744
+    end: 748
+  raw: Push
+- kind:
+    Constant: 8
+  span:
+    start: 749
+    end: 758
+  raw: constant8
+- kind: Newline
+  span:
+    start: 758
+    end: 759
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 759
+    end: 763
+  raw: Push
+- kind:
+    Constant: 0
+  span:
+    start: 764
+    end: 773
+  raw: constant0
+- kind: Newline
+  span:
+    start: 773
+    end: 774
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 774
+    end: 785
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 785
+    end: 786
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 786
+    end: 790
+  raw: Push
+- kind:
+    Constant: 1
+  span:
+    start: 791
+    end: 800
+  raw: constant1
+- kind: Newline
+  span:
+    start: 800
+    end: 801
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 801
+    end: 812
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 812
+    end: 813
+  raw: "\n"
+- kind:
+    ActionName: Multiply
+  span:
+    start: 813
+    end: 821
+  raw: Multiply
+- kind: Newline
+  span:
+    start: 821
+    end: 822
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 822
+    end: 826
+  raw: Push
+- kind:
+    Constant: 2
+  span:
+    start: 827
+    end: 836
+  raw: constant2
+- kind: Newline
+  span:
+    start: 836
+    end: 837
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 837
+    end: 848
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 848
+    end: 849
+  raw: "\n"
+- kind:
+    ActionName: Divide
+  span:
+    start: 849
+    end: 855
+  raw: Divide
+- kind: Newline
+  span:
+    start: 855
+    end: 856
+  raw: "\n"
+- kind:
+    ActionName: Add2
+  span:
+    start: 856
+    end: 860
+  raw: Add2
+- kind: Newline
+  span:
+    start: 860
+    end: 861
+  raw: "\n"
+- kind:
+    ActionName: Trace
+  span:
+    start: 861
+    end: 866
+  raw: Trace
+- kind: Newline
+  span:
+    start: 866
+    end: 867
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 867
+    end: 871
+  raw: Push
+- kind:
+    Constant: 9
+  span:
+    start: 872
+    end: 881
+  raw: constant9
+- kind: Newline
+  span:
+    start: 881
+    end: 882
+  raw: "\n"
+- kind:
+    ActionName: Trace
+  span:
+    start: 882
+    end: 887
+  raw: Trace
+- kind: Newline
+  span:
+    start: 887
+    end: 888
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 888
+    end: 892
+  raw: Push
+- kind:
+    Constant: 10
+  span:
+    start: 893
+    end: 903
+  raw: constant10
+- kind: Newline
+  span:
+    start: 903
+    end: 904
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 904
+    end: 908
+  raw: Push
+- kind:
+    Constant: 0
+  span:
+    start: 909
+    end: 918
+  raw: constant0
+- kind: Newline
+  span:
+    start: 918
+    end: 919
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 919
+    end: 930
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 930
+    end: 931
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 931
+    end: 935
+  raw: Push
+- kind:
+    Constant: 1
+  span:
+    start: 936
+    end: 945
+  raw: constant1
+- kind: Newline
+  span:
+    start: 945
+    end: 946
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 946
+    end: 957
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 957
+    end: 958
+  raw: "\n"
+- kind:
+    ActionName: Divide
+  span:
+    start: 958
+    end: 964
+  raw: Divide
+- kind: Newline
+  span:
+    start: 964
+    end: 965
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 965
+    end: 969
+  raw: Push
+- kind:
+    Constant: 2
+  span:
+    start: 970
+    end: 979
+  raw: constant2
+- kind: Newline
+  span:
+    start: 979
+    end: 980
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 980
+    end: 991
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 991
+    end: 992
+  raw: "\n"
+- kind:
+    ActionName: Multiply
+  span:
+    start: 992
+    end: 1000
+  raw: Multiply
+- kind: Newline
+  span:
+    start: 1000
+    end: 1001
+  raw: "\n"
+- kind:
+    ActionName: Add2
+  span:
+    start: 1001
+    end: 1005
+  raw: Add2
+- kind: Newline
+  span:
+    start: 1005
+    end: 1006
+  raw: "\n"
+- kind:
+    ActionName: Trace
+  span:
+    start: 1006
+    end: 1011
+  raw: Trace
+- kind: Newline
+  span:
+    start: 1011
+    end: 1012
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1012
+    end: 1016
+  raw: Push
+- kind:
+    Constant: 11
+  span:
+    start: 1017
+    end: 1027
+  raw: constant11
+- kind: Newline
+  span:
+    start: 1027
+    end: 1028
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1028
+    end: 1032
+  raw: Push
+- kind:
+    Constant: 0
+  span:
+    start: 1033
+    end: 1042
+  raw: constant0
+- kind: Newline
+  span:
+    start: 1042
+    end: 1043
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 1043
+    end: 1054
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 1054
+    end: 1055
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1055
+    end: 1059
+  raw: Push
+- kind:
+    Constant: 1
+  span:
+    start: 1060
+    end: 1069
+  raw: constant1
+- kind: Newline
+  span:
+    start: 1069
+    end: 1070
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 1070
+    end: 1081
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 1081
+    end: 1082
+  raw: "\n"
+- kind:
+    ActionName: Divide
+  span:
+    start: 1082
+    end: 1088
+  raw: Divide
+- kind: Newline
+  span:
+    start: 1088
+    end: 1089
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1089
+    end: 1093
+  raw: Push
+- kind:
+    Constant: 2
+  span:
+    start: 1094
+    end: 1103
+  raw: constant2
+- kind: Newline
+  span:
+    start: 1103
+    end: 1104
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 1104
+    end: 1115
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 1115
+    end: 1116
+  raw: "\n"
+- kind:
+    ActionName: Multiply
+  span:
+    start: 1116
+    end: 1124
+  raw: Multiply
+- kind: Newline
+  span:
+    start: 1124
+    end: 1125
+  raw: "\n"
+- kind:
+    ActionName: Add2
+  span:
+    start: 1125
+    end: 1129
+  raw: Add2
+- kind: Newline
+  span:
+    start: 1129
+    end: 1130
+  raw: "\n"
+- kind:
+    ActionName: Trace
+  span:
+    start: 1130
+    end: 1135
+  raw: Trace
+- kind: Newline
+  span:
+    start: 1135
+    end: 1136
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1136
+    end: 1140
+  raw: Push
+- kind:
+    Constant: 9
+  span:
+    start: 1141
+    end: 1150
+  raw: constant9
+- kind: Newline
+  span:
+    start: 1150
+    end: 1151
+  raw: "\n"
+- kind:
+    ActionName: Trace
+  span:
+    start: 1151
+    end: 1156
+  raw: Trace
+- kind: Newline
+  span:
+    start: 1156
+    end: 1157
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1157
+    end: 1161
+  raw: Push
+- kind:
+    Constant: 12
+  span:
+    start: 1162
+    end: 1172
+  raw: constant12
+- kind: Newline
+  span:
+    start: 1172
+    end: 1173
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1173
+    end: 1177
+  raw: Push
+- kind:
+    Constant: 0
+  span:
+    start: 1178
+    end: 1187
+  raw: constant0
+- kind: Newline
+  span:
+    start: 1187
+    end: 1188
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 1188
+    end: 1199
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 1199
+    end: 1200
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1200
+    end: 1204
+  raw: Push
+- kind:
+    Constant: 1
+  span:
+    start: 1205
+    end: 1214
+  raw: constant1
+- kind: Newline
+  span:
+    start: 1214
+    end: 1215
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 1215
+    end: 1226
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 1226
+    end: 1227
+  raw: "\n"
+- kind:
+    ActionName: Modulo
+  span:
+    start: 1227
+    end: 1233
+  raw: Modulo
+- kind: Newline
+  span:
+    start: 1233
+    end: 1234
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1234
+    end: 1238
+  raw: Push
+- kind:
+    Constant: 2
+  span:
+    start: 1239
+    end: 1248
+  raw: constant2
+- kind: Newline
+  span:
+    start: 1248
+    end: 1249
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 1249
+    end: 1260
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 1260
+    end: 1261
+  raw: "\n"
+- kind:
+    ActionName: Multiply
+  span:
+    start: 1261
+    end: 1269
+  raw: Multiply
+- kind: Newline
+  span:
+    start: 1269
+    end: 1270
+  raw: "\n"
+- kind:
+    ActionName: Add2
+  span:
+    start: 1270
+    end: 1274
+  raw: Add2
+- kind: Newline
+  span:
+    start: 1274
+    end: 1275
+  raw: "\n"
+- kind:
+    ActionName: Trace
+  span:
+    start: 1275
+    end: 1280
+  raw: Trace
+- kind: Newline
+  span:
+    start: 1280
+    end: 1281
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1281
+    end: 1285
+  raw: Push
+- kind:
+    Constant: 13
+  span:
+    start: 1286
+    end: 1296
+  raw: constant13
+- kind: Newline
+  span:
+    start: 1296
+    end: 1297
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1297
+    end: 1301
+  raw: Push
+- kind:
+    Constant: 0
+  span:
+    start: 1302
+    end: 1311
+  raw: constant0
+- kind: Newline
+  span:
+    start: 1311
+    end: 1312
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 1312
+    end: 1323
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 1323
+    end: 1324
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1324
+    end: 1328
+  raw: Push
+- kind:
+    Constant: 1
+  span:
+    start: 1329
+    end: 1338
+  raw: constant1
+- kind: Newline
+  span:
+    start: 1338
+    end: 1339
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 1339
+    end: 1350
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 1350
+    end: 1351
+  raw: "\n"
+- kind:
+    ActionName: Modulo
+  span:
+    start: 1351
+    end: 1357
+  raw: Modulo
+- kind: Newline
+  span:
+    start: 1357
+    end: 1358
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1358
+    end: 1362
+  raw: Push
+- kind:
+    Constant: 2
+  span:
+    start: 1363
+    end: 1372
+  raw: constant2
+- kind: Newline
+  span:
+    start: 1372
+    end: 1373
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 1373
+    end: 1384
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 1384
+    end: 1385
+  raw: "\n"
+- kind:
+    ActionName: Multiply
+  span:
+    start: 1385
+    end: 1393
+  raw: Multiply
+- kind: Newline
+  span:
+    start: 1393
+    end: 1394
+  raw: "\n"
+- kind:
+    ActionName: Add2
+  span:
+    start: 1394
+    end: 1398
+  raw: Add2
+- kind: Newline
+  span:
+    start: 1398
+    end: 1399
+  raw: "\n"
+- kind:
+    ActionName: Trace
+  span:
+    start: 1399
+    end: 1404
+  raw: Trace
+- kind: Newline
+  span:
+    start: 1404
+    end: 1405
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1405
+    end: 1409
+  raw: Push
+- kind:
+    Constant: 9
+  span:
+    start: 1410
+    end: 1419
+  raw: constant9
+- kind: Newline
+  span:
+    start: 1419
+    end: 1420
+  raw: "\n"
+- kind:
+    ActionName: Trace
+  span:
+    start: 1420
+    end: 1425
+  raw: Trace
+- kind: Newline
+  span:
+    start: 1425
+    end: 1426
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1426
+    end: 1430
+  raw: Push
+- kind:
+    Constant: 14
+  span:
+    start: 1431
+    end: 1441
+  raw: constant14
+- kind: Newline
+  span:
+    start: 1441
+    end: 1442
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1442
+    end: 1446
+  raw: Push
+- kind:
+    Constant: 0
+  span:
+    start: 1447
+    end: 1456
+  raw: constant0
+- kind: Newline
+  span:
+    start: 1456
+    end: 1457
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 1457
+    end: 1468
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 1468
+    end: 1469
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1469
+    end: 1473
+  raw: Push
+- kind:
+    Constant: 1
+  span:
+    start: 1474
+    end: 1483
+  raw: constant1
+- kind: Newline
+  span:
+    start: 1483
+    end: 1484
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 1484
+    end: 1495
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 1495
+    end: 1496
+  raw: "\n"
+- kind:
+    ActionName: Multiply
+  span:
+    start: 1496
+    end: 1504
+  raw: Multiply
+- kind: Newline
+  span:
+    start: 1504
+    end: 1505
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1505
+    end: 1509
+  raw: Push
+- kind:
+    Constant: 2
+  span:
+    start: 1510
+    end: 1519
+  raw: constant2
+- kind: Newline
+  span:
+    start: 1519
+    end: 1520
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 1520
+    end: 1531
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 1531
+    end: 1532
+  raw: "\n"
+- kind:
+    ActionName: Modulo
+  span:
+    start: 1532
+    end: 1538
+  raw: Modulo
+- kind: Newline
+  span:
+    start: 1538
+    end: 1539
+  raw: "\n"
+- kind:
+    ActionName: Add2
+  span:
+    start: 1539
+    end: 1543
+  raw: Add2
+- kind: Newline
+  span:
+    start: 1543
+    end: 1544
+  raw: "\n"
+- kind:
+    ActionName: Trace
+  span:
+    start: 1544
+    end: 1549
+  raw: Trace
+- kind: Newline
+  span:
+    start: 1549
+    end: 1550
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1550
+    end: 1554
+  raw: Push
+- kind:
+    Constant: 15
+  span:
+    start: 1555
+    end: 1565
+  raw: constant15
+- kind: Newline
+  span:
+    start: 1565
+    end: 1566
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1566
+    end: 1570
+  raw: Push
+- kind:
+    Constant: 0
+  span:
+    start: 1571
+    end: 1580
+  raw: constant0
+- kind: Newline
+  span:
+    start: 1580
+    end: 1581
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 1581
+    end: 1592
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 1592
+    end: 1593
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1593
+    end: 1597
+  raw: Push
+- kind:
+    Constant: 1
+  span:
+    start: 1598
+    end: 1607
+  raw: constant1
+- kind: Newline
+  span:
+    start: 1607
+    end: 1608
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 1608
+    end: 1619
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 1619
+    end: 1620
+  raw: "\n"
+- kind:
+    ActionName: Multiply
+  span:
+    start: 1620
+    end: 1628
+  raw: Multiply
+- kind: Newline
+  span:
+    start: 1628
+    end: 1629
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1629
+    end: 1633
+  raw: Push
+- kind:
+    Constant: 2
+  span:
+    start: 1634
+    end: 1643
+  raw: constant2
+- kind: Newline
+  span:
+    start: 1643
+    end: 1644
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 1644
+    end: 1655
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 1655
+    end: 1656
+  raw: "\n"
+- kind:
+    ActionName: Modulo
+  span:
+    start: 1656
+    end: 1662
+  raw: Modulo
+- kind: Newline
+  span:
+    start: 1662
+    end: 1663
+  raw: "\n"
+- kind:
+    ActionName: Add2
+  span:
+    start: 1663
+    end: 1667
+  raw: Add2
+- kind: Newline
+  span:
+    start: 1667
+    end: 1668
+  raw: "\n"
+- kind:
+    ActionName: Trace
+  span:
+    start: 1668
+    end: 1673
+  raw: Trace
+- kind: Newline
+  span:
+    start: 1673
+    end: 1674
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1674
+    end: 1678
+  raw: Push
+- kind:
+    Constant: 9
+  span:
+    start: 1679
+    end: 1688
+  raw: constant9
+- kind: Newline
+  span:
+    start: 1688
+    end: 1689
+  raw: "\n"
+- kind:
+    ActionName: Trace
+  span:
+    start: 1689
+    end: 1694
+  raw: Trace
+- kind: Newline
+  span:
+    start: 1694
+    end: 1695
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1695
+    end: 1699
+  raw: Push
+- kind:
+    Constant: 16
+  span:
+    start: 1700
+    end: 1710
+  raw: constant16
+- kind: Newline
+  span:
+    start: 1710
+    end: 1711
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1711
+    end: 1715
+  raw: Push
+- kind:
+    Constant: 0
+  span:
+    start: 1716
+    end: 1725
+  raw: constant0
+- kind: Newline
+  span:
+    start: 1725
+    end: 1726
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 1726
+    end: 1737
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 1737
+    end: 1738
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1738
+    end: 1742
+  raw: Push
+- kind:
+    Constant: 1
+  span:
+    start: 1743
+    end: 1752
+  raw: constant1
+- kind: Newline
+  span:
+    start: 1752
+    end: 1753
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 1753
+    end: 1764
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 1764
+    end: 1765
+  raw: "\n"
+- kind:
+    ActionName: Modulo
+  span:
+    start: 1765
+    end: 1771
+  raw: Modulo
+- kind: Newline
+  span:
+    start: 1771
+    end: 1772
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1772
+    end: 1776
+  raw: Push
+- kind:
+    Constant: 2
+  span:
+    start: 1777
+    end: 1786
+  raw: constant2
+- kind: Newline
+  span:
+    start: 1786
+    end: 1787
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 1787
+    end: 1798
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 1798
+    end: 1799
+  raw: "\n"
+- kind:
+    ActionName: Divide
+  span:
+    start: 1799
+    end: 1805
+  raw: Divide
+- kind: Newline
+  span:
+    start: 1805
+    end: 1806
+  raw: "\n"
+- kind:
+    ActionName: Add2
+  span:
+    start: 1806
+    end: 1810
+  raw: Add2
+- kind: Newline
+  span:
+    start: 1810
+    end: 1811
+  raw: "\n"
+- kind:
+    ActionName: Trace
+  span:
+    start: 1811
+    end: 1816
+  raw: Trace
+- kind: Newline
+  span:
+    start: 1816
+    end: 1817
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1817
+    end: 1821
+  raw: Push
+- kind:
+    Constant: 17
+  span:
+    start: 1822
+    end: 1832
+  raw: constant17
+- kind: Newline
+  span:
+    start: 1832
+    end: 1833
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1833
+    end: 1837
+  raw: Push
+- kind:
+    Constant: 0
+  span:
+    start: 1838
+    end: 1847
+  raw: constant0
+- kind: Newline
+  span:
+    start: 1847
+    end: 1848
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 1848
+    end: 1859
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 1859
+    end: 1860
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1860
+    end: 1864
+  raw: Push
+- kind:
+    Constant: 1
+  span:
+    start: 1865
+    end: 1874
+  raw: constant1
+- kind: Newline
+  span:
+    start: 1874
+    end: 1875
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 1875
+    end: 1886
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 1886
+    end: 1887
+  raw: "\n"
+- kind:
+    ActionName: Modulo
+  span:
+    start: 1887
+    end: 1893
+  raw: Modulo
+- kind: Newline
+  span:
+    start: 1893
+    end: 1894
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1894
+    end: 1898
+  raw: Push
+- kind:
+    Constant: 2
+  span:
+    start: 1899
+    end: 1908
+  raw: constant2
+- kind: Newline
+  span:
+    start: 1908
+    end: 1909
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 1909
+    end: 1920
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 1920
+    end: 1921
+  raw: "\n"
+- kind:
+    ActionName: Divide
+  span:
+    start: 1921
+    end: 1927
+  raw: Divide
+- kind: Newline
+  span:
+    start: 1927
+    end: 1928
+  raw: "\n"
+- kind:
+    ActionName: Add2
+  span:
+    start: 1928
+    end: 1932
+  raw: Add2
+- kind: Newline
+  span:
+    start: 1932
+    end: 1933
+  raw: "\n"
+- kind:
+    ActionName: Trace
+  span:
+    start: 1933
+    end: 1938
+  raw: Trace
+- kind: Newline
+  span:
+    start: 1938
+    end: 1939
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1939
+    end: 1943
+  raw: Push
+- kind:
+    Constant: 9
+  span:
+    start: 1944
+    end: 1953
+  raw: constant9
+- kind: Newline
+  span:
+    start: 1953
+    end: 1954
+  raw: "\n"
+- kind:
+    ActionName: Trace
+  span:
+    start: 1954
+    end: 1959
+  raw: Trace
+- kind: Newline
+  span:
+    start: 1959
+    end: 1960
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1960
+    end: 1964
+  raw: Push
+- kind:
+    Constant: 18
+  span:
+    start: 1965
+    end: 1975
+  raw: constant18
+- kind: Newline
+  span:
+    start: 1975
+    end: 1976
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1976
+    end: 1980
+  raw: Push
+- kind:
+    Constant: 0
+  span:
+    start: 1981
+    end: 1990
+  raw: constant0
+- kind: Newline
+  span:
+    start: 1990
+    end: 1991
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 1991
+    end: 2002
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 2002
+    end: 2003
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 2003
+    end: 2007
+  raw: Push
+- kind:
+    Constant: 1
+  span:
+    start: 2008
+    end: 2017
+  raw: constant1
+- kind: Newline
+  span:
+    start: 2017
+    end: 2018
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 2018
+    end: 2029
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 2029
+    end: 2030
+  raw: "\n"
+- kind:
+    ActionName: Divide
+  span:
+    start: 2030
+    end: 2036
+  raw: Divide
+- kind: Newline
+  span:
+    start: 2036
+    end: 2037
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 2037
+    end: 2041
+  raw: Push
+- kind:
+    Constant: 2
+  span:
+    start: 2042
+    end: 2051
+  raw: constant2
+- kind: Newline
+  span:
+    start: 2051
+    end: 2052
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 2052
+    end: 2063
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 2063
+    end: 2064
+  raw: "\n"
+- kind:
+    ActionName: Modulo
+  span:
+    start: 2064
+    end: 2070
+  raw: Modulo
+- kind: Newline
+  span:
+    start: 2070
+    end: 2071
+  raw: "\n"
+- kind:
+    ActionName: Add2
+  span:
+    start: 2071
+    end: 2075
+  raw: Add2
+- kind: Newline
+  span:
+    start: 2075
+    end: 2076
+  raw: "\n"
+- kind:
+    ActionName: Trace
+  span:
+    start: 2076
+    end: 2081
+  raw: Trace
+- kind: Newline
+  span:
+    start: 2081
+    end: 2082
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 2082
+    end: 2086
+  raw: Push
+- kind:
+    Constant: 19
+  span:
+    start: 2087
+    end: 2097
+  raw: constant19
+- kind: Newline
+  span:
+    start: 2097
+    end: 2098
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 2098
+    end: 2102
+  raw: Push
+- kind:
+    Constant: 0
+  span:
+    start: 2103
+    end: 2112
+  raw: constant0
+- kind: Newline
+  span:
+    start: 2112
+    end: 2113
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 2113
+    end: 2124
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 2124
+    end: 2125
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 2125
+    end: 2129
+  raw: Push
+- kind:
+    Constant: 1
+  span:
+    start: 2130
+    end: 2139
+  raw: constant1
+- kind: Newline
+  span:
+    start: 2139
+    end: 2140
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 2140
+    end: 2151
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 2151
+    end: 2152
+  raw: "\n"
+- kind:
+    ActionName: Divide
+  span:
+    start: 2152
+    end: 2158
+  raw: Divide
+- kind: Newline
+  span:
+    start: 2158
+    end: 2159
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 2159
+    end: 2163
+  raw: Push
+- kind:
+    Constant: 2
+  span:
+    start: 2164
+    end: 2173
+  raw: constant2
+- kind: Newline
+  span:
+    start: 2173
+    end: 2174
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 2174
+    end: 2185
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 2185
+    end: 2186
+  raw: "\n"
+- kind:
+    ActionName: Modulo
+  span:
+    start: 2186
+    end: 2192
+  raw: Modulo
+- kind: Newline
+  span:
+    start: 2192
+    end: 2193
+  raw: "\n"
+- kind:
+    ActionName: Add2
+  span:
+    start: 2193
+    end: 2197
+  raw: Add2
+- kind: Newline
+  span:
+    start: 2197
+    end: 2198
+  raw: "\n"
+- kind:
+    ActionName: Trace
+  span:
+    start: 2198
+    end: 2203
+  raw: Trace
+- kind: Newline
+  span:
+    start: 2203
+    end: 2204
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 2204
+    end: 2208
+  raw: Push
+- kind:
+    Constant: 9
+  span:
+    start: 2209
+    end: 2218
+  raw: constant9
+- kind: Newline
+  span:
+    start: 2218
+    end: 2219
+  raw: "\n"
+- kind:
+    ActionName: Trace
+  span:
+    start: 2219
+    end: 2224
+  raw: Trace
+- kind: Newline
+  span:
+    start: 2224
+    end: 2225
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 2225
+    end: 2229
+  raw: Push
+- kind:
+    Constant: 20
+  span:
+    start: 2230
+    end: 2240
+  raw: constant20
+- kind: Newline
+  span:
+    start: 2240
+    end: 2241
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 2241
+    end: 2245
+  raw: Push
+- kind:
+    Constant: 0
+  span:
+    start: 2246
+    end: 2255
+  raw: constant0
+- kind: Newline
+  span:
+    start: 2255
+    end: 2256
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 2256
+    end: 2267
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 2267
+    end: 2268
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 2268
+    end: 2272
+  raw: Push
+- kind:
+    Constant: 1
+  span:
+    start: 2273
+    end: 2282
+  raw: constant1
+- kind: Newline
+  span:
+    start: 2282
+    end: 2283
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 2283
+    end: 2294
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 2294
+    end: 2295
+  raw: "\n"
+- kind:
+    ActionName: Multiply
+  span:
+    start: 2295
+    end: 2303
+  raw: Multiply
+- kind: Newline
+  span:
+    start: 2303
+    end: 2304
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 2304
+    end: 2308
+  raw: Push
+- kind:
+    Constant: 2
+  span:
+    start: 2309
+    end: 2318
+  raw: constant2
+- kind: Newline
+  span:
+    start: 2318
+    end: 2319
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 2319
+    end: 2330
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 2330
+    end: 2331
+  raw: "\n"
+- kind:
+    ActionName: Divide
+  span:
+    start: 2331
+    end: 2337
+  raw: Divide
+- kind: Newline
+  span:
+    start: 2337
+    end: 2338
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 2338
+    end: 2342
+  raw: Push
+- kind:
+    Constant: 1
+  span:
+    start: 2343
+    end: 2352
+  raw: constant1
+- kind: Newline
+  span:
+    start: 2352
+    end: 2353
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 2353
+    end: 2364
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 2364
+    end: 2365
+  raw: "\n"
+- kind:
+    ActionName: Multiply
+  span:
+    start: 2365
+    end: 2373
+  raw: Multiply
+- kind: Newline
+  span:
+    start: 2373
+    end: 2374
+  raw: "\n"
+- kind:
+    ActionName: Add2
+  span:
+    start: 2374
+    end: 2378
+  raw: Add2
+- kind: Newline
+  span:
+    start: 2378
+    end: 2379
+  raw: "\n"
+- kind:
+    ActionName: Trace
+  span:
+    start: 2379
+    end: 2384
+  raw: Trace
+- kind: Newline
+  span:
+    start: 2384
+    end: 2385
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 2385
+    end: 2389
+  raw: Push
+- kind:
+    Constant: 21
+  span:
+    start: 2390
+    end: 2400
+  raw: constant21
+- kind: Newline
+  span:
+    start: 2400
+    end: 2401
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 2401
+    end: 2405
+  raw: Push
+- kind:
+    Constant: 0
+  span:
+    start: 2406
+    end: 2415
+  raw: constant0
+- kind: Newline
+  span:
+    start: 2415
+    end: 2416
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 2416
+    end: 2427
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 2427
+    end: 2428
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 2428
+    end: 2432
+  raw: Push
+- kind:
+    Constant: 1
+  span:
+    start: 2433
+    end: 2442
+  raw: constant1
+- kind: Newline
+  span:
+    start: 2442
+    end: 2443
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 2443
+    end: 2454
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 2454
+    end: 2455
+  raw: "\n"
+- kind:
+    ActionName: Multiply
+  span:
+    start: 2455
+    end: 2463
+  raw: Multiply
+- kind: Newline
+  span:
+    start: 2463
+    end: 2464
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 2464
+    end: 2468
+  raw: Push
+- kind:
+    Constant: 2
+  span:
+    start: 2469
+    end: 2478
+  raw: constant2
+- kind: Newline
+  span:
+    start: 2478
+    end: 2479
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 2479
+    end: 2490
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 2490
+    end: 2491
+  raw: "\n"
+- kind:
+    ActionName: Divide
+  span:
+    start: 2491
+    end: 2497
+  raw: Divide
+- kind: Newline
+  span:
+    start: 2497
+    end: 2498
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 2498
+    end: 2502
+  raw: Push
+- kind:
+    Constant: 1
+  span:
+    start: 2503
+    end: 2512
+  raw: constant1
+- kind: Newline
+  span:
+    start: 2512
+    end: 2513
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 2513
+    end: 2524
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 2524
+    end: 2525
+  raw: "\n"
+- kind:
+    ActionName: Multiply
+  span:
+    start: 2525
+    end: 2533
+  raw: Multiply
+- kind: Newline
+  span:
+    start: 2533
+    end: 2534
+  raw: "\n"
+- kind:
+    ActionName: Add2
+  span:
+    start: 2534
+    end: 2538
+  raw: Add2
+- kind: Newline
+  span:
+    start: 2538
+    end: 2539
+  raw: "\n"
+- kind:
+    ActionName: Trace
+  span:
+    start: 2539
+    end: 2544
+  raw: Trace
+- kind: Newline
+  span:
+    start: 2544
+    end: 2545
+  raw: "\n"

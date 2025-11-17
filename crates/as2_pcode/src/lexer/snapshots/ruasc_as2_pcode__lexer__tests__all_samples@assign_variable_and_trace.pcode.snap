@@ -1,0 +1,115 @@
+---
+source: crates/as2_pcode/src/lexer/tests.rs
+expression: tokens
+input_file: samples/as2_pcode/assign_variable_and_trace.pcode
+---
+- kind:
+    ActionName: ConstantPool
+  span:
+    start: 0
+    end: 12
+  raw: ConstantPool
+- kind: String
+  span:
+    start: 13
+    end: 22
+  raw: message
+- kind: Comma
+  span:
+    start: 22
+    end: 23
+  raw: ","
+- kind: String
+  span:
+    start: 24
+    end: 37
+  raw: Hello World
+- kind: Newline
+  span:
+    start: 37
+    end: 38
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 38
+    end: 42
+  raw: Push
+- kind:
+    Constant: 0
+  span:
+    start: 43
+    end: 52
+  raw: constant0
+- kind: Newline
+  span:
+    start: 52
+    end: 53
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 53
+    end: 57
+  raw: Push
+- kind:
+    Constant: 1
+  span:
+    start: 58
+    end: 67
+  raw: constant1
+- kind: Newline
+  span:
+    start: 67
+    end: 68
+  raw: "\n"
+- kind:
+    ActionName: DefineLocal
+  span:
+    start: 68
+    end: 79
+  raw: DefineLocal
+- kind: Newline
+  span:
+    start: 79
+    end: 80
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 80
+    end: 84
+  raw: Push
+- kind:
+    Constant: 0
+  span:
+    start: 85
+    end: 94
+  raw: constant0
+- kind: Newline
+  span:
+    start: 94
+    end: 95
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 95
+    end: 106
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 106
+    end: 107
+  raw: "\n"
+- kind:
+    ActionName: Trace
+  span:
+    start: 107
+    end: 112
+  raw: Trace
+- kind: Newline
+  span:
+    start: 112
+    end: 113
+  raw: "\n"

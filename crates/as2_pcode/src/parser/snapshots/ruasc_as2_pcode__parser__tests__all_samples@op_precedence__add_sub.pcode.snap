@@ -1,0 +1,199 @@
+---
+source: crates/as2_pcode/src/parser/tests.rs
+expression: parsed
+input_file: samples/as2_pcode/op_precedence/add_sub.pcode
+---
+Ok:
+  actions:
+    - ConstantPool:
+        - a
+        - b
+        - c
+        - a=
+        - ", b="
+        - ", c="
+        - "----"
+        - "a + b - c = "
+        - "(a + b) - c = "
+        - "---"
+        - "a - b + c = "
+        - "(a - b) + c = "
+        - "a + b - c + b = "
+        - "(((a + b) - c) + b) = "
+        - "a + -b = "
+        - "a - -b = "
+    - Push:
+        - Constant: 0
+    - Push:
+        - Integer: 10
+    - DefineLocal
+    - Push:
+        - Constant: 1
+    - Push:
+        - Integer: 5
+    - DefineLocal
+    - Push:
+        - Constant: 2
+    - Push:
+        - Integer: 2
+    - DefineLocal
+    - Push:
+        - Constant: 3
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Add2
+    - Push:
+        - Constant: 4
+    - Add2
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Add2
+    - Push:
+        - Constant: 5
+    - Add2
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 6
+    - Trace
+    - Push:
+        - Constant: 7
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Add2
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Subtract
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 8
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Add2
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Subtract
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 9
+    - Trace
+    - Push:
+        - Constant: 10
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Subtract
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Add2
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 11
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Subtract
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Add2
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 9
+    - Trace
+    - Push:
+        - Constant: 12
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Add2
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Subtract
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Add2
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 13
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Add2
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Subtract
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Add2
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 9
+    - Trace
+    - Push:
+        - Constant: 14
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Integer: 0
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Subtract
+    - Add2
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 15
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Integer: 0
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Subtract
+    - Subtract
+    - Add2
+    - Trace
+  label_positions: {}

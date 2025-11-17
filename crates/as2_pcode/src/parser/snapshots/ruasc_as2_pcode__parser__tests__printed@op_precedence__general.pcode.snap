@@ -1,0 +1,627 @@
+---
+source: crates/as2_pcode/src/parser/tests.rs
+expression: "parsed.unwrap_or_else(|_| Actions::empty())"
+input_file: samples/as2_pcode/op_precedence/general.pcode
+---
+ConstantPool "one", "two", "three", "four", "five", "ten", "zero", "negOne", "a", "b", "c", "p", "s", "t", "one + two * three = ", "(one + two) * three = ", "-one * two = ", "-(one * two) = ", "++p + p++ = ", "p++ * 2 = ", "2 * ++p = ", "four / two * two = ", "one + two << one = ", "(one + two) << one = ", "one + (two << one) = ", "one + two < five = ", "(one + two) < five = ", "one + (two < five) = ", "one + two == three = ", "(one + two) == three = ", "one + (two == three) = ", "one | two == three = ", "(one | two) == three = ", "one | (two == three) = ", "one & three | two = ", "(one & three) | two = ", "one & (three | two) = ", "~one = ", "-~one = ", "(one < two && three > two) = ", "(one > two || three > two) = ", "one & three && two > zero = ", "one < two ? five : ten = ", "one + two < three ? five : ten = ", "a after a = b = c -> ", "b after a = b = c -> ", "a after a += b * c = ", "obj", "Object", "x", "obj.x + two = ", "typeof one = ", "typeof s = ", "a after a = (b>c)?b:c = ", "a + b * c << one & three == ((a + (b * c)) << one & three) ? five : ten = ", "+one + +two = ", "-one + -two = ", "ten % three + one = ", "(ten % three) + one = ", "one + two * three > four = "
+Push constant0
+Push 1
+DefineLocal
+Push constant1
+Push 2
+DefineLocal
+Push constant2
+Push 3
+DefineLocal
+Push constant3
+Push 4
+DefineLocal
+Push constant4
+Push 5
+DefineLocal
+Push constant5
+Push 10
+DefineLocal
+Push constant6
+Push 0
+DefineLocal
+Push constant7
+Push -1
+DefineLocal
+Push constant8
+DefineLocal2
+Push constant9
+DefineLocal2
+Push constant10
+DefineLocal2
+Push constant11
+DefineLocal2
+Push constant12
+Push constant12
+DefineLocal
+Push constant13
+Push constant13
+DefineLocal
+Push constant14
+Push constant0
+GetVariable
+Push constant1
+GetVariable
+Push constant2
+GetVariable
+Multiply
+Add2
+Add2
+Trace
+Push constant15
+Push constant0
+GetVariable
+Push constant1
+GetVariable
+Add2
+Push constant2
+GetVariable
+Multiply
+Add2
+Trace
+Push constant16
+Push 0
+Push constant0
+GetVariable
+Subtract
+Push constant1
+GetVariable
+Multiply
+Add2
+Trace
+Push constant17
+Push 0
+Push constant0
+GetVariable
+Push constant1
+GetVariable
+Multiply
+Subtract
+Add2
+Trace
+Push constant11
+Push constant0
+GetVariable
+SetVariable
+Push constant18
+Push constant11
+Push constant11
+GetVariable
+Increment
+StoreRegister 0
+SetVariable
+Push register0
+Push constant11
+GetVariable
+Push constant11
+Push constant11
+GetVariable
+Increment
+SetVariable
+Add2
+Add2
+Trace
+Push constant11
+Push constant1
+GetVariable
+SetVariable
+Push constant19
+Push constant11
+GetVariable
+Push constant11
+Push constant11
+GetVariable
+Increment
+SetVariable
+Push 2
+Multiply
+Add2
+Trace
+Push constant11
+Push constant1
+GetVariable
+SetVariable
+Push constant20
+Push 2
+Push constant11
+Push constant11
+GetVariable
+Increment
+StoreRegister 0
+SetVariable
+Push register0
+Multiply
+Add2
+Trace
+Push constant21
+Push constant3
+GetVariable
+Push constant1
+GetVariable
+Divide
+Push constant1
+GetVariable
+Multiply
+Add2
+Trace
+Push constant22
+Push constant0
+GetVariable
+Push constant1
+GetVariable
+Add2
+Push constant0
+GetVariable
+BitLShift
+Add2
+Trace
+Push constant23
+Push constant0
+GetVariable
+Push constant1
+GetVariable
+Add2
+Push constant0
+GetVariable
+BitLShift
+Add2
+Trace
+Push constant24
+Push constant0
+GetVariable
+Push constant1
+GetVariable
+Push constant0
+GetVariable
+BitLShift
+Add2
+Add2
+Trace
+Push constant25
+Push constant0
+GetVariable
+Push constant1
+GetVariable
+Add2
+Push constant4
+GetVariable
+Less2
+Add2
+Trace
+Push constant26
+Push constant0
+GetVariable
+Push constant1
+GetVariable
+Add2
+Push constant4
+GetVariable
+Less2
+Add2
+Trace
+Push constant27
+Push constant0
+GetVariable
+Push constant1
+GetVariable
+Push constant4
+GetVariable
+Less2
+Add2
+Add2
+Trace
+Push constant28
+Push constant0
+GetVariable
+Push constant1
+GetVariable
+Add2
+Push constant2
+GetVariable
+Equals2
+Add2
+Trace
+Push constant29
+Push constant0
+GetVariable
+Push constant1
+GetVariable
+Add2
+Push constant2
+GetVariable
+Equals2
+Add2
+Trace
+Push constant30
+Push constant0
+GetVariable
+Push constant1
+GetVariable
+Push constant2
+GetVariable
+Equals2
+Add2
+Add2
+Trace
+Push constant31
+Push constant0
+GetVariable
+Push constant1
+GetVariable
+Push constant2
+GetVariable
+Equals2
+BitOr
+Add2
+Trace
+Push constant32
+Push constant0
+GetVariable
+Push constant1
+GetVariable
+BitOr
+Push constant2
+GetVariable
+Equals2
+Add2
+Trace
+Push constant33
+Push constant0
+GetVariable
+Push constant1
+GetVariable
+Push constant2
+GetVariable
+Equals2
+BitOr
+Add2
+Trace
+Push constant34
+Push constant0
+GetVariable
+Push constant2
+GetVariable
+BitAnd
+Push constant1
+GetVariable
+BitOr
+Add2
+Trace
+Push constant35
+Push constant0
+GetVariable
+Push constant2
+GetVariable
+BitAnd
+Push constant1
+GetVariable
+BitOr
+Add2
+Trace
+Push constant36
+Push constant0
+GetVariable
+Push constant2
+GetVariable
+Push constant1
+GetVariable
+BitOr
+BitAnd
+Add2
+Trace
+Push constant37
+Push constant0
+GetVariable
+Push 4294967295.0
+BitXor
+Add2
+Trace
+Push constant38
+Push 0
+Push constant0
+GetVariable
+Push 4294967295.0
+BitXor
+Subtract
+Add2
+Trace
+Push constant39
+Push constant0
+GetVariable
+Push constant1
+GetVariable
+Less2
+PushDuplicate
+Not
+If loc07c1
+Pop
+Push constant2
+GetVariable
+Push constant1
+GetVariable
+Greater
+loc07c1: Add2
+Trace
+Push constant40
+Push constant0
+GetVariable
+Push constant1
+GetVariable
+Greater
+PushDuplicate
+If loc07e9
+Pop
+Push constant2
+GetVariable
+Push constant1
+GetVariable
+Greater
+loc07e9: Add2
+Trace
+Push constant41
+Push constant0
+GetVariable
+Push constant2
+GetVariable
+BitAnd
+PushDuplicate
+Not
+If loc0812
+Pop
+Push constant1
+GetVariable
+Push constant6
+GetVariable
+Greater
+loc0812: Add2
+Trace
+Push constant42
+Push constant0
+GetVariable
+Push constant1
+GetVariable
+Less2
+If loc0836
+Push constant5
+GetVariable
+Jump loc083c
+loc0836: Push constant4
+GetVariable
+loc083c: Add2
+Trace
+Push constant43
+Push constant0
+GetVariable
+Push constant1
+GetVariable
+Add2
+Push constant2
+GetVariable
+Less2
+If loc0867
+Push constant5
+GetVariable
+Jump loc086d
+loc0867: Push constant4
+GetVariable
+loc086d: Add2
+Trace
+Push constant8
+Push 0
+SetVariable
+Push constant9
+Push 0
+SetVariable
+Push constant10
+Push constant4
+GetVariable
+SetVariable
+Push constant8
+Push constant9
+Push constant10
+GetVariable
+StoreRegister 0
+SetVariable
+Push register0
+SetVariable
+Push constant44
+Push constant8
+GetVariable
+Add2
+Trace
+Push constant45
+Push constant9
+GetVariable
+Add2
+Trace
+Push constant8
+Push 1
+SetVariable
+Push constant9
+Push 2
+SetVariable
+Push constant10
+Push 3
+SetVariable
+Push constant8
+Push constant8
+GetVariable
+Push constant9
+GetVariable
+Push constant10
+GetVariable
+Multiply
+Add2
+SetVariable
+Push constant46
+Push constant8
+GetVariable
+Add2
+Trace
+Push constant47
+Push 0
+Push constant48
+NewObject
+DefineLocal
+Push constant47
+GetVariable
+Push constant49
+Push 2
+SetMember
+Push constant50
+Push constant47
+GetVariable
+Push constant49
+GetMember
+Push constant1
+GetVariable
+Add2
+Add2
+Trace
+Push constant51
+Push constant0
+GetVariable
+TypeOf
+Add2
+Trace
+Push constant52
+Push constant12
+GetVariable
+TypeOf
+Add2
+Trace
+Push constant8
+Push 1
+SetVariable
+Push constant9
+Push 2
+SetVariable
+Push constant10
+Push 3
+SetVariable
+Push constant8
+Push constant9
+GetVariable
+Push constant10
+GetVariable
+Greater
+If loc09d3
+Push constant10
+GetVariable
+Jump loc09d9
+loc09d3: Push constant9
+GetVariable
+loc09d9: SetVariable
+Push constant53
+Push constant8
+GetVariable
+Add2
+Trace
+Push constant8
+Push 1
+SetVariable
+Push constant9
+Push 2
+SetVariable
+Push constant10
+Push 3
+SetVariable
+Push constant54
+Push constant8
+GetVariable
+Push constant9
+GetVariable
+Push constant10
+GetVariable
+Multiply
+Add2
+Push constant0
+GetVariable
+BitLShift
+Push constant2
+GetVariable
+BitAnd
+Push constant8
+GetVariable
+Push constant9
+GetVariable
+Push constant10
+GetVariable
+Multiply
+Add2
+Push constant0
+GetVariable
+BitLShift
+Push constant2
+GetVariable
+BitAnd
+Equals2
+If loc0a6b
+Push constant5
+GetVariable
+Jump loc0a71
+loc0a6b: Push constant4
+GetVariable
+loc0a71: Add2
+Trace
+Push constant55
+Push constant0
+GetVariable
+Push constant1
+GetVariable
+Add2
+Add2
+Trace
+Push constant56
+Push 0
+Push constant0
+GetVariable
+Subtract
+Push 0
+Push constant1
+GetVariable
+Subtract
+Add2
+Add2
+Trace
+Push constant57
+Push constant5
+GetVariable
+Push constant2
+GetVariable
+Modulo
+Push constant0
+GetVariable
+Add2
+Add2
+Trace
+Push constant58
+Push constant5
+GetVariable
+Push constant2
+GetVariable
+Modulo
+Push constant0
+GetVariable
+Add2
+Add2
+Trace
+Push constant59
+Push constant0
+GetVariable
+Push constant1
+GetVariable
+Push constant2
+GetVariable
+Multiply
+Add2
+Push constant3
+GetVariable
+Greater
+Add2
+Trace

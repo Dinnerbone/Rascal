@@ -1,0 +1,847 @@
+---
+source: crates/as2_pcode/src/lexer/tests.rs
+expression: tokens
+input_file: samples/as2_pcode/comments.pcode
+---
+- kind:
+    ActionName: ConstantPool
+  span:
+    start: 0
+    end: 12
+  raw: ConstantPool
+- kind: String
+  span:
+    start: 13
+    end: 16
+  raw: a
+- kind: Comma
+  span:
+    start: 16
+    end: 17
+  raw: ","
+- kind: String
+  span:
+    start: 18
+    end: 21
+  raw: "1"
+- kind: Comma
+  span:
+    start: 21
+    end: 22
+  raw: ","
+- kind: String
+  span:
+    start: 23
+    end: 26
+  raw: b
+- kind: Comma
+  span:
+    start: 26
+    end: 27
+  raw: ","
+- kind: String
+  span:
+    start: 28
+    end: 31
+  raw: "2"
+- kind: Comma
+  span:
+    start: 31
+    end: 32
+  raw: ","
+- kind: String
+  span:
+    start: 33
+    end: 36
+  raw: c
+- kind: Comma
+  span:
+    start: 36
+    end: 37
+  raw: ","
+- kind: String
+  span:
+    start: 38
+    end: 41
+  raw: "3"
+- kind: Comma
+  span:
+    start: 41
+    end: 42
+  raw: ","
+- kind: String
+  span:
+    start: 43
+    end: 46
+  raw: d
+- kind: Comma
+  span:
+    start: 46
+    end: 47
+  raw: ","
+- kind: String
+  span:
+    start: 48
+    end: 51
+  raw: "4"
+- kind: Comma
+  span:
+    start: 51
+    end: 52
+  raw: ","
+- kind: String
+  span:
+    start: 53
+    end: 59
+  raw: test
+- kind: Comma
+  span:
+    start: 59
+    end: 60
+  raw: ","
+- kind: String
+  span:
+    start: 61
+    end: 64
+  raw: e
+- kind: Comma
+  span:
+    start: 64
+    end: 65
+  raw: ","
+- kind: String
+  span:
+    start: 66
+    end: 69
+  raw: "5"
+- kind: Comma
+  span:
+    start: 69
+    end: 70
+  raw: ","
+- kind: String
+  span:
+    start: 71
+    end: 74
+  raw: f
+- kind: Comma
+  span:
+    start: 74
+    end: 75
+  raw: ","
+- kind: String
+  span:
+    start: 76
+    end: 94
+  raw: // not a comment
+- kind: Comma
+  span:
+    start: 94
+    end: 95
+  raw: ","
+- kind: String
+  span:
+    start: 96
+    end: 99
+  raw: g
+- kind: Comma
+  span:
+    start: 99
+    end: 100
+  raw: ","
+- kind: String
+  span:
+    start: 101
+    end: 122
+  raw: /* not a comment */
+- kind: Comma
+  span:
+    start: 122
+    end: 123
+  raw: ","
+- kind: String
+  span:
+    start: 124
+    end: 127
+  raw: h
+- kind: Comma
+  span:
+    start: 127
+    end: 128
+  raw: ","
+- kind: String
+  span:
+    start: 129
+    end: 160
+  raw: "\\\"/* still not a comment */\\\""
+- kind: Comma
+  span:
+    start: 160
+    end: 161
+  raw: ","
+- kind: String
+  span:
+    start: 162
+    end: 165
+  raw: i
+- kind: Comma
+  span:
+    start: 165
+    end: 166
+  raw: ","
+- kind: String
+  span:
+    start: 167
+    end: 170
+  raw: "6"
+- kind: Comma
+  span:
+    start: 170
+    end: 171
+  raw: ","
+- kind: String
+  span:
+    start: 172
+    end: 175
+  raw: j
+- kind: Comma
+  span:
+    start: 175
+    end: 176
+  raw: ","
+- kind: String
+  span:
+    start: 177
+    end: 180
+  raw: "7"
+- kind: Comma
+  span:
+    start: 180
+    end: 181
+  raw: ","
+- kind: String
+  span:
+    start: 182
+    end: 185
+  raw: k
+- kind: Comma
+  span:
+    start: 185
+    end: 186
+  raw: ","
+- kind: String
+  span:
+    start: 187
+    end: 190
+  raw: "8"
+- kind: Newline
+  span:
+    start: 190
+    end: 191
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 191
+    end: 195
+  raw: Push
+- kind:
+    Constant: 0
+  span:
+    start: 196
+    end: 205
+  raw: constant0
+- kind: Newline
+  span:
+    start: 205
+    end: 206
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 206
+    end: 210
+  raw: Push
+- kind:
+    Constant: 1
+  span:
+    start: 211
+    end: 220
+  raw: constant1
+- kind: Newline
+  span:
+    start: 220
+    end: 221
+  raw: "\n"
+- kind:
+    ActionName: DefineLocal
+  span:
+    start: 221
+    end: 232
+  raw: DefineLocal
+- kind: Newline
+  span:
+    start: 232
+    end: 233
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 233
+    end: 237
+  raw: Push
+- kind:
+    Constant: 2
+  span:
+    start: 238
+    end: 247
+  raw: constant2
+- kind: Newline
+  span:
+    start: 247
+    end: 248
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 248
+    end: 252
+  raw: Push
+- kind:
+    Constant: 3
+  span:
+    start: 253
+    end: 262
+  raw: constant3
+- kind: Newline
+  span:
+    start: 262
+    end: 263
+  raw: "\n"
+- kind:
+    ActionName: DefineLocal
+  span:
+    start: 263
+    end: 274
+  raw: DefineLocal
+- kind: Newline
+  span:
+    start: 274
+    end: 275
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 275
+    end: 279
+  raw: Push
+- kind:
+    Constant: 4
+  span:
+    start: 280
+    end: 289
+  raw: constant4
+- kind: Newline
+  span:
+    start: 289
+    end: 290
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 290
+    end: 294
+  raw: Push
+- kind:
+    Constant: 5
+  span:
+    start: 295
+    end: 304
+  raw: constant5
+- kind: Newline
+  span:
+    start: 304
+    end: 305
+  raw: "\n"
+- kind:
+    ActionName: DefineLocal
+  span:
+    start: 305
+    end: 316
+  raw: DefineLocal
+- kind: Newline
+  span:
+    start: 316
+    end: 317
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 317
+    end: 321
+  raw: Push
+- kind:
+    Constant: 6
+  span:
+    start: 322
+    end: 331
+  raw: constant6
+- kind: Newline
+  span:
+    start: 331
+    end: 332
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 332
+    end: 336
+  raw: Push
+- kind:
+    Constant: 7
+  span:
+    start: 337
+    end: 346
+  raw: constant7
+- kind: Newline
+  span:
+    start: 346
+    end: 347
+  raw: "\n"
+- kind:
+    ActionName: DefineLocal
+  span:
+    start: 347
+    end: 358
+  raw: DefineLocal
+- kind: Newline
+  span:
+    start: 358
+    end: 359
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 359
+    end: 363
+  raw: Push
+- kind:
+    Constant: 2
+  span:
+    start: 364
+    end: 373
+  raw: constant2
+- kind: Newline
+  span:
+    start: 373
+    end: 374
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 374
+    end: 385
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 385
+    end: 386
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 386
+    end: 390
+  raw: Push
+- kind:
+    Constant: 0
+  span:
+    start: 391
+    end: 400
+  raw: constant0
+- kind: Newline
+  span:
+    start: 400
+    end: 401
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 401
+    end: 412
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 412
+    end: 413
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 413
+    end: 417
+  raw: Push
+- kind: Integer
+  span:
+    start: 418
+    end: 419
+  raw: "2"
+- kind: Newline
+  span:
+    start: 419
+    end: 420
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 420
+    end: 424
+  raw: Push
+- kind:
+    Constant: 8
+  span:
+    start: 425
+    end: 434
+  raw: constant8
+- kind: Newline
+  span:
+    start: 434
+    end: 435
+  raw: "\n"
+- kind:
+    ActionName: CallFunction
+  span:
+    start: 435
+    end: 447
+  raw: CallFunction
+- kind: Newline
+  span:
+    start: 447
+    end: 448
+  raw: "\n"
+- kind:
+    ActionName: Pop
+  span:
+    start: 448
+    end: 451
+  raw: Pop
+- kind: Newline
+  span:
+    start: 451
+    end: 452
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 452
+    end: 456
+  raw: Push
+- kind:
+    Constant: 9
+  span:
+    start: 457
+    end: 466
+  raw: constant9
+- kind: Newline
+  span:
+    start: 466
+    end: 467
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 467
+    end: 471
+  raw: Push
+- kind:
+    Constant: 10
+  span:
+    start: 472
+    end: 482
+  raw: constant10
+- kind: Newline
+  span:
+    start: 482
+    end: 483
+  raw: "\n"
+- kind:
+    ActionName: DefineLocal
+  span:
+    start: 483
+    end: 494
+  raw: DefineLocal
+- kind: Newline
+  span:
+    start: 494
+    end: 495
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 495
+    end: 499
+  raw: Push
+- kind:
+    Constant: 11
+  span:
+    start: 500
+    end: 510
+  raw: constant11
+- kind: Newline
+  span:
+    start: 510
+    end: 511
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 511
+    end: 515
+  raw: Push
+- kind:
+    Constant: 12
+  span:
+    start: 516
+    end: 526
+  raw: constant12
+- kind: Newline
+  span:
+    start: 526
+    end: 527
+  raw: "\n"
+- kind:
+    ActionName: DefineLocal
+  span:
+    start: 527
+    end: 538
+  raw: DefineLocal
+- kind: Newline
+  span:
+    start: 538
+    end: 539
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 539
+    end: 543
+  raw: Push
+- kind:
+    Constant: 13
+  span:
+    start: 544
+    end: 554
+  raw: constant13
+- kind: Newline
+  span:
+    start: 554
+    end: 555
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 555
+    end: 559
+  raw: Push
+- kind:
+    Constant: 14
+  span:
+    start: 560
+    end: 570
+  raw: constant14
+- kind: Newline
+  span:
+    start: 570
+    end: 571
+  raw: "\n"
+- kind:
+    ActionName: DefineLocal
+  span:
+    start: 571
+    end: 582
+  raw: DefineLocal
+- kind: Newline
+  span:
+    start: 582
+    end: 583
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 583
+    end: 587
+  raw: Push
+- kind:
+    Constant: 15
+  span:
+    start: 588
+    end: 598
+  raw: constant15
+- kind: Newline
+  span:
+    start: 598
+    end: 599
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 599
+    end: 603
+  raw: Push
+- kind:
+    Constant: 16
+  span:
+    start: 604
+    end: 614
+  raw: constant16
+- kind: Newline
+  span:
+    start: 614
+    end: 615
+  raw: "\n"
+- kind:
+    ActionName: DefineLocal
+  span:
+    start: 615
+    end: 626
+  raw: DefineLocal
+- kind: Newline
+  span:
+    start: 626
+    end: 627
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 627
+    end: 631
+  raw: Push
+- kind:
+    Constant: 17
+  span:
+    start: 632
+    end: 642
+  raw: constant17
+- kind: Newline
+  span:
+    start: 642
+    end: 643
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 643
+    end: 647
+  raw: Push
+- kind:
+    Constant: 18
+  span:
+    start: 648
+    end: 658
+  raw: constant18
+- kind: Newline
+  span:
+    start: 658
+    end: 659
+  raw: "\n"
+- kind:
+    ActionName: DefineLocal
+  span:
+    start: 659
+    end: 670
+  raw: DefineLocal
+- kind: Newline
+  span:
+    start: 670
+    end: 671
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 671
+    end: 675
+  raw: Push
+- kind:
+    Constant: 19
+  span:
+    start: 676
+    end: 686
+  raw: constant19
+- kind: Newline
+  span:
+    start: 686
+    end: 687
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 687
+    end: 691
+  raw: Push
+- kind:
+    Constant: 20
+  span:
+    start: 692
+    end: 702
+  raw: constant20
+- kind: Newline
+  span:
+    start: 702
+    end: 703
+  raw: "\n"
+- kind:
+    ActionName: DefineLocal
+  span:
+    start: 703
+    end: 714
+  raw: DefineLocal
+- kind: Newline
+  span:
+    start: 714
+    end: 715
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 715
+    end: 719
+  raw: Push
+- kind:
+    Constant: 21
+  span:
+    start: 720
+    end: 730
+  raw: constant21
+- kind: Newline
+  span:
+    start: 730
+    end: 731
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 731
+    end: 735
+  raw: Push
+- kind:
+    Constant: 22
+  span:
+    start: 736
+    end: 746
+  raw: constant22
+- kind: Newline
+  span:
+    start: 746
+    end: 747
+  raw: "\n"
+- kind:
+    ActionName: DefineLocal
+  span:
+    start: 747
+    end: 758
+  raw: DefineLocal
+- kind: Newline
+  span:
+    start: 758
+    end: 759
+  raw: "\n"

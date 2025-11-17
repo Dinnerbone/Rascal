@@ -1,0 +1,52 @@
+---
+source: crates/as2_pcode/src/parser/tests.rs
+expression: parsed
+input_file: samples/as2_pcode/block.pcode
+---
+Ok:
+  actions:
+    - ConstantPool:
+        - outside
+        - visible
+        - inside
+        - "outside: "
+        - ", inside: "
+    - Push:
+        - Constant: 0
+    - Push:
+        - Constant: 1
+    - DefineLocal
+    - Push:
+        - Constant: 2
+    - Push:
+        - Constant: 1
+    - DefineLocal
+    - Push:
+        - Constant: 3
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Add2
+    - Push:
+        - Constant: 4
+    - Add2
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 3
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Add2
+    - Push:
+        - Constant: 4
+    - Add2
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Add2
+    - Trace
+  label_positions: {}
