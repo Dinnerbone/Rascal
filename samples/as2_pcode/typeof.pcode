@@ -1,0 +1,97 @@
+ConstantPool "num", "obj", "trace", "typeof num: ", "typeof obj: ", "typeof obj.num: ", "typeof obj.num + 1: ", "typeof obj.num == \"number\" ? \":)\" : \":(\": ", "number", ":(", ":)", "typeof obj.num + typeof obj.num: ", "typeof obj.trace: ", "typeof obj.trace(): ", "typeof(nonexistent, obj): ", "nonexistent"
+Push constant0
+Push 1
+DefineLocal
+Push constant1
+Push constant0
+Push 1
+Push constant2
+Push constant2
+GetVariable
+Push 2
+InitObject
+DefineLocal
+Push constant3
+Push constant0
+GetVariable
+TypeOf
+Add2
+Trace
+Push constant4
+Push constant1
+GetVariable
+TypeOf
+Add2
+Trace
+Push constant5
+Push constant1
+GetVariable
+Push constant0
+GetMember
+TypeOf
+Add2
+Trace
+Push constant6
+Push constant1
+GetVariable
+Push constant0
+GetMember
+TypeOf
+Push 1
+Add2
+Add2
+Trace
+Push constant7
+Push constant1
+GetVariable
+Push constant0
+GetMember
+TypeOf
+Push constant8
+Equals2
+If loc01a5
+Push constant9
+Jump loc01aa
+loc01a5:Push constant10
+loc01aa:Add2
+Trace
+Push constant11
+Push constant1
+GetVariable
+Push constant0
+GetMember
+TypeOf
+Push constant1
+GetVariable
+Push constant0
+GetMember
+TypeOf
+Add2
+Add2
+Trace
+Push constant12
+Push constant1
+GetVariable
+Push constant2
+GetMember
+TypeOf
+Add2
+Trace
+Push constant13
+Push 0
+Push constant1
+GetVariable
+Push constant2
+CallMethod
+TypeOf
+Add2
+Trace
+Push constant14
+Push constant15
+GetVariable
+Pop
+Push constant1
+GetVariable
+TypeOf
+Add2
+Trace

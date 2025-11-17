@@ -60,13 +60,16 @@ pub enum Action {
     BitRShift,
     BitURShift,
     BitXor,
+    CallMethod,
     ConstantPool(Vec<String>),
     DefineLocal,
     DefineLocal2,
     Divide,
     Equals2,
+    GetMember,
     GetVariable,
     If(String),
+    InitObject,
     Jump(String),
     Modulo,
     Not,
@@ -76,6 +79,7 @@ pub enum Action {
     SetVariable,
     Subtract,
     Trace,
+    TypeOf,
 }
 
 impl std::fmt::Display for Action {
@@ -89,6 +93,7 @@ impl std::fmt::Display for Action {
             Action::BitRShift => write!(f, "BitRShift"),
             Action::BitURShift => write!(f, "BitURShift"),
             Action::BitXor => write!(f, "BitXor"),
+            Action::CallMethod => write!(f, "CallMethod"),
             Action::ConstantPool(values) => {
                 write!(f, "ConstantPool ")?;
                 for (i, value) in values.iter().enumerate() {
@@ -103,8 +108,10 @@ impl std::fmt::Display for Action {
             Action::DefineLocal2 => write!(f, "DefineLocal2"),
             Action::Divide => write!(f, "Divide"),
             Action::Equals2 => write!(f, "Equals2"),
+            Action::GetMember => write!(f, "GetMember"),
             Action::GetVariable => write!(f, "GetVariable"),
             Action::If(label) => write!(f, "If {}", label),
+            Action::InitObject => write!(f, "InitObject"),
             Action::Jump(label) => write!(f, "Jump {}", label),
             Action::Modulo => write!(f, "Modulo"),
             Action::Not => write!(f, "Not"),
@@ -123,6 +130,7 @@ impl std::fmt::Display for Action {
             Action::SetVariable => write!(f, "SetVariable"),
             Action::Subtract => write!(f, "Subtract"),
             Action::Trace => write!(f, "Trace"),
+            Action::TypeOf => write!(f, "TypeOf"),
         }
     }
 }

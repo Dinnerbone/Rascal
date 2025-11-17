@@ -49,13 +49,16 @@ pub(crate) fn action(i: &mut Tokens<'_>) -> ModalResult<Action> {
         ActionName::BitRShift => Action::BitRShift,
         ActionName::BitURShift => Action::BitURShift,
         ActionName::BitXor => Action::BitXor,
+        ActionName::CallMethod => Action::CallMethod,
         ActionName::ConstantPool => constant_pool.parse_next(i)?,
         ActionName::DefineLocal => Action::DefineLocal,
         ActionName::DefineLocal2 => Action::DefineLocal2,
         ActionName::Divide => Action::Divide,
         ActionName::Equals2 => Action::Equals2,
+        ActionName::GetMember => Action::GetMember,
         ActionName::GetVariable => Action::GetVariable,
         ActionName::If => if_.parse_next(i)?,
+        ActionName::InitObject => Action::InitObject,
         ActionName::Jump => jump.parse_next(i)?,
         ActionName::Modulo => Action::Modulo,
         ActionName::Not => Action::Not,
@@ -65,6 +68,7 @@ pub(crate) fn action(i: &mut Tokens<'_>) -> ModalResult<Action> {
         ActionName::SetVariable => Action::SetVariable,
         ActionName::Subtract => Action::Subtract,
         ActionName::Trace => Action::Trace,
+        ActionName::TypeOf => Action::TypeOf,
     })
 }
 
@@ -201,11 +205,14 @@ mod tests {
         test_bitrshift => BitRShift,
         test_biturshift => BitURShift,
         test_bitxor => BitXor,
+        test_call_method => CallMethod,
         test_define_local => DefineLocal,
         test_definelocal2 => DefineLocal2,
         test_divide => Divide,
         test_equals2 => Equals2,
+        test_get_member => GetMember,
         test_get_variable => GetVariable,
+        test_init_object => InitObject,
         test_modulo => Modulo,
         test_not => Not,
         test_pop => Pop,
@@ -213,6 +220,7 @@ mod tests {
         test_set_variable => SetVariable,
         test_subtract => Subtract,
         test_trace => Trace,
+        test_typeof => TypeOf,
     }
 
     #[test]
