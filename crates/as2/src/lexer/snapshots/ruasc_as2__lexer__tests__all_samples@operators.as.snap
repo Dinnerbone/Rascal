@@ -1,7 +1,7 @@
 ---
 source: crates/as2/src/lexer/tests.rs
 expression: tokens
-input_file: samples/operators.as
+input_file: samples/as2/operators.as
 ---
 - kind: Newline
   span:
@@ -3205,68 +3205,4 @@ input_file: samples/operators.as
   span:
     start: 2539
     end: 2540
-  raw: "\n"
-- kind: Identifier
-  span:
-    start: 2540
-    end: 2545
-  raw: trace
-- kind: OpenParen
-  span:
-    start: 2545
-    end: 2546
-  raw: (
-- kind:
-    String: Double
-  span:
-    start: 2546
-    end: 2564
-  raw: "\\\"key\\\" in obj: "
-- kind:
-    Operator: Add
-  span:
-    start: 2565
-    end: 2566
-  raw: +
-- kind: OpenParen
-  span:
-    start: 2567
-    end: 2568
-  raw: (
-- kind:
-    String: Double
-  span:
-    start: 2568
-    end: 2573
-  raw: key
-- kind:
-    Keyword: In
-  span:
-    start: 2574
-    end: 2576
-  raw: in
-- kind: Identifier
-  span:
-    start: 2577
-    end: 2580
-  raw: obj
-- kind: CloseParen
-  span:
-    start: 2580
-    end: 2581
-  raw: )
-- kind: CloseParen
-  span:
-    start: 2581
-    end: 2582
-  raw: )
-- kind: Semicolon
-  span:
-    start: 2582
-    end: 2583
-  raw: ;
-- kind: Newline
-  span:
-    start: 2583
-    end: 2584
   raw: "\n"

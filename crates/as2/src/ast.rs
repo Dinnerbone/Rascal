@@ -72,7 +72,6 @@ pub enum BinaryOperator {
     LogicalAnd,
     LogicalOr,
     InstanceOf,
-    In,
 }
 
 #[derive(Debug, Clone, Copy, Serialize, PartialEq)]
