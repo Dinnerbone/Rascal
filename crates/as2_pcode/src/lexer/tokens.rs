@@ -99,6 +99,8 @@ pub enum ActionName {
     DefineFunction,
     DefineLocal,
     DefineLocal2,
+    Delete,
+    Delete2,
     Divide,
     Enumerate2,
     Equals2,

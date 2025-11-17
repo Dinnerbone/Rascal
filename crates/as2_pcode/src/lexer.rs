@@ -231,6 +231,8 @@ fn lex_identifier_or_action<'a>(stream: &mut Stream<'a>) -> Token<'a> {
         "definefunction" => TokenKind::ActionName(ActionName::DefineFunction),
         "definelocal" => TokenKind::ActionName(ActionName::DefineLocal),
         "definelocal2" => TokenKind::ActionName(ActionName::DefineLocal2),
+        "delete" => TokenKind::ActionName(ActionName::Delete),
+        "delete2" => TokenKind::ActionName(ActionName::Delete2),
         "divide" => TokenKind::ActionName(ActionName::Divide),
         "enumerate2" => TokenKind::ActionName(ActionName::Enumerate2),
         "equals2" => TokenKind::ActionName(ActionName::Equals2),

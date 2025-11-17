@@ -77,6 +77,8 @@ pub enum Action {
     },
     DefineLocal,
     DefineLocal2,
+    Delete,
+    Delete2,
     Divide,
     Enumerate2,
     Equals2,
@@ -148,6 +150,8 @@ impl std::fmt::Display for Action {
             }
             Action::DefineLocal => write!(f, "DefineLocal"),
             Action::DefineLocal2 => write!(f, "DefineLocal2"),
+            Action::Delete => write!(f, "Delete"),
+            Action::Delete2 => write!(f, "Delete2"),
             Action::Divide => write!(f, "Divide"),
             Action::Enumerate2 => write!(f, "Enumerate2"),
             Action::Equals2 => write!(f, "Equals2"),

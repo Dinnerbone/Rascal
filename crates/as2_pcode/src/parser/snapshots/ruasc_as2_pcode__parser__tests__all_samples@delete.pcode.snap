@@ -1,0 +1,216 @@
+---
+source: crates/as2_pcode/src/parser/tests.rs
+expression: parsed
+input_file: samples/as2_pcode/delete.pcode
+---
+Ok:
+  actions:
+    - ConstantPool:
+        - num
+        - obj
+        - "delete num: "
+        - "delete obj: "
+        - "delete obj.num: "
+        - "delete obj.num + 1: "
+        - "delete obj.num == \\\"number\\\" ? \\\":)\\\" : \\\":(\\\": "
+        - ":("
+        - ":)"
+        - "delete obj.num + delete obj.num: "
+        - trace
+        - "delete obj.trace: "
+        - "delete obj.trace(): "
+        - "delete(nonexistent, obj): "
+        - nonexistent
+    - Push:
+        - Constant: 0
+    - Push:
+        - Integer: 1
+    - DefineLocal
+    - Push:
+        - Constant: 1
+    - Push:
+        - Constant: 0
+    - Push:
+        - Integer: 1
+    - Push:
+        - Integer: 1
+    - InitObject
+    - DefineLocal
+    - Push:
+        - Constant: 2
+    - Push:
+        - Constant: 0
+    - Delete2
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 3
+    - Push:
+        - Constant: 1
+    - Delete2
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 1
+    - Push:
+        - Constant: 0
+    - Push:
+        - Integer: 1
+    - Push:
+        - Integer: 1
+    - InitObject
+    - DefineLocal
+    - Push:
+        - Constant: 4
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Push:
+        - Constant: 0
+    - Delete
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 1
+    - Push:
+        - Constant: 0
+    - Push:
+        - Integer: 1
+    - Push:
+        - Integer: 1
+    - InitObject
+    - DefineLocal
+    - Push:
+        - Constant: 5
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Push:
+        - Constant: 0
+    - Delete
+    - Push:
+        - Integer: 1
+    - Add2
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 1
+    - Push:
+        - Constant: 0
+    - Push:
+        - Integer: 1
+    - Push:
+        - Integer: 1
+    - InitObject
+    - DefineLocal
+    - Push:
+        - Constant: 6
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Push:
+        - Constant: 0
+    - Delete
+    - If: loc01dc
+    - Push:
+        - Constant: 7
+    - Jump: loc01e1
+    - Push:
+        - Constant: 8
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 1
+    - Push:
+        - Constant: 0
+    - Push:
+        - Integer: 1
+    - Push:
+        - Integer: 1
+    - InitObject
+    - DefineLocal
+    - Push:
+        - Constant: 9
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Push:
+        - Constant: 0
+    - Delete
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Push:
+        - Constant: 0
+    - Delete
+    - Add2
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 1
+    - Push:
+        - Constant: 0
+    - Push:
+        - Integer: 1
+    - Push:
+        - Constant: 10
+    - Push:
+        - Constant: 10
+    - GetVariable
+    - Push:
+        - Integer: 2
+    - InitObject
+    - DefineLocal
+    - Push:
+        - Constant: 11
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Push:
+        - Constant: 10
+    - Delete
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 1
+    - Push:
+        - Constant: 0
+    - Push:
+        - Integer: 1
+    - Push:
+        - Constant: 10
+    - Push:
+        - Constant: 10
+    - GetVariable
+    - Push:
+        - Integer: 2
+    - InitObject
+    - DefineLocal
+    - Push:
+        - Constant: 12
+    - Push:
+        - Integer: 0
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Push:
+        - Constant: 10
+    - CallMethod
+    - Delete2
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 13
+    - Push:
+        - Constant: 14
+    - GetVariable
+    - Pop
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Delete2
+    - Add2
+    - Trace
+  label_positions:
+    loc01dc: 62
+    loc01e1: 63
