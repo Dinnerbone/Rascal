@@ -130,22 +130,16 @@ pub(crate) fn expression(i: &mut Tokens<'_>) -> ModalResult<Expr> {
         }
         TokenKind::Keyword(Keyword::Delete) => {
             TokenKind::Keyword(Keyword::Delete).parse_next(i)?;
-            let values = if opt(TokenKind::OpenParen).parse_next(i)?.is_some() {
+            let expr = if opt(TokenKind::OpenParen).parse_next(i)?.is_some() {
                 let values = expr_list.parse_next(i)?;
-                if values.is_empty() {
-                    return fail
-                        .context(StrContext::Label("expression"))
-                        .context(StrContext::Expected(StrContextValue::Description(
-                            "a value to delete",
-                        )))
-                        .parse_next(i);
-                }
                 TokenKind::CloseParen.parse_next(i)?;
-                values
+                Expr::Delete(values)
             } else {
-                vec![expression.parse_next(i)?]
+                let mut value = expression.parse_next(i)?;
+                value.rewrite_leftmost_expr(|expr| Expr::Delete(vec![expr]));
+                value
             };
-            expr_next(Expr::Delete(values))
+            expr_next(expr)
                 .context(StrContext::Label("expression"))
                 .parse_next(i)
         }
