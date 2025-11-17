@@ -1,0 +1,102 @@
+---
+source: crates/as2_pcode/src/parser/tests.rs
+expression: parsed
+input_file: samples/as2_pcode/objects.pcode
+---
+Ok:
+  actions:
+    - ConstantPool:
+        - o
+        - a
+        - b
+        - Object
+        - "o.a: "
+        - "o.b: "
+        - "new Object(): "
+        - "new Object(1, 2, {}, false): "
+        - "new Object: "
+        - "new o.b(): "
+    - Push:
+        - Constant: 0
+    - Push:
+        - Constant: 1
+    - Push:
+        - Integer: 1
+    - Push:
+        - Constant: 2
+    - Push:
+        - Constant: 3
+    - GetVariable
+    - Push:
+        - Integer: 2
+    - InitObject
+    - DefineLocal
+    - Push:
+        - Constant: 4
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetMember
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 5
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 2
+    - GetMember
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 6
+    - Push:
+        - Integer: 0
+    - Push:
+        - Constant: 3
+    - NewObject
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 7
+    - Push:
+        - "False"
+    - Push:
+        - Integer: 0
+    - InitObject
+    - Push:
+        - Integer: 2
+    - Push:
+        - Integer: 1
+    - Push:
+        - Integer: 4
+    - Push:
+        - Constant: 3
+    - NewObject
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 8
+    - Push:
+        - Integer: 0
+    - Push:
+        - Constant: 3
+    - NewObject
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 9
+    - Push:
+        - Integer: 0
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 2
+    - NewMethod
+    - Add2
+    - Trace
+  label_positions: {}

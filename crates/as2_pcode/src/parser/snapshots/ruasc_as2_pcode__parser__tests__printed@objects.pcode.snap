@@ -1,0 +1,60 @@
+---
+source: crates/as2_pcode/src/parser/tests.rs
+expression: "parsed.unwrap_or_else(|_| Actions::empty())"
+input_file: samples/as2_pcode/objects.pcode
+---
+ConstantPool "o", "a", "b", "Object", "o.a: ", "o.b: ", "new Object(): ", "new Object(1, 2, {}, false): ", "new Object: ", "new o.b(): "
+Push constant0
+Push constant1
+Push 1
+Push constant2
+Push constant3
+GetVariable
+Push 2
+InitObject
+DefineLocal
+Push constant4
+Push constant0
+GetVariable
+Push constant1
+GetMember
+Add2
+Trace
+Push constant5
+Push constant0
+GetVariable
+Push constant2
+GetMember
+Add2
+Trace
+Push constant6
+Push 0
+Push constant3
+NewObject
+Add2
+Trace
+Push constant7
+Push false
+Push 0
+InitObject
+Push 2
+Push 1
+Push 4
+Push constant3
+NewObject
+Add2
+Trace
+Push constant8
+Push 0
+Push constant3
+NewObject
+Add2
+Trace
+Push constant9
+Push 0
+Push constant0
+GetVariable
+Push constant2
+NewMethod
+Add2
+Trace

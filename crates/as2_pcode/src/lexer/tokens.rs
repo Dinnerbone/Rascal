@@ -110,6 +110,8 @@ pub enum ActionName {
     Less2,
     Modulo,
     Multiply,
+    NewMethod,
+    NewObject,
     Not,
     Pop,
     Push,

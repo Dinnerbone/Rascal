@@ -242,6 +242,8 @@ fn lex_identifier_or_action<'a>(stream: &mut Stream<'a>) -> Token<'a> {
         "less2" => TokenKind::ActionName(ActionName::Less2),
         "modulo" => TokenKind::ActionName(ActionName::Modulo),
         "multiply" => TokenKind::ActionName(ActionName::Multiply),
+        "newmethod" => TokenKind::ActionName(ActionName::NewMethod),
+        "newobject" => TokenKind::ActionName(ActionName::NewObject),
         "not" => TokenKind::ActionName(ActionName::Not),
         "pop" => TokenKind::ActionName(ActionName::Pop),
         "pushduplicate" => TokenKind::ActionName(ActionName::PushDuplicate),

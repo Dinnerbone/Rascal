@@ -78,6 +78,8 @@ pub enum Action {
     Less2,
     Modulo,
     Multiply,
+    NewMethod,
+    NewObject,
     Not,
     Pop,
     Push(Vec<PushValue>),
@@ -129,6 +131,8 @@ impl std::fmt::Display for Action {
             Action::Less2 => write!(f, "Less2"),
             Action::Modulo => write!(f, "Modulo"),
             Action::Multiply => write!(f, "Multiply"),
+            Action::NewMethod => write!(f, "NewMethod"),
+            Action::NewObject => write!(f, "NewObject"),
             Action::Not => write!(f, "Not"),
             Action::Pop => write!(f, "Pop"),
             Action::Push(values) => {
