@@ -1,61 +1,13 @@
+use crate::ast::{Declaration, ForCondition, Function, Statement};
 use crate::lexer::operator::Operator;
 use crate::lexer::tokens::{Keyword, TokenKind};
-use crate::parser::expression::{Expr, expr_list, expression};
+use crate::parser::expression::{expr_list, expression};
 use crate::parser::{Tokens, identifier, skip_newlines};
-use serde::Serialize;
 use winnow::combinator::{alt, cond, cut_err, opt, peek, separated};
 use winnow::error::{ContextError, ErrMode, StrContext};
 use winnow::stream::Stream;
 use winnow::token::{any, take_while};
 use winnow::{ModalResult, Parser};
-
-#[derive(Debug, Clone, Serialize, PartialEq)]
-pub(crate) enum Statement {
-    Declare(Vec<Declaration>),
-    Return(Vec<Expr>),
-    Expr(Expr),
-    Block(Vec<Statement>),
-    ForIn {
-        condition: ForCondition,
-        body: Box<Statement>,
-    },
-    If {
-        condition: Expr,
-        yes: Box<Statement>,
-        no: Option<Box<Statement>>,
-    },
-    Break,
-    Continue,
-}
-
-#[derive(Debug, Clone, Serialize, PartialEq)]
-pub(crate) enum ForCondition {
-    Enumerate {
-        variable: String,
-        declare: bool,
-        object: Expr,
-    },
-    Classic {
-        initialize: Option<Box<Statement>>,
-        // This is technically incorrect, we treat `a++, b++` as two different expressions, but they should be one (and we'd have a `Next(a, b)` expression)
-        // Unfortunately that seems difficult to implement _correctly_, so this is a good stopgap (did anyone even use `,` in regular code, outside for loops?)
-        condition: Vec<Expr>,
-        update: Vec<Expr>,
-    },
-}
-
-#[derive(Debug, Clone, Serialize, PartialEq)]
-pub(crate) struct Function {
-    pub(crate) name: Option<String>,
-    pub(crate) args: Vec<String>,
-    pub(crate) body: Vec<Statement>,
-}
-
-#[derive(Debug, Clone, Serialize, PartialEq)]
-pub(crate) struct Declaration {
-    pub(crate) name: String,
-    pub(crate) value: Option<Expr>,
-}
 
 pub(crate) fn statement(i: &mut Tokens<'_>) -> ModalResult<Statement> {
     let checkpoint = i.checkpoint();
@@ -217,9 +169,8 @@ pub(crate) fn function(i: &mut Tokens<'_>) -> ModalResult<Function> {
 #[cfg(test)]
 mod stmt_tests {
     use super::*;
+    use crate::ast::{Affix, BinaryOperator, Constant, Expr, UnaryOperator};
     use crate::lexer::tokens::{Keyword, QuoteKind, Token, TokenKind};
-    use crate::parser::expression::{Constant, Expr};
-    use crate::parser::operator::{Affix, BinaryOperator, UnaryOperator};
     use crate::parser::tests::build_tokens;
     use winnow::stream::TokenSlice;
 

@@ -2,11 +2,12 @@ use crate::lexer::Lexer;
 use crate::lexer::tokens::Token;
 use crate::parser::ActionScriptError;
 
+pub mod ast;
 mod lexer;
 mod parser;
 mod source;
 
-pub use crate::parser::document::Document;
+pub use ast::Document;
 
 pub struct ActionScript<'a> {
     filename: &'a str,

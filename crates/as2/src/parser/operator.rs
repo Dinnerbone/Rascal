@@ -1,7 +1,7 @@
+use crate::ast::{BinaryOperator, Expr, UnaryOperator};
 use crate::lexer::operator::Operator;
 use crate::lexer::tokens::{Token, TokenKind};
 use crate::parser::Tokens;
-use crate::parser::expression::Expr;
 use serde::Serialize;
 use std::cmp::Ordering;
 use winnow::error::ParserError;
@@ -19,45 +19,6 @@ enum OperatorPrecedence {
     Logic,
     Other,
     Assignment,
-}
-
-#[derive(Debug, Clone, Copy, Serialize, PartialEq)]
-pub(crate) enum BinaryOperator {
-    Add,
-    Assign,
-    AddAssign,
-    Sub,
-    SubAssign,
-    Divide,
-    DivideAssign,
-    Multiply,
-    MultiplyAssign,
-    Modulo,
-    ModuloAssign,
-    BitAnd,
-    BitAndAssign,
-    BitOr,
-    BitOrAssign,
-    BitXor,
-    BitXorAssign,
-    BitShiftLeft,
-    BitShiftLeftAssign,
-    BitShiftRight,
-    BitShiftRightAssign,
-    BitShiftRightUnsigned,
-    BitShiftRightUnsignedAssign,
-    Equal,
-    StrictEqual,
-    NotEqual,
-    StrictNotEqual,
-    LessThan,
-    LessThanEqual,
-    GreaterThan,
-    GreaterThanEqual,
-    LogicalAnd,
-    LogicalOr,
-    InstanceOf,
-    In,
 }
 
 impl BinaryOperator {
@@ -129,15 +90,6 @@ impl Expr {
     }
 }
 
-#[derive(Debug, Clone, Serialize, PartialEq)]
-pub(crate) enum UnaryOperator {
-    Sub,
-    BitNot,
-    Increment(Affix),
-    Decrement(Affix),
-    LogicalNot,
-}
-
 impl Expr {
     pub(crate) fn for_unary_operator(op: UnaryOperator, expr: Box<Expr>) -> Expr {
         match *expr {
@@ -152,12 +104,6 @@ impl Expr {
             _ => Expr::UnaryOperator(op, expr),
         }
     }
-}
-
-#[derive(Debug, Clone, Serialize, PartialEq)]
-pub enum Affix {
-    Postfix,
-    Prefix,
 }
 
 pub fn binary_operator(i: &mut Tokens<'_>) -> ModalResult<BinaryOperator> {

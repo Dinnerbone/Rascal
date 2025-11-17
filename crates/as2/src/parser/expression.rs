@@ -1,44 +1,14 @@
+use crate::ast::{Affix, BinaryOperator, Constant, Expr, UnaryOperator};
 use crate::lexer::operator::Operator;
 use crate::lexer::tokens::{Keyword, TokenKind};
-use crate::parser::expression::Constant::Integer;
-use crate::parser::operator::{Affix, BinaryOperator, UnaryOperator};
-use crate::parser::statement::{Function, function};
+use crate::parser::statement::function;
 use crate::parser::{Tokens, identifier, operator, skip_newlines, string};
-use serde::Serialize;
 use winnow::combinator::{alt, fail, opt, peek, separated};
 use winnow::error::{ContextError, ErrMode, StrContext};
 use winnow::error::{ParserError, StrContextValue};
 use winnow::stream::ParseSlice;
 use winnow::token::any;
 use winnow::{ModalResult, Parser};
-
-#[derive(Debug, Clone, Serialize, PartialEq)]
-pub(crate) enum Expr {
-    Constant(Constant),
-    Call {
-        name: Box<Expr>,
-        args: Vec<Expr>,
-    },
-    New {
-        name: Box<Expr>,
-        args: Vec<Expr>,
-    },
-    BinaryOperator(BinaryOperator, Box<Expr>, Box<Expr>),
-    UnaryOperator(UnaryOperator, Box<Expr>),
-    Parenthesis(Box<Expr>),
-    Ternary {
-        condition: Box<Expr>,
-        yes: Box<Expr>,
-        no: Box<Expr>,
-    },
-    InitObject(Vec<(String, Expr)>),
-    InitArray(Vec<Expr>),
-    Field(Box<Expr>, Box<Expr>),
-    TypeOf(Vec<Expr>),
-    Delete(Vec<Expr>),
-    Void(Vec<Expr>),
-    Function(Function),
-}
 
 impl Expr {
     pub(crate) fn rewrite_leftmost_expr<R>(&mut self, rewriter: R)
@@ -56,7 +26,10 @@ impl Expr {
         }
 
         // Temporarily replaces it with something else, to appease the borrow checker
-        *expr = rewriter(std::mem::replace(expr, Expr::Constant(Integer(0))));
+        *expr = rewriter(std::mem::replace(
+            expr,
+            Expr::Constant(Constant::Integer(0)),
+        ));
     }
 }
 
@@ -64,14 +37,6 @@ impl Expr {
     pub(crate) fn can_postfix(&self) -> bool {
         matches!(self, Expr::Constant(_))
     }
-}
-
-#[derive(Debug, Clone, Serialize, PartialEq)]
-pub(crate) enum Constant {
-    String(String),
-    Identifier(String),
-    Float(f64),
-    Integer(i32),
 }
 
 pub(crate) fn expression(i: &mut Tokens<'_>) -> ModalResult<Expr> {
@@ -403,9 +368,9 @@ pub(crate) fn expr_list(i: &mut Tokens<'_>) -> ModalResult<Vec<Expr>> {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::ast::{Function, Statement};
     use crate::lexer::operator::Operator;
     use crate::lexer::tokens::{QuoteKind, Token, TokenKind};
-    use crate::parser::statement::Statement;
     use crate::parser::tests::build_tokens;
     use winnow::stream::TokenSlice;
 

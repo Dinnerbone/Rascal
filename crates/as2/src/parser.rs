@@ -15,7 +15,7 @@ mod tests;
 
 pub(crate) type Tokens<'i> = TokenSlice<'i, Token<'i>>;
 
-use crate::parser::document::Document;
+use crate::ast::Document;
 pub use crate::parser::error::ActionScriptError;
 
 pub fn parse_document<'a>(
