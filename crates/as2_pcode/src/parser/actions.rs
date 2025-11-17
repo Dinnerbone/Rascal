@@ -1,34 +1,40 @@
 use crate::lexer::tokens::{ActionName, Token, TokenKind};
 use crate::parser::Tokens;
 use crate::pcode::{Action, Actions, PushValue};
-use winnow::combinator::{alt, eof, fail, peek, separated};
-use winnow::error::{ParserError, StrContext, StrContextValue};
+use winnow::combinator::{alt, fail, peek, separated};
+use winnow::error::{ContextError, ErrMode, ParserError, StrContext, StrContextValue};
 use winnow::stream::Stream;
 use winnow::token::{any, take_while};
 use winnow::{ModalResult, Parser};
 
-pub(crate) fn actions(i: &mut Tokens<'_>) -> ModalResult<Actions> {
-    let mut actions = Actions::empty();
+pub(crate) fn actions<'i>(
+    is_block: bool,
+) -> impl Parser<Tokens<'i>, Actions, ErrMode<ContextError>> {
+    move |i: &mut Tokens<'i>| {
+        let mut actions = Actions::empty();
 
-    take_while(0.., TokenKind::Newline).parse_next(i)?;
+        take_while(0.., TokenKind::Newline).parse_next(i)?;
 
-    while !i.is_empty() {
-        let next = peek(any).parse_next(i)?;
+        while !i.is_empty() {
+            let next = peek(any).parse_next(i)?;
 
-        if next.kind == TokenKind::Identifier {
-            let identifier = label.parse_next(i)?;
-            TokenKind::Colon.parse_next(i)?;
-            actions.push_label(identifier);
-            continue;
+            if next.kind == TokenKind::CloseBrace && is_block {
+                break;
+            }
+            if next.kind == TokenKind::Identifier {
+                let identifier = label.parse_next(i)?;
+                TokenKind::Colon.parse_next(i)?;
+                actions.push_label(identifier);
+                continue;
+            }
+            actions.push(action.parse_next(i)?);
+            if !i.is_empty() {
+                take_while(1.., TokenKind::Newline).parse_next(i)?;
+            }
         }
-        actions.push(action.parse_next(i)?);
-        if !i.is_empty() {
-            take_while(1.., TokenKind::Newline).parse_next(i)?;
-        }
+
+        Ok(actions)
     }
-    eof.parse_next(i)?;
-
-    Ok(actions)
 }
 
 pub(crate) fn action(i: &mut Tokens<'_>) -> ModalResult<Action> {
@@ -53,6 +59,7 @@ pub(crate) fn action(i: &mut Tokens<'_>) -> ModalResult<Action> {
         ActionName::CallMethod => Action::CallMethod,
         ActionName::ConstantPool => constant_pool.parse_next(i)?,
         ActionName::Decrement => Action::Decrement,
+        ActionName::DefineFunction => define_function.parse_next(i)?,
         ActionName::DefineLocal => Action::DefineLocal,
         ActionName::DefineLocal2 => Action::DefineLocal2,
         ActionName::Divide => Action::Divide,
@@ -75,6 +82,7 @@ pub(crate) fn action(i: &mut Tokens<'_>) -> ModalResult<Action> {
         ActionName::Push => push.parse_next(i)?,
         ActionName::PushDuplicate => Action::PushDuplicate,
         ActionName::RandomNumber => Action::RandomNumber,
+        ActionName::Return => Action::Return,
         ActionName::SetVariable => Action::SetVariable,
         ActionName::StoreRegister => store_register.parse_next(i)?,
         ActionName::StrictEquals => Action::StrictEquals,
@@ -109,6 +117,26 @@ pub fn constant_pool(i: &mut Tokens<'_>) -> ModalResult<Action> {
     Ok(Action::ConstantPool(values))
 }
 
+pub fn define_function(i: &mut Tokens<'_>) -> ModalResult<Action> {
+    let name = string.parse_next(i)?;
+    TokenKind::Comma.parse_next(i)?;
+    let num_args = integer.parse_next(i)?;
+    let args = if num_args > 0 {
+        TokenKind::Comma.parse_next(i)?;
+        separated(num_args as usize, string, TokenKind::Comma).parse_next(i)?
+    } else {
+        vec![]
+    };
+    TokenKind::OpenBrace.parse_next(i)?;
+    let body = actions(true).parse_next(i)?;
+    TokenKind::CloseBrace.parse_next(i)?;
+    Ok(Action::DefineFunction {
+        name,
+        params: args,
+        actions: body,
+    })
+}
+
 pub fn string(i: &mut Tokens<'_>) -> ModalResult<String> {
     // TODO parse
     TokenKind::String.parse_next(i).map(|t| t.raw.to_owned())
@@ -136,6 +164,12 @@ fn integer_or_float(i: &mut Tokens<'_>) -> ModalResult<PushValue> {
 fn register_num(i: &mut Tokens<'_>) -> ModalResult<u8> {
     let raw = TokenKind::Integer.parse_next(i)?.raw;
     raw.parse::<u8>().map_err(|_| ParserError::from_input(&raw))
+}
+
+fn integer(i: &mut Tokens<'_>) -> ModalResult<i32> {
+    let raw = TokenKind::Integer.parse_next(i)?.raw;
+    raw.parse::<i32>()
+        .map_err(|_| ParserError::from_input(&raw))
 }
 
 fn float(i: &mut Tokens<'_>) -> ModalResult<f64> {
@@ -249,6 +283,7 @@ mod tests {
         test_pop => Pop,
         test_pushduplicate => PushDuplicate,
         test_random_number => RandomNumber,
+        test_return => Return,
         test_set_variable => SetVariable,
         test_subtract => Subtract,
         test_strictequals => StrictEquals,
@@ -381,6 +416,45 @@ mod tests {
             parse_actions(&tokens),
             Ok(Actions {
                 actions: vec![Action::StoreRegister(0)],
+                label_positions: Default::default()
+            })
+        )
+    }
+
+    #[test]
+    fn test_define_function() {
+        let tokens = build_tokens(&[
+            (
+                TokenKind::ActionName(ActionName::DefineFunction),
+                "DefineFunction",
+            ),
+            (TokenKind::String, "foo"),
+            (TokenKind::Comma, ","),
+            (TokenKind::Integer, "1"),
+            (TokenKind::Comma, ","),
+            (TokenKind::String, "a"),
+            (TokenKind::OpenBrace, "{"),
+            (TokenKind::ActionName(ActionName::Push), "push"),
+            (TokenKind::String, "a"),
+            (TokenKind::Newline, "\n"),
+            (TokenKind::ActionName(ActionName::Trace), "trace"),
+            (TokenKind::Newline, "\n"),
+            (TokenKind::CloseBrace, "}"),
+        ]);
+        assert_eq!(
+            parse_actions(&tokens),
+            Ok(Actions {
+                actions: vec![Action::DefineFunction {
+                    name: "foo".to_string(),
+                    params: vec!["a".to_string()],
+                    actions: Actions {
+                        actions: vec![
+                            Action::Push(vec![PushValue::String("a".to_owned())]),
+                            Action::Trace
+                        ],
+                        label_positions: Default::default()
+                    },
+                }],
                 label_positions: Default::default()
             })
         )

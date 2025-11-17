@@ -70,6 +70,11 @@ pub enum Action {
     CallMethod,
     ConstantPool(Vec<String>),
     Decrement,
+    DefineFunction {
+        name: String,
+        params: Vec<String>,
+        actions: Actions,
+    },
     DefineLocal,
     DefineLocal2,
     Divide,
@@ -92,6 +97,7 @@ pub enum Action {
     Push(Vec<PushValue>),
     PushDuplicate,
     RandomNumber,
+    Return,
     SetVariable,
     StoreRegister(u8),
     StrictEquals,
@@ -124,6 +130,19 @@ impl std::fmt::Display for Action {
                 Ok(())
             }
             Action::Decrement => write!(f, "Decrement"),
+            Action::DefineFunction {
+                name,
+                params,
+                actions,
+            } => {
+                write!(f, "DefineFunction \"{}\", {}", name, params.len())?;
+                for param in params {
+                    write!(f, ", \"{}\"", param)?;
+                }
+                writeln!(f, " {{")?;
+                write!(f, "{}", actions)?;
+                write!(f, "}}")
+            }
             Action::DefineLocal => write!(f, "DefineLocal"),
             Action::DefineLocal2 => write!(f, "DefineLocal2"),
             Action::Divide => write!(f, "Divide"),
@@ -155,6 +174,7 @@ impl std::fmt::Display for Action {
             }
             Action::PushDuplicate => write!(f, "PushDuplicate"),
             Action::RandomNumber => write!(f, "RandomNumber"),
+            Action::Return => write!(f, "Return"),
             Action::SetVariable => write!(f, "SetVariable"),
             Action::StoreRegister(r) => write!(f, "StoreRegister {}", r),
             Action::StrictEquals => write!(f, "StrictEquals"),

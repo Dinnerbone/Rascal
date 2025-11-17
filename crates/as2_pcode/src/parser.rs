@@ -16,5 +16,5 @@ use crate::pcode::Actions;
 pub fn parse_actions<'a>(
     source: &'a [Token],
 ) -> winnow::Result<Actions, ParseError<Tokens<'a>, ContextError>> {
-    actions::actions.parse(TokenSlice::new(source))
+    actions::actions(false).parse(TokenSlice::new(source))
 }

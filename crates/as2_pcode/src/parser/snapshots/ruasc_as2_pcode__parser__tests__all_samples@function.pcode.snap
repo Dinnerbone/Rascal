@@ -1,0 +1,76 @@
+---
+source: crates/as2_pcode/src/parser/tests.rs
+expression: parsed
+input_file: samples/as2_pcode/function.pcode
+---
+Ok:
+  actions:
+    - ConstantPool:
+        - Test called!
+        - ":)"
+        - bb
+        - aa
+        - Anonymous function called!
+        - "a = "
+        - a
+        - ", b = "
+        - b
+        - test
+    - DefineFunction:
+        name: test
+        params: []
+        actions:
+          actions:
+            - Push:
+                - Constant: 0
+            - Trace
+            - Push:
+                - Constant: 1
+            - Return
+          label_positions: {}
+    - Push:
+        - Constant: 2
+    - Push:
+        - Constant: 3
+    - Push:
+        - Integer: 2
+    - DefineFunction:
+        name: ""
+        params:
+          - a
+          - b
+        actions:
+          actions:
+            - Push:
+                - Constant: 4
+            - Trace
+            - Push:
+                - Constant: 5
+            - Push:
+                - Constant: 6
+            - GetVariable
+            - Add2
+            - Push:
+                - Constant: 7
+            - Add2
+            - Push:
+                - Constant: 8
+            - GetVariable
+            - Add2
+            - Trace
+          label_positions: {}
+    - CallFunction
+    - Pop
+    - Push:
+        - Integer: 0
+    - Push:
+        - Constant: 9
+    - CallFunction
+    - Push:
+        - Integer: 0
+    - Push:
+        - Constant: 9
+    - CallFunction
+    - Add2
+    - Trace
+  label_positions: {}

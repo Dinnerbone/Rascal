@@ -1,0 +1,39 @@
+---
+source: crates/as2_pcode/src/parser/tests.rs
+expression: "parsed.unwrap_or_else(|_| Actions::empty())"
+input_file: samples/as2_pcode/function.pcode
+---
+ConstantPool "Test called!", ":)", "bb", "aa", "Anonymous function called!", "a = ", "a", ", b = ", "b", "test"
+DefineFunction "test", 0 {
+Push constant0
+Trace
+Push constant1
+Return
+}
+Push constant2
+Push constant3
+Push 2
+DefineFunction "", 2, "a", "b" {
+Push constant4
+Trace
+Push constant5
+Push constant6
+GetVariable
+Add2
+Push constant7
+Add2
+Push constant8
+GetVariable
+Add2
+Trace
+}
+CallFunction
+Pop
+Push 0
+Push constant9
+CallFunction
+Push 0
+Push constant9
+CallFunction
+Add2
+Trace
