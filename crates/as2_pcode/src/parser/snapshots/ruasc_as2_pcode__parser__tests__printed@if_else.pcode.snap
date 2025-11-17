@@ -1,0 +1,153 @@
+---
+source: crates/as2_pcode/src/parser/tests.rs
+expression: "parsed.unwrap_or_else(|_| Actions::empty())"
+input_file: samples/as2_pcode/if_else.pcode
+---
+ConstantPool "condition", "x", "y", "doSomething", "positive", "negative", "zero", "undefined", "single", "both positive", "x positive, y negative", "x positive, y zero", "otherCondition", "doSomethingElse", "doFinal", "statement1", "statement2", "ambiguous else"
+Push constant0
+Push true
+DefineLocal
+Push constant1
+Push 1
+DefineLocal
+Push constant2
+Push -1
+DefineLocal
+Push constant0
+GetVariable
+Not
+If loc0111
+Push 0
+Push constant3
+CallFunction
+Pop
+loc0111: Push constant1
+GetVariable
+Push 0
+Greater
+Not
+If loc0135
+Push constant4
+Trace
+Jump loc013b
+loc0135: Push constant5
+Trace
+loc013b: Push constant1
+GetVariable
+Push 0
+Less2
+Not
+If loc015f
+Push constant5
+Trace
+Jump loc01ad
+loc015f: Push constant1
+GetVariable
+Push 0
+Greater
+Not
+If loc0183
+Push constant4
+Trace
+Jump loc01ad
+loc0183: Push constant1
+GetVariable
+Push 0
+Equals2
+Not
+If loc01a7
+Push constant6
+Trace
+Jump loc01ad
+loc01a7: Push constant7
+Trace
+loc01ad: Push constant0
+GetVariable
+Not
+If loc01b9
+loc01b9: Push constant0
+GetVariable
+Not
+If loc01ca
+Jump loc01ca
+loc01ca: Push constant0
+GetVariable
+Not
+If loc01e1
+Push constant8
+Trace
+Jump loc01e1
+loc01e1: Push constant1
+GetVariable
+Push 0
+Greater
+Not
+If loc0248
+Push constant2
+GetVariable
+Push 0
+Greater
+Not
+If loc021e
+Push constant9
+Trace
+Jump loc0248
+loc021e: Push constant2
+GetVariable
+Push 0
+Less2
+Not
+If loc0242
+Push constant10
+Trace
+Jump loc0248
+loc0242: Push constant11
+Trace
+loc0248: Push constant0
+GetVariable
+Not
+If loc026c
+Push 0
+Push constant3
+CallFunction
+Pop
+Jump loc02a3
+loc026c: Push constant12
+GetVariable
+Not
+If loc0290
+Push 0
+Push constant13
+CallFunction
+Pop
+Jump loc02a3
+loc0290: Push 0
+Push constant14
+CallFunction
+Pop
+loc02a3: Push constant0
+GetVariable
+Not
+If loc02c2
+Push 0
+Push constant15
+CallFunction
+Pop
+loc02c2: Push 0
+Push constant16
+CallFunction
+Pop
+Push constant1
+GetVariable
+Not
+If loc02fe
+Push constant2
+GetVariable
+Not
+If loc02f8
+Push constant2
+Trace
+Jump loc02fe
+loc02f8: Push constant17
+Trace
+loc02fe:

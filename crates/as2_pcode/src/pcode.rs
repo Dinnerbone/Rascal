@@ -46,6 +46,12 @@ impl std::fmt::Display for Actions {
             }
             writeln!(f, "{}", action)?;
         }
+        if let Some(labels) = labels_per_pos.get(&self.actions.len()) {
+            for label in labels {
+                write!(f, "{}: ", label)?;
+            }
+            writeln!(f)?;
+        }
         Ok(())
     }
 }
@@ -60,6 +66,7 @@ pub enum Action {
     BitRShift,
     BitURShift,
     BitXor,
+    CallFunction,
     CallMethod,
     ConstantPool(Vec<String>),
     Decrement,
@@ -104,6 +111,7 @@ impl std::fmt::Display for Action {
             Action::BitRShift => write!(f, "BitRShift"),
             Action::BitURShift => write!(f, "BitURShift"),
             Action::BitXor => write!(f, "BitXor"),
+            Action::CallFunction => write!(f, "CallFunction"),
             Action::CallMethod => write!(f, "CallMethod"),
             Action::ConstantPool(values) => {
                 write!(f, "ConstantPool ")?;

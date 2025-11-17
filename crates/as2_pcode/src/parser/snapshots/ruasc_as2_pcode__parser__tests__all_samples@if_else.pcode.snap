@@ -1,0 +1,245 @@
+---
+source: crates/as2_pcode/src/parser/tests.rs
+expression: parsed
+input_file: samples/as2_pcode/if_else.pcode
+---
+Ok:
+  actions:
+    - ConstantPool:
+        - condition
+        - x
+        - y
+        - doSomething
+        - positive
+        - negative
+        - zero
+        - undefined
+        - single
+        - both positive
+        - "x positive, y negative"
+        - "x positive, y zero"
+        - otherCondition
+        - doSomethingElse
+        - doFinal
+        - statement1
+        - statement2
+        - ambiguous else
+    - Push:
+        - Constant: 0
+    - Push:
+        - "True"
+    - DefineLocal
+    - Push:
+        - Constant: 1
+    - Push:
+        - Integer: 1
+    - DefineLocal
+    - Push:
+        - Constant: 2
+    - Push:
+        - Integer: -1
+    - DefineLocal
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Not
+    - If: loc0111
+    - Push:
+        - Integer: 0
+    - Push:
+        - Constant: 3
+    - CallFunction
+    - Pop
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Push:
+        - Integer: 0
+    - Greater
+    - Not
+    - If: loc0135
+    - Push:
+        - Constant: 4
+    - Trace
+    - Jump: loc013b
+    - Push:
+        - Constant: 5
+    - Trace
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Push:
+        - Integer: 0
+    - Less2
+    - Not
+    - If: loc015f
+    - Push:
+        - Constant: 5
+    - Trace
+    - Jump: loc01ad
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Push:
+        - Integer: 0
+    - Greater
+    - Not
+    - If: loc0183
+    - Push:
+        - Constant: 4
+    - Trace
+    - Jump: loc01ad
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Push:
+        - Integer: 0
+    - Equals2
+    - Not
+    - If: loc01a7
+    - Push:
+        - Constant: 6
+    - Trace
+    - Jump: loc01ad
+    - Push:
+        - Constant: 7
+    - Trace
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Not
+    - If: loc01b9
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Not
+    - If: loc01ca
+    - Jump: loc01ca
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Not
+    - If: loc01e1
+    - Push:
+        - Constant: 8
+    - Trace
+    - Jump: loc01e1
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Push:
+        - Integer: 0
+    - Greater
+    - Not
+    - If: loc0248
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Push:
+        - Integer: 0
+    - Greater
+    - Not
+    - If: loc021e
+    - Push:
+        - Constant: 9
+    - Trace
+    - Jump: loc0248
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Push:
+        - Integer: 0
+    - Less2
+    - Not
+    - If: loc0242
+    - Push:
+        - Constant: 10
+    - Trace
+    - Jump: loc0248
+    - Push:
+        - Constant: 11
+    - Trace
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Not
+    - If: loc026c
+    - Push:
+        - Integer: 0
+    - Push:
+        - Constant: 3
+    - CallFunction
+    - Pop
+    - Jump: loc02a3
+    - Push:
+        - Constant: 12
+    - GetVariable
+    - Not
+    - If: loc0290
+    - Push:
+        - Integer: 0
+    - Push:
+        - Constant: 13
+    - CallFunction
+    - Pop
+    - Jump: loc02a3
+    - Push:
+        - Integer: 0
+    - Push:
+        - Constant: 14
+    - CallFunction
+    - Pop
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Not
+    - If: loc02c2
+    - Push:
+        - Integer: 0
+    - Push:
+        - Constant: 15
+    - CallFunction
+    - Pop
+    - Push:
+        - Integer: 0
+    - Push:
+        - Constant: 16
+    - CallFunction
+    - Pop
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Not
+    - If: loc02fe
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Not
+    - If: loc02f8
+    - Push:
+        - Constant: 2
+    - Trace
+    - Jump: loc02fe
+    - Push:
+        - Constant: 17
+    - Trace
+  label_positions:
+    loc0111: 18
+    loc0135: 27
+    loc013b: 29
+    loc015f: 38
+    loc0183: 47
+    loc01a7: 56
+    loc01ad: 58
+    loc01b9: 62
+    loc01ca: 67
+    loc01e1: 74
+    loc021e: 89
+    loc0242: 98
+    loc0248: 100
+    loc026c: 109
+    loc0290: 118
+    loc02a3: 122
+    loc02c2: 130
+    loc02f8: 145
+    loc02fe: 147

@@ -1,0 +1,2424 @@
+---
+source: crates/as2_pcode/src/lexer/tests.rs
+expression: tokens
+input_file: samples/as2_pcode/if_else.pcode
+---
+- kind:
+    ActionName: ConstantPool
+  span:
+    start: 0
+    end: 12
+  raw: ConstantPool
+- kind: String
+  span:
+    start: 13
+    end: 24
+  raw: condition
+- kind: Comma
+  span:
+    start: 24
+    end: 25
+  raw: ","
+- kind: String
+  span:
+    start: 26
+    end: 29
+  raw: x
+- kind: Comma
+  span:
+    start: 29
+    end: 30
+  raw: ","
+- kind: String
+  span:
+    start: 31
+    end: 34
+  raw: y
+- kind: Comma
+  span:
+    start: 34
+    end: 35
+  raw: ","
+- kind: String
+  span:
+    start: 36
+    end: 49
+  raw: doSomething
+- kind: Comma
+  span:
+    start: 49
+    end: 50
+  raw: ","
+- kind: String
+  span:
+    start: 51
+    end: 61
+  raw: positive
+- kind: Comma
+  span:
+    start: 61
+    end: 62
+  raw: ","
+- kind: String
+  span:
+    start: 63
+    end: 73
+  raw: negative
+- kind: Comma
+  span:
+    start: 73
+    end: 74
+  raw: ","
+- kind: String
+  span:
+    start: 75
+    end: 81
+  raw: zero
+- kind: Comma
+  span:
+    start: 81
+    end: 82
+  raw: ","
+- kind: String
+  span:
+    start: 83
+    end: 94
+  raw: undefined
+- kind: Comma
+  span:
+    start: 94
+    end: 95
+  raw: ","
+- kind: String
+  span:
+    start: 96
+    end: 104
+  raw: single
+- kind: Comma
+  span:
+    start: 104
+    end: 105
+  raw: ","
+- kind: String
+  span:
+    start: 106
+    end: 121
+  raw: both positive
+- kind: Comma
+  span:
+    start: 121
+    end: 122
+  raw: ","
+- kind: String
+  span:
+    start: 123
+    end: 147
+  raw: "x positive, y negative"
+- kind: Comma
+  span:
+    start: 147
+    end: 148
+  raw: ","
+- kind: String
+  span:
+    start: 149
+    end: 169
+  raw: "x positive, y zero"
+- kind: Comma
+  span:
+    start: 169
+    end: 170
+  raw: ","
+- kind: String
+  span:
+    start: 171
+    end: 187
+  raw: otherCondition
+- kind: Comma
+  span:
+    start: 187
+    end: 188
+  raw: ","
+- kind: String
+  span:
+    start: 189
+    end: 206
+  raw: doSomethingElse
+- kind: Comma
+  span:
+    start: 206
+    end: 207
+  raw: ","
+- kind: String
+  span:
+    start: 208
+    end: 217
+  raw: doFinal
+- kind: Comma
+  span:
+    start: 217
+    end: 218
+  raw: ","
+- kind: String
+  span:
+    start: 219
+    end: 231
+  raw: statement1
+- kind: Comma
+  span:
+    start: 231
+    end: 232
+  raw: ","
+- kind: String
+  span:
+    start: 233
+    end: 245
+  raw: statement2
+- kind: Comma
+  span:
+    start: 245
+    end: 246
+  raw: ","
+- kind: String
+  span:
+    start: 247
+    end: 263
+  raw: ambiguous else
+- kind: Newline
+  span:
+    start: 263
+    end: 264
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 264
+    end: 268
+  raw: Push
+- kind:
+    Constant: 0
+  span:
+    start: 269
+    end: 278
+  raw: constant0
+- kind: Newline
+  span:
+    start: 278
+    end: 279
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 279
+    end: 283
+  raw: Push
+- kind: "True"
+  span:
+    start: 284
+    end: 288
+  raw: "true"
+- kind: Newline
+  span:
+    start: 288
+    end: 289
+  raw: "\n"
+- kind:
+    ActionName: DefineLocal
+  span:
+    start: 289
+    end: 300
+  raw: DefineLocal
+- kind: Newline
+  span:
+    start: 300
+    end: 301
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 301
+    end: 305
+  raw: Push
+- kind:
+    Constant: 1
+  span:
+    start: 306
+    end: 315
+  raw: constant1
+- kind: Newline
+  span:
+    start: 315
+    end: 316
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 316
+    end: 320
+  raw: Push
+- kind: Integer
+  span:
+    start: 321
+    end: 322
+  raw: "1"
+- kind: Newline
+  span:
+    start: 322
+    end: 323
+  raw: "\n"
+- kind:
+    ActionName: DefineLocal
+  span:
+    start: 323
+    end: 334
+  raw: DefineLocal
+- kind: Newline
+  span:
+    start: 334
+    end: 335
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 335
+    end: 339
+  raw: Push
+- kind:
+    Constant: 2
+  span:
+    start: 340
+    end: 349
+  raw: constant2
+- kind: Newline
+  span:
+    start: 349
+    end: 350
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 350
+    end: 354
+  raw: Push
+- kind: Integer
+  span:
+    start: 355
+    end: 357
+  raw: "-1"
+- kind: Newline
+  span:
+    start: 357
+    end: 358
+  raw: "\n"
+- kind:
+    ActionName: DefineLocal
+  span:
+    start: 358
+    end: 369
+  raw: DefineLocal
+- kind: Newline
+  span:
+    start: 369
+    end: 370
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 370
+    end: 374
+  raw: Push
+- kind:
+    Constant: 0
+  span:
+    start: 375
+    end: 384
+  raw: constant0
+- kind: Newline
+  span:
+    start: 384
+    end: 385
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 385
+    end: 396
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 396
+    end: 397
+  raw: "\n"
+- kind:
+    ActionName: Not
+  span:
+    start: 397
+    end: 400
+  raw: Not
+- kind: Newline
+  span:
+    start: 400
+    end: 401
+  raw: "\n"
+- kind:
+    ActionName: If
+  span:
+    start: 401
+    end: 403
+  raw: If
+- kind: Identifier
+  span:
+    start: 404
+    end: 411
+  raw: loc0111
+- kind: Newline
+  span:
+    start: 411
+    end: 412
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 412
+    end: 416
+  raw: Push
+- kind: Integer
+  span:
+    start: 417
+    end: 418
+  raw: "0"
+- kind: Newline
+  span:
+    start: 418
+    end: 419
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 419
+    end: 423
+  raw: Push
+- kind:
+    Constant: 3
+  span:
+    start: 424
+    end: 433
+  raw: constant3
+- kind: Newline
+  span:
+    start: 433
+    end: 434
+  raw: "\n"
+- kind:
+    ActionName: CallFunction
+  span:
+    start: 434
+    end: 446
+  raw: CallFunction
+- kind: Newline
+  span:
+    start: 446
+    end: 447
+  raw: "\n"
+- kind:
+    ActionName: Pop
+  span:
+    start: 447
+    end: 450
+  raw: Pop
+- kind: Newline
+  span:
+    start: 450
+    end: 451
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 451
+    end: 458
+  raw: loc0111
+- kind: Colon
+  span:
+    start: 458
+    end: 459
+  raw: ":"
+- kind:
+    ActionName: Push
+  span:
+    start: 459
+    end: 463
+  raw: Push
+- kind:
+    Constant: 1
+  span:
+    start: 464
+    end: 473
+  raw: constant1
+- kind: Newline
+  span:
+    start: 473
+    end: 474
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 474
+    end: 485
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 485
+    end: 486
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 486
+    end: 490
+  raw: Push
+- kind: Integer
+  span:
+    start: 491
+    end: 492
+  raw: "0"
+- kind: Newline
+  span:
+    start: 492
+    end: 493
+  raw: "\n"
+- kind:
+    ActionName: Greater
+  span:
+    start: 493
+    end: 500
+  raw: Greater
+- kind: Newline
+  span:
+    start: 500
+    end: 501
+  raw: "\n"
+- kind:
+    ActionName: Not
+  span:
+    start: 501
+    end: 504
+  raw: Not
+- kind: Newline
+  span:
+    start: 504
+    end: 505
+  raw: "\n"
+- kind:
+    ActionName: If
+  span:
+    start: 505
+    end: 507
+  raw: If
+- kind: Identifier
+  span:
+    start: 508
+    end: 515
+  raw: loc0135
+- kind: Newline
+  span:
+    start: 515
+    end: 516
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 516
+    end: 520
+  raw: Push
+- kind:
+    Constant: 4
+  span:
+    start: 521
+    end: 530
+  raw: constant4
+- kind: Newline
+  span:
+    start: 530
+    end: 531
+  raw: "\n"
+- kind:
+    ActionName: Trace
+  span:
+    start: 531
+    end: 536
+  raw: Trace
+- kind: Newline
+  span:
+    start: 536
+    end: 537
+  raw: "\n"
+- kind:
+    ActionName: Jump
+  span:
+    start: 537
+    end: 541
+  raw: Jump
+- kind: Identifier
+  span:
+    start: 542
+    end: 549
+  raw: loc013b
+- kind: Newline
+  span:
+    start: 549
+    end: 550
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 550
+    end: 557
+  raw: loc0135
+- kind: Colon
+  span:
+    start: 557
+    end: 558
+  raw: ":"
+- kind:
+    ActionName: Push
+  span:
+    start: 558
+    end: 562
+  raw: Push
+- kind:
+    Constant: 5
+  span:
+    start: 563
+    end: 572
+  raw: constant5
+- kind: Newline
+  span:
+    start: 572
+    end: 573
+  raw: "\n"
+- kind:
+    ActionName: Trace
+  span:
+    start: 573
+    end: 578
+  raw: Trace
+- kind: Newline
+  span:
+    start: 578
+    end: 579
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 579
+    end: 586
+  raw: loc013b
+- kind: Colon
+  span:
+    start: 586
+    end: 587
+  raw: ":"
+- kind:
+    ActionName: Push
+  span:
+    start: 587
+    end: 591
+  raw: Push
+- kind:
+    Constant: 1
+  span:
+    start: 592
+    end: 601
+  raw: constant1
+- kind: Newline
+  span:
+    start: 601
+    end: 602
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 602
+    end: 613
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 613
+    end: 614
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 614
+    end: 618
+  raw: Push
+- kind: Integer
+  span:
+    start: 619
+    end: 620
+  raw: "0"
+- kind: Newline
+  span:
+    start: 620
+    end: 621
+  raw: "\n"
+- kind:
+    ActionName: Less2
+  span:
+    start: 621
+    end: 626
+  raw: Less2
+- kind: Newline
+  span:
+    start: 626
+    end: 627
+  raw: "\n"
+- kind:
+    ActionName: Not
+  span:
+    start: 627
+    end: 630
+  raw: Not
+- kind: Newline
+  span:
+    start: 630
+    end: 631
+  raw: "\n"
+- kind:
+    ActionName: If
+  span:
+    start: 631
+    end: 633
+  raw: If
+- kind: Identifier
+  span:
+    start: 634
+    end: 641
+  raw: loc015f
+- kind: Newline
+  span:
+    start: 641
+    end: 642
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 642
+    end: 646
+  raw: Push
+- kind:
+    Constant: 5
+  span:
+    start: 647
+    end: 656
+  raw: constant5
+- kind: Newline
+  span:
+    start: 656
+    end: 657
+  raw: "\n"
+- kind:
+    ActionName: Trace
+  span:
+    start: 657
+    end: 662
+  raw: Trace
+- kind: Newline
+  span:
+    start: 662
+    end: 663
+  raw: "\n"
+- kind:
+    ActionName: Jump
+  span:
+    start: 663
+    end: 667
+  raw: Jump
+- kind: Identifier
+  span:
+    start: 668
+    end: 675
+  raw: loc01ad
+- kind: Newline
+  span:
+    start: 675
+    end: 676
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 676
+    end: 683
+  raw: loc015f
+- kind: Colon
+  span:
+    start: 683
+    end: 684
+  raw: ":"
+- kind:
+    ActionName: Push
+  span:
+    start: 684
+    end: 688
+  raw: Push
+- kind:
+    Constant: 1
+  span:
+    start: 689
+    end: 698
+  raw: constant1
+- kind: Newline
+  span:
+    start: 698
+    end: 699
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 699
+    end: 710
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 710
+    end: 711
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 711
+    end: 715
+  raw: Push
+- kind: Integer
+  span:
+    start: 716
+    end: 717
+  raw: "0"
+- kind: Newline
+  span:
+    start: 717
+    end: 718
+  raw: "\n"
+- kind:
+    ActionName: Greater
+  span:
+    start: 718
+    end: 725
+  raw: Greater
+- kind: Newline
+  span:
+    start: 725
+    end: 726
+  raw: "\n"
+- kind:
+    ActionName: Not
+  span:
+    start: 726
+    end: 729
+  raw: Not
+- kind: Newline
+  span:
+    start: 729
+    end: 730
+  raw: "\n"
+- kind:
+    ActionName: If
+  span:
+    start: 730
+    end: 732
+  raw: If
+- kind: Identifier
+  span:
+    start: 733
+    end: 740
+  raw: loc0183
+- kind: Newline
+  span:
+    start: 740
+    end: 741
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 741
+    end: 745
+  raw: Push
+- kind:
+    Constant: 4
+  span:
+    start: 746
+    end: 755
+  raw: constant4
+- kind: Newline
+  span:
+    start: 755
+    end: 756
+  raw: "\n"
+- kind:
+    ActionName: Trace
+  span:
+    start: 756
+    end: 761
+  raw: Trace
+- kind: Newline
+  span:
+    start: 761
+    end: 762
+  raw: "\n"
+- kind:
+    ActionName: Jump
+  span:
+    start: 762
+    end: 766
+  raw: Jump
+- kind: Identifier
+  span:
+    start: 767
+    end: 774
+  raw: loc01ad
+- kind: Newline
+  span:
+    start: 774
+    end: 775
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 775
+    end: 782
+  raw: loc0183
+- kind: Colon
+  span:
+    start: 782
+    end: 783
+  raw: ":"
+- kind:
+    ActionName: Push
+  span:
+    start: 783
+    end: 787
+  raw: Push
+- kind:
+    Constant: 1
+  span:
+    start: 788
+    end: 797
+  raw: constant1
+- kind: Newline
+  span:
+    start: 797
+    end: 798
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 798
+    end: 809
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 809
+    end: 810
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 810
+    end: 814
+  raw: Push
+- kind: Integer
+  span:
+    start: 815
+    end: 816
+  raw: "0"
+- kind: Newline
+  span:
+    start: 816
+    end: 817
+  raw: "\n"
+- kind:
+    ActionName: Equals2
+  span:
+    start: 817
+    end: 824
+  raw: Equals2
+- kind: Newline
+  span:
+    start: 824
+    end: 825
+  raw: "\n"
+- kind:
+    ActionName: Not
+  span:
+    start: 825
+    end: 828
+  raw: Not
+- kind: Newline
+  span:
+    start: 828
+    end: 829
+  raw: "\n"
+- kind:
+    ActionName: If
+  span:
+    start: 829
+    end: 831
+  raw: If
+- kind: Identifier
+  span:
+    start: 832
+    end: 839
+  raw: loc01a7
+- kind: Newline
+  span:
+    start: 839
+    end: 840
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 840
+    end: 844
+  raw: Push
+- kind:
+    Constant: 6
+  span:
+    start: 845
+    end: 854
+  raw: constant6
+- kind: Newline
+  span:
+    start: 854
+    end: 855
+  raw: "\n"
+- kind:
+    ActionName: Trace
+  span:
+    start: 855
+    end: 860
+  raw: Trace
+- kind: Newline
+  span:
+    start: 860
+    end: 861
+  raw: "\n"
+- kind:
+    ActionName: Jump
+  span:
+    start: 861
+    end: 865
+  raw: Jump
+- kind: Identifier
+  span:
+    start: 866
+    end: 873
+  raw: loc01ad
+- kind: Newline
+  span:
+    start: 873
+    end: 874
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 874
+    end: 881
+  raw: loc01a7
+- kind: Colon
+  span:
+    start: 881
+    end: 882
+  raw: ":"
+- kind:
+    ActionName: Push
+  span:
+    start: 882
+    end: 886
+  raw: Push
+- kind:
+    Constant: 7
+  span:
+    start: 887
+    end: 896
+  raw: constant7
+- kind: Newline
+  span:
+    start: 896
+    end: 897
+  raw: "\n"
+- kind:
+    ActionName: Trace
+  span:
+    start: 897
+    end: 902
+  raw: Trace
+- kind: Newline
+  span:
+    start: 902
+    end: 903
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 903
+    end: 910
+  raw: loc01ad
+- kind: Colon
+  span:
+    start: 910
+    end: 911
+  raw: ":"
+- kind:
+    ActionName: Push
+  span:
+    start: 911
+    end: 915
+  raw: Push
+- kind:
+    Constant: 0
+  span:
+    start: 916
+    end: 925
+  raw: constant0
+- kind: Newline
+  span:
+    start: 925
+    end: 926
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 926
+    end: 937
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 937
+    end: 938
+  raw: "\n"
+- kind:
+    ActionName: Not
+  span:
+    start: 938
+    end: 941
+  raw: Not
+- kind: Newline
+  span:
+    start: 941
+    end: 942
+  raw: "\n"
+- kind:
+    ActionName: If
+  span:
+    start: 942
+    end: 944
+  raw: If
+- kind: Identifier
+  span:
+    start: 945
+    end: 952
+  raw: loc01b9
+- kind: Newline
+  span:
+    start: 952
+    end: 953
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 953
+    end: 960
+  raw: loc01b9
+- kind: Colon
+  span:
+    start: 960
+    end: 961
+  raw: ":"
+- kind:
+    ActionName: Push
+  span:
+    start: 961
+    end: 965
+  raw: Push
+- kind:
+    Constant: 0
+  span:
+    start: 966
+    end: 975
+  raw: constant0
+- kind: Newline
+  span:
+    start: 975
+    end: 976
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 976
+    end: 987
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 987
+    end: 988
+  raw: "\n"
+- kind:
+    ActionName: Not
+  span:
+    start: 988
+    end: 991
+  raw: Not
+- kind: Newline
+  span:
+    start: 991
+    end: 992
+  raw: "\n"
+- kind:
+    ActionName: If
+  span:
+    start: 992
+    end: 994
+  raw: If
+- kind: Identifier
+  span:
+    start: 995
+    end: 1002
+  raw: loc01ca
+- kind: Newline
+  span:
+    start: 1002
+    end: 1003
+  raw: "\n"
+- kind:
+    ActionName: Jump
+  span:
+    start: 1003
+    end: 1007
+  raw: Jump
+- kind: Identifier
+  span:
+    start: 1008
+    end: 1015
+  raw: loc01ca
+- kind: Newline
+  span:
+    start: 1015
+    end: 1016
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1016
+    end: 1023
+  raw: loc01ca
+- kind: Colon
+  span:
+    start: 1023
+    end: 1024
+  raw: ":"
+- kind:
+    ActionName: Push
+  span:
+    start: 1024
+    end: 1028
+  raw: Push
+- kind:
+    Constant: 0
+  span:
+    start: 1029
+    end: 1038
+  raw: constant0
+- kind: Newline
+  span:
+    start: 1038
+    end: 1039
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 1039
+    end: 1050
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 1050
+    end: 1051
+  raw: "\n"
+- kind:
+    ActionName: Not
+  span:
+    start: 1051
+    end: 1054
+  raw: Not
+- kind: Newline
+  span:
+    start: 1054
+    end: 1055
+  raw: "\n"
+- kind:
+    ActionName: If
+  span:
+    start: 1055
+    end: 1057
+  raw: If
+- kind: Identifier
+  span:
+    start: 1058
+    end: 1065
+  raw: loc01e1
+- kind: Newline
+  span:
+    start: 1065
+    end: 1066
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1066
+    end: 1070
+  raw: Push
+- kind:
+    Constant: 8
+  span:
+    start: 1071
+    end: 1080
+  raw: constant8
+- kind: Newline
+  span:
+    start: 1080
+    end: 1081
+  raw: "\n"
+- kind:
+    ActionName: Trace
+  span:
+    start: 1081
+    end: 1086
+  raw: Trace
+- kind: Newline
+  span:
+    start: 1086
+    end: 1087
+  raw: "\n"
+- kind:
+    ActionName: Jump
+  span:
+    start: 1087
+    end: 1091
+  raw: Jump
+- kind: Identifier
+  span:
+    start: 1092
+    end: 1099
+  raw: loc01e1
+- kind: Newline
+  span:
+    start: 1099
+    end: 1100
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1100
+    end: 1107
+  raw: loc01e1
+- kind: Colon
+  span:
+    start: 1107
+    end: 1108
+  raw: ":"
+- kind:
+    ActionName: Push
+  span:
+    start: 1108
+    end: 1112
+  raw: Push
+- kind:
+    Constant: 1
+  span:
+    start: 1113
+    end: 1122
+  raw: constant1
+- kind: Newline
+  span:
+    start: 1122
+    end: 1123
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 1123
+    end: 1134
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 1134
+    end: 1135
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1135
+    end: 1139
+  raw: Push
+- kind: Integer
+  span:
+    start: 1140
+    end: 1141
+  raw: "0"
+- kind: Newline
+  span:
+    start: 1141
+    end: 1142
+  raw: "\n"
+- kind:
+    ActionName: Greater
+  span:
+    start: 1142
+    end: 1149
+  raw: Greater
+- kind: Newline
+  span:
+    start: 1149
+    end: 1150
+  raw: "\n"
+- kind:
+    ActionName: Not
+  span:
+    start: 1150
+    end: 1153
+  raw: Not
+- kind: Newline
+  span:
+    start: 1153
+    end: 1154
+  raw: "\n"
+- kind:
+    ActionName: If
+  span:
+    start: 1154
+    end: 1156
+  raw: If
+- kind: Identifier
+  span:
+    start: 1157
+    end: 1164
+  raw: loc0248
+- kind: Newline
+  span:
+    start: 1164
+    end: 1165
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1165
+    end: 1169
+  raw: Push
+- kind:
+    Constant: 2
+  span:
+    start: 1170
+    end: 1179
+  raw: constant2
+- kind: Newline
+  span:
+    start: 1179
+    end: 1180
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 1180
+    end: 1191
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 1191
+    end: 1192
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1192
+    end: 1196
+  raw: Push
+- kind: Integer
+  span:
+    start: 1197
+    end: 1198
+  raw: "0"
+- kind: Newline
+  span:
+    start: 1198
+    end: 1199
+  raw: "\n"
+- kind:
+    ActionName: Greater
+  span:
+    start: 1199
+    end: 1206
+  raw: Greater
+- kind: Newline
+  span:
+    start: 1206
+    end: 1207
+  raw: "\n"
+- kind:
+    ActionName: Not
+  span:
+    start: 1207
+    end: 1210
+  raw: Not
+- kind: Newline
+  span:
+    start: 1210
+    end: 1211
+  raw: "\n"
+- kind:
+    ActionName: If
+  span:
+    start: 1211
+    end: 1213
+  raw: If
+- kind: Identifier
+  span:
+    start: 1214
+    end: 1221
+  raw: loc021e
+- kind: Newline
+  span:
+    start: 1221
+    end: 1222
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1222
+    end: 1226
+  raw: Push
+- kind:
+    Constant: 9
+  span:
+    start: 1227
+    end: 1236
+  raw: constant9
+- kind: Newline
+  span:
+    start: 1236
+    end: 1237
+  raw: "\n"
+- kind:
+    ActionName: Trace
+  span:
+    start: 1237
+    end: 1242
+  raw: Trace
+- kind: Newline
+  span:
+    start: 1242
+    end: 1243
+  raw: "\n"
+- kind:
+    ActionName: Jump
+  span:
+    start: 1243
+    end: 1247
+  raw: Jump
+- kind: Identifier
+  span:
+    start: 1248
+    end: 1255
+  raw: loc0248
+- kind: Newline
+  span:
+    start: 1255
+    end: 1256
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1256
+    end: 1263
+  raw: loc021e
+- kind: Colon
+  span:
+    start: 1263
+    end: 1264
+  raw: ":"
+- kind:
+    ActionName: Push
+  span:
+    start: 1264
+    end: 1268
+  raw: Push
+- kind:
+    Constant: 2
+  span:
+    start: 1269
+    end: 1278
+  raw: constant2
+- kind: Newline
+  span:
+    start: 1278
+    end: 1279
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 1279
+    end: 1290
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 1290
+    end: 1291
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1291
+    end: 1295
+  raw: Push
+- kind: Integer
+  span:
+    start: 1296
+    end: 1297
+  raw: "0"
+- kind: Newline
+  span:
+    start: 1297
+    end: 1298
+  raw: "\n"
+- kind:
+    ActionName: Less2
+  span:
+    start: 1298
+    end: 1303
+  raw: Less2
+- kind: Newline
+  span:
+    start: 1303
+    end: 1304
+  raw: "\n"
+- kind:
+    ActionName: Not
+  span:
+    start: 1304
+    end: 1307
+  raw: Not
+- kind: Newline
+  span:
+    start: 1307
+    end: 1308
+  raw: "\n"
+- kind:
+    ActionName: If
+  span:
+    start: 1308
+    end: 1310
+  raw: If
+- kind: Identifier
+  span:
+    start: 1311
+    end: 1318
+  raw: loc0242
+- kind: Newline
+  span:
+    start: 1318
+    end: 1319
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1319
+    end: 1323
+  raw: Push
+- kind:
+    Constant: 10
+  span:
+    start: 1324
+    end: 1334
+  raw: constant10
+- kind: Newline
+  span:
+    start: 1334
+    end: 1335
+  raw: "\n"
+- kind:
+    ActionName: Trace
+  span:
+    start: 1335
+    end: 1340
+  raw: Trace
+- kind: Newline
+  span:
+    start: 1340
+    end: 1341
+  raw: "\n"
+- kind:
+    ActionName: Jump
+  span:
+    start: 1341
+    end: 1345
+  raw: Jump
+- kind: Identifier
+  span:
+    start: 1346
+    end: 1353
+  raw: loc0248
+- kind: Newline
+  span:
+    start: 1353
+    end: 1354
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1354
+    end: 1361
+  raw: loc0242
+- kind: Colon
+  span:
+    start: 1361
+    end: 1362
+  raw: ":"
+- kind:
+    ActionName: Push
+  span:
+    start: 1362
+    end: 1366
+  raw: Push
+- kind:
+    Constant: 11
+  span:
+    start: 1367
+    end: 1377
+  raw: constant11
+- kind: Newline
+  span:
+    start: 1377
+    end: 1378
+  raw: "\n"
+- kind:
+    ActionName: Trace
+  span:
+    start: 1378
+    end: 1383
+  raw: Trace
+- kind: Newline
+  span:
+    start: 1383
+    end: 1384
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1384
+    end: 1391
+  raw: loc0248
+- kind: Colon
+  span:
+    start: 1391
+    end: 1392
+  raw: ":"
+- kind:
+    ActionName: Push
+  span:
+    start: 1392
+    end: 1396
+  raw: Push
+- kind:
+    Constant: 0
+  span:
+    start: 1397
+    end: 1406
+  raw: constant0
+- kind: Newline
+  span:
+    start: 1406
+    end: 1407
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 1407
+    end: 1418
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 1418
+    end: 1419
+  raw: "\n"
+- kind:
+    ActionName: Not
+  span:
+    start: 1419
+    end: 1422
+  raw: Not
+- kind: Newline
+  span:
+    start: 1422
+    end: 1423
+  raw: "\n"
+- kind:
+    ActionName: If
+  span:
+    start: 1423
+    end: 1425
+  raw: If
+- kind: Identifier
+  span:
+    start: 1426
+    end: 1433
+  raw: loc026c
+- kind: Newline
+  span:
+    start: 1433
+    end: 1434
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1434
+    end: 1438
+  raw: Push
+- kind: Integer
+  span:
+    start: 1439
+    end: 1440
+  raw: "0"
+- kind: Newline
+  span:
+    start: 1440
+    end: 1441
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1441
+    end: 1445
+  raw: Push
+- kind:
+    Constant: 3
+  span:
+    start: 1446
+    end: 1455
+  raw: constant3
+- kind: Newline
+  span:
+    start: 1455
+    end: 1456
+  raw: "\n"
+- kind:
+    ActionName: CallFunction
+  span:
+    start: 1456
+    end: 1468
+  raw: CallFunction
+- kind: Newline
+  span:
+    start: 1468
+    end: 1469
+  raw: "\n"
+- kind:
+    ActionName: Pop
+  span:
+    start: 1469
+    end: 1472
+  raw: Pop
+- kind: Newline
+  span:
+    start: 1472
+    end: 1473
+  raw: "\n"
+- kind:
+    ActionName: Jump
+  span:
+    start: 1473
+    end: 1477
+  raw: Jump
+- kind: Identifier
+  span:
+    start: 1478
+    end: 1485
+  raw: loc02a3
+- kind: Newline
+  span:
+    start: 1485
+    end: 1486
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1486
+    end: 1493
+  raw: loc026c
+- kind: Colon
+  span:
+    start: 1493
+    end: 1494
+  raw: ":"
+- kind:
+    ActionName: Push
+  span:
+    start: 1494
+    end: 1498
+  raw: Push
+- kind:
+    Constant: 12
+  span:
+    start: 1499
+    end: 1509
+  raw: constant12
+- kind: Newline
+  span:
+    start: 1509
+    end: 1510
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 1510
+    end: 1521
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 1521
+    end: 1522
+  raw: "\n"
+- kind:
+    ActionName: Not
+  span:
+    start: 1522
+    end: 1525
+  raw: Not
+- kind: Newline
+  span:
+    start: 1525
+    end: 1526
+  raw: "\n"
+- kind:
+    ActionName: If
+  span:
+    start: 1526
+    end: 1528
+  raw: If
+- kind: Identifier
+  span:
+    start: 1529
+    end: 1536
+  raw: loc0290
+- kind: Newline
+  span:
+    start: 1536
+    end: 1537
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1537
+    end: 1541
+  raw: Push
+- kind: Integer
+  span:
+    start: 1542
+    end: 1543
+  raw: "0"
+- kind: Newline
+  span:
+    start: 1543
+    end: 1544
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1544
+    end: 1548
+  raw: Push
+- kind:
+    Constant: 13
+  span:
+    start: 1549
+    end: 1559
+  raw: constant13
+- kind: Newline
+  span:
+    start: 1559
+    end: 1560
+  raw: "\n"
+- kind:
+    ActionName: CallFunction
+  span:
+    start: 1560
+    end: 1572
+  raw: CallFunction
+- kind: Newline
+  span:
+    start: 1572
+    end: 1573
+  raw: "\n"
+- kind:
+    ActionName: Pop
+  span:
+    start: 1573
+    end: 1576
+  raw: Pop
+- kind: Newline
+  span:
+    start: 1576
+    end: 1577
+  raw: "\n"
+- kind:
+    ActionName: Jump
+  span:
+    start: 1577
+    end: 1581
+  raw: Jump
+- kind: Identifier
+  span:
+    start: 1582
+    end: 1589
+  raw: loc02a3
+- kind: Newline
+  span:
+    start: 1589
+    end: 1590
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1590
+    end: 1597
+  raw: loc0290
+- kind: Colon
+  span:
+    start: 1597
+    end: 1598
+  raw: ":"
+- kind:
+    ActionName: Push
+  span:
+    start: 1598
+    end: 1602
+  raw: Push
+- kind: Integer
+  span:
+    start: 1603
+    end: 1604
+  raw: "0"
+- kind: Newline
+  span:
+    start: 1604
+    end: 1605
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1605
+    end: 1609
+  raw: Push
+- kind:
+    Constant: 14
+  span:
+    start: 1610
+    end: 1620
+  raw: constant14
+- kind: Newline
+  span:
+    start: 1620
+    end: 1621
+  raw: "\n"
+- kind:
+    ActionName: CallFunction
+  span:
+    start: 1621
+    end: 1633
+  raw: CallFunction
+- kind: Newline
+  span:
+    start: 1633
+    end: 1634
+  raw: "\n"
+- kind:
+    ActionName: Pop
+  span:
+    start: 1634
+    end: 1637
+  raw: Pop
+- kind: Newline
+  span:
+    start: 1637
+    end: 1638
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1638
+    end: 1645
+  raw: loc02a3
+- kind: Colon
+  span:
+    start: 1645
+    end: 1646
+  raw: ":"
+- kind:
+    ActionName: Push
+  span:
+    start: 1646
+    end: 1650
+  raw: Push
+- kind:
+    Constant: 0
+  span:
+    start: 1651
+    end: 1660
+  raw: constant0
+- kind: Newline
+  span:
+    start: 1660
+    end: 1661
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 1661
+    end: 1672
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 1672
+    end: 1673
+  raw: "\n"
+- kind:
+    ActionName: Not
+  span:
+    start: 1673
+    end: 1676
+  raw: Not
+- kind: Newline
+  span:
+    start: 1676
+    end: 1677
+  raw: "\n"
+- kind:
+    ActionName: If
+  span:
+    start: 1677
+    end: 1679
+  raw: If
+- kind: Identifier
+  span:
+    start: 1680
+    end: 1687
+  raw: loc02c2
+- kind: Newline
+  span:
+    start: 1687
+    end: 1688
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1688
+    end: 1692
+  raw: Push
+- kind: Integer
+  span:
+    start: 1693
+    end: 1694
+  raw: "0"
+- kind: Newline
+  span:
+    start: 1694
+    end: 1695
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1695
+    end: 1699
+  raw: Push
+- kind:
+    Constant: 15
+  span:
+    start: 1700
+    end: 1710
+  raw: constant15
+- kind: Newline
+  span:
+    start: 1710
+    end: 1711
+  raw: "\n"
+- kind:
+    ActionName: CallFunction
+  span:
+    start: 1711
+    end: 1723
+  raw: CallFunction
+- kind: Newline
+  span:
+    start: 1723
+    end: 1724
+  raw: "\n"
+- kind:
+    ActionName: Pop
+  span:
+    start: 1724
+    end: 1727
+  raw: Pop
+- kind: Newline
+  span:
+    start: 1727
+    end: 1728
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1728
+    end: 1735
+  raw: loc02c2
+- kind: Colon
+  span:
+    start: 1735
+    end: 1736
+  raw: ":"
+- kind:
+    ActionName: Push
+  span:
+    start: 1736
+    end: 1740
+  raw: Push
+- kind: Integer
+  span:
+    start: 1741
+    end: 1742
+  raw: "0"
+- kind: Newline
+  span:
+    start: 1742
+    end: 1743
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1743
+    end: 1747
+  raw: Push
+- kind:
+    Constant: 16
+  span:
+    start: 1748
+    end: 1758
+  raw: constant16
+- kind: Newline
+  span:
+    start: 1758
+    end: 1759
+  raw: "\n"
+- kind:
+    ActionName: CallFunction
+  span:
+    start: 1759
+    end: 1771
+  raw: CallFunction
+- kind: Newline
+  span:
+    start: 1771
+    end: 1772
+  raw: "\n"
+- kind:
+    ActionName: Pop
+  span:
+    start: 1772
+    end: 1775
+  raw: Pop
+- kind: Newline
+  span:
+    start: 1775
+    end: 1776
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1776
+    end: 1780
+  raw: Push
+- kind:
+    Constant: 1
+  span:
+    start: 1781
+    end: 1790
+  raw: constant1
+- kind: Newline
+  span:
+    start: 1790
+    end: 1791
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 1791
+    end: 1802
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 1802
+    end: 1803
+  raw: "\n"
+- kind:
+    ActionName: Not
+  span:
+    start: 1803
+    end: 1806
+  raw: Not
+- kind: Newline
+  span:
+    start: 1806
+    end: 1807
+  raw: "\n"
+- kind:
+    ActionName: If
+  span:
+    start: 1807
+    end: 1809
+  raw: If
+- kind: Identifier
+  span:
+    start: 1810
+    end: 1817
+  raw: loc02fe
+- kind: Newline
+  span:
+    start: 1817
+    end: 1818
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1818
+    end: 1822
+  raw: Push
+- kind:
+    Constant: 2
+  span:
+    start: 1823
+    end: 1832
+  raw: constant2
+- kind: Newline
+  span:
+    start: 1832
+    end: 1833
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 1833
+    end: 1844
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 1844
+    end: 1845
+  raw: "\n"
+- kind:
+    ActionName: Not
+  span:
+    start: 1845
+    end: 1848
+  raw: Not
+- kind: Newline
+  span:
+    start: 1848
+    end: 1849
+  raw: "\n"
+- kind:
+    ActionName: If
+  span:
+    start: 1849
+    end: 1851
+  raw: If
+- kind: Identifier
+  span:
+    start: 1852
+    end: 1859
+  raw: loc02f8
+- kind: Newline
+  span:
+    start: 1859
+    end: 1860
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1860
+    end: 1864
+  raw: Push
+- kind:
+    Constant: 2
+  span:
+    start: 1865
+    end: 1874
+  raw: constant2
+- kind: Newline
+  span:
+    start: 1874
+    end: 1875
+  raw: "\n"
+- kind:
+    ActionName: Trace
+  span:
+    start: 1875
+    end: 1880
+  raw: Trace
+- kind: Newline
+  span:
+    start: 1880
+    end: 1881
+  raw: "\n"
+- kind:
+    ActionName: Jump
+  span:
+    start: 1881
+    end: 1885
+  raw: Jump
+- kind: Identifier
+  span:
+    start: 1886
+    end: 1893
+  raw: loc02fe
+- kind: Newline
+  span:
+    start: 1893
+    end: 1894
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1894
+    end: 1901
+  raw: loc02f8
+- kind: Colon
+  span:
+    start: 1901
+    end: 1902
+  raw: ":"
+- kind:
+    ActionName: Push
+  span:
+    start: 1902
+    end: 1906
+  raw: Push
+- kind:
+    Constant: 17
+  span:
+    start: 1907
+    end: 1917
+  raw: constant17
+- kind: Newline
+  span:
+    start: 1917
+    end: 1918
+  raw: "\n"
+- kind:
+    ActionName: Trace
+  span:
+    start: 1918
+    end: 1923
+  raw: Trace
+- kind: Newline
+  span:
+    start: 1923
+    end: 1924
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1924
+    end: 1931
+  raw: loc02fe
+- kind: Colon
+  span:
+    start: 1931
+    end: 1932
+  raw: ":"
