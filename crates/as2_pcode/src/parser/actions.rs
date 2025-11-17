@@ -51,21 +51,30 @@ pub(crate) fn action(i: &mut Tokens<'_>) -> ModalResult<Action> {
         ActionName::BitXor => Action::BitXor,
         ActionName::CallMethod => Action::CallMethod,
         ActionName::ConstantPool => constant_pool.parse_next(i)?,
+        ActionName::Decrement => Action::Decrement,
         ActionName::DefineLocal => Action::DefineLocal,
         ActionName::DefineLocal2 => Action::DefineLocal2,
         ActionName::Divide => Action::Divide,
         ActionName::Equals2 => Action::Equals2,
         ActionName::GetMember => Action::GetMember,
         ActionName::GetVariable => Action::GetVariable,
+        ActionName::Greater => Action::Greater,
         ActionName::If => if_.parse_next(i)?,
+        ActionName::Increment => Action::Increment,
         ActionName::InitObject => Action::InitObject,
+        ActionName::InstanceOf => Action::InstanceOf,
         ActionName::Jump => jump.parse_next(i)?,
+        ActionName::Less2 => Action::Less2,
         ActionName::Modulo => Action::Modulo,
+        ActionName::Multiply => Action::Multiply,
         ActionName::Not => Action::Not,
         ActionName::Pop => Action::Pop,
         ActionName::Push => push.parse_next(i)?,
+        ActionName::PushDuplicate => Action::PushDuplicate,
         ActionName::RandomNumber => Action::RandomNumber,
         ActionName::SetVariable => Action::SetVariable,
+        ActionName::StoreRegister => store_register.parse_next(i)?,
+        ActionName::StrictEquals => Action::StrictEquals,
         ActionName::Subtract => Action::Subtract,
         ActionName::Trace => Action::Trace,
         ActionName::TypeOf => Action::TypeOf,
@@ -80,6 +89,11 @@ pub fn if_(i: &mut Tokens<'_>) -> ModalResult<Action> {
 pub fn jump(i: &mut Tokens<'_>) -> ModalResult<Action> {
     let label = label.parse_next(i)?;
     Ok(Action::Jump(label))
+}
+
+pub fn store_register(i: &mut Tokens<'_>) -> ModalResult<Action> {
+    let n = register_num.parse_next(i)?;
+    Ok(Action::StoreRegister(n))
 }
 
 pub fn push(i: &mut Tokens<'_>) -> ModalResult<Action> {
@@ -114,6 +128,11 @@ fn integer_or_float(i: &mut Tokens<'_>) -> ModalResult<PushValue> {
     raw.parse::<f64>()
         .map_err(|_| ParserError::from_input(&raw))
         .map(PushValue::Float)
+}
+
+fn register_num(i: &mut Tokens<'_>) -> ModalResult<u8> {
+    let raw = TokenKind::Integer.parse_next(i)?.raw;
+    raw.parse::<u8>().map_err(|_| ParserError::from_input(&raw))
 }
 
 fn float(i: &mut Tokens<'_>) -> ModalResult<f64> {
@@ -206,19 +225,27 @@ mod tests {
         test_biturshift => BitURShift,
         test_bitxor => BitXor,
         test_call_method => CallMethod,
+        test_decrement => Decrement,
         test_define_local => DefineLocal,
         test_definelocal2 => DefineLocal2,
         test_divide => Divide,
         test_equals2 => Equals2,
         test_get_member => GetMember,
         test_get_variable => GetVariable,
+        test_greater => Greater,
+        test_increment => Increment,
         test_init_object => InitObject,
+        test_instanceof => InstanceOf,
+        test_less2 => Less2,
         test_modulo => Modulo,
+        test_multiply => Multiply,
         test_not => Not,
         test_pop => Pop,
+        test_pushduplicate => PushDuplicate,
         test_random_number => RandomNumber,
         test_set_variable => SetVariable,
         test_subtract => Subtract,
+        test_strictequals => StrictEquals,
         test_trace => Trace,
         test_typeof => TypeOf,
     }
@@ -330,6 +357,24 @@ mod tests {
             parse_actions(&tokens),
             Ok(Actions {
                 actions: vec![Action::Jump("end".to_owned())],
+                label_positions: Default::default()
+            })
+        )
+    }
+
+    #[test]
+    fn test_store_register() {
+        let tokens = build_tokens(&[
+            (
+                TokenKind::ActionName(ActionName::StoreRegister),
+                "StoreRegister",
+            ),
+            (TokenKind::Integer, "0"),
+        ]);
+        assert_eq!(
+            parse_actions(&tokens),
+            Ok(Actions {
+                actions: vec![Action::StoreRegister(0)],
                 label_positions: Default::default()
             })
         )
