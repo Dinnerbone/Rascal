@@ -1,0 +1,338 @@
+ConstantPool "for_classic", "i", "for_no_init", "j", "start", "end", "for_no_condition", "k", "for_no_update", "n", "for_all_omitted", "count", "loop", "done", "for_in_object", "obj", "a", "b", "key", "=", "for_in_array", "arr", "idx", "for_multiple_clauses", ",", "for_continue_break", "x", "for_nested", "outer", "inner", "for_existing_var", "z", "for_single_statement_body", "q"
+Push constant0
+Trace
+Push constant1
+Push 0
+DefineLocal
+loc0129:Push constant1
+GetVariable
+Push 3
+Less2
+Not
+If loc0157
+Push constant1
+GetVariable
+Trace
+Push constant1
+Push constant1
+GetVariable
+Increment
+SetVariable
+Jump loc0129
+loc0157:Push constant2
+Trace
+Push constant3
+Push 3
+DefineLocal
+Push constant4
+Trace
+loc0171:Push constant3
+GetVariable
+Push 6
+Less2
+Not
+If loc019f
+Push constant3
+GetVariable
+Trace
+Push constant3
+Push constant3
+GetVariable
+Increment
+SetVariable
+Jump loc0171
+loc019f:Push constant5
+Trace
+Push constant6
+Trace
+Push constant7
+Push 0
+DefineLocal
+loc01bd:Push constant7
+GetVariable
+Trace
+Push constant7
+GetVariable
+Push 3
+Less2
+Not
+Not
+If loc01df
+Jump loc01f1
+loc01df:Push constant7
+Push constant7
+GetVariable
+Increment
+SetVariable
+Jump loc01bd
+loc01f1:Push constant8
+Trace
+Push constant9
+Push 0
+DefineLocal
+loc0209:Push constant9
+GetVariable
+Push 3
+Less2
+Not
+If loc0237
+Push constant9
+GetVariable
+Trace
+Push constant9
+Push constant9
+GetVariable
+Increment
+SetVariable
+Jump loc0209
+loc0237:Push constant10
+Trace
+Push constant11
+Push 0
+DefineLocal
+loc024f:Push constant12
+Trace
+Push constant11
+Push constant11
+GetVariable
+Increment
+SetVariable
+Push constant11
+GetVariable
+Push 3
+Equals2
+Not
+If loc027c
+Jump loc0281
+loc027c:Jump loc024f
+loc0281:Push constant13
+Trace
+Push constant14
+Trace
+Push constant15
+Push 0
+InitObject
+DefineLocal
+Push constant15
+GetVariable
+Push constant16
+Push 10
+SetMember
+Push constant15
+GetVariable
+Push constant17
+Push 20
+SetMember
+Push constant15
+GetVariable
+Enumerate2
+loc02cf:StoreRegister 0
+Push null
+Equals2
+If loc0308
+Push constant18
+Push register0
+DefineLocal
+Push constant18
+GetVariable
+Push constant19
+Add2
+Push constant15
+GetVariable
+Push constant18
+GetVariable
+GetMember
+Add2
+Trace
+Jump loc02cf
+loc0308:Push constant20
+Trace
+Push constant21
+Push 7
+Push 6
+Push 5
+Push 3
+InitArray
+DefineLocal
+Push constant21
+GetVariable
+Enumerate2
+loc033c:StoreRegister 0
+Push null
+Equals2
+If loc0375
+Push constant22
+Push register0
+DefineLocal
+Push constant22
+GetVariable
+Push constant19
+Add2
+Push constant21
+GetVariable
+Push constant22
+GetVariable
+GetMember
+Add2
+Trace
+Jump loc033c
+loc0375:Push constant23
+Trace
+Push constant16
+Push 0
+DefineLocal
+Push constant17
+Push 3
+DefineLocal
+loc039b:Push constant16
+GetVariable
+Push constant17
+GetVariable
+Less2
+Not
+If loc03ef
+Push constant16
+GetVariable
+Push constant24
+Add2
+Push constant17
+GetVariable
+Add2
+Trace
+Push constant16
+GetVariable
+Push constant16
+Push constant16
+GetVariable
+Increment
+SetVariable
+Pop
+Push constant17
+GetVariable
+Push constant17
+Push constant17
+GetVariable
+Decrement
+SetVariable
+Pop
+Jump loc039b
+loc03ef:Push constant25
+Trace
+Push constant26
+Push 0
+DefineLocal
+loc0407:Push constant26
+GetVariable
+Push 10
+Less2
+Not
+If loc0472
+Push constant26
+GetVariable
+Push 5
+Equals2
+Not
+If loc0436
+Jump loc0472
+loc0436:Push constant26
+GetVariable
+Push 2
+Modulo
+Push 1
+Equals2
+Not
+If loc0459
+Jump loc0460
+loc0459:Push constant26
+GetVariable
+Trace
+loc0460:Push constant26
+Push constant26
+GetVariable
+Increment
+SetVariable
+Jump loc0407
+loc0472:Push constant27
+Trace
+Push constant28
+Push 0
+DefineLocal
+loc048a:Push constant28
+GetVariable
+Push 2
+Less2
+Not
+If loc04fe
+Push constant29
+Push 0
+DefineLocal
+loc04b1:Push constant29
+GetVariable
+Push 2
+Less2
+Not
+If loc04ec
+Push constant28
+GetVariable
+Push constant24
+Add2
+Push constant29
+GetVariable
+Add2
+Trace
+Push constant29
+Push constant29
+GetVariable
+Increment
+SetVariable
+Jump loc04b1
+loc04ec:Push constant28
+Push constant28
+GetVariable
+Increment
+SetVariable
+Jump loc048a
+loc04fe:Push constant30
+Trace
+Push constant31
+DefineLocal2
+Push constant31
+Push 1
+SetVariable
+loc0518:Push constant31
+GetVariable
+Push 3
+Greater
+Not
+Not
+If loc0547
+Push constant31
+GetVariable
+Trace
+Push constant31
+Push constant31
+GetVariable
+Increment
+SetVariable
+Jump loc0518
+loc0547:Push constant32
+Trace
+Push constant33
+Push 0
+DefineLocal
+loc055f:Push constant33
+GetVariable
+Push 3
+Less2
+Not
+If loc058d
+Push constant33
+GetVariable
+Trace
+Push constant33
+Push constant33
+GetVariable
+Increment
+SetVariable
+Jump loc055f
+loc058d:

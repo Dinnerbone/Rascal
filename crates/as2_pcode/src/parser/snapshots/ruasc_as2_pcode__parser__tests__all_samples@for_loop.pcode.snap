@@ -1,0 +1,546 @@
+---
+source: crates/as2_pcode/src/parser/tests.rs
+expression: parsed
+input_file: samples/as2_pcode/for_loop.pcode
+---
+Ok:
+  actions:
+    - ConstantPool:
+        - for_classic
+        - i
+        - for_no_init
+        - j
+        - start
+        - end
+        - for_no_condition
+        - k
+        - for_no_update
+        - n
+        - for_all_omitted
+        - count
+        - loop
+        - done
+        - for_in_object
+        - obj
+        - a
+        - b
+        - key
+        - "="
+        - for_in_array
+        - arr
+        - idx
+        - for_multiple_clauses
+        - ","
+        - for_continue_break
+        - x
+        - for_nested
+        - outer
+        - inner
+        - for_existing_var
+        - z
+        - for_single_statement_body
+        - q
+    - Push:
+        - Constant: 0
+    - Trace
+    - Push:
+        - Constant: 1
+    - Push:
+        - Integer: 0
+    - DefineLocal
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Push:
+        - Integer: 3
+    - Less2
+    - Not
+    - If: loc0157
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Trace
+    - Push:
+        - Constant: 1
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Increment
+    - SetVariable
+    - Jump: loc0129
+    - Push:
+        - Constant: 2
+    - Trace
+    - Push:
+        - Constant: 3
+    - Push:
+        - Integer: 3
+    - DefineLocal
+    - Push:
+        - Constant: 4
+    - Trace
+    - Push:
+        - Constant: 3
+    - GetVariable
+    - Push:
+        - Integer: 6
+    - Less2
+    - Not
+    - If: loc019f
+    - Push:
+        - Constant: 3
+    - GetVariable
+    - Trace
+    - Push:
+        - Constant: 3
+    - Push:
+        - Constant: 3
+    - GetVariable
+    - Increment
+    - SetVariable
+    - Jump: loc0171
+    - Push:
+        - Constant: 5
+    - Trace
+    - Push:
+        - Constant: 6
+    - Trace
+    - Push:
+        - Constant: 7
+    - Push:
+        - Integer: 0
+    - DefineLocal
+    - Push:
+        - Constant: 7
+    - GetVariable
+    - Trace
+    - Push:
+        - Constant: 7
+    - GetVariable
+    - Push:
+        - Integer: 3
+    - Less2
+    - Not
+    - Not
+    - If: loc01df
+    - Jump: loc01f1
+    - Push:
+        - Constant: 7
+    - Push:
+        - Constant: 7
+    - GetVariable
+    - Increment
+    - SetVariable
+    - Jump: loc01bd
+    - Push:
+        - Constant: 8
+    - Trace
+    - Push:
+        - Constant: 9
+    - Push:
+        - Integer: 0
+    - DefineLocal
+    - Push:
+        - Constant: 9
+    - GetVariable
+    - Push:
+        - Integer: 3
+    - Less2
+    - Not
+    - If: loc0237
+    - Push:
+        - Constant: 9
+    - GetVariable
+    - Trace
+    - Push:
+        - Constant: 9
+    - Push:
+        - Constant: 9
+    - GetVariable
+    - Increment
+    - SetVariable
+    - Jump: loc0209
+    - Push:
+        - Constant: 10
+    - Trace
+    - Push:
+        - Constant: 11
+    - Push:
+        - Integer: 0
+    - DefineLocal
+    - Push:
+        - Constant: 12
+    - Trace
+    - Push:
+        - Constant: 11
+    - Push:
+        - Constant: 11
+    - GetVariable
+    - Increment
+    - SetVariable
+    - Push:
+        - Constant: 11
+    - GetVariable
+    - Push:
+        - Integer: 3
+    - Equals2
+    - Not
+    - If: loc027c
+    - Jump: loc0281
+    - Jump: loc024f
+    - Push:
+        - Constant: 13
+    - Trace
+    - Push:
+        - Constant: 14
+    - Trace
+    - Push:
+        - Constant: 15
+    - Push:
+        - Integer: 0
+    - InitObject
+    - DefineLocal
+    - Push:
+        - Constant: 15
+    - GetVariable
+    - Push:
+        - Constant: 16
+    - Push:
+        - Integer: 10
+    - SetMember
+    - Push:
+        - Constant: 15
+    - GetVariable
+    - Push:
+        - Constant: 17
+    - Push:
+        - Integer: 20
+    - SetMember
+    - Push:
+        - Constant: 15
+    - GetVariable
+    - Enumerate2
+    - StoreRegister: 0
+    - Push:
+        - "Null"
+    - Equals2
+    - If: loc0308
+    - Push:
+        - Constant: 18
+    - Push:
+        - Register: 0
+    - DefineLocal
+    - Push:
+        - Constant: 18
+    - GetVariable
+    - Push:
+        - Constant: 19
+    - Add2
+    - Push:
+        - Constant: 15
+    - GetVariable
+    - Push:
+        - Constant: 18
+    - GetVariable
+    - GetMember
+    - Add2
+    - Trace
+    - Jump: loc02cf
+    - Push:
+        - Constant: 20
+    - Trace
+    - Push:
+        - Constant: 21
+    - Push:
+        - Integer: 7
+    - Push:
+        - Integer: 6
+    - Push:
+        - Integer: 5
+    - Push:
+        - Integer: 3
+    - InitArray
+    - DefineLocal
+    - Push:
+        - Constant: 21
+    - GetVariable
+    - Enumerate2
+    - StoreRegister: 0
+    - Push:
+        - "Null"
+    - Equals2
+    - If: loc0375
+    - Push:
+        - Constant: 22
+    - Push:
+        - Register: 0
+    - DefineLocal
+    - Push:
+        - Constant: 22
+    - GetVariable
+    - Push:
+        - Constant: 19
+    - Add2
+    - Push:
+        - Constant: 21
+    - GetVariable
+    - Push:
+        - Constant: 22
+    - GetVariable
+    - GetMember
+    - Add2
+    - Trace
+    - Jump: loc033c
+    - Push:
+        - Constant: 23
+    - Trace
+    - Push:
+        - Constant: 16
+    - Push:
+        - Integer: 0
+    - DefineLocal
+    - Push:
+        - Constant: 17
+    - Push:
+        - Integer: 3
+    - DefineLocal
+    - Push:
+        - Constant: 16
+    - GetVariable
+    - Push:
+        - Constant: 17
+    - GetVariable
+    - Less2
+    - Not
+    - If: loc03ef
+    - Push:
+        - Constant: 16
+    - GetVariable
+    - Push:
+        - Constant: 24
+    - Add2
+    - Push:
+        - Constant: 17
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 16
+    - GetVariable
+    - Push:
+        - Constant: 16
+    - Push:
+        - Constant: 16
+    - GetVariable
+    - Increment
+    - SetVariable
+    - Pop
+    - Push:
+        - Constant: 17
+    - GetVariable
+    - Push:
+        - Constant: 17
+    - Push:
+        - Constant: 17
+    - GetVariable
+    - Decrement
+    - SetVariable
+    - Pop
+    - Jump: loc039b
+    - Push:
+        - Constant: 25
+    - Trace
+    - Push:
+        - Constant: 26
+    - Push:
+        - Integer: 0
+    - DefineLocal
+    - Push:
+        - Constant: 26
+    - GetVariable
+    - Push:
+        - Integer: 10
+    - Less2
+    - Not
+    - If: loc0472
+    - Push:
+        - Constant: 26
+    - GetVariable
+    - Push:
+        - Integer: 5
+    - Equals2
+    - Not
+    - If: loc0436
+    - Jump: loc0472
+    - Push:
+        - Constant: 26
+    - GetVariable
+    - Push:
+        - Integer: 2
+    - Modulo
+    - Push:
+        - Integer: 1
+    - Equals2
+    - Not
+    - If: loc0459
+    - Jump: loc0460
+    - Push:
+        - Constant: 26
+    - GetVariable
+    - Trace
+    - Push:
+        - Constant: 26
+    - Push:
+        - Constant: 26
+    - GetVariable
+    - Increment
+    - SetVariable
+    - Jump: loc0407
+    - Push:
+        - Constant: 27
+    - Trace
+    - Push:
+        - Constant: 28
+    - Push:
+        - Integer: 0
+    - DefineLocal
+    - Push:
+        - Constant: 28
+    - GetVariable
+    - Push:
+        - Integer: 2
+    - Less2
+    - Not
+    - If: loc04fe
+    - Push:
+        - Constant: 29
+    - Push:
+        - Integer: 0
+    - DefineLocal
+    - Push:
+        - Constant: 29
+    - GetVariable
+    - Push:
+        - Integer: 2
+    - Less2
+    - Not
+    - If: loc04ec
+    - Push:
+        - Constant: 28
+    - GetVariable
+    - Push:
+        - Constant: 24
+    - Add2
+    - Push:
+        - Constant: 29
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 29
+    - Push:
+        - Constant: 29
+    - GetVariable
+    - Increment
+    - SetVariable
+    - Jump: loc04b1
+    - Push:
+        - Constant: 28
+    - Push:
+        - Constant: 28
+    - GetVariable
+    - Increment
+    - SetVariable
+    - Jump: loc048a
+    - Push:
+        - Constant: 30
+    - Trace
+    - Push:
+        - Constant: 31
+    - DefineLocal2
+    - Push:
+        - Constant: 31
+    - Push:
+        - Integer: 1
+    - SetVariable
+    - Push:
+        - Constant: 31
+    - GetVariable
+    - Push:
+        - Integer: 3
+    - Greater
+    - Not
+    - Not
+    - If: loc0547
+    - Push:
+        - Constant: 31
+    - GetVariable
+    - Trace
+    - Push:
+        - Constant: 31
+    - Push:
+        - Constant: 31
+    - GetVariable
+    - Increment
+    - SetVariable
+    - Jump: loc0518
+    - Push:
+        - Constant: 32
+    - Trace
+    - Push:
+        - Constant: 33
+    - Push:
+        - Integer: 0
+    - DefineLocal
+    - Push:
+        - Constant: 33
+    - GetVariable
+    - Push:
+        - Integer: 3
+    - Less2
+    - Not
+    - If: loc058d
+    - Push:
+        - Constant: 33
+    - GetVariable
+    - Trace
+    - Push:
+        - Constant: 33
+    - Push:
+        - Constant: 33
+    - GetVariable
+    - Increment
+    - SetVariable
+    - Jump: loc055f
+  label_positions:
+    loc0129: 6
+    loc0157: 21
+    loc0171: 28
+    loc019f: 43
+    loc01bd: 50
+    loc01df: 61
+    loc01f1: 67
+    loc0209: 72
+    loc0237: 87
+    loc024f: 92
+    loc027c: 106
+    loc0281: 107
+    loc02cf: 128
+    loc0308: 147
+    loc033c: 159
+    loc0375: 178
+    loc039b: 186
+    loc03ef: 218
+    loc0407: 223
+    loc0436: 236
+    loc0459: 245
+    loc0460: 248
+    loc0472: 254
+    loc048a: 259
+    loc04b1: 268
+    loc04ec: 288
+    loc04fe: 294
+    loc0518: 301
+    loc0547: 317
+    loc055f: 322
+    loc058d: 337
