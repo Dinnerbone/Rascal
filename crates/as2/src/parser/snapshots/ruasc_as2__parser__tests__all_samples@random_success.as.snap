@@ -1,0 +1,67 @@
+---
+source: crates/as2/src/parser/tests.rs
+expression: parsed
+input_file: samples/as2/random_success.as
+---
+Ok:
+  statements:
+    - Declare:
+        - name: success
+          value:
+            Constant:
+              Identifier: "true"
+    - If:
+        condition:
+          BinaryOperator:
+            - Equal
+            - Call:
+                name:
+                  Constant:
+                    Identifier: random
+                args:
+                  - Constant:
+                      Integer: 2
+            - Constant:
+                Integer: 0
+        "yes":
+          Block:
+            - Expr:
+                BinaryOperator:
+                  - Assign
+                  - Constant:
+                      Identifier: success
+                  - Constant:
+                      Identifier: "false"
+        "no": ~
+    - If:
+        condition:
+          Constant:
+            Identifier: success
+        "yes":
+          Block:
+            - Expr:
+                Call:
+                  name:
+                    Constant:
+                      Identifier: trace
+                  args:
+                    - Constant:
+                        String: Success! Hurrah!
+        "no":
+          Block:
+            - Expr:
+                Call:
+                  name:
+                    Constant:
+                      Identifier: trace
+                  args:
+                    - Constant:
+                        String: "Failed :("
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - Constant:
+                String: "-- end --"
