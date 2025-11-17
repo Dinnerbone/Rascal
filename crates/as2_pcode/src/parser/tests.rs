@@ -1,6 +1,7 @@
 use crate::lexer::Lexer;
 use crate::lexer::tokens::{Token, TokenKind};
 use crate::parser::parse_actions;
+use crate::pcode::Actions;
 use crate::span::Span;
 
 pub(crate) fn build_tokens<'a>(spec: &'a [(TokenKind, &'a str)]) -> Vec<Token<'a>> {
@@ -22,5 +23,6 @@ fn test_all_samples() {
         let tokens = Lexer::new(&src).into_vec();
         let parsed = parse_actions(&tokens).map_err(|e| format!("{e:#?}"));
         insta::assert_yaml_snapshot!(parsed);
+        insta::assert_snapshot!("printed", parsed.unwrap_or_else(|_| Actions::empty()));
     });
 }

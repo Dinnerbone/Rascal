@@ -34,7 +34,7 @@ fn main() -> Result<()> {
         let actions = actionscript.to_actions();
         match actions {
             Ok(actions) => {
-                println!("{actions:#?}");
+                println!("{actions}");
             }
             Err(err) => {
                 println!("{err}");
