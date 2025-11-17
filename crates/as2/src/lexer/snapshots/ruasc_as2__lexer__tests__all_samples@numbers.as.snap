@@ -1,0 +1,2155 @@
+---
+source: crates/as2/src/lexer/tests.rs
+expression: tokens
+input_file: samples/numbers.as
+---
+- kind:
+    Keyword: Var
+  span:
+    start: 20
+    end: 23
+  raw: var
+- kind: Identifier
+  span:
+    start: 24
+    end: 26
+  raw: i0
+- kind:
+    Operator: Assign
+  span:
+    start: 27
+    end: 28
+  raw: "="
+- kind: Integer
+  span:
+    start: 29
+    end: 30
+  raw: "0"
+- kind: Semicolon
+  span:
+    start: 30
+    end: 31
+  raw: ;
+- kind: Newline
+  span:
+    start: 31
+    end: 32
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 32
+    end: 35
+  raw: var
+- kind: Identifier
+  span:
+    start: 36
+    end: 38
+  raw: i1
+- kind:
+    Operator: Assign
+  span:
+    start: 39
+    end: 40
+  raw: "="
+- kind: Integer
+  span:
+    start: 41
+    end: 42
+  raw: "1"
+- kind: Semicolon
+  span:
+    start: 42
+    end: 43
+  raw: ;
+- kind: Newline
+  span:
+    start: 43
+    end: 44
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 44
+    end: 47
+  raw: var
+- kind: Identifier
+  span:
+    start: 48
+    end: 51
+  raw: i42
+- kind:
+    Operator: Assign
+  span:
+    start: 52
+    end: 53
+  raw: "="
+- kind: Integer
+  span:
+    start: 54
+    end: 56
+  raw: "42"
+- kind: Semicolon
+  span:
+    start: 56
+    end: 57
+  raw: ;
+- kind: Newline
+  span:
+    start: 57
+    end: 58
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 58
+    end: 61
+  raw: var
+- kind: Identifier
+  span:
+    start: 62
+    end: 68
+  raw: iLarge
+- kind:
+    Operator: Assign
+  span:
+    start: 69
+    end: 70
+  raw: "="
+- kind: Integer
+  span:
+    start: 71
+    end: 81
+  raw: "2147483647"
+- kind: Semicolon
+  span:
+    start: 81
+    end: 82
+  raw: ;
+- kind:
+    Keyword: Var
+  span:
+    start: 94
+    end: 97
+  raw: var
+- kind: Identifier
+  span:
+    start: 98
+    end: 111
+  raw: iLargePlusOne
+- kind:
+    Operator: Assign
+  span:
+    start: 112
+    end: 113
+  raw: "="
+- kind: Integer
+  span:
+    start: 114
+    end: 124
+  raw: "2147483648"
+- kind: Semicolon
+  span:
+    start: 124
+    end: 125
+  raw: ;
+- kind: Newline
+  span:
+    start: 142
+    end: 143
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 171
+    end: 174
+  raw: var
+- kind: Identifier
+  span:
+    start: 175
+    end: 177
+  raw: f0
+- kind:
+    Operator: Assign
+  span:
+    start: 178
+    end: 179
+  raw: "="
+- kind: Float
+  span:
+    start: 180
+    end: 183
+  raw: "0.0"
+- kind: Semicolon
+  span:
+    start: 183
+    end: 184
+  raw: ;
+- kind: Newline
+  span:
+    start: 184
+    end: 185
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 185
+    end: 188
+  raw: var
+- kind: Identifier
+  span:
+    start: 189
+    end: 191
+  raw: f1
+- kind:
+    Operator: Assign
+  span:
+    start: 192
+    end: 193
+  raw: "="
+- kind: Float
+  span:
+    start: 194
+    end: 198
+  raw: "1.23"
+- kind: Semicolon
+  span:
+    start: 198
+    end: 199
+  raw: ;
+- kind: Newline
+  span:
+    start: 199
+    end: 200
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 200
+    end: 203
+  raw: var
+- kind: Identifier
+  span:
+    start: 204
+    end: 215
+  raw: fLeadingDot
+- kind:
+    Operator: Assign
+  span:
+    start: 216
+    end: 217
+  raw: "="
+- kind: Float
+  span:
+    start: 218
+    end: 220
+  raw: ".5"
+- kind: Semicolon
+  span:
+    start: 220
+    end: 221
+  raw: ;
+- kind:
+    Keyword: Var
+  span:
+    start: 238
+    end: 241
+  raw: var
+- kind: Identifier
+  span:
+    start: 242
+    end: 254
+  raw: fTrailingDot
+- kind:
+    Operator: Assign
+  span:
+    start: 255
+    end: 256
+  raw: "="
+- kind: Float
+  span:
+    start: 257
+    end: 259
+  raw: "5."
+- kind: Semicolon
+  span:
+    start: 259
+    end: 260
+  raw: ;
+- kind: Newline
+  span:
+    start: 277
+    end: 278
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 324
+    end: 327
+  raw: var
+- kind: Identifier
+  span:
+    start: 328
+    end: 330
+  raw: h0
+- kind:
+    Operator: Assign
+  span:
+    start: 331
+    end: 332
+  raw: "="
+- kind: Integer
+  span:
+    start: 333
+    end: 336
+  raw: "0x0"
+- kind: Semicolon
+  span:
+    start: 336
+    end: 337
+  raw: ;
+- kind: Newline
+  span:
+    start: 337
+    end: 338
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 338
+    end: 341
+  raw: var
+- kind: Identifier
+  span:
+    start: 342
+    end: 346
+  raw: hMix
+- kind:
+    Operator: Assign
+  span:
+    start: 347
+    end: 348
+  raw: "="
+- kind: Integer
+  span:
+    start: 349
+    end: 355
+  raw: "0x1A2b"
+- kind: Semicolon
+  span:
+    start: 355
+    end: 356
+  raw: ;
+- kind: Newline
+  span:
+    start: 356
+    end: 357
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 357
+    end: 360
+  raw: var
+- kind: Identifier
+  span:
+    start: 361
+    end: 369
+  raw: hMaxByte
+- kind:
+    Operator: Assign
+  span:
+    start: 370
+    end: 371
+  raw: "="
+- kind: Integer
+  span:
+    start: 372
+    end: 376
+  raw: "0xFF"
+- kind: Semicolon
+  span:
+    start: 376
+    end: 377
+  raw: ;
+- kind: Newline
+  span:
+    start: 377
+    end: 378
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 378
+    end: 379
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 400
+    end: 403
+  raw: var
+- kind: Identifier
+  span:
+    start: 404
+    end: 408
+  raw: eBig
+- kind:
+    Operator: Assign
+  span:
+    start: 409
+    end: 410
+  raw: "="
+- kind: Integer
+  span:
+    start: 411
+    end: 415
+  raw: "1e10"
+- kind: Semicolon
+  span:
+    start: 415
+    end: 416
+  raw: ;
+- kind: Newline
+  span:
+    start: 416
+    end: 417
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 417
+    end: 420
+  raw: var
+- kind: Identifier
+  span:
+    start: 421
+    end: 427
+  raw: eSmall
+- kind:
+    Operator: Assign
+  span:
+    start: 428
+    end: 429
+  raw: "="
+- kind: Integer
+  span:
+    start: 430
+    end: 435
+  raw: "1E-10"
+- kind: Semicolon
+  span:
+    start: 435
+    end: 436
+  raw: ;
+- kind: Newline
+  span:
+    start: 436
+    end: 437
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 437
+    end: 440
+  raw: var
+- kind: Identifier
+  span:
+    start: 441
+    end: 446
+  raw: ePlus
+- kind:
+    Operator: Assign
+  span:
+    start: 447
+    end: 448
+  raw: "="
+- kind: Float
+  span:
+    start: 449
+    end: 455
+  raw: "2.5e+3"
+- kind: Semicolon
+  span:
+    start: 455
+    end: 456
+  raw: ;
+- kind: Newline
+  span:
+    start: 456
+    end: 457
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 457
+    end: 460
+  raw: var
+- kind: Identifier
+  span:
+    start: 461
+    end: 472
+  raw: eLeadingDot
+- kind:
+    Operator: Assign
+  span:
+    start: 473
+    end: 474
+  raw: "="
+- kind: Float
+  span:
+    start: 475
+    end: 479
+  raw: ".5e2"
+- kind: Semicolon
+  span:
+    start: 479
+    end: 480
+  raw: ;
+- kind: Newline
+  span:
+    start: 480
+    end: 481
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 481
+    end: 484
+  raw: var
+- kind: Identifier
+  span:
+    start: 485
+    end: 497
+  raw: eTrailingDot
+- kind:
+    Operator: Assign
+  span:
+    start: 498
+    end: 499
+  raw: "="
+- kind: Float
+  span:
+    start: 500
+    end: 504
+  raw: "5.e3"
+- kind: Semicolon
+  span:
+    start: 504
+    end: 505
+  raw: ;
+- kind: Newline
+  span:
+    start: 505
+    end: 506
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 506
+    end: 509
+  raw: var
+- kind: Identifier
+  span:
+    start: 510
+    end: 514
+  raw: eSci
+- kind:
+    Operator: Assign
+  span:
+    start: 515
+    end: 516
+  raw: "="
+- kind: Float
+  span:
+    start: 517
+    end: 525
+  raw: "6.022e23"
+- kind: Semicolon
+  span:
+    start: 525
+    end: 526
+  raw: ;
+- kind: Newline
+  span:
+    start: 526
+    end: 527
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 527
+    end: 528
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 566
+    end: 569
+  raw: var
+- kind: Identifier
+  span:
+    start: 570
+    end: 574
+  raw: nDec
+- kind:
+    Operator: Assign
+  span:
+    start: 575
+    end: 576
+  raw: "="
+- kind:
+    Operator: Sub
+  span:
+    start: 577
+    end: 578
+  raw: "-"
+- kind: Integer
+  span:
+    start: 578
+    end: 581
+  raw: "123"
+- kind: Semicolon
+  span:
+    start: 581
+    end: 582
+  raw: ;
+- kind: Newline
+  span:
+    start: 582
+    end: 583
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 583
+    end: 586
+  raw: var
+- kind: Identifier
+  span:
+    start: 587
+    end: 591
+  raw: nHex
+- kind:
+    Operator: Assign
+  span:
+    start: 592
+    end: 593
+  raw: "="
+- kind:
+    Operator: Sub
+  span:
+    start: 594
+    end: 595
+  raw: "-"
+- kind: Integer
+  span:
+    start: 595
+    end: 599
+  raw: "0xFF"
+- kind: Semicolon
+  span:
+    start: 599
+    end: 600
+  raw: ;
+- kind: Newline
+  span:
+    start: 600
+    end: 601
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 601
+    end: 604
+  raw: var
+- kind: Identifier
+  span:
+    start: 605
+    end: 611
+  raw: nFloat
+- kind:
+    Operator: Assign
+  span:
+    start: 612
+    end: 613
+  raw: "="
+- kind:
+    Operator: Sub
+  span:
+    start: 614
+    end: 615
+  raw: "-"
+- kind: Float
+  span:
+    start: 615
+    end: 619
+  raw: "3.14"
+- kind: Semicolon
+  span:
+    start: 619
+    end: 620
+  raw: ;
+- kind: Newline
+  span:
+    start: 620
+    end: 621
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 621
+    end: 624
+  raw: var
+- kind: Identifier
+  span:
+    start: 625
+    end: 629
+  raw: pDec
+- kind:
+    Operator: Assign
+  span:
+    start: 630
+    end: 631
+  raw: "="
+- kind:
+    Operator: Add
+  span:
+    start: 632
+    end: 633
+  raw: +
+- kind: Integer
+  span:
+    start: 633
+    end: 634
+  raw: "7"
+- kind: Semicolon
+  span:
+    start: 634
+    end: 635
+  raw: ;
+- kind: Newline
+  span:
+    start: 653
+    end: 654
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 680
+    end: 683
+  raw: var
+- kind: Identifier
+  span:
+    start: 684
+    end: 687
+  raw: sum
+- kind:
+    Operator: Assign
+  span:
+    start: 688
+    end: 689
+  raw: "="
+- kind: Integer
+  span:
+    start: 690
+    end: 691
+  raw: "1"
+- kind:
+    Operator: Add
+  span:
+    start: 692
+    end: 693
+  raw: +
+- kind: Integer
+  span:
+    start: 694
+    end: 695
+  raw: "2"
+- kind:
+    Operator: Add
+  span:
+    start: 696
+    end: 697
+  raw: +
+- kind: Integer
+  span:
+    start: 698
+    end: 699
+  raw: "3"
+- kind: Semicolon
+  span:
+    start: 699
+    end: 700
+  raw: ;
+- kind: Newline
+  span:
+    start: 700
+    end: 701
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 701
+    end: 704
+  raw: var
+- kind: Identifier
+  span:
+    start: 705
+    end: 709
+  raw: diff
+- kind:
+    Operator: Assign
+  span:
+    start: 710
+    end: 711
+  raw: "="
+- kind: Integer
+  span:
+    start: 712
+    end: 714
+  raw: "10"
+- kind:
+    Operator: Sub
+  span:
+    start: 715
+    end: 716
+  raw: "-"
+- kind: Integer
+  span:
+    start: 717
+    end: 718
+  raw: "4"
+- kind: Semicolon
+  span:
+    start: 718
+    end: 719
+  raw: ;
+- kind: Newline
+  span:
+    start: 719
+    end: 720
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 720
+    end: 723
+  raw: var
+- kind: Identifier
+  span:
+    start: 724
+    end: 728
+  raw: prod
+- kind:
+    Operator: Assign
+  span:
+    start: 729
+    end: 730
+  raw: "="
+- kind: Integer
+  span:
+    start: 731
+    end: 732
+  raw: "6"
+- kind:
+    Operator: Multiply
+  span:
+    start: 733
+    end: 734
+  raw: "*"
+- kind: Integer
+  span:
+    start: 735
+    end: 736
+  raw: "7"
+- kind: Semicolon
+  span:
+    start: 736
+    end: 737
+  raw: ;
+- kind: Newline
+  span:
+    start: 737
+    end: 738
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 738
+    end: 741
+  raw: var
+- kind: Identifier
+  span:
+    start: 742
+    end: 746
+  raw: quot
+- kind:
+    Operator: Assign
+  span:
+    start: 747
+    end: 748
+  raw: "="
+- kind: Integer
+  span:
+    start: 749
+    end: 751
+  raw: "22"
+- kind:
+    Operator: Divide
+  span:
+    start: 752
+    end: 753
+  raw: /
+- kind: Integer
+  span:
+    start: 754
+    end: 755
+  raw: "7"
+- kind: Semicolon
+  span:
+    start: 755
+    end: 756
+  raw: ;
+- kind: Newline
+  span:
+    start: 756
+    end: 757
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 757
+    end: 760
+  raw: var
+- kind: Identifier
+  span:
+    start: 761
+    end: 766
+  raw: combo
+- kind:
+    Operator: Assign
+  span:
+    start: 767
+    end: 768
+  raw: "="
+- kind: OpenParen
+  span:
+    start: 769
+    end: 770
+  raw: (
+- kind: Integer
+  span:
+    start: 770
+    end: 774
+  raw: "0x10"
+- kind:
+    Operator: Add
+  span:
+    start: 775
+    end: 776
+  raw: +
+- kind: Integer
+  span:
+    start: 777
+    end: 779
+  raw: "15"
+- kind: CloseParen
+  span:
+    start: 779
+    end: 780
+  raw: )
+- kind:
+    Operator: Multiply
+  span:
+    start: 781
+    end: 782
+  raw: "*"
+- kind: Float
+  span:
+    start: 783
+    end: 788
+  raw: "2.5e1"
+- kind:
+    Operator: Sub
+  span:
+    start: 789
+    end: 790
+  raw: "-"
+- kind: Float
+  span:
+    start: 791
+    end: 794
+  raw: ".75"
+- kind: Semicolon
+  span:
+    start: 794
+    end: 795
+  raw: ;
+- kind: Newline
+  span:
+    start: 795
+    end: 796
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 796
+    end: 797
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 797
+    end: 802
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 802
+    end: 803
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 803
+    end: 810
+  raw: "i0 = "
+- kind:
+    Operator: Add
+  span:
+    start: 811
+    end: 812
+  raw: +
+- kind: Identifier
+  span:
+    start: 813
+    end: 815
+  raw: i0
+- kind: CloseParen
+  span:
+    start: 815
+    end: 816
+  raw: )
+- kind: Semicolon
+  span:
+    start: 816
+    end: 817
+  raw: ;
+- kind: Newline
+  span:
+    start: 817
+    end: 818
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 818
+    end: 823
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 823
+    end: 824
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 824
+    end: 831
+  raw: "i1 = "
+- kind:
+    Operator: Add
+  span:
+    start: 832
+    end: 833
+  raw: +
+- kind: Identifier
+  span:
+    start: 834
+    end: 836
+  raw: i1
+- kind: CloseParen
+  span:
+    start: 836
+    end: 837
+  raw: )
+- kind: Semicolon
+  span:
+    start: 837
+    end: 838
+  raw: ;
+- kind: Newline
+  span:
+    start: 838
+    end: 839
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 839
+    end: 844
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 844
+    end: 845
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 845
+    end: 853
+  raw: "i42 = "
+- kind:
+    Operator: Add
+  span:
+    start: 854
+    end: 855
+  raw: +
+- kind: Identifier
+  span:
+    start: 856
+    end: 859
+  raw: i42
+- kind: CloseParen
+  span:
+    start: 859
+    end: 860
+  raw: )
+- kind: Semicolon
+  span:
+    start: 860
+    end: 861
+  raw: ;
+- kind: Newline
+  span:
+    start: 861
+    end: 862
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 862
+    end: 867
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 867
+    end: 868
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 868
+    end: 879
+  raw: "iLarge = "
+- kind:
+    Operator: Add
+  span:
+    start: 880
+    end: 881
+  raw: +
+- kind: Identifier
+  span:
+    start: 882
+    end: 888
+  raw: iLarge
+- kind: CloseParen
+  span:
+    start: 888
+    end: 889
+  raw: )
+- kind: Semicolon
+  span:
+    start: 889
+    end: 890
+  raw: ;
+- kind: Newline
+  span:
+    start: 890
+    end: 891
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 891
+    end: 896
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 896
+    end: 897
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 897
+    end: 915
+  raw: "iLargePlusOne = "
+- kind:
+    Operator: Add
+  span:
+    start: 916
+    end: 917
+  raw: +
+- kind: Identifier
+  span:
+    start: 918
+    end: 931
+  raw: iLargePlusOne
+- kind: CloseParen
+  span:
+    start: 931
+    end: 932
+  raw: )
+- kind: Semicolon
+  span:
+    start: 932
+    end: 933
+  raw: ;
+- kind: Newline
+  span:
+    start: 933
+    end: 934
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 934
+    end: 935
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 935
+    end: 940
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 940
+    end: 941
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 941
+    end: 948
+  raw: "f0 = "
+- kind:
+    Operator: Add
+  span:
+    start: 949
+    end: 950
+  raw: +
+- kind: Identifier
+  span:
+    start: 951
+    end: 953
+  raw: f0
+- kind: CloseParen
+  span:
+    start: 953
+    end: 954
+  raw: )
+- kind: Semicolon
+  span:
+    start: 954
+    end: 955
+  raw: ;
+- kind: Newline
+  span:
+    start: 955
+    end: 956
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 956
+    end: 961
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 961
+    end: 962
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 962
+    end: 969
+  raw: "f1 = "
+- kind:
+    Operator: Add
+  span:
+    start: 970
+    end: 971
+  raw: +
+- kind: Identifier
+  span:
+    start: 972
+    end: 974
+  raw: f1
+- kind: CloseParen
+  span:
+    start: 974
+    end: 975
+  raw: )
+- kind: Semicolon
+  span:
+    start: 975
+    end: 976
+  raw: ;
+- kind: Newline
+  span:
+    start: 976
+    end: 977
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 977
+    end: 982
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 982
+    end: 983
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 983
+    end: 999
+  raw: "fLeadingDot = "
+- kind:
+    Operator: Add
+  span:
+    start: 1000
+    end: 1001
+  raw: +
+- kind: Identifier
+  span:
+    start: 1002
+    end: 1013
+  raw: fLeadingDot
+- kind: CloseParen
+  span:
+    start: 1013
+    end: 1014
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1014
+    end: 1015
+  raw: ;
+- kind: Newline
+  span:
+    start: 1015
+    end: 1016
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1016
+    end: 1021
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1021
+    end: 1022
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1022
+    end: 1039
+  raw: "fTrailingDot = "
+- kind:
+    Operator: Add
+  span:
+    start: 1040
+    end: 1041
+  raw: +
+- kind: Identifier
+  span:
+    start: 1042
+    end: 1054
+  raw: fTrailingDot
+- kind: CloseParen
+  span:
+    start: 1054
+    end: 1055
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1055
+    end: 1056
+  raw: ;
+- kind: Newline
+  span:
+    start: 1056
+    end: 1057
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 1057
+    end: 1058
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1058
+    end: 1063
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1063
+    end: 1064
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1064
+    end: 1071
+  raw: "h0 = "
+- kind:
+    Operator: Add
+  span:
+    start: 1072
+    end: 1073
+  raw: +
+- kind: Identifier
+  span:
+    start: 1074
+    end: 1076
+  raw: h0
+- kind: CloseParen
+  span:
+    start: 1076
+    end: 1077
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1077
+    end: 1078
+  raw: ;
+- kind: Newline
+  span:
+    start: 1078
+    end: 1079
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1079
+    end: 1084
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1084
+    end: 1085
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1085
+    end: 1094
+  raw: "hMix = "
+- kind:
+    Operator: Add
+  span:
+    start: 1095
+    end: 1096
+  raw: +
+- kind: Identifier
+  span:
+    start: 1097
+    end: 1101
+  raw: hMix
+- kind: CloseParen
+  span:
+    start: 1101
+    end: 1102
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1102
+    end: 1103
+  raw: ;
+- kind: Newline
+  span:
+    start: 1103
+    end: 1104
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1104
+    end: 1109
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1109
+    end: 1110
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1110
+    end: 1123
+  raw: "hMaxByte = "
+- kind:
+    Operator: Add
+  span:
+    start: 1124
+    end: 1125
+  raw: +
+- kind: Identifier
+  span:
+    start: 1126
+    end: 1134
+  raw: hMaxByte
+- kind: CloseParen
+  span:
+    start: 1134
+    end: 1135
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1135
+    end: 1136
+  raw: ;
+- kind: Newline
+  span:
+    start: 1136
+    end: 1137
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 1137
+    end: 1138
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1138
+    end: 1143
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1143
+    end: 1144
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1144
+    end: 1153
+  raw: "eBig = "
+- kind:
+    Operator: Add
+  span:
+    start: 1154
+    end: 1155
+  raw: +
+- kind: Identifier
+  span:
+    start: 1156
+    end: 1160
+  raw: eBig
+- kind: CloseParen
+  span:
+    start: 1160
+    end: 1161
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1161
+    end: 1162
+  raw: ;
+- kind: Newline
+  span:
+    start: 1162
+    end: 1163
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1163
+    end: 1168
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1168
+    end: 1169
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1169
+    end: 1180
+  raw: "eSmall = "
+- kind:
+    Operator: Add
+  span:
+    start: 1181
+    end: 1182
+  raw: +
+- kind: Identifier
+  span:
+    start: 1183
+    end: 1189
+  raw: eSmall
+- kind: CloseParen
+  span:
+    start: 1189
+    end: 1190
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1190
+    end: 1191
+  raw: ;
+- kind: Newline
+  span:
+    start: 1191
+    end: 1192
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1192
+    end: 1197
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1197
+    end: 1198
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1198
+    end: 1208
+  raw: "ePlus = "
+- kind:
+    Operator: Add
+  span:
+    start: 1209
+    end: 1210
+  raw: +
+- kind: Identifier
+  span:
+    start: 1211
+    end: 1216
+  raw: ePlus
+- kind: CloseParen
+  span:
+    start: 1216
+    end: 1217
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1217
+    end: 1218
+  raw: ;
+- kind: Newline
+  span:
+    start: 1218
+    end: 1219
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1219
+    end: 1224
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1224
+    end: 1225
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1225
+    end: 1241
+  raw: "eLeadingDot = "
+- kind:
+    Operator: Add
+  span:
+    start: 1242
+    end: 1243
+  raw: +
+- kind: Identifier
+  span:
+    start: 1244
+    end: 1255
+  raw: eLeadingDot
+- kind: CloseParen
+  span:
+    start: 1255
+    end: 1256
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1256
+    end: 1257
+  raw: ;
+- kind: Newline
+  span:
+    start: 1257
+    end: 1258
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1258
+    end: 1263
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1263
+    end: 1264
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1264
+    end: 1281
+  raw: "eTrailingDot = "
+- kind:
+    Operator: Add
+  span:
+    start: 1282
+    end: 1283
+  raw: +
+- kind: Identifier
+  span:
+    start: 1284
+    end: 1296
+  raw: eTrailingDot
+- kind: CloseParen
+  span:
+    start: 1296
+    end: 1297
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1297
+    end: 1298
+  raw: ;
+- kind: Newline
+  span:
+    start: 1298
+    end: 1299
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1299
+    end: 1304
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1304
+    end: 1305
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1305
+    end: 1314
+  raw: "eSci = "
+- kind:
+    Operator: Add
+  span:
+    start: 1315
+    end: 1316
+  raw: +
+- kind: Identifier
+  span:
+    start: 1317
+    end: 1321
+  raw: eSci
+- kind: CloseParen
+  span:
+    start: 1321
+    end: 1322
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1322
+    end: 1323
+  raw: ;
+- kind: Newline
+  span:
+    start: 1323
+    end: 1324
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 1324
+    end: 1325
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1325
+    end: 1330
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1330
+    end: 1331
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1331
+    end: 1340
+  raw: "nDec = "
+- kind:
+    Operator: Add
+  span:
+    start: 1341
+    end: 1342
+  raw: +
+- kind: Identifier
+  span:
+    start: 1343
+    end: 1347
+  raw: nDec
+- kind: CloseParen
+  span:
+    start: 1347
+    end: 1348
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1348
+    end: 1349
+  raw: ;
+- kind: Newline
+  span:
+    start: 1349
+    end: 1350
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1350
+    end: 1355
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1355
+    end: 1356
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1356
+    end: 1365
+  raw: "nHex = "
+- kind:
+    Operator: Add
+  span:
+    start: 1366
+    end: 1367
+  raw: +
+- kind: Identifier
+  span:
+    start: 1368
+    end: 1372
+  raw: nHex
+- kind: CloseParen
+  span:
+    start: 1372
+    end: 1373
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1373
+    end: 1374
+  raw: ;
+- kind: Newline
+  span:
+    start: 1374
+    end: 1375
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1375
+    end: 1380
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1380
+    end: 1381
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1381
+    end: 1392
+  raw: "nFloat = "
+- kind:
+    Operator: Add
+  span:
+    start: 1393
+    end: 1394
+  raw: +
+- kind: Identifier
+  span:
+    start: 1395
+    end: 1401
+  raw: nFloat
+- kind: CloseParen
+  span:
+    start: 1401
+    end: 1402
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1402
+    end: 1403
+  raw: ;
+- kind: Newline
+  span:
+    start: 1403
+    end: 1404
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1404
+    end: 1409
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1409
+    end: 1410
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1410
+    end: 1419
+  raw: "pDec = "
+- kind:
+    Operator: Add
+  span:
+    start: 1420
+    end: 1421
+  raw: +
+- kind: Identifier
+  span:
+    start: 1422
+    end: 1426
+  raw: pDec
+- kind: CloseParen
+  span:
+    start: 1426
+    end: 1427
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1427
+    end: 1428
+  raw: ;
+- kind: Newline
+  span:
+    start: 1428
+    end: 1429
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 1429
+    end: 1430
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1430
+    end: 1435
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1435
+    end: 1436
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1436
+    end: 1444
+  raw: "sum = "
+- kind:
+    Operator: Add
+  span:
+    start: 1445
+    end: 1446
+  raw: +
+- kind: Identifier
+  span:
+    start: 1447
+    end: 1450
+  raw: sum
+- kind: CloseParen
+  span:
+    start: 1450
+    end: 1451
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1451
+    end: 1452
+  raw: ;
+- kind: Newline
+  span:
+    start: 1452
+    end: 1453
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1453
+    end: 1458
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1458
+    end: 1459
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1459
+    end: 1468
+  raw: "diff = "
+- kind:
+    Operator: Add
+  span:
+    start: 1469
+    end: 1470
+  raw: +
+- kind: Identifier
+  span:
+    start: 1471
+    end: 1475
+  raw: diff
+- kind: CloseParen
+  span:
+    start: 1475
+    end: 1476
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1476
+    end: 1477
+  raw: ;
+- kind: Newline
+  span:
+    start: 1477
+    end: 1478
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1478
+    end: 1483
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1483
+    end: 1484
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1484
+    end: 1493
+  raw: "prod = "
+- kind:
+    Operator: Add
+  span:
+    start: 1494
+    end: 1495
+  raw: +
+- kind: Identifier
+  span:
+    start: 1496
+    end: 1500
+  raw: prod
+- kind: CloseParen
+  span:
+    start: 1500
+    end: 1501
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1501
+    end: 1502
+  raw: ;
+- kind: Newline
+  span:
+    start: 1502
+    end: 1503
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1503
+    end: 1508
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1508
+    end: 1509
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1509
+    end: 1518
+  raw: "quot = "
+- kind:
+    Operator: Add
+  span:
+    start: 1519
+    end: 1520
+  raw: +
+- kind: Identifier
+  span:
+    start: 1521
+    end: 1525
+  raw: quot
+- kind: CloseParen
+  span:
+    start: 1525
+    end: 1526
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1526
+    end: 1527
+  raw: ;
+- kind: Newline
+  span:
+    start: 1527
+    end: 1528
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1528
+    end: 1533
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1533
+    end: 1534
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1534
+    end: 1544
+  raw: "combo = "
+- kind:
+    Operator: Add
+  span:
+    start: 1545
+    end: 1546
+  raw: +
+- kind: Identifier
+  span:
+    start: 1547
+    end: 1552
+  raw: combo
+- kind: CloseParen
+  span:
+    start: 1552
+    end: 1553
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1553
+    end: 1554
+  raw: ;
+- kind: Newline
+  span:
+    start: 1554
+    end: 1555
+  raw: "\n"

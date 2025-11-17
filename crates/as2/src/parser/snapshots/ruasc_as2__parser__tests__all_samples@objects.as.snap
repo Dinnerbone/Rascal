@@ -1,0 +1,117 @@
+---
+source: crates/as2/src/parser/tests.rs
+expression: parsed
+input_file: samples/objects.as
+---
+Ok:
+  statements:
+    - Declare:
+        - name: o
+          value:
+            InitObject:
+              - - a
+                - Constant:
+                    Integer: 1
+              - - b
+                - Constant:
+                    Identifier: Object
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "o.a: "
+                - Field:
+                    - Constant:
+                        Identifier: o
+                    - Constant:
+                        String: a
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "o.b: "
+                - Field:
+                    - Constant:
+                        Identifier: o
+                    - Constant:
+                        String: b
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "new Object(): "
+                - New:
+                    name:
+                      Constant:
+                        Identifier: Object
+                    args: []
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "new Object(1, 2, {}, false): "
+                - New:
+                    name:
+                      Constant:
+                        Identifier: Object
+                    args:
+                      - Constant:
+                          Integer: 1
+                      - Constant:
+                          Integer: 2
+                      - InitObject: []
+                      - Constant:
+                          Identifier: "false"
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "new Object: "
+                - New:
+                    name:
+                      Constant:
+                        Identifier: Object
+                    args: []
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "new o.b(): "
+                - New:
+                    name:
+                      Field:
+                        - Constant:
+                            Identifier: o
+                        - Constant:
+                            String: b
+                    args: []

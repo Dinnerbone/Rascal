@@ -1,0 +1,18 @@
+[package]
+name = "ruasc_as2"
+authors.workspace = true
+edition.workspace = true
+license.workspace = true
+version.workspace = true
+
+[dependencies]
+winnow = "0.7.13"
+serde = { version = "1.0.228", features = ["derive"] }
+annotate-snippets = "0.12.8"
+
+[dev-dependencies]
+insta = { version = "1.43.2", features = ["yaml", "glob"] }
+
+[features]
+default = []
+winnow-debug = ["winnow/debug"]

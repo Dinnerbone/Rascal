@@ -1,0 +1,15 @@
+---
+source: crates/as2/src/parser/tests.rs
+expression: parsed
+input_file: samples/trace_hello_world.as
+---
+Ok:
+  statements:
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - Constant:
+                String: Hello World

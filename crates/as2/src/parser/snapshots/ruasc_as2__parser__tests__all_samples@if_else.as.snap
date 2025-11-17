@@ -1,0 +1,290 @@
+---
+source: crates/as2/src/parser/tests.rs
+expression: parsed
+input_file: samples/if_else.as
+---
+Ok:
+  statements:
+    - Declare:
+        - name: condition
+          value:
+            Constant:
+              Identifier: "true"
+    - Declare:
+        - name: x
+          value:
+            Constant:
+              Integer: 1
+    - Declare:
+        - name: y
+          value:
+            UnaryOperator:
+              - Sub
+              - Constant:
+                  Integer: 1
+    - If:
+        condition:
+          Constant:
+            Identifier: condition
+        "yes":
+          Expr:
+            Call:
+              name:
+                Constant:
+                  Identifier: doSomething
+              args: []
+        "no": ~
+    - If:
+        condition:
+          BinaryOperator:
+            - GreaterThan
+            - Constant:
+                Identifier: x
+            - Constant:
+                Integer: 0
+        "yes":
+          Expr:
+            Call:
+              name:
+                Constant:
+                  Identifier: trace
+              args:
+                - Constant:
+                    String: positive
+        "no":
+          Expr:
+            Call:
+              name:
+                Constant:
+                  Identifier: trace
+              args:
+                - Constant:
+                    String: negative
+    - If:
+        condition:
+          BinaryOperator:
+            - LessThan
+            - Constant:
+                Identifier: x
+            - Constant:
+                Integer: 0
+        "yes":
+          Block:
+            - Expr:
+                Call:
+                  name:
+                    Constant:
+                      Identifier: trace
+                  args:
+                    - Constant:
+                        String: negative
+        "no":
+          If:
+            condition:
+              BinaryOperator:
+                - GreaterThan
+                - Constant:
+                    Identifier: x
+                - Constant:
+                    Integer: 0
+            "yes":
+              Block:
+                - Expr:
+                    Call:
+                      name:
+                        Constant:
+                          Identifier: trace
+                      args:
+                        - Constant:
+                            String: positive
+            "no":
+              If:
+                condition:
+                  BinaryOperator:
+                    - Equal
+                    - Constant:
+                        Identifier: x
+                    - Constant:
+                        Integer: 0
+                "yes":
+                  Block:
+                    - Expr:
+                        Call:
+                          name:
+                            Constant:
+                              Identifier: trace
+                          args:
+                            - Constant:
+                                String: zero
+                "no":
+                  Block:
+                    - Expr:
+                        Call:
+                          name:
+                            Constant:
+                              Identifier: trace
+                          args:
+                            - Constant:
+                                String: undefined
+    - If:
+        condition:
+          Constant:
+            Identifier: condition
+        "yes":
+          Block: []
+        "no": ~
+    - If:
+        condition:
+          Constant:
+            Identifier: condition
+        "yes":
+          Block: []
+        "no":
+          Block: []
+    - If:
+        condition:
+          Constant:
+            Identifier: condition
+        "yes":
+          Expr:
+            Call:
+              name:
+                Constant:
+                  Identifier: trace
+              args:
+                - Constant:
+                    String: single
+        "no":
+          Block: []
+    - If:
+        condition:
+          BinaryOperator:
+            - GreaterThan
+            - Constant:
+                Identifier: x
+            - Constant:
+                Integer: 0
+        "yes":
+          If:
+            condition:
+              BinaryOperator:
+                - GreaterThan
+                - Constant:
+                    Identifier: y
+                - Constant:
+                    Integer: 0
+            "yes":
+              Expr:
+                Call:
+                  name:
+                    Constant:
+                      Identifier: trace
+                  args:
+                    - Constant:
+                        String: both positive
+            "no":
+              If:
+                condition:
+                  BinaryOperator:
+                    - LessThan
+                    - Constant:
+                        Identifier: y
+                    - Constant:
+                        Integer: 0
+                "yes":
+                  Expr:
+                    Call:
+                      name:
+                        Constant:
+                          Identifier: trace
+                      args:
+                        - Constant:
+                            String: "x positive, y negative"
+                "no":
+                  Expr:
+                    Call:
+                      name:
+                        Constant:
+                          Identifier: trace
+                      args:
+                        - Constant:
+                            String: "x positive, y zero"
+        "no": ~
+    - If:
+        condition:
+          Constant:
+            Identifier: condition
+        "yes":
+          Block:
+            - Expr:
+                Call:
+                  name:
+                    Constant:
+                      Identifier: doSomething
+                  args: []
+        "no":
+          If:
+            condition:
+              Constant:
+                Identifier: otherCondition
+            "yes":
+              Expr:
+                Call:
+                  name:
+                    Constant:
+                      Identifier: doSomethingElse
+                  args: []
+            "no":
+              Block:
+                - Expr:
+                    Call:
+                      name:
+                        Constant:
+                          Identifier: doFinal
+                      args: []
+    - If:
+        condition:
+          Constant:
+            Identifier: condition
+        "yes":
+          Expr:
+            Call:
+              name:
+                Constant:
+                  Identifier: statement1
+              args: []
+        "no": ~
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: statement2
+          args: []
+    - If:
+        condition:
+          Constant:
+            Identifier: x
+        "yes":
+          If:
+            condition:
+              Constant:
+                Identifier: y
+            "yes":
+              Expr:
+                Call:
+                  name:
+                    Constant:
+                      Identifier: trace
+                  args:
+                    - Constant:
+                        String: y
+            "no":
+              Expr:
+                Call:
+                  name:
+                    Constant:
+                      Identifier: trace
+                  args:
+                    - Constant:
+                        String: ambiguous else
+        "no": ~

@@ -1,0 +1,258 @@
+---
+source: crates/as2/src/parser/tests.rs
+expression: parsed
+input_file: samples/op_precedence/add_sub.as
+---
+Ok:
+  statements:
+    - Declare:
+        - name: a
+          value:
+            Constant:
+              Integer: 10
+    - Declare:
+        - name: b
+          value:
+            Constant:
+              Integer: 5
+    - Declare:
+        - name: c
+          value:
+            Constant:
+              Integer: 2
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - BinaryOperator:
+                    - Add
+                    - BinaryOperator:
+                        - Add
+                        - BinaryOperator:
+                            - Add
+                            - BinaryOperator:
+                                - Add
+                                - Constant:
+                                    String: a=
+                                - Constant:
+                                    Identifier: a
+                            - Constant:
+                                String: ", b="
+                        - Constant:
+                            Identifier: b
+                    - Constant:
+                        String: ", c="
+                - Constant:
+                    Identifier: c
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - Constant:
+                String: "----"
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "a + b - c = "
+                - Parenthesis:
+                    BinaryOperator:
+                      - Sub
+                      - BinaryOperator:
+                          - Add
+                          - Constant:
+                              Identifier: a
+                          - Constant:
+                              Identifier: b
+                      - Constant:
+                          Identifier: c
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "(a + b) - c = "
+                - Parenthesis:
+                    BinaryOperator:
+                      - Sub
+                      - Parenthesis:
+                          BinaryOperator:
+                            - Add
+                            - Constant:
+                                Identifier: a
+                            - Constant:
+                                Identifier: b
+                      - Constant:
+                          Identifier: c
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - Constant:
+                String: "---"
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "a - b + c = "
+                - Parenthesis:
+                    BinaryOperator:
+                      - Add
+                      - BinaryOperator:
+                          - Sub
+                          - Constant:
+                              Identifier: a
+                          - Constant:
+                              Identifier: b
+                      - Constant:
+                          Identifier: c
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "(a - b) + c = "
+                - Parenthesis:
+                    BinaryOperator:
+                      - Add
+                      - Parenthesis:
+                          BinaryOperator:
+                            - Sub
+                            - Constant:
+                                Identifier: a
+                            - Constant:
+                                Identifier: b
+                      - Constant:
+                          Identifier: c
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - Constant:
+                String: "---"
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "a + b - c + b = "
+                - Parenthesis:
+                    BinaryOperator:
+                      - Add
+                      - BinaryOperator:
+                          - Sub
+                          - BinaryOperator:
+                              - Add
+                              - Constant:
+                                  Identifier: a
+                              - Constant:
+                                  Identifier: b
+                          - Constant:
+                              Identifier: c
+                      - Constant:
+                          Identifier: b
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "(((a + b) - c) + b) = "
+                - Parenthesis:
+                    BinaryOperator:
+                      - Add
+                      - Parenthesis:
+                          BinaryOperator:
+                            - Sub
+                            - Parenthesis:
+                                BinaryOperator:
+                                  - Add
+                                  - Constant:
+                                      Identifier: a
+                                  - Constant:
+                                      Identifier: b
+                            - Constant:
+                                Identifier: c
+                      - Constant:
+                          Identifier: b
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - Constant:
+                String: "---"
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "a + -b = "
+                - Parenthesis:
+                    BinaryOperator:
+                      - Add
+                      - Constant:
+                          Identifier: a
+                      - UnaryOperator:
+                          - Sub
+                          - Constant:
+                              Identifier: b
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "a - -b = "
+                - Parenthesis:
+                    BinaryOperator:
+                      - Sub
+                      - Constant:
+                          Identifier: a
+                      - UnaryOperator:
+                          - Sub
+                          - Constant:
+                              Identifier: b

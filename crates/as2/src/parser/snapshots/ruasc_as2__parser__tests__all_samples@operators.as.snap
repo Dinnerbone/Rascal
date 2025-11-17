@@ -1,0 +1,876 @@
+---
+source: crates/as2/src/parser/tests.rs
+expression: parsed
+input_file: samples/operators.as
+---
+Ok:
+  statements:
+    - Declare:
+        - name: a
+          value:
+            Constant:
+              Integer: 10
+    - Declare:
+        - name: b
+          value:
+            Constant:
+              Integer: 3
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "a + b = "
+                - Parenthesis:
+                    BinaryOperator:
+                      - Add
+                      - Constant:
+                          Identifier: a
+                      - Constant:
+                          Identifier: b
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "a - b = "
+                - Parenthesis:
+                    BinaryOperator:
+                      - Sub
+                      - Constant:
+                          Identifier: a
+                      - Constant:
+                          Identifier: b
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "a * b = "
+                - Parenthesis:
+                    BinaryOperator:
+                      - Multiply
+                      - Constant:
+                          Identifier: a
+                      - Constant:
+                          Identifier: b
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "a / b = "
+                - Parenthesis:
+                    BinaryOperator:
+                      - Divide
+                      - Constant:
+                          Identifier: a
+                      - Constant:
+                          Identifier: b
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "a % b = "
+                - Parenthesis:
+                    BinaryOperator:
+                      - Modulo
+                      - Constant:
+                          Identifier: a
+                      - Constant:
+                          Identifier: b
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "++a = "
+                - Parenthesis:
+                    UnaryOperator:
+                      - Increment: Prefix
+                      - Constant:
+                          Identifier: a
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "--a = "
+                - Parenthesis:
+                    UnaryOperator:
+                      - Decrement: Prefix
+                      - Constant:
+                          Identifier: a
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "a++ = "
+                - Parenthesis:
+                    UnaryOperator:
+                      - Increment: Postfix
+                      - Constant:
+                          Identifier: a
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "a-- = "
+                - Parenthesis:
+                    UnaryOperator:
+                      - Decrement: Postfix
+                      - Constant:
+                          Identifier: a
+    - Declare:
+        - name: hello
+          value:
+            Constant:
+              String: Hello
+    - Declare:
+        - name: world
+          value:
+            Constant:
+              String: World
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "hello + \" \" + world = "
+                - Parenthesis:
+                    BinaryOperator:
+                      - Add
+                      - BinaryOperator:
+                          - Add
+                          - Constant:
+                              Identifier: hello
+                          - Constant:
+                              String: " "
+                      - Constant:
+                          Identifier: world
+    - Declare:
+        - name: x
+          value:
+            Constant:
+              Integer: 5
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "x = "
+                - Constant:
+                    Identifier: x
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "x += 2 => "
+                - Parenthesis:
+                    BinaryOperator:
+                      - AddAssign
+                      - Constant:
+                          Identifier: x
+                      - Constant:
+                          Integer: 2
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "x -= 2 => "
+                - Parenthesis:
+                    BinaryOperator:
+                      - SubAssign
+                      - Constant:
+                          Identifier: x
+                      - Constant:
+                          Integer: 2
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "x *= 3 => "
+                - Parenthesis:
+                    BinaryOperator:
+                      - MultiplyAssign
+                      - Constant:
+                          Identifier: x
+                      - Constant:
+                          Integer: 3
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "x /= 5 => "
+                - Parenthesis:
+                    BinaryOperator:
+                      - DivideAssign
+                      - Constant:
+                          Identifier: x
+                      - Constant:
+                          Integer: 5
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "x %= 2 => "
+                - Parenthesis:
+                    BinaryOperator:
+                      - ModuloAssign
+                      - Constant:
+                          Identifier: x
+                      - Constant:
+                          Integer: 2
+    - Declare:
+        - name: five
+          value:
+            Constant:
+              Integer: 5
+    - Declare:
+        - name: three
+          value:
+            Constant:
+              Integer: 3
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "five & three = "
+                - Parenthesis:
+                    BinaryOperator:
+                      - BitAnd
+                      - Constant:
+                          Identifier: five
+                      - Constant:
+                          Identifier: three
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "five | three = "
+                - Parenthesis:
+                    BinaryOperator:
+                      - BitOr
+                      - Constant:
+                          Identifier: five
+                      - Constant:
+                          Identifier: three
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "five ^ three = "
+                - Parenthesis:
+                    BinaryOperator:
+                      - BitXor
+                      - Constant:
+                          Identifier: five
+                      - Constant:
+                          Identifier: three
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "~five = "
+                - Parenthesis:
+                    UnaryOperator:
+                      - BitNot
+                      - Constant:
+                          Identifier: five
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "five << 1 = "
+                - Parenthesis:
+                    BinaryOperator:
+                      - BitShiftLeft
+                      - Constant:
+                          Identifier: five
+                      - Constant:
+                          Integer: 1
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "five >> 1 = "
+                - Parenthesis:
+                    BinaryOperator:
+                      - BitShiftRight
+                      - Constant:
+                          Identifier: five
+                      - Constant:
+                          Integer: 1
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "five >>> 1 = "
+                - Parenthesis:
+                    BinaryOperator:
+                      - BitShiftRightUnsigned
+                      - Constant:
+                          Identifier: five
+                      - Constant:
+                          Integer: 1
+    - Expr:
+        BinaryOperator:
+          - Assign
+          - Constant:
+              Identifier: five
+          - Constant:
+              Integer: 5
+    - Expr:
+        BinaryOperator:
+          - BitAndAssign
+          - Constant:
+              Identifier: five
+          - Constant:
+              Identifier: three
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "five &= three => "
+                - Constant:
+                    Identifier: five
+    - Expr:
+        BinaryOperator:
+          - Assign
+          - Constant:
+              Identifier: five
+          - Constant:
+              Integer: 5
+    - Expr:
+        BinaryOperator:
+          - BitOrAssign
+          - Constant:
+              Identifier: five
+          - Constant:
+              Identifier: three
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "five |= three => "
+                - Constant:
+                    Identifier: five
+    - Expr:
+        BinaryOperator:
+          - Assign
+          - Constant:
+              Identifier: five
+          - Constant:
+              Integer: 5
+    - Expr:
+        BinaryOperator:
+          - BitXorAssign
+          - Constant:
+              Identifier: five
+          - Constant:
+              Identifier: three
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "five ^= three => "
+                - Constant:
+                    Identifier: five
+    - Expr:
+        BinaryOperator:
+          - Assign
+          - Constant:
+              Identifier: five
+          - Constant:
+              Integer: 5
+    - Expr:
+        BinaryOperator:
+          - BitShiftLeftAssign
+          - Constant:
+              Identifier: five
+          - Constant:
+              Integer: 1
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "five <<= 1 => "
+                - Constant:
+                    Identifier: five
+    - Expr:
+        BinaryOperator:
+          - Assign
+          - Constant:
+              Identifier: five
+          - Constant:
+              Integer: 5
+    - Expr:
+        BinaryOperator:
+          - BitShiftRightAssign
+          - Constant:
+              Identifier: five
+          - Constant:
+              Integer: 1
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "five >>= 1 => "
+                - Constant:
+                    Identifier: five
+    - Expr:
+        BinaryOperator:
+          - Assign
+          - Constant:
+              Identifier: five
+          - Constant:
+              Integer: 5
+    - Expr:
+        BinaryOperator:
+          - BitShiftRightUnsignedAssign
+          - Constant:
+              Identifier: five
+          - Constant:
+              Integer: 1
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "five >>>= 1 => "
+                - Constant:
+                    Identifier: five
+    - Declare:
+        - name: six
+          value:
+            Constant:
+              Integer: 6
+    - Declare:
+        - name: seven
+          value:
+            Constant:
+              Integer: 7
+    - Declare:
+        - name: sevenStr
+          value:
+            Constant:
+              String: "7"
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "six == seven: "
+                - Parenthesis:
+                    BinaryOperator:
+                      - Equal
+                      - Constant:
+                          Identifier: six
+                      - Constant:
+                          Identifier: seven
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "six != seven: "
+                - Parenthesis:
+                    BinaryOperator:
+                      - NotEqual
+                      - Constant:
+                          Identifier: six
+                      - Constant:
+                          Identifier: seven
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "six < seven: "
+                - Parenthesis:
+                    BinaryOperator:
+                      - LessThan
+                      - Constant:
+                          Identifier: six
+                      - Constant:
+                          Identifier: seven
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "six <= seven: "
+                - Parenthesis:
+                    BinaryOperator:
+                      - LessThanEqual
+                      - Constant:
+                          Identifier: six
+                      - Constant:
+                          Identifier: seven
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "six > seven: "
+                - Parenthesis:
+                    BinaryOperator:
+                      - GreaterThan
+                      - Constant:
+                          Identifier: six
+                      - Constant:
+                          Identifier: seven
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "six >= seven: "
+                - Parenthesis:
+                    BinaryOperator:
+                      - GreaterThanEqual
+                      - Constant:
+                          Identifier: six
+                      - Constant:
+                          Identifier: seven
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "sevenStr == seven: "
+                - Parenthesis:
+                    BinaryOperator:
+                      - Equal
+                      - Constant:
+                          Identifier: sevenStr
+                      - Constant:
+                          Identifier: seven
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "sevenStr === seven: "
+                - Parenthesis:
+                    BinaryOperator:
+                      - StrictEqual
+                      - Constant:
+                          Identifier: sevenStr
+                      - Constant:
+                          Identifier: seven
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "sevenStr !== seven: "
+                - Parenthesis:
+                    BinaryOperator:
+                      - StrictNotEqual
+                      - Constant:
+                          Identifier: sevenStr
+                      - Constant:
+                          Identifier: seven
+    - Declare:
+        - name: t
+          value:
+            Constant:
+              Identifier: "true"
+    - Declare:
+        - name: f
+          value:
+            Constant:
+              Identifier: "false"
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "t && f: "
+                - Parenthesis:
+                    BinaryOperator:
+                      - LogicalAnd
+                      - Constant:
+                          Identifier: t
+                      - Constant:
+                          Identifier: f
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "t || f: "
+                - Parenthesis:
+                    BinaryOperator:
+                      - LogicalOr
+                      - Constant:
+                          Identifier: t
+                      - Constant:
+                          Identifier: f
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "!t: "
+                - Parenthesis:
+                    UnaryOperator:
+                      - LogicalNot
+                      - Constant:
+                          Identifier: t
+    - Declare:
+        - name: max
+          value:
+            Ternary:
+              condition:
+                Parenthesis:
+                  BinaryOperator:
+                    - GreaterThan
+                    - Constant:
+                        Identifier: a
+                    - Constant:
+                        Identifier: b
+              "yes":
+                Constant:
+                  Identifier: a
+              "no":
+                Constant:
+                  Identifier: b
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "(a > b) ? a : b = "
+                - Constant:
+                    Identifier: max
+    - Declare:
+        - name: obj
+          value:
+            InitObject:
+              - - key
+                - Constant:
+                    String: value
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "obj instanceof Object: "
+                - Parenthesis:
+                    BinaryOperator:
+                      - InstanceOf
+                      - Constant:
+                          Identifier: obj
+                      - Constant:
+                          Identifier: Object
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "\\\"key\\\" in obj: "
+                - Parenthesis:
+                    BinaryOperator:
+                      - In
+                      - Constant:
+                          String: key
+                      - Constant:
+                          Identifier: obj

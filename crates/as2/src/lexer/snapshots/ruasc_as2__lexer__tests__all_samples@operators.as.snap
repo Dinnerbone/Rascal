@@ -1,0 +1,3272 @@
+---
+source: crates/as2/src/lexer/tests.rs
+expression: tokens
+input_file: samples/operators.as
+---
+- kind: Newline
+  span:
+    start: 104
+    end: 105
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 105
+    end: 108
+  raw: var
+- kind: Identifier
+  span:
+    start: 109
+    end: 110
+  raw: a
+- kind:
+    Operator: Assign
+  span:
+    start: 111
+    end: 112
+  raw: "="
+- kind: Integer
+  span:
+    start: 113
+    end: 115
+  raw: "10"
+- kind: Semicolon
+  span:
+    start: 115
+    end: 116
+  raw: ;
+- kind: Newline
+  span:
+    start: 116
+    end: 117
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 117
+    end: 120
+  raw: var
+- kind: Identifier
+  span:
+    start: 121
+    end: 122
+  raw: b
+- kind:
+    Operator: Assign
+  span:
+    start: 123
+    end: 124
+  raw: "="
+- kind: Integer
+  span:
+    start: 125
+    end: 126
+  raw: "3"
+- kind: Semicolon
+  span:
+    start: 126
+    end: 127
+  raw: ;
+- kind: Newline
+  span:
+    start: 127
+    end: 128
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 128
+    end: 129
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 129
+    end: 134
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 134
+    end: 135
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 135
+    end: 145
+  raw: "a + b = "
+- kind:
+    Operator: Add
+  span:
+    start: 146
+    end: 147
+  raw: +
+- kind: OpenParen
+  span:
+    start: 148
+    end: 149
+  raw: (
+- kind: Identifier
+  span:
+    start: 149
+    end: 150
+  raw: a
+- kind:
+    Operator: Add
+  span:
+    start: 151
+    end: 152
+  raw: +
+- kind: Identifier
+  span:
+    start: 153
+    end: 154
+  raw: b
+- kind: CloseParen
+  span:
+    start: 154
+    end: 155
+  raw: )
+- kind: CloseParen
+  span:
+    start: 155
+    end: 156
+  raw: )
+- kind: Semicolon
+  span:
+    start: 156
+    end: 157
+  raw: ;
+- kind: Identifier
+  span:
+    start: 164
+    end: 169
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 169
+    end: 170
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 170
+    end: 180
+  raw: "a - b = "
+- kind:
+    Operator: Add
+  span:
+    start: 181
+    end: 182
+  raw: +
+- kind: OpenParen
+  span:
+    start: 183
+    end: 184
+  raw: (
+- kind: Identifier
+  span:
+    start: 184
+    end: 185
+  raw: a
+- kind:
+    Operator: Sub
+  span:
+    start: 186
+    end: 187
+  raw: "-"
+- kind: Identifier
+  span:
+    start: 188
+    end: 189
+  raw: b
+- kind: CloseParen
+  span:
+    start: 189
+    end: 190
+  raw: )
+- kind: CloseParen
+  span:
+    start: 190
+    end: 191
+  raw: )
+- kind: Semicolon
+  span:
+    start: 191
+    end: 192
+  raw: ;
+- kind: Identifier
+  span:
+    start: 198
+    end: 203
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 203
+    end: 204
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 204
+    end: 214
+  raw: "a * b = "
+- kind:
+    Operator: Add
+  span:
+    start: 215
+    end: 216
+  raw: +
+- kind: OpenParen
+  span:
+    start: 217
+    end: 218
+  raw: (
+- kind: Identifier
+  span:
+    start: 218
+    end: 219
+  raw: a
+- kind:
+    Operator: Multiply
+  span:
+    start: 220
+    end: 221
+  raw: "*"
+- kind: Identifier
+  span:
+    start: 222
+    end: 223
+  raw: b
+- kind: CloseParen
+  span:
+    start: 223
+    end: 224
+  raw: )
+- kind: CloseParen
+  span:
+    start: 224
+    end: 225
+  raw: )
+- kind: Semicolon
+  span:
+    start: 225
+    end: 226
+  raw: ;
+- kind: Identifier
+  span:
+    start: 233
+    end: 238
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 238
+    end: 239
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 239
+    end: 249
+  raw: "a / b = "
+- kind:
+    Operator: Add
+  span:
+    start: 250
+    end: 251
+  raw: +
+- kind: OpenParen
+  span:
+    start: 252
+    end: 253
+  raw: (
+- kind: Identifier
+  span:
+    start: 253
+    end: 254
+  raw: a
+- kind:
+    Operator: Divide
+  span:
+    start: 255
+    end: 256
+  raw: /
+- kind: Identifier
+  span:
+    start: 257
+    end: 258
+  raw: b
+- kind: CloseParen
+  span:
+    start: 258
+    end: 259
+  raw: )
+- kind: CloseParen
+  span:
+    start: 259
+    end: 260
+  raw: )
+- kind: Semicolon
+  span:
+    start: 260
+    end: 261
+  raw: ;
+- kind: Identifier
+  span:
+    start: 278
+    end: 283
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 283
+    end: 284
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 284
+    end: 294
+  raw: "a % b = "
+- kind:
+    Operator: Add
+  span:
+    start: 295
+    end: 296
+  raw: +
+- kind: OpenParen
+  span:
+    start: 297
+    end: 298
+  raw: (
+- kind: Identifier
+  span:
+    start: 298
+    end: 299
+  raw: a
+- kind:
+    Operator: Modulo
+  span:
+    start: 300
+    end: 301
+  raw: "%"
+- kind: Identifier
+  span:
+    start: 302
+    end: 303
+  raw: b
+- kind: CloseParen
+  span:
+    start: 303
+    end: 304
+  raw: )
+- kind: CloseParen
+  span:
+    start: 304
+    end: 305
+  raw: )
+- kind: Semicolon
+  span:
+    start: 305
+    end: 306
+  raw: ;
+- kind: Newline
+  span:
+    start: 312
+    end: 313
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 313
+    end: 318
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 318
+    end: 319
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 319
+    end: 327
+  raw: "++a = "
+- kind:
+    Operator: Add
+  span:
+    start: 328
+    end: 329
+  raw: +
+- kind: OpenParen
+  span:
+    start: 330
+    end: 331
+  raw: (
+- kind:
+    Operator: Increment
+  span:
+    start: 331
+    end: 333
+  raw: ++
+- kind: Identifier
+  span:
+    start: 333
+    end: 334
+  raw: a
+- kind: CloseParen
+  span:
+    start: 334
+    end: 335
+  raw: )
+- kind: CloseParen
+  span:
+    start: 335
+    end: 336
+  raw: )
+- kind: Semicolon
+  span:
+    start: 336
+    end: 337
+  raw: ;
+- kind: Identifier
+  span:
+    start: 344
+    end: 349
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 349
+    end: 350
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 350
+    end: 358
+  raw: "--a = "
+- kind:
+    Operator: Add
+  span:
+    start: 359
+    end: 360
+  raw: +
+- kind: OpenParen
+  span:
+    start: 361
+    end: 362
+  raw: (
+- kind:
+    Operator: Decrement
+  span:
+    start: 362
+    end: 364
+  raw: "--"
+- kind: Identifier
+  span:
+    start: 364
+    end: 365
+  raw: a
+- kind: CloseParen
+  span:
+    start: 365
+    end: 366
+  raw: )
+- kind: CloseParen
+  span:
+    start: 366
+    end: 367
+  raw: )
+- kind: Semicolon
+  span:
+    start: 367
+    end: 368
+  raw: ;
+- kind: Identifier
+  span:
+    start: 375
+    end: 380
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 380
+    end: 381
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 381
+    end: 389
+  raw: "a++ = "
+- kind:
+    Operator: Add
+  span:
+    start: 390
+    end: 391
+  raw: +
+- kind: OpenParen
+  span:
+    start: 392
+    end: 393
+  raw: (
+- kind: Identifier
+  span:
+    start: 393
+    end: 394
+  raw: a
+- kind:
+    Operator: Increment
+  span:
+    start: 394
+    end: 396
+  raw: ++
+- kind: CloseParen
+  span:
+    start: 396
+    end: 397
+  raw: )
+- kind: CloseParen
+  span:
+    start: 397
+    end: 398
+  raw: )
+- kind: Semicolon
+  span:
+    start: 398
+    end: 399
+  raw: ;
+- kind: Identifier
+  span:
+    start: 418
+    end: 423
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 423
+    end: 424
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 424
+    end: 432
+  raw: "a-- = "
+- kind:
+    Operator: Add
+  span:
+    start: 433
+    end: 434
+  raw: +
+- kind: OpenParen
+  span:
+    start: 435
+    end: 436
+  raw: (
+- kind: Identifier
+  span:
+    start: 436
+    end: 437
+  raw: a
+- kind:
+    Operator: Decrement
+  span:
+    start: 437
+    end: 439
+  raw: "--"
+- kind: CloseParen
+  span:
+    start: 439
+    end: 440
+  raw: )
+- kind: CloseParen
+  span:
+    start: 440
+    end: 441
+  raw: )
+- kind: Semicolon
+  span:
+    start: 441
+    end: 442
+  raw: ;
+- kind: Newline
+  span:
+    start: 461
+    end: 462
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 462
+    end: 465
+  raw: var
+- kind: Identifier
+  span:
+    start: 466
+    end: 471
+  raw: hello
+- kind:
+    Operator: Assign
+  span:
+    start: 472
+    end: 473
+  raw: "="
+- kind:
+    String: Double
+  span:
+    start: 474
+    end: 481
+  raw: Hello
+- kind: Semicolon
+  span:
+    start: 481
+    end: 482
+  raw: ;
+- kind: Newline
+  span:
+    start: 482
+    end: 483
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 483
+    end: 486
+  raw: var
+- kind: Identifier
+  span:
+    start: 487
+    end: 492
+  raw: world
+- kind:
+    Operator: Assign
+  span:
+    start: 493
+    end: 494
+  raw: "="
+- kind:
+    String: Double
+  span:
+    start: 495
+    end: 502
+  raw: World
+- kind: Semicolon
+  span:
+    start: 502
+    end: 503
+  raw: ;
+- kind: Newline
+  span:
+    start: 503
+    end: 504
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 504
+    end: 509
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 509
+    end: 510
+  raw: (
+- kind:
+    String: Single
+  span:
+    start: 510
+    end: 534
+  raw: "hello + \" \" + world = "
+- kind:
+    Operator: Add
+  span:
+    start: 535
+    end: 536
+  raw: +
+- kind: OpenParen
+  span:
+    start: 537
+    end: 538
+  raw: (
+- kind: Identifier
+  span:
+    start: 538
+    end: 543
+  raw: hello
+- kind:
+    Operator: Add
+  span:
+    start: 544
+    end: 545
+  raw: +
+- kind:
+    String: Double
+  span:
+    start: 546
+    end: 549
+  raw: " "
+- kind:
+    Operator: Add
+  span:
+    start: 550
+    end: 551
+  raw: +
+- kind: Identifier
+  span:
+    start: 552
+    end: 557
+  raw: world
+- kind: CloseParen
+  span:
+    start: 557
+    end: 558
+  raw: )
+- kind: CloseParen
+  span:
+    start: 558
+    end: 559
+  raw: )
+- kind: Semicolon
+  span:
+    start: 559
+    end: 560
+  raw: ;
+- kind: Newline
+  span:
+    start: 576
+    end: 577
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 601
+    end: 604
+  raw: var
+- kind: Identifier
+  span:
+    start: 605
+    end: 606
+  raw: x
+- kind:
+    Operator: Assign
+  span:
+    start: 607
+    end: 608
+  raw: "="
+- kind: Integer
+  span:
+    start: 609
+    end: 610
+  raw: "5"
+- kind: Semicolon
+  span:
+    start: 610
+    end: 611
+  raw: ;
+- kind: Newline
+  span:
+    start: 611
+    end: 612
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 612
+    end: 617
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 617
+    end: 618
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 618
+    end: 624
+  raw: "x = "
+- kind:
+    Operator: Add
+  span:
+    start: 625
+    end: 626
+  raw: +
+- kind: Identifier
+  span:
+    start: 627
+    end: 628
+  raw: x
+- kind: CloseParen
+  span:
+    start: 628
+    end: 629
+  raw: )
+- kind: Semicolon
+  span:
+    start: 629
+    end: 630
+  raw: ;
+- kind: Identifier
+  span:
+    start: 636
+    end: 641
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 641
+    end: 642
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 642
+    end: 654
+  raw: "x += 2 => "
+- kind:
+    Operator: Add
+  span:
+    start: 655
+    end: 656
+  raw: +
+- kind: OpenParen
+  span:
+    start: 657
+    end: 658
+  raw: (
+- kind: Identifier
+  span:
+    start: 658
+    end: 659
+  raw: x
+- kind:
+    Operator: AddAssign
+  span:
+    start: 660
+    end: 662
+  raw: +=
+- kind: Integer
+  span:
+    start: 663
+    end: 664
+  raw: "2"
+- kind: CloseParen
+  span:
+    start: 664
+    end: 665
+  raw: )
+- kind: CloseParen
+  span:
+    start: 665
+    end: 666
+  raw: )
+- kind: Semicolon
+  span:
+    start: 666
+    end: 667
+  raw: ;
+- kind: Identifier
+  span:
+    start: 673
+    end: 678
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 678
+    end: 679
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 679
+    end: 691
+  raw: "x -= 2 => "
+- kind:
+    Operator: Add
+  span:
+    start: 692
+    end: 693
+  raw: +
+- kind: OpenParen
+  span:
+    start: 694
+    end: 695
+  raw: (
+- kind: Identifier
+  span:
+    start: 695
+    end: 696
+  raw: x
+- kind:
+    Operator: SubAssign
+  span:
+    start: 697
+    end: 699
+  raw: "-="
+- kind: Integer
+  span:
+    start: 700
+    end: 701
+  raw: "2"
+- kind: CloseParen
+  span:
+    start: 701
+    end: 702
+  raw: )
+- kind: CloseParen
+  span:
+    start: 702
+    end: 703
+  raw: )
+- kind: Semicolon
+  span:
+    start: 703
+    end: 704
+  raw: ;
+- kind: Identifier
+  span:
+    start: 710
+    end: 715
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 715
+    end: 716
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 716
+    end: 728
+  raw: "x *= 3 => "
+- kind:
+    Operator: Add
+  span:
+    start: 729
+    end: 730
+  raw: +
+- kind: OpenParen
+  span:
+    start: 731
+    end: 732
+  raw: (
+- kind: Identifier
+  span:
+    start: 732
+    end: 733
+  raw: x
+- kind:
+    Operator: MultiplyAssign
+  span:
+    start: 734
+    end: 736
+  raw: "*="
+- kind: Integer
+  span:
+    start: 737
+    end: 738
+  raw: "3"
+- kind: CloseParen
+  span:
+    start: 738
+    end: 739
+  raw: )
+- kind: CloseParen
+  span:
+    start: 739
+    end: 740
+  raw: )
+- kind: Semicolon
+  span:
+    start: 740
+    end: 741
+  raw: ;
+- kind: Identifier
+  span:
+    start: 748
+    end: 753
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 753
+    end: 754
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 754
+    end: 766
+  raw: "x /= 5 => "
+- kind:
+    Operator: Add
+  span:
+    start: 767
+    end: 768
+  raw: +
+- kind: OpenParen
+  span:
+    start: 769
+    end: 770
+  raw: (
+- kind: Identifier
+  span:
+    start: 770
+    end: 771
+  raw: x
+- kind:
+    Operator: DivideAssign
+  span:
+    start: 772
+    end: 774
+  raw: /=
+- kind: Integer
+  span:
+    start: 775
+    end: 776
+  raw: "5"
+- kind: CloseParen
+  span:
+    start: 776
+    end: 777
+  raw: )
+- kind: CloseParen
+  span:
+    start: 777
+    end: 778
+  raw: )
+- kind: Semicolon
+  span:
+    start: 778
+    end: 779
+  raw: ;
+- kind: Identifier
+  span:
+    start: 785
+    end: 790
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 790
+    end: 791
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 791
+    end: 803
+  raw: "x %= 2 => "
+- kind:
+    Operator: Add
+  span:
+    start: 804
+    end: 805
+  raw: +
+- kind: OpenParen
+  span:
+    start: 806
+    end: 807
+  raw: (
+- kind: Identifier
+  span:
+    start: 807
+    end: 808
+  raw: x
+- kind:
+    Operator: ModuloAssign
+  span:
+    start: 809
+    end: 811
+  raw: "%="
+- kind: Integer
+  span:
+    start: 812
+    end: 813
+  raw: "2"
+- kind: CloseParen
+  span:
+    start: 813
+    end: 814
+  raw: )
+- kind: CloseParen
+  span:
+    start: 814
+    end: 815
+  raw: )
+- kind: Semicolon
+  span:
+    start: 815
+    end: 816
+  raw: ;
+- kind: Newline
+  span:
+    start: 822
+    end: 823
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 844
+    end: 847
+  raw: var
+- kind: Identifier
+  span:
+    start: 848
+    end: 852
+  raw: five
+- kind:
+    Operator: Assign
+  span:
+    start: 853
+    end: 854
+  raw: "="
+- kind: Integer
+  span:
+    start: 855
+    end: 856
+  raw: "5"
+- kind: Semicolon
+  span:
+    start: 856
+    end: 857
+  raw: ;
+- kind: Newline
+  span:
+    start: 857
+    end: 858
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 858
+    end: 861
+  raw: var
+- kind: Identifier
+  span:
+    start: 862
+    end: 867
+  raw: three
+- kind:
+    Operator: Assign
+  span:
+    start: 868
+    end: 869
+  raw: "="
+- kind: Integer
+  span:
+    start: 870
+    end: 871
+  raw: "3"
+- kind: Semicolon
+  span:
+    start: 871
+    end: 872
+  raw: ;
+- kind: Newline
+  span:
+    start: 872
+    end: 873
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 873
+    end: 878
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 878
+    end: 879
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 879
+    end: 896
+  raw: "five & three = "
+- kind:
+    Operator: Add
+  span:
+    start: 897
+    end: 898
+  raw: +
+- kind: OpenParen
+  span:
+    start: 899
+    end: 900
+  raw: (
+- kind: Identifier
+  span:
+    start: 900
+    end: 904
+  raw: five
+- kind:
+    Operator: BitAnd
+  span:
+    start: 905
+    end: 906
+  raw: "&"
+- kind: Identifier
+  span:
+    start: 907
+    end: 912
+  raw: three
+- kind: CloseParen
+  span:
+    start: 912
+    end: 913
+  raw: )
+- kind: CloseParen
+  span:
+    start: 913
+    end: 914
+  raw: )
+- kind: Semicolon
+  span:
+    start: 914
+    end: 915
+  raw: ;
+- kind: Identifier
+  span:
+    start: 921
+    end: 926
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 926
+    end: 927
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 927
+    end: 944
+  raw: "five | three = "
+- kind:
+    Operator: Add
+  span:
+    start: 945
+    end: 946
+  raw: +
+- kind: OpenParen
+  span:
+    start: 947
+    end: 948
+  raw: (
+- kind: Identifier
+  span:
+    start: 948
+    end: 952
+  raw: five
+- kind:
+    Operator: BitOr
+  span:
+    start: 953
+    end: 954
+  raw: "|"
+- kind: Identifier
+  span:
+    start: 955
+    end: 960
+  raw: three
+- kind: CloseParen
+  span:
+    start: 960
+    end: 961
+  raw: )
+- kind: CloseParen
+  span:
+    start: 961
+    end: 962
+  raw: )
+- kind: Semicolon
+  span:
+    start: 962
+    end: 963
+  raw: ;
+- kind: Identifier
+  span:
+    start: 969
+    end: 974
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 974
+    end: 975
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 975
+    end: 992
+  raw: "five ^ three = "
+- kind:
+    Operator: Add
+  span:
+    start: 993
+    end: 994
+  raw: +
+- kind: OpenParen
+  span:
+    start: 995
+    end: 996
+  raw: (
+- kind: Identifier
+  span:
+    start: 996
+    end: 1000
+  raw: five
+- kind:
+    Operator: BitXor
+  span:
+    start: 1001
+    end: 1002
+  raw: ^
+- kind: Identifier
+  span:
+    start: 1003
+    end: 1008
+  raw: three
+- kind: CloseParen
+  span:
+    start: 1008
+    end: 1009
+  raw: )
+- kind: CloseParen
+  span:
+    start: 1009
+    end: 1010
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1010
+    end: 1011
+  raw: ;
+- kind: Identifier
+  span:
+    start: 1017
+    end: 1022
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1022
+    end: 1023
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1023
+    end: 1033
+  raw: "~five = "
+- kind:
+    Operator: Add
+  span:
+    start: 1034
+    end: 1035
+  raw: +
+- kind: OpenParen
+  span:
+    start: 1036
+    end: 1037
+  raw: (
+- kind:
+    Operator: BitNot
+  span:
+    start: 1037
+    end: 1038
+  raw: "~"
+- kind: Identifier
+  span:
+    start: 1038
+    end: 1042
+  raw: five
+- kind: CloseParen
+  span:
+    start: 1042
+    end: 1043
+  raw: )
+- kind: CloseParen
+  span:
+    start: 1043
+    end: 1044
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1044
+    end: 1045
+  raw: ;
+- kind: Identifier
+  span:
+    start: 1052
+    end: 1057
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1057
+    end: 1058
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1058
+    end: 1072
+  raw: "five << 1 = "
+- kind:
+    Operator: Add
+  span:
+    start: 1073
+    end: 1074
+  raw: +
+- kind: OpenParen
+  span:
+    start: 1075
+    end: 1076
+  raw: (
+- kind: Identifier
+  span:
+    start: 1076
+    end: 1080
+  raw: five
+- kind:
+    Operator: BitShiftLeft
+  span:
+    start: 1081
+    end: 1083
+  raw: "<<"
+- kind: Integer
+  span:
+    start: 1084
+    end: 1085
+  raw: "1"
+- kind: CloseParen
+  span:
+    start: 1085
+    end: 1086
+  raw: )
+- kind: CloseParen
+  span:
+    start: 1086
+    end: 1087
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1087
+    end: 1088
+  raw: ;
+- kind: Identifier
+  span:
+    start: 1095
+    end: 1100
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1100
+    end: 1101
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1101
+    end: 1115
+  raw: "five >> 1 = "
+- kind:
+    Operator: Add
+  span:
+    start: 1116
+    end: 1117
+  raw: +
+- kind: OpenParen
+  span:
+    start: 1118
+    end: 1119
+  raw: (
+- kind: Identifier
+  span:
+    start: 1119
+    end: 1123
+  raw: five
+- kind:
+    Operator: BitShiftRight
+  span:
+    start: 1124
+    end: 1126
+  raw: ">>"
+- kind: Integer
+  span:
+    start: 1127
+    end: 1128
+  raw: "1"
+- kind: CloseParen
+  span:
+    start: 1128
+    end: 1129
+  raw: )
+- kind: CloseParen
+  span:
+    start: 1129
+    end: 1130
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1130
+    end: 1131
+  raw: ;
+- kind: Identifier
+  span:
+    start: 1137
+    end: 1142
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1142
+    end: 1143
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1143
+    end: 1158
+  raw: "five >>> 1 = "
+- kind:
+    Operator: Add
+  span:
+    start: 1159
+    end: 1160
+  raw: +
+- kind: OpenParen
+  span:
+    start: 1161
+    end: 1162
+  raw: (
+- kind: Identifier
+  span:
+    start: 1162
+    end: 1166
+  raw: five
+- kind:
+    Operator: BitShiftRightUnsigned
+  span:
+    start: 1167
+    end: 1170
+  raw: ">>>"
+- kind: Integer
+  span:
+    start: 1171
+    end: 1172
+  raw: "1"
+- kind: CloseParen
+  span:
+    start: 1172
+    end: 1173
+  raw: )
+- kind: CloseParen
+  span:
+    start: 1173
+    end: 1174
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1174
+    end: 1175
+  raw: ;
+- kind: Newline
+  span:
+    start: 1181
+    end: 1182
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1214
+    end: 1218
+  raw: five
+- kind:
+    Operator: Assign
+  span:
+    start: 1219
+    end: 1220
+  raw: "="
+- kind: Integer
+  span:
+    start: 1221
+    end: 1222
+  raw: "5"
+- kind: Semicolon
+  span:
+    start: 1222
+    end: 1223
+  raw: ;
+- kind: Newline
+  span:
+    start: 1223
+    end: 1224
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1224
+    end: 1228
+  raw: five
+- kind:
+    Operator: BitAndAssign
+  span:
+    start: 1229
+    end: 1231
+  raw: "&="
+- kind: Identifier
+  span:
+    start: 1232
+    end: 1237
+  raw: three
+- kind: Semicolon
+  span:
+    start: 1237
+    end: 1238
+  raw: ;
+- kind: Newline
+  span:
+    start: 1238
+    end: 1239
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1239
+    end: 1244
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1244
+    end: 1245
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1245
+    end: 1264
+  raw: "five &= three => "
+- kind:
+    Operator: Add
+  span:
+    start: 1265
+    end: 1266
+  raw: +
+- kind: Identifier
+  span:
+    start: 1267
+    end: 1271
+  raw: five
+- kind: CloseParen
+  span:
+    start: 1271
+    end: 1272
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1272
+    end: 1273
+  raw: ;
+- kind: Newline
+  span:
+    start: 1279
+    end: 1280
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1280
+    end: 1284
+  raw: five
+- kind:
+    Operator: Assign
+  span:
+    start: 1285
+    end: 1286
+  raw: "="
+- kind: Integer
+  span:
+    start: 1287
+    end: 1288
+  raw: "5"
+- kind: Semicolon
+  span:
+    start: 1288
+    end: 1289
+  raw: ;
+- kind: Newline
+  span:
+    start: 1289
+    end: 1290
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1290
+    end: 1294
+  raw: five
+- kind:
+    Operator: BitOrAssign
+  span:
+    start: 1295
+    end: 1297
+  raw: "|="
+- kind: Identifier
+  span:
+    start: 1298
+    end: 1303
+  raw: three
+- kind: Semicolon
+  span:
+    start: 1303
+    end: 1304
+  raw: ;
+- kind: Newline
+  span:
+    start: 1304
+    end: 1305
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1305
+    end: 1310
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1310
+    end: 1311
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1311
+    end: 1330
+  raw: "five |= three => "
+- kind:
+    Operator: Add
+  span:
+    start: 1331
+    end: 1332
+  raw: +
+- kind: Identifier
+  span:
+    start: 1333
+    end: 1337
+  raw: five
+- kind: CloseParen
+  span:
+    start: 1337
+    end: 1338
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1338
+    end: 1339
+  raw: ;
+- kind: Newline
+  span:
+    start: 1345
+    end: 1346
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1346
+    end: 1350
+  raw: five
+- kind:
+    Operator: Assign
+  span:
+    start: 1351
+    end: 1352
+  raw: "="
+- kind: Integer
+  span:
+    start: 1353
+    end: 1354
+  raw: "5"
+- kind: Semicolon
+  span:
+    start: 1354
+    end: 1355
+  raw: ;
+- kind: Newline
+  span:
+    start: 1355
+    end: 1356
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1356
+    end: 1360
+  raw: five
+- kind:
+    Operator: BitXorAssign
+  span:
+    start: 1361
+    end: 1363
+  raw: ^=
+- kind: Identifier
+  span:
+    start: 1364
+    end: 1369
+  raw: three
+- kind: Semicolon
+  span:
+    start: 1369
+    end: 1370
+  raw: ;
+- kind: Newline
+  span:
+    start: 1370
+    end: 1371
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1371
+    end: 1376
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1376
+    end: 1377
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1377
+    end: 1396
+  raw: "five ^= three => "
+- kind:
+    Operator: Add
+  span:
+    start: 1397
+    end: 1398
+  raw: +
+- kind: Identifier
+  span:
+    start: 1399
+    end: 1403
+  raw: five
+- kind: CloseParen
+  span:
+    start: 1403
+    end: 1404
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1404
+    end: 1405
+  raw: ;
+- kind: Newline
+  span:
+    start: 1411
+    end: 1412
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1412
+    end: 1416
+  raw: five
+- kind:
+    Operator: Assign
+  span:
+    start: 1417
+    end: 1418
+  raw: "="
+- kind: Integer
+  span:
+    start: 1419
+    end: 1420
+  raw: "5"
+- kind: Semicolon
+  span:
+    start: 1420
+    end: 1421
+  raw: ;
+- kind: Identifier
+  span:
+    start: 1431
+    end: 1435
+  raw: five
+- kind:
+    Operator: BitShiftLeftAssign
+  span:
+    start: 1436
+    end: 1439
+  raw: "<<="
+- kind: Integer
+  span:
+    start: 1440
+    end: 1441
+  raw: "1"
+- kind: Semicolon
+  span:
+    start: 1441
+    end: 1442
+  raw: ;
+- kind: Newline
+  span:
+    start: 1442
+    end: 1443
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1443
+    end: 1448
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1448
+    end: 1449
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1449
+    end: 1465
+  raw: "five <<= 1 => "
+- kind:
+    Operator: Add
+  span:
+    start: 1466
+    end: 1467
+  raw: +
+- kind: Identifier
+  span:
+    start: 1468
+    end: 1472
+  raw: five
+- kind: CloseParen
+  span:
+    start: 1472
+    end: 1473
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1473
+    end: 1474
+  raw: ;
+- kind: Newline
+  span:
+    start: 1481
+    end: 1482
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1482
+    end: 1486
+  raw: five
+- kind:
+    Operator: Assign
+  span:
+    start: 1487
+    end: 1488
+  raw: "="
+- kind: Integer
+  span:
+    start: 1489
+    end: 1490
+  raw: "5"
+- kind: Semicolon
+  span:
+    start: 1490
+    end: 1491
+  raw: ;
+- kind: Identifier
+  span:
+    start: 1501
+    end: 1505
+  raw: five
+- kind:
+    Operator: BitShiftRightAssign
+  span:
+    start: 1506
+    end: 1509
+  raw: ">>="
+- kind: Integer
+  span:
+    start: 1510
+    end: 1511
+  raw: "1"
+- kind: Semicolon
+  span:
+    start: 1511
+    end: 1512
+  raw: ;
+- kind: Newline
+  span:
+    start: 1512
+    end: 1513
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1513
+    end: 1518
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1518
+    end: 1519
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1519
+    end: 1535
+  raw: "five >>= 1 => "
+- kind:
+    Operator: Add
+  span:
+    start: 1536
+    end: 1537
+  raw: +
+- kind: Identifier
+  span:
+    start: 1538
+    end: 1542
+  raw: five
+- kind: CloseParen
+  span:
+    start: 1542
+    end: 1543
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1543
+    end: 1544
+  raw: ;
+- kind: Newline
+  span:
+    start: 1550
+    end: 1551
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1551
+    end: 1555
+  raw: five
+- kind:
+    Operator: Assign
+  span:
+    start: 1556
+    end: 1557
+  raw: "="
+- kind: Integer
+  span:
+    start: 1558
+    end: 1559
+  raw: "5"
+- kind: Semicolon
+  span:
+    start: 1559
+    end: 1560
+  raw: ;
+- kind: Identifier
+  span:
+    start: 1570
+    end: 1574
+  raw: five
+- kind:
+    Operator: BitShiftRightUnsignedAssign
+  span:
+    start: 1575
+    end: 1579
+  raw: ">>>="
+- kind: Integer
+  span:
+    start: 1580
+    end: 1581
+  raw: "1"
+- kind: Semicolon
+  span:
+    start: 1581
+    end: 1582
+  raw: ;
+- kind: Newline
+  span:
+    start: 1582
+    end: 1583
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1583
+    end: 1588
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1588
+    end: 1589
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1589
+    end: 1606
+  raw: "five >>>= 1 => "
+- kind:
+    Operator: Add
+  span:
+    start: 1607
+    end: 1608
+  raw: +
+- kind: Identifier
+  span:
+    start: 1609
+    end: 1613
+  raw: five
+- kind: CloseParen
+  span:
+    start: 1613
+    end: 1614
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1614
+    end: 1615
+  raw: ;
+- kind: Newline
+  span:
+    start: 1621
+    end: 1622
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 1646
+    end: 1649
+  raw: var
+- kind: Identifier
+  span:
+    start: 1650
+    end: 1653
+  raw: six
+- kind:
+    Operator: Assign
+  span:
+    start: 1654
+    end: 1655
+  raw: "="
+- kind: Integer
+  span:
+    start: 1656
+    end: 1657
+  raw: "6"
+- kind: Semicolon
+  span:
+    start: 1657
+    end: 1658
+  raw: ;
+- kind: Newline
+  span:
+    start: 1658
+    end: 1659
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 1659
+    end: 1662
+  raw: var
+- kind: Identifier
+  span:
+    start: 1663
+    end: 1668
+  raw: seven
+- kind:
+    Operator: Assign
+  span:
+    start: 1669
+    end: 1670
+  raw: "="
+- kind: Integer
+  span:
+    start: 1671
+    end: 1672
+  raw: "7"
+- kind: Semicolon
+  span:
+    start: 1672
+    end: 1673
+  raw: ;
+- kind: Newline
+  span:
+    start: 1673
+    end: 1674
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 1674
+    end: 1677
+  raw: var
+- kind: Identifier
+  span:
+    start: 1678
+    end: 1686
+  raw: sevenStr
+- kind:
+    Operator: Assign
+  span:
+    start: 1687
+    end: 1688
+  raw: "="
+- kind:
+    String: Double
+  span:
+    start: 1689
+    end: 1692
+  raw: "7"
+- kind: Semicolon
+  span:
+    start: 1692
+    end: 1693
+  raw: ;
+- kind: Newline
+  span:
+    start: 1693
+    end: 1694
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1694
+    end: 1699
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1699
+    end: 1700
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1700
+    end: 1716
+  raw: "six == seven: "
+- kind:
+    Operator: Add
+  span:
+    start: 1717
+    end: 1718
+  raw: +
+- kind: OpenParen
+  span:
+    start: 1719
+    end: 1720
+  raw: (
+- kind: Identifier
+  span:
+    start: 1720
+    end: 1723
+  raw: six
+- kind:
+    Operator: Equal
+  span:
+    start: 1724
+    end: 1726
+  raw: "=="
+- kind: Identifier
+  span:
+    start: 1727
+    end: 1732
+  raw: seven
+- kind: CloseParen
+  span:
+    start: 1732
+    end: 1733
+  raw: )
+- kind: CloseParen
+  span:
+    start: 1733
+    end: 1734
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1734
+    end: 1735
+  raw: ;
+- kind: Identifier
+  span:
+    start: 1745
+    end: 1750
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1750
+    end: 1751
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1751
+    end: 1767
+  raw: "six != seven: "
+- kind:
+    Operator: Add
+  span:
+    start: 1768
+    end: 1769
+  raw: +
+- kind: OpenParen
+  span:
+    start: 1770
+    end: 1771
+  raw: (
+- kind: Identifier
+  span:
+    start: 1771
+    end: 1774
+  raw: six
+- kind:
+    Operator: NotEqual
+  span:
+    start: 1775
+    end: 1777
+  raw: "!="
+- kind: Identifier
+  span:
+    start: 1778
+    end: 1783
+  raw: seven
+- kind: CloseParen
+  span:
+    start: 1783
+    end: 1784
+  raw: )
+- kind: CloseParen
+  span:
+    start: 1784
+    end: 1785
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1785
+    end: 1786
+  raw: ;
+- kind: Identifier
+  span:
+    start: 1795
+    end: 1800
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1800
+    end: 1801
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1801
+    end: 1816
+  raw: "six < seven: "
+- kind:
+    Operator: Add
+  span:
+    start: 1817
+    end: 1818
+  raw: +
+- kind: OpenParen
+  span:
+    start: 1819
+    end: 1820
+  raw: (
+- kind: Identifier
+  span:
+    start: 1820
+    end: 1823
+  raw: six
+- kind:
+    Operator: LessThan
+  span:
+    start: 1824
+    end: 1825
+  raw: "<"
+- kind: Identifier
+  span:
+    start: 1826
+    end: 1831
+  raw: seven
+- kind: CloseParen
+  span:
+    start: 1831
+    end: 1832
+  raw: )
+- kind: CloseParen
+  span:
+    start: 1832
+    end: 1833
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1833
+    end: 1834
+  raw: ;
+- kind: Identifier
+  span:
+    start: 1843
+    end: 1848
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1848
+    end: 1849
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1849
+    end: 1865
+  raw: "six <= seven: "
+- kind:
+    Operator: Add
+  span:
+    start: 1866
+    end: 1867
+  raw: +
+- kind: OpenParen
+  span:
+    start: 1868
+    end: 1869
+  raw: (
+- kind: Identifier
+  span:
+    start: 1869
+    end: 1872
+  raw: six
+- kind:
+    Operator: LessThanEqual
+  span:
+    start: 1873
+    end: 1875
+  raw: "<="
+- kind: Identifier
+  span:
+    start: 1876
+    end: 1881
+  raw: seven
+- kind: CloseParen
+  span:
+    start: 1881
+    end: 1882
+  raw: )
+- kind: CloseParen
+  span:
+    start: 1882
+    end: 1883
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1883
+    end: 1884
+  raw: ;
+- kind: Identifier
+  span:
+    start: 1893
+    end: 1898
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1898
+    end: 1899
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1899
+    end: 1914
+  raw: "six > seven: "
+- kind:
+    Operator: Add
+  span:
+    start: 1915
+    end: 1916
+  raw: +
+- kind: OpenParen
+  span:
+    start: 1917
+    end: 1918
+  raw: (
+- kind: Identifier
+  span:
+    start: 1918
+    end: 1921
+  raw: six
+- kind:
+    Operator: GreaterThan
+  span:
+    start: 1922
+    end: 1923
+  raw: ">"
+- kind: Identifier
+  span:
+    start: 1924
+    end: 1929
+  raw: seven
+- kind: CloseParen
+  span:
+    start: 1929
+    end: 1930
+  raw: )
+- kind: CloseParen
+  span:
+    start: 1930
+    end: 1931
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1931
+    end: 1932
+  raw: ;
+- kind: Identifier
+  span:
+    start: 1942
+    end: 1947
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1947
+    end: 1948
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1948
+    end: 1964
+  raw: "six >= seven: "
+- kind:
+    Operator: Add
+  span:
+    start: 1965
+    end: 1966
+  raw: +
+- kind: OpenParen
+  span:
+    start: 1967
+    end: 1968
+  raw: (
+- kind: Identifier
+  span:
+    start: 1968
+    end: 1971
+  raw: six
+- kind:
+    Operator: GreaterThanEqual
+  span:
+    start: 1972
+    end: 1974
+  raw: ">="
+- kind: Identifier
+  span:
+    start: 1975
+    end: 1980
+  raw: seven
+- kind: CloseParen
+  span:
+    start: 1980
+    end: 1981
+  raw: )
+- kind: CloseParen
+  span:
+    start: 1981
+    end: 1982
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1982
+    end: 1983
+  raw: ;
+- kind: Identifier
+  span:
+    start: 1993
+    end: 1998
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1998
+    end: 1999
+  raw: (
+- kind:
+    String: Single
+  span:
+    start: 1999
+    end: 2020
+  raw: "sevenStr == seven: "
+- kind:
+    Operator: Add
+  span:
+    start: 2021
+    end: 2022
+  raw: +
+- kind: OpenParen
+  span:
+    start: 2023
+    end: 2024
+  raw: (
+- kind: Identifier
+  span:
+    start: 2024
+    end: 2032
+  raw: sevenStr
+- kind:
+    Operator: Equal
+  span:
+    start: 2033
+    end: 2035
+  raw: "=="
+- kind: Identifier
+  span:
+    start: 2036
+    end: 2041
+  raw: seven
+- kind: CloseParen
+  span:
+    start: 2041
+    end: 2042
+  raw: )
+- kind: CloseParen
+  span:
+    start: 2042
+    end: 2043
+  raw: )
+- kind: Semicolon
+  span:
+    start: 2043
+    end: 2044
+  raw: ;
+- kind: Identifier
+  span:
+    start: 2053
+    end: 2058
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 2058
+    end: 2059
+  raw: (
+- kind:
+    String: Single
+  span:
+    start: 2059
+    end: 2081
+  raw: "sevenStr === seven: "
+- kind:
+    Operator: Add
+  span:
+    start: 2082
+    end: 2083
+  raw: +
+- kind: OpenParen
+  span:
+    start: 2084
+    end: 2085
+  raw: (
+- kind: Identifier
+  span:
+    start: 2085
+    end: 2093
+  raw: sevenStr
+- kind:
+    Operator: StrictEqual
+  span:
+    start: 2094
+    end: 2097
+  raw: "==="
+- kind: Identifier
+  span:
+    start: 2098
+    end: 2103
+  raw: seven
+- kind: CloseParen
+  span:
+    start: 2103
+    end: 2104
+  raw: )
+- kind: CloseParen
+  span:
+    start: 2104
+    end: 2105
+  raw: )
+- kind: Semicolon
+  span:
+    start: 2105
+    end: 2106
+  raw: ;
+- kind: Identifier
+  span:
+    start: 2116
+    end: 2121
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 2121
+    end: 2122
+  raw: (
+- kind:
+    String: Single
+  span:
+    start: 2122
+    end: 2144
+  raw: "sevenStr !== seven: "
+- kind:
+    Operator: Add
+  span:
+    start: 2145
+    end: 2146
+  raw: +
+- kind: OpenParen
+  span:
+    start: 2147
+    end: 2148
+  raw: (
+- kind: Identifier
+  span:
+    start: 2148
+    end: 2156
+  raw: sevenStr
+- kind:
+    Operator: StrictNotEqual
+  span:
+    start: 2157
+    end: 2160
+  raw: "!=="
+- kind: Identifier
+  span:
+    start: 2161
+    end: 2166
+  raw: seven
+- kind: CloseParen
+  span:
+    start: 2166
+    end: 2167
+  raw: )
+- kind: CloseParen
+  span:
+    start: 2167
+    end: 2168
+  raw: )
+- kind: Semicolon
+  span:
+    start: 2168
+    end: 2169
+  raw: ;
+- kind: Newline
+  span:
+    start: 2178
+    end: 2179
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 2200
+    end: 2203
+  raw: var
+- kind: Identifier
+  span:
+    start: 2204
+    end: 2205
+  raw: t
+- kind:
+    Operator: Assign
+  span:
+    start: 2206
+    end: 2207
+  raw: "="
+- kind: Identifier
+  span:
+    start: 2208
+    end: 2212
+  raw: "true"
+- kind: Semicolon
+  span:
+    start: 2212
+    end: 2213
+  raw: ;
+- kind: Newline
+  span:
+    start: 2213
+    end: 2214
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 2214
+    end: 2217
+  raw: var
+- kind: Identifier
+  span:
+    start: 2218
+    end: 2219
+  raw: f
+- kind:
+    Operator: Assign
+  span:
+    start: 2220
+    end: 2221
+  raw: "="
+- kind: Identifier
+  span:
+    start: 2222
+    end: 2227
+  raw: "false"
+- kind: Semicolon
+  span:
+    start: 2227
+    end: 2228
+  raw: ;
+- kind: Newline
+  span:
+    start: 2228
+    end: 2229
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 2229
+    end: 2234
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 2234
+    end: 2235
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 2235
+    end: 2245
+  raw: "t && f: "
+- kind:
+    Operator: Add
+  span:
+    start: 2246
+    end: 2247
+  raw: +
+- kind: OpenParen
+  span:
+    start: 2248
+    end: 2249
+  raw: (
+- kind: Identifier
+  span:
+    start: 2249
+    end: 2250
+  raw: t
+- kind:
+    Operator: LogicalAnd
+  span:
+    start: 2251
+    end: 2253
+  raw: "&&"
+- kind: Identifier
+  span:
+    start: 2254
+    end: 2255
+  raw: f
+- kind: CloseParen
+  span:
+    start: 2255
+    end: 2256
+  raw: )
+- kind: CloseParen
+  span:
+    start: 2256
+    end: 2257
+  raw: )
+- kind: Semicolon
+  span:
+    start: 2257
+    end: 2258
+  raw: ;
+- kind: Identifier
+  span:
+    start: 2268
+    end: 2273
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 2273
+    end: 2274
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 2274
+    end: 2284
+  raw: "t || f: "
+- kind:
+    Operator: Add
+  span:
+    start: 2285
+    end: 2286
+  raw: +
+- kind: OpenParen
+  span:
+    start: 2287
+    end: 2288
+  raw: (
+- kind: Identifier
+  span:
+    start: 2288
+    end: 2289
+  raw: t
+- kind:
+    Operator: LogicalOr
+  span:
+    start: 2290
+    end: 2292
+  raw: "||"
+- kind: Identifier
+  span:
+    start: 2293
+    end: 2294
+  raw: f
+- kind: CloseParen
+  span:
+    start: 2294
+    end: 2295
+  raw: )
+- kind: CloseParen
+  span:
+    start: 2295
+    end: 2296
+  raw: )
+- kind: Semicolon
+  span:
+    start: 2296
+    end: 2297
+  raw: ;
+- kind: Identifier
+  span:
+    start: 2306
+    end: 2311
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 2311
+    end: 2312
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 2312
+    end: 2318
+  raw: "!t: "
+- kind:
+    Operator: Add
+  span:
+    start: 2319
+    end: 2320
+  raw: +
+- kind: OpenParen
+  span:
+    start: 2321
+    end: 2322
+  raw: (
+- kind:
+    Operator: LogicalNot
+  span:
+    start: 2322
+    end: 2323
+  raw: "!"
+- kind: Identifier
+  span:
+    start: 2323
+    end: 2324
+  raw: t
+- kind: CloseParen
+  span:
+    start: 2324
+    end: 2325
+  raw: )
+- kind: CloseParen
+  span:
+    start: 2325
+    end: 2326
+  raw: )
+- kind: Semicolon
+  span:
+    start: 2326
+    end: 2327
+  raw: ;
+- kind: Newline
+  span:
+    start: 2337
+    end: 2338
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 2358
+    end: 2361
+  raw: var
+- kind: Identifier
+  span:
+    start: 2362
+    end: 2365
+  raw: max
+- kind:
+    Operator: Assign
+  span:
+    start: 2366
+    end: 2367
+  raw: "="
+- kind: OpenParen
+  span:
+    start: 2368
+    end: 2369
+  raw: (
+- kind: Identifier
+  span:
+    start: 2369
+    end: 2370
+  raw: a
+- kind:
+    Operator: GreaterThan
+  span:
+    start: 2371
+    end: 2372
+  raw: ">"
+- kind: Identifier
+  span:
+    start: 2373
+    end: 2374
+  raw: b
+- kind: CloseParen
+  span:
+    start: 2374
+    end: 2375
+  raw: )
+- kind: Question
+  span:
+    start: 2376
+    end: 2377
+  raw: "?"
+- kind: Identifier
+  span:
+    start: 2378
+    end: 2379
+  raw: a
+- kind: Colon
+  span:
+    start: 2380
+    end: 2381
+  raw: ":"
+- kind: Identifier
+  span:
+    start: 2382
+    end: 2383
+  raw: b
+- kind: Semicolon
+  span:
+    start: 2383
+    end: 2384
+  raw: ;
+- kind: Newline
+  span:
+    start: 2384
+    end: 2385
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 2385
+    end: 2390
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 2390
+    end: 2391
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 2391
+    end: 2411
+  raw: "(a > b) ? a : b = "
+- kind:
+    Operator: Add
+  span:
+    start: 2412
+    end: 2413
+  raw: +
+- kind: Identifier
+  span:
+    start: 2414
+    end: 2417
+  raw: max
+- kind: CloseParen
+  span:
+    start: 2417
+    end: 2418
+  raw: )
+- kind: Semicolon
+  span:
+    start: 2418
+    end: 2419
+  raw: ;
+- kind: Newline
+  span:
+    start: 2426
+    end: 2427
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 2454
+    end: 2457
+  raw: var
+- kind: Identifier
+  span:
+    start: 2458
+    end: 2461
+  raw: obj
+- kind:
+    Operator: Assign
+  span:
+    start: 2462
+    end: 2463
+  raw: "="
+- kind: OpenBrace
+  span:
+    start: 2464
+    end: 2465
+  raw: "{"
+- kind: Identifier
+  span:
+    start: 2465
+    end: 2468
+  raw: key
+- kind: Colon
+  span:
+    start: 2468
+    end: 2469
+  raw: ":"
+- kind:
+    String: Double
+  span:
+    start: 2470
+    end: 2477
+  raw: value
+- kind: CloseBrace
+  span:
+    start: 2477
+    end: 2478
+  raw: "}"
+- kind: Semicolon
+  span:
+    start: 2478
+    end: 2479
+  raw: ;
+- kind: Newline
+  span:
+    start: 2479
+    end: 2480
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 2480
+    end: 2485
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 2485
+    end: 2486
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 2486
+    end: 2511
+  raw: "obj instanceof Object: "
+- kind:
+    Operator: Add
+  span:
+    start: 2512
+    end: 2513
+  raw: +
+- kind: OpenParen
+  span:
+    start: 2514
+    end: 2515
+  raw: (
+- kind: Identifier
+  span:
+    start: 2515
+    end: 2518
+  raw: obj
+- kind:
+    Keyword: InstanceOf
+  span:
+    start: 2519
+    end: 2529
+  raw: instanceof
+- kind: Identifier
+  span:
+    start: 2530
+    end: 2536
+  raw: Object
+- kind: CloseParen
+  span:
+    start: 2536
+    end: 2537
+  raw: )
+- kind: CloseParen
+  span:
+    start: 2537
+    end: 2538
+  raw: )
+- kind: Semicolon
+  span:
+    start: 2538
+    end: 2539
+  raw: ;
+- kind: Newline
+  span:
+    start: 2539
+    end: 2540
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 2540
+    end: 2545
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 2545
+    end: 2546
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 2546
+    end: 2564
+  raw: "\\\"key\\\" in obj: "
+- kind:
+    Operator: Add
+  span:
+    start: 2565
+    end: 2566
+  raw: +
+- kind: OpenParen
+  span:
+    start: 2567
+    end: 2568
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 2568
+    end: 2573
+  raw: key
+- kind:
+    Keyword: In
+  span:
+    start: 2574
+    end: 2576
+  raw: in
+- kind: Identifier
+  span:
+    start: 2577
+    end: 2580
+  raw: obj
+- kind: CloseParen
+  span:
+    start: 2580
+    end: 2581
+  raw: )
+- kind: CloseParen
+  span:
+    start: 2581
+    end: 2582
+  raw: )
+- kind: Semicolon
+  span:
+    start: 2582
+    end: 2583
+  raw: ;
+- kind: Newline
+  span:
+    start: 2583
+    end: 2584
+  raw: "\n"

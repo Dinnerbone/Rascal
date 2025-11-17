@@ -1,0 +1,622 @@
+---
+source: crates/as2/src/parser/tests.rs
+expression: parsed
+input_file: samples/for_loop.as
+---
+Ok:
+  statements:
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - Constant:
+                String: for_classic
+    - ForIn:
+        condition:
+          Classic:
+            initialize:
+              Declare:
+                - name: i
+                  value:
+                    Constant:
+                      Integer: 0
+            condition:
+              - BinaryOperator:
+                  - LessThan
+                  - Constant:
+                      Identifier: i
+                  - Constant:
+                      Integer: 3
+            update:
+              - UnaryOperator:
+                  - Increment: Postfix
+                  - Constant:
+                      Identifier: i
+        body:
+          Block:
+            - Expr:
+                Call:
+                  name:
+                    Constant:
+                      Identifier: trace
+                  args:
+                    - Constant:
+                        Identifier: i
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - Constant:
+                String: for_no_init
+    - Declare:
+        - name: j
+          value:
+            Constant:
+              Integer: 3
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - Constant:
+                String: start
+    - ForIn:
+        condition:
+          Classic:
+            initialize: ~
+            condition:
+              - BinaryOperator:
+                  - LessThan
+                  - Constant:
+                      Identifier: j
+                  - Constant:
+                      Integer: 6
+            update:
+              - UnaryOperator:
+                  - Increment: Postfix
+                  - Constant:
+                      Identifier: j
+        body:
+          Block:
+            - Expr:
+                Call:
+                  name:
+                    Constant:
+                      Identifier: trace
+                  args:
+                    - Constant:
+                        Identifier: j
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - Constant:
+                String: end
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - Constant:
+                String: for_no_condition
+    - ForIn:
+        condition:
+          Classic:
+            initialize:
+              Declare:
+                - name: k
+                  value:
+                    Constant:
+                      Integer: 0
+            condition: []
+            update:
+              - UnaryOperator:
+                  - Increment: Postfix
+                  - Constant:
+                      Identifier: k
+        body:
+          Block:
+            - Expr:
+                Call:
+                  name:
+                    Constant:
+                      Identifier: trace
+                  args:
+                    - Constant:
+                        Identifier: k
+            - If:
+                condition:
+                  BinaryOperator:
+                    - GreaterThanEqual
+                    - Constant:
+                        Identifier: k
+                    - Constant:
+                        Integer: 3
+                "yes":
+                  Block:
+                    - Break
+                "no": ~
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - Constant:
+                String: for_no_update
+    - ForIn:
+        condition:
+          Classic:
+            initialize:
+              Declare:
+                - name: n
+                  value:
+                    Constant:
+                      Integer: 0
+            condition:
+              - BinaryOperator:
+                  - LessThan
+                  - Constant:
+                      Identifier: n
+                  - Constant:
+                      Integer: 3
+            update: []
+        body:
+          Block:
+            - Expr:
+                Call:
+                  name:
+                    Constant:
+                      Identifier: trace
+                  args:
+                    - Constant:
+                        Identifier: n
+            - Expr:
+                UnaryOperator:
+                  - Increment: Postfix
+                  - Constant:
+                      Identifier: n
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - Constant:
+                String: for_all_omitted
+    - Declare:
+        - name: count
+          value:
+            Constant:
+              Integer: 0
+    - ForIn:
+        condition:
+          Classic:
+            initialize: ~
+            condition: []
+            update: []
+        body:
+          Block:
+            - Expr:
+                Call:
+                  name:
+                    Constant:
+                      Identifier: trace
+                  args:
+                    - Constant:
+                        String: loop
+            - Expr:
+                UnaryOperator:
+                  - Increment: Postfix
+                  - Constant:
+                      Identifier: count
+            - If:
+                condition:
+                  BinaryOperator:
+                    - Equal
+                    - Constant:
+                        Identifier: count
+                    - Constant:
+                        Integer: 3
+                "yes":
+                  Block:
+                    - Break
+                "no": ~
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - Constant:
+                String: done
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - Constant:
+                String: for_in_object
+    - Declare:
+        - name: obj
+          value:
+            InitObject: []
+    - Expr:
+        BinaryOperator:
+          - Assign
+          - Field:
+              - Constant:
+                  Identifier: obj
+              - Constant:
+                  String: a
+          - Constant:
+              Integer: 10
+    - Expr:
+        BinaryOperator:
+          - Assign
+          - Field:
+              - Constant:
+                  Identifier: obj
+              - Constant:
+                  String: b
+          - Constant:
+              Integer: 20
+    - ForIn:
+        condition:
+          Enumerate:
+            variable: key
+            declare: true
+            object:
+              Constant:
+                Identifier: obj
+        body:
+          Block:
+            - Expr:
+                Call:
+                  name:
+                    Constant:
+                      Identifier: trace
+                  args:
+                    - BinaryOperator:
+                        - Add
+                        - BinaryOperator:
+                            - Add
+                            - Constant:
+                                Identifier: key
+                            - Constant:
+                                String: "="
+                        - Field:
+                            - Constant:
+                                Identifier: obj
+                            - Constant:
+                                Identifier: key
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - Constant:
+                String: for_in_array
+    - Declare:
+        - name: arr
+          value:
+            InitArray:
+              - Constant:
+                  Integer: 5
+              - Constant:
+                  Integer: 6
+              - Constant:
+                  Integer: 7
+    - ForIn:
+        condition:
+          Enumerate:
+            variable: idx
+            declare: true
+            object:
+              Constant:
+                Identifier: arr
+        body:
+          Block:
+            - Expr:
+                Call:
+                  name:
+                    Constant:
+                      Identifier: trace
+                  args:
+                    - BinaryOperator:
+                        - Add
+                        - BinaryOperator:
+                            - Add
+                            - Constant:
+                                Identifier: idx
+                            - Constant:
+                                String: "="
+                        - Field:
+                            - Constant:
+                                Identifier: arr
+                            - Constant:
+                                Identifier: idx
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - Constant:
+                String: for_multiple_clauses
+    - ForIn:
+        condition:
+          Classic:
+            initialize:
+              Declare:
+                - name: a
+                  value:
+                    Constant:
+                      Integer: 0
+                - name: b
+                  value:
+                    Constant:
+                      Integer: 3
+            condition:
+              - BinaryOperator:
+                  - LessThan
+                  - Constant:
+                      Identifier: a
+                  - Constant:
+                      Identifier: b
+            update:
+              - UnaryOperator:
+                  - Increment: Postfix
+                  - Constant:
+                      Identifier: a
+              - UnaryOperator:
+                  - Decrement: Postfix
+                  - Constant:
+                      Identifier: b
+        body:
+          Block:
+            - Expr:
+                Call:
+                  name:
+                    Constant:
+                      Identifier: trace
+                  args:
+                    - BinaryOperator:
+                        - Add
+                        - BinaryOperator:
+                            - Add
+                            - Constant:
+                                Identifier: a
+                            - Constant:
+                                String: ","
+                        - Constant:
+                            Identifier: b
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - Constant:
+                String: for_continue_break
+    - ForIn:
+        condition:
+          Classic:
+            initialize:
+              Declare:
+                - name: x
+                  value:
+                    Constant:
+                      Integer: 0
+            condition:
+              - BinaryOperator:
+                  - LessThan
+                  - Constant:
+                      Identifier: x
+                  - Constant:
+                      Integer: 10
+            update:
+              - UnaryOperator:
+                  - Increment: Postfix
+                  - Constant:
+                      Identifier: x
+        body:
+          Block:
+            - If:
+                condition:
+                  BinaryOperator:
+                    - Equal
+                    - Constant:
+                        Identifier: x
+                    - Constant:
+                        Integer: 5
+                "yes":
+                  Block:
+                    - Break
+                "no": ~
+            - If:
+                condition:
+                  BinaryOperator:
+                    - Equal
+                    - BinaryOperator:
+                        - Modulo
+                        - Constant:
+                            Identifier: x
+                        - Constant:
+                            Integer: 2
+                    - Constant:
+                        Integer: 1
+                "yes":
+                  Block:
+                    - Continue
+                "no": ~
+            - Expr:
+                Call:
+                  name:
+                    Constant:
+                      Identifier: trace
+                  args:
+                    - Constant:
+                        Identifier: x
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - Constant:
+                String: for_nested
+    - ForIn:
+        condition:
+          Classic:
+            initialize:
+              Declare:
+                - name: outer
+                  value:
+                    Constant:
+                      Integer: 0
+            condition:
+              - BinaryOperator:
+                  - LessThan
+                  - Constant:
+                      Identifier: outer
+                  - Constant:
+                      Integer: 2
+            update:
+              - UnaryOperator:
+                  - Increment: Postfix
+                  - Constant:
+                      Identifier: outer
+        body:
+          Block:
+            - ForIn:
+                condition:
+                  Classic:
+                    initialize:
+                      Declare:
+                        - name: inner
+                          value:
+                            Constant:
+                              Integer: 0
+                    condition:
+                      - BinaryOperator:
+                          - LessThan
+                          - Constant:
+                              Identifier: inner
+                          - Constant:
+                              Integer: 2
+                    update:
+                      - UnaryOperator:
+                          - Increment: Postfix
+                          - Constant:
+                              Identifier: inner
+                body:
+                  Block:
+                    - Expr:
+                        Call:
+                          name:
+                            Constant:
+                              Identifier: trace
+                          args:
+                            - BinaryOperator:
+                                - Add
+                                - BinaryOperator:
+                                    - Add
+                                    - Constant:
+                                        Identifier: outer
+                                    - Constant:
+                                        String: ","
+                                - Constant:
+                                    Identifier: inner
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - Constant:
+                String: for_existing_var
+    - Declare:
+        - name: z
+          value: ~
+    - ForIn:
+        condition:
+          Classic:
+            initialize:
+              Expr:
+                BinaryOperator:
+                  - Assign
+                  - Constant:
+                      Identifier: z
+                  - Constant:
+                      Integer: 1
+            condition:
+              - BinaryOperator:
+                  - LessThanEqual
+                  - Constant:
+                      Identifier: z
+                  - Constant:
+                      Integer: 3
+            update:
+              - UnaryOperator:
+                  - Increment: Postfix
+                  - Constant:
+                      Identifier: z
+        body:
+          Block:
+            - Expr:
+                Call:
+                  name:
+                    Constant:
+                      Identifier: trace
+                  args:
+                    - Constant:
+                        Identifier: z
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - Constant:
+                String: for_single_statement_body
+    - ForIn:
+        condition:
+          Classic:
+            initialize:
+              Declare:
+                - name: q
+                  value:
+                    Constant:
+                      Integer: 0
+            condition:
+              - BinaryOperator:
+                  - LessThan
+                  - Constant:
+                      Identifier: q
+                  - Constant:
+                      Integer: 3
+            update:
+              - UnaryOperator:
+                  - Increment: Postfix
+                  - Constant:
+                      Identifier: q
+        body:
+          Expr:
+            Call:
+              name:
+                Constant:
+                  Identifier: trace
+              args:
+                - Constant:
+                    Identifier: q

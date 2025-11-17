@@ -1,0 +1,339 @@
+---
+source: crates/as2/src/parser/tests.rs
+expression: parsed
+input_file: samples/op_precedence/comparison.as
+---
+Ok:
+  statements:
+    - Declare:
+        - name: a
+          value:
+            Constant:
+              Integer: 10
+    - Declare:
+        - name: b
+          value:
+            Constant:
+              Integer: 5
+    - Declare:
+        - name: c
+          value:
+            Constant:
+              Integer: 7
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - BinaryOperator:
+                    - Add
+                    - BinaryOperator:
+                        - Add
+                        - BinaryOperator:
+                            - Add
+                            - BinaryOperator:
+                                - Add
+                                - Constant:
+                                    String: a=
+                                - Constant:
+                                    Identifier: a
+                            - Constant:
+                                String: ", b="
+                        - Constant:
+                            Identifier: b
+                    - Constant:
+                        String: ", c="
+                - Constant:
+                    Identifier: c
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - Constant:
+                String: "----"
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "a > b = "
+                - Parenthesis:
+                    BinaryOperator:
+                      - GreaterThan
+                      - Constant:
+                          Identifier: a
+                      - Constant:
+                          Identifier: b
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "a < b = "
+                - Parenthesis:
+                    BinaryOperator:
+                      - LessThan
+                      - Constant:
+                          Identifier: a
+                      - Constant:
+                          Identifier: b
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "a >= b = "
+                - Parenthesis:
+                    BinaryOperator:
+                      - GreaterThanEqual
+                      - Constant:
+                          Identifier: a
+                      - Constant:
+                          Identifier: b
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "a <= b = "
+                - Parenthesis:
+                    BinaryOperator:
+                      - LessThanEqual
+                      - Constant:
+                          Identifier: a
+                      - Constant:
+                          Identifier: b
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - Constant:
+                String: "---"
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "a > b >= c = "
+                - Parenthesis:
+                    BinaryOperator:
+                      - GreaterThanEqual
+                      - BinaryOperator:
+                          - GreaterThan
+                          - Constant:
+                              Identifier: a
+                          - Constant:
+                              Identifier: b
+                      - Constant:
+                          Identifier: c
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "((a > b) >= c) = "
+                - Parenthesis:
+                    BinaryOperator:
+                      - GreaterThanEqual
+                      - Parenthesis:
+                          BinaryOperator:
+                            - GreaterThan
+                            - Constant:
+                                Identifier: a
+                            - Constant:
+                                Identifier: b
+                      - Constant:
+                          Identifier: c
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - Constant:
+                String: "---"
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "a < b <= c = "
+                - Parenthesis:
+                    BinaryOperator:
+                      - LessThanEqual
+                      - BinaryOperator:
+                          - LessThan
+                          - Constant:
+                              Identifier: a
+                          - Constant:
+                              Identifier: b
+                      - Constant:
+                          Identifier: c
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "((a < b) <= c) = "
+                - Parenthesis:
+                    BinaryOperator:
+                      - LessThanEqual
+                      - Parenthesis:
+                          BinaryOperator:
+                            - LessThan
+                            - Constant:
+                                Identifier: a
+                            - Constant:
+                                Identifier: b
+                      - Constant:
+                          Identifier: c
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - Constant:
+                String: "---"
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "a + b > c = "
+                - Parenthesis:
+                    BinaryOperator:
+                      - GreaterThan
+                      - BinaryOperator:
+                          - Add
+                          - Constant:
+                              Identifier: a
+                          - Constant:
+                              Identifier: b
+                      - Constant:
+                          Identifier: c
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "((a + b) > c) = "
+                - Parenthesis:
+                    BinaryOperator:
+                      - GreaterThan
+                      - Parenthesis:
+                          BinaryOperator:
+                            - Add
+                            - Constant:
+                                Identifier: a
+                            - Constant:
+                                Identifier: b
+                      - Constant:
+                          Identifier: c
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - Constant:
+                String: "---"
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "a * b <= c + 5 = "
+                - Parenthesis:
+                    BinaryOperator:
+                      - LessThanEqual
+                      - BinaryOperator:
+                          - Multiply
+                          - Constant:
+                              Identifier: a
+                          - Constant:
+                              Identifier: b
+                      - BinaryOperator:
+                          - Add
+                          - Constant:
+                              Identifier: c
+                          - Constant:
+                              Integer: 5
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "((a * b) <= (c + 5)) = "
+                - Parenthesis:
+                    BinaryOperator:
+                      - LessThanEqual
+                      - Parenthesis:
+                          BinaryOperator:
+                            - Multiply
+                            - Constant:
+                                Identifier: a
+                            - Constant:
+                                Identifier: b
+                      - Parenthesis:
+                          BinaryOperator:
+                            - Add
+                            - Constant:
+                                Identifier: c
+                            - Constant:
+                                Integer: 5

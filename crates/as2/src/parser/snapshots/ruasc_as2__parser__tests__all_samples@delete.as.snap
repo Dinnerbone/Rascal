@@ -1,0 +1,236 @@
+---
+source: crates/as2/src/parser/tests.rs
+expression: parsed
+input_file: samples/delete.as
+---
+Ok:
+  statements:
+    - Declare:
+        - name: num
+          value:
+            Constant:
+              Integer: 1
+    - Declare:
+        - name: obj
+          value:
+            InitObject:
+              - - num
+                - Constant:
+                    Integer: 1
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "delete num: "
+                - Parenthesis:
+                    Delete:
+                      - Constant:
+                          Identifier: num
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "delete obj: "
+                - Parenthesis:
+                    Delete:
+                      - Constant:
+                          Identifier: obj
+    - Declare:
+        - name: obj
+          value:
+            InitObject:
+              - - num
+                - Constant:
+                    Integer: 1
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "delete obj.num: "
+                - Parenthesis:
+                    Delete:
+                      - Field:
+                          - Constant:
+                              Identifier: obj
+                          - Constant:
+                              String: num
+    - Declare:
+        - name: obj
+          value:
+            InitObject:
+              - - num
+                - Constant:
+                    Integer: 1
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "delete obj.num + 1: "
+                - Parenthesis:
+                    Delete:
+                      - BinaryOperator:
+                          - Add
+                          - Field:
+                              - Constant:
+                                  Identifier: obj
+                              - Constant:
+                                  String: num
+                          - Constant:
+                              Integer: 1
+    - Declare:
+        - name: obj
+          value:
+            InitObject:
+              - - num
+                - Constant:
+                    Integer: 1
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "delete obj.num == \\\"number\\\" ? \\\":)\\\" : \\\":(\\\": "
+                - Parenthesis:
+                    Delete:
+                      - Ternary:
+                          condition:
+                            Field:
+                              - Constant:
+                                  Identifier: obj
+                              - Constant:
+                                  String: num
+                          "yes":
+                            Constant:
+                              String: ":)"
+                          "no":
+                            Constant:
+                              String: ":("
+    - Declare:
+        - name: obj
+          value:
+            InitObject:
+              - - num
+                - Constant:
+                    Integer: 1
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "delete obj.num + delete obj.num: "
+                - Parenthesis:
+                    Delete:
+                      - BinaryOperator:
+                          - Add
+                          - Field:
+                              - Constant:
+                                  Identifier: obj
+                              - Constant:
+                                  String: num
+                          - Delete:
+                              - Field:
+                                  - Constant:
+                                      Identifier: obj
+                                  - Constant:
+                                      String: num
+    - Declare:
+        - name: obj
+          value:
+            InitObject:
+              - - num
+                - Constant:
+                    Integer: 1
+              - - trace
+                - Constant:
+                    Identifier: trace
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "delete obj.trace: "
+                - Parenthesis:
+                    Delete:
+                      - Field:
+                          - Constant:
+                              Identifier: obj
+                          - Constant:
+                              String: trace
+    - Declare:
+        - name: obj
+          value:
+            InitObject:
+              - - num
+                - Constant:
+                    Integer: 1
+              - - trace
+                - Constant:
+                    Identifier: trace
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "delete obj.trace(): "
+                - Parenthesis:
+                    Delete:
+                      - Call:
+                          name:
+                            Field:
+                              - Constant:
+                                  Identifier: obj
+                              - Constant:
+                                  String: trace
+                          args: []
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: trace
+          args:
+            - BinaryOperator:
+                - Add
+                - Constant:
+                    String: "delete(nonexistent, obj): "
+                - Parenthesis:
+                    Delete:
+                      - Constant:
+                          Identifier: nonexistent
+                      - Constant:
+                          Identifier: obj

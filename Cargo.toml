@@ -1,22 +1,17 @@
-[package]
-name = "ruasc"
+[workspace]
+members = [
+    "crates/as2",
+    "crates/cli"
+]
+default-members = ["crates/cli"]
+resolver = "3"
+
+[workspace.package]
+authors = ["Nathan Adams <dinnerbone@dinnerbone.com>"]
 version = "0.1.0"
 edition = "2024"
-
-[dependencies]
-anyhow = "1"
-clap = { version = "4", features = ["derive"] }
-winnow = "0.7.13"
-serde = { version = "1.0.228", features = ["derive"] }
-annotate-snippets = "0.12.8"
-
-[dev-dependencies]
-insta = { version = "1.43.2", features = ["yaml", "glob"] }
+license = "MIT OR Apache-2.0"
 
 [profile.dev.package]
 insta.opt-level = 3
 similar.opt-level = 3
-
-[features]
-default = []
-winnow-debug = ["winnow/debug"]

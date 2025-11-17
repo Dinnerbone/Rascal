@@ -1,0 +1,15 @@
+[package]
+name = "ruasc_cli"
+authors.workspace = true
+edition.workspace = true
+license.workspace = true
+version.workspace = true
+
+[dependencies]
+anyhow = "1"
+clap = { version = "4", features = ["derive"] }
+ruasc_as2 = { path = "../as2" }
+
+[features]
+default = []
+winnow-debug = ["ruasc_as2/winnow-debug"]
