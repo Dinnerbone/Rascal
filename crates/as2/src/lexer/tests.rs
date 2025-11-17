@@ -20,7 +20,7 @@ fn raws(input: &str) -> Vec<String> {
 
 #[test]
 fn test_all_samples() {
-    insta::glob!("../../../../samples", "**/*.as", |path| {
+    insta::glob!("../../../../samples/as2", "**/*.as", |path| {
         let src = std::fs::read_to_string(path).expect("failed to read sample");
         let tokens = Lexer::new(&src).into_vec();
         insta::assert_yaml_snapshot!(tokens);
