@@ -11,6 +11,8 @@ serde = { version = "1.0.228", features = ["derive"] }
 ruasc_as2 = { path = "../as2" }
 annotate-snippets = "0.12.8"
 indexmap = { version = "2.12.0", features = ["serde"] }
+swf = "0.2.2"
+byteorder = "1.5.0"
 
 [dev-dependencies]
 insta = { version = "1.43.2", features = ["yaml", "glob"] }

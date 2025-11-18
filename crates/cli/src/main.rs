@@ -1,7 +1,7 @@
 use anyhow::Result;
 use clap::Parser;
 use ruasc_as2::ActionScript;
-use ruasc_as2_pcode::{PCode, ast_to_pcode};
+use ruasc_as2_pcode::{ast_to_pcode, pcode_to_swf};
 use std::fs;
 use std::path::PathBuf;
 
@@ -17,29 +17,10 @@ fn main() -> Result<()> {
     let opt = Opt::parse();
     let src = fs::read_to_string(&opt.src)?;
     let filename = opt.src.file_name().unwrap().to_string_lossy();
-    if filename.ends_with(".as") {
-        let actionscript = ActionScript::new(&filename, &src);
-        let document = actionscript.to_ast();
-        match document {
-            Ok(document) => {
-                let pcode = ast_to_pcode(&document);
-                println!("{pcode}");
-            }
-            Err(err) => {
-                println!("{err}");
-            }
-        }
-    } else {
-        let actionscript = PCode::new(&filename, &src);
-        let actions = actionscript.to_actions();
-        match actions {
-            Ok(actions) => {
-                println!("{actions}");
-            }
-            Err(err) => {
-                println!("{err}");
-            }
-        }
-    }
+    let actionscript = ActionScript::new(&filename, &src);
+    let document = actionscript.to_ast().unwrap_or_else(|e| panic!("{}", e));
+    let pcode = ast_to_pcode(&document);
+    let swf = pcode_to_swf(&pcode)?;
+    fs::write(opt.src.with_extension("swf"), swf)?;
     Ok(())
 }

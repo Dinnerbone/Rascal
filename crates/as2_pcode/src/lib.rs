@@ -11,6 +11,9 @@ mod lexer;
 mod parser;
 mod pcode;
 mod span;
+mod swf;
+
+pub use swf::pcode_to_swf;
 
 pub struct PCode<'a> {
     filename: &'a str,
