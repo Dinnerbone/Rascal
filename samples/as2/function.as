@@ -3,9 +3,11 @@ function test() {
     return ":)";
 }
 
-function(a, b){
+var anon = function(a, b){
     trace("Anonymous function called!");
     trace("a = " + a + ", b = " + b);
-}("aa", "bb");
+};
+anon("aa", "bb");
 
 trace(test() + test());
+

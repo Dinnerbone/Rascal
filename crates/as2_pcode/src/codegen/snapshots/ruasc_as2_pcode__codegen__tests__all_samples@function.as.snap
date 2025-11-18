@@ -10,9 +10,7 @@ Push ":)"
 Return
 }
 Pop
-Push "bb"
-Push "aa"
-Push 2
+Push "anon"
 DefineFunction "", 2, "a", "b" {
 Push "Anonymous function called!"
 Trace
@@ -27,6 +25,11 @@ GetVariable
 Add2
 Trace
 }
+DefineLocal
+Push "bb"
+Push "aa"
+Push 2
+Push "anon"
 CallFunction
 Pop
 Push 0

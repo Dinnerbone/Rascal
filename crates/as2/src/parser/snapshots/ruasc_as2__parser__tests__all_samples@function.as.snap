@@ -1,7 +1,7 @@
 ---
 source: crates/as2/src/parser/tests.rs
 expression: parsed
-input_file: samples/function.as
+input_file: samples/as2/function.as
 ---
 Ok:
   statements:
@@ -21,9 +21,9 @@ Ok:
             - Return:
                 - Constant:
                     String: ":)"
-    - Expr:
-        Call:
-          name:
+    - Declare:
+        - name: anon
+          value:
             Function:
               name: ~
               args:
@@ -58,6 +58,11 @@ Ok:
                                     String: ", b = "
                             - Constant:
                                 Identifier: b
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: anon
           args:
             - Constant:
                 String: aa
