@@ -1,0 +1,202 @@
+---
+source: crates/as2/src/parser/tests.rs
+expression: parsed
+input_file: samples/as2/typed_variables.as
+---
+Ok:
+  statements:
+    - Declare:
+        - name: num
+          value:
+            Constant:
+              Integer: 42
+    - Declare:
+        - name: str
+          value:
+            Constant:
+              String: Hello
+    - Declare:
+        - name: flag
+          value:
+            Constant:
+              Identifier: "true"
+    - Declare:
+        - name: obj
+          value:
+            InitObject: []
+    - Declare:
+        - name: arr
+          value:
+            InitArray: []
+    - Expr:
+        Function:
+          name: add
+          args:
+            - a
+            - b
+          body:
+            - Return:
+                - BinaryOperator:
+                    - Add
+                    - Constant:
+                        Identifier: a
+                    - Constant:
+                        Identifier: b
+    - Expr:
+        Function:
+          name: getMessage
+          args: []
+          body:
+            - Return:
+                - Constant:
+                    String: Test message
+    - Expr:
+        Function:
+          name: processData
+          args:
+            - data
+          body:
+            - Expr:
+                Call:
+                  name:
+                    Constant:
+                      Identifier: trace
+                  args:
+                    - Constant:
+                        Identifier: data
+    - Declare:
+        - name: numbers
+          value:
+            New:
+              name:
+                Constant:
+                  Identifier: Array
+              args: []
+    - Declare:
+        - name: strings
+          value:
+            InitArray:
+              - Constant:
+                  String: one
+              - Constant:
+                  String: two
+              - Constant:
+                  String: three
+    - Declare:
+        - name: someValue
+          value:
+            Constant:
+              String: "123"
+    - Declare:
+        - name: numValue
+          value:
+            Call:
+              name:
+                Constant:
+                  Identifier: Number
+              args:
+                - Constant:
+                    Identifier: someValue
+    - Declare:
+        - name: strValue
+          value:
+            Call:
+              name:
+                Constant:
+                  Identifier: String
+              args:
+                - Constant:
+                    Integer: 42
+    - Expr:
+        Function:
+          name: complexFunc
+          args:
+            - name
+            - age
+            - isValid
+          body:
+            - Return:
+                - InitObject:
+                    - - name
+                      - Constant:
+                          Identifier: name
+                    - - age
+                      - Constant:
+                          Identifier: age
+                    - - valid
+                      - Constant:
+                          Identifier: isValid
+    - Declare:
+        - name: userData
+          value:
+            InitObject:
+              - - id
+                - BinaryOperator:
+                    - Assign
+                    - Constant:
+                        Identifier: Number
+                    - Constant:
+                        Integer: 1
+              - - name
+                - BinaryOperator:
+                    - Assign
+                    - Constant:
+                        Identifier: String
+                    - Constant:
+                        String: User
+              - - scores
+                - BinaryOperator:
+                    - Assign
+                    - Constant:
+                        Identifier: Array
+                    - InitArray:
+                        - Constant:
+                            Integer: 1
+                        - Constant:
+                            Integer: 2
+                        - Constant:
+                            Integer: 3
+    - Expr:
+        Function:
+          name: forEach
+          args:
+            - arr
+            - callback
+          body:
+            - ForIn:
+                condition:
+                  Classic:
+                    initialize:
+                      Declare:
+                        - name: i
+                          value:
+                            Constant:
+                              Integer: 0
+                    condition:
+                      - BinaryOperator:
+                          - LessThan
+                          - Constant:
+                              Identifier: i
+                          - Field:
+                              - Constant:
+                                  Identifier: arr
+                              - Constant:
+                                  String: length
+                    update:
+                      - UnaryOperator:
+                          - Increment: Postfix
+                          - Constant:
+                              Identifier: i
+                body:
+                  Block:
+                    - Expr:
+                        Call:
+                          name:
+                            Constant:
+                              Identifier: callback
+                          args:
+                            - Field:
+                                - Constant:
+                                    Identifier: arr
+                                - Constant:
+                                    Identifier: i

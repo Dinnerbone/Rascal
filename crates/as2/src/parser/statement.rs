@@ -1,7 +1,7 @@
 use crate::ast::{Declaration, ForCondition, Function, Statement};
 use crate::lexer::operator::Operator;
 use crate::lexer::tokens::{Keyword, TokenKind};
-use crate::parser::expression::{expr_list, expression};
+use crate::parser::expression::{expr_list, expression, type_name};
 use crate::parser::{Tokens, identifier, skip_newlines};
 use winnow::combinator::{alt, cond, cut_err, opt, peek, separated};
 use winnow::error::{ContextError, ErrMode, StrContext};
@@ -85,6 +85,7 @@ fn declaration(i: &mut Tokens<'_>) -> ModalResult<Declaration> {
     let name = cut_err(identifier)
         .context(StrContext::Label("variable name"))
         .parse_next(i)?;
+    opt(type_name).parse_next(i)?;
     let equals = cut_err(opt(TokenKind::Operator(Operator::Assign)))
         .parse_next(i)?
         .is_some();
@@ -157,8 +158,14 @@ fn for_loop(i: &mut Tokens<'_>) -> ModalResult<Statement> {
 pub(crate) fn function(i: &mut Tokens<'_>) -> ModalResult<Function> {
     let name = opt(identifier).parse_next(i)?;
     TokenKind::OpenParen.parse_next(i)?;
-    let args = separated(0.., identifier, TokenKind::Comma).parse_next(i)?;
+    let args = separated(
+        0..,
+        (identifier, opt(type_name)).map(|(i, _)| i),
+        TokenKind::Comma,
+    )
+    .parse_next(i)?;
     TokenKind::CloseParen.parse_next(i)?;
+    opt(type_name).parse_next(i)?;
     TokenKind::OpenBrace.parse_next(i)?;
     let body = statement_list(true).parse_next(i)?;
     TokenKind::CloseBrace.parse_next(i)?;

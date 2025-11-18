@@ -217,6 +217,16 @@ fn array_definition(i: &mut Tokens<'_>) -> ModalResult<Vec<Expr>> {
     separated(0.., expression, TokenKind::Comma).parse_next(i)
 }
 
+pub(crate) fn type_name(i: &mut Tokens<'_>) -> ModalResult<()> {
+    TokenKind::Colon.parse_next(i)?;
+    alt((
+        identifier.map(|_| ()),
+        TokenKind::Keyword(Keyword::Void).map(|_| ()),
+    ))
+    .parse_next(i)?;
+    Ok(())
+}
+
 fn constant(i: &mut Tokens<'_>) -> ModalResult<Constant> {
     skip_newlines(i)?;
     let token = peek(any).parse_next(i)?;
