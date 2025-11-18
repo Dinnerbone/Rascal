@@ -105,6 +105,7 @@ pub enum ActionName {
     Enumerate2,
     Equals2,
     GetMember,
+    GetProperty,
     GetVariable,
     Greater,
     If,

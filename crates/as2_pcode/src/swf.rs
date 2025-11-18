@@ -188,7 +188,7 @@ impl<'a> ActionEncoder<'a> {
             Action::Equals2 => self.write_small_action(OpCode::Equals2),
             // Action::Extends => self.write_small_action(OpCode::Extends),
             Action::GetMember => self.write_small_action(OpCode::GetMember),
-            // Action::GetProperty => self.write_small_action(OpCode::GetProperty),
+            Action::GetProperty => self.write_small_action(OpCode::GetProperty),
             // Action::GetTime => self.write_small_action(OpCode::GetTime),
             // Action::GetUrl(action) => self.write_get_url(action),
             // Action::GetUrl2(action) => self.write_get_url_2(*action),
