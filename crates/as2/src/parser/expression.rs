@@ -6,7 +6,6 @@ use crate::parser::{Tokens, identifier, operator, skip_newlines, string};
 use winnow::combinator::{alt, fail, opt, peek, separated};
 use winnow::error::{ContextError, ErrMode, StrContext};
 use winnow::error::{ParserError, StrContextValue};
-use winnow::stream::ParseSlice;
 use winnow::token::any;
 use winnow::{ModalResult, Parser};
 
@@ -255,10 +254,14 @@ fn float(i: &mut Tokens<'_>) -> ModalResult<f64> {
     let raw = alt((TokenKind::Float, TokenKind::Integer))
         .parse_next(i)?
         .raw;
-    let value = raw
-        .parse_slice()
-        .ok_or_else(|| ParserError::from_input(&raw))?;
-    Ok(value)
+    Ok(if let Some(raw) = raw.strip_prefix("0x") {
+        u32::from_str_radix(raw, 16)
+            .map(|i| i as f64)
+            .map_err(|_| ParserError::from_input(&raw))
+    } else {
+        raw.parse::<f64>()
+            .map_err(|_| ParserError::from_input(&raw))
+    })?
 }
 
 fn integer(i: &mut Tokens<'_>) -> ModalResult<i32> {
