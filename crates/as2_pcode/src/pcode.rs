@@ -146,6 +146,7 @@ impl Action {
             Action::Pop => -1,
             Action::Push(values) => values.len() as i32,
             Action::PushDuplicate => 1,
+            Action::RandomNumber => 0,
             Action::Return => -1,
             Action::SetMember => -3,
             Action::SetVariable => -2,

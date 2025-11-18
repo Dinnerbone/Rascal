@@ -405,13 +405,17 @@ fn gen_binary_op(
 }
 
 fn gen_call(builder: &mut CodeBuilder, name: &Expr, args: &[Expr]) {
-    if let Expr::Constant(Constant::Identifier(identifier)) = name
-        && identifier == "trace"
-        && args.len() == 1
-    {
-        gen_expr(builder, &args[0], false);
-        builder.action(Action::Trace);
-        return;
+    if let Expr::Constant(Constant::Identifier(identifier)) = name {
+        if identifier == "trace" && args.len() == 1 {
+            gen_expr(builder, &args[0], false);
+            builder.action(Action::Trace);
+            return;
+        }
+        if identifier == "random" && args.len() == 1 {
+            gen_expr(builder, &args[0], false);
+            builder.action(Action::RandomNumber);
+            return;
+        }
     }
 
     for arg in args.iter().rev() {
