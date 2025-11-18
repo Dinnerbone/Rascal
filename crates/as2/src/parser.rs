@@ -26,14 +26,24 @@ pub fn parse_document<'a>(
 
 fn string(i: &mut Tokens<'_>) -> ModalResult<String> {
     skip_newlines(i)?;
-    // TODO decode
-    Ok(alt((
-        TokenKind::String(QuoteKind::Double),
-        TokenKind::String(QuoteKind::Single),
+    let (kind, raw) = alt((
+        TokenKind::String(QuoteKind::Double).map(|t| (QuoteKind::Double, t.raw)),
+        TokenKind::String(QuoteKind::Single).map(|t| (QuoteKind::Single, t.raw)),
     ))
-    .parse_next(i)?
-    .raw
-    .to_string())
+    .parse_next(i)?;
+    if !raw.contains("\\") {
+        return Ok(raw.to_string());
+    }
+    let mut result = match kind {
+        QuoteKind::Double => raw.replace("\\\"", "\""),
+        QuoteKind::Single => raw.replace("\\'", "'"),
+    };
+    result = result
+        .replace("\\n", "\n")
+        .replace("\\r", "\r")
+        .replace("\\t", "\t")
+        .replace("\\\\", "\\");
+    Ok(result)
 }
 
 fn identifier(i: &mut Tokens<'_>) -> ModalResult<String> {
