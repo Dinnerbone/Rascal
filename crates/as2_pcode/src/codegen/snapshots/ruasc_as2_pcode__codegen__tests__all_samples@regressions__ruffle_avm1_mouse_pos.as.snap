@@ -1,0 +1,132 @@
+---
+source: crates/as2_pcode/src/codegen/tests.rs
+expression: builder
+input_file: samples/as2/regressions/ruffle_avm1_mouse_pos.as
+---
+Push "zs"
+GetVariable
+Push "_xscale"
+Push "zs"
+GetVariable
+Push "_yscale"
+Push 0
+StoreRegister 0
+SetMember
+Push register0
+SetMember
+Push "oldX"
+DefineLocal2
+Push "oldY"
+DefineLocal2
+DefineFunction "dump", 0 {
+Push "_xmouse"
+GetVariable
+Push "oldX"
+GetVariable
+Equals2
+PushDuplicate
+Not
+If loc0001
+Pop
+Push "_ymouse"
+GetVariable
+Push "oldY"
+GetVariable
+Equals2
+loc0001: Not
+If loc0000
+Push undefined
+Return
+loc0000: Push "oldX"
+Push "_xmouse"
+GetVariable
+SetVariable
+Push "oldY"
+Push "_ymouse"
+GetVariable
+SetVariable
+Push "_root"
+Push " "
+Add2
+Push "_xmouse"
+GetVariable
+Add2
+Push " "
+Add2
+Push "_ymouse"
+GetVariable
+Add2
+Trace
+Push "clips"
+Push "s133fpr15"
+GetVariable
+Push "s133fp"
+GetVariable
+Push "s42fp"
+GetVariable
+Push "fp"
+GetVariable
+Push "ip"
+GetVariable
+Push "zs"
+GetVariable
+Push "id"
+GetVariable
+Push 7
+InitArray
+DefineLocal
+Push "i"
+Push 0
+DefineLocal
+loc0004: Push "i"
+GetVariable
+Push "clips"
+GetVariable
+Push "length"
+GetMember
+Less2
+Not
+If loc0002
+Push "clip"
+Push "clips"
+GetVariable
+Push "i"
+GetVariable
+GetMember
+DefineLocal
+Push "clip"
+GetVariable
+Push "_name"
+GetMember
+Push " "
+Add2
+Push "clip"
+GetVariable
+Push "_xmouse"
+GetMember
+Add2
+Push " "
+Add2
+Push "clip"
+GetVariable
+Push "_ymouse"
+GetMember
+Add2
+Trace
+loc0003: Push "i"
+Push "i"
+GetVariable
+Increment
+SetVariable
+Jump loc0004
+loc0002: Push ""
+Trace
+}
+Pop
+DefineFunction "onEnterFrame", 0 {
+Push 0
+Push "dump"
+CallFunction
+Pop
+}
+Pop

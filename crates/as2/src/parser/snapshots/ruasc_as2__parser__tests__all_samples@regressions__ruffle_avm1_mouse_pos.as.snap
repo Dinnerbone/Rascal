@@ -1,0 +1,195 @@
+---
+source: crates/as2/src/parser/tests.rs
+expression: parsed
+input_file: samples/as2/regressions/ruffle_avm1_mouse_pos.as
+---
+Ok:
+  statements:
+    - Expr:
+        BinaryOperator:
+          - Assign
+          - Field:
+              - Constant:
+                  Identifier: zs
+              - Constant:
+                  String: _xscale
+          - BinaryOperator:
+              - Assign
+              - Field:
+                  - Constant:
+                      Identifier: zs
+                  - Constant:
+                      String: _yscale
+              - Constant:
+                  Integer: 0
+    - Declare:
+        - name: oldX
+          value: ~
+        - name: oldY
+          value: ~
+    - Expr:
+        Function:
+          name: dump
+          args: []
+          body:
+            - If:
+                condition:
+                  BinaryOperator:
+                    - LogicalAnd
+                    - BinaryOperator:
+                        - Equal
+                        - Constant:
+                            Identifier: _xmouse
+                        - Constant:
+                            Identifier: oldX
+                    - BinaryOperator:
+                        - Equal
+                        - Constant:
+                            Identifier: _ymouse
+                        - Constant:
+                            Identifier: oldY
+                "yes":
+                  Return: []
+                "no": ~
+            - Expr:
+                BinaryOperator:
+                  - Assign
+                  - Constant:
+                      Identifier: oldX
+                  - Constant:
+                      Identifier: _xmouse
+            - Expr:
+                BinaryOperator:
+                  - Assign
+                  - Constant:
+                      Identifier: oldY
+                  - Constant:
+                      Identifier: _ymouse
+            - Expr:
+                Call:
+                  name:
+                    Constant:
+                      Identifier: trace
+                  args:
+                    - BinaryOperator:
+                        - Add
+                        - BinaryOperator:
+                            - Add
+                            - BinaryOperator:
+                                - Add
+                                - BinaryOperator:
+                                    - Add
+                                    - Constant:
+                                        String: _root
+                                    - Constant:
+                                        String: " "
+                                - Constant:
+                                    Identifier: _xmouse
+                            - Constant:
+                                String: " "
+                        - Constant:
+                            Identifier: _ymouse
+            - Declare:
+                - name: clips
+                  value:
+                    InitArray:
+                      - Constant:
+                          Identifier: id
+                      - Constant:
+                          Identifier: zs
+                      - Constant:
+                          Identifier: ip
+                      - Constant:
+                          Identifier: fp
+                      - Constant:
+                          Identifier: s42fp
+                      - Constant:
+                          Identifier: s133fp
+                      - Constant:
+                          Identifier: s133fpr15
+            - ForIn:
+                condition:
+                  Classic:
+                    initialize:
+                      Declare:
+                        - name: i
+                          value:
+                            Constant:
+                              Integer: 0
+                    condition:
+                      - BinaryOperator:
+                          - LessThan
+                          - Constant:
+                              Identifier: i
+                          - Field:
+                              - Constant:
+                                  Identifier: clips
+                              - Constant:
+                                  String: length
+                    update:
+                      - UnaryOperator:
+                          - Increment: Postfix
+                          - Constant:
+                              Identifier: i
+                body:
+                  Block:
+                    - Declare:
+                        - name: clip
+                          value:
+                            Field:
+                              - Constant:
+                                  Identifier: clips
+                              - Constant:
+                                  Identifier: i
+                    - Expr:
+                        Call:
+                          name:
+                            Constant:
+                              Identifier: trace
+                          args:
+                            - BinaryOperator:
+                                - Add
+                                - BinaryOperator:
+                                    - Add
+                                    - BinaryOperator:
+                                        - Add
+                                        - BinaryOperator:
+                                            - Add
+                                            - Field:
+                                                - Constant:
+                                                    Identifier: clip
+                                                - Constant:
+                                                    String: _name
+                                            - Constant:
+                                                String: " "
+                                        - Field:
+                                            - Constant:
+                                                Identifier: clip
+                                            - Constant:
+                                                String: _xmouse
+                                    - Constant:
+                                        String: " "
+                                - Field:
+                                    - Constant:
+                                        Identifier: clip
+                                    - Constant:
+                                        String: _ymouse
+            - Expr:
+                Call:
+                  name:
+                    Constant:
+                      Identifier: trace
+                  args:
+                    - Constant:
+                        String: ""
+    - Expr:
+        Function:
+          name: onEnterFrame
+          args: []
+          body:
+            - Expr:
+                Call:
+                  name:
+                    Constant:
+                      Identifier: dump
+                  args: []

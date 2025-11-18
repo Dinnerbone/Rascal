@@ -1,0 +1,830 @@
+---
+source: crates/as2/src/lexer/tests.rs
+expression: tokens
+input_file: samples/as2/regressions/ruffle_avm1_mouse_pos.as
+---
+- kind: Newline
+  span:
+    start: 305
+    end: 306
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 306
+    end: 307
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 307
+    end: 309
+  raw: zs
+- kind: Period
+  span:
+    start: 309
+    end: 310
+  raw: "."
+- kind: Identifier
+  span:
+    start: 310
+    end: 317
+  raw: _xscale
+- kind:
+    Operator: Assign
+  span:
+    start: 318
+    end: 319
+  raw: "="
+- kind: Identifier
+  span:
+    start: 320
+    end: 322
+  raw: zs
+- kind: Period
+  span:
+    start: 322
+    end: 323
+  raw: "."
+- kind: Identifier
+  span:
+    start: 323
+    end: 330
+  raw: _yscale
+- kind:
+    Operator: Assign
+  span:
+    start: 331
+    end: 332
+  raw: "="
+- kind: Integer
+  span:
+    start: 333
+    end: 334
+  raw: "0"
+- kind: Newline
+  span:
+    start: 334
+    end: 335
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 335
+    end: 336
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 336
+    end: 339
+  raw: var
+- kind: Identifier
+  span:
+    start: 340
+    end: 344
+  raw: oldX
+- kind: Comma
+  span:
+    start: 344
+    end: 345
+  raw: ","
+- kind: Identifier
+  span:
+    start: 346
+    end: 350
+  raw: oldY
+- kind: Semicolon
+  span:
+    start: 350
+    end: 351
+  raw: ;
+- kind: Newline
+  span:
+    start: 351
+    end: 352
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 352
+    end: 353
+  raw: "\n"
+- kind:
+    Keyword: Function
+  span:
+    start: 353
+    end: 361
+  raw: function
+- kind: Identifier
+  span:
+    start: 362
+    end: 366
+  raw: dump
+- kind: OpenParen
+  span:
+    start: 366
+    end: 367
+  raw: (
+- kind: CloseParen
+  span:
+    start: 367
+    end: 368
+  raw: )
+- kind: OpenBrace
+  span:
+    start: 369
+    end: 370
+  raw: "{"
+- kind: Newline
+  span:
+    start: 370
+    end: 371
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 371
+    end: 372
+  raw: "\n"
+- kind:
+    Keyword: If
+  span:
+    start: 376
+    end: 378
+  raw: if
+- kind: OpenParen
+  span:
+    start: 379
+    end: 380
+  raw: (
+- kind: Identifier
+  span:
+    start: 380
+    end: 387
+  raw: _xmouse
+- kind:
+    Operator: Equal
+  span:
+    start: 388
+    end: 390
+  raw: "=="
+- kind: Identifier
+  span:
+    start: 391
+    end: 395
+  raw: oldX
+- kind:
+    Operator: LogicalAnd
+  span:
+    start: 396
+    end: 398
+  raw: "&&"
+- kind: Identifier
+  span:
+    start: 399
+    end: 406
+  raw: _ymouse
+- kind:
+    Operator: Equal
+  span:
+    start: 407
+    end: 409
+  raw: "=="
+- kind: Identifier
+  span:
+    start: 410
+    end: 414
+  raw: oldY
+- kind: CloseParen
+  span:
+    start: 414
+    end: 415
+  raw: )
+- kind: Newline
+  span:
+    start: 415
+    end: 416
+  raw: "\n"
+- kind:
+    Keyword: Return
+  span:
+    start: 424
+    end: 430
+  raw: return
+- kind: Semicolon
+  span:
+    start: 430
+    end: 431
+  raw: ;
+- kind: Newline
+  span:
+    start: 431
+    end: 432
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 432
+    end: 433
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 437
+    end: 441
+  raw: oldX
+- kind:
+    Operator: Assign
+  span:
+    start: 442
+    end: 443
+  raw: "="
+- kind: Identifier
+  span:
+    start: 444
+    end: 451
+  raw: _xmouse
+- kind: Semicolon
+  span:
+    start: 451
+    end: 452
+  raw: ;
+- kind: Newline
+  span:
+    start: 452
+    end: 453
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 457
+    end: 461
+  raw: oldY
+- kind:
+    Operator: Assign
+  span:
+    start: 462
+    end: 463
+  raw: "="
+- kind: Identifier
+  span:
+    start: 464
+    end: 471
+  raw: _ymouse
+- kind: Semicolon
+  span:
+    start: 471
+    end: 472
+  raw: ;
+- kind: Newline
+  span:
+    start: 472
+    end: 473
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 473
+    end: 474
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 478
+    end: 483
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 483
+    end: 484
+  raw: (
+- kind:
+    String: Single
+  span:
+    start: 484
+    end: 491
+  raw: _root
+- kind:
+    Operator: Add
+  span:
+    start: 491
+    end: 492
+  raw: +
+- kind:
+    String: Double
+  span:
+    start: 492
+    end: 495
+  raw: " "
+- kind:
+    Operator: Add
+  span:
+    start: 495
+    end: 496
+  raw: +
+- kind: Identifier
+  span:
+    start: 496
+    end: 503
+  raw: _xmouse
+- kind:
+    Operator: Add
+  span:
+    start: 503
+    end: 504
+  raw: +
+- kind:
+    String: Double
+  span:
+    start: 504
+    end: 507
+  raw: " "
+- kind:
+    Operator: Add
+  span:
+    start: 507
+    end: 508
+  raw: +
+- kind: Identifier
+  span:
+    start: 509
+    end: 516
+  raw: _ymouse
+- kind: CloseParen
+  span:
+    start: 516
+    end: 517
+  raw: )
+- kind: Semicolon
+  span:
+    start: 517
+    end: 518
+  raw: ;
+- kind: Newline
+  span:
+    start: 518
+    end: 519
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 523
+    end: 526
+  raw: var
+- kind: Identifier
+  span:
+    start: 527
+    end: 532
+  raw: clips
+- kind:
+    Operator: Assign
+  span:
+    start: 533
+    end: 534
+  raw: "="
+- kind: OpenBracket
+  span:
+    start: 535
+    end: 536
+  raw: "["
+- kind: Identifier
+  span:
+    start: 536
+    end: 538
+  raw: id
+- kind: Comma
+  span:
+    start: 538
+    end: 539
+  raw: ","
+- kind: Identifier
+  span:
+    start: 540
+    end: 542
+  raw: zs
+- kind: Comma
+  span:
+    start: 542
+    end: 543
+  raw: ","
+- kind: Identifier
+  span:
+    start: 544
+    end: 546
+  raw: ip
+- kind: Comma
+  span:
+    start: 546
+    end: 547
+  raw: ","
+- kind: Identifier
+  span:
+    start: 548
+    end: 550
+  raw: fp
+- kind: Comma
+  span:
+    start: 550
+    end: 551
+  raw: ","
+- kind: Identifier
+  span:
+    start: 552
+    end: 557
+  raw: s42fp
+- kind: Comma
+  span:
+    start: 557
+    end: 558
+  raw: ","
+- kind: Identifier
+  span:
+    start: 559
+    end: 565
+  raw: s133fp
+- kind: Comma
+  span:
+    start: 565
+    end: 566
+  raw: ","
+- kind: Identifier
+  span:
+    start: 567
+    end: 576
+  raw: s133fpr15
+- kind: CloseBracket
+  span:
+    start: 576
+    end: 577
+  raw: "]"
+- kind: Semicolon
+  span:
+    start: 577
+    end: 578
+  raw: ;
+- kind: Newline
+  span:
+    start: 578
+    end: 579
+  raw: "\n"
+- kind:
+    Keyword: For
+  span:
+    start: 583
+    end: 586
+  raw: for
+- kind: OpenParen
+  span:
+    start: 587
+    end: 588
+  raw: (
+- kind:
+    Keyword: Var
+  span:
+    start: 588
+    end: 591
+  raw: var
+- kind: Identifier
+  span:
+    start: 592
+    end: 593
+  raw: i
+- kind:
+    Operator: Assign
+  span:
+    start: 593
+    end: 594
+  raw: "="
+- kind: Integer
+  span:
+    start: 594
+    end: 595
+  raw: "0"
+- kind: Semicolon
+  span:
+    start: 595
+    end: 596
+  raw: ;
+- kind: Identifier
+  span:
+    start: 597
+    end: 598
+  raw: i
+- kind:
+    Operator: LessThan
+  span:
+    start: 598
+    end: 599
+  raw: "<"
+- kind: Identifier
+  span:
+    start: 599
+    end: 604
+  raw: clips
+- kind: Period
+  span:
+    start: 604
+    end: 605
+  raw: "."
+- kind: Identifier
+  span:
+    start: 605
+    end: 611
+  raw: length
+- kind: Semicolon
+  span:
+    start: 611
+    end: 612
+  raw: ;
+- kind: Identifier
+  span:
+    start: 613
+    end: 614
+  raw: i
+- kind:
+    Operator: Increment
+  span:
+    start: 614
+    end: 616
+  raw: ++
+- kind: CloseParen
+  span:
+    start: 616
+    end: 617
+  raw: )
+- kind: OpenBrace
+  span:
+    start: 618
+    end: 619
+  raw: "{"
+- kind: Newline
+  span:
+    start: 619
+    end: 620
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 628
+    end: 631
+  raw: var
+- kind: Identifier
+  span:
+    start: 632
+    end: 636
+  raw: clip
+- kind:
+    Operator: Assign
+  span:
+    start: 637
+    end: 638
+  raw: "="
+- kind: Identifier
+  span:
+    start: 639
+    end: 644
+  raw: clips
+- kind: OpenBracket
+  span:
+    start: 644
+    end: 645
+  raw: "["
+- kind: Identifier
+  span:
+    start: 645
+    end: 646
+  raw: i
+- kind: CloseBracket
+  span:
+    start: 646
+    end: 647
+  raw: "]"
+- kind: Semicolon
+  span:
+    start: 647
+    end: 648
+  raw: ;
+- kind: Newline
+  span:
+    start: 648
+    end: 649
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 657
+    end: 662
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 662
+    end: 663
+  raw: (
+- kind: Identifier
+  span:
+    start: 663
+    end: 667
+  raw: clip
+- kind: Period
+  span:
+    start: 667
+    end: 668
+  raw: "."
+- kind: Identifier
+  span:
+    start: 668
+    end: 673
+  raw: _name
+- kind:
+    Operator: Add
+  span:
+    start: 673
+    end: 674
+  raw: +
+- kind:
+    String: Double
+  span:
+    start: 674
+    end: 677
+  raw: " "
+- kind:
+    Operator: Add
+  span:
+    start: 677
+    end: 678
+  raw: +
+- kind: Identifier
+  span:
+    start: 678
+    end: 682
+  raw: clip
+- kind: Period
+  span:
+    start: 682
+    end: 683
+  raw: "."
+- kind: Identifier
+  span:
+    start: 683
+    end: 690
+  raw: _xmouse
+- kind:
+    Operator: Add
+  span:
+    start: 690
+    end: 691
+  raw: +
+- kind:
+    String: Double
+  span:
+    start: 691
+    end: 694
+  raw: " "
+- kind:
+    Operator: Add
+  span:
+    start: 694
+    end: 695
+  raw: +
+- kind: Identifier
+  span:
+    start: 695
+    end: 699
+  raw: clip
+- kind: Period
+  span:
+    start: 699
+    end: 700
+  raw: "."
+- kind: Identifier
+  span:
+    start: 700
+    end: 707
+  raw: _ymouse
+- kind: CloseParen
+  span:
+    start: 707
+    end: 708
+  raw: )
+- kind: Semicolon
+  span:
+    start: 708
+    end: 709
+  raw: ;
+- kind: Newline
+  span:
+    start: 709
+    end: 710
+  raw: "\n"
+- kind: CloseBrace
+  span:
+    start: 714
+    end: 715
+  raw: "}"
+- kind: Newline
+  span:
+    start: 715
+    end: 716
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 720
+    end: 725
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 725
+    end: 726
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 726
+    end: 728
+  raw: ""
+- kind: CloseParen
+  span:
+    start: 728
+    end: 729
+  raw: )
+- kind: Semicolon
+  span:
+    start: 729
+    end: 730
+  raw: ;
+- kind: Newline
+  span:
+    start: 730
+    end: 731
+  raw: "\n"
+- kind: CloseBrace
+  span:
+    start: 731
+    end: 732
+  raw: "}"
+- kind: Newline
+  span:
+    start: 732
+    end: 733
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 733
+    end: 734
+  raw: "\n"
+- kind:
+    Keyword: Function
+  span:
+    start: 734
+    end: 742
+  raw: function
+- kind: Identifier
+  span:
+    start: 743
+    end: 755
+  raw: onEnterFrame
+- kind: OpenParen
+  span:
+    start: 755
+    end: 756
+  raw: (
+- kind: CloseParen
+  span:
+    start: 756
+    end: 757
+  raw: )
+- kind: OpenBrace
+  span:
+    start: 758
+    end: 759
+  raw: "{"
+- kind: Newline
+  span:
+    start: 759
+    end: 760
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 764
+    end: 768
+  raw: dump
+- kind: OpenParen
+  span:
+    start: 768
+    end: 769
+  raw: (
+- kind: CloseParen
+  span:
+    start: 769
+    end: 770
+  raw: )
+- kind: Semicolon
+  span:
+    start: 770
+    end: 771
+  raw: ;
+- kind: Newline
+  span:
+    start: 771
+    end: 772
+  raw: "\n"
+- kind: CloseBrace
+  span:
+    start: 772
+    end: 773
+  raw: "}"
+- kind: Newline
+  span:
+    start: 773
+    end: 774
+  raw: "\n"

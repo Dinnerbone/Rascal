@@ -1,0 +1,130 @@
+ConstantPool "", "oldX", "oldY", "_root ", " ", "clips", "s133fpr15", "s133fp", "s42fp", "fp", "ip", "zs", "id", "i", "length", "clip", "_name", "_xmouse", "_ymouse", "dump", "_xscale", "_yscale"
+DefineFunction "dump", 0 {
+Push constant0
+Push 20
+GetProperty
+Push constant1
+GetVariable
+Equals2
+PushDuplicate
+Not
+If loc00b9
+Pop
+Push constant0
+Push 21
+GetProperty
+Push constant2
+GetVariable
+Equals2
+loc00b9:Not
+If loc00c4
+Push undefined
+Return
+loc00c4:Push constant1
+Push constant0
+Push 20
+GetProperty
+SetVariable
+Push constant2
+Push constant0
+Push 21
+GetProperty
+SetVariable
+Push constant3
+Push constant0
+Push 20
+GetProperty
+Add2
+Push constant4
+Add2
+Push constant0
+Push 21
+GetProperty
+Add2
+Trace
+Push constant5
+Push constant6
+GetVariable
+Push constant7
+GetVariable
+Push constant8
+GetVariable
+Push constant9
+GetVariable
+Push constant10
+GetVariable
+Push constant11
+GetVariable
+Push constant12
+GetVariable
+Push 7
+InitArray
+DefineLocal
+Push constant13
+Push 0
+DefineLocal
+loc0161:Push constant13
+GetVariable
+Push constant5
+GetVariable
+Push constant14
+GetMember
+Less2
+Not
+If loc01d2
+Push constant15
+Push constant5
+GetVariable
+Push constant13
+GetVariable
+GetMember
+DefineLocal
+Push constant15
+GetVariable
+Push constant16
+GetMember
+Push constant4
+Add2
+Push constant15
+GetVariable
+Push constant17
+GetMember
+Add2
+Push constant4
+Add2
+Push constant15
+GetVariable
+Push constant18
+GetMember
+Add2
+Trace
+Push constant13
+Push constant13
+GetVariable
+Increment
+SetVariable
+Jump loc0161
+loc01d2:Push constant0
+Trace
+}
+DefineFunction "onEnterFrame", 0 {
+Push 0
+Push constant19
+CallFunction
+Pop
+}
+Push constant11
+GetVariable
+Push constant20
+Push constant11
+GetVariable
+Push constant21
+Push 0
+StoreRegister 0
+SetMember
+Push register0
+SetMember
+Push constant1
+DefineLocal2
+Push constant2
+DefineLocal2
