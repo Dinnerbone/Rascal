@@ -93,7 +93,8 @@ fn gen_for_loop(builder: &mut CodeBuilder, condition: &ForCondition, body: &Stat
             if let Some(initialize) = initialize {
                 gen_statement(builder, initialize);
             }
-            builder.mark_label(continue_label.clone());
+            let start_label = builder.create_label();
+            builder.mark_label(start_label.clone());
             if !condition.is_empty() {
                 let last_cond = condition.len() - 1;
                 for (i, expr) in condition.iter().enumerate() {
@@ -107,12 +108,13 @@ fn gen_for_loop(builder: &mut CodeBuilder, condition: &ForCondition, body: &Stat
                 builder.action(Action::If(end_label.clone()));
             }
             gen_statement(builder, body);
+            builder.mark_label(continue_label.clone());
             for expr in update {
                 let stack_size = builder.stack_size();
                 gen_expr(builder, expr, true);
                 builder.truncate_stack(stack_size);
             }
-            builder.action(Action::Jump(continue_label));
+            builder.action(Action::Jump(start_label));
         }
     }
 

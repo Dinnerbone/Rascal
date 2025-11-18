@@ -8,7 +8,7 @@ Trace
 Push "i"
 Push 0
 DefineLocal
-loc0001: Push "i"
+loc0002: Push "i"
 GetVariable
 Push 3
 Less2
@@ -17,12 +17,12 @@ If loc0000
 Push "i"
 GetVariable
 Trace
-Push "i"
+loc0001: Push "i"
 Push "i"
 GetVariable
 Increment
 SetVariable
-Jump loc0001
+Jump loc0002
 loc0000: Push "for_no_init"
 Trace
 Push "j"
@@ -30,29 +30,29 @@ Push 3
 DefineLocal
 Push "start"
 Trace
-loc0003: Push "j"
+loc0005: Push "j"
 GetVariable
 Push 6
 Less2
 Not
-If loc0002
+If loc0003
 Push "j"
 GetVariable
 Trace
-Push "j"
+loc0004: Push "j"
 Push "j"
 GetVariable
 Increment
 SetVariable
-Jump loc0003
-loc0002: Push "end"
+Jump loc0005
+loc0003: Push "end"
 Trace
 Push "for_no_condition"
 Trace
 Push "k"
 Push 0
 DefineLocal
-loc0005: Push "k"
+loc0008: Push "k"
 GetVariable
 Trace
 Push "k"
@@ -61,40 +61,40 @@ Push 3
 Less2
 Not
 Not
-If loc0006
-Jump loc0004
-loc0006: Push "k"
+If loc0009
+Jump loc0006
+loc0009: loc0007: Push "k"
 Push "k"
-GetVariable
-Increment
-SetVariable
-Jump loc0005
-loc0004: Push "for_no_update"
-Trace
-Push "n"
-Push 0
-DefineLocal
-loc0008: Push "n"
-GetVariable
-Push 3
-Less2
-Not
-If loc0007
-Push "n"
-GetVariable
-Trace
-Push "n"
-Push "n"
 GetVariable
 Increment
 SetVariable
 Jump loc0008
-loc0007: Push "for_all_omitted"
+loc0006: Push "for_no_update"
+Trace
+Push "n"
+Push 0
+DefineLocal
+loc000c: Push "n"
+GetVariable
+Push 3
+Less2
+Not
+If loc000a
+Push "n"
+GetVariable
+Trace
+Push "n"
+Push "n"
+GetVariable
+Increment
+SetVariable
+loc000b: Jump loc000c
+loc000a: Push "for_all_omitted"
 Trace
 Push "count"
 Push 0
 DefineLocal
-loc000a: Push "loop"
+loc000f: Push "loop"
 Trace
 Push "count"
 Push "count"
@@ -106,10 +106,10 @@ GetVariable
 Push 3
 Equals2
 Not
-If loc000b
-Jump loc0009
-loc000b: Jump loc000a
-loc0009: Push "done"
+If loc0010
+Jump loc000d
+loc0010: loc000e: Jump loc000f
+loc000d: Push "done"
 Trace
 Push "for_in_object"
 Trace
@@ -130,10 +130,10 @@ SetMember
 Push "obj"
 GetVariable
 Enumerate2
-loc000d: StoreRegister 0
+loc0012: StoreRegister 0
 Push null
 Equals2
-If loc000c
+If loc0011
 Push "key"
 Push register0
 DefineLocal
@@ -148,8 +148,8 @@ GetVariable
 GetMember
 Add2
 Trace
-Jump loc000d
-loc000c: Push "for_in_array"
+Jump loc0012
+loc0011: Push "for_in_array"
 Trace
 Push "arr"
 Push 7
@@ -163,10 +163,10 @@ DefineLocal2
 Push "arr"
 GetVariable
 Enumerate2
-loc000f: StoreRegister 0
+loc0014: StoreRegister 0
 Push null
 Equals2
-If loc000e
+If loc0013
 Push "idx"
 Push register0
 SetVariable
@@ -181,8 +181,8 @@ GetVariable
 GetMember
 Add2
 Trace
-Jump loc000f
-loc000e: Push "for_multiple_clauses"
+Jump loc0014
+loc0013: Push "for_multiple_clauses"
 Trace
 Push "a"
 Push 0
@@ -190,13 +190,13 @@ DefineLocal
 Push "b"
 Push 3
 DefineLocal
-loc0011: Push "a"
+loc0017: Push "a"
 GetVariable
 Push "b"
 GetVariable
 Less2
 Not
-If loc0010
+If loc0015
 Push "a"
 GetVariable
 Push ","
@@ -205,7 +205,7 @@ Push "b"
 GetVariable
 Add2
 Trace
-Push "a"
+loc0016: Push "a"
 Push "a"
 GetVariable
 Increment
@@ -215,63 +215,63 @@ Push "b"
 GetVariable
 Decrement
 SetVariable
-Jump loc0011
-loc0010: Push "for_continue_break"
+Jump loc0017
+loc0015: Push "for_continue_break"
 Trace
 Push "x"
 Push 0
 DefineLocal
-loc0013: Push "x"
+loc001a: Push "x"
 GetVariable
 Push 10
 Less2
 Not
-If loc0012
+If loc0018
 Push "x"
 GetVariable
 Push 5
 Equals2
 Not
-If loc0014
-Jump loc0012
-loc0014: Push "x"
+If loc001b
+Jump loc0018
+loc001b: Push "x"
 GetVariable
 Push 2
 Modulo
 Push 1
 Equals2
 Not
-If loc0015
-Jump loc0013
-loc0015: Push "x"
+If loc001c
+Jump loc0019
+loc001c: Push "x"
 GetVariable
 Trace
-Push "x"
+loc0019: Push "x"
 Push "x"
 GetVariable
 Increment
 SetVariable
-Jump loc0013
-loc0012: Push "for_nested"
+Jump loc001a
+loc0018: Push "for_nested"
 Trace
 Push "outer"
 Push 0
 DefineLocal
-loc0017: Push "outer"
+loc001f: Push "outer"
 GetVariable
 Push 2
 Less2
 Not
-If loc0016
+If loc001d
 Push "inner"
 Push 0
 DefineLocal
-loc0019: Push "inner"
+loc0022: Push "inner"
 GetVariable
 Push 2
 Less2
 Not
-If loc0018
+If loc0020
 Push "outer"
 GetVariable
 Push ","
@@ -280,59 +280,59 @@ Push "inner"
 GetVariable
 Add2
 Trace
-Push "inner"
+loc0021: Push "inner"
 Push "inner"
 GetVariable
 Increment
 SetVariable
-Jump loc0019
-loc0018: Push "outer"
+Jump loc0022
+loc0020: loc001e: Push "outer"
 Push "outer"
 GetVariable
 Increment
 SetVariable
-Jump loc0017
-loc0016: Push "for_existing_var"
+Jump loc001f
+loc001d: Push "for_existing_var"
 Trace
 Push "z"
 DefineLocal2
 Push "z"
 Push 1
 SetVariable
-loc001b: Push "z"
+loc0025: Push "z"
 GetVariable
 Push 3
 Greater
 Not
 Not
-If loc001a
+If loc0023
 Push "z"
 GetVariable
 Trace
-Push "z"
+loc0024: Push "z"
 Push "z"
 GetVariable
 Increment
 SetVariable
-Jump loc001b
-loc001a: Push "for_single_statement_body"
+Jump loc0025
+loc0023: Push "for_single_statement_body"
 Trace
 Push "q"
 Push 0
 DefineLocal
-loc001d: Push "q"
+loc0028: Push "q"
 GetVariable
 Push 3
 Less2
 Not
-If loc001c
+If loc0026
 Push "q"
 GetVariable
 Trace
-Push "q"
+loc0027: Push "q"
 Push "q"
 GetVariable
 Increment
 SetVariable
-Jump loc001d
-loc001c:
+Jump loc0028
+loc0026:
