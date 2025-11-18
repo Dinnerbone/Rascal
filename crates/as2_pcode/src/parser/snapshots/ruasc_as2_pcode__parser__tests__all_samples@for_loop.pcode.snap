@@ -262,6 +262,9 @@ Ok:
     - InitArray
     - DefineLocal
     - Push:
+        - Constant: 22
+    - DefineLocal2
+    - Push:
         - Constant: 21
     - GetVariable
     - Enumerate2
@@ -269,12 +272,12 @@ Ok:
     - Push:
         - "Null"
     - Equals2
-    - If: loc0375
+    - If: loc037b
     - Push:
         - Constant: 22
     - Push:
         - Register: 0
-    - DefineLocal
+    - SetVariable
     - Push:
         - Constant: 22
     - GetVariable
@@ -290,7 +293,7 @@ Ok:
     - GetMember
     - Add2
     - Trace
-    - Jump: loc033c
+    - Jump: loc0342
     - Push:
         - Constant: 23
     - Trace
@@ -312,7 +315,7 @@ Ok:
     - GetVariable
     - Less2
     - Not
-    - If: loc03ef
+    - If: loc03f5
     - Push:
         - Constant: 16
     - GetVariable
@@ -346,7 +349,7 @@ Ok:
     - Decrement
     - SetVariable
     - Pop
-    - Jump: loc039b
+    - Jump: loc03a1
     - Push:
         - Constant: 25
     - Trace
@@ -362,7 +365,7 @@ Ok:
         - Integer: 10
     - Less2
     - Not
-    - If: loc0472
+    - If: loc0478
     - Push:
         - Constant: 26
     - GetVariable
@@ -370,8 +373,8 @@ Ok:
         - Integer: 5
     - Equals2
     - Not
-    - If: loc0436
-    - Jump: loc0472
+    - If: loc043c
+    - Jump: loc0478
     - Push:
         - Constant: 26
     - GetVariable
@@ -382,8 +385,8 @@ Ok:
         - Integer: 1
     - Equals2
     - Not
-    - If: loc0459
-    - Jump: loc0460
+    - If: loc045f
+    - Jump: loc0466
     - Push:
         - Constant: 26
     - GetVariable
@@ -395,7 +398,7 @@ Ok:
     - GetVariable
     - Increment
     - SetVariable
-    - Jump: loc0407
+    - Jump: loc040d
     - Push:
         - Constant: 27
     - Trace
@@ -411,7 +414,7 @@ Ok:
         - Integer: 2
     - Less2
     - Not
-    - If: loc04fe
+    - If: loc0504
     - Push:
         - Constant: 29
     - Push:
@@ -424,7 +427,7 @@ Ok:
         - Integer: 2
     - Less2
     - Not
-    - If: loc04ec
+    - If: loc04f2
     - Push:
         - Constant: 28
     - GetVariable
@@ -443,7 +446,7 @@ Ok:
     - GetVariable
     - Increment
     - SetVariable
-    - Jump: loc04b1
+    - Jump: loc04b7
     - Push:
         - Constant: 28
     - Push:
@@ -451,7 +454,7 @@ Ok:
     - GetVariable
     - Increment
     - SetVariable
-    - Jump: loc048a
+    - Jump: loc0490
     - Push:
         - Constant: 30
     - Trace
@@ -471,7 +474,7 @@ Ok:
     - Greater
     - Not
     - Not
-    - If: loc0547
+    - If: loc054d
     - Push:
         - Constant: 31
     - GetVariable
@@ -483,7 +486,7 @@ Ok:
     - GetVariable
     - Increment
     - SetVariable
-    - Jump: loc0518
+    - Jump: loc051e
     - Push:
         - Constant: 32
     - Trace
@@ -499,7 +502,7 @@ Ok:
         - Integer: 3
     - Less2
     - Not
-    - If: loc058d
+    - If: loc0593
     - Push:
         - Constant: 33
     - GetVariable
@@ -511,7 +514,7 @@ Ok:
     - GetVariable
     - Increment
     - SetVariable
-    - Jump: loc055f
+    - Jump: loc0565
   label_positions:
     loc0129: 6
     loc0157: 21
@@ -527,20 +530,20 @@ Ok:
     loc0281: 107
     loc02cf: 128
     loc0308: 147
-    loc033c: 159
-    loc0375: 178
-    loc039b: 186
-    loc03ef: 218
-    loc0407: 223
-    loc0436: 236
-    loc0459: 245
-    loc0460: 248
-    loc0472: 254
-    loc048a: 259
-    loc04b1: 268
-    loc04ec: 288
-    loc04fe: 294
-    loc0518: 301
-    loc0547: 317
-    loc055f: 322
-    loc058d: 337
+    loc0342: 161
+    loc037b: 180
+    loc03a1: 188
+    loc03f5: 220
+    loc040d: 225
+    loc043c: 238
+    loc045f: 247
+    loc0466: 250
+    loc0478: 256
+    loc0490: 261
+    loc04b7: 270
+    loc04f2: 290
+    loc0504: 296
+    loc051e: 303
+    loc054d: 319
+    loc0565: 324
+    loc0593: 339

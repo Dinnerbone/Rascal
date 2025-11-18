@@ -58,7 +58,8 @@ for (var key in obj) {
 
 trace("for_in_array");
 var arr = [5, 6, 7];
-for (var idx in arr) {
+var idx;
+for (idx in arr) {
     trace(idx + "=" + arr[idx]);
 }
 

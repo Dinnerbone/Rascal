@@ -1,7 +1,7 @@
 ---
 source: crates/as2/src/lexer/tests.rs
 expression: tokens
-input_file: samples/for_loop.as
+input_file: samples/as2/for_loop.as
 ---
 - kind: Identifier
   span:
@@ -1441,1278 +1441,1293 @@ input_file: samples/for_loop.as
     end: 1055
   raw: "\n"
 - kind:
-    Keyword: For
+    Keyword: Var
   span:
     start: 1055
     end: 1058
-  raw: for
-- kind: OpenParen
-  span:
-    start: 1059
-    end: 1060
-  raw: (
-- kind:
-    Keyword: Var
-  span:
-    start: 1060
-    end: 1063
   raw: var
 - kind: Identifier
   span:
+    start: 1059
+    end: 1062
+  raw: idx
+- kind: Semicolon
+  span:
+    start: 1062
+    end: 1063
+  raw: ;
+- kind: Newline
+  span:
+    start: 1063
+    end: 1064
+  raw: "\n"
+- kind:
+    Keyword: For
+  span:
     start: 1064
     end: 1067
+  raw: for
+- kind: OpenParen
+  span:
+    start: 1068
+    end: 1069
+  raw: (
+- kind: Identifier
+  span:
+    start: 1069
+    end: 1072
   raw: idx
 - kind:
     Keyword: In
   span:
-    start: 1068
-    end: 1070
+    start: 1073
+    end: 1075
   raw: in
 - kind: Identifier
   span:
-    start: 1071
-    end: 1074
+    start: 1076
+    end: 1079
   raw: arr
 - kind: CloseParen
   span:
-    start: 1074
-    end: 1075
+    start: 1079
+    end: 1080
   raw: )
 - kind: OpenBrace
   span:
-    start: 1076
-    end: 1077
+    start: 1081
+    end: 1082
   raw: "{"
 - kind: Newline
   span:
-    start: 1077
-    end: 1078
+    start: 1082
+    end: 1083
   raw: "\n"
 - kind: Identifier
   span:
-    start: 1082
-    end: 1087
+    start: 1087
+    end: 1092
   raw: trace
 - kind: OpenParen
   span:
-    start: 1087
-    end: 1088
+    start: 1092
+    end: 1093
   raw: (
 - kind: Identifier
   span:
-    start: 1088
-    end: 1091
+    start: 1093
+    end: 1096
   raw: idx
 - kind:
     Operator: Add
   span:
-    start: 1092
-    end: 1093
+    start: 1097
+    end: 1098
   raw: +
 - kind:
     String: Double
   span:
-    start: 1094
-    end: 1097
+    start: 1099
+    end: 1102
   raw: "="
 - kind:
     Operator: Add
   span:
-    start: 1098
-    end: 1099
+    start: 1103
+    end: 1104
   raw: +
 - kind: Identifier
   span:
-    start: 1100
-    end: 1103
+    start: 1105
+    end: 1108
   raw: arr
 - kind: OpenBracket
   span:
-    start: 1103
-    end: 1104
+    start: 1108
+    end: 1109
   raw: "["
 - kind: Identifier
   span:
-    start: 1104
-    end: 1107
+    start: 1109
+    end: 1112
   raw: idx
 - kind: CloseBracket
   span:
-    start: 1107
-    end: 1108
+    start: 1112
+    end: 1113
   raw: "]"
 - kind: CloseParen
   span:
-    start: 1108
-    end: 1109
+    start: 1113
+    end: 1114
   raw: )
 - kind: Semicolon
   span:
-    start: 1109
-    end: 1110
+    start: 1114
+    end: 1115
   raw: ;
 - kind: Newline
   span:
-    start: 1110
-    end: 1111
+    start: 1115
+    end: 1116
   raw: "\n"
 - kind: CloseBrace
   span:
-    start: 1111
-    end: 1112
+    start: 1116
+    end: 1117
   raw: "}"
 - kind: Newline
   span:
-    start: 1112
-    end: 1113
+    start: 1117
+    end: 1118
   raw: "\n"
 - kind: Newline
   span:
-    start: 1113
-    end: 1114
+    start: 1118
+    end: 1119
   raw: "\n"
 - kind: Newline
   span:
-    start: 1178
-    end: 1179
+    start: 1183
+    end: 1184
   raw: "\n"
 - kind: Identifier
   span:
-    start: 1179
-    end: 1184
+    start: 1184
+    end: 1189
   raw: trace
 - kind: OpenParen
   span:
-    start: 1184
-    end: 1185
+    start: 1189
+    end: 1190
   raw: (
 - kind:
     String: Double
   span:
-    start: 1185
-    end: 1207
+    start: 1190
+    end: 1212
   raw: for_multiple_clauses
 - kind: CloseParen
   span:
-    start: 1207
-    end: 1208
+    start: 1212
+    end: 1213
   raw: )
 - kind: Semicolon
   span:
-    start: 1208
-    end: 1209
+    start: 1213
+    end: 1214
   raw: ;
 - kind: Newline
   span:
-    start: 1209
-    end: 1210
+    start: 1214
+    end: 1215
   raw: "\n"
 - kind:
     Keyword: For
   span:
-    start: 1210
-    end: 1213
+    start: 1215
+    end: 1218
   raw: for
 - kind: OpenParen
   span:
-    start: 1214
-    end: 1215
+    start: 1219
+    end: 1220
   raw: (
 - kind:
     Keyword: Var
   span:
-    start: 1215
-    end: 1218
+    start: 1220
+    end: 1223
   raw: var
 - kind: Identifier
   span:
-    start: 1219
-    end: 1220
+    start: 1224
+    end: 1225
   raw: a
 - kind:
     Operator: Assign
   span:
-    start: 1221
-    end: 1222
+    start: 1226
+    end: 1227
   raw: "="
 - kind: Integer
   span:
-    start: 1223
-    end: 1224
+    start: 1228
+    end: 1229
   raw: "0"
 - kind: Comma
   span:
-    start: 1224
-    end: 1225
+    start: 1229
+    end: 1230
   raw: ","
 - kind: Identifier
   span:
-    start: 1226
-    end: 1227
+    start: 1231
+    end: 1232
   raw: b
 - kind:
     Operator: Assign
   span:
-    start: 1228
-    end: 1229
+    start: 1233
+    end: 1234
   raw: "="
 - kind: Integer
   span:
-    start: 1230
-    end: 1231
+    start: 1235
+    end: 1236
   raw: "3"
 - kind: Semicolon
   span:
-    start: 1231
-    end: 1232
+    start: 1236
+    end: 1237
   raw: ;
 - kind: Identifier
   span:
-    start: 1233
-    end: 1234
+    start: 1238
+    end: 1239
   raw: a
 - kind:
     Operator: LessThan
   span:
-    start: 1235
-    end: 1236
+    start: 1240
+    end: 1241
   raw: "<"
 - kind: Identifier
   span:
-    start: 1237
-    end: 1238
+    start: 1242
+    end: 1243
   raw: b
 - kind: Semicolon
   span:
-    start: 1238
-    end: 1239
-  raw: ;
-- kind: Identifier
-  span:
-    start: 1240
-    end: 1241
-  raw: a
-- kind:
-    Operator: Increment
-  span:
-    start: 1241
-    end: 1243
-  raw: ++
-- kind: Comma
-  span:
     start: 1243
     end: 1244
-  raw: ","
+  raw: ;
 - kind: Identifier
   span:
     start: 1245
     end: 1246
+  raw: a
+- kind:
+    Operator: Increment
+  span:
+    start: 1246
+    end: 1248
+  raw: ++
+- kind: Comma
+  span:
+    start: 1248
+    end: 1249
+  raw: ","
+- kind: Identifier
+  span:
+    start: 1250
+    end: 1251
   raw: b
 - kind:
     Operator: Decrement
   span:
-    start: 1246
-    end: 1248
+    start: 1251
+    end: 1253
   raw: "--"
 - kind: CloseParen
   span:
-    start: 1248
-    end: 1249
+    start: 1253
+    end: 1254
   raw: )
 - kind: OpenBrace
   span:
-    start: 1250
-    end: 1251
+    start: 1255
+    end: 1256
   raw: "{"
 - kind: Newline
   span:
-    start: 1251
-    end: 1252
+    start: 1256
+    end: 1257
   raw: "\n"
 - kind: Identifier
   span:
-    start: 1256
-    end: 1261
+    start: 1261
+    end: 1266
   raw: trace
 - kind: OpenParen
   span:
-    start: 1261
-    end: 1262
+    start: 1266
+    end: 1267
   raw: (
 - kind: Identifier
   span:
-    start: 1262
-    end: 1263
+    start: 1267
+    end: 1268
   raw: a
 - kind:
     Operator: Add
   span:
-    start: 1264
-    end: 1265
+    start: 1269
+    end: 1270
   raw: +
 - kind:
     String: Double
   span:
-    start: 1266
-    end: 1269
+    start: 1271
+    end: 1274
   raw: ","
 - kind:
     Operator: Add
   span:
-    start: 1270
-    end: 1271
+    start: 1275
+    end: 1276
   raw: +
 - kind: Identifier
   span:
-    start: 1272
-    end: 1273
+    start: 1277
+    end: 1278
   raw: b
 - kind: CloseParen
   span:
-    start: 1273
-    end: 1274
+    start: 1278
+    end: 1279
   raw: )
 - kind: Semicolon
   span:
-    start: 1274
-    end: 1275
+    start: 1279
+    end: 1280
   raw: ;
 - kind: Newline
   span:
-    start: 1275
-    end: 1276
+    start: 1280
+    end: 1281
   raw: "\n"
 - kind: CloseBrace
   span:
-    start: 1276
-    end: 1277
+    start: 1281
+    end: 1282
   raw: "}"
 - kind: Newline
   span:
-    start: 1277
-    end: 1278
+    start: 1282
+    end: 1283
   raw: "\n"
 - kind: Newline
   span:
-    start: 1278
-    end: 1279
+    start: 1283
+    end: 1284
   raw: "\n"
 - kind: Newline
   span:
-    start: 1343
-    end: 1344
+    start: 1348
+    end: 1349
   raw: "\n"
 - kind: Identifier
   span:
-    start: 1344
-    end: 1349
+    start: 1349
+    end: 1354
   raw: trace
 - kind: OpenParen
   span:
-    start: 1349
-    end: 1350
+    start: 1354
+    end: 1355
   raw: (
 - kind:
     String: Double
   span:
-    start: 1350
-    end: 1370
+    start: 1355
+    end: 1375
   raw: for_continue_break
 - kind: CloseParen
   span:
-    start: 1370
-    end: 1371
+    start: 1375
+    end: 1376
   raw: )
 - kind: Semicolon
   span:
-    start: 1371
-    end: 1372
+    start: 1376
+    end: 1377
   raw: ;
 - kind: Newline
   span:
-    start: 1372
-    end: 1373
+    start: 1377
+    end: 1378
   raw: "\n"
 - kind:
     Keyword: For
   span:
-    start: 1373
-    end: 1376
+    start: 1378
+    end: 1381
   raw: for
 - kind: OpenParen
   span:
-    start: 1377
-    end: 1378
+    start: 1382
+    end: 1383
   raw: (
 - kind:
     Keyword: Var
   span:
-    start: 1378
-    end: 1381
+    start: 1383
+    end: 1386
   raw: var
 - kind: Identifier
   span:
-    start: 1382
-    end: 1383
+    start: 1387
+    end: 1388
   raw: x
 - kind:
     Operator: Assign
   span:
-    start: 1384
-    end: 1385
+    start: 1389
+    end: 1390
   raw: "="
 - kind: Integer
   span:
-    start: 1386
-    end: 1387
+    start: 1391
+    end: 1392
   raw: "0"
 - kind: Semicolon
   span:
-    start: 1387
-    end: 1388
+    start: 1392
+    end: 1393
   raw: ;
 - kind: Identifier
   span:
-    start: 1389
-    end: 1390
+    start: 1394
+    end: 1395
   raw: x
 - kind:
     Operator: LessThan
   span:
-    start: 1391
-    end: 1392
+    start: 1396
+    end: 1397
   raw: "<"
 - kind: Integer
   span:
-    start: 1393
-    end: 1395
+    start: 1398
+    end: 1400
   raw: "10"
 - kind: Semicolon
   span:
-    start: 1395
-    end: 1396
+    start: 1400
+    end: 1401
   raw: ;
 - kind: Identifier
   span:
-    start: 1397
-    end: 1398
+    start: 1402
+    end: 1403
   raw: x
 - kind:
     Operator: Increment
   span:
-    start: 1398
-    end: 1400
+    start: 1403
+    end: 1405
   raw: ++
 - kind: CloseParen
   span:
-    start: 1400
-    end: 1401
+    start: 1405
+    end: 1406
   raw: )
 - kind: OpenBrace
   span:
-    start: 1402
-    end: 1403
+    start: 1407
+    end: 1408
   raw: "{"
 - kind: Newline
   span:
-    start: 1403
-    end: 1404
+    start: 1408
+    end: 1409
   raw: "\n"
 - kind:
     Keyword: If
   span:
-    start: 1408
-    end: 1410
+    start: 1413
+    end: 1415
   raw: if
 - kind: OpenParen
   span:
-    start: 1411
-    end: 1412
+    start: 1416
+    end: 1417
   raw: (
 - kind: Identifier
   span:
-    start: 1412
-    end: 1413
+    start: 1417
+    end: 1418
   raw: x
 - kind:
     Operator: Equal
   span:
-    start: 1414
-    end: 1416
+    start: 1419
+    end: 1421
   raw: "=="
 - kind: Integer
   span:
-    start: 1417
-    end: 1418
+    start: 1422
+    end: 1423
   raw: "5"
 - kind: CloseParen
   span:
-    start: 1418
-    end: 1419
+    start: 1423
+    end: 1424
   raw: )
 - kind: OpenBrace
   span:
-    start: 1420
-    end: 1421
+    start: 1425
+    end: 1426
   raw: "{"
 - kind: Newline
   span:
-    start: 1421
-    end: 1422
+    start: 1426
+    end: 1427
   raw: "\n"
 - kind:
     Keyword: Break
   span:
-    start: 1430
-    end: 1435
+    start: 1435
+    end: 1440
   raw: break
 - kind: Semicolon
   span:
-    start: 1435
-    end: 1436
+    start: 1440
+    end: 1441
   raw: ;
 - kind: Newline
   span:
-    start: 1436
-    end: 1437
+    start: 1441
+    end: 1442
   raw: "\n"
 - kind: CloseBrace
   span:
-    start: 1441
-    end: 1442
+    start: 1446
+    end: 1447
   raw: "}"
 - kind: Newline
   span:
-    start: 1442
-    end: 1443
+    start: 1447
+    end: 1448
   raw: "\n"
 - kind:
     Keyword: If
   span:
-    start: 1447
-    end: 1449
+    start: 1452
+    end: 1454
   raw: if
 - kind: OpenParen
   span:
-    start: 1450
-    end: 1451
+    start: 1455
+    end: 1456
   raw: (
 - kind: Identifier
   span:
-    start: 1451
-    end: 1452
+    start: 1456
+    end: 1457
   raw: x
 - kind:
     Operator: Modulo
   span:
-    start: 1453
-    end: 1454
-  raw: "%"
-- kind: Integer
-  span:
-    start: 1455
-    end: 1456
-  raw: "2"
-- kind:
-    Operator: Equal
-  span:
-    start: 1457
+    start: 1458
     end: 1459
-  raw: "=="
+  raw: "%"
 - kind: Integer
   span:
     start: 1460
     end: 1461
+  raw: "2"
+- kind:
+    Operator: Equal
+  span:
+    start: 1462
+    end: 1464
+  raw: "=="
+- kind: Integer
+  span:
+    start: 1465
+    end: 1466
   raw: "1"
 - kind: CloseParen
   span:
-    start: 1461
-    end: 1462
+    start: 1466
+    end: 1467
   raw: )
 - kind: OpenBrace
   span:
-    start: 1463
-    end: 1464
+    start: 1468
+    end: 1469
   raw: "{"
 - kind: Newline
   span:
-    start: 1464
-    end: 1465
+    start: 1469
+    end: 1470
   raw: "\n"
 - kind:
     Keyword: Continue
   span:
-    start: 1473
-    end: 1481
+    start: 1478
+    end: 1486
   raw: continue
 - kind: Semicolon
   span:
-    start: 1481
-    end: 1482
+    start: 1486
+    end: 1487
   raw: ;
 - kind: Newline
-  span:
-    start: 1482
-    end: 1483
-  raw: "\n"
-- kind: CloseBrace
   span:
     start: 1487
     end: 1488
-  raw: "}"
-- kind: Newline
-  span:
-    start: 1488
-    end: 1489
-  raw: "\n"
-- kind: Identifier
-  span:
-    start: 1493
-    end: 1498
-  raw: trace
-- kind: OpenParen
-  span:
-    start: 1498
-    end: 1499
-  raw: (
-- kind: Identifier
-  span:
-    start: 1499
-    end: 1500
-  raw: x
-- kind: CloseParen
-  span:
-    start: 1500
-    end: 1501
-  raw: )
-- kind: Semicolon
-  span:
-    start: 1501
-    end: 1502
-  raw: ;
-- kind: Newline
-  span:
-    start: 1502
-    end: 1503
   raw: "\n"
 - kind: CloseBrace
   span:
-    start: 1503
-    end: 1504
+    start: 1492
+    end: 1493
   raw: "}"
 - kind: Newline
   span:
-    start: 1504
-    end: 1505
-  raw: "\n"
-- kind: Newline
-  span:
-    start: 1505
-    end: 1506
-  raw: "\n"
-- kind: Newline
-  span:
-    start: 1570
-    end: 1571
+    start: 1493
+    end: 1494
   raw: "\n"
 - kind: Identifier
   span:
-    start: 1571
-    end: 1576
+    start: 1498
+    end: 1503
   raw: trace
 - kind: OpenParen
   span:
+    start: 1503
+    end: 1504
+  raw: (
+- kind: Identifier
+  span:
+    start: 1504
+    end: 1505
+  raw: x
+- kind: CloseParen
+  span:
+    start: 1505
+    end: 1506
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1506
+    end: 1507
+  raw: ;
+- kind: Newline
+  span:
+    start: 1507
+    end: 1508
+  raw: "\n"
+- kind: CloseBrace
+  span:
+    start: 1508
+    end: 1509
+  raw: "}"
+- kind: Newline
+  span:
+    start: 1509
+    end: 1510
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 1510
+    end: 1511
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 1575
+    end: 1576
+  raw: "\n"
+- kind: Identifier
+  span:
     start: 1576
-    end: 1577
+    end: 1581
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1581
+    end: 1582
   raw: (
 - kind:
     String: Double
   span:
-    start: 1577
-    end: 1589
+    start: 1582
+    end: 1594
   raw: for_nested
 - kind: CloseParen
   span:
-    start: 1589
-    end: 1590
+    start: 1594
+    end: 1595
   raw: )
 - kind: Semicolon
   span:
-    start: 1590
-    end: 1591
+    start: 1595
+    end: 1596
   raw: ;
 - kind: Newline
-  span:
-    start: 1591
-    end: 1592
-  raw: "\n"
-- kind:
-    Keyword: For
-  span:
-    start: 1592
-    end: 1595
-  raw: for
-- kind: OpenParen
   span:
     start: 1596
     end: 1597
-  raw: (
-- kind:
-    Keyword: Var
-  span:
-    start: 1597
-    end: 1600
-  raw: var
-- kind: Identifier
-  span:
-    start: 1601
-    end: 1606
-  raw: outer
-- kind:
-    Operator: Assign
-  span:
-    start: 1607
-    end: 1608
-  raw: "="
-- kind: Integer
-  span:
-    start: 1609
-    end: 1610
-  raw: "0"
-- kind: Semicolon
-  span:
-    start: 1610
-    end: 1611
-  raw: ;
-- kind: Identifier
-  span:
-    start: 1612
-    end: 1617
-  raw: outer
-- kind:
-    Operator: LessThan
-  span:
-    start: 1618
-    end: 1619
-  raw: "<"
-- kind: Integer
-  span:
-    start: 1620
-    end: 1621
-  raw: "2"
-- kind: Semicolon
-  span:
-    start: 1621
-    end: 1622
-  raw: ;
-- kind: Identifier
-  span:
-    start: 1623
-    end: 1628
-  raw: outer
-- kind:
-    Operator: Increment
-  span:
-    start: 1628
-    end: 1630
-  raw: ++
-- kind: CloseParen
-  span:
-    start: 1630
-    end: 1631
-  raw: )
-- kind: OpenBrace
-  span:
-    start: 1632
-    end: 1633
-  raw: "{"
-- kind: Newline
-  span:
-    start: 1633
-    end: 1634
   raw: "\n"
 - kind:
     Keyword: For
   span:
-    start: 1638
-    end: 1641
+    start: 1597
+    end: 1600
   raw: for
 - kind: OpenParen
   span:
-    start: 1642
-    end: 1643
+    start: 1601
+    end: 1602
   raw: (
 - kind:
     Keyword: Var
   span:
-    start: 1643
-    end: 1646
+    start: 1602
+    end: 1605
   raw: var
 - kind: Identifier
   span:
+    start: 1606
+    end: 1611
+  raw: outer
+- kind:
+    Operator: Assign
+  span:
+    start: 1612
+    end: 1613
+  raw: "="
+- kind: Integer
+  span:
+    start: 1614
+    end: 1615
+  raw: "0"
+- kind: Semicolon
+  span:
+    start: 1615
+    end: 1616
+  raw: ;
+- kind: Identifier
+  span:
+    start: 1617
+    end: 1622
+  raw: outer
+- kind:
+    Operator: LessThan
+  span:
+    start: 1623
+    end: 1624
+  raw: "<"
+- kind: Integer
+  span:
+    start: 1625
+    end: 1626
+  raw: "2"
+- kind: Semicolon
+  span:
+    start: 1626
+    end: 1627
+  raw: ;
+- kind: Identifier
+  span:
+    start: 1628
+    end: 1633
+  raw: outer
+- kind:
+    Operator: Increment
+  span:
+    start: 1633
+    end: 1635
+  raw: ++
+- kind: CloseParen
+  span:
+    start: 1635
+    end: 1636
+  raw: )
+- kind: OpenBrace
+  span:
+    start: 1637
+    end: 1638
+  raw: "{"
+- kind: Newline
+  span:
+    start: 1638
+    end: 1639
+  raw: "\n"
+- kind:
+    Keyword: For
+  span:
+    start: 1643
+    end: 1646
+  raw: for
+- kind: OpenParen
+  span:
     start: 1647
-    end: 1652
+    end: 1648
+  raw: (
+- kind:
+    Keyword: Var
+  span:
+    start: 1648
+    end: 1651
+  raw: var
+- kind: Identifier
+  span:
+    start: 1652
+    end: 1657
   raw: inner
 - kind:
     Operator: Assign
   span:
-    start: 1653
-    end: 1654
+    start: 1658
+    end: 1659
   raw: "="
 - kind: Integer
   span:
-    start: 1655
-    end: 1656
+    start: 1660
+    end: 1661
   raw: "0"
 - kind: Semicolon
   span:
-    start: 1656
-    end: 1657
+    start: 1661
+    end: 1662
   raw: ;
 - kind: Identifier
   span:
-    start: 1658
-    end: 1663
+    start: 1663
+    end: 1668
   raw: inner
 - kind:
     Operator: LessThan
   span:
-    start: 1664
-    end: 1665
+    start: 1669
+    end: 1670
   raw: "<"
 - kind: Integer
   span:
-    start: 1666
-    end: 1667
+    start: 1671
+    end: 1672
   raw: "2"
 - kind: Semicolon
   span:
-    start: 1667
-    end: 1668
+    start: 1672
+    end: 1673
   raw: ;
 - kind: Identifier
   span:
-    start: 1669
-    end: 1674
+    start: 1674
+    end: 1679
   raw: inner
 - kind:
     Operator: Increment
   span:
-    start: 1674
-    end: 1676
+    start: 1679
+    end: 1681
   raw: ++
 - kind: CloseParen
   span:
-    start: 1676
-    end: 1677
+    start: 1681
+    end: 1682
   raw: )
 - kind: OpenBrace
   span:
-    start: 1678
-    end: 1679
+    start: 1683
+    end: 1684
   raw: "{"
 - kind: Newline
   span:
-    start: 1679
-    end: 1680
+    start: 1684
+    end: 1685
   raw: "\n"
 - kind: Identifier
   span:
-    start: 1688
-    end: 1693
+    start: 1693
+    end: 1698
   raw: trace
 - kind: OpenParen
   span:
-    start: 1693
-    end: 1694
+    start: 1698
+    end: 1699
   raw: (
 - kind: Identifier
   span:
-    start: 1694
-    end: 1699
+    start: 1699
+    end: 1704
   raw: outer
 - kind:
     Operator: Add
   span:
-    start: 1700
-    end: 1701
+    start: 1705
+    end: 1706
   raw: +
 - kind:
     String: Double
   span:
-    start: 1702
-    end: 1705
+    start: 1707
+    end: 1710
   raw: ","
 - kind:
     Operator: Add
   span:
-    start: 1706
-    end: 1707
+    start: 1711
+    end: 1712
   raw: +
 - kind: Identifier
   span:
-    start: 1708
-    end: 1713
+    start: 1713
+    end: 1718
   raw: inner
 - kind: CloseParen
   span:
-    start: 1713
-    end: 1714
+    start: 1718
+    end: 1719
   raw: )
 - kind: Semicolon
   span:
-    start: 1714
-    end: 1715
+    start: 1719
+    end: 1720
   raw: ;
 - kind: Newline
   span:
-    start: 1715
-    end: 1716
-  raw: "\n"
-- kind: CloseBrace
-  span:
     start: 1720
     end: 1721
-  raw: "}"
-- kind: Newline
-  span:
-    start: 1721
-    end: 1722
   raw: "\n"
 - kind: CloseBrace
   span:
-    start: 1722
-    end: 1723
+    start: 1725
+    end: 1726
   raw: "}"
 - kind: Newline
   span:
-    start: 1723
-    end: 1724
+    start: 1726
+    end: 1727
+  raw: "\n"
+- kind: CloseBrace
+  span:
+    start: 1727
+    end: 1728
+  raw: "}"
+- kind: Newline
+  span:
+    start: 1728
+    end: 1729
   raw: "\n"
 - kind: Newline
   span:
-    start: 1724
-    end: 1725
+    start: 1729
+    end: 1730
   raw: "\n"
 - kind: Newline
   span:
-    start: 1789
-    end: 1790
+    start: 1794
+    end: 1795
   raw: "\n"
 - kind: Identifier
   span:
-    start: 1790
-    end: 1795
+    start: 1795
+    end: 1800
   raw: trace
 - kind: OpenParen
   span:
-    start: 1795
-    end: 1796
+    start: 1800
+    end: 1801
   raw: (
 - kind:
     String: Double
   span:
-    start: 1796
-    end: 1814
+    start: 1801
+    end: 1819
   raw: for_existing_var
 - kind: CloseParen
   span:
-    start: 1814
-    end: 1815
+    start: 1819
+    end: 1820
   raw: )
 - kind: Semicolon
   span:
-    start: 1815
-    end: 1816
+    start: 1820
+    end: 1821
   raw: ;
 - kind: Newline
   span:
-    start: 1816
-    end: 1817
+    start: 1821
+    end: 1822
   raw: "\n"
 - kind:
     Keyword: Var
   span:
-    start: 1817
-    end: 1820
+    start: 1822
+    end: 1825
   raw: var
 - kind: Identifier
   span:
-    start: 1821
-    end: 1822
+    start: 1826
+    end: 1827
   raw: z
 - kind: Semicolon
   span:
-    start: 1822
-    end: 1823
+    start: 1827
+    end: 1828
   raw: ;
 - kind: Newline
   span:
-    start: 1823
-    end: 1824
+    start: 1828
+    end: 1829
   raw: "\n"
 - kind:
     Keyword: For
   span:
-    start: 1824
-    end: 1827
+    start: 1829
+    end: 1832
   raw: for
 - kind: OpenParen
   span:
-    start: 1828
-    end: 1829
+    start: 1833
+    end: 1834
   raw: (
 - kind: Identifier
   span:
-    start: 1829
-    end: 1830
+    start: 1834
+    end: 1835
   raw: z
 - kind:
     Operator: Assign
   span:
-    start: 1831
-    end: 1832
+    start: 1836
+    end: 1837
   raw: "="
 - kind: Integer
   span:
-    start: 1833
-    end: 1834
+    start: 1838
+    end: 1839
   raw: "1"
 - kind: Semicolon
   span:
-    start: 1834
-    end: 1835
+    start: 1839
+    end: 1840
   raw: ;
 - kind: Identifier
   span:
-    start: 1836
-    end: 1837
+    start: 1841
+    end: 1842
   raw: z
 - kind:
     Operator: LessThanEqual
   span:
-    start: 1838
-    end: 1840
+    start: 1843
+    end: 1845
   raw: "<="
 - kind: Integer
   span:
-    start: 1841
-    end: 1842
+    start: 1846
+    end: 1847
   raw: "3"
 - kind: Semicolon
   span:
-    start: 1842
-    end: 1843
+    start: 1847
+    end: 1848
   raw: ;
 - kind: Identifier
   span:
-    start: 1844
-    end: 1845
+    start: 1849
+    end: 1850
   raw: z
 - kind:
     Operator: Increment
   span:
-    start: 1845
-    end: 1847
+    start: 1850
+    end: 1852
   raw: ++
 - kind: CloseParen
   span:
-    start: 1847
-    end: 1848
+    start: 1852
+    end: 1853
   raw: )
 - kind: OpenBrace
   span:
-    start: 1849
-    end: 1850
+    start: 1854
+    end: 1855
   raw: "{"
 - kind: Newline
   span:
-    start: 1850
-    end: 1851
+    start: 1855
+    end: 1856
   raw: "\n"
 - kind: Identifier
-  span:
-    start: 1855
-    end: 1860
-  raw: trace
-- kind: OpenParen
   span:
     start: 1860
-    end: 1861
-  raw: (
-- kind: Identifier
-  span:
-    start: 1861
-    end: 1862
-  raw: z
-- kind: CloseParen
-  span:
-    start: 1862
-    end: 1863
-  raw: )
-- kind: Semicolon
-  span:
-    start: 1863
-    end: 1864
-  raw: ;
-- kind: Newline
-  span:
-    start: 1864
     end: 1865
-  raw: "\n"
-- kind: CloseBrace
+  raw: trace
+- kind: OpenParen
   span:
     start: 1865
     end: 1866
-  raw: "}"
-- kind: Newline
+  raw: (
+- kind: Identifier
   span:
     start: 1866
     end: 1867
-  raw: "\n"
-- kind: Newline
+  raw: z
+- kind: CloseParen
   span:
     start: 1867
     end: 1868
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1868
+    end: 1869
+  raw: ;
+- kind: Newline
+  span:
+    start: 1869
+    end: 1870
+  raw: "\n"
+- kind: CloseBrace
+  span:
+    start: 1870
+    end: 1871
+  raw: "}"
+- kind: Newline
+  span:
+    start: 1871
+    end: 1872
   raw: "\n"
 - kind: Newline
   span:
-    start: 1932
-    end: 1933
+    start: 1872
+    end: 1873
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 1937
+    end: 1938
   raw: "\n"
 - kind: Identifier
   span:
-    start: 1933
-    end: 1938
+    start: 1938
+    end: 1943
   raw: trace
 - kind: OpenParen
   span:
-    start: 1938
-    end: 1939
+    start: 1943
+    end: 1944
   raw: (
 - kind:
     String: Double
   span:
-    start: 1939
-    end: 1966
+    start: 1944
+    end: 1971
   raw: for_single_statement_body
 - kind: CloseParen
   span:
-    start: 1966
-    end: 1967
+    start: 1971
+    end: 1972
   raw: )
 - kind: Semicolon
   span:
-    start: 1967
-    end: 1968
+    start: 1972
+    end: 1973
   raw: ;
 - kind: Newline
   span:
-    start: 1968
-    end: 1969
+    start: 1973
+    end: 1974
   raw: "\n"
 - kind:
     Keyword: For
   span:
-    start: 1969
-    end: 1972
+    start: 1974
+    end: 1977
   raw: for
 - kind: OpenParen
   span:
-    start: 1973
-    end: 1974
+    start: 1978
+    end: 1979
   raw: (
 - kind:
     Keyword: Var
   span:
-    start: 1974
-    end: 1977
+    start: 1979
+    end: 1982
   raw: var
 - kind: Identifier
   span:
-    start: 1978
-    end: 1979
+    start: 1983
+    end: 1984
   raw: q
 - kind:
     Operator: Assign
   span:
-    start: 1980
-    end: 1981
+    start: 1985
+    end: 1986
   raw: "="
 - kind: Integer
   span:
-    start: 1982
-    end: 1983
+    start: 1987
+    end: 1988
   raw: "0"
 - kind: Semicolon
   span:
-    start: 1983
-    end: 1984
+    start: 1988
+    end: 1989
   raw: ;
 - kind: Identifier
   span:
-    start: 1985
-    end: 1986
+    start: 1990
+    end: 1991
   raw: q
 - kind:
     Operator: LessThan
   span:
-    start: 1987
-    end: 1988
+    start: 1992
+    end: 1993
   raw: "<"
 - kind: Integer
   span:
-    start: 1989
-    end: 1990
+    start: 1994
+    end: 1995
   raw: "3"
 - kind: Semicolon
   span:
-    start: 1990
-    end: 1991
+    start: 1995
+    end: 1996
   raw: ;
 - kind: Identifier
   span:
-    start: 1992
-    end: 1993
+    start: 1997
+    end: 1998
   raw: q
 - kind:
     Operator: Increment
   span:
-    start: 1993
-    end: 1995
+    start: 1998
+    end: 2000
   raw: ++
 - kind: CloseParen
   span:
-    start: 1995
-    end: 1996
+    start: 2000
+    end: 2001
   raw: )
 - kind: Newline
   span:
-    start: 1996
-    end: 1997
+    start: 2001
+    end: 2002
   raw: "\n"
 - kind: Identifier
   span:
-    start: 2001
-    end: 2006
+    start: 2006
+    end: 2011
   raw: trace
 - kind: OpenParen
   span:
-    start: 2006
-    end: 2007
+    start: 2011
+    end: 2012
   raw: (
 - kind: Identifier
   span:
-    start: 2007
-    end: 2008
+    start: 2012
+    end: 2013
   raw: q
 - kind: CloseParen
   span:
-    start: 2008
-    end: 2009
+    start: 2013
+    end: 2014
   raw: )
 - kind: Semicolon
   span:
-    start: 2009
-    end: 2010
+    start: 2014
+    end: 2015
   raw: ;

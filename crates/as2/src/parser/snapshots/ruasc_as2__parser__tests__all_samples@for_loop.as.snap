@@ -1,7 +1,7 @@
 ---
 source: crates/as2/src/parser/tests.rs
 expression: parsed
-input_file: samples/for_loop.as
+input_file: samples/as2/for_loop.as
 ---
 Ok:
   statements:
@@ -317,11 +317,14 @@ Ok:
                   Integer: 6
               - Constant:
                   Integer: 7
+    - Declare:
+        - name: idx
+          value: ~
     - ForIn:
         condition:
           Enumerate:
             variable: idx
-            declare: true
+            declare: false
             object:
               Constant:
                 Identifier: arr
