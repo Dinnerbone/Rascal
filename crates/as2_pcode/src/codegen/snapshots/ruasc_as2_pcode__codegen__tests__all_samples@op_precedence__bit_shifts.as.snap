@@ -3,176 +3,177 @@ source: crates/as2_pcode/src/codegen/tests.rs
 expression: builder
 input_file: samples/as2/op_precedence/bit_shifts.as
 ---
-Push "a"
+ConstantPool "a", "b", "c", "a=", ", b=", ", c=", "----", "a << b >> c = ", "((a << b) >> c) = ", "---", "a >> b << c = ", "((a >> b) << c) = ", "a >>> b >> c = ", "((a >>> b) >> c) = ", "a << b >> c >>> b = ", "(((a << b) >> c) >>> b) = ", "a << b + c = ", "a << (b + c) = ", "a * b << c = ", "(a * b) << c = "
+Push constant0
 Push 16
 DefineLocal
-Push "b"
+Push constant1
 Push 2
 DefineLocal
-Push "c"
+Push constant2
 Push 1
 DefineLocal
-Push "a="
-Push "a"
+Push constant3
+Push constant0
 GetVariable
 Add2
-Push ", b="
+Push constant4
 Add2
-Push "b"
+Push constant1
 GetVariable
 Add2
-Push ", c="
+Push constant5
 Add2
-Push "c"
+Push constant2
 GetVariable
 Add2
 Trace
-Push "----"
+Push constant6
 Trace
-Push "a << b >> c = "
-Push "a"
+Push constant7
+Push constant0
 GetVariable
-Push "b"
+Push constant1
 GetVariable
 BitLShift
-Push "c"
+Push constant2
 GetVariable
 BitRShift
 Add2
 Trace
-Push "((a << b) >> c) = "
-Push "a"
+Push constant8
+Push constant0
 GetVariable
-Push "b"
+Push constant1
 GetVariable
 BitLShift
-Push "c"
+Push constant2
 GetVariable
 BitRShift
 Add2
 Trace
-Push "---"
+Push constant9
 Trace
-Push "a >> b << c = "
-Push "a"
+Push constant10
+Push constant0
 GetVariable
-Push "b"
+Push constant1
 GetVariable
 BitRShift
-Push "c"
+Push constant2
 GetVariable
 BitLShift
 Add2
 Trace
-Push "((a >> b) << c) = "
-Push "a"
+Push constant11
+Push constant0
 GetVariable
-Push "b"
+Push constant1
 GetVariable
 BitRShift
-Push "c"
+Push constant2
 GetVariable
 BitLShift
 Add2
 Trace
-Push "---"
+Push constant9
 Trace
-Push "a >>> b >> c = "
-Push "a"
+Push constant12
+Push constant0
 GetVariable
-Push "b"
+Push constant1
 GetVariable
 BitURShift
-Push "c"
+Push constant2
 GetVariable
 BitRShift
 Add2
 Trace
-Push "((a >>> b) >> c) = "
-Push "a"
+Push constant13
+Push constant0
 GetVariable
-Push "b"
+Push constant1
 GetVariable
 BitURShift
-Push "c"
+Push constant2
 GetVariable
 BitRShift
 Add2
 Trace
-Push "---"
+Push constant9
 Trace
-Push "a << b >> c >>> b = "
-Push "a"
+Push constant14
+Push constant0
 GetVariable
-Push "b"
+Push constant1
 GetVariable
 BitLShift
-Push "c"
+Push constant2
 GetVariable
 BitRShift
-Push "b"
-GetVariable
-BitURShift
-Add2
-Trace
-Push "(((a << b) >> c) >>> b) = "
-Push "a"
-GetVariable
-Push "b"
-GetVariable
-BitLShift
-Push "c"
-GetVariable
-BitRShift
-Push "b"
+Push constant1
 GetVariable
 BitURShift
 Add2
 Trace
-Push "---"
+Push constant15
+Push constant0
+GetVariable
+Push constant1
+GetVariable
+BitLShift
+Push constant2
+GetVariable
+BitRShift
+Push constant1
+GetVariable
+BitURShift
+Add2
 Trace
-Push "a << b + c = "
-Push "a"
+Push constant9
+Trace
+Push constant16
+Push constant0
 GetVariable
-Push "b"
+Push constant1
 GetVariable
-Push "c"
+Push constant2
 GetVariable
 Add2
 BitLShift
 Add2
 Trace
-Push "a << (b + c) = "
-Push "a"
+Push constant17
+Push constant0
 GetVariable
-Push "b"
+Push constant1
 GetVariable
-Push "c"
+Push constant2
 GetVariable
 Add2
 BitLShift
 Add2
 Trace
-Push "---"
+Push constant9
 Trace
-Push "a * b << c = "
-Push "a"
+Push constant18
+Push constant0
 GetVariable
-Push "b"
+Push constant1
 GetVariable
 Multiply
-Push "c"
+Push constant2
 GetVariable
 BitLShift
 Add2
 Trace
-Push "(a * b) << c = "
-Push "a"
+Push constant19
+Push constant0
 GetVariable
-Push "b"
+Push constant1
 GetVariable
 Multiply
-Push "c"
+Push constant2
 GetVariable
 BitLShift
 Add2

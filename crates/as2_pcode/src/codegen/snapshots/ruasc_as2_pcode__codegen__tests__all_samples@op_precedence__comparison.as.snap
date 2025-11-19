@@ -3,151 +3,152 @@ source: crates/as2_pcode/src/codegen/tests.rs
 expression: builder
 input_file: samples/as2/op_precedence/comparison.as
 ---
-Push "a"
+ConstantPool "a", "b", "c", "a=", ", b=", ", c=", "----", "a > b = ", "a < b = ", "a >= b = ", "a <= b = ", "---", "a > b >= c = ", "((a > b) >= c) = ", "a < b <= c = ", "((a < b) <= c) = ", "a + b > c = ", "((a + b) > c) = ", "a * b <= c + 5 = ", "((a * b) <= (c + 5)) = "
+Push constant0
 Push 10
 DefineLocal
-Push "b"
+Push constant1
 Push 5
 DefineLocal
-Push "c"
+Push constant2
 Push 7
 DefineLocal
-Push "a="
-Push "a"
+Push constant3
+Push constant0
 GetVariable
 Add2
-Push ", b="
+Push constant4
 Add2
-Push "b"
+Push constant1
 GetVariable
 Add2
-Push ", c="
+Push constant5
 Add2
-Push "c"
+Push constant2
 GetVariable
 Add2
 Trace
-Push "----"
+Push constant6
 Trace
-Push "a > b = "
-Push "a"
+Push constant7
+Push constant0
 GetVariable
-Push "b"
+Push constant1
 GetVariable
 Greater
 Add2
 Trace
-Push "a < b = "
-Push "a"
+Push constant8
+Push constant0
 GetVariable
-Push "b"
+Push constant1
 GetVariable
 Less2
 Add2
 Trace
-Push "a >= b = "
-Push "a"
+Push constant9
+Push constant0
 GetVariable
-Push "b"
-GetVariable
-Less2
-Not
-Add2
-Trace
-Push "a <= b = "
-Push "a"
-GetVariable
-Push "b"
-GetVariable
-Greater
-Not
-Add2
-Trace
-Push "---"
-Trace
-Push "a > b >= c = "
-Push "a"
-GetVariable
-Push "b"
-GetVariable
-Greater
-Push "c"
+Push constant1
 GetVariable
 Less2
 Not
 Add2
 Trace
-Push "((a > b) >= c) = "
-Push "a"
+Push constant10
+Push constant0
 GetVariable
-Push "b"
-GetVariable
-Greater
-Push "c"
-GetVariable
-Less2
-Not
-Add2
-Trace
-Push "---"
-Trace
-Push "a < b <= c = "
-Push "a"
-GetVariable
-Push "b"
-GetVariable
-Less2
-Push "c"
+Push constant1
 GetVariable
 Greater
 Not
 Add2
 Trace
-Push "((a < b) <= c) = "
-Push "a"
+Push constant11
+Trace
+Push constant12
+Push constant0
 GetVariable
-Push "b"
+Push constant1
+GetVariable
+Greater
+Push constant2
 GetVariable
 Less2
-Push "c"
+Not
+Add2
+Trace
+Push constant13
+Push constant0
+GetVariable
+Push constant1
+GetVariable
+Greater
+Push constant2
+GetVariable
+Less2
+Not
+Add2
+Trace
+Push constant11
+Trace
+Push constant14
+Push constant0
+GetVariable
+Push constant1
+GetVariable
+Less2
+Push constant2
 GetVariable
 Greater
 Not
 Add2
 Trace
-Push "---"
-Trace
-Push "a + b > c = "
-Push "a"
+Push constant15
+Push constant0
 GetVariable
-Push "b"
+Push constant1
+GetVariable
+Less2
+Push constant2
+GetVariable
+Greater
+Not
+Add2
+Trace
+Push constant11
+Trace
+Push constant16
+Push constant0
+GetVariable
+Push constant1
 GetVariable
 Add2
-Push "c"
+Push constant2
 GetVariable
 Greater
 Add2
 Trace
-Push "((a + b) > c) = "
-Push "a"
+Push constant17
+Push constant0
 GetVariable
-Push "b"
+Push constant1
 GetVariable
 Add2
-Push "c"
+Push constant2
 GetVariable
 Greater
 Add2
 Trace
-Push "---"
+Push constant11
 Trace
-Push "a * b <= c + 5 = "
-Push "a"
+Push constant18
+Push constant0
 GetVariable
-Push "b"
+Push constant1
 GetVariable
 Multiply
-Push "c"
+Push constant2
 GetVariable
 Push 5
 Add2
@@ -155,13 +156,13 @@ Greater
 Not
 Add2
 Trace
-Push "((a * b) <= (c + 5)) = "
-Push "a"
+Push constant19
+Push constant0
 GetVariable
-Push "b"
+Push constant1
 GetVariable
 Multiply
-Push "c"
+Push constant2
 GetVariable
 Push 5
 Add2

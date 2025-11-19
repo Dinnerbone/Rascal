@@ -30,6 +30,10 @@ impl Actions {
     pub fn label_positions(&self) -> &IndexMap<String, usize> {
         &self.label_positions
     }
+
+    pub fn replace_action(&mut self, index: usize, action: Action) {
+        self.actions[index] = action;
+    }
 }
 
 impl std::fmt::Display for Actions {
@@ -123,6 +127,7 @@ impl Action {
             Action::BitRShift => -1,
             Action::BitURShift => -1,
             Action::BitXor => -1,
+            Action::ConstantPool(_) => 0,
             Action::Decrement => -1,
             Action::DefineFunction { .. } => 1,
             Action::DefineLocal => -2,

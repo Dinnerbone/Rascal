@@ -3,55 +3,56 @@ source: crates/as2_pcode/src/codegen/tests.rs
 expression: builder
 input_file: samples/as2/operators.as
 ---
-Push "a"
+ConstantPool "a", "b", "a + b = ", "a - b = ", "a * b = ", "a / b = ", "a % b = ", "++a = ", "--a = ", "a++ = ", "a-- = ", "hello", "Hello", "world", "World", "hello + " " + world = ", " ", "x", "x = ", "x += 2 => ", "x -= 2 => ", "x *= 3 => ", "x /= 5 => ", "x %= 2 => ", "five", "three", "five & three = ", "five | three = ", "five ^ three = ", "~five = ", "five << 1 = ", "five >> 1 = ", "five >>> 1 = ", "five &= three => ", "five |= three => ", "five ^= three => ", "five <<= 1 => ", "five >>= 1 => ", "five >>>= 1 => ", "six", "seven", "sevenStr", "7", "six == seven: ", "six != seven: ", "six < seven: ", "six <= seven: ", "six > seven: ", "six >= seven: ", "sevenStr == seven: ", "sevenStr === seven: ", "sevenStr !== seven: ", "t", "f", "t && f: ", "t || f: ", "!t: ", "max", "(a > b) ? a : b = ", "obj", "key", "value", "obj instanceof Object: ", "Object"
+Push constant0
 Push 10
 DefineLocal
-Push "b"
+Push constant1
 Push 3
 DefineLocal
-Push "a + b = "
-Push "a"
+Push constant2
+Push constant0
 GetVariable
-Push "b"
+Push constant1
 GetVariable
 Add2
 Add2
 Trace
-Push "a - b = "
-Push "a"
+Push constant3
+Push constant0
 GetVariable
-Push "b"
+Push constant1
 GetVariable
 Subtract
 Add2
 Trace
-Push "a * b = "
-Push "a"
+Push constant4
+Push constant0
 GetVariable
-Push "b"
+Push constant1
 GetVariable
 Multiply
 Add2
 Trace
-Push "a / b = "
-Push "a"
+Push constant5
+Push constant0
 GetVariable
-Push "b"
+Push constant1
 GetVariable
 Divide
 Add2
 Trace
-Push "a % b = "
-Push "a"
+Push constant6
+Push constant0
 GetVariable
-Push "b"
+Push constant1
 GetVariable
 Modulo
 Add2
 Trace
-Push "++a = "
-Push "a"
-Push "a"
+Push constant7
+Push constant0
+Push constant0
 GetVariable
 Increment
 StoreRegister 0
@@ -59,9 +60,9 @@ SetVariable
 Push register0
 Add2
 Trace
-Push "--a = "
-Push "a"
-Push "a"
+Push constant8
+Push constant0
+Push constant0
 GetVariable
 Decrement
 StoreRegister 0
@@ -69,53 +70,53 @@ SetVariable
 Push register0
 Add2
 Trace
-Push "a++ = "
-Push "a"
+Push constant9
+Push constant0
 GetVariable
-Push "a"
-Push "a"
+Push constant0
+Push constant0
 GetVariable
 Increment
 SetVariable
 Add2
 Trace
-Push "a-- = "
-Push "a"
+Push constant10
+Push constant0
 GetVariable
-Push "a"
-Push "a"
+Push constant0
+Push constant0
 GetVariable
 Decrement
 SetVariable
 Add2
 Trace
-Push "hello"
-Push "Hello"
+Push constant11
+Push constant12
 DefineLocal
-Push "world"
-Push "World"
+Push constant13
+Push constant14
 DefineLocal
-Push "hello + " " + world = "
-Push "hello"
+Push constant15
+Push constant11
 GetVariable
-Push " "
+Push constant16
 Add2
-Push "world"
+Push constant13
 GetVariable
 Add2
 Add2
 Trace
-Push "x"
+Push constant17
 Push 5
 DefineLocal
-Push "x = "
-Push "x"
+Push constant18
+Push constant17
 GetVariable
 Add2
 Trace
-Push "x += 2 => "
-Push "x"
-Push "x"
+Push constant19
+Push constant17
+Push constant17
 GetVariable
 Push 2
 Add2
@@ -124,9 +125,9 @@ SetVariable
 Push register0
 Add2
 Trace
-Push "x -= 2 => "
-Push "x"
-Push "x"
+Push constant20
+Push constant17
+Push constant17
 GetVariable
 Push 2
 Subtract
@@ -135,9 +136,9 @@ SetVariable
 Push register0
 Add2
 Trace
-Push "x *= 3 => "
-Push "x"
-Push "x"
+Push constant21
+Push constant17
+Push constant17
 GetVariable
 Push 3
 Multiply
@@ -146,9 +147,9 @@ SetVariable
 Push register0
 Add2
 Trace
-Push "x /= 5 => "
-Push "x"
-Push "x"
+Push constant22
+Push constant17
+Push constant17
 GetVariable
 Push 5
 Divide
@@ -157,9 +158,9 @@ SetVariable
 Push register0
 Add2
 Trace
-Push "x %= 2 => "
-Push "x"
-Push "x"
+Push constant23
+Push constant17
+Push constant17
 GetVariable
 Push 2
 Modulo
@@ -168,298 +169,298 @@ SetVariable
 Push register0
 Add2
 Trace
-Push "five"
+Push constant24
 Push 5
 DefineLocal
-Push "three"
+Push constant25
 Push 3
 DefineLocal
-Push "five & three = "
-Push "five"
+Push constant26
+Push constant24
 GetVariable
-Push "three"
+Push constant25
 GetVariable
 BitAnd
 Add2
 Trace
-Push "five | three = "
-Push "five"
+Push constant27
+Push constant24
 GetVariable
-Push "three"
+Push constant25
 GetVariable
 BitOr
 Add2
 Trace
-Push "five ^ three = "
-Push "five"
+Push constant28
+Push constant24
 GetVariable
-Push "three"
+Push constant25
 GetVariable
 BitXor
 Add2
 Trace
-Push "~five = "
-Push "five"
+Push constant29
+Push constant24
 GetVariable
 Push -1
 BitXor
 Add2
 Trace
-Push "five << 1 = "
-Push "five"
+Push constant30
+Push constant24
 GetVariable
 Push 1
 BitLShift
 Add2
 Trace
-Push "five >> 1 = "
-Push "five"
+Push constant31
+Push constant24
 GetVariable
 Push 1
 BitRShift
 Add2
 Trace
-Push "five >>> 1 = "
-Push "five"
+Push constant32
+Push constant24
 GetVariable
 Push 1
 BitURShift
 Add2
 Trace
-Push "five"
+Push constant24
 Push 5
 SetVariable
-Push "five"
-Push "five"
+Push constant24
+Push constant24
 GetVariable
-Push "three"
+Push constant25
 GetVariable
 BitAnd
 SetVariable
-Push "five &= three => "
-Push "five"
+Push constant33
+Push constant24
 GetVariable
 Add2
 Trace
-Push "five"
+Push constant24
 Push 5
 SetVariable
-Push "five"
-Push "five"
+Push constant24
+Push constant24
 GetVariable
-Push "three"
+Push constant25
 GetVariable
 BitOr
 SetVariable
-Push "five |= three => "
-Push "five"
+Push constant34
+Push constant24
 GetVariable
 Add2
 Trace
-Push "five"
+Push constant24
 Push 5
 SetVariable
-Push "five"
-Push "five"
+Push constant24
+Push constant24
 GetVariable
-Push "three"
+Push constant25
 GetVariable
 BitXor
 SetVariable
-Push "five ^= three => "
-Push "five"
+Push constant35
+Push constant24
 GetVariable
 Add2
 Trace
-Push "five"
+Push constant24
 Push 5
 SetVariable
-Push "five"
-Push "five"
+Push constant24
+Push constant24
 GetVariable
 Push 1
 BitLShift
 SetVariable
-Push "five <<= 1 => "
-Push "five"
+Push constant36
+Push constant24
 GetVariable
 Add2
 Trace
-Push "five"
+Push constant24
 Push 5
 SetVariable
-Push "five"
-Push "five"
+Push constant24
+Push constant24
 GetVariable
 Push 1
 BitRShift
 SetVariable
-Push "five >>= 1 => "
-Push "five"
+Push constant37
+Push constant24
 GetVariable
 Add2
 Trace
-Push "five"
+Push constant24
 Push 5
 SetVariable
-Push "five"
-Push "five"
+Push constant24
+Push constant24
 GetVariable
 Push 1
 BitURShift
 SetVariable
-Push "five >>>= 1 => "
-Push "five"
+Push constant38
+Push constant24
 GetVariable
 Add2
 Trace
-Push "six"
+Push constant39
 Push 6
 DefineLocal
-Push "seven"
+Push constant40
 Push 7
 DefineLocal
-Push "sevenStr"
-Push "7"
+Push constant41
+Push constant42
 DefineLocal
-Push "six == seven: "
-Push "six"
+Push constant43
+Push constant39
 GetVariable
-Push "seven"
+Push constant40
 GetVariable
 Equals2
 Add2
 Trace
-Push "six != seven: "
-Push "six"
+Push constant44
+Push constant39
 GetVariable
-Push "seven"
+Push constant40
 GetVariable
 Equals2
 Not
 Add2
 Trace
-Push "six < seven: "
-Push "six"
+Push constant45
+Push constant39
 GetVariable
-Push "seven"
+Push constant40
 GetVariable
 Less2
 Add2
 Trace
-Push "six <= seven: "
-Push "six"
+Push constant46
+Push constant39
 GetVariable
-Push "seven"
+Push constant40
 GetVariable
 Greater
 Not
 Add2
 Trace
-Push "six > seven: "
-Push "six"
+Push constant47
+Push constant39
 GetVariable
-Push "seven"
+Push constant40
 GetVariable
 Greater
 Add2
 Trace
-Push "six >= seven: "
-Push "six"
+Push constant48
+Push constant39
 GetVariable
-Push "seven"
+Push constant40
 GetVariable
 Less2
 Not
 Add2
 Trace
-Push "sevenStr == seven: "
-Push "sevenStr"
+Push constant49
+Push constant41
 GetVariable
-Push "seven"
+Push constant40
 GetVariable
 Equals2
 Add2
 Trace
-Push "sevenStr === seven: "
-Push "sevenStr"
+Push constant50
+Push constant41
 GetVariable
-Push "seven"
+Push constant40
 GetVariable
 StrictEquals
 Add2
 Trace
-Push "sevenStr !== seven: "
-Push "sevenStr"
+Push constant51
+Push constant41
 GetVariable
-Push "seven"
+Push constant40
 GetVariable
 StrictEquals
 Not
 Add2
 Trace
-Push "t"
+Push constant52
 Push true
 DefineLocal
-Push "f"
+Push constant53
 Push false
 DefineLocal
-Push "t && f: "
-Push "t"
+Push constant54
+Push constant52
 GetVariable
 PushDuplicate
 Not
 If loc0000
 Pop
-Push "f"
+Push constant53
 GetVariable
 loc0000: Add2
 Trace
-Push "t || f: "
-Push "t"
+Push constant55
+Push constant52
 GetVariable
 PushDuplicate
 If loc0001
 Pop
-Push "f"
+Push constant53
 GetVariable
 loc0001: Add2
 Trace
-Push "!t: "
-Push "t"
+Push constant56
+Push constant52
 GetVariable
 Not
 Add2
 Trace
-Push "max"
-Push "a"
+Push constant57
+Push constant0
 GetVariable
-Push "b"
+Push constant1
 GetVariable
 Greater
 Not
 If loc0003
-Push "a"
+Push constant0
 GetVariable
 Jump loc0002
-loc0003: Push "b"
+loc0003: Push constant1
 GetVariable
 loc0002: DefineLocal
-Push "(a > b) ? a : b = "
-Push "max"
+Push constant58
+Push constant57
 GetVariable
 Add2
 Trace
-Push "obj"
-Push "key"
-Push "value"
+Push constant59
+Push constant60
+Push constant61
 Push 1
 InitObject
 DefineLocal
-Push "obj instanceof Object: "
-Push "obj"
+Push constant62
+Push constant59
 GetVariable
-Push "Object"
+Push constant63
 GetVariable
 InstanceOf
 Add2

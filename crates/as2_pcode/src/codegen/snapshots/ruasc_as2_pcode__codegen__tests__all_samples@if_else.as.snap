@@ -3,150 +3,151 @@ source: crates/as2_pcode/src/codegen/tests.rs
 expression: builder
 input_file: samples/as2/if_else.as
 ---
-Push "condition"
+ConstantPool "condition", "x", "y", "doSomething", "positive", "negative", "zero", "undefined", "single", "both positive", "x positive, y negative", "x positive, y zero", "otherCondition", "doSomethingElse", "doFinal", "statement1", "statement2", "ambiguous else"
+Push constant0
 Push true
 DefineLocal
-Push "x"
+Push constant1
 Push 1
 DefineLocal
-Push "y"
+Push constant2
 Push -1
 DefineLocal
-Push "condition"
+Push constant0
 GetVariable
 Not
 If loc0000
 Push 0
-Push "doSomething"
+Push constant3
 CallFunction
 Pop
-loc0000: Push "x"
+loc0000: Push constant1
 GetVariable
 Push 0
 Greater
 Not
 If loc0002
-Push "positive"
+Push constant4
 Trace
 Jump loc0001
-loc0002: Push "negative"
+loc0002: Push constant5
 Trace
-loc0001: Push "x"
+loc0001: Push constant1
 GetVariable
 Push 0
 Less2
 Not
 If loc0004
-Push "negative"
+Push constant5
 Trace
 Jump loc0003
-loc0004: Push "x"
+loc0004: Push constant1
 GetVariable
 Push 0
 Greater
 Not
 If loc0006
-Push "positive"
+Push constant4
 Trace
 Jump loc0005
-loc0006: Push "x"
+loc0006: Push constant1
 GetVariable
 Push 0
 Equals2
 Not
 If loc0008
-Push "zero"
+Push constant6
 Trace
 Jump loc0007
-loc0008: Push "undefined"
+loc0008: Push constant7
 Trace
-loc0007: loc0005: loc0003: Push "condition"
+loc0007: loc0005: loc0003: Push constant0
 GetVariable
 Not
 If loc0009
-loc0009: Push "condition"
+loc0009: Push constant0
 GetVariable
 Not
 If loc000b
 Jump loc000a
-loc000b: loc000a: Push "condition"
+loc000b: loc000a: Push constant0
 GetVariable
 Not
 If loc000d
-Push "single"
+Push constant8
 Trace
 Jump loc000c
-loc000d: loc000c: Push "x"
+loc000d: loc000c: Push constant1
 GetVariable
 Push 0
 Greater
 Not
 If loc000e
-Push "y"
+Push constant2
 GetVariable
 Push 0
 Greater
 Not
 If loc0010
-Push "both positive"
+Push constant9
 Trace
 Jump loc000f
-loc0010: Push "y"
+loc0010: Push constant2
 GetVariable
 Push 0
 Less2
 Not
 If loc0012
-Push "x positive, y negative"
+Push constant10
 Trace
 Jump loc0011
-loc0012: Push "x positive, y zero"
+loc0012: Push constant11
 Trace
-loc0011: loc000f: loc000e: Push "condition"
+loc0011: loc000f: loc000e: Push constant0
 GetVariable
 Not
 If loc0014
 Push 0
-Push "doSomething"
+Push constant3
 CallFunction
 Pop
 Jump loc0013
-loc0014: Push "otherCondition"
+loc0014: Push constant12
 GetVariable
 Not
 If loc0016
 Push 0
-Push "doSomethingElse"
+Push constant13
 CallFunction
 Pop
 Jump loc0015
 loc0016: Push 0
-Push "doFinal"
+Push constant14
 CallFunction
 Pop
-loc0015: loc0013: Push "condition"
+loc0015: loc0013: Push constant0
 GetVariable
 Not
 If loc0017
 Push 0
-Push "statement1"
+Push constant15
 CallFunction
 Pop
 loc0017: Push 0
-Push "statement2"
+Push constant16
 CallFunction
 Pop
-Push "x"
+Push constant1
 GetVariable
 Not
 If loc0018
-Push "y"
+Push constant2
 GetVariable
 Not
 If loc001a
-Push "y"
+Push constant2
 Trace
 Jump loc0019
-loc001a: Push "ambiguous else"
+loc001a: Push constant17
 Trace
 loc0019: loc0018:

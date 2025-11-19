@@ -3,80 +3,81 @@ source: crates/as2_pcode/src/codegen/tests.rs
 expression: builder
 input_file: samples/as2/nested_break_continue.as
 ---
-Push "i"
+ConstantPool "i", "i = ", "j", "fn", "trying to break from fn", "j = "
+Push constant0
 Push 0
 DefineLocal
-loc0002: Push "i"
+loc0002: Push constant0
 GetVariable
 Push 4
 Less2
 Not
 If loc0000
-Push "i = "
-Push "i"
+Push constant1
+Push constant0
 GetVariable
 Add2
 Trace
-Push "j"
+Push constant2
 Push 0
 DefineLocal
-loc0005: Push "j"
+loc0005: Push constant2
 GetVariable
 Push 4
 Less2
 Not
 If loc0003
-Push "fn"
+Push constant3
 DefineFunction "", 0 {
-Push "trying to break from fn"
+Push constant4
 Trace
 }
 DefineLocal
-Push "j = "
-Push "j"
+Push constant5
+Push constant2
 GetVariable
 Add2
 Trace
-Push "j"
+Push constant2
 GetVariable
 Push 1
 Equals2
 Not
 If loc0006
 Push 0
-Push "fn"
+Push constant3
 CallFunction
 Pop
 Jump loc0004
-loc0006: Push "j"
+loc0006: Push constant2
 GetVariable
 Push 2
 Equals2
 Not
 If loc0007
 Jump loc0003
-loc0007: loc0004: Push "j"
-Push "j"
+loc0007: loc0004: Push constant2
+Push constant2
 GetVariable
 Increment
 SetVariable
 Jump loc0005
-loc0003: Push "i"
+loc0003: Push constant0
 GetVariable
 Push 1
 Equals2
 Not
 If loc0008
 Jump loc0001
-loc0008: Push "i"
+loc0008: Push constant0
 GetVariable
 Push 2
 Equals2
 Not
 If loc0009
 Jump loc0000
-loc0009: loc0001: Push "i"
-Push "i"
+loc0009: loc0001: Push constant0
+Push constant0
 GetVariable
 Increment
 SetVariable

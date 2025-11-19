@@ -3,130 +3,131 @@ source: crates/as2_pcode/src/codegen/tests.rs
 expression: builder
 input_file: samples/as2/regressions/ruffle_avm1_mouse_pos.as
 ---
+ConstantPool "_xmouse", "oldX", "_ymouse", "oldY", "_root", " ", "clips", "s133fpr15", "s133fp", "s42fp", "fp", "ip", "zs", "id", "i", "length", "clip", "_name", "", "dump", "_xscale", "_yscale"
 DefineFunction "dump", 0 {
-Push "_xmouse"
+Push constant0
 GetVariable
-Push "oldX"
+Push constant1
 GetVariable
 Equals2
 PushDuplicate
 Not
 If loc0001
 Pop
-Push "_ymouse"
+Push constant2
 GetVariable
-Push "oldY"
+Push constant3
 GetVariable
 Equals2
 loc0001: Not
 If loc0000
 Push undefined
 Return
-loc0000: Push "oldX"
-Push "_xmouse"
+loc0000: Push constant1
+Push constant0
 GetVariable
 SetVariable
-Push "oldY"
-Push "_ymouse"
+Push constant3
+Push constant2
 GetVariable
 SetVariable
-Push "_root"
-Push " "
+Push constant4
+Push constant5
 Add2
-Push "_xmouse"
+Push constant0
 GetVariable
 Add2
-Push " "
+Push constant5
 Add2
-Push "_ymouse"
+Push constant2
 GetVariable
 Add2
 Trace
-Push "clips"
-Push "s133fpr15"
+Push constant6
+Push constant7
 GetVariable
-Push "s133fp"
+Push constant8
 GetVariable
-Push "s42fp"
+Push constant9
 GetVariable
-Push "fp"
+Push constant10
 GetVariable
-Push "ip"
+Push constant11
 GetVariable
-Push "zs"
+Push constant12
 GetVariable
-Push "id"
+Push constant13
 GetVariable
 Push 7
 InitArray
 DefineLocal
-Push "i"
+Push constant14
 Push 0
 DefineLocal
-loc0004: Push "i"
+loc0004: Push constant14
 GetVariable
-Push "clips"
+Push constant6
 GetVariable
-Push "length"
+Push constant15
 GetMember
 Less2
 Not
 If loc0002
-Push "clip"
-Push "clips"
+Push constant16
+Push constant6
 GetVariable
-Push "i"
+Push constant14
 GetVariable
 GetMember
 DefineLocal
-Push "clip"
+Push constant16
 GetVariable
-Push "_name"
+Push constant17
 GetMember
-Push " "
+Push constant5
 Add2
-Push "clip"
+Push constant16
 GetVariable
-Push "_xmouse"
+Push constant0
 GetMember
 Add2
-Push " "
+Push constant5
 Add2
-Push "clip"
+Push constant16
 GetVariable
-Push "_ymouse"
+Push constant2
 GetMember
 Add2
 Trace
-loc0003: Push "i"
-Push "i"
+loc0003: Push constant14
+Push constant14
 GetVariable
 Increment
 SetVariable
 Jump loc0004
-loc0002: Push ""
+loc0002: Push constant18
 Trace
 }
 Pop
 DefineFunction "onEnterFrame", 0 {
 Push 0
-Push "dump"
+Push constant19
 CallFunction
 Pop
 }
 Pop
-Push "zs"
+Push constant12
 GetVariable
-Push "_xscale"
-Push "zs"
+Push constant20
+Push constant12
 GetVariable
-Push "_yscale"
+Push constant21
 Push 0
 StoreRegister 0
 SetMember
 Push register0
 SetMember
-Push "oldX"
+Push constant1
 DefineLocal2
-Push "oldY"
+Push constant3
 DefineLocal2

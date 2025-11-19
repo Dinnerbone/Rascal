@@ -1,8 +1,10 @@
+use crate::codegen::constants::Constants;
 use crate::pcode::{Action, Actions};
 use serde::Serialize;
 
 #[derive(Debug, Serialize)]
-pub(crate) struct CodeBuilder {
+pub(crate) struct CodeBuilder<'a> {
+    constants: &'a mut Constants,
     actions: Actions,
     next_label: usize,
     stack_size: u32,
@@ -10,9 +12,10 @@ pub(crate) struct CodeBuilder {
     continue_label: Option<String>,
 }
 
-impl CodeBuilder {
-    pub fn new() -> Self {
+impl<'a> CodeBuilder<'a> {
+    pub fn new(constants: &'a mut Constants) -> Self {
         Self {
+            constants,
             actions: Actions::empty(),
             next_label: 0,
             stack_size: 0,
@@ -79,5 +82,9 @@ impl CodeBuilder {
 
     pub fn set_continue_label(&mut self, label: Option<String>) -> Option<String> {
         std::mem::replace(&mut self.continue_label, label)
+    }
+
+    pub fn constants_mut(&mut self) -> &mut Constants {
+        self.constants
     }
 }

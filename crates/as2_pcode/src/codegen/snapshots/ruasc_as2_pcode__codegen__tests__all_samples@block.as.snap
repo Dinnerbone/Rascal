@@ -3,29 +3,30 @@ source: crates/as2_pcode/src/codegen/tests.rs
 expression: builder
 input_file: samples/as2/block.as
 ---
-Push "outside"
-Push "visible"
+ConstantPool "outside", "visible", "inside", "outside: ", ", inside: "
+Push constant0
+Push constant1
 DefineLocal
-Push "inside"
-Push "visible"
+Push constant2
+Push constant1
 DefineLocal
-Push "outside: "
-Push "outside"
+Push constant3
+Push constant0
 GetVariable
 Add2
-Push ", inside: "
+Push constant4
 Add2
-Push "inside"
+Push constant2
 GetVariable
 Add2
 Trace
-Push "outside: "
-Push "outside"
+Push constant3
+Push constant0
 GetVariable
 Add2
-Push ", inside: "
+Push constant4
 Add2
-Push "inside"
+Push constant2
 GetVariable
 Add2
 Trace

@@ -3,35 +3,36 @@ source: crates/as2_pcode/src/codegen/tests.rs
 expression: builder
 input_file: samples/as2/typed_variables.as
 ---
+ConstantPool "a", "b", "Test message", "data", "valid", "isValid", "age", "name", "i", "arr", "length", "callback", "num", "str", "Hello", "flag", "obj", "numbers", "Array", "strings", "three", "two", "one", "someValue", "123", "numValue", "Number", "strValue", "String", "userData", "scores", "User", "id"
 DefineFunction "add", 2, "a", "b" {
-Push "a"
+Push constant0
 GetVariable
-Push "b"
+Push constant1
 GetVariable
 Add2
 Return
 }
 Pop
 DefineFunction "getMessage", 0 {
-Push "Test message"
+Push constant2
 Return
 }
 Pop
 DefineFunction "processData", 1, "data" {
-Push "data"
+Push constant3
 GetVariable
 Trace
 }
 Pop
 DefineFunction "complexFunc", 3, "name", "age", "isValid" {
-Push "valid"
-Push "isValid"
+Push constant4
+Push constant5
 GetVariable
-Push "age"
-Push "age"
+Push constant6
+Push constant6
 GetVariable
-Push "name"
-Push "name"
+Push constant7
+Push constant7
 GetVariable
 Push 3
 InitObject
@@ -39,29 +40,29 @@ Return
 }
 Pop
 DefineFunction "forEach", 2, "arr", "callback" {
-Push "i"
+Push constant8
 Push 0
 DefineLocal
-loc0002: Push "i"
+loc0002: Push constant8
 GetVariable
-Push "arr"
+Push constant9
 GetVariable
-Push "length"
+Push constant10
 GetMember
 Less2
 Not
 If loc0000
-Push "arr"
+Push constant9
 GetVariable
-Push "i"
+Push constant8
 GetVariable
 GetMember
 Push 1
-Push "callback"
+Push constant11
 CallFunction
 Pop
-loc0001: Push "i"
-Push "i"
+loc0001: Push constant8
+Push constant8
 GetVariable
 Increment
 SetVariable
@@ -69,54 +70,54 @@ Jump loc0002
 loc0000: 
 }
 Pop
-Push "num"
+Push constant12
 Push 42
 DefineLocal
-Push "str"
-Push "Hello"
+Push constant13
+Push constant14
 DefineLocal
-Push "flag"
+Push constant15
 Push true
 DefineLocal
-Push "obj"
+Push constant16
 Push 0
 InitObject
 DefineLocal
-Push "arr"
+Push constant9
 Push 0
 InitArray
 DefineLocal
-Push "numbers"
+Push constant17
 Push 0
-Push "Array"
+Push constant18
 NewObject
 DefineLocal
-Push "strings"
-Push "three"
-Push "two"
-Push "one"
+Push constant19
+Push constant20
+Push constant21
+Push constant22
 Push 3
 InitArray
 DefineLocal
-Push "someValue"
-Push "123"
+Push constant23
+Push constant24
 DefineLocal
-Push "numValue"
-Push "someValue"
+Push constant25
+Push constant23
 GetVariable
 Push 1
-Push "Number"
+Push constant26
 CallFunction
 DefineLocal
-Push "strValue"
+Push constant27
 Push 42
 Push 1
-Push "String"
+Push constant28
 CallFunction
 DefineLocal
-Push "userData"
-Push "scores"
-Push "Array"
+Push constant29
+Push constant30
+Push constant18
 Push 3
 Push 2
 Push 1
@@ -125,14 +126,14 @@ InitArray
 StoreRegister 0
 SetVariable
 Push register0
-Push "name"
-Push "String"
-Push "User"
+Push constant7
+Push constant28
+Push constant31
 StoreRegister 0
 SetVariable
 Push register0
-Push "id"
-Push "Number"
+Push constant32
+Push constant26
 Push 1
 StoreRegister 0
 SetVariable

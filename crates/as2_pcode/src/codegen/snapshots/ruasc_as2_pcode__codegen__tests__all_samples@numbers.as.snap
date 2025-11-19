@@ -3,95 +3,96 @@ source: crates/as2_pcode/src/codegen/tests.rs
 expression: builder
 input_file: samples/as2/numbers.as
 ---
-Push "i0"
+ConstantPool "i0", "i1", "i42", "iLarge", "iLargePlusOne", "f0", "f1", "fLeadingDot", "fTrailingDot", "h0", "hMix", "hMaxByte", "eBig", "eSmall", "ePlus", "eLeadingDot", "eTrailingDot", "eSci", "nDec", "nHex", "nFloat", "pDec", "sum", "diff", "prod", "quot", "combo", "i0 = ", "i1 = ", "i42 = ", "iLarge = ", "iLargePlusOne = ", "f0 = ", "f1 = ", "fLeadingDot = ", "fTrailingDot = ", "h0 = ", "hMix = ", "hMaxByte = ", "eBig = ", "eSmall = ", "ePlus = ", "eLeadingDot = ", "eTrailingDot = ", "eSci = ", "nDec = ", "nHex = ", "nFloat = ", "pDec = ", "sum = ", "diff = ", "prod = ", "quot = ", "combo = "
+Push constant0
 Push 0
 DefineLocal
-Push "i1"
+Push constant1
 Push 1
 DefineLocal
-Push "i42"
+Push constant2
 Push 42
 DefineLocal
-Push "iLarge"
+Push constant3
 Push 2147483647
 DefineLocal
-Push "iLargePlusOne"
+Push constant4
 Push 2147483648.0
 DefineLocal
-Push "f0"
+Push constant5
 Push 0.0
 DefineLocal
-Push "f1"
+Push constant6
 Push 1.23
 DefineLocal
-Push "fLeadingDot"
+Push constant7
 Push 0.5
 DefineLocal
-Push "fTrailingDot"
+Push constant8
 Push 5.0
 DefineLocal
-Push "h0"
+Push constant9
 Push 0
 DefineLocal
-Push "hMix"
+Push constant10
 Push 6699
 DefineLocal
-Push "hMaxByte"
+Push constant11
 Push 255
 DefineLocal
-Push "eBig"
+Push constant12
 Push 10000000000.0
 DefineLocal
-Push "eSmall"
+Push constant13
 Push 0.0000000001
 DefineLocal
-Push "ePlus"
+Push constant14
 Push 2500.0
 DefineLocal
-Push "eLeadingDot"
+Push constant15
 Push 50.0
 DefineLocal
-Push "eTrailingDot"
+Push constant16
 Push 5000.0
 DefineLocal
-Push "eSci"
+Push constant17
 Push 602200000000000000000000.0
 DefineLocal
-Push "nDec"
+Push constant18
 Push -123
 DefineLocal
-Push "nHex"
+Push constant19
 Push -255
 DefineLocal
-Push "nFloat"
+Push constant20
 Push -3.14
 DefineLocal
-Push "pDec"
+Push constant21
 Push 7
 DefineLocal
-Push "sum"
+Push constant22
 Push 1
 Push 2
 Add2
 Push 3
 Add2
 DefineLocal
-Push "diff"
+Push constant23
 Push 10
 Push 4
 Subtract
 DefineLocal
-Push "prod"
+Push constant24
 Push 6
 Push 7
 Multiply
 DefineLocal
-Push "quot"
+Push constant25
 Push 22
 Push 7
 Divide
 DefineLocal
-Push "combo"
+Push constant26
 Push 16
 Push 15
 Add2
@@ -100,138 +101,138 @@ Multiply
 Push 0.75
 Subtract
 DefineLocal
-Push "i0 = "
-Push "i0"
+Push constant27
+Push constant0
 GetVariable
 Add2
 Trace
-Push "i1 = "
-Push "i1"
+Push constant28
+Push constant1
 GetVariable
 Add2
 Trace
-Push "i42 = "
-Push "i42"
+Push constant29
+Push constant2
 GetVariable
 Add2
 Trace
-Push "iLarge = "
-Push "iLarge"
+Push constant30
+Push constant3
 GetVariable
 Add2
 Trace
-Push "iLargePlusOne = "
-Push "iLargePlusOne"
+Push constant31
+Push constant4
 GetVariable
 Add2
 Trace
-Push "f0 = "
-Push "f0"
+Push constant32
+Push constant5
 GetVariable
 Add2
 Trace
-Push "f1 = "
-Push "f1"
+Push constant33
+Push constant6
 GetVariable
 Add2
 Trace
-Push "fLeadingDot = "
-Push "fLeadingDot"
+Push constant34
+Push constant7
 GetVariable
 Add2
 Trace
-Push "fTrailingDot = "
-Push "fTrailingDot"
+Push constant35
+Push constant8
 GetVariable
 Add2
 Trace
-Push "h0 = "
-Push "h0"
+Push constant36
+Push constant9
 GetVariable
 Add2
 Trace
-Push "hMix = "
-Push "hMix"
+Push constant37
+Push constant10
 GetVariable
 Add2
 Trace
-Push "hMaxByte = "
-Push "hMaxByte"
+Push constant38
+Push constant11
 GetVariable
 Add2
 Trace
-Push "eBig = "
-Push "eBig"
+Push constant39
+Push constant12
 GetVariable
 Add2
 Trace
-Push "eSmall = "
-Push "eSmall"
+Push constant40
+Push constant13
 GetVariable
 Add2
 Trace
-Push "ePlus = "
-Push "ePlus"
+Push constant41
+Push constant14
 GetVariable
 Add2
 Trace
-Push "eLeadingDot = "
-Push "eLeadingDot"
+Push constant42
+Push constant15
 GetVariable
 Add2
 Trace
-Push "eTrailingDot = "
-Push "eTrailingDot"
+Push constant43
+Push constant16
 GetVariable
 Add2
 Trace
-Push "eSci = "
-Push "eSci"
+Push constant44
+Push constant17
 GetVariable
 Add2
 Trace
-Push "nDec = "
-Push "nDec"
+Push constant45
+Push constant18
 GetVariable
 Add2
 Trace
-Push "nHex = "
-Push "nHex"
+Push constant46
+Push constant19
 GetVariable
 Add2
 Trace
-Push "nFloat = "
-Push "nFloat"
+Push constant47
+Push constant20
 GetVariable
 Add2
 Trace
-Push "pDec = "
-Push "pDec"
+Push constant48
+Push constant21
 GetVariable
 Add2
 Trace
-Push "sum = "
-Push "sum"
+Push constant49
+Push constant22
 GetVariable
 Add2
 Trace
-Push "diff = "
-Push "diff"
+Push constant50
+Push constant23
 GetVariable
 Add2
 Trace
-Push "prod = "
-Push "prod"
+Push constant51
+Push constant24
 GetVariable
 Add2
 Trace
-Push "quot = "
-Push "quot"
+Push constant52
+Push constant25
 GetVariable
 Add2
 Trace
-Push "combo = "
-Push "combo"
+Push constant53
+Push constant26
 GetVariable
 Add2
 Trace

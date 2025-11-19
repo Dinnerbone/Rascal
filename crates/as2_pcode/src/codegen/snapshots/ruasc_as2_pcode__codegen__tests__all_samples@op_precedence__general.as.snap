@@ -3,117 +3,118 @@ source: crates/as2_pcode/src/codegen/tests.rs
 expression: builder
 input_file: samples/as2/op_precedence/general.as
 ---
-Push "one"
+ConstantPool "one", "two", "three", "four", "five", "ten", "zero", "negOne", "a", "b", "c", "p", "s", "t", "one + two * three = ", "(one + two) * three = ", "-one * two = ", "-(one * two) = ", "++p + p++ = ", "p++ * 2 = ", "2 * ++p = ", "four / two * two = ", "one + two << one = ", "(one + two) << one = ", "one + (two << one) = ", "one + two < five = ", "(one + two) < five = ", "one + (two < five) = ", "one + two == three = ", "(one + two) == three = ", "one + (two == three) = ", "one | two == three = ", "(one | two) == three = ", "one | (two == three) = ", "one & three | two = ", "(one & three) | two = ", "one & (three | two) = ", "~one = ", "-~one = ", "(one < two && three > two) = ", "(one > two || three > two) = ", "one & three && two > zero = ", "one < two ? five : ten = ", "one + two < three ? five : ten = ", "a after a = b = c -> ", "b after a = b = c -> ", "a after a += b * c = ", "obj", "Object", "x", "obj.x + two = ", "typeof one = ", "typeof s = ", "a after a = (b>c)?b:c = ", "a + b * c << one & three == ((a + (b * c)) << one & three) ? five : ten = ", "+one + +two = ", "-one + -two = ", "ten % three + one = ", "(ten % three) + one = ", "one + two * three > four = "
+Push constant0
 Push 1
 DefineLocal
-Push "two"
+Push constant1
 Push 2
 DefineLocal
-Push "three"
+Push constant2
 Push 3
 DefineLocal
-Push "four"
+Push constant3
 Push 4
 DefineLocal
-Push "five"
+Push constant4
 Push 5
 DefineLocal
-Push "ten"
+Push constant5
 Push 10
 DefineLocal
-Push "zero"
+Push constant6
 Push 0
 DefineLocal
-Push "negOne"
+Push constant7
 Push -1
 DefineLocal
-Push "a"
+Push constant8
 DefineLocal2
-Push "b"
+Push constant9
 DefineLocal2
-Push "c"
+Push constant10
 DefineLocal2
-Push "p"
+Push constant11
 DefineLocal2
-Push "s"
-Push "s"
+Push constant12
+Push constant12
 DefineLocal
-Push "t"
-Push "t"
+Push constant13
+Push constant13
 DefineLocal
-Push "one + two * three = "
-Push "one"
+Push constant14
+Push constant0
 GetVariable
-Push "two"
+Push constant1
 GetVariable
-Push "three"
+Push constant2
 GetVariable
 Multiply
 Add2
 Add2
 Trace
-Push "(one + two) * three = "
-Push "one"
+Push constant15
+Push constant0
 GetVariable
-Push "two"
+Push constant1
 GetVariable
 Add2
-Push "three"
+Push constant2
 GetVariable
 Multiply
 Add2
 Trace
-Push "-one * two = "
+Push constant16
 Push 0
-Push "one"
+Push constant0
 GetVariable
 Subtract
-Push "two"
+Push constant1
 GetVariable
 Multiply
 Add2
 Trace
-Push "-(one * two) = "
+Push constant17
 Push 0
-Push "one"
+Push constant0
 GetVariable
-Push "two"
+Push constant1
 GetVariable
 Multiply
 Subtract
 Add2
 Trace
-Push "p"
-Push "one"
+Push constant11
+Push constant0
 GetVariable
 SetVariable
-Push "++p + p++ = "
-Push "p"
-Push "p"
+Push constant18
+Push constant11
+Push constant11
 GetVariable
 Increment
 StoreRegister 0
 SetVariable
 Push register0
-Push "p"
+Push constant11
 GetVariable
-Push "p"
-Push "p"
+Push constant11
+Push constant11
 GetVariable
 Increment
 SetVariable
 Add2
 Add2
 Trace
-Push "p"
-Push "two"
+Push constant11
+Push constant1
 GetVariable
 SetVariable
-Push "p++ * 2 = "
-Push "p"
+Push constant19
+Push constant11
 GetVariable
-Push "p"
-Push "p"
+Push constant11
+Push constant11
 GetVariable
 Increment
 SetVariable
@@ -121,14 +122,14 @@ Push 2
 Multiply
 Add2
 Trace
-Push "p"
-Push "two"
+Push constant11
+Push constant1
 GetVariable
 SetVariable
-Push "2 * ++p = "
+Push constant20
 Push 2
-Push "p"
-Push "p"
+Push constant11
+Push constant11
 GetVariable
 Increment
 StoreRegister 0
@@ -137,493 +138,493 @@ Push register0
 Multiply
 Add2
 Trace
-Push "four / two * two = "
-Push "four"
+Push constant21
+Push constant3
 GetVariable
-Push "two"
+Push constant1
 GetVariable
 Divide
-Push "two"
+Push constant1
 GetVariable
 Multiply
 Add2
 Trace
-Push "one + two << one = "
-Push "one"
+Push constant22
+Push constant0
 GetVariable
-Push "two"
+Push constant1
 GetVariable
 Add2
-Push "one"
+Push constant0
 GetVariable
 BitLShift
 Add2
 Trace
-Push "(one + two) << one = "
-Push "one"
+Push constant23
+Push constant0
 GetVariable
-Push "two"
+Push constant1
 GetVariable
 Add2
-Push "one"
+Push constant0
 GetVariable
 BitLShift
 Add2
 Trace
-Push "one + (two << one) = "
-Push "one"
+Push constant24
+Push constant0
 GetVariable
-Push "two"
+Push constant1
 GetVariable
-Push "one"
+Push constant0
 GetVariable
 BitLShift
 Add2
 Add2
 Trace
-Push "one + two < five = "
-Push "one"
+Push constant25
+Push constant0
 GetVariable
-Push "two"
+Push constant1
 GetVariable
 Add2
-Push "five"
+Push constant4
 GetVariable
 Less2
 Add2
 Trace
-Push "(one + two) < five = "
-Push "one"
+Push constant26
+Push constant0
 GetVariable
-Push "two"
+Push constant1
 GetVariable
 Add2
-Push "five"
+Push constant4
 GetVariable
 Less2
 Add2
 Trace
-Push "one + (two < five) = "
-Push "one"
+Push constant27
+Push constant0
 GetVariable
-Push "two"
+Push constant1
 GetVariable
-Push "five"
+Push constant4
 GetVariable
 Less2
 Add2
 Add2
 Trace
-Push "one + two == three = "
-Push "one"
+Push constant28
+Push constant0
 GetVariable
-Push "two"
+Push constant1
 GetVariable
 Add2
-Push "three"
+Push constant2
 GetVariable
 Equals2
 Add2
 Trace
-Push "(one + two) == three = "
-Push "one"
+Push constant29
+Push constant0
 GetVariable
-Push "two"
+Push constant1
 GetVariable
 Add2
-Push "three"
+Push constant2
 GetVariable
 Equals2
 Add2
 Trace
-Push "one + (two == three) = "
-Push "one"
+Push constant30
+Push constant0
 GetVariable
-Push "two"
+Push constant1
 GetVariable
-Push "three"
+Push constant2
 GetVariable
 Equals2
 Add2
 Add2
 Trace
-Push "one | two == three = "
-Push "one"
+Push constant31
+Push constant0
 GetVariable
-Push "two"
+Push constant1
 GetVariable
-Push "three"
-GetVariable
-Equals2
-BitOr
-Add2
-Trace
-Push "(one | two) == three = "
-Push "one"
-GetVariable
-Push "two"
-GetVariable
-BitOr
-Push "three"
-GetVariable
-Equals2
-Add2
-Trace
-Push "one | (two == three) = "
-Push "one"
-GetVariable
-Push "two"
-GetVariable
-Push "three"
+Push constant2
 GetVariable
 Equals2
 BitOr
 Add2
 Trace
-Push "one & three | two = "
-Push "one"
+Push constant32
+Push constant0
 GetVariable
-Push "three"
+Push constant1
+GetVariable
+BitOr
+Push constant2
+GetVariable
+Equals2
+Add2
+Trace
+Push constant33
+Push constant0
+GetVariable
+Push constant1
+GetVariable
+Push constant2
+GetVariable
+Equals2
+BitOr
+Add2
+Trace
+Push constant34
+Push constant0
+GetVariable
+Push constant2
 GetVariable
 BitAnd
-Push "two"
+Push constant1
 GetVariable
 BitOr
 Add2
 Trace
-Push "(one & three) | two = "
-Push "one"
+Push constant35
+Push constant0
 GetVariable
-Push "three"
+Push constant2
 GetVariable
 BitAnd
-Push "two"
+Push constant1
 GetVariable
 BitOr
 Add2
 Trace
-Push "one & (three | two) = "
-Push "one"
+Push constant36
+Push constant0
 GetVariable
-Push "three"
+Push constant2
 GetVariable
-Push "two"
+Push constant1
 GetVariable
 BitOr
 BitAnd
 Add2
 Trace
-Push "~one = "
-Push "one"
+Push constant37
+Push constant0
 GetVariable
 Push -1
 BitXor
 Add2
 Trace
-Push "-~one = "
+Push constant38
 Push 0
-Push "one"
+Push constant0
 GetVariable
 Push -1
 BitXor
 Subtract
 Add2
 Trace
-Push "(one < two && three > two) = "
-Push "one"
+Push constant39
+Push constant0
 GetVariable
-Push "two"
+Push constant1
 GetVariable
 Less2
 PushDuplicate
 Not
 If loc0000
 Pop
-Push "three"
+Push constant2
 GetVariable
-Push "two"
+Push constant1
 GetVariable
 Greater
 loc0000: Add2
 Trace
-Push "(one > two || three > two) = "
-Push "one"
+Push constant40
+Push constant0
 GetVariable
-Push "two"
+Push constant1
 GetVariable
 Greater
 PushDuplicate
 If loc0001
 Pop
-Push "three"
+Push constant2
 GetVariable
-Push "two"
+Push constant1
 GetVariable
 Greater
 loc0001: Add2
 Trace
-Push "one & three && two > zero = "
-Push "one"
+Push constant41
+Push constant0
 GetVariable
-Push "three"
+Push constant2
 GetVariable
 BitAnd
 PushDuplicate
 Not
 If loc0002
 Pop
-Push "two"
+Push constant1
 GetVariable
-Push "zero"
+Push constant6
 GetVariable
 Greater
 loc0002: Add2
 Trace
-Push "one < two ? five : ten = "
-Push "one"
+Push constant42
+Push constant0
 GetVariable
-Push "two"
+Push constant1
 GetVariable
 Less2
 Not
 If loc0004
-Push "five"
+Push constant4
 GetVariable
 Jump loc0003
-loc0004: Push "ten"
+loc0004: Push constant5
 GetVariable
 loc0003: Add2
 Trace
-Push "one + two < three ? five : ten = "
-Push "one"
+Push constant43
+Push constant0
 GetVariable
-Push "two"
+Push constant1
 GetVariable
 Add2
-Push "three"
+Push constant2
 GetVariable
 Less2
 Not
 If loc0006
-Push "five"
+Push constant4
 GetVariable
 Jump loc0005
-loc0006: Push "ten"
+loc0006: Push constant5
 GetVariable
 loc0005: Add2
 Trace
-Push "a"
+Push constant8
 Push 0
 SetVariable
-Push "b"
+Push constant9
 Push 0
 SetVariable
-Push "c"
-Push "five"
+Push constant10
+Push constant4
 GetVariable
 SetVariable
-Push "a"
-Push "b"
-Push "c"
+Push constant8
+Push constant9
+Push constant10
 GetVariable
 StoreRegister 0
 SetVariable
 Push register0
 SetVariable
-Push "a after a = b = c -> "
-Push "a"
+Push constant44
+Push constant8
 GetVariable
 Add2
 Trace
-Push "b after a = b = c -> "
-Push "b"
+Push constant45
+Push constant9
 GetVariable
 Add2
 Trace
-Push "a"
+Push constant8
 Push 1
 SetVariable
-Push "b"
+Push constant9
 Push 2
 SetVariable
-Push "c"
+Push constant10
 Push 3
 SetVariable
-Push "a"
-Push "a"
+Push constant8
+Push constant8
 GetVariable
-Push "b"
+Push constant9
 GetVariable
-Push "c"
+Push constant10
 GetVariable
 Multiply
 Add2
 SetVariable
-Push "a after a += b * c = "
-Push "a"
+Push constant46
+Push constant8
 GetVariable
 Add2
 Trace
-Push "obj"
+Push constant47
 Push 0
-Push "Object"
+Push constant48
 NewObject
 DefineLocal
-Push "obj"
+Push constant47
 GetVariable
-Push "x"
+Push constant49
 Push 2
 SetMember
-Push "obj.x + two = "
-Push "obj"
+Push constant50
+Push constant47
 GetVariable
-Push "x"
+Push constant49
 GetMember
-Push "two"
+Push constant1
 GetVariable
 Add2
 Add2
 Trace
-Push "typeof one = "
-Push "one"
-GetVariable
-TypeOf
-Add2
-Trace
-Push "typeof s = "
-Push "s"
+Push constant51
+Push constant0
 GetVariable
 TypeOf
 Add2
 Trace
-Push "a"
+Push constant52
+Push constant12
+GetVariable
+TypeOf
+Add2
+Trace
+Push constant8
 Push 1
 SetVariable
-Push "b"
+Push constant9
 Push 2
 SetVariable
-Push "c"
+Push constant10
 Push 3
 SetVariable
-Push "a"
-Push "b"
+Push constant8
+Push constant9
 GetVariable
-Push "c"
+Push constant10
 GetVariable
 Greater
 Not
 If loc0008
-Push "b"
+Push constant9
 GetVariable
 Jump loc0007
-loc0008: Push "c"
+loc0008: Push constant10
 GetVariable
 loc0007: SetVariable
-Push "a after a = (b>c)?b:c = "
-Push "a"
+Push constant53
+Push constant8
 GetVariable
 Add2
 Trace
-Push "a"
+Push constant8
 Push 1
 SetVariable
-Push "b"
+Push constant9
 Push 2
 SetVariable
-Push "c"
+Push constant10
 Push 3
 SetVariable
-Push "a + b * c << one & three == ((a + (b * c)) << one & three) ? five : ten = "
-Push "a"
+Push constant54
+Push constant8
 GetVariable
-Push "b"
+Push constant9
 GetVariable
-Push "c"
+Push constant10
 GetVariable
 Multiply
 Add2
-Push "one"
+Push constant0
 GetVariable
 BitLShift
-Push "three"
+Push constant2
 GetVariable
 BitAnd
-Push "a"
+Push constant8
 GetVariable
-Push "b"
+Push constant9
 GetVariable
-Push "c"
+Push constant10
 GetVariable
 Multiply
 Add2
-Push "one"
+Push constant0
 GetVariable
 BitLShift
-Push "three"
+Push constant2
 GetVariable
 BitAnd
 Equals2
 Not
 If loc000a
-Push "five"
+Push constant4
 GetVariable
 Jump loc0009
-loc000a: Push "ten"
+loc000a: Push constant5
 GetVariable
 loc0009: Add2
 Trace
-Push "+one + +two = "
-Push "one"
+Push constant55
+Push constant0
 GetVariable
-Push "two"
+Push constant1
 GetVariable
 Add2
 Add2
 Trace
-Push "-one + -two = "
+Push constant56
 Push 0
-Push "one"
+Push constant0
 GetVariable
 Subtract
 Push 0
-Push "two"
+Push constant1
 GetVariable
 Subtract
 Add2
 Add2
 Trace
-Push "ten % three + one = "
-Push "ten"
+Push constant57
+Push constant5
 GetVariable
-Push "three"
+Push constant2
 GetVariable
 Modulo
-Push "one"
+Push constant0
 GetVariable
 Add2
 Add2
 Trace
-Push "(ten % three) + one = "
-Push "ten"
+Push constant58
+Push constant5
 GetVariable
-Push "three"
+Push constant2
 GetVariable
 Modulo
-Push "one"
+Push constant0
 GetVariable
 Add2
 Add2
 Trace
-Push "one + two * three > four = "
-Push "one"
+Push constant59
+Push constant0
 GetVariable
-Push "two"
+Push constant1
 GetVariable
-Push "three"
+Push constant2
 GetVariable
 Multiply
 Add2
-Push "four"
+Push constant3
 GetVariable
 Greater
 Add2

@@ -3,125 +3,126 @@ source: crates/as2_pcode/src/codegen/tests.rs
 expression: builder
 input_file: samples/as2/op_precedence/add_sub.as
 ---
-Push "a"
+ConstantPool "a", "b", "c", "a=", ", b=", ", c=", "----", "a + b - c = ", "(a + b) - c = ", "---", "a - b + c = ", "(a - b) + c = ", "a + b - c + b = ", "(((a + b) - c) + b) = ", "a + -b = ", "a - -b = "
+Push constant0
 Push 10
 DefineLocal
-Push "b"
+Push constant1
 Push 5
 DefineLocal
-Push "c"
+Push constant2
 Push 2
 DefineLocal
-Push "a="
-Push "a"
+Push constant3
+Push constant0
 GetVariable
 Add2
-Push ", b="
+Push constant4
 Add2
-Push "b"
+Push constant1
 GetVariable
 Add2
-Push ", c="
+Push constant5
 Add2
-Push "c"
+Push constant2
 GetVariable
 Add2
 Trace
-Push "----"
+Push constant6
 Trace
-Push "a + b - c = "
-Push "a"
+Push constant7
+Push constant0
 GetVariable
-Push "b"
+Push constant1
 GetVariable
 Add2
-Push "c"
+Push constant2
 GetVariable
 Subtract
 Add2
 Trace
-Push "(a + b) - c = "
-Push "a"
+Push constant8
+Push constant0
 GetVariable
-Push "b"
+Push constant1
 GetVariable
 Add2
-Push "c"
+Push constant2
 GetVariable
 Subtract
 Add2
 Trace
-Push "---"
+Push constant9
 Trace
-Push "a - b + c = "
-Push "a"
+Push constant10
+Push constant0
 GetVariable
-Push "b"
+Push constant1
 GetVariable
 Subtract
-Push "c"
+Push constant2
 GetVariable
 Add2
 Add2
 Trace
-Push "(a - b) + c = "
-Push "a"
+Push constant11
+Push constant0
 GetVariable
-Push "b"
+Push constant1
 GetVariable
 Subtract
-Push "c"
+Push constant2
 GetVariable
 Add2
 Add2
 Trace
-Push "---"
+Push constant9
 Trace
-Push "a + b - c + b = "
-Push "a"
+Push constant12
+Push constant0
 GetVariable
-Push "b"
+Push constant1
 GetVariable
 Add2
-Push "c"
+Push constant2
 GetVariable
 Subtract
-Push "b"
+Push constant1
 GetVariable
 Add2
 Add2
 Trace
-Push "(((a + b) - c) + b) = "
-Push "a"
+Push constant13
+Push constant0
 GetVariable
-Push "b"
+Push constant1
 GetVariable
 Add2
-Push "c"
+Push constant2
 GetVariable
 Subtract
-Push "b"
+Push constant1
 GetVariable
 Add2
 Add2
 Trace
-Push "---"
+Push constant9
 Trace
-Push "a + -b = "
-Push "a"
+Push constant14
+Push constant0
 GetVariable
 Push 0
-Push "b"
+Push constant1
 GetVariable
 Subtract
 Add2
 Add2
 Trace
-Push "a - -b = "
-Push "a"
+Push constant15
+Push constant0
 GetVariable
 Push 0
-Push "b"
+Push constant1
 GetVariable
 Subtract
 Subtract

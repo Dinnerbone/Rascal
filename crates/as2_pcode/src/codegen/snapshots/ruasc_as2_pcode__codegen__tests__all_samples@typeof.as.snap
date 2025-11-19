@@ -3,99 +3,100 @@ source: crates/as2_pcode/src/codegen/tests.rs
 expression: builder
 input_file: samples/as2/typeof.as
 ---
-Push "num"
+ConstantPool "num", "obj", "trace", "typeof num: ", "typeof obj: ", "typeof obj.num: ", "typeof obj.num + 1: ", "typeof obj.num == "number" ? ":)" : ":(": ", "number", ":)", ":(", "typeof obj.num + typeof obj.num: ", "typeof obj.trace: ", "typeof obj.trace(): ", "typeof(nonexistent, obj): ", "nonexistent"
+Push constant0
 Push 1
 DefineLocal
-Push "obj"
-Push "trace"
-Push "trace"
+Push constant1
+Push constant2
+Push constant2
 GetVariable
-Push "num"
+Push constant0
 Push 1
 Push 2
 InitObject
 DefineLocal
-Push "typeof num: "
-Push "num"
+Push constant3
+Push constant0
 GetVariable
 TypeOf
 Add2
 Trace
-Push "typeof obj: "
-Push "obj"
+Push constant4
+Push constant1
 GetVariable
 TypeOf
 Add2
 Trace
-Push "typeof obj.num: "
-Push "obj"
+Push constant5
+Push constant1
 GetVariable
-Push "num"
+Push constant0
 GetMember
 TypeOf
 Add2
 Trace
-Push "typeof obj.num + 1: "
-Push "obj"
+Push constant6
+Push constant1
 GetVariable
-Push "num"
+Push constant0
 GetMember
 TypeOf
 Push 1
 Add2
 Add2
 Trace
-Push "typeof obj.num == "number" ? ":)" : ":(": "
-Push "obj"
+Push constant7
+Push constant1
 GetVariable
-Push "num"
+Push constant0
 GetMember
 TypeOf
-Push "number"
+Push constant8
 Equals2
 Not
 If loc0001
-Push ":)"
+Push constant9
 Jump loc0000
-loc0001: Push ":("
+loc0001: Push constant10
 loc0000: Add2
 Trace
-Push "typeof obj.num + typeof obj.num: "
-Push "obj"
+Push constant11
+Push constant1
 GetVariable
-Push "num"
+Push constant0
 GetMember
 TypeOf
-Push "obj"
+Push constant1
 GetVariable
-Push "num"
+Push constant0
 GetMember
 TypeOf
 Add2
-Add2
-Trace
-Push "typeof obj.trace: "
-Push "obj"
-GetVariable
-Push "trace"
-GetMember
-TypeOf
 Add2
 Trace
-Push "typeof obj.trace(): "
+Push constant12
+Push constant1
+GetVariable
+Push constant2
+GetMember
+TypeOf
+Add2
+Trace
+Push constant13
 Push 0
-Push "obj"
+Push constant1
 GetVariable
-Push "trace"
+Push constant2
 CallMethod
 TypeOf
 Add2
 Trace
-Push "typeof(nonexistent, obj): "
-Push "nonexistent"
+Push constant14
+Push constant15
 GetVariable
 Pop
-Push "obj"
+Push constant1
 GetVariable
 TypeOf
 Add2

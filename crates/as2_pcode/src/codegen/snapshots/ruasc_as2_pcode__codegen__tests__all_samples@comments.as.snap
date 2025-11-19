@@ -3,44 +3,45 @@ source: crates/as2_pcode/src/codegen/tests.rs
 expression: builder
 input_file: samples/as2/comments.as
 ---
-Push "a"
-Push "1"
+ConstantPool "a", "1", "b", "2", "c", "3", "d", "4", "test", "e", "5", "f", "// not a comment", "g", "/* not a comment */", "h", ""/* still not a comment */"", "i", "6", "j", "7", "k", "8"
+Push constant0
+Push constant1
 DefineLocal
-Push "b"
-Push "2"
+Push constant2
+Push constant3
 DefineLocal
-Push "c"
-Push "3"
+Push constant4
+Push constant5
 DefineLocal
-Push "d"
-Push "4"
+Push constant6
+Push constant7
 DefineLocal
-Push "b"
+Push constant2
 GetVariable
-Push "a"
+Push constant0
 GetVariable
 Push 2
-Push "test"
+Push constant8
 CallFunction
 Pop
-Push "e"
-Push "5"
+Push constant9
+Push constant10
 DefineLocal
-Push "f"
-Push "// not a comment"
+Push constant11
+Push constant12
 DefineLocal
-Push "g"
-Push "/* not a comment */"
+Push constant13
+Push constant14
 DefineLocal
-Push "h"
-Push ""/* still not a comment */""
+Push constant15
+Push constant16
 DefineLocal
-Push "i"
-Push "6"
+Push constant17
+Push constant18
 DefineLocal
-Push "j"
-Push "7"
+Push constant19
+Push constant20
 DefineLocal
-Push "k"
-Push "8"
+Push constant21
+Push constant22
 DefineLocal

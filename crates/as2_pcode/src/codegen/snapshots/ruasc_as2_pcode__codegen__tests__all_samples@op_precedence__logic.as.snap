@@ -3,218 +3,219 @@ source: crates/as2_pcode/src/codegen/tests.rs
 expression: builder
 input_file: samples/as2/op_precedence/logic.as
 ---
-Push "a"
+ConstantPool "a", "b", "c", "a=", ", b=", ", c=", "----", "a && b = ", "b && c = ", "---", "a || b = ", "b || c = ", "a && c && b = ", "((a && c) && b) = ", "a || b || c = ", "((a || b) || c) = ", "a || b && c = ", "(a || (b && c)) = ", "x", "y", "z", "x && y || z = ", "((x && y) || z) = "
+Push constant0
 Push true
 DefineLocal
-Push "b"
+Push constant1
 Push false
 DefineLocal
-Push "c"
+Push constant2
 Push true
 DefineLocal
-Push "a="
-Push "a"
+Push constant3
+Push constant0
 GetVariable
 Add2
-Push ", b="
+Push constant4
 Add2
-Push "b"
+Push constant1
 GetVariable
 Add2
-Push ", c="
+Push constant5
 Add2
-Push "c"
+Push constant2
 GetVariable
 Add2
 Trace
-Push "----"
+Push constant6
 Trace
-Push "a && b = "
-Push "a"
+Push constant7
+Push constant0
 GetVariable
 PushDuplicate
 Not
 If loc0000
 Pop
-Push "b"
+Push constant1
 GetVariable
 loc0000: Add2
 Trace
-Push "b && c = "
-Push "b"
+Push constant8
+Push constant1
 GetVariable
 PushDuplicate
 Not
 If loc0001
 Pop
-Push "c"
+Push constant2
 GetVariable
 loc0001: Add2
 Trace
-Push "---"
+Push constant9
 Trace
-Push "a || b = "
-Push "a"
+Push constant10
+Push constant0
 GetVariable
 PushDuplicate
 If loc0002
 Pop
-Push "b"
+Push constant1
 GetVariable
 loc0002: Add2
 Trace
-Push "b || c = "
-Push "b"
+Push constant11
+Push constant1
 GetVariable
 PushDuplicate
 If loc0003
 Pop
-Push "c"
+Push constant2
 GetVariable
 loc0003: Add2
 Trace
-Push "---"
+Push constant9
 Trace
-Push "a && c && b = "
-Push "a"
+Push constant12
+Push constant0
 GetVariable
 PushDuplicate
 Not
 If loc0005
 Pop
-Push "c"
+Push constant2
 GetVariable
 loc0005: PushDuplicate
 Not
 If loc0004
 Pop
-Push "b"
+Push constant1
 GetVariable
 loc0004: Add2
 Trace
-Push "((a && c) && b) = "
-Push "a"
+Push constant13
+Push constant0
 GetVariable
 PushDuplicate
 Not
 If loc0007
 Pop
-Push "c"
+Push constant2
 GetVariable
 loc0007: PushDuplicate
 Not
 If loc0006
 Pop
-Push "b"
+Push constant1
 GetVariable
 loc0006: Add2
 Trace
-Push "---"
+Push constant9
 Trace
-Push "a || b || c = "
-Push "a"
+Push constant14
+Push constant0
 GetVariable
 PushDuplicate
 If loc0009
 Pop
-Push "b"
+Push constant1
 GetVariable
 loc0009: PushDuplicate
 If loc0008
 Pop
-Push "c"
+Push constant2
 GetVariable
 loc0008: Add2
 Trace
-Push "((a || b) || c) = "
-Push "a"
+Push constant15
+Push constant0
 GetVariable
 PushDuplicate
 If loc000b
 Pop
-Push "b"
+Push constant1
 GetVariable
 loc000b: PushDuplicate
 If loc000a
 Pop
-Push "c"
+Push constant2
 GetVariable
 loc000a: Add2
 Trace
-Push "---"
+Push constant9
 Trace
-Push "a || b && c = "
-Push "a"
+Push constant16
+Push constant0
 GetVariable
 PushDuplicate
 If loc000d
 Pop
-Push "b"
+Push constant1
 GetVariable
 loc000d: PushDuplicate
 Not
 If loc000c
 Pop
-Push "c"
+Push constant2
 GetVariable
 loc000c: Add2
 Trace
-Push "(a || (b && c)) = "
-Push "a"
+Push constant17
+Push constant0
 GetVariable
 PushDuplicate
 If loc000e
 Pop
-Push "b"
+Push constant1
 GetVariable
 PushDuplicate
 Not
 If loc000f
 Pop
-Push "c"
+Push constant2
 GetVariable
 loc000f: loc000e: Add2
 Trace
-Push "---"
+Push constant9
 Trace
-Push "x"
+Push constant18
 Push false
 DefineLocal
-Push "y"
+Push constant19
 Push true
 DefineLocal
-Push "z"
+Push constant20
 Push false
 DefineLocal
-Push "x && y || z = "
-Push "x"
+Push constant21
+Push constant18
 GetVariable
 PushDuplicate
 Not
 If loc0011
 Pop
-Push "y"
+Push constant19
 GetVariable
 loc0011: PushDuplicate
 If loc0010
 Pop
-Push "z"
+Push constant20
 GetVariable
 loc0010: Add2
 Trace
-Push "((x && y) || z) = "
-Push "x"
+Push constant22
+Push constant18
 GetVariable
 PushDuplicate
 Not
 If loc0013
 Pop
-Push "y"
+Push constant19
 GetVariable
 loc0013: PushDuplicate
 If loc0012
 Pop
-Push "z"
+Push constant20
 GetVariable
 loc0012: Add2
 Trace

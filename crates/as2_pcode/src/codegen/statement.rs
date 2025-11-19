@@ -88,7 +88,8 @@ fn gen_for_loop(builder: &mut CodeBuilder, condition: &ForCondition, body: &Stat
             builder.action(Action::If(end_label.clone()));
 
             if *declare {
-                builder.action(Action::Push(vec![PushValue::String(variable.to_owned())]));
+                let value = builder.constants_mut().add(variable.to_owned());
+                builder.action(Action::Push(vec![value]));
                 builder.action(Action::Push(vec![PushValue::Register(0)]));
                 builder.action(Action::DefineLocal);
             } else {
@@ -183,9 +184,8 @@ fn gen_ternary(builder: &mut CodeBuilder, condition: &Expr, yes: &Expr, no: &Exp
 
 fn gen_declarations(builder: &mut CodeBuilder, declarations: &[Declaration]) {
     for declaration in declarations {
-        builder.action(Action::Push(vec![PushValue::String(
-            declaration.name.to_owned(),
-        )]));
+        let value = builder.constants_mut().add(declaration.name.to_owned());
+        builder.action(Action::Push(vec![value]));
         if let Some(value) = &declaration.value {
             gen_expr(builder, value, false);
             builder.action(Action::DefineLocal);
@@ -242,19 +242,21 @@ pub fn gen_expr(builder: &mut CodeBuilder, expr: &Expr, will_discard_result: boo
 }
 
 fn gen_function(builder: &mut CodeBuilder, function: &Function) {
-    let mut fun_builder = CodeBuilder::new();
+    let mut fun_builder = CodeBuilder::new(builder.constants_mut());
     gen_statements(&mut fun_builder, &function.body);
+    let actions = fun_builder.into_actions();
     builder.action(Action::DefineFunction {
         name: function.name.clone().unwrap_or_default(),
         params: function.args.clone(),
-        actions: fun_builder.into_actions(),
+        actions,
     })
 }
 
 fn gen_init_object(builder: &mut CodeBuilder, values: &[(String, Expr)]) {
     let num_fields = values.len() as i32;
     for (key, value) in values.iter().rev() {
-        builder.action(Action::Push(vec![PushValue::String(key.to_owned())]));
+        let push_value = builder.constants_mut().add(key.to_owned());
+        builder.action(Action::Push(vec![push_value]));
         gen_expr(builder, value, false);
     }
     builder.action(Action::Push(vec![PushValue::Integer(num_fields)]));

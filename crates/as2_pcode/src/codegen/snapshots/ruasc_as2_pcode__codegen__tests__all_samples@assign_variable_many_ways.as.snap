@@ -3,46 +3,47 @@ source: crates/as2_pcode/src/codegen/tests.rs
 expression: builder
 input_file: samples/as2/assign_variable_many_ways.as
 ---
-Push "message"
-Push "Hello"
-Push " "
+ConstantPool "message", "Hello", " ", "World", "!", "a", "b", "c", "a: ", "b: ", "c: "
+Push constant0
+Push constant1
+Push constant2
 Add2
 DefineLocal
-Push "message"
-Push "message"
+Push constant0
+Push constant0
 GetVariable
-Push "World"
+Push constant3
 Add2
 SetVariable
-Push "message"
-Push "message"
+Push constant0
+Push constant0
 GetVariable
-Push "!"
+Push constant4
 Add2
 SetVariable
-Push "message"
+Push constant0
 GetVariable
 Trace
-Push "a"
+Push constant5
 Push 1
 DefineLocal
-Push "b"
+Push constant6
 DefineLocal2
-Push "c"
+Push constant7
 Push 3
 DefineLocal
-Push "a: "
-Push "a"
+Push constant8
+Push constant5
 GetVariable
 Add2
 Trace
-Push "b: "
-Push "b"
+Push constant9
+Push constant6
 GetVariable
 Add2
 Trace
-Push "c: "
-Push "c"
+Push constant10
+Push constant7
 GetVariable
 Add2
 Trace

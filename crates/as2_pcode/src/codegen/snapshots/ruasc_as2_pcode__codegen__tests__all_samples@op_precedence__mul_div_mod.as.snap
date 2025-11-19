@@ -3,200 +3,201 @@ source: crates/as2_pcode/src/codegen/tests.rs
 expression: builder
 input_file: samples/as2/op_precedence/mul_div_mod.as
 ---
-Push "a"
+ConstantPool "a", "b", "c", "a=", ", b=", ", c=", "----", "a * b / c = ", "(a * b) / c = ", "---", "a / b * c = ", "(a / b) * c = ", "a % b * c = ", "(a % b) * c = ", "a * b % c = ", "(a * b) % c = ", "a % b / c = ", "(a % b) / c = ", "a / b % c = ", "(a / b) % c = ", "Nested: a * b / c * b = ", "Nested reference: (((a * b) / c) * b) = "
+Push constant0
 Push 20
 DefineLocal
-Push "b"
+Push constant1
 Push 6
 DefineLocal
-Push "c"
+Push constant2
 Push 4
 DefineLocal
-Push "a="
-Push "a"
+Push constant3
+Push constant0
 GetVariable
 Add2
-Push ", b="
+Push constant4
 Add2
-Push "b"
+Push constant1
 GetVariable
 Add2
-Push ", c="
+Push constant5
 Add2
-Push "c"
+Push constant2
 GetVariable
 Add2
 Trace
-Push "----"
+Push constant6
 Trace
-Push "a * b / c = "
-Push "a"
+Push constant7
+Push constant0
 GetVariable
-Push "b"
+Push constant1
 GetVariable
 Multiply
-Push "c"
+Push constant2
 GetVariable
 Divide
 Add2
 Trace
-Push "(a * b) / c = "
-Push "a"
+Push constant8
+Push constant0
 GetVariable
-Push "b"
+Push constant1
 GetVariable
 Multiply
-Push "c"
+Push constant2
 GetVariable
 Divide
 Add2
 Trace
-Push "---"
+Push constant9
 Trace
-Push "a / b * c = "
-Push "a"
+Push constant10
+Push constant0
 GetVariable
-Push "b"
+Push constant1
 GetVariable
 Divide
-Push "c"
+Push constant2
 GetVariable
 Multiply
 Add2
 Trace
-Push "(a / b) * c = "
-Push "a"
+Push constant11
+Push constant0
 GetVariable
-Push "b"
+Push constant1
 GetVariable
 Divide
-Push "c"
+Push constant2
 GetVariable
 Multiply
 Add2
 Trace
-Push "---"
+Push constant9
 Trace
-Push "a % b * c = "
-Push "a"
+Push constant12
+Push constant0
 GetVariable
-Push "b"
+Push constant1
 GetVariable
 Modulo
-Push "c"
+Push constant2
 GetVariable
 Multiply
 Add2
 Trace
-Push "(a % b) * c = "
-Push "a"
+Push constant13
+Push constant0
 GetVariable
-Push "b"
+Push constant1
 GetVariable
 Modulo
-Push "c"
+Push constant2
 GetVariable
 Multiply
 Add2
 Trace
-Push "---"
+Push constant9
 Trace
-Push "a * b % c = "
-Push "a"
+Push constant14
+Push constant0
 GetVariable
-Push "b"
+Push constant1
 GetVariable
 Multiply
-Push "c"
-GetVariable
-Modulo
-Add2
-Trace
-Push "(a * b) % c = "
-Push "a"
-GetVariable
-Push "b"
-GetVariable
-Multiply
-Push "c"
+Push constant2
 GetVariable
 Modulo
 Add2
 Trace
-Push "---"
-Trace
-Push "a % b / c = "
-Push "a"
+Push constant15
+Push constant0
 GetVariable
-Push "b"
-GetVariable
-Modulo
-Push "c"
-GetVariable
-Divide
-Add2
-Trace
-Push "(a % b) / c = "
-Push "a"
-GetVariable
-Push "b"
-GetVariable
-Modulo
-Push "c"
-GetVariable
-Divide
-Add2
-Trace
-Push "---"
-Trace
-Push "a / b % c = "
-Push "a"
-GetVariable
-Push "b"
-GetVariable
-Divide
-Push "c"
-GetVariable
-Modulo
-Add2
-Trace
-Push "(a / b) % c = "
-Push "a"
-GetVariable
-Push "b"
-GetVariable
-Divide
-Push "c"
-GetVariable
-Modulo
-Add2
-Trace
-Push "---"
-Trace
-Push "Nested: a * b / c * b = "
-Push "a"
-GetVariable
-Push "b"
+Push constant1
 GetVariable
 Multiply
-Push "c"
+Push constant2
+GetVariable
+Modulo
+Add2
+Trace
+Push constant9
+Trace
+Push constant16
+Push constant0
+GetVariable
+Push constant1
+GetVariable
+Modulo
+Push constant2
 GetVariable
 Divide
-Push "b"
+Add2
+Trace
+Push constant17
+Push constant0
+GetVariable
+Push constant1
+GetVariable
+Modulo
+Push constant2
+GetVariable
+Divide
+Add2
+Trace
+Push constant9
+Trace
+Push constant18
+Push constant0
+GetVariable
+Push constant1
+GetVariable
+Divide
+Push constant2
+GetVariable
+Modulo
+Add2
+Trace
+Push constant19
+Push constant0
+GetVariable
+Push constant1
+GetVariable
+Divide
+Push constant2
+GetVariable
+Modulo
+Add2
+Trace
+Push constant9
+Trace
+Push constant20
+Push constant0
+GetVariable
+Push constant1
+GetVariable
+Multiply
+Push constant2
+GetVariable
+Divide
+Push constant1
 GetVariable
 Multiply
 Add2
 Trace
-Push "Nested reference: (((a * b) / c) * b) = "
-Push "a"
+Push constant21
+Push constant0
 GetVariable
-Push "b"
+Push constant1
 GetVariable
 Multiply
-Push "c"
+Push constant2
 GetVariable
 Divide
-Push "b"
+Push constant1
 GetVariable
 Multiply
 Add2
