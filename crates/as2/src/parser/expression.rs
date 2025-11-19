@@ -204,10 +204,10 @@ pub(crate) fn expression<'i>(i: &mut Tokens<'i>) -> ModalResult<Expr<'i>> {
     }
 }
 
-fn object_definition<'i>(i: &mut Tokens<'i>) -> ModalResult<Vec<(String, Expr<'i>)>> {
+fn object_definition<'i>(i: &mut Tokens<'i>) -> ModalResult<Vec<(&'i str, Expr<'i>)>> {
     separated(
         0..,
-        (identifier, TokenKind::Colon, expression).map(|(name, _, expr)| (name.to_owned(), expr)),
+        (identifier, TokenKind::Colon, expression).map(|(name, _, expr)| (name, expr)),
         TokenKind::Comma,
     )
     .parse_next(i)
@@ -1275,9 +1275,9 @@ mod tests {
         assert_eq!(
             parse_expr(&tokens),
             Ok(Expr::InitObject(vec![
-                ("a".to_string(), Expr::Constant(Constant::Identifier("b"))),
+                ("a", Expr::Constant(Constant::Identifier("b"))),
                 (
-                    "c".to_string(),
+                    "c",
                     Expr::BinaryOperator(
                         BinaryOperator::Add,
                         Box::new(Expr::Constant(Constant::Identifier("d"))),

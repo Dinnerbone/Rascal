@@ -20,7 +20,7 @@ pub enum Expr<'a> {
         yes: Box<Expr<'a>>,
         no: Box<Expr<'a>>,
     },
-    InitObject(Vec<(String, Expr<'a>)>),
+    InitObject(Vec<(&'a str, Expr<'a>)>),
     InitArray(Vec<Expr<'a>>),
     Field(Box<Expr<'a>>, Box<Expr<'a>>),
     TypeOf(Vec<Expr<'a>>),

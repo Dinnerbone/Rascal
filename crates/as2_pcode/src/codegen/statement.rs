@@ -252,7 +252,7 @@ fn gen_function(builder: &mut CodeBuilder, function: &Function) {
     })
 }
 
-fn gen_init_object(builder: &mut CodeBuilder, values: &[(String, Expr)]) {
+fn gen_init_object(builder: &mut CodeBuilder, values: &[(&str, Expr)]) {
     let num_fields = values.len() as i32;
     for (key, value) in values.iter().rev() {
         let push_value = builder.constants_mut().add(key);
