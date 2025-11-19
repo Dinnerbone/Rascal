@@ -91,10 +91,7 @@ fn declaration<'i>(i: &mut Tokens<'i>) -> ModalResult<Declaration<'i>> {
         .is_some();
     let value = cond(equals, expression).parse_next(i)?;
 
-    Ok(Declaration {
-        name: name.to_owned(),
-        value,
-    })
+    Ok(Declaration { name, value })
 }
 
 fn if_else<'i>(i: &mut Tokens<'i>) -> ModalResult<Statement<'i>> {
@@ -198,7 +195,7 @@ mod stmt_tests {
         assert_eq!(
             parse_stmt(&tokens),
             Ok(Statement::Declare(vec![Declaration {
-                name: "x".to_string(),
+                name: "x",
                 value: None
             }]))
         );
@@ -215,7 +212,7 @@ mod stmt_tests {
         assert_eq!(
             parse_stmt(&tokens),
             Ok(Statement::Declare(vec![Declaration {
-                name: "x".to_string(),
+                name: "x",
                 value: Some(Expr::Constant(Constant::String(Cow::Borrowed("hi"))))
             }]))
         );
@@ -235,7 +232,7 @@ mod stmt_tests {
         assert_eq!(
             parse_stmt(&tokens),
             Ok(Statement::Declare(vec![Declaration {
-                name: "x".to_string(),
+                name: "x",
                 value: Some(Expr::Call {
                     name: Box::new(Expr::Constant(Constant::Identifier("foo"))),
                     args: vec![Expr::Constant(Constant::Identifier("a"))]
@@ -331,7 +328,7 @@ mod stmt_tests {
             Ok(Statement::ForIn {
                 condition: ForCondition::Classic {
                     initialize: Some(Box::new(Statement::Declare(vec![Declaration {
-                        name: "i".to_string(),
+                        name: "i",
                         value: Some(Expr::Constant(Constant::Identifier("0")))
                     }]))),
                     condition: vec![Expr::BinaryOperator(

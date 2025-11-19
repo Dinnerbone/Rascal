@@ -184,7 +184,7 @@ fn gen_ternary(builder: &mut CodeBuilder, condition: &Expr, yes: &Expr, no: &Exp
 
 fn gen_declarations(builder: &mut CodeBuilder, declarations: &[Declaration]) {
     for declaration in declarations {
-        let value = builder.constants_mut().add(&declaration.name);
+        let value = builder.constants_mut().add(declaration.name);
         builder.action(Action::Push(vec![value]));
         if let Some(value) = &declaration.value {
             gen_expr(builder, value, false);

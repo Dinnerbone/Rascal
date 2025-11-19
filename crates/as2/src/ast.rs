@@ -134,7 +134,7 @@ pub struct Function<'a> {
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
 pub struct Declaration<'a> {
-    pub name: String,
+    pub name: &'a str,
     pub value: Option<Expr<'a>>,
 }
 
