@@ -19,11 +19,11 @@ GetVariable
 Push constant3
 GetVariable
 Equals2
-loc0001: Not
+loc0001:Not
 If loc0000
 Push undefined
 Return
-loc0000: Push constant1
+loc0000:Push constant1
 Push constant0
 GetVariable
 SetVariable
@@ -64,7 +64,7 @@ DefineLocal
 Push constant14
 Push 0
 DefineLocal
-loc0004: Push constant14
+loc0004:Push constant14
 GetVariable
 Push constant6
 GetVariable
@@ -99,13 +99,13 @@ Push constant2
 GetMember
 Add2
 Trace
-loc0003: Push constant14
+loc0003:Push constant14
 Push constant14
 GetVariable
 Increment
 SetVariable
 Jump loc0004
-loc0002: Push constant18
+loc0002:Push constant18
 Trace
 }
 Pop

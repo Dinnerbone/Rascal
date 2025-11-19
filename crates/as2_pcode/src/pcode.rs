@@ -45,14 +45,14 @@ impl std::fmt::Display for Actions {
         for (i, action) in self.actions.iter().enumerate() {
             if let Some(labels) = labels_per_pos.get(&i) {
                 for label in labels {
-                    write!(f, "{}: ", label)?;
+                    write!(f, "{}:", label)?;
                 }
             }
             writeln!(f, "{}", action)?;
         }
         if let Some(labels) = labels_per_pos.get(&self.actions.len()) {
             for label in labels {
-                write!(f, "{}: ", label)?;
+                write!(f, "{}:", label)?;
             }
             writeln!(f)?;
         }

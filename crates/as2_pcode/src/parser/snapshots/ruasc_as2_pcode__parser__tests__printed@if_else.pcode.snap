@@ -21,7 +21,7 @@ Push 0
 Push constant3
 CallFunction
 Pop
-loc0111: Push constant1
+loc0111:Push constant1
 GetVariable
 Push 0
 Greater
@@ -30,9 +30,9 @@ If loc0135
 Push constant4
 Trace
 Jump loc013b
-loc0135: Push constant5
+loc0135:Push constant5
 Trace
-loc013b: Push constant1
+loc013b:Push constant1
 GetVariable
 Push 0
 Less2
@@ -41,7 +41,7 @@ If loc015f
 Push constant5
 Trace
 Jump loc01ad
-loc015f: Push constant1
+loc015f:Push constant1
 GetVariable
 Push 0
 Greater
@@ -50,7 +50,7 @@ If loc0183
 Push constant4
 Trace
 Jump loc01ad
-loc0183: Push constant1
+loc0183:Push constant1
 GetVariable
 Push 0
 Equals2
@@ -59,25 +59,25 @@ If loc01a7
 Push constant6
 Trace
 Jump loc01ad
-loc01a7: Push constant7
+loc01a7:Push constant7
 Trace
-loc01ad: Push constant0
+loc01ad:Push constant0
 GetVariable
 Not
 If loc01b9
-loc01b9: Push constant0
+loc01b9:Push constant0
 GetVariable
 Not
 If loc01ca
 Jump loc01ca
-loc01ca: Push constant0
+loc01ca:Push constant0
 GetVariable
 Not
 If loc01e1
 Push constant8
 Trace
 Jump loc01e1
-loc01e1: Push constant1
+loc01e1:Push constant1
 GetVariable
 Push 0
 Greater
@@ -92,7 +92,7 @@ If loc021e
 Push constant9
 Trace
 Jump loc0248
-loc021e: Push constant2
+loc021e:Push constant2
 GetVariable
 Push 0
 Less2
@@ -101,9 +101,9 @@ If loc0242
 Push constant10
 Trace
 Jump loc0248
-loc0242: Push constant11
+loc0242:Push constant11
 Trace
-loc0248: Push constant0
+loc0248:Push constant0
 GetVariable
 Not
 If loc026c
@@ -112,7 +112,7 @@ Push constant3
 CallFunction
 Pop
 Jump loc02a3
-loc026c: Push constant12
+loc026c:Push constant12
 GetVariable
 Not
 If loc0290
@@ -121,11 +121,11 @@ Push constant13
 CallFunction
 Pop
 Jump loc02a3
-loc0290: Push 0
+loc0290:Push 0
 Push constant14
 CallFunction
 Pop
-loc02a3: Push constant0
+loc02a3:Push constant0
 GetVariable
 Not
 If loc02c2
@@ -133,7 +133,7 @@ Push 0
 Push constant15
 CallFunction
 Pop
-loc02c2: Push 0
+loc02c2:Push 0
 Push constant16
 CallFunction
 Pop
@@ -148,6 +148,6 @@ If loc02f8
 Push constant2
 Trace
 Jump loc02fe
-loc02f8: Push constant17
+loc02f8:Push constant17
 Trace
 loc02fe:

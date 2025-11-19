@@ -21,11 +21,11 @@ GetProperty
 Push constant2
 GetVariable
 Equals2
-loc00b9: Not
+loc00b9:Not
 If loc00c4
 Push undefined
 Return
-loc00c4: Push constant1
+loc00c4:Push constant1
 Push constant0
 Push 20
 GetProperty
@@ -68,7 +68,7 @@ DefineLocal
 Push constant13
 Push 0
 DefineLocal
-loc0161: Push constant13
+loc0161:Push constant13
 GetVariable
 Push constant5
 GetVariable
@@ -109,7 +109,7 @@ GetVariable
 Increment
 SetVariable
 Jump loc0161
-loc01d2: Push constant0
+loc01d2:Push constant0
 Trace
 }
 DefineFunction "onEnterFrame", 0 {

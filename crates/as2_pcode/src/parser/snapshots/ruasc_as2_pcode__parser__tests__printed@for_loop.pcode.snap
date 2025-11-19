@@ -9,7 +9,7 @@ Trace
 Push constant1
 Push 0
 DefineLocal
-loc0129: Push constant1
+loc0129:Push constant1
 GetVariable
 Push 3
 Less2
@@ -24,14 +24,14 @@ GetVariable
 Increment
 SetVariable
 Jump loc0129
-loc0157: Push constant2
+loc0157:Push constant2
 Trace
 Push constant3
 Push 3
 DefineLocal
 Push constant4
 Trace
-loc0171: Push constant3
+loc0171:Push constant3
 GetVariable
 Push 6
 Less2
@@ -46,14 +46,14 @@ GetVariable
 Increment
 SetVariable
 Jump loc0171
-loc019f: Push constant5
+loc019f:Push constant5
 Trace
 Push constant6
 Trace
 Push constant7
 Push 0
 DefineLocal
-loc01bd: Push constant7
+loc01bd:Push constant7
 GetVariable
 Trace
 Push constant7
@@ -64,18 +64,18 @@ Not
 Not
 If loc01df
 Jump loc01f1
-loc01df: Push constant7
+loc01df:Push constant7
 Push constant7
 GetVariable
 Increment
 SetVariable
 Jump loc01bd
-loc01f1: Push constant8
+loc01f1:Push constant8
 Trace
 Push constant9
 Push 0
 DefineLocal
-loc0209: Push constant9
+loc0209:Push constant9
 GetVariable
 Push 3
 Less2
@@ -90,12 +90,12 @@ GetVariable
 Increment
 SetVariable
 Jump loc0209
-loc0237: Push constant10
+loc0237:Push constant10
 Trace
 Push constant11
 Push 0
 DefineLocal
-loc024f: Push constant12
+loc024f:Push constant12
 Trace
 Push constant11
 Push constant11
@@ -109,8 +109,8 @@ Equals2
 Not
 If loc027c
 Jump loc0281
-loc027c: Jump loc024f
-loc0281: Push constant13
+loc027c:Jump loc024f
+loc0281:Push constant13
 Trace
 Push constant14
 Trace
@@ -131,7 +131,7 @@ SetMember
 Push constant15
 GetVariable
 Enumerate2
-loc02cf: StoreRegister 0
+loc02cf:StoreRegister 0
 Push null
 Equals2
 If loc0308
@@ -150,7 +150,7 @@ GetMember
 Add2
 Trace
 Jump loc02cf
-loc0308: Push constant20
+loc0308:Push constant20
 Trace
 Push constant21
 Push 7
@@ -164,7 +164,7 @@ DefineLocal2
 Push constant21
 GetVariable
 Enumerate2
-loc0342: StoreRegister 0
+loc0342:StoreRegister 0
 Push null
 Equals2
 If loc037b
@@ -183,7 +183,7 @@ GetMember
 Add2
 Trace
 Jump loc0342
-loc037b: Push constant23
+loc037b:Push constant23
 Trace
 Push constant16
 Push 0
@@ -191,7 +191,7 @@ DefineLocal
 Push constant17
 Push 3
 DefineLocal
-loc03a1: Push constant16
+loc03a1:Push constant16
 GetVariable
 Push constant17
 GetVariable
@@ -223,12 +223,12 @@ Decrement
 SetVariable
 Pop
 Jump loc03a1
-loc03f5: Push constant25
+loc03f5:Push constant25
 Trace
 Push constant26
 Push 0
 DefineLocal
-loc040d: Push constant26
+loc040d:Push constant26
 GetVariable
 Push 10
 Less2
@@ -241,7 +241,7 @@ Equals2
 Not
 If loc043c
 Jump loc0478
-loc043c: Push constant26
+loc043c:Push constant26
 GetVariable
 Push 2
 Modulo
@@ -250,21 +250,21 @@ Equals2
 Not
 If loc045f
 Jump loc0466
-loc045f: Push constant26
+loc045f:Push constant26
 GetVariable
 Trace
-loc0466: Push constant26
+loc0466:Push constant26
 Push constant26
 GetVariable
 Increment
 SetVariable
 Jump loc040d
-loc0478: Push constant27
+loc0478:Push constant27
 Trace
 Push constant28
 Push 0
 DefineLocal
-loc0490: Push constant28
+loc0490:Push constant28
 GetVariable
 Push 2
 Less2
@@ -273,7 +273,7 @@ If loc0504
 Push constant29
 Push 0
 DefineLocal
-loc04b7: Push constant29
+loc04b7:Push constant29
 GetVariable
 Push 2
 Less2
@@ -293,20 +293,20 @@ GetVariable
 Increment
 SetVariable
 Jump loc04b7
-loc04f2: Push constant28
+loc04f2:Push constant28
 Push constant28
 GetVariable
 Increment
 SetVariable
 Jump loc0490
-loc0504: Push constant30
+loc0504:Push constant30
 Trace
 Push constant31
 DefineLocal2
 Push constant31
 Push 1
 SetVariable
-loc051e: Push constant31
+loc051e:Push constant31
 GetVariable
 Push 3
 Greater
@@ -322,12 +322,12 @@ GetVariable
 Increment
 SetVariable
 Jump loc051e
-loc054d: Push constant32
+loc054d:Push constant32
 Trace
 Push constant33
 Push 0
 DefineLocal
-loc0565: Push constant33
+loc0565:Push constant33
 GetVariable
 Push 3
 Less2

@@ -7,7 +7,7 @@ ConstantPool "i", "i = ", "j", "fn", "trying to break from fn", "j = "
 Push constant0
 Push 0
 DefineLocal
-loc0002: Push constant0
+loc0002:Push constant0
 GetVariable
 Push 4
 Less2
@@ -21,7 +21,7 @@ Trace
 Push constant2
 Push 0
 DefineLocal
-loc0005: Push constant2
+loc0005:Push constant2
 GetVariable
 Push 4
 Less2
@@ -49,34 +49,34 @@ Push constant3
 CallFunction
 Pop
 Jump loc0004
-loc0006: Push constant2
+loc0006:Push constant2
 GetVariable
 Push 2
 Equals2
 Not
 If loc0007
 Jump loc0003
-loc0007: loc0004: Push constant2
+loc0007:loc0004:Push constant2
 Push constant2
 GetVariable
 Increment
 SetVariable
 Jump loc0005
-loc0003: Push constant0
+loc0003:Push constant0
 GetVariable
 Push 1
 Equals2
 Not
 If loc0008
 Jump loc0001
-loc0008: Push constant0
+loc0008:Push constant0
 GetVariable
 Push 2
 Equals2
 Not
 If loc0009
 Jump loc0000
-loc0009: loc0001: Push constant0
+loc0009:loc0001:Push constant0
 Push constant0
 GetVariable
 Increment

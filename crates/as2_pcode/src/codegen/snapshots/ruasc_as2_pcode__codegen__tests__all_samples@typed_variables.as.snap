@@ -43,7 +43,7 @@ DefineFunction "forEach", 2, "arr", "callback" {
 Push constant8
 Push 0
 DefineLocal
-loc0002: Push constant8
+loc0002:Push constant8
 GetVariable
 Push constant9
 GetVariable
@@ -61,13 +61,13 @@ Push 1
 Push constant11
 CallFunction
 Pop
-loc0001: Push constant8
+loc0001:Push constant8
 Push constant8
 GetVariable
 Increment
 SetVariable
 Jump loc0002
-loc0000: 
+loc0000:
 }
 Pop
 Push constant12

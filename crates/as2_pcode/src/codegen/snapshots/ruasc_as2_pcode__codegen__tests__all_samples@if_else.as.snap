@@ -21,7 +21,7 @@ Push 0
 Push constant3
 CallFunction
 Pop
-loc0000: Push constant1
+loc0000:Push constant1
 GetVariable
 Push 0
 Greater
@@ -30,9 +30,9 @@ If loc0002
 Push constant4
 Trace
 Jump loc0001
-loc0002: Push constant5
+loc0002:Push constant5
 Trace
-loc0001: Push constant1
+loc0001:Push constant1
 GetVariable
 Push 0
 Less2
@@ -41,7 +41,7 @@ If loc0004
 Push constant5
 Trace
 Jump loc0003
-loc0004: Push constant1
+loc0004:Push constant1
 GetVariable
 Push 0
 Greater
@@ -50,7 +50,7 @@ If loc0006
 Push constant4
 Trace
 Jump loc0005
-loc0006: Push constant1
+loc0006:Push constant1
 GetVariable
 Push 0
 Equals2
@@ -59,25 +59,25 @@ If loc0008
 Push constant6
 Trace
 Jump loc0007
-loc0008: Push constant7
+loc0008:Push constant7
 Trace
-loc0007: loc0005: loc0003: Push constant0
+loc0007:loc0005:loc0003:Push constant0
 GetVariable
 Not
 If loc0009
-loc0009: Push constant0
+loc0009:Push constant0
 GetVariable
 Not
 If loc000b
 Jump loc000a
-loc000b: loc000a: Push constant0
+loc000b:loc000a:Push constant0
 GetVariable
 Not
 If loc000d
 Push constant8
 Trace
 Jump loc000c
-loc000d: loc000c: Push constant1
+loc000d:loc000c:Push constant1
 GetVariable
 Push 0
 Greater
@@ -92,7 +92,7 @@ If loc0010
 Push constant9
 Trace
 Jump loc000f
-loc0010: Push constant2
+loc0010:Push constant2
 GetVariable
 Push 0
 Less2
@@ -101,9 +101,9 @@ If loc0012
 Push constant10
 Trace
 Jump loc0011
-loc0012: Push constant11
+loc0012:Push constant11
 Trace
-loc0011: loc000f: loc000e: Push constant0
+loc0011:loc000f:loc000e:Push constant0
 GetVariable
 Not
 If loc0014
@@ -112,7 +112,7 @@ Push constant3
 CallFunction
 Pop
 Jump loc0013
-loc0014: Push constant12
+loc0014:Push constant12
 GetVariable
 Not
 If loc0016
@@ -121,11 +121,11 @@ Push constant13
 CallFunction
 Pop
 Jump loc0015
-loc0016: Push 0
+loc0016:Push 0
 Push constant14
 CallFunction
 Pop
-loc0015: loc0013: Push constant0
+loc0015:loc0013:Push constant0
 GetVariable
 Not
 If loc0017
@@ -133,7 +133,7 @@ Push 0
 Push constant15
 CallFunction
 Pop
-loc0017: Push 0
+loc0017:Push 0
 Push constant16
 CallFunction
 Pop
@@ -148,6 +148,6 @@ If loc001a
 Push constant2
 Trace
 Jump loc0019
-loc001a: Push constant17
+loc001a:Push constant17
 Trace
-loc0019: loc0018:
+loc0019:loc0018:
