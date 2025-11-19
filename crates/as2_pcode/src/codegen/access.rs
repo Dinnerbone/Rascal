@@ -40,7 +40,7 @@ impl VariableAccess {
     pub fn for_constant(builder: &mut CodeBuilder, constant: &Constant) -> Self {
         match constant {
             Constant::String(str) => {
-                let value = builder.constants_mut().add(str.to_owned());
+                let value = builder.constants_mut().add(str.to_string());
                 builder.action(Action::Push(vec![value]));
                 VariableAccess::Direct
             }

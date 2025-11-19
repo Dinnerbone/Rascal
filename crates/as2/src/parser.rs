@@ -1,4 +1,5 @@
 use crate::lexer::tokens::{QuoteKind, Token, TokenKind};
+use std::borrow::Cow;
 use winnow::combinator::{alt, repeat};
 use winnow::error::{ContextError, ErrMode, ParseError};
 use winnow::stream::TokenSlice;
@@ -24,7 +25,7 @@ pub fn parse_document<'i>(
     document::document.parse(TokenSlice::new(source))
 }
 
-fn string(i: &mut Tokens<'_>) -> ModalResult<String> {
+fn string<'i>(i: &mut Tokens<'i>) -> ModalResult<Cow<'i, str>> {
     skip_newlines(i)?;
     let (kind, raw) = alt((
         TokenKind::String(QuoteKind::Double).map(|t| (QuoteKind::Double, t.raw)),
@@ -32,7 +33,7 @@ fn string(i: &mut Tokens<'_>) -> ModalResult<String> {
     ))
     .parse_next(i)?;
     if !raw.contains("\\") {
-        return Ok(raw.to_string());
+        return Ok(Cow::Borrowed(raw));
     }
     let mut result = match kind {
         QuoteKind::Double => raw.replace("\\\"", "\""),
@@ -43,7 +44,7 @@ fn string(i: &mut Tokens<'_>) -> ModalResult<String> {
         .replace("\\r", "\r")
         .replace("\\t", "\t")
         .replace("\\\\", "\\");
-    Ok(result)
+    Ok(Cow::Owned(result))
 }
 
 fn identifier<'i>(i: &mut Tokens<'i>) -> ModalResult<&'i str> {

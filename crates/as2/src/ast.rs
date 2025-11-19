@@ -1,4 +1,5 @@
 use serde::Serialize;
+use std::borrow::Cow;
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
 pub enum Expr<'a> {
@@ -30,7 +31,7 @@ pub enum Expr<'a> {
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
 pub enum Constant<'a> {
-    String(String),
+    String(Cow<'a, str>),
     Identifier(&'a str),
     Float(f64),
     Integer(i32),

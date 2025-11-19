@@ -186,6 +186,7 @@ mod stmt_tests {
     use crate::ast::{Affix, BinaryOperator, Constant, Expr, UnaryOperator};
     use crate::lexer::tokens::{Keyword, QuoteKind, Token, TokenKind};
     use crate::parser::tests::build_tokens;
+    use std::borrow::Cow;
     use winnow::stream::TokenSlice;
 
     fn parse_stmt<'i>(tokens: &'i [Token<'i>]) -> ModalResult<Statement<'i>> {
@@ -219,7 +220,7 @@ mod stmt_tests {
             parse_stmt(&tokens),
             Ok(Statement::Declare(vec![Declaration {
                 name: "x".to_string(),
-                value: Some(Expr::Constant(Constant::String("hi".to_string())))
+                value: Some(Expr::Constant(Constant::String(Cow::Borrowed("hi"))))
             }]))
         );
     }

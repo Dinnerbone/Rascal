@@ -3,6 +3,7 @@ use crate::lexer::operator::Operator;
 use crate::lexer::tokens::{Keyword, TokenKind};
 use crate::parser::statement::function;
 use crate::parser::{Tokens, identifier, operator, skip_newlines, string};
+use std::borrow::Cow;
 use winnow::combinator::{alt, fail, opt, peek, separated};
 use winnow::error::{ContextError, ErrMode, StrContext};
 use winnow::error::{ParserError, StrContextValue};
@@ -323,7 +324,7 @@ fn expr_next<'i>(prior: Expr<'i>) -> impl Parser<Tokens<'i>, Expr<'i>, ErrMode<C
                 let name = identifier.parse_next(i)?;
                 expr_next(Expr::Field(
                     Box::new(prior),
-                    Box::new(Expr::Constant(Constant::String(name.to_owned()))),
+                    Box::new(Expr::Constant(Constant::String(Cow::Borrowed(name)))),
                 ))
                 .parse_next(i)
             }
@@ -393,7 +394,7 @@ mod tests {
         let tokens = build_tokens(&[(TokenKind::String(QuoteKind::Double), "hello")]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::Constant(Constant::String("hello".to_string())))
+            Ok(Expr::Constant(Constant::String(Cow::Borrowed("hello"))))
         );
     }
 
@@ -429,7 +430,7 @@ mod tests {
                 name: Box::new(Expr::Constant(Constant::Identifier("foo"))),
                 args: vec![
                     Expr::Constant(Constant::Identifier("a")),
-                    Expr::Constant(Constant::String("str".to_string()))
+                    Expr::Constant(Constant::String(Cow::Borrowed("str")))
                 ]
             })
         );
@@ -1298,7 +1299,7 @@ mod tests {
             parse_expr(&tokens),
             Ok(Expr::Field(
                 Box::new(Expr::Constant(Constant::Identifier("a"))),
-                Box::new(Expr::Constant(Constant::String("b".to_string())))
+                Box::new(Expr::Constant(Constant::String(Cow::Borrowed("b"))))
             ))
         )
     }
@@ -1494,7 +1495,7 @@ mod tests {
             parse_expr(&tokens),
             Ok(Expr::Delete(vec![Expr::Field(
                 Box::new(Expr::Constant(Constant::Identifier("a"))),
-                Box::new(Expr::Constant(Constant::String("a".to_string())))
+                Box::new(Expr::Constant(Constant::String(Cow::Borrowed("a"))))
             )]))
         )
     }
