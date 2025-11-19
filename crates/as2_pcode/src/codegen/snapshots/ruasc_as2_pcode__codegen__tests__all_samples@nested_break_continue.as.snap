@@ -1,0 +1,84 @@
+---
+source: crates/as2_pcode/src/codegen/tests.rs
+expression: builder
+input_file: samples/as2/nested_break_continue.as
+---
+Push "i"
+Push 0
+DefineLocal
+loc0002: Push "i"
+GetVariable
+Push 4
+Less2
+Not
+If loc0000
+Push "i = "
+Push "i"
+GetVariable
+Add2
+Trace
+Push "j"
+Push 0
+DefineLocal
+loc0005: Push "j"
+GetVariable
+Push 4
+Less2
+Not
+If loc0003
+Push "fn"
+DefineFunction "", 0 {
+Push "trying to break from fn"
+Trace
+}
+DefineLocal
+Push "j = "
+Push "j"
+GetVariable
+Add2
+Trace
+Push "j"
+GetVariable
+Push 1
+Equals2
+Not
+If loc0006
+Push 0
+Push "fn"
+CallFunction
+Pop
+Jump loc0004
+loc0006: Push "j"
+GetVariable
+Push 2
+Equals2
+Not
+If loc0007
+Jump loc0003
+loc0007: loc0004: Push "j"
+Push "j"
+GetVariable
+Increment
+SetVariable
+Jump loc0005
+loc0003: Push "i"
+GetVariable
+Push 1
+Equals2
+Not
+If loc0008
+Jump loc0001
+loc0008: Push "i"
+GetVariable
+Push 2
+Equals2
+Not
+If loc0009
+Jump loc0000
+loc0009: loc0001: Push "i"
+Push "i"
+GetVariable
+Increment
+SetVariable
+Jump loc0002
+loc0000:

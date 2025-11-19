@@ -1,0 +1,133 @@
+---
+source: crates/as2_pcode/src/parser/tests.rs
+expression: parsed
+input_file: samples/as2_pcode/nested_break_continue.pcode
+---
+Ok:
+  actions:
+    - ConstantPool:
+        - i
+        - "i = "
+        - j
+        - fn
+        - trying to break from fn
+        - "j = "
+    - Push:
+        - Constant: 0
+    - Push:
+        - Integer: 0
+    - DefineLocal
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Integer: 4
+    - Less2
+    - Not
+    - If: loc0149
+    - Push:
+        - Constant: 1
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 2
+    - Push:
+        - Integer: 0
+    - DefineLocal
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Push:
+        - Integer: 4
+    - Less2
+    - Not
+    - If: loc0103
+    - Push:
+        - Constant: 3
+    - DefineFunction:
+        name: ""
+        params: []
+        actions:
+          actions:
+            - Push:
+                - Constant: 4
+            - Trace
+          label_positions: {}
+    - DefineLocal
+    - Push:
+        - Constant: 5
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Push:
+        - Integer: 1
+    - Equals2
+    - Not
+    - If: loc00d7
+    - Push:
+        - Integer: 0
+    - Push:
+        - Constant: 3
+    - CallFunction
+    - Pop
+    - Jump: loc00f1
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Push:
+        - Integer: 2
+    - Equals2
+    - Not
+    - If: loc00f1
+    - Jump: loc0103
+    - Push:
+        - Constant: 2
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Increment
+    - SetVariable
+    - Jump: loc0074
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Integer: 1
+    - Equals2
+    - Not
+    - If: loc011d
+    - Jump: loc0137
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Integer: 2
+    - Equals2
+    - Not
+    - If: loc0137
+    - Jump: loc0149
+    - Push:
+        - Constant: 0
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Increment
+    - SetVariable
+    - Jump: loc0040
+  label_positions:
+    loc0040: 4
+    loc0074: 18
+    loc00d7: 43
+    loc00f1: 50
+    loc0103: 56
+    loc011d: 63
+    loc0137: 70
+    loc0149: 76

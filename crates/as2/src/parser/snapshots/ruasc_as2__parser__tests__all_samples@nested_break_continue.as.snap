@@ -1,0 +1,147 @@
+---
+source: crates/as2/src/parser/tests.rs
+expression: parsed
+input_file: samples/as2/nested_break_continue.as
+---
+Ok:
+  statements:
+    - ForIn:
+        condition:
+          Classic:
+            initialize:
+              Declare:
+                - name: i
+                  value:
+                    Constant:
+                      Integer: 0
+            condition:
+              - BinaryOperator:
+                  - LessThan
+                  - Constant:
+                      Identifier: i
+                  - Constant:
+                      Integer: 4
+            update:
+              - UnaryOperator:
+                  - Increment: Postfix
+                  - Constant:
+                      Identifier: i
+        body:
+          Block:
+            - Expr:
+                Call:
+                  name:
+                    Constant:
+                      Identifier: trace
+                  args:
+                    - BinaryOperator:
+                        - Add
+                        - Constant:
+                            String: "i = "
+                        - Constant:
+                            Identifier: i
+            - ForIn:
+                condition:
+                  Classic:
+                    initialize:
+                      Declare:
+                        - name: j
+                          value:
+                            Constant:
+                              Integer: 0
+                    condition:
+                      - BinaryOperator:
+                          - LessThan
+                          - Constant:
+                              Identifier: j
+                          - Constant:
+                              Integer: 4
+                    update:
+                      - UnaryOperator:
+                          - Increment: Postfix
+                          - Constant:
+                              Identifier: j
+                body:
+                  Block:
+                    - Declare:
+                        - name: fn
+                          value:
+                            Function:
+                              name: ~
+                              args: []
+                              body:
+                                - Expr:
+                                    Call:
+                                      name:
+                                        Constant:
+                                          Identifier: trace
+                                      args:
+                                        - Constant:
+                                            String: trying to break from fn
+                                - Break
+                    - Expr:
+                        Call:
+                          name:
+                            Constant:
+                              Identifier: trace
+                          args:
+                            - BinaryOperator:
+                                - Add
+                                - Constant:
+                                    String: "j = "
+                                - Constant:
+                                    Identifier: j
+                    - If:
+                        condition:
+                          BinaryOperator:
+                            - Equal
+                            - Constant:
+                                Identifier: j
+                            - Constant:
+                                Integer: 1
+                        "yes":
+                          Block:
+                            - Expr:
+                                Call:
+                                  name:
+                                    Constant:
+                                      Identifier: fn
+                                  args: []
+                            - Continue
+                        "no": ~
+                    - If:
+                        condition:
+                          BinaryOperator:
+                            - Equal
+                            - Constant:
+                                Identifier: j
+                            - Constant:
+                                Integer: 2
+                        "yes":
+                          Block:
+                            - Break
+                        "no": ~
+            - If:
+                condition:
+                  BinaryOperator:
+                    - Equal
+                    - Constant:
+                        Identifier: i
+                    - Constant:
+                        Integer: 1
+                "yes":
+                  Block:
+                    - Continue
+                "no": ~
+            - If:
+                condition:
+                  BinaryOperator:
+                    - Equal
+                    - Constant:
+                        Identifier: i
+                    - Constant:
+                        Integer: 2
+                "yes":
+                  Block:
+                    - Break
+                "no": ~

@@ -1,0 +1,85 @@
+---
+source: crates/as2_pcode/src/parser/tests.rs
+expression: "parsed.unwrap_or_else(|_| Actions::empty())"
+input_file: samples/as2_pcode/nested_break_continue.pcode
+---
+ConstantPool "i", "i = ", "j", "fn", "trying to break from fn", "j = "
+Push constant0
+Push 0
+DefineLocal
+loc0040: Push constant0
+GetVariable
+Push 4
+Less2
+Not
+If loc0149
+Push constant1
+Push constant0
+GetVariable
+Add2
+Trace
+Push constant2
+Push 0
+DefineLocal
+loc0074: Push constant2
+GetVariable
+Push 4
+Less2
+Not
+If loc0103
+Push constant3
+DefineFunction "", 0 {
+Push constant4
+Trace
+}
+DefineLocal
+Push constant5
+Push constant2
+GetVariable
+Add2
+Trace
+Push constant2
+GetVariable
+Push 1
+Equals2
+Not
+If loc00d7
+Push 0
+Push constant3
+CallFunction
+Pop
+Jump loc00f1
+loc00d7: Push constant2
+GetVariable
+Push 2
+Equals2
+Not
+If loc00f1
+Jump loc0103
+loc00f1: Push constant2
+Push constant2
+GetVariable
+Increment
+SetVariable
+Jump loc0074
+loc0103: Push constant0
+GetVariable
+Push 1
+Equals2
+Not
+If loc011d
+Jump loc0137
+loc011d: Push constant0
+GetVariable
+Push 2
+Equals2
+Not
+If loc0137
+Jump loc0149
+loc0137: Push constant0
+Push constant0
+GetVariable
+Increment
+SetVariable
+Jump loc0040
+loc0149:
