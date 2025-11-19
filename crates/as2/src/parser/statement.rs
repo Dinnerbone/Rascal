@@ -126,7 +126,7 @@ fn for_loop<'i>(i: &mut Tokens<'i>) -> ModalResult<Statement<'i>> {
     .parse_next(i)?
     {
         ForCondition::Enumerate {
-            variable: name.to_string(),
+            variable: name,
             declare: var.is_some(),
             object: expression.parse_next(i)?,
         }
@@ -376,7 +376,7 @@ mod stmt_tests {
             parse_stmt(&tokens),
             Ok(Statement::ForIn {
                 condition: ForCondition::Enumerate {
-                    variable: "a".to_string(),
+                    variable: "a",
                     declare: false,
                     object: Expr::Constant(Constant::Identifier("b"))
                 },

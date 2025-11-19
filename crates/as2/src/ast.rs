@@ -112,7 +112,7 @@ pub enum Statement<'a> {
 #[derive(Debug, Clone, Serialize, PartialEq)]
 pub enum ForCondition<'a> {
     Enumerate {
-        variable: String,
+        variable: &'a str,
         declare: bool,
         object: Expr<'a>,
     },
