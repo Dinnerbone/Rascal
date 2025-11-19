@@ -128,7 +128,7 @@ pub enum ForCondition<'a> {
 #[derive(Debug, Clone, Serialize, PartialEq)]
 pub struct Function<'a> {
     pub name: Option<&'a str>,
-    pub args: Vec<String>,
+    pub args: Vec<&'a str>,
     pub body: Vec<Statement<'a>>,
 }
 

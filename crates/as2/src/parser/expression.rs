@@ -1552,7 +1552,7 @@ mod tests {
             parse_expr(&tokens),
             Ok(Expr::Function(Function {
                 name: Some("func"),
-                args: vec!["a".to_string(), "b".to_string()],
+                args: vec!["a", "b"],
                 body: vec![Statement::Expr(Expr::Call {
                     name: Box::new(Expr::Constant(Constant::Identifier("trace"))),
                     args: vec![Expr::Constant(Constant::Identifier("a"))],

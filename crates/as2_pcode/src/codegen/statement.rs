@@ -247,7 +247,7 @@ fn gen_function(builder: &mut CodeBuilder, function: &Function) {
     let actions = fun_builder.into_actions();
     builder.action(Action::DefineFunction {
         name: function.name.map(ToOwned::to_owned).unwrap_or_default(),
-        params: function.args.clone(),
+        params: function.args.iter().map(|s| s.to_string()).collect(),
         actions,
     })
 }

@@ -163,7 +163,7 @@ pub(crate) fn function<'i>(i: &mut Tokens<'i>) -> ModalResult<Function<'i>> {
     TokenKind::OpenParen.parse_next(i)?;
     let args = separated(
         0..,
-        (identifier, opt(type_name)).map(|(i, _)| i.to_owned()),
+        (identifier, opt(type_name)).map(|(i, _)| i),
         TokenKind::Comma,
     )
     .parse_next(i)?;
