@@ -18,9 +18,9 @@ pub(crate) type Tokens<'i> = TokenSlice<'i, Token<'i>>;
 use crate::ast::Document;
 pub use crate::parser::error::ActionScriptError;
 
-pub fn parse_document<'a>(
-    source: &'a [Token],
-) -> winnow::Result<Document, ParseError<Tokens<'a>, ContextError>> {
+pub fn parse_document<'i>(
+    source: &'i [Token<'i>],
+) -> winnow::Result<Document<'i>, ParseError<Tokens<'i>, ContextError>> {
     document::document.parse(TokenSlice::new(source))
 }
 
@@ -46,12 +46,12 @@ fn string(i: &mut Tokens<'_>) -> ModalResult<String> {
     Ok(result)
 }
 
-fn identifier(i: &mut Tokens<'_>) -> ModalResult<String> {
+fn identifier<'i>(i: &mut Tokens<'i>) -> ModalResult<String> {
     skip_newlines(i)?;
     Ok(TokenKind::Identifier.parse_next(i)?.raw.to_string())
 }
 
-pub(crate) fn ignore_newlines<'i, O, P>(
+pub(crate) fn ignore_newlines<'i: 'i, O, P>(
     mut inner: P,
 ) -> impl Parser<Tokens<'i>, O, ErrMode<ContextError>>
 where

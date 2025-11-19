@@ -9,7 +9,7 @@ use winnow::error::{ParserError, StrContextValue};
 use winnow::token::any;
 use winnow::{ModalResult, Parser};
 
-impl Expr {
+impl Expr<'_> {
     pub(crate) fn rewrite_leftmost_expr<R>(&mut self, rewriter: R)
     where
         R: FnOnce(Expr) -> Expr,
@@ -32,13 +32,13 @@ impl Expr {
     }
 }
 
-impl Expr {
+impl Expr<'_> {
     pub(crate) fn can_postfix(&self) -> bool {
         matches!(self, Expr::Constant(_))
     }
 }
 
-pub(crate) fn expression(i: &mut Tokens<'_>) -> ModalResult<Expr> {
+pub(crate) fn expression<'i>(i: &mut Tokens<'i>) -> ModalResult<Expr<'i>> {
     skip_newlines(i)?;
     let token = peek(any).parse_next(i)?;
     match token.kind {
@@ -203,16 +203,16 @@ pub(crate) fn expression(i: &mut Tokens<'_>) -> ModalResult<Expr> {
     }
 }
 
-fn object_definition(i: &mut Tokens<'_>) -> ModalResult<Vec<(String, Expr)>> {
+fn object_definition<'i>(i: &mut Tokens<'i>) -> ModalResult<Vec<(String, Expr<'i>)>> {
     separated(
         0..,
-        (identifier, TokenKind::Colon, expression).map(|(name, _, expr)| (name, expr)),
+        (identifier, TokenKind::Colon, expression).map(|(name, _, expr)| (name.to_owned(), expr)),
         TokenKind::Comma,
     )
     .parse_next(i)
 }
 
-fn array_definition(i: &mut Tokens<'_>) -> ModalResult<Vec<Expr>> {
+fn array_definition<'i>(i: &mut Tokens<'i>) -> ModalResult<Vec<Expr<'i>>> {
     separated(0.., expression, TokenKind::Comma).parse_next(i)
 }
 
@@ -226,7 +226,7 @@ pub(crate) fn type_name(i: &mut Tokens<'_>) -> ModalResult<()> {
     Ok(())
 }
 
-fn constant(i: &mut Tokens<'_>) -> ModalResult<Constant> {
+fn constant<'i>(i: &mut Tokens<'i>) -> ModalResult<Constant<'i>> {
     skip_newlines(i)?;
     let token = peek(any).parse_next(i)?;
     match token.kind {
@@ -275,7 +275,7 @@ fn integer(i: &mut Tokens<'_>) -> ModalResult<i32> {
     .map_err(|_| ParserError::from_input(&raw)))?
 }
 
-fn expr_next<'i>(prior: Expr) -> impl Parser<Tokens<'i>, Expr, ErrMode<ContextError>> {
+fn expr_next<'i>(prior: Expr<'i>) -> impl Parser<Tokens<'i>, Expr<'i>, ErrMode<ContextError>> {
     move |i: &mut Tokens<'i>| {
         let prior = prior.clone();
         skip_newlines(i)?;
@@ -323,7 +323,7 @@ fn expr_next<'i>(prior: Expr) -> impl Parser<Tokens<'i>, Expr, ErrMode<ContextEr
                 let name = identifier.parse_next(i)?;
                 expr_next(Expr::Field(
                     Box::new(prior),
-                    Box::new(Expr::Constant(Constant::String(name))),
+                    Box::new(Expr::Constant(Constant::String(name.to_owned()))),
                 ))
                 .parse_next(i)
             }
@@ -362,7 +362,7 @@ fn expr_next<'i>(prior: Expr) -> impl Parser<Tokens<'i>, Expr, ErrMode<ContextEr
     }
 }
 
-pub(crate) fn expr_list(i: &mut Tokens<'_>) -> ModalResult<Vec<Expr>> {
+pub(crate) fn expr_list<'i>(i: &mut Tokens<'i>) -> ModalResult<Vec<Expr<'i>>> {
     separated(0.., expression, TokenKind::Comma).parse_next(i)
 }
 
@@ -375,7 +375,7 @@ mod tests {
     use crate::parser::tests::build_tokens;
     use winnow::stream::TokenSlice;
 
-    fn parse_expr(tokens: &[Token<'_>]) -> ModalResult<Expr> {
+    fn parse_expr<'i>(tokens: &'i [Token<'i>]) -> ModalResult<Expr<'i>> {
         expression(&mut TokenSlice::new(tokens))
     }
 

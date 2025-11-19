@@ -4,17 +4,17 @@ use annotate_snippets::{AnnotationKind, Renderer};
 use winnow::error::{ContextError, ParseError};
 
 #[derive(Debug)]
-pub struct ActionScriptError<'a> {
-    filename: &'a str,
-    source: &'a str,
-    error: ParseError<Tokens<'a>, ContextError>,
+pub struct ActionScriptError<'i> {
+    filename: &'i str,
+    source: &'i str,
+    error: ParseError<Tokens<'i>, ContextError>,
 }
 
-impl<'a> ActionScriptError<'a> {
+impl<'i> ActionScriptError<'i> {
     pub(crate) fn from_parse(
-        filename: &'a str,
-        source: &'a str,
-        error: ParseError<Tokens<'a>, ContextError>,
+        filename: &'i str,
+        source: &'i str,
+        error: ParseError<Tokens<'i>, ContextError>,
     ) -> Self {
         Self {
             filename,

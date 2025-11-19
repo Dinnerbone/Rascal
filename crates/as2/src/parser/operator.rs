@@ -70,8 +70,12 @@ impl BinaryOperator {
     }
 }
 
-impl Expr {
-    pub(crate) fn for_binary_operator(op: BinaryOperator, a: Box<Expr>, b: Box<Expr>) -> Expr {
+impl<'i> Expr<'i> {
+    pub(crate) fn for_binary_operator(
+        op: BinaryOperator,
+        a: Box<Expr<'i>>,
+        b: Box<Expr<'i>>,
+    ) -> Expr<'i> {
         match *b {
             Expr::Ternary { condition, yes, no }
                 if op.precedence() != OperatorPrecedence::Assignment =>
@@ -90,8 +94,8 @@ impl Expr {
     }
 }
 
-impl Expr {
-    pub(crate) fn for_unary_operator(op: UnaryOperator, expr: Box<Expr>) -> Expr {
+impl<'i> Expr<'i> {
+    pub(crate) fn for_unary_operator(op: UnaryOperator, expr: Box<Expr<'i>>) -> Expr<'i> {
         match *expr {
             Expr::BinaryOperator(binary_op, a, b) => {
                 Expr::BinaryOperator(binary_op, Box::new(Expr::for_unary_operator(op, a)), b)

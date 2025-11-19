@@ -9,7 +9,7 @@ use winnow::stream::Stream;
 use winnow::token::{any, take_while};
 use winnow::{ModalResult, Parser};
 
-pub(crate) fn statement(i: &mut Tokens<'_>) -> ModalResult<Statement> {
+pub(crate) fn statement<'i>(i: &mut Tokens<'i>) -> ModalResult<Statement<'i>> {
     let checkpoint = i.checkpoint();
     skip_newlines(i)?;
     let token = any.parse_next(i)?;
@@ -53,7 +53,7 @@ pub(crate) fn statement(i: &mut Tokens<'_>) -> ModalResult<Statement> {
 
 pub(crate) fn statement_list<'i>(
     is_block: bool,
-) -> impl Parser<Tokens<'i>, Vec<Statement>, ErrMode<ContextError>> {
+) -> impl Parser<Tokens<'i>, Vec<Statement<'i>>, ErrMode<ContextError>> {
     move |i: &mut Tokens<'i>| {
         let mut result = vec![];
         while let Ok(peek) = peek(any::<_, ErrMode<ContextError>>).parse_next(i) {
@@ -74,14 +74,14 @@ pub(crate) fn statement_list<'i>(
     }
 }
 
-fn declaration_list(i: &mut Tokens<'_>) -> ModalResult<Statement> {
+fn declaration_list<'i>(i: &mut Tokens<'i>) -> ModalResult<Statement<'i>> {
     skip_newlines(i)?;
     let declarations = separated(0.., declaration, TokenKind::Comma).parse_next(i)?;
 
     Ok(Statement::Declare(declarations))
 }
 
-fn declaration(i: &mut Tokens<'_>) -> ModalResult<Declaration> {
+fn declaration<'i>(i: &mut Tokens<'i>) -> ModalResult<Declaration<'i>> {
     let name = cut_err(identifier)
         .context(StrContext::Label("variable name"))
         .parse_next(i)?;
@@ -91,10 +91,13 @@ fn declaration(i: &mut Tokens<'_>) -> ModalResult<Declaration> {
         .is_some();
     let value = cond(equals, expression).parse_next(i)?;
 
-    Ok(Declaration { name, value })
+    Ok(Declaration {
+        name: name.to_owned(),
+        value,
+    })
 }
 
-fn if_else(i: &mut Tokens<'_>) -> ModalResult<Statement> {
+fn if_else<'i>(i: &mut Tokens<'i>) -> ModalResult<Statement<'i>> {
     TokenKind::OpenParen.parse_next(i)?;
     let condition = expression.parse_next(i)?;
     TokenKind::CloseParen.parse_next(i)?;
@@ -113,7 +116,7 @@ fn if_else(i: &mut Tokens<'_>) -> ModalResult<Statement> {
     Ok(Statement::If { condition, yes, no })
 }
 
-fn for_loop(i: &mut Tokens<'_>) -> ModalResult<Statement> {
+fn for_loop<'i>(i: &mut Tokens<'i>) -> ModalResult<Statement<'i>> {
     TokenKind::OpenParen.parse_next(i)?;
     let condition = if let Some((var, name, _)) = opt((
         opt(TokenKind::Keyword(Keyword::Var)),
@@ -155,12 +158,12 @@ fn for_loop(i: &mut Tokens<'_>) -> ModalResult<Statement> {
     })
 }
 
-pub(crate) fn function(i: &mut Tokens<'_>) -> ModalResult<Function> {
+pub(crate) fn function<'i>(i: &mut Tokens<'i>) -> ModalResult<Function<'i>> {
     let name = opt(identifier).parse_next(i)?;
     TokenKind::OpenParen.parse_next(i)?;
     let args = separated(
         0..,
-        (identifier, opt(type_name)).map(|(i, _)| i),
+        (identifier, opt(type_name)).map(|(i, _)| i.to_owned()),
         TokenKind::Comma,
     )
     .parse_next(i)?;
@@ -170,7 +173,11 @@ pub(crate) fn function(i: &mut Tokens<'_>) -> ModalResult<Function> {
     let body = statement_list(true).parse_next(i)?;
     TokenKind::CloseBrace.parse_next(i)?;
 
-    Ok(Function { name, args, body })
+    Ok(Function {
+        name: name.map(|n| n.to_owned()),
+        args,
+        body,
+    })
 }
 
 #[cfg(test)]
@@ -181,7 +188,7 @@ mod stmt_tests {
     use crate::parser::tests::build_tokens;
     use winnow::stream::TokenSlice;
 
-    fn parse_stmt(tokens: &[Token<'_>]) -> ModalResult<Statement> {
+    fn parse_stmt<'i>(tokens: &'i [Token<'i>]) -> ModalResult<Statement<'i>> {
         statement(&mut TokenSlice::new(tokens))
     }
 

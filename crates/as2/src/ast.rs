@@ -1,39 +1,41 @@
 use serde::Serialize;
+use std::marker::PhantomData;
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
-pub enum Expr {
-    Constant(Constant),
+pub enum Expr<'a> {
+    Constant(Constant<'a>),
     Call {
-        name: Box<Expr>,
-        args: Vec<Expr>,
+        name: Box<Expr<'a>>,
+        args: Vec<Expr<'a>>,
     },
     New {
-        name: Box<Expr>,
-        args: Vec<Expr>,
+        name: Box<Expr<'a>>,
+        args: Vec<Expr<'a>>,
     },
-    BinaryOperator(BinaryOperator, Box<Expr>, Box<Expr>),
-    UnaryOperator(UnaryOperator, Box<Expr>),
-    Parenthesis(Box<Expr>),
+    BinaryOperator(BinaryOperator, Box<Expr<'a>>, Box<Expr<'a>>),
+    UnaryOperator(UnaryOperator, Box<Expr<'a>>),
+    Parenthesis(Box<Expr<'a>>),
     Ternary {
-        condition: Box<Expr>,
-        yes: Box<Expr>,
-        no: Box<Expr>,
+        condition: Box<Expr<'a>>,
+        yes: Box<Expr<'a>>,
+        no: Box<Expr<'a>>,
     },
-    InitObject(Vec<(String, Expr)>),
-    InitArray(Vec<Expr>),
-    Field(Box<Expr>, Box<Expr>),
-    TypeOf(Vec<Expr>),
-    Delete(Vec<Expr>),
-    Void(Vec<Expr>),
-    Function(Function),
+    InitObject(Vec<(String, Expr<'a>)>),
+    InitArray(Vec<Expr<'a>>),
+    Field(Box<Expr<'a>>, Box<Expr<'a>>),
+    TypeOf(Vec<Expr<'a>>),
+    Delete(Vec<Expr<'a>>),
+    Void(Vec<Expr<'a>>),
+    Function(Function<'a>),
 }
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
-pub enum Constant {
+pub enum Constant<'a> {
     String(String),
     Identifier(String),
     Float(f64),
     Integer(i32),
+    Phantom(&'a PhantomData<()>),
 }
 
 #[derive(Debug, Clone, Copy, Serialize, PartialEq)]
@@ -90,54 +92,54 @@ pub enum Affix {
 }
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
-pub enum Statement {
-    Declare(Vec<Declaration>),
-    Return(Vec<Expr>),
-    Expr(Expr),
-    Block(Vec<Statement>),
+pub enum Statement<'a> {
+    Declare(Vec<Declaration<'a>>),
+    Return(Vec<Expr<'a>>),
+    Expr(Expr<'a>),
+    Block(Vec<Statement<'a>>),
     ForIn {
-        condition: ForCondition,
-        body: Box<Statement>,
+        condition: ForCondition<'a>,
+        body: Box<Statement<'a>>,
     },
     If {
-        condition: Expr,
-        yes: Box<Statement>,
-        no: Option<Box<Statement>>,
+        condition: Expr<'a>,
+        yes: Box<Statement<'a>>,
+        no: Option<Box<Statement<'a>>>,
     },
     Break,
     Continue,
 }
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
-pub enum ForCondition {
+pub enum ForCondition<'a> {
     Enumerate {
         variable: String,
         declare: bool,
-        object: Expr,
+        object: Expr<'a>,
     },
     Classic {
-        initialize: Option<Box<Statement>>,
+        initialize: Option<Box<Statement<'a>>>,
         // This is technically incorrect, we treat `a++, b++` as two different expressions, but they should be one (and we'd have a `Next(a, b)` expression)
         // Unfortunately that seems difficult to implement _correctly_, so this is a good stopgap (did anyone even use `,` in regular code, outside for loops?)
-        condition: Vec<Expr>,
-        update: Vec<Expr>,
+        condition: Vec<Expr<'a>>,
+        update: Vec<Expr<'a>>,
     },
 }
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
-pub struct Function {
+pub struct Function<'a> {
     pub name: Option<String>,
     pub args: Vec<String>,
-    pub body: Vec<Statement>,
+    pub body: Vec<Statement<'a>>,
 }
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
-pub struct Declaration {
+pub struct Declaration<'a> {
     pub name: String,
-    pub value: Option<Expr>,
+    pub value: Option<Expr<'a>>,
 }
 
 #[derive(Debug, Serialize)]
-pub struct Document {
-    pub statements: Vec<Statement>,
+pub struct Document<'src> {
+    pub statements: Vec<Statement<'src>>,
 }

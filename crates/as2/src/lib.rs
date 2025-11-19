@@ -25,7 +25,7 @@ impl<'a> ActionScript<'a> {
         }
     }
 
-    pub fn to_ast(&'a self) -> Result<Document, ActionScriptError<'a>> {
+    pub fn to_ast(&'a self) -> Result<Document<'a>, ActionScriptError<'a>> {
         parser::parse_document(&self.tokens)
             .map_err(|e| ActionScriptError::from_parse(self.filename, self.source, e))
     }

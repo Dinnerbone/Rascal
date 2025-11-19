@@ -3,7 +3,7 @@ use crate::lexer::tokens::{Token, TokenKind};
 use crate::parser::parse_document;
 use crate::source::Span;
 
-pub(crate) fn build_tokens<'a>(spec: &'a [(TokenKind, &'a str)]) -> Vec<Token<'a>> {
+pub(crate) fn build_tokens<'i>(spec: &'i [(TokenKind, &'i str)]) -> Vec<Token<'i>> {
     let mut pos = 0usize;
     spec.iter()
         .map(|(k, raw)| {
