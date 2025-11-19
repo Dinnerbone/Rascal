@@ -46,9 +46,9 @@ fn string(i: &mut Tokens<'_>) -> ModalResult<String> {
     Ok(result)
 }
 
-fn identifier<'i>(i: &mut Tokens<'i>) -> ModalResult<String> {
+fn identifier<'i>(i: &mut Tokens<'i>) -> ModalResult<&'i str> {
     skip_newlines(i)?;
-    Ok(TokenKind::Identifier.parse_next(i)?.raw.to_string())
+    Ok(TokenKind::Identifier.parse_next(i)?.raw)
 }
 
 pub(crate) fn ignore_newlines<'i: 'i, O, P>(

@@ -53,7 +53,6 @@ impl VariableAccess {
                 builder.action(Action::Push(vec![PushValue::Integer(*value)]));
                 VariableAccess::Direct
             }
-            Constant::Phantom(_) => unreachable!(),
         }
     }
 

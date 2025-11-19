@@ -240,8 +240,8 @@ mod stmt_tests {
             Ok(Statement::Declare(vec![Declaration {
                 name: "x".to_string(),
                 value: Some(Expr::Call {
-                    name: Box::new(Expr::Constant(Constant::Identifier("foo".to_string()))),
-                    args: vec![Expr::Constant(Constant::Identifier("a".to_string()))]
+                    name: Box::new(Expr::Constant(Constant::Identifier("foo"))),
+                    args: vec![Expr::Constant(Constant::Identifier("a"))]
                 })
             }]))
         );
@@ -253,9 +253,7 @@ mod stmt_tests {
         let got = parse_stmt(&tokens);
         assert_eq!(
             got,
-            Ok(Statement::Expr(Expr::Constant(Constant::Identifier(
-                "foo".to_string()
-            ))))
+            Ok(Statement::Expr(Expr::Constant(Constant::Identifier("foo"))))
         );
     }
 
@@ -264,9 +262,7 @@ mod stmt_tests {
         let tokens = build_tokens(&[(TokenKind::Newline, "\n"), (TokenKind::Identifier, "bar")]);
         assert_eq!(
             parse_stmt(&tokens),
-            Ok(Statement::Expr(Expr::Constant(Constant::Identifier(
-                "bar".to_string()
-            ))))
+            Ok(Statement::Expr(Expr::Constant(Constant::Identifier("bar"))))
         );
     }
 
@@ -285,7 +281,7 @@ mod stmt_tests {
         assert_eq!(
             parse_stmt(&tokens),
             Ok(Statement::Return(vec![Expr::Constant(
-                Constant::Identifier("a".to_string())
+                Constant::Identifier("a")
             )]))
         )
     }
@@ -303,8 +299,8 @@ mod stmt_tests {
         assert_eq!(
             parse_stmt(&tokens),
             Ok(Statement::Return(vec![
-                Expr::Constant(Constant::Identifier("a".to_string())),
-                Expr::Constant(Constant::Identifier("b".to_string()))
+                Expr::Constant(Constant::Identifier("a")),
+                Expr::Constant(Constant::Identifier("b"))
             ]))
         )
     }
@@ -339,21 +335,21 @@ mod stmt_tests {
                 condition: ForCondition::Classic {
                     initialize: Some(Box::new(Statement::Declare(vec![Declaration {
                         name: "i".to_string(),
-                        value: Some(Expr::Constant(Constant::Identifier("0".to_string())))
+                        value: Some(Expr::Constant(Constant::Identifier("0")))
                     }]))),
                     condition: vec![Expr::BinaryOperator(
                         BinaryOperator::LessThan,
-                        Box::new(Expr::Constant(Constant::Identifier("i".to_string()))),
-                        Box::new(Expr::Constant(Constant::Identifier("10".to_string())))
+                        Box::new(Expr::Constant(Constant::Identifier("i"))),
+                        Box::new(Expr::Constant(Constant::Identifier("10")))
                     )],
                     update: vec![Expr::UnaryOperator(
                         UnaryOperator::Increment(Affix::Postfix),
-                        Box::new(Expr::Constant(Constant::Identifier("i".to_string())))
+                        Box::new(Expr::Constant(Constant::Identifier("i")))
                     )]
                 },
                 body: Box::new(Statement::Block(vec![Statement::Expr(Expr::Call {
-                    name: Box::new(Expr::Constant(Constant::Identifier("trace".to_string()))),
-                    args: vec![Expr::Constant(Constant::Identifier("i".to_string()))]
+                    name: Box::new(Expr::Constant(Constant::Identifier("trace"))),
+                    args: vec![Expr::Constant(Constant::Identifier("i"))]
                 })]))
             })
         )
@@ -381,11 +377,11 @@ mod stmt_tests {
                 condition: ForCondition::Enumerate {
                     variable: "a".to_string(),
                     declare: false,
-                    object: Expr::Constant(Constant::Identifier("b".to_string()))
+                    object: Expr::Constant(Constant::Identifier("b"))
                 },
                 body: Box::new(Statement::Block(vec![Statement::Expr(Expr::Call {
-                    name: Box::new(Expr::Constant(Constant::Identifier("trace".to_string()))),
-                    args: vec![Expr::Constant(Constant::Identifier("a".to_string()))]
+                    name: Box::new(Expr::Constant(Constant::Identifier("trace"))),
+                    args: vec![Expr::Constant(Constant::Identifier("a"))]
                 })]))
             })
         )
@@ -408,10 +404,10 @@ mod stmt_tests {
         assert_eq!(
             parse_stmt(&tokens),
             Ok(Statement::If {
-                condition: Expr::Constant(Constant::Identifier("a".to_string())),
+                condition: Expr::Constant(Constant::Identifier("a")),
                 yes: Box::new(Statement::Block(vec![Statement::Expr(Expr::Call {
-                    name: Box::new(Expr::Constant(Constant::Identifier("trace".to_string()))),
-                    args: vec![Expr::Constant(Constant::Identifier("a".to_string()))]
+                    name: Box::new(Expr::Constant(Constant::Identifier("trace"))),
+                    args: vec![Expr::Constant(Constant::Identifier("a"))]
                 })])),
                 no: None,
             })
@@ -438,14 +434,14 @@ mod stmt_tests {
         assert_eq!(
             parse_stmt(&tokens),
             Ok(Statement::If {
-                condition: Expr::Constant(Constant::Identifier("a".to_string())),
+                condition: Expr::Constant(Constant::Identifier("a")),
                 yes: Box::new(Statement::Expr(Expr::Call {
-                    name: Box::new(Expr::Constant(Constant::Identifier("trace".to_string()))),
-                    args: vec![Expr::Constant(Constant::Identifier("a".to_string()))]
+                    name: Box::new(Expr::Constant(Constant::Identifier("trace"))),
+                    args: vec![Expr::Constant(Constant::Identifier("a"))]
                 })),
                 no: Some(Box::new(Statement::Expr(Expr::Call {
-                    name: Box::new(Expr::Constant(Constant::Identifier("trace".to_string()))),
-                    args: vec![Expr::Constant(Constant::Identifier("b".to_string()))]
+                    name: Box::new(Expr::Constant(Constant::Identifier("trace"))),
+                    args: vec![Expr::Constant(Constant::Identifier("b"))]
                 })))
             })
         )
