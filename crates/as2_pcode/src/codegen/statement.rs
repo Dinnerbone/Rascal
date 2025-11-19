@@ -88,7 +88,7 @@ fn gen_for_loop(builder: &mut CodeBuilder, condition: &ForCondition, body: &Stat
             builder.action(Action::If(end_label.clone()));
 
             if *declare {
-                let value = builder.constants_mut().add(variable.to_owned());
+                let value = builder.constants_mut().add(variable);
                 builder.action(Action::Push(vec![value]));
                 builder.action(Action::Push(vec![PushValue::Register(0)]));
                 builder.action(Action::DefineLocal);
@@ -184,7 +184,7 @@ fn gen_ternary(builder: &mut CodeBuilder, condition: &Expr, yes: &Expr, no: &Exp
 
 fn gen_declarations(builder: &mut CodeBuilder, declarations: &[Declaration]) {
     for declaration in declarations {
-        let value = builder.constants_mut().add(declaration.name.to_owned());
+        let value = builder.constants_mut().add(&declaration.name);
         builder.action(Action::Push(vec![value]));
         if let Some(value) = &declaration.value {
             gen_expr(builder, value, false);
@@ -255,7 +255,7 @@ fn gen_function(builder: &mut CodeBuilder, function: &Function) {
 fn gen_init_object(builder: &mut CodeBuilder, values: &[(String, Expr)]) {
     let num_fields = values.len() as i32;
     for (key, value) in values.iter().rev() {
-        let push_value = builder.constants_mut().add(key.to_owned());
+        let push_value = builder.constants_mut().add(key);
         builder.action(Action::Push(vec![push_value]));
         gen_expr(builder, value, false);
     }

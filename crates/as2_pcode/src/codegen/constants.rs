@@ -13,17 +13,17 @@ impl Constants {
         Self::default()
     }
 
-    pub fn add(&mut self, string: String) -> PushValue {
-        if let Some(index) = self.lookup.get(&string) {
+    pub fn add(&mut self, string: &str) -> PushValue {
+        if let Some(index) = self.lookup.get(string) {
             return PushValue::Constant(*index);
         }
         if self.strings.len() < u16::MAX as usize {
             let index = self.strings.len() as u16;
-            self.strings.push(string.clone());
-            self.lookup.insert(string, index);
+            self.strings.push(string.to_owned());
+            self.lookup.insert(string.to_owned(), index);
             return PushValue::Constant(index);
         }
-        PushValue::String(string)
+        PushValue::String(string.to_owned())
     }
 }
 
@@ -43,25 +43,22 @@ mod tests {
     #[test]
     fn test_add_single() {
         let mut constants = Constants::empty();
-        assert_eq!(constants.add("foo".to_owned()), PushValue::Constant(0));
+        assert_eq!(constants.add("foo"), PushValue::Constant(0));
     }
 
     #[test]
     fn test_duplicate_is_not_added() {
         let mut constants = Constants::empty();
-        assert_eq!(constants.add("foo".to_owned()), PushValue::Constant(0));
-        assert_eq!(constants.add("foo".to_owned()), PushValue::Constant(0));
+        assert_eq!(constants.add("foo"), PushValue::Constant(0));
+        assert_eq!(constants.add("foo"), PushValue::Constant(0));
     }
 
     #[test]
     fn test_none_after_full() {
         let mut constants = Constants::empty();
         for i in 0..u16::MAX {
-            assert_eq!(constants.add(format!("foo{}", i)), PushValue::Constant(i));
+            assert_eq!(constants.add(&format!("foo{}", i)), PushValue::Constant(i));
         }
-        assert_eq!(
-            constants.add("foo".to_owned()),
-            PushValue::String("foo".to_owned())
-        );
+        assert_eq!(constants.add("foo"), PushValue::String("foo".to_owned()));
     }
 }

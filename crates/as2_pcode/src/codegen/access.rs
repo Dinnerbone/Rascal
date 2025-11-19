@@ -30,7 +30,7 @@ impl VariableAccess {
                 VariableAccess::Direct
             }
             name => {
-                let value = builder.constants_mut().add(name.to_owned());
+                let value = builder.constants_mut().add(name);
                 builder.action(Action::Push(vec![value]));
                 VariableAccess::Variable
             }
@@ -40,7 +40,7 @@ impl VariableAccess {
     pub fn for_constant(builder: &mut CodeBuilder, constant: &Constant) -> Self {
         match constant {
             Constant::String(str) => {
-                let value = builder.constants_mut().add(str.to_string());
+                let value = builder.constants_mut().add(str);
                 builder.action(Action::Push(vec![value]));
                 VariableAccess::Direct
             }
