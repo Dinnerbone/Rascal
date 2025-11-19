@@ -173,11 +173,7 @@ pub(crate) fn function<'i>(i: &mut Tokens<'i>) -> ModalResult<Function<'i>> {
     let body = statement_list(true).parse_next(i)?;
     TokenKind::CloseBrace.parse_next(i)?;
 
-    Ok(Function {
-        name: name.map(|n| n.to_owned()),
-        args,
-        body,
-    })
+    Ok(Function { name, args, body })
 }
 
 #[cfg(test)]

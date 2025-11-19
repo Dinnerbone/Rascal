@@ -1551,7 +1551,7 @@ mod tests {
         assert_eq!(
             parse_expr(&tokens),
             Ok(Expr::Function(Function {
-                name: Some("func".to_string()),
+                name: Some("func"),
                 args: vec!["a".to_string(), "b".to_string()],
                 body: vec![Statement::Expr(Expr::Call {
                     name: Box::new(Expr::Constant(Constant::Identifier("trace"))),
