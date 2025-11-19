@@ -1,0 +1,115 @@
+---
+source: crates/as2_pcode/src/codegen/tests.rs
+expression: builder
+input_file: samples/as2/function_hoisting.as
+---
+DefineFunction "firstFunction", 0 {
+DefineFunction "functionWithinAFunction", 0 {
+Push "function within a function!"
+Trace
+}
+Pop
+Push "first function!"
+Trace
+Push 0
+Push "functionWithinAFunction"
+CallFunction
+Pop
+Push "firstVar = "
+Push "firstVar"
+GetVariable
+Add2
+Push ", secondVar = "
+Add2
+Push "secondVar"
+GetVariable
+Add2
+Trace
+}
+Pop
+DefineFunction "secondFunction", 0 {
+Push "second function!"
+Trace
+Push "firstVar = "
+Push "firstVar"
+GetVariable
+Add2
+Push ", secondVar = "
+Add2
+Push "secondVar"
+GetVariable
+Add2
+Trace
+}
+Pop
+DefineFunction "secondFunction", 0 {
+Push "second function! (but redefined!)"
+Trace
+Push "firstVar = "
+Push "firstVar"
+GetVariable
+Add2
+Push ", secondVar = "
+Add2
+Push "secondVar"
+GetVariable
+Add2
+Trace
+}
+Pop
+DefineFunction "thirdFunction", 0 {
+Push "third function!"
+Trace
+}
+Pop
+DefineFunction "unusedFunction", 0 {
+Push "Unused function!"
+Trace
+}
+Pop
+Push "firstVar"
+Push 1
+DefineLocal
+Push 0
+Push "firstFunction"
+CallFunction
+Pop
+Push 0
+Push "secondFunction"
+CallFunction
+Pop
+Push "secondVar"
+Push 2
+DefineLocal
+Push 0
+Push "firstFunction"
+CallFunction
+Pop
+Push 0
+Push "secondFunction"
+CallFunction
+Pop
+Push 0
+Push "firstFunction"
+CallFunction
+Pop
+Push 0
+Push "secondFunction"
+CallFunction
+Pop
+Push 0
+Push "firstFunction"
+CallFunction
+Pop
+Push 0
+Push "secondFunction"
+CallFunction
+Pop
+Push 0
+Push "functionWithinAFunction"
+CallFunction
+Pop
+Push 0
+Push "thirdFunction"
+CallFunction
+Pop

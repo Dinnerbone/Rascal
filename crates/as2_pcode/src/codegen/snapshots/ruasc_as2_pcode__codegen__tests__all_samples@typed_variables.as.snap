@@ -3,23 +3,6 @@ source: crates/as2_pcode/src/codegen/tests.rs
 expression: builder
 input_file: samples/as2/typed_variables.as
 ---
-Push "num"
-Push 42
-DefineLocal
-Push "str"
-Push "Hello"
-DefineLocal
-Push "flag"
-Push true
-DefineLocal
-Push "obj"
-Push 0
-InitObject
-DefineLocal
-Push "arr"
-Push 0
-InitArray
-DefineLocal
 DefineFunction "add", 2, "a", "b" {
 Push "a"
 GetVariable
@@ -40,34 +23,6 @@ GetVariable
 Trace
 }
 Pop
-Push "numbers"
-Push 0
-Push "Array"
-NewObject
-DefineLocal
-Push "strings"
-Push "three"
-Push "two"
-Push "one"
-Push 3
-InitArray
-DefineLocal
-Push "someValue"
-Push "123"
-DefineLocal
-Push "numValue"
-Push "someValue"
-GetVariable
-Push 1
-Push "Number"
-CallFunction
-DefineLocal
-Push "strValue"
-Push 42
-Push 1
-Push "String"
-CallFunction
-DefineLocal
 DefineFunction "complexFunc", 3, "name", "age", "isValid" {
 Push "valid"
 Push "isValid"
@@ -83,32 +38,6 @@ InitObject
 Return
 }
 Pop
-Push "userData"
-Push "scores"
-Push "Array"
-Push 3
-Push 2
-Push 1
-Push 3
-InitArray
-StoreRegister 0
-SetVariable
-Push register0
-Push "name"
-Push "String"
-Push "User"
-StoreRegister 0
-SetVariable
-Push register0
-Push "id"
-Push "Number"
-Push 1
-StoreRegister 0
-SetVariable
-Push register0
-Push 3
-InitObject
-DefineLocal
 DefineFunction "forEach", 2, "arr", "callback" {
 Push "i"
 Push 0
@@ -140,3 +69,74 @@ Jump loc0002
 loc0000: 
 }
 Pop
+Push "num"
+Push 42
+DefineLocal
+Push "str"
+Push "Hello"
+DefineLocal
+Push "flag"
+Push true
+DefineLocal
+Push "obj"
+Push 0
+InitObject
+DefineLocal
+Push "arr"
+Push 0
+InitArray
+DefineLocal
+Push "numbers"
+Push 0
+Push "Array"
+NewObject
+DefineLocal
+Push "strings"
+Push "three"
+Push "two"
+Push "one"
+Push 3
+InitArray
+DefineLocal
+Push "someValue"
+Push "123"
+DefineLocal
+Push "numValue"
+Push "someValue"
+GetVariable
+Push 1
+Push "Number"
+CallFunction
+DefineLocal
+Push "strValue"
+Push 42
+Push 1
+Push "String"
+CallFunction
+DefineLocal
+Push "userData"
+Push "scores"
+Push "Array"
+Push 3
+Push 2
+Push 1
+Push 3
+InitArray
+StoreRegister 0
+SetVariable
+Push register0
+Push "name"
+Push "String"
+Push "User"
+StoreRegister 0
+SetVariable
+Push register0
+Push "id"
+Push "Number"
+Push 1
+StoreRegister 0
+SetVariable
+Push register0
+Push 3
+InitObject
+DefineLocal

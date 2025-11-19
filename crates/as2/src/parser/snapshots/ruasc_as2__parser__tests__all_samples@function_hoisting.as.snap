@@ -1,0 +1,221 @@
+---
+source: crates/as2/src/parser/tests.rs
+expression: parsed
+input_file: samples/as2/function_hoisting.as
+---
+Ok:
+  statements:
+    - Declare:
+        - name: firstVar
+          value:
+            Constant:
+              Integer: 1
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: firstFunction
+          args: []
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: secondFunction
+          args: []
+    - Expr:
+        Function:
+          name: firstFunction
+          args: []
+          body:
+            - Expr:
+                Call:
+                  name:
+                    Constant:
+                      Identifier: trace
+                  args:
+                    - Constant:
+                        String: first function!
+            - Expr:
+                Call:
+                  name:
+                    Constant:
+                      Identifier: functionWithinAFunction
+                  args: []
+            - Expr:
+                Call:
+                  name:
+                    Constant:
+                      Identifier: trace
+                  args:
+                    - BinaryOperator:
+                        - Add
+                        - BinaryOperator:
+                            - Add
+                            - BinaryOperator:
+                                - Add
+                                - Constant:
+                                    String: "firstVar = "
+                                - Constant:
+                                    Identifier: firstVar
+                            - Constant:
+                                String: ", secondVar = "
+                        - Constant:
+                            Identifier: secondVar
+            - Expr:
+                Function:
+                  name: functionWithinAFunction
+                  args: []
+                  body:
+                    - Expr:
+                        Call:
+                          name:
+                            Constant:
+                              Identifier: trace
+                          args:
+                            - Constant:
+                                String: function within a function!
+    - Declare:
+        - name: secondVar
+          value:
+            Constant:
+              Integer: 2
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: firstFunction
+          args: []
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: secondFunction
+          args: []
+    - Expr:
+        Function:
+          name: secondFunction
+          args: []
+          body:
+            - Expr:
+                Call:
+                  name:
+                    Constant:
+                      Identifier: trace
+                  args:
+                    - Constant:
+                        String: second function!
+            - Expr:
+                Call:
+                  name:
+                    Constant:
+                      Identifier: trace
+                  args:
+                    - BinaryOperator:
+                        - Add
+                        - BinaryOperator:
+                            - Add
+                            - BinaryOperator:
+                                - Add
+                                - Constant:
+                                    String: "firstVar = "
+                                - Constant:
+                                    Identifier: firstVar
+                            - Constant:
+                                String: ", secondVar = "
+                        - Constant:
+                            Identifier: secondVar
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: firstFunction
+          args: []
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: secondFunction
+          args: []
+    - Expr:
+        Function:
+          name: secondFunction
+          args: []
+          body:
+            - Expr:
+                Call:
+                  name:
+                    Constant:
+                      Identifier: trace
+                  args:
+                    - Constant:
+                        String: second function! (but redefined!)
+            - Expr:
+                Call:
+                  name:
+                    Constant:
+                      Identifier: trace
+                  args:
+                    - BinaryOperator:
+                        - Add
+                        - BinaryOperator:
+                            - Add
+                            - BinaryOperator:
+                                - Add
+                                - Constant:
+                                    String: "firstVar = "
+                                - Constant:
+                                    Identifier: firstVar
+                            - Constant:
+                                String: ", secondVar = "
+                        - Constant:
+                            Identifier: secondVar
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: firstFunction
+          args: []
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: secondFunction
+          args: []
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: functionWithinAFunction
+          args: []
+    - Expr:
+        Function:
+          name: thirdFunction
+          args: []
+          body:
+            - Expr:
+                Call:
+                  name:
+                    Constant:
+                      Identifier: trace
+                  args:
+                    - Constant:
+                        String: third function!
+    - Expr:
+        Call:
+          name:
+            Constant:
+              Identifier: thirdFunction
+          args: []
+    - Expr:
+        Function:
+          name: unusedFunction
+          args: []
+          body:
+            - Expr:
+                Call:
+                  name:
+                    Constant:
+                      Identifier: trace
+                  args:
+                    - Constant:
+                        String: Unused function!

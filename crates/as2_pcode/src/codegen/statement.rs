@@ -7,7 +7,22 @@ use ruasc_as2::ast::{
 };
 
 pub(crate) fn gen_statements(builder: &mut CodeBuilder, statements: &[Statement]) {
+    let mut hoisted = vec![];
+    let mut regular = vec![];
     for statement in statements {
+        if matches!(
+            statement,
+            Statement::Expr(Expr::Function(Function { name: Some(_), .. }))
+        ) {
+            hoisted.push(statement);
+        } else {
+            regular.push(statement);
+        }
+    }
+    for statement in hoisted {
+        gen_statement(builder, statement);
+    }
+    for statement in regular {
         gen_statement(builder, statement);
     }
 }
