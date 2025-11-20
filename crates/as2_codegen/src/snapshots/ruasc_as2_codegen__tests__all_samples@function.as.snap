@@ -1,0 +1,43 @@
+---
+source: crates/as2_codegen/src/tests.rs
+expression: builder
+input_file: samples/as2/function.as
+---
+ConstantPool "Test called!", ":)", "anon", "Anonymous function called!", "a = ", "a", ", b = ", "b", "bb", "aa", "test"
+DefineFunction "test", 0 {
+Push constant0
+Trace
+Push constant1
+Return
+}
+Pop
+Push constant2
+DefineFunction "", 2, "a", "b" {
+Push constant3
+Trace
+Push constant4
+Push constant5
+GetVariable
+Add2
+Push constant6
+Add2
+Push constant7
+GetVariable
+Add2
+Trace
+}
+DefineLocal
+Push constant8
+Push constant9
+Push 2
+Push constant2
+CallFunction
+Pop
+Push 0
+Push constant10
+CallFunction
+Push 0
+Push constant10
+CallFunction
+Add2
+Trace

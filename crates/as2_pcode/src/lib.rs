@@ -1,19 +1,16 @@
-use crate::codegen::builder::CodeBuilder;
-use crate::codegen::statement::gen_statements;
 use crate::lexer::Lexer;
 use crate::lexer::tokens::Token;
 use crate::parser::PCodeError;
-use crate::pcode::{Action, Actions};
-use ruasc_as2::Document;
+pub use crate::pcode::Action;
+pub use crate::pcode::Actions;
+pub use crate::pcode::PushValue;
 
-mod codegen;
 mod lexer;
 mod parser;
 mod pcode;
 mod span;
 mod swf;
 
-use crate::codegen::constants::Constants;
 pub use swf::pcode_to_swf;
 
 pub struct PCode<'a> {
@@ -36,15 +33,4 @@ impl<'a> PCode<'a> {
         parser::parse_actions(&self.tokens)
             .map_err(|e| PCodeError::from_parse(self.filename, self.source, e))
     }
-}
-
-pub fn ast_to_pcode(source: &Document) -> Actions {
-    let mut constants = Constants::empty();
-    let mut builder = CodeBuilder::new(&mut constants);
-    builder.action(Action::ConstantPool(vec![])); // Reserve space for the constant pool
-    gen_statements(&mut builder, &source.statements);
-    let mut actions = builder.into_actions();
-    actions.replace_action(0, Action::ConstantPool(constants.into_iter().collect()));
-
-    actions
 }

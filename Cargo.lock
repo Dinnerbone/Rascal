@@ -533,6 +533,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "ruasc_as2_codegen"
+version = "0.1.0"
+dependencies = [
+ "insta",
+ "ruasc_as2",
+ "ruasc_as2_pcode",
+]
+
+[[package]]
 name = "ruasc_as2_pcode"
 version = "0.1.0"
 dependencies = [
@@ -540,7 +549,6 @@ dependencies = [
  "byteorder",
  "indexmap",
  "insta",
- "ruasc_as2",
  "serde",
  "swf",
  "winnow",
@@ -553,6 +561,7 @@ dependencies = [
  "anyhow",
  "clap",
  "ruasc_as2",
+ "ruasc_as2_codegen",
  "ruasc_as2_pcode",
 ]
 

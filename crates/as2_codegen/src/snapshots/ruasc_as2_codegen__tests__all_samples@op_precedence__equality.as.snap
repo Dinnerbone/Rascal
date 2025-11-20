@@ -1,0 +1,142 @@
+---
+source: crates/as2_codegen/src/tests.rs
+expression: builder
+input_file: samples/as2/op_precedence/equality.as
+---
+ConstantPool "a", "b", "10", "c", "a=", ", b=", ", c=", "----", "a == b = ", "a != b = ", "---", "a === b = ", "a !== b = ", "a == b == c = ", "((a == b) == c) = ", "a !== b !== c = ", "((a !== b) !== c) = ", "a == b > c = ", "(a == (b > c)) = "
+Push constant0
+Push 10
+DefineLocal
+Push constant1
+Push constant2
+DefineLocal
+Push constant3
+Push 5
+DefineLocal
+Push constant4
+Push constant0
+GetVariable
+Add2
+Push constant5
+Add2
+Push constant1
+GetVariable
+Add2
+Push constant6
+Add2
+Push constant3
+GetVariable
+Add2
+Trace
+Push constant7
+Trace
+Push constant8
+Push constant0
+GetVariable
+Push constant1
+GetVariable
+Equals2
+Add2
+Trace
+Push constant9
+Push constant0
+GetVariable
+Push constant1
+GetVariable
+Equals2
+Not
+Add2
+Trace
+Push constant10
+Trace
+Push constant11
+Push constant0
+GetVariable
+Push constant1
+GetVariable
+StrictEquals
+Add2
+Trace
+Push constant12
+Push constant0
+GetVariable
+Push constant1
+GetVariable
+StrictEquals
+Not
+Add2
+Trace
+Push constant10
+Trace
+Push constant13
+Push constant0
+GetVariable
+Push constant1
+GetVariable
+Equals2
+Push constant3
+GetVariable
+Equals2
+Add2
+Trace
+Push constant14
+Push constant0
+GetVariable
+Push constant1
+GetVariable
+Equals2
+Push constant3
+GetVariable
+Equals2
+Add2
+Trace
+Push constant15
+Push constant0
+GetVariable
+Push constant1
+GetVariable
+StrictEquals
+Not
+Push constant3
+GetVariable
+StrictEquals
+Not
+Add2
+Trace
+Push constant16
+Push constant0
+GetVariable
+Push constant1
+GetVariable
+StrictEquals
+Not
+Push constant3
+GetVariable
+StrictEquals
+Not
+Add2
+Trace
+Push constant10
+Trace
+Push constant17
+Push constant0
+GetVariable
+Push constant1
+GetVariable
+Push constant3
+GetVariable
+Greater
+Equals2
+Add2
+Trace
+Push constant18
+Push constant0
+GetVariable
+Push constant1
+GetVariable
+Push constant3
+GetVariable
+Greater
+Equals2
+Add2
+Trace

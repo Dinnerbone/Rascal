@@ -1,17 +1,16 @@
 [package]
-name = "ruasc_cli"
+name = "ruasc_as2_codegen"
 authors.workspace = true
 edition.workspace = true
 license.workspace = true
 version.workspace = true
 
 [dependencies]
-anyhow = "1"
-clap = { version = "4", features = ["derive"] }
 ruasc_as2 = { path = "../as2" }
 ruasc_as2_pcode = { path = "../as2_pcode" }
-ruasc_as2_codegen = { path = "../as2_codegen" }
+
+[dev-dependencies]
+insta = { version = "1.43.2", features = ["yaml", "glob"] }
 
 [features]
 default = []
-winnow-debug = ["ruasc_as2/winnow-debug"]

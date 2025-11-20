@@ -1,0 +1,32 @@
+---
+source: crates/as2_codegen/src/tests.rs
+expression: builder
+input_file: samples/as2/block.as
+---
+ConstantPool "outside", "visible", "inside", "outside: ", ", inside: "
+Push constant0
+Push constant1
+DefineLocal
+Push constant2
+Push constant1
+DefineLocal
+Push constant3
+Push constant0
+GetVariable
+Add2
+Push constant4
+Add2
+Push constant2
+GetVariable
+Add2
+Trace
+Push constant3
+Push constant0
+GetVariable
+Add2
+Push constant4
+Add2
+Push constant2
+GetVariable
+Add2
+Trace

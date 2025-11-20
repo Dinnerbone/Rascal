@@ -1,0 +1,29 @@
+---
+source: crates/as2_codegen/src/tests.rs
+expression: builder
+input_file: samples/as2/random_success.as
+---
+ConstantPool "success", "Success! Hurrah!", "Failed :(", "-- end --"
+Push constant0
+Push true
+DefineLocal
+Push 2
+RandomNumber
+Push 0
+Equals2
+Not
+If loc0000
+Push constant0
+Push false
+SetVariable
+loc0000:Push constant0
+GetVariable
+Not
+If loc0002
+Push constant1
+Trace
+Jump loc0001
+loc0002:Push constant2
+Trace
+loc0001:Push constant3
+Trace

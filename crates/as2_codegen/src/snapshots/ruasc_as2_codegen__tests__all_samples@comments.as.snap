@@ -1,0 +1,47 @@
+---
+source: crates/as2_codegen/src/tests.rs
+expression: builder
+input_file: samples/as2/comments.as
+---
+ConstantPool "a", "1", "b", "2", "c", "3", "d", "4", "test", "e", "5", "f", "// not a comment", "g", "/* not a comment */", "h", ""/* still not a comment */"", "i", "6", "j", "7", "k", "8"
+Push constant0
+Push constant1
+DefineLocal
+Push constant2
+Push constant3
+DefineLocal
+Push constant4
+Push constant5
+DefineLocal
+Push constant6
+Push constant7
+DefineLocal
+Push constant2
+GetVariable
+Push constant0
+GetVariable
+Push 2
+Push constant8
+CallFunction
+Pop
+Push constant9
+Push constant10
+DefineLocal
+Push constant11
+Push constant12
+DefineLocal
+Push constant13
+Push constant14
+DefineLocal
+Push constant15
+Push constant16
+DefineLocal
+Push constant17
+Push constant18
+DefineLocal
+Push constant19
+Push constant20
+DefineLocal
+Push constant21
+Push constant22
+DefineLocal

@@ -117,7 +117,7 @@ pub enum Action {
 }
 
 impl Action {
-    pub(crate) fn stack_delta(&self) -> i32 {
+    pub fn stack_delta(&self) -> i32 {
         match self {
             Action::Add => -1,
             Action::Add2 => -1,

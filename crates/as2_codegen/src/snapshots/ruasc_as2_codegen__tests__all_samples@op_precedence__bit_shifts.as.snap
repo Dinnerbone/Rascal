@@ -1,0 +1,180 @@
+---
+source: crates/as2_codegen/src/tests.rs
+expression: builder
+input_file: samples/as2/op_precedence/bit_shifts.as
+---
+ConstantPool "a", "b", "c", "a=", ", b=", ", c=", "----", "a << b >> c = ", "((a << b) >> c) = ", "---", "a >> b << c = ", "((a >> b) << c) = ", "a >>> b >> c = ", "((a >>> b) >> c) = ", "a << b >> c >>> b = ", "(((a << b) >> c) >>> b) = ", "a << b + c = ", "a << (b + c) = ", "a * b << c = ", "(a * b) << c = "
+Push constant0
+Push 16
+DefineLocal
+Push constant1
+Push 2
+DefineLocal
+Push constant2
+Push 1
+DefineLocal
+Push constant3
+Push constant0
+GetVariable
+Add2
+Push constant4
+Add2
+Push constant1
+GetVariable
+Add2
+Push constant5
+Add2
+Push constant2
+GetVariable
+Add2
+Trace
+Push constant6
+Trace
+Push constant7
+Push constant0
+GetVariable
+Push constant1
+GetVariable
+BitLShift
+Push constant2
+GetVariable
+BitRShift
+Add2
+Trace
+Push constant8
+Push constant0
+GetVariable
+Push constant1
+GetVariable
+BitLShift
+Push constant2
+GetVariable
+BitRShift
+Add2
+Trace
+Push constant9
+Trace
+Push constant10
+Push constant0
+GetVariable
+Push constant1
+GetVariable
+BitRShift
+Push constant2
+GetVariable
+BitLShift
+Add2
+Trace
+Push constant11
+Push constant0
+GetVariable
+Push constant1
+GetVariable
+BitRShift
+Push constant2
+GetVariable
+BitLShift
+Add2
+Trace
+Push constant9
+Trace
+Push constant12
+Push constant0
+GetVariable
+Push constant1
+GetVariable
+BitURShift
+Push constant2
+GetVariable
+BitRShift
+Add2
+Trace
+Push constant13
+Push constant0
+GetVariable
+Push constant1
+GetVariable
+BitURShift
+Push constant2
+GetVariable
+BitRShift
+Add2
+Trace
+Push constant9
+Trace
+Push constant14
+Push constant0
+GetVariable
+Push constant1
+GetVariable
+BitLShift
+Push constant2
+GetVariable
+BitRShift
+Push constant1
+GetVariable
+BitURShift
+Add2
+Trace
+Push constant15
+Push constant0
+GetVariable
+Push constant1
+GetVariable
+BitLShift
+Push constant2
+GetVariable
+BitRShift
+Push constant1
+GetVariable
+BitURShift
+Add2
+Trace
+Push constant9
+Trace
+Push constant16
+Push constant0
+GetVariable
+Push constant1
+GetVariable
+Push constant2
+GetVariable
+Add2
+BitLShift
+Add2
+Trace
+Push constant17
+Push constant0
+GetVariable
+Push constant1
+GetVariable
+Push constant2
+GetVariable
+Add2
+BitLShift
+Add2
+Trace
+Push constant9
+Trace
+Push constant18
+Push constant0
+GetVariable
+Push constant1
+GetVariable
+Multiply
+Push constant2
+GetVariable
+BitLShift
+Add2
+Trace
+Push constant19
+Push constant0
+GetVariable
+Push constant1
+GetVariable
+Multiply
+Push constant2
+GetVariable
+BitLShift
+Add2
+Trace

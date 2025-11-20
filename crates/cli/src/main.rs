@@ -1,7 +1,8 @@
 use anyhow::Result;
 use clap::Parser;
 use ruasc_as2::ActionScript;
-use ruasc_as2_pcode::{PCode, ast_to_pcode, pcode_to_swf};
+use ruasc_as2_codegen::ast_to_pcode;
+use ruasc_as2_pcode::{PCode, pcode_to_swf};
 use std::fs;
 use std::path::PathBuf;
 
