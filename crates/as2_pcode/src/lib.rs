@@ -8,7 +8,6 @@ pub use crate::pcode::PushValue;
 mod lexer;
 mod parser;
 mod pcode;
-mod span;
 mod swf;
 
 pub use swf::pcode_to_swf;

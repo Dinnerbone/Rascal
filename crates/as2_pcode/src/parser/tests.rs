@@ -2,7 +2,7 @@ use crate::lexer::Lexer;
 use crate::lexer::tokens::{Token, TokenKind};
 use crate::parser::parse_actions;
 use crate::pcode::Actions;
-use crate::span::Span;
+use ruasc_common::span::Span;
 
 pub(crate) fn build_tokens<'a>(spec: &'a [(TokenKind, &'a str)]) -> Vec<Token<'a>> {
     let mut pos = 0usize;

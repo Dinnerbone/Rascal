@@ -5,7 +5,6 @@ use crate::parser::ActionScriptError;
 pub mod ast;
 mod lexer;
 mod parser;
-mod source;
 
 pub use ast::Document;
 

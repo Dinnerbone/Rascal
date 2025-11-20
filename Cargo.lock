@@ -528,6 +528,7 @@ version = "0.1.0"
 dependencies = [
  "annotate-snippets",
  "insta",
+ "ruasc_common",
  "serde",
  "winnow",
 ]
@@ -549,6 +550,7 @@ dependencies = [
  "byteorder",
  "indexmap",
  "insta",
+ "ruasc_common",
  "serde",
  "swf",
  "winnow",
@@ -563,6 +565,19 @@ dependencies = [
  "ruasc_as2",
  "ruasc_as2_codegen",
  "ruasc_as2_pcode",
+]
+
+[[package]]
+name = "ruasc_common"
+version = "0.1.0"
+dependencies = [
+ "annotate-snippets",
+ "byteorder",
+ "indexmap",
+ "insta",
+ "serde",
+ "swf",
+ "winnow",
 ]
 
 [[package]]

@@ -3,7 +3,7 @@ mod tests;
 pub(crate) mod tokens;
 
 use crate::lexer::tokens::{ActionName, Token, TokenKind};
-use crate::span::Span;
+use ruasc_common::span::Span;
 use winnow::stream::{AsBStr, FindSlice, Location, Stream as _};
 
 pub(crate) type Stream<'i> = winnow::stream::LocatingSlice<&'i str>;

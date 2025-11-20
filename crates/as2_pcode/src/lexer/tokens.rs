@@ -1,5 +1,5 @@
 use crate::parser::Tokens;
-use crate::span::Span;
+use ruasc_common::span::Span;
 use serde::Serialize;
 use winnow::Parser;
 use winnow::error::{ContextError, ErrMode};

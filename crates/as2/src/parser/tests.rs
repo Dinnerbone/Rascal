@@ -1,7 +1,7 @@
 use crate::lexer::Lexer;
 use crate::lexer::tokens::{Token, TokenKind};
 use crate::parser::parse_document;
-use crate::source::Span;
+use ruasc_common::span::Span;
 
 pub(crate) fn build_tokens<'i>(spec: &'i [(TokenKind, &'i str)]) -> Vec<Token<'i>> {
     let mut pos = 0usize;
