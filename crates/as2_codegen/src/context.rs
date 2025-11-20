@@ -4,6 +4,7 @@ use crate::constants::Constants;
 pub struct ScriptContext {
     pub constants: Constants,
     pub next_label: usize,
+    pub is_in_tell_target: bool,
 }
 
 impl ScriptContext {
@@ -11,6 +12,7 @@ impl ScriptContext {
         Self {
             constants: Constants::empty(),
             next_label: 0,
+            is_in_tell_target: false,
         }
     }
 
@@ -18,6 +20,14 @@ impl ScriptContext {
         let id = self.next_label;
         self.next_label += 1;
         format!("loc{:04x}", id)
+    }
+
+    pub fn set_is_in_tell_target(&mut self, is_in_tell_target: bool) {
+        self.is_in_tell_target = is_in_tell_target;
+    }
+
+    pub fn is_in_tell_target(&self) -> bool {
+        self.is_in_tell_target
     }
 }
 

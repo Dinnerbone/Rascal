@@ -1,0 +1,471 @@
+---
+source: crates/as2/src/lexer/tests.rs
+expression: tokens
+input_file: samples/as2/tell_target.as
+---
+- kind:
+    Keyword: TellTarget
+  span:
+    start: 0
+    end: 10
+  raw: tellTarget
+- kind: OpenParen
+  span:
+    start: 10
+    end: 11
+  raw: (
+- kind: Identifier
+  span:
+    start: 11
+    end: 12
+  raw: x
+- kind: CloseParen
+  span:
+    start: 12
+    end: 13
+  raw: )
+- kind: OpenBrace
+  span:
+    start: 14
+    end: 15
+  raw: "{"
+- kind: Newline
+  span:
+    start: 15
+    end: 16
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 17
+    end: 22
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 22
+    end: 23
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 23
+    end: 34
+  raw: this is x
+- kind: CloseParen
+  span:
+    start: 34
+    end: 35
+  raw: )
+- kind: Semicolon
+  span:
+    start: 35
+    end: 36
+  raw: ;
+- kind: Newline
+  span:
+    start: 36
+    end: 37
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 37
+    end: 38
+  raw: "\n"
+- kind:
+    Keyword: TellTarget
+  span:
+    start: 39
+    end: 49
+  raw: tellTarget
+- kind: OpenParen
+  span:
+    start: 49
+    end: 50
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 50
+    end: 53
+  raw: y
+- kind: CloseParen
+  span:
+    start: 53
+    end: 54
+  raw: )
+- kind: OpenBrace
+  span:
+    start: 55
+    end: 56
+  raw: "{"
+- kind: Newline
+  span:
+    start: 56
+    end: 57
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 59
+    end: 64
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 64
+    end: 65
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 65
+    end: 76
+  raw: this is y
+- kind: CloseParen
+  span:
+    start: 76
+    end: 77
+  raw: )
+- kind: Semicolon
+  span:
+    start: 77
+    end: 78
+  raw: ;
+- kind: Newline
+  span:
+    start: 78
+    end: 79
+  raw: "\n"
+- kind:
+    Keyword: TellTarget
+  span:
+    start: 81
+    end: 91
+  raw: tellTarget
+- kind: OpenParen
+  span:
+    start: 91
+    end: 92
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 92
+    end: 95
+  raw: z
+- kind: CloseParen
+  span:
+    start: 95
+    end: 96
+  raw: )
+- kind: OpenBrace
+  span:
+    start: 97
+    end: 98
+  raw: "{"
+- kind: Newline
+  span:
+    start: 98
+    end: 99
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 102
+    end: 107
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 107
+    end: 108
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 108
+    end: 119
+  raw: this is z
+- kind: CloseParen
+  span:
+    start: 119
+    end: 120
+  raw: )
+- kind: Semicolon
+  span:
+    start: 120
+    end: 121
+  raw: ;
+- kind: Newline
+  span:
+    start: 121
+    end: 122
+  raw: "\n"
+- kind: CloseBrace
+  span:
+    start: 124
+    end: 125
+  raw: "}"
+- kind: Newline
+  span:
+    start: 125
+    end: 126
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 128
+    end: 133
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 133
+    end: 134
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 134
+    end: 151
+  raw: this is still y
+- kind: CloseParen
+  span:
+    start: 151
+    end: 152
+  raw: )
+- kind: Semicolon
+  span:
+    start: 152
+    end: 153
+  raw: ;
+- kind: Newline
+  span:
+    start: 153
+    end: 154
+  raw: "\n"
+- kind: CloseBrace
+  span:
+    start: 155
+    end: 156
+  raw: "}"
+- kind: Newline
+  span:
+    start: 156
+    end: 157
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 157
+    end: 158
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 159
+    end: 164
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 164
+    end: 165
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 165
+    end: 182
+  raw: this is x again
+- kind: CloseParen
+  span:
+    start: 182
+    end: 183
+  raw: )
+- kind: Semicolon
+  span:
+    start: 183
+    end: 184
+  raw: ;
+- kind: Newline
+  span:
+    start: 184
+    end: 185
+  raw: "\n"
+- kind: CloseBrace
+  span:
+    start: 185
+    end: 186
+  raw: "}"
+- kind: Newline
+  span:
+    start: 186
+    end: 187
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 187
+    end: 192
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 192
+    end: 193
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 193
+    end: 207
+  raw: this is root
+- kind: CloseParen
+  span:
+    start: 207
+    end: 208
+  raw: )
+- kind: Semicolon
+  span:
+    start: 208
+    end: 209
+  raw: ;
+- kind: Newline
+  span:
+    start: 209
+    end: 210
+  raw: "\n"
+- kind:
+    Keyword: TellTarget
+  span:
+    start: 210
+    end: 220
+  raw: tellTarget
+- kind: OpenParen
+  span:
+    start: 220
+    end: 221
+  raw: (
+- kind: Identifier
+  span:
+    start: 221
+    end: 222
+  raw: x
+- kind: CloseParen
+  span:
+    start: 222
+    end: 223
+  raw: )
+- kind: Semicolon
+  span:
+    start: 223
+    end: 224
+  raw: ;
+- kind: Newline
+  span:
+    start: 224
+    end: 225
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 225
+    end: 230
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 230
+    end: 231
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 231
+    end: 251
+  raw: this is still root
+- kind: CloseParen
+  span:
+    start: 251
+    end: 252
+  raw: )
+- kind: Semicolon
+  span:
+    start: 252
+    end: 253
+  raw: ;
+- kind: Newline
+  span:
+    start: 253
+    end: 254
+  raw: "\n"
+- kind:
+    Keyword: TellTarget
+  span:
+    start: 254
+    end: 264
+  raw: tellTarget
+- kind: OpenParen
+  span:
+    start: 264
+    end: 265
+  raw: (
+- kind: Identifier
+  span:
+    start: 265
+    end: 266
+  raw: x
+- kind: CloseParen
+  span:
+    start: 266
+    end: 267
+  raw: )
+- kind: Identifier
+  span:
+    start: 268
+    end: 273
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 273
+    end: 274
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 274
+    end: 285
+  raw: this is x
+- kind: CloseParen
+  span:
+    start: 285
+    end: 286
+  raw: )
+- kind: Semicolon
+  span:
+    start: 286
+    end: 287
+  raw: ;
+- kind: Newline
+  span:
+    start: 287
+    end: 288
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 288
+    end: 293
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 293
+    end: 294
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 294
+    end: 314
+  raw: this is still root
+- kind: CloseParen
+  span:
+    start: 314
+    end: 315
+  raw: )
+- kind: Semicolon
+  span:
+    start: 315
+    end: 316
+  raw: ;
+- kind: Newline
+  span:
+    start: 316
+    end: 317
+  raw: "\n"

@@ -94,6 +94,41 @@ pub(crate) fn gen_statement(
             scene: _, // Scene is effectively not a concept in a standalone compiler, Flash ignores whatever expr is here if it's not a recognised scene name
             if_loaded,
         } => gen_wait_for_frame(context, builder, frame, if_loaded),
+        StatementKind::TellTarget { target, body } => {
+            gen_tell_target(context, builder, target, body)
+        }
+    }
+}
+
+fn gen_tell_target(
+    context: &mut ScriptContext,
+    builder: &mut CodeBuilder,
+    target: &Expr,
+    body: &StatementKind,
+) {
+    let was_in_tell_target = context.is_in_tell_target();
+    if was_in_tell_target {
+        builder.push(""); // current target path
+        builder.push(11); // _target
+        builder.action(Action::GetProperty);
+    }
+
+    match &target.value {
+        ExprKind::Constant(ConstantKind::String(name)) => {
+            builder.action(Action::SetTarget(name.to_string()));
+        }
+        _ => {
+            gen_expr(context, builder, target, false);
+            builder.action(Action::SetTarget2);
+        }
+    }
+    context.set_is_in_tell_target(true);
+    gen_statement(context, builder, body);
+    context.set_is_in_tell_target(was_in_tell_target);
+
+    builder.action(Action::SetTarget("".to_string()));
+    if was_in_tell_target {
+        builder.action(Action::SetTarget2);
     }
 }
 

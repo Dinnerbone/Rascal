@@ -114,4 +114,5 @@ pub enum Keyword {
     Catch,
     Finally,
     IfFrameLoaded,
+    TellTarget,
 }

@@ -48,6 +48,7 @@ pub(crate) fn statement<'i>(i: &mut Tokens<'i>) -> ModalResult<StatementKind<'i>
         TokenKind::Keyword(Keyword::Continue) => StatementKind::Continue,
         TokenKind::Keyword(Keyword::Try) => try_catch_finally.parse_next(i)?,
         TokenKind::Keyword(Keyword::IfFrameLoaded) => if_frame_loaded.parse_next(i)?,
+        TokenKind::Keyword(Keyword::TellTarget) => tell_target.parse_next(i)?,
         TokenKind::OpenBrace => {
             let statements = statement_list(true).parse_next(i)?;
             TokenKind::CloseBrace.parse_next(i)?;
@@ -183,6 +184,20 @@ pub(crate) fn if_frame_loaded<'i>(i: &mut Tokens<'i>) -> ModalResult<StatementKi
         frame,
         scene,
         if_loaded: Box::new(body),
+    })
+}
+
+pub(crate) fn tell_target<'i>(i: &mut Tokens<'i>) -> ModalResult<StatementKind<'i>> {
+    TokenKind::OpenParen.parse_next(i)?;
+    let target = expression.parse_next(i)?;
+    TokenKind::CloseParen.parse_next(i)?;
+    let body = opt(statement)
+        .parse_next(i)?
+        .unwrap_or_else(|| StatementKind::Block(vec![]));
+
+    Ok(StatementKind::TellTarget {
+        target,
+        body: Box::new(body),
     })
 }
 
@@ -668,6 +683,25 @@ mod stmt_tests {
                     "scene"
                 ))))),
                 if_loaded: Box::new(StatementKind::Return(vec![])),
+            })
+        )
+    }
+
+    #[test]
+    fn test_tell_target() {
+        let tokens = build_tokens(&[
+            (TokenKind::Keyword(Keyword::TellTarget), "tellTarget"),
+            (TokenKind::OpenParen, "("),
+            (TokenKind::String(QuoteKind::Double), "target"),
+            (TokenKind::CloseParen, ")"),
+            (TokenKind::OpenBrace, "{"),
+            (TokenKind::CloseBrace, "}"),
+        ]);
+        assert_eq!(
+            parse_stmt(&tokens),
+            Ok(StatementKind::TellTarget {
+                target: s("target"),
+                body: Box::new(StatementKind::Block(vec![]))
             })
         )
     }

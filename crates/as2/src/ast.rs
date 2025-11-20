@@ -119,6 +119,10 @@ pub enum StatementKind<'a> {
         scene: Option<Expr<'a>>,
         if_loaded: Box<StatementKind<'a>>,
     },
+    TellTarget {
+        target: Expr<'a>,
+        body: Box<StatementKind<'a>>,
+    },
 }
 
 #[derive(Debug, Clone, Serialize, PartialEq)]

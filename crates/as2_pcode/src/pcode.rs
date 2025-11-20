@@ -224,6 +224,7 @@ impl Action {
             Action::Enumerate2 => 0,
             Action::Equals2 => -1,
             Action::GetMember => -1,
+            Action::GetProperty => -1,
             Action::GetTime => 1,
             Action::GetUrl { .. } => 0,
             Action::GetUrl2 { .. } => -2,
