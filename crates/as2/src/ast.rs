@@ -3,7 +3,7 @@ use std::borrow::Cow;
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
 pub enum ExprKind<'a> {
-    Constant(Constant<'a>),
+    Constant(ConstantKind<'a>),
     Call {
         name: Box<ExprKind<'a>>,
         args: Vec<ExprKind<'a>>,
@@ -30,7 +30,7 @@ pub enum ExprKind<'a> {
 }
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
-pub enum Constant<'a> {
+pub enum ConstantKind<'a> {
     String(Cow<'a, str>),
     Identifier(&'a str),
     Float(f64),

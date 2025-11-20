@@ -1,6 +1,6 @@
 use crate::builder::CodeBuilder;
 use crate::statement::gen_expr;
-use ruasc_as2::ast::{Constant, ExprKind};
+use ruasc_as2::ast::{ConstantKind, ExprKind};
 use ruasc_as2_pcode::{Action, PushValue};
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -37,19 +37,19 @@ impl VariableAccess {
         }
     }
 
-    pub fn for_constant(builder: &mut CodeBuilder, constant: &Constant) -> Self {
+    pub fn for_constant(builder: &mut CodeBuilder, constant: &ConstantKind) -> Self {
         match constant {
-            Constant::String(str) => {
+            ConstantKind::String(str) => {
                 let value = builder.constants_mut().add(str);
                 builder.action(Action::Push(vec![value]));
                 VariableAccess::Direct
             }
-            Constant::Identifier(identifier) => Self::for_identifier(builder, identifier),
-            Constant::Float(value) => {
+            ConstantKind::Identifier(identifier) => Self::for_identifier(builder, identifier),
+            ConstantKind::Float(value) => {
                 builder.action(Action::Push(vec![PushValue::Float(*value)]));
                 VariableAccess::Direct
             }
-            Constant::Integer(value) => {
+            ConstantKind::Integer(value) => {
                 builder.action(Action::Push(vec![PushValue::Integer(*value)]));
                 VariableAccess::Direct
             }

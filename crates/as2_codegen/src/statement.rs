@@ -1,7 +1,7 @@
 use crate::access::VariableAccess;
 use crate::builder::CodeBuilder;
 use ruasc_as2::ast::{
-    Affix, BinaryOperator, Constant, Declaration, ExprKind, ForCondition, Function, Statement,
+    Affix, BinaryOperator, ConstantKind, Declaration, ExprKind, ForCondition, Function, Statement,
     UnaryOperator,
 };
 use ruasc_as2_pcode::{Action, PushValue};
@@ -299,14 +299,14 @@ fn gen_unary_op(
 
     match op {
         UnaryOperator::Sub => match expr {
-            ExprKind::Constant(Constant::Integer(value)) => {
-                VariableAccess::for_constant(builder, &Constant::Integer(-*value));
+            ExprKind::Constant(ConstantKind::Integer(value)) => {
+                VariableAccess::for_constant(builder, &ConstantKind::Integer(-*value));
             }
-            ExprKind::Constant(Constant::Float(value)) => {
-                VariableAccess::for_constant(builder, &Constant::Float(-*value));
+            ExprKind::Constant(ConstantKind::Float(value)) => {
+                VariableAccess::for_constant(builder, &ConstantKind::Float(-*value));
             }
             _ => {
-                VariableAccess::for_constant(builder, &Constant::Integer(0));
+                VariableAccess::for_constant(builder, &ConstantKind::Integer(0));
                 gen_expr(builder, expr, false);
                 builder.action(Action::Subtract);
             }
@@ -422,7 +422,7 @@ fn gen_binary_op(
 }
 
 fn gen_call(builder: &mut CodeBuilder, name: &ExprKind, args: &[ExprKind]) {
-    if let ExprKind::Constant(Constant::Identifier(identifier)) = name {
+    if let ExprKind::Constant(ConstantKind::Identifier(identifier)) = name {
         if *identifier == "trace" && args.len() == 1 {
             gen_expr(builder, &args[0], false);
             builder.action(Action::Trace);

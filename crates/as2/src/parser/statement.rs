@@ -176,7 +176,7 @@ pub(crate) fn function<'i>(i: &mut Tokens<'i>) -> ModalResult<Function<'i>> {
 #[cfg(test)]
 mod stmt_tests {
     use super::*;
-    use crate::ast::{Affix, BinaryOperator, Constant, ExprKind, UnaryOperator};
+    use crate::ast::{Affix, BinaryOperator, ConstantKind, ExprKind, UnaryOperator};
     use crate::lexer::tokens::{Keyword, QuoteKind, Token, TokenKind};
     use crate::parser::tests::build_tokens;
     use std::borrow::Cow;
@@ -213,7 +213,9 @@ mod stmt_tests {
             parse_stmt(&tokens),
             Ok(Statement::Declare(vec![Declaration {
                 name: "x",
-                value: Some(ExprKind::Constant(Constant::String(Cow::Borrowed("hi"))))
+                value: Some(ExprKind::Constant(ConstantKind::String(Cow::Borrowed(
+                    "hi"
+                ))))
             }]))
         );
     }
@@ -234,8 +236,8 @@ mod stmt_tests {
             Ok(Statement::Declare(vec![Declaration {
                 name: "x",
                 value: Some(ExprKind::Call {
-                    name: Box::new(ExprKind::Constant(Constant::Identifier("foo"))),
-                    args: vec![ExprKind::Constant(Constant::Identifier("a"))]
+                    name: Box::new(ExprKind::Constant(ConstantKind::Identifier("foo"))),
+                    args: vec![ExprKind::Constant(ConstantKind::Identifier("a"))]
                 })
             }]))
         );
@@ -247,9 +249,9 @@ mod stmt_tests {
         let got = parse_stmt(&tokens);
         assert_eq!(
             got,
-            Ok(Statement::Expr(ExprKind::Constant(Constant::Identifier(
-                "foo"
-            ))))
+            Ok(Statement::Expr(ExprKind::Constant(
+                ConstantKind::Identifier("foo")
+            )))
         );
     }
 
@@ -258,9 +260,9 @@ mod stmt_tests {
         let tokens = build_tokens(&[(TokenKind::Newline, "\n"), (TokenKind::Identifier, "bar")]);
         assert_eq!(
             parse_stmt(&tokens),
-            Ok(Statement::Expr(ExprKind::Constant(Constant::Identifier(
-                "bar"
-            ))))
+            Ok(Statement::Expr(ExprKind::Constant(
+                ConstantKind::Identifier("bar")
+            )))
         );
     }
 
@@ -279,7 +281,7 @@ mod stmt_tests {
         assert_eq!(
             parse_stmt(&tokens),
             Ok(Statement::Return(vec![ExprKind::Constant(
-                Constant::Identifier("a")
+                ConstantKind::Identifier("a")
             )]))
         )
     }
@@ -297,8 +299,8 @@ mod stmt_tests {
         assert_eq!(
             parse_stmt(&tokens),
             Ok(Statement::Return(vec![
-                ExprKind::Constant(Constant::Identifier("a")),
-                ExprKind::Constant(Constant::Identifier("b"))
+                ExprKind::Constant(ConstantKind::Identifier("a")),
+                ExprKind::Constant(ConstantKind::Identifier("b"))
             ]))
         )
     }
@@ -333,21 +335,21 @@ mod stmt_tests {
                 condition: ForCondition::Classic {
                     initialize: Some(Box::new(Statement::Declare(vec![Declaration {
                         name: "i",
-                        value: Some(ExprKind::Constant(Constant::Identifier("0")))
+                        value: Some(ExprKind::Constant(ConstantKind::Identifier("0")))
                     }]))),
                     condition: vec![ExprKind::BinaryOperator(
                         BinaryOperator::LessThan,
-                        Box::new(ExprKind::Constant(Constant::Identifier("i"))),
-                        Box::new(ExprKind::Constant(Constant::Identifier("10")))
+                        Box::new(ExprKind::Constant(ConstantKind::Identifier("i"))),
+                        Box::new(ExprKind::Constant(ConstantKind::Identifier("10")))
                     )],
                     update: vec![ExprKind::UnaryOperator(
                         UnaryOperator::Increment(Affix::Postfix),
-                        Box::new(ExprKind::Constant(Constant::Identifier("i")))
+                        Box::new(ExprKind::Constant(ConstantKind::Identifier("i")))
                     )]
                 },
                 body: Box::new(Statement::Block(vec![Statement::Expr(ExprKind::Call {
-                    name: Box::new(ExprKind::Constant(Constant::Identifier("trace"))),
-                    args: vec![ExprKind::Constant(Constant::Identifier("i"))]
+                    name: Box::new(ExprKind::Constant(ConstantKind::Identifier("trace"))),
+                    args: vec![ExprKind::Constant(ConstantKind::Identifier("i"))]
                 })]))
             })
         )
@@ -375,11 +377,11 @@ mod stmt_tests {
                 condition: ForCondition::Enumerate {
                     variable: "a",
                     declare: false,
-                    object: ExprKind::Constant(Constant::Identifier("b"))
+                    object: ExprKind::Constant(ConstantKind::Identifier("b"))
                 },
                 body: Box::new(Statement::Block(vec![Statement::Expr(ExprKind::Call {
-                    name: Box::new(ExprKind::Constant(Constant::Identifier("trace"))),
-                    args: vec![ExprKind::Constant(Constant::Identifier("a"))]
+                    name: Box::new(ExprKind::Constant(ConstantKind::Identifier("trace"))),
+                    args: vec![ExprKind::Constant(ConstantKind::Identifier("a"))]
                 })]))
             })
         )
@@ -402,10 +404,10 @@ mod stmt_tests {
         assert_eq!(
             parse_stmt(&tokens),
             Ok(Statement::If {
-                condition: ExprKind::Constant(Constant::Identifier("a")),
+                condition: ExprKind::Constant(ConstantKind::Identifier("a")),
                 yes: Box::new(Statement::Block(vec![Statement::Expr(ExprKind::Call {
-                    name: Box::new(ExprKind::Constant(Constant::Identifier("trace"))),
-                    args: vec![ExprKind::Constant(Constant::Identifier("a"))]
+                    name: Box::new(ExprKind::Constant(ConstantKind::Identifier("trace"))),
+                    args: vec![ExprKind::Constant(ConstantKind::Identifier("a"))]
                 })])),
                 no: None,
             })
@@ -432,14 +434,14 @@ mod stmt_tests {
         assert_eq!(
             parse_stmt(&tokens),
             Ok(Statement::If {
-                condition: ExprKind::Constant(Constant::Identifier("a")),
+                condition: ExprKind::Constant(ConstantKind::Identifier("a")),
                 yes: Box::new(Statement::Expr(ExprKind::Call {
-                    name: Box::new(ExprKind::Constant(Constant::Identifier("trace"))),
-                    args: vec![ExprKind::Constant(Constant::Identifier("a"))]
+                    name: Box::new(ExprKind::Constant(ConstantKind::Identifier("trace"))),
+                    args: vec![ExprKind::Constant(ConstantKind::Identifier("a"))]
                 })),
                 no: Some(Box::new(Statement::Expr(ExprKind::Call {
-                    name: Box::new(ExprKind::Constant(Constant::Identifier("trace"))),
-                    args: vec![ExprKind::Constant(Constant::Identifier("b"))]
+                    name: Box::new(ExprKind::Constant(ConstantKind::Identifier("trace"))),
+                    args: vec![ExprKind::Constant(ConstantKind::Identifier("b"))]
                 })))
             })
         )
