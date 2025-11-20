@@ -1,4 +1,4 @@
-use crate::ast::{Declaration, ForCondition, Function, Statement};
+use crate::ast::{Declaration, ForCondition, Function, StatementKind};
 use crate::lexer::operator::Operator;
 use crate::lexer::tokens::{Keyword, TokenKind};
 use crate::parser::expression::{expr_list, expression, type_name};
@@ -9,7 +9,7 @@ use winnow::stream::Stream;
 use winnow::token::{any, take_while};
 use winnow::{ModalResult, Parser};
 
-pub(crate) fn statement<'i>(i: &mut Tokens<'i>) -> ModalResult<Statement<'i>> {
+pub(crate) fn statement<'i>(i: &mut Tokens<'i>) -> ModalResult<StatementKind<'i>> {
     let checkpoint = i.checkpoint();
     skip_newlines(i)?;
     let token = any.parse_next(i)?;
@@ -27,7 +27,7 @@ pub(crate) fn statement<'i>(i: &mut Tokens<'i>) -> ModalResult<Statement<'i>> {
             } else {
                 vec![]
             };
-            Statement::Return(values)
+            StatementKind::Return(values)
         }
         TokenKind::Keyword(Keyword::For) => for_loop
             .context(StrContext::Label("for loop"))
@@ -35,16 +35,16 @@ pub(crate) fn statement<'i>(i: &mut Tokens<'i>) -> ModalResult<Statement<'i>> {
         TokenKind::Keyword(Keyword::If) => if_else
             .context(StrContext::Label("if statement"))
             .parse_next(i)?,
-        TokenKind::Keyword(Keyword::Break) => Statement::Break,
-        TokenKind::Keyword(Keyword::Continue) => Statement::Continue,
+        TokenKind::Keyword(Keyword::Break) => StatementKind::Break,
+        TokenKind::Keyword(Keyword::Continue) => StatementKind::Continue,
         TokenKind::OpenBrace => {
             let statements = statement_list(true).parse_next(i)?;
             TokenKind::CloseBrace.parse_next(i)?;
-            Statement::Block(statements)
+            StatementKind::Block(statements)
         }
         _ => {
             i.reset(&checkpoint);
-            expression.parse_next(i).map(Statement::Expr)?
+            expression.parse_next(i).map(StatementKind::Expr)?
         }
     };
 
@@ -53,7 +53,7 @@ pub(crate) fn statement<'i>(i: &mut Tokens<'i>) -> ModalResult<Statement<'i>> {
 
 pub(crate) fn statement_list<'i>(
     is_block: bool,
-) -> impl Parser<Tokens<'i>, Vec<Statement<'i>>, ErrMode<ContextError>> {
+) -> impl Parser<Tokens<'i>, Vec<StatementKind<'i>>, ErrMode<ContextError>> {
     move |i: &mut Tokens<'i>| {
         let mut result = vec![];
         while let Ok(peek) = peek(any::<_, ErrMode<ContextError>>).parse_next(i) {
@@ -74,11 +74,11 @@ pub(crate) fn statement_list<'i>(
     }
 }
 
-fn declaration_list<'i>(i: &mut Tokens<'i>) -> ModalResult<Statement<'i>> {
+fn declaration_list<'i>(i: &mut Tokens<'i>) -> ModalResult<StatementKind<'i>> {
     skip_newlines(i)?;
     let declarations = separated(0.., declaration, TokenKind::Comma).parse_next(i)?;
 
-    Ok(Statement::Declare(declarations))
+    Ok(StatementKind::Declare(declarations))
 }
 
 fn declaration<'i>(i: &mut Tokens<'i>) -> ModalResult<Declaration<'i>> {
@@ -94,7 +94,7 @@ fn declaration<'i>(i: &mut Tokens<'i>) -> ModalResult<Declaration<'i>> {
     Ok(Declaration { name, value })
 }
 
-fn if_else<'i>(i: &mut Tokens<'i>) -> ModalResult<Statement<'i>> {
+fn if_else<'i>(i: &mut Tokens<'i>) -> ModalResult<StatementKind<'i>> {
     TokenKind::OpenParen.parse_next(i)?;
     let condition = expression.parse_next(i)?;
     TokenKind::CloseParen.parse_next(i)?;
@@ -110,10 +110,10 @@ fn if_else<'i>(i: &mut Tokens<'i>) -> ModalResult<Statement<'i>> {
         None
     };
 
-    Ok(Statement::If { condition, yes, no })
+    Ok(StatementKind::If { condition, yes, no })
 }
 
-fn for_loop<'i>(i: &mut Tokens<'i>) -> ModalResult<Statement<'i>> {
+fn for_loop<'i>(i: &mut Tokens<'i>) -> ModalResult<StatementKind<'i>> {
     TokenKind::OpenParen.parse_next(i)?;
     let condition = if let Some((var, name, _)) = opt((
         opt(TokenKind::Keyword(Keyword::Var)),
@@ -130,7 +130,7 @@ fn for_loop<'i>(i: &mut Tokens<'i>) -> ModalResult<Statement<'i>> {
     } else {
         let (init, _, cond, _, next) = (
             opt(alt((
-                expression.map(Statement::Expr),
+                expression.map(StatementKind::Expr),
                 (TokenKind::Keyword(Keyword::Var), declaration_list).map(|v| v.1),
             ))),
             TokenKind::Semicolon,
@@ -149,7 +149,7 @@ fn for_loop<'i>(i: &mut Tokens<'i>) -> ModalResult<Statement<'i>> {
 
     // Braces are optional, so a body is just one statement - which is _usually_ a block of other statements
     let body = statement.parse_next(i)?;
-    Ok(Statement::ForIn {
+    Ok(StatementKind::ForIn {
         condition,
         body: Box::new(body),
     })
@@ -182,7 +182,7 @@ mod stmt_tests {
     use std::borrow::Cow;
     use winnow::stream::TokenSlice;
 
-    fn parse_stmt<'i>(tokens: &'i [Token<'i>]) -> ModalResult<Statement<'i>> {
+    fn parse_stmt<'i>(tokens: &'i [Token<'i>]) -> ModalResult<StatementKind<'i>> {
         statement(&mut TokenSlice::new(tokens))
     }
 
@@ -194,7 +194,7 @@ mod stmt_tests {
         ]);
         assert_eq!(
             parse_stmt(&tokens),
-            Ok(Statement::Declare(vec![Declaration {
+            Ok(StatementKind::Declare(vec![Declaration {
                 name: "x",
                 value: None
             }]))
@@ -211,7 +211,7 @@ mod stmt_tests {
         ]);
         assert_eq!(
             parse_stmt(&tokens),
-            Ok(Statement::Declare(vec![Declaration {
+            Ok(StatementKind::Declare(vec![Declaration {
                 name: "x",
                 value: Some(ExprKind::Constant(ConstantKind::String(Cow::Borrowed(
                     "hi"
@@ -233,7 +233,7 @@ mod stmt_tests {
         ]);
         assert_eq!(
             parse_stmt(&tokens),
-            Ok(Statement::Declare(vec![Declaration {
+            Ok(StatementKind::Declare(vec![Declaration {
                 name: "x",
                 value: Some(ExprKind::Call {
                     name: Box::new(ExprKind::Constant(ConstantKind::Identifier("foo"))),
@@ -249,7 +249,7 @@ mod stmt_tests {
         let got = parse_stmt(&tokens);
         assert_eq!(
             got,
-            Ok(Statement::Expr(ExprKind::Constant(
+            Ok(StatementKind::Expr(ExprKind::Constant(
                 ConstantKind::Identifier("foo")
             )))
         );
@@ -260,7 +260,7 @@ mod stmt_tests {
         let tokens = build_tokens(&[(TokenKind::Newline, "\n"), (TokenKind::Identifier, "bar")]);
         assert_eq!(
             parse_stmt(&tokens),
-            Ok(Statement::Expr(ExprKind::Constant(
+            Ok(StatementKind::Expr(ExprKind::Constant(
                 ConstantKind::Identifier("bar")
             )))
         );
@@ -269,7 +269,7 @@ mod stmt_tests {
     #[test]
     fn test_return_no_value() {
         let tokens = build_tokens(&[(TokenKind::Keyword(Keyword::Return), "return")]);
-        assert_eq!(parse_stmt(&tokens), Ok(Statement::Return(vec![])))
+        assert_eq!(parse_stmt(&tokens), Ok(StatementKind::Return(vec![])))
     }
 
     #[test]
@@ -280,7 +280,7 @@ mod stmt_tests {
         ]);
         assert_eq!(
             parse_stmt(&tokens),
-            Ok(Statement::Return(vec![ExprKind::Constant(
+            Ok(StatementKind::Return(vec![ExprKind::Constant(
                 ConstantKind::Identifier("a")
             )]))
         )
@@ -298,7 +298,7 @@ mod stmt_tests {
         ]);
         assert_eq!(
             parse_stmt(&tokens),
-            Ok(Statement::Return(vec![
+            Ok(StatementKind::Return(vec![
                 ExprKind::Constant(ConstantKind::Identifier("a")),
                 ExprKind::Constant(ConstantKind::Identifier("b"))
             ]))
@@ -331,9 +331,9 @@ mod stmt_tests {
         ]);
         assert_eq!(
             parse_stmt(&tokens),
-            Ok(Statement::ForIn {
+            Ok(StatementKind::ForIn {
                 condition: ForCondition::Classic {
-                    initialize: Some(Box::new(Statement::Declare(vec![Declaration {
+                    initialize: Some(Box::new(StatementKind::Declare(vec![Declaration {
                         name: "i",
                         value: Some(ExprKind::Constant(ConstantKind::Identifier("0")))
                     }]))),
@@ -347,10 +347,12 @@ mod stmt_tests {
                         Box::new(ExprKind::Constant(ConstantKind::Identifier("i")))
                     )]
                 },
-                body: Box::new(Statement::Block(vec![Statement::Expr(ExprKind::Call {
-                    name: Box::new(ExprKind::Constant(ConstantKind::Identifier("trace"))),
-                    args: vec![ExprKind::Constant(ConstantKind::Identifier("i"))]
-                })]))
+                body: Box::new(StatementKind::Block(vec![StatementKind::Expr(
+                    ExprKind::Call {
+                        name: Box::new(ExprKind::Constant(ConstantKind::Identifier("trace"))),
+                        args: vec![ExprKind::Constant(ConstantKind::Identifier("i"))]
+                    }
+                )]))
             })
         )
     }
@@ -373,16 +375,18 @@ mod stmt_tests {
         ]);
         assert_eq!(
             parse_stmt(&tokens),
-            Ok(Statement::ForIn {
+            Ok(StatementKind::ForIn {
                 condition: ForCondition::Enumerate {
                     variable: "a",
                     declare: false,
                     object: ExprKind::Constant(ConstantKind::Identifier("b"))
                 },
-                body: Box::new(Statement::Block(vec![Statement::Expr(ExprKind::Call {
-                    name: Box::new(ExprKind::Constant(ConstantKind::Identifier("trace"))),
-                    args: vec![ExprKind::Constant(ConstantKind::Identifier("a"))]
-                })]))
+                body: Box::new(StatementKind::Block(vec![StatementKind::Expr(
+                    ExprKind::Call {
+                        name: Box::new(ExprKind::Constant(ConstantKind::Identifier("trace"))),
+                        args: vec![ExprKind::Constant(ConstantKind::Identifier("a"))]
+                    }
+                )]))
             })
         )
     }
@@ -403,12 +407,14 @@ mod stmt_tests {
         ]);
         assert_eq!(
             parse_stmt(&tokens),
-            Ok(Statement::If {
+            Ok(StatementKind::If {
                 condition: ExprKind::Constant(ConstantKind::Identifier("a")),
-                yes: Box::new(Statement::Block(vec![Statement::Expr(ExprKind::Call {
-                    name: Box::new(ExprKind::Constant(ConstantKind::Identifier("trace"))),
-                    args: vec![ExprKind::Constant(ConstantKind::Identifier("a"))]
-                })])),
+                yes: Box::new(StatementKind::Block(vec![StatementKind::Expr(
+                    ExprKind::Call {
+                        name: Box::new(ExprKind::Constant(ConstantKind::Identifier("trace"))),
+                        args: vec![ExprKind::Constant(ConstantKind::Identifier("a"))]
+                    }
+                )])),
                 no: None,
             })
         )
@@ -433,13 +439,13 @@ mod stmt_tests {
         ]);
         assert_eq!(
             parse_stmt(&tokens),
-            Ok(Statement::If {
+            Ok(StatementKind::If {
                 condition: ExprKind::Constant(ConstantKind::Identifier("a")),
-                yes: Box::new(Statement::Expr(ExprKind::Call {
+                yes: Box::new(StatementKind::Expr(ExprKind::Call {
                     name: Box::new(ExprKind::Constant(ConstantKind::Identifier("trace"))),
                     args: vec![ExprKind::Constant(ConstantKind::Identifier("a"))]
                 })),
-                no: Some(Box::new(Statement::Expr(ExprKind::Call {
+                no: Some(Box::new(StatementKind::Expr(ExprKind::Call {
                     name: Box::new(ExprKind::Constant(ConstantKind::Identifier("trace"))),
                     args: vec![ExprKind::Constant(ConstantKind::Identifier("b"))]
                 })))
@@ -450,12 +456,12 @@ mod stmt_tests {
     #[test]
     fn test_break() {
         let tokens = build_tokens(&[(TokenKind::Keyword(Keyword::Break), "break")]);
-        assert_eq!(parse_stmt(&tokens), Ok(Statement::Break))
+        assert_eq!(parse_stmt(&tokens), Ok(StatementKind::Break))
     }
 
     #[test]
     fn test_continue() {
         let tokens = build_tokens(&[(TokenKind::Keyword(Keyword::Continue), "continue")]);
-        assert_eq!(parse_stmt(&tokens), Ok(Statement::Continue))
+        assert_eq!(parse_stmt(&tokens), Ok(StatementKind::Continue))
     }
 }

@@ -383,7 +383,7 @@ pub(crate) fn expr_list<'i>(i: &mut Tokens<'i>) -> ModalResult<Vec<ExprKind<'i>>
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::ast::{Function, Statement};
+    use crate::ast::{Function, StatementKind};
     use crate::lexer::operator::Operator;
     use crate::lexer::tokens::{QuoteKind, Token, TokenKind};
     use crate::parser::tests::build_tokens;
@@ -1570,7 +1570,7 @@ mod tests {
             Ok(ExprKind::Function(Function {
                 name: Some("func"),
                 args: vec!["a", "b"],
-                body: vec![Statement::Expr(ExprKind::Call {
+                body: vec![StatementKind::Expr(ExprKind::Call {
                     name: Box::new(ExprKind::Constant(ConstantKind::Identifier("trace"))),
                     args: vec![ExprKind::Constant(ConstantKind::Identifier("a"))],
                 })],

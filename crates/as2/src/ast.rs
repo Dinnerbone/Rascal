@@ -91,19 +91,19 @@ pub enum Affix {
 }
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
-pub enum Statement<'a> {
+pub enum StatementKind<'a> {
     Declare(Vec<Declaration<'a>>),
     Return(Vec<ExprKind<'a>>),
     Expr(ExprKind<'a>),
-    Block(Vec<Statement<'a>>),
+    Block(Vec<StatementKind<'a>>),
     ForIn {
         condition: ForCondition<'a>,
-        body: Box<Statement<'a>>,
+        body: Box<StatementKind<'a>>,
     },
     If {
         condition: ExprKind<'a>,
-        yes: Box<Statement<'a>>,
-        no: Option<Box<Statement<'a>>>,
+        yes: Box<StatementKind<'a>>,
+        no: Option<Box<StatementKind<'a>>>,
     },
     Break,
     Continue,
@@ -117,7 +117,7 @@ pub enum ForCondition<'a> {
         object: ExprKind<'a>,
     },
     Classic {
-        initialize: Option<Box<Statement<'a>>>,
+        initialize: Option<Box<StatementKind<'a>>>,
         // This is technically incorrect, we treat `a++, b++` as two different expressions, but they should be one (and we'd have a `Next(a, b)` expression)
         // Unfortunately that seems difficult to implement _correctly_, so this is a good stopgap (did anyone even use `,` in regular code, outside for loops?)
         condition: Vec<ExprKind<'a>>,
@@ -129,7 +129,7 @@ pub enum ForCondition<'a> {
 pub struct Function<'a> {
     pub name: Option<&'a str>,
     pub args: Vec<&'a str>,
-    pub body: Vec<Statement<'a>>,
+    pub body: Vec<StatementKind<'a>>,
 }
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
@@ -140,5 +140,5 @@ pub struct Declaration<'a> {
 
 #[derive(Debug, Serialize)]
 pub struct Document<'src> {
-    pub statements: Vec<Statement<'src>>,
+    pub statements: Vec<StatementKind<'src>>,
 }

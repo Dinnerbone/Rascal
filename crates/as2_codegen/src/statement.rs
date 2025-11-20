@@ -1,18 +1,18 @@
 use crate::access::VariableAccess;
 use crate::builder::CodeBuilder;
 use ruasc_as2::ast::{
-    Affix, BinaryOperator, ConstantKind, Declaration, ExprKind, ForCondition, Function, Statement,
-    UnaryOperator,
+    Affix, BinaryOperator, ConstantKind, Declaration, ExprKind, ForCondition, Function,
+    StatementKind, UnaryOperator,
 };
 use ruasc_as2_pcode::{Action, PushValue};
 
-pub(crate) fn gen_statements(builder: &mut CodeBuilder, statements: &[Statement]) {
+pub(crate) fn gen_statements(builder: &mut CodeBuilder, statements: &[StatementKind]) {
     let mut hoisted = vec![];
     let mut regular = vec![];
     for statement in statements {
         if matches!(
             statement,
-            Statement::Expr(ExprKind::Function(Function { name: Some(_), .. }))
+            StatementKind::Expr(ExprKind::Function(Function { name: Some(_), .. }))
         ) {
             hoisted.push(statement);
         } else {
@@ -27,12 +27,12 @@ pub(crate) fn gen_statements(builder: &mut CodeBuilder, statements: &[Statement]
     }
 }
 
-pub(crate) fn gen_statement(builder: &mut CodeBuilder, statement: &Statement) {
+pub(crate) fn gen_statement(builder: &mut CodeBuilder, statement: &StatementKind) {
     match statement {
-        Statement::Declare(declarations) => {
+        StatementKind::Declare(declarations) => {
             gen_declarations(builder, declarations);
         }
-        Statement::Return(exprs) => {
+        StatementKind::Return(exprs) => {
             for expr in exprs {
                 gen_expr(builder, expr, false);
             }
@@ -41,24 +41,24 @@ pub(crate) fn gen_statement(builder: &mut CodeBuilder, statement: &Statement) {
             }
             builder.action(Action::Return);
         }
-        Statement::Expr(expr) => {
+        StatementKind::Expr(expr) => {
             let stack_size = builder.stack_size();
             gen_expr(builder, expr, true);
             builder.truncate_stack(stack_size);
         }
-        Statement::Block(statements) => {
+        StatementKind::Block(statements) => {
             let stack_size = builder.stack_size();
             gen_statements(builder, statements);
             builder.truncate_stack(stack_size);
         }
-        Statement::ForIn { condition, body } => gen_for_loop(builder, condition, body),
-        Statement::If { condition, yes, no } => gen_if(builder, condition, yes, no),
-        Statement::Break => {
+        StatementKind::ForIn { condition, body } => gen_for_loop(builder, condition, body),
+        StatementKind::If { condition, yes, no } => gen_if(builder, condition, yes, no),
+        StatementKind::Break => {
             if let Some(label) = builder.break_label() {
                 builder.action(Action::Jump(label));
             }
         }
-        Statement::Continue => {
+        StatementKind::Continue => {
             if let Some(label) = builder.continue_label() {
                 builder.action(Action::Jump(label));
             }
@@ -66,7 +66,7 @@ pub(crate) fn gen_statement(builder: &mut CodeBuilder, statement: &Statement) {
     }
 }
 
-fn gen_for_loop(builder: &mut CodeBuilder, condition: &ForCondition, body: &Statement) {
+fn gen_for_loop(builder: &mut CodeBuilder, condition: &ForCondition, body: &StatementKind) {
     let start_stack_size = builder.stack_size();
     let end_label = builder.create_label();
     let continue_label = builder.create_label();
@@ -143,8 +143,8 @@ fn gen_for_loop(builder: &mut CodeBuilder, condition: &ForCondition, body: &Stat
 fn gen_if(
     builder: &mut CodeBuilder,
     condition: &ExprKind,
-    yes: &Statement,
-    no: &Option<Box<Statement>>,
+    yes: &StatementKind,
+    no: &Option<Box<StatementKind>>,
 ) {
     let end_label = builder.create_label();
     gen_expr(builder, condition, false);
