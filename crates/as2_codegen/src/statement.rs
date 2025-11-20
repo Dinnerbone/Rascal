@@ -1,7 +1,7 @@
 use crate::access::VariableAccess;
 use crate::builder::CodeBuilder;
 use ruasc_as2::ast::{
-    Affix, BinaryOperator, ConstantKind, Declaration, ExprKind, ForCondition, Function,
+    Affix, BinaryOperator, ConstantKind, Declaration, Expr, ExprKind, ForCondition, Function,
     StatementKind, UnaryOperator,
 };
 use ruasc_as2_pcode::{Action, PushValue};
@@ -12,7 +12,10 @@ pub(crate) fn gen_statements(builder: &mut CodeBuilder, statements: &[StatementK
     for statement in statements {
         if matches!(
             statement,
-            StatementKind::Expr(ExprKind::Function(Function { name: Some(_), .. }))
+            StatementKind::Expr(Expr {
+                value: ExprKind::Function(Function { name: Some(_), .. }),
+                ..
+            })
         ) {
             hoisted.push(statement);
         } else {
@@ -252,7 +255,7 @@ fn gen_function(builder: &mut CodeBuilder, function: &Function) {
     })
 }
 
-fn gen_init_object(builder: &mut CodeBuilder, values: &[(&str, ExprKind)]) {
+fn gen_init_object(builder: &mut CodeBuilder, values: &[(&str, Expr)]) {
     let num_fields = values.len() as i32;
     for (key, value) in values.iter().rev() {
         let push_value = builder.constants_mut().add(key);
@@ -263,7 +266,7 @@ fn gen_init_object(builder: &mut CodeBuilder, values: &[(&str, ExprKind)]) {
     builder.action_with_stack_delta(Action::InitObject, -num_fields * 2);
 }
 
-fn gen_init_array(builder: &mut CodeBuilder, values: &[ExprKind]) {
+fn gen_init_array(builder: &mut CodeBuilder, values: &[Expr]) {
     let num_values = values.len() as i32;
     for value in values.iter().rev() {
         gen_expr(builder, value, false);
@@ -421,7 +424,7 @@ fn gen_binary_op(
     }
 }
 
-fn gen_call(builder: &mut CodeBuilder, name: &ExprKind, args: &[ExprKind]) {
+fn gen_call(builder: &mut CodeBuilder, name: &ExprKind, args: &[Expr]) {
     if let ExprKind::Constant(ConstantKind::Identifier(identifier)) = name {
         if *identifier == "trace" && args.len() == 1 {
             gen_expr(builder, &args[0], false);
@@ -443,7 +446,7 @@ fn gen_call(builder: &mut CodeBuilder, name: &ExprKind, args: &[ExprKind]) {
     VariableAccess::for_expr(builder, name).call(builder, num_args);
 }
 
-fn gen_new(builder: &mut CodeBuilder, name: &ExprKind, args: &[ExprKind]) {
+fn gen_new(builder: &mut CodeBuilder, name: &ExprKind, args: &[Expr]) {
     for arg in args.iter().rev() {
         gen_expr(builder, arg, false);
     }

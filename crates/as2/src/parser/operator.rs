@@ -1,7 +1,8 @@
-use crate::ast::{BinaryOperator, ExprKind, UnaryOperator};
+use crate::ast::{BinaryOperator, Expr, ExprKind, UnaryOperator};
 use crate::lexer::operator::Operator;
 use crate::lexer::tokens::{Token, TokenKind};
 use crate::parser::Tokens;
+use ruasc_common::span::Span;
 use serde::Serialize;
 use std::cmp::Ordering;
 use winnow::error::ParserError;
@@ -70,49 +71,70 @@ impl BinaryOperator {
     }
 }
 
-impl<'i> ExprKind<'i> {
-    pub(crate) fn for_binary_operator(
-        op: BinaryOperator,
-        a: Box<ExprKind<'i>>,
-        b: Box<ExprKind<'i>>,
-    ) -> ExprKind<'i> {
-        match *b {
-            ExprKind::Ternary { condition, yes, no }
-                if op.precedence() != OperatorPrecedence::Assignment =>
-            {
-                ExprKind::Ternary {
-                    condition: Box::new(ExprKind::for_binary_operator(op, a, condition)),
-                    yes,
-                    no,
-                }
-            }
-            ExprKind::BinaryOperator(bop, ba, bb) if BinaryOperator::should_swap(op, bop) => {
-                ExprKind::BinaryOperator(
-                    bop,
-                    Box::new(ExprKind::for_binary_operator(op, a, ba)),
-                    bb,
-                )
-            }
-            _ => ExprKind::BinaryOperator(op, a, b),
-        }
-    }
-}
-
-impl<'i> ExprKind<'i> {
-    pub(crate) fn for_unary_operator(op: UnaryOperator, expr: Box<ExprKind<'i>>) -> ExprKind<'i> {
-        match *expr {
-            ExprKind::BinaryOperator(binary_op, a, b) => ExprKind::BinaryOperator(
-                binary_op,
-                Box::new(ExprKind::for_unary_operator(op, a)),
-                b,
-            ),
-            ExprKind::Ternary { condition, yes, no } => ExprKind::Ternary {
-                condition: Box::new(ExprKind::for_unary_operator(op, condition)),
+pub(crate) fn expr_for_binary_operator<'i>(
+    op: BinaryOperator,
+    a: Box<Expr<'i>>,
+    b: Box<Expr<'i>>,
+) -> Expr<'i> {
+    match *b {
+        Expr {
+            value: ExprKind::Ternary { condition, yes, no },
+            ..
+        } if op.precedence() != OperatorPrecedence::Assignment => Expr::new(
+            Span::encompassing(condition.span, no.span),
+            ExprKind::Ternary {
+                condition: Box::new(expr_for_binary_operator(op, a, condition)),
                 yes,
                 no,
             },
-            _ => ExprKind::UnaryOperator(op, expr),
+        ),
+        Expr {
+            value: ExprKind::BinaryOperator(bop, ba, bb),
+            ..
+        } if BinaryOperator::should_swap(op, bop) => {
+            let new_left = Box::new(expr_for_binary_operator(op, a, ba));
+            Expr::new(
+                Span::encompassing(new_left.span, bb.span),
+                ExprKind::BinaryOperator(bop, new_left, bb),
+            )
         }
+        _ => Expr::new(
+            Span::encompassing(a.span, b.span),
+            ExprKind::BinaryOperator(op, a, b),
+        ),
+    }
+}
+
+pub(crate) fn expr_for_unary_operator(op: UnaryOperator, expr: Box<Expr>, op_span: Span) -> Expr {
+    match *expr {
+        Expr {
+            value: ExprKind::BinaryOperator(binary_op, a, b),
+            ..
+        } => {
+            let new_left = Box::new(expr_for_unary_operator(op, a, op_span));
+            Expr::new(
+                Span::encompassing(new_left.span, b.span),
+                ExprKind::BinaryOperator(binary_op, new_left, b),
+            )
+        }
+        Expr {
+            value: ExprKind::Ternary { condition, yes, no },
+            ..
+        } => {
+            let new_condition = Box::new(expr_for_unary_operator(op, condition, op_span));
+            Expr::new(
+                Span::encompassing(new_condition.span, no.span),
+                ExprKind::Ternary {
+                    condition: new_condition,
+                    yes,
+                    no,
+                },
+            )
+        }
+        _ => Expr::new(
+            Span::encompassing(op_span, expr.span),
+            ExprKind::UnaryOperator(op, expr),
+        ),
     }
 }
 

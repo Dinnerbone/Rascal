@@ -8,65 +8,125 @@ Ok:
     - Declare:
         - name: a
           value:
-            Constant:
-              String: "1"
+            span:
+              start: 116
+              end: 119
+            value:
+              Constant:
+                String: "1"
     - Declare:
         - name: b
           value:
-            Constant:
-              String: "2"
+            span:
+              start: 248
+              end: 251
+            value:
+              Constant:
+                String: "2"
     - Declare:
         - name: c
           value:
-            Constant:
-              String: "3"
+            span:
+              start: 371
+              end: 374
+            value:
+              Constant:
+                String: "3"
     - Declare:
         - name: d
           value:
-            Constant:
-              String: "4"
+            span:
+              start: 451
+              end: 454
+            value:
+              Constant:
+                String: "4"
     - Expr:
-        Call:
-          name:
-            Constant:
-              Identifier: test
-          args:
-            - Constant:
-                Identifier: a
-            - Constant:
-                Identifier: b
+        span:
+          start: 510
+          end: 578
+        value:
+          Call:
+            name:
+              span:
+                start: 506
+                end: 510
+              value:
+                Constant:
+                  Identifier: test
+            args:
+              - span:
+                  start: 529
+                  end: 530
+                value:
+                  Constant:
+                    Identifier: a
+              - span:
+                  start: 575
+                  end: 576
+                value:
+                  Constant:
+                    Identifier: b
     - Declare:
         - name: e
           value:
-            Constant:
-              String: "5"
+            span:
+              start: 656
+              end: 659
+            value:
+              Constant:
+                String: "5"
     - Declare:
         - name: f
           value:
-            Constant:
-              String: // not a comment
+            span:
+              start: 670
+              end: 688
+            value:
+              Constant:
+                String: // not a comment
     - Declare:
         - name: g
           value:
-            Constant:
-              String: /* not a comment */
+            span:
+              start: 727
+              end: 748
+            value:
+              Constant:
+                String: /* not a comment */
     - Declare:
         - name: h
           value:
-            Constant:
-              String: "\"/* still not a comment */\""
+            span:
+              start: 793
+              end: 824
+            value:
+              Constant:
+                String: "\"/* still not a comment */\""
     - Declare:
         - name: i
           value:
-            Constant:
-              String: "6"
+            span:
+              start: 898
+              end: 901
+            value:
+              Constant:
+                String: "6"
     - Declare:
         - name: j
           value:
-            Constant:
-              String: "7"
+            span:
+              start: 1042
+              end: 1045
+            value:
+              Constant:
+                String: "7"
     - Declare:
         - name: k
           value:
-            Constant:
-              String: "8"
+            span:
+              start: 1115
+              end: 1118
+            value:
+              Constant:
+                String: "8"

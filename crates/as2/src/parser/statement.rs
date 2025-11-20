@@ -3,6 +3,7 @@ use crate::lexer::operator::Operator;
 use crate::lexer::tokens::{Keyword, TokenKind};
 use crate::parser::expression::{expr_list, expression, type_name};
 use crate::parser::{Tokens, identifier, skip_newlines};
+use ruasc_common::span::{Span, Spanned};
 use winnow::combinator::{alt, cond, cut_err, opt, peek, separated};
 use winnow::error::{ContextError, ErrMode, StrContext};
 use winnow::stream::Stream;
@@ -91,7 +92,10 @@ fn declaration<'i>(i: &mut Tokens<'i>) -> ModalResult<Declaration<'i>> {
         .is_some();
     let value = cond(equals, expression).parse_next(i)?;
 
-    Ok(Declaration { name, value })
+    Ok(Declaration {
+        name: name.value,
+        value,
+    })
 }
 
 fn if_else<'i>(i: &mut Tokens<'i>) -> ModalResult<StatementKind<'i>> {
@@ -123,7 +127,7 @@ fn for_loop<'i>(i: &mut Tokens<'i>) -> ModalResult<StatementKind<'i>> {
     .parse_next(i)?
     {
         ForCondition::Enumerate {
-            variable: name,
+            variable: name.value,
             declare: var.is_some(),
             object: expression.parse_next(i)?,
         }
@@ -155,12 +159,13 @@ fn for_loop<'i>(i: &mut Tokens<'i>) -> ModalResult<StatementKind<'i>> {
     })
 }
 
-pub(crate) fn function<'i>(i: &mut Tokens<'i>) -> ModalResult<Function<'i>> {
+pub(crate) fn function<'i>(i: &mut Tokens<'i>) -> ModalResult<Spanned<Function<'i>>> {
+    let start = TokenKind::Keyword(Keyword::Function).parse_next(i)?.span;
     let name = opt(identifier).parse_next(i)?;
     TokenKind::OpenParen.parse_next(i)?;
     let args = separated(
         0..,
-        (identifier, opt(type_name)).map(|(i, _)| i),
+        (identifier, opt(type_name)).map(|(i, _)| i.value),
         TokenKind::Comma,
     )
     .parse_next(i)?;
@@ -168,15 +173,22 @@ pub(crate) fn function<'i>(i: &mut Tokens<'i>) -> ModalResult<Function<'i>> {
     opt(type_name).parse_next(i)?;
     TokenKind::OpenBrace.parse_next(i)?;
     let body = statement_list(true).parse_next(i)?;
-    TokenKind::CloseBrace.parse_next(i)?;
+    let end = TokenKind::CloseBrace.parse_next(i)?.span;
 
-    Ok(Function { name, args, body })
+    Ok(Spanned::new(
+        Span::encompassing(start, end),
+        Function {
+            name: name.map(|n| n.value),
+            args,
+            body,
+        },
+    ))
 }
 
 #[cfg(test)]
 mod stmt_tests {
     use super::*;
-    use crate::ast::{Affix, BinaryOperator, ConstantKind, ExprKind, UnaryOperator};
+    use crate::ast::{Affix, BinaryOperator, ConstantKind, Expr, ExprKind, UnaryOperator};
     use crate::lexer::tokens::{Keyword, QuoteKind, Token, TokenKind};
     use crate::parser::tests::build_tokens;
     use std::borrow::Cow;
@@ -184,6 +196,19 @@ mod stmt_tests {
 
     fn parse_stmt<'i>(tokens: &'i [Token<'i>]) -> ModalResult<StatementKind<'i>> {
         statement(&mut TokenSlice::new(tokens))
+    }
+
+    // Helpers to build Expr values with default spans for expectations
+    fn ex<'i>(k: ExprKind<'i>) -> Expr<'i> {
+        Spanned::new(Span::default(), k)
+    }
+
+    fn id<'i>(name: &'i str) -> Expr<'i> {
+        ex(ExprKind::Constant(ConstantKind::Identifier(name)))
+    }
+
+    fn s<'i>(val: &'i str) -> Expr<'i> {
+        ex(ExprKind::Constant(ConstantKind::String(Cow::Borrowed(val))))
     }
 
     #[test]
@@ -213,9 +238,7 @@ mod stmt_tests {
             parse_stmt(&tokens),
             Ok(StatementKind::Declare(vec![Declaration {
                 name: "x",
-                value: Some(ExprKind::Constant(ConstantKind::String(Cow::Borrowed(
-                    "hi"
-                ))))
+                value: Some(s("hi"))
             }]))
         );
     }
@@ -235,10 +258,10 @@ mod stmt_tests {
             parse_stmt(&tokens),
             Ok(StatementKind::Declare(vec![Declaration {
                 name: "x",
-                value: Some(ExprKind::Call {
-                    name: Box::new(ExprKind::Constant(ConstantKind::Identifier("foo"))),
-                    args: vec![ExprKind::Constant(ConstantKind::Identifier("a"))]
-                })
+                value: Some(ex(ExprKind::Call {
+                    name: Box::new(id("foo")),
+                    args: vec![id("a")]
+                }))
             }]))
         );
     }
@@ -249,9 +272,7 @@ mod stmt_tests {
         let got = parse_stmt(&tokens);
         assert_eq!(
             got,
-            Ok(StatementKind::Expr(ExprKind::Constant(
-                ConstantKind::Identifier("foo")
-            )))
+            Ok(StatementKind::Expr(id("foo")))
         );
     }
 
@@ -260,9 +281,7 @@ mod stmt_tests {
         let tokens = build_tokens(&[(TokenKind::Newline, "\n"), (TokenKind::Identifier, "bar")]);
         assert_eq!(
             parse_stmt(&tokens),
-            Ok(StatementKind::Expr(ExprKind::Constant(
-                ConstantKind::Identifier("bar")
-            )))
+            Ok(StatementKind::Expr(id("bar")))
         );
     }
 
@@ -280,9 +299,7 @@ mod stmt_tests {
         ]);
         assert_eq!(
             parse_stmt(&tokens),
-            Ok(StatementKind::Return(vec![ExprKind::Constant(
-                ConstantKind::Identifier("a")
-            )]))
+            Ok(StatementKind::Return(vec![id("a")]))
         )
     }
 
@@ -298,10 +315,7 @@ mod stmt_tests {
         ]);
         assert_eq!(
             parse_stmt(&tokens),
-            Ok(StatementKind::Return(vec![
-                ExprKind::Constant(ConstantKind::Identifier("a")),
-                ExprKind::Constant(ConstantKind::Identifier("b"))
-            ]))
+            Ok(StatementKind::Return(vec![id("a"), id("b")]))
         )
     }
 
@@ -335,23 +349,23 @@ mod stmt_tests {
                 condition: ForCondition::Classic {
                     initialize: Some(Box::new(StatementKind::Declare(vec![Declaration {
                         name: "i",
-                        value: Some(ExprKind::Constant(ConstantKind::Identifier("0")))
+                        value: Some(id("0"))
                     }]))),
-                    condition: vec![ExprKind::BinaryOperator(
+                    condition: vec![ex(ExprKind::BinaryOperator(
                         BinaryOperator::LessThan,
-                        Box::new(ExprKind::Constant(ConstantKind::Identifier("i"))),
-                        Box::new(ExprKind::Constant(ConstantKind::Identifier("10")))
-                    )],
-                    update: vec![ExprKind::UnaryOperator(
+                        Box::new(id("i")),
+                        Box::new(id("10"))
+                    ))],
+                    update: vec![ex(ExprKind::UnaryOperator(
                         UnaryOperator::Increment(Affix::Postfix),
-                        Box::new(ExprKind::Constant(ConstantKind::Identifier("i")))
-                    )]
+                        Box::new(id("i"))
+                    ))]
                 },
                 body: Box::new(StatementKind::Block(vec![StatementKind::Expr(
-                    ExprKind::Call {
-                        name: Box::new(ExprKind::Constant(ConstantKind::Identifier("trace"))),
-                        args: vec![ExprKind::Constant(ConstantKind::Identifier("i"))]
-                    }
+                    ex(ExprKind::Call {
+                        name: Box::new(id("trace")),
+                        args: vec![id("i")]
+                    })
                 )]))
             })
         )
@@ -379,13 +393,13 @@ mod stmt_tests {
                 condition: ForCondition::Enumerate {
                     variable: "a",
                     declare: false,
-                    object: ExprKind::Constant(ConstantKind::Identifier("b"))
+                    object: id("b")
                 },
                 body: Box::new(StatementKind::Block(vec![StatementKind::Expr(
-                    ExprKind::Call {
-                        name: Box::new(ExprKind::Constant(ConstantKind::Identifier("trace"))),
-                        args: vec![ExprKind::Constant(ConstantKind::Identifier("a"))]
-                    }
+                    ex(ExprKind::Call {
+                        name: Box::new(id("trace")),
+                        args: vec![id("a")]
+                    })
                 )]))
             })
         )
@@ -408,12 +422,12 @@ mod stmt_tests {
         assert_eq!(
             parse_stmt(&tokens),
             Ok(StatementKind::If {
-                condition: ExprKind::Constant(ConstantKind::Identifier("a")),
+                condition: id("a"),
                 yes: Box::new(StatementKind::Block(vec![StatementKind::Expr(
-                    ExprKind::Call {
-                        name: Box::new(ExprKind::Constant(ConstantKind::Identifier("trace"))),
-                        args: vec![ExprKind::Constant(ConstantKind::Identifier("a"))]
-                    }
+                    ex(ExprKind::Call {
+                        name: Box::new(id("trace")),
+                        args: vec![id("a")]
+                    })
                 )])),
                 no: None,
             })
@@ -440,15 +454,15 @@ mod stmt_tests {
         assert_eq!(
             parse_stmt(&tokens),
             Ok(StatementKind::If {
-                condition: ExprKind::Constant(ConstantKind::Identifier("a")),
-                yes: Box::new(StatementKind::Expr(ExprKind::Call {
-                    name: Box::new(ExprKind::Constant(ConstantKind::Identifier("trace"))),
-                    args: vec![ExprKind::Constant(ConstantKind::Identifier("a"))]
-                })),
-                no: Some(Box::new(StatementKind::Expr(ExprKind::Call {
-                    name: Box::new(ExprKind::Constant(ConstantKind::Identifier("trace"))),
-                    args: vec![ExprKind::Constant(ConstantKind::Identifier("b"))]
-                })))
+                condition: id("a"),
+                yes: Box::new(StatementKind::Expr(ex(ExprKind::Call {
+                    name: Box::new(id("trace")),
+                    args: vec![id("a")]
+                })) ),
+                no: Some(Box::new(StatementKind::Expr(ex(ExprKind::Call {
+                    name: Box::new(id("trace")),
+                    args: vec![id("b")]
+                }))))
             })
         )
     }

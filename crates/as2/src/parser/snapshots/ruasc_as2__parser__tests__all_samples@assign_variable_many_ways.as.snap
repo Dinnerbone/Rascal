@@ -1,89 +1,213 @@
 ---
 source: crates/as2/src/parser/tests.rs
 expression: parsed
-input_file: samples/assign_variable_many_ways.as
+input_file: samples/as2/assign_variable_many_ways.as
 ---
 Ok:
   statements:
     - Declare:
         - name: message
           value:
-            BinaryOperator:
-              - Add
-              - Constant:
-                  String: Hello
-              - Constant:
-                  String: " "
+            span:
+              start: 14
+              end: 27
+            value:
+              BinaryOperator:
+                - Add
+                - span:
+                    start: 14
+                    end: 21
+                  value:
+                    Constant:
+                      String: Hello
+                - span:
+                    start: 24
+                    end: 27
+                  value:
+                    Constant:
+                      String: " "
     - Expr:
-        BinaryOperator:
-          - AddAssign
-          - Constant:
-              Identifier: message
-          - Constant:
-              String: World
-    - Expr:
-        BinaryOperator:
-          - Assign
-          - Constant:
-              Identifier: message
-          - BinaryOperator:
-              - Add
-              - Constant:
+        span:
+          start: 29
+          end: 47
+        value:
+          BinaryOperator:
+            - AddAssign
+            - span:
+                start: 29
+                end: 36
+              value:
+                Constant:
                   Identifier: message
-              - Constant:
-                  String: "!"
+            - span:
+                start: 40
+                end: 47
+              value:
+                Constant:
+                  String: World
     - Expr:
-        Call:
-          name:
-            Constant:
-              Identifier: trace
-          args:
-            - Constant:
-                Identifier: message
+        span:
+          start: 49
+          end: 72
+        value:
+          BinaryOperator:
+            - Assign
+            - span:
+                start: 49
+                end: 56
+              value:
+                Constant:
+                  Identifier: message
+            - span:
+                start: 59
+                end: 72
+              value:
+                BinaryOperator:
+                  - Add
+                  - span:
+                      start: 59
+                      end: 66
+                    value:
+                      Constant:
+                        Identifier: message
+                  - span:
+                      start: 69
+                      end: 72
+                    value:
+                      Constant:
+                        String: "!"
+    - Expr:
+        span:
+          start: 79
+          end: 88
+        value:
+          Call:
+            name:
+              span:
+                start: 74
+                end: 79
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 80
+                  end: 87
+                value:
+                  Constant:
+                    Identifier: message
     - Declare:
         - name: a
           value:
-            Constant:
-              Integer: 1
+            span:
+              start: 97
+              end: 98
+            value:
+              Constant:
+                Integer: 1
         - name: b
           value: ~
         - name: c
           value:
-            Constant:
-              Integer: 3
+            span:
+              start: 105
+              end: 106
+            value:
+              Constant:
+                Integer: 3
     - Expr:
-        Call:
-          name:
-            Constant:
-              Identifier: trace
-          args:
-            - BinaryOperator:
-                - Add
-                - Constant:
-                    String: "a: "
-                - Constant:
-                    Identifier: a
+        span:
+          start: 113
+          end: 124
+        value:
+          Call:
+            name:
+              span:
+                start: 108
+                end: 113
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 114
+                  end: 123
+                value:
+                  BinaryOperator:
+                    - Add
+                    - span:
+                        start: 114
+                        end: 119
+                      value:
+                        Constant:
+                          String: "a: "
+                    - span:
+                        start: 122
+                        end: 123
+                      value:
+                        Constant:
+                          Identifier: a
     - Expr:
-        Call:
-          name:
-            Constant:
-              Identifier: trace
-          args:
-            - BinaryOperator:
-                - Add
-                - Constant:
-                    String: "b: "
-                - Constant:
-                    Identifier: b
+        span:
+          start: 136
+          end: 147
+        value:
+          Call:
+            name:
+              span:
+                start: 131
+                end: 136
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 137
+                  end: 146
+                value:
+                  BinaryOperator:
+                    - Add
+                    - span:
+                        start: 137
+                        end: 142
+                      value:
+                        Constant:
+                          String: "b: "
+                    - span:
+                        start: 145
+                        end: 146
+                      value:
+                        Constant:
+                          Identifier: b
     - Expr:
-        Call:
-          name:
-            Constant:
-              Identifier: trace
-          args:
-            - BinaryOperator:
-                - Add
-                - Constant:
-                    String: "c: "
-                - Constant:
-                    Identifier: c
+        span:
+          start: 167
+          end: 178
+        value:
+          Call:
+            name:
+              span:
+                start: 162
+                end: 167
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 168
+                  end: 177
+                value:
+                  BinaryOperator:
+                    - Add
+                    - span:
+                        start: 168
+                        end: 173
+                      value:
+                        Constant:
+                          String: "c: "
+                    - span:
+                        start: 176
+                        end: 177
+                      value:
+                        Constant:
+                          Identifier: c

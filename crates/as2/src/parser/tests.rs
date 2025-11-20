@@ -4,14 +4,8 @@ use crate::parser::parse_document;
 use ruasc_common::span::Span;
 
 pub(crate) fn build_tokens<'i>(spec: &'i [(TokenKind, &'i str)]) -> Vec<Token<'i>> {
-    let mut pos = 0usize;
     spec.iter()
-        .map(|(k, raw)| {
-            let start = pos;
-            pos += raw.len().max(1);
-            let end = pos;
-            Token::new(*k, Span::new_unchecked(start, end), raw)
-        })
+        .map(|(k, raw)| Token::new(*k, Span::default(), raw))
         .collect()
 }
 

@@ -1,58 +1,138 @@
 ---
 source: crates/as2/src/parser/tests.rs
 expression: parsed
-input_file: samples/block.as
+input_file: samples/as2/block.as
 ---
 Ok:
   statements:
     - Declare:
         - name: outside
           value:
-            Constant:
-              String: visible
+            span:
+              start: 107
+              end: 116
+            value:
+              Constant:
+                String: visible
     - Block:
         - Declare:
             - name: inside
               value:
-                Constant:
-                  String: visible
+                span:
+                  start: 137
+                  end: 146
+                value:
+                  Constant:
+                    String: visible
         - Expr:
-            Call:
-              name:
+            span:
+              start: 157
+              end: 204
+            value:
+              Call:
+                name:
+                  span:
+                    start: 152
+                    end: 157
+                  value:
+                    Constant:
+                      Identifier: trace
+                args:
+                  - span:
+                      start: 158
+                      end: 203
+                    value:
+                      BinaryOperator:
+                        - Add
+                        - span:
+                            start: 158
+                            end: 194
+                          value:
+                            BinaryOperator:
+                              - Add
+                              - span:
+                                  start: 158
+                                  end: 179
+                                value:
+                                  BinaryOperator:
+                                    - Add
+                                    - span:
+                                        start: 158
+                                        end: 169
+                                      value:
+                                        Constant:
+                                          String: "outside: "
+                                    - span:
+                                        start: 172
+                                        end: 179
+                                      value:
+                                        Constant:
+                                          Identifier: outside
+                              - span:
+                                  start: 182
+                                  end: 194
+                                value:
+                                  Constant:
+                                    String: ", inside: "
+                        - span:
+                            start: 197
+                            end: 203
+                          value:
+                            Constant:
+                              Identifier: inside
+    - Expr:
+        span:
+          start: 213
+          end: 260
+        value:
+          Call:
+            name:
+              span:
+                start: 208
+                end: 213
+              value:
                 Constant:
                   Identifier: trace
-              args:
-                - BinaryOperator:
+            args:
+              - span:
+                  start: 214
+                  end: 259
+                value:
+                  BinaryOperator:
                     - Add
-                    - BinaryOperator:
-                        - Add
-                        - BinaryOperator:
-                            - Add
-                            - Constant:
-                                String: "outside: "
-                            - Constant:
-                                Identifier: outside
-                        - Constant:
-                            String: ", inside: "
-                    - Constant:
-                        Identifier: inside
-    - Expr:
-        Call:
-          name:
-            Constant:
-              Identifier: trace
-          args:
-            - BinaryOperator:
-                - Add
-                - BinaryOperator:
-                    - Add
-                    - BinaryOperator:
-                        - Add
-                        - Constant:
-                            String: "outside: "
-                        - Constant:
-                            Identifier: outside
-                    - Constant:
-                        String: ", inside: "
-                - Constant:
-                    Identifier: inside
+                    - span:
+                        start: 214
+                        end: 250
+                      value:
+                        BinaryOperator:
+                          - Add
+                          - span:
+                              start: 214
+                              end: 235
+                            value:
+                              BinaryOperator:
+                                - Add
+                                - span:
+                                    start: 214
+                                    end: 225
+                                  value:
+                                    Constant:
+                                      String: "outside: "
+                                - span:
+                                    start: 228
+                                    end: 235
+                                  value:
+                                    Constant:
+                                      Identifier: outside
+                          - span:
+                              start: 238
+                              end: 250
+                            value:
+                              Constant:
+                                String: ", inside: "
+                    - span:
+                        start: 253
+                        end: 259
+                      value:
+                        Constant:
+                          Identifier: inside

@@ -1,290 +1,618 @@
 ---
 source: crates/as2/src/parser/tests.rs
 expression: parsed
-input_file: samples/if_else.as
+input_file: samples/as2/if_else.as
 ---
 Ok:
   statements:
     - Declare:
         - name: condition
           value:
-            Constant:
-              Identifier: "true"
+            span:
+              start: 16
+              end: 20
+            value:
+              Constant:
+                Identifier: "true"
     - Declare:
         - name: x
           value:
-            Constant:
-              Integer: 1
+            span:
+              start: 30
+              end: 31
+            value:
+              Constant:
+                Integer: 1
     - Declare:
         - name: y
           value:
-            UnaryOperator:
-              - Sub
-              - Constant:
-                  Integer: 1
-    - If:
-        condition:
-          Constant:
-            Identifier: condition
-        "yes":
-          Expr:
-            Call:
-              name:
-                Constant:
-                  Identifier: doSomething
-              args: []
-        "no": ~
-    - If:
-        condition:
-          BinaryOperator:
-            - GreaterThan
-            - Constant:
-                Identifier: x
-            - Constant:
-                Integer: 0
-        "yes":
-          Expr:
-            Call:
-              name:
-                Constant:
-                  Identifier: trace
-              args:
-                - Constant:
-                    String: positive
-        "no":
-          Expr:
-            Call:
-              name:
-                Constant:
-                  Identifier: trace
-              args:
-                - Constant:
-                    String: negative
-    - If:
-        condition:
-          BinaryOperator:
-            - LessThan
-            - Constant:
-                Identifier: x
-            - Constant:
-                Integer: 0
-        "yes":
-          Block:
-            - Expr:
-                Call:
-                  name:
+            span:
+              start: 41
+              end: 43
+            value:
+              UnaryOperator:
+                - Sub
+                - span:
+                    start: 42
+                    end: 43
+                  value:
                     Constant:
-                      Identifier: trace
-                  args:
-                    - Constant:
-                        String: negative
-        "no":
-          If:
-            condition:
-              BinaryOperator:
-                - GreaterThan
-                - Constant:
-                    Identifier: x
-                - Constant:
-                    Integer: 0
-            "yes":
-              Block:
-                - Expr:
-                    Call:
-                      name:
-                        Constant:
-                          Identifier: trace
-                      args:
-                        - Constant:
-                            String: positive
-            "no":
-              If:
-                condition:
-                  BinaryOperator:
-                    - Equal
-                    - Constant:
-                        Identifier: x
-                    - Constant:
-                        Integer: 0
-                "yes":
-                  Block:
-                    - Expr:
-                        Call:
-                          name:
-                            Constant:
-                              Identifier: trace
-                          args:
-                            - Constant:
-                                String: zero
-                "no":
-                  Block:
-                    - Expr:
-                        Call:
-                          name:
-                            Constant:
-                              Identifier: trace
-                          args:
-                            - Constant:
-                                String: undefined
+                      Integer: 1
     - If:
         condition:
-          Constant:
-            Identifier: condition
-        "yes":
-          Block: []
-        "no": ~
-    - If:
-        condition:
-          Constant:
-            Identifier: condition
-        "yes":
-          Block: []
-        "no":
-          Block: []
-    - If:
-        condition:
-          Constant:
-            Identifier: condition
+          span:
+            start: 85
+            end: 94
+          value:
+            Constant:
+              Identifier: condition
         "yes":
           Expr:
-            Call:
-              name:
-                Constant:
-                  Identifier: trace
-              args:
-                - Constant:
-                    String: single
-        "no":
-          Block: []
-    - If:
-        condition:
-          BinaryOperator:
-            - GreaterThan
-            - Constant:
-                Identifier: x
-            - Constant:
-                Integer: 0
-        "yes":
-          If:
-            condition:
-              BinaryOperator:
-                - GreaterThan
-                - Constant:
-                    Identifier: y
-                - Constant:
-                    Integer: 0
-            "yes":
-              Expr:
-                Call:
-                  name:
-                    Constant:
-                      Identifier: trace
-                  args:
-                    - Constant:
-                        String: both positive
-            "no":
-              If:
-                condition:
-                  BinaryOperator:
-                    - LessThan
-                    - Constant:
-                        Identifier: y
-                    - Constant:
-                        Integer: 0
-                "yes":
-                  Expr:
-                    Call:
-                      name:
-                        Constant:
-                          Identifier: trace
-                      args:
-                        - Constant:
-                            String: "x positive, y negative"
-                "no":
-                  Expr:
-                    Call:
-                      name:
-                        Constant:
-                          Identifier: trace
-                      args:
-                        - Constant:
-                            String: "x positive, y zero"
-        "no": ~
-    - If:
-        condition:
-          Constant:
-            Identifier: condition
-        "yes":
-          Block:
-            - Expr:
-                Call:
-                  name:
+            span:
+              start: 107
+              end: 109
+            value:
+              Call:
+                name:
+                  span:
+                    start: 96
+                    end: 107
+                  value:
                     Constant:
                       Identifier: doSomething
-                  args: []
+                args: []
+        "no": ~
+    - If:
+        condition:
+          span:
+            start: 115
+            end: 120
+          value:
+            BinaryOperator:
+              - GreaterThan
+              - span:
+                  start: 115
+                  end: 116
+                value:
+                  Constant:
+                    Identifier: x
+              - span:
+                  start: 119
+                  end: 120
+                value:
+                  Constant:
+                    Integer: 0
+        "yes":
+          Expr:
+            span:
+              start: 127
+              end: 139
+            value:
+              Call:
+                name:
+                  span:
+                    start: 122
+                    end: 127
+                  value:
+                    Constant:
+                      Identifier: trace
+                args:
+                  - span:
+                      start: 128
+                      end: 138
+                    value:
+                      Constant:
+                        String: positive
+        "no":
+          Expr:
+            span:
+              start: 151
+              end: 163
+            value:
+              Call:
+                name:
+                  span:
+                    start: 146
+                    end: 151
+                  value:
+                    Constant:
+                      Identifier: trace
+                args:
+                  - span:
+                      start: 152
+                      end: 162
+                    value:
+                      Constant:
+                        String: negative
+    - If:
+        condition:
+          span:
+            start: 196
+            end: 201
+          value:
+            BinaryOperator:
+              - LessThan
+              - span:
+                  start: 196
+                  end: 197
+                value:
+                  Constant:
+                    Identifier: x
+              - span:
+                  start: 200
+                  end: 201
+                value:
+                  Constant:
+                    Integer: 0
+        "yes":
+          Block:
+            - Expr:
+                span:
+                  start: 214
+                  end: 226
+                value:
+                  Call:
+                    name:
+                      span:
+                        start: 209
+                        end: 214
+                      value:
+                        Constant:
+                          Identifier: trace
+                    args:
+                      - span:
+                          start: 215
+                          end: 225
+                        value:
+                          Constant:
+                            String: negative
         "no":
           If:
             condition:
-              Constant:
-                Identifier: otherCondition
+              span:
+                start: 239
+                end: 244
+              value:
+                BinaryOperator:
+                  - GreaterThan
+                  - span:
+                      start: 239
+                      end: 240
+                    value:
+                      Constant:
+                        Identifier: x
+                  - span:
+                      start: 243
+                      end: 244
+                    value:
+                      Constant:
+                        Integer: 0
             "yes":
-              Expr:
-                Call:
-                  name:
-                    Constant:
-                      Identifier: doSomethingElse
-                  args: []
-            "no":
               Block:
                 - Expr:
-                    Call:
-                      name:
-                        Constant:
-                          Identifier: doFinal
-                      args: []
+                    span:
+                      start: 257
+                      end: 269
+                    value:
+                      Call:
+                        name:
+                          span:
+                            start: 252
+                            end: 257
+                          value:
+                            Constant:
+                              Identifier: trace
+                        args:
+                          - span:
+                              start: 258
+                              end: 268
+                            value:
+                              Constant:
+                                String: positive
+            "no":
+              If:
+                condition:
+                  span:
+                    start: 282
+                    end: 288
+                  value:
+                    BinaryOperator:
+                      - Equal
+                      - span:
+                          start: 282
+                          end: 283
+                        value:
+                          Constant:
+                            Identifier: x
+                      - span:
+                          start: 287
+                          end: 288
+                        value:
+                          Constant:
+                            Integer: 0
+                "yes":
+                  Block:
+                    - Expr:
+                        span:
+                          start: 301
+                          end: 309
+                        value:
+                          Call:
+                            name:
+                              span:
+                                start: 296
+                                end: 301
+                              value:
+                                Constant:
+                                  Identifier: trace
+                            args:
+                              - span:
+                                  start: 302
+                                  end: 308
+                                value:
+                                  Constant:
+                                    String: zero
+                "no":
+                  Block:
+                    - Expr:
+                        span:
+                          start: 329
+                          end: 342
+                        value:
+                          Call:
+                            name:
+                              span:
+                                start: 324
+                                end: 329
+                              value:
+                                Constant:
+                                  Identifier: trace
+                            args:
+                              - span:
+                                  start: 330
+                                  end: 341
+                                value:
+                                  Constant:
+                                    String: undefined
     - If:
         condition:
-          Constant:
-            Identifier: condition
+          span:
+            start: 389
+            end: 398
+          value:
+            Constant:
+              Identifier: condition
+        "yes":
+          Block: []
+        "no": ~
+    - If:
+        condition:
+          span:
+            start: 407
+            end: 416
+          value:
+            Constant:
+              Identifier: condition
+        "yes":
+          Block: []
+        "no":
+          Block: []
+    - If:
+        condition:
+          span:
+            start: 433
+            end: 442
+          value:
+            Constant:
+              Identifier: condition
         "yes":
           Expr:
-            Call:
-              name:
-                Constant:
-                  Identifier: statement1
-              args: []
-        "no": ~
-    - Expr:
-        Call:
-          name:
-            Constant:
-              Identifier: statement2
-          args: []
+            span:
+              start: 449
+              end: 459
+            value:
+              Call:
+                name:
+                  span:
+                    start: 444
+                    end: 449
+                  value:
+                    Constant:
+                      Identifier: trace
+                args:
+                  - span:
+                      start: 450
+                      end: 458
+                    value:
+                      Constant:
+                        String: single
+        "no":
+          Block: []
     - If:
         condition:
-          Constant:
-            Identifier: x
+          span:
+            start: 510
+            end: 515
+          value:
+            BinaryOperator:
+              - GreaterThan
+              - span:
+                  start: 510
+                  end: 511
+                value:
+                  Constant:
+                    Identifier: x
+              - span:
+                  start: 514
+                  end: 515
+                value:
+                  Constant:
+                    Integer: 0
         "yes":
           If:
             condition:
-              Constant:
-                Identifier: y
+              span:
+                start: 525
+                end: 530
+              value:
+                BinaryOperator:
+                  - GreaterThan
+                  - span:
+                      start: 525
+                      end: 526
+                    value:
+                      Constant:
+                        Identifier: y
+                  - span:
+                      start: 529
+                      end: 530
+                    value:
+                      Constant:
+                        Integer: 0
             "yes":
               Expr:
-                Call:
-                  name:
+                span:
+                  start: 545
+                  end: 562
+                value:
+                  Call:
+                    name:
+                      span:
+                        start: 540
+                        end: 545
+                      value:
+                        Constant:
+                          Identifier: trace
+                    args:
+                      - span:
+                          start: 546
+                          end: 561
+                        value:
+                          Constant:
+                            String: both positive
+            "no":
+              If:
+                condition:
+                  span:
+                    start: 577
+                    end: 582
+                  value:
+                    BinaryOperator:
+                      - LessThan
+                      - span:
+                          start: 577
+                          end: 578
+                        value:
+                          Constant:
+                            Identifier: y
+                      - span:
+                          start: 581
+                          end: 582
+                        value:
+                          Constant:
+                            Integer: 0
+                "yes":
+                  Expr:
+                    span:
+                      start: 597
+                      end: 623
+                    value:
+                      Call:
+                        name:
+                          span:
+                            start: 592
+                            end: 597
+                          value:
+                            Constant:
+                              Identifier: trace
+                        args:
+                          - span:
+                              start: 598
+                              end: 622
+                            value:
+                              Constant:
+                                String: "x positive, y negative"
+                "no":
+                  Expr:
+                    span:
+                      start: 647
+                      end: 669
+                    value:
+                      Call:
+                        name:
+                          span:
+                            start: 642
+                            end: 647
+                          value:
+                            Constant:
+                              Identifier: trace
+                        args:
+                          - span:
+                              start: 648
+                              end: 668
+                            value:
+                              Constant:
+                                String: "x positive, y zero"
+        "no": ~
+    - If:
+        condition:
+          span:
+            start: 706
+            end: 715
+          value:
+            Constant:
+              Identifier: condition
+        "yes":
+          Block:
+            - Expr:
+                span:
+                  start: 734
+                  end: 736
+                value:
+                  Call:
+                    name:
+                      span:
+                        start: 723
+                        end: 734
+                      value:
+                        Constant:
+                          Identifier: doSomething
+                    args: []
+        "no":
+          If:
+            condition:
+              span:
+                start: 749
+                end: 763
+              value:
+                Constant:
+                  Identifier: otherCondition
+            "yes":
+              Expr:
+                span:
+                  start: 784
+                  end: 786
+                value:
+                  Call:
+                    name:
+                      span:
+                        start: 769
+                        end: 784
+                      value:
+                        Constant:
+                          Identifier: doSomethingElse
+                    args: []
+            "no":
+              Block:
+                - Expr:
+                    span:
+                      start: 806
+                      end: 808
+                    value:
+                      Call:
+                        name:
+                          span:
+                            start: 799
+                            end: 806
+                          value:
+                            Constant:
+                              Identifier: doFinal
+                        args: []
+    - If:
+        condition:
+          span:
+            start: 902
+            end: 911
+          value:
+            Constant:
+              Identifier: condition
+        "yes":
+          Expr:
+            span:
+              start: 927
+              end: 929
+            value:
+              Call:
+                name:
+                  span:
+                    start: 917
+                    end: 927
+                  value:
                     Constant:
-                      Identifier: trace
-                  args:
-                    - Constant:
-                        String: y
+                      Identifier: statement1
+                args: []
+        "no": ~
+    - Expr:
+        span:
+          start: 945
+          end: 947
+        value:
+          Call:
+            name:
+              span:
+                start: 935
+                end: 945
+              value:
+                Constant:
+                  Identifier: statement2
+            args: []
+    - If:
+        condition:
+          span:
+            start: 1007
+            end: 1008
+          value:
+            Constant:
+              Identifier: x
+        "yes":
+          If:
+            condition:
+              span:
+                start: 1018
+                end: 1019
+              value:
+                Constant:
+                  Identifier: y
+            "yes":
+              Expr:
+                span:
+                  start: 1034
+                  end: 1039
+                value:
+                  Call:
+                    name:
+                      span:
+                        start: 1029
+                        end: 1034
+                      value:
+                        Constant:
+                          Identifier: trace
+                    args:
+                      - span:
+                          start: 1035
+                          end: 1038
+                        value:
+                          Constant:
+                            String: y
             "no":
               Expr:
-                Call:
-                  name:
-                    Constant:
-                      Identifier: trace
-                  args:
-                    - Constant:
-                        String: ambiguous else
+                span:
+                  start: 1055
+                  end: 1073
+                value:
+                  Call:
+                    name:
+                      span:
+                        start: 1050
+                        end: 1055
+                      value:
+                        Constant:
+                          Identifier: trace
+                    args:
+                      - span:
+                          start: 1056
+                          end: 1072
+                        value:
+                          Constant:
+                            String: ambiguous else
         "no": ~

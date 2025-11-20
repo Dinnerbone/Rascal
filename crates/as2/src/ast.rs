@@ -1,31 +1,36 @@
+use ruasc_common::span::Spanned;
 use serde::Serialize;
 use std::borrow::Cow;
+
+pub type Expr<'a> = Spanned<ExprKind<'a>>;
+pub type Constant<'a> = Spanned<ConstantKind<'a>>;
+pub type Statement<'a> = Spanned<StatementKind<'a>>;
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
 pub enum ExprKind<'a> {
     Constant(ConstantKind<'a>),
     Call {
-        name: Box<ExprKind<'a>>,
-        args: Vec<ExprKind<'a>>,
+        name: Box<Expr<'a>>,
+        args: Vec<Expr<'a>>,
     },
     New {
-        name: Box<ExprKind<'a>>,
-        args: Vec<ExprKind<'a>>,
+        name: Box<Expr<'a>>,
+        args: Vec<Expr<'a>>,
     },
-    BinaryOperator(BinaryOperator, Box<ExprKind<'a>>, Box<ExprKind<'a>>),
-    UnaryOperator(UnaryOperator, Box<ExprKind<'a>>),
-    Parenthesis(Box<ExprKind<'a>>),
+    BinaryOperator(BinaryOperator, Box<Expr<'a>>, Box<Expr<'a>>),
+    UnaryOperator(UnaryOperator, Box<Expr<'a>>),
+    Parenthesis(Box<Expr<'a>>),
     Ternary {
-        condition: Box<ExprKind<'a>>,
-        yes: Box<ExprKind<'a>>,
-        no: Box<ExprKind<'a>>,
+        condition: Box<Expr<'a>>,
+        yes: Box<Expr<'a>>,
+        no: Box<Expr<'a>>,
     },
-    InitObject(Vec<(&'a str, ExprKind<'a>)>),
-    InitArray(Vec<ExprKind<'a>>),
-    Field(Box<ExprKind<'a>>, Box<ExprKind<'a>>),
-    TypeOf(Vec<ExprKind<'a>>),
-    Delete(Vec<ExprKind<'a>>),
-    Void(Vec<ExprKind<'a>>),
+    InitObject(Vec<(&'a str, Expr<'a>)>),
+    InitArray(Vec<Expr<'a>>),
+    Field(Box<Expr<'a>>, Box<Expr<'a>>),
+    TypeOf(Vec<Expr<'a>>),
+    Delete(Vec<Expr<'a>>),
+    Void(Vec<Expr<'a>>),
     Function(Function<'a>),
 }
 
@@ -93,15 +98,15 @@ pub enum Affix {
 #[derive(Debug, Clone, Serialize, PartialEq)]
 pub enum StatementKind<'a> {
     Declare(Vec<Declaration<'a>>),
-    Return(Vec<ExprKind<'a>>),
-    Expr(ExprKind<'a>),
+    Return(Vec<Expr<'a>>),
+    Expr(Expr<'a>),
     Block(Vec<StatementKind<'a>>),
     ForIn {
         condition: ForCondition<'a>,
         body: Box<StatementKind<'a>>,
     },
     If {
-        condition: ExprKind<'a>,
+        condition: Expr<'a>,
         yes: Box<StatementKind<'a>>,
         no: Option<Box<StatementKind<'a>>>,
     },
@@ -114,14 +119,14 @@ pub enum ForCondition<'a> {
     Enumerate {
         variable: &'a str,
         declare: bool,
-        object: ExprKind<'a>,
+        object: Expr<'a>,
     },
     Classic {
         initialize: Option<Box<StatementKind<'a>>>,
         // This is technically incorrect, we treat `a++, b++` as two different expressions, but they should be one (and we'd have a `Next(a, b)` expression)
         // Unfortunately that seems difficult to implement _correctly_, so this is a good stopgap (did anyone even use `,` in regular code, outside for loops?)
-        condition: Vec<ExprKind<'a>>,
-        update: Vec<ExprKind<'a>>,
+        condition: Vec<Expr<'a>>,
+        update: Vec<Expr<'a>>,
     },
 }
 
@@ -135,7 +140,7 @@ pub struct Function<'a> {
 #[derive(Debug, Clone, Serialize, PartialEq)]
 pub struct Declaration<'a> {
     pub name: &'a str,
-    pub value: Option<ExprKind<'a>>,
+    pub value: Option<Expr<'a>>,
 }
 
 #[derive(Debug, Serialize)]

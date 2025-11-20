@@ -1,356 +1,996 @@
 ---
 source: crates/as2/src/parser/tests.rs
 expression: parsed
-input_file: samples/op_precedence/bit_math.as
+input_file: samples/as2/op_precedence/bit_math.as
 ---
 Ok:
   statements:
     - Declare:
         - name: a
           value:
-            Constant:
-              Integer: 12
+            span:
+              start: 8
+              end: 10
+            value:
+              Constant:
+                Integer: 12
     - Declare:
         - name: b
           value:
-            Constant:
-              Integer: 5
+            span:
+              start: 31
+              end: 32
+            value:
+              Constant:
+                Integer: 5
     - Declare:
         - name: c
           value:
-            Constant:
-              Integer: 3
+            span:
+              start: 54
+              end: 55
+            value:
+              Constant:
+                Integer: 3
     - Expr:
-        Call:
-          name:
-            Constant:
-              Identifier: trace
-          args:
-            - BinaryOperator:
-                - Add
-                - BinaryOperator:
+        span:
+          start: 75
+          end: 111
+        value:
+          Call:
+            name:
+              span:
+                start: 70
+                end: 75
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 76
+                  end: 110
+                value:
+                  BinaryOperator:
                     - Add
-                    - BinaryOperator:
-                        - Add
-                        - BinaryOperator:
-                            - Add
-                            - BinaryOperator:
+                    - span:
+                        start: 76
+                        end: 106
+                      value:
+                        BinaryOperator:
+                          - Add
+                          - span:
+                              start: 76
+                              end: 97
+                            value:
+                              BinaryOperator:
                                 - Add
-                                - Constant:
-                                    String: a=
-                                - Constant:
+                                - span:
+                                    start: 76
+                                    end: 93
+                                  value:
+                                    BinaryOperator:
+                                      - Add
+                                      - span:
+                                          start: 76
+                                          end: 84
+                                        value:
+                                          BinaryOperator:
+                                            - Add
+                                            - span:
+                                                start: 76
+                                                end: 80
+                                              value:
+                                                Constant:
+                                                  String: a=
+                                            - span:
+                                                start: 83
+                                                end: 84
+                                              value:
+                                                Constant:
+                                                  Identifier: a
+                                      - span:
+                                          start: 87
+                                          end: 93
+                                        value:
+                                          Constant:
+                                            String: ", b="
+                                - span:
+                                    start: 96
+                                    end: 97
+                                  value:
+                                    Constant:
+                                      Identifier: b
+                          - span:
+                              start: 100
+                              end: 106
+                            value:
+                              Constant:
+                                String: ", c="
+                    - span:
+                        start: 109
+                        end: 110
+                      value:
+                        Constant:
+                          Identifier: c
+    - Expr:
+        span:
+          start: 118
+          end: 126
+        value:
+          Call:
+            name:
+              span:
+                start: 113
+                end: 118
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 119
+                  end: 125
+                value:
+                  Constant:
+                    String: "----"
+    - Expr:
+        span:
+          start: 149
+          end: 171
+        value:
+          Call:
+            name:
+              span:
+                start: 144
+                end: 149
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 150
+                  end: 170
+                value:
+                  BinaryOperator:
+                    - Add
+                    - span:
+                        start: 150
+                        end: 160
+                      value:
+                        Constant:
+                          String: "a & b = "
+                    - span:
+                        start: 163
+                        end: 170
+                      value:
+                        Parenthesis:
+                          span:
+                            start: 164
+                            end: 169
+                          value:
+                            BinaryOperator:
+                              - BitAnd
+                              - span:
+                                  start: 164
+                                  end: 165
+                                value:
+                                  Constant:
                                     Identifier: a
-                            - Constant:
-                                String: ", b="
-                        - Constant:
-                            Identifier: b
-                    - Constant:
-                        String: ", c="
-                - Constant:
-                    Identifier: c
+                              - span:
+                                  start: 168
+                                  end: 169
+                                value:
+                                  Constant:
+                                    Identifier: b
     - Expr:
-        Call:
-          name:
-            Constant:
-              Identifier: trace
-          args:
-            - Constant:
-                String: "----"
+        span:
+          start: 183
+          end: 213
+        value:
+          Call:
+            name:
+              span:
+                start: 178
+                end: 183
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 184
+                  end: 212
+                value:
+                  BinaryOperator:
+                    - Add
+                    - span:
+                        start: 184
+                        end: 198
+                      value:
+                        Constant:
+                          String: "a & b & c = "
+                    - span:
+                        start: 201
+                        end: 212
+                      value:
+                        Parenthesis:
+                          span:
+                            start: 202
+                            end: 211
+                          value:
+                            BinaryOperator:
+                              - BitAnd
+                              - span:
+                                  start: 202
+                                  end: 207
+                                value:
+                                  BinaryOperator:
+                                    - BitAnd
+                                    - span:
+                                        start: 202
+                                        end: 203
+                                      value:
+                                        Constant:
+                                          Identifier: a
+                                    - span:
+                                        start: 206
+                                        end: 207
+                                      value:
+                                        Constant:
+                                          Identifier: b
+                              - span:
+                                  start: 210
+                                  end: 211
+                                value:
+                                  Constant:
+                                    Identifier: c
     - Expr:
-        Call:
-          name:
-            Constant:
-              Identifier: trace
-          args:
-            - BinaryOperator:
-                - Add
-                - Constant:
-                    String: "a & b = "
-                - Parenthesis:
-                    BinaryOperator:
-                      - BitAnd
-                      - Constant:
-                          Identifier: a
-                      - Constant:
-                          Identifier: b
+        span:
+          start: 225
+          end: 261
+        value:
+          Call:
+            name:
+              span:
+                start: 220
+                end: 225
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 226
+                  end: 260
+                value:
+                  BinaryOperator:
+                    - Add
+                    - span:
+                        start: 226
+                        end: 244
+                      value:
+                        Constant:
+                          String: "((a & b) & c) = "
+                    - span:
+                        start: 247
+                        end: 260
+                      value:
+                        Parenthesis:
+                          span:
+                            start: 248
+                            end: 259
+                          value:
+                            BinaryOperator:
+                              - BitAnd
+                              - span:
+                                  start: 248
+                                  end: 255
+                                value:
+                                  Parenthesis:
+                                    span:
+                                      start: 249
+                                      end: 254
+                                    value:
+                                      BinaryOperator:
+                                        - BitAnd
+                                        - span:
+                                            start: 249
+                                            end: 250
+                                          value:
+                                            Constant:
+                                              Identifier: a
+                                        - span:
+                                            start: 253
+                                            end: 254
+                                          value:
+                                            Constant:
+                                              Identifier: b
+                              - span:
+                                  start: 258
+                                  end: 259
+                                value:
+                                  Constant:
+                                    Identifier: c
     - Expr:
-        Call:
-          name:
-            Constant:
-              Identifier: trace
-          args:
-            - BinaryOperator:
-                - Add
-                - Constant:
-                    String: "a & b & c = "
-                - Parenthesis:
-                    BinaryOperator:
-                      - BitAnd
-                      - BinaryOperator:
-                          - BitAnd
-                          - Constant:
-                              Identifier: a
-                          - Constant:
-                              Identifier: b
-                      - Constant:
-                          Identifier: c
+        span:
+          start: 273
+          end: 280
+        value:
+          Call:
+            name:
+              span:
+                start: 268
+                end: 273
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 274
+                  end: 279
+                value:
+                  Constant:
+                    String: "---"
     - Expr:
-        Call:
-          name:
-            Constant:
-              Identifier: trace
-          args:
-            - BinaryOperator:
-                - Add
-                - Constant:
-                    String: "((a & b) & c) = "
-                - Parenthesis:
-                    BinaryOperator:
-                      - BitAnd
-                      - Parenthesis:
-                          BinaryOperator:
-                            - BitAnd
-                            - Constant:
-                                Identifier: a
-                            - Constant:
-                                Identifier: b
-                      - Constant:
-                          Identifier: c
+        span:
+          start: 303
+          end: 325
+        value:
+          Call:
+            name:
+              span:
+                start: 298
+                end: 303
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 304
+                  end: 324
+                value:
+                  BinaryOperator:
+                    - Add
+                    - span:
+                        start: 304
+                        end: 314
+                      value:
+                        Constant:
+                          String: "a ^ b = "
+                    - span:
+                        start: 317
+                        end: 324
+                      value:
+                        Parenthesis:
+                          span:
+                            start: 318
+                            end: 323
+                          value:
+                            BinaryOperator:
+                              - BitXor
+                              - span:
+                                  start: 318
+                                  end: 319
+                                value:
+                                  Constant:
+                                    Identifier: a
+                              - span:
+                                  start: 322
+                                  end: 323
+                                value:
+                                  Constant:
+                                    Identifier: b
     - Expr:
-        Call:
-          name:
-            Constant:
-              Identifier: trace
-          args:
-            - Constant:
-                String: "---"
+        span:
+          start: 339
+          end: 369
+        value:
+          Call:
+            name:
+              span:
+                start: 334
+                end: 339
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 340
+                  end: 368
+                value:
+                  BinaryOperator:
+                    - Add
+                    - span:
+                        start: 340
+                        end: 354
+                      value:
+                        Constant:
+                          String: "a ^ b ^ c = "
+                    - span:
+                        start: 357
+                        end: 368
+                      value:
+                        Parenthesis:
+                          span:
+                            start: 358
+                            end: 367
+                          value:
+                            BinaryOperator:
+                              - BitXor
+                              - span:
+                                  start: 358
+                                  end: 363
+                                value:
+                                  BinaryOperator:
+                                    - BitXor
+                                    - span:
+                                        start: 358
+                                        end: 359
+                                      value:
+                                        Constant:
+                                          Identifier: a
+                                    - span:
+                                        start: 362
+                                        end: 363
+                                      value:
+                                        Constant:
+                                          Identifier: b
+                              - span:
+                                  start: 366
+                                  end: 367
+                                value:
+                                  Constant:
+                                    Identifier: c
     - Expr:
-        Call:
-          name:
-            Constant:
-              Identifier: trace
-          args:
-            - BinaryOperator:
-                - Add
-                - Constant:
-                    String: "a ^ b = "
-                - Parenthesis:
-                    BinaryOperator:
-                      - BitXor
-                      - Constant:
-                          Identifier: a
-                      - Constant:
-                          Identifier: b
+        span:
+          start: 382
+          end: 418
+        value:
+          Call:
+            name:
+              span:
+                start: 377
+                end: 382
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 383
+                  end: 417
+                value:
+                  BinaryOperator:
+                    - Add
+                    - span:
+                        start: 383
+                        end: 401
+                      value:
+                        Constant:
+                          String: "((a ^ b) ^ c) = "
+                    - span:
+                        start: 404
+                        end: 417
+                      value:
+                        Parenthesis:
+                          span:
+                            start: 405
+                            end: 416
+                          value:
+                            BinaryOperator:
+                              - BitXor
+                              - span:
+                                  start: 405
+                                  end: 412
+                                value:
+                                  Parenthesis:
+                                    span:
+                                      start: 406
+                                      end: 411
+                                    value:
+                                      BinaryOperator:
+                                        - BitXor
+                                        - span:
+                                            start: 406
+                                            end: 407
+                                          value:
+                                            Constant:
+                                              Identifier: a
+                                        - span:
+                                            start: 410
+                                            end: 411
+                                          value:
+                                            Constant:
+                                              Identifier: b
+                              - span:
+                                  start: 415
+                                  end: 416
+                                value:
+                                  Constant:
+                                    Identifier: c
     - Expr:
-        Call:
-          name:
-            Constant:
-              Identifier: trace
-          args:
-            - BinaryOperator:
-                - Add
-                - Constant:
-                    String: "a ^ b ^ c = "
-                - Parenthesis:
-                    BinaryOperator:
-                      - BitXor
-                      - BinaryOperator:
-                          - BitXor
-                          - Constant:
-                              Identifier: a
-                          - Constant:
-                              Identifier: b
-                      - Constant:
-                          Identifier: c
+        span:
+          start: 431
+          end: 438
+        value:
+          Call:
+            name:
+              span:
+                start: 426
+                end: 431
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 432
+                  end: 437
+                value:
+                  Constant:
+                    String: "---"
     - Expr:
-        Call:
-          name:
-            Constant:
-              Identifier: trace
-          args:
-            - BinaryOperator:
-                - Add
-                - Constant:
-                    String: "((a ^ b) ^ c) = "
-                - Parenthesis:
-                    BinaryOperator:
-                      - BitXor
-                      - Parenthesis:
-                          BinaryOperator:
-                            - BitXor
-                            - Constant:
-                                Identifier: a
-                            - Constant:
-                                Identifier: b
-                      - Constant:
-                          Identifier: c
+        span:
+          start: 460
+          end: 482
+        value:
+          Call:
+            name:
+              span:
+                start: 455
+                end: 460
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 461
+                  end: 481
+                value:
+                  BinaryOperator:
+                    - Add
+                    - span:
+                        start: 461
+                        end: 471
+                      value:
+                        Constant:
+                          String: "a | b = "
+                    - span:
+                        start: 474
+                        end: 481
+                      value:
+                        Parenthesis:
+                          span:
+                            start: 475
+                            end: 480
+                          value:
+                            BinaryOperator:
+                              - BitOr
+                              - span:
+                                  start: 475
+                                  end: 476
+                                value:
+                                  Constant:
+                                    Identifier: a
+                              - span:
+                                  start: 479
+                                  end: 480
+                                value:
+                                  Constant:
+                                    Identifier: b
     - Expr:
-        Call:
-          name:
-            Constant:
-              Identifier: trace
-          args:
-            - Constant:
-                String: "---"
+        span:
+          start: 497
+          end: 527
+        value:
+          Call:
+            name:
+              span:
+                start: 492
+                end: 497
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 498
+                  end: 526
+                value:
+                  BinaryOperator:
+                    - Add
+                    - span:
+                        start: 498
+                        end: 512
+                      value:
+                        Constant:
+                          String: "a | b | c = "
+                    - span:
+                        start: 515
+                        end: 526
+                      value:
+                        Parenthesis:
+                          span:
+                            start: 516
+                            end: 525
+                          value:
+                            BinaryOperator:
+                              - BitOr
+                              - span:
+                                  start: 516
+                                  end: 521
+                                value:
+                                  BinaryOperator:
+                                    - BitOr
+                                    - span:
+                                        start: 516
+                                        end: 517
+                                      value:
+                                        Constant:
+                                          Identifier: a
+                                    - span:
+                                        start: 520
+                                        end: 521
+                                      value:
+                                        Constant:
+                                          Identifier: b
+                              - span:
+                                  start: 524
+                                  end: 525
+                                value:
+                                  Constant:
+                                    Identifier: c
     - Expr:
-        Call:
-          name:
-            Constant:
-              Identifier: trace
-          args:
-            - BinaryOperator:
-                - Add
-                - Constant:
-                    String: "a | b = "
-                - Parenthesis:
-                    BinaryOperator:
-                      - BitOr
-                      - Constant:
-                          Identifier: a
-                      - Constant:
-                          Identifier: b
+        span:
+          start: 540
+          end: 576
+        value:
+          Call:
+            name:
+              span:
+                start: 535
+                end: 540
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 541
+                  end: 575
+                value:
+                  BinaryOperator:
+                    - Add
+                    - span:
+                        start: 541
+                        end: 559
+                      value:
+                        Constant:
+                          String: "((a | b) | c) = "
+                    - span:
+                        start: 562
+                        end: 575
+                      value:
+                        Parenthesis:
+                          span:
+                            start: 563
+                            end: 574
+                          value:
+                            BinaryOperator:
+                              - BitOr
+                              - span:
+                                  start: 563
+                                  end: 570
+                                value:
+                                  Parenthesis:
+                                    span:
+                                      start: 564
+                                      end: 569
+                                    value:
+                                      BinaryOperator:
+                                        - BitOr
+                                        - span:
+                                            start: 564
+                                            end: 565
+                                          value:
+                                            Constant:
+                                              Identifier: a
+                                        - span:
+                                            start: 568
+                                            end: 569
+                                          value:
+                                            Constant:
+                                              Identifier: b
+                              - span:
+                                  start: 573
+                                  end: 574
+                                value:
+                                  Constant:
+                                    Identifier: c
     - Expr:
-        Call:
-          name:
-            Constant:
-              Identifier: trace
-          args:
-            - BinaryOperator:
-                - Add
-                - Constant:
-                    String: "a | b | c = "
-                - Parenthesis:
-                    BinaryOperator:
-                      - BitOr
-                      - BinaryOperator:
-                          - BitOr
-                          - Constant:
-                              Identifier: a
-                          - Constant:
-                              Identifier: b
-                      - Constant:
-                          Identifier: c
+        span:
+          start: 589
+          end: 596
+        value:
+          Call:
+            name:
+              span:
+                start: 584
+                end: 589
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 590
+                  end: 595
+                value:
+                  Constant:
+                    String: "---"
     - Expr:
-        Call:
-          name:
-            Constant:
-              Identifier: trace
-          args:
-            - BinaryOperator:
-                - Add
-                - Constant:
-                    String: "((a | b) | c) = "
-                - Parenthesis:
-                    BinaryOperator:
-                      - BitOr
-                      - Parenthesis:
-                          BinaryOperator:
-                            - BitOr
-                            - Constant:
-                                Identifier: a
-                            - Constant:
-                                Identifier: b
-                      - Constant:
-                          Identifier: c
+        span:
+          start: 641
+          end: 671
+        value:
+          Call:
+            name:
+              span:
+                start: 636
+                end: 641
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 642
+                  end: 670
+                value:
+                  BinaryOperator:
+                    - Add
+                    - span:
+                        start: 642
+                        end: 656
+                      value:
+                        Constant:
+                          String: "a & b ^ c = "
+                    - span:
+                        start: 659
+                        end: 670
+                      value:
+                        Parenthesis:
+                          span:
+                            start: 660
+                            end: 669
+                          value:
+                            BinaryOperator:
+                              - BitXor
+                              - span:
+                                  start: 660
+                                  end: 665
+                                value:
+                                  BinaryOperator:
+                                    - BitAnd
+                                    - span:
+                                        start: 660
+                                        end: 661
+                                      value:
+                                        Constant:
+                                          Identifier: a
+                                    - span:
+                                        start: 664
+                                        end: 665
+                                      value:
+                                        Constant:
+                                          Identifier: b
+                              - span:
+                                  start: 668
+                                  end: 669
+                                value:
+                                  Constant:
+                                    Identifier: c
     - Expr:
-        Call:
-          name:
-            Constant:
-              Identifier: trace
-          args:
-            - Constant:
-                String: "---"
+        span:
+          start: 683
+          end: 719
+        value:
+          Call:
+            name:
+              span:
+                start: 678
+                end: 683
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 684
+                  end: 718
+                value:
+                  BinaryOperator:
+                    - Add
+                    - span:
+                        start: 684
+                        end: 702
+                      value:
+                        Constant:
+                          String: "((a & b) ^ c) = "
+                    - span:
+                        start: 705
+                        end: 718
+                      value:
+                        Parenthesis:
+                          span:
+                            start: 706
+                            end: 717
+                          value:
+                            BinaryOperator:
+                              - BitXor
+                              - span:
+                                  start: 706
+                                  end: 713
+                                value:
+                                  Parenthesis:
+                                    span:
+                                      start: 707
+                                      end: 712
+                                    value:
+                                      BinaryOperator:
+                                        - BitAnd
+                                        - span:
+                                            start: 707
+                                            end: 708
+                                          value:
+                                            Constant:
+                                              Identifier: a
+                                        - span:
+                                            start: 711
+                                            end: 712
+                                          value:
+                                            Constant:
+                                              Identifier: b
+                              - span:
+                                  start: 716
+                                  end: 717
+                                value:
+                                  Constant:
+                                    Identifier: c
     - Expr:
-        Call:
-          name:
-            Constant:
-              Identifier: trace
-          args:
-            - BinaryOperator:
-                - Add
-                - Constant:
-                    String: "a & b ^ c = "
-                - Parenthesis:
-                    BinaryOperator:
-                      - BitXor
-                      - BinaryOperator:
-                          - BitAnd
-                          - Constant:
-                              Identifier: a
-                          - Constant:
-                              Identifier: b
-                      - Constant:
-                          Identifier: c
+        span:
+          start: 731
+          end: 738
+        value:
+          Call:
+            name:
+              span:
+                start: 726
+                end: 731
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 732
+                  end: 737
+                value:
+                  Constant:
+                    String: "---"
     - Expr:
-        Call:
-          name:
-            Constant:
-              Identifier: trace
-          args:
-            - BinaryOperator:
-                - Add
-                - Constant:
-                    String: "((a & b) ^ c) = "
-                - Parenthesis:
-                    BinaryOperator:
-                      - BitXor
-                      - Parenthesis:
-                          BinaryOperator:
-                            - BitAnd
-                            - Constant:
-                                Identifier: a
-                            - Constant:
-                                Identifier: b
-                      - Constant:
-                          Identifier: c
+        span:
+          start: 746
+          end: 776
+        value:
+          Call:
+            name:
+              span:
+                start: 741
+                end: 746
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 747
+                  end: 775
+                value:
+                  BinaryOperator:
+                    - Add
+                    - span:
+                        start: 747
+                        end: 761
+                      value:
+                        Constant:
+                          String: "a ^ b | c = "
+                    - span:
+                        start: 764
+                        end: 775
+                      value:
+                        Parenthesis:
+                          span:
+                            start: 765
+                            end: 774
+                          value:
+                            BinaryOperator:
+                              - BitOr
+                              - span:
+                                  start: 765
+                                  end: 770
+                                value:
+                                  BinaryOperator:
+                                    - BitXor
+                                    - span:
+                                        start: 765
+                                        end: 766
+                                      value:
+                                        Constant:
+                                          Identifier: a
+                                    - span:
+                                        start: 769
+                                        end: 770
+                                      value:
+                                        Constant:
+                                          Identifier: b
+                              - span:
+                                  start: 773
+                                  end: 774
+                                value:
+                                  Constant:
+                                    Identifier: c
     - Expr:
-        Call:
-          name:
-            Constant:
-              Identifier: trace
-          args:
-            - Constant:
-                String: "---"
-    - Expr:
-        Call:
-          name:
-            Constant:
-              Identifier: trace
-          args:
-            - BinaryOperator:
-                - Add
-                - Constant:
-                    String: "a ^ b | c = "
-                - Parenthesis:
-                    BinaryOperator:
-                      - BitOr
-                      - BinaryOperator:
-                          - BitXor
-                          - Constant:
-                              Identifier: a
-                          - Constant:
-                              Identifier: b
-                      - Constant:
-                          Identifier: c
-    - Expr:
-        Call:
-          name:
-            Constant:
-              Identifier: trace
-          args:
-            - BinaryOperator:
-                - Add
-                - Constant:
-                    String: "((a ^ b) | c) = "
-                - Parenthesis:
-                    BinaryOperator:
-                      - BitOr
-                      - Parenthesis:
-                          BinaryOperator:
-                            - BitXor
-                            - Constant:
-                                Identifier: a
-                            - Constant:
-                                Identifier: b
-                      - Constant:
-                          Identifier: c
+        span:
+          start: 789
+          end: 825
+        value:
+          Call:
+            name:
+              span:
+                start: 784
+                end: 789
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 790
+                  end: 824
+                value:
+                  BinaryOperator:
+                    - Add
+                    - span:
+                        start: 790
+                        end: 808
+                      value:
+                        Constant:
+                          String: "((a ^ b) | c) = "
+                    - span:
+                        start: 811
+                        end: 824
+                      value:
+                        Parenthesis:
+                          span:
+                            start: 812
+                            end: 823
+                          value:
+                            BinaryOperator:
+                              - BitOr
+                              - span:
+                                  start: 812
+                                  end: 819
+                                value:
+                                  Parenthesis:
+                                    span:
+                                      start: 813
+                                      end: 818
+                                    value:
+                                      BinaryOperator:
+                                        - BitXor
+                                        - span:
+                                            start: 813
+                                            end: 814
+                                          value:
+                                            Constant:
+                                              Identifier: a
+                                        - span:
+                                            start: 817
+                                            end: 818
+                                          value:
+                                            Constant:
+                                              Identifier: b
+                              - span:
+                                  start: 822
+                                  end: 823
+                                value:
+                                  Constant:
+                                    Identifier: c

@@ -8,60 +8,136 @@ Ok:
     - Declare:
         - name: success
           value:
-            Constant:
-              Identifier: "true"
+            span:
+              start: 14
+              end: 18
+            value:
+              Constant:
+                Identifier: "true"
     - If:
         condition:
-          BinaryOperator:
-            - Equal
-            - Call:
-                name:
+          span:
+            start: 30
+            end: 38
+          value:
+            BinaryOperator:
+              - Equal
+              - span:
+                  start: 30
+                  end: 33
+                value:
+                  Call:
+                    name:
+                      span:
+                        start: 24
+                        end: 30
+                      value:
+                        Constant:
+                          Identifier: random
+                    args:
+                      - span:
+                          start: 31
+                          end: 32
+                        value:
+                          Constant:
+                            Integer: 2
+              - span:
+                  start: 37
+                  end: 38
+                value:
                   Constant:
-                    Identifier: random
-                args:
-                  - Constant:
-                      Integer: 2
-            - Constant:
-                Integer: 0
+                    Integer: 0
         "yes":
           Block:
             - Expr:
-                BinaryOperator:
-                  - Assign
-                  - Constant:
-                      Identifier: success
-                  - Constant:
-                      Identifier: "false"
+                span:
+                  start: 45
+                  end: 60
+                value:
+                  BinaryOperator:
+                    - Assign
+                    - span:
+                        start: 45
+                        end: 52
+                      value:
+                        Constant:
+                          Identifier: success
+                    - span:
+                        start: 55
+                        end: 60
+                      value:
+                        Constant:
+                          Identifier: "false"
         "no": ~
     - If:
         condition:
-          Constant:
-            Identifier: success
+          span:
+            start: 68
+            end: 75
+          value:
+            Constant:
+              Identifier: success
         "yes":
           Block:
             - Expr:
-                Call:
-                  name:
-                    Constant:
-                      Identifier: trace
-                  args:
-                    - Constant:
-                        String: Success! Hurrah!
+                span:
+                  start: 87
+                  end: 107
+                value:
+                  Call:
+                    name:
+                      span:
+                        start: 82
+                        end: 87
+                      value:
+                        Constant:
+                          Identifier: trace
+                    args:
+                      - span:
+                          start: 88
+                          end: 106
+                        value:
+                          Constant:
+                            String: Success! Hurrah!
         "no":
           Block:
             - Expr:
-                Call:
-                  name:
-                    Constant:
-                      Identifier: trace
-                  args:
-                    - Constant:
-                        String: "Failed :("
+                span:
+                  start: 126
+                  end: 139
+                value:
+                  Call:
+                    name:
+                      span:
+                        start: 121
+                        end: 126
+                      value:
+                        Constant:
+                          Identifier: trace
+                    args:
+                      - span:
+                          start: 127
+                          end: 138
+                        value:
+                          Constant:
+                            String: "Failed :("
     - Expr:
-        Call:
-          name:
-            Constant:
-              Identifier: trace
-          args:
-            - Constant:
-                String: "-- end --"
+        span:
+          start: 148
+          end: 161
+        value:
+          Call:
+            name:
+              span:
+                start: 143
+                end: 148
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 149
+                  end: 160
+                value:
+                  Constant:
+                    String: "-- end --"

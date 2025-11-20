@@ -1,4 +1,5 @@
 use crate::lexer::tokens::{QuoteKind, Token, TokenKind};
+use ruasc_common::span::Spanned;
 use std::borrow::Cow;
 use winnow::combinator::{alt, repeat};
 use winnow::error::{ContextError, ErrMode, ParseError};
@@ -25,15 +26,15 @@ pub fn parse_document<'i>(
     document::document.parse(TokenSlice::new(source))
 }
 
-fn string<'i>(i: &mut Tokens<'i>) -> ModalResult<Cow<'i, str>> {
+fn string<'i>(i: &mut Tokens<'i>) -> ModalResult<Spanned<Cow<'i, str>>> {
     skip_newlines(i)?;
-    let (kind, raw) = alt((
-        TokenKind::String(QuoteKind::Double).map(|t| (QuoteKind::Double, t.raw)),
-        TokenKind::String(QuoteKind::Single).map(|t| (QuoteKind::Single, t.raw)),
+    let (kind, raw, span) = alt((
+        TokenKind::String(QuoteKind::Double).map(|t| (QuoteKind::Double, t.raw, t.span)),
+        TokenKind::String(QuoteKind::Single).map(|t| (QuoteKind::Single, t.raw, t.span)),
     ))
     .parse_next(i)?;
     if !raw.contains("\\") {
-        return Ok(Cow::Borrowed(raw));
+        return Ok(Spanned::new(span, Cow::Borrowed(raw)));
     }
     let mut result = match kind {
         QuoteKind::Double => raw.replace("\\\"", "\""),
@@ -44,12 +45,13 @@ fn string<'i>(i: &mut Tokens<'i>) -> ModalResult<Cow<'i, str>> {
         .replace("\\r", "\r")
         .replace("\\t", "\t")
         .replace("\\\\", "\\");
-    Ok(Cow::Owned(result))
+    Ok(Spanned::new(span, Cow::Owned(result)))
 }
 
-fn identifier<'i>(i: &mut Tokens<'i>) -> ModalResult<&'i str> {
+fn identifier<'i>(i: &mut Tokens<'i>) -> ModalResult<Spanned<&'i str>> {
     skip_newlines(i)?;
-    Ok(TokenKind::Identifier.parse_next(i)?.raw)
+    let token = TokenKind::Identifier.parse_next(i)?;
+    Ok(Spanned::new(token.span, token.raw))
 }
 
 pub(crate) fn ignore_newlines<'i: 'i, O, P>(

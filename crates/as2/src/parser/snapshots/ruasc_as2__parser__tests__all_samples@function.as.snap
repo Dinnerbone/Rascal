@@ -6,83 +6,199 @@ input_file: samples/as2/function.as
 Ok:
   statements:
     - Expr:
-        Function:
-          name: test
-          args: []
-          body:
-            - Expr:
-                Call:
-                  name:
-                    Constant:
-                      Identifier: trace
-                  args:
-                    - Constant:
-                        String: Test called!
-            - Return:
-                - Constant:
-                    String: ":)"
+        span:
+          start: 0
+          end: 63
+        value:
+          Function:
+            name: test
+            args: []
+            body:
+              - Expr:
+                  span:
+                    start: 27
+                    end: 43
+                  value:
+                    Call:
+                      name:
+                        span:
+                          start: 22
+                          end: 27
+                        value:
+                          Constant:
+                            Identifier: trace
+                      args:
+                        - span:
+                            start: 28
+                            end: 42
+                          value:
+                            Constant:
+                              String: Test called!
+              - Return:
+                  - span:
+                      start: 56
+                      end: 60
+                    value:
+                      Constant:
+                        String: ":)"
     - Declare:
         - name: anon
           value:
-            Function:
-              name: ~
-              args:
-                - a
-                - b
-              body:
-                - Expr:
-                    Call:
-                      name:
-                        Constant:
-                          Identifier: trace
-                      args:
-                        - Constant:
-                            String: Anonymous function called!
-                - Expr:
-                    Call:
-                      name:
-                        Constant:
-                          Identifier: trace
-                      args:
-                        - BinaryOperator:
-                            - Add
-                            - BinaryOperator:
-                                - Add
-                                - BinaryOperator:
-                                    - Add
-                                    - Constant:
-                                        String: "a = "
-                                    - Constant:
-                                        Identifier: a
-                                - Constant:
-                                    String: ", b = "
-                            - Constant:
-                                Identifier: b
+            span:
+              start: 76
+              end: 172
+            value:
+              Function:
+                name: ~
+                args:
+                  - a
+                  - b
+                body:
+                  - Expr:
+                      span:
+                        start: 101
+                        end: 131
+                      value:
+                        Call:
+                          name:
+                            span:
+                              start: 96
+                              end: 101
+                            value:
+                              Constant:
+                                Identifier: trace
+                          args:
+                            - span:
+                                start: 102
+                                end: 130
+                              value:
+                                Constant:
+                                  String: Anonymous function called!
+                  - Expr:
+                      span:
+                        start: 142
+                        end: 169
+                      value:
+                        Call:
+                          name:
+                            span:
+                              start: 137
+                              end: 142
+                            value:
+                              Constant:
+                                Identifier: trace
+                          args:
+                            - span:
+                                start: 143
+                                end: 168
+                              value:
+                                BinaryOperator:
+                                  - Add
+                                  - span:
+                                      start: 143
+                                      end: 164
+                                    value:
+                                      BinaryOperator:
+                                        - Add
+                                        - span:
+                                            start: 143
+                                            end: 153
+                                          value:
+                                            BinaryOperator:
+                                              - Add
+                                              - span:
+                                                  start: 143
+                                                  end: 149
+                                                value:
+                                                  Constant:
+                                                    String: "a = "
+                                              - span:
+                                                  start: 152
+                                                  end: 153
+                                                value:
+                                                  Constant:
+                                                    Identifier: a
+                                        - span:
+                                            start: 156
+                                            end: 164
+                                          value:
+                                            Constant:
+                                              String: ", b = "
+                                  - span:
+                                      start: 167
+                                      end: 168
+                                    value:
+                                      Constant:
+                                        Identifier: b
     - Expr:
-        Call:
-          name:
-            Constant:
-              Identifier: anon
-          args:
-            - Constant:
-                String: aa
-            - Constant:
-                String: bb
+        span:
+          start: 178
+          end: 190
+        value:
+          Call:
+            name:
+              span:
+                start: 174
+                end: 178
+              value:
+                Constant:
+                  Identifier: anon
+            args:
+              - span:
+                  start: 179
+                  end: 183
+                value:
+                  Constant:
+                    String: aa
+              - span:
+                  start: 185
+                  end: 189
+                value:
+                  Constant:
+                    String: bb
     - Expr:
-        Call:
-          name:
-            Constant:
-              Identifier: trace
-          args:
-            - BinaryOperator:
-                - Add
-                - Call:
-                    name:
-                      Constant:
-                        Identifier: test
-                    args: []
-                - Call:
-                    name:
-                      Constant:
-                        Identifier: test
-                    args: []
+        span:
+          start: 198
+          end: 215
+        value:
+          Call:
+            name:
+              span:
+                start: 193
+                end: 198
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 203
+                  end: 214
+                value:
+                  BinaryOperator:
+                    - Add
+                    - span:
+                        start: 203
+                        end: 205
+                      value:
+                        Call:
+                          name:
+                            span:
+                              start: 199
+                              end: 203
+                            value:
+                              Constant:
+                                Identifier: test
+                          args: []
+                    - span:
+                        start: 212
+                        end: 214
+                      value:
+                        Call:
+                          name:
+                            span:
+                              start: 208
+                              end: 212
+                            value:
+                              Constant:
+                                Identifier: test
+                          args: []

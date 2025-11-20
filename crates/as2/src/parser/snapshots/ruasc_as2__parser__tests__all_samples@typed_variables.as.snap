@@ -8,195 +8,435 @@ Ok:
     - Declare:
         - name: num
           value:
-            Constant:
-              Integer: 42
+            span:
+              start: 17
+              end: 19
+            value:
+              Constant:
+                Integer: 42
     - Declare:
         - name: str
           value:
-            Constant:
-              String: Hello
+            span:
+              start: 38
+              end: 45
+            value:
+              Constant:
+                String: Hello
     - Declare:
         - name: flag
           value:
-            Constant:
-              Identifier: "true"
+            span:
+              start: 66
+              end: 70
+            value:
+              Constant:
+                Identifier: "true"
     - Declare:
         - name: obj
           value:
-            InitObject: []
+            span:
+              start: 89
+              end: 91
+            value:
+              InitObject: []
     - Declare:
         - name: arr
           value:
-            InitArray: []
+            span:
+              start: 109
+              end: 111
+            value:
+              InitArray: []
     - Expr:
-        Function:
-          name: add
-          args:
-            - a
-            - b
-          body:
-            - Return:
-                - BinaryOperator:
-                    - Add
-                    - Constant:
-                        Identifier: a
-                    - Constant:
-                        Identifier: b
+        span:
+          start: 114
+          end: 175
+        value:
+          Function:
+            name: add
+            args:
+              - a
+              - b
+            body:
+              - Return:
+                  - span:
+                      start: 167
+                      end: 172
+                    value:
+                      BinaryOperator:
+                        - Add
+                        - span:
+                            start: 167
+                            end: 168
+                          value:
+                            Constant:
+                              Identifier: a
+                        - span:
+                            start: 171
+                            end: 172
+                          value:
+                            Constant:
+                              Identifier: b
     - Expr:
-        Function:
-          name: getMessage
-          args: []
-          body:
-            - Return:
-                - Constant:
-                    String: Test message
+        span:
+          start: 177
+          end: 236
+        value:
+          Function:
+            name: getMessage
+            args: []
+            body:
+              - Return:
+                  - span:
+                      start: 219
+                      end: 233
+                    value:
+                      Constant:
+                        String: Test message
     - Expr:
-        Function:
-          name: processData
-          args:
-            - data
-          body:
-            - Expr:
-                Call:
-                  name:
-                    Constant:
-                      Identifier: trace
-                  args:
-                    - Constant:
-                        Identifier: data
+        span:
+          start: 238
+          end: 297
+        value:
+          Function:
+            name: processData
+            args:
+              - data
+            body:
+              - Expr:
+                  span:
+                    start: 288
+                    end: 294
+                  value:
+                    Call:
+                      name:
+                        span:
+                          start: 283
+                          end: 288
+                        value:
+                          Constant:
+                            Identifier: trace
+                      args:
+                        - span:
+                            start: 289
+                            end: 293
+                          value:
+                            Constant:
+                              Identifier: data
     - Declare:
         - name: numbers
           value:
-            New:
-              name:
-                Constant:
-                  Identifier: Array
-              args: []
+            span:
+              start: 319
+              end: 322
+            value:
+              New:
+                name:
+                  span:
+                    start: 323
+                    end: 328
+                  value:
+                    Constant:
+                      Identifier: Array
+                args: []
     - Declare:
         - name: strings
           value:
-            InitArray:
-              - Constant:
-                  String: one
-              - Constant:
-                  String: two
-              - Constant:
-                  String: three
+            span:
+              start: 352
+              end: 375
+            value:
+              InitArray:
+                - span:
+                    start: 353
+                    end: 358
+                  value:
+                    Constant:
+                      String: one
+                - span:
+                    start: 360
+                    end: 365
+                  value:
+                    Constant:
+                      String: two
+                - span:
+                    start: 367
+                    end: 374
+                  value:
+                    Constant:
+                      String: three
     - Declare:
         - name: someValue
           value:
-            Constant:
-              String: "123"
+            span:
+              start: 401
+              end: 406
+            value:
+              Constant:
+                String: "123"
     - Declare:
         - name: numValue
           value:
-            Call:
-              name:
-                Constant:
-                  Identifier: Number
-              args:
-                - Constant:
-                    Identifier: someValue
+            span:
+              start: 436
+              end: 447
+            value:
+              Call:
+                name:
+                  span:
+                    start: 430
+                    end: 436
+                  value:
+                    Constant:
+                      Identifier: Number
+                args:
+                  - span:
+                      start: 437
+                      end: 446
+                    value:
+                      Constant:
+                        Identifier: someValue
     - Declare:
         - name: strValue
           value:
-            Call:
-              name:
-                Constant:
-                  Identifier: String
-              args:
-                - Constant:
-                    Integer: 42
+            span:
+              start: 477
+              end: 481
+            value:
+              Call:
+                name:
+                  span:
+                    start: 471
+                    end: 477
+                  value:
+                    Constant:
+                      Identifier: String
+                args:
+                  - span:
+                      start: 478
+                      end: 480
+                    value:
+                      Constant:
+                        Integer: 42
     - Expr:
-        Function:
-          name: complexFunc
-          args:
-            - name
-            - age
-            - isValid
-          body:
-            - Return:
-                - InitObject:
-                    - - name
-                      - Constant:
-                          Identifier: name
-                    - - age
-                      - Constant:
-                          Identifier: age
-                    - - valid
-                      - Constant:
-                          Identifier: isValid
+        span:
+          start: 484
+          end: 608
+        value:
+          Function:
+            name: complexFunc
+            args:
+              - name
+              - age
+              - isValid
+            body:
+              - Return:
+                  - span:
+                      start: 567
+                      end: 605
+                    value:
+                      InitObject:
+                        - - name
+                          - span:
+                              start: 574
+                              end: 578
+                            value:
+                              Constant:
+                                Identifier: name
+                        - - age
+                          - span:
+                              start: 585
+                              end: 588
+                            value:
+                              Constant:
+                                Identifier: age
+                        - - valid
+                          - span:
+                              start: 597
+                              end: 604
+                            value:
+                              Constant:
+                                Identifier: isValid
     - Declare:
         - name: userData
           value:
-            InitObject:
-              - - id
-                - BinaryOperator:
-                    - Assign
-                    - Constant:
-                        Identifier: Number
-                    - Constant:
-                        Integer: 1
-              - - name
-                - BinaryOperator:
-                    - Assign
-                    - Constant:
-                        Identifier: String
-                    - Constant:
-                        String: User
-              - - scores
-                - BinaryOperator:
-                    - Assign
-                    - Constant:
-                        Identifier: Array
-                    - InitArray:
-                        - Constant:
-                            Integer: 1
-                        - Constant:
-                            Integer: 2
-                        - Constant:
-                            Integer: 3
-    - Expr:
-        Function:
-          name: forEach
-          args:
-            - arr
-            - callback
-          body:
-            - ForIn:
-                condition:
-                  Classic:
-                    initialize:
-                      Declare:
-                        - name: i
+            span:
+              start: 632
+              end: 709
+            value:
+              InitObject:
+                - - id
+                  - span:
+                      start: 641
+                      end: 651
+                    value:
+                      BinaryOperator:
+                        - Assign
+                        - span:
+                            start: 641
+                            end: 647
                           value:
                             Constant:
-                              Integer: 0
-                    condition:
-                      - BinaryOperator:
-                          - LessThan
-                          - Constant:
-                              Identifier: i
-                          - Field:
-                              - Constant:
-                                  Identifier: arr
-                              - Constant:
-                                  String: length
-                    update:
-                      - UnaryOperator:
-                          - Increment: Postfix
-                          - Constant:
-                              Identifier: i
-                body:
-                  Block:
-                    - Expr:
-                        Call:
-                          name:
+                              Identifier: Number
+                        - span:
+                            start: 650
+                            end: 651
+                          value:
                             Constant:
-                              Identifier: callback
-                          args:
-                            - Field:
-                                - Constant:
-                                    Identifier: arr
-                                - Constant:
+                              Integer: 1
+                - - name
+                  - span:
+                      start: 662
+                      end: 677
+                    value:
+                      BinaryOperator:
+                        - Assign
+                        - span:
+                            start: 662
+                            end: 668
+                          value:
+                            Constant:
+                              Identifier: String
+                        - span:
+                            start: 671
+                            end: 677
+                          value:
+                            Constant:
+                              String: User
+                - - scores
+                  - span:
+                      start: 690
+                      end: 707
+                    value:
+                      BinaryOperator:
+                        - Assign
+                        - span:
+                            start: 690
+                            end: 695
+                          value:
+                            Constant:
+                              Identifier: Array
+                        - span:
+                            start: 698
+                            end: 707
+                          value:
+                            InitArray:
+                              - span:
+                                  start: 699
+                                  end: 700
+                                value:
+                                  Constant:
+                                    Integer: 1
+                              - span:
+                                  start: 702
+                                  end: 703
+                                value:
+                                  Constant:
+                                    Integer: 2
+                              - span:
+                                  start: 705
+                                  end: 706
+                                value:
+                                  Constant:
+                                    Integer: 3
+    - Expr:
+        span:
+          start: 712
+          end: 849
+        value:
+          Function:
+            name: forEach
+            args:
+              - arr
+              - callback
+            body:
+              - ForIn:
+                  condition:
+                    Classic:
+                      initialize:
+                        Declare:
+                          - name: i
+                            value:
+                              span:
+                                start: 790
+                                end: 791
+                              value:
+                                Constant:
+                                  Integer: 0
+                      condition:
+                        - span:
+                            start: 793
+                            end: 807
+                          value:
+                            BinaryOperator:
+                              - LessThan
+                              - span:
+                                  start: 793
+                                  end: 794
+                                value:
+                                  Constant:
                                     Identifier: i
+                              - span:
+                                  start: 800
+                                  end: 807
+                                value:
+                                  Field:
+                                    - span:
+                                        start: 797
+                                        end: 800
+                                      value:
+                                        Constant:
+                                          Identifier: arr
+                                    - span:
+                                        start: 801
+                                        end: 807
+                                      value:
+                                        Constant:
+                                          String: length
+                      update:
+                        - span:
+                            start: 810
+                            end: 812
+                          value:
+                            UnaryOperator:
+                              - Increment: Postfix
+                              - span:
+                                  start: 809
+                                  end: 810
+                                value:
+                                  Constant:
+                                    Identifier: i
+                  body:
+                    Block:
+                      - Expr:
+                          span:
+                            start: 832
+                            end: 840
+                          value:
+                            Call:
+                              name:
+                                span:
+                                  start: 824
+                                  end: 832
+                                value:
+                                  Constant:
+                                    Identifier: callback
+                              args:
+                                - span:
+                                    start: 836
+                                    end: 839
+                                  value:
+                                    Field:
+                                      - span:
+                                          start: 833
+                                          end: 836
+                                        value:
+                                          Constant:
+                                            Identifier: arr
+                                      - span:
+                                          start: 837
+                                          end: 838
+                                        value:
+                                          Constant:
+                                            Identifier: i
