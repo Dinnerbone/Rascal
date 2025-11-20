@@ -1,7 +1,7 @@
 use crate::access::VariableAccess;
 use crate::builder::CodeBuilder;
 use ruasc_as2::ast::{
-    Affix, BinaryOperator, Constant, Declaration, Expr, ForCondition, Function, Statement,
+    Affix, BinaryOperator, Constant, Declaration, ExprKind, ForCondition, Function, Statement,
     UnaryOperator,
 };
 use ruasc_as2_pcode::{Action, PushValue};
@@ -12,7 +12,7 @@ pub(crate) fn gen_statements(builder: &mut CodeBuilder, statements: &[Statement]
     for statement in statements {
         if matches!(
             statement,
-            Statement::Expr(Expr::Function(Function { name: Some(_), .. }))
+            Statement::Expr(ExprKind::Function(Function { name: Some(_), .. }))
         ) {
             hoisted.push(statement);
         } else {
@@ -142,7 +142,7 @@ fn gen_for_loop(builder: &mut CodeBuilder, condition: &ForCondition, body: &Stat
 
 fn gen_if(
     builder: &mut CodeBuilder,
-    condition: &Expr,
+    condition: &ExprKind,
     yes: &Statement,
     no: &Option<Box<Statement>>,
 ) {
@@ -165,7 +165,7 @@ fn gen_if(
     builder.mark_label(end_label);
 }
 
-fn gen_ternary(builder: &mut CodeBuilder, condition: &Expr, yes: &Expr, no: &Expr) {
+fn gen_ternary(builder: &mut CodeBuilder, condition: &ExprKind, yes: &ExprKind, no: &ExprKind) {
     let end_label = builder.create_label();
     let no_label = builder.create_label();
 
@@ -195,26 +195,26 @@ fn gen_declarations(builder: &mut CodeBuilder, declarations: &[Declaration]) {
     }
 }
 
-pub fn gen_expr(builder: &mut CodeBuilder, expr: &Expr, will_discard_result: bool) {
+pub fn gen_expr(builder: &mut CodeBuilder, expr: &ExprKind, will_discard_result: bool) {
     match expr {
-        Expr::Constant(constant) => {
+        ExprKind::Constant(constant) => {
             VariableAccess::for_constant(builder, constant).get_value(builder)
         }
-        Expr::Call { name, args } => gen_call(builder, name, args),
-        Expr::New { name, args } => gen_new(builder, name, args),
-        Expr::BinaryOperator(op, left, right) => {
+        ExprKind::Call { name, args } => gen_call(builder, name, args),
+        ExprKind::New { name, args } => gen_new(builder, name, args),
+        ExprKind::BinaryOperator(op, left, right) => {
             gen_binary_op(builder, *op, left, right, will_discard_result)
         }
-        Expr::UnaryOperator(op, exr) => gen_unary_op(builder, *op, exr, will_discard_result),
-        Expr::Parenthesis(expr) => gen_expr(builder, expr, will_discard_result),
-        Expr::Ternary { condition, yes, no } => gen_ternary(builder, condition, yes, no),
-        Expr::InitObject(values) => gen_init_object(builder, values),
-        Expr::InitArray(values) => gen_init_array(builder, values),
-        Expr::Field(_, _) => {
+        ExprKind::UnaryOperator(op, exr) => gen_unary_op(builder, *op, exr, will_discard_result),
+        ExprKind::Parenthesis(expr) => gen_expr(builder, expr, will_discard_result),
+        ExprKind::Ternary { condition, yes, no } => gen_ternary(builder, condition, yes, no),
+        ExprKind::InitObject(values) => gen_init_object(builder, values),
+        ExprKind::InitArray(values) => gen_init_array(builder, values),
+        ExprKind::Field(_, _) => {
             let access = VariableAccess::for_expr(builder, expr);
             access.get_value(builder);
         }
-        Expr::TypeOf(exprs) => {
+        ExprKind::TypeOf(exprs) => {
             let stack_size = builder.stack_size();
             let last = exprs.len() - 1;
             for (i, expr) in exprs.iter().enumerate() {
@@ -223,7 +223,7 @@ pub fn gen_expr(builder: &mut CodeBuilder, expr: &Expr, will_discard_result: boo
             }
             builder.action(Action::TypeOf);
         }
-        Expr::Delete(exprs) => {
+        ExprKind::Delete(exprs) => {
             let mut access: Option<VariableAccess> = None;
             for expr in exprs {
                 if let Some(access) = &mut access {
@@ -236,8 +236,8 @@ pub fn gen_expr(builder: &mut CodeBuilder, expr: &Expr, will_discard_result: boo
                 access.delete(builder);
             }
         }
-        Expr::Void(_) => {}
-        Expr::Function(function) => gen_function(builder, function),
+        ExprKind::Void(_) => {}
+        ExprKind::Function(function) => gen_function(builder, function),
     }
 }
 
@@ -252,7 +252,7 @@ fn gen_function(builder: &mut CodeBuilder, function: &Function) {
     })
 }
 
-fn gen_init_object(builder: &mut CodeBuilder, values: &[(&str, Expr)]) {
+fn gen_init_object(builder: &mut CodeBuilder, values: &[(&str, ExprKind)]) {
     let num_fields = values.len() as i32;
     for (key, value) in values.iter().rev() {
         let push_value = builder.constants_mut().add(key);
@@ -263,7 +263,7 @@ fn gen_init_object(builder: &mut CodeBuilder, values: &[(&str, Expr)]) {
     builder.action_with_stack_delta(Action::InitObject, -num_fields * 2);
 }
 
-fn gen_init_array(builder: &mut CodeBuilder, values: &[Expr]) {
+fn gen_init_array(builder: &mut CodeBuilder, values: &[ExprKind]) {
     let num_values = values.len() as i32;
     for value in values.iter().rev() {
         gen_expr(builder, value, false);
@@ -275,7 +275,7 @@ fn gen_init_array(builder: &mut CodeBuilder, values: &[Expr]) {
 fn gen_unary_op(
     builder: &mut CodeBuilder,
     op: UnaryOperator,
-    expr: &Expr,
+    expr: &ExprKind,
     will_discard_result: bool,
 ) {
     let adjust_in_place = |builder: &mut CodeBuilder, action, affix| {
@@ -299,10 +299,10 @@ fn gen_unary_op(
 
     match op {
         UnaryOperator::Sub => match expr {
-            Expr::Constant(Constant::Integer(value)) => {
+            ExprKind::Constant(Constant::Integer(value)) => {
                 VariableAccess::for_constant(builder, &Constant::Integer(-*value));
             }
-            Expr::Constant(Constant::Float(value)) => {
+            ExprKind::Constant(Constant::Float(value)) => {
                 VariableAccess::for_constant(builder, &Constant::Float(-*value));
             }
             _ => {
@@ -328,8 +328,8 @@ fn gen_unary_op(
 fn gen_binary_op(
     builder: &mut CodeBuilder,
     op: BinaryOperator,
-    left: &Expr,
-    right: &Expr,
+    left: &ExprKind,
+    right: &ExprKind,
     will_discard_result: bool, // if we can optimise slightly by not deliberately pushing the result onto the stack
 ) {
     let trivial = |builder: &mut CodeBuilder, action: Action| {
@@ -421,8 +421,8 @@ fn gen_binary_op(
     }
 }
 
-fn gen_call(builder: &mut CodeBuilder, name: &Expr, args: &[Expr]) {
-    if let Expr::Constant(Constant::Identifier(identifier)) = name {
+fn gen_call(builder: &mut CodeBuilder, name: &ExprKind, args: &[ExprKind]) {
+    if let ExprKind::Constant(Constant::Identifier(identifier)) = name {
         if *identifier == "trace" && args.len() == 1 {
             gen_expr(builder, &args[0], false);
             builder.action(Action::Trace);
@@ -443,7 +443,7 @@ fn gen_call(builder: &mut CodeBuilder, name: &Expr, args: &[Expr]) {
     VariableAccess::for_expr(builder, name).call(builder, num_args);
 }
 
-fn gen_new(builder: &mut CodeBuilder, name: &Expr, args: &[Expr]) {
+fn gen_new(builder: &mut CodeBuilder, name: &ExprKind, args: &[ExprKind]) {
     for arg in args.iter().rev() {
         gen_expr(builder, arg, false);
     }

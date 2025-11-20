@@ -1,4 +1,4 @@
-use crate::ast::{Affix, BinaryOperator, Constant, Expr, UnaryOperator};
+use crate::ast::{Affix, BinaryOperator, Constant, ExprKind, UnaryOperator};
 use crate::lexer::operator::Operator;
 use crate::lexer::tokens::{Keyword, TokenKind};
 use crate::parser::statement::function;
@@ -10,17 +10,17 @@ use winnow::error::{ParserError, StrContextValue};
 use winnow::token::any;
 use winnow::{ModalResult, Parser};
 
-impl Expr<'_> {
+impl ExprKind<'_> {
     pub(crate) fn rewrite_leftmost_expr<R>(&mut self, rewriter: R)
     where
-        R: FnOnce(Expr) -> Expr,
+        R: FnOnce(ExprKind) -> ExprKind,
     {
-        let mut expr: &mut Expr = self;
+        let mut expr: &mut ExprKind = self;
 
         loop {
             match expr {
-                Expr::BinaryOperator(_op, left, _right) => expr = left,
-                Expr::Ternary { condition, .. } => expr = condition,
+                ExprKind::BinaryOperator(_op, left, _right) => expr = left,
+                ExprKind::Ternary { condition, .. } => expr = condition,
                 _ => break,
             }
         }
@@ -28,25 +28,25 @@ impl Expr<'_> {
         // Temporarily replaces it with something else, to appease the borrow checker
         *expr = rewriter(std::mem::replace(
             expr,
-            Expr::Constant(Constant::Integer(0)),
+            ExprKind::Constant(Constant::Integer(0)),
         ));
     }
 }
 
-impl Expr<'_> {
+impl ExprKind<'_> {
     pub(crate) fn can_postfix(&self) -> bool {
-        matches!(self, Expr::Constant(_))
+        matches!(self, ExprKind::Constant(_))
     }
 }
 
-pub(crate) fn expression<'i>(i: &mut Tokens<'i>) -> ModalResult<Expr<'i>> {
+pub(crate) fn expression<'i>(i: &mut Tokens<'i>) -> ModalResult<ExprKind<'i>> {
     skip_newlines(i)?;
     let token = peek(any).parse_next(i)?;
     match token.kind {
         TokenKind::Operator(Operator::Sub) => {
             TokenKind::Operator(Operator::Sub).parse_next(i)?;
             expression
-                .map(|e| Expr::for_unary_operator(UnaryOperator::Sub, Box::new(e)))
+                .map(|e| ExprKind::for_unary_operator(UnaryOperator::Sub, Box::new(e)))
                 .context(StrContext::Label("expression"))
                 .parse_next(i)
         }
@@ -60,7 +60,10 @@ pub(crate) fn expression<'i>(i: &mut Tokens<'i>) -> ModalResult<Expr<'i>> {
             TokenKind::Operator(Operator::Increment).parse_next(i)?;
             expression
                 .map(|e| {
-                    Expr::for_unary_operator(UnaryOperator::Increment(Affix::Prefix), Box::new(e))
+                    ExprKind::for_unary_operator(
+                        UnaryOperator::Increment(Affix::Prefix),
+                        Box::new(e),
+                    )
                 })
                 .context(StrContext::Label("expression"))
                 .parse_next(i)
@@ -69,7 +72,10 @@ pub(crate) fn expression<'i>(i: &mut Tokens<'i>) -> ModalResult<Expr<'i>> {
             TokenKind::Operator(Operator::Decrement).parse_next(i)?;
             expression
                 .map(|e| {
-                    Expr::for_unary_operator(UnaryOperator::Decrement(Affix::Prefix), Box::new(e))
+                    ExprKind::for_unary_operator(
+                        UnaryOperator::Decrement(Affix::Prefix),
+                        Box::new(e),
+                    )
                 })
                 .context(StrContext::Label("expression"))
                 .parse_next(i)
@@ -77,14 +83,14 @@ pub(crate) fn expression<'i>(i: &mut Tokens<'i>) -> ModalResult<Expr<'i>> {
         TokenKind::Operator(Operator::BitNot) => {
             TokenKind::Operator(Operator::BitNot).parse_next(i)?;
             expression
-                .map(|e| Expr::for_unary_operator(UnaryOperator::BitNot, Box::new(e)))
+                .map(|e| ExprKind::for_unary_operator(UnaryOperator::BitNot, Box::new(e)))
                 .context(StrContext::Label("expression"))
                 .parse_next(i)
         }
         TokenKind::Operator(Operator::LogicalNot) => {
             TokenKind::Operator(Operator::LogicalNot).parse_next(i)?;
             expression
-                .map(|e| Expr::for_unary_operator(UnaryOperator::LogicalNot, Box::new(e)))
+                .map(|e| ExprKind::for_unary_operator(UnaryOperator::LogicalNot, Box::new(e)))
                 .context(StrContext::Label("expression"))
                 .parse_next(i)
         }
@@ -94,17 +100,17 @@ pub(crate) fn expression<'i>(i: &mut Tokens<'i>) -> ModalResult<Expr<'i>> {
                 .context(StrContext::Label("expression"))
                 .parse_next(i)?;
             TokenKind::CloseParen.parse_next(i)?;
-            expr_next(Expr::Parenthesis(Box::new(val)))
+            expr_next(ExprKind::Parenthesis(Box::new(val)))
                 .context(StrContext::Label("expression"))
                 .parse_next(i)
         }
         TokenKind::Keyword(Keyword::New) => {
             TokenKind::Keyword(Keyword::New).parse_next(i)?;
             let val = expression.parse_next(i)?;
-            let val = if let Expr::Call { name, args } = val {
-                Expr::New { name, args }
+            let val = if let ExprKind::Call { name, args } = val {
+                ExprKind::New { name, args }
             } else {
-                Expr::New {
+                ExprKind::New {
                     name: Box::new(val),
                     args: vec![],
                 }
@@ -118,10 +124,10 @@ pub(crate) fn expression<'i>(i: &mut Tokens<'i>) -> ModalResult<Expr<'i>> {
             let expr = if opt(TokenKind::OpenParen).parse_next(i)?.is_some() {
                 let values = expr_list.parse_next(i)?;
                 TokenKind::CloseParen.parse_next(i)?;
-                Expr::TypeOf(values)
+                ExprKind::TypeOf(values)
             } else {
                 let mut value = expression.parse_next(i)?;
-                value.rewrite_leftmost_expr(|expr| Expr::TypeOf(vec![expr]));
+                value.rewrite_leftmost_expr(|expr| ExprKind::TypeOf(vec![expr]));
                 value
             };
             expr_next(expr)
@@ -133,10 +139,10 @@ pub(crate) fn expression<'i>(i: &mut Tokens<'i>) -> ModalResult<Expr<'i>> {
             let expr = if opt(TokenKind::OpenParen).parse_next(i)?.is_some() {
                 let values = expr_list.parse_next(i)?;
                 TokenKind::CloseParen.parse_next(i)?;
-                Expr::Delete(values)
+                ExprKind::Delete(values)
             } else {
                 let mut value = expression.parse_next(i)?;
-                value.rewrite_leftmost_expr(|expr| Expr::Delete(vec![expr]));
+                value.rewrite_leftmost_expr(|expr| ExprKind::Delete(vec![expr]));
                 value
             };
             expr_next(expr)
@@ -152,7 +158,7 @@ pub(crate) fn expression<'i>(i: &mut Tokens<'i>) -> ModalResult<Expr<'i>> {
             } else {
                 vec![expression.parse_next(i)?]
             };
-            expr_next(Expr::Void(values))
+            expr_next(ExprKind::Void(values))
                 .context(StrContext::Label("expression"))
                 .parse_next(i)
         }
@@ -160,7 +166,7 @@ pub(crate) fn expression<'i>(i: &mut Tokens<'i>) -> ModalResult<Expr<'i>> {
             let val = constant
                 .context(StrContext::Label("constant"))
                 .parse_next(i)?;
-            expr_next(Expr::Constant(val))
+            expr_next(ExprKind::Constant(val))
                 .context(StrContext::Label("expression"))
                 .parse_next(i)
         }
@@ -170,7 +176,7 @@ pub(crate) fn expression<'i>(i: &mut Tokens<'i>) -> ModalResult<Expr<'i>> {
                 .context(StrContext::Label("object definition"))
                 .parse_next(i)?;
             TokenKind::CloseBrace.parse_next(i)?;
-            expr_next(Expr::InitObject(definition))
+            expr_next(ExprKind::InitObject(definition))
                 .context(StrContext::Label("expression"))
                 .parse_next(i)
         }
@@ -180,14 +186,14 @@ pub(crate) fn expression<'i>(i: &mut Tokens<'i>) -> ModalResult<Expr<'i>> {
                 .context(StrContext::Label("array definition"))
                 .parse_next(i)?;
             TokenKind::CloseBracket.parse_next(i)?;
-            expr_next(Expr::InitArray(definition))
+            expr_next(ExprKind::InitArray(definition))
                 .context(StrContext::Label("expression"))
                 .parse_next(i)
         }
         TokenKind::Keyword(Keyword::Function) => {
             TokenKind::Keyword(Keyword::Function).parse_next(i)?;
             let func = function.parse_next(i)?;
-            expr_next(Expr::Function(func))
+            expr_next(ExprKind::Function(func))
                 .context(StrContext::Label("expression"))
                 .parse_next(i)
         }
@@ -204,7 +210,7 @@ pub(crate) fn expression<'i>(i: &mut Tokens<'i>) -> ModalResult<Expr<'i>> {
     }
 }
 
-fn object_definition<'i>(i: &mut Tokens<'i>) -> ModalResult<Vec<(&'i str, Expr<'i>)>> {
+fn object_definition<'i>(i: &mut Tokens<'i>) -> ModalResult<Vec<(&'i str, ExprKind<'i>)>> {
     separated(
         0..,
         (identifier, TokenKind::Colon, expression).map(|(name, _, expr)| (name, expr)),
@@ -213,7 +219,7 @@ fn object_definition<'i>(i: &mut Tokens<'i>) -> ModalResult<Vec<(&'i str, Expr<'
     .parse_next(i)
 }
 
-fn array_definition<'i>(i: &mut Tokens<'i>) -> ModalResult<Vec<Expr<'i>>> {
+fn array_definition<'i>(i: &mut Tokens<'i>) -> ModalResult<Vec<ExprKind<'i>>> {
     separated(0.., expression, TokenKind::Comma).parse_next(i)
 }
 
@@ -276,7 +282,9 @@ fn integer(i: &mut Tokens<'_>) -> ModalResult<i32> {
     .map_err(|_| ParserError::from_input(&raw)))?
 }
 
-fn expr_next<'i>(prior: Expr<'i>) -> impl Parser<Tokens<'i>, Expr<'i>, ErrMode<ContextError>> {
+fn expr_next<'i>(
+    prior: ExprKind<'i>,
+) -> impl Parser<Tokens<'i>, ExprKind<'i>, ErrMode<ContextError>> {
     move |i: &mut Tokens<'i>| {
         let prior = prior.clone();
         skip_newlines(i)?;
@@ -291,7 +299,7 @@ fn expr_next<'i>(prior: Expr<'i>) -> impl Parser<Tokens<'i>, Expr<'i>, ErrMode<C
                     .context(StrContext::Label("arguments"))
                     .parse_next(i)?;
                 TokenKind::CloseParen.parse_next(i)?;
-                expr_next(Expr::Call {
+                expr_next(ExprKind::Call {
                     name: Box::new(prior),
                     args,
                 })
@@ -299,7 +307,7 @@ fn expr_next<'i>(prior: Expr<'i>) -> impl Parser<Tokens<'i>, Expr<'i>, ErrMode<C
             }
             TokenKind::Operator(Operator::Increment) if prior.can_postfix() => {
                 TokenKind::Operator(Operator::Increment).parse_next(i)?;
-                expr_next(Expr::UnaryOperator(
+                expr_next(ExprKind::UnaryOperator(
                     UnaryOperator::Increment(Affix::Postfix),
                     Box::new(prior),
                 ))
@@ -307,7 +315,7 @@ fn expr_next<'i>(prior: Expr<'i>) -> impl Parser<Tokens<'i>, Expr<'i>, ErrMode<C
             }
             TokenKind::Operator(Operator::Decrement) if prior.can_postfix() => {
                 TokenKind::Operator(Operator::Decrement).parse_next(i)?;
-                expr_next(Expr::UnaryOperator(
+                expr_next(ExprKind::UnaryOperator(
                     UnaryOperator::Decrement(Affix::Postfix),
                     Box::new(prior),
                 ))
@@ -317,21 +325,21 @@ fn expr_next<'i>(prior: Expr<'i>) -> impl Parser<Tokens<'i>, Expr<'i>, ErrMode<C
                 let op = operator::binary_operator.parse_next(i)?;
                 expression
                     .parse_next(i)
-                    .map(|next| Expr::for_binary_operator(op, Box::new(prior), Box::new(next)))
+                    .map(|next| ExprKind::for_binary_operator(op, Box::new(prior), Box::new(next)))
             }
             TokenKind::Period => {
                 TokenKind::Period.parse_next(i)?;
                 let name = identifier.parse_next(i)?;
-                expr_next(Expr::Field(
+                expr_next(ExprKind::Field(
                     Box::new(prior),
-                    Box::new(Expr::Constant(Constant::String(Cow::Borrowed(name)))),
+                    Box::new(ExprKind::Constant(Constant::String(Cow::Borrowed(name)))),
                 ))
                 .parse_next(i)
             }
             TokenKind::Keyword(Keyword::InstanceOf) => {
                 TokenKind::Keyword(Keyword::InstanceOf).parse_next(i)?;
                 expression.parse_next(i).map(|next| {
-                    Expr::for_binary_operator(
+                    ExprKind::for_binary_operator(
                         BinaryOperator::InstanceOf,
                         Box::new(prior),
                         Box::new(next),
@@ -343,7 +351,7 @@ fn expr_next<'i>(prior: Expr<'i>) -> impl Parser<Tokens<'i>, Expr<'i>, ErrMode<C
                 let yes = expression.parse_next(i)?;
                 TokenKind::Colon.parse_next(i)?;
                 let no = expression.parse_next(i)?;
-                expr_next(Expr::Ternary {
+                expr_next(ExprKind::Ternary {
                     condition: Box::new(prior),
                     yes: Box::new(yes),
                     no: Box::new(no),
@@ -354,7 +362,7 @@ fn expr_next<'i>(prior: Expr<'i>) -> impl Parser<Tokens<'i>, Expr<'i>, ErrMode<C
                 TokenKind::OpenBracket.parse_next(i)?;
                 let name = expression.parse_next(i)?;
                 TokenKind::CloseBracket.parse_next(i)?;
-                expr_next(Expr::Field(Box::new(prior), Box::new(name)))
+                expr_next(ExprKind::Field(Box::new(prior), Box::new(name)))
                     .context(StrContext::Label("expression"))
                     .parse_next(i)
             }
@@ -363,7 +371,7 @@ fn expr_next<'i>(prior: Expr<'i>) -> impl Parser<Tokens<'i>, Expr<'i>, ErrMode<C
     }
 }
 
-pub(crate) fn expr_list<'i>(i: &mut Tokens<'i>) -> ModalResult<Vec<Expr<'i>>> {
+pub(crate) fn expr_list<'i>(i: &mut Tokens<'i>) -> ModalResult<Vec<ExprKind<'i>>> {
     separated(0.., expression, TokenKind::Comma).parse_next(i)
 }
 
@@ -376,7 +384,7 @@ mod tests {
     use crate::parser::tests::build_tokens;
     use winnow::stream::TokenSlice;
 
-    fn parse_expr<'i>(tokens: &'i [Token<'i>]) -> ModalResult<Expr<'i>> {
+    fn parse_expr<'i>(tokens: &'i [Token<'i>]) -> ModalResult<ExprKind<'i>> {
         expression(&mut TokenSlice::new(tokens))
     }
 
@@ -385,7 +393,7 @@ mod tests {
         let tokens = build_tokens(&[(TokenKind::Identifier, "foo")]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::Constant(Constant::Identifier("foo")))
+            Ok(ExprKind::Constant(Constant::Identifier("foo")))
         );
     }
 
@@ -394,7 +402,7 @@ mod tests {
         let tokens = build_tokens(&[(TokenKind::String(QuoteKind::Double), "hello")]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::Constant(Constant::String(Cow::Borrowed("hello"))))
+            Ok(ExprKind::Constant(Constant::String(Cow::Borrowed("hello"))))
         );
     }
 
@@ -407,8 +415,8 @@ mod tests {
         ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::Call {
-                name: Box::new(Expr::Constant(Constant::Identifier("foo"))),
+            Ok(ExprKind::Call {
+                name: Box::new(ExprKind::Constant(Constant::Identifier("foo"))),
                 args: vec![]
             })
         );
@@ -426,11 +434,11 @@ mod tests {
         ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::Call {
-                name: Box::new(Expr::Constant(Constant::Identifier("foo"))),
+            Ok(ExprKind::Call {
+                name: Box::new(ExprKind::Constant(Constant::Identifier("foo"))),
                 args: vec![
-                    Expr::Constant(Constant::Identifier("a")),
-                    Expr::Constant(Constant::String(Cow::Borrowed("str")))
+                    ExprKind::Constant(Constant::Identifier("a")),
+                    ExprKind::Constant(Constant::String(Cow::Borrowed("str")))
                 ]
             })
         );
@@ -445,10 +453,10 @@ mod tests {
         ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::BinaryOperator(
+            Ok(ExprKind::BinaryOperator(
                 BinaryOperator::Add,
-                Box::new(Expr::Constant(Constant::Identifier("a"))),
-                Box::new(Expr::Constant(Constant::Identifier("b")))
+                Box::new(ExprKind::Constant(Constant::Identifier("a"))),
+                Box::new(ExprKind::Constant(Constant::Identifier("b")))
             ))
         );
     }
@@ -462,10 +470,10 @@ mod tests {
         ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::BinaryOperator(
+            Ok(ExprKind::BinaryOperator(
                 BinaryOperator::AddAssign,
-                Box::new(Expr::Constant(Constant::Identifier("a"))),
-                Box::new(Expr::Constant(Constant::Identifier("b")))
+                Box::new(ExprKind::Constant(Constant::Identifier("a"))),
+                Box::new(ExprKind::Constant(Constant::Identifier("b")))
             ))
         );
     }
@@ -479,10 +487,10 @@ mod tests {
         ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::BinaryOperator(
+            Ok(ExprKind::BinaryOperator(
                 BinaryOperator::Sub,
-                Box::new(Expr::Constant(Constant::Identifier("a"))),
-                Box::new(Expr::Constant(Constant::Identifier("b")))
+                Box::new(ExprKind::Constant(Constant::Identifier("a"))),
+                Box::new(ExprKind::Constant(Constant::Identifier("b")))
             ))
         );
     }
@@ -496,10 +504,10 @@ mod tests {
         ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::BinaryOperator(
+            Ok(ExprKind::BinaryOperator(
                 BinaryOperator::SubAssign,
-                Box::new(Expr::Constant(Constant::Identifier("a"))),
-                Box::new(Expr::Constant(Constant::Identifier("b")))
+                Box::new(ExprKind::Constant(Constant::Identifier("a"))),
+                Box::new(ExprKind::Constant(Constant::Identifier("b")))
             ))
         );
     }
@@ -513,10 +521,10 @@ mod tests {
         ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::BinaryOperator(
+            Ok(ExprKind::BinaryOperator(
                 BinaryOperator::Divide,
-                Box::new(Expr::Constant(Constant::Identifier("a"))),
-                Box::new(Expr::Constant(Constant::Identifier("b")))
+                Box::new(ExprKind::Constant(Constant::Identifier("a"))),
+                Box::new(ExprKind::Constant(Constant::Identifier("b")))
             ))
         );
     }
@@ -530,10 +538,10 @@ mod tests {
         ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::BinaryOperator(
+            Ok(ExprKind::BinaryOperator(
                 BinaryOperator::DivideAssign,
-                Box::new(Expr::Constant(Constant::Identifier("a"))),
-                Box::new(Expr::Constant(Constant::Identifier("b")))
+                Box::new(ExprKind::Constant(Constant::Identifier("a"))),
+                Box::new(ExprKind::Constant(Constant::Identifier("b")))
             ))
         );
     }
@@ -547,10 +555,10 @@ mod tests {
         ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::BinaryOperator(
+            Ok(ExprKind::BinaryOperator(
                 BinaryOperator::Multiply,
-                Box::new(Expr::Constant(Constant::Identifier("a"))),
-                Box::new(Expr::Constant(Constant::Identifier("b")))
+                Box::new(ExprKind::Constant(Constant::Identifier("a"))),
+                Box::new(ExprKind::Constant(Constant::Identifier("b")))
             ))
         );
     }
@@ -564,10 +572,10 @@ mod tests {
         ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::BinaryOperator(
+            Ok(ExprKind::BinaryOperator(
                 BinaryOperator::MultiplyAssign,
-                Box::new(Expr::Constant(Constant::Identifier("a"))),
-                Box::new(Expr::Constant(Constant::Identifier("b")))
+                Box::new(ExprKind::Constant(Constant::Identifier("a"))),
+                Box::new(ExprKind::Constant(Constant::Identifier("b")))
             ))
         );
     }
@@ -581,10 +589,10 @@ mod tests {
         ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::BinaryOperator(
+            Ok(ExprKind::BinaryOperator(
                 BinaryOperator::Modulo,
-                Box::new(Expr::Constant(Constant::Identifier("a"))),
-                Box::new(Expr::Constant(Constant::Identifier("b")))
+                Box::new(ExprKind::Constant(Constant::Identifier("a"))),
+                Box::new(ExprKind::Constant(Constant::Identifier("b")))
             ))
         );
     }
@@ -597,9 +605,9 @@ mod tests {
         ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::UnaryOperator(
+            Ok(ExprKind::UnaryOperator(
                 UnaryOperator::BitNot,
-                Box::new(Expr::Constant(Constant::Identifier("a")))
+                Box::new(ExprKind::Constant(Constant::Identifier("a")))
             ))
         )
     }
@@ -613,10 +621,10 @@ mod tests {
         ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::BinaryOperator(
+            Ok(ExprKind::BinaryOperator(
                 BinaryOperator::BitAnd,
-                Box::new(Expr::Constant(Constant::Identifier("a"))),
-                Box::new(Expr::Constant(Constant::Identifier("b")))
+                Box::new(ExprKind::Constant(Constant::Identifier("a"))),
+                Box::new(ExprKind::Constant(Constant::Identifier("b")))
             ))
         )
     }
@@ -630,10 +638,10 @@ mod tests {
         ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::BinaryOperator(
+            Ok(ExprKind::BinaryOperator(
                 BinaryOperator::BitOr,
-                Box::new(Expr::Constant(Constant::Identifier("a"))),
-                Box::new(Expr::Constant(Constant::Identifier("b")))
+                Box::new(ExprKind::Constant(Constant::Identifier("a"))),
+                Box::new(ExprKind::Constant(Constant::Identifier("b")))
             ))
         )
     }
@@ -647,10 +655,10 @@ mod tests {
         ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::BinaryOperator(
+            Ok(ExprKind::BinaryOperator(
                 BinaryOperator::BitXor,
-                Box::new(Expr::Constant(Constant::Identifier("a"))),
-                Box::new(Expr::Constant(Constant::Identifier("b")))
+                Box::new(ExprKind::Constant(Constant::Identifier("a"))),
+                Box::new(ExprKind::Constant(Constant::Identifier("b")))
             ))
         )
     }
@@ -664,10 +672,10 @@ mod tests {
         ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::BinaryOperator(
+            Ok(ExprKind::BinaryOperator(
                 BinaryOperator::BitShiftLeft,
-                Box::new(Expr::Constant(Constant::Identifier("a"))),
-                Box::new(Expr::Constant(Constant::Identifier("b")))
+                Box::new(ExprKind::Constant(Constant::Identifier("a"))),
+                Box::new(ExprKind::Constant(Constant::Identifier("b")))
             ))
         )
     }
@@ -681,10 +689,10 @@ mod tests {
         ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::BinaryOperator(
+            Ok(ExprKind::BinaryOperator(
                 BinaryOperator::BitShiftRight,
-                Box::new(Expr::Constant(Constant::Identifier("a"))),
-                Box::new(Expr::Constant(Constant::Identifier("b")))
+                Box::new(ExprKind::Constant(Constant::Identifier("a"))),
+                Box::new(ExprKind::Constant(Constant::Identifier("b")))
             ))
         )
     }
@@ -698,10 +706,10 @@ mod tests {
         ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::BinaryOperator(
+            Ok(ExprKind::BinaryOperator(
                 BinaryOperator::BitShiftRightUnsigned,
-                Box::new(Expr::Constant(Constant::Identifier("a"))),
-                Box::new(Expr::Constant(Constant::Identifier("b")))
+                Box::new(ExprKind::Constant(Constant::Identifier("a"))),
+                Box::new(ExprKind::Constant(Constant::Identifier("b")))
             ))
         )
     }
@@ -715,10 +723,10 @@ mod tests {
         ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::BinaryOperator(
+            Ok(ExprKind::BinaryOperator(
                 BinaryOperator::ModuloAssign,
-                Box::new(Expr::Constant(Constant::Identifier("a"))),
-                Box::new(Expr::Constant(Constant::Identifier("b")))
+                Box::new(ExprKind::Constant(Constant::Identifier("a"))),
+                Box::new(ExprKind::Constant(Constant::Identifier("b")))
             ))
         );
     }
@@ -732,10 +740,10 @@ mod tests {
         ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::BinaryOperator(
+            Ok(ExprKind::BinaryOperator(
                 BinaryOperator::BitAndAssign,
-                Box::new(Expr::Constant(Constant::Identifier("a"))),
-                Box::new(Expr::Constant(Constant::Identifier("b")))
+                Box::new(ExprKind::Constant(Constant::Identifier("a"))),
+                Box::new(ExprKind::Constant(Constant::Identifier("b")))
             ))
         )
     }
@@ -749,10 +757,10 @@ mod tests {
         ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::BinaryOperator(
+            Ok(ExprKind::BinaryOperator(
                 BinaryOperator::BitOrAssign,
-                Box::new(Expr::Constant(Constant::Identifier("a"))),
-                Box::new(Expr::Constant(Constant::Identifier("b")))
+                Box::new(ExprKind::Constant(Constant::Identifier("a"))),
+                Box::new(ExprKind::Constant(Constant::Identifier("b")))
             ))
         )
     }
@@ -766,10 +774,10 @@ mod tests {
         ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::BinaryOperator(
+            Ok(ExprKind::BinaryOperator(
                 BinaryOperator::BitXorAssign,
-                Box::new(Expr::Constant(Constant::Identifier("a"))),
-                Box::new(Expr::Constant(Constant::Identifier("b")))
+                Box::new(ExprKind::Constant(Constant::Identifier("a"))),
+                Box::new(ExprKind::Constant(Constant::Identifier("b")))
             ))
         )
     }
@@ -783,10 +791,10 @@ mod tests {
         ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::BinaryOperator(
+            Ok(ExprKind::BinaryOperator(
                 BinaryOperator::BitShiftLeftAssign,
-                Box::new(Expr::Constant(Constant::Identifier("a"))),
-                Box::new(Expr::Constant(Constant::Identifier("b")))
+                Box::new(ExprKind::Constant(Constant::Identifier("a"))),
+                Box::new(ExprKind::Constant(Constant::Identifier("b")))
             ))
         )
     }
@@ -800,10 +808,10 @@ mod tests {
         ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::BinaryOperator(
+            Ok(ExprKind::BinaryOperator(
                 BinaryOperator::BitShiftRightAssign,
-                Box::new(Expr::Constant(Constant::Identifier("a"))),
-                Box::new(Expr::Constant(Constant::Identifier("b")))
+                Box::new(ExprKind::Constant(Constant::Identifier("a"))),
+                Box::new(ExprKind::Constant(Constant::Identifier("b")))
             ))
         )
     }
@@ -820,10 +828,10 @@ mod tests {
         ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::BinaryOperator(
+            Ok(ExprKind::BinaryOperator(
                 BinaryOperator::BitShiftRightUnsignedAssign,
-                Box::new(Expr::Constant(Constant::Identifier("a"))),
-                Box::new(Expr::Constant(Constant::Identifier("b")))
+                Box::new(ExprKind::Constant(Constant::Identifier("a"))),
+                Box::new(ExprKind::Constant(Constant::Identifier("b")))
             ))
         )
     }
@@ -833,7 +841,7 @@ mod tests {
         let tokens = build_tokens(&[(TokenKind::Integer, "0123")]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::Constant(Constant::Integer(123)))
+            Ok(ExprKind::Constant(Constant::Integer(123)))
         );
     }
 
@@ -842,7 +850,7 @@ mod tests {
         let tokens = build_tokens(&[(TokenKind::Integer, "0x1A2B3C")]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::Constant(Constant::Integer(0x1A2B3C)))
+            Ok(ExprKind::Constant(Constant::Integer(0x1A2B3C)))
         );
     }
 
@@ -851,7 +859,7 @@ mod tests {
         let tokens = build_tokens(&[(TokenKind::Float, "012.345")]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::Constant(Constant::Float(12.345)))
+            Ok(ExprKind::Constant(Constant::Float(12.345)))
         );
     }
 
@@ -860,7 +868,7 @@ mod tests {
         let tokens = build_tokens(&[(TokenKind::Float, ".123")]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::Constant(Constant::Float(0.123)))
+            Ok(ExprKind::Constant(Constant::Float(0.123)))
         );
     }
 
@@ -869,7 +877,7 @@ mod tests {
         let tokens = build_tokens(&[(TokenKind::Float, "123.")]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::Constant(Constant::Float(123.0)))
+            Ok(ExprKind::Constant(Constant::Float(123.0)))
         );
     }
 
@@ -881,9 +889,9 @@ mod tests {
         ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::UnaryOperator(
+            Ok(ExprKind::UnaryOperator(
                 UnaryOperator::Sub,
-                Box::new(Expr::Constant(Constant::Identifier("a")))
+                Box::new(ExprKind::Constant(Constant::Identifier("a")))
             ))
         );
     }
@@ -898,13 +906,13 @@ mod tests {
         ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::BinaryOperator(
+            Ok(ExprKind::BinaryOperator(
                 BinaryOperator::Sub,
-                Box::new(Expr::UnaryOperator(
+                Box::new(ExprKind::UnaryOperator(
                     UnaryOperator::Sub,
-                    Box::new(Expr::Constant(Constant::Identifier("a")))
+                    Box::new(ExprKind::Constant(Constant::Identifier("a")))
                 )),
-                Box::new(Expr::Constant(Constant::Identifier("b")))
+                Box::new(ExprKind::Constant(Constant::Identifier("b")))
             ))
         )
     }
@@ -919,10 +927,10 @@ mod tests {
         ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::BinaryOperator(
+            Ok(ExprKind::BinaryOperator(
                 BinaryOperator::Add,
-                Box::new(Expr::Constant(Constant::Identifier("a"))),
-                Box::new(Expr::Constant(Constant::Identifier("b")))
+                Box::new(ExprKind::Constant(Constant::Identifier("a"))),
+                Box::new(ExprKind::Constant(Constant::Identifier("b")))
             ))
         )
     }
@@ -935,7 +943,7 @@ mod tests {
         ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::Constant(Constant::Identifier("a")))
+            Ok(ExprKind::Constant(Constant::Identifier("a")))
         );
     }
 
@@ -950,15 +958,15 @@ mod tests {
         ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::BinaryOperator(
+            Ok(ExprKind::BinaryOperator(
                 BinaryOperator::Add,
-                Box::new(Expr::UnaryOperator(
+                Box::new(ExprKind::UnaryOperator(
                     UnaryOperator::Increment(Affix::Prefix),
-                    Box::new(Expr::Constant(Constant::Identifier("a")))
+                    Box::new(ExprKind::Constant(Constant::Identifier("a")))
                 )),
-                Box::new(Expr::UnaryOperator(
+                Box::new(ExprKind::UnaryOperator(
                     UnaryOperator::Increment(Affix::Postfix),
-                    Box::new(Expr::Constant(Constant::Identifier("a")))
+                    Box::new(ExprKind::Constant(Constant::Identifier("a")))
                 ))
             ))
         );
@@ -975,15 +983,15 @@ mod tests {
         ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::BinaryOperator(
+            Ok(ExprKind::BinaryOperator(
                 BinaryOperator::Add,
-                Box::new(Expr::UnaryOperator(
+                Box::new(ExprKind::UnaryOperator(
                     UnaryOperator::Decrement(Affix::Prefix),
-                    Box::new(Expr::Constant(Constant::Identifier("a")))
+                    Box::new(ExprKind::Constant(Constant::Identifier("a")))
                 )),
-                Box::new(Expr::UnaryOperator(
+                Box::new(ExprKind::UnaryOperator(
                     UnaryOperator::Decrement(Affix::Postfix),
-                    Box::new(Expr::Constant(Constant::Identifier("a")))
+                    Box::new(ExprKind::Constant(Constant::Identifier("a")))
                 ))
             ))
         );
@@ -998,10 +1006,10 @@ mod tests {
         ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::BinaryOperator(
+            Ok(ExprKind::BinaryOperator(
                 BinaryOperator::Equal,
-                Box::new(Expr::Constant(Constant::Identifier("a"))),
-                Box::new(Expr::Constant(Constant::Identifier("b")))
+                Box::new(ExprKind::Constant(Constant::Identifier("a"))),
+                Box::new(ExprKind::Constant(Constant::Identifier("b")))
             ))
         )
     }
@@ -1015,10 +1023,10 @@ mod tests {
         ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::BinaryOperator(
+            Ok(ExprKind::BinaryOperator(
                 BinaryOperator::StrictEqual,
-                Box::new(Expr::Constant(Constant::Identifier("a"))),
-                Box::new(Expr::Constant(Constant::Identifier("b")))
+                Box::new(ExprKind::Constant(Constant::Identifier("a"))),
+                Box::new(ExprKind::Constant(Constant::Identifier("b")))
             ))
         )
     }
@@ -1032,10 +1040,10 @@ mod tests {
         ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::BinaryOperator(
+            Ok(ExprKind::BinaryOperator(
                 BinaryOperator::NotEqual,
-                Box::new(Expr::Constant(Constant::Identifier("a"))),
-                Box::new(Expr::Constant(Constant::Identifier("b")))
+                Box::new(ExprKind::Constant(Constant::Identifier("a"))),
+                Box::new(ExprKind::Constant(Constant::Identifier("b")))
             ))
         )
     }
@@ -1049,10 +1057,10 @@ mod tests {
         ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::BinaryOperator(
+            Ok(ExprKind::BinaryOperator(
                 BinaryOperator::StrictNotEqual,
-                Box::new(Expr::Constant(Constant::Identifier("a"))),
-                Box::new(Expr::Constant(Constant::Identifier("b")))
+                Box::new(ExprKind::Constant(Constant::Identifier("a"))),
+                Box::new(ExprKind::Constant(Constant::Identifier("b")))
             ))
         )
     }
@@ -1066,10 +1074,10 @@ mod tests {
         ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::BinaryOperator(
+            Ok(ExprKind::BinaryOperator(
                 BinaryOperator::LessThan,
-                Box::new(Expr::Constant(Constant::Identifier("a"))),
-                Box::new(Expr::Constant(Constant::Identifier("b")))
+                Box::new(ExprKind::Constant(Constant::Identifier("a"))),
+                Box::new(ExprKind::Constant(Constant::Identifier("b")))
             ))
         )
     }
@@ -1083,10 +1091,10 @@ mod tests {
         ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::BinaryOperator(
+            Ok(ExprKind::BinaryOperator(
                 BinaryOperator::LessThanEqual,
-                Box::new(Expr::Constant(Constant::Identifier("a"))),
-                Box::new(Expr::Constant(Constant::Identifier("b")))
+                Box::new(ExprKind::Constant(Constant::Identifier("a"))),
+                Box::new(ExprKind::Constant(Constant::Identifier("b")))
             ))
         )
     }
@@ -1100,10 +1108,10 @@ mod tests {
         ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::BinaryOperator(
+            Ok(ExprKind::BinaryOperator(
                 BinaryOperator::GreaterThan,
-                Box::new(Expr::Constant(Constant::Identifier("a"))),
-                Box::new(Expr::Constant(Constant::Identifier("b")))
+                Box::new(ExprKind::Constant(Constant::Identifier("a"))),
+                Box::new(ExprKind::Constant(Constant::Identifier("b")))
             ))
         )
     }
@@ -1117,10 +1125,10 @@ mod tests {
         ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::BinaryOperator(
+            Ok(ExprKind::BinaryOperator(
                 BinaryOperator::GreaterThanEqual,
-                Box::new(Expr::Constant(Constant::Identifier("a"))),
-                Box::new(Expr::Constant(Constant::Identifier("b")))
+                Box::new(ExprKind::Constant(Constant::Identifier("a"))),
+                Box::new(ExprKind::Constant(Constant::Identifier("b")))
             ))
         )
     }
@@ -1134,10 +1142,10 @@ mod tests {
         ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::BinaryOperator(
+            Ok(ExprKind::BinaryOperator(
                 BinaryOperator::LogicalAnd,
-                Box::new(Expr::Constant(Constant::Identifier("a"))),
-                Box::new(Expr::Constant(Constant::Identifier("b")))
+                Box::new(ExprKind::Constant(Constant::Identifier("a"))),
+                Box::new(ExprKind::Constant(Constant::Identifier("b")))
             ))
         )
     }
@@ -1151,10 +1159,10 @@ mod tests {
         ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::BinaryOperator(
+            Ok(ExprKind::BinaryOperator(
                 BinaryOperator::LogicalOr,
-                Box::new(Expr::Constant(Constant::Identifier("a"))),
-                Box::new(Expr::Constant(Constant::Identifier("b")))
+                Box::new(ExprKind::Constant(Constant::Identifier("a"))),
+                Box::new(ExprKind::Constant(Constant::Identifier("b")))
             ))
         )
     }
@@ -1167,9 +1175,9 @@ mod tests {
         ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::UnaryOperator(
+            Ok(ExprKind::UnaryOperator(
                 UnaryOperator::LogicalNot,
-                Box::new(Expr::Constant(Constant::Identifier("b")))
+                Box::new(ExprKind::Constant(Constant::Identifier("b")))
             ))
         )
     }
@@ -1191,21 +1199,21 @@ mod tests {
         ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::Ternary {
-                condition: Box::new(Expr::BinaryOperator(
+            Ok(ExprKind::Ternary {
+                condition: Box::new(ExprKind::BinaryOperator(
                     BinaryOperator::GreaterThan,
-                    Box::new(Expr::Constant(Constant::Identifier("a"))),
-                    Box::new(Expr::Constant(Constant::Identifier("b"))),
+                    Box::new(ExprKind::Constant(Constant::Identifier("a"))),
+                    Box::new(ExprKind::Constant(Constant::Identifier("b"))),
                 )),
-                yes: Box::new(Expr::BinaryOperator(
+                yes: Box::new(ExprKind::BinaryOperator(
                     BinaryOperator::Add,
-                    Box::new(Expr::Constant(Constant::Identifier("a"))),
-                    Box::new(Expr::Constant(Constant::Identifier("b"))),
+                    Box::new(ExprKind::Constant(Constant::Identifier("a"))),
+                    Box::new(ExprKind::Constant(Constant::Identifier("b"))),
                 )),
-                no: Box::new(Expr::BinaryOperator(
+                no: Box::new(ExprKind::BinaryOperator(
                     BinaryOperator::Sub,
-                    Box::new(Expr::Constant(Constant::Identifier("a"))),
-                    Box::new(Expr::Constant(Constant::Identifier("b"))),
+                    Box::new(ExprKind::Constant(Constant::Identifier("a"))),
+                    Box::new(ExprKind::Constant(Constant::Identifier("b"))),
                 )),
             })
         )
@@ -1224,14 +1232,14 @@ mod tests {
         ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::Ternary {
-                condition: Box::new(Expr::BinaryOperator(
+            Ok(ExprKind::Ternary {
+                condition: Box::new(ExprKind::BinaryOperator(
                     BinaryOperator::InstanceOf,
-                    Box::new(Expr::Constant(Constant::Identifier("a"))),
-                    Box::new(Expr::Constant(Constant::Identifier("b"))),
+                    Box::new(ExprKind::Constant(Constant::Identifier("a"))),
+                    Box::new(ExprKind::Constant(Constant::Identifier("b"))),
                 )),
-                yes: Box::new(Expr::Constant(Constant::Identifier("a"))),
-                no: Box::new(Expr::Constant(Constant::Identifier("c"))),
+                yes: Box::new(ExprKind::Constant(Constant::Identifier("a"))),
+                no: Box::new(ExprKind::Constant(Constant::Identifier("c"))),
             })
         )
     }
@@ -1245,7 +1253,7 @@ mod tests {
         ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::Parenthesis(Box::new(Expr::Constant(
+            Ok(ExprKind::Parenthesis(Box::new(ExprKind::Constant(
                 Constant::Identifier("a")
             ))))
         );
@@ -1254,7 +1262,7 @@ mod tests {
     #[test]
     fn test_empty_object() {
         let tokens = build_tokens(&[(TokenKind::OpenBrace, "{"), (TokenKind::CloseBrace, "}")]);
-        assert_eq!(parse_expr(&tokens), Ok(Expr::InitObject(Vec::new())));
+        assert_eq!(parse_expr(&tokens), Ok(ExprKind::InitObject(Vec::new())));
     }
 
     #[test]
@@ -1274,14 +1282,14 @@ mod tests {
         ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::InitObject(vec![
-                ("a", Expr::Constant(Constant::Identifier("b"))),
+            Ok(ExprKind::InitObject(vec![
+                ("a", ExprKind::Constant(Constant::Identifier("b"))),
                 (
                     "c",
-                    Expr::BinaryOperator(
+                    ExprKind::BinaryOperator(
                         BinaryOperator::Add,
-                        Box::new(Expr::Constant(Constant::Identifier("d"))),
-                        Box::new(Expr::Constant(Constant::Identifier("e"))),
+                        Box::new(ExprKind::Constant(Constant::Identifier("d"))),
+                        Box::new(ExprKind::Constant(Constant::Identifier("e"))),
                     )
                 ),
             ]))
@@ -1297,9 +1305,9 @@ mod tests {
         ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::Field(
-                Box::new(Expr::Constant(Constant::Identifier("a"))),
-                Box::new(Expr::Constant(Constant::String(Cow::Borrowed("b"))))
+            Ok(ExprKind::Field(
+                Box::new(ExprKind::Constant(Constant::Identifier("a"))),
+                Box::new(ExprKind::Constant(Constant::String(Cow::Borrowed("b"))))
             ))
         )
     }
@@ -1315,9 +1323,9 @@ mod tests {
         ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::New {
-                name: Box::new(Expr::Constant(Constant::Identifier("a"))),
-                args: vec![Expr::Constant(Constant::Identifier("b"))],
+            Ok(ExprKind::New {
+                name: Box::new(ExprKind::Constant(Constant::Identifier("a"))),
+                args: vec![ExprKind::Constant(Constant::Identifier("b"))],
             })
         )
     }
@@ -1330,8 +1338,8 @@ mod tests {
         ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::New {
-                name: Box::new(Expr::Constant(Constant::Identifier("a"))),
+            Ok(ExprKind::New {
+                name: Box::new(ExprKind::Constant(Constant::Identifier("a"))),
                 args: vec![],
             })
         )
@@ -1347,12 +1355,12 @@ mod tests {
         ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::BinaryOperator(
+            Ok(ExprKind::BinaryOperator(
                 BinaryOperator::Add,
-                Box::new(Expr::TypeOf(vec![Expr::Constant(Constant::Identifier(
-                    "a"
-                ))])),
-                Box::new(Expr::Constant(Constant::Identifier("b"))),
+                Box::new(ExprKind::TypeOf(vec![ExprKind::Constant(
+                    Constant::Identifier("a")
+                )])),
+                Box::new(ExprKind::Constant(Constant::Identifier("b"))),
             ))
         )
     }
@@ -1369,9 +1377,9 @@ mod tests {
         ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::TypeOf(vec![
-                Expr::Constant(Constant::Identifier("a")),
-                Expr::Constant(Constant::Identifier("b"))
+            Ok(ExprKind::TypeOf(vec![
+                ExprKind::Constant(Constant::Identifier("a")),
+                ExprKind::Constant(Constant::Identifier("b"))
             ]))
         )
     }
@@ -1385,9 +1393,9 @@ mod tests {
         ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::InitArray(vec![Expr::Constant(Constant::Identifier(
-                "a"
-            ))]))
+            Ok(ExprKind::InitArray(vec![ExprKind::Constant(
+                Constant::Identifier("a")
+            )]))
         )
     }
 
@@ -1404,9 +1412,9 @@ mod tests {
         ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::InitArray(vec![
-                Expr::Constant(Constant::Identifier("a")),
-                Expr::InitArray(vec![Expr::Constant(Constant::Identifier("b"))]),
+            Ok(ExprKind::InitArray(vec![
+                ExprKind::Constant(Constant::Identifier("a")),
+                ExprKind::InitArray(vec![ExprKind::Constant(Constant::Identifier("b"))]),
             ]))
         )
     }
@@ -1421,9 +1429,9 @@ mod tests {
         ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::Field(
-                Box::new(Expr::Constant(Constant::Identifier("a"))),
-                Box::new(Expr::Constant(Constant::Identifier("b")))
+            Ok(ExprKind::Field(
+                Box::new(ExprKind::Constant(Constant::Identifier("a"))),
+                Box::new(ExprKind::Constant(Constant::Identifier("b")))
             ))
         )
     }
@@ -1440,10 +1448,10 @@ mod tests {
         ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::Field(
-                Box::new(Expr::Constant(Constant::Identifier("a"))),
-                Box::new(Expr::Call {
-                    name: Box::new(Expr::Constant(Constant::Identifier("b"))),
+            Ok(ExprKind::Field(
+                Box::new(ExprKind::Constant(Constant::Identifier("a"))),
+                Box::new(ExprKind::Call {
+                    name: Box::new(ExprKind::Constant(Constant::Identifier("b"))),
                     args: vec![],
                 })
             ))
@@ -1458,9 +1466,9 @@ mod tests {
         ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::Delete(vec![Expr::Constant(Constant::Identifier(
-                "a"
-            ))]))
+            Ok(ExprKind::Delete(vec![ExprKind::Constant(
+                Constant::Identifier("a")
+            )]))
         )
     }
 
@@ -1476,9 +1484,9 @@ mod tests {
         ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::Delete(vec![
-                Expr::Constant(Constant::Identifier("a")),
-                Expr::Constant(Constant::Identifier("b"))
+            Ok(ExprKind::Delete(vec![
+                ExprKind::Constant(Constant::Identifier("a")),
+                ExprKind::Constant(Constant::Identifier("b"))
             ]))
         )
     }
@@ -1493,9 +1501,9 @@ mod tests {
         ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::Delete(vec![Expr::Field(
-                Box::new(Expr::Constant(Constant::Identifier("a"))),
-                Box::new(Expr::Constant(Constant::String(Cow::Borrowed("a"))))
+            Ok(ExprKind::Delete(vec![ExprKind::Field(
+                Box::new(ExprKind::Constant(Constant::Identifier("a"))),
+                Box::new(ExprKind::Constant(Constant::String(Cow::Borrowed("a"))))
             )]))
         )
     }
@@ -1508,7 +1516,9 @@ mod tests {
         ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::Void(vec![Expr::Constant(Constant::Identifier("a"))]))
+            Ok(ExprKind::Void(vec![ExprKind::Constant(
+                Constant::Identifier("a")
+            )]))
         )
     }
 
@@ -1524,9 +1534,9 @@ mod tests {
         ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::Void(vec![
-                Expr::Constant(Constant::Identifier("a")),
-                Expr::Constant(Constant::Identifier("b"))
+            Ok(ExprKind::Void(vec![
+                ExprKind::Constant(Constant::Identifier("a")),
+                ExprKind::Constant(Constant::Identifier("b"))
             ]))
         )
     }
@@ -1550,12 +1560,12 @@ mod tests {
         ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(Expr::Function(Function {
+            Ok(ExprKind::Function(Function {
                 name: Some("func"),
                 args: vec!["a", "b"],
-                body: vec![Statement::Expr(Expr::Call {
-                    name: Box::new(Expr::Constant(Constant::Identifier("trace"))),
-                    args: vec![Expr::Constant(Constant::Identifier("a"))],
+                body: vec![Statement::Expr(ExprKind::Call {
+                    name: Box::new(ExprKind::Constant(Constant::Identifier("trace"))),
+                    args: vec![ExprKind::Constant(Constant::Identifier("a"))],
                 })],
             }))
         )

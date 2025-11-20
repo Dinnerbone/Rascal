@@ -1,4 +1,4 @@
-use crate::ast::{BinaryOperator, Expr, UnaryOperator};
+use crate::ast::{BinaryOperator, ExprKind, UnaryOperator};
 use crate::lexer::operator::Operator;
 use crate::lexer::tokens::{Token, TokenKind};
 use crate::parser::Tokens;
@@ -70,42 +70,48 @@ impl BinaryOperator {
     }
 }
 
-impl<'i> Expr<'i> {
+impl<'i> ExprKind<'i> {
     pub(crate) fn for_binary_operator(
         op: BinaryOperator,
-        a: Box<Expr<'i>>,
-        b: Box<Expr<'i>>,
-    ) -> Expr<'i> {
+        a: Box<ExprKind<'i>>,
+        b: Box<ExprKind<'i>>,
+    ) -> ExprKind<'i> {
         match *b {
-            Expr::Ternary { condition, yes, no }
+            ExprKind::Ternary { condition, yes, no }
                 if op.precedence() != OperatorPrecedence::Assignment =>
             {
-                Expr::Ternary {
-                    condition: Box::new(Expr::for_binary_operator(op, a, condition)),
+                ExprKind::Ternary {
+                    condition: Box::new(ExprKind::for_binary_operator(op, a, condition)),
                     yes,
                     no,
                 }
             }
-            Expr::BinaryOperator(bop, ba, bb) if BinaryOperator::should_swap(op, bop) => {
-                Expr::BinaryOperator(bop, Box::new(Expr::for_binary_operator(op, a, ba)), bb)
+            ExprKind::BinaryOperator(bop, ba, bb) if BinaryOperator::should_swap(op, bop) => {
+                ExprKind::BinaryOperator(
+                    bop,
+                    Box::new(ExprKind::for_binary_operator(op, a, ba)),
+                    bb,
+                )
             }
-            _ => Expr::BinaryOperator(op, a, b),
+            _ => ExprKind::BinaryOperator(op, a, b),
         }
     }
 }
 
-impl<'i> Expr<'i> {
-    pub(crate) fn for_unary_operator(op: UnaryOperator, expr: Box<Expr<'i>>) -> Expr<'i> {
+impl<'i> ExprKind<'i> {
+    pub(crate) fn for_unary_operator(op: UnaryOperator, expr: Box<ExprKind<'i>>) -> ExprKind<'i> {
         match *expr {
-            Expr::BinaryOperator(binary_op, a, b) => {
-                Expr::BinaryOperator(binary_op, Box::new(Expr::for_unary_operator(op, a)), b)
-            }
-            Expr::Ternary { condition, yes, no } => Expr::Ternary {
-                condition: Box::new(Expr::for_unary_operator(op, condition)),
+            ExprKind::BinaryOperator(binary_op, a, b) => ExprKind::BinaryOperator(
+                binary_op,
+                Box::new(ExprKind::for_unary_operator(op, a)),
+                b,
+            ),
+            ExprKind::Ternary { condition, yes, no } => ExprKind::Ternary {
+                condition: Box::new(ExprKind::for_unary_operator(op, condition)),
                 yes,
                 no,
             },
-            _ => Expr::UnaryOperator(op, expr),
+            _ => ExprKind::UnaryOperator(op, expr),
         }
     }
 }
