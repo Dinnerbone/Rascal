@@ -17,13 +17,13 @@ Ok:
     - If:
         condition:
           span:
-            start: 30
+            start: 24
             end: 38
           value:
             BinaryOperator:
               - Equal
               - span:
-                  start: 30
+                  start: 24
                   end: 33
                 value:
                   Call:
@@ -81,7 +81,7 @@ Ok:
           Block:
             - Expr:
                 span:
-                  start: 87
+                  start: 82
                   end: 107
                 value:
                   Call:
@@ -103,7 +103,7 @@ Ok:
           Block:
             - Expr:
                 span:
-                  start: 126
+                  start: 121
                   end: 139
                 value:
                   Call:
@@ -123,7 +123,7 @@ Ok:
                             String: "Failed :("
     - Expr:
         span:
-          start: 148
+          start: 143
           end: 161
         value:
           Call:

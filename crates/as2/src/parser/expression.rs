@@ -360,7 +360,7 @@ fn expr_next<'i>(prior: Expr<'i>) -> impl Parser<Tokens<'i>, Expr<'i>, ErrMode<C
                     .parse_next(i)?;
                 let end = TokenKind::CloseParen.parse_next(i)?.span;
                 expr_next(Expr::new(
-                    Span::encompassing(start, end),
+                    Span::encompassing(prior.span, end),
                     ExprKind::Call {
                         name: Box::new(prior),
                         args,
@@ -485,19 +485,13 @@ mod tests {
     #[test]
     fn test_identifier() {
         let tokens = build_tokens(&[(TokenKind::Identifier, "foo")]);
-        assert_eq!(
-            parse_expr(&tokens),
-            Ok(id("foo"))
-        );
+        assert_eq!(parse_expr(&tokens), Ok(id("foo")));
     }
 
     #[test]
     fn test_string() {
         let tokens = build_tokens(&[(TokenKind::String(QuoteKind::Double), "hello")]);
-        assert_eq!(
-            parse_expr(&tokens),
-            Ok(s("hello"))
-        );
+        assert_eq!(parse_expr(&tokens), Ok(s("hello")));
     }
 
     #[test]
@@ -1032,10 +1026,7 @@ mod tests {
             (TokenKind::Operator(Operator::Add), "+"),
             (TokenKind::Identifier, "a"),
         ]);
-        assert_eq!(
-            parse_expr(&tokens),
-            Ok(id("a"))
-        );
+        assert_eq!(parse_expr(&tokens), Ok(id("a")));
     }
 
     #[test]
@@ -1351,7 +1342,10 @@ mod tests {
     #[test]
     fn test_empty_object() {
         let tokens = build_tokens(&[(TokenKind::OpenBrace, "{"), (TokenKind::CloseBrace, "}")]);
-        assert_eq!(parse_expr(&tokens), Ok(ex(ExprKind::InitObject(Vec::new()))));
+        assert_eq!(
+            parse_expr(&tokens),
+            Ok(ex(ExprKind::InitObject(Vec::new())))
+        );
     }
 
     #[test]
@@ -1394,10 +1388,7 @@ mod tests {
         ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(ex(ExprKind::Field(
-                Box::new(id("a")),
-                Box::new(s("b"))
-            )))
+            Ok(ex(ExprKind::Field(Box::new(id("a")), Box::new(s("b")))))
         )
     }
 
@@ -1511,10 +1502,7 @@ mod tests {
         ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(ex(ExprKind::Field(
-                Box::new(id("a")),
-                Box::new(id("b"))
-            )))
+            Ok(ex(ExprKind::Field(Box::new(id("a")), Box::new(id("b")))))
         )
     }
 
@@ -1546,10 +1534,7 @@ mod tests {
             (TokenKind::Keyword(Keyword::Delete), "delete"),
             (TokenKind::Identifier, "a"),
         ]);
-        assert_eq!(
-            parse_expr(&tokens),
-            Ok(ex(ExprKind::Delete(vec![id("a")])))
-        )
+        assert_eq!(parse_expr(&tokens), Ok(ex(ExprKind::Delete(vec![id("a")]))))
     }
 
     #[test]
@@ -1591,10 +1576,7 @@ mod tests {
             (TokenKind::Keyword(Keyword::Void), "void"),
             (TokenKind::Identifier, "a"),
         ]);
-        assert_eq!(
-            parse_expr(&tokens),
-            Ok(ex(ExprKind::Void(vec![id("a")])))
-        )
+        assert_eq!(parse_expr(&tokens), Ok(ex(ExprKind::Void(vec![id("a")]))))
     }
 
     #[test]
