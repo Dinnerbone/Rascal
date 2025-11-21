@@ -1,0 +1,13 @@
+---
+source: crates/as2_codegen/src/tests.rs
+expression: result
+input_file: crates/as2_codegen/fail_samples/random.as
+---
+error: Compile error(s)
+  ╭▸ random.as:1:1
+  │
+1 │ random();
+  │ ━━━━━━━━ Wrong number of parameters; random requires exactly 1.
+2 │ random(1);
+3 │ random(1, 2);
+  ╰╴━━━━━━━━━━━━ Wrong number of parameters; random requires exactly 1.

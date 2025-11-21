@@ -452,9 +452,16 @@ fn gen_call(builder: &mut CodeBuilder, span: Span, name: &Expr, args: &[Expr]) {
             }
             return;
         }
-        if *identifier == "random" && args.len() == 1 {
-            gen_expr(builder, &args[0], false);
-            builder.action(Action::RandomNumber);
+        if *identifier == "random" {
+            if args.len() == 1 {
+                gen_expr(builder, &args[0], false);
+                builder.action(Action::RandomNumber);
+            } else {
+                builder.error(
+                    "Wrong number of parameters; random requires exactly 1.",
+                    span,
+                );
+            }
             return;
         }
     }
