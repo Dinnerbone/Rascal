@@ -1,5 +1,6 @@
 use crate::access::VariableAccess;
 use crate::builder::CodeBuilder;
+use crate::special_functions::gen_special_call;
 use ruasc_as2::ast::{
     Affix, BinaryOperator, ConstantKind, Declaration, Expr, ExprKind, ForCondition, Function,
     StatementKind, UnaryOperator,
@@ -440,30 +441,7 @@ fn gen_call(builder: &mut CodeBuilder, span: Span, name: &Expr, args: &[Expr]) {
     } = name
         && gen_special_call(builder, span, identifier, args)
     {
-        if *identifier == "trace" {
-            if args.len() == 1 {
-                gen_expr(builder, &args[0], false);
-                builder.action(Action::Trace);
-            } else {
-                builder.error(
-                    "Wrong number of parameters; trace requires exactly 1.",
-                    span,
-                );
-            }
-            return;
-        }
-        if *identifier == "random" {
-            if args.len() == 1 {
-                gen_expr(builder, &args[0], false);
-                builder.action(Action::RandomNumber);
-            } else {
-                builder.error(
-                    "Wrong number of parameters; random requires exactly 1.",
-                    span,
-                );
-            }
-            return;
-        }
+        return;
     }
 
     for arg in args.iter().rev() {

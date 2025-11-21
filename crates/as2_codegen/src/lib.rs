@@ -9,6 +9,7 @@ mod access;
 mod builder;
 mod constants;
 mod error;
+mod special_functions;
 mod statement;
 #[cfg(test)]
 mod tests;
