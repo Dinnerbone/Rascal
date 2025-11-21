@@ -247,7 +247,8 @@ pub fn gen_expr(builder: &mut CodeBuilder, expr: &ExprKind, will_discard_result:
 fn gen_function(builder: &mut CodeBuilder, function: &Function) {
     let mut fun_builder = CodeBuilder::new(builder.constants_mut());
     gen_statements(&mut fun_builder, &function.body);
-    let actions = fun_builder.into_actions();
+    let (actions, errors) = fun_builder.into_actions();
+    builder.add_errors(errors);
     builder.action(Action::DefineFunction {
         name: function.name.map(ToOwned::to_owned).unwrap_or_default(),
         params: function.args.iter().map(|s| s.to_string()).collect(),

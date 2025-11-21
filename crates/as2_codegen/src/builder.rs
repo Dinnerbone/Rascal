@@ -1,9 +1,12 @@
 use crate::constants::Constants;
+use crate::error::Error;
 use ruasc_as2_pcode::{Action, Actions};
+use ruasc_common::span::Span;
 
 #[derive(Debug)]
 pub(crate) struct CodeBuilder<'a> {
     constants: &'a mut Constants,
+    errors: Vec<Error>,
     actions: Actions,
     next_label: usize,
     stack_size: u32,
@@ -15,6 +18,7 @@ impl<'a> CodeBuilder<'a> {
     pub fn new(constants: &'a mut Constants) -> Self {
         Self {
             constants,
+            errors: Vec::new(),
             actions: Actions::empty(),
             next_label: 0,
             stack_size: 0,
@@ -23,8 +27,8 @@ impl<'a> CodeBuilder<'a> {
         }
     }
 
-    pub fn into_actions(self) -> Actions {
-        self.actions
+    pub fn into_actions(self) -> (Actions, Vec<Error>) {
+        (self.actions, self.errors)
     }
 
     pub fn stack_size(&self) -> u32 {
@@ -85,5 +89,13 @@ impl<'a> CodeBuilder<'a> {
 
     pub fn constants_mut(&mut self) -> &mut Constants {
         self.constants
+    }
+
+    pub fn error(&mut self, message: &'static str, span: Span) {
+        self.errors.push(Error { message, span });
+    }
+
+    pub fn add_errors(&mut self, mut errors: Vec<Error>) {
+        self.errors.append(&mut errors);
     }
 }

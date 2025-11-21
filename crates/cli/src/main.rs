@@ -21,7 +21,7 @@ fn main() -> Result<()> {
     let pcode = if filename.ends_with(".as") {
         let actionscript = ActionScript::new(&filename, &src);
         let document = actionscript.to_ast().unwrap_or_else(|e| panic!("{}", e));
-        ast_to_pcode(&document)
+        ast_to_pcode(&filename, &src, &document).unwrap_or_else(|e| panic!("{}", e))
     } else {
         let pcode = PCode::new(&filename, &src);
         pcode.to_actions().unwrap_or_else(|e| panic!("{}", e))

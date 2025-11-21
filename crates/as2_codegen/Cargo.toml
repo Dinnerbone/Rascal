@@ -8,6 +8,8 @@ version.workspace = true
 [dependencies]
 ruasc_as2 = { path = "../as2" }
 ruasc_as2_pcode = { path = "../as2_pcode" }
+ruasc_common = { path = "../common" }
+annotate-snippets = "0.12.8"
 
 [dev-dependencies]
 insta = { version = "1.43.2", features = ["yaml", "glob"] }
