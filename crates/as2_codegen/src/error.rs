@@ -43,9 +43,9 @@ impl std::fmt::Display for CompileError<'_> {
             .primary_title("Compile error(s)")
             .element(source)];
         let renderer = if cfg!(test) {
-            Renderer::styled().decor_style(DecorStyle::Unicode)
-        } else {
             Renderer::plain().decor_style(DecorStyle::Unicode)
+        } else {
+            Renderer::styled().decor_style(DecorStyle::Unicode)
         };
         renderer.render(report).fmt(f)
     }

@@ -1,6 +1,6 @@
 use crate::builder::CodeBuilder;
 use crate::statement::gen_expr;
-use ruasc_as2::ast::{ConstantKind, ExprKind};
+use ruasc_as2::ast::{ConstantKind, Expr, ExprKind};
 use ruasc_as2_pcode::{Action, PushValue};
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -56,10 +56,16 @@ impl VariableAccess {
         }
     }
 
-    pub fn for_expr(builder: &mut CodeBuilder, expr: &ExprKind) -> Self {
+    pub fn for_expr(builder: &mut CodeBuilder, expr: &Expr) -> Self {
         match expr {
-            ExprKind::Constant(constant) => Self::for_constant(builder, constant),
-            ExprKind::Field(object, field) => {
+            Expr {
+                value: ExprKind::Constant(constant),
+                ..
+            } => Self::for_constant(builder, constant),
+            Expr {
+                value: ExprKind::Field(object, field),
+                ..
+            } => {
                 gen_expr(builder, object, false);
                 gen_expr(builder, field, false);
                 VariableAccess::Object

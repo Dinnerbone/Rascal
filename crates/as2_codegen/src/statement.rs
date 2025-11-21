@@ -5,6 +5,7 @@ use ruasc_as2::ast::{
     StatementKind, UnaryOperator,
 };
 use ruasc_as2_pcode::{Action, PushValue};
+use ruasc_common::span::Span;
 
 pub(crate) fn gen_statements(builder: &mut CodeBuilder, statements: &[StatementKind]) {
     let mut hoisted = vec![];
@@ -145,7 +146,7 @@ fn gen_for_loop(builder: &mut CodeBuilder, condition: &ForCondition, body: &Stat
 
 fn gen_if(
     builder: &mut CodeBuilder,
-    condition: &ExprKind,
+    condition: &Expr,
     yes: &StatementKind,
     no: &Option<Box<StatementKind>>,
 ) {
@@ -168,7 +169,7 @@ fn gen_if(
     builder.mark_label(end_label);
 }
 
-fn gen_ternary(builder: &mut CodeBuilder, condition: &ExprKind, yes: &ExprKind, no: &ExprKind) {
+fn gen_ternary(builder: &mut CodeBuilder, condition: &Expr, yes: &Expr, no: &Expr) {
     let end_label = builder.create_label();
     let no_label = builder.create_label();
 
@@ -198,12 +199,13 @@ fn gen_declarations(builder: &mut CodeBuilder, declarations: &[Declaration]) {
     }
 }
 
-pub fn gen_expr(builder: &mut CodeBuilder, expr: &ExprKind, will_discard_result: bool) {
-    match expr {
+pub fn gen_expr(builder: &mut CodeBuilder, expr: &Expr, will_discard_result: bool) {
+    let (span, kind) = (expr.span, &expr.value);
+    match kind {
         ExprKind::Constant(constant) => {
             VariableAccess::for_constant(builder, constant).get_value(builder)
         }
-        ExprKind::Call { name, args } => gen_call(builder, name, args),
+        ExprKind::Call { name, args } => gen_call(builder, span, name, args),
         ExprKind::New { name, args } => gen_new(builder, name, args),
         ExprKind::BinaryOperator(op, left, right) => {
             gen_binary_op(builder, *op, left, right, will_discard_result)
@@ -279,7 +281,7 @@ fn gen_init_array(builder: &mut CodeBuilder, values: &[Expr]) {
 fn gen_unary_op(
     builder: &mut CodeBuilder,
     op: UnaryOperator,
-    expr: &ExprKind,
+    expr: &Expr,
     will_discard_result: bool,
 ) {
     let adjust_in_place = |builder: &mut CodeBuilder, action, affix| {
@@ -303,10 +305,16 @@ fn gen_unary_op(
 
     match op {
         UnaryOperator::Sub => match expr {
-            ExprKind::Constant(ConstantKind::Integer(value)) => {
+            Expr {
+                value: ExprKind::Constant(ConstantKind::Integer(value)),
+                ..
+            } => {
                 VariableAccess::for_constant(builder, &ConstantKind::Integer(-*value));
             }
-            ExprKind::Constant(ConstantKind::Float(value)) => {
+            Expr {
+                value: ExprKind::Constant(ConstantKind::Float(value)),
+                ..
+            } => {
                 VariableAccess::for_constant(builder, &ConstantKind::Float(-*value));
             }
             _ => {
@@ -332,8 +340,8 @@ fn gen_unary_op(
 fn gen_binary_op(
     builder: &mut CodeBuilder,
     op: BinaryOperator,
-    left: &ExprKind,
-    right: &ExprKind,
+    left: &Expr,
+    right: &Expr,
     will_discard_result: bool, // if we can optimise slightly by not deliberately pushing the result onto the stack
 ) {
     let trivial = |builder: &mut CodeBuilder, action: Action| {
@@ -425,11 +433,23 @@ fn gen_binary_op(
     }
 }
 
-fn gen_call(builder: &mut CodeBuilder, name: &ExprKind, args: &[Expr]) {
-    if let ExprKind::Constant(ConstantKind::Identifier(identifier)) = name {
-        if *identifier == "trace" && args.len() == 1 {
-            gen_expr(builder, &args[0], false);
-            builder.action(Action::Trace);
+fn gen_call(builder: &mut CodeBuilder, span: Span, name: &Expr, args: &[Expr]) {
+    if let Expr {
+        value: ExprKind::Constant(ConstantKind::Identifier(identifier)),
+        ..
+    } = name
+        && gen_special_call(builder, span, identifier, args)
+    {
+        if *identifier == "trace" {
+            if args.len() == 1 {
+                gen_expr(builder, &args[0], false);
+                builder.action(Action::Trace);
+            } else {
+                builder.error(
+                    "Wrong number of parameters; trace requires exactly 1.",
+                    span,
+                );
+            }
             return;
         }
         if *identifier == "random" && args.len() == 1 {
@@ -447,7 +467,7 @@ fn gen_call(builder: &mut CodeBuilder, name: &ExprKind, args: &[Expr]) {
     VariableAccess::for_expr(builder, name).call(builder, num_args);
 }
 
-fn gen_new(builder: &mut CodeBuilder, name: &ExprKind, args: &[Expr]) {
+fn gen_new(builder: &mut CodeBuilder, name: &Expr, args: &[Expr]) {
     for arg in args.iter().rev() {
         gen_expr(builder, arg, false);
     }
