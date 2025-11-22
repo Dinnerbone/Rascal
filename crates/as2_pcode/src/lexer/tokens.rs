@@ -86,6 +86,7 @@ impl<'i> Parser<Tokens<'i>, &'i Token<'i>, ErrMode<ContextError>> for TokenKind 
 pub enum ActionName {
     Add,
     Add2,
+    AsciiToChar,
     BitAnd,
     BitLShift,
     BitOr,

@@ -5,6 +5,10 @@ input_file: samples/as2_pcode/special_functions.pcode
 ---
 Push 123
 Call
+Push "x"
+GetVariable
+AsciiToChar
+Pop
 Push 123
 RandomNumber
 Pop

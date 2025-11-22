@@ -49,6 +49,7 @@ pub(crate) fn action(i: &mut Tokens<'_>) -> ModalResult<Action> {
     Ok(match name {
         ActionName::Add => Action::Add,
         ActionName::Add2 => Action::Add2,
+        ActionName::AsciiToChar => Action::AsciiToChar,
         ActionName::BitAnd => Action::BitAnd,
         ActionName::BitLShift => Action::BitLShift,
         ActionName::BitOr => Action::BitOr,
@@ -262,6 +263,7 @@ mod tests {
     trivial_action_tests! {
         test_add => Add,
         test_add2 => Add2,
+        test_asciitochar => AsciiToChar,
         test_bitand => BitAnd,
         test_bitlshift => BitLShift,
         test_bitor => BitOr,

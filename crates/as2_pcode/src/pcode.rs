@@ -64,6 +64,7 @@ impl std::fmt::Display for Actions {
 pub enum Action {
     Add,
     Add2,
+    AsciiToChar,
     BitAnd,
     BitLShift,
     BitOr,
@@ -122,6 +123,7 @@ impl Action {
         match self {
             Action::Add => -1,
             Action::Add2 => -1,
+            Action::AsciiToChar => 0,
             Action::BitAnd => -1,
             Action::BitLShift => -1,
             Action::BitOr => -1,
@@ -173,6 +175,7 @@ impl std::fmt::Display for Action {
         match self {
             Action::Add => write!(f, "Add"),
             Action::Add2 => write!(f, "Add2"),
+            Action::AsciiToChar => write!(f, "AsciiToChar"),
             Action::BitAnd => write!(f, "BitAnd"),
             Action::BitLShift => write!(f, "BitLShift"),
             Action::BitOr => write!(f, "BitOr"),

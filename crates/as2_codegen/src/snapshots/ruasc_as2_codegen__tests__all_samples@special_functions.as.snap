@@ -3,11 +3,15 @@ source: crates/as2_codegen/src/tests.rs
 expression: result
 input_file: samples/as2/special_functions.as
 ---
-ConstantPool "message"
+ConstantPool "x", "message"
 Push 123
 Call
+Push constant0
+GetVariable
+AsciiToChar
+Pop
 Push 123
 RandomNumber
 Pop
-Push constant0
+Push constant1
 Trace

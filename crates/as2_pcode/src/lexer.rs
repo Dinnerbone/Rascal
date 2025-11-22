@@ -218,6 +218,7 @@ fn lex_identifier_or_action<'a>(stream: &mut Stream<'a>) -> Token<'a> {
         // Actions
         "add" => TokenKind::ActionName(ActionName::Add),
         "add2" => TokenKind::ActionName(ActionName::Add2),
+        "asciitochar" => TokenKind::ActionName(ActionName::AsciiToChar),
         "bitand" => TokenKind::ActionName(ActionName::BitAnd),
         "bitlshift" => TokenKind::ActionName(ActionName::BitLShift),
         "bitor" => TokenKind::ActionName(ActionName::BitOr),

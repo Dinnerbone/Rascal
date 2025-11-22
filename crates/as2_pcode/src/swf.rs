@@ -154,7 +154,7 @@ impl<'a> ActionEncoder<'a> {
             Action::Add => self.write_small_action(OpCode::Add),
             Action::Add2 => self.write_small_action(OpCode::Add2),
             // Action::And => self.write_small_action(OpCode::And),
-            // Action::AsciiToChar => self.write_small_action(OpCode::AsciiToChar),
+            Action::AsciiToChar => self.write_small_action(OpCode::AsciiToChar),
             Action::BitAnd => self.write_small_action(OpCode::BitAnd),
             Action::BitLShift => self.write_small_action(OpCode::BitLShift),
             Action::BitOr => self.write_small_action(OpCode::BitOr),
