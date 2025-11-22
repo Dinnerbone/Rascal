@@ -1,0 +1,11 @@
+---
+source: crates/as2_codegen/src/tests.rs
+expression: result
+input_file: samples/as2/special_functions.as
+---
+ConstantPool "message"
+Push 123
+RandomNumber
+Pop
+Push constant0
+Trace

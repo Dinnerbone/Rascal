@@ -1,0 +1,15 @@
+---
+source: crates/as2_pcode/src/parser/tests.rs
+expression: parsed
+input_file: samples/as2_pcode/special_functions.pcode
+---
+Ok:
+  actions:
+    - Push:
+        - Integer: 123
+    - RandomNumber
+    - Pop
+    - Push:
+        - String: message
+    - Trace
+  label_positions: {}

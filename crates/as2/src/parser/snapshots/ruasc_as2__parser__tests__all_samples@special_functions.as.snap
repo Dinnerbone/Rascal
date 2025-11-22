@@ -1,0 +1,47 @@
+---
+source: crates/as2/src/parser/tests.rs
+expression: parsed
+input_file: samples/as2/special_functions.as
+---
+Ok:
+  statements:
+    - Expr:
+        span:
+          start: 0
+          end: 11
+        value:
+          Call:
+            name:
+              span:
+                start: 0
+                end: 6
+              value:
+                Constant:
+                  Identifier: random
+            args:
+              - span:
+                  start: 7
+                  end: 10
+                value:
+                  Constant:
+                    Integer: 123
+    - Expr:
+        span:
+          start: 13
+          end: 29
+        value:
+          Call:
+            name:
+              span:
+                start: 13
+                end: 18
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 19
+                  end: 28
+                value:
+                  Constant:
+                    String: message
