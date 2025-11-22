@@ -4,6 +4,8 @@ expression: "parsed.unwrap_or_else(|_| Actions::empty())"
 input_file: samples/as2_pcode/special_functions.pcode
 ---
 Push 123
+Call
+Push 123
 RandomNumber
 Pop
 Push "message"

@@ -6,61 +6,91 @@ input_file: samples/as2/special_functions.as
 - kind: Identifier
   span:
     start: 0
-    end: 6
-  raw: random
+    end: 4
+  raw: call
 - kind: OpenParen
   span:
-    start: 6
-    end: 7
+    start: 4
+    end: 5
   raw: (
 - kind: Integer
   span:
-    start: 7
-    end: 10
+    start: 5
+    end: 8
   raw: "123"
 - kind: CloseParen
   span:
-    start: 10
-    end: 11
+    start: 8
+    end: 9
   raw: )
 - kind: Semicolon
   span:
-    start: 11
-    end: 12
+    start: 9
+    end: 10
   raw: ;
 - kind: Newline
   span:
-    start: 12
-    end: 13
+    start: 10
+    end: 11
   raw: "\n"
 - kind: Identifier
   span:
-    start: 13
+    start: 11
+    end: 17
+  raw: random
+- kind: OpenParen
+  span:
+    start: 17
     end: 18
+  raw: (
+- kind: Integer
+  span:
+    start: 18
+    end: 21
+  raw: "123"
+- kind: CloseParen
+  span:
+    start: 21
+    end: 22
+  raw: )
+- kind: Semicolon
+  span:
+    start: 22
+    end: 23
+  raw: ;
+- kind: Newline
+  span:
+    start: 23
+    end: 24
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 24
+    end: 29
   raw: trace
 - kind: OpenParen
   span:
-    start: 18
-    end: 19
+    start: 29
+    end: 30
   raw: (
 - kind:
     String: Double
   span:
-    start: 19
-    end: 28
+    start: 30
+    end: 39
   raw: message
 - kind: CloseParen
   span:
-    start: 28
-    end: 29
+    start: 39
+    end: 40
   raw: )
 - kind: Semicolon
   span:
-    start: 29
-    end: 30
+    start: 40
+    end: 41
   raw: ;
 - kind: Newline
   span:
-    start: 30
-    end: 31
+    start: 41
+    end: 42
   raw: "\n"

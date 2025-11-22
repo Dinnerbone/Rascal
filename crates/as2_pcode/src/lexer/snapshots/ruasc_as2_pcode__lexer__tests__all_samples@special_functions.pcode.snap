@@ -20,51 +20,78 @@ input_file: samples/as2_pcode/special_functions.pcode
     end: 9
   raw: "\n"
 - kind:
-    ActionName: RandomNumber
+    ActionName: Call
   span:
     start: 9
-    end: 21
-  raw: RandomNumber
+    end: 13
+  raw: Call
 - kind: Newline
   span:
-    start: 21
-    end: 22
-  raw: "\n"
-- kind:
-    ActionName: Pop
-  span:
-    start: 22
-    end: 25
-  raw: Pop
-- kind: Newline
-  span:
-    start: 25
-    end: 26
+    start: 13
+    end: 14
   raw: "\n"
 - kind:
     ActionName: Push
   span:
-    start: 26
-    end: 30
+    start: 14
+    end: 18
+  raw: Push
+- kind: Integer
+  span:
+    start: 19
+    end: 22
+  raw: "123"
+- kind: Newline
+  span:
+    start: 22
+    end: 23
+  raw: "\n"
+- kind:
+    ActionName: RandomNumber
+  span:
+    start: 23
+    end: 35
+  raw: RandomNumber
+- kind: Newline
+  span:
+    start: 35
+    end: 36
+  raw: "\n"
+- kind:
+    ActionName: Pop
+  span:
+    start: 36
+    end: 39
+  raw: Pop
+- kind: Newline
+  span:
+    start: 39
+    end: 40
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 40
+    end: 44
   raw: Push
 - kind: String
   span:
-    start: 31
-    end: 40
+    start: 45
+    end: 54
   raw: message
 - kind: Newline
   span:
-    start: 40
-    end: 41
+    start: 54
+    end: 55
   raw: "\n"
 - kind:
     ActionName: Trace
   span:
-    start: 41
-    end: 46
+    start: 55
+    end: 60
   raw: Trace
 - kind: Newline
   span:
-    start: 46
-    end: 47
+    start: 60
+    end: 61
   raw: "\n"

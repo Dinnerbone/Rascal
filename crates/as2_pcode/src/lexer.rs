@@ -224,6 +224,7 @@ fn lex_identifier_or_action<'a>(stream: &mut Stream<'a>) -> Token<'a> {
         "bitrshift" => TokenKind::ActionName(ActionName::BitRShift),
         "biturshift" => TokenKind::ActionName(ActionName::BitURShift),
         "bitxor" => TokenKind::ActionName(ActionName::BitXor),
+        "call" => TokenKind::ActionName(ActionName::Call),
         "callfunction" => TokenKind::ActionName(ActionName::CallFunction),
         "callmethod" => TokenKind::ActionName(ActionName::CallMethod),
         "constantpool" => TokenKind::ActionName(ActionName::ConstantPool),

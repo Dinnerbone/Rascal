@@ -70,6 +70,7 @@ pub enum Action {
     BitRShift,
     BitURShift,
     BitXor,
+    Call,
     CallFunction,
     CallMethod,
     ConstantPool(Vec<String>),
@@ -127,6 +128,7 @@ impl Action {
             Action::BitRShift => -1,
             Action::BitURShift => -1,
             Action::BitXor => -1,
+            Action::Call => -1,
             Action::ConstantPool(_) => 0,
             Action::Decrement => -1,
             Action::DefineFunction { .. } => 1,
@@ -177,6 +179,7 @@ impl std::fmt::Display for Action {
             Action::BitRShift => write!(f, "BitRShift"),
             Action::BitURShift => write!(f, "BitURShift"),
             Action::BitXor => write!(f, "BitXor"),
+            Action::Call => write!(f, "Call"),
             Action::CallFunction => write!(f, "CallFunction"),
             Action::CallMethod => write!(f, "CallMethod"),
             Action::ConstantPool(values) => {

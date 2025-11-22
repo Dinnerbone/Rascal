@@ -1,0 +1,12 @@
+---
+source: crates/as2_codegen/src/tests.rs
+expression: result
+input_file: crates/as2_codegen/fail_samples/call.as
+---
+error: Compile error(s)
+  ╭▸ call.as:1:1
+  │
+1 │ call();
+  │ ━━━━━━ Wrong number of parameters; call requires exactly 1.
+2 │ call(1, 2);
+  ╰╴━━━━━━━━━━ Wrong number of parameters; call requires exactly 1.

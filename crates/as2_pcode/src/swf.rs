@@ -161,7 +161,7 @@ impl<'a> ActionEncoder<'a> {
             Action::BitRShift => self.write_small_action(OpCode::BitRShift),
             Action::BitURShift => self.write_small_action(OpCode::BitURShift),
             Action::BitXor => self.write_small_action(OpCode::BitXor),
-            // Action::Call => self.write_small_action(OpCode::Call),
+            Action::Call => self.write_small_action(OpCode::Call),
             Action::CallFunction => self.write_small_action(OpCode::CallFunction),
             Action::CallMethod => self.write_small_action(OpCode::CallMethod),
             // Action::CastOp => self.write_small_action(OpCode::CastOp),

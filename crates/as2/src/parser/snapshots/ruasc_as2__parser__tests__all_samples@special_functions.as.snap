@@ -8,40 +8,60 @@ Ok:
     - Expr:
         span:
           start: 0
-          end: 11
+          end: 9
         value:
           Call:
             name:
               span:
                 start: 0
-                end: 6
+                end: 4
               value:
                 Constant:
-                  Identifier: random
+                  Identifier: call
             args:
               - span:
-                  start: 7
-                  end: 10
+                  start: 5
+                  end: 8
                 value:
                   Constant:
                     Integer: 123
     - Expr:
         span:
-          start: 13
-          end: 29
+          start: 11
+          end: 22
         value:
           Call:
             name:
               span:
-                start: 13
-                end: 18
+                start: 11
+                end: 17
+              value:
+                Constant:
+                  Identifier: random
+            args:
+              - span:
+                  start: 18
+                  end: 21
+                value:
+                  Constant:
+                    Integer: 123
+    - Expr:
+        span:
+          start: 24
+          end: 40
+        value:
+          Call:
+            name:
+              span:
+                start: 24
+                end: 29
               value:
                 Constant:
                   Identifier: trace
             args:
               - span:
-                  start: 19
-                  end: 28
+                  start: 30
+                  end: 39
                 value:
                   Constant:
                     String: message

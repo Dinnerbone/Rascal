@@ -11,11 +11,21 @@ pub(crate) fn gen_special_call(
     args: &[Expr],
 ) -> bool {
     match name {
+        "call" => fn_call(builder, span, args),
         "trace" => fn_trace(builder, span, args),
         "random" => fn_random(builder, span, args),
         _ => return false,
     };
     true
+}
+
+fn fn_call(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
+    if args.len() == 1 {
+        gen_expr(builder, &args[0], false);
+        builder.action(Action::Call);
+    } else {
+        builder.error("Wrong number of parameters; call requires exactly 1.", span);
+    }
 }
 
 fn fn_trace(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {

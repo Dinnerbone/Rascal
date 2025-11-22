@@ -92,6 +92,7 @@ pub enum ActionName {
     BitRShift,
     BitURShift,
     BitXor,
+    Call,
     CallFunction,
     CallMethod,
     ConstantPool,
