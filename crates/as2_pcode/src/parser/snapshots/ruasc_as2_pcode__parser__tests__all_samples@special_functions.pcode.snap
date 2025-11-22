@@ -73,6 +73,28 @@ Ok:
     - Play
     - GotoFrame: 0
     - Play
+    - GotoFrame: 122
+    - GotoLabel: "123"
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - GotoFrame2:
+        scene_bias: 0
+        play: false
+    - GotoFrame: 122
+    - GotoLabel: "123"
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - GotoFrame2:
+        scene_bias: 0
+        play: false
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - GotoFrame2:
+        scene_bias: 0
+        play: false
     - Push:
         - Integer: 123
     - RandomNumber

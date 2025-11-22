@@ -698,68 +698,294 @@ input_file: samples/as2_pcode/special_functions.pcode
     end: 594
   raw: "\n"
 - kind:
-    ActionName: Push
+    ActionName: GotoFrame
   span:
     start: 594
-    end: 598
-  raw: Push
+    end: 603
+  raw: GotoFrame
 - kind: Integer
   span:
-    start: 599
-    end: 602
+    start: 604
+    end: 607
+  raw: "122"
+- kind: Newline
+  span:
+    start: 607
+    end: 608
+  raw: "\n"
+- kind:
+    ActionName: GotoLabel
+  span:
+    start: 608
+    end: 617
+  raw: GoToLabel
+- kind: String
+  span:
+    start: 618
+    end: 623
   raw: "123"
 - kind: Newline
   span:
-    start: 602
-    end: 603
+    start: 623
+    end: 624
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 624
+    end: 628
+  raw: Push
+- kind:
+    Constant: 0
+  span:
+    start: 629
+    end: 638
+  raw: constant0
+- kind: Newline
+  span:
+    start: 638
+    end: 639
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 639
+    end: 650
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 650
+    end: 651
+  raw: "\n"
+- kind:
+    ActionName: GotoFrame2
+  span:
+    start: 651
+    end: 661
+  raw: GotoFrame2
+- kind: "False"
+  span:
+    start: 662
+    end: 667
+  raw: "false"
+- kind: Comma
+  span:
+    start: 667
+    end: 668
+  raw: ","
+- kind: "False"
+  span:
+    start: 669
+    end: 674
+  raw: "false"
+- kind: Newline
+  span:
+    start: 674
+    end: 675
+  raw: "\n"
+- kind:
+    ActionName: GotoFrame
+  span:
+    start: 675
+    end: 684
+  raw: GotoFrame
+- kind: Integer
+  span:
+    start: 685
+    end: 688
+  raw: "122"
+- kind: Newline
+  span:
+    start: 688
+    end: 689
+  raw: "\n"
+- kind:
+    ActionName: GotoLabel
+  span:
+    start: 689
+    end: 698
+  raw: GoToLabel
+- kind: String
+  span:
+    start: 699
+    end: 704
+  raw: "123"
+- kind: Newline
+  span:
+    start: 704
+    end: 705
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 705
+    end: 709
+  raw: Push
+- kind:
+    Constant: 0
+  span:
+    start: 710
+    end: 719
+  raw: constant0
+- kind: Newline
+  span:
+    start: 719
+    end: 720
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 720
+    end: 731
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 731
+    end: 732
+  raw: "\n"
+- kind:
+    ActionName: GotoFrame2
+  span:
+    start: 732
+    end: 742
+  raw: GotoFrame2
+- kind: "False"
+  span:
+    start: 743
+    end: 748
+  raw: "false"
+- kind: Comma
+  span:
+    start: 748
+    end: 749
+  raw: ","
+- kind: "False"
+  span:
+    start: 750
+    end: 755
+  raw: "false"
+- kind: Newline
+  span:
+    start: 755
+    end: 756
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 756
+    end: 760
+  raw: Push
+- kind:
+    Constant: 0
+  span:
+    start: 761
+    end: 770
+  raw: constant0
+- kind: Newline
+  span:
+    start: 770
+    end: 771
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 771
+    end: 782
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 782
+    end: 783
+  raw: "\n"
+- kind:
+    ActionName: GotoFrame2
+  span:
+    start: 783
+    end: 793
+  raw: GotoFrame2
+- kind: "False"
+  span:
+    start: 794
+    end: 799
+  raw: "false"
+- kind: Comma
+  span:
+    start: 799
+    end: 800
+  raw: ","
+- kind: "False"
+  span:
+    start: 801
+    end: 806
+  raw: "false"
+- kind: Newline
+  span:
+    start: 806
+    end: 807
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 807
+    end: 811
+  raw: Push
+- kind: Integer
+  span:
+    start: 812
+    end: 815
+  raw: "123"
+- kind: Newline
+  span:
+    start: 815
+    end: 816
   raw: "\n"
 - kind:
     ActionName: RandomNumber
   span:
-    start: 603
-    end: 615
+    start: 816
+    end: 828
   raw: RandomNumber
 - kind: Newline
   span:
-    start: 615
-    end: 616
+    start: 828
+    end: 829
   raw: "\n"
 - kind:
     ActionName: Pop
   span:
-    start: 616
-    end: 619
+    start: 829
+    end: 832
   raw: Pop
 - kind: Newline
   span:
-    start: 619
-    end: 620
+    start: 832
+    end: 833
   raw: "\n"
 - kind:
     ActionName: Push
   span:
-    start: 620
-    end: 624
+    start: 833
+    end: 837
   raw: Push
 - kind:
     Constant: 4
   span:
-    start: 625
-    end: 634
+    start: 838
+    end: 847
   raw: constant4
 - kind: Newline
   span:
-    start: 634
-    end: 635
+    start: 847
+    end: 848
   raw: "\n"
 - kind:
     ActionName: Trace
   span:
-    start: 635
-    end: 640
+    start: 848
+    end: 853
   raw: Trace
 - kind: Newline
   span:
-    start: 640
-    end: 641
+    start: 853
+    end: 854
   raw: "\n"

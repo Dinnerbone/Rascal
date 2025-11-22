@@ -45,6 +45,19 @@ GotoFrame 1
 Play
 GotoFrame 0
 Play
+GotoFrame 122
+GotoLabel "123"
+Push constant0
+GetVariable
+GotoFrame2 false, false
+GotoFrame 122
+GotoLabel "123"
+Push constant0
+GetVariable
+GotoFrame2 false, false
+Push constant0
+GetVariable
+GotoFrame2 false, false
 Push 123
 RandomNumber
 Pop
