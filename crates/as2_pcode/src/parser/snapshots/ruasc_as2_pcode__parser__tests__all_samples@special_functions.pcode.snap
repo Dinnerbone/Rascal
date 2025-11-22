@@ -5,11 +5,17 @@ input_file: samples/as2_pcode/special_functions.pcode
 ---
 Ok:
   actions:
+    - ConstantPool:
+        - x
+        - "http://ruffle.rs"
+        - window
+        - "/:$version"
+        - message
     - Push:
         - Integer: 123
     - Call
     - Push:
-        - String: x
+        - Constant: 0
     - GetVariable
     - AsciiToChar
     - Pop
@@ -22,22 +28,56 @@ Ok:
         url: "http://ruffle.rs"
         target: window
     - Push:
-        - String: "http://ruffle.rs"
+        - Constant: 1
     - Push:
-        - String: window
+        - Constant: 2
     - GetUrl2:
         load_variables: false
         load_target: false
         method: 1
     - Push:
-        - String: "/:$version"
+        - Constant: 3
     - GetVariable
     - Pop
+    - GotoFrame: 122
+    - Play
+    - GotoLabel: "123"
+    - Play
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - GotoFrame2:
+        scene_bias: 0
+        play: true
+    - GotoFrame: 122
+    - Play
+    - GotoLabel: "123"
+    - Play
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - GotoFrame2:
+        scene_bias: 0
+        play: true
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - GotoFrame2:
+        scene_bias: 0
+        play: true
+    - GotoFrame: 65535
+    - Play
+    - GotoFrame: 0
+    - Play
+    - GotoFrame: 1
+    - Play
+    - GotoFrame: 0
+    - Play
     - Push:
         - Integer: 123
     - RandomNumber
     - Pop
     - Push:
-        - String: message
+        - Constant: 4
     - Trace
   label_positions: {}

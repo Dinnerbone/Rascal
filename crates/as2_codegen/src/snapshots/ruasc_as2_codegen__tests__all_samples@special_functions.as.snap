@@ -20,6 +20,31 @@ GetUrl2 false, false, 1
 Push "/:$version"
 GetVariable
 Pop
+GotoFrame 122
+Play
+GotoLabel "123"
+Play
+Push constant0
+GetVariable
+GotoFrame2 false, true
+GotoFrame 122
+Play
+GotoLabel "123"
+Play
+Push constant0
+GetVariable
+GotoFrame2 false, true
+Push constant0
+GetVariable
+GotoFrame2 false, true
+GotoFrame 65535
+Play
+GotoFrame 0
+Play
+GotoFrame 1
+Play
+GotoFrame 0
+Play
 Push 123
 RandomNumber
 Pop

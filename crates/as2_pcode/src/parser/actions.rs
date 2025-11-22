@@ -75,6 +75,9 @@ pub(crate) fn action(i: &mut Tokens<'_>) -> ModalResult<Action> {
         ActionName::GetUrl => get_url.parse_next(i)?,
         ActionName::GetUrl2 => get_url_2.parse_next(i)?,
         ActionName::GetVariable => Action::GetVariable,
+        ActionName::GotoFrame => goto_frame.parse_next(i)?,
+        ActionName::GotoFrame2 => goto_frame_2.parse_next(i)?,
+        ActionName::GotoLabel => goto_label.parse_next(i)?,
         ActionName::Greater => Action::Greater,
         ActionName::If => if_.parse_next(i)?,
         ActionName::Increment => Action::Increment,
@@ -88,6 +91,7 @@ pub(crate) fn action(i: &mut Tokens<'_>) -> ModalResult<Action> {
         ActionName::NewMethod => Action::NewMethod,
         ActionName::NewObject => Action::NewObject,
         ActionName::Not => Action::Not,
+        ActionName::Play => Action::Play,
         ActionName::Pop => Action::Pop,
         ActionName::Push => push.parse_next(i)?,
         ActionName::PushDuplicate => Action::PushDuplicate,
@@ -131,6 +135,29 @@ pub fn if_(i: &mut Tokens<'_>) -> ModalResult<Action> {
 pub fn jump(i: &mut Tokens<'_>) -> ModalResult<Action> {
     let label = label.parse_next(i)?;
     Ok(Action::Jump(label))
+}
+
+pub fn goto_frame(i: &mut Tokens<'_>) -> ModalResult<Action> {
+    let frame = u16.parse_next(i)?;
+    Ok(Action::GotoFrame(frame))
+}
+
+pub fn goto_frame_2(i: &mut Tokens<'_>) -> ModalResult<Action> {
+    let use_scene_bias = bool.parse_next(i)?;
+    TokenKind::Comma.parse_next(i)?;
+    let play = bool.parse_next(i)?;
+    let scene_bias = if use_scene_bias {
+        TokenKind::Comma.parse_next(i)?;
+        u16.parse_next(i)?
+    } else {
+        0
+    };
+    Ok(Action::GotoFrame2 { scene_bias, play })
+}
+
+pub fn goto_label(i: &mut Tokens<'_>) -> ModalResult<Action> {
+    let label = string.parse_next(i)?;
+    Ok(Action::GotoLabel(label))
 }
 
 pub fn store_register(i: &mut Tokens<'_>) -> ModalResult<Action> {
@@ -203,6 +230,12 @@ fn integer_or_float(i: &mut Tokens<'_>) -> ModalResult<PushValue> {
 fn u8(i: &mut Tokens<'_>) -> ModalResult<u8> {
     let raw = TokenKind::Integer.parse_next(i)?.raw;
     raw.parse::<u8>().map_err(|_| ParserError::from_input(&raw))
+}
+
+fn u16(i: &mut Tokens<'_>) -> ModalResult<u16> {
+    let raw = TokenKind::Integer.parse_next(i)?.raw;
+    raw.parse::<u16>()
+        .map_err(|_| ParserError::from_input(&raw))
 }
 
 fn integer(i: &mut Tokens<'_>) -> ModalResult<i32> {
@@ -328,6 +361,7 @@ mod tests {
         test_new_object => NewObject,
         test_not => Not,
         test_pop => Pop,
+        test_pplay => Play,
         test_pushduplicate => PushDuplicate,
         test_random_number => RandomNumber,
         test_return => Return,
@@ -546,6 +580,78 @@ mod tests {
                     load_target: false,
                     method: 1
                 }],
+                label_positions: Default::default()
+            })
+        )
+    }
+
+    #[test]
+    fn test_goto_frame() {
+        let tokens = build_tokens(&[
+            (TokenKind::ActionName(ActionName::GotoFrame), "gotoFrame"),
+            (TokenKind::Integer, "123"),
+        ]);
+        assert_eq!(
+            parse_actions(&tokens),
+            Ok(Actions {
+                actions: vec![Action::GotoFrame(123)],
+                label_positions: Default::default()
+            })
+        )
+    }
+
+    #[test]
+    fn test_goto_frame_2_with_scene_bias() {
+        let tokens = build_tokens(&[
+            (TokenKind::ActionName(ActionName::GotoFrame2), "gotoFrame2"),
+            (TokenKind::True, "true"),
+            (TokenKind::Comma, ","),
+            (TokenKind::True, "true"),
+            (TokenKind::Comma, ","),
+            (TokenKind::Integer, "123"),
+        ]);
+        assert_eq!(
+            parse_actions(&tokens),
+            Ok(Actions {
+                actions: vec![Action::GotoFrame2 {
+                    scene_bias: 123,
+                    play: true
+                }],
+                label_positions: Default::default()
+            })
+        )
+    }
+
+    #[test]
+    fn test_goto_frame_2_without_scene_bias() {
+        let tokens = build_tokens(&[
+            (TokenKind::ActionName(ActionName::GotoFrame2), "gotoFrame2"),
+            (TokenKind::False, "false"),
+            (TokenKind::Comma, ","),
+            (TokenKind::True, "true"),
+        ]);
+        assert_eq!(
+            parse_actions(&tokens),
+            Ok(Actions {
+                actions: vec![Action::GotoFrame2 {
+                    scene_bias: 0,
+                    play: true
+                }],
+                label_positions: Default::default()
+            })
+        )
+    }
+
+    #[test]
+    fn test_goto_label() {
+        let tokens = build_tokens(&[
+            (TokenKind::ActionName(ActionName::GotoLabel), "gotoLabel"),
+            (TokenKind::String, "foo"),
+        ]);
+        assert_eq!(
+            parse_actions(&tokens),
+            Ok(Actions {
+                actions: vec![Action::GotoLabel("foo".to_owned())],
                 label_positions: Default::default()
             })
         )

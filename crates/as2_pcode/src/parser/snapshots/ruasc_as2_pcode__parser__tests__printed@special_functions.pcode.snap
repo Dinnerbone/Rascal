@@ -3,9 +3,10 @@ source: crates/as2_pcode/src/parser/tests.rs
 expression: "parsed.unwrap_or_else(|_| Actions::empty())"
 input_file: samples/as2_pcode/special_functions.pcode
 ---
+ConstantPool "x", "http://ruffle.rs", "window", "/:$version", "message"
 Push 123
 Call
-Push "x"
+Push constant0
 GetVariable
 AsciiToChar
 Pop
@@ -13,14 +14,39 @@ GetTime
 Pop
 GetUrl "http://ruffle.rs", ""
 GetUrl "http://ruffle.rs", "window"
-Push "http://ruffle.rs"
-Push "window"
+Push constant1
+Push constant2
 GetUrl2 false, false, 1
-Push "/:$version"
+Push constant3
 GetVariable
 Pop
+GotoFrame 122
+Play
+GotoLabel "123"
+Play
+Push constant0
+GetVariable
+GotoFrame2 false, true
+GotoFrame 122
+Play
+GotoLabel "123"
+Play
+Push constant0
+GetVariable
+GotoFrame2 false, true
+Push constant0
+GetVariable
+GotoFrame2 false, true
+GotoFrame 65535
+Play
+GotoFrame 0
+Play
+GotoFrame 1
+Play
+GotoFrame 0
+Play
 Push 123
 RandomNumber
 Pop
-Push "message"
+Push constant4
 Trace

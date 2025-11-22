@@ -17,6 +17,7 @@ pub(crate) fn gen_special_call(
         "getTimer" => fn_get_timer(builder, span, args),
         "getURL" => fn_get_url(builder, span, args),
         "getVersion" => fn_get_version(builder, span, args),
+        "gotoAndPlay" => fn_goto_and_play(builder, span, args),
         "trace" => fn_trace(builder, span, args),
         "random" => fn_random(builder, span, args),
         _ => return false,
@@ -64,6 +65,50 @@ fn fn_get_version(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
             "Wrong number of parameters; getVersion requires exactly 0.",
             span,
         );
+    }
+}
+
+fn fn_goto_and_play(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
+    let frame = if args.len() == 1 {
+        // gotoAndPlay(frame)
+        &args[0]
+    } else if args.len() == 2 {
+        // gotoAndPlay(scene, frame)
+        // Scenes aren't a concept in a standalone compiler though, so the correct behaviour is to validate and then ignore the scene parameter
+        // (That's what Flash does if it's a scene it doesn't recognise)
+        if !matches!(args[0].value, ExprKind::Constant(ConstantKind::String(_))) {
+            builder.error("Scene name must be quoted string.", args[0].span);
+            return;
+        }
+        &args[1]
+    } else {
+        builder.error(
+            "Wrong number of parameters; gotoAndPlay requires between 1 and 2.",
+            span,
+        );
+        return;
+    };
+
+    match &frame.value {
+        ExprKind::Constant(ConstantKind::String(label)) => {
+            builder.action(Action::GotoLabel(label.to_string()));
+            builder.action(Action::Play);
+        }
+        ExprKind::Constant(ConstantKind::Integer(frame_number)) => {
+            let mut frame_number = *frame_number;
+            if frame_number != 0 {
+                frame_number = frame_number.wrapping_sub(1);
+            }
+            builder.action(Action::GotoFrame((frame_number & 0xFFFF) as u16));
+            builder.action(Action::Play);
+        }
+        _ => {
+            gen_expr(builder, frame, false);
+            builder.action(Action::GotoFrame2 {
+                scene_bias: 0,
+                play: true,
+            });
+        }
     }
 }
 

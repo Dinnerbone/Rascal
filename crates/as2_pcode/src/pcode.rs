@@ -101,6 +101,12 @@ pub enum Action {
         method: u8,
     },
     GetVariable,
+    GotoFrame(u16),
+    GotoFrame2 {
+        scene_bias: u16,
+        play: bool,
+    },
+    GotoLabel(String),
     Greater,
     If(String),
     Increment,
@@ -114,6 +120,7 @@ pub enum Action {
     NewMethod,
     NewObject,
     Not,
+    Play,
     Pop,
     Push(Vec<PushValue>),
     PushDuplicate,
@@ -156,6 +163,9 @@ impl Action {
             Action::GetUrl { .. } => 0,
             Action::GetUrl2 { .. } => -2,
             Action::GetVariable => 0,
+            Action::GotoFrame(_) => 0,
+            Action::GotoFrame2 { .. } => -1,
+            Action::GotoLabel(_) => 0,
             Action::Greater => -1,
             Action::If(_) => -1,
             Action::Increment => -1,
@@ -166,6 +176,7 @@ impl Action {
             Action::Multiply => -1,
             Action::NewObject => 1,
             Action::Not => 0,
+            Action::Play => 0,
             Action::Pop => -1,
             Action::Push(values) => values.len() as i32,
             Action::PushDuplicate => 1,
@@ -239,6 +250,15 @@ impl std::fmt::Display for Action {
                 method,
             } => write!(f, "GetUrl2 {}, {}, {}", load_variables, load_target, method),
             Action::GetVariable => write!(f, "GetVariable"),
+            Action::GotoFrame(frame) => write!(f, "GotoFrame {}", frame),
+            Action::GotoFrame2 { scene_bias, play } => {
+                if *scene_bias > 0 {
+                    write!(f, "GotoFrame2 true, {}, {}", play, scene_bias)
+                } else {
+                    write!(f, "GotoFrame2 false, {}", play)
+                }
+            }
+            Action::GotoLabel(label) => write!(f, "GotoLabel \"{}\"", label),
             Action::Greater => write!(f, "Greater"),
             Action::If(label) => write!(f, "If {}", label),
             Action::Increment => write!(f, "Increment"),
@@ -252,6 +272,7 @@ impl std::fmt::Display for Action {
             Action::NewMethod => write!(f, "NewMethod"),
             Action::NewObject => write!(f, "NewObject"),
             Action::Not => write!(f, "Not"),
+            Action::Play => write!(f, "Play"),
             Action::Pop => write!(f, "Pop"),
             Action::Push(values) => {
                 write!(f, "Push ")?;

@@ -154,40 +154,278 @@ Ok:
     - Expr:
         span:
           start: 156
-          end: 167
+          end: 172
         value:
           Call:
             name:
               span:
                 start: 156
-                end: 162
+                end: 167
               value:
                 Constant:
-                  Identifier: random
+                  Identifier: gotoAndPlay
             args:
               - span:
-                  start: 163
-                  end: 166
+                  start: 168
+                  end: 171
                 value:
                   Constant:
                     Integer: 123
     - Expr:
         span:
-          start: 169
-          end: 185
+          start: 174
+          end: 192
         value:
           Call:
             name:
               span:
-                start: 169
-                end: 174
+                start: 174
+                end: 185
+              value:
+                Constant:
+                  Identifier: gotoAndPlay
+            args:
+              - span:
+                  start: 186
+                  end: 191
+                value:
+                  Constant:
+                    String: "123"
+    - Expr:
+        span:
+          start: 194
+          end: 208
+        value:
+          Call:
+            name:
+              span:
+                start: 194
+                end: 205
+              value:
+                Constant:
+                  Identifier: gotoAndPlay
+            args:
+              - span:
+                  start: 206
+                  end: 207
+                value:
+                  Constant:
+                    Identifier: x
+    - Expr:
+        span:
+          start: 210
+          end: 235
+        value:
+          Call:
+            name:
+              span:
+                start: 210
+                end: 221
+              value:
+                Constant:
+                  Identifier: gotoAndPlay
+            args:
+              - span:
+                  start: 222
+                  end: 229
+                value:
+                  Constant:
+                    String: scene
+              - span:
+                  start: 231
+                  end: 234
+                value:
+                  Constant:
+                    Integer: 123
+    - Expr:
+        span:
+          start: 237
+          end: 264
+        value:
+          Call:
+            name:
+              span:
+                start: 237
+                end: 248
+              value:
+                Constant:
+                  Identifier: gotoAndPlay
+            args:
+              - span:
+                  start: 249
+                  end: 256
+                value:
+                  Constant:
+                    String: scene
+              - span:
+                  start: 258
+                  end: 263
+                value:
+                  Constant:
+                    String: "123"
+    - Expr:
+        span:
+          start: 266
+          end: 289
+        value:
+          Call:
+            name:
+              span:
+                start: 266
+                end: 277
+              value:
+                Constant:
+                  Identifier: gotoAndPlay
+            args:
+              - span:
+                  start: 278
+                  end: 285
+                value:
+                  Constant:
+                    String: scene
+              - span:
+                  start: 287
+                  end: 288
+                value:
+                  Constant:
+                    Identifier: x
+    - Expr:
+        span:
+          start: 291
+          end: 305
+        value:
+          Call:
+            name:
+              span:
+                start: 291
+                end: 302
+              value:
+                Constant:
+                  Identifier: gotoAndPlay
+            args:
+              - span:
+                  start: 303
+                  end: 304
+                value:
+                  Constant:
+                    Identifier: x
+    - Expr:
+        span:
+          start: 307
+          end: 325
+        value:
+          Call:
+            name:
+              span:
+                start: 307
+                end: 318
+              value:
+                Constant:
+                  Identifier: gotoAndPlay
+            args:
+              - span:
+                  start: 319
+                  end: 324
+                value:
+                  Constant:
+                    Integer: 65536
+    - Expr:
+        span:
+          start: 327
+          end: 345
+        value:
+          Call:
+            name:
+              span:
+                start: 327
+                end: 338
+              value:
+                Constant:
+                  Identifier: gotoAndPlay
+            args:
+              - span:
+                  start: 339
+                  end: 344
+                value:
+                  Constant:
+                    Integer: 65537
+    - Expr:
+        span:
+          start: 347
+          end: 365
+        value:
+          Call:
+            name:
+              span:
+                start: 347
+                end: 358
+              value:
+                Constant:
+                  Identifier: gotoAndPlay
+            args:
+              - span:
+                  start: 359
+                  end: 364
+                value:
+                  Constant:
+                    Integer: 65538
+    - Expr:
+        span:
+          start: 367
+          end: 381
+        value:
+          Call:
+            name:
+              span:
+                start: 367
+                end: 378
+              value:
+                Constant:
+                  Identifier: gotoAndPlay
+            args:
+              - span:
+                  start: 379
+                  end: 380
+                value:
+                  Constant:
+                    Integer: 0
+    - Expr:
+        span:
+          start: 383
+          end: 394
+        value:
+          Call:
+            name:
+              span:
+                start: 383
+                end: 389
+              value:
+                Constant:
+                  Identifier: random
+            args:
+              - span:
+                  start: 390
+                  end: 393
+                value:
+                  Constant:
+                    Integer: 123
+    - Expr:
+        span:
+          start: 396
+          end: 412
+        value:
+          Call:
+            name:
+              span:
+                start: 396
+                end: 401
               value:
                 Constant:
                   Identifier: trace
             args:
               - span:
-                  start: 175
-                  end: 184
+                  start: 402
+                  end: 411
                 value:
                   Constant:
                     String: message

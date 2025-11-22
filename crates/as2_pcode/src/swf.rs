@@ -197,9 +197,9 @@ impl<'a> ActionEncoder<'a> {
                 method,
             } => self.write_get_url_2(*load_variables, *load_target, *method),
             Action::GetVariable => self.write_small_action(OpCode::GetVariable),
-            // Action::GotoFrame(action) => self.write_goto_frame(*action),
-            // Action::GotoFrame2(action) => self.write_goto_frame_2(*action),
-            // Action::GotoLabel(action) => self.write_goto_label(action),
+            Action::GotoFrame(frame) => self.write_goto_frame(*frame),
+            Action::GotoFrame2 { scene_bias, play } => self.write_goto_frame_2(*scene_bias, *play),
+            Action::GotoLabel(label) => self.write_goto_label(label),
             Action::Greater => self.write_small_action(OpCode::Greater),
             Action::If(action) => self.write_if(action),
             // Action::ImplementsOp => self.write_small_action(OpCode::ImplementsOp),
@@ -221,7 +221,7 @@ impl<'a> ActionEncoder<'a> {
             // Action::NextFrame => self.write_small_action(OpCode::NextFrame),
             Action::Not => self.write_small_action(OpCode::Not),
             // Action::Or => self.write_small_action(OpCode::Or),
-            // Action::Play => self.write_small_action(OpCode::Play),
+            Action::Play => self.write_small_action(OpCode::Play),
             Action::Pop => self.write_small_action(OpCode::Pop),
             // Action::PreviousFrame => self.write_small_action(OpCode::PreviousFrame),
             Action::Push(action) => self.write_push(action),
@@ -282,6 +282,30 @@ impl<'a> ActionEncoder<'a> {
     /// Writes an action that has no payload.
     fn write_small_action(&mut self, opcode: OpCode) -> Result<()> {
         self.write_action_header(opcode, 0)
+    }
+
+    fn write_goto_frame(&mut self, frame: u16) -> Result<()> {
+        self.write_action_header(OpCode::GotoFrame, 2)?;
+        self.write_u16(frame)?;
+        Ok(())
+    }
+
+    fn write_goto_frame_2(&mut self, scene_bias: u16, play: bool) -> Result<()> {
+        if scene_bias != 0 {
+            self.write_action_header(OpCode::GotoFrame2, 3)?;
+            self.write_u8(if play { 0b11 } else { 0b01 })?;
+            self.write_u16(scene_bias)?;
+        } else {
+            self.write_action_header(OpCode::GotoFrame2, 1)?;
+            self.write_u8(if play { 0b10 } else { 0b00 })?;
+        }
+        Ok(())
+    }
+
+    fn write_goto_label(&mut self, label: &'a str) -> Result<()> {
+        self.write_action_header(OpCode::GotoLabel, label.len() + 1)?;
+        self.write_string(SwfStr::from_utf8_str(label))?;
+        Ok(())
     }
 
     fn write_constant_pool(&mut self, strings: &'a [String]) -> Result<()> {
