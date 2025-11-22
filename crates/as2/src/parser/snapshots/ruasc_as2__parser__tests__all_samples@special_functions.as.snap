@@ -62,7 +62,7 @@ Ok:
     - Expr:
         span:
           start: 31
-          end: 42
+          end: 57
         value:
           Call:
             name:
@@ -71,31 +71,109 @@ Ok:
                 end: 37
               value:
                 Constant:
-                  Identifier: random
+                  Identifier: getURL
             args:
               - span:
                   start: 38
-                  end: 41
+                  end: 56
+                value:
+                  Constant:
+                    String: "http://ruffle.rs"
+    - Expr:
+        span:
+          start: 59
+          end: 95
+        value:
+          Call:
+            name:
+              span:
+                start: 59
+                end: 65
+              value:
+                Constant:
+                  Identifier: getURL
+            args:
+              - span:
+                  start: 66
+                  end: 84
+                value:
+                  Constant:
+                    String: "http://ruffle.rs"
+              - span:
+                  start: 86
+                  end: 94
+                value:
+                  Constant:
+                    String: window
+    - Expr:
+        span:
+          start: 97
+          end: 140
+        value:
+          Call:
+            name:
+              span:
+                start: 97
+                end: 103
+              value:
+                Constant:
+                  Identifier: getURL
+            args:
+              - span:
+                  start: 104
+                  end: 122
+                value:
+                  Constant:
+                    String: "http://ruffle.rs"
+              - span:
+                  start: 124
+                  end: 132
+                value:
+                  Constant:
+                    String: window
+              - span:
+                  start: 134
+                  end: 139
+                value:
+                  Constant:
+                    String: get
+    - Expr:
+        span:
+          start: 142
+          end: 153
+        value:
+          Call:
+            name:
+              span:
+                start: 142
+                end: 148
+              value:
+                Constant:
+                  Identifier: random
+            args:
+              - span:
+                  start: 149
+                  end: 152
                 value:
                   Constant:
                     Integer: 123
     - Expr:
         span:
-          start: 44
-          end: 60
+          start: 155
+          end: 171
         value:
           Call:
             name:
               span:
-                start: 44
-                end: 49
+                start: 155
+                end: 160
               value:
                 Constant:
                   Identifier: trace
             args:
               - span:
-                  start: 50
-                  end: 59
+                  start: 161
+                  end: 170
                 value:
                   Constant:
                     String: message

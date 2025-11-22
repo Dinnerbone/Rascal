@@ -109,6 +109,8 @@ pub enum ActionName {
     GetMember,
     GetProperty,
     GetTime,
+    GetUrl,
+    GetUrl2,
     GetVariable,
     Greater,
     If,

@@ -72,6 +72,8 @@ pub(crate) fn action(i: &mut Tokens<'_>) -> ModalResult<Action> {
         ActionName::GetMember => Action::GetMember,
         ActionName::GetProperty => Action::GetProperty,
         ActionName::GetTime => Action::GetTime,
+        ActionName::GetUrl => get_url.parse_next(i)?,
+        ActionName::GetUrl2 => get_url_2.parse_next(i)?,
         ActionName::GetVariable => Action::GetVariable,
         ActionName::Greater => Action::Greater,
         ActionName::If => if_.parse_next(i)?,
@@ -101,6 +103,26 @@ pub(crate) fn action(i: &mut Tokens<'_>) -> ModalResult<Action> {
     })
 }
 
+pub fn get_url(i: &mut Tokens<'_>) -> ModalResult<Action> {
+    let url = string.parse_next(i)?;
+    TokenKind::Comma.parse_next(i)?;
+    let target = string.parse_next(i)?;
+    Ok(Action::GetUrl { url, target })
+}
+
+pub fn get_url_2(i: &mut Tokens<'_>) -> ModalResult<Action> {
+    let load_variables = bool.parse_next(i)?;
+    TokenKind::Comma.parse_next(i)?;
+    let load_target = bool.parse_next(i)?;
+    TokenKind::Comma.parse_next(i)?;
+    let method = u8.parse_next(i)?;
+    Ok(Action::GetUrl2 {
+        load_variables,
+        load_target,
+        method,
+    })
+}
+
 pub fn if_(i: &mut Tokens<'_>) -> ModalResult<Action> {
     let label = label.parse_next(i)?;
     Ok(Action::If(label))
@@ -112,7 +134,7 @@ pub fn jump(i: &mut Tokens<'_>) -> ModalResult<Action> {
 }
 
 pub fn store_register(i: &mut Tokens<'_>) -> ModalResult<Action> {
-    let n = register_num.parse_next(i)?;
+    let n = u8.parse_next(i)?;
     Ok(Action::StoreRegister(n))
 }
 
@@ -151,6 +173,14 @@ pub fn string(i: &mut Tokens<'_>) -> ModalResult<String> {
     TokenKind::String.parse_next(i).map(|t| t.raw.to_owned())
 }
 
+pub fn bool(i: &mut Tokens<'_>) -> ModalResult<bool> {
+    alt((
+        TokenKind::True.map(|_| true),
+        TokenKind::False.map(|_| false),
+    ))
+    .parse_next(i)
+}
+
 pub fn label(i: &mut Tokens<'_>) -> ModalResult<String> {
     TokenKind::Identifier
         .context(StrContext::Label("label"))
@@ -170,7 +200,7 @@ fn integer_or_float(i: &mut Tokens<'_>) -> ModalResult<PushValue> {
         .map(PushValue::Float)
 }
 
-fn register_num(i: &mut Tokens<'_>) -> ModalResult<u8> {
+fn u8(i: &mut Tokens<'_>) -> ModalResult<u8> {
     let raw = TokenKind::Integer.parse_next(i)?.raw;
     raw.parse::<u8>().map_err(|_| ParserError::from_input(&raw))
 }
@@ -472,6 +502,49 @@ mod tests {
                         ],
                         label_positions: Default::default()
                     },
+                }],
+                label_positions: Default::default()
+            })
+        )
+    }
+
+    #[test]
+    fn test_get_url() {
+        let tokens = build_tokens(&[
+            (TokenKind::ActionName(ActionName::GetUrl), "getUrl"),
+            (TokenKind::String, "foo"),
+            (TokenKind::Comma, ","),
+            (TokenKind::String, "bar"),
+        ]);
+        assert_eq!(
+            parse_actions(&tokens),
+            Ok(Actions {
+                actions: vec![Action::GetUrl {
+                    url: "foo".to_owned(),
+                    target: "bar".to_owned()
+                }],
+                label_positions: Default::default()
+            })
+        )
+    }
+
+    #[test]
+    fn test_get_url_2() {
+        let tokens = build_tokens(&[
+            (TokenKind::ActionName(ActionName::GetUrl2), "getUrl2"),
+            (TokenKind::True, "true"),
+            (TokenKind::Comma, ","),
+            (TokenKind::False, "false"),
+            (TokenKind::Comma, ","),
+            (TokenKind::Integer, "1"),
+        ]);
+        assert_eq!(
+            parse_actions(&tokens),
+            Ok(Actions {
+                actions: vec![Action::GetUrl2 {
+                    load_variables: true,
+                    load_target: false,
+                    method: 1
                 }],
                 label_positions: Default::default()
             })

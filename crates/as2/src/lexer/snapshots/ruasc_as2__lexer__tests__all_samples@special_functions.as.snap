@@ -92,60 +92,186 @@ input_file: samples/as2/special_functions.as
   span:
     start: 31
     end: 37
-  raw: random
+  raw: getURL
 - kind: OpenParen
   span:
     start: 37
     end: 38
   raw: (
-- kind: Integer
+- kind:
+    String: Double
   span:
     start: 38
-    end: 41
-  raw: "123"
+    end: 56
+  raw: "http://ruffle.rs"
 - kind: CloseParen
   span:
-    start: 41
-    end: 42
+    start: 56
+    end: 57
   raw: )
 - kind: Semicolon
   span:
-    start: 42
-    end: 43
+    start: 57
+    end: 58
   raw: ;
 - kind: Newline
   span:
-    start: 43
-    end: 44
+    start: 58
+    end: 59
   raw: "\n"
 - kind: Identifier
   span:
-    start: 44
-    end: 49
-  raw: trace
+    start: 59
+    end: 65
+  raw: getURL
 - kind: OpenParen
   span:
-    start: 49
-    end: 50
+    start: 65
+    end: 66
   raw: (
 - kind:
     String: Double
   span:
-    start: 50
-    end: 59
-  raw: message
+    start: 66
+    end: 84
+  raw: "http://ruffle.rs"
+- kind: Comma
+  span:
+    start: 84
+    end: 85
+  raw: ","
+- kind:
+    String: Double
+  span:
+    start: 86
+    end: 94
+  raw: window
 - kind: CloseParen
   span:
-    start: 59
-    end: 60
+    start: 94
+    end: 95
   raw: )
 - kind: Semicolon
   span:
-    start: 60
-    end: 61
+    start: 95
+    end: 96
   raw: ;
 - kind: Newline
   span:
-    start: 61
-    end: 62
+    start: 96
+    end: 97
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 97
+    end: 103
+  raw: getURL
+- kind: OpenParen
+  span:
+    start: 103
+    end: 104
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 104
+    end: 122
+  raw: "http://ruffle.rs"
+- kind: Comma
+  span:
+    start: 122
+    end: 123
+  raw: ","
+- kind:
+    String: Double
+  span:
+    start: 124
+    end: 132
+  raw: window
+- kind: Comma
+  span:
+    start: 132
+    end: 133
+  raw: ","
+- kind:
+    String: Double
+  span:
+    start: 134
+    end: 139
+  raw: get
+- kind: CloseParen
+  span:
+    start: 139
+    end: 140
+  raw: )
+- kind: Semicolon
+  span:
+    start: 140
+    end: 141
+  raw: ;
+- kind: Newline
+  span:
+    start: 141
+    end: 142
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 142
+    end: 148
+  raw: random
+- kind: OpenParen
+  span:
+    start: 148
+    end: 149
+  raw: (
+- kind: Integer
+  span:
+    start: 149
+    end: 152
+  raw: "123"
+- kind: CloseParen
+  span:
+    start: 152
+    end: 153
+  raw: )
+- kind: Semicolon
+  span:
+    start: 153
+    end: 154
+  raw: ;
+- kind: Newline
+  span:
+    start: 154
+    end: 155
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 155
+    end: 160
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 160
+    end: 161
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 161
+    end: 170
+  raw: message
+- kind: CloseParen
+  span:
+    start: 170
+    end: 171
+  raw: )
+- kind: Semicolon
+  span:
+    start: 171
+    end: 172
+  raw: ;
+- kind: Newline
+  span:
+    start: 172
+    end: 173
   raw: "\n"

@@ -190,8 +190,12 @@ impl<'a> ActionEncoder<'a> {
             Action::GetMember => self.write_small_action(OpCode::GetMember),
             Action::GetProperty => self.write_small_action(OpCode::GetProperty),
             Action::GetTime => self.write_small_action(OpCode::GetTime),
-            // Action::GetUrl(action) => self.write_get_url(action),
-            // Action::GetUrl2(action) => self.write_get_url_2(*action),
+            Action::GetUrl { url, target } => self.write_get_url(url, target),
+            Action::GetUrl2 {
+                load_variables,
+                load_target,
+                method,
+            } => self.write_get_url_2(*load_variables, *load_target, *method),
             Action::GetVariable => self.write_small_action(OpCode::GetVariable),
             // Action::GotoFrame(action) => self.write_goto_frame(*action),
             // Action::GotoFrame2(action) => self.write_goto_frame_2(*action),
@@ -409,6 +413,28 @@ impl<'a> ActionEncoder<'a> {
     fn write_store_register(&mut self, register: u8) -> Result<()> {
         self.write_action_header(OpCode::StoreRegister, 1)?;
         self.write_u8(register)?;
+        Ok(())
+    }
+
+    fn write_get_url(&mut self, url: &str, target: &str) -> Result<()> {
+        self.write_action_header(OpCode::GetUrl, url.len() + target.len() + 2)?;
+        self.write_string(SwfStr::from_utf8_str(url))?;
+        self.write_string(SwfStr::from_utf8_str(target))?;
+        Ok(())
+    }
+
+    fn write_get_url_2(
+        &mut self,
+        load_variables: bool,
+        load_target: bool,
+        method: u8,
+    ) -> Result<()> {
+        self.write_action_header(OpCode::GetUrl2, 1)?;
+        let mut flags = 0;
+        flags |= method & 0x3;
+        flags |= (load_target as u8) << 6;
+        flags |= (load_variables as u8) << 7;
+        self.write_u8(flags)?;
         Ok(())
     }
 }
