@@ -13,6 +13,7 @@ pub(crate) fn gen_special_call(
     match name {
         "call" => fn_call(builder, span, args),
         "chr" => fn_chr(builder, span, args),
+        "getTimer" => fn_get_timer(builder, span, args),
         "trace" => fn_trace(builder, span, args),
         "random" => fn_random(builder, span, args),
         _ => return false,
@@ -35,6 +36,17 @@ fn fn_chr(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
         builder.action(Action::AsciiToChar);
     } else {
         builder.error("Wrong number of parameters; chr requires exactly 1.", span);
+    }
+}
+
+fn fn_get_timer(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
+    if args.is_empty() {
+        builder.action(Action::GetTime);
+    } else {
+        builder.error(
+            "Wrong number of parameters; getTimer requires exactly 0.",
+            span,
+        );
     }
 }
 

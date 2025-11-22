@@ -240,6 +240,7 @@ fn lex_identifier_or_action<'a>(stream: &mut Stream<'a>) -> Token<'a> {
         "equals2" => TokenKind::ActionName(ActionName::Equals2),
         "getmember" => TokenKind::ActionName(ActionName::GetMember),
         "getproperty" => TokenKind::ActionName(ActionName::GetProperty),
+        "gettime" => TokenKind::ActionName(ActionName::GetTime),
         "getvariable" => TokenKind::ActionName(ActionName::GetVariable),
         "greater" => TokenKind::ActionName(ActionName::Greater),
         "if" => TokenKind::ActionName(ActionName::If),

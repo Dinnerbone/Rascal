@@ -1,0 +1,10 @@
+---
+source: crates/as2_codegen/src/tests.rs
+expression: result
+input_file: crates/as2_codegen/fail_samples/gettimer.as
+---
+error: Compile error(s)
+  ╭▸ gettimer.as:1:1
+  │
+1 │ getTimer(true);
+  ╰╴━━━━━━━━━━━━━━ Wrong number of parameters; getTimer requires exactly 0.

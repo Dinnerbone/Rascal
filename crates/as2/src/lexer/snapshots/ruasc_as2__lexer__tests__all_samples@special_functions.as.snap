@@ -66,61 +66,86 @@ input_file: samples/as2/special_functions.as
 - kind: Identifier
   span:
     start: 19
-    end: 25
-  raw: random
+    end: 27
+  raw: getTimer
 - kind: OpenParen
   span:
-    start: 25
-    end: 26
+    start: 27
+    end: 28
   raw: (
-- kind: Integer
-  span:
-    start: 26
-    end: 29
-  raw: "123"
 - kind: CloseParen
   span:
-    start: 29
-    end: 30
+    start: 28
+    end: 29
   raw: )
 - kind: Semicolon
   span:
-    start: 30
-    end: 31
+    start: 29
+    end: 30
   raw: ;
 - kind: Newline
   span:
-    start: 31
-    end: 32
+    start: 30
+    end: 31
   raw: "\n"
 - kind: Identifier
   span:
-    start: 32
+    start: 31
     end: 37
-  raw: trace
+  raw: random
 - kind: OpenParen
   span:
     start: 37
     end: 38
   raw: (
-- kind:
-    String: Double
+- kind: Integer
   span:
     start: 38
-    end: 47
-  raw: message
+    end: 41
+  raw: "123"
 - kind: CloseParen
   span:
-    start: 47
-    end: 48
+    start: 41
+    end: 42
   raw: )
 - kind: Semicolon
   span:
-    start: 48
-    end: 49
+    start: 42
+    end: 43
   raw: ;
 - kind: Newline
   span:
+    start: 43
+    end: 44
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 44
+    end: 49
+  raw: trace
+- kind: OpenParen
+  span:
     start: 49
     end: 50
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 50
+    end: 59
+  raw: message
+- kind: CloseParen
+  span:
+    start: 59
+    end: 60
+  raw: )
+- kind: Semicolon
+  span:
+    start: 60
+    end: 61
+  raw: ;
+- kind: Newline
+  span:
+    start: 61
+    end: 62
   raw: "\n"

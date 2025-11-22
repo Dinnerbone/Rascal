@@ -80,67 +80,89 @@ input_file: samples/as2_pcode/special_functions.pcode
     end: 51
   raw: "\n"
 - kind:
-    ActionName: Push
+    ActionName: GetTime
   span:
     start: 51
-    end: 55
-  raw: Push
-- kind: Integer
+    end: 58
+  raw: GetTime
+- kind: Newline
   span:
-    start: 56
+    start: 58
     end: 59
-  raw: "123"
-- kind: Newline
-  span:
-    start: 59
-    end: 60
-  raw: "\n"
-- kind:
-    ActionName: RandomNumber
-  span:
-    start: 60
-    end: 72
-  raw: RandomNumber
-- kind: Newline
-  span:
-    start: 72
-    end: 73
   raw: "\n"
 - kind:
     ActionName: Pop
   span:
-    start: 73
-    end: 76
+    start: 59
+    end: 62
   raw: Pop
 - kind: Newline
   span:
-    start: 76
-    end: 77
+    start: 62
+    end: 63
   raw: "\n"
 - kind:
     ActionName: Push
   span:
-    start: 77
-    end: 81
+    start: 63
+    end: 67
+  raw: Push
+- kind: Integer
+  span:
+    start: 68
+    end: 71
+  raw: "123"
+- kind: Newline
+  span:
+    start: 71
+    end: 72
+  raw: "\n"
+- kind:
+    ActionName: RandomNumber
+  span:
+    start: 72
+    end: 84
+  raw: RandomNumber
+- kind: Newline
+  span:
+    start: 84
+    end: 85
+  raw: "\n"
+- kind:
+    ActionName: Pop
+  span:
+    start: 85
+    end: 88
+  raw: Pop
+- kind: Newline
+  span:
+    start: 88
+    end: 89
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 89
+    end: 93
   raw: Push
 - kind: String
   span:
-    start: 82
-    end: 91
+    start: 94
+    end: 103
   raw: message
 - kind: Newline
   span:
-    start: 91
-    end: 92
+    start: 103
+    end: 104
   raw: "\n"
 - kind:
     ActionName: Trace
   span:
-    start: 92
-    end: 97
+    start: 104
+    end: 109
   raw: Trace
 - kind: Newline
   span:
-    start: 97
-    end: 98
+    start: 109
+    end: 110
   raw: "\n"

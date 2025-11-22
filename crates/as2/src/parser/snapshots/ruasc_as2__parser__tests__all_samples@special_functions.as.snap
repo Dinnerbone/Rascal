@@ -48,40 +48,54 @@ Ok:
     - Expr:
         span:
           start: 19
-          end: 30
+          end: 29
         value:
           Call:
             name:
               span:
                 start: 19
-                end: 25
+                end: 27
+              value:
+                Constant:
+                  Identifier: getTimer
+            args: []
+    - Expr:
+        span:
+          start: 31
+          end: 42
+        value:
+          Call:
+            name:
+              span:
+                start: 31
+                end: 37
               value:
                 Constant:
                   Identifier: random
             args:
               - span:
-                  start: 26
-                  end: 29
+                  start: 38
+                  end: 41
                 value:
                   Constant:
                     Integer: 123
     - Expr:
         span:
-          start: 32
-          end: 48
+          start: 44
+          end: 60
         value:
           Call:
             name:
               span:
-                start: 32
-                end: 37
+                start: 44
+                end: 49
               value:
                 Constant:
                   Identifier: trace
             args:
               - span:
-                  start: 38
-                  end: 47
+                  start: 50
+                  end: 59
                 value:
                   Constant:
                     String: message
