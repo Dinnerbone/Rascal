@@ -1,0 +1,10 @@
+---
+source: crates/as2_codegen/src/tests.rs
+expression: result
+input_file: crates/as2_codegen/fail_samples/getversion.as
+---
+error: Compile error(s)
+  ╭▸ getversion.as:1:1
+  │
+1 │ getVersion(1);
+  ╰╴━━━━━━━━━━━━━ Wrong number of parameters; getVersion requires exactly 0.

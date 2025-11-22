@@ -16,6 +16,7 @@ pub(crate) fn gen_special_call(
         "chr" => fn_chr(builder, span, args),
         "getTimer" => fn_get_timer(builder, span, args),
         "getURL" => fn_get_url(builder, span, args),
+        "getVersion" => fn_get_version(builder, span, args),
         "trace" => fn_trace(builder, span, args),
         "random" => fn_random(builder, span, args),
         _ => return false,
@@ -47,6 +48,20 @@ fn fn_get_timer(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
     } else {
         builder.error(
             "Wrong number of parameters; getTimer requires exactly 0.",
+            span,
+        );
+    }
+}
+
+fn fn_get_version(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
+    if args.is_empty() {
+        builder.action(Action::Push(vec![PushValue::String(
+            "/:$version".to_string(),
+        )]));
+        builder.action(Action::GetVariable);
+    } else {
+        builder.error(
+            "Wrong number of parameters; getVersion requires exactly 0.",
             span,
         );
     }

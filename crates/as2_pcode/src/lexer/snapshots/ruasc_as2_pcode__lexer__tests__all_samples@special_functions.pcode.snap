@@ -227,62 +227,100 @@ input_file: samples/as2_pcode/special_functions.pcode
     start: 191
     end: 195
   raw: Push
-- kind: Integer
+- kind: String
   span:
     start: 196
-    end: 199
-  raw: "123"
+    end: 208
+  raw: "/:$version"
 - kind: Newline
   span:
-    start: 199
-    end: 200
+    start: 208
+    end: 209
   raw: "\n"
 - kind:
-    ActionName: RandomNumber
+    ActionName: GetVariable
   span:
-    start: 200
-    end: 212
-  raw: RandomNumber
+    start: 209
+    end: 220
+  raw: GetVariable
 - kind: Newline
   span:
-    start: 212
-    end: 213
+    start: 220
+    end: 221
   raw: "\n"
 - kind:
     ActionName: Pop
   span:
-    start: 213
-    end: 216
+    start: 221
+    end: 224
   raw: Pop
 - kind: Newline
   span:
-    start: 216
-    end: 217
+    start: 224
+    end: 225
   raw: "\n"
 - kind:
     ActionName: Push
   span:
-    start: 217
-    end: 221
+    start: 225
+    end: 229
+  raw: Push
+- kind: Integer
+  span:
+    start: 230
+    end: 233
+  raw: "123"
+- kind: Newline
+  span:
+    start: 233
+    end: 234
+  raw: "\n"
+- kind:
+    ActionName: RandomNumber
+  span:
+    start: 234
+    end: 246
+  raw: RandomNumber
+- kind: Newline
+  span:
+    start: 246
+    end: 247
+  raw: "\n"
+- kind:
+    ActionName: Pop
+  span:
+    start: 247
+    end: 250
+  raw: Pop
+- kind: Newline
+  span:
+    start: 250
+    end: 251
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 251
+    end: 255
   raw: Push
 - kind: String
   span:
-    start: 222
-    end: 231
+    start: 256
+    end: 265
   raw: message
 - kind: Newline
   span:
-    start: 231
-    end: 232
+    start: 265
+    end: 266
   raw: "\n"
 - kind:
     ActionName: Trace
   span:
-    start: 232
-    end: 237
+    start: 266
+    end: 271
   raw: Trace
 - kind: Newline
   span:
-    start: 237
-    end: 238
+    start: 271
+    end: 272
   raw: "\n"

@@ -140,40 +140,54 @@ Ok:
     - Expr:
         span:
           start: 142
-          end: 153
+          end: 154
         value:
           Call:
             name:
               span:
                 start: 142
-                end: 148
+                end: 152
+              value:
+                Constant:
+                  Identifier: getVersion
+            args: []
+    - Expr:
+        span:
+          start: 156
+          end: 167
+        value:
+          Call:
+            name:
+              span:
+                start: 156
+                end: 162
               value:
                 Constant:
                   Identifier: random
             args:
               - span:
-                  start: 149
-                  end: 152
+                  start: 163
+                  end: 166
                 value:
                   Constant:
                     Integer: 123
     - Expr:
         span:
-          start: 155
-          end: 171
+          start: 169
+          end: 185
         value:
           Call:
             name:
               span:
-                start: 155
-                end: 160
+                start: 169
+                end: 174
               value:
                 Constant:
                   Identifier: trace
             args:
               - span:
-                  start: 161
-                  end: 170
+                  start: 175
+                  end: 184
                 value:
                   Constant:
                     String: message

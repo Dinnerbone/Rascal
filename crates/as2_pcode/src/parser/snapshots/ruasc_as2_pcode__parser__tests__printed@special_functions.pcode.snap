@@ -16,6 +16,9 @@ GetUrl "http://ruffle.rs", "window"
 Push "http://ruffle.rs"
 Push "window"
 GetUrl2 false, false, 1
+Push "/:$version"
+GetVariable
+Pop
 Push 123
 RandomNumber
 Pop

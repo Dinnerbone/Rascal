@@ -30,6 +30,10 @@ Ok:
         load_target: false
         method: 1
     - Push:
+        - String: "/:$version"
+    - GetVariable
+    - Pop
+    - Push:
         - Integer: 123
     - RandomNumber
     - Pop
