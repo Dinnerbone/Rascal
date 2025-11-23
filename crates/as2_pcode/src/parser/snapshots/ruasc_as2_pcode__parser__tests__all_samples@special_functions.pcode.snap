@@ -10,6 +10,8 @@ Ok:
         - "http://ruffle.rs"
         - window
         - "/:$version"
+        - url
+        - target
         - message
     - Push:
         - Integer: 123
@@ -106,10 +108,26 @@ Ok:
     - StringLength
     - Pop
     - Push:
+        - Constant: 4
+    - Push:
+        - Constant: 5
+    - GetUrl2:
+        load_variables: false
+        load_target: true
+        method: 0
+    - Push:
+        - Constant: 4
+    - Push:
+        - Constant: 5
+    - GetUrl2:
+        load_variables: false
+        load_target: true
+        method: 1
+    - Push:
         - Integer: 123
     - RandomNumber
     - Pop
     - Push:
-        - Constant: 4
+        - Constant: 6
     - Trace
   label_positions: {}

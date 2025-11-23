@@ -25,5 +25,7 @@ gotoAndStop("scene", x);
 gotoAndStop(x);
 int(x);
 length(x);
+loadMovie("url", "target");
+loadMovie("url", "target", "get");
 random(123);
 trace("message");

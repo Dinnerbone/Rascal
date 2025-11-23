@@ -590,40 +590,98 @@ Ok:
     - Expr:
         span:
           start: 553
-          end: 564
+          end: 579
         value:
           Call:
             name:
               span:
                 start: 553
-                end: 559
+                end: 562
+              value:
+                Constant:
+                  Identifier: loadMovie
+            args:
+              - span:
+                  start: 563
+                  end: 568
+                value:
+                  Constant:
+                    String: url
+              - span:
+                  start: 570
+                  end: 578
+                value:
+                  Constant:
+                    String: target
+    - Expr:
+        span:
+          start: 581
+          end: 614
+        value:
+          Call:
+            name:
+              span:
+                start: 581
+                end: 590
+              value:
+                Constant:
+                  Identifier: loadMovie
+            args:
+              - span:
+                  start: 591
+                  end: 596
+                value:
+                  Constant:
+                    String: url
+              - span:
+                  start: 598
+                  end: 606
+                value:
+                  Constant:
+                    String: target
+              - span:
+                  start: 608
+                  end: 613
+                value:
+                  Constant:
+                    String: get
+    - Expr:
+        span:
+          start: 616
+          end: 627
+        value:
+          Call:
+            name:
+              span:
+                start: 616
+                end: 622
               value:
                 Constant:
                   Identifier: random
             args:
               - span:
-                  start: 560
-                  end: 563
+                  start: 623
+                  end: 626
                 value:
                   Constant:
                     Integer: 123
     - Expr:
         span:
-          start: 566
-          end: 582
+          start: 629
+          end: 645
         value:
           Call:
             name:
               span:
-                start: 566
-                end: 571
+                start: 629
+                end: 634
               value:
                 Constant:
                   Identifier: trace
             args:
               - span:
-                  start: 572
-                  end: 581
+                  start: 635
+                  end: 644
                 value:
                   Constant:
                     String: message

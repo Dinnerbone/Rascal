@@ -1,4 +1,4 @@
-ConstantPool "x", "http://ruffle.rs", "window", "/:$version", "message"
+ConstantPool "x", "http://ruffle.rs", "window", "/:$version", "url", "target", "message"
 Push 123
 Call
 Push constant0
@@ -61,8 +61,14 @@ Push constant0
 GetVariable
 StringLength
 Pop
+Push constant4
+Push constant5
+GetURL2 false, true, 0
+Push constant4
+Push constant5
+GetURL2 false, true, 1
 Push 123
 RandomNumber
 Pop
-Push constant4
+Push constant6
 Trace

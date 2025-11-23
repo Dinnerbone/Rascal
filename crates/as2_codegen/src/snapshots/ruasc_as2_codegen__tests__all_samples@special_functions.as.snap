@@ -3,7 +3,7 @@ source: crates/as2_codegen/src/tests.rs
 expression: result
 input_file: samples/as2/special_functions.as
 ---
-ConstantPool "x", "http://ruffle.rs", "window", "message"
+ConstantPool "x", "http://ruffle.rs", "window", "url", "target", "message"
 Push 123
 Call
 Push constant0
@@ -66,8 +66,14 @@ Push constant0
 GetVariable
 StringLength
 Pop
+Push constant3
+Push constant4
+GetUrl2 false, true, 0
+Push constant3
+Push constant4
+GetUrl2 false, true, 1
 Push 123
 RandomNumber
 Pop
-Push constant3
+Push constant5
 Trace

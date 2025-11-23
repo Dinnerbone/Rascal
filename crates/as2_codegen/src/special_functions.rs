@@ -21,6 +21,7 @@ pub(crate) fn gen_special_call(
         "gotoAndStop" => fn_goto_and_stop(builder, span, args),
         "int" => fn_int(builder, span, args),
         "length" => fn_length(builder, span, args),
+        "loadMovie" => fn_load_movie(builder, span, args),
         "trace" => fn_trace(builder, span, args),
         "random" => fn_random(builder, span, args),
         _ => return false,
@@ -206,6 +207,25 @@ fn fn_get_url(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
     builder.action(Action::GetUrl2 {
         load_variables: false,
         load_target: false,
+        method,
+    });
+}
+
+fn fn_load_movie(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
+    if args.len() < 2 || args.len() > 3 {
+        builder.error(
+            "Wrong number of parameters; loadMovie requires between 2 and 3.",
+            span,
+        );
+        return;
+    }
+
+    gen_expr(builder, &args[0], false);
+    gen_expr(builder, &args[1], false);
+    let method = get_method(builder, args.get(2));
+    builder.action(Action::GetUrl2 {
+        load_variables: false,
+        load_target: true,
         method,
     });
 }
