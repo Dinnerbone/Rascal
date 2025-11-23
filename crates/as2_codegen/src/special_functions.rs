@@ -33,6 +33,7 @@ pub(crate) fn gen_special_call(
         "nextscene" => fn_next_scene(builder, span, args),
         "number" => fn_number(builder, span, args),
         "ord" => fn_ord(builder, span, args),
+        "play" => fn_play(builder, span, args),
         "trace" => fn_trace(builder, span, args),
         "random" => fn_random(builder, span, args),
         _ => return false,
@@ -505,6 +506,14 @@ fn fn_ord(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
         builder.action(Action::CharToAscii);
     } else {
         builder.error("Wrong number of parameters; ord requires exactly 1.", span);
+    }
+}
+
+fn fn_play(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
+    if args.is_empty() {
+        builder.action(Action::Play);
+    } else {
+        builder.error("Wrong number of parameters; play requires exactly 0.", span);
     }
 }
 

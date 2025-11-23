@@ -1725,61 +1725,86 @@ input_file: samples/as2/special_functions.as
 - kind: Identifier
   span:
     start: 1027
-    end: 1033
-  raw: random
+    end: 1031
+  raw: play
 - kind: OpenParen
   span:
-    start: 1033
-    end: 1034
+    start: 1031
+    end: 1032
   raw: (
-- kind: Integer
-  span:
-    start: 1034
-    end: 1037
-  raw: "123"
 - kind: CloseParen
   span:
-    start: 1037
-    end: 1038
+    start: 1032
+    end: 1033
   raw: )
 - kind: Semicolon
   span:
-    start: 1038
-    end: 1039
+    start: 1033
+    end: 1034
   raw: ;
 - kind: Newline
   span:
-    start: 1039
-    end: 1040
+    start: 1034
+    end: 1035
   raw: "\n"
 - kind: Identifier
   span:
-    start: 1040
-    end: 1045
-  raw: trace
+    start: 1035
+    end: 1041
+  raw: random
 - kind: OpenParen
+  span:
+    start: 1041
+    end: 1042
+  raw: (
+- kind: Integer
+  span:
+    start: 1042
+    end: 1045
+  raw: "123"
+- kind: CloseParen
   span:
     start: 1045
     end: 1046
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1046
+    end: 1047
+  raw: ;
+- kind: Newline
+  span:
+    start: 1047
+    end: 1048
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1048
+    end: 1053
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1053
+    end: 1054
   raw: (
 - kind:
     String: Double
   span:
-    start: 1046
-    end: 1055
+    start: 1054
+    end: 1063
   raw: message
 - kind: CloseParen
   span:
-    start: 1055
-    end: 1056
+    start: 1063
+    end: 1064
   raw: )
 - kind: Semicolon
   span:
-    start: 1056
-    end: 1057
+    start: 1064
+    end: 1065
   raw: ;
 - kind: Newline
   span:
-    start: 1057
-    end: 1058
+    start: 1065
+    end: 1066
   raw: "\n"
