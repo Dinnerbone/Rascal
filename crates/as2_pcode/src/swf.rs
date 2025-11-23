@@ -236,7 +236,7 @@ impl<'a> ActionEncoder<'a> {
             Action::SetVariable => self.write_small_action(OpCode::SetVariable),
             // Action::StackSwap => self.write_small_action(OpCode::StackSwap),
             Action::StartDrag => self.write_small_action(OpCode::StartDrag),
-            // Action::Stop => self.write_small_action(OpCode::Stop),
+            Action::Stop => self.write_small_action(OpCode::Stop),
             // Action::StopSounds => self.write_small_action(OpCode::StopSounds),
             Action::StoreRegister(action) => self.write_store_register(*action),
             Action::StrictEquals => self.write_small_action(OpCode::StrictEquals),

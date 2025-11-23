@@ -42,6 +42,7 @@ pub(crate) fn gen_special_call(
         "printnum" => fn_print_num(builder, span, args),
         "removemovieclip" => fn_remove_movie_clio(builder, span, args),
         "startdrag" => fn_start_drag(builder, span, args),
+        "stop" => fn_stop(builder, span, args),
         "trace" => fn_trace(builder, span, args),
         "random" => fn_random(builder, span, args),
         _ => return false,
@@ -730,6 +731,14 @@ fn fn_start_drag(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
             "startDrag requires 1 (target), 2 (target+lock) or 6 (target+lock+constraint) parameters.",
             span,
         );
+    }
+}
+
+fn fn_stop(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
+    if args.is_empty() {
+        builder.action(Action::Stop);
+    } else {
+        builder.error("Wrong number of parameters; stop requires exactly 0.", span);
     }
 }
 

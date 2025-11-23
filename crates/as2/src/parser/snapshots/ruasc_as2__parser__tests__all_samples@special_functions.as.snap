@@ -1614,20 +1614,34 @@ Ok:
     - Expr:
         span:
           start: 1509
-          end: 1525
+          end: 1515
         value:
           Call:
             name:
               span:
                 start: 1509
-                end: 1514
+                end: 1513
+              value:
+                Constant:
+                  Identifier: stop
+            args: []
+    - Expr:
+        span:
+          start: 1517
+          end: 1533
+        value:
+          Call:
+            name:
+              span:
+                start: 1517
+                end: 1522
               value:
                 Constant:
                   Identifier: trace
             args:
               - span:
-                  start: 1515
-                  end: 1524
+                  start: 1523
+                  end: 1532
                 value:
                   Constant:
                     String: message

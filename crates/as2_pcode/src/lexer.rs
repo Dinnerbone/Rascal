@@ -277,6 +277,7 @@ fn lex_identifier_or_action<'a>(stream: &mut Stream<'a>) -> Token<'a> {
         "setmember" => TokenKind::ActionName(ActionName::SetMember),
         "setvariable" => TokenKind::ActionName(ActionName::SetVariable),
         "startdrag" => TokenKind::ActionName(ActionName::StartDrag),
+        "stop" => TokenKind::ActionName(ActionName::Stop),
         "storeregister" => TokenKind::ActionName(ActionName::StoreRegister),
         "strictequals" => TokenKind::ActionName(ActionName::StrictEquals),
         "stringadd" => TokenKind::ActionName(ActionName::StringAdd),

@@ -3911,30 +3911,41 @@ input_file: samples/as2_pcode/special_functions.pcode
     end: 3250
   raw: "\n"
 - kind:
-    ActionName: Push
+    ActionName: Stop
   span:
     start: 3250
     end: 3254
+  raw: Stop
+- kind: Newline
+  span:
+    start: 3254
+    end: 3255
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 3255
+    end: 3259
   raw: Push
 - kind:
     Constant: 19
   span:
-    start: 3255
-    end: 3265
+    start: 3260
+    end: 3270
   raw: constant19
 - kind: Newline
   span:
-    start: 3265
-    end: 3266
+    start: 3270
+    end: 3271
   raw: "\n"
 - kind:
     ActionName: Trace
   span:
-    start: 3266
-    end: 3271
+    start: 3271
+    end: 3276
   raw: Trace
 - kind: Newline
   span:
-    start: 3271
-    end: 3272
+    start: 3276
+    end: 3277
   raw: "\n"

@@ -145,6 +145,7 @@ pub enum ActionName {
     SetMember,
     SetVariable,
     StartDrag,
+    Stop,
     StoreRegister,
     StrictEquals,
     StringAdd,
