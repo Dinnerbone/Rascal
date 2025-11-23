@@ -467,4 +467,19 @@ Ok:
         load_variables: false
         load_target: true
         method: 0
+    - Push:
+        - Constant: 20
+    - Push:
+        - Constant: 7
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - StringAdd
+    - GetUrl2:
+        load_variables: false
+        load_target: false
+        method: 0
+    - GetUrl:
+        url: ""
+        target: _level123
   label_positions: {}

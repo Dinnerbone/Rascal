@@ -76,3 +76,5 @@ targetPath(x);
 toggleHighQuality();
 trace("message");
 unloadMovie(x);
+unloadMovieNum(x);
+unloadMovieNum(123);
