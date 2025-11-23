@@ -1,0 +1,14 @@
+---
+source: crates/as2_codegen/src/tests.rs
+expression: result
+input_file: crates/as2_codegen/fail_samples/mbsubstring.as
+---
+error: Compile error(s)
+  ╭▸ mbsubstring.as:1:1
+  │
+1 │ mbsubstring();
+  │ ━━━━━━━━━━━━━ Wrong number of parameters; mbsubstring requires between 2 and 3.
+2 │ mbsubstring("a");
+  │ ━━━━━━━━━━━━━━━━ Wrong number of parameters; mbsubstring requires between 2 and 3.
+3 │ mbsubstring("a", 1, 2, 3);
+  ╰╴━━━━━━━━━━━━━━━━━━━━━━━━━ Wrong number of parameters; mbsubstring requires between 2 and 3.

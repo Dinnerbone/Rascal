@@ -14,6 +14,7 @@ Ok:
         - target
         - _level12
         - _level
+        - abc
         - message
     - Push:
         - Integer: 123
@@ -217,10 +218,26 @@ Ok:
     - MBCharToAscii
     - Pop
     - Push:
+        - Constant: 8
+    - Push:
+        - Integer: 1
+    - Push:
+        - Integer: -1
+    - MBStringExtract
+    - Pop
+    - Push:
+        - Constant: 8
+    - Push:
+        - Integer: 1
+    - Push:
+        - Integer: 2
+    - MBStringExtract
+    - Pop
+    - Push:
         - Integer: 123
     - RandomNumber
     - Pop
     - Push:
-        - Constant: 8
+        - Constant: 9
     - Trace
   label_positions: {}

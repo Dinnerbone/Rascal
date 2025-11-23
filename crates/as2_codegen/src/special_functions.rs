@@ -28,6 +28,7 @@ pub(crate) fn gen_special_call(
         "mbchr" => fn_mbchr(builder, span, args),
         "mblength" => fn_mblength(builder, span, args),
         "mbord" => fn_mbord(builder, span, args),
+        "mbsubstring" => fn_mbsubstring(builder, span, args),
         "trace" => fn_trace(builder, span, args),
         "random" => fn_random(builder, span, args),
         _ => return false,
@@ -439,6 +440,24 @@ fn fn_mbord(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
             span,
         );
     }
+}
+
+fn fn_mbsubstring(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
+    if args.len() < 2 || args.len() > 3 {
+        builder.error(
+            "Wrong number of parameters; mbsubstring requires between 2 and 3.",
+            span,
+        );
+        return;
+    }
+    gen_expr(builder, &args[0], false);
+    gen_expr(builder, &args[1], false);
+    if let Some(length) = args.get(2) {
+        gen_expr(builder, length, false);
+    } else {
+        builder.push(-1);
+    }
+    builder.action(Action::MBStringExtract);
 }
 
 fn fn_trace(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {

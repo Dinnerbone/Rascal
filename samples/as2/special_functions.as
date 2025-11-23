@@ -39,5 +39,7 @@ loadVariablesNum("url", x, "get");
 mbchr(x);
 mblength(x);
 mbord(x);
+mbsubstring("abc", 1);
+mbsubstring("abc", 1, 2);
 random(123);
 trace("message");

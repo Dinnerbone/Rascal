@@ -125,6 +125,7 @@ pub enum ActionName {
     Less2,
     MBAsciiToChar,
     MBCharToAscii,
+    MBStringExtract,
     MBStringLength,
     Modulo,
     Multiply,

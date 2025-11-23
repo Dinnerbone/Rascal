@@ -1,4 +1,4 @@
-ConstantPool "x", "http://ruffle.rs", "window", "/:$version", "url", "target", "_level12", "_level", "message"
+ConstantPool "x", "http://ruffle.rs", "window", "/:$version", "url", "target", "_level12", "_level", "abc", "message"
 Push 123
 Call
 Push constant0
@@ -111,8 +111,18 @@ Push constant0
 GetVariable
 MBCharToAscii
 Pop
+Push constant8
+Push 1
+Push -1
+MBStringExtract
+Pop
+Push constant8
+Push 1
+Push 2
+MBStringExtract
+Pop
 Push 123
 RandomNumber
 Pop
-Push constant8
+Push constant9
 Trace
