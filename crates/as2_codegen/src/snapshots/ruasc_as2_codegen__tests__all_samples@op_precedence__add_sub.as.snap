@@ -4,17 +4,13 @@ expression: result
 input_file: samples/as2/op_precedence/add_sub.as
 ---
 ConstantPool "a", "b", "c", "a=", ", b=", ", c=", "----", "a + b - c = ", "(a + b) - c = ", "---", "a - b + c = ", "(a - b) + c = ", "a + b - c + b = ", "(((a + b) - c) + b) = ", "a + -b = ", "a - -b = "
-Push constant0
-Push 10
+Push constant0, 10
 DefineLocal
-Push constant1
-Push 5
+Push constant1, 5
 DefineLocal
-Push constant2
-Push 2
+Push constant2, 2
 DefineLocal
-Push constant3
-Push constant0
+Push constant3, constant0
 GetVariable
 Add2
 Push constant4
@@ -30,8 +26,7 @@ Add2
 Trace
 Push constant6
 Trace
-Push constant7
-Push constant0
+Push constant7, constant0
 GetVariable
 Push constant1
 GetVariable
@@ -41,8 +36,7 @@ GetVariable
 Subtract
 Add2
 Trace
-Push constant8
-Push constant0
+Push constant8, constant0
 GetVariable
 Push constant1
 GetVariable
@@ -54,8 +48,7 @@ Add2
 Trace
 Push constant9
 Trace
-Push constant10
-Push constant0
+Push constant10, constant0
 GetVariable
 Push constant1
 GetVariable
@@ -65,8 +58,7 @@ GetVariable
 Add2
 Add2
 Trace
-Push constant11
-Push constant0
+Push constant11, constant0
 GetVariable
 Push constant1
 GetVariable
@@ -78,8 +70,7 @@ Add2
 Trace
 Push constant9
 Trace
-Push constant12
-Push constant0
+Push constant12, constant0
 GetVariable
 Push constant1
 GetVariable
@@ -92,8 +83,7 @@ GetVariable
 Add2
 Add2
 Trace
-Push constant13
-Push constant0
+Push constant13, constant0
 GetVariable
 Push constant1
 GetVariable
@@ -108,21 +98,17 @@ Add2
 Trace
 Push constant9
 Trace
-Push constant14
-Push constant0
+Push constant14, constant0
 GetVariable
-Push 0
-Push constant1
+Push 0, constant1
 GetVariable
 Subtract
 Add2
 Add2
 Trace
-Push constant15
-Push constant0
+Push constant15, constant0
 GetVariable
-Push 0
-Push constant1
+Push 0, constant1
 GetVariable
 Subtract
 Subtract

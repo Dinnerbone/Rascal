@@ -4,46 +4,32 @@ expression: result
 input_file: samples/as2/delete.as
 ---
 ConstantPool "num", "obj", "delete num: ", "delete obj: ", "delete obj.num: ", "delete obj.num + 1: ", "delete obj.num == "number" ? ":)" : ":(": ", ":)", ":(", "delete obj.num + delete obj.num: ", "trace", "delete obj.trace: ", "delete obj.trace(): ", "delete(nonexistent, obj): ", "nonexistent"
-Push constant0
-Push 1
+Push constant0, 1
 DefineLocal
-Push constant1
-Push constant0
-Push 1
-Push 1
+Push constant1, constant0, 1, 1
 InitObject
 DefineLocal
-Push constant2
-Push constant0
+Push constant2, constant0
 Delete2
 Add2
 Trace
-Push constant3
-Push constant1
+Push constant3, constant1
 Delete2
 Add2
 Trace
-Push constant1
-Push constant0
-Push 1
-Push 1
+Push constant1, constant0, 1, 1
 InitObject
 DefineLocal
-Push constant4
-Push constant1
+Push constant4, constant1
 GetVariable
 Push constant0
 Delete
 Add2
 Trace
-Push constant1
-Push constant0
-Push 1
-Push 1
+Push constant1, constant0, 1, 1
 InitObject
 DefineLocal
-Push constant5
-Push constant1
+Push constant5, constant1
 GetVariable
 Push constant0
 Delete
@@ -51,14 +37,10 @@ Push 1
 Add2
 Add2
 Trace
-Push constant1
-Push constant0
-Push 1
-Push 1
+Push constant1, constant0, 1, 1
 InitObject
 DefineLocal
-Push constant6
-Push constant1
+Push constant6, constant1
 GetVariable
 Push constant0
 Delete
@@ -69,14 +51,10 @@ Jump loc0000
 loc0001:Push constant8
 loc0000:Add2
 Trace
-Push constant1
-Push constant0
-Push 1
-Push 1
+Push constant1, constant0, 1, 1
 InitObject
 DefineLocal
-Push constant9
-Push constant1
+Push constant9, constant1
 GetVariable
 Push constant0
 Delete
@@ -87,42 +65,30 @@ Delete
 Add2
 Add2
 Trace
-Push constant1
-Push constant10
-Push constant10
+Push constant1, constant10, constant10
 GetVariable
-Push constant0
-Push 1
-Push 2
+Push constant0, 1, 2
 InitObject
 DefineLocal
-Push constant11
-Push constant1
+Push constant11, constant1
 GetVariable
 Push constant10
 Delete
 Add2
 Trace
-Push constant1
-Push constant10
-Push constant10
+Push constant1, constant10, constant10
 GetVariable
-Push constant0
-Push 1
-Push 2
+Push constant0, 1, 2
 InitObject
 DefineLocal
-Push constant12
-Push 0
-Push constant1
+Push constant12, 0, constant1
 GetVariable
 Push constant10
 CallMethod
 Delete2
 Add2
 Trace
-Push constant13
-Push constant14
+Push constant13, constant14
 GetVariable
 Pop
 Push constant1

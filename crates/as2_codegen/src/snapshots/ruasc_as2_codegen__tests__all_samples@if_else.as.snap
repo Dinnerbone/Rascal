@@ -4,21 +4,17 @@ expression: result
 input_file: samples/as2/if_else.as
 ---
 ConstantPool "condition", "x", "y", "doSomething", "positive", "negative", "zero", "undefined", "single", "both positive", "x positive, y negative", "x positive, y zero", "otherCondition", "doSomethingElse", "doFinal", "statement1", "statement2", "ambiguous else"
-Push constant0
-Push true
+Push constant0, true
 DefineLocal
-Push constant1
-Push 1
+Push constant1, 1
 DefineLocal
-Push constant2
-Push -1
+Push constant2, -1
 DefineLocal
 Push constant0
 GetVariable
 Not
 If loc0000
-Push 0
-Push constant3
+Push 0, constant3
 CallFunction
 Pop
 loc0000:Push constant1
@@ -107,8 +103,7 @@ loc0011:loc000f:loc000e:Push constant0
 GetVariable
 Not
 If loc0014
-Push 0
-Push constant3
+Push 0, constant3
 CallFunction
 Pop
 Jump loc0013
@@ -116,25 +111,21 @@ loc0014:Push constant12
 GetVariable
 Not
 If loc0016
-Push 0
-Push constant13
+Push 0, constant13
 CallFunction
 Pop
 Jump loc0015
-loc0016:Push 0
-Push constant14
+loc0016:Push 0, constant14
 CallFunction
 Pop
 loc0015:loc0013:Push constant0
 GetVariable
 Not
 If loc0017
-Push 0
-Push constant15
+Push 0, constant15
 CallFunction
 Pop
-loc0017:Push 0
-Push constant16
+loc0017:Push 0, constant16
 CallFunction
 Pop
 Push constant1

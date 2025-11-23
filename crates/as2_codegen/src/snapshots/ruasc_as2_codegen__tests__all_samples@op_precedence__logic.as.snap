@@ -4,17 +4,13 @@ expression: result
 input_file: samples/as2/op_precedence/logic.as
 ---
 ConstantPool "a", "b", "c", "a=", ", b=", ", c=", "----", "a && b = ", "b && c = ", "---", "a || b = ", "b || c = ", "a && c && b = ", "((a && c) && b) = ", "a || b || c = ", "((a || b) || c) = ", "a || b && c = ", "(a || (b && c)) = ", "x", "y", "z", "x && y || z = ", "((x && y) || z) = "
-Push constant0
-Push true
+Push constant0, true
 DefineLocal
-Push constant1
-Push false
+Push constant1, false
 DefineLocal
-Push constant2
-Push true
+Push constant2, true
 DefineLocal
-Push constant3
-Push constant0
+Push constant3, constant0
 GetVariable
 Add2
 Push constant4
@@ -30,8 +26,7 @@ Add2
 Trace
 Push constant6
 Trace
-Push constant7
-Push constant0
+Push constant7, constant0
 GetVariable
 PushDuplicate
 Not
@@ -41,8 +36,7 @@ Push constant1
 GetVariable
 loc0000:Add2
 Trace
-Push constant8
-Push constant1
+Push constant8, constant1
 GetVariable
 PushDuplicate
 Not
@@ -54,8 +48,7 @@ loc0001:Add2
 Trace
 Push constant9
 Trace
-Push constant10
-Push constant0
+Push constant10, constant0
 GetVariable
 PushDuplicate
 If loc0002
@@ -64,8 +57,7 @@ Push constant1
 GetVariable
 loc0002:Add2
 Trace
-Push constant11
-Push constant1
+Push constant11, constant1
 GetVariable
 PushDuplicate
 If loc0003
@@ -76,8 +68,7 @@ loc0003:Add2
 Trace
 Push constant9
 Trace
-Push constant12
-Push constant0
+Push constant12, constant0
 GetVariable
 PushDuplicate
 Not
@@ -93,8 +84,7 @@ Push constant1
 GetVariable
 loc0004:Add2
 Trace
-Push constant13
-Push constant0
+Push constant13, constant0
 GetVariable
 PushDuplicate
 Not
@@ -112,8 +102,7 @@ loc0006:Add2
 Trace
 Push constant9
 Trace
-Push constant14
-Push constant0
+Push constant14, constant0
 GetVariable
 PushDuplicate
 If loc0009
@@ -127,8 +116,7 @@ Push constant2
 GetVariable
 loc0008:Add2
 Trace
-Push constant15
-Push constant0
+Push constant15, constant0
 GetVariable
 PushDuplicate
 If loc000b
@@ -144,8 +132,7 @@ loc000a:Add2
 Trace
 Push constant9
 Trace
-Push constant16
-Push constant0
+Push constant16, constant0
 GetVariable
 PushDuplicate
 If loc000d
@@ -160,8 +147,7 @@ Push constant2
 GetVariable
 loc000c:Add2
 Trace
-Push constant17
-Push constant0
+Push constant17, constant0
 GetVariable
 PushDuplicate
 If loc000e
@@ -178,17 +164,13 @@ loc000f:loc000e:Add2
 Trace
 Push constant9
 Trace
-Push constant18
-Push false
+Push constant18, false
 DefineLocal
-Push constant19
-Push true
+Push constant19, true
 DefineLocal
-Push constant20
-Push false
+Push constant20, false
 DefineLocal
-Push constant21
-Push constant18
+Push constant21, constant18
 GetVariable
 PushDuplicate
 Not
@@ -203,8 +185,7 @@ Push constant20
 GetVariable
 loc0010:Add2
 Trace
-Push constant22
-Push constant18
+Push constant22, constant18
 GetVariable
 PushDuplicate
 Not

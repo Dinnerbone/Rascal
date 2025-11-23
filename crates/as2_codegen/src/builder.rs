@@ -75,7 +75,14 @@ impl<'a> CodeBuilder<'a> {
     where
         V: Into<PushValue>,
     {
-        self.action(Action::Push(vec![value.into()]));
+        if !self.actions.has_dangling_label()
+            && let Some(Action::Push(values)) = self.actions.last_mut()
+        {
+            values.push(value.into());
+            self.assume_stack_delta(1);
+        } else {
+            self.action(Action::Push(vec![value.into()]));
+        }
     }
 
     pub fn break_label(&self) -> Option<String> {
@@ -118,9 +125,19 @@ mod tests {
         let mut builder = CodeBuilder::new(&mut constants);
         builder.push(PushValue::True);
         builder.push(PushValue::False);
+        assert_snapshot!(builder.actions, @"Push true, false");
+    }
+
+    #[test]
+    fn test_multiple_pushes_split_by_label() {
+        let mut constants = Constants::empty();
+        let mut builder = CodeBuilder::new(&mut constants);
+        builder.push(PushValue::True);
+        builder.mark_label("loc0001".to_string());
+        builder.push(PushValue::False);
         assert_snapshot!(builder.actions, @r"
         Push true
-        Push false
+        loc0001:Push false
         ");
     }
 }

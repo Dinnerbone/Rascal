@@ -15,8 +15,7 @@ Push constant2
 DefineFunction "", 2, "a", "b" {
 Push constant3
 Trace
-Push constant4
-Push constant5
+Push constant4, constant5
 GetVariable
 Add2
 Push constant6
@@ -27,17 +26,12 @@ Add2
 Trace
 }
 DefineLocal
-Push constant8
-Push constant9
-Push 2
-Push constant2
+Push constant8, constant9, 2, constant2
 CallFunction
 Pop
-Push 0
-Push constant10
+Push 0, constant10
 CallFunction
-Push 0
-Push constant10
+Push 0, constant10
 CallFunction
 Add2
 Trace

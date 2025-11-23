@@ -4,55 +4,46 @@ expression: result
 input_file: samples/as2/operators.as
 ---
 ConstantPool "a", "b", "a + b = ", "a - b = ", "a * b = ", "a / b = ", "a % b = ", "++a = ", "--a = ", "a++ = ", "a-- = ", "hello", "Hello", "world", "World", "hello + " " + world = ", " ", "x", "x = ", "x += 2 => ", "x -= 2 => ", "x *= 3 => ", "x /= 5 => ", "x %= 2 => ", "five", "three", "five & three = ", "five | three = ", "five ^ three = ", "~five = ", "five << 1 = ", "five >> 1 = ", "five >>> 1 = ", "five &= three => ", "five |= three => ", "five ^= three => ", "five <<= 1 => ", "five >>= 1 => ", "five >>>= 1 => ", "six", "seven", "sevenStr", "7", "six == seven: ", "six != seven: ", "six < seven: ", "six <= seven: ", "six > seven: ", "six >= seven: ", "sevenStr == seven: ", "sevenStr === seven: ", "sevenStr !== seven: ", "t", "f", "t && f: ", "t || f: ", "!t: ", "max", "(a > b) ? a : b = ", "obj", "key", "value", "obj instanceof Object: ", "Object"
-Push constant0
-Push 10
+Push constant0, 10
 DefineLocal
-Push constant1
-Push 3
+Push constant1, 3
 DefineLocal
-Push constant2
-Push constant0
+Push constant2, constant0
 GetVariable
 Push constant1
 GetVariable
 Add2
 Add2
 Trace
-Push constant3
-Push constant0
+Push constant3, constant0
 GetVariable
 Push constant1
 GetVariable
 Subtract
 Add2
 Trace
-Push constant4
-Push constant0
+Push constant4, constant0
 GetVariable
 Push constant1
 GetVariable
 Multiply
 Add2
 Trace
-Push constant5
-Push constant0
+Push constant5, constant0
 GetVariable
 Push constant1
 GetVariable
 Divide
 Add2
 Trace
-Push constant6
-Push constant0
+Push constant6, constant0
 GetVariable
 Push constant1
 GetVariable
 Modulo
 Add2
 Trace
-Push constant7
-Push constant0
-Push constant0
+Push constant7, constant0, constant0
 GetVariable
 Increment
 StoreRegister 0
@@ -60,9 +51,7 @@ SetVariable
 Push register0
 Add2
 Trace
-Push constant8
-Push constant0
-Push constant0
+Push constant8, constant0, constant0
 GetVariable
 Decrement
 StoreRegister 0
@@ -70,34 +59,27 @@ SetVariable
 Push register0
 Add2
 Trace
-Push constant9
-Push constant0
+Push constant9, constant0
 GetVariable
-Push constant0
-Push constant0
+Push constant0, constant0
 GetVariable
 Increment
 SetVariable
 Add2
 Trace
-Push constant10
-Push constant0
+Push constant10, constant0
 GetVariable
-Push constant0
-Push constant0
+Push constant0, constant0
 GetVariable
 Decrement
 SetVariable
 Add2
 Trace
-Push constant11
-Push constant12
+Push constant11, constant12
 DefineLocal
-Push constant13
-Push constant14
+Push constant13, constant14
 DefineLocal
-Push constant15
-Push constant11
+Push constant15, constant11
 GetVariable
 Push constant16
 Add2
@@ -106,17 +88,13 @@ GetVariable
 Add2
 Add2
 Trace
-Push constant17
-Push 5
+Push constant17, 5
 DefineLocal
-Push constant18
-Push constant17
+Push constant18, constant17
 GetVariable
 Add2
 Trace
-Push constant19
-Push constant17
-Push constant17
+Push constant19, constant17, constant17
 GetVariable
 Push 2
 Add2
@@ -125,9 +103,7 @@ SetVariable
 Push register0
 Add2
 Trace
-Push constant20
-Push constant17
-Push constant17
+Push constant20, constant17, constant17
 GetVariable
 Push 2
 Subtract
@@ -136,9 +112,7 @@ SetVariable
 Push register0
 Add2
 Trace
-Push constant21
-Push constant17
-Push constant17
+Push constant21, constant17, constant17
 GetVariable
 Push 3
 Multiply
@@ -147,9 +121,7 @@ SetVariable
 Push register0
 Add2
 Trace
-Push constant22
-Push constant17
-Push constant17
+Push constant22, constant17, constant17
 GetVariable
 Push 5
 Divide
@@ -158,9 +130,7 @@ SetVariable
 Push register0
 Add2
 Trace
-Push constant23
-Push constant17
-Push constant17
+Push constant23, constant17, constant17
 GetVariable
 Push 2
 Modulo
@@ -169,170 +139,138 @@ SetVariable
 Push register0
 Add2
 Trace
-Push constant24
-Push 5
+Push constant24, 5
 DefineLocal
-Push constant25
-Push 3
+Push constant25, 3
 DefineLocal
-Push constant26
-Push constant24
+Push constant26, constant24
 GetVariable
 Push constant25
 GetVariable
 BitAnd
 Add2
 Trace
-Push constant27
-Push constant24
+Push constant27, constant24
 GetVariable
 Push constant25
 GetVariable
 BitOr
 Add2
 Trace
-Push constant28
-Push constant24
+Push constant28, constant24
 GetVariable
 Push constant25
 GetVariable
 BitXor
 Add2
 Trace
-Push constant29
-Push constant24
+Push constant29, constant24
 GetVariable
 Push -1
 BitXor
 Add2
 Trace
-Push constant30
-Push constant24
+Push constant30, constant24
 GetVariable
 Push 1
 BitLShift
 Add2
 Trace
-Push constant31
-Push constant24
+Push constant31, constant24
 GetVariable
 Push 1
 BitRShift
 Add2
 Trace
-Push constant32
-Push constant24
+Push constant32, constant24
 GetVariable
 Push 1
 BitURShift
 Add2
 Trace
-Push constant24
-Push 5
+Push constant24, 5
 SetVariable
-Push constant24
-Push constant24
+Push constant24, constant24
 GetVariable
 Push constant25
 GetVariable
 BitAnd
 SetVariable
-Push constant33
-Push constant24
+Push constant33, constant24
 GetVariable
 Add2
 Trace
-Push constant24
-Push 5
+Push constant24, 5
 SetVariable
-Push constant24
-Push constant24
+Push constant24, constant24
 GetVariable
 Push constant25
 GetVariable
 BitOr
 SetVariable
-Push constant34
-Push constant24
+Push constant34, constant24
 GetVariable
 Add2
 Trace
-Push constant24
-Push 5
+Push constant24, 5
 SetVariable
-Push constant24
-Push constant24
+Push constant24, constant24
 GetVariable
 Push constant25
 GetVariable
 BitXor
 SetVariable
-Push constant35
-Push constant24
+Push constant35, constant24
 GetVariable
 Add2
 Trace
-Push constant24
-Push 5
+Push constant24, 5
 SetVariable
-Push constant24
-Push constant24
+Push constant24, constant24
 GetVariable
 Push 1
 BitLShift
 SetVariable
-Push constant36
-Push constant24
+Push constant36, constant24
 GetVariable
 Add2
 Trace
-Push constant24
-Push 5
+Push constant24, 5
 SetVariable
-Push constant24
-Push constant24
+Push constant24, constant24
 GetVariable
 Push 1
 BitRShift
 SetVariable
-Push constant37
-Push constant24
+Push constant37, constant24
 GetVariable
 Add2
 Trace
-Push constant24
-Push 5
+Push constant24, 5
 SetVariable
-Push constant24
-Push constant24
+Push constant24, constant24
 GetVariable
 Push 1
 BitURShift
 SetVariable
-Push constant38
-Push constant24
+Push constant38, constant24
 GetVariable
 Add2
 Trace
-Push constant39
-Push 6
+Push constant39, 6
 DefineLocal
-Push constant40
-Push 7
+Push constant40, 7
 DefineLocal
-Push constant41
-Push constant42
+Push constant41, constant42
 DefineLocal
-Push constant43
-Push constant39
+Push constant43, constant39
 GetVariable
 Push constant40
 GetVariable
 Equals2
 Add2
 Trace
-Push constant44
-Push constant39
+Push constant44, constant39
 GetVariable
 Push constant40
 GetVariable
@@ -340,16 +278,14 @@ Equals2
 Not
 Add2
 Trace
-Push constant45
-Push constant39
+Push constant45, constant39
 GetVariable
 Push constant40
 GetVariable
 Less2
 Add2
 Trace
-Push constant46
-Push constant39
+Push constant46, constant39
 GetVariable
 Push constant40
 GetVariable
@@ -357,16 +293,14 @@ Greater
 Not
 Add2
 Trace
-Push constant47
-Push constant39
+Push constant47, constant39
 GetVariable
 Push constant40
 GetVariable
 Greater
 Add2
 Trace
-Push constant48
-Push constant39
+Push constant48, constant39
 GetVariable
 Push constant40
 GetVariable
@@ -374,24 +308,21 @@ Less2
 Not
 Add2
 Trace
-Push constant49
-Push constant41
+Push constant49, constant41
 GetVariable
 Push constant40
 GetVariable
 Equals2
 Add2
 Trace
-Push constant50
-Push constant41
+Push constant50, constant41
 GetVariable
 Push constant40
 GetVariable
 StrictEquals
 Add2
 Trace
-Push constant51
-Push constant41
+Push constant51, constant41
 GetVariable
 Push constant40
 GetVariable
@@ -399,14 +330,11 @@ StrictEquals
 Not
 Add2
 Trace
-Push constant52
-Push true
+Push constant52, true
 DefineLocal
-Push constant53
-Push false
+Push constant53, false
 DefineLocal
-Push constant54
-Push constant52
+Push constant54, constant52
 GetVariable
 PushDuplicate
 Not
@@ -416,8 +344,7 @@ Push constant53
 GetVariable
 loc0000:Add2
 Trace
-Push constant55
-Push constant52
+Push constant55, constant52
 GetVariable
 PushDuplicate
 If loc0001
@@ -426,14 +353,12 @@ Push constant53
 GetVariable
 loc0001:Add2
 Trace
-Push constant56
-Push constant52
+Push constant56, constant52
 GetVariable
 Not
 Add2
 Trace
-Push constant57
-Push constant0
+Push constant57, constant0
 GetVariable
 Push constant1
 GetVariable
@@ -446,19 +371,14 @@ Jump loc0002
 loc0003:Push constant1
 GetVariable
 loc0002:DefineLocal
-Push constant58
-Push constant57
+Push constant58, constant57
 GetVariable
 Add2
 Trace
-Push constant59
-Push constant60
-Push constant61
-Push 1
+Push constant59, constant60, constant61, 1
 InitObject
 DefineLocal
-Push constant62
-Push constant59
+Push constant62, constant59
 GetVariable
 Push constant63
 GetVariable

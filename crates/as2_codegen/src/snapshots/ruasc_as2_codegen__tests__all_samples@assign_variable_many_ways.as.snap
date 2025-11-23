@@ -4,19 +4,15 @@ expression: result
 input_file: samples/as2/assign_variable_many_ways.as
 ---
 ConstantPool "message", "Hello", " ", "World", "!", "a", "b", "c", "a: ", "b: ", "c: "
-Push constant0
-Push constant1
-Push constant2
+Push constant0, constant1, constant2
 Add2
 DefineLocal
-Push constant0
-Push constant0
+Push constant0, constant0
 GetVariable
 Push constant3
 Add2
 SetVariable
-Push constant0
-Push constant0
+Push constant0, constant0
 GetVariable
 Push constant4
 Add2
@@ -24,26 +20,21 @@ SetVariable
 Push constant0
 GetVariable
 Trace
-Push constant5
-Push 1
+Push constant5, 1
 DefineLocal
 Push constant6
 DefineLocal2
-Push constant7
-Push 3
+Push constant7, 3
 DefineLocal
-Push constant8
-Push constant5
+Push constant8, constant5
 GetVariable
 Add2
 Trace
-Push constant9
-Push constant6
+Push constant9, constant6
 GetVariable
 Add2
 Trace
-Push constant10
-Push constant7
+Push constant10, constant7
 GetVariable
 Add2
 Trace

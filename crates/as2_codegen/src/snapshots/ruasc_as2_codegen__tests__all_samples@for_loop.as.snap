@@ -6,8 +6,7 @@ input_file: samples/as2/for_loop.as
 ConstantPool "for_classic", "i", "for_no_init", "j", "start", "end", "for_no_condition", "k", "for_no_update", "n", "for_all_omitted", "count", "loop", "done", "for_in_object", "obj", "a", "b", "key", "=", "for_in_array", "arr", "idx", "for_multiple_clauses", ",", "for_continue_break", "x", "for_nested", "outer", "inner", "for_existing_var", "z", "for_single_statement_body", "q"
 Push constant0
 Trace
-Push constant1
-Push 0
+Push constant1, 0
 DefineLocal
 loc0002:Push constant1
 GetVariable
@@ -18,16 +17,14 @@ If loc0000
 Push constant1
 GetVariable
 Trace
-loc0001:Push constant1
-Push constant1
+loc0001:Push constant1, constant1
 GetVariable
 Increment
 SetVariable
 Jump loc0002
 loc0000:Push constant2
 Trace
-Push constant3
-Push 3
+Push constant3, 3
 DefineLocal
 Push constant4
 Trace
@@ -40,8 +37,7 @@ If loc0003
 Push constant3
 GetVariable
 Trace
-loc0004:Push constant3
-Push constant3
+loc0004:Push constant3, constant3
 GetVariable
 Increment
 SetVariable
@@ -50,8 +46,7 @@ loc0003:Push constant5
 Trace
 Push constant6
 Trace
-Push constant7
-Push 0
+Push constant7, 0
 DefineLocal
 loc0008:Push constant7
 GetVariable
@@ -64,16 +59,14 @@ Not
 Not
 If loc0009
 Jump loc0006
-loc0009:loc0007:Push constant7
-Push constant7
+loc0009:loc0007:Push constant7, constant7
 GetVariable
 Increment
 SetVariable
 Jump loc0008
 loc0006:Push constant8
 Trace
-Push constant9
-Push 0
+Push constant9, 0
 DefineLocal
 loc000c:Push constant9
 GetVariable
@@ -84,21 +77,18 @@ If loc000a
 Push constant9
 GetVariable
 Trace
-Push constant9
-Push constant9
+Push constant9, constant9
 GetVariable
 Increment
 SetVariable
 loc000b:Jump loc000c
 loc000a:Push constant10
 Trace
-Push constant11
-Push 0
+Push constant11, 0
 DefineLocal
 loc000f:Push constant12
 Trace
-Push constant11
-Push constant11
+Push constant11, constant11
 GetVariable
 Increment
 SetVariable
@@ -114,19 +104,16 @@ loc000d:Push constant13
 Trace
 Push constant14
 Trace
-Push constant15
-Push 0
+Push constant15, 0
 InitObject
 DefineLocal
 Push constant15
 GetVariable
-Push constant16
-Push 10
+Push constant16, 10
 SetMember
 Push constant15
 GetVariable
-Push constant17
-Push 20
+Push constant17, 20
 SetMember
 Push constant15
 GetVariable
@@ -135,8 +122,7 @@ loc0012:StoreRegister 0
 Push null
 Equals2
 If loc0011
-Push constant18
-Push register0
+Push constant18, register0
 DefineLocal
 Push constant18
 GetVariable
@@ -152,11 +138,7 @@ Trace
 Jump loc0012
 loc0011:Push constant20
 Trace
-Push constant21
-Push 7
-Push 6
-Push 5
-Push 3
+Push constant21, 7, 6, 5, 3
 InitArray
 DefineLocal
 Push constant22
@@ -168,8 +150,7 @@ loc0014:StoreRegister 0
 Push null
 Equals2
 If loc0013
-Push constant22
-Push register0
+Push constant22, register0
 SetVariable
 Push constant22
 GetVariable
@@ -185,11 +166,9 @@ Trace
 Jump loc0014
 loc0013:Push constant23
 Trace
-Push constant16
-Push 0
+Push constant16, 0
 DefineLocal
-Push constant17
-Push 3
+Push constant17, 3
 DefineLocal
 loc0017:Push constant16
 GetVariable
@@ -206,21 +185,18 @@ Push constant17
 GetVariable
 Add2
 Trace
-loc0016:Push constant16
-Push constant16
+loc0016:Push constant16, constant16
 GetVariable
 Increment
 SetVariable
-Push constant17
-Push constant17
+Push constant17, constant17
 GetVariable
 Decrement
 SetVariable
 Jump loc0017
 loc0015:Push constant25
 Trace
-Push constant26
-Push 0
+Push constant26, 0
 DefineLocal
 loc001a:Push constant26
 GetVariable
@@ -247,16 +223,14 @@ Jump loc0019
 loc001c:Push constant26
 GetVariable
 Trace
-loc0019:Push constant26
-Push constant26
+loc0019:Push constant26, constant26
 GetVariable
 Increment
 SetVariable
 Jump loc001a
 loc0018:Push constant27
 Trace
-Push constant28
-Push 0
+Push constant28, 0
 DefineLocal
 loc001f:Push constant28
 GetVariable
@@ -264,8 +238,7 @@ Push 2
 Less2
 Not
 If loc001d
-Push constant29
-Push 0
+Push constant29, 0
 DefineLocal
 loc0022:Push constant29
 GetVariable
@@ -281,14 +254,12 @@ Push constant29
 GetVariable
 Add2
 Trace
-loc0021:Push constant29
-Push constant29
+loc0021:Push constant29, constant29
 GetVariable
 Increment
 SetVariable
 Jump loc0022
-loc0020:loc001e:Push constant28
-Push constant28
+loc0020:loc001e:Push constant28, constant28
 GetVariable
 Increment
 SetVariable
@@ -297,8 +268,7 @@ loc001d:Push constant30
 Trace
 Push constant31
 DefineLocal2
-Push constant31
-Push 1
+Push constant31, 1
 SetVariable
 loc0025:Push constant31
 GetVariable
@@ -310,16 +280,14 @@ If loc0023
 Push constant31
 GetVariable
 Trace
-loc0024:Push constant31
-Push constant31
+loc0024:Push constant31, constant31
 GetVariable
 Increment
 SetVariable
 Jump loc0025
 loc0023:Push constant32
 Trace
-Push constant33
-Push 0
+Push constant33, 0
 DefineLocal
 loc0028:Push constant33
 GetVariable
@@ -330,8 +298,7 @@ If loc0026
 Push constant33
 GetVariable
 Trace
-loc0027:Push constant33
-Push constant33
+loc0027:Push constant33, constant33
 GetVariable
 Increment
 SetVariable

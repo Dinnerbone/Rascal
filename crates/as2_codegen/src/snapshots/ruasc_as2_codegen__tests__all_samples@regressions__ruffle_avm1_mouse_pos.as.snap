@@ -23,16 +23,13 @@ loc0001:Not
 If loc0000
 Push undefined
 Return
-loc0000:Push constant1
-Push constant0
+loc0000:Push constant1, constant0
 GetVariable
 SetVariable
-Push constant3
-Push constant2
+Push constant3, constant2
 GetVariable
 SetVariable
-Push constant4
-Push constant5
+Push constant4, constant5
 Add2
 Push constant0
 GetVariable
@@ -43,8 +40,7 @@ Push constant2
 GetVariable
 Add2
 Trace
-Push constant6
-Push constant7
+Push constant6, constant7
 GetVariable
 Push constant8
 GetVariable
@@ -61,8 +57,7 @@ GetVariable
 Push 7
 InitArray
 DefineLocal
-Push constant14
-Push 0
+Push constant14, 0
 DefineLocal
 loc0004:Push constant14
 GetVariable
@@ -73,8 +68,7 @@ GetMember
 Less2
 Not
 If loc0002
-Push constant16
-Push constant6
+Push constant16, constant6
 GetVariable
 Push constant14
 GetVariable
@@ -99,8 +93,7 @@ Push constant2
 GetMember
 Add2
 Trace
-loc0003:Push constant14
-Push constant14
+loc0003:Push constant14, constant14
 GetVariable
 Increment
 SetVariable
@@ -110,19 +103,16 @@ Trace
 }
 Pop
 DefineFunction "onEnterFrame", 0 {
-Push 0
-Push constant19
+Push 0, constant19
 CallFunction
 Pop
 }
 Pop
 Push constant12
 GetVariable
-Push constant20
-Push constant12
+Push constant20, constant12
 GetVariable
-Push constant21
-Push 0
+Push constant21, 0
 StoreRegister 0
 SetMember
 Push register0

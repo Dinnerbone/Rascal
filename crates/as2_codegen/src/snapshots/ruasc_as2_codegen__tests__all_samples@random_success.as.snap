@@ -4,8 +4,7 @@ expression: result
 input_file: samples/as2/random_success.as
 ---
 ConstantPool "success", "Success! Hurrah!", "Failed :(", "-- end --"
-Push constant0
-Push true
+Push constant0, true
 DefineLocal
 Push 2
 RandomNumber
@@ -13,8 +12,7 @@ Push 0
 Equals2
 Not
 If loc0000
-Push constant0
-Push false
+Push constant0, false
 SetVariable
 loc0000:Push constant0
 GetVariable

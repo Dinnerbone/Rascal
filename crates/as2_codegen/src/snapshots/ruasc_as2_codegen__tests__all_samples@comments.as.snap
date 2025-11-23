@@ -4,44 +4,32 @@ expression: result
 input_file: samples/as2/comments.as
 ---
 ConstantPool "a", "1", "b", "2", "c", "3", "d", "4", "test", "e", "5", "f", "// not a comment", "g", "/* not a comment */", "h", ""/* still not a comment */"", "i", "6", "j", "7", "k", "8"
-Push constant0
-Push constant1
+Push constant0, constant1
 DefineLocal
-Push constant2
-Push constant3
+Push constant2, constant3
 DefineLocal
-Push constant4
-Push constant5
+Push constant4, constant5
 DefineLocal
-Push constant6
-Push constant7
+Push constant6, constant7
 DefineLocal
 Push constant2
 GetVariable
 Push constant0
 GetVariable
-Push 2
-Push constant8
+Push 2, constant8
 CallFunction
 Pop
-Push constant9
-Push constant10
+Push constant9, constant10
 DefineLocal
-Push constant11
-Push constant12
+Push constant11, constant12
 DefineLocal
-Push constant13
-Push constant14
+Push constant13, constant14
 DefineLocal
-Push constant15
-Push constant16
+Push constant15, constant16
 DefineLocal
-Push constant17
-Push constant18
+Push constant17, constant18
 DefineLocal
-Push constant19
-Push constant20
+Push constant19, constant20
 DefineLocal
-Push constant21
-Push constant22
+Push constant21, constant22
 DefineLocal

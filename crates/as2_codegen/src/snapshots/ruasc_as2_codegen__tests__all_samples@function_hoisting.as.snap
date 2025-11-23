@@ -12,12 +12,10 @@ Trace
 Pop
 Push constant1
 Trace
-Push 0
-Push constant2
+Push 0, constant2
 CallFunction
 Pop
-Push constant3
-Push constant4
+Push constant3, constant4
 GetVariable
 Add2
 Push constant5
@@ -31,8 +29,7 @@ Pop
 DefineFunction "secondFunction", 0 {
 Push constant7
 Trace
-Push constant3
-Push constant4
+Push constant3, constant4
 GetVariable
 Add2
 Push constant5
@@ -46,8 +43,7 @@ Pop
 DefineFunction "secondFunction", 0 {
 Push constant8
 Trace
-Push constant3
-Push constant4
+Push constant3, constant4
 GetVariable
 Add2
 Push constant5
@@ -68,49 +64,37 @@ Push constant10
 Trace
 }
 Pop
-Push constant4
-Push 1
+Push constant4, 1
 DefineLocal
-Push 0
-Push constant11
+Push 0, constant11
 CallFunction
 Pop
-Push 0
-Push constant12
+Push 0, constant12
 CallFunction
 Pop
-Push constant6
-Push 2
+Push constant6, 2
 DefineLocal
-Push 0
-Push constant11
+Push 0, constant11
 CallFunction
 Pop
-Push 0
-Push constant12
+Push 0, constant12
 CallFunction
 Pop
-Push 0
-Push constant11
+Push 0, constant11
 CallFunction
 Pop
-Push 0
-Push constant12
+Push 0, constant12
 CallFunction
 Pop
-Push 0
-Push constant11
+Push 0, constant11
 CallFunction
 Pop
-Push 0
-Push constant12
+Push 0, constant12
 CallFunction
 Pop
-Push 0
-Push constant2
+Push 0, constant2
 CallFunction
 Pop
-Push 0
-Push constant13
+Push 0, constant13
 CallFunction
 Pop

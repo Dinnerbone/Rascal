@@ -4,8 +4,7 @@ expression: result
 input_file: samples/as2/nested_break_continue.as
 ---
 ConstantPool "i", "i = ", "j", "fn", "trying to break from fn", "j = "
-Push constant0
-Push 0
+Push constant0, 0
 DefineLocal
 loc0002:Push constant0
 GetVariable
@@ -13,13 +12,11 @@ Push 4
 Less2
 Not
 If loc0000
-Push constant1
-Push constant0
+Push constant1, constant0
 GetVariable
 Add2
 Trace
-Push constant2
-Push 0
+Push constant2, 0
 DefineLocal
 loc0005:Push constant2
 GetVariable
@@ -33,8 +30,7 @@ Push constant4
 Trace
 }
 DefineLocal
-Push constant5
-Push constant2
+Push constant5, constant2
 GetVariable
 Add2
 Trace
@@ -44,8 +40,7 @@ Push 1
 Equals2
 Not
 If loc0006
-Push 0
-Push constant3
+Push 0, constant3
 CallFunction
 Pop
 Jump loc0004
@@ -56,8 +51,7 @@ Equals2
 Not
 If loc0007
 Jump loc0003
-loc0007:loc0004:Push constant2
-Push constant2
+loc0007:loc0004:Push constant2, constant2
 GetVariable
 Increment
 SetVariable
@@ -76,8 +70,7 @@ Equals2
 Not
 If loc0009
 Jump loc0000
-loc0009:loc0001:Push constant0
-Push constant0
+loc0009:loc0001:Push constant0, constant0
 GetVariable
 Increment
 SetVariable

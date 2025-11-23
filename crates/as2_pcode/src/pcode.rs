@@ -34,6 +34,15 @@ impl Actions {
     pub fn replace_action(&mut self, index: usize, action: Action) {
         self.actions[index] = action;
     }
+
+    pub fn last_mut(&mut self) -> Option<&mut Action> {
+        self.actions.last_mut()
+    }
+
+    pub fn has_dangling_label(&self) -> bool {
+        let current_pos = self.actions.len();
+        self.label_positions.values().any(|p| *p == current_pos)
+    }
 }
 
 impl std::fmt::Display for Actions {

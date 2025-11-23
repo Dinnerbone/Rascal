@@ -14,8 +14,7 @@ GetTime
 Pop
 GetUrl "http://ruffle.rs", ""
 GetUrl "http://ruffle.rs", "window"
-Push constant1
-Push constant2
+Push constant1, constant2
 GetUrl2 false, false, 1
 Push "/:$version"
 GetVariable
@@ -66,19 +65,14 @@ Push constant0
 GetVariable
 StringLength
 Pop
-Push constant3
-Push constant4
+Push constant3, constant4
 GetUrl2 false, true, 0
-Push constant3
-Push constant4
+Push constant3, constant4
 GetUrl2 false, true, 1
 GetUrl "url", "_level12"
-Push constant3
-Push constant5
+Push constant3, constant5
 GetUrl2 false, false, 1
-Push constant3
-Push constant6
-Push constant0
+Push constant3, constant6, constant0
 GetVariable
 StringAdd
 GetUrl2 false, false, 1
