@@ -57,5 +57,8 @@ printAsBitmap(_root, "bmovie");
 printAsBitmapNum("123", "bmax");
 printAsBitmapNum(x, "bframe");
 printAsBitmapNum(x, "bmovie");
+printNum("123", "bmax");
+printNum(x, "bframe");
+printNum(x, "bmovie");
 random(123);
 trace("message");

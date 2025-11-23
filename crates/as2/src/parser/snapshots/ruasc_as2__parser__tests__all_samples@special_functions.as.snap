@@ -1374,40 +1374,118 @@ Ok:
     - Expr:
         span:
           start: 1318
-          end: 1329
+          end: 1341
         value:
           Call:
             name:
               span:
                 start: 1318
-                end: 1324
+                end: 1326
+              value:
+                Constant:
+                  Identifier: printNum
+            args:
+              - span:
+                  start: 1327
+                  end: 1332
+                value:
+                  Constant:
+                    String: "123"
+              - span:
+                  start: 1334
+                  end: 1340
+                value:
+                  Constant:
+                    String: bmax
+    - Expr:
+        span:
+          start: 1343
+          end: 1364
+        value:
+          Call:
+            name:
+              span:
+                start: 1343
+                end: 1351
+              value:
+                Constant:
+                  Identifier: printNum
+            args:
+              - span:
+                  start: 1352
+                  end: 1353
+                value:
+                  Constant:
+                    Identifier: x
+              - span:
+                  start: 1355
+                  end: 1363
+                value:
+                  Constant:
+                    String: bframe
+    - Expr:
+        span:
+          start: 1366
+          end: 1387
+        value:
+          Call:
+            name:
+              span:
+                start: 1366
+                end: 1374
+              value:
+                Constant:
+                  Identifier: printNum
+            args:
+              - span:
+                  start: 1375
+                  end: 1376
+                value:
+                  Constant:
+                    Identifier: x
+              - span:
+                  start: 1378
+                  end: 1386
+                value:
+                  Constant:
+                    String: bmovie
+    - Expr:
+        span:
+          start: 1389
+          end: 1400
+        value:
+          Call:
+            name:
+              span:
+                start: 1389
+                end: 1395
               value:
                 Constant:
                   Identifier: random
             args:
               - span:
-                  start: 1325
-                  end: 1328
+                  start: 1396
+                  end: 1399
                 value:
                   Constant:
                     Integer: 123
     - Expr:
         span:
-          start: 1331
-          end: 1347
+          start: 1402
+          end: 1418
         value:
           Call:
             name:
               span:
-                start: 1331
-                end: 1336
+                start: 1402
+                end: 1407
               value:
                 Constant:
                   Identifier: trace
             args:
               - span:
-                  start: 1337
-                  end: 1346
+                  start: 1408
+                  end: 1417
                 value:
                   Constant:
                     String: message

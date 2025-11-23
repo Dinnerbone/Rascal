@@ -3203,63 +3203,351 @@ input_file: samples/as2_pcode/special_functions.pcode
     start: 2713
     end: 2717
   raw: Push
-- kind: Integer
+- kind:
+    Constant: 9
   span:
     start: 2718
-    end: 2721
-  raw: "123"
+    end: 2727
+  raw: constant9
 - kind: Newline
   span:
-    start: 2721
-    end: 2722
-  raw: "\n"
-- kind:
-    ActionName: RandomNumber
-  span:
-    start: 2722
-    end: 2734
-  raw: RandomNumber
-- kind: Newline
-  span:
-    start: 2734
-    end: 2735
-  raw: "\n"
-- kind:
-    ActionName: Pop
-  span:
-    start: 2735
-    end: 2738
-  raw: Pop
-- kind: Newline
-  span:
-    start: 2738
-    end: 2739
+    start: 2727
+    end: 2728
   raw: "\n"
 - kind:
     ActionName: Push
   span:
-    start: 2739
+    start: 2728
+    end: 2732
+  raw: Push
+- kind:
+    Constant: 18
+  span:
+    start: 2733
     end: 2743
+  raw: constant18
+- kind: Newline
+  span:
+    start: 2743
+    end: 2744
+  raw: "\n"
+- kind:
+    ActionName: GetUrl2
+  span:
+    start: 2744
+    end: 2751
+  raw: GetURL2
+- kind: "False"
+  span:
+    start: 2752
+    end: 2757
+  raw: "false"
+- kind: Comma
+  span:
+    start: 2757
+    end: 2758
+  raw: ","
+- kind: "False"
+  span:
+    start: 2759
+    end: 2764
+  raw: "false"
+- kind: Comma
+  span:
+    start: 2764
+    end: 2765
+  raw: ","
+- kind: Integer
+  span:
+    start: 2766
+    end: 2767
+  raw: "0"
+- kind: Newline
+  span:
+    start: 2767
+    end: 2768
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 2768
+    end: 2772
+  raw: Push
+- kind:
+    Constant: 11
+  span:
+    start: 2773
+    end: 2783
+  raw: constant11
+- kind: Newline
+  span:
+    start: 2783
+    end: 2784
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 2784
+    end: 2788
+  raw: Push
+- kind:
+    Constant: 7
+  span:
+    start: 2789
+    end: 2798
+  raw: constant7
+- kind: Newline
+  span:
+    start: 2798
+    end: 2799
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 2799
+    end: 2803
+  raw: Push
+- kind:
+    Constant: 0
+  span:
+    start: 2804
+    end: 2813
+  raw: constant0
+- kind: Newline
+  span:
+    start: 2813
+    end: 2814
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 2814
+    end: 2825
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 2825
+    end: 2826
+  raw: "\n"
+- kind:
+    ActionName: StringAdd
+  span:
+    start: 2826
+    end: 2835
+  raw: StringAdd
+- kind: Newline
+  span:
+    start: 2835
+    end: 2836
+  raw: "\n"
+- kind:
+    ActionName: GetUrl2
+  span:
+    start: 2836
+    end: 2843
+  raw: GetURL2
+- kind: "False"
+  span:
+    start: 2844
+    end: 2849
+  raw: "false"
+- kind: Comma
+  span:
+    start: 2849
+    end: 2850
+  raw: ","
+- kind: "False"
+  span:
+    start: 2851
+    end: 2856
+  raw: "false"
+- kind: Comma
+  span:
+    start: 2856
+    end: 2857
+  raw: ","
+- kind: Integer
+  span:
+    start: 2858
+    end: 2859
+  raw: "0"
+- kind: Newline
+  span:
+    start: 2859
+    end: 2860
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 2860
+    end: 2864
+  raw: Push
+- kind:
+    Constant: 13
+  span:
+    start: 2865
+    end: 2875
+  raw: constant13
+- kind: Newline
+  span:
+    start: 2875
+    end: 2876
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 2876
+    end: 2880
+  raw: Push
+- kind:
+    Constant: 7
+  span:
+    start: 2881
+    end: 2890
+  raw: constant7
+- kind: Newline
+  span:
+    start: 2890
+    end: 2891
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 2891
+    end: 2895
+  raw: Push
+- kind:
+    Constant: 0
+  span:
+    start: 2896
+    end: 2905
+  raw: constant0
+- kind: Newline
+  span:
+    start: 2905
+    end: 2906
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 2906
+    end: 2917
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 2917
+    end: 2918
+  raw: "\n"
+- kind:
+    ActionName: StringAdd
+  span:
+    start: 2918
+    end: 2927
+  raw: StringAdd
+- kind: Newline
+  span:
+    start: 2927
+    end: 2928
+  raw: "\n"
+- kind:
+    ActionName: GetUrl2
+  span:
+    start: 2928
+    end: 2935
+  raw: GetURL2
+- kind: "False"
+  span:
+    start: 2936
+    end: 2941
+  raw: "false"
+- kind: Comma
+  span:
+    start: 2941
+    end: 2942
+  raw: ","
+- kind: "False"
+  span:
+    start: 2943
+    end: 2948
+  raw: "false"
+- kind: Comma
+  span:
+    start: 2948
+    end: 2949
+  raw: ","
+- kind: Integer
+  span:
+    start: 2950
+    end: 2951
+  raw: "0"
+- kind: Newline
+  span:
+    start: 2951
+    end: 2952
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 2952
+    end: 2956
+  raw: Push
+- kind: Integer
+  span:
+    start: 2957
+    end: 2960
+  raw: "123"
+- kind: Newline
+  span:
+    start: 2960
+    end: 2961
+  raw: "\n"
+- kind:
+    ActionName: RandomNumber
+  span:
+    start: 2961
+    end: 2973
+  raw: RandomNumber
+- kind: Newline
+  span:
+    start: 2973
+    end: 2974
+  raw: "\n"
+- kind:
+    ActionName: Pop
+  span:
+    start: 2974
+    end: 2977
+  raw: Pop
+- kind: Newline
+  span:
+    start: 2977
+    end: 2978
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 2978
+    end: 2982
   raw: Push
 - kind:
     Constant: 19
   span:
-    start: 2744
-    end: 2754
+    start: 2983
+    end: 2993
   raw: constant19
 - kind: Newline
   span:
-    start: 2754
-    end: 2755
+    start: 2993
+    end: 2994
   raw: "\n"
 - kind:
     ActionName: Trace
   span:
-    start: 2755
-    end: 2760
+    start: 2994
+    end: 2999
   raw: Trace
 - kind: Newline
   span:
-    start: 2760
-    end: 2761
+    start: 2999
+    end: 3000
   raw: "\n"
