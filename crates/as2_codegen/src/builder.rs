@@ -1,6 +1,6 @@
 use crate::constants::Constants;
 use crate::error::Error;
-use ruasc_as2_pcode::{Action, Actions};
+use ruasc_as2_pcode::{Action, Actions, PushValue};
 use ruasc_common::span::Span;
 
 #[derive(Debug)]
@@ -71,6 +71,13 @@ impl<'a> CodeBuilder<'a> {
         self.actions.push(action);
     }
 
+    pub fn push<V>(&mut self, value: V)
+    where
+        V: Into<PushValue>,
+    {
+        self.action(Action::Push(vec![value.into()]));
+    }
+
     pub fn break_label(&self) -> Option<String> {
         self.break_label.clone()
     }
@@ -97,5 +104,23 @@ impl<'a> CodeBuilder<'a> {
 
     pub fn add_errors(&mut self, mut errors: Vec<Error>) {
         self.errors.append(&mut errors);
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use insta::assert_snapshot;
+
+    #[test]
+    fn test_multiple_pushes() {
+        let mut constants = Constants::empty();
+        let mut builder = CodeBuilder::new(&mut constants);
+        builder.push(PushValue::True);
+        builder.push(PushValue::False);
+        assert_snapshot!(builder.actions, @r"
+        Push true
+        Push false
+        ");
     }
 }

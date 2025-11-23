@@ -42,7 +42,7 @@ pub(crate) fn gen_statement(builder: &mut CodeBuilder, statement: &StatementKind
                 gen_expr(builder, expr, false);
             }
             if exprs.is_empty() {
-                builder.action(Action::Push(vec![PushValue::Undefined]));
+                builder.push(PushValue::Undefined);
             }
             builder.action(Action::Return);
         }
@@ -88,18 +88,18 @@ fn gen_for_loop(builder: &mut CodeBuilder, condition: &ForCondition, body: &Stat
             builder.action(Action::Enumerate2);
             builder.mark_label(continue_label.clone());
             builder.action(Action::StoreRegister(0));
-            builder.action(Action::Push(vec![PushValue::Null]));
+            builder.push(PushValue::Null);
             builder.action(Action::Equals2);
             builder.action(Action::If(end_label.clone()));
 
             if *declare {
                 let value = builder.constants_mut().add(variable);
-                builder.action(Action::Push(vec![value]));
-                builder.action(Action::Push(vec![PushValue::Register(0)]));
+                builder.push(value);
+                builder.push(PushValue::Register(0));
                 builder.action(Action::DefineLocal);
             } else {
                 let access = VariableAccess::for_identifier(builder, variable);
-                builder.action(Action::Push(vec![PushValue::Register(0)]));
+                builder.push(PushValue::Register(0));
                 access.set_value(builder);
             }
 
@@ -190,7 +190,7 @@ fn gen_ternary(builder: &mut CodeBuilder, condition: &Expr, yes: &Expr, no: &Exp
 fn gen_declarations(builder: &mut CodeBuilder, declarations: &[Declaration]) {
     for declaration in declarations {
         let value = builder.constants_mut().add(declaration.name);
-        builder.action(Action::Push(vec![value]));
+        builder.push(value);
         if let Some(value) = &declaration.value {
             gen_expr(builder, value, false);
             builder.action(Action::DefineLocal);
@@ -263,10 +263,10 @@ fn gen_init_object(builder: &mut CodeBuilder, values: &[(&str, Expr)]) {
     let num_fields = values.len() as i32;
     for (key, value) in values.iter().rev() {
         let push_value = builder.constants_mut().add(key);
-        builder.action(Action::Push(vec![push_value]));
+        builder.push(push_value);
         gen_expr(builder, value, false);
     }
-    builder.action(Action::Push(vec![PushValue::Integer(num_fields)]));
+    builder.push(PushValue::Integer(num_fields));
     builder.action_with_stack_delta(Action::InitObject, -num_fields * 2);
 }
 
@@ -275,7 +275,7 @@ fn gen_init_array(builder: &mut CodeBuilder, values: &[Expr]) {
     for value in values.iter().rev() {
         gen_expr(builder, value, false);
     }
-    builder.action(Action::Push(vec![PushValue::Integer(num_values)]));
+    builder.push(PushValue::Integer(num_values));
     builder.action_with_stack_delta(Action::InitArray, -num_values);
 }
 
@@ -326,7 +326,7 @@ fn gen_unary_op(
         },
         UnaryOperator::BitNot => {
             gen_expr(builder, expr, false);
-            builder.action(Action::Push(vec![PushValue::Integer(-1)]));
+            builder.push(PushValue::Integer(-1));
             builder.action(Action::BitXor);
         }
         UnaryOperator::Increment(affix) => adjust_in_place(builder, Action::Increment, affix),
@@ -448,7 +448,7 @@ fn gen_call(builder: &mut CodeBuilder, span: Span, name: &Expr, args: &[Expr]) {
         gen_expr(builder, arg, false);
     }
     let num_args = args.len() as i32;
-    builder.action(Action::Push(vec![PushValue::Integer(num_args)]));
+    builder.push(PushValue::Integer(num_args));
     VariableAccess::for_expr(builder, name).call(builder, num_args);
 }
 
@@ -457,7 +457,7 @@ fn gen_new(builder: &mut CodeBuilder, name: &Expr, args: &[Expr]) {
         gen_expr(builder, arg, false);
     }
     let num_args = args.len() as i32;
-    builder.action(Action::Push(vec![PushValue::Integer(num_args)]));
+    builder.push(PushValue::Integer(num_args));
     let access = VariableAccess::for_expr(builder, name);
     access.call_new(builder, num_args);
 }

@@ -1,6 +1,6 @@
 ---
 source: crates/as2_codegen/src/tests.rs
-expression: builder
+expression: result
 input_file: samples/as2/op_precedence/equality.as
 ---
 ConstantPool "a", "b", "10", "c", "a=", ", b=", ", c=", "----", "a == b = ", "a != b = ", "---", "a === b = ", "a !== b = ", "a == b == c = ", "((a == b) == c) = ", "a !== b !== c = ", "((a !== b) !== c) = ", "a == b > c = ", "(a == (b > c)) = "

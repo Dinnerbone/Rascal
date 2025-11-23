@@ -2,7 +2,7 @@ use annotate_snippets::renderer::DecorStyle;
 use annotate_snippets::{Annotation, AnnotationKind, Renderer};
 use ruasc_common::span::Span;
 
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 pub(crate) struct Error {
     pub(crate) message: &'static str,
     pub(crate) span: Span,

@@ -1,6 +1,6 @@
 ---
 source: crates/as2_codegen/src/tests.rs
-expression: builder
+expression: result
 input_file: samples/as2/op_precedence/general.as
 ---
 ConstantPool "one", "two", "three", "four", "five", "ten", "zero", "negOne", "a", "b", "c", "p", "s", "t", "one + two * three = ", "(one + two) * three = ", "-one * two = ", "-(one * two) = ", "++p + p++ = ", "p++ * 2 = ", "2 * ++p = ", "four / two * two = ", "one + two << one = ", "(one + two) << one = ", "one + (two << one) = ", "one + two < five = ", "(one + two) < five = ", "one + (two < five) = ", "one + two == three = ", "(one + two) == three = ", "one + (two == three) = ", "one | two == three = ", "(one | two) == three = ", "one | (two == three) = ", "one & three | two = ", "(one & three) | two = ", "one & (three | two) = ", "~one = ", "-~one = ", "(one < two && three > two) = ", "(one > two || three > two) = ", "one & three && two > zero = ", "one < two ? five : ten = ", "one + two < three ? five : ten = ", "a after a = b = c -> ", "b after a = b = c -> ", "a after a += b * c = ", "obj", "Object", "x", "obj.x + two = ", "typeof one = ", "typeof s = ", "a after a = (b>c)?b:c = ", "a + b * c << one & three == ((a + (b * c)) << one & three) ? five : ten = ", "+one + +two = ", "-one + -two = ", "ten % three + one = ", "(ten % three) + one = ", "one + two * three > four = "

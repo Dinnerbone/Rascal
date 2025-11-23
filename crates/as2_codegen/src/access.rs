@@ -14,24 +14,24 @@ impl VariableAccess {
     pub fn for_identifier(builder: &mut CodeBuilder, name: &str) -> Self {
         match name {
             "true" => {
-                builder.action(Action::Push(vec![PushValue::True]));
+                builder.push(PushValue::True);
                 VariableAccess::Direct
             }
             "false" => {
-                builder.action(Action::Push(vec![PushValue::False]));
+                builder.push(PushValue::False);
                 VariableAccess::Direct
             }
             "null" => {
-                builder.action(Action::Push(vec![PushValue::Null]));
+                builder.push(PushValue::Null);
                 VariableAccess::Direct
             }
             "undefined" => {
-                builder.action(Action::Push(vec![PushValue::Undefined]));
+                builder.push(PushValue::Undefined);
                 VariableAccess::Direct
             }
             name => {
                 let value = builder.constants_mut().add(name);
-                builder.action(Action::Push(vec![value]));
+                builder.push(value);
                 VariableAccess::Variable
             }
         }
@@ -41,16 +41,16 @@ impl VariableAccess {
         match constant {
             ConstantKind::String(str) => {
                 let value = builder.constants_mut().add(str);
-                builder.action(Action::Push(vec![value]));
+                builder.push(value);
                 VariableAccess::Direct
             }
             ConstantKind::Identifier(identifier) => Self::for_identifier(builder, identifier),
             ConstantKind::Float(value) => {
-                builder.action(Action::Push(vec![PushValue::Float(*value)]));
+                builder.push(PushValue::Float(*value));
                 VariableAccess::Direct
             }
             ConstantKind::Integer(value) => {
-                builder.action(Action::Push(vec![PushValue::Integer(*value)]));
+                builder.push(PushValue::Integer(*value));
                 VariableAccess::Direct
             }
         }
@@ -108,12 +108,12 @@ impl VariableAccess {
             VariableAccess::Variable => {
                 builder.action(Action::StoreRegister(0));
                 builder.action(Action::SetVariable);
-                builder.action(Action::Push(vec![PushValue::Register(0)]));
+                builder.push(PushValue::Register(0));
             }
             VariableAccess::Object => {
                 builder.action(Action::StoreRegister(0));
                 builder.action(Action::SetMember);
-                builder.action(Action::Push(vec![PushValue::Register(0)]));
+                builder.push(PushValue::Register(0));
             }
             VariableAccess::Direct => {
                 unimplemented!("Cannot get-and-set a direct value")

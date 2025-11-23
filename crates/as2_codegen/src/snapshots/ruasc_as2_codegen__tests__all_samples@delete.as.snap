@@ -1,6 +1,6 @@
 ---
 source: crates/as2_codegen/src/tests.rs
-expression: builder
+expression: result
 input_file: samples/as2/delete.as
 ---
 ConstantPool "num", "obj", "delete num: ", "delete obj: ", "delete obj.num: ", "delete obj.num + 1: ", "delete obj.num == "number" ? ":)" : ":(": ", ":)", ":(", "delete obj.num + delete obj.num: ", "trace", "delete obj.trace: ", "delete obj.trace(): ", "delete(nonexistent, obj): ", "nonexistent"

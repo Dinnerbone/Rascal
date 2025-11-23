@@ -1,6 +1,6 @@
 ---
 source: crates/as2_codegen/src/tests.rs
-expression: builder
+expression: result
 input_file: samples/as2/op_precedence/mul_div_mod.as
 ---
 ConstantPool "a", "b", "c", "a=", ", b=", ", c=", "----", "a * b / c = ", "(a * b) / c = ", "---", "a / b * c = ", "(a / b) * c = ", "a % b * c = ", "(a % b) * c = ", "a * b % c = ", "(a * b) % c = ", "a % b / c = ", "(a % b) / c = ", "a / b % c = ", "(a / b) % c = ", "Nested: a * b / c * b = ", "Nested reference: (((a * b) / c) * b) = "

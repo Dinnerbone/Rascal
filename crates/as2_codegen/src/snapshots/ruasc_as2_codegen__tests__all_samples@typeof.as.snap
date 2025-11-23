@@ -1,6 +1,6 @@
 ---
 source: crates/as2_codegen/src/tests.rs
-expression: builder
+expression: result
 input_file: samples/as2/typeof.as
 ---
 ConstantPool "num", "obj", "trace", "typeof num: ", "typeof obj: ", "typeof obj.num: ", "typeof obj.num + 1: ", "typeof obj.num == "number" ? ":)" : ":(": ", "number", ":)", ":(", "typeof obj.num + typeof obj.num: ", "typeof obj.trace: ", "typeof obj.trace(): ", "typeof(nonexistent, obj): ", "nonexistent"

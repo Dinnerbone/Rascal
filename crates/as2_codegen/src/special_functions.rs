@@ -61,9 +61,7 @@ fn fn_get_timer(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
 
 fn fn_get_version(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
     if args.is_empty() {
-        builder.action(Action::Push(vec![PushValue::String(
-            "/:$version".to_string(),
-        )]));
+        builder.push(PushValue::String("/:$version".to_string()));
         builder.action(Action::GetVariable);
     } else {
         builder.error(
@@ -202,7 +200,7 @@ fn fn_get_url(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
     if let Some(target) = target {
         gen_expr(builder, target, false);
     } else {
-        builder.action(Action::Push(vec![PushValue::String("".to_string())]));
+        builder.push(PushValue::String("".to_string()));
     }
     let method = get_method(builder, method);
     builder.action(Action::GetUrl2 {
@@ -276,16 +274,16 @@ fn fn_load_movie_num(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
         ExprKind::Constant(ConstantKind::Integer(target)) => {
             let str = format!("_level{}", target);
             let value = builder.constants_mut().add(&str);
-            builder.action(Action::Push(vec![value]))
+            builder.push(value);
         }
         ExprKind::Constant(ConstantKind::String(target)) => {
             let str = format!("_level{}", target);
             let value = builder.constants_mut().add(&str);
-            builder.action(Action::Push(vec![value]))
+            builder.push(value);
         }
         _ => {
             let value = builder.constants_mut().add("_level");
-            builder.action(Action::Push(vec![value]));
+            builder.push(value);
             gen_expr(builder, &args[1], false);
             builder.action(Action::StringAdd);
         }
