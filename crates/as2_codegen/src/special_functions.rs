@@ -31,6 +31,7 @@ pub(crate) fn gen_special_call(
         "mbsubstring" => fn_mbsubstring(builder, span, args),
         "nextFrame" => fn_next_frame(builder, span, args),
         "nextScene" => fn_next_scene(builder, span, args),
+        "Number" => fn_number(builder, span, args),
         "trace" => fn_trace(builder, span, args),
         "random" => fn_random(builder, span, args),
         _ => return false,
@@ -480,6 +481,18 @@ fn fn_next_scene(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
     } else {
         builder.error(
             "Wrong number of parameters; nextScene requires exactly 0.",
+            span,
+        );
+    }
+}
+
+fn fn_number(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
+    if args.len() == 1 {
+        gen_expr(builder, &args[0], false);
+        builder.action(Action::ToNumber);
+    } else {
+        builder.error(
+            "Wrong number of parameters; number requires exactly 1.",
             span,
         );
     }

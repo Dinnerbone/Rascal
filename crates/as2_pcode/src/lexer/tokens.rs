@@ -147,6 +147,7 @@ pub enum ActionName {
     StringLength,
     Subtract,
     ToInteger,
+    ToNumber,
     Trace,
     TypeOf,
 }

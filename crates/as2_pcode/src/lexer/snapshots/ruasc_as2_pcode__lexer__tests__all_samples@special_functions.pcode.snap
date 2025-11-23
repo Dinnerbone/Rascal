@@ -2213,63 +2213,113 @@ input_file: samples/as2_pcode/special_functions.pcode
     start: 1835
     end: 1839
   raw: Push
-- kind: Integer
+- kind:
+    Constant: 0
   span:
     start: 1840
-    end: 1843
-  raw: "123"
+    end: 1849
+  raw: constant0
 - kind: Newline
   span:
-    start: 1843
-    end: 1844
+    start: 1849
+    end: 1850
   raw: "\n"
 - kind:
-    ActionName: RandomNumber
+    ActionName: GetVariable
   span:
-    start: 1844
-    end: 1856
-  raw: RandomNumber
+    start: 1850
+    end: 1861
+  raw: GetVariable
 - kind: Newline
   span:
-    start: 1856
-    end: 1857
+    start: 1861
+    end: 1862
+  raw: "\n"
+- kind:
+    ActionName: ToNumber
+  span:
+    start: 1862
+    end: 1870
+  raw: ToNumber
+- kind: Newline
+  span:
+    start: 1870
+    end: 1871
   raw: "\n"
 - kind:
     ActionName: Pop
   span:
-    start: 1857
-    end: 1860
+    start: 1871
+    end: 1874
   raw: Pop
 - kind: Newline
   span:
-    start: 1860
-    end: 1861
+    start: 1874
+    end: 1875
   raw: "\n"
 - kind:
     ActionName: Push
   span:
-    start: 1861
-    end: 1865
+    start: 1875
+    end: 1879
+  raw: Push
+- kind: Integer
+  span:
+    start: 1880
+    end: 1883
+  raw: "123"
+- kind: Newline
+  span:
+    start: 1883
+    end: 1884
+  raw: "\n"
+- kind:
+    ActionName: RandomNumber
+  span:
+    start: 1884
+    end: 1896
+  raw: RandomNumber
+- kind: Newline
+  span:
+    start: 1896
+    end: 1897
+  raw: "\n"
+- kind:
+    ActionName: Pop
+  span:
+    start: 1897
+    end: 1900
+  raw: Pop
+- kind: Newline
+  span:
+    start: 1900
+    end: 1901
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1901
+    end: 1905
   raw: Push
 - kind:
     Constant: 9
   span:
-    start: 1866
-    end: 1875
+    start: 1906
+    end: 1915
   raw: constant9
 - kind: Newline
   span:
-    start: 1875
-    end: 1876
+    start: 1915
+    end: 1916
   raw: "\n"
 - kind:
     ActionName: Trace
   span:
-    start: 1876
-    end: 1881
+    start: 1916
+    end: 1921
   raw: Trace
 - kind: Newline
   span:
-    start: 1881
-    end: 1882
+    start: 1921
+    end: 1922
   raw: "\n"

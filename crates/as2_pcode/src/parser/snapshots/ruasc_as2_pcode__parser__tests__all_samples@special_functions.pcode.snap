@@ -236,6 +236,11 @@ Ok:
     - NextFrame
     - GotoFrame: 0
     - Push:
+        - Constant: 0
+    - GetVariable
+    - ToNumber
+    - Pop
+    - Push:
         - Integer: 123
     - RandomNumber
     - Pop

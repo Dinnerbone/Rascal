@@ -128,6 +128,10 @@ MBStringExtract
 Pop
 NextFrame
 GotoFrame 0
+Push constant0
+GetVariable
+ToNumber
+Pop
 Push 123
 RandomNumber
 Pop

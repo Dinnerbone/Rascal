@@ -1,0 +1,12 @@
+---
+source: crates/as2_codegen/src/tests.rs
+expression: result
+input_file: crates/as2_codegen/fail_samples/number.as
+---
+error: Compile error(s)
+  ╭▸ number.as:1:1
+  │
+1 │ Number();
+  │ ━━━━━━━━ Wrong number of parameters; number requires exactly 1.
+2 │ Number(1, 2);
+  ╰╴━━━━━━━━━━━━ Wrong number of parameters; number requires exactly 1.

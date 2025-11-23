@@ -148,6 +148,7 @@ pub enum Action {
     StringLength,
     Subtract,
     ToInteger,
+    ToNumber,
     Trace,
     TypeOf,
 }
@@ -212,6 +213,7 @@ impl Action {
             Action::StoreRegister(_) => 0,
             Action::Subtract => -1,
             Action::ToInteger => 0,
+            Action::ToNumber => 0,
             Action::Trace => -1,
             Action::TypeOf => 0,
             _ => todo!("missing stack size delta for {:?}", self),
@@ -325,6 +327,7 @@ impl std::fmt::Display for Action {
             Action::StringLength => write!(f, "StringLength"),
             Action::Subtract => write!(f, "Subtract"),
             Action::ToInteger => write!(f, "ToInteger"),
+            Action::ToNumber => write!(f, "ToNumber"),
             Action::Trace => write!(f, "Trace"),
             Action::TypeOf => write!(f, "TypeOf"),
         }
