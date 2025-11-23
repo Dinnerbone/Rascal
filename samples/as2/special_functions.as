@@ -47,5 +47,6 @@ Number(x);
 ord(x);
 play();
 prevFrame();
+prevScene();
 random(123);
 trace("message");

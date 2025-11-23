@@ -35,6 +35,7 @@ pub(crate) fn gen_special_call(
         "ord" => fn_ord(builder, span, args),
         "play" => fn_play(builder, span, args),
         "prevframe" => fn_prev_frame(builder, span, args),
+        "prevscene" => fn_prev_scene(builder, span, args),
         "trace" => fn_trace(builder, span, args),
         "random" => fn_random(builder, span, args),
         _ => return false,
@@ -483,6 +484,18 @@ fn fn_prev_frame(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
     } else {
         builder.error(
             "Wrong number of parameters; prevFrame requires exactly 0.",
+            span,
+        );
+    }
+}
+
+fn fn_prev_scene(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
+    if args.is_empty() {
+        // Scenes don't exist in a standalone compiler, and Flash's behaviour is to skip to frame 0 in this case
+        builder.action(Action::GotoFrame(0));
+    } else {
+        builder.error(
+            "Wrong number of parameters; prevScene requires exactly 0.",
             span,
         );
     }
