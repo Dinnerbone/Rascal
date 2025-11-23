@@ -1,0 +1,10 @@
+---
+source: crates/as2_codegen/src/tests.rs
+expression: result
+input_file: crates/as2_codegen/fail_samples/prevframe.as
+---
+error: Compile error(s)
+  ╭▸ prevframe.as:1:1
+  │
+1 │ prevFrame(true);
+  ╰╴━━━━━━━━━━━━━━━ Wrong number of parameters; prevFrame requires exactly 0.

@@ -136,6 +136,7 @@ pub enum ActionName {
     Not,
     Play,
     Pop,
+    PrevFrame,
     Push,
     PushDuplicate,
     RandomNumber,

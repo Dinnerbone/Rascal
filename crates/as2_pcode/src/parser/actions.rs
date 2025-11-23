@@ -99,6 +99,7 @@ pub(crate) fn action(i: &mut Tokens<'_>) -> ModalResult<Action> {
         ActionName::Not => Action::Not,
         ActionName::Play => Action::Play,
         ActionName::Pop => Action::Pop,
+        ActionName::PrevFrame => Action::PrevFrame,
         ActionName::Push => push.parse_next(i)?,
         ActionName::PushDuplicate => Action::PushDuplicate,
         ActionName::RandomNumber => Action::RandomNumber,

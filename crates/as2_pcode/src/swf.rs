@@ -223,7 +223,7 @@ impl<'a> ActionEncoder<'a> {
             // Action::Or => self.write_small_action(OpCode::Or),
             Action::Play => self.write_small_action(OpCode::Play),
             Action::Pop => self.write_small_action(OpCode::Pop),
-            // Action::PreviousFrame => self.write_small_action(OpCode::PreviousFrame),
+            Action::PrevFrame => self.write_small_action(OpCode::PreviousFrame),
             Action::Push(action) => self.write_push(action),
             Action::PushDuplicate => self.write_small_action(OpCode::PushDuplicate),
             Action::RandomNumber => self.write_small_action(OpCode::RandomNumber),

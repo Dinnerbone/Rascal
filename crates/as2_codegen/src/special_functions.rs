@@ -34,6 +34,7 @@ pub(crate) fn gen_special_call(
         "number" => fn_number(builder, span, args),
         "ord" => fn_ord(builder, span, args),
         "play" => fn_play(builder, span, args),
+        "prevframe" => fn_prev_frame(builder, span, args),
         "trace" => fn_trace(builder, span, args),
         "random" => fn_random(builder, span, args),
         _ => return false,
@@ -471,6 +472,17 @@ fn fn_next_frame(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
     } else {
         builder.error(
             "Wrong number of parameters; nextFrame requires exactly 0.",
+            span,
+        );
+    }
+}
+
+fn fn_prev_frame(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
+    if args.is_empty() {
+        builder.action(Action::PrevFrame);
+    } else {
+        builder.error(
+            "Wrong number of parameters; prevFrame requires exactly 0.",
             span,
         );
     }

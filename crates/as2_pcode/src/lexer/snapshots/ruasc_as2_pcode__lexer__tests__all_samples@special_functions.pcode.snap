@@ -2319,68 +2319,79 @@ input_file: samples/as2_pcode/special_functions.pcode
     end: 1923
   raw: "\n"
 - kind:
-    ActionName: Push
+    ActionName: PrevFrame
   span:
     start: 1923
-    end: 1927
+    end: 1932
+  raw: PrevFrame
+- kind: Newline
+  span:
+    start: 1932
+    end: 1933
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1933
+    end: 1937
   raw: Push
 - kind: Integer
   span:
-    start: 1928
-    end: 1931
+    start: 1938
+    end: 1941
   raw: "123"
 - kind: Newline
   span:
-    start: 1931
-    end: 1932
+    start: 1941
+    end: 1942
   raw: "\n"
 - kind:
     ActionName: RandomNumber
   span:
-    start: 1932
-    end: 1944
+    start: 1942
+    end: 1954
   raw: RandomNumber
 - kind: Newline
   span:
-    start: 1944
-    end: 1945
+    start: 1954
+    end: 1955
   raw: "\n"
 - kind:
     ActionName: Pop
   span:
-    start: 1945
-    end: 1948
+    start: 1955
+    end: 1958
   raw: Pop
 - kind: Newline
   span:
-    start: 1948
-    end: 1949
+    start: 1958
+    end: 1959
   raw: "\n"
 - kind:
     ActionName: Push
   span:
-    start: 1949
-    end: 1953
+    start: 1959
+    end: 1963
   raw: Push
 - kind:
     Constant: 9
   span:
-    start: 1954
-    end: 1963
+    start: 1964
+    end: 1973
   raw: constant9
 - kind: Newline
   span:
-    start: 1963
-    end: 1964
+    start: 1973
+    end: 1974
   raw: "\n"
 - kind:
     ActionName: Trace
   span:
-    start: 1964
-    end: 1969
+    start: 1974
+    end: 1979
   raw: Trace
 - kind: Newline
   span:
-    start: 1969
-    end: 1970
+    start: 1979
+    end: 1980
   raw: "\n"

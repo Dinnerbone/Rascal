@@ -137,6 +137,7 @@ pub enum Action {
     Not,
     Play,
     Pop,
+    PrevFrame,
     Push(Vec<PushValue>),
     PushDuplicate,
     RandomNumber,
@@ -202,6 +203,7 @@ impl Action {
             Action::NextFrame => 0,
             Action::Not => 0,
             Action::Play => 0,
+            Action::PrevFrame => 0,
             Action::Pop => -1,
             Action::Push(values) => values.len() as i32,
             Action::PushDuplicate => 1,
@@ -309,6 +311,7 @@ impl std::fmt::Display for Action {
             Action::Not => write!(f, "Not"),
             Action::Play => write!(f, "Play"),
             Action::Pop => write!(f, "Pop"),
+            Action::PrevFrame => write!(f, "PrevFrame"),
             Action::Push(values) => {
                 write!(f, "Push ")?;
                 for (i, value) in values.iter().enumerate() {

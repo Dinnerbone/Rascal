@@ -1118,34 +1118,48 @@ Ok:
             name:
               span:
                 start: 1035
-                end: 1041
+                end: 1044
               value:
                 Constant:
-                  Identifier: random
-            args:
-              - span:
-                  start: 1042
-                  end: 1045
-                value:
-                  Constant:
-                    Integer: 123
+                  Identifier: prevFrame
+            args: []
     - Expr:
         span:
           start: 1048
-          end: 1064
+          end: 1059
         value:
           Call:
             name:
               span:
                 start: 1048
-                end: 1053
+                end: 1054
+              value:
+                Constant:
+                  Identifier: random
+            args:
+              - span:
+                  start: 1055
+                  end: 1058
+                value:
+                  Constant:
+                    Integer: 123
+    - Expr:
+        span:
+          start: 1061
+          end: 1077
+        value:
+          Call:
+            name:
+              span:
+                start: 1061
+                end: 1066
               value:
                 Constant:
                   Identifier: trace
             args:
               - span:
-                  start: 1054
-                  end: 1063
+                  start: 1067
+                  end: 1076
                 value:
                   Constant:
                     String: message

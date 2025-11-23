@@ -268,6 +268,7 @@ fn lex_identifier_or_action<'a>(stream: &mut Stream<'a>) -> Token<'a> {
         "not" => TokenKind::ActionName(ActionName::Not),
         "play" => TokenKind::ActionName(ActionName::Play),
         "pop" => TokenKind::ActionName(ActionName::Pop),
+        "prevframe" => TokenKind::ActionName(ActionName::PrevFrame),
         "pushduplicate" => TokenKind::ActionName(ActionName::PushDuplicate),
         "push" => TokenKind::ActionName(ActionName::Push),
         "randomnumber" => TokenKind::ActionName(ActionName::RandomNumber),
