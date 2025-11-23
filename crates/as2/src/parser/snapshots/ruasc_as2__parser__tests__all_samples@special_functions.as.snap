@@ -1754,20 +1754,34 @@ Ok:
     - Expr:
         span:
           start: 1609
-          end: 1625
+          end: 1628
         value:
           Call:
             name:
               span:
                 start: 1609
-                end: 1614
+                end: 1626
+              value:
+                Constant:
+                  Identifier: toggleHighQuality
+            args: []
+    - Expr:
+        span:
+          start: 1630
+          end: 1646
+        value:
+          Call:
+            name:
+              span:
+                start: 1630
+                end: 1635
               value:
                 Constant:
                   Identifier: trace
             args:
               - span:
-                  start: 1615
-                  end: 1624
+                  start: 1636
+                  end: 1645
                 value:
                   Constant:
                     String: message

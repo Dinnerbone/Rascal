@@ -73,4 +73,5 @@ String(x);
 substring(x, 1);
 substring(x, 1, 2);
 targetPath(x);
+toggleHighQuality();
 trace("message");

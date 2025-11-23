@@ -2771,31 +2771,56 @@ input_file: samples/as2/special_functions.as
 - kind: Identifier
   span:
     start: 1609
-    end: 1614
+    end: 1626
+  raw: toggleHighQuality
+- kind: OpenParen
+  span:
+    start: 1626
+    end: 1627
+  raw: (
+- kind: CloseParen
+  span:
+    start: 1627
+    end: 1628
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1628
+    end: 1629
+  raw: ;
+- kind: Newline
+  span:
+    start: 1629
+    end: 1630
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1630
+    end: 1635
   raw: trace
 - kind: OpenParen
   span:
-    start: 1614
-    end: 1615
+    start: 1635
+    end: 1636
   raw: (
 - kind:
     String: Double
   span:
-    start: 1615
-    end: 1624
+    start: 1636
+    end: 1645
   raw: message
 - kind: CloseParen
   span:
-    start: 1624
-    end: 1625
+    start: 1645
+    end: 1646
   raw: )
 - kind: Semicolon
   span:
-    start: 1625
-    end: 1626
+    start: 1646
+    end: 1647
   raw: ;
 - kind: Newline
   span:
-    start: 1626
-    end: 1627
+    start: 1647
+    end: 1648
   raw: "\n"

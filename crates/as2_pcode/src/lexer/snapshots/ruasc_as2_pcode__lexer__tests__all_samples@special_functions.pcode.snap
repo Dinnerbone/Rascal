@@ -4208,30 +4208,41 @@ input_file: samples/as2_pcode/special_functions.pcode
     end: 3475
   raw: "\n"
 - kind:
-    ActionName: Push
+    ActionName: ToggleQuality
   span:
     start: 3475
-    end: 3479
+    end: 3488
+  raw: ToggleQuality
+- kind: Newline
+  span:
+    start: 3488
+    end: 3489
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 3489
+    end: 3493
   raw: Push
 - kind:
     Constant: 19
   span:
-    start: 3480
-    end: 3490
+    start: 3494
+    end: 3504
   raw: constant19
 - kind: Newline
   span:
-    start: 3490
-    end: 3491
+    start: 3504
+    end: 3505
   raw: "\n"
 - kind:
     ActionName: Trace
   span:
-    start: 3491
-    end: 3496
+    start: 3505
+    end: 3510
   raw: Trace
 - kind: Newline
   span:
-    start: 3496
-    end: 3497
+    start: 3510
+    end: 3511
   raw: "\n"

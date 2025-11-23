@@ -48,6 +48,7 @@ pub(crate) fn gen_special_call(
         "string" => fn_string(builder, span, args),
         "substring" => fn_substring(builder, span, args),
         "targetpath" => fn_target_path(builder, span, args),
+        "togglehighquality" => fn_toggle_high_quality(builder, span, args),
         "trace" => fn_trace(builder, span, args),
         "random" => fn_random(builder, span, args),
         _ => return false,
@@ -806,6 +807,17 @@ fn fn_target_path(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
     } else {
         builder.error(
             "Wrong number of parameters; targetPath requires exactly 1.",
+            span,
+        );
+    }
+}
+
+fn fn_toggle_high_quality(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
+    if args.is_empty() {
+        builder.action(Action::ToggleQuality);
+    } else {
+        builder.error(
+            "Wrong number of parameters; toggleHighQuality requires exactly 0.",
             span,
         );
     }

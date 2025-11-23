@@ -158,6 +158,7 @@ pub enum ActionName {
     ToInteger,
     ToNumber,
     ToString,
+    ToggleQuality,
     Trace,
     TypeOf,
 }

@@ -1,0 +1,10 @@
+---
+source: crates/as2_codegen/src/tests.rs
+expression: result
+input_file: crates/as2_codegen/fail_samples/togglehighquality.as
+---
+error: Compile error(s)
+  ╭▸ togglehighquality.as:1:1
+  │
+1 │ toggleHighQuality(true);
+  ╰╴━━━━━━━━━━━━━━━━━━━━━━━ Wrong number of parameters; toggleHighQuality requires exactly 0.

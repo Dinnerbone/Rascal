@@ -121,6 +121,7 @@ pub(crate) fn action(i: &mut Tokens<'_>) -> ModalResult<Action> {
         ActionName::ToInteger => Action::ToInteger,
         ActionName::ToNumber => Action::ToNumber,
         ActionName::ToString => Action::ToString,
+        ActionName::ToggleQuality => Action::ToggleQuality,
         ActionName::Trace => Action::Trace,
         ActionName::TypeOf => Action::TypeOf,
     })
@@ -402,6 +403,7 @@ mod tests {
         test_tointeger => ToInteger,
         test_tonumber => ToNumber,
         test_tostring => ToString,
+        test_toggle_quality => ToggleQuality,
         test_strictequals => StrictEquals,
         test_stringextract => StringExtract,
         test_stringadd => StringAdd,

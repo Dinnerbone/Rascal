@@ -287,6 +287,7 @@ fn lex_identifier_or_action<'a>(stream: &mut Stream<'a>) -> Token<'a> {
         "stringlength" => TokenKind::ActionName(ActionName::StringLength),
         "subtract" => TokenKind::ActionName(ActionName::Subtract),
         "targetpath" => TokenKind::ActionName(ActionName::TargetPath),
+        "togglequality" => TokenKind::ActionName(ActionName::ToggleQuality),
         "tointeger" => TokenKind::ActionName(ActionName::ToInteger),
         "tonumber" => TokenKind::ActionName(ActionName::ToNumber),
         "tostring" => TokenKind::ActionName(ActionName::ToString),
