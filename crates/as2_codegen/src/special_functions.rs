@@ -43,6 +43,7 @@ pub(crate) fn gen_special_call(
         "removemovieclip" => fn_remove_movie_clio(builder, span, args),
         "startdrag" => fn_start_drag(builder, span, args),
         "stop" => fn_stop(builder, span, args),
+        "stopallsounds" => fn_stop_all_sounds(builder, span, args),
         "trace" => fn_trace(builder, span, args),
         "random" => fn_random(builder, span, args),
         _ => return false,
@@ -739,6 +740,17 @@ fn fn_stop(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
         builder.action(Action::Stop);
     } else {
         builder.error("Wrong number of parameters; stop requires exactly 0.", span);
+    }
+}
+
+fn fn_stop_all_sounds(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
+    if args.is_empty() {
+        builder.action(Action::StopSounds);
+    } else {
+        builder.error(
+            "Wrong number of parameters; stopAllSounds requires exactly 0.",
+            span,
+        );
     }
 }
 

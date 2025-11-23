@@ -146,6 +146,7 @@ pub enum ActionName {
     SetVariable,
     StartDrag,
     Stop,
+    StopSounds,
     StoreRegister,
     StrictEquals,
     StringAdd,

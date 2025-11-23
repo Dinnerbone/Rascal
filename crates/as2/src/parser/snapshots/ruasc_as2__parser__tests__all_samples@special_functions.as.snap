@@ -1628,20 +1628,34 @@ Ok:
     - Expr:
         span:
           start: 1517
-          end: 1533
+          end: 1532
         value:
           Call:
             name:
               span:
                 start: 1517
-                end: 1522
+                end: 1530
+              value:
+                Constant:
+                  Identifier: stopAllSounds
+            args: []
+    - Expr:
+        span:
+          start: 1534
+          end: 1550
+        value:
+          Call:
+            name:
+              span:
+                start: 1534
+                end: 1539
               value:
                 Constant:
                   Identifier: trace
             args:
               - span:
-                  start: 1523
-                  end: 1532
+                  start: 1540
+                  end: 1549
                 value:
                   Constant:
                     String: message
