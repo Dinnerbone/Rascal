@@ -96,6 +96,7 @@ pub enum ActionName {
     Call,
     CallFunction,
     CallMethod,
+    CharToAscii,
     ConstantPool,
     Decrement,
     DefineFunction,

@@ -2263,63 +2263,113 @@ input_file: samples/as2_pcode/special_functions.pcode
     start: 1875
     end: 1879
   raw: Push
-- kind: Integer
+- kind:
+    Constant: 0
   span:
     start: 1880
-    end: 1883
-  raw: "123"
+    end: 1889
+  raw: constant0
 - kind: Newline
   span:
-    start: 1883
-    end: 1884
+    start: 1889
+    end: 1890
   raw: "\n"
 - kind:
-    ActionName: RandomNumber
+    ActionName: GetVariable
   span:
-    start: 1884
-    end: 1896
-  raw: RandomNumber
+    start: 1890
+    end: 1901
+  raw: GetVariable
 - kind: Newline
   span:
-    start: 1896
-    end: 1897
+    start: 1901
+    end: 1902
+  raw: "\n"
+- kind:
+    ActionName: CharToAscii
+  span:
+    start: 1902
+    end: 1913
+  raw: CharToAscii
+- kind: Newline
+  span:
+    start: 1913
+    end: 1914
   raw: "\n"
 - kind:
     ActionName: Pop
   span:
-    start: 1897
-    end: 1900
+    start: 1914
+    end: 1917
   raw: Pop
 - kind: Newline
   span:
-    start: 1900
-    end: 1901
+    start: 1917
+    end: 1918
   raw: "\n"
 - kind:
     ActionName: Push
   span:
-    start: 1901
-    end: 1905
+    start: 1918
+    end: 1922
+  raw: Push
+- kind: Integer
+  span:
+    start: 1923
+    end: 1926
+  raw: "123"
+- kind: Newline
+  span:
+    start: 1926
+    end: 1927
+  raw: "\n"
+- kind:
+    ActionName: RandomNumber
+  span:
+    start: 1927
+    end: 1939
+  raw: RandomNumber
+- kind: Newline
+  span:
+    start: 1939
+    end: 1940
+  raw: "\n"
+- kind:
+    ActionName: Pop
+  span:
+    start: 1940
+    end: 1943
+  raw: Pop
+- kind: Newline
+  span:
+    start: 1943
+    end: 1944
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1944
+    end: 1948
   raw: Push
 - kind:
     Constant: 9
   span:
-    start: 1906
-    end: 1915
+    start: 1949
+    end: 1958
   raw: constant9
 - kind: Newline
   span:
-    start: 1915
-    end: 1916
+    start: 1958
+    end: 1959
   raw: "\n"
 - kind:
     ActionName: Trace
   span:
-    start: 1916
-    end: 1921
+    start: 1959
+    end: 1964
   raw: Trace
 - kind: Newline
   span:
-    start: 1921
-    end: 1922
+    start: 1964
+    end: 1965
   raw: "\n"

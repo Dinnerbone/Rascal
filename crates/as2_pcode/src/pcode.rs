@@ -83,6 +83,7 @@ pub enum Action {
     Call,
     CallFunction,
     CallMethod,
+    CharToAscii,
     ConstantPool(Vec<String>),
     Decrement,
     DefineFunction {
@@ -166,6 +167,7 @@ impl Action {
             Action::BitURShift => -1,
             Action::BitXor => -1,
             Action::Call => -1,
+            Action::CharToAscii => 0,
             Action::ConstantPool(_) => 0,
             Action::Decrement => -1,
             Action::DefineFunction { .. } => 1,
@@ -236,6 +238,7 @@ impl std::fmt::Display for Action {
             Action::Call => write!(f, "Call"),
             Action::CallFunction => write!(f, "CallFunction"),
             Action::CallMethod => write!(f, "CallMethod"),
+            Action::CharToAscii => write!(f, "CharToAscii"),
             Action::ConstantPool(values) => {
                 write!(f, "ConstantPool ")?;
                 for (i, value) in values.iter().enumerate() {

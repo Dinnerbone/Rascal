@@ -44,5 +44,6 @@ mbsubstring("abc", 1, 2);
 nextFrame();
 nextScene();
 Number(x);
+ord(x);
 random(123);
 trace("message");

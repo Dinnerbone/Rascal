@@ -32,6 +32,7 @@ pub(crate) fn gen_special_call(
         "nextframe" => fn_next_frame(builder, span, args),
         "nextscene" => fn_next_scene(builder, span, args),
         "number" => fn_number(builder, span, args),
+        "ord" => fn_ord(builder, span, args),
         "trace" => fn_trace(builder, span, args),
         "random" => fn_random(builder, span, args),
         _ => return false,
@@ -495,6 +496,15 @@ fn fn_number(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
             "Wrong number of parameters; number requires exactly 1.",
             span,
         );
+    }
+}
+
+fn fn_ord(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
+    if args.len() == 1 {
+        gen_expr(builder, &args[0], false);
+        builder.action(Action::CharToAscii);
+    } else {
+        builder.error("Wrong number of parameters; ord requires exactly 1.", span);
     }
 }
 

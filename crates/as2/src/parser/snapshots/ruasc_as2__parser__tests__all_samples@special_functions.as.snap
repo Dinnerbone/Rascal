@@ -1078,40 +1078,60 @@ Ok:
     - Expr:
         span:
           start: 1019
-          end: 1030
+          end: 1025
         value:
           Call:
             name:
               span:
                 start: 1019
-                end: 1025
+                end: 1022
+              value:
+                Constant:
+                  Identifier: ord
+            args:
+              - span:
+                  start: 1023
+                  end: 1024
+                value:
+                  Constant:
+                    Identifier: x
+    - Expr:
+        span:
+          start: 1027
+          end: 1038
+        value:
+          Call:
+            name:
+              span:
+                start: 1027
+                end: 1033
               value:
                 Constant:
                   Identifier: random
             args:
               - span:
-                  start: 1026
-                  end: 1029
+                  start: 1034
+                  end: 1037
                 value:
                   Constant:
                     Integer: 123
     - Expr:
         span:
-          start: 1032
-          end: 1048
+          start: 1040
+          end: 1056
         value:
           Call:
             name:
               span:
-                start: 1032
-                end: 1037
+                start: 1040
+                end: 1045
               value:
                 Constant:
                   Identifier: trace
             args:
               - span:
-                  start: 1038
-                  end: 1047
+                  start: 1046
+                  end: 1055
                 value:
                   Constant:
                     String: message

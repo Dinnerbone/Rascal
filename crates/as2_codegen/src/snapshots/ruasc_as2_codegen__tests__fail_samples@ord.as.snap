@@ -1,0 +1,12 @@
+---
+source: crates/as2_codegen/src/tests.rs
+expression: result
+input_file: crates/as2_codegen/fail_samples/ord.as
+---
+error: Compile error(s)
+  ╭▸ ord.as:1:1
+  │
+1 │ ord();
+  │ ━━━━━ Wrong number of parameters; ord requires exactly 1.
+2 │ ord(a, b);
+  ╰╴━━━━━━━━━ Wrong number of parameters; ord requires exactly 1.

@@ -228,6 +228,7 @@ fn lex_identifier_or_action<'a>(stream: &mut Stream<'a>) -> Token<'a> {
         "call" => TokenKind::ActionName(ActionName::Call),
         "callfunction" => TokenKind::ActionName(ActionName::CallFunction),
         "callmethod" => TokenKind::ActionName(ActionName::CallMethod),
+        "chartoascii" => TokenKind::ActionName(ActionName::CharToAscii),
         "constantpool" => TokenKind::ActionName(ActionName::ConstantPool),
         "decrement" => TokenKind::ActionName(ActionName::Decrement),
         "definefunction" => TokenKind::ActionName(ActionName::DefineFunction),
