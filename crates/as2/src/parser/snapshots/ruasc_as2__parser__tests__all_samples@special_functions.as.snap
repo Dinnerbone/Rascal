@@ -912,40 +912,60 @@ Ok:
     - Expr:
         span:
           start: 900
-          end: 911
+          end: 908
         value:
           Call:
             name:
               span:
                 start: 900
-                end: 906
+                end: 905
+              value:
+                Constant:
+                  Identifier: mbchr
+            args:
+              - span:
+                  start: 906
+                  end: 907
+                value:
+                  Constant:
+                    Identifier: x
+    - Expr:
+        span:
+          start: 910
+          end: 921
+        value:
+          Call:
+            name:
+              span:
+                start: 910
+                end: 916
               value:
                 Constant:
                   Identifier: random
             args:
               - span:
-                  start: 907
-                  end: 910
+                  start: 917
+                  end: 920
                 value:
                   Constant:
                     Integer: 123
     - Expr:
         span:
-          start: 913
-          end: 929
+          start: 923
+          end: 939
         value:
           Call:
             name:
               span:
-                start: 913
-                end: 918
+                start: 923
+                end: 928
               value:
                 Constant:
                   Identifier: trace
             args:
               - span:
-                  start: 919
-                  end: 928
+                  start: 929
+                  end: 938
                 value:
                   Constant:
                     String: message

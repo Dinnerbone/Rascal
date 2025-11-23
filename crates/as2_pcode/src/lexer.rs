@@ -255,6 +255,7 @@ fn lex_identifier_or_action<'a>(stream: &mut Stream<'a>) -> Token<'a> {
         "instanceof" => TokenKind::ActionName(ActionName::InstanceOf),
         "jump" => TokenKind::ActionName(ActionName::Jump),
         "less2" => TokenKind::ActionName(ActionName::Less2),
+        "mbasciitochar" => TokenKind::ActionName(ActionName::MBAsciiToChar),
         "modulo" => TokenKind::ActionName(ActionName::Modulo),
         "multiply" => TokenKind::ActionName(ActionName::Multiply),
         "newmethod" => TokenKind::ActionName(ActionName::NewMethod),

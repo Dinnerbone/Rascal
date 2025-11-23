@@ -1433,61 +1433,91 @@ input_file: samples/as2/special_functions.as
 - kind: Identifier
   span:
     start: 900
-    end: 906
-  raw: random
+    end: 905
+  raw: mbchr
 - kind: OpenParen
+  span:
+    start: 905
+    end: 906
+  raw: (
+- kind: Identifier
   span:
     start: 906
     end: 907
-  raw: (
-- kind: Integer
-  span:
-    start: 907
-    end: 910
-  raw: "123"
+  raw: x
 - kind: CloseParen
   span:
-    start: 910
-    end: 911
+    start: 907
+    end: 908
   raw: )
 - kind: Semicolon
   span:
-    start: 911
-    end: 912
+    start: 908
+    end: 909
   raw: ;
 - kind: Newline
   span:
-    start: 912
-    end: 913
+    start: 909
+    end: 910
   raw: "\n"
 - kind: Identifier
   span:
-    start: 913
-    end: 918
+    start: 910
+    end: 916
+  raw: random
+- kind: OpenParen
+  span:
+    start: 916
+    end: 917
+  raw: (
+- kind: Integer
+  span:
+    start: 917
+    end: 920
+  raw: "123"
+- kind: CloseParen
+  span:
+    start: 920
+    end: 921
+  raw: )
+- kind: Semicolon
+  span:
+    start: 921
+    end: 922
+  raw: ;
+- kind: Newline
+  span:
+    start: 922
+    end: 923
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 923
+    end: 928
   raw: trace
 - kind: OpenParen
   span:
-    start: 918
-    end: 919
+    start: 928
+    end: 929
   raw: (
 - kind:
     String: Double
   span:
-    start: 919
-    end: 928
+    start: 929
+    end: 938
   raw: message
 - kind: CloseParen
   span:
-    start: 928
-    end: 929
+    start: 938
+    end: 939
   raw: )
 - kind: Semicolon
   span:
-    start: 929
-    end: 930
+    start: 939
+    end: 940
   raw: ;
 - kind: Newline
   span:
-    start: 930
-    end: 931
+    start: 940
+    end: 941
   raw: "\n"

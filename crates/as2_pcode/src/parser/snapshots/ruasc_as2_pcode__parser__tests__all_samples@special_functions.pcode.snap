@@ -202,6 +202,11 @@ Ok:
         load_target: false
         method: 1
     - Push:
+        - Constant: 0
+    - GetVariable
+    - MBAsciiToChar
+    - Pop
+    - Push:
         - Integer: 123
     - RandomNumber
     - Pop

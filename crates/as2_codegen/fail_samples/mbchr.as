@@ -1,0 +1,2 @@
+mbchr();
+mbchr("a", "b");

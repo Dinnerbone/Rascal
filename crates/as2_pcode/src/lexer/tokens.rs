@@ -123,6 +123,7 @@ pub enum ActionName {
     InstanceOf,
     Jump,
     Less2,
+    MBAsciiToChar,
     Modulo,
     Multiply,
     NewMethod,

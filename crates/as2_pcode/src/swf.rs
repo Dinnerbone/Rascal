@@ -210,7 +210,7 @@ impl<'a> ActionEncoder<'a> {
             Action::Jump(action) => self.write_jump(action),
             // Action::Less => self.write_small_action(OpCode::Less),
             Action::Less2 => self.write_small_action(OpCode::Less2),
-            // Action::MBAsciiToChar => self.write_small_action(OpCode::MBAsciiToChar),
+            Action::MBAsciiToChar => self.write_small_action(OpCode::MBAsciiToChar),
             // Action::MBCharToAscii => self.write_small_action(OpCode::MBCharToAscii),
             // Action::MBStringExtract => self.write_small_action(OpCode::MBStringExtract),
             // Action::MBStringLength => self.write_small_action(OpCode::MBStringLength),
