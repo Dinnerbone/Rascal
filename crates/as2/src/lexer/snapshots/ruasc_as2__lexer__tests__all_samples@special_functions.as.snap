@@ -1800,61 +1800,185 @@ input_file: samples/as2/special_functions.as
 - kind: Identifier
   span:
     start: 1061
+    end: 1066
+  raw: print
+- kind: OpenParen
+  span:
+    start: 1066
     end: 1067
-  raw: random
-- kind: OpenParen
-  span:
-    start: 1067
-    end: 1068
-  raw: (
-- kind: Integer
-  span:
-    start: 1068
-    end: 1071
-  raw: "123"
-- kind: CloseParen
-  span:
-    start: 1071
-    end: 1072
-  raw: )
-- kind: Semicolon
-  span:
-    start: 1072
-    end: 1073
-  raw: ;
-- kind: Newline
-  span:
-    start: 1073
-    end: 1074
-  raw: "\n"
-- kind: Identifier
-  span:
-    start: 1074
-    end: 1079
-  raw: trace
-- kind: OpenParen
-  span:
-    start: 1079
-    end: 1080
   raw: (
 - kind:
     String: Double
   span:
-    start: 1080
-    end: 1089
-  raw: message
+    start: 1067
+    end: 1072
+  raw: foo
+- kind: Comma
+  span:
+    start: 1072
+    end: 1073
+  raw: ","
+- kind:
+    String: Double
+  span:
+    start: 1074
+    end: 1080
+  raw: bmax
 - kind: CloseParen
   span:
-    start: 1089
-    end: 1090
+    start: 1080
+    end: 1081
   raw: )
 - kind: Semicolon
   span:
-    start: 1090
-    end: 1091
+    start: 1081
+    end: 1082
   raw: ;
 - kind: Newline
   span:
-    start: 1091
-    end: 1092
+    start: 1082
+    end: 1083
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1083
+    end: 1088
+  raw: print
+- kind: OpenParen
+  span:
+    start: 1088
+    end: 1089
+  raw: (
+- kind: Identifier
+  span:
+    start: 1089
+    end: 1093
+  raw: this
+- kind: Comma
+  span:
+    start: 1093
+    end: 1094
+  raw: ","
+- kind:
+    String: Double
+  span:
+    start: 1095
+    end: 1103
+  raw: bframe
+- kind: CloseParen
+  span:
+    start: 1103
+    end: 1104
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1104
+    end: 1105
+  raw: ;
+- kind: Newline
+  span:
+    start: 1105
+    end: 1106
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1106
+    end: 1111
+  raw: print
+- kind: OpenParen
+  span:
+    start: 1111
+    end: 1112
+  raw: (
+- kind: Identifier
+  span:
+    start: 1112
+    end: 1117
+  raw: _root
+- kind: Comma
+  span:
+    start: 1117
+    end: 1118
+  raw: ","
+- kind:
+    String: Double
+  span:
+    start: 1119
+    end: 1127
+  raw: bmovie
+- kind: CloseParen
+  span:
+    start: 1127
+    end: 1128
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1128
+    end: 1129
+  raw: ;
+- kind: Newline
+  span:
+    start: 1129
+    end: 1130
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1130
+    end: 1136
+  raw: random
+- kind: OpenParen
+  span:
+    start: 1136
+    end: 1137
+  raw: (
+- kind: Integer
+  span:
+    start: 1137
+    end: 1140
+  raw: "123"
+- kind: CloseParen
+  span:
+    start: 1140
+    end: 1141
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1141
+    end: 1142
+  raw: ;
+- kind: Newline
+  span:
+    start: 1142
+    end: 1143
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1143
+    end: 1148
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1148
+    end: 1149
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1149
+    end: 1158
+  raw: message
+- kind: CloseParen
+  span:
+    start: 1158
+    end: 1159
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1159
+    end: 1160
+  raw: ;
+- kind: Newline
+  span:
+    start: 1160
+    end: 1161
   raw: "\n"

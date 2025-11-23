@@ -15,6 +15,12 @@ Ok:
         - _level12
         - _level
         - abc
+        - "print:#bmax"
+        - foo
+        - "print:#bframe"
+        - this
+        - "print:"
+        - _root
         - message
     - Push:
         - Integer: 123
@@ -249,10 +255,36 @@ Ok:
     - PrevFrame
     - GotoFrame: 0
     - Push:
+        - Constant: 9
+    - Push:
+        - Constant: 10
+    - GetUrl2:
+        load_variables: false
+        load_target: false
+        method: 0
+    - Push:
+        - Constant: 11
+    - Push:
+        - Constant: 12
+    - GetVariable
+    - GetUrl2:
+        load_variables: false
+        load_target: false
+        method: 0
+    - Push:
+        - Constant: 13
+    - Push:
+        - Constant: 14
+    - GetVariable
+    - GetUrl2:
+        load_variables: false
+        load_target: false
+        method: 0
+    - Push:
         - Integer: 123
     - RandomNumber
     - Pop
     - Push:
-        - Constant: 9
+        - Constant: 15
     - Trace
   label_positions: {}

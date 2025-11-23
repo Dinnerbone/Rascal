@@ -36,6 +36,7 @@ pub(crate) fn gen_special_call(
         "play" => fn_play(builder, span, args),
         "prevframe" => fn_prev_frame(builder, span, args),
         "prevscene" => fn_prev_scene(builder, span, args),
+        "print" => fn_print(builder, span, args),
         "trace" => fn_trace(builder, span, args),
         "random" => fn_random(builder, span, args),
         _ => return false,
@@ -364,6 +365,30 @@ fn get_method(builder: &mut CodeBuilder, method: Option<&Expr>) -> u8 {
     }
 }
 
+fn get_bounds_type(builder: &mut CodeBuilder, name: Option<&Expr>) -> &'static str {
+    let Some(name) = name else {
+        return "";
+    };
+    let span = name.span;
+    let Expr {
+        value: ExprKind::Constant(ConstantKind::String(name)),
+        ..
+    } = name
+    else {
+        builder.error("Bounds type must be bmovie, bframe or bmax.", span);
+        return "";
+    };
+    match name.to_ascii_lowercase().as_str() {
+        "bmax" => "#bmax",
+        "bframe" => "#bframe",
+        "bmovie" => "",
+        _ => {
+            builder.error("Bounds type must be bmovie, bframe or bmax.", span);
+            ""
+        }
+    }
+}
+
 fn fn_load_variables_num(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
     if args.len() < 2 || args.len() > 3 {
         builder.error(
@@ -539,6 +564,25 @@ fn fn_play(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
         builder.action(Action::Play);
     } else {
         builder.error("Wrong number of parameters; play requires exactly 0.", span);
+    }
+}
+
+fn fn_print(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
+    if args.len() == 2 {
+        let url = format!("print:{}", get_bounds_type(builder, args.get(1)));
+        let value = builder.constants_mut().add(&url);
+        builder.push(value);
+        gen_expr(builder, &args[0], false);
+        builder.action(Action::GetUrl2 {
+            load_target: false,
+            load_variables: false,
+            method: 0,
+        });
+    } else {
+        builder.error(
+            "Wrong number of parameters; print requires exactly 2.",
+            span,
+        );
     }
 }
 

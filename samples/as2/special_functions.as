@@ -48,5 +48,8 @@ ord(x);
 play();
 prevFrame();
 prevScene();
+print("foo", "bmax");
+print(this, "bframe");
+print(_root, "bmovie");
 random(123);
 trace("message");
