@@ -24,5 +24,6 @@ gotoAndStop("scene", "123");
 gotoAndStop("scene", x);
 gotoAndStop(x);
 int(x);
+length(x);
 random(123);
 trace("message");

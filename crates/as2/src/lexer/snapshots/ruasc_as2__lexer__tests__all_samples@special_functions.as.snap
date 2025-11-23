@@ -883,60 +883,90 @@ input_file: samples/as2/special_functions.as
   span:
     start: 542
     end: 548
-  raw: random
+  raw: length
 - kind: OpenParen
   span:
     start: 548
     end: 549
   raw: (
-- kind: Integer
+- kind: Identifier
   span:
     start: 549
-    end: 552
-  raw: "123"
+    end: 550
+  raw: x
 - kind: CloseParen
   span:
-    start: 552
-    end: 553
+    start: 550
+    end: 551
   raw: )
 - kind: Semicolon
   span:
-    start: 553
-    end: 554
+    start: 551
+    end: 552
   raw: ;
 - kind: Newline
   span:
-    start: 554
-    end: 555
+    start: 552
+    end: 553
   raw: "\n"
 - kind: Identifier
   span:
-    start: 555
+    start: 553
+    end: 559
+  raw: random
+- kind: OpenParen
+  span:
+    start: 559
     end: 560
+  raw: (
+- kind: Integer
+  span:
+    start: 560
+    end: 563
+  raw: "123"
+- kind: CloseParen
+  span:
+    start: 563
+    end: 564
+  raw: )
+- kind: Semicolon
+  span:
+    start: 564
+    end: 565
+  raw: ;
+- kind: Newline
+  span:
+    start: 565
+    end: 566
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 566
+    end: 571
   raw: trace
 - kind: OpenParen
   span:
-    start: 560
-    end: 561
+    start: 571
+    end: 572
   raw: (
 - kind:
     String: Double
   span:
-    start: 561
-    end: 570
+    start: 572
+    end: 581
   raw: message
 - kind: CloseParen
   span:
-    start: 570
-    end: 571
+    start: 581
+    end: 582
   raw: )
 - kind: Semicolon
   span:
-    start: 571
-    end: 572
+    start: 582
+    end: 583
   raw: ;
 - kind: Newline
   span:
-    start: 572
-    end: 573
+    start: 583
+    end: 584
   raw: "\n"

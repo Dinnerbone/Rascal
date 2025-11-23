@@ -1,0 +1,2 @@
+length();
+length("a", "b");

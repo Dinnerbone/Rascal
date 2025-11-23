@@ -139,6 +139,7 @@ pub enum ActionName {
     StoreRegister,
     Subtract,
     StrictEquals,
+    StringLength,
     ToInteger,
     Trace,
     TypeOf,

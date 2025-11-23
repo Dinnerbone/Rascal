@@ -979,63 +979,113 @@ input_file: samples/as2_pcode/special_functions.pcode
     start: 848
     end: 852
   raw: Push
-- kind: Integer
+- kind:
+    Constant: 0
   span:
     start: 853
-    end: 856
-  raw: "123"
+    end: 862
+  raw: constant0
 - kind: Newline
   span:
-    start: 856
-    end: 857
+    start: 862
+    end: 863
   raw: "\n"
 - kind:
-    ActionName: RandomNumber
+    ActionName: GetVariable
   span:
-    start: 857
-    end: 869
-  raw: RandomNumber
+    start: 863
+    end: 874
+  raw: GetVariable
 - kind: Newline
   span:
-    start: 869
-    end: 870
+    start: 874
+    end: 875
+  raw: "\n"
+- kind:
+    ActionName: StringLength
+  span:
+    start: 875
+    end: 887
+  raw: StringLength
+- kind: Newline
+  span:
+    start: 887
+    end: 888
   raw: "\n"
 - kind:
     ActionName: Pop
   span:
-    start: 870
-    end: 873
+    start: 888
+    end: 891
   raw: Pop
 - kind: Newline
   span:
-    start: 873
-    end: 874
+    start: 891
+    end: 892
   raw: "\n"
 - kind:
     ActionName: Push
   span:
-    start: 874
-    end: 878
+    start: 892
+    end: 896
+  raw: Push
+- kind: Integer
+  span:
+    start: 897
+    end: 900
+  raw: "123"
+- kind: Newline
+  span:
+    start: 900
+    end: 901
+  raw: "\n"
+- kind:
+    ActionName: RandomNumber
+  span:
+    start: 901
+    end: 913
+  raw: RandomNumber
+- kind: Newline
+  span:
+    start: 913
+    end: 914
+  raw: "\n"
+- kind:
+    ActionName: Pop
+  span:
+    start: 914
+    end: 917
+  raw: Pop
+- kind: Newline
+  span:
+    start: 917
+    end: 918
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 918
+    end: 922
   raw: Push
 - kind:
     Constant: 4
   span:
-    start: 879
-    end: 888
+    start: 923
+    end: 932
   raw: constant4
 - kind: Newline
   span:
-    start: 888
-    end: 889
+    start: 932
+    end: 933
   raw: "\n"
 - kind:
     ActionName: Trace
   span:
-    start: 889
-    end: 894
+    start: 933
+    end: 938
   raw: Trace
 - kind: Newline
   span:
-    start: 894
-    end: 895
+    start: 938
+    end: 939
   raw: "\n"

@@ -570,7 +570,7 @@ Ok:
     - Expr:
         span:
           start: 542
-          end: 553
+          end: 551
         value:
           Call:
             name:
@@ -579,31 +579,51 @@ Ok:
                 end: 548
               value:
                 Constant:
-                  Identifier: random
+                  Identifier: length
             args:
               - span:
                   start: 549
-                  end: 552
+                  end: 550
+                value:
+                  Constant:
+                    Identifier: x
+    - Expr:
+        span:
+          start: 553
+          end: 564
+        value:
+          Call:
+            name:
+              span:
+                start: 553
+                end: 559
+              value:
+                Constant:
+                  Identifier: random
+            args:
+              - span:
+                  start: 560
+                  end: 563
                 value:
                   Constant:
                     Integer: 123
     - Expr:
         span:
-          start: 555
-          end: 571
+          start: 566
+          end: 582
         value:
           Call:
             name:
               span:
-                start: 555
-                end: 560
+                start: 566
+                end: 571
               value:
                 Constant:
                   Identifier: trace
             args:
               - span:
-                  start: 561
-                  end: 570
+                  start: 572
+                  end: 581
                 value:
                   Constant:
                     String: message

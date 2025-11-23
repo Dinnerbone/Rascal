@@ -101,6 +101,7 @@ pub(crate) fn action(i: &mut Tokens<'_>) -> ModalResult<Action> {
         ActionName::SetVariable => Action::SetVariable,
         ActionName::StoreRegister => store_register.parse_next(i)?,
         ActionName::StrictEquals => Action::StrictEquals,
+        ActionName::StringLength => Action::StringLength,
         ActionName::Subtract => Action::Subtract,
         ActionName::ToInteger => Action::ToInteger,
         ActionName::Trace => Action::Trace,
@@ -371,6 +372,7 @@ mod tests {
         test_subtract => Subtract,
         test_tointeger => ToInteger,
         test_strictequals => StrictEquals,
+        test_stringlength => StringLength,
         test_trace => Trace,
         test_typeof => TypeOf,
     }
