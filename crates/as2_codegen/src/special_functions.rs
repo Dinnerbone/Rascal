@@ -23,6 +23,7 @@ pub(crate) fn gen_special_call(
         "length" => fn_length(builder, span, args),
         "loadMovie" => fn_load_movie(builder, span, args),
         "loadMovieNum" => fn_load_movie_num(builder, span, args),
+        "loadVariables" => fn_load_variables(builder, span, args),
         "trace" => fn_trace(builder, span, args),
         "random" => fn_random(builder, span, args),
         _ => return false,
@@ -293,6 +294,25 @@ fn fn_load_movie_num(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
     builder.action(Action::GetUrl2 {
         load_variables: false,
         load_target: false,
+        method,
+    });
+}
+
+fn fn_load_variables(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
+    if args.len() < 2 || args.len() > 3 {
+        builder.error(
+            "Wrong number of parameters; loadVariables requires between 2 and 3.",
+            span,
+        );
+        return;
+    }
+
+    gen_expr(builder, &args[0], false);
+    gen_expr(builder, &args[1], false);
+    let method = get_method(builder, args.get(2));
+    builder.action(Action::GetUrl2 {
+        load_variables: true,
+        load_target: true,
         method,
     });
 }

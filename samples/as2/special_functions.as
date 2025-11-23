@@ -30,5 +30,8 @@ loadMovie("url", "target", "get");
 loadMovieNum("url", 12);
 loadMovieNum("url", 12, "get");
 loadMovieNum("url", x, "get");
+loadVariables("url", "target");
+loadVariables("url", x);
+loadVariables("url", "target", "get");
 random(123);
 trace("message");

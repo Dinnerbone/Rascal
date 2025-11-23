@@ -149,6 +149,31 @@ Ok:
         load_target: false
         method: 1
     - Push:
+        - Constant: 4
+    - Push:
+        - Constant: 5
+    - GetUrl2:
+        load_variables: true
+        load_target: true
+        method: 0
+    - Push:
+        - Constant: 4
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - GetUrl2:
+        load_variables: true
+        load_target: true
+        method: 0
+    - Push:
+        - Constant: 4
+    - Push:
+        - Constant: 5
+    - GetUrl2:
+        load_variables: true
+        load_target: true
+        method: 1
+    - Push:
         - Integer: 123
     - RandomNumber
     - Pop
