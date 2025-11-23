@@ -155,6 +155,7 @@ pub enum ActionName {
     Subtract,
     ToInteger,
     ToNumber,
+    ToString,
     Trace,
     TypeOf,
 }

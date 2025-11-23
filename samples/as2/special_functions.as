@@ -69,4 +69,5 @@ startDrag(x, true, 1, 2, 3, 4);
 stop();
 stopAllSounds();
 stopDrag();
+String(x);
 trace("message");

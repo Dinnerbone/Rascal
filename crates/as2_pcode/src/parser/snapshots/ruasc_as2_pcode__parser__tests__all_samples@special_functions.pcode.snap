@@ -426,6 +426,11 @@ Ok:
     - StopSounds
     - EndDrag
     - Push:
+        - Constant: 0
+    - GetVariable
+    - ToString
+    - Pop
+    - Push:
         - Constant: 19
     - Trace
   label_positions: {}

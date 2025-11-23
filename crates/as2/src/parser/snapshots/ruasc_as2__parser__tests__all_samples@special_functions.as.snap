@@ -1656,20 +1656,40 @@ Ok:
     - Expr:
         span:
           start: 1546
-          end: 1562
+          end: 1555
         value:
           Call:
             name:
               span:
                 start: 1546
-                end: 1551
+                end: 1552
+              value:
+                Constant:
+                  Identifier: String
+            args:
+              - span:
+                  start: 1553
+                  end: 1554
+                value:
+                  Constant:
+                    Identifier: x
+    - Expr:
+        span:
+          start: 1557
+          end: 1573
+        value:
+          Call:
+            name:
+              span:
+                start: 1557
+                end: 1562
               value:
                 Constant:
                   Identifier: trace
             args:
               - span:
-                  start: 1552
-                  end: 1561
+                  start: 1563
+                  end: 1572
                 value:
                   Constant:
                     String: message

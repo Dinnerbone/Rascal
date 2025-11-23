@@ -3,7 +3,7 @@ source: crates/as2_codegen/src/tests.rs
 expression: result
 input_file: samples/as2/typed_variables.as
 ---
-ConstantPool "a", "b", "Test message", "data", "valid", "isValid", "age", "name", "i", "arr", "length", "callback", "num", "str", "Hello", "flag", "obj", "numbers", "Array", "strings", "three", "two", "one", "someValue", "123", "numValue", "strValue", "String", "userData", "scores", "User", "id", "Number"
+ConstantPool "a", "b", "Test message", "data", "valid", "isValid", "age", "name", "i", "arr", "length", "callback", "num", "str", "Hello", "flag", "obj", "numbers", "Array", "strings", "three", "two", "one", "someValue", "123", "numValue", "strValue", "userData", "scores", "String", "User", "id", "Number"
 DefineFunction "add", 2, "a", "b" {
 Push constant0
 GetVariable
@@ -88,14 +88,14 @@ Push constant25, constant23
 GetVariable
 ToNumber
 DefineLocal
-Push constant26, 42, 1, constant27
-CallFunction
+Push constant26, 42
+ToString
 DefineLocal
-Push constant28, constant29, constant18, 3, 2, 1, 3
+Push constant27, constant28, constant18, 3, 2, 1, 3
 InitArray
 StoreRegister 0
 SetVariable
-Push register0, constant7, constant27, constant30
+Push register0, constant7, constant29, constant30
 StoreRegister 0
 SetVariable
 Push register0, constant31, constant32, 1
