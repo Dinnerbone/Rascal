@@ -1,0 +1,2 @@
+mbord();
+mbord("a", "b");

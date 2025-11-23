@@ -952,40 +952,60 @@ Ok:
     - Expr:
         span:
           start: 923
-          end: 934
+          end: 931
         value:
           Call:
             name:
               span:
                 start: 923
-                end: 929
+                end: 928
+              value:
+                Constant:
+                  Identifier: mbord
+            args:
+              - span:
+                  start: 929
+                  end: 930
+                value:
+                  Constant:
+                    Identifier: x
+    - Expr:
+        span:
+          start: 933
+          end: 944
+        value:
+          Call:
+            name:
+              span:
+                start: 933
+                end: 939
               value:
                 Constant:
                   Identifier: random
             args:
               - span:
-                  start: 930
-                  end: 933
+                  start: 940
+                  end: 943
                 value:
                   Constant:
                     Integer: 123
     - Expr:
         span:
-          start: 936
-          end: 952
+          start: 946
+          end: 962
         value:
           Call:
             name:
               span:
-                start: 936
-                end: 941
+                start: 946
+                end: 951
               value:
                 Constant:
                   Identifier: trace
             args:
               - span:
-                  start: 942
-                  end: 951
+                  start: 952
+                  end: 961
                 value:
                   Constant:
                     String: message
