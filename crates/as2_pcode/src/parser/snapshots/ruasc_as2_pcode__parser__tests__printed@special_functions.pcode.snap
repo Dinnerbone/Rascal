@@ -3,7 +3,7 @@ source: crates/as2_pcode/src/parser/tests.rs
 expression: "parsed.unwrap_or_else(|_| Actions::empty())"
 input_file: samples/as2_pcode/special_functions.pcode
 ---
-ConstantPool "x", "http://ruffle.rs", "window", "/:$version", "url", "target", "_level12", "_level", "abc", "print:#bmax", "foo", "print:#bframe", "this", "print:", "_root", "printasbitmap:#bmax", "printasbitmap:#bframe", "printasbitmap:", "_level123", "message"
+ConstantPool "x", "http://ruffle.rs", "window", "/:$version", "url", "target", "_level12", "_level", "abc", "print:#bmax", "foo", "print:#bframe", "this", "print:", "_root", "printasbitmap:#bmax", "printasbitmap:#bframe", "printasbitmap:", "_level123", "message", ""
 Push 123
 Call
 Push constant0
@@ -247,3 +247,7 @@ Pop
 ToggleQuality
 Push constant19
 Trace
+Push constant20
+Push constant0
+GetVariable
+GetUrl2 false, true, 0

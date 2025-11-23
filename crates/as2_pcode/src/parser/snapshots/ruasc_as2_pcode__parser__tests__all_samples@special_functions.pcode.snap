@@ -26,6 +26,7 @@ Ok:
         - "printasbitmap:"
         - _level123
         - message
+        - ""
     - Push:
         - Integer: 123
     - Call
@@ -457,4 +458,13 @@ Ok:
     - Push:
         - Constant: 19
     - Trace
+    - Push:
+        - Constant: 20
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - GetUrl2:
+        load_variables: false
+        load_target: true
+        method: 0
   label_positions: {}

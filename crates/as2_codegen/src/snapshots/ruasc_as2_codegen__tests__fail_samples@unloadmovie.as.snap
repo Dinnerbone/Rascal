@@ -1,0 +1,12 @@
+---
+source: crates/as2_codegen/src/tests.rs
+expression: result
+input_file: crates/as2_codegen/fail_samples/unloadmovie.as
+---
+error: Compile error(s)
+  ╭▸ unloadmovie.as:1:1
+  │
+1 │ unloadMovie();
+  │ ━━━━━━━━━━━━━ Wrong number of parameters; unloadMovie requires exactly 1.
+2 │ unloadMovie(x, y);
+  ╰╴━━━━━━━━━━━━━━━━━ Wrong number of parameters; unloadMovie requires exactly 1.

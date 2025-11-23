@@ -1785,3 +1785,23 @@ Ok:
                 value:
                   Constant:
                     String: message
+    - Expr:
+        span:
+          start: 1648
+          end: 1662
+        value:
+          Call:
+            name:
+              span:
+                start: 1648
+                end: 1659
+              value:
+                Constant:
+                  Identifier: unloadMovie
+            args:
+              - span:
+                  start: 1660
+                  end: 1661
+                value:
+                  Constant:
+                    Identifier: x

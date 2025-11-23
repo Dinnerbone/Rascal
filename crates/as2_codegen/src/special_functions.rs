@@ -51,6 +51,7 @@ pub(crate) fn gen_special_call(
         "togglehighquality" => fn_toggle_high_quality(builder, span, args),
         "trace" => fn_trace(builder, span, args),
         "random" => fn_random(builder, span, args),
+        "unloadmovie" => fn_unload_movie(builder, span, args),
         _ => return false,
     };
     true
@@ -854,6 +855,24 @@ fn fn_random(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
     } else {
         builder.error(
             "Wrong number of parameters; random requires exactly 1.",
+            span,
+        );
+    }
+}
+
+fn fn_unload_movie(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
+    if args.len() == 1 {
+        let url = builder.constants_mut().add("");
+        builder.push(url);
+        gen_expr(builder, &args[0], false);
+        builder.action(Action::GetUrl2 {
+            load_target: true,
+            load_variables: false,
+            method: 0,
+        });
+    } else {
+        builder.error(
+            "Wrong number of parameters; unloadMovie requires exactly 1.",
             span,
         );
     }

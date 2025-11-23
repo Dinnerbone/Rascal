@@ -75,3 +75,4 @@ substring(x, 1, 2);
 targetPath(x);
 toggleHighQuality();
 trace("message");
+unloadMovie(x);
