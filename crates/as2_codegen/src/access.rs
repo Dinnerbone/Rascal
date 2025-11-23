@@ -14,11 +14,11 @@ impl VariableAccess {
     pub fn for_identifier(builder: &mut CodeBuilder, name: &str) -> Self {
         match name {
             "true" => {
-                builder.push(PushValue::True);
+                builder.push(true);
                 VariableAccess::Direct
             }
             "false" => {
-                builder.push(PushValue::False);
+                builder.push(false);
                 VariableAccess::Direct
             }
             "null" => {
@@ -46,11 +46,11 @@ impl VariableAccess {
             }
             ConstantKind::Identifier(identifier) => Self::for_identifier(builder, identifier),
             ConstantKind::Float(value) => {
-                builder.push(PushValue::Float(*value));
+                builder.push(*value);
                 VariableAccess::Direct
             }
             ConstantKind::Integer(value) => {
-                builder.push(PushValue::Integer(*value));
+                builder.push(*value);
                 VariableAccess::Direct
             }
         }

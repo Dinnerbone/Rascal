@@ -266,7 +266,7 @@ fn gen_init_object(builder: &mut CodeBuilder, values: &[(&str, Expr)]) {
         builder.push(push_value);
         gen_expr(builder, value, false);
     }
-    builder.push(PushValue::Integer(num_fields));
+    builder.push(num_fields);
     builder.action_with_stack_delta(Action::InitObject, -num_fields * 2);
 }
 
@@ -275,7 +275,7 @@ fn gen_init_array(builder: &mut CodeBuilder, values: &[Expr]) {
     for value in values.iter().rev() {
         gen_expr(builder, value, false);
     }
-    builder.push(PushValue::Integer(num_values));
+    builder.push(num_values);
     builder.action_with_stack_delta(Action::InitArray, -num_values);
 }
 
@@ -326,7 +326,7 @@ fn gen_unary_op(
         },
         UnaryOperator::BitNot => {
             gen_expr(builder, expr, false);
-            builder.push(PushValue::Integer(-1));
+            builder.push(-1);
             builder.action(Action::BitXor);
         }
         UnaryOperator::Increment(affix) => adjust_in_place(builder, Action::Increment, affix),
@@ -448,7 +448,7 @@ fn gen_call(builder: &mut CodeBuilder, span: Span, name: &Expr, args: &[Expr]) {
         gen_expr(builder, arg, false);
     }
     let num_args = args.len() as i32;
-    builder.push(PushValue::Integer(num_args));
+    builder.push(num_args);
     VariableAccess::for_expr(builder, name).call(builder, num_args);
 }
 
@@ -457,7 +457,7 @@ fn gen_new(builder: &mut CodeBuilder, name: &Expr, args: &[Expr]) {
         gen_expr(builder, arg, false);
     }
     let num_args = args.len() as i32;
-    builder.push(PushValue::Integer(num_args));
+    builder.push(num_args);
     let access = VariableAccess::for_expr(builder, name);
     access.call_new(builder, num_args);
 }

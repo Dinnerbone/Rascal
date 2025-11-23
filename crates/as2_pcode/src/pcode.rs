@@ -351,3 +351,39 @@ impl std::fmt::Display for PushValue {
         }
     }
 }
+
+impl From<bool> for PushValue {
+    fn from(b: bool) -> Self {
+        if b { PushValue::True } else { PushValue::False }
+    }
+}
+
+impl From<i32> for PushValue {
+    fn from(i: i32) -> Self {
+        PushValue::Integer(i)
+    }
+}
+
+impl From<f64> for PushValue {
+    fn from(f: f64) -> Self {
+        PushValue::Float(f)
+    }
+}
+
+impl From<&str> for PushValue {
+    fn from(s: &str) -> Self {
+        PushValue::String(s.to_string())
+    }
+}
+
+impl From<String> for PushValue {
+    fn from(s: String) -> Self {
+        PushValue::String(s)
+    }
+}
+
+impl From<f32> for PushValue {
+    fn from(f: f32) -> Self {
+        PushValue::Float(f as f64)
+    }
+}

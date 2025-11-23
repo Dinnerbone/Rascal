@@ -1,8 +1,8 @@
 use crate::builder::CodeBuilder;
 use crate::statement::gen_expr;
 use ruasc_as2::ast::{ConstantKind, Expr, ExprKind};
+use ruasc_as2_pcode::Action;
 use ruasc_as2_pcode::Action::GetUrl;
-use ruasc_as2_pcode::{Action, PushValue};
 use ruasc_common::span::Span;
 
 pub(crate) fn gen_special_call(
@@ -61,7 +61,7 @@ fn fn_get_timer(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
 
 fn fn_get_version(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
     if args.is_empty() {
-        builder.push(PushValue::String("/:$version".to_string()));
+        builder.push("/:$version");
         builder.action(Action::GetVariable);
     } else {
         builder.error(
@@ -200,7 +200,7 @@ fn fn_get_url(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
     if let Some(target) = target {
         gen_expr(builder, target, false);
     } else {
-        builder.push(PushValue::String("".to_string()));
+        builder.push("");
     }
     let method = get_method(builder, method);
     builder.action(Action::GetUrl2 {
