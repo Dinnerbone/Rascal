@@ -1734,20 +1734,40 @@ Ok:
     - Expr:
         span:
           start: 1594
-          end: 1610
+          end: 1607
         value:
           Call:
             name:
               span:
                 start: 1594
-                end: 1599
+                end: 1604
+              value:
+                Constant:
+                  Identifier: targetPath
+            args:
+              - span:
+                  start: 1605
+                  end: 1606
+                value:
+                  Constant:
+                    Identifier: x
+    - Expr:
+        span:
+          start: 1609
+          end: 1625
+        value:
+          Call:
+            name:
+              span:
+                start: 1609
+                end: 1614
               value:
                 Constant:
                   Identifier: trace
             args:
               - span:
-                  start: 1600
-                  end: 1609
+                  start: 1615
+                  end: 1624
                 value:
                   Constant:
                     String: message

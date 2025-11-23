@@ -47,6 +47,7 @@ pub(crate) fn gen_special_call(
         "stopdrag" => fn_stop_drag(builder, span, args),
         "string" => fn_string(builder, span, args),
         "substring" => fn_substring(builder, span, args),
+        "targetpath" => fn_target_path(builder, span, args),
         "trace" => fn_trace(builder, span, args),
         "random" => fn_random(builder, span, args),
         _ => return false,
@@ -793,6 +794,18 @@ fn fn_string(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
     } else {
         builder.error(
             "Wrong number of parameters; String requires exactly 1.",
+            span,
+        );
+    }
+}
+
+fn fn_target_path(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
+    if args.len() == 1 {
+        gen_expr(builder, &args[0], false);
+        builder.action(Action::TargetPath);
+    } else {
+        builder.error(
+            "Wrong number of parameters; targetPath requires exactly 1.",
             span,
         );
     }

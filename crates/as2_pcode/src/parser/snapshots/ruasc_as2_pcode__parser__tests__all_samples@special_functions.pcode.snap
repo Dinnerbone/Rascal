@@ -449,6 +449,11 @@ Ok:
     - StringExtract
     - Pop
     - Push:
+        - Constant: 0
+    - GetVariable
+    - TargetPath
+    - Pop
+    - Push:
         - Constant: 19
     - Trace
   label_positions: {}

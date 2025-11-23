@@ -154,6 +154,7 @@ pub enum ActionName {
     StringExtract,
     StringLength,
     Subtract,
+    TargetPath,
     ToInteger,
     ToNumber,
     ToString,

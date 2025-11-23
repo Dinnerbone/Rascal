@@ -2741,31 +2741,61 @@ input_file: samples/as2/special_functions.as
 - kind: Identifier
   span:
     start: 1594
-    end: 1599
+    end: 1604
+  raw: targetPath
+- kind: OpenParen
+  span:
+    start: 1604
+    end: 1605
+  raw: (
+- kind: Identifier
+  span:
+    start: 1605
+    end: 1606
+  raw: x
+- kind: CloseParen
+  span:
+    start: 1606
+    end: 1607
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1607
+    end: 1608
+  raw: ;
+- kind: Newline
+  span:
+    start: 1608
+    end: 1609
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1609
+    end: 1614
   raw: trace
 - kind: OpenParen
   span:
-    start: 1599
-    end: 1600
+    start: 1614
+    end: 1615
   raw: (
 - kind:
     String: Double
   span:
-    start: 1600
-    end: 1609
+    start: 1615
+    end: 1624
   raw: message
 - kind: CloseParen
   span:
-    start: 1609
-    end: 1610
+    start: 1624
+    end: 1625
   raw: )
 - kind: Semicolon
   span:
-    start: 1610
-    end: 1611
+    start: 1625
+    end: 1626
   raw: ;
 - kind: Newline
   span:
-    start: 1611
-    end: 1612
+    start: 1626
+    end: 1627
   raw: "\n"

@@ -4164,24 +4164,74 @@ input_file: samples/as2_pcode/special_functions.pcode
     end: 3437
   raw: Push
 - kind:
-    Constant: 19
+    Constant: 0
   span:
     start: 3438
+    end: 3447
+  raw: constant0
+- kind: Newline
+  span:
+    start: 3447
     end: 3448
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 3448
+    end: 3459
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 3459
+    end: 3460
+  raw: "\n"
+- kind:
+    ActionName: TargetPath
+  span:
+    start: 3460
+    end: 3470
+  raw: TargetPath
+- kind: Newline
+  span:
+    start: 3470
+    end: 3471
+  raw: "\n"
+- kind:
+    ActionName: Pop
+  span:
+    start: 3471
+    end: 3474
+  raw: Pop
+- kind: Newline
+  span:
+    start: 3474
+    end: 3475
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 3475
+    end: 3479
+  raw: Push
+- kind:
+    Constant: 19
+  span:
+    start: 3480
+    end: 3490
   raw: constant19
 - kind: Newline
   span:
-    start: 3448
-    end: 3449
+    start: 3490
+    end: 3491
   raw: "\n"
 - kind:
     ActionName: Trace
   span:
-    start: 3449
-    end: 3454
+    start: 3491
+    end: 3496
   raw: Trace
 - kind: Newline
   span:
-    start: 3454
-    end: 3455
+    start: 3496
+    end: 3497
   raw: "\n"
