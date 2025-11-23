@@ -27,5 +27,8 @@ int(x);
 length(x);
 loadMovie("url", "target");
 loadMovie("url", "target", "get");
+loadMovieNum("url", 12);
+loadMovieNum("url", 12, "get");
+loadMovieNum("url", x, "get");
 random(123);
 trace("message");

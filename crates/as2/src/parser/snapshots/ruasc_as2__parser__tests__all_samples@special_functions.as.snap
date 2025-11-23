@@ -648,40 +648,130 @@ Ok:
     - Expr:
         span:
           start: 616
-          end: 627
+          end: 639
         value:
           Call:
             name:
               span:
                 start: 616
-                end: 622
+                end: 628
+              value:
+                Constant:
+                  Identifier: loadMovieNum
+            args:
+              - span:
+                  start: 629
+                  end: 634
+                value:
+                  Constant:
+                    String: url
+              - span:
+                  start: 636
+                  end: 638
+                value:
+                  Constant:
+                    Integer: 12
+    - Expr:
+        span:
+          start: 641
+          end: 671
+        value:
+          Call:
+            name:
+              span:
+                start: 641
+                end: 653
+              value:
+                Constant:
+                  Identifier: loadMovieNum
+            args:
+              - span:
+                  start: 654
+                  end: 659
+                value:
+                  Constant:
+                    String: url
+              - span:
+                  start: 661
+                  end: 663
+                value:
+                  Constant:
+                    Integer: 12
+              - span:
+                  start: 665
+                  end: 670
+                value:
+                  Constant:
+                    String: get
+    - Expr:
+        span:
+          start: 673
+          end: 702
+        value:
+          Call:
+            name:
+              span:
+                start: 673
+                end: 685
+              value:
+                Constant:
+                  Identifier: loadMovieNum
+            args:
+              - span:
+                  start: 686
+                  end: 691
+                value:
+                  Constant:
+                    String: url
+              - span:
+                  start: 693
+                  end: 694
+                value:
+                  Constant:
+                    Identifier: x
+              - span:
+                  start: 696
+                  end: 701
+                value:
+                  Constant:
+                    String: get
+    - Expr:
+        span:
+          start: 704
+          end: 715
+        value:
+          Call:
+            name:
+              span:
+                start: 704
+                end: 710
               value:
                 Constant:
                   Identifier: random
             args:
               - span:
-                  start: 623
-                  end: 626
+                  start: 711
+                  end: 714
                 value:
                   Constant:
                     Integer: 123
     - Expr:
         span:
-          start: 629
-          end: 645
+          start: 717
+          end: 733
         value:
           Call:
             name:
               span:
-                start: 629
-                end: 634
+                start: 717
+                end: 722
               value:
                 Constant:
                   Identifier: trace
             args:
               - span:
-                  start: 635
-                  end: 644
+                  start: 723
+                  end: 732
                 value:
                   Constant:
                     String: message

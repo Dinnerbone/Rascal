@@ -1007,61 +1007,206 @@ input_file: samples/as2/special_functions.as
 - kind: Identifier
   span:
     start: 616
-    end: 622
-  raw: random
-- kind: OpenParen
-  span:
-    start: 622
-    end: 623
-  raw: (
-- kind: Integer
-  span:
-    start: 623
-    end: 626
-  raw: "123"
-- kind: CloseParen
-  span:
-    start: 626
-    end: 627
-  raw: )
-- kind: Semicolon
-  span:
-    start: 627
     end: 628
-  raw: ;
-- kind: Newline
+  raw: loadMovieNum
+- kind: OpenParen
   span:
     start: 628
     end: 629
-  raw: "\n"
-- kind: Identifier
-  span:
-    start: 629
-    end: 634
-  raw: trace
-- kind: OpenParen
-  span:
-    start: 634
-    end: 635
   raw: (
 - kind:
     String: Double
   span:
-    start: 635
-    end: 644
-  raw: message
+    start: 629
+    end: 634
+  raw: url
+- kind: Comma
+  span:
+    start: 634
+    end: 635
+  raw: ","
+- kind: Integer
+  span:
+    start: 636
+    end: 638
+  raw: "12"
 - kind: CloseParen
   span:
-    start: 644
-    end: 645
+    start: 638
+    end: 639
   raw: )
 - kind: Semicolon
   span:
-    start: 645
-    end: 646
+    start: 639
+    end: 640
   raw: ;
 - kind: Newline
   span:
-    start: 646
-    end: 647
+    start: 640
+    end: 641
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 641
+    end: 653
+  raw: loadMovieNum
+- kind: OpenParen
+  span:
+    start: 653
+    end: 654
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 654
+    end: 659
+  raw: url
+- kind: Comma
+  span:
+    start: 659
+    end: 660
+  raw: ","
+- kind: Integer
+  span:
+    start: 661
+    end: 663
+  raw: "12"
+- kind: Comma
+  span:
+    start: 663
+    end: 664
+  raw: ","
+- kind:
+    String: Double
+  span:
+    start: 665
+    end: 670
+  raw: get
+- kind: CloseParen
+  span:
+    start: 670
+    end: 671
+  raw: )
+- kind: Semicolon
+  span:
+    start: 671
+    end: 672
+  raw: ;
+- kind: Newline
+  span:
+    start: 672
+    end: 673
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 673
+    end: 685
+  raw: loadMovieNum
+- kind: OpenParen
+  span:
+    start: 685
+    end: 686
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 686
+    end: 691
+  raw: url
+- kind: Comma
+  span:
+    start: 691
+    end: 692
+  raw: ","
+- kind: Identifier
+  span:
+    start: 693
+    end: 694
+  raw: x
+- kind: Comma
+  span:
+    start: 694
+    end: 695
+  raw: ","
+- kind:
+    String: Double
+  span:
+    start: 696
+    end: 701
+  raw: get
+- kind: CloseParen
+  span:
+    start: 701
+    end: 702
+  raw: )
+- kind: Semicolon
+  span:
+    start: 702
+    end: 703
+  raw: ;
+- kind: Newline
+  span:
+    start: 703
+    end: 704
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 704
+    end: 710
+  raw: random
+- kind: OpenParen
+  span:
+    start: 710
+    end: 711
+  raw: (
+- kind: Integer
+  span:
+    start: 711
+    end: 714
+  raw: "123"
+- kind: CloseParen
+  span:
+    start: 714
+    end: 715
+  raw: )
+- kind: Semicolon
+  span:
+    start: 715
+    end: 716
+  raw: ;
+- kind: Newline
+  span:
+    start: 716
+    end: 717
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 717
+    end: 722
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 722
+    end: 723
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 723
+    end: 732
+  raw: message
+- kind: CloseParen
+  span:
+    start: 732
+    end: 733
+  raw: )
+- kind: Semicolon
+  span:
+    start: 733
+    end: 734
+  raw: ;
+- kind: Newline
+  span:
+    start: 734
+    end: 735
   raw: "\n"

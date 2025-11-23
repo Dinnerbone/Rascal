@@ -138,6 +138,7 @@ pub enum ActionName {
     SetVariable,
     StoreRegister,
     StrictEquals,
+    StringAdd,
     StringLength,
     Subtract,
     ToInteger,

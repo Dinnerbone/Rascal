@@ -3,7 +3,7 @@ source: crates/as2_pcode/src/parser/tests.rs
 expression: "parsed.unwrap_or_else(|_| Actions::empty())"
 input_file: samples/as2_pcode/special_functions.pcode
 ---
-ConstantPool "x", "http://ruffle.rs", "window", "/:$version", "url", "target", "message"
+ConstantPool "x", "http://ruffle.rs", "window", "/:$version", "url", "target", "_level12", "_level", "message"
 Push 123
 Call
 Push constant0
@@ -72,8 +72,18 @@ GetUrl2 false, true, 0
 Push constant4
 Push constant5
 GetUrl2 false, true, 1
+GetUrl "url", "_level12"
+Push constant4
+Push constant6
+GetUrl2 false, false, 1
+Push constant4
+Push constant7
+Push constant0
+GetVariable
+StringAdd
+GetUrl2 false, false, 1
 Push 123
 RandomNumber
 Pop
-Push constant6
+Push constant8
 Trace

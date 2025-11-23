@@ -240,7 +240,7 @@ impl<'a> ActionEncoder<'a> {
             // Action::StopSounds => self.write_small_action(OpCode::StopSounds),
             Action::StoreRegister(action) => self.write_store_register(*action),
             Action::StrictEquals => self.write_small_action(OpCode::StrictEquals),
-            // Action::StringAdd => self.write_small_action(OpCode::StringAdd),
+            Action::StringAdd => self.write_small_action(OpCode::StringAdd),
             // Action::StringEquals => self.write_small_action(OpCode::StringEquals),
             // Action::StringExtract => self.write_small_action(OpCode::StringExtract),
             // Action::StringGreater => self.write_small_action(OpCode::StringGreater),

@@ -12,6 +12,8 @@ Ok:
         - "/:$version"
         - url
         - target
+        - _level12
+        - _level
         - message
     - Push:
         - Integer: 123
@@ -123,11 +125,34 @@ Ok:
         load_variables: false
         load_target: true
         method: 1
+    - GetUrl:
+        url: url
+        target: _level12
+    - Push:
+        - Constant: 4
+    - Push:
+        - Constant: 6
+    - GetUrl2:
+        load_variables: false
+        load_target: false
+        method: 1
+    - Push:
+        - Constant: 4
+    - Push:
+        - Constant: 7
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - StringAdd
+    - GetUrl2:
+        load_variables: false
+        load_target: false
+        method: 1
     - Push:
         - Integer: 123
     - RandomNumber
     - Pop
     - Push:
-        - Constant: 6
+        - Constant: 8
     - Trace
   label_positions: {}

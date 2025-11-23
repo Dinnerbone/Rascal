@@ -22,6 +22,7 @@ pub(crate) fn gen_special_call(
         "int" => fn_int(builder, span, args),
         "length" => fn_length(builder, span, args),
         "loadMovie" => fn_load_movie(builder, span, args),
+        "loadMovieNum" => fn_load_movie_num(builder, span, args),
         "trace" => fn_trace(builder, span, args),
         "random" => fn_random(builder, span, args),
         _ => return false,
@@ -226,6 +227,74 @@ fn fn_load_movie(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
     builder.action(Action::GetUrl2 {
         load_variables: false,
         load_target: true,
+        method,
+    });
+}
+
+fn fn_load_movie_num(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
+    if args.len() < 2 || args.len() > 3 {
+        builder.error(
+            "Wrong number of parameters; loadMovieNum requires between 2 and 3.",
+            span,
+        );
+        return;
+    }
+    let url = &args[0];
+    let target = &args[1];
+    let method = args.get(2);
+
+    // First we see if getUrl is viable - it requires a string url and a constant target, but no method
+    if method.is_none()
+        && let Expr {
+            value: ExprKind::Constant(ConstantKind::String(url)),
+            ..
+        } = url
+    {
+        match &target.value {
+            ExprKind::Constant(ConstantKind::Integer(target)) => {
+                builder.action(GetUrl {
+                    url: url.to_string(),
+                    target: format!("_level{}", target),
+                });
+                return;
+            }
+            ExprKind::Constant(ConstantKind::String(target)) => {
+                builder.action(GetUrl {
+                    url: url.to_string(),
+                    target: format!("_level{}", target),
+                });
+                return;
+            }
+            _ => {}
+        }
+    }
+
+    // We can't use the "classic" getUrl, so let's use the stack
+    gen_expr(builder, url, false);
+
+    match &target.value {
+        ExprKind::Constant(ConstantKind::Integer(target)) => {
+            let str = format!("_level{}", target);
+            let value = builder.constants_mut().add(&str);
+            builder.action(Action::Push(vec![value]))
+        }
+        ExprKind::Constant(ConstantKind::String(target)) => {
+            let str = format!("_level{}", target);
+            let value = builder.constants_mut().add(&str);
+            builder.action(Action::Push(vec![value]))
+        }
+        _ => {
+            let value = builder.constants_mut().add("_level");
+            builder.action(Action::Push(vec![value]));
+            gen_expr(builder, &args[1], false);
+            builder.action(Action::StringAdd);
+        }
+    }
+
+    let method = get_method(builder, method);
+    builder.action(Action::GetUrl2 {
+        load_variables: false,
+        load_target: false,
         method,
     });
 }
