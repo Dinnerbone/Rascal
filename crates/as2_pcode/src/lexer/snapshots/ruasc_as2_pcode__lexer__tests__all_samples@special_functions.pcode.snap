@@ -929,63 +929,113 @@ input_file: samples/as2_pcode/special_functions.pcode
     start: 807
     end: 811
   raw: Push
-- kind: Integer
+- kind:
+    Constant: 0
   span:
     start: 812
-    end: 815
-  raw: "123"
+    end: 821
+  raw: constant0
 - kind: Newline
   span:
-    start: 815
-    end: 816
+    start: 821
+    end: 822
   raw: "\n"
 - kind:
-    ActionName: RandomNumber
+    ActionName: GetVariable
   span:
-    start: 816
-    end: 828
-  raw: RandomNumber
+    start: 822
+    end: 833
+  raw: GetVariable
 - kind: Newline
   span:
-    start: 828
-    end: 829
+    start: 833
+    end: 834
+  raw: "\n"
+- kind:
+    ActionName: ToInteger
+  span:
+    start: 834
+    end: 843
+  raw: ToInteger
+- kind: Newline
+  span:
+    start: 843
+    end: 844
   raw: "\n"
 - kind:
     ActionName: Pop
   span:
-    start: 829
-    end: 832
-  raw: Pop
-- kind: Newline
-  span:
-    start: 832
-    end: 833
-  raw: "\n"
-- kind:
-    ActionName: Push
-  span:
-    start: 833
-    end: 837
-  raw: Push
-- kind:
-    Constant: 4
-  span:
-    start: 838
+    start: 844
     end: 847
-  raw: constant4
+  raw: Pop
 - kind: Newline
   span:
     start: 847
     end: 848
   raw: "\n"
 - kind:
-    ActionName: Trace
+    ActionName: Push
   span:
     start: 848
-    end: 853
+    end: 852
+  raw: Push
+- kind: Integer
+  span:
+    start: 853
+    end: 856
+  raw: "123"
+- kind: Newline
+  span:
+    start: 856
+    end: 857
+  raw: "\n"
+- kind:
+    ActionName: RandomNumber
+  span:
+    start: 857
+    end: 869
+  raw: RandomNumber
+- kind: Newline
+  span:
+    start: 869
+    end: 870
+  raw: "\n"
+- kind:
+    ActionName: Pop
+  span:
+    start: 870
+    end: 873
+  raw: Pop
+- kind: Newline
+  span:
+    start: 873
+    end: 874
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 874
+    end: 878
+  raw: Push
+- kind:
+    Constant: 4
+  span:
+    start: 879
+    end: 888
+  raw: constant4
+- kind: Newline
+  span:
+    start: 888
+    end: 889
+  raw: "\n"
+- kind:
+    ActionName: Trace
+  span:
+    start: 889
+    end: 894
   raw: Trace
 - kind: Newline
   span:
-    start: 853
-    end: 854
+    start: 894
+    end: 895
   raw: "\n"

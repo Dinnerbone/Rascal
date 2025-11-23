@@ -131,6 +131,7 @@ pub enum Action {
     StoreRegister(u8),
     StrictEquals,
     Subtract,
+    ToInteger,
     Trace,
     TypeOf,
 }
@@ -187,6 +188,7 @@ impl Action {
             Action::StrictEquals => -1,
             Action::StoreRegister(_) => 0,
             Action::Subtract => -1,
+            Action::ToInteger => 0,
             Action::Trace => -1,
             Action::TypeOf => 0,
             _ => todo!("missing stack size delta for {:?}", self),
@@ -292,6 +294,7 @@ impl std::fmt::Display for Action {
             Action::StoreRegister(r) => write!(f, "StoreRegister {}", r),
             Action::StrictEquals => write!(f, "StrictEquals"),
             Action::Subtract => write!(f, "Subtract"),
+            Action::ToInteger => write!(f, "ToInteger"),
             Action::Trace => write!(f, "Trace"),
             Action::TypeOf => write!(f, "TypeOf"),
         }

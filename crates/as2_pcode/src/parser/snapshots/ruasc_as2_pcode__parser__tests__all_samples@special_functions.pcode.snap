@@ -96,6 +96,11 @@ Ok:
         scene_bias: 0
         play: false
     - Push:
+        - Constant: 0
+    - GetVariable
+    - ToInteger
+    - Pop
+    - Push:
         - Integer: 123
     - RandomNumber
     - Pop

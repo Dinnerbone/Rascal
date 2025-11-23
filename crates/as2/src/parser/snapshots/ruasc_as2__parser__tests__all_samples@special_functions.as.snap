@@ -550,40 +550,60 @@ Ok:
     - Expr:
         span:
           start: 534
-          end: 545
+          end: 540
         value:
           Call:
             name:
               span:
                 start: 534
-                end: 540
+                end: 537
+              value:
+                Constant:
+                  Identifier: int
+            args:
+              - span:
+                  start: 538
+                  end: 539
+                value:
+                  Constant:
+                    Identifier: x
+    - Expr:
+        span:
+          start: 542
+          end: 553
+        value:
+          Call:
+            name:
+              span:
+                start: 542
+                end: 548
               value:
                 Constant:
                   Identifier: random
             args:
               - span:
-                  start: 541
-                  end: 544
+                  start: 549
+                  end: 552
                 value:
                   Constant:
                     Integer: 123
     - Expr:
         span:
-          start: 547
-          end: 563
+          start: 555
+          end: 571
         value:
           Call:
             name:
               span:
-                start: 547
-                end: 552
+                start: 555
+                end: 560
               value:
                 Constant:
                   Identifier: trace
             args:
               - span:
-                  start: 553
-                  end: 562
+                  start: 561
+                  end: 570
                 value:
                   Constant:
                     String: message

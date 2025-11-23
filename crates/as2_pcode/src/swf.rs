@@ -250,7 +250,7 @@ impl<'a> ActionEncoder<'a> {
             // Action::TargetPath => self.write_small_action(OpCode::TargetPath),
             // Action::Throw => self.write_small_action(OpCode::Throw),
             // Action::ToggleQuality => self.write_small_action(OpCode::ToggleQuality),
-            // Action::ToInteger => self.write_small_action(OpCode::ToInteger),
+            Action::ToInteger => self.write_small_action(OpCode::ToInteger),
             // Action::ToNumber => self.write_small_action(OpCode::ToNumber),
             // Action::ToString => self.write_small_action(OpCode::ToString),
             Action::Trace => self.write_small_action(OpCode::Trace),

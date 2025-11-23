@@ -19,6 +19,7 @@ pub(crate) fn gen_special_call(
         "getVersion" => fn_get_version(builder, span, args),
         "gotoAndPlay" => fn_goto_and_play(builder, span, args),
         "gotoAndStop" => fn_goto_and_stop(builder, span, args),
+        "int" => fn_int(builder, span, args),
         "trace" => fn_trace(builder, span, args),
         "random" => fn_random(builder, span, args),
         _ => return false,
@@ -228,6 +229,15 @@ fn get_method(builder: &mut CodeBuilder, method: Option<&Expr>) -> u8 {
             builder.error("Method name must be GET or POST.", span);
             0
         }
+    }
+}
+
+fn fn_int(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
+    if args.len() == 1 {
+        gen_expr(builder, &args[0], false);
+        builder.action(Action::ToInteger);
+    } else {
+        builder.error("Wrong number of parameters; int requires exactly 1.", span);
     }
 }
 

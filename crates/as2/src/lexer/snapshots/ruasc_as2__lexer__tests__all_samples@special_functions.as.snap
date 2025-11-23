@@ -852,61 +852,91 @@ input_file: samples/as2/special_functions.as
 - kind: Identifier
   span:
     start: 534
-    end: 540
-  raw: random
+    end: 537
+  raw: int
 - kind: OpenParen
   span:
-    start: 540
-    end: 541
+    start: 537
+    end: 538
   raw: (
-- kind: Integer
+- kind: Identifier
   span:
-    start: 541
-    end: 544
-  raw: "123"
+    start: 538
+    end: 539
+  raw: x
 - kind: CloseParen
   span:
-    start: 544
-    end: 545
+    start: 539
+    end: 540
   raw: )
 - kind: Semicolon
   span:
-    start: 545
-    end: 546
+    start: 540
+    end: 541
   raw: ;
 - kind: Newline
   span:
-    start: 546
-    end: 547
+    start: 541
+    end: 542
   raw: "\n"
 - kind: Identifier
   span:
-    start: 547
-    end: 552
-  raw: trace
+    start: 542
+    end: 548
+  raw: random
 - kind: OpenParen
+  span:
+    start: 548
+    end: 549
+  raw: (
+- kind: Integer
+  span:
+    start: 549
+    end: 552
+  raw: "123"
+- kind: CloseParen
   span:
     start: 552
     end: 553
+  raw: )
+- kind: Semicolon
+  span:
+    start: 553
+    end: 554
+  raw: ;
+- kind: Newline
+  span:
+    start: 554
+    end: 555
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 555
+    end: 560
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 560
+    end: 561
   raw: (
 - kind:
     String: Double
   span:
-    start: 553
-    end: 562
+    start: 561
+    end: 570
   raw: message
 - kind: CloseParen
   span:
-    start: 562
-    end: 563
+    start: 570
+    end: 571
   raw: )
 - kind: Semicolon
   span:
-    start: 563
-    end: 564
+    start: 571
+    end: 572
   raw: ;
 - kind: Newline
   span:
-    start: 564
-    end: 565
+    start: 572
+    end: 573
   raw: "\n"
