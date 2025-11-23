@@ -62,4 +62,8 @@ printNum(x, "bframe");
 printNum(x, "bmovie");
 random(123);
 removeMovieClip(x);
+startDrag(x);
+startDrag(x, true);
+startDrag(x, false);
+startDrag(x, true, 1, 2, 3, 4);
 trace("message");

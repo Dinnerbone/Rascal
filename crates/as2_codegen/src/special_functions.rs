@@ -41,6 +41,7 @@ pub(crate) fn gen_special_call(
         "printasbitmapnum" => fn_print_as_bitmap_num(builder, span, args),
         "printnum" => fn_print_num(builder, span, args),
         "removemovieclip" => fn_remove_movie_clio(builder, span, args),
+        "startdrag" => fn_start_drag(builder, span, args),
         "trace" => fn_trace(builder, span, args),
         "random" => fn_random(builder, span, args),
         _ => return false,
@@ -680,6 +681,53 @@ fn fn_print_num(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
     } else {
         builder.error(
             "Wrong number of parameters; printNum requires exactly 2.",
+            span,
+        );
+    }
+}
+
+fn fn_start_drag(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
+    if args.is_empty() || args.len() > 6 {
+        builder.error(
+            "Wrong number of parameters; startDrag requires between 1 and 6.",
+            span,
+        );
+        return;
+    }
+    let target = &args[0]; // Only guaranteed argument
+    let lock = match args.get(1) {
+        Some(Expr {
+            value: ExprKind::Constant(ConstantKind::Identifier("true")),
+            ..
+        }) => 1,
+        Some(Expr {
+            value: ExprKind::Constant(ConstantKind::Identifier("false")),
+            ..
+        }) => 0,
+        None => 0,
+        Some(other) => {
+            builder.error("Lock center parameter must be true or false", other.span);
+            return;
+        }
+    };
+
+    if args.len() == 6 {
+        #[expect(clippy::needless_range_loop)]
+        for i in 2..6 {
+            gen_expr(builder, &args[i], false);
+        }
+        builder.push(1);
+        builder.push(lock);
+        gen_expr(builder, target, false);
+        builder.action_with_stack_delta(Action::StartDrag, -7);
+    } else if args.len() < 3 {
+        builder.push(0);
+        builder.push(lock);
+        gen_expr(builder, target, false);
+        builder.action_with_stack_delta(Action::StartDrag, -3);
+    } else {
+        builder.error(
+            "startDrag requires 1 (target), 2 (target+lock) or 6 (target+lock+constraint) parameters.",
             span,
         );
     }

@@ -1,0 +1,22 @@
+---
+source: crates/as2_codegen/src/tests.rs
+expression: result
+input_file: crates/as2_codegen/fail_samples/startdrag.as
+---
+error: Compile error(s)
+  ╭▸ startdrag.as:1:1
+  │
+1 │ startDrag();
+  │ ━━━━━━━━━━━ Wrong number of parameters; startDrag requires between 1 and 6.
+2 │ startDrag(x, "maybe");
+  │              ━━━━━━━ Lock center parameter must be true or false
+3 │ startDrag(x, "true");
+  │              ━━━━━━ Lock center parameter must be true or false
+4 │ startDrag(x, true, 1);
+  │ ━━━━━━━━━━━━━━━━━━━━━ startDrag requires 1 (target), 2 (target+lock) or 6 (target+lock+constraint) parameters.
+5 │ startDrag(x, true, 1, 2);
+  │ ━━━━━━━━━━━━━━━━━━━━━━━━ startDrag requires 1 (target), 2 (target+lock) or 6 (target+lock+constraint) parameters.
+6 │ startDrag(x, true, 1, 2, 3);
+  │ ━━━━━━━━━━━━━━━━━━━━━━━━━━━ startDrag requires 1 (target), 2 (target+lock) or 6 (target+lock+constraint) parameters.
+7 │ startDrag(x, true, 1, 2, 3, 4, 5);
+  ╰╴━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Wrong number of parameters; startDrag requires between 1 and 6.

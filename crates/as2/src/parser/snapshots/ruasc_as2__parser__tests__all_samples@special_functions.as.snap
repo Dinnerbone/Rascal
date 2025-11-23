@@ -1492,20 +1492,142 @@ Ok:
     - Expr:
         span:
           start: 1422
-          end: 1438
+          end: 1434
         value:
           Call:
             name:
               span:
                 start: 1422
-                end: 1427
+                end: 1431
+              value:
+                Constant:
+                  Identifier: startDrag
+            args:
+              - span:
+                  start: 1432
+                  end: 1433
+                value:
+                  Constant:
+                    Identifier: x
+    - Expr:
+        span:
+          start: 1436
+          end: 1454
+        value:
+          Call:
+            name:
+              span:
+                start: 1436
+                end: 1445
+              value:
+                Constant:
+                  Identifier: startDrag
+            args:
+              - span:
+                  start: 1446
+                  end: 1447
+                value:
+                  Constant:
+                    Identifier: x
+              - span:
+                  start: 1449
+                  end: 1453
+                value:
+                  Constant:
+                    Identifier: "true"
+    - Expr:
+        span:
+          start: 1456
+          end: 1475
+        value:
+          Call:
+            name:
+              span:
+                start: 1456
+                end: 1465
+              value:
+                Constant:
+                  Identifier: startDrag
+            args:
+              - span:
+                  start: 1466
+                  end: 1467
+                value:
+                  Constant:
+                    Identifier: x
+              - span:
+                  start: 1469
+                  end: 1474
+                value:
+                  Constant:
+                    Identifier: "false"
+    - Expr:
+        span:
+          start: 1477
+          end: 1507
+        value:
+          Call:
+            name:
+              span:
+                start: 1477
+                end: 1486
+              value:
+                Constant:
+                  Identifier: startDrag
+            args:
+              - span:
+                  start: 1487
+                  end: 1488
+                value:
+                  Constant:
+                    Identifier: x
+              - span:
+                  start: 1490
+                  end: 1494
+                value:
+                  Constant:
+                    Identifier: "true"
+              - span:
+                  start: 1496
+                  end: 1497
+                value:
+                  Constant:
+                    Integer: 1
+              - span:
+                  start: 1499
+                  end: 1500
+                value:
+                  Constant:
+                    Integer: 2
+              - span:
+                  start: 1502
+                  end: 1503
+                value:
+                  Constant:
+                    Integer: 3
+              - span:
+                  start: 1505
+                  end: 1506
+                value:
+                  Constant:
+                    Integer: 4
+    - Expr:
+        span:
+          start: 1509
+          end: 1525
+        value:
+          Call:
+            name:
+              span:
+                start: 1509
+                end: 1514
               value:
                 Constant:
                   Identifier: trace
             args:
               - span:
-                  start: 1428
-                  end: 1437
+                  start: 1515
+                  end: 1524
                 value:
                   Constant:
                     String: message
