@@ -61,4 +61,5 @@ printNum("123", "bmax");
 printNum(x, "bframe");
 printNum(x, "bmovie");
 random(123);
+removeMovieClip(x);
 trace("message");

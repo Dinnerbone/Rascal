@@ -1472,20 +1472,40 @@ Ok:
     - Expr:
         span:
           start: 1402
-          end: 1418
+          end: 1420
         value:
           Call:
             name:
               span:
                 start: 1402
-                end: 1407
+                end: 1417
+              value:
+                Constant:
+                  Identifier: removeMovieClip
+            args:
+              - span:
+                  start: 1418
+                  end: 1419
+                value:
+                  Constant:
+                    Identifier: x
+    - Expr:
+        span:
+          start: 1422
+          end: 1438
+        value:
+          Call:
+            name:
+              span:
+                start: 1422
+                end: 1427
               value:
                 Constant:
                   Identifier: trace
             args:
               - span:
-                  start: 1408
-                  end: 1417
+                  start: 1428
+                  end: 1437
                 value:
                   Constant:
                     String: message

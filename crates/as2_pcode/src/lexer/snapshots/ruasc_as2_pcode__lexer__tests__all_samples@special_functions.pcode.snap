@@ -3530,24 +3530,63 @@ input_file: samples/as2_pcode/special_functions.pcode
     end: 2982
   raw: Push
 - kind:
-    Constant: 19
+    Constant: 0
   span:
     start: 2983
+    end: 2992
+  raw: constant0
+- kind: Newline
+  span:
+    start: 2992
     end: 2993
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 2993
+    end: 3004
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 3004
+    end: 3005
+  raw: "\n"
+- kind:
+    ActionName: RemoveSprite
+  span:
+    start: 3005
+    end: 3017
+  raw: RemoveSprite
+- kind: Newline
+  span:
+    start: 3017
+    end: 3018
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 3018
+    end: 3022
+  raw: Push
+- kind:
+    Constant: 19
+  span:
+    start: 3023
+    end: 3033
   raw: constant19
 - kind: Newline
   span:
-    start: 2993
-    end: 2994
+    start: 3033
+    end: 3034
   raw: "\n"
 - kind:
     ActionName: Trace
   span:
-    start: 2994
-    end: 2999
+    start: 3034
+    end: 3039
   raw: Trace
 - kind: Newline
   span:
-    start: 2999
-    end: 3000
+    start: 3039
+    end: 3040
   raw: "\n"

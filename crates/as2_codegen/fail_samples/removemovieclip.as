@@ -1,0 +1,2 @@
+removeMovieClip();
+removeMovieClip(a, b);

@@ -272,6 +272,7 @@ fn lex_identifier_or_action<'a>(stream: &mut Stream<'a>) -> Token<'a> {
         "pushduplicate" => TokenKind::ActionName(ActionName::PushDuplicate),
         "push" => TokenKind::ActionName(ActionName::Push),
         "randomnumber" => TokenKind::ActionName(ActionName::RandomNumber),
+        "removesprite" => TokenKind::ActionName(ActionName::RemoveSprite),
         "return" => TokenKind::ActionName(ActionName::Return),
         "setmember" => TokenKind::ActionName(ActionName::SetMember),
         "setvariable" => TokenKind::ActionName(ActionName::SetVariable),

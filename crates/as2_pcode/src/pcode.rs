@@ -141,6 +141,7 @@ pub enum Action {
     Push(Vec<PushValue>),
     PushDuplicate,
     RandomNumber,
+    RemoveSprite,
     Return,
     SetMember,
     SetVariable,
@@ -208,6 +209,7 @@ impl Action {
             Action::Push(values) => values.len() as i32,
             Action::PushDuplicate => 1,
             Action::RandomNumber => 0,
+            Action::RemoveSprite => -1,
             Action::Return => -1,
             Action::SetMember => -3,
             Action::SetVariable => -2,
@@ -324,6 +326,7 @@ impl std::fmt::Display for Action {
             }
             Action::PushDuplicate => write!(f, "PushDuplicate"),
             Action::RandomNumber => write!(f, "RandomNumber"),
+            Action::RemoveSprite => write!(f, "RemoveSprite"),
             Action::Return => write!(f, "Return"),
             Action::SetMember => write!(f, "SetMember"),
             Action::SetVariable => write!(f, "SetVariable"),

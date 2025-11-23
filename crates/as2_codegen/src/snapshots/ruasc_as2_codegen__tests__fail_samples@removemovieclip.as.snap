@@ -1,0 +1,12 @@
+---
+source: crates/as2_codegen/src/tests.rs
+expression: result
+input_file: crates/as2_codegen/fail_samples/removemovieclip.as
+---
+error: Compile error(s)
+  ╭▸ removemovieclip.as:1:1
+  │
+1 │ removeMovieClip();
+  │ ━━━━━━━━━━━━━━━━━ Wrong number of parameters; removeMovieClip requires exactly 1.
+2 │ removeMovieClip(a, b);
+  ╰╴━━━━━━━━━━━━━━━━━━━━━ Wrong number of parameters; removeMovieClip requires exactly 1.

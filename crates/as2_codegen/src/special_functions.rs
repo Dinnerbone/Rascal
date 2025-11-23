@@ -40,6 +40,7 @@ pub(crate) fn gen_special_call(
         "printasbitmap" => fn_print_as_bitmap(builder, span, args),
         "printasbitmapnum" => fn_print_as_bitmap_num(builder, span, args),
         "printnum" => fn_print_num(builder, span, args),
+        "removemovieclip" => fn_remove_movie_clio(builder, span, args),
         "trace" => fn_trace(builder, span, args),
         "random" => fn_random(builder, span, args),
         _ => return false,
@@ -691,6 +692,18 @@ fn fn_trace(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
     } else {
         builder.error(
             "Wrong number of parameters; trace requires exactly 1.",
+            span,
+        );
+    }
+}
+
+fn fn_remove_movie_clio(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
+    if args.len() == 1 {
+        gen_expr(builder, &args[0], false);
+        builder.action(Action::RemoveSprite);
+    } else {
+        builder.error(
+            "Wrong number of parameters; removeMovieClip requires exactly 1.",
             span,
         );
     }

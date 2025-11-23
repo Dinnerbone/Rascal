@@ -2326,31 +2326,61 @@ input_file: samples/as2/special_functions.as
 - kind: Identifier
   span:
     start: 1402
-    end: 1407
+    end: 1417
+  raw: removeMovieClip
+- kind: OpenParen
+  span:
+    start: 1417
+    end: 1418
+  raw: (
+- kind: Identifier
+  span:
+    start: 1418
+    end: 1419
+  raw: x
+- kind: CloseParen
+  span:
+    start: 1419
+    end: 1420
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1420
+    end: 1421
+  raw: ;
+- kind: Newline
+  span:
+    start: 1421
+    end: 1422
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1422
+    end: 1427
   raw: trace
 - kind: OpenParen
   span:
-    start: 1407
-    end: 1408
+    start: 1427
+    end: 1428
   raw: (
 - kind:
     String: Double
   span:
-    start: 1408
-    end: 1417
+    start: 1428
+    end: 1437
   raw: message
 - kind: CloseParen
   span:
-    start: 1417
-    end: 1418
+    start: 1437
+    end: 1438
   raw: )
 - kind: Semicolon
   span:
-    start: 1418
-    end: 1419
+    start: 1438
+    end: 1439
   raw: ;
 - kind: Newline
   span:
-    start: 1419
-    end: 1420
+    start: 1439
+    end: 1440
   raw: "\n"

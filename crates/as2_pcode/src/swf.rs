@@ -227,7 +227,7 @@ impl<'a> ActionEncoder<'a> {
             Action::Push(action) => self.write_push(action),
             Action::PushDuplicate => self.write_small_action(OpCode::PushDuplicate),
             Action::RandomNumber => self.write_small_action(OpCode::RandomNumber),
-            // Action::RemoveSprite => self.write_small_action(OpCode::RemoveSprite),
+            Action::RemoveSprite => self.write_small_action(OpCode::RemoveSprite),
             Action::Return => self.write_small_action(OpCode::Return),
             Action::SetMember => self.write_small_action(OpCode::SetMember),
             // Action::SetProperty => self.write_small_action(OpCode::SetProperty),

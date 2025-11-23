@@ -140,6 +140,7 @@ pub enum ActionName {
     Push,
     PushDuplicate,
     RandomNumber,
+    RemoveSprite,
     Return,
     SetMember,
     SetVariable,
