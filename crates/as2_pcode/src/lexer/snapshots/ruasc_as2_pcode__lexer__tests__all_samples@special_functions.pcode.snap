@@ -192,2776 +192,3074 @@ input_file: samples/as2_pcode/special_functions.pcode
 - kind: String
   span:
     start: 240
-    end: 249
+    end: 251
+  raw: _level123
+- kind: Comma
+  span:
+    start: 251
+    end: 252
+  raw: ","
+- kind: String
+  span:
+    start: 253
+    end: 262
   raw: message
 - kind: Newline
   span:
-    start: 249
-    end: 250
+    start: 262
+    end: 263
   raw: "\n"
 - kind:
     ActionName: Push
   span:
-    start: 250
-    end: 254
+    start: 263
+    end: 267
   raw: Push
 - kind: Integer
   span:
-    start: 255
-    end: 258
+    start: 268
+    end: 271
   raw: "123"
 - kind: Newline
   span:
-    start: 258
-    end: 259
+    start: 271
+    end: 272
   raw: "\n"
 - kind:
     ActionName: Call
   span:
-    start: 259
-    end: 263
+    start: 272
+    end: 276
   raw: Call
 - kind: Newline
   span:
-    start: 263
-    end: 264
+    start: 276
+    end: 277
   raw: "\n"
 - kind:
     ActionName: Push
   span:
-    start: 264
-    end: 268
+    start: 277
+    end: 281
   raw: Push
 - kind:
     Constant: 0
   span:
-    start: 269
-    end: 278
+    start: 282
+    end: 291
   raw: constant0
 - kind: Newline
   span:
-    start: 278
-    end: 279
+    start: 291
+    end: 292
   raw: "\n"
 - kind:
     ActionName: GetVariable
   span:
-    start: 279
-    end: 290
+    start: 292
+    end: 303
   raw: GetVariable
 - kind: Newline
   span:
-    start: 290
-    end: 291
+    start: 303
+    end: 304
   raw: "\n"
 - kind:
     ActionName: AsciiToChar
   span:
-    start: 291
-    end: 302
+    start: 304
+    end: 315
   raw: AsciiToChar
 - kind: Newline
   span:
-    start: 302
-    end: 303
+    start: 315
+    end: 316
   raw: "\n"
 - kind:
     ActionName: Pop
   span:
-    start: 303
-    end: 306
+    start: 316
+    end: 319
   raw: Pop
 - kind: Newline
   span:
-    start: 306
-    end: 307
+    start: 319
+    end: 320
   raw: "\n"
 - kind:
     ActionName: GetTime
   span:
-    start: 307
-    end: 314
+    start: 320
+    end: 327
   raw: GetTime
 - kind: Newline
   span:
-    start: 314
-    end: 315
+    start: 327
+    end: 328
   raw: "\n"
 - kind:
     ActionName: Pop
   span:
-    start: 315
-    end: 318
+    start: 328
+    end: 331
   raw: Pop
 - kind: Newline
   span:
-    start: 318
-    end: 319
+    start: 331
+    end: 332
   raw: "\n"
 - kind:
     ActionName: GetUrl
   span:
-    start: 319
-    end: 325
+    start: 332
+    end: 338
   raw: GetUrl
 - kind: String
   span:
-    start: 326
-    end: 344
+    start: 339
+    end: 357
   raw: "http://ruffle.rs"
 - kind: Comma
   span:
-    start: 344
-    end: 345
+    start: 357
+    end: 358
   raw: ","
 - kind: String
   span:
-    start: 346
-    end: 348
+    start: 359
+    end: 361
   raw: ""
 - kind: Newline
   span:
-    start: 348
-    end: 349
+    start: 361
+    end: 362
   raw: "\n"
 - kind:
     ActionName: GetUrl
   span:
-    start: 349
-    end: 355
+    start: 362
+    end: 368
   raw: GetUrl
 - kind: String
   span:
-    start: 356
-    end: 374
+    start: 369
+    end: 387
   raw: "http://ruffle.rs"
 - kind: Comma
   span:
-    start: 374
-    end: 375
+    start: 387
+    end: 388
   raw: ","
 - kind: String
   span:
-    start: 376
-    end: 384
+    start: 389
+    end: 397
   raw: window
 - kind: Newline
   span:
-    start: 384
-    end: 385
+    start: 397
+    end: 398
   raw: "\n"
 - kind:
     ActionName: Push
   span:
-    start: 385
-    end: 389
+    start: 398
+    end: 402
   raw: Push
 - kind:
     Constant: 1
   span:
-    start: 390
-    end: 399
+    start: 403
+    end: 412
   raw: constant1
 - kind: Newline
   span:
-    start: 399
-    end: 400
+    start: 412
+    end: 413
   raw: "\n"
 - kind:
     ActionName: Push
   span:
-    start: 400
-    end: 404
+    start: 413
+    end: 417
   raw: Push
 - kind:
     Constant: 2
   span:
-    start: 405
-    end: 414
+    start: 418
+    end: 427
   raw: constant2
 - kind: Newline
   span:
-    start: 414
-    end: 415
+    start: 427
+    end: 428
   raw: "\n"
 - kind:
     ActionName: GetUrl2
   span:
-    start: 415
-    end: 422
+    start: 428
+    end: 435
   raw: GetURL2
 - kind: "False"
   span:
-    start: 423
-    end: 428
+    start: 436
+    end: 441
   raw: "false"
 - kind: Comma
   span:
-    start: 428
-    end: 429
+    start: 441
+    end: 442
   raw: ","
 - kind: "False"
   span:
-    start: 430
-    end: 435
+    start: 443
+    end: 448
   raw: "false"
 - kind: Comma
   span:
-    start: 435
-    end: 436
+    start: 448
+    end: 449
   raw: ","
 - kind: Integer
   span:
-    start: 437
-    end: 438
+    start: 450
+    end: 451
   raw: "1"
 - kind: Newline
   span:
-    start: 438
-    end: 439
+    start: 451
+    end: 452
   raw: "\n"
 - kind:
     ActionName: Push
   span:
-    start: 439
-    end: 443
+    start: 452
+    end: 456
   raw: Push
 - kind:
     Constant: 3
   span:
-    start: 444
-    end: 453
+    start: 457
+    end: 466
   raw: constant3
 - kind: Newline
   span:
-    start: 453
-    end: 454
+    start: 466
+    end: 467
   raw: "\n"
 - kind:
     ActionName: GetVariable
   span:
-    start: 454
-    end: 465
+    start: 467
+    end: 478
   raw: GetVariable
 - kind: Newline
   span:
-    start: 465
-    end: 466
+    start: 478
+    end: 479
   raw: "\n"
 - kind:
     ActionName: Pop
   span:
-    start: 466
-    end: 469
+    start: 479
+    end: 482
   raw: Pop
 - kind: Newline
   span:
-    start: 469
-    end: 470
+    start: 482
+    end: 483
   raw: "\n"
 - kind:
     ActionName: GotoFrame
-  span:
-    start: 470
-    end: 479
-  raw: GotoFrame
-- kind: Integer
-  span:
-    start: 480
-    end: 483
-  raw: "122"
-- kind: Newline
   span:
     start: 483
-    end: 484
-  raw: "\n"
-- kind:
-    ActionName: Play
-  span:
-    start: 484
-    end: 488
-  raw: Play
-- kind: Newline
-  span:
-    start: 488
-    end: 489
-  raw: "\n"
-- kind:
-    ActionName: GotoLabel
-  span:
-    start: 489
-    end: 498
-  raw: GoToLabel
-- kind: String
-  span:
-    start: 499
-    end: 504
-  raw: "123"
-- kind: Newline
-  span:
-    start: 504
-    end: 505
-  raw: "\n"
-- kind:
-    ActionName: Play
-  span:
-    start: 505
-    end: 509
-  raw: Play
-- kind: Newline
-  span:
-    start: 509
-    end: 510
-  raw: "\n"
-- kind:
-    ActionName: Push
-  span:
-    start: 510
-    end: 514
-  raw: Push
-- kind:
-    Constant: 0
-  span:
-    start: 515
-    end: 524
-  raw: constant0
-- kind: Newline
-  span:
-    start: 524
-    end: 525
-  raw: "\n"
-- kind:
-    ActionName: GetVariable
-  span:
-    start: 525
-    end: 536
-  raw: GetVariable
-- kind: Newline
-  span:
-    start: 536
-    end: 537
-  raw: "\n"
-- kind:
-    ActionName: GotoFrame2
-  span:
-    start: 537
-    end: 547
-  raw: GotoFrame2
-- kind: "False"
-  span:
-    start: 548
-    end: 553
-  raw: "false"
-- kind: Comma
-  span:
-    start: 553
-    end: 554
-  raw: ","
-- kind: "True"
-  span:
-    start: 555
-    end: 559
-  raw: "true"
-- kind: Newline
-  span:
-    start: 559
-    end: 560
-  raw: "\n"
-- kind:
-    ActionName: GotoFrame
-  span:
-    start: 560
-    end: 569
+    end: 492
   raw: GotoFrame
 - kind: Integer
   span:
-    start: 570
-    end: 573
+    start: 493
+    end: 496
   raw: "122"
 - kind: Newline
   span:
-    start: 573
-    end: 574
+    start: 496
+    end: 497
   raw: "\n"
 - kind:
     ActionName: Play
   span:
-    start: 574
-    end: 578
+    start: 497
+    end: 501
   raw: Play
 - kind: Newline
   span:
-    start: 578
-    end: 579
+    start: 501
+    end: 502
   raw: "\n"
 - kind:
     ActionName: GotoLabel
   span:
-    start: 579
-    end: 588
+    start: 502
+    end: 511
   raw: GoToLabel
 - kind: String
   span:
-    start: 589
-    end: 594
+    start: 512
+    end: 517
   raw: "123"
 - kind: Newline
   span:
-    start: 594
-    end: 595
+    start: 517
+    end: 518
   raw: "\n"
 - kind:
     ActionName: Play
   span:
-    start: 595
-    end: 599
+    start: 518
+    end: 522
   raw: Play
 - kind: Newline
   span:
-    start: 599
-    end: 600
+    start: 522
+    end: 523
   raw: "\n"
 - kind:
     ActionName: Push
   span:
-    start: 600
-    end: 604
+    start: 523
+    end: 527
   raw: Push
 - kind:
     Constant: 0
   span:
-    start: 605
-    end: 614
+    start: 528
+    end: 537
   raw: constant0
 - kind: Newline
   span:
-    start: 614
-    end: 615
+    start: 537
+    end: 538
   raw: "\n"
 - kind:
     ActionName: GetVariable
   span:
-    start: 615
-    end: 626
+    start: 538
+    end: 549
   raw: GetVariable
 - kind: Newline
   span:
-    start: 626
-    end: 627
+    start: 549
+    end: 550
   raw: "\n"
 - kind:
     ActionName: GotoFrame2
   span:
-    start: 627
-    end: 637
+    start: 550
+    end: 560
   raw: GotoFrame2
 - kind: "False"
   span:
-    start: 638
-    end: 643
+    start: 561
+    end: 566
   raw: "false"
 - kind: Comma
   span:
-    start: 643
-    end: 644
+    start: 566
+    end: 567
   raw: ","
 - kind: "True"
   span:
-    start: 645
-    end: 649
+    start: 568
+    end: 572
   raw: "true"
 - kind: Newline
   span:
-    start: 649
-    end: 650
-  raw: "\n"
-- kind:
-    ActionName: Push
-  span:
-    start: 650
-    end: 654
-  raw: Push
-- kind:
-    Constant: 0
-  span:
-    start: 655
-    end: 664
-  raw: constant0
-- kind: Newline
-  span:
-    start: 664
-    end: 665
-  raw: "\n"
-- kind:
-    ActionName: GetVariable
-  span:
-    start: 665
-    end: 676
-  raw: GetVariable
-- kind: Newline
-  span:
-    start: 676
-    end: 677
-  raw: "\n"
-- kind:
-    ActionName: GotoFrame2
-  span:
-    start: 677
-    end: 687
-  raw: GotoFrame2
-- kind: "False"
-  span:
-    start: 688
-    end: 693
-  raw: "false"
-- kind: Comma
-  span:
-    start: 693
-    end: 694
-  raw: ","
-- kind: "True"
-  span:
-    start: 695
-    end: 699
-  raw: "true"
-- kind: Newline
-  span:
-    start: 699
-    end: 700
+    start: 572
+    end: 573
   raw: "\n"
 - kind:
     ActionName: GotoFrame
   span:
-    start: 700
-    end: 709
+    start: 573
+    end: 582
   raw: GotoFrame
 - kind: Integer
   span:
-    start: 710
-    end: 715
+    start: 583
+    end: 586
+  raw: "122"
+- kind: Newline
+  span:
+    start: 586
+    end: 587
+  raw: "\n"
+- kind:
+    ActionName: Play
+  span:
+    start: 587
+    end: 591
+  raw: Play
+- kind: Newline
+  span:
+    start: 591
+    end: 592
+  raw: "\n"
+- kind:
+    ActionName: GotoLabel
+  span:
+    start: 592
+    end: 601
+  raw: GoToLabel
+- kind: String
+  span:
+    start: 602
+    end: 607
+  raw: "123"
+- kind: Newline
+  span:
+    start: 607
+    end: 608
+  raw: "\n"
+- kind:
+    ActionName: Play
+  span:
+    start: 608
+    end: 612
+  raw: Play
+- kind: Newline
+  span:
+    start: 612
+    end: 613
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 613
+    end: 617
+  raw: Push
+- kind:
+    Constant: 0
+  span:
+    start: 618
+    end: 627
+  raw: constant0
+- kind: Newline
+  span:
+    start: 627
+    end: 628
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 628
+    end: 639
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 639
+    end: 640
+  raw: "\n"
+- kind:
+    ActionName: GotoFrame2
+  span:
+    start: 640
+    end: 650
+  raw: GotoFrame2
+- kind: "False"
+  span:
+    start: 651
+    end: 656
+  raw: "false"
+- kind: Comma
+  span:
+    start: 656
+    end: 657
+  raw: ","
+- kind: "True"
+  span:
+    start: 658
+    end: 662
+  raw: "true"
+- kind: Newline
+  span:
+    start: 662
+    end: 663
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 663
+    end: 667
+  raw: Push
+- kind:
+    Constant: 0
+  span:
+    start: 668
+    end: 677
+  raw: constant0
+- kind: Newline
+  span:
+    start: 677
+    end: 678
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 678
+    end: 689
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 689
+    end: 690
+  raw: "\n"
+- kind:
+    ActionName: GotoFrame2
+  span:
+    start: 690
+    end: 700
+  raw: GotoFrame2
+- kind: "False"
+  span:
+    start: 701
+    end: 706
+  raw: "false"
+- kind: Comma
+  span:
+    start: 706
+    end: 707
+  raw: ","
+- kind: "True"
+  span:
+    start: 708
+    end: 712
+  raw: "true"
+- kind: Newline
+  span:
+    start: 712
+    end: 713
+  raw: "\n"
+- kind:
+    ActionName: GotoFrame
+  span:
+    start: 713
+    end: 722
+  raw: GotoFrame
+- kind: Integer
+  span:
+    start: 723
+    end: 728
   raw: "65535"
 - kind: Newline
   span:
-    start: 715
-    end: 716
+    start: 728
+    end: 729
   raw: "\n"
 - kind:
     ActionName: Play
   span:
-    start: 716
-    end: 720
+    start: 729
+    end: 733
   raw: Play
 - kind: Newline
   span:
-    start: 720
-    end: 721
+    start: 733
+    end: 734
   raw: "\n"
 - kind:
     ActionName: GotoFrame
   span:
-    start: 721
-    end: 730
+    start: 734
+    end: 743
   raw: GotoFrame
 - kind: Integer
   span:
-    start: 731
-    end: 732
+    start: 744
+    end: 745
   raw: "0"
 - kind: Newline
   span:
-    start: 732
-    end: 733
+    start: 745
+    end: 746
   raw: "\n"
 - kind:
     ActionName: Play
   span:
-    start: 733
-    end: 737
+    start: 746
+    end: 750
   raw: Play
 - kind: Newline
   span:
-    start: 737
-    end: 738
+    start: 750
+    end: 751
   raw: "\n"
 - kind:
     ActionName: GotoFrame
   span:
-    start: 738
-    end: 747
+    start: 751
+    end: 760
   raw: GotoFrame
 - kind: Integer
   span:
-    start: 748
-    end: 749
+    start: 761
+    end: 762
   raw: "1"
 - kind: Newline
   span:
-    start: 749
-    end: 750
+    start: 762
+    end: 763
   raw: "\n"
 - kind:
     ActionName: Play
   span:
-    start: 750
-    end: 754
+    start: 763
+    end: 767
   raw: Play
 - kind: Newline
   span:
-    start: 754
-    end: 755
+    start: 767
+    end: 768
   raw: "\n"
 - kind:
     ActionName: GotoFrame
   span:
-    start: 755
-    end: 764
+    start: 768
+    end: 777
   raw: GotoFrame
 - kind: Integer
   span:
-    start: 765
-    end: 766
+    start: 778
+    end: 779
   raw: "0"
 - kind: Newline
   span:
-    start: 766
-    end: 767
+    start: 779
+    end: 780
   raw: "\n"
 - kind:
     ActionName: Play
   span:
-    start: 767
-    end: 771
+    start: 780
+    end: 784
   raw: Play
 - kind: Newline
   span:
-    start: 771
-    end: 772
+    start: 784
+    end: 785
   raw: "\n"
 - kind:
     ActionName: GotoFrame
-  span:
-    start: 772
-    end: 781
-  raw: GotoFrame
-- kind: Integer
-  span:
-    start: 782
-    end: 785
-  raw: "122"
-- kind: Newline
   span:
     start: 785
-    end: 786
+    end: 794
+  raw: GotoFrame
+- kind: Integer
+  span:
+    start: 795
+    end: 798
+  raw: "122"
+- kind: Newline
+  span:
+    start: 798
+    end: 799
   raw: "\n"
 - kind:
     ActionName: GotoLabel
   span:
-    start: 786
-    end: 795
+    start: 799
+    end: 808
   raw: GoToLabel
 - kind: String
   span:
-    start: 796
-    end: 801
+    start: 809
+    end: 814
   raw: "123"
 - kind: Newline
   span:
-    start: 801
-    end: 802
+    start: 814
+    end: 815
   raw: "\n"
 - kind:
     ActionName: Push
   span:
-    start: 802
-    end: 806
+    start: 815
+    end: 819
   raw: Push
 - kind:
     Constant: 0
   span:
-    start: 807
-    end: 816
+    start: 820
+    end: 829
   raw: constant0
 - kind: Newline
   span:
-    start: 816
-    end: 817
+    start: 829
+    end: 830
   raw: "\n"
 - kind:
     ActionName: GetVariable
   span:
-    start: 817
-    end: 828
+    start: 830
+    end: 841
   raw: GetVariable
 - kind: Newline
   span:
-    start: 828
-    end: 829
+    start: 841
+    end: 842
   raw: "\n"
 - kind:
     ActionName: GotoFrame2
   span:
-    start: 829
-    end: 839
+    start: 842
+    end: 852
   raw: GotoFrame2
 - kind: "False"
   span:
-    start: 840
-    end: 845
+    start: 853
+    end: 858
   raw: "false"
 - kind: Comma
   span:
-    start: 845
-    end: 846
+    start: 858
+    end: 859
   raw: ","
 - kind: "False"
   span:
-    start: 847
-    end: 852
+    start: 860
+    end: 865
   raw: "false"
 - kind: Newline
   span:
-    start: 852
-    end: 853
+    start: 865
+    end: 866
   raw: "\n"
 - kind:
     ActionName: GotoFrame
   span:
-    start: 853
-    end: 862
+    start: 866
+    end: 875
   raw: GotoFrame
 - kind: Integer
   span:
-    start: 863
-    end: 866
+    start: 876
+    end: 879
   raw: "122"
 - kind: Newline
   span:
-    start: 866
-    end: 867
+    start: 879
+    end: 880
   raw: "\n"
 - kind:
     ActionName: GotoLabel
   span:
-    start: 867
-    end: 876
+    start: 880
+    end: 889
   raw: GoToLabel
 - kind: String
   span:
-    start: 877
-    end: 882
+    start: 890
+    end: 895
   raw: "123"
 - kind: Newline
   span:
-    start: 882
-    end: 883
+    start: 895
+    end: 896
   raw: "\n"
 - kind:
     ActionName: Push
   span:
-    start: 883
-    end: 887
+    start: 896
+    end: 900
   raw: Push
 - kind:
     Constant: 0
   span:
-    start: 888
-    end: 897
+    start: 901
+    end: 910
   raw: constant0
 - kind: Newline
-  span:
-    start: 897
-    end: 898
-  raw: "\n"
-- kind:
-    ActionName: GetVariable
-  span:
-    start: 898
-    end: 909
-  raw: GetVariable
-- kind: Newline
-  span:
-    start: 909
-    end: 910
-  raw: "\n"
-- kind:
-    ActionName: GotoFrame2
   span:
     start: 910
-    end: 920
-  raw: GotoFrame2
-- kind: "False"
-  span:
-    start: 921
-    end: 926
-  raw: "false"
-- kind: Comma
-  span:
-    start: 926
-    end: 927
-  raw: ","
-- kind: "False"
-  span:
-    start: 928
-    end: 933
-  raw: "false"
-- kind: Newline
-  span:
-    start: 933
-    end: 934
-  raw: "\n"
-- kind:
-    ActionName: Push
-  span:
-    start: 934
-    end: 938
-  raw: Push
-- kind:
-    Constant: 0
-  span:
-    start: 939
-    end: 948
-  raw: constant0
-- kind: Newline
-  span:
-    start: 948
-    end: 949
+    end: 911
   raw: "\n"
 - kind:
     ActionName: GetVariable
   span:
-    start: 949
-    end: 960
+    start: 911
+    end: 922
   raw: GetVariable
 - kind: Newline
   span:
-    start: 960
-    end: 961
+    start: 922
+    end: 923
   raw: "\n"
 - kind:
     ActionName: GotoFrame2
   span:
-    start: 961
-    end: 971
+    start: 923
+    end: 933
   raw: GotoFrame2
 - kind: "False"
   span:
-    start: 972
-    end: 977
+    start: 934
+    end: 939
   raw: "false"
 - kind: Comma
   span:
-    start: 977
-    end: 978
+    start: 939
+    end: 940
   raw: ","
 - kind: "False"
   span:
-    start: 979
-    end: 984
+    start: 941
+    end: 946
   raw: "false"
 - kind: Newline
   span:
-    start: 984
-    end: 985
+    start: 946
+    end: 947
   raw: "\n"
 - kind:
     ActionName: Push
   span:
-    start: 985
-    end: 989
+    start: 947
+    end: 951
   raw: Push
 - kind:
     Constant: 0
   span:
-    start: 990
-    end: 999
+    start: 952
+    end: 961
   raw: constant0
 - kind: Newline
   span:
-    start: 999
-    end: 1000
+    start: 961
+    end: 962
   raw: "\n"
 - kind:
     ActionName: GetVariable
   span:
-    start: 1000
-    end: 1011
+    start: 962
+    end: 973
   raw: GetVariable
 - kind: Newline
   span:
-    start: 1011
+    start: 973
+    end: 974
+  raw: "\n"
+- kind:
+    ActionName: GotoFrame2
+  span:
+    start: 974
+    end: 984
+  raw: GotoFrame2
+- kind: "False"
+  span:
+    start: 985
+    end: 990
+  raw: "false"
+- kind: Comma
+  span:
+    start: 990
+    end: 991
+  raw: ","
+- kind: "False"
+  span:
+    start: 992
+    end: 997
+  raw: "false"
+- kind: Newline
+  span:
+    start: 997
+    end: 998
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 998
+    end: 1002
+  raw: Push
+- kind:
+    Constant: 0
+  span:
+    start: 1003
     end: 1012
+  raw: constant0
+- kind: Newline
+  span:
+    start: 1012
+    end: 1013
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 1013
+    end: 1024
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 1024
+    end: 1025
   raw: "\n"
 - kind:
     ActionName: ToInteger
   span:
-    start: 1012
-    end: 1021
+    start: 1025
+    end: 1034
   raw: ToInteger
 - kind: Newline
   span:
-    start: 1021
-    end: 1022
+    start: 1034
+    end: 1035
   raw: "\n"
 - kind:
     ActionName: Pop
   span:
-    start: 1022
-    end: 1025
+    start: 1035
+    end: 1038
   raw: Pop
 - kind: Newline
   span:
-    start: 1025
-    end: 1026
+    start: 1038
+    end: 1039
   raw: "\n"
 - kind:
     ActionName: Push
   span:
-    start: 1026
-    end: 1030
+    start: 1039
+    end: 1043
   raw: Push
 - kind:
     Constant: 0
   span:
-    start: 1031
-    end: 1040
+    start: 1044
+    end: 1053
   raw: constant0
 - kind: Newline
   span:
-    start: 1040
-    end: 1041
+    start: 1053
+    end: 1054
   raw: "\n"
 - kind:
     ActionName: GetVariable
   span:
-    start: 1041
-    end: 1052
-  raw: GetVariable
-- kind: Newline
-  span:
-    start: 1052
-    end: 1053
-  raw: "\n"
-- kind:
-    ActionName: StringLength
-  span:
-    start: 1053
+    start: 1054
     end: 1065
-  raw: StringLength
+  raw: GetVariable
 - kind: Newline
   span:
     start: 1065
     end: 1066
   raw: "\n"
 - kind:
-    ActionName: Pop
+    ActionName: StringLength
   span:
     start: 1066
-    end: 1069
+    end: 1078
+  raw: StringLength
+- kind: Newline
+  span:
+    start: 1078
+    end: 1079
+  raw: "\n"
+- kind:
+    ActionName: Pop
+  span:
+    start: 1079
+    end: 1082
   raw: Pop
 - kind: Newline
   span:
-    start: 1069
-    end: 1070
+    start: 1082
+    end: 1083
   raw: "\n"
 - kind:
     ActionName: Push
   span:
-    start: 1070
-    end: 1074
+    start: 1083
+    end: 1087
   raw: Push
 - kind:
     Constant: 4
   span:
-    start: 1075
-    end: 1084
+    start: 1088
+    end: 1097
   raw: constant4
 - kind: Newline
   span:
-    start: 1084
-    end: 1085
+    start: 1097
+    end: 1098
   raw: "\n"
 - kind:
     ActionName: Push
   span:
-    start: 1085
-    end: 1089
+    start: 1098
+    end: 1102
   raw: Push
 - kind:
     Constant: 5
   span:
-    start: 1090
-    end: 1099
+    start: 1103
+    end: 1112
   raw: constant5
 - kind: Newline
   span:
-    start: 1099
-    end: 1100
+    start: 1112
+    end: 1113
   raw: "\n"
 - kind:
     ActionName: GetUrl2
   span:
-    start: 1100
-    end: 1107
+    start: 1113
+    end: 1120
   raw: GetURL2
 - kind: "False"
   span:
-    start: 1108
-    end: 1113
+    start: 1121
+    end: 1126
   raw: "false"
 - kind: Comma
   span:
-    start: 1113
-    end: 1114
+    start: 1126
+    end: 1127
   raw: ","
 - kind: "True"
   span:
-    start: 1115
-    end: 1119
+    start: 1128
+    end: 1132
   raw: "true"
 - kind: Comma
   span:
-    start: 1119
-    end: 1120
+    start: 1132
+    end: 1133
   raw: ","
 - kind: Integer
   span:
-    start: 1121
-    end: 1122
+    start: 1134
+    end: 1135
   raw: "0"
 - kind: Newline
   span:
-    start: 1122
-    end: 1123
+    start: 1135
+    end: 1136
   raw: "\n"
 - kind:
     ActionName: Push
   span:
-    start: 1123
-    end: 1127
+    start: 1136
+    end: 1140
   raw: Push
 - kind:
     Constant: 4
   span:
-    start: 1128
-    end: 1137
+    start: 1141
+    end: 1150
   raw: constant4
 - kind: Newline
   span:
-    start: 1137
-    end: 1138
+    start: 1150
+    end: 1151
   raw: "\n"
 - kind:
     ActionName: Push
   span:
-    start: 1138
-    end: 1142
+    start: 1151
+    end: 1155
   raw: Push
 - kind:
     Constant: 5
   span:
-    start: 1143
-    end: 1152
+    start: 1156
+    end: 1165
   raw: constant5
 - kind: Newline
   span:
-    start: 1152
-    end: 1153
+    start: 1165
+    end: 1166
   raw: "\n"
 - kind:
     ActionName: GetUrl2
   span:
-    start: 1153
-    end: 1160
+    start: 1166
+    end: 1173
   raw: GetURL2
 - kind: "False"
   span:
-    start: 1161
-    end: 1166
+    start: 1174
+    end: 1179
   raw: "false"
 - kind: Comma
   span:
-    start: 1166
-    end: 1167
+    start: 1179
+    end: 1180
   raw: ","
 - kind: "True"
   span:
-    start: 1168
-    end: 1172
+    start: 1181
+    end: 1185
   raw: "true"
 - kind: Comma
   span:
-    start: 1172
-    end: 1173
+    start: 1185
+    end: 1186
   raw: ","
 - kind: Integer
   span:
-    start: 1174
-    end: 1175
+    start: 1187
+    end: 1188
   raw: "1"
 - kind: Newline
   span:
-    start: 1175
-    end: 1176
+    start: 1188
+    end: 1189
   raw: "\n"
 - kind:
     ActionName: GetUrl
   span:
-    start: 1176
-    end: 1182
+    start: 1189
+    end: 1195
   raw: GetUrl
 - kind: String
   span:
-    start: 1183
-    end: 1188
+    start: 1196
+    end: 1201
   raw: url
 - kind: Comma
   span:
-    start: 1188
-    end: 1189
+    start: 1201
+    end: 1202
   raw: ","
 - kind: String
   span:
-    start: 1190
-    end: 1200
+    start: 1203
+    end: 1213
   raw: _level12
 - kind: Newline
   span:
-    start: 1200
-    end: 1201
+    start: 1213
+    end: 1214
   raw: "\n"
 - kind:
     ActionName: Push
   span:
-    start: 1201
-    end: 1205
+    start: 1214
+    end: 1218
   raw: Push
 - kind:
     Constant: 4
   span:
-    start: 1206
-    end: 1215
+    start: 1219
+    end: 1228
   raw: constant4
 - kind: Newline
   span:
-    start: 1215
-    end: 1216
+    start: 1228
+    end: 1229
   raw: "\n"
 - kind:
     ActionName: Push
   span:
-    start: 1216
-    end: 1220
+    start: 1229
+    end: 1233
   raw: Push
 - kind:
     Constant: 6
   span:
-    start: 1221
-    end: 1230
+    start: 1234
+    end: 1243
   raw: constant6
 - kind: Newline
   span:
-    start: 1230
-    end: 1231
+    start: 1243
+    end: 1244
   raw: "\n"
 - kind:
     ActionName: GetUrl2
   span:
-    start: 1231
-    end: 1238
+    start: 1244
+    end: 1251
   raw: GetURL2
 - kind: "False"
   span:
-    start: 1239
-    end: 1244
+    start: 1252
+    end: 1257
   raw: "false"
 - kind: Comma
   span:
-    start: 1244
-    end: 1245
+    start: 1257
+    end: 1258
   raw: ","
 - kind: "False"
   span:
-    start: 1246
-    end: 1251
+    start: 1259
+    end: 1264
   raw: "false"
 - kind: Comma
   span:
-    start: 1251
-    end: 1252
+    start: 1264
+    end: 1265
   raw: ","
 - kind: Integer
   span:
-    start: 1253
-    end: 1254
+    start: 1266
+    end: 1267
   raw: "1"
 - kind: Newline
   span:
-    start: 1254
-    end: 1255
+    start: 1267
+    end: 1268
   raw: "\n"
 - kind:
     ActionName: Push
   span:
-    start: 1255
-    end: 1259
+    start: 1268
+    end: 1272
   raw: Push
 - kind:
     Constant: 4
   span:
-    start: 1260
-    end: 1269
+    start: 1273
+    end: 1282
   raw: constant4
 - kind: Newline
   span:
-    start: 1269
-    end: 1270
+    start: 1282
+    end: 1283
   raw: "\n"
 - kind:
     ActionName: Push
   span:
-    start: 1270
-    end: 1274
+    start: 1283
+    end: 1287
   raw: Push
 - kind:
     Constant: 7
   span:
-    start: 1275
-    end: 1284
+    start: 1288
+    end: 1297
   raw: constant7
 - kind: Newline
   span:
-    start: 1284
-    end: 1285
+    start: 1297
+    end: 1298
   raw: "\n"
 - kind:
     ActionName: Push
   span:
-    start: 1285
-    end: 1289
+    start: 1298
+    end: 1302
   raw: Push
 - kind:
     Constant: 0
   span:
-    start: 1290
-    end: 1299
+    start: 1303
+    end: 1312
   raw: constant0
 - kind: Newline
   span:
-    start: 1299
-    end: 1300
+    start: 1312
+    end: 1313
   raw: "\n"
 - kind:
     ActionName: GetVariable
   span:
-    start: 1300
-    end: 1311
+    start: 1313
+    end: 1324
   raw: GetVariable
 - kind: Newline
   span:
-    start: 1311
-    end: 1312
+    start: 1324
+    end: 1325
   raw: "\n"
 - kind:
     ActionName: StringAdd
   span:
-    start: 1312
-    end: 1321
+    start: 1325
+    end: 1334
   raw: StringAdd
 - kind: Newline
   span:
-    start: 1321
-    end: 1322
+    start: 1334
+    end: 1335
   raw: "\n"
 - kind:
     ActionName: GetUrl2
   span:
-    start: 1322
-    end: 1329
+    start: 1335
+    end: 1342
   raw: GetURL2
 - kind: "False"
   span:
-    start: 1330
-    end: 1335
+    start: 1343
+    end: 1348
   raw: "false"
 - kind: Comma
   span:
-    start: 1335
-    end: 1336
+    start: 1348
+    end: 1349
   raw: ","
 - kind: "False"
   span:
-    start: 1337
-    end: 1342
+    start: 1350
+    end: 1355
   raw: "false"
 - kind: Comma
   span:
-    start: 1342
-    end: 1343
+    start: 1355
+    end: 1356
   raw: ","
 - kind: Integer
   span:
-    start: 1344
-    end: 1345
+    start: 1357
+    end: 1358
   raw: "1"
 - kind: Newline
   span:
-    start: 1345
-    end: 1346
+    start: 1358
+    end: 1359
   raw: "\n"
 - kind:
     ActionName: Push
   span:
-    start: 1346
-    end: 1350
+    start: 1359
+    end: 1363
   raw: Push
 - kind:
     Constant: 4
   span:
-    start: 1351
-    end: 1360
+    start: 1364
+    end: 1373
   raw: constant4
 - kind: Newline
   span:
-    start: 1360
-    end: 1361
+    start: 1373
+    end: 1374
   raw: "\n"
 - kind:
     ActionName: Push
   span:
-    start: 1361
-    end: 1365
+    start: 1374
+    end: 1378
   raw: Push
 - kind:
     Constant: 5
   span:
-    start: 1366
-    end: 1375
+    start: 1379
+    end: 1388
   raw: constant5
 - kind: Newline
-  span:
-    start: 1375
-    end: 1376
-  raw: "\n"
-- kind:
-    ActionName: GetUrl2
-  span:
-    start: 1376
-    end: 1383
-  raw: GetURL2
-- kind: "True"
-  span:
-    start: 1384
-    end: 1388
-  raw: "true"
-- kind: Comma
   span:
     start: 1388
     end: 1389
-  raw: ","
-- kind: "True"
-  span:
-    start: 1390
-    end: 1394
-  raw: "true"
-- kind: Comma
-  span:
-    start: 1394
-    end: 1395
-  raw: ","
-- kind: Integer
-  span:
-    start: 1396
-    end: 1397
-  raw: "0"
-- kind: Newline
-  span:
-    start: 1397
-    end: 1398
-  raw: "\n"
-- kind:
-    ActionName: Push
-  span:
-    start: 1398
-    end: 1402
-  raw: Push
-- kind:
-    Constant: 4
-  span:
-    start: 1403
-    end: 1412
-  raw: constant4
-- kind: Newline
-  span:
-    start: 1412
-    end: 1413
-  raw: "\n"
-- kind:
-    ActionName: Push
-  span:
-    start: 1413
-    end: 1417
-  raw: Push
-- kind:
-    Constant: 0
-  span:
-    start: 1418
-    end: 1427
-  raw: constant0
-- kind: Newline
-  span:
-    start: 1427
-    end: 1428
-  raw: "\n"
-- kind:
-    ActionName: GetVariable
-  span:
-    start: 1428
-    end: 1439
-  raw: GetVariable
-- kind: Newline
-  span:
-    start: 1439
-    end: 1440
   raw: "\n"
 - kind:
     ActionName: GetUrl2
   span:
-    start: 1440
-    end: 1447
+    start: 1389
+    end: 1396
   raw: GetURL2
 - kind: "True"
   span:
-    start: 1448
-    end: 1452
+    start: 1397
+    end: 1401
   raw: "true"
 - kind: Comma
   span:
-    start: 1452
-    end: 1453
+    start: 1401
+    end: 1402
   raw: ","
 - kind: "True"
   span:
-    start: 1454
-    end: 1458
+    start: 1403
+    end: 1407
   raw: "true"
 - kind: Comma
   span:
-    start: 1458
-    end: 1459
+    start: 1407
+    end: 1408
   raw: ","
 - kind: Integer
   span:
-    start: 1460
-    end: 1461
+    start: 1409
+    end: 1410
   raw: "0"
 - kind: Newline
   span:
-    start: 1461
-    end: 1462
+    start: 1410
+    end: 1411
   raw: "\n"
 - kind:
     ActionName: Push
   span:
-    start: 1462
-    end: 1466
+    start: 1411
+    end: 1415
   raw: Push
 - kind:
     Constant: 4
   span:
-    start: 1467
-    end: 1476
+    start: 1416
+    end: 1425
   raw: constant4
 - kind: Newline
   span:
-    start: 1476
-    end: 1477
+    start: 1425
+    end: 1426
   raw: "\n"
 - kind:
     ActionName: Push
   span:
-    start: 1477
-    end: 1481
+    start: 1426
+    end: 1430
+  raw: Push
+- kind:
+    Constant: 0
+  span:
+    start: 1431
+    end: 1440
+  raw: constant0
+- kind: Newline
+  span:
+    start: 1440
+    end: 1441
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 1441
+    end: 1452
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 1452
+    end: 1453
+  raw: "\n"
+- kind:
+    ActionName: GetUrl2
+  span:
+    start: 1453
+    end: 1460
+  raw: GetURL2
+- kind: "True"
+  span:
+    start: 1461
+    end: 1465
+  raw: "true"
+- kind: Comma
+  span:
+    start: 1465
+    end: 1466
+  raw: ","
+- kind: "True"
+  span:
+    start: 1467
+    end: 1471
+  raw: "true"
+- kind: Comma
+  span:
+    start: 1471
+    end: 1472
+  raw: ","
+- kind: Integer
+  span:
+    start: 1473
+    end: 1474
+  raw: "0"
+- kind: Newline
+  span:
+    start: 1474
+    end: 1475
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1475
+    end: 1479
+  raw: Push
+- kind:
+    Constant: 4
+  span:
+    start: 1480
+    end: 1489
+  raw: constant4
+- kind: Newline
+  span:
+    start: 1489
+    end: 1490
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1490
+    end: 1494
   raw: Push
 - kind:
     Constant: 5
   span:
-    start: 1482
-    end: 1491
+    start: 1495
+    end: 1504
   raw: constant5
 - kind: Newline
   span:
-    start: 1491
-    end: 1492
+    start: 1504
+    end: 1505
   raw: "\n"
 - kind:
     ActionName: GetUrl2
   span:
-    start: 1492
-    end: 1499
+    start: 1505
+    end: 1512
   raw: GetURL2
 - kind: "True"
   span:
-    start: 1500
-    end: 1504
+    start: 1513
+    end: 1517
   raw: "true"
 - kind: Comma
   span:
-    start: 1504
-    end: 1505
+    start: 1517
+    end: 1518
   raw: ","
 - kind: "True"
   span:
-    start: 1506
-    end: 1510
+    start: 1519
+    end: 1523
   raw: "true"
 - kind: Comma
   span:
-    start: 1510
-    end: 1511
+    start: 1523
+    end: 1524
   raw: ","
 - kind: Integer
   span:
-    start: 1512
-    end: 1513
+    start: 1525
+    end: 1526
   raw: "1"
 - kind: Newline
   span:
-    start: 1513
-    end: 1514
+    start: 1526
+    end: 1527
   raw: "\n"
 - kind:
     ActionName: Push
   span:
-    start: 1514
-    end: 1518
+    start: 1527
+    end: 1531
   raw: Push
 - kind:
     Constant: 4
   span:
-    start: 1519
-    end: 1528
+    start: 1532
+    end: 1541
   raw: constant4
 - kind: Newline
   span:
-    start: 1528
-    end: 1529
+    start: 1541
+    end: 1542
   raw: "\n"
 - kind:
     ActionName: Push
   span:
-    start: 1529
-    end: 1533
+    start: 1542
+    end: 1546
   raw: Push
 - kind:
     Constant: 6
   span:
-    start: 1534
-    end: 1543
+    start: 1547
+    end: 1556
   raw: constant6
 - kind: Newline
-  span:
-    start: 1543
-    end: 1544
-  raw: "\n"
-- kind:
-    ActionName: GetUrl2
-  span:
-    start: 1544
-    end: 1551
-  raw: GetURL2
-- kind: "True"
-  span:
-    start: 1552
-    end: 1556
-  raw: "true"
-- kind: Comma
   span:
     start: 1556
     end: 1557
-  raw: ","
-- kind: "False"
-  span:
-    start: 1558
-    end: 1563
-  raw: "false"
-- kind: Comma
-  span:
-    start: 1563
-    end: 1564
-  raw: ","
-- kind: Integer
-  span:
-    start: 1565
-    end: 1566
-  raw: "0"
-- kind: Newline
-  span:
-    start: 1566
-    end: 1567
-  raw: "\n"
-- kind:
-    ActionName: Push
-  span:
-    start: 1567
-    end: 1571
-  raw: Push
-- kind:
-    Constant: 4
-  span:
-    start: 1572
-    end: 1581
-  raw: constant4
-- kind: Newline
-  span:
-    start: 1581
-    end: 1582
-  raw: "\n"
-- kind:
-    ActionName: Push
-  span:
-    start: 1582
-    end: 1586
-  raw: Push
-- kind:
-    Constant: 6
-  span:
-    start: 1587
-    end: 1596
-  raw: constant6
-- kind: Newline
-  span:
-    start: 1596
-    end: 1597
   raw: "\n"
 - kind:
     ActionName: GetUrl2
   span:
-    start: 1597
-    end: 1604
+    start: 1557
+    end: 1564
   raw: GetURL2
 - kind: "True"
   span:
-    start: 1605
-    end: 1609
+    start: 1565
+    end: 1569
   raw: "true"
 - kind: Comma
   span:
-    start: 1609
-    end: 1610
+    start: 1569
+    end: 1570
   raw: ","
 - kind: "False"
   span:
-    start: 1611
-    end: 1616
+    start: 1571
+    end: 1576
   raw: "false"
 - kind: Comma
   span:
-    start: 1616
-    end: 1617
+    start: 1576
+    end: 1577
   raw: ","
 - kind: Integer
   span:
-    start: 1618
-    end: 1619
-  raw: "1"
+    start: 1578
+    end: 1579
+  raw: "0"
 - kind: Newline
   span:
-    start: 1619
-    end: 1620
+    start: 1579
+    end: 1580
   raw: "\n"
 - kind:
     ActionName: Push
   span:
-    start: 1620
-    end: 1624
+    start: 1580
+    end: 1584
   raw: Push
 - kind:
     Constant: 4
   span:
-    start: 1625
-    end: 1634
+    start: 1585
+    end: 1594
   raw: constant4
 - kind: Newline
   span:
-    start: 1634
-    end: 1635
+    start: 1594
+    end: 1595
   raw: "\n"
 - kind:
     ActionName: Push
   span:
-    start: 1635
-    end: 1639
+    start: 1595
+    end: 1599
+  raw: Push
+- kind:
+    Constant: 6
+  span:
+    start: 1600
+    end: 1609
+  raw: constant6
+- kind: Newline
+  span:
+    start: 1609
+    end: 1610
+  raw: "\n"
+- kind:
+    ActionName: GetUrl2
+  span:
+    start: 1610
+    end: 1617
+  raw: GetURL2
+- kind: "True"
+  span:
+    start: 1618
+    end: 1622
+  raw: "true"
+- kind: Comma
+  span:
+    start: 1622
+    end: 1623
+  raw: ","
+- kind: "False"
+  span:
+    start: 1624
+    end: 1629
+  raw: "false"
+- kind: Comma
+  span:
+    start: 1629
+    end: 1630
+  raw: ","
+- kind: Integer
+  span:
+    start: 1631
+    end: 1632
+  raw: "1"
+- kind: Newline
+  span:
+    start: 1632
+    end: 1633
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1633
+    end: 1637
+  raw: Push
+- kind:
+    Constant: 4
+  span:
+    start: 1638
+    end: 1647
+  raw: constant4
+- kind: Newline
+  span:
+    start: 1647
+    end: 1648
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1648
+    end: 1652
   raw: Push
 - kind:
     Constant: 7
   span:
-    start: 1640
-    end: 1649
+    start: 1653
+    end: 1662
   raw: constant7
 - kind: Newline
   span:
-    start: 1649
-    end: 1650
+    start: 1662
+    end: 1663
   raw: "\n"
 - kind:
     ActionName: Push
   span:
-    start: 1650
-    end: 1654
+    start: 1663
+    end: 1667
   raw: Push
 - kind:
     Constant: 0
   span:
-    start: 1655
-    end: 1664
+    start: 1668
+    end: 1677
   raw: constant0
 - kind: Newline
   span:
-    start: 1664
-    end: 1665
+    start: 1677
+    end: 1678
   raw: "\n"
 - kind:
     ActionName: GetVariable
   span:
-    start: 1665
-    end: 1676
+    start: 1678
+    end: 1689
   raw: GetVariable
 - kind: Newline
   span:
-    start: 1676
-    end: 1677
+    start: 1689
+    end: 1690
   raw: "\n"
 - kind:
     ActionName: StringAdd
   span:
-    start: 1677
-    end: 1686
+    start: 1690
+    end: 1699
   raw: StringAdd
 - kind: Newline
   span:
-    start: 1686
-    end: 1687
+    start: 1699
+    end: 1700
   raw: "\n"
 - kind:
     ActionName: GetUrl2
   span:
-    start: 1687
-    end: 1694
+    start: 1700
+    end: 1707
   raw: GetURL2
 - kind: "True"
   span:
-    start: 1695
-    end: 1699
+    start: 1708
+    end: 1712
   raw: "true"
 - kind: Comma
   span:
-    start: 1699
-    end: 1700
+    start: 1712
+    end: 1713
   raw: ","
 - kind: "False"
   span:
-    start: 1701
-    end: 1706
+    start: 1714
+    end: 1719
   raw: "false"
 - kind: Comma
   span:
-    start: 1706
-    end: 1707
+    start: 1719
+    end: 1720
   raw: ","
 - kind: Integer
   span:
-    start: 1708
-    end: 1709
+    start: 1721
+    end: 1722
   raw: "1"
 - kind: Newline
   span:
-    start: 1709
-    end: 1710
+    start: 1722
+    end: 1723
   raw: "\n"
 - kind:
     ActionName: Push
   span:
-    start: 1710
-    end: 1714
+    start: 1723
+    end: 1727
   raw: Push
 - kind:
     Constant: 0
   span:
-    start: 1715
-    end: 1724
+    start: 1728
+    end: 1737
   raw: constant0
 - kind: Newline
   span:
-    start: 1724
-    end: 1725
+    start: 1737
+    end: 1738
   raw: "\n"
 - kind:
     ActionName: GetVariable
   span:
-    start: 1725
-    end: 1736
+    start: 1738
+    end: 1749
   raw: GetVariable
 - kind: Newline
   span:
-    start: 1736
-    end: 1737
+    start: 1749
+    end: 1750
   raw: "\n"
 - kind:
     ActionName: MBAsciiToChar
   span:
-    start: 1737
-    end: 1750
+    start: 1750
+    end: 1763
   raw: MBAsciiToChar
 - kind: Newline
   span:
-    start: 1750
-    end: 1751
+    start: 1763
+    end: 1764
   raw: "\n"
 - kind:
     ActionName: Pop
   span:
-    start: 1751
-    end: 1754
+    start: 1764
+    end: 1767
   raw: Pop
 - kind: Newline
   span:
-    start: 1754
-    end: 1755
+    start: 1767
+    end: 1768
   raw: "\n"
 - kind:
     ActionName: Push
   span:
-    start: 1755
-    end: 1759
+    start: 1768
+    end: 1772
   raw: Push
 - kind:
     Constant: 0
   span:
-    start: 1760
-    end: 1769
+    start: 1773
+    end: 1782
   raw: constant0
 - kind: Newline
   span:
-    start: 1769
-    end: 1770
+    start: 1782
+    end: 1783
   raw: "\n"
 - kind:
     ActionName: GetVariable
   span:
-    start: 1770
-    end: 1781
+    start: 1783
+    end: 1794
   raw: GetVariable
 - kind: Newline
   span:
-    start: 1781
-    end: 1782
+    start: 1794
+    end: 1795
   raw: "\n"
 - kind:
     ActionName: MBStringLength
   span:
-    start: 1782
-    end: 1796
+    start: 1795
+    end: 1809
   raw: MBStringLength
 - kind: Newline
   span:
-    start: 1796
-    end: 1797
+    start: 1809
+    end: 1810
   raw: "\n"
 - kind:
     ActionName: Pop
   span:
-    start: 1797
-    end: 1800
+    start: 1810
+    end: 1813
   raw: Pop
 - kind: Newline
   span:
-    start: 1800
-    end: 1801
+    start: 1813
+    end: 1814
   raw: "\n"
 - kind:
     ActionName: Push
   span:
-    start: 1801
-    end: 1805
+    start: 1814
+    end: 1818
   raw: Push
 - kind:
     Constant: 0
   span:
-    start: 1806
-    end: 1815
+    start: 1819
+    end: 1828
   raw: constant0
 - kind: Newline
   span:
-    start: 1815
-    end: 1816
+    start: 1828
+    end: 1829
   raw: "\n"
 - kind:
     ActionName: GetVariable
   span:
-    start: 1816
-    end: 1827
+    start: 1829
+    end: 1840
   raw: GetVariable
 - kind: Newline
   span:
-    start: 1827
-    end: 1828
+    start: 1840
+    end: 1841
   raw: "\n"
 - kind:
     ActionName: MBCharToAscii
   span:
-    start: 1828
-    end: 1841
+    start: 1841
+    end: 1854
   raw: MBCharToAscii
 - kind: Newline
   span:
-    start: 1841
-    end: 1842
+    start: 1854
+    end: 1855
   raw: "\n"
 - kind:
     ActionName: Pop
   span:
-    start: 1842
-    end: 1845
+    start: 1855
+    end: 1858
   raw: Pop
 - kind: Newline
   span:
-    start: 1845
-    end: 1846
+    start: 1858
+    end: 1859
   raw: "\n"
 - kind:
     ActionName: Push
   span:
-    start: 1846
-    end: 1850
+    start: 1859
+    end: 1863
   raw: Push
 - kind:
     Constant: 8
   span:
-    start: 1851
-    end: 1860
+    start: 1864
+    end: 1873
   raw: constant8
 - kind: Newline
   span:
-    start: 1860
-    end: 1861
+    start: 1873
+    end: 1874
   raw: "\n"
 - kind:
     ActionName: Push
   span:
-    start: 1861
-    end: 1865
+    start: 1874
+    end: 1878
   raw: Push
 - kind: Integer
   span:
-    start: 1866
-    end: 1867
+    start: 1879
+    end: 1880
   raw: "1"
 - kind: Newline
   span:
-    start: 1867
-    end: 1868
+    start: 1880
+    end: 1881
   raw: "\n"
 - kind:
     ActionName: Push
   span:
-    start: 1868
-    end: 1872
+    start: 1881
+    end: 1885
   raw: Push
 - kind: Integer
   span:
-    start: 1873
-    end: 1875
+    start: 1886
+    end: 1888
   raw: "-1"
 - kind: Newline
   span:
-    start: 1875
-    end: 1876
+    start: 1888
+    end: 1889
   raw: "\n"
 - kind:
     ActionName: MBStringExtract
   span:
-    start: 1876
-    end: 1891
+    start: 1889
+    end: 1904
   raw: MBStringExtract
 - kind: Newline
   span:
-    start: 1891
-    end: 1892
+    start: 1904
+    end: 1905
   raw: "\n"
 - kind:
     ActionName: Pop
   span:
-    start: 1892
-    end: 1895
+    start: 1905
+    end: 1908
   raw: Pop
 - kind: Newline
   span:
-    start: 1895
-    end: 1896
+    start: 1908
+    end: 1909
   raw: "\n"
 - kind:
     ActionName: Push
   span:
-    start: 1896
-    end: 1900
+    start: 1909
+    end: 1913
   raw: Push
 - kind:
     Constant: 8
   span:
-    start: 1901
-    end: 1910
+    start: 1914
+    end: 1923
   raw: constant8
 - kind: Newline
   span:
-    start: 1910
-    end: 1911
+    start: 1923
+    end: 1924
   raw: "\n"
 - kind:
     ActionName: Push
   span:
-    start: 1911
-    end: 1915
+    start: 1924
+    end: 1928
   raw: Push
 - kind: Integer
   span:
-    start: 1916
-    end: 1917
+    start: 1929
+    end: 1930
   raw: "1"
 - kind: Newline
   span:
-    start: 1917
-    end: 1918
+    start: 1930
+    end: 1931
   raw: "\n"
 - kind:
     ActionName: Push
   span:
-    start: 1918
-    end: 1922
+    start: 1931
+    end: 1935
   raw: Push
 - kind: Integer
   span:
-    start: 1923
-    end: 1924
+    start: 1936
+    end: 1937
   raw: "2"
 - kind: Newline
   span:
-    start: 1924
-    end: 1925
+    start: 1937
+    end: 1938
   raw: "\n"
 - kind:
     ActionName: MBStringExtract
   span:
-    start: 1925
-    end: 1940
+    start: 1938
+    end: 1953
   raw: MBStringExtract
 - kind: Newline
   span:
-    start: 1940
-    end: 1941
+    start: 1953
+    end: 1954
   raw: "\n"
 - kind:
     ActionName: Pop
   span:
-    start: 1941
-    end: 1944
+    start: 1954
+    end: 1957
   raw: Pop
 - kind: Newline
   span:
-    start: 1944
-    end: 1945
+    start: 1957
+    end: 1958
   raw: "\n"
 - kind:
     ActionName: NextFrame
   span:
-    start: 1945
-    end: 1954
+    start: 1958
+    end: 1967
   raw: NextFrame
 - kind: Newline
   span:
-    start: 1954
-    end: 1955
+    start: 1967
+    end: 1968
   raw: "\n"
 - kind:
     ActionName: GotoFrame
   span:
-    start: 1955
-    end: 1964
+    start: 1968
+    end: 1977
   raw: GotoFrame
 - kind: Integer
   span:
-    start: 1965
-    end: 1966
+    start: 1978
+    end: 1979
   raw: "0"
 - kind: Newline
   span:
-    start: 1966
-    end: 1967
+    start: 1979
+    end: 1980
   raw: "\n"
 - kind:
     ActionName: Push
   span:
-    start: 1967
-    end: 1971
+    start: 1980
+    end: 1984
   raw: Push
 - kind:
     Constant: 0
   span:
-    start: 1972
-    end: 1981
+    start: 1985
+    end: 1994
   raw: constant0
 - kind: Newline
   span:
-    start: 1981
-    end: 1982
+    start: 1994
+    end: 1995
   raw: "\n"
 - kind:
     ActionName: GetVariable
   span:
-    start: 1982
-    end: 1993
-  raw: GetVariable
-- kind: Newline
-  span:
-    start: 1993
-    end: 1994
-  raw: "\n"
-- kind:
-    ActionName: ToNumber
-  span:
-    start: 1994
-    end: 2002
-  raw: ToNumber
-- kind: Newline
-  span:
-    start: 2002
-    end: 2003
-  raw: "\n"
-- kind:
-    ActionName: Pop
-  span:
-    start: 2003
+    start: 1995
     end: 2006
-  raw: Pop
+  raw: GetVariable
 - kind: Newline
   span:
     start: 2006
     end: 2007
   raw: "\n"
 - kind:
-    ActionName: Push
+    ActionName: ToNumber
   span:
     start: 2007
-    end: 2011
+    end: 2015
+  raw: ToNumber
+- kind: Newline
+  span:
+    start: 2015
+    end: 2016
+  raw: "\n"
+- kind:
+    ActionName: Pop
+  span:
+    start: 2016
+    end: 2019
+  raw: Pop
+- kind: Newline
+  span:
+    start: 2019
+    end: 2020
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 2020
+    end: 2024
   raw: Push
 - kind:
     Constant: 0
   span:
-    start: 2012
-    end: 2021
+    start: 2025
+    end: 2034
   raw: constant0
 - kind: Newline
   span:
-    start: 2021
-    end: 2022
+    start: 2034
+    end: 2035
   raw: "\n"
 - kind:
     ActionName: GetVariable
   span:
-    start: 2022
-    end: 2033
+    start: 2035
+    end: 2046
   raw: GetVariable
 - kind: Newline
   span:
-    start: 2033
-    end: 2034
+    start: 2046
+    end: 2047
   raw: "\n"
 - kind:
     ActionName: CharToAscii
   span:
-    start: 2034
-    end: 2045
+    start: 2047
+    end: 2058
   raw: CharToAscii
 - kind: Newline
   span:
-    start: 2045
-    end: 2046
+    start: 2058
+    end: 2059
   raw: "\n"
 - kind:
     ActionName: Pop
   span:
-    start: 2046
-    end: 2049
+    start: 2059
+    end: 2062
   raw: Pop
 - kind: Newline
   span:
-    start: 2049
-    end: 2050
+    start: 2062
+    end: 2063
   raw: "\n"
 - kind:
     ActionName: Play
   span:
-    start: 2050
-    end: 2054
+    start: 2063
+    end: 2067
   raw: Play
 - kind: Newline
   span:
-    start: 2054
-    end: 2055
+    start: 2067
+    end: 2068
   raw: "\n"
 - kind:
     ActionName: PrevFrame
   span:
-    start: 2055
-    end: 2064
+    start: 2068
+    end: 2077
   raw: PrevFrame
 - kind: Newline
   span:
-    start: 2064
-    end: 2065
+    start: 2077
+    end: 2078
   raw: "\n"
 - kind:
     ActionName: GotoFrame
   span:
-    start: 2065
-    end: 2074
+    start: 2078
+    end: 2087
   raw: GotoFrame
 - kind: Integer
   span:
-    start: 2075
-    end: 2076
+    start: 2088
+    end: 2089
   raw: "0"
 - kind: Newline
   span:
-    start: 2076
-    end: 2077
+    start: 2089
+    end: 2090
   raw: "\n"
 - kind:
     ActionName: Push
   span:
-    start: 2077
-    end: 2081
+    start: 2090
+    end: 2094
   raw: Push
 - kind:
     Constant: 9
   span:
-    start: 2082
-    end: 2091
+    start: 2095
+    end: 2104
   raw: constant9
 - kind: Newline
   span:
-    start: 2091
-    end: 2092
+    start: 2104
+    end: 2105
   raw: "\n"
 - kind:
     ActionName: Push
   span:
-    start: 2092
-    end: 2096
+    start: 2105
+    end: 2109
   raw: Push
 - kind:
     Constant: 10
   span:
-    start: 2097
-    end: 2107
+    start: 2110
+    end: 2120
   raw: constant10
 - kind: Newline
   span:
-    start: 2107
-    end: 2108
+    start: 2120
+    end: 2121
   raw: "\n"
 - kind:
     ActionName: GetUrl2
   span:
-    start: 2108
-    end: 2115
+    start: 2121
+    end: 2128
   raw: GetURL2
 - kind: "False"
   span:
-    start: 2116
-    end: 2121
+    start: 2129
+    end: 2134
   raw: "false"
 - kind: Comma
   span:
-    start: 2121
-    end: 2122
+    start: 2134
+    end: 2135
   raw: ","
 - kind: "False"
   span:
-    start: 2123
-    end: 2128
+    start: 2136
+    end: 2141
   raw: "false"
 - kind: Comma
   span:
-    start: 2128
-    end: 2129
+    start: 2141
+    end: 2142
   raw: ","
 - kind: Integer
   span:
-    start: 2130
-    end: 2131
+    start: 2143
+    end: 2144
   raw: "0"
 - kind: Newline
   span:
-    start: 2131
-    end: 2132
+    start: 2144
+    end: 2145
   raw: "\n"
 - kind:
     ActionName: Push
   span:
-    start: 2132
-    end: 2136
+    start: 2145
+    end: 2149
   raw: Push
 - kind:
     Constant: 11
   span:
-    start: 2137
-    end: 2147
+    start: 2150
+    end: 2160
   raw: constant11
 - kind: Newline
   span:
-    start: 2147
-    end: 2148
+    start: 2160
+    end: 2161
   raw: "\n"
 - kind:
     ActionName: Push
   span:
-    start: 2148
-    end: 2152
+    start: 2161
+    end: 2165
   raw: Push
 - kind:
     Constant: 12
   span:
-    start: 2153
-    end: 2163
+    start: 2166
+    end: 2176
   raw: constant12
 - kind: Newline
   span:
-    start: 2163
-    end: 2164
+    start: 2176
+    end: 2177
   raw: "\n"
 - kind:
     ActionName: GetVariable
   span:
-    start: 2164
-    end: 2175
+    start: 2177
+    end: 2188
   raw: GetVariable
 - kind: Newline
   span:
-    start: 2175
-    end: 2176
+    start: 2188
+    end: 2189
   raw: "\n"
 - kind:
     ActionName: GetUrl2
   span:
-    start: 2176
-    end: 2183
+    start: 2189
+    end: 2196
   raw: GetURL2
 - kind: "False"
   span:
-    start: 2184
-    end: 2189
+    start: 2197
+    end: 2202
   raw: "false"
 - kind: Comma
   span:
-    start: 2189
-    end: 2190
+    start: 2202
+    end: 2203
   raw: ","
 - kind: "False"
   span:
-    start: 2191
-    end: 2196
+    start: 2204
+    end: 2209
   raw: "false"
 - kind: Comma
   span:
-    start: 2196
-    end: 2197
+    start: 2209
+    end: 2210
   raw: ","
 - kind: Integer
   span:
-    start: 2198
-    end: 2199
+    start: 2211
+    end: 2212
   raw: "0"
 - kind: Newline
   span:
-    start: 2199
-    end: 2200
+    start: 2212
+    end: 2213
   raw: "\n"
 - kind:
     ActionName: Push
   span:
-    start: 2200
-    end: 2204
+    start: 2213
+    end: 2217
   raw: Push
 - kind:
     Constant: 13
   span:
-    start: 2205
-    end: 2215
+    start: 2218
+    end: 2228
   raw: constant13
 - kind: Newline
   span:
-    start: 2215
-    end: 2216
+    start: 2228
+    end: 2229
   raw: "\n"
 - kind:
     ActionName: Push
   span:
-    start: 2216
-    end: 2220
+    start: 2229
+    end: 2233
   raw: Push
 - kind:
     Constant: 14
   span:
-    start: 2221
-    end: 2231
+    start: 2234
+    end: 2244
   raw: constant14
 - kind: Newline
   span:
-    start: 2231
-    end: 2232
+    start: 2244
+    end: 2245
   raw: "\n"
 - kind:
     ActionName: GetVariable
   span:
-    start: 2232
-    end: 2243
+    start: 2245
+    end: 2256
   raw: GetVariable
 - kind: Newline
   span:
-    start: 2243
-    end: 2244
+    start: 2256
+    end: 2257
   raw: "\n"
 - kind:
     ActionName: GetUrl2
   span:
-    start: 2244
-    end: 2251
+    start: 2257
+    end: 2264
   raw: GetURL2
 - kind: "False"
   span:
-    start: 2252
-    end: 2257
+    start: 2265
+    end: 2270
   raw: "false"
 - kind: Comma
   span:
-    start: 2257
-    end: 2258
+    start: 2270
+    end: 2271
   raw: ","
 - kind: "False"
   span:
-    start: 2259
-    end: 2264
+    start: 2272
+    end: 2277
   raw: "false"
 - kind: Comma
   span:
-    start: 2264
-    end: 2265
+    start: 2277
+    end: 2278
   raw: ","
 - kind: Integer
   span:
-    start: 2266
-    end: 2267
+    start: 2279
+    end: 2280
   raw: "0"
 - kind: Newline
   span:
-    start: 2267
-    end: 2268
+    start: 2280
+    end: 2281
   raw: "\n"
 - kind:
     ActionName: Push
   span:
-    start: 2268
-    end: 2272
+    start: 2281
+    end: 2285
   raw: Push
 - kind:
     Constant: 15
   span:
-    start: 2273
-    end: 2283
+    start: 2286
+    end: 2296
   raw: constant15
 - kind: Newline
   span:
-    start: 2283
-    end: 2284
+    start: 2296
+    end: 2297
   raw: "\n"
 - kind:
     ActionName: Push
   span:
-    start: 2284
-    end: 2288
+    start: 2297
+    end: 2301
   raw: Push
 - kind:
     Constant: 10
   span:
-    start: 2289
-    end: 2299
+    start: 2302
+    end: 2312
   raw: constant10
 - kind: Newline
   span:
-    start: 2299
-    end: 2300
+    start: 2312
+    end: 2313
   raw: "\n"
 - kind:
     ActionName: GetUrl2
   span:
-    start: 2300
-    end: 2307
+    start: 2313
+    end: 2320
   raw: GetURL2
 - kind: "False"
   span:
-    start: 2308
-    end: 2313
+    start: 2321
+    end: 2326
   raw: "false"
 - kind: Comma
   span:
-    start: 2313
-    end: 2314
+    start: 2326
+    end: 2327
   raw: ","
 - kind: "False"
   span:
-    start: 2315
-    end: 2320
+    start: 2328
+    end: 2333
   raw: "false"
 - kind: Comma
   span:
-    start: 2320
-    end: 2321
+    start: 2333
+    end: 2334
   raw: ","
 - kind: Integer
   span:
-    start: 2322
-    end: 2323
+    start: 2335
+    end: 2336
   raw: "0"
 - kind: Newline
   span:
-    start: 2323
-    end: 2324
+    start: 2336
+    end: 2337
   raw: "\n"
 - kind:
     ActionName: Push
   span:
-    start: 2324
-    end: 2328
+    start: 2337
+    end: 2341
   raw: Push
 - kind:
     Constant: 16
   span:
-    start: 2329
-    end: 2339
+    start: 2342
+    end: 2352
   raw: constant16
 - kind: Newline
   span:
-    start: 2339
-    end: 2340
+    start: 2352
+    end: 2353
   raw: "\n"
 - kind:
     ActionName: Push
   span:
-    start: 2340
-    end: 2344
+    start: 2353
+    end: 2357
   raw: Push
 - kind:
     Constant: 12
   span:
-    start: 2345
-    end: 2355
+    start: 2358
+    end: 2368
   raw: constant12
 - kind: Newline
   span:
-    start: 2355
-    end: 2356
+    start: 2368
+    end: 2369
   raw: "\n"
 - kind:
     ActionName: GetVariable
   span:
-    start: 2356
-    end: 2367
+    start: 2369
+    end: 2380
   raw: GetVariable
 - kind: Newline
   span:
-    start: 2367
-    end: 2368
+    start: 2380
+    end: 2381
   raw: "\n"
 - kind:
     ActionName: GetUrl2
   span:
-    start: 2368
-    end: 2375
+    start: 2381
+    end: 2388
   raw: GetURL2
 - kind: "False"
   span:
-    start: 2376
-    end: 2381
+    start: 2389
+    end: 2394
   raw: "false"
 - kind: Comma
   span:
-    start: 2381
-    end: 2382
+    start: 2394
+    end: 2395
   raw: ","
 - kind: "False"
   span:
-    start: 2383
-    end: 2388
+    start: 2396
+    end: 2401
   raw: "false"
 - kind: Comma
   span:
-    start: 2388
-    end: 2389
+    start: 2401
+    end: 2402
   raw: ","
 - kind: Integer
   span:
-    start: 2390
-    end: 2391
+    start: 2403
+    end: 2404
   raw: "0"
 - kind: Newline
   span:
-    start: 2391
-    end: 2392
+    start: 2404
+    end: 2405
   raw: "\n"
 - kind:
     ActionName: Push
   span:
-    start: 2392
-    end: 2396
+    start: 2405
+    end: 2409
   raw: Push
 - kind:
     Constant: 17
   span:
-    start: 2397
-    end: 2407
+    start: 2410
+    end: 2420
   raw: constant17
 - kind: Newline
   span:
-    start: 2407
-    end: 2408
+    start: 2420
+    end: 2421
   raw: "\n"
 - kind:
     ActionName: Push
   span:
-    start: 2408
-    end: 2412
+    start: 2421
+    end: 2425
   raw: Push
 - kind:
     Constant: 14
   span:
-    start: 2413
-    end: 2423
+    start: 2426
+    end: 2436
   raw: constant14
 - kind: Newline
   span:
-    start: 2423
-    end: 2424
+    start: 2436
+    end: 2437
   raw: "\n"
 - kind:
     ActionName: GetVariable
   span:
-    start: 2424
-    end: 2435
+    start: 2437
+    end: 2448
   raw: GetVariable
 - kind: Newline
   span:
-    start: 2435
-    end: 2436
+    start: 2448
+    end: 2449
   raw: "\n"
 - kind:
     ActionName: GetUrl2
   span:
-    start: 2436
-    end: 2443
+    start: 2449
+    end: 2456
   raw: GetURL2
 - kind: "False"
   span:
-    start: 2444
-    end: 2449
+    start: 2457
+    end: 2462
   raw: "false"
 - kind: Comma
   span:
-    start: 2449
-    end: 2450
+    start: 2462
+    end: 2463
   raw: ","
 - kind: "False"
   span:
-    start: 2451
-    end: 2456
+    start: 2464
+    end: 2469
   raw: "false"
 - kind: Comma
   span:
-    start: 2456
-    end: 2457
+    start: 2469
+    end: 2470
   raw: ","
 - kind: Integer
   span:
-    start: 2458
-    end: 2459
+    start: 2471
+    end: 2472
   raw: "0"
 - kind: Newline
   span:
-    start: 2459
-    end: 2460
+    start: 2472
+    end: 2473
   raw: "\n"
 - kind:
     ActionName: Push
   span:
-    start: 2460
-    end: 2464
+    start: 2473
+    end: 2477
   raw: Push
-- kind: Integer
-  span:
-    start: 2465
-    end: 2468
-  raw: "123"
-- kind: Newline
-  span:
-    start: 2468
-    end: 2469
-  raw: "\n"
 - kind:
-    ActionName: RandomNumber
+    Constant: 15
   span:
-    start: 2469
-    end: 2481
-  raw: RandomNumber
+    start: 2478
+    end: 2488
+  raw: constant15
 - kind: Newline
   span:
-    start: 2481
-    end: 2482
-  raw: "\n"
-- kind:
-    ActionName: Pop
-  span:
-    start: 2482
-    end: 2485
-  raw: Pop
-- kind: Newline
-  span:
-    start: 2485
-    end: 2486
+    start: 2488
+    end: 2489
   raw: "\n"
 - kind:
     ActionName: Push
   span:
-    start: 2486
-    end: 2490
+    start: 2489
+    end: 2493
   raw: Push
 - kind:
     Constant: 18
   span:
-    start: 2491
-    end: 2501
+    start: 2494
+    end: 2504
   raw: constant18
 - kind: Newline
   span:
-    start: 2501
-    end: 2502
+    start: 2504
+    end: 2505
+  raw: "\n"
+- kind:
+    ActionName: GetUrl2
+  span:
+    start: 2505
+    end: 2512
+  raw: GetURL2
+- kind: "False"
+  span:
+    start: 2513
+    end: 2518
+  raw: "false"
+- kind: Comma
+  span:
+    start: 2518
+    end: 2519
+  raw: ","
+- kind: "False"
+  span:
+    start: 2520
+    end: 2525
+  raw: "false"
+- kind: Comma
+  span:
+    start: 2525
+    end: 2526
+  raw: ","
+- kind: Integer
+  span:
+    start: 2527
+    end: 2528
+  raw: "0"
+- kind: Newline
+  span:
+    start: 2528
+    end: 2529
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 2529
+    end: 2533
+  raw: Push
+- kind:
+    Constant: 16
+  span:
+    start: 2534
+    end: 2544
+  raw: constant16
+- kind: Newline
+  span:
+    start: 2544
+    end: 2545
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 2545
+    end: 2549
+  raw: Push
+- kind:
+    Constant: 7
+  span:
+    start: 2550
+    end: 2559
+  raw: constant7
+- kind: Newline
+  span:
+    start: 2559
+    end: 2560
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 2560
+    end: 2564
+  raw: Push
+- kind:
+    Constant: 0
+  span:
+    start: 2565
+    end: 2574
+  raw: constant0
+- kind: Newline
+  span:
+    start: 2574
+    end: 2575
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 2575
+    end: 2586
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 2586
+    end: 2587
+  raw: "\n"
+- kind:
+    ActionName: StringAdd
+  span:
+    start: 2587
+    end: 2596
+  raw: StringAdd
+- kind: Newline
+  span:
+    start: 2596
+    end: 2597
+  raw: "\n"
+- kind:
+    ActionName: GetUrl2
+  span:
+    start: 2597
+    end: 2604
+  raw: GetURL2
+- kind: "False"
+  span:
+    start: 2605
+    end: 2610
+  raw: "false"
+- kind: Comma
+  span:
+    start: 2610
+    end: 2611
+  raw: ","
+- kind: "False"
+  span:
+    start: 2612
+    end: 2617
+  raw: "false"
+- kind: Comma
+  span:
+    start: 2617
+    end: 2618
+  raw: ","
+- kind: Integer
+  span:
+    start: 2619
+    end: 2620
+  raw: "0"
+- kind: Newline
+  span:
+    start: 2620
+    end: 2621
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 2621
+    end: 2625
+  raw: Push
+- kind:
+    Constant: 17
+  span:
+    start: 2626
+    end: 2636
+  raw: constant17
+- kind: Newline
+  span:
+    start: 2636
+    end: 2637
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 2637
+    end: 2641
+  raw: Push
+- kind:
+    Constant: 7
+  span:
+    start: 2642
+    end: 2651
+  raw: constant7
+- kind: Newline
+  span:
+    start: 2651
+    end: 2652
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 2652
+    end: 2656
+  raw: Push
+- kind:
+    Constant: 0
+  span:
+    start: 2657
+    end: 2666
+  raw: constant0
+- kind: Newline
+  span:
+    start: 2666
+    end: 2667
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 2667
+    end: 2678
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 2678
+    end: 2679
+  raw: "\n"
+- kind:
+    ActionName: StringAdd
+  span:
+    start: 2679
+    end: 2688
+  raw: StringAdd
+- kind: Newline
+  span:
+    start: 2688
+    end: 2689
+  raw: "\n"
+- kind:
+    ActionName: GetUrl2
+  span:
+    start: 2689
+    end: 2696
+  raw: GetURL2
+- kind: "False"
+  span:
+    start: 2697
+    end: 2702
+  raw: "false"
+- kind: Comma
+  span:
+    start: 2702
+    end: 2703
+  raw: ","
+- kind: "False"
+  span:
+    start: 2704
+    end: 2709
+  raw: "false"
+- kind: Comma
+  span:
+    start: 2709
+    end: 2710
+  raw: ","
+- kind: Integer
+  span:
+    start: 2711
+    end: 2712
+  raw: "0"
+- kind: Newline
+  span:
+    start: 2712
+    end: 2713
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 2713
+    end: 2717
+  raw: Push
+- kind: Integer
+  span:
+    start: 2718
+    end: 2721
+  raw: "123"
+- kind: Newline
+  span:
+    start: 2721
+    end: 2722
+  raw: "\n"
+- kind:
+    ActionName: RandomNumber
+  span:
+    start: 2722
+    end: 2734
+  raw: RandomNumber
+- kind: Newline
+  span:
+    start: 2734
+    end: 2735
+  raw: "\n"
+- kind:
+    ActionName: Pop
+  span:
+    start: 2735
+    end: 2738
+  raw: Pop
+- kind: Newline
+  span:
+    start: 2738
+    end: 2739
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 2739
+    end: 2743
+  raw: Push
+- kind:
+    Constant: 19
+  span:
+    start: 2744
+    end: 2754
+  raw: constant19
+- kind: Newline
+  span:
+    start: 2754
+    end: 2755
   raw: "\n"
 - kind:
     ActionName: Trace
   span:
-    start: 2502
-    end: 2507
+    start: 2755
+    end: 2760
   raw: Trace
 - kind: Newline
   span:
-    start: 2507
-    end: 2508
+    start: 2760
+    end: 2761
   raw: "\n"

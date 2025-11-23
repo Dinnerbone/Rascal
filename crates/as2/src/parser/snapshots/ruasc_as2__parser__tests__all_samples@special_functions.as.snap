@@ -1296,40 +1296,118 @@ Ok:
     - Expr:
         span:
           start: 1223
-          end: 1234
+          end: 1254
         value:
           Call:
             name:
               span:
                 start: 1223
-                end: 1229
+                end: 1239
+              value:
+                Constant:
+                  Identifier: printAsBitmapNum
+            args:
+              - span:
+                  start: 1240
+                  end: 1245
+                value:
+                  Constant:
+                    String: "123"
+              - span:
+                  start: 1247
+                  end: 1253
+                value:
+                  Constant:
+                    String: bmax
+    - Expr:
+        span:
+          start: 1256
+          end: 1285
+        value:
+          Call:
+            name:
+              span:
+                start: 1256
+                end: 1272
+              value:
+                Constant:
+                  Identifier: printAsBitmapNum
+            args:
+              - span:
+                  start: 1273
+                  end: 1274
+                value:
+                  Constant:
+                    Identifier: x
+              - span:
+                  start: 1276
+                  end: 1284
+                value:
+                  Constant:
+                    String: bframe
+    - Expr:
+        span:
+          start: 1287
+          end: 1316
+        value:
+          Call:
+            name:
+              span:
+                start: 1287
+                end: 1303
+              value:
+                Constant:
+                  Identifier: printAsBitmapNum
+            args:
+              - span:
+                  start: 1304
+                  end: 1305
+                value:
+                  Constant:
+                    Identifier: x
+              - span:
+                  start: 1307
+                  end: 1315
+                value:
+                  Constant:
+                    String: bmovie
+    - Expr:
+        span:
+          start: 1318
+          end: 1329
+        value:
+          Call:
+            name:
+              span:
+                start: 1318
+                end: 1324
               value:
                 Constant:
                   Identifier: random
             args:
               - span:
-                  start: 1230
-                  end: 1233
+                  start: 1325
+                  end: 1328
                 value:
                   Constant:
                     Integer: 123
     - Expr:
         span:
-          start: 1236
-          end: 1252
+          start: 1331
+          end: 1347
         value:
           Call:
             name:
               span:
-                start: 1236
-                end: 1241
+                start: 1331
+                end: 1336
               value:
                 Constant:
                   Identifier: trace
             args:
               - span:
-                  start: 1242
-                  end: 1251
+                  start: 1337
+                  end: 1346
                 value:
                   Constant:
                     String: message

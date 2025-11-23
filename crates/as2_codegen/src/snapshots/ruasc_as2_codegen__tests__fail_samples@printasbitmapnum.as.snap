@@ -1,0 +1,18 @@
+---
+source: crates/as2_codegen/src/tests.rs
+expression: result
+input_file: crates/as2_codegen/fail_samples/printasbitmapnum.as
+---
+error: Compile error(s)
+  ╭▸ printasbitmapnum.as:1:1
+  │
+1 │ printAsBitmapNum();
+  │ ━━━━━━━━━━━━━━━━━━ Wrong number of parameters; printAsBitmapNum requires exactly 2.
+2 │ printAsBitmapNum(x);
+  │ ━━━━━━━━━━━━━━━━━━━ Wrong number of parameters; printAsBitmapNum requires exactly 2.
+3 │ printAsBitmapNum(x, "foo");
+  │                     ━━━━━ Bounds type must be bmovie, bframe or bmax.
+4 │ printAsBitmapNum(x, foo);
+  │                     ━━━ Bounds type must be bmovie, bframe or bmax.
+5 │ printAsBitmapNum(x, "bmax", true);
+  ╰╴━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Wrong number of parameters; printAsBitmapNum requires exactly 2.
