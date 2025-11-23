@@ -51,5 +51,8 @@ prevScene();
 print("foo", "bmax");
 print(this, "bframe");
 print(_root, "bmovie");
+printAsBitmap("foo", "bmax");
+printAsBitmap(this, "bframe");
+printAsBitmap(_root, "bmovie");
 random(123);
 trace("message");

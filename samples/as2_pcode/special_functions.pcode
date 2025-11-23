@@ -1,4 +1,4 @@
-ConstantPool "x", "http://ruffle.rs", "window", "/:$version", "url", "target", "_level12", "_level", "abc", "print:#bmax", "foo", "print:#bframe", "this", "print:", "_root", "message"
+ConstantPool "x", "http://ruffle.rs", "window", "/:$version", "url", "target", "_level12", "_level", "abc", "print:#bmax", "foo", "print:#bframe", "this", "print:", "_root", "printasbitmap:#bmax", "printasbitmap:#bframe", "printasbitmap:", "message"
 Push 123
 Call
 Push constant0
@@ -145,8 +145,19 @@ Push constant13
 Push constant14
 GetVariable
 GetURL2 false, false, 0
+Push constant15
+Push constant10
+GetURL2 false, false, 0
+Push constant16
+Push constant12
+GetVariable
+GetURL2 false, false, 0
+Push constant17
+Push constant14
+GetVariable
+GetURL2 false, false, 0
 Push 123
 RandomNumber
 Pop
-Push constant15
+Push constant18
 Trace

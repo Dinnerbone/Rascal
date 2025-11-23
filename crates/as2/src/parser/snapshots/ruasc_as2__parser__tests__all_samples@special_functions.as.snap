@@ -1218,40 +1218,118 @@ Ok:
     - Expr:
         span:
           start: 1130
-          end: 1141
+          end: 1158
         value:
           Call:
             name:
               span:
                 start: 1130
-                end: 1136
+                end: 1143
+              value:
+                Constant:
+                  Identifier: printAsBitmap
+            args:
+              - span:
+                  start: 1144
+                  end: 1149
+                value:
+                  Constant:
+                    String: foo
+              - span:
+                  start: 1151
+                  end: 1157
+                value:
+                  Constant:
+                    String: bmax
+    - Expr:
+        span:
+          start: 1160
+          end: 1189
+        value:
+          Call:
+            name:
+              span:
+                start: 1160
+                end: 1173
+              value:
+                Constant:
+                  Identifier: printAsBitmap
+            args:
+              - span:
+                  start: 1174
+                  end: 1178
+                value:
+                  Constant:
+                    Identifier: this
+              - span:
+                  start: 1180
+                  end: 1188
+                value:
+                  Constant:
+                    String: bframe
+    - Expr:
+        span:
+          start: 1191
+          end: 1221
+        value:
+          Call:
+            name:
+              span:
+                start: 1191
+                end: 1204
+              value:
+                Constant:
+                  Identifier: printAsBitmap
+            args:
+              - span:
+                  start: 1205
+                  end: 1210
+                value:
+                  Constant:
+                    Identifier: _root
+              - span:
+                  start: 1212
+                  end: 1220
+                value:
+                  Constant:
+                    String: bmovie
+    - Expr:
+        span:
+          start: 1223
+          end: 1234
+        value:
+          Call:
+            name:
+              span:
+                start: 1223
+                end: 1229
               value:
                 Constant:
                   Identifier: random
             args:
               - span:
-                  start: 1137
-                  end: 1140
+                  start: 1230
+                  end: 1233
                 value:
                   Constant:
                     Integer: 123
     - Expr:
         span:
-          start: 1143
-          end: 1159
+          start: 1236
+          end: 1252
         value:
           Call:
             name:
               span:
-                start: 1143
-                end: 1148
+                start: 1236
+                end: 1241
               value:
                 Constant:
                   Identifier: trace
             args:
               - span:
-                  start: 1149
-                  end: 1158
+                  start: 1242
+                  end: 1251
                 value:
                   Constant:
                     String: message

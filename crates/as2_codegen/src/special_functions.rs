@@ -37,6 +37,7 @@ pub(crate) fn gen_special_call(
         "prevframe" => fn_prev_frame(builder, span, args),
         "prevscene" => fn_prev_scene(builder, span, args),
         "print" => fn_print(builder, span, args),
+        "printasbitmap" => fn_print_as_bitmap(builder, span, args),
         "trace" => fn_trace(builder, span, args),
         "random" => fn_random(builder, span, args),
         _ => return false,
@@ -581,6 +582,25 @@ fn fn_print(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
     } else {
         builder.error(
             "Wrong number of parameters; print requires exactly 2.",
+            span,
+        );
+    }
+}
+
+fn fn_print_as_bitmap(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
+    if args.len() == 2 {
+        let url = format!("printasbitmap:{}", get_bounds_type(builder, args.get(1)));
+        let value = builder.constants_mut().add(&url);
+        builder.push(value);
+        gen_expr(builder, &args[0], false);
+        builder.action(Action::GetUrl2 {
+            load_target: false,
+            load_variables: false,
+            method: 0,
+        });
+    } else {
+        builder.error(
+            "Wrong number of parameters; printAsBitmap requires exactly 2.",
             span,
         );
     }

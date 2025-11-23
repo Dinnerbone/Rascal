@@ -21,6 +21,9 @@ Ok:
         - this
         - "print:"
         - _root
+        - "printasbitmap:#bmax"
+        - "printasbitmap:#bframe"
+        - "printasbitmap:"
         - message
     - Push:
         - Integer: 123
@@ -281,10 +284,36 @@ Ok:
         load_target: false
         method: 0
     - Push:
+        - Constant: 15
+    - Push:
+        - Constant: 10
+    - GetUrl2:
+        load_variables: false
+        load_target: false
+        method: 0
+    - Push:
+        - Constant: 16
+    - Push:
+        - Constant: 12
+    - GetVariable
+    - GetUrl2:
+        load_variables: false
+        load_target: false
+        method: 0
+    - Push:
+        - Constant: 17
+    - Push:
+        - Constant: 14
+    - GetVariable
+    - GetUrl2:
+        load_variables: false
+        load_target: false
+        method: 0
+    - Push:
         - Integer: 123
     - RandomNumber
     - Pop
     - Push:
-        - Constant: 15
+        - Constant: 18
     - Trace
   label_positions: {}
