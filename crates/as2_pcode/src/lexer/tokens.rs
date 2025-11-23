@@ -131,6 +131,7 @@ pub enum ActionName {
     Multiply,
     NewMethod,
     NewObject,
+    NextFrame,
     Not,
     Play,
     Pop,

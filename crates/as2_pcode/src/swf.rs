@@ -218,7 +218,7 @@ impl<'a> ActionEncoder<'a> {
             Action::Multiply => self.write_small_action(OpCode::Multiply),
             Action::NewMethod => self.write_small_action(OpCode::NewMethod),
             Action::NewObject => self.write_small_action(OpCode::NewObject),
-            // Action::NextFrame => self.write_small_action(OpCode::NextFrame),
+            Action::NextFrame => self.write_small_action(OpCode::NextFrame),
             Action::Not => self.write_small_action(OpCode::Not),
             // Action::Or => self.write_small_action(OpCode::Or),
             Action::Play => self.write_small_action(OpCode::Play),

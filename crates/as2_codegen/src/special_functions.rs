@@ -29,6 +29,7 @@ pub(crate) fn gen_special_call(
         "mblength" => fn_mblength(builder, span, args),
         "mbord" => fn_mbord(builder, span, args),
         "mbsubstring" => fn_mbsubstring(builder, span, args),
+        "nextFrame" => fn_next_frame(builder, span, args),
         "trace" => fn_trace(builder, span, args),
         "random" => fn_random(builder, span, args),
         _ => return false,
@@ -458,6 +459,17 @@ fn fn_mbsubstring(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
         builder.push(-1);
     }
     builder.action(Action::MBStringExtract);
+}
+
+fn fn_next_frame(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
+    if args.is_empty() {
+        builder.action(Action::NextFrame);
+    } else {
+        builder.error(
+            "Wrong number of parameters; nextFrame requires exactly 0.",
+            span,
+        );
+    }
 }
 
 fn fn_trace(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {

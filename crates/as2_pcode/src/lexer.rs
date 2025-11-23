@@ -263,6 +263,7 @@ fn lex_identifier_or_action<'a>(stream: &mut Stream<'a>) -> Token<'a> {
         "multiply" => TokenKind::ActionName(ActionName::Multiply),
         "newmethod" => TokenKind::ActionName(ActionName::NewMethod),
         "newobject" => TokenKind::ActionName(ActionName::NewObject),
+        "nextframe" => TokenKind::ActionName(ActionName::NextFrame),
         "not" => TokenKind::ActionName(ActionName::Not),
         "play" => TokenKind::ActionName(ActionName::Play),
         "pop" => TokenKind::ActionName(ActionName::Pop),

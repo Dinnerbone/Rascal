@@ -41,5 +41,6 @@ mblength(x);
 mbord(x);
 mbsubstring("abc", 1);
 mbsubstring("abc", 1, 2);
+nextFrame();
 random(123);
 trace("message");

@@ -1,0 +1,10 @@
+---
+source: crates/as2_codegen/src/tests.rs
+expression: result
+input_file: crates/as2_codegen/fail_samples/nextframe.as
+---
+error: Compile error(s)
+  ╭▸ nextframe.as:1:1
+  │
+1 │ nextFrame(1);
+  ╰╴━━━━━━━━━━━━ Wrong number of parameters; nextFrame requires exactly 0.
