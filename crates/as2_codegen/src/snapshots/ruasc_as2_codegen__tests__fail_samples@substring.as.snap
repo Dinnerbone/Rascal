@@ -1,0 +1,14 @@
+---
+source: crates/as2_codegen/src/tests.rs
+expression: result
+input_file: crates/as2_codegen/fail_samples/substring.as
+---
+error: Compile error(s)
+  ╭▸ substring.as:1:1
+  │
+1 │ substring();
+  │ ━━━━━━━━━━━ Wrong number of parameters; substring requires between 2 and 3.
+2 │ substring("a");
+  │ ━━━━━━━━━━━━━━ Wrong number of parameters; substring requires between 2 and 3.
+3 │ substring("a", 1, 2, 3);
+  ╰╴━━━━━━━━━━━━━━━━━━━━━━━ Wrong number of parameters; substring requires between 2 and 3.

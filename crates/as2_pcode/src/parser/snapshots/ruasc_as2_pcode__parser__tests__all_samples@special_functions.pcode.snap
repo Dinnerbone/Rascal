@@ -431,6 +431,24 @@ Ok:
     - ToString
     - Pop
     - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Integer: 1
+    - Push:
+        - Integer: -1
+    - StringExtract
+    - Pop
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Integer: 1
+    - Push:
+        - Integer: 2
+    - StringExtract
+    - Pop
+    - Push:
         - Constant: 19
     - Trace
   label_positions: {}

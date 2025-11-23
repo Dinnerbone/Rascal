@@ -70,4 +70,6 @@ stop();
 stopAllSounds();
 stopDrag();
 String(x);
+substring(x, 1);
+substring(x, 1, 2);
 trace("message");

@@ -4000,24 +4000,188 @@ input_file: samples/as2_pcode/special_functions.pcode
     end: 3318
   raw: Push
 - kind:
-    Constant: 19
+    Constant: 0
   span:
     start: 3319
+    end: 3328
+  raw: constant0
+- kind: Newline
+  span:
+    start: 3328
     end: 3329
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 3329
+    end: 3340
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 3340
+    end: 3341
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 3341
+    end: 3345
+  raw: Push
+- kind: Integer
+  span:
+    start: 3346
+    end: 3347
+  raw: "1"
+- kind: Newline
+  span:
+    start: 3347
+    end: 3348
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 3348
+    end: 3352
+  raw: Push
+- kind: Integer
+  span:
+    start: 3353
+    end: 3355
+  raw: "-1"
+- kind: Newline
+  span:
+    start: 3355
+    end: 3356
+  raw: "\n"
+- kind:
+    ActionName: StringExtract
+  span:
+    start: 3356
+    end: 3369
+  raw: StringExtract
+- kind: Newline
+  span:
+    start: 3369
+    end: 3370
+  raw: "\n"
+- kind:
+    ActionName: Pop
+  span:
+    start: 3370
+    end: 3373
+  raw: Pop
+- kind: Newline
+  span:
+    start: 3373
+    end: 3374
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 3374
+    end: 3378
+  raw: Push
+- kind:
+    Constant: 0
+  span:
+    start: 3379
+    end: 3388
+  raw: constant0
+- kind: Newline
+  span:
+    start: 3388
+    end: 3389
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 3389
+    end: 3400
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 3400
+    end: 3401
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 3401
+    end: 3405
+  raw: Push
+- kind: Integer
+  span:
+    start: 3406
+    end: 3407
+  raw: "1"
+- kind: Newline
+  span:
+    start: 3407
+    end: 3408
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 3408
+    end: 3412
+  raw: Push
+- kind: Integer
+  span:
+    start: 3413
+    end: 3414
+  raw: "2"
+- kind: Newline
+  span:
+    start: 3414
+    end: 3415
+  raw: "\n"
+- kind:
+    ActionName: StringExtract
+  span:
+    start: 3415
+    end: 3428
+  raw: StringExtract
+- kind: Newline
+  span:
+    start: 3428
+    end: 3429
+  raw: "\n"
+- kind:
+    ActionName: Pop
+  span:
+    start: 3429
+    end: 3432
+  raw: Pop
+- kind: Newline
+  span:
+    start: 3432
+    end: 3433
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 3433
+    end: 3437
+  raw: Push
+- kind:
+    Constant: 19
+  span:
+    start: 3438
+    end: 3448
   raw: constant19
 - kind: Newline
   span:
-    start: 3329
-    end: 3330
+    start: 3448
+    end: 3449
   raw: "\n"
 - kind:
     ActionName: Trace
   span:
-    start: 3330
-    end: 3335
+    start: 3449
+    end: 3454
   raw: Trace
 - kind: Newline
   span:
-    start: 3335
-    end: 3336
+    start: 3454
+    end: 3455
   raw: "\n"

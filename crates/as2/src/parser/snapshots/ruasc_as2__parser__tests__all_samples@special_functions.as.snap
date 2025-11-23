@@ -1676,20 +1676,78 @@ Ok:
     - Expr:
         span:
           start: 1557
-          end: 1573
+          end: 1572
         value:
           Call:
             name:
               span:
                 start: 1557
-                end: 1562
+                end: 1566
+              value:
+                Constant:
+                  Identifier: substring
+            args:
+              - span:
+                  start: 1567
+                  end: 1568
+                value:
+                  Constant:
+                    Identifier: x
+              - span:
+                  start: 1570
+                  end: 1571
+                value:
+                  Constant:
+                    Integer: 1
+    - Expr:
+        span:
+          start: 1574
+          end: 1592
+        value:
+          Call:
+            name:
+              span:
+                start: 1574
+                end: 1583
+              value:
+                Constant:
+                  Identifier: substring
+            args:
+              - span:
+                  start: 1584
+                  end: 1585
+                value:
+                  Constant:
+                    Identifier: x
+              - span:
+                  start: 1587
+                  end: 1588
+                value:
+                  Constant:
+                    Integer: 1
+              - span:
+                  start: 1590
+                  end: 1591
+                value:
+                  Constant:
+                    Integer: 2
+    - Expr:
+        span:
+          start: 1594
+          end: 1610
+        value:
+          Call:
+            name:
+              span:
+                start: 1594
+                end: 1599
               value:
                 Constant:
                   Identifier: trace
             args:
               - span:
-                  start: 1563
-                  end: 1572
+                  start: 1600
+                  end: 1609
                 value:
                   Constant:
                     String: message

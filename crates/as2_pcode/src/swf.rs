@@ -242,7 +242,7 @@ impl<'a> ActionEncoder<'a> {
             Action::StrictEquals => self.write_small_action(OpCode::StrictEquals),
             Action::StringAdd => self.write_small_action(OpCode::StringAdd),
             // Action::StringEquals => self.write_small_action(OpCode::StringEquals),
-            // Action::StringExtract => self.write_small_action(OpCode::StringExtract),
+            Action::StringExtract => self.write_small_action(OpCode::StringExtract),
             // Action::StringGreater => self.write_small_action(OpCode::StringGreater),
             Action::StringLength => self.write_small_action(OpCode::StringLength),
             // Action::StringLess => self.write_small_action(OpCode::StringLess),

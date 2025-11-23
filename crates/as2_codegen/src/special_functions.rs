@@ -46,6 +46,7 @@ pub(crate) fn gen_special_call(
         "stopallsounds" => fn_stop_all_sounds(builder, span, args),
         "stopdrag" => fn_stop_drag(builder, span, args),
         "string" => fn_string(builder, span, args),
+        "substring" => fn_substring(builder, span, args),
         "trace" => fn_trace(builder, span, args),
         "random" => fn_random(builder, span, args),
         _ => return false,
@@ -499,6 +500,24 @@ fn fn_mbsubstring(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
         builder.push(-1);
     }
     builder.action(Action::MBStringExtract);
+}
+
+fn fn_substring(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
+    if args.len() < 2 || args.len() > 3 {
+        builder.error(
+            "Wrong number of parameters; substring requires between 2 and 3.",
+            span,
+        );
+        return;
+    }
+    gen_expr(builder, &args[0], false);
+    gen_expr(builder, &args[1], false);
+    if let Some(length) = args.get(2) {
+        gen_expr(builder, length, false);
+    } else {
+        builder.push(-1);
+    }
+    builder.action(Action::StringExtract);
 }
 
 fn fn_next_frame(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
