@@ -30,6 +30,7 @@ pub(crate) fn gen_special_call(
         "mbord" => fn_mbord(builder, span, args),
         "mbsubstring" => fn_mbsubstring(builder, span, args),
         "nextFrame" => fn_next_frame(builder, span, args),
+        "nextScene" => fn_next_scene(builder, span, args),
         "trace" => fn_trace(builder, span, args),
         "random" => fn_random(builder, span, args),
         _ => return false,
@@ -467,6 +468,18 @@ fn fn_next_frame(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
     } else {
         builder.error(
             "Wrong number of parameters; nextFrame requires exactly 0.",
+            span,
+        );
+    }
+}
+
+fn fn_next_scene(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
+    if args.is_empty() {
+        // Scenes don't exist in a standalone compiler, and Flash's behaviour is to skip to frame 0 in this case
+        builder.action(Action::GotoFrame(0));
+    } else {
+        builder.error(
+            "Wrong number of parameters; nextScene requires exactly 0.",
             span,
         );
     }

@@ -2192,68 +2192,84 @@ input_file: samples/as2_pcode/special_functions.pcode
     end: 1823
   raw: "\n"
 - kind:
-    ActionName: Push
+    ActionName: GotoFrame
   span:
     start: 1823
-    end: 1827
+    end: 1832
+  raw: GotoFrame
+- kind: Integer
+  span:
+    start: 1833
+    end: 1834
+  raw: "0"
+- kind: Newline
+  span:
+    start: 1834
+    end: 1835
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1835
+    end: 1839
   raw: Push
 - kind: Integer
   span:
-    start: 1828
-    end: 1831
+    start: 1840
+    end: 1843
   raw: "123"
 - kind: Newline
   span:
-    start: 1831
-    end: 1832
+    start: 1843
+    end: 1844
   raw: "\n"
 - kind:
     ActionName: RandomNumber
   span:
-    start: 1832
-    end: 1844
+    start: 1844
+    end: 1856
   raw: RandomNumber
 - kind: Newline
   span:
-    start: 1844
-    end: 1845
+    start: 1856
+    end: 1857
   raw: "\n"
 - kind:
     ActionName: Pop
   span:
-    start: 1845
-    end: 1848
+    start: 1857
+    end: 1860
   raw: Pop
 - kind: Newline
   span:
-    start: 1848
-    end: 1849
+    start: 1860
+    end: 1861
   raw: "\n"
 - kind:
     ActionName: Push
   span:
-    start: 1849
-    end: 1853
+    start: 1861
+    end: 1865
   raw: Push
 - kind:
     Constant: 9
   span:
-    start: 1854
-    end: 1863
+    start: 1866
+    end: 1875
   raw: constant9
 - kind: Newline
   span:
-    start: 1863
-    end: 1864
+    start: 1875
+    end: 1876
   raw: "\n"
 - kind:
     ActionName: Trace
   span:
-    start: 1864
-    end: 1869
+    start: 1876
+    end: 1881
   raw: Trace
 - kind: Newline
   span:
-    start: 1869
-    end: 1870
+    start: 1881
+    end: 1882
   raw: "\n"

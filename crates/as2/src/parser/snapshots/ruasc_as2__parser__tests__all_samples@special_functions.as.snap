@@ -1050,34 +1050,48 @@ Ok:
             name:
               span:
                 start: 995
-                end: 1001
+                end: 1004
               value:
                 Constant:
-                  Identifier: random
-            args:
-              - span:
-                  start: 1002
-                  end: 1005
-                value:
-                  Constant:
-                    Integer: 123
+                  Identifier: nextScene
+            args: []
     - Expr:
         span:
           start: 1008
-          end: 1024
+          end: 1019
         value:
           Call:
             name:
               span:
                 start: 1008
-                end: 1013
+                end: 1014
+              value:
+                Constant:
+                  Identifier: random
+            args:
+              - span:
+                  start: 1015
+                  end: 1018
+                value:
+                  Constant:
+                    Integer: 123
+    - Expr:
+        span:
+          start: 1021
+          end: 1037
+        value:
+          Call:
+            name:
+              span:
+                start: 1021
+                end: 1026
               value:
                 Constant:
                   Identifier: trace
             args:
               - span:
-                  start: 1014
-                  end: 1023
+                  start: 1027
+                  end: 1036
                 value:
                   Constant:
                     String: message
