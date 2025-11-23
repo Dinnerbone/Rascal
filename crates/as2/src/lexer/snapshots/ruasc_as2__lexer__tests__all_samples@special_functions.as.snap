@@ -1463,18 +1463,18 @@ input_file: samples/as2/special_functions.as
 - kind: Identifier
   span:
     start: 910
-    end: 916
-  raw: random
+    end: 918
+  raw: mblength
 - kind: OpenParen
   span:
-    start: 916
-    end: 917
+    start: 918
+    end: 919
   raw: (
-- kind: Integer
+- kind: Identifier
   span:
-    start: 917
+    start: 919
     end: 920
-  raw: "123"
+  raw: x
 - kind: CloseParen
   span:
     start: 920
@@ -1493,31 +1493,61 @@ input_file: samples/as2/special_functions.as
 - kind: Identifier
   span:
     start: 923
-    end: 928
+    end: 929
+  raw: random
+- kind: OpenParen
+  span:
+    start: 929
+    end: 930
+  raw: (
+- kind: Integer
+  span:
+    start: 930
+    end: 933
+  raw: "123"
+- kind: CloseParen
+  span:
+    start: 933
+    end: 934
+  raw: )
+- kind: Semicolon
+  span:
+    start: 934
+    end: 935
+  raw: ;
+- kind: Newline
+  span:
+    start: 935
+    end: 936
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 936
+    end: 941
   raw: trace
 - kind: OpenParen
   span:
-    start: 928
-    end: 929
+    start: 941
+    end: 942
   raw: (
 - kind:
     String: Double
   span:
-    start: 929
-    end: 938
+    start: 942
+    end: 951
   raw: message
 - kind: CloseParen
   span:
-    start: 938
-    end: 939
+    start: 951
+    end: 952
   raw: )
 - kind: Semicolon
   span:
-    start: 939
-    end: 940
+    start: 952
+    end: 953
   raw: ;
 - kind: Newline
   span:
-    start: 940
-    end: 941
+    start: 953
+    end: 954
   raw: "\n"

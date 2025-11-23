@@ -938,34 +938,54 @@ Ok:
             name:
               span:
                 start: 910
-                end: 916
+                end: 918
               value:
                 Constant:
-                  Identifier: random
+                  Identifier: mblength
             args:
               - span:
-                  start: 917
+                  start: 919
                   end: 920
                 value:
                   Constant:
-                    Integer: 123
+                    Identifier: x
     - Expr:
         span:
           start: 923
-          end: 939
+          end: 934
         value:
           Call:
             name:
               span:
                 start: 923
-                end: 928
+                end: 929
+              value:
+                Constant:
+                  Identifier: random
+            args:
+              - span:
+                  start: 930
+                  end: 933
+                value:
+                  Constant:
+                    Integer: 123
+    - Expr:
+        span:
+          start: 936
+          end: 952
+        value:
+          Call:
+            name:
+              span:
+                start: 936
+                end: 941
               value:
                 Constant:
                   Identifier: trace
             args:
               - span:
-                  start: 929
-                  end: 938
+                  start: 942
+                  end: 951
                 value:
                   Constant:
                     String: message

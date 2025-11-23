@@ -124,6 +124,7 @@ pub enum ActionName {
     Jump,
     Less2,
     MBAsciiToChar,
+    MBStringLength,
     Modulo,
     Multiply,
     NewMethod,

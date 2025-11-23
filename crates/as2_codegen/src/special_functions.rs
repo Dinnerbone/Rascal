@@ -26,6 +26,7 @@ pub(crate) fn gen_special_call(
         "loadVariables" => fn_load_variables(builder, span, args),
         "loadVariablesNum" => fn_load_variables_num(builder, span, args),
         "mbchr" => fn_mbchr(builder, span, args),
+        "mblength" => fn_mblength(builder, span, args),
         "trace" => fn_trace(builder, span, args),
         "random" => fn_random(builder, span, args),
         _ => return false,
@@ -410,6 +411,18 @@ fn fn_length(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
     } else {
         builder.error(
             "Wrong number of parameters; length requires exactly 1.",
+            span,
+        );
+    }
+}
+
+fn fn_mblength(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
+    if args.len() == 1 {
+        gen_expr(builder, &args[0], false);
+        builder.action(Action::MBStringLength);
+    } else {
+        builder.error(
+            "Wrong number of parameters; mblength requires exactly 1.",
             span,
         );
     }

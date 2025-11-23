@@ -1,0 +1,2 @@
+mblength();
+mblength("a", "b");

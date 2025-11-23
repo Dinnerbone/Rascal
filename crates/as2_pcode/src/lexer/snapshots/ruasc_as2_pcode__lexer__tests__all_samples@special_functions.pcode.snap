@@ -1934,63 +1934,113 @@ input_file: samples/as2_pcode/special_functions.pcode
     start: 1616
     end: 1620
   raw: Push
-- kind: Integer
+- kind:
+    Constant: 0
   span:
     start: 1621
-    end: 1624
-  raw: "123"
+    end: 1630
+  raw: constant0
 - kind: Newline
   span:
-    start: 1624
-    end: 1625
+    start: 1630
+    end: 1631
   raw: "\n"
 - kind:
-    ActionName: RandomNumber
+    ActionName: GetVariable
   span:
-    start: 1625
-    end: 1637
-  raw: RandomNumber
+    start: 1631
+    end: 1642
+  raw: GetVariable
 - kind: Newline
   span:
-    start: 1637
-    end: 1638
+    start: 1642
+    end: 1643
+  raw: "\n"
+- kind:
+    ActionName: MBStringLength
+  span:
+    start: 1643
+    end: 1657
+  raw: MBStringLength
+- kind: Newline
+  span:
+    start: 1657
+    end: 1658
   raw: "\n"
 - kind:
     ActionName: Pop
   span:
-    start: 1638
-    end: 1641
+    start: 1658
+    end: 1661
   raw: Pop
 - kind: Newline
   span:
-    start: 1641
-    end: 1642
+    start: 1661
+    end: 1662
   raw: "\n"
 - kind:
     ActionName: Push
   span:
-    start: 1642
-    end: 1646
+    start: 1662
+    end: 1666
+  raw: Push
+- kind: Integer
+  span:
+    start: 1667
+    end: 1670
+  raw: "123"
+- kind: Newline
+  span:
+    start: 1670
+    end: 1671
+  raw: "\n"
+- kind:
+    ActionName: RandomNumber
+  span:
+    start: 1671
+    end: 1683
+  raw: RandomNumber
+- kind: Newline
+  span:
+    start: 1683
+    end: 1684
+  raw: "\n"
+- kind:
+    ActionName: Pop
+  span:
+    start: 1684
+    end: 1687
+  raw: Pop
+- kind: Newline
+  span:
+    start: 1687
+    end: 1688
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 1688
+    end: 1692
   raw: Push
 - kind:
     Constant: 8
   span:
-    start: 1647
-    end: 1656
+    start: 1693
+    end: 1702
   raw: constant8
 - kind: Newline
   span:
-    start: 1656
-    end: 1657
+    start: 1702
+    end: 1703
   raw: "\n"
 - kind:
     ActionName: Trace
   span:
-    start: 1657
-    end: 1662
+    start: 1703
+    end: 1708
   raw: Trace
 - kind: Newline
   span:
-    start: 1662
-    end: 1663
+    start: 1708
+    end: 1709
   raw: "\n"
