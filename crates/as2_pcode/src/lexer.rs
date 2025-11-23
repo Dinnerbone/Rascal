@@ -237,6 +237,7 @@ fn lex_identifier_or_action<'a>(stream: &mut Stream<'a>) -> Token<'a> {
         "delete" => TokenKind::ActionName(ActionName::Delete),
         "delete2" => TokenKind::ActionName(ActionName::Delete2),
         "divide" => TokenKind::ActionName(ActionName::Divide),
+        "enddrag" => TokenKind::ActionName(ActionName::EndDrag),
         "enumerate2" => TokenKind::ActionName(ActionName::Enumerate2),
         "equals2" => TokenKind::ActionName(ActionName::Equals2),
         "getmember" => TokenKind::ActionName(ActionName::GetMember),

@@ -3933,30 +3933,41 @@ input_file: samples/as2_pcode/special_functions.pcode
     end: 3266
   raw: "\n"
 - kind:
-    ActionName: Push
+    ActionName: EndDrag
   span:
     start: 3266
-    end: 3270
+    end: 3273
+  raw: EndDrag
+- kind: Newline
+  span:
+    start: 3273
+    end: 3274
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 3274
+    end: 3278
   raw: Push
 - kind:
     Constant: 19
   span:
-    start: 3271
-    end: 3281
+    start: 3279
+    end: 3289
   raw: constant19
 - kind: Newline
   span:
-    start: 3281
-    end: 3282
+    start: 3289
+    end: 3290
   raw: "\n"
 - kind:
     ActionName: Trace
   span:
-    start: 3282
-    end: 3287
+    start: 3290
+    end: 3295
   raw: Trace
 - kind: Newline
   span:
-    start: 3287
-    end: 3288
+    start: 3295
+    end: 3296
   raw: "\n"

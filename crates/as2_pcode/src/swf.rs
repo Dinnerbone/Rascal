@@ -181,7 +181,7 @@ impl<'a> ActionEncoder<'a> {
             Action::Delete => self.write_small_action(OpCode::Delete),
             Action::Delete2 => self.write_small_action(OpCode::Delete2),
             // Action::End => self.write_small_action(OpCode::End),
-            // Action::EndDrag => self.write_small_action(OpCode::EndDrag),
+            Action::EndDrag => self.write_small_action(OpCode::EndDrag),
             // Action::Enumerate => self.write_small_action(OpCode::Enumerate),
             Action::Enumerate2 => self.write_small_action(OpCode::Enumerate2),
             // Action::Equals => self.write_small_action(OpCode::Equals),

@@ -1,0 +1,10 @@
+---
+source: crates/as2_codegen/src/tests.rs
+expression: result
+input_file: crates/as2_codegen/fail_samples/stopdrag.as
+---
+error: Compile error(s)
+  ╭▸ stopdrag.as:1:1
+  │
+1 │ stopDrag(true);
+  ╰╴━━━━━━━━━━━━━━ Wrong number of parameters; stopDrag requires exactly 0.

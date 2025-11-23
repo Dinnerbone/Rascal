@@ -1642,20 +1642,34 @@ Ok:
     - Expr:
         span:
           start: 1534
-          end: 1550
+          end: 1544
         value:
           Call:
             name:
               span:
                 start: 1534
-                end: 1539
+                end: 1542
+              value:
+                Constant:
+                  Identifier: stopDrag
+            args: []
+    - Expr:
+        span:
+          start: 1546
+          end: 1562
+        value:
+          Call:
+            name:
+              span:
+                start: 1546
+                end: 1551
               value:
                 Constant:
                   Identifier: trace
             args:
               - span:
-                  start: 1540
-                  end: 1549
+                  start: 1552
+                  end: 1561
                 value:
                   Constant:
                     String: message

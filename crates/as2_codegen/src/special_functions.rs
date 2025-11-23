@@ -44,6 +44,7 @@ pub(crate) fn gen_special_call(
         "startdrag" => fn_start_drag(builder, span, args),
         "stop" => fn_stop(builder, span, args),
         "stopallsounds" => fn_stop_all_sounds(builder, span, args),
+        "stopdrag" => fn_stop_drag(builder, span, args),
         "trace" => fn_trace(builder, span, args),
         "random" => fn_random(builder, span, args),
         _ => return false,
@@ -749,6 +750,17 @@ fn fn_stop_all_sounds(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
     } else {
         builder.error(
             "Wrong number of parameters; stopAllSounds requires exactly 0.",
+            span,
+        );
+    }
+}
+
+fn fn_stop_drag(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
+    if args.is_empty() {
+        builder.action(Action::EndDrag);
+    } else {
+        builder.error(
+            "Wrong number of parameters; stopDrag requires exactly 0.",
             span,
         );
     }

@@ -2596,31 +2596,56 @@ input_file: samples/as2/special_functions.as
 - kind: Identifier
   span:
     start: 1534
-    end: 1539
+    end: 1542
+  raw: stopDrag
+- kind: OpenParen
+  span:
+    start: 1542
+    end: 1543
+  raw: (
+- kind: CloseParen
+  span:
+    start: 1543
+    end: 1544
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1544
+    end: 1545
+  raw: ;
+- kind: Newline
+  span:
+    start: 1545
+    end: 1546
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1546
+    end: 1551
   raw: trace
 - kind: OpenParen
   span:
-    start: 1539
-    end: 1540
+    start: 1551
+    end: 1552
   raw: (
 - kind:
     String: Double
   span:
-    start: 1540
-    end: 1549
+    start: 1552
+    end: 1561
   raw: message
 - kind: CloseParen
   span:
-    start: 1549
-    end: 1550
+    start: 1561
+    end: 1562
   raw: )
 - kind: Semicolon
   span:
-    start: 1550
-    end: 1551
+    start: 1562
+    end: 1563
   raw: ;
 - kind: Newline
   span:
-    start: 1551
-    end: 1552
+    start: 1563
+    end: 1564
   raw: "\n"

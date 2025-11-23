@@ -105,6 +105,7 @@ pub enum ActionName {
     Delete,
     Delete2,
     Divide,
+    EndDrag,
     Enumerate2,
     Equals2,
     GetMember,
