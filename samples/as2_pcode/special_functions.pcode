@@ -87,6 +87,18 @@ GetURL2 true, true, 0
 Push constant4
 Push constant5
 GetURL2 true, true, 1
+Push constant4
+Push constant6
+GetURL2 true, false, 0
+Push constant4
+Push constant6
+GetURL2 true, false, 1
+Push constant4
+Push constant7
+Push constant0
+GetVariable
+StringAdd
+GetURL2 true, false, 1
 Push 123
 RandomNumber
 Pop

@@ -822,40 +822,130 @@ Ok:
     - Expr:
         span:
           start: 800
-          end: 811
+          end: 827
         value:
           Call:
             name:
               span:
                 start: 800
-                end: 806
+                end: 816
+              value:
+                Constant:
+                  Identifier: loadVariablesNum
+            args:
+              - span:
+                  start: 817
+                  end: 822
+                value:
+                  Constant:
+                    String: url
+              - span:
+                  start: 824
+                  end: 826
+                value:
+                  Constant:
+                    Integer: 12
+    - Expr:
+        span:
+          start: 829
+          end: 863
+        value:
+          Call:
+            name:
+              span:
+                start: 829
+                end: 845
+              value:
+                Constant:
+                  Identifier: loadVariablesNum
+            args:
+              - span:
+                  start: 846
+                  end: 851
+                value:
+                  Constant:
+                    String: url
+              - span:
+                  start: 853
+                  end: 855
+                value:
+                  Constant:
+                    Integer: 12
+              - span:
+                  start: 857
+                  end: 862
+                value:
+                  Constant:
+                    String: get
+    - Expr:
+        span:
+          start: 865
+          end: 898
+        value:
+          Call:
+            name:
+              span:
+                start: 865
+                end: 881
+              value:
+                Constant:
+                  Identifier: loadVariablesNum
+            args:
+              - span:
+                  start: 882
+                  end: 887
+                value:
+                  Constant:
+                    String: url
+              - span:
+                  start: 889
+                  end: 890
+                value:
+                  Constant:
+                    Identifier: x
+              - span:
+                  start: 892
+                  end: 897
+                value:
+                  Constant:
+                    String: get
+    - Expr:
+        span:
+          start: 900
+          end: 911
+        value:
+          Call:
+            name:
+              span:
+                start: 900
+                end: 906
               value:
                 Constant:
                   Identifier: random
             args:
               - span:
-                  start: 807
-                  end: 810
+                  start: 907
+                  end: 910
                 value:
                   Constant:
                     Integer: 123
     - Expr:
         span:
-          start: 813
-          end: 829
+          start: 913
+          end: 929
         value:
           Call:
             name:
               span:
-                start: 813
-                end: 818
+                start: 913
+                end: 918
               value:
                 Constant:
                   Identifier: trace
             args:
               - span:
-                  start: 819
-                  end: 828
+                  start: 919
+                  end: 928
                 value:
                   Constant:
                     String: message

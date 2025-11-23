@@ -24,6 +24,7 @@ pub(crate) fn gen_special_call(
         "loadMovie" => fn_load_movie(builder, span, args),
         "loadMovieNum" => fn_load_movie_num(builder, span, args),
         "loadVariables" => fn_load_variables(builder, span, args),
+        "loadVariablesNum" => fn_load_variables_num(builder, span, args),
         "trace" => fn_trace(builder, span, args),
         "random" => fn_random(builder, span, args),
         _ => return false,
@@ -338,6 +339,46 @@ fn get_method(builder: &mut CodeBuilder, method: Option<&Expr>) -> u8 {
             0
         }
     }
+}
+
+fn fn_load_variables_num(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
+    if args.len() < 2 || args.len() > 3 {
+        builder.error(
+            "Wrong number of parameters; loadVariablesNum requires between 2 and 3.",
+            span,
+        );
+        return;
+    }
+    let url = &args[0];
+    let target = &args[1];
+    let method = args.get(2);
+    gen_expr(builder, url, false);
+
+    match &target.value {
+        ExprKind::Constant(ConstantKind::Integer(target)) => {
+            let str = format!("_level{}", target);
+            let value = builder.constants_mut().add(&str);
+            builder.push(value);
+        }
+        ExprKind::Constant(ConstantKind::String(target)) => {
+            let str = format!("_level{}", target);
+            let value = builder.constants_mut().add(&str);
+            builder.push(value);
+        }
+        _ => {
+            let value = builder.constants_mut().add("_level");
+            builder.push(value);
+            gen_expr(builder, &args[1], false);
+            builder.action(Action::StringAdd);
+        }
+    }
+
+    let method = get_method(builder, method);
+    builder.action(Action::GetUrl2 {
+        load_variables: true,
+        load_target: false,
+        method,
+    });
 }
 
 fn fn_int(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
