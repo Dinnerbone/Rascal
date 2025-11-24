@@ -167,4 +167,6 @@ pub enum ActionName {
     Trace,
     Try,
     TypeOf,
+    WaitForFrame,
+    WaitForFrame2,
 }

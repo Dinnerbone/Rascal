@@ -170,6 +170,13 @@ pub enum Action {
         finally_body: Option<Actions>,
     },
     TypeOf,
+    WaitForFrame {
+        frame: u16,
+        skip_count: u8,
+    },
+    WaitForFrame2 {
+        skip_count: u8,
+    },
 }
 
 #[derive(Debug, PartialEq, Serialize, Clone)]
@@ -255,6 +262,8 @@ impl Action {
             Action::Trace => -1,
             Action::Try { .. } => 0,
             Action::TypeOf => 0,
+            Action::WaitForFrame { .. } => 0,
+            Action::WaitForFrame2 { .. } => -1,
             _ => todo!("missing stack size delta for {:?}", self),
         }
     }
@@ -409,6 +418,12 @@ impl std::fmt::Display for Action {
             }
             Action::Trace => write!(f, "Trace"),
             Action::TypeOf => write!(f, "TypeOf"),
+            Action::WaitForFrame { frame, skip_count } => {
+                write!(f, "WaitForFrame {}, {}", frame, skip_count)
+            }
+            Action::WaitForFrame2 { skip_count } => {
+                write!(f, "WaitForFrame2 {}", skip_count)
+            }
         }
     }
 }

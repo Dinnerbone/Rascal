@@ -1,0 +1,19 @@
+WaitForFrame 1, 2
+Push "single line"
+Trace
+Push "frame"
+GetVariable
+Push 0
+Add2
+WaitForFrame2 2
+Push "block"
+Trace
+WaitForFrame 2, 6
+Push "this"
+GetVariable
+Not
+If loc006c
+Push "nested conditions!"
+Trace
+loc006c:Push "end!"
+Trace

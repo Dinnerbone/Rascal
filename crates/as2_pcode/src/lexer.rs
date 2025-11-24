@@ -297,6 +297,8 @@ fn lex_identifier_or_action<'a>(stream: &mut Stream<'a>) -> Token<'a> {
         "trace" => TokenKind::ActionName(ActionName::Trace),
         "try" => TokenKind::ActionName(ActionName::Try),
         "typeof" => TokenKind::ActionName(ActionName::TypeOf),
+        "waitforframe" => TokenKind::ActionName(ActionName::WaitForFrame),
+        "waitforframe2" => TokenKind::ActionName(ActionName::WaitForFrame2),
         // Other
         "catch" => TokenKind::Catch,
         "false" => TokenKind::False,

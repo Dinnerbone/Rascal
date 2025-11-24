@@ -128,6 +128,8 @@ pub(crate) fn action(i: &mut Tokens<'_>) -> ModalResult<Action> {
         ActionName::Trace => Action::Trace,
         ActionName::Try => try_catch.parse_next(i)?,
         ActionName::TypeOf => Action::TypeOf,
+        ActionName::WaitForFrame => wait_for_frame.parse_next(i)?,
+        ActionName::WaitForFrame2 => wait_for_frame_2.parse_next(i)?,
     })
 }
 
@@ -205,6 +207,18 @@ pub fn push(i: &mut Tokens<'_>) -> ModalResult<Action> {
 pub fn constant_pool(i: &mut Tokens<'_>) -> ModalResult<Action> {
     let values = separated(0.., string, TokenKind::Comma).parse_next(i)?;
     Ok(Action::ConstantPool(values))
+}
+
+pub fn wait_for_frame(i: &mut Tokens<'_>) -> ModalResult<Action> {
+    let frame = u16.parse_next(i)?;
+    TokenKind::Comma.parse_next(i)?;
+    let skip_count = u8.parse_next(i)?;
+    Ok(Action::WaitForFrame { frame, skip_count })
+}
+
+pub fn wait_for_frame_2(i: &mut Tokens<'_>) -> ModalResult<Action> {
+    let skip_count = u8.parse_next(i)?;
+    Ok(Action::WaitForFrame2 { skip_count })
 }
 
 pub fn define_function(i: &mut Tokens<'_>) -> ModalResult<Action> {
@@ -880,6 +894,47 @@ mod tests {
                         label_positions: Default::default()
                     })
                 }],
+                label_positions: Default::default()
+            })
+        )
+    }
+
+    #[test]
+    fn test_wait_for_frame() {
+        let tokens = build_tokens(&[
+            (
+                TokenKind::ActionName(ActionName::WaitForFrame),
+                "waitForFrame",
+            ),
+            (TokenKind::Integer, "123"),
+            (TokenKind::Comma, ","),
+            (TokenKind::Integer, "45"),
+        ]);
+        assert_eq!(
+            parse_actions(&tokens),
+            Ok(Actions {
+                actions: vec![Action::WaitForFrame {
+                    frame: 123,
+                    skip_count: 45
+                }],
+                label_positions: Default::default()
+            })
+        )
+    }
+
+    #[test]
+    fn test_wait_for_frame_2() {
+        let tokens = build_tokens(&[
+            (
+                TokenKind::ActionName(ActionName::WaitForFrame2),
+                "waitForFrame2",
+            ),
+            (TokenKind::Integer, "123"),
+        ]);
+        assert_eq!(
+            parse_actions(&tokens),
+            Ok(Actions {
+                actions: vec![Action::WaitForFrame2 { skip_count: 123 }],
                 label_positions: Default::default()
             })
         )

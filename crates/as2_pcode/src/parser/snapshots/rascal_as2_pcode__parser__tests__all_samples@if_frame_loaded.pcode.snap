@@ -1,0 +1,40 @@
+---
+source: crates/as2_pcode/src/parser/tests.rs
+expression: parsed
+input_file: samples/as2_pcode/if_frame_loaded.pcode
+---
+Ok:
+  actions:
+    - WaitForFrame:
+        frame: 1
+        skip_count: 2
+    - Push:
+        - String: single line
+    - Trace
+    - Push:
+        - String: frame
+    - GetVariable
+    - Push:
+        - Integer: 0
+    - Add2
+    - WaitForFrame2:
+        skip_count: 2
+    - Push:
+        - String: block
+    - Trace
+    - WaitForFrame:
+        frame: 2
+        skip_count: 6
+    - Push:
+        - String: this
+    - GetVariable
+    - Not
+    - If: loc006c
+    - Push:
+        - String: nested conditions!
+    - Trace
+    - Push:
+        - String: end!
+    - Trace
+  label_positions:
+    loc006c: 17

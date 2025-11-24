@@ -260,8 +260,10 @@ impl<'a> ActionEncoder<'a> {
                 finally_body,
             } => self.write_try(try_body, catch_body, finally_body),
             Action::TypeOf => self.write_small_action(OpCode::TypeOf),
-            // Action::WaitForFrame(action) => self.write_wait_for_frame(*action),
-            // Action::WaitForFrame2(action) => self.write_wait_for_frame_2(*action),
+            Action::WaitForFrame { frame, skip_count } => {
+                self.write_wait_for_frame(*frame, *skip_count)
+            }
+            Action::WaitForFrame2 { skip_count } => self.write_wait_for_frame_2(*skip_count),
             // Action::With(action) => self.write_with(action),
             // Action::Unknown(action) => self.write_unknown(action),
         }
@@ -528,6 +530,19 @@ impl<'a> ActionEncoder<'a> {
         flags |= (load_target as u8) << 6;
         flags |= (load_variables as u8) << 7;
         self.write_u8(flags)?;
+        Ok(())
+    }
+
+    fn write_wait_for_frame(&mut self, frame: u16, num_actions_to_skip: u8) -> Result<()> {
+        self.write_action_header(OpCode::WaitForFrame, 3)?;
+        self.write_u16(frame)?;
+        self.write_u8(num_actions_to_skip)?;
+        Ok(())
+    }
+
+    fn write_wait_for_frame_2(&mut self, num_actions_to_skip: u8) -> Result<()> {
+        self.write_action_header(OpCode::WaitForFrame2, 1)?;
+        self.write_u8(num_actions_to_skip)?;
         Ok(())
     }
 }

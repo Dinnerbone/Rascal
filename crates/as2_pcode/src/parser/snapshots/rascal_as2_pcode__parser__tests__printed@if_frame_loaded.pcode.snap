@@ -1,0 +1,24 @@
+---
+source: crates/as2_pcode/src/parser/tests.rs
+expression: "parsed.unwrap_or_else(|_| Actions::empty())"
+input_file: samples/as2_pcode/if_frame_loaded.pcode
+---
+WaitForFrame 1, 2
+Push "single line"
+Trace
+Push "frame"
+GetVariable
+Push 0
+Add2
+WaitForFrame2 2
+Push "block"
+Trace
+WaitForFrame 2, 6
+Push "this"
+GetVariable
+Not
+If loc006c
+Push "nested conditions!"
+Trace
+loc006c:Push "end!"
+Trace

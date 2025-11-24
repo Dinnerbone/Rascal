@@ -1,0 +1,299 @@
+---
+source: crates/as2_pcode/src/lexer/tests.rs
+expression: tokens
+input_file: samples/as2_pcode/if_frame_loaded.pcode
+---
+- kind:
+    ActionName: WaitForFrame
+  span:
+    start: 0
+    end: 12
+  raw: WaitForFrame
+- kind: Integer
+  span:
+    start: 13
+    end: 14
+  raw: "1"
+- kind: Comma
+  span:
+    start: 14
+    end: 15
+  raw: ","
+- kind: Integer
+  span:
+    start: 16
+    end: 17
+  raw: "2"
+- kind: Newline
+  span:
+    start: 17
+    end: 18
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 18
+    end: 22
+  raw: Push
+- kind: String
+  span:
+    start: 23
+    end: 36
+  raw: single line
+- kind: Newline
+  span:
+    start: 36
+    end: 37
+  raw: "\n"
+- kind:
+    ActionName: Trace
+  span:
+    start: 37
+    end: 42
+  raw: Trace
+- kind: Newline
+  span:
+    start: 42
+    end: 43
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 43
+    end: 47
+  raw: Push
+- kind: String
+  span:
+    start: 48
+    end: 55
+  raw: frame
+- kind: Newline
+  span:
+    start: 55
+    end: 56
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 56
+    end: 67
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 67
+    end: 68
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 68
+    end: 72
+  raw: Push
+- kind: Integer
+  span:
+    start: 73
+    end: 74
+  raw: "0"
+- kind: Newline
+  span:
+    start: 74
+    end: 75
+  raw: "\n"
+- kind:
+    ActionName: Add2
+  span:
+    start: 75
+    end: 79
+  raw: Add2
+- kind: Newline
+  span:
+    start: 79
+    end: 80
+  raw: "\n"
+- kind:
+    ActionName: WaitForFrame2
+  span:
+    start: 80
+    end: 93
+  raw: WaitForFrame2
+- kind: Integer
+  span:
+    start: 94
+    end: 95
+  raw: "2"
+- kind: Newline
+  span:
+    start: 95
+    end: 96
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 96
+    end: 100
+  raw: Push
+- kind: String
+  span:
+    start: 101
+    end: 108
+  raw: block
+- kind: Newline
+  span:
+    start: 108
+    end: 109
+  raw: "\n"
+- kind:
+    ActionName: Trace
+  span:
+    start: 109
+    end: 114
+  raw: Trace
+- kind: Newline
+  span:
+    start: 114
+    end: 115
+  raw: "\n"
+- kind:
+    ActionName: WaitForFrame
+  span:
+    start: 115
+    end: 127
+  raw: WaitForFrame
+- kind: Integer
+  span:
+    start: 128
+    end: 129
+  raw: "2"
+- kind: Comma
+  span:
+    start: 129
+    end: 130
+  raw: ","
+- kind: Integer
+  span:
+    start: 131
+    end: 132
+  raw: "6"
+- kind: Newline
+  span:
+    start: 132
+    end: 133
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 133
+    end: 137
+  raw: Push
+- kind: String
+  span:
+    start: 138
+    end: 144
+  raw: this
+- kind: Newline
+  span:
+    start: 144
+    end: 145
+  raw: "\n"
+- kind:
+    ActionName: GetVariable
+  span:
+    start: 145
+    end: 156
+  raw: GetVariable
+- kind: Newline
+  span:
+    start: 156
+    end: 157
+  raw: "\n"
+- kind:
+    ActionName: Not
+  span:
+    start: 157
+    end: 160
+  raw: Not
+- kind: Newline
+  span:
+    start: 160
+    end: 161
+  raw: "\n"
+- kind:
+    ActionName: If
+  span:
+    start: 161
+    end: 163
+  raw: If
+- kind: Identifier
+  span:
+    start: 164
+    end: 171
+  raw: loc006c
+- kind: Newline
+  span:
+    start: 171
+    end: 172
+  raw: "\n"
+- kind:
+    ActionName: Push
+  span:
+    start: 172
+    end: 176
+  raw: Push
+- kind: String
+  span:
+    start: 177
+    end: 197
+  raw: nested conditions!
+- kind: Newline
+  span:
+    start: 197
+    end: 198
+  raw: "\n"
+- kind:
+    ActionName: Trace
+  span:
+    start: 198
+    end: 203
+  raw: Trace
+- kind: Newline
+  span:
+    start: 203
+    end: 204
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 204
+    end: 211
+  raw: loc006c
+- kind: Colon
+  span:
+    start: 211
+    end: 212
+  raw: ":"
+- kind:
+    ActionName: Push
+  span:
+    start: 212
+    end: 216
+  raw: Push
+- kind: String
+  span:
+    start: 217
+    end: 223
+  raw: end!
+- kind: Newline
+  span:
+    start: 223
+    end: 224
+  raw: "\n"
+- kind:
+    ActionName: Trace
+  span:
+    start: 224
+    end: 229
+  raw: Trace
+- kind: Newline
+  span:
+    start: 229
+    end: 230
+  raw: "\n"
