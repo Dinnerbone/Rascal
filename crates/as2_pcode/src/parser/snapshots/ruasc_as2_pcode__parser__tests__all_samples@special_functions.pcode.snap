@@ -35,6 +35,15 @@ Ok:
     - GetVariable
     - AsciiToChar
     - Pop
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - GetVariable
+    - Pop
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Pop
     - GetTime
     - Pop
     - GetUrl:

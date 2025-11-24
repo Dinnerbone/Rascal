@@ -1,5 +1,7 @@
 call(123);
 chr(x);
+eval(x);
+eval("x");
 getTimer();
 getURL("http://ruffle.rs");
 getURL("http://ruffle.rs", "window");

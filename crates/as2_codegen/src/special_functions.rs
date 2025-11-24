@@ -14,6 +14,7 @@ pub(crate) fn gen_special_call(
     match name.to_ascii_lowercase().as_str() {
         "call" => fn_call(builder, span, args),
         "chr" => fn_chr(builder, span, args),
+        "eval" => fn_eval(builder, span, args),
         "gettimer" => fn_get_timer(builder, span, args),
         "geturl" => fn_get_url(builder, span, args),
         "getversion" => fn_get_version(builder, span, args),
@@ -64,6 +65,15 @@ fn fn_call(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
         builder.action(Action::Call);
     } else {
         builder.error("Wrong number of parameters; call requires exactly 1.", span);
+    }
+}
+
+fn fn_eval(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
+    if args.len() == 1 {
+        gen_expr(builder, &args[0], false);
+        builder.action(Action::GetVariable);
+    } else {
+        builder.error("Wrong number of parameters; eval requires exactly 1.", span);
     }
 }
 
