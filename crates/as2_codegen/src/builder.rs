@@ -97,6 +97,10 @@ impl CodeBuilder {
     pub fn add_errors(&mut self, mut errors: Vec<Error>) {
         self.errors.append(&mut errors);
     }
+
+    pub fn append(&mut self, actions: Actions) {
+        self.actions.append(actions);
+    }
 }
 
 #[cfg(test)]

@@ -114,6 +114,11 @@ pub enum StatementKind<'a> {
     Break,
     Continue,
     Try(TryCatch<'a>),
+    WaitForFrame {
+        frame: Expr<'a>,
+        scene: Option<Expr<'a>>,
+        if_loaded: Box<StatementKind<'a>>,
+    },
 }
 
 #[derive(Debug, Clone, Serialize, PartialEq)]

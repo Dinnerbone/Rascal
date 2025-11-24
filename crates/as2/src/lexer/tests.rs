@@ -55,7 +55,7 @@ fn test_non_ending_block_comment() {
 fn test_identifiers_and_keyword() {
     assert_eq!(
         kinds(
-            "var x _abc $d Var instanceof new typeof delete in void function return for if else break continue throw try catch finally"
+            "var x _abc $d Var instanceof new typeof delete in void function return for if else break continue throw try catch finally ifFrameLoaded"
         ),
         vec![
             TokenKind::Keyword(Keyword::Var),
@@ -80,6 +80,7 @@ fn test_identifiers_and_keyword() {
             TokenKind::Keyword(Keyword::Try),
             TokenKind::Keyword(Keyword::Catch),
             TokenKind::Keyword(Keyword::Finally),
+            TokenKind::Keyword(Keyword::IfFrameLoaded),
         ]
     );
 }

@@ -89,7 +89,46 @@ pub(crate) fn gen_statement(
         StatementKind::Try(try_catch) => {
             gen_try_catch(context, builder, try_catch);
         }
+        StatementKind::WaitForFrame {
+            frame,
+            scene: _, // Scene is effectively not a concept in a standalone compiler, Flash ignores whatever expr is here if it's not a recognised scene name
+            if_loaded,
+        } => gen_wait_for_frame(context, builder, frame, if_loaded),
     }
+}
+
+fn gen_wait_for_frame(
+    context: &mut ScriptContext,
+    builder: &mut CodeBuilder,
+    frame: &Expr,
+    if_loaded: &StatementKind,
+) {
+    let mut sub_builder = CodeBuilder::new();
+    gen_statement(context, &mut sub_builder, if_loaded);
+    let (actions, errors) = sub_builder.into_actions();
+    builder.add_errors(errors);
+    let num_actions = actions.actions().len();
+
+    match frame.value {
+        ExprKind::Constant(ConstantKind::Integer(frame)) => {
+            let mut frame_number = frame;
+            if frame_number != 0 {
+                frame_number = frame_number.wrapping_sub(1);
+            }
+            builder.action(Action::WaitForFrame {
+                frame: (frame_number & 0xFFFF) as u16,
+                skip_count: num_actions as u8,
+            });
+        }
+        _ => {
+            gen_expr(context, builder, frame, false);
+            builder.action(Action::WaitForFrame2 {
+                skip_count: num_actions as u8,
+            });
+        }
+    }
+
+    builder.append(actions);
 }
 
 fn gen_for_loop(

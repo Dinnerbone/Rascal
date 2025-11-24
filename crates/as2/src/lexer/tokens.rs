@@ -113,4 +113,5 @@ pub enum Keyword {
     Try,
     Catch,
     Finally,
+    IfFrameLoaded,
 }

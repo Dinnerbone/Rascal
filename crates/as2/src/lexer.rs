@@ -287,6 +287,7 @@ fn lex_identifier_or_keyword<'a>(stream: &mut Stream<'a>) -> Token<'a> {
         "try" => TokenKind::Keyword(Keyword::Try),
         "catch" => TokenKind::Keyword(Keyword::Catch),
         "finally" => TokenKind::Keyword(Keyword::Finally),
+        "ifFrameLoaded" => TokenKind::Keyword(Keyword::IfFrameLoaded),
         _ => TokenKind::Identifier,
     };
 

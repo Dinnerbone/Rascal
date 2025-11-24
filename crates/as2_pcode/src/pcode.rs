@@ -43,6 +43,14 @@ impl Actions {
         let current_pos = self.actions.len();
         self.label_positions.values().any(|p| *p == current_pos)
     }
+
+    pub fn append(&mut self, mut other: Actions) {
+        let offset = self.actions.len();
+        self.actions.append(&mut other.actions);
+        for (label, pos) in other.label_positions {
+            self.label_positions.insert(label, pos + offset);
+        }
+    }
 }
 
 impl std::fmt::Display for Actions {

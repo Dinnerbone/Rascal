@@ -47,6 +47,7 @@ pub(crate) fn statement<'i>(i: &mut Tokens<'i>) -> ModalResult<StatementKind<'i>
         TokenKind::Keyword(Keyword::Break) => StatementKind::Break,
         TokenKind::Keyword(Keyword::Continue) => StatementKind::Continue,
         TokenKind::Keyword(Keyword::Try) => try_catch_finally.parse_next(i)?,
+        TokenKind::Keyword(Keyword::IfFrameLoaded) => if_frame_loaded.parse_next(i)?,
         TokenKind::OpenBrace => {
             let statements = statement_list(true).parse_next(i)?;
             TokenKind::CloseBrace.parse_next(i)?;
@@ -165,6 +166,23 @@ fn for_loop<'i>(i: &mut Tokens<'i>) -> ModalResult<StatementKind<'i>> {
     Ok(StatementKind::ForIn {
         condition,
         body: Box::new(body),
+    })
+}
+
+pub(crate) fn if_frame_loaded<'i>(i: &mut Tokens<'i>) -> ModalResult<StatementKind<'i>> {
+    TokenKind::OpenParen.parse_next(i)?;
+    let (scene, frame) = alt((
+        (expression, TokenKind::Comma, expression).map(|(s, _, f)| (Some(s), f)),
+        (expression).map(|f| (None, f)),
+    ))
+    .parse_next(i)?;
+    TokenKind::CloseParen.parse_next(i)?;
+    let body = statement.parse_next(i)?;
+
+    Ok(StatementKind::WaitForFrame {
+        frame,
+        scene,
+        if_loaded: Box::new(body),
     })
 }
 
@@ -608,6 +626,49 @@ mod stmt_tests {
                 }),
                 finally: vec![]
             }))
+        )
+    }
+
+    #[test]
+    fn test_if_frame_loaded() {
+        let tokens = build_tokens(&[
+            (TokenKind::Keyword(Keyword::IfFrameLoaded), "ifFrameLoaded"),
+            (TokenKind::OpenParen, "("),
+            (TokenKind::Integer, "123"),
+            (TokenKind::CloseParen, ")"),
+            (TokenKind::OpenBrace, "{"),
+            (TokenKind::CloseBrace, "}"),
+        ]);
+        assert_eq!(
+            parse_stmt(&tokens),
+            Ok(StatementKind::WaitForFrame {
+                frame: ex(ExprKind::Constant(ConstantKind::Integer(123))),
+                scene: None,
+                if_loaded: Box::new(StatementKind::Block(vec![])),
+            })
+        )
+    }
+
+    #[test]
+    fn test_if_frame_loaded_with_scene() {
+        let tokens = build_tokens(&[
+            (TokenKind::Keyword(Keyword::IfFrameLoaded), "ifFrameLoaded"),
+            (TokenKind::OpenParen, "("),
+            (TokenKind::String(QuoteKind::Double), "scene"),
+            (TokenKind::Comma, ","),
+            (TokenKind::Integer, "123"),
+            (TokenKind::CloseParen, ")"),
+            (TokenKind::Keyword(Keyword::Return), "return"),
+        ]);
+        assert_eq!(
+            parse_stmt(&tokens),
+            Ok(StatementKind::WaitForFrame {
+                frame: ex(ExprKind::Constant(ConstantKind::Integer(123))),
+                scene: Some(ex(ExprKind::Constant(ConstantKind::String(Cow::Borrowed(
+                    "scene"
+                ))))),
+                if_loaded: Box::new(StatementKind::Return(vec![])),
+            })
         )
     }
 }
