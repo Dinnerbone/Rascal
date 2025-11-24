@@ -36,16 +36,30 @@ fn string<'i>(i: &mut Tokens<'i>) -> ModalResult<Spanned<Cow<'i, str>>> {
     if !raw.contains("\\") {
         return Ok(Spanned::new(span, Cow::Borrowed(raw)));
     }
-    let mut result = match kind {
-        QuoteKind::Double => raw.replace("\\\"", "\""),
-        QuoteKind::Single => raw.replace("\\'", "'"),
-    };
-    result = result
-        .replace("\\n", "\n")
-        .replace("\\r", "\r")
-        .replace("\\t", "\t")
-        .replace("\\\\", "\\");
-    Ok(Spanned::new(span, Cow::Owned(result)))
+    let mut out = String::with_capacity(raw.len());
+    let mut iter = raw.chars();
+    while let Some(ch) = iter.next() {
+        if ch == '\\' {
+            match iter.next() {
+                Some('n') => out.push('\n'),
+                Some('r') => out.push('\r'),
+                Some('t') => out.push('\t'),
+                Some('\\') => out.push('\\'),
+                Some('"') if matches!(kind, QuoteKind::Double) => out.push('"'),
+                Some('\'') if matches!(kind, QuoteKind::Single) => out.push('\''),
+                Some(other) => {
+                    out.push('\\');
+                    out.push(other);
+                }
+                None => {
+                    out.push('\\');
+                }
+            }
+        } else {
+            out.push(ch);
+        }
+    }
+    Ok(Spanned::new(span, Cow::Owned(out)))
 }
 
 fn identifier<'i>(i: &mut Tokens<'i>) -> ModalResult<Spanned<&'i str>> {

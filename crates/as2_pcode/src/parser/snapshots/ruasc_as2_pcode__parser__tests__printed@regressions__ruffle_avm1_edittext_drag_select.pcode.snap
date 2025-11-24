@@ -1,0 +1,97 @@
+---
+source: crates/as2_pcode/src/parser/tests.rs
+expression: "parsed.unwrap_or_else(|_| Actions::empty())"
+input_file: samples/as2_pcode/regressions/ruffle_avm1_edittext_drag_select.pcode
+---
+ConstantPool "listener", "Object", "onMouseDown", "Mouse down: ", "_root", "_xmouse", ",", "_ymouse", "onMouseUp", "Mouse up: ", "<selection>", "text", "replaceSel", "Text: ", "\\n", "\n", "\r", "split", "join", "Key", "addListener", "Mouse"
+Push constant0
+Push 0
+Push constant1
+NewObject
+DefineLocal
+Push constant0
+GetVariable
+Push constant2
+DefineFunction "", 0 {
+Push constant3
+Push constant4
+GetVariable
+Push constant5
+GetMember
+Add2
+Push constant6
+Add2
+Push constant4
+GetVariable
+Push constant7
+GetMember
+Add2
+Trace
+}
+SetMember
+Push constant0
+GetVariable
+Push constant8
+DefineFunction "", 0 {
+Push constant9
+Push constant4
+GetVariable
+Push constant5
+GetMember
+Add2
+Push constant6
+Add2
+Push constant4
+GetVariable
+Push constant7
+GetMember
+Add2
+Trace
+Push constant10
+Push 1
+Push constant11
+GetVariable
+Push constant12
+CallMethod
+Pop
+Push constant13
+Push constant14
+Push 1
+Push constant15
+Push 1
+Push constant14
+Push 1
+Push constant16
+Push 1
+Push constant11
+GetVariable
+Push constant11
+GetMember
+Push constant17
+CallMethod
+Push constant18
+CallMethod
+Push constant17
+CallMethod
+Push constant18
+CallMethod
+Add2
+Trace
+}
+SetMember
+Push constant0
+GetVariable
+Push 1
+Push constant19
+GetVariable
+Push constant20
+CallMethod
+Pop
+Push constant0
+GetVariable
+Push 1
+Push constant21
+GetVariable
+Push constant20
+CallMethod
+Pop

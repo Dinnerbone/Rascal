@@ -1,0 +1,176 @@
+---
+source: crates/as2_pcode/src/parser/tests.rs
+expression: parsed
+input_file: samples/as2_pcode/regressions/ruffle_avm1_edittext_drag_select.pcode
+---
+Ok:
+  actions:
+    - ConstantPool:
+        - listener
+        - Object
+        - onMouseDown
+        - "Mouse down: "
+        - _root
+        - _xmouse
+        - ","
+        - _ymouse
+        - onMouseUp
+        - "Mouse up: "
+        - "<selection>"
+        - text
+        - replaceSel
+        - "Text: "
+        - "\\\\n"
+        - "\\n"
+        - "\\r"
+        - split
+        - join
+        - Key
+        - addListener
+        - Mouse
+    - Push:
+        - Constant: 0
+    - Push:
+        - Integer: 0
+    - Push:
+        - Constant: 1
+    - NewObject
+    - DefineLocal
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 2
+    - DefineFunction:
+        name: ""
+        params: []
+        actions:
+          actions:
+            - Push:
+                - Constant: 3
+            - Push:
+                - Constant: 4
+            - GetVariable
+            - Push:
+                - Constant: 5
+            - GetMember
+            - Add2
+            - Push:
+                - Constant: 6
+            - Add2
+            - Push:
+                - Constant: 4
+            - GetVariable
+            - Push:
+                - Constant: 7
+            - GetMember
+            - Add2
+            - Trace
+          label_positions: {}
+    - SetMember
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 8
+    - DefineFunction:
+        name: ""
+        params: []
+        actions:
+          actions:
+            - Push:
+                - Constant: 9
+            - Push:
+                - Constant: 4
+            - GetVariable
+            - Push:
+                - Constant: 5
+            - GetMember
+            - Add2
+            - Push:
+                - Constant: 6
+            - Add2
+            - Push:
+                - Constant: 4
+            - GetVariable
+            - Push:
+                - Constant: 7
+            - GetMember
+            - Add2
+            - Trace
+            - Push:
+                - Constant: 10
+            - Push:
+                - Integer: 1
+            - Push:
+                - Constant: 11
+            - GetVariable
+            - Push:
+                - Constant: 12
+            - CallMethod
+            - Pop
+            - Push:
+                - Constant: 13
+            - Push:
+                - Constant: 14
+            - Push:
+                - Integer: 1
+            - Push:
+                - Constant: 15
+            - Push:
+                - Integer: 1
+            - Push:
+                - Constant: 14
+            - Push:
+                - Integer: 1
+            - Push:
+                - Constant: 16
+            - Push:
+                - Integer: 1
+            - Push:
+                - Constant: 11
+            - GetVariable
+            - Push:
+                - Constant: 11
+            - GetMember
+            - Push:
+                - Constant: 17
+            - CallMethod
+            - Push:
+                - Constant: 18
+            - CallMethod
+            - Push:
+                - Constant: 17
+            - CallMethod
+            - Push:
+                - Constant: 18
+            - CallMethod
+            - Add2
+            - Trace
+          label_positions: {}
+    - SetMember
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Integer: 1
+    - Push:
+        - Constant: 19
+    - GetVariable
+    - Push:
+        - Constant: 20
+    - CallMethod
+    - Pop
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Integer: 1
+    - Push:
+        - Constant: 21
+    - GetVariable
+    - Push:
+        - Constant: 20
+    - CallMethod
+    - Pop
+  label_positions: {}

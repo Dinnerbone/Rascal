@@ -1,0 +1,81 @@
+---
+source: crates/as2_codegen/src/tests.rs
+expression: result
+input_file: samples/as2/regressions/ruffle_avm1_edittext_drag_select.as
+---
+ConstantPool "listener", "Object", "onMouseDown", "Mouse down: ", "_root", "_xmouse", ",", "_ymouse", "onMouseUp", "Mouse up: ", "<selection>", "text", "replaceSel", "Text: ", "\n", "
+", "", "split", "join", "Key", "addListener", "Mouse"
+Push constant0, 0, constant1
+NewObject
+DefineLocal
+Push constant0
+GetVariable
+Push constant2
+DefineFunction "", 0 {
+Push constant3, constant4
+GetVariable
+Push constant5
+GetMember
+Add2
+Push constant6
+Add2
+Push constant4
+GetVariable
+Push constant7
+GetMember
+Add2
+Trace
+}
+SetMember
+Push constant0
+GetVariable
+Push constant8
+DefineFunction "", 0 {
+Push constant9, constant4
+GetVariable
+Push constant5
+GetMember
+Add2
+Push constant6
+Add2
+Push constant4
+GetVariable
+Push constant7
+GetMember
+Add2
+Trace
+Push constant10, 1, constant11
+GetVariable
+Push constant12
+CallMethod
+Pop
+Push constant13, constant14, 1, constant15, 1, constant14, 1, constant16, 1, constant11
+GetVariable
+Push constant11
+GetMember
+Push constant17
+CallMethod
+Push constant18
+CallMethod
+Push constant17
+CallMethod
+Push constant18
+CallMethod
+Add2
+Trace
+}
+SetMember
+Push constant0
+GetVariable
+Push 1, constant19
+GetVariable
+Push constant20
+CallMethod
+Pop
+Push constant0
+GetVariable
+Push 1, constant21
+GetVariable
+Push constant20
+CallMethod
+Pop

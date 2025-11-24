@@ -1,0 +1,614 @@
+---
+source: crates/as2/src/lexer/tests.rs
+expression: tokens
+input_file: samples/as2/regressions/ruffle_avm1_edittext_drag_select.as
+---
+- kind:
+    Keyword: Var
+  span:
+    start: 0
+    end: 3
+  raw: var
+- kind: Identifier
+  span:
+    start: 4
+    end: 12
+  raw: listener
+- kind:
+    Operator: Assign
+  span:
+    start: 13
+    end: 14
+  raw: "="
+- kind:
+    Keyword: New
+  span:
+    start: 15
+    end: 18
+  raw: new
+- kind: Identifier
+  span:
+    start: 19
+    end: 25
+  raw: Object
+- kind: OpenParen
+  span:
+    start: 25
+    end: 26
+  raw: (
+- kind: CloseParen
+  span:
+    start: 26
+    end: 27
+  raw: )
+- kind: Semicolon
+  span:
+    start: 27
+    end: 28
+  raw: ;
+- kind: Newline
+  span:
+    start: 28
+    end: 29
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 29
+    end: 37
+  raw: listener
+- kind: Period
+  span:
+    start: 37
+    end: 38
+  raw: "."
+- kind: Identifier
+  span:
+    start: 38
+    end: 49
+  raw: onMouseDown
+- kind:
+    Operator: Assign
+  span:
+    start: 50
+    end: 51
+  raw: "="
+- kind:
+    Keyword: Function
+  span:
+    start: 52
+    end: 60
+  raw: function
+- kind: OpenParen
+  span:
+    start: 60
+    end: 61
+  raw: (
+- kind: CloseParen
+  span:
+    start: 61
+    end: 62
+  raw: )
+- kind: OpenBrace
+  span:
+    start: 63
+    end: 64
+  raw: "{"
+- kind: Newline
+  span:
+    start: 64
+    end: 65
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 69
+    end: 74
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 74
+    end: 75
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 75
+    end: 89
+  raw: "Mouse down: "
+- kind:
+    Operator: Add
+  span:
+    start: 90
+    end: 91
+  raw: +
+- kind: Identifier
+  span:
+    start: 92
+    end: 97
+  raw: _root
+- kind: Period
+  span:
+    start: 97
+    end: 98
+  raw: "."
+- kind: Identifier
+  span:
+    start: 98
+    end: 105
+  raw: _xmouse
+- kind:
+    Operator: Add
+  span:
+    start: 106
+    end: 107
+  raw: +
+- kind:
+    String: Double
+  span:
+    start: 108
+    end: 111
+  raw: ","
+- kind:
+    Operator: Add
+  span:
+    start: 112
+    end: 113
+  raw: +
+- kind: Identifier
+  span:
+    start: 114
+    end: 119
+  raw: _root
+- kind: Period
+  span:
+    start: 119
+    end: 120
+  raw: "."
+- kind: Identifier
+  span:
+    start: 120
+    end: 127
+  raw: _ymouse
+- kind: CloseParen
+  span:
+    start: 127
+    end: 128
+  raw: )
+- kind: Newline
+  span:
+    start: 128
+    end: 129
+  raw: "\n"
+- kind: CloseBrace
+  span:
+    start: 129
+    end: 130
+  raw: "}"
+- kind: Semicolon
+  span:
+    start: 130
+    end: 131
+  raw: ;
+- kind: Newline
+  span:
+    start: 131
+    end: 132
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 132
+    end: 140
+  raw: listener
+- kind: Period
+  span:
+    start: 140
+    end: 141
+  raw: "."
+- kind: Identifier
+  span:
+    start: 141
+    end: 150
+  raw: onMouseUp
+- kind:
+    Operator: Assign
+  span:
+    start: 151
+    end: 152
+  raw: "="
+- kind:
+    Keyword: Function
+  span:
+    start: 153
+    end: 161
+  raw: function
+- kind: OpenParen
+  span:
+    start: 161
+    end: 162
+  raw: (
+- kind: CloseParen
+  span:
+    start: 162
+    end: 163
+  raw: )
+- kind: OpenBrace
+  span:
+    start: 164
+    end: 165
+  raw: "{"
+- kind: Newline
+  span:
+    start: 165
+    end: 166
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 170
+    end: 175
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 175
+    end: 176
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 176
+    end: 188
+  raw: "Mouse up: "
+- kind:
+    Operator: Add
+  span:
+    start: 189
+    end: 190
+  raw: +
+- kind: Identifier
+  span:
+    start: 191
+    end: 196
+  raw: _root
+- kind: Period
+  span:
+    start: 196
+    end: 197
+  raw: "."
+- kind: Identifier
+  span:
+    start: 197
+    end: 204
+  raw: _xmouse
+- kind:
+    Operator: Add
+  span:
+    start: 205
+    end: 206
+  raw: +
+- kind:
+    String: Double
+  span:
+    start: 207
+    end: 210
+  raw: ","
+- kind:
+    Operator: Add
+  span:
+    start: 211
+    end: 212
+  raw: +
+- kind: Identifier
+  span:
+    start: 213
+    end: 218
+  raw: _root
+- kind: Period
+  span:
+    start: 218
+    end: 219
+  raw: "."
+- kind: Identifier
+  span:
+    start: 219
+    end: 226
+  raw: _ymouse
+- kind: CloseParen
+  span:
+    start: 226
+    end: 227
+  raw: )
+- kind: Newline
+  span:
+    start: 227
+    end: 228
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 232
+    end: 236
+  raw: text
+- kind: Period
+  span:
+    start: 236
+    end: 237
+  raw: "."
+- kind: Identifier
+  span:
+    start: 237
+    end: 247
+  raw: replaceSel
+- kind: OpenParen
+  span:
+    start: 247
+    end: 248
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 248
+    end: 261
+  raw: "<selection>"
+- kind: CloseParen
+  span:
+    start: 261
+    end: 262
+  raw: )
+- kind: Semicolon
+  span:
+    start: 262
+    end: 263
+  raw: ;
+- kind: Newline
+  span:
+    start: 263
+    end: 264
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 268
+    end: 273
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 273
+    end: 274
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 274
+    end: 282
+  raw: "Text: "
+- kind:
+    Operator: Add
+  span:
+    start: 283
+    end: 284
+  raw: +
+- kind: Identifier
+  span:
+    start: 285
+    end: 289
+  raw: text
+- kind: Period
+  span:
+    start: 289
+    end: 290
+  raw: "."
+- kind: Identifier
+  span:
+    start: 290
+    end: 294
+  raw: text
+- kind: Period
+  span:
+    start: 294
+    end: 295
+  raw: "."
+- kind: Identifier
+  span:
+    start: 295
+    end: 300
+  raw: split
+- kind: OpenParen
+  span:
+    start: 300
+    end: 301
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 301
+    end: 305
+  raw: "\\r"
+- kind: CloseParen
+  span:
+    start: 305
+    end: 306
+  raw: )
+- kind: Period
+  span:
+    start: 306
+    end: 307
+  raw: "."
+- kind: Identifier
+  span:
+    start: 307
+    end: 311
+  raw: join
+- kind: OpenParen
+  span:
+    start: 311
+    end: 312
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 312
+    end: 317
+  raw: "\\\\n"
+- kind: CloseParen
+  span:
+    start: 317
+    end: 318
+  raw: )
+- kind: Period
+  span:
+    start: 318
+    end: 319
+  raw: "."
+- kind: Identifier
+  span:
+    start: 319
+    end: 324
+  raw: split
+- kind: OpenParen
+  span:
+    start: 324
+    end: 325
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 325
+    end: 329
+  raw: "\\n"
+- kind: CloseParen
+  span:
+    start: 329
+    end: 330
+  raw: )
+- kind: Period
+  span:
+    start: 330
+    end: 331
+  raw: "."
+- kind: Identifier
+  span:
+    start: 331
+    end: 335
+  raw: join
+- kind: OpenParen
+  span:
+    start: 335
+    end: 336
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 336
+    end: 341
+  raw: "\\\\n"
+- kind: CloseParen
+  span:
+    start: 341
+    end: 342
+  raw: )
+- kind: CloseParen
+  span:
+    start: 342
+    end: 343
+  raw: )
+- kind: Semicolon
+  span:
+    start: 343
+    end: 344
+  raw: ;
+- kind: Newline
+  span:
+    start: 344
+    end: 345
+  raw: "\n"
+- kind: CloseBrace
+  span:
+    start: 345
+    end: 346
+  raw: "}"
+- kind: Semicolon
+  span:
+    start: 346
+    end: 347
+  raw: ;
+- kind: Newline
+  span:
+    start: 347
+    end: 348
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 348
+    end: 351
+  raw: Key
+- kind: Period
+  span:
+    start: 351
+    end: 352
+  raw: "."
+- kind: Identifier
+  span:
+    start: 352
+    end: 363
+  raw: addListener
+- kind: OpenParen
+  span:
+    start: 363
+    end: 364
+  raw: (
+- kind: Identifier
+  span:
+    start: 364
+    end: 372
+  raw: listener
+- kind: CloseParen
+  span:
+    start: 372
+    end: 373
+  raw: )
+- kind: Semicolon
+  span:
+    start: 373
+    end: 374
+  raw: ;
+- kind: Newline
+  span:
+    start: 374
+    end: 375
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 375
+    end: 380
+  raw: Mouse
+- kind: Period
+  span:
+    start: 380
+    end: 381
+  raw: "."
+- kind: Identifier
+  span:
+    start: 381
+    end: 392
+  raw: addListener
+- kind: OpenParen
+  span:
+    start: 392
+    end: 393
+  raw: (
+- kind: Identifier
+  span:
+    start: 393
+    end: 401
+  raw: listener
+- kind: CloseParen
+  span:
+    start: 401
+    end: 402
+  raw: )
+- kind: Semicolon
+  span:
+    start: 402
+    end: 403
+  raw: ;
+- kind: Newline
+  span:
+    start: 403
+    end: 404
+  raw: "\n"
