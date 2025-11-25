@@ -1,4 +1,4 @@
-use crate::pcode::{Action, Actions, PushValue};
+use crate::pcode::{Action, Actions, CatchTarget, PushValue};
 use byteorder::{LittleEndian, WriteBytesExt};
 use indexmap::IndexMap;
 use std::collections::HashMap;
@@ -164,7 +164,7 @@ impl<'a> ActionEncoder<'a> {
             Action::Call => self.write_small_action(OpCode::Call),
             Action::CallFunction => self.write_small_action(OpCode::CallFunction),
             Action::CallMethod => self.write_small_action(OpCode::CallMethod),
-            // Action::CastOp => self.write_small_action(OpCode::CastOp),
+            Action::CastOp => self.write_small_action(OpCode::CastOp),
             Action::CharToAscii => self.write_small_action(OpCode::CharToAscii),
             // Action::CloneSprite => self.write_small_action(OpCode::CloneSprite),
             Action::ConstantPool(action) => self.write_constant_pool(action),
@@ -234,7 +234,7 @@ impl<'a> ActionEncoder<'a> {
             // Action::SetTarget(action) => self.write_set_target(action),
             // Action::SetTarget2 => self.write_small_action(OpCode::SetTarget2),
             Action::SetVariable => self.write_small_action(OpCode::SetVariable),
-            // Action::StackSwap => self.write_small_action(OpCode::StackSwap),
+            Action::StackSwap => self.write_small_action(OpCode::StackSwap),
             Action::StartDrag => self.write_small_action(OpCode::StartDrag),
             Action::Stop => self.write_small_action(OpCode::Stop),
             Action::StopSounds => self.write_small_action(OpCode::StopSounds),
@@ -254,7 +254,11 @@ impl<'a> ActionEncoder<'a> {
             Action::ToNumber => self.write_small_action(OpCode::ToNumber),
             Action::ToString => self.write_small_action(OpCode::ToString),
             Action::Trace => self.write_small_action(OpCode::Trace),
-            // Action::Try(action) => self.write_try(action),
+            Action::Try {
+                try_body,
+                catch_body,
+                finally_body,
+            } => self.write_try(try_body, catch_body, finally_body),
             Action::TypeOf => self.write_small_action(OpCode::TypeOf),
             // Action::WaitForFrame(action) => self.write_wait_for_frame(*action),
             // Action::WaitForFrame2(action) => self.write_wait_for_frame_2(*action),
@@ -341,6 +345,71 @@ impl<'a> ActionEncoder<'a> {
         self.output[length_offset..length_offset + 2].copy_from_slice(
             &((length_after_function - length_before_function) as u16).to_le_bytes(),
         );
+        Ok(())
+    }
+
+    fn write_try(
+        &mut self,
+        try_body: &'a Actions,
+        catch_body: &'a Option<(CatchTarget, Actions)>,
+        finally_body: &'a Option<Actions>,
+    ) -> Result<()> {
+        let len = 7 + if let Some((CatchTarget::Variable(name), _)) = catch_body {
+            name.len() + 1
+        } else {
+            1
+        };
+        self.write_action_header(OpCode::Try, len)?;
+
+        let mut flags = 0;
+        if catch_body.is_some() {
+            flags |= 1 << 0;
+        }
+        if finally_body.is_some() {
+            flags |= 1 << 1;
+        }
+        if matches!(catch_body, Some((CatchTarget::Register(_), _))) {
+            flags |= 1 << 2;
+        }
+        self.write_u8(flags)?;
+
+        let try_offset = self.output.len();
+        self.write_u16(0)?; // This will get replaced later.
+        let catch_offset = self.output.len();
+        self.write_u16(0)?; // This will get replaced later.
+        let finally_offset = self.output.len();
+        self.write_u16(0)?; // This will get replaced later.
+
+        match catch_body {
+            Some((CatchTarget::Variable(name), _)) => {
+                self.write_string(SwfStr::from_utf8_str(name))?
+            }
+            Some((CatchTarget::Register(i), _)) => self.write_u8(*i)?,
+            None => self.write_u8(0)?,
+        }
+
+        let len_before_try = self.output.len();
+        self.write_actions(try_body)?;
+
+        let len_before_catch = self.output.len();
+        if let Some((_, catch_body)) = catch_body {
+            self.write_actions(catch_body)?;
+        }
+
+        let len_before_finally = self.output.len();
+        if let Some(finally_body) = finally_body {
+            self.write_actions(finally_body)?;
+        }
+        let len_at_end = self.output.len();
+
+        // Patch the sizes we allocated earlier
+        self.output[try_offset..try_offset + 2]
+            .copy_from_slice(&((len_before_catch - len_before_try) as u16).to_le_bytes());
+        self.output[catch_offset..catch_offset + 2]
+            .copy_from_slice(&((len_before_finally - len_before_catch) as u16).to_le_bytes());
+        self.output[finally_offset..finally_offset + 2]
+            .copy_from_slice(&((len_at_end - len_before_finally) as u16).to_le_bytes());
+
         Ok(())
     }
 

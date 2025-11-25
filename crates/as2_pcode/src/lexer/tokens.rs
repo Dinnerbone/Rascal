@@ -70,6 +70,8 @@ pub enum TokenKind {
     False,
     Null,
     Undefined,
+    Catch,
+    Finally,
     Unknown,
 }
 
@@ -96,6 +98,7 @@ pub enum ActionName {
     Call,
     CallFunction,
     CallMethod,
+    CastOp,
     CharToAscii,
     ConstantPool,
     Decrement,
@@ -145,6 +148,7 @@ pub enum ActionName {
     Return,
     SetMember,
     SetVariable,
+    StackSwap,
     StartDrag,
     Stop,
     StopSounds,
@@ -161,5 +165,6 @@ pub enum ActionName {
     ToString,
     ToggleQuality,
     Trace,
+    Try,
     TypeOf,
 }

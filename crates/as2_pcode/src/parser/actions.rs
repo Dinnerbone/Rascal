@@ -1,7 +1,7 @@
 use crate::lexer::tokens::{ActionName, Token, TokenKind};
 use crate::parser::Tokens;
-use crate::pcode::{Action, Actions, PushValue};
-use winnow::combinator::{alt, fail, peek, separated};
+use crate::pcode::{Action, Actions, CatchTarget, PushValue};
+use winnow::combinator::{alt, fail, opt, peek, separated};
 use winnow::error::{ContextError, ErrMode, ParserError, StrContext, StrContextValue};
 use winnow::stream::Stream;
 use winnow::token::{any, take_while};
@@ -59,6 +59,7 @@ pub(crate) fn action(i: &mut Tokens<'_>) -> ModalResult<Action> {
         ActionName::Call => Action::Call,
         ActionName::CallFunction => Action::CallFunction,
         ActionName::CallMethod => Action::CallMethod,
+        ActionName::CastOp => Action::CastOp,
         ActionName::CharToAscii => Action::CharToAscii,
         ActionName::ConstantPool => constant_pool.parse_next(i)?,
         ActionName::Decrement => Action::Decrement,
@@ -108,6 +109,7 @@ pub(crate) fn action(i: &mut Tokens<'_>) -> ModalResult<Action> {
         ActionName::Return => Action::Return,
         ActionName::SetMember => Action::SetMember,
         ActionName::SetVariable => Action::SetVariable,
+        ActionName::StackSwap => Action::StackSwap,
         ActionName::StartDrag => Action::StartDrag,
         ActionName::Stop => Action::Stop,
         ActionName::StopSounds => Action::StopSounds,
@@ -124,6 +126,7 @@ pub(crate) fn action(i: &mut Tokens<'_>) -> ModalResult<Action> {
         ActionName::ToString => Action::ToString,
         ActionName::ToggleQuality => Action::ToggleQuality,
         ActionName::Trace => Action::Trace,
+        ActionName::Try => try_catch.parse_next(i)?,
         ActionName::TypeOf => Action::TypeOf,
     })
 }
@@ -186,6 +189,14 @@ pub fn store_register(i: &mut Tokens<'_>) -> ModalResult<Action> {
     Ok(Action::StoreRegister(n))
 }
 
+pub fn register(i: &mut Tokens<'_>) -> ModalResult<u8> {
+    let token = any.parse_next(i)?;
+    match token.kind {
+        TokenKind::Register(n) => Ok(n),
+        _ => fail.parse_next(i),
+    }
+}
+
 pub fn push(i: &mut Tokens<'_>) -> ModalResult<Action> {
     let values = separated(0.., push_value, TokenKind::Comma).parse_next(i)?;
     Ok(Action::Push(values))
@@ -213,6 +224,50 @@ pub fn define_function(i: &mut Tokens<'_>) -> ModalResult<Action> {
         name,
         params: args,
         actions: body,
+    })
+}
+
+pub fn try_catch(i: &mut Tokens<'_>) -> ModalResult<Action> {
+    let catch_target = opt(alt((
+        string.map(CatchTarget::Variable),
+        register.map(CatchTarget::Register),
+    )))
+    .parse_next(i)?;
+    TokenKind::OpenBrace.parse_next(i)?;
+    let try_body = actions(true).parse_next(i)?;
+    TokenKind::CloseBrace.parse_next(i)?;
+
+    let catch_body = if opt((take_while(1.., TokenKind::Newline), TokenKind::Catch))
+        .parse_next(i)?
+        .is_some()
+    {
+        TokenKind::OpenBrace.parse_next(i)?;
+        let catch_body = actions(true).parse_next(i)?;
+        TokenKind::CloseBrace.parse_next(i)?;
+        Some((
+            catch_target.unwrap_or_else(|| CatchTarget::Variable("".to_string())),
+            catch_body,
+        ))
+    } else {
+        None
+    };
+
+    let finally_body = if opt((take_while(1.., TokenKind::Newline), TokenKind::Finally))
+        .parse_next(i)?
+        .is_some()
+    {
+        TokenKind::OpenBrace.parse_next(i)?;
+        let finally_body = actions(true).parse_next(i)?;
+        TokenKind::CloseBrace.parse_next(i)?;
+        Some(finally_body)
+    } else {
+        None
+    };
+
+    Ok(Action::Try {
+        try_body,
+        catch_body,
+        finally_body,
     })
 }
 
@@ -323,7 +378,7 @@ mod tests {
     use crate::lexer::tokens::{ActionName, TokenKind};
     use crate::parser::parse_actions;
     use crate::parser::tests::build_tokens;
-    use crate::pcode::{Action, Actions, PushValue};
+    use crate::pcode::{Action, Actions, CatchTarget, PushValue};
     use indexmap::IndexMap;
 
     macro_rules! trivial_action_tests {
@@ -358,6 +413,7 @@ mod tests {
         test_call => Call,
         test_call_function => CallFunction,
         test_call_method => CallMethod,
+        test_cast_op => CastOp,
         test_char_to_ascii => CharToAscii,
         test_decrement => Decrement,
         test_define_local => DefineLocal,
@@ -396,6 +452,7 @@ mod tests {
         test_return => Return,
         test_set_member => SetMember,
         test_set_variable => SetVariable,
+        test_sack_swap => StackSwap,
         test_start_drag => StartDrag,
         test_stop => Stop,
         test_stop_sounds => StopSounds,
@@ -693,6 +750,136 @@ mod tests {
             parse_actions(&tokens),
             Ok(Actions {
                 actions: vec![Action::GotoLabel("foo".to_owned())],
+                label_positions: Default::default()
+            })
+        )
+    }
+
+    #[test]
+    fn test_try_catch_finally() {
+        let tokens = build_tokens(&[
+            (TokenKind::ActionName(ActionName::Try), "Try"),
+            (TokenKind::Register(0), "register0"),
+            (TokenKind::OpenBrace, "{"),
+            (TokenKind::Newline, "\n"),
+            (TokenKind::ActionName(ActionName::Play), "play"),
+            (TokenKind::Newline, "\n"),
+            (TokenKind::CloseBrace, "}"),
+            (TokenKind::Newline, "\n"),
+            (TokenKind::Catch, "Catch"),
+            (TokenKind::OpenBrace, "{"),
+            (TokenKind::Newline, "\n"),
+            (TokenKind::ActionName(ActionName::Stop), "stop"),
+            (TokenKind::Newline, "\n"),
+            (TokenKind::CloseBrace, "}"),
+            (TokenKind::Newline, "\n"),
+            (TokenKind::Finally, "Finally"),
+            (TokenKind::OpenBrace, "{"),
+            (TokenKind::Newline, "\n"),
+            (TokenKind::ActionName(ActionName::Return), "return"),
+            (TokenKind::Newline, "\n"),
+            (TokenKind::CloseBrace, "}"),
+            (TokenKind::Newline, "\n"),
+        ]);
+
+        assert_eq!(
+            parse_actions(&tokens),
+            Ok(Actions {
+                actions: vec![Action::Try {
+                    try_body: Actions {
+                        actions: vec![Action::Play],
+                        label_positions: Default::default(),
+                    },
+                    catch_body: Some((
+                        CatchTarget::Register(0),
+                        Actions {
+                            actions: vec![Action::Stop],
+                            label_positions: Default::default()
+                        }
+                    )),
+                    finally_body: Some(Actions {
+                        actions: vec![Action::Return],
+                        label_positions: Default::default()
+                    })
+                }],
+                label_positions: Default::default()
+            })
+        )
+    }
+
+    #[test]
+    fn test_try_catch() {
+        let tokens = build_tokens(&[
+            (TokenKind::ActionName(ActionName::Try), "Try"),
+            (TokenKind::String, "e"),
+            (TokenKind::OpenBrace, "{"),
+            (TokenKind::Newline, "\n"),
+            (TokenKind::ActionName(ActionName::Play), "play"),
+            (TokenKind::Newline, "\n"),
+            (TokenKind::CloseBrace, "}"),
+            (TokenKind::Newline, "\n"),
+            (TokenKind::Catch, "Catch"),
+            (TokenKind::OpenBrace, "{"),
+            (TokenKind::Newline, "\n"),
+            (TokenKind::ActionName(ActionName::Stop), "stop"),
+            (TokenKind::Newline, "\n"),
+            (TokenKind::CloseBrace, "}"),
+        ]);
+
+        assert_eq!(
+            parse_actions(&tokens),
+            Ok(Actions {
+                actions: vec![Action::Try {
+                    try_body: Actions {
+                        actions: vec![Action::Play],
+                        label_positions: Default::default(),
+                    },
+                    catch_body: Some((
+                        CatchTarget::Variable("e".to_owned()),
+                        Actions {
+                            actions: vec![Action::Stop],
+                            label_positions: Default::default()
+                        }
+                    )),
+                    finally_body: None
+                }],
+                label_positions: Default::default()
+            })
+        )
+    }
+
+    #[test]
+    fn test_try_finally() {
+        let tokens = build_tokens(&[
+            (TokenKind::ActionName(ActionName::Try), "Try"),
+            (TokenKind::OpenBrace, "{"),
+            (TokenKind::Newline, "\n"),
+            (TokenKind::ActionName(ActionName::Play), "play"),
+            (TokenKind::Newline, "\n"),
+            (TokenKind::CloseBrace, "}"),
+            (TokenKind::Newline, "\n"),
+            (TokenKind::Finally, "Finally"),
+            (TokenKind::OpenBrace, "{"),
+            (TokenKind::Newline, "\n"),
+            (TokenKind::ActionName(ActionName::Stop), "stop"),
+            (TokenKind::Newline, "\n"),
+            (TokenKind::CloseBrace, "}"),
+        ]);
+
+        assert_eq!(
+            parse_actions(&tokens),
+            Ok(Actions {
+                actions: vec![Action::Try {
+                    try_body: Actions {
+                        actions: vec![Action::Play],
+                        label_positions: Default::default(),
+                    },
+                    catch_body: None,
+                    finally_body: Some(Actions {
+                        actions: vec![Action::Stop],
+                        label_positions: Default::default()
+                    })
+                }],
                 label_positions: Default::default()
             })
         )

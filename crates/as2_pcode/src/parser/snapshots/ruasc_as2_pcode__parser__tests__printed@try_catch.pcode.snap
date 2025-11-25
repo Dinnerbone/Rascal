@@ -1,0 +1,141 @@
+---
+source: crates/as2_pcode/src/parser/tests.rs
+expression: "parsed.unwrap_or_else(|_| Actions::empty())"
+input_file: samples/as2_pcode/try_catch.pcode
+---
+ConstantPool " -- try catch finally -- ", "try!", "message", "Hello World!", "catch!", "e", "finally!", " -- try catch -- ", "test", "caught something! ", " -- try catch(MovieClip) finally -- ", "this", "MovieClip", " -- try catch(MovieClip) catch(Number) --", "catch something of MovieClip!", "Number", "catch something of Number!", "catch anything else!", " -- try finally -- ", "If you see this, it didn\'t throw! :("
+Push constant0
+Trace
+Try "e" {
+Push constant1
+Trace
+Push constant2
+Push constant3
+DefineLocal
+Push constant2
+GetVariable
+Throw
+}
+Catch {
+Push constant4
+Trace
+Push constant5
+GetVariable
+Trace
+}
+Finally {
+Push constant6
+Trace
+}
+Push constant7
+Trace
+Try "e" {
+Push constant1
+Trace
+Push constant8
+Throw
+}
+Catch {
+Push constant9
+Push constant5
+GetVariable
+Add2
+Trace
+}
+Push constant10
+Trace
+Try register"0" {
+Push constant1
+Trace
+Push constant11
+GetVariable
+Throw
+}
+Catch {
+Push constant12
+GetVariable
+Push register0
+CastOp
+PushDuplicate
+Push null
+Equals2
+If loc0217
+Push constant5
+StackSwap
+DefineLocal
+Push constant9
+Push constant5
+GetVariable
+Add2
+Trace
+Jump loc021e
+loc0217:Pop
+Push register0
+Throw
+}
+Finally {
+loc021e:Push constant6
+Trace
+}
+Push constant13
+Trace
+Try register"0" {
+Push constant1
+Trace
+Push constant11
+GetVariable
+Throw
+}
+Catch {
+Push constant12
+GetVariable
+Push register0
+CastOp
+PushDuplicate
+Push null
+Equals2
+If loc026b
+Push constant5
+StackSwap
+DefineLocal
+Push constant14
+Trace
+Jump loc02ad
+loc026b:Pop
+Push constant15
+GetVariable
+Push register0
+CastOp
+PushDuplicate
+Push null
+Equals2
+If loc0295
+Push constant5
+StackSwap
+DefineLocal
+Push constant16
+Trace
+Jump loc02ad
+loc0295:Pop
+Push register0
+Push constant5
+StackSwap
+DefineLocal
+Push constant17
+Trace
+Jump loc02ad
+}
+loc02ad:Push constant18
+Trace
+Try {
+Push constant1
+Trace
+Push null
+Throw
+}
+Finally {
+Push constant6
+Trace
+}
+Push constant19
+Trace

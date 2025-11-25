@@ -83,6 +83,7 @@ pub enum Action {
     Call,
     CallFunction,
     CallMethod,
+    CastOp,
     CharToAscii,
     ConstantPool(Vec<String>),
     Decrement,
@@ -146,6 +147,7 @@ pub enum Action {
     Return,
     SetMember,
     SetVariable,
+    StackSwap,
     StartDrag,
     Stop,
     StopSounds,
@@ -162,7 +164,18 @@ pub enum Action {
     ToString,
     ToggleQuality,
     Trace,
+    Try {
+        try_body: Actions,
+        catch_body: Option<(CatchTarget, Actions)>,
+        finally_body: Option<Actions>,
+    },
     TypeOf,
+}
+
+#[derive(Debug, PartialEq, Serialize, Clone)]
+pub enum CatchTarget {
+    Variable(String),
+    Register(u8),
 }
 
 impl Action {
@@ -178,6 +191,7 @@ impl Action {
             Action::BitURShift => -1,
             Action::BitXor => -1,
             Action::Call => -1,
+            Action::CastOp => -1,
             Action::CharToAscii => 0,
             Action::ConstantPool(_) => 0,
             Action::Decrement => -1,
@@ -223,6 +237,7 @@ impl Action {
             Action::Return => -1,
             Action::SetMember => -3,
             Action::SetVariable => -2,
+            Action::StackSwap => 0,
             Action::Stop => 0,
             Action::StopSounds => 0,
             Action::StrictEquals => -1,
@@ -238,6 +253,7 @@ impl Action {
             Action::ToString => 0,
             Action::ToggleQuality => 0,
             Action::Trace => -1,
+            Action::Try { .. } => 0,
             Action::TypeOf => 0,
             _ => todo!("missing stack size delta for {:?}", self),
         }
@@ -259,6 +275,7 @@ impl std::fmt::Display for Action {
             Action::Call => write!(f, "Call"),
             Action::CallFunction => write!(f, "CallFunction"),
             Action::CallMethod => write!(f, "CallMethod"),
+            Action::CastOp => write!(f, "CastOp"),
             Action::CharToAscii => write!(f, "CharToAscii"),
             Action::ConstantPool(values) => {
                 write!(f, "ConstantPool ")?;
@@ -348,6 +365,7 @@ impl std::fmt::Display for Action {
             Action::Return => write!(f, "Return"),
             Action::SetMember => write!(f, "SetMember"),
             Action::SetVariable => write!(f, "SetVariable"),
+            Action::StackSwap => write!(f, "StackSwap"),
             Action::StartDrag => write!(f, "StartDrag"),
             Action::Stop => write!(f, "Stop"),
             Action::StopSounds => write!(f, "StopSounds"),
@@ -363,6 +381,32 @@ impl std::fmt::Display for Action {
             Action::ToNumber => write!(f, "ToNumber"),
             Action::ToString => write!(f, "ToString"),
             Action::ToggleQuality => write!(f, "ToggleQuality"),
+            Action::Try {
+                try_body,
+                catch_body,
+                finally_body,
+            } => {
+                if let Some((catch_target, catch_actions)) = catch_body {
+                    match catch_target {
+                        CatchTarget::Variable(v) => writeln!(f, "Try \"{v}\" {{")?,
+                        CatchTarget::Register(r) => writeln!(f, "Try register\"{r}\" {{")?,
+                    }
+                    write!(f, "{}", try_body)?;
+                    writeln!(f, "}}")?;
+                    writeln!(f, "Catch {{")?;
+                    write!(f, "{}", catch_actions)?;
+                } else {
+                    writeln!(f, "Try {{")?;
+                    write!(f, "{}", try_body)?;
+                }
+                if let Some(finally_actions) = finally_body {
+                    writeln!(f, "}}")?;
+                    writeln!(f, "Finally {{")?;
+                    write!(f, "{}", finally_actions)?;
+                }
+                write!(f, "}}")?;
+                Ok(())
+            }
             Action::Trace => write!(f, "Trace"),
             Action::TypeOf => write!(f, "TypeOf"),
         }
