@@ -30,6 +30,14 @@ pub(crate) fn statement<'i>(i: &mut Tokens<'i>) -> ModalResult<StatementKind<'i>
             };
             StatementKind::Return(values)
         }
+        TokenKind::Keyword(Keyword::Throw) => {
+            let paren = opt(TokenKind::OpenParen).parse_next(i)?;
+            let values = expr_list.parse_next(i)?;
+            if paren.is_some() {
+                TokenKind::CloseParen.parse_next(i)?;
+            }
+            StatementKind::Throw(values)
+        }
         TokenKind::Keyword(Keyword::For) => for_loop
             .context(StrContext::Label("for loop"))
             .parse_next(i)?,
@@ -270,19 +278,13 @@ mod stmt_tests {
     fn test_wraps_expr() {
         let tokens = build_tokens(&[(TokenKind::Identifier, "foo")]);
         let got = parse_stmt(&tokens);
-        assert_eq!(
-            got,
-            Ok(StatementKind::Expr(id("foo")))
-        );
+        assert_eq!(got, Ok(StatementKind::Expr(id("foo"))));
     }
 
     #[test]
     fn test_skips_leading_newline() {
         let tokens = build_tokens(&[(TokenKind::Newline, "\n"), (TokenKind::Identifier, "bar")]);
-        assert_eq!(
-            parse_stmt(&tokens),
-            Ok(StatementKind::Expr(id("bar")))
-        );
+        assert_eq!(parse_stmt(&tokens), Ok(StatementKind::Expr(id("bar"))));
     }
 
     #[test]
@@ -361,12 +363,12 @@ mod stmt_tests {
                         Box::new(id("i"))
                     ))]
                 },
-                body: Box::new(StatementKind::Block(vec![StatementKind::Expr(
-                    ex(ExprKind::Call {
+                body: Box::new(StatementKind::Block(vec![StatementKind::Expr(ex(
+                    ExprKind::Call {
                         name: Box::new(id("trace")),
                         args: vec![id("i")]
-                    })
-                )]))
+                    }
+                ))]))
             })
         )
     }
@@ -395,12 +397,12 @@ mod stmt_tests {
                     declare: false,
                     object: id("b")
                 },
-                body: Box::new(StatementKind::Block(vec![StatementKind::Expr(
-                    ex(ExprKind::Call {
+                body: Box::new(StatementKind::Block(vec![StatementKind::Expr(ex(
+                    ExprKind::Call {
                         name: Box::new(id("trace")),
                         args: vec![id("a")]
-                    })
-                )]))
+                    }
+                ))]))
             })
         )
     }
@@ -423,12 +425,12 @@ mod stmt_tests {
             parse_stmt(&tokens),
             Ok(StatementKind::If {
                 condition: id("a"),
-                yes: Box::new(StatementKind::Block(vec![StatementKind::Expr(
-                    ex(ExprKind::Call {
+                yes: Box::new(StatementKind::Block(vec![StatementKind::Expr(ex(
+                    ExprKind::Call {
                         name: Box::new(id("trace")),
                         args: vec![id("a")]
-                    })
-                )])),
+                    }
+                ))])),
                 no: None,
             })
         )
@@ -458,12 +460,62 @@ mod stmt_tests {
                 yes: Box::new(StatementKind::Expr(ex(ExprKind::Call {
                     name: Box::new(id("trace")),
                     args: vec![id("a")]
-                })) ),
+                }))),
                 no: Some(Box::new(StatementKind::Expr(ex(ExprKind::Call {
                     name: Box::new(id("trace")),
                     args: vec![id("b")]
                 }))))
             })
+        )
+    }
+
+    #[test]
+    fn test_throw_regular() {
+        let tokens = build_tokens(&[
+            (TokenKind::Keyword(Keyword::Throw), "throw"),
+            (TokenKind::Identifier, "a"),
+        ]);
+        assert_eq!(
+            parse_stmt(&tokens),
+            Ok(StatementKind::Throw(vec![ex(ExprKind::Constant(
+                ConstantKind::Identifier("a")
+            ))]))
+        )
+    }
+
+    #[test]
+    fn test_throw_multi_args_no_paren() {
+        let tokens = build_tokens(&[
+            (TokenKind::Keyword(Keyword::Throw), "throw"),
+            (TokenKind::Identifier, "a"),
+            (TokenKind::Comma, ","),
+            (TokenKind::Identifier, "b"),
+        ]);
+        assert_eq!(
+            parse_stmt(&tokens),
+            Ok(StatementKind::Throw(vec![
+                ex(ExprKind::Constant(ConstantKind::Identifier("a"))),
+                ex(ExprKind::Constant(ConstantKind::Identifier("b")))
+            ]))
+        )
+    }
+
+    #[test]
+    fn test_throw_multi_args_with_paren() {
+        let tokens = build_tokens(&[
+            (TokenKind::Keyword(Keyword::Throw), "throw"),
+            (TokenKind::OpenParen, "("),
+            (TokenKind::Identifier, "a"),
+            (TokenKind::Comma, ","),
+            (TokenKind::Identifier, "b"),
+            (TokenKind::CloseParen, ")"),
+        ]);
+        assert_eq!(
+            parse_stmt(&tokens),
+            Ok(StatementKind::Throw(vec![
+                ex(ExprKind::Constant(ConstantKind::Identifier("a"))),
+                ex(ExprKind::Constant(ConstantKind::Identifier("b")))
+            ]))
         )
     }
 

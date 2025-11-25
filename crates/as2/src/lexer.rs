@@ -283,6 +283,7 @@ fn lex_identifier_or_keyword<'a>(stream: &mut Stream<'a>) -> Token<'a> {
         "else" => TokenKind::Keyword(Keyword::Else),
         "break" => TokenKind::Keyword(Keyword::Break),
         "continue" => TokenKind::Keyword(Keyword::Continue),
+        "throw" => TokenKind::Keyword(Keyword::Throw),
         _ => TokenKind::Identifier,
     };
 

@@ -99,6 +99,7 @@ pub enum Affix {
 pub enum StatementKind<'a> {
     Declare(Vec<Declaration<'a>>),
     Return(Vec<Expr<'a>>),
+    Throw(Vec<Expr<'a>>),
     Expr(Expr<'a>),
     Block(Vec<StatementKind<'a>>),
     ForIn {

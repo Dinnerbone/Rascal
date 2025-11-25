@@ -109,4 +109,5 @@ pub enum Keyword {
     Else,
     Break,
     Continue,
+    Throw,
 }

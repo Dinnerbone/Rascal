@@ -248,7 +248,7 @@ impl<'a> ActionEncoder<'a> {
             // Action::StringLess => self.write_small_action(OpCode::StringLess),
             Action::Subtract => self.write_small_action(OpCode::Subtract),
             Action::TargetPath => self.write_small_action(OpCode::TargetPath),
-            // Action::Throw => self.write_small_action(OpCode::Throw),
+            Action::Throw => self.write_small_action(OpCode::Throw),
             Action::ToggleQuality => self.write_small_action(OpCode::ToggleQuality),
             Action::ToInteger => self.write_small_action(OpCode::ToInteger),
             Action::ToNumber => self.write_small_action(OpCode::ToNumber),

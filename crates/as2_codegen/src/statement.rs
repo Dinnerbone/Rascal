@@ -46,6 +46,15 @@ pub(crate) fn gen_statement(builder: &mut CodeBuilder, statement: &StatementKind
             }
             builder.action(Action::Return);
         }
+        StatementKind::Throw(exprs) => {
+            for expr in exprs {
+                gen_expr(builder, expr, false);
+            }
+            if exprs.is_empty() {
+                builder.push(PushValue::Undefined);
+            }
+            builder.action(Action::Throw);
+        }
         StatementKind::Expr(expr) => {
             let stack_size = builder.stack_size();
             gen_expr(builder, expr, true);
