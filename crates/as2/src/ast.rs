@@ -113,6 +113,7 @@ pub enum StatementKind<'a> {
     },
     Break,
     Continue,
+    Try(TryCatch<'a>),
 }
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
@@ -142,6 +143,20 @@ pub struct Function<'a> {
 pub struct Declaration<'a> {
     pub name: &'a str,
     pub value: Option<Expr<'a>>,
+}
+
+#[derive(Debug, Clone, Serialize, PartialEq)]
+pub struct TryCatch<'a> {
+    pub try_body: Vec<StatementKind<'a>>,
+    pub typed_catches: Vec<(Spanned<&'a str>, Catch<'a>)>,
+    pub catch_all: Option<Catch<'a>>,
+    pub finally: Vec<StatementKind<'a>>,
+}
+
+#[derive(Debug, Clone, Serialize, PartialEq)]
+pub struct Catch<'a> {
+    pub name: Spanned<&'a str>,
+    pub body: Vec<StatementKind<'a>>,
 }
 
 #[derive(Debug, Serialize)]

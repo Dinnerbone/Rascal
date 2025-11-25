@@ -1,0 +1,568 @@
+---
+source: crates/as2/src/parser/tests.rs
+expression: parsed
+input_file: samples/as2/try_catch.as
+---
+Ok:
+  statements:
+    - Expr:
+        span:
+          start: 0
+          end: 34
+        value:
+          Call:
+            name:
+              span:
+                start: 0
+                end: 5
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 6
+                  end: 33
+                value:
+                  Constant:
+                    String: " -- try catch finally -- "
+    - Try:
+        try_body:
+          - Expr:
+              span:
+                start: 44
+                end: 57
+              value:
+                Call:
+                  name:
+                    span:
+                      start: 44
+                      end: 49
+                    value:
+                      Constant:
+                        Identifier: trace
+                  args:
+                    - span:
+                        start: 50
+                        end: 56
+                      value:
+                        Constant:
+                          String: try!
+          - Declare:
+              - name: message
+                value:
+                  span:
+                    start: 77
+                    end: 91
+                  value:
+                    Constant:
+                      String: Hello World!
+          - Throw:
+              - span:
+                  start: 103
+                  end: 110
+                value:
+                  Constant:
+                    Identifier: message
+        typed_catches: []
+        catch_all:
+          name:
+            span:
+              start: 121
+              end: 122
+            value: e
+          body:
+            - Expr:
+                span:
+                  start: 127
+                  end: 142
+                value:
+                  Call:
+                    name:
+                      span:
+                        start: 127
+                        end: 132
+                      value:
+                        Constant:
+                          Identifier: trace
+                    args:
+                      - span:
+                          start: 133
+                          end: 141
+                        value:
+                          Constant:
+                            String: catch!
+            - Expr:
+                span:
+                  start: 148
+                  end: 156
+                value:
+                  Call:
+                    name:
+                      span:
+                        start: 148
+                        end: 153
+                      value:
+                        Constant:
+                          Identifier: trace
+                    args:
+                      - span:
+                          start: 154
+                          end: 155
+                        value:
+                          Constant:
+                            Identifier: e
+        finally:
+          - Expr:
+              span:
+                start: 171
+                end: 188
+              value:
+                Call:
+                  name:
+                    span:
+                      start: 171
+                      end: 176
+                    value:
+                      Constant:
+                        Identifier: trace
+                  args:
+                    - span:
+                        start: 177
+                        end: 187
+                      value:
+                        Constant:
+                          String: finally!
+    - Expr:
+        span:
+          start: 193
+          end: 219
+        value:
+          Call:
+            name:
+              span:
+                start: 193
+                end: 198
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 199
+                  end: 218
+                value:
+                  Constant:
+                    String: " -- try catch -- "
+    - Try:
+        try_body:
+          - Expr:
+              span:
+                start: 228
+                end: 241
+              value:
+                Call:
+                  name:
+                    span:
+                      start: 228
+                      end: 233
+                    value:
+                      Constant:
+                        Identifier: trace
+                  args:
+                    - span:
+                        start: 234
+                        end: 240
+                      value:
+                        Constant:
+                          String: try!
+          - Throw:
+              - span:
+                  start: 250
+                  end: 256
+                value:
+                  Constant:
+                    String: test
+        typed_catches: []
+        catch_all:
+          name:
+            span:
+              start: 266
+              end: 267
+            value: e
+          body:
+            - Expr:
+                span:
+                  start: 272
+                  end: 303
+                value:
+                  Call:
+                    name:
+                      span:
+                        start: 272
+                        end: 277
+                      value:
+                        Constant:
+                          Identifier: trace
+                    args:
+                      - span:
+                          start: 278
+                          end: 302
+                        value:
+                          BinaryOperator:
+                            - Add
+                            - span:
+                                start: 278
+                                end: 298
+                              value:
+                                Constant:
+                                  String: "caught something! "
+                            - span:
+                                start: 301
+                                end: 302
+                              value:
+                                Constant:
+                                  Identifier: e
+        finally: []
+    - Expr:
+        span:
+          start: 308
+          end: 353
+        value:
+          Call:
+            name:
+              span:
+                start: 308
+                end: 313
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 314
+                  end: 352
+                value:
+                  Constant:
+                    String: " -- try catch(MovieClip) finally -- "
+    - Try:
+        try_body:
+          - Expr:
+              span:
+                start: 362
+                end: 375
+              value:
+                Call:
+                  name:
+                    span:
+                      start: 362
+                      end: 367
+                    value:
+                      Constant:
+                        Identifier: trace
+                  args:
+                    - span:
+                        start: 368
+                        end: 374
+                      value:
+                        Constant:
+                          String: try!
+          - Throw:
+              - span:
+                  start: 384
+                  end: 388
+                value:
+                  Constant:
+                    Identifier: this
+        typed_catches:
+          - - span:
+                start: 401
+                end: 410
+              value: MovieClip
+            - name:
+                span:
+                  start: 398
+                  end: 399
+                value: e
+              body:
+                - Expr:
+                    span:
+                      start: 415
+                      end: 446
+                    value:
+                      Call:
+                        name:
+                          span:
+                            start: 415
+                            end: 420
+                          value:
+                            Constant:
+                              Identifier: trace
+                        args:
+                          - span:
+                              start: 421
+                              end: 445
+                            value:
+                              BinaryOperator:
+                                - Add
+                                - span:
+                                    start: 421
+                                    end: 441
+                                  value:
+                                    Constant:
+                                      String: "caught something! "
+                                - span:
+                                    start: 444
+                                    end: 445
+                                  value:
+                                    Constant:
+                                      Identifier: e
+        catch_all: ~
+        finally:
+          - Expr:
+              span:
+                start: 464
+                end: 481
+              value:
+                Call:
+                  name:
+                    span:
+                      start: 464
+                      end: 469
+                    value:
+                      Constant:
+                        Identifier: trace
+                  args:
+                    - span:
+                        start: 470
+                        end: 480
+                      value:
+                        Constant:
+                          String: finally!
+    - Expr:
+        span:
+          start: 486
+          end: 536
+        value:
+          Call:
+            name:
+              span:
+                start: 486
+                end: 491
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 492
+                  end: 535
+                value:
+                  Constant:
+                    String: " -- try catch(MovieClip) catch(Number) --"
+    - Try:
+        try_body:
+          - Expr:
+              span:
+                start: 545
+                end: 558
+              value:
+                Call:
+                  name:
+                    span:
+                      start: 545
+                      end: 550
+                    value:
+                      Constant:
+                        Identifier: trace
+                  args:
+                    - span:
+                        start: 551
+                        end: 557
+                      value:
+                        Constant:
+                          String: try!
+          - Throw:
+              - span:
+                  start: 567
+                  end: 571
+                value:
+                  Constant:
+                    Identifier: this
+        typed_catches:
+          - - span:
+                start: 584
+                end: 593
+              value: MovieClip
+            - name:
+                span:
+                  start: 581
+                  end: 582
+                value: e
+              body:
+                - Expr:
+                    span:
+                      start: 598
+                      end: 636
+                    value:
+                      Call:
+                        name:
+                          span:
+                            start: 598
+                            end: 603
+                          value:
+                            Constant:
+                              Identifier: trace
+                        args:
+                          - span:
+                              start: 604
+                              end: 635
+                            value:
+                              Constant:
+                                String: catch something of MovieClip!
+          - - span:
+                start: 649
+                end: 655
+              value: Number
+            - name:
+                span:
+                  start: 646
+                  end: 647
+                value: e
+              body:
+                - Expr:
+                    span:
+                      start: 660
+                      end: 695
+                    value:
+                      Call:
+                        name:
+                          span:
+                            start: 660
+                            end: 665
+                          value:
+                            Constant:
+                              Identifier: trace
+                        args:
+                          - span:
+                              start: 666
+                              end: 694
+                            value:
+                              Constant:
+                                String: catch something of Number!
+        catch_all:
+          name:
+            span:
+              start: 705
+              end: 706
+            value: e
+          body:
+            - Expr:
+                span:
+                  start: 711
+                  end: 740
+                value:
+                  Call:
+                    name:
+                      span:
+                        start: 711
+                        end: 716
+                      value:
+                        Constant:
+                          Identifier: trace
+                    args:
+                      - span:
+                          start: 717
+                          end: 739
+                        value:
+                          Constant:
+                            String: catch anything else!
+        finally: []
+    - Expr:
+        span:
+          start: 774
+          end: 802
+        value:
+          Call:
+            name:
+              span:
+                start: 774
+                end: 779
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 780
+                  end: 801
+                value:
+                  Constant:
+                    String: " -- try finally -- "
+    - Try:
+        try_body:
+          - Expr:
+              span:
+                start: 812
+                end: 825
+              value:
+                Call:
+                  name:
+                    span:
+                      start: 812
+                      end: 817
+                    value:
+                      Constant:
+                        Identifier: trace
+                  args:
+                    - span:
+                        start: 818
+                        end: 824
+                      value:
+                        Constant:
+                          String: try!
+          - Throw:
+              - span:
+                  start: 837
+                  end: 841
+                value:
+                  Constant:
+                    Identifier: "null"
+        typed_catches: []
+        catch_all: ~
+        finally:
+          - Expr:
+              span:
+                start: 856
+                end: 873
+              value:
+                Call:
+                  name:
+                    span:
+                      start: 856
+                      end: 861
+                    value:
+                      Constant:
+                        Identifier: trace
+                  args:
+                    - span:
+                        start: 862
+                        end: 872
+                      value:
+                        Constant:
+                          String: finally!
+    - Expr:
+        span:
+          start: 878
+          end: 923
+        value:
+          Call:
+            name:
+              span:
+                start: 878
+                end: 883
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 884
+                  end: 922
+                value:
+                  Constant:
+                    String: "If you see this, it didn't throw! :("

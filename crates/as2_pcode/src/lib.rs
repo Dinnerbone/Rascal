@@ -3,6 +3,7 @@ use crate::lexer::tokens::Token;
 use crate::parser::PCodeError;
 pub use crate::pcode::Action;
 pub use crate::pcode::Actions;
+pub use crate::pcode::CatchTarget;
 pub use crate::pcode::PushValue;
 
 mod lexer;

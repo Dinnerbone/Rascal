@@ -1,4 +1,4 @@
-use crate::ast::{Declaration, ForCondition, Function, StatementKind};
+use crate::ast::{Catch, Declaration, ForCondition, Function, StatementKind, TryCatch};
 use crate::lexer::operator::Operator;
 use crate::lexer::tokens::{Keyword, TokenKind};
 use crate::parser::expression::{expr_list, expression, type_name};
@@ -46,6 +46,7 @@ pub(crate) fn statement<'i>(i: &mut Tokens<'i>) -> ModalResult<StatementKind<'i>
             .parse_next(i)?,
         TokenKind::Keyword(Keyword::Break) => StatementKind::Break,
         TokenKind::Keyword(Keyword::Continue) => StatementKind::Continue,
+        TokenKind::Keyword(Keyword::Try) => try_catch_finally.parse_next(i)?,
         TokenKind::OpenBrace => {
             let statements = statement_list(true).parse_next(i)?;
             TokenKind::CloseBrace.parse_next(i)?;
@@ -167,6 +168,53 @@ fn for_loop<'i>(i: &mut Tokens<'i>) -> ModalResult<StatementKind<'i>> {
     })
 }
 
+pub(crate) fn try_catch_finally<'i>(i: &mut Tokens<'i>) -> ModalResult<StatementKind<'i>> {
+    TokenKind::OpenBrace.parse_next(i)?;
+    let try_body = statement_list(true).parse_next(i)?;
+    TokenKind::CloseBrace.parse_next(i)?;
+    let mut typed_catches = vec![];
+    let mut catch_all = None;
+
+    while opt(TokenKind::Keyword(Keyword::Catch))
+        .parse_next(i)?
+        .is_some()
+    {
+        TokenKind::OpenParen.parse_next(i)?;
+        let name = identifier.parse_next(i)?;
+        let type_name = opt(type_name).parse_next(i)?;
+        TokenKind::CloseParen.parse_next(i)?;
+        TokenKind::OpenBrace.parse_next(i)?;
+        let body = statement_list(true).parse_next(i)?;
+        TokenKind::CloseBrace.parse_next(i)?;
+
+        if let Some(type_name) = type_name {
+            typed_catches.push((type_name, Catch { name, body }));
+        } else {
+            catch_all = Some(Catch { name, body });
+            break;
+        }
+    }
+
+    let finally = if opt(TokenKind::Keyword(Keyword::Finally))
+        .parse_next(i)?
+        .is_some()
+    {
+        TokenKind::OpenBrace.parse_next(i)?;
+        let body = statement_list(true).parse_next(i)?;
+        TokenKind::CloseBrace.parse_next(i)?;
+        body
+    } else {
+        vec![]
+    };
+
+    Ok(StatementKind::Try(TryCatch {
+        try_body,
+        typed_catches,
+        catch_all,
+        finally,
+    }))
+}
+
 pub(crate) fn function<'i>(i: &mut Tokens<'i>) -> ModalResult<Spanned<Function<'i>>> {
     let start = TokenKind::Keyword(Keyword::Function).parse_next(i)?.span;
     let name = opt(identifier).parse_next(i)?;
@@ -196,7 +244,9 @@ pub(crate) fn function<'i>(i: &mut Tokens<'i>) -> ModalResult<Spanned<Function<'
 #[cfg(test)]
 mod stmt_tests {
     use super::*;
-    use crate::ast::{Affix, BinaryOperator, ConstantKind, Expr, ExprKind, UnaryOperator};
+    use crate::ast::{
+        Affix, BinaryOperator, ConstantKind, Expr, ExprKind, TryCatch, UnaryOperator,
+    };
     use crate::lexer::tokens::{Keyword, QuoteKind, Token, TokenKind};
     use crate::parser::tests::build_tokens;
     use std::borrow::Cow;
@@ -529,5 +579,35 @@ mod stmt_tests {
     fn test_continue() {
         let tokens = build_tokens(&[(TokenKind::Keyword(Keyword::Continue), "continue")]);
         assert_eq!(parse_stmt(&tokens), Ok(StatementKind::Continue))
+    }
+
+    #[test]
+    fn test_try_catch_finally() {
+        let tokens = build_tokens(&[
+            (TokenKind::Keyword(Keyword::Try), "try"),
+            (TokenKind::OpenBrace, "{"),
+            (TokenKind::CloseBrace, "}"),
+            (TokenKind::Keyword(Keyword::Catch), "catch"),
+            (TokenKind::OpenParen, "("),
+            (TokenKind::Identifier, "e"),
+            (TokenKind::CloseParen, ")"),
+            (TokenKind::OpenBrace, "{"),
+            (TokenKind::CloseBrace, "}"),
+            (TokenKind::Keyword(Keyword::Finally), "finally"),
+            (TokenKind::OpenBrace, "{"),
+            (TokenKind::CloseBrace, "}"),
+        ]);
+        assert_eq!(
+            parse_stmt(&tokens),
+            Ok(StatementKind::Try(TryCatch {
+                try_body: vec![],
+                typed_catches: vec![],
+                catch_all: Some(Catch {
+                    name: Spanned::new(Span::default(), "e"),
+                    body: vec![]
+                }),
+                finally: vec![]
+            }))
+        )
     }
 }

@@ -110,4 +110,7 @@ pub enum Keyword {
     Break,
     Continue,
     Throw,
+    Try,
+    Catch,
+    Finally,
 }

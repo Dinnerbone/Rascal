@@ -273,14 +273,13 @@ fn array_definition<'i>(i: &mut Tokens<'i>) -> ModalResult<Vec<Expr<'i>>> {
     separated(0.., expression, TokenKind::Comma).parse_next(i)
 }
 
-pub(crate) fn type_name(i: &mut Tokens<'_>) -> ModalResult<()> {
+pub(crate) fn type_name<'i>(i: &mut Tokens<'i>) -> ModalResult<Spanned<&'i str>> {
     TokenKind::Colon.parse_next(i)?;
     alt((
-        identifier.map(|_| ()),
-        TokenKind::Keyword(Keyword::Void).map(|_| ()),
+        identifier,
+        TokenKind::Keyword(Keyword::Void).map(|t| Spanned::new(t.span, "Void")), // It's a valid identifier here
     ))
-    .parse_next(i)?;
-    Ok(())
+    .parse_next(i)
 }
 
 fn constant<'i>(i: &mut Tokens<'i>) -> ModalResult<Spanned<ConstantKind<'i>>> {

@@ -4,9 +4,9 @@ use crate::context::ScriptContext;
 use crate::special_functions::gen_special_call;
 use ruasc_as2::ast::{
     Affix, BinaryOperator, ConstantKind, Declaration, Expr, ExprKind, ForCondition, Function,
-    StatementKind, UnaryOperator,
+    StatementKind, TryCatch, UnaryOperator,
 };
-use ruasc_as2_pcode::{Action, PushValue};
+use ruasc_as2_pcode::{Action, CatchTarget, PushValue};
 use ruasc_common::span::Span;
 
 pub(crate) fn gen_statements(
@@ -85,6 +85,9 @@ pub(crate) fn gen_statement(
             if let Some(label) = builder.continue_label() {
                 builder.action(Action::Jump(label));
             }
+        }
+        StatementKind::Try(try_catch) => {
+            gen_try_catch(context, builder, try_catch);
         }
     }
 }
@@ -287,6 +290,98 @@ pub fn gen_expr(
         }
         ExprKind::Void(_) => {}
         ExprKind::Function(function) => gen_function(context, builder, function),
+    }
+}
+
+fn gen_try_catch(context: &mut ScriptContext, builder: &mut CodeBuilder, try_catch: &TryCatch) {
+    let mut end_label: Option<String> = None;
+    let mut try_builder = CodeBuilder::new();
+    gen_statements(context, &mut try_builder, &try_catch.try_body);
+    let (try_body, errors) = try_builder.into_actions();
+    builder.add_errors(errors);
+
+    let catch_body = if try_catch.typed_catches.is_empty() && try_catch.catch_all.is_none() {
+        // Nothing to do
+        None
+    } else if let Some(catch_all) = &try_catch.catch_all
+        && try_catch.typed_catches.is_empty()
+    {
+        // A single catch-all block
+        let mut catch_builder = CodeBuilder::new();
+        gen_statements(context, &mut catch_builder, &catch_all.body);
+        let (catch_body, errors) = catch_builder.into_actions();
+        builder.add_errors(errors);
+        Some((
+            CatchTarget::Variable(catch_all.name.value.to_owned()),
+            catch_body,
+        ))
+    } else {
+        // Any number of typed catch blocks, with an optional catch-all block at the end
+        let mut catch_builder = CodeBuilder::new();
+        let catch_target = CatchTarget::Register(0);
+        end_label = Some(context.create_label());
+        let mut first = true;
+
+        for (type_name, catch) in &try_catch.typed_catches {
+            let next_label = context.create_label();
+            if !first {
+                catch_builder.action(Action::Pop);
+            }
+            first = false;
+            catch_builder.push(type_name.value);
+            catch_builder.action(Action::GetVariable);
+            catch_builder.push(PushValue::Register(0));
+            catch_builder.action(Action::CastOp);
+            catch_builder.action(Action::PushDuplicate);
+            catch_builder.push(PushValue::Null);
+            catch_builder.action(Action::Equals2);
+            catch_builder.action(Action::If(next_label.clone()));
+            catch_builder.push(catch.name.value);
+            catch_builder.action(Action::StackSwap);
+            catch_builder.action(Action::DefineLocal);
+            gen_statements(context, &mut catch_builder, &catch.body);
+            catch_builder.action(Action::Jump(end_label.clone().unwrap()));
+            catch_builder.mark_label(next_label);
+        }
+
+        if let Some(catch) = &try_catch.catch_all {
+            catch_builder.action(Action::Pop);
+            catch_builder.push(PushValue::Register(0));
+            catch_builder.push(catch.name.value);
+            catch_builder.action(Action::StackSwap);
+            catch_builder.action(Action::DefineLocal);
+            gen_statements(context, &mut catch_builder, &catch.body);
+        } else {
+            catch_builder.action(Action::Pop);
+            catch_builder.push(PushValue::Register(0));
+            catch_builder.action(Action::Throw);
+        }
+
+        let (catch_body, errors) = catch_builder.into_actions();
+        builder.add_errors(errors);
+        Some((catch_target, catch_body))
+    };
+
+    let finally_body = if try_catch.finally.is_empty() {
+        None
+    } else {
+        let mut finally_builder = CodeBuilder::new();
+        if let Some(end_label) = end_label.take() {
+            finally_builder.mark_label(end_label);
+        }
+        gen_statements(context, &mut finally_builder, &try_catch.finally);
+        let (finally_body, errors) = finally_builder.into_actions();
+        builder.add_errors(errors);
+        Some(finally_body)
+    };
+
+    builder.action(Action::Try {
+        try_body,
+        catch_body,
+        finally_body,
+    });
+    if let Some(end_label) = end_label.take() {
+        builder.mark_label(end_label);
     }
 }
 
