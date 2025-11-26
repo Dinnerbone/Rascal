@@ -1,0 +1,40 @@
+---
+source: crates/as2_codegen/src/tests.rs
+expression: result
+input_file: samples/as2/try_catch_stack.as
+---
+ConstantPool "bad", "oh noes!", "foo", "caught: ", "e"
+Push constant0
+DefineFunction "", 0 {
+Push constant1
+Throw
+}
+DefineLocal
+Push constant2
+DefineFunction "", 0 {
+Try "e" {
+Push 1, 1, 0, constant0
+CallFunction
+Add2
+Add2
+Return
+}
+Catch {
+Push constant3, constant4
+GetVariable
+Add2
+Trace
+Push 5
+Return
+}
+}
+DefineLocal
+Push 0, constant2
+CallFunction
+Trace
+Push 0, constant2
+CallFunction
+Push 0, constant2
+CallFunction
+Add2
+Trace

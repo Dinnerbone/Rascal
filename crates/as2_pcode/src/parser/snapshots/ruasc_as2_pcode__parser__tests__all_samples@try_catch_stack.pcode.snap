@@ -1,0 +1,84 @@
+---
+source: crates/as2_pcode/src/parser/tests.rs
+expression: parsed
+input_file: samples/as2_pcode/try_catch_stack.pcode
+---
+Ok:
+  actions:
+    - ConstantPool:
+        - bad
+        - oh noes!
+        - foo
+        - "caught: "
+        - e
+    - Push:
+        - Constant: 0
+    - DefineFunction:
+        name: ""
+        params: []
+        actions:
+          actions:
+            - Push:
+                - Constant: 1
+            - Throw
+          label_positions: {}
+    - DefineLocal
+    - Push:
+        - Constant: 2
+    - DefineFunction:
+        name: ""
+        params: []
+        actions:
+          actions:
+            - Try:
+                try_body:
+                  actions:
+                    - Push:
+                        - Integer: 1
+                    - Push:
+                        - Integer: 1
+                    - Push:
+                        - Integer: 0
+                    - Push:
+                        - Constant: 0
+                    - CallFunction
+                    - Add2
+                    - Add2
+                    - Return
+                  label_positions: {}
+                catch_body:
+                  - Variable: e
+                  - actions:
+                      - Push:
+                          - Constant: 3
+                      - Push:
+                          - Constant: 4
+                      - GetVariable
+                      - Add2
+                      - Trace
+                      - Push:
+                          - Integer: 5
+                      - Return
+                    label_positions: {}
+                finally_body: ~
+          label_positions: {}
+    - DefineLocal
+    - Push:
+        - Integer: 0
+    - Push:
+        - Constant: 2
+    - CallFunction
+    - Trace
+    - Push:
+        - Integer: 0
+    - Push:
+        - Constant: 2
+    - CallFunction
+    - Push:
+        - Integer: 0
+    - Push:
+        - Constant: 2
+    - CallFunction
+    - Add2
+    - Trace
+  label_positions: {}
