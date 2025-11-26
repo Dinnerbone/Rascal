@@ -198,214 +198,260 @@ input_file: samples/as2/special_functions.as
 - kind: Identifier
   span:
     start: 103
-    end: 111
-  raw: getTimer
-- kind: OpenParen
-  span:
-    start: 111
     end: 112
-  raw: (
-- kind: CloseParen
+  raw: fscommand
+- kind: OpenParen
   span:
     start: 112
     end: 113
-  raw: )
-- kind: Semicolon
+  raw: (
+- kind: Identifier
   span:
     start: 113
     end: 114
-  raw: ;
-- kind: Newline
+  raw: x
+- kind: Comma
   span:
     start: 114
     end: 115
-  raw: "\n"
+  raw: ","
 - kind: Identifier
   span:
-    start: 115
+    start: 116
+    end: 120
+  raw: "true"
+- kind: CloseParen
+  span:
+    start: 120
     end: 121
-  raw: getURL
-- kind: OpenParen
+  raw: )
+- kind: Semicolon
   span:
     start: 121
     end: 122
+  raw: ;
+- kind: Newline
+  span:
+    start: 122
+    end: 123
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 123
+    end: 132
+  raw: fscommand
+- kind: OpenParen
+  span:
+    start: 132
+    end: 133
   raw: (
 - kind:
     String: Double
   span:
-    start: 122
-    end: 140
-  raw: "http://ruffle.rs"
+    start: 133
+    end: 136
+  raw: x
+- kind: Comma
+  span:
+    start: 136
+    end: 137
+  raw: ","
+- kind: Identifier
+  span:
+    start: 138
+    end: 143
+  raw: "false"
 - kind: CloseParen
   span:
-    start: 140
-    end: 141
+    start: 143
+    end: 144
   raw: )
 - kind: Semicolon
   span:
-    start: 141
-    end: 142
+    start: 144
+    end: 145
   raw: ;
 - kind: Newline
   span:
-    start: 142
-    end: 143
+    start: 145
+    end: 146
   raw: "\n"
 - kind: Identifier
   span:
-    start: 143
-    end: 149
+    start: 146
+    end: 155
+  raw: fscommand
+- kind: OpenParen
+  span:
+    start: 155
+    end: 156
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 156
+    end: 159
+  raw: x
+- kind: CloseParen
+  span:
+    start: 159
+    end: 160
+  raw: )
+- kind: Semicolon
+  span:
+    start: 160
+    end: 161
+  raw: ;
+- kind: Newline
+  span:
+    start: 161
+    end: 162
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 162
+    end: 171
+  raw: fscommand
+- kind: OpenParen
+  span:
+    start: 171
+    end: 172
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 172
+    end: 175
+  raw: x
+- kind: Comma
+  span:
+    start: 175
+    end: 176
+  raw: ","
+- kind:
+    String: Double
+  span:
+    start: 177
+    end: 182
+  raw: foo
+- kind: CloseParen
+  span:
+    start: 182
+    end: 183
+  raw: )
+- kind: Semicolon
+  span:
+    start: 183
+    end: 184
+  raw: ;
+- kind: Newline
+  span:
+    start: 184
+    end: 185
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 185
+    end: 193
+  raw: getTimer
+- kind: OpenParen
+  span:
+    start: 193
+    end: 194
+  raw: (
+- kind: CloseParen
+  span:
+    start: 194
+    end: 195
+  raw: )
+- kind: Semicolon
+  span:
+    start: 195
+    end: 196
+  raw: ;
+- kind: Newline
+  span:
+    start: 196
+    end: 197
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 197
+    end: 203
   raw: getURL
 - kind: OpenParen
   span:
-    start: 149
-    end: 150
+    start: 203
+    end: 204
   raw: (
 - kind:
     String: Double
   span:
-    start: 150
-    end: 168
+    start: 204
+    end: 222
   raw: "http://ruffle.rs"
-- kind: Comma
-  span:
-    start: 168
-    end: 169
-  raw: ","
-- kind:
-    String: Double
-  span:
-    start: 170
-    end: 178
-  raw: window
 - kind: CloseParen
   span:
-    start: 178
-    end: 179
+    start: 222
+    end: 223
   raw: )
 - kind: Semicolon
-  span:
-    start: 179
-    end: 180
-  raw: ;
-- kind: Newline
-  span:
-    start: 180
-    end: 181
-  raw: "\n"
-- kind: Identifier
-  span:
-    start: 181
-    end: 187
-  raw: GETurl
-- kind: OpenParen
-  span:
-    start: 187
-    end: 188
-  raw: (
-- kind:
-    String: Double
-  span:
-    start: 188
-    end: 206
-  raw: "http://ruffle.rs"
-- kind: Comma
-  span:
-    start: 206
-    end: 207
-  raw: ","
-- kind:
-    String: Double
-  span:
-    start: 208
-    end: 216
-  raw: window
-- kind: Comma
-  span:
-    start: 216
-    end: 217
-  raw: ","
-- kind:
-    String: Double
-  span:
-    start: 218
-    end: 223
-  raw: get
-- kind: CloseParen
   span:
     start: 223
     end: 224
-  raw: )
-- kind: Semicolon
+  raw: ;
+- kind: Newline
   span:
     start: 224
     end: 225
-  raw: ;
-- kind: Newline
+  raw: "\n"
+- kind: Identifier
   span:
     start: 225
-    end: 226
-  raw: "\n"
-- kind: Identifier
-  span:
-    start: 226
-    end: 236
-  raw: getVersion
+    end: 231
+  raw: getURL
 - kind: OpenParen
   span:
-    start: 236
-    end: 237
+    start: 231
+    end: 232
   raw: (
-- kind: CloseParen
+- kind:
+    String: Double
   span:
-    start: 237
-    end: 238
-  raw: )
-- kind: Semicolon
+    start: 232
+    end: 250
+  raw: "http://ruffle.rs"
+- kind: Comma
   span:
-    start: 238
-    end: 239
-  raw: ;
-- kind: Newline
-  span:
-    start: 239
-    end: 240
-  raw: "\n"
-- kind: Identifier
-  span:
-    start: 240
+    start: 250
     end: 251
-  raw: gotoAndPlay
-- kind: OpenParen
-  span:
-    start: 251
-    end: 252
-  raw: (
-- kind: Integer
+  raw: ","
+- kind:
+    String: Double
   span:
     start: 252
-    end: 255
-  raw: "123"
+    end: 260
+  raw: window
 - kind: CloseParen
   span:
-    start: 255
-    end: 256
+    start: 260
+    end: 261
   raw: )
 - kind: Semicolon
   span:
-    start: 256
-    end: 257
+    start: 261
+    end: 262
   raw: ;
 - kind: Newline
   span:
-    start: 257
-    end: 258
+    start: 262
+    end: 263
   raw: "\n"
 - kind: Identifier
   span:
-    start: 258
+    start: 263
     end: 269
-  raw: gotoAndPlay
+  raw: GETurl
 - kind: OpenParen
   span:
     start: 269
@@ -415,712 +461,665 @@ input_file: samples/as2/special_functions.as
     String: Double
   span:
     start: 270
-    end: 275
-  raw: "123"
-- kind: CloseParen
+    end: 288
+  raw: "http://ruffle.rs"
+- kind: Comma
   span:
-    start: 275
-    end: 276
-  raw: )
-- kind: Semicolon
-  span:
-    start: 276
-    end: 277
-  raw: ;
-- kind: Newline
-  span:
-    start: 277
-    end: 278
-  raw: "\n"
-- kind: Identifier
-  span:
-    start: 278
+    start: 288
     end: 289
-  raw: GOTOandPLAY
-- kind: OpenParen
-  span:
-    start: 289
-    end: 290
-  raw: (
-- kind: Identifier
+  raw: ","
+- kind:
+    String: Double
   span:
     start: 290
-    end: 291
-  raw: x
-- kind: CloseParen
+    end: 298
+  raw: window
+- kind: Comma
   span:
-    start: 291
-    end: 292
-  raw: )
-- kind: Semicolon
+    start: 298
+    end: 299
+  raw: ","
+- kind:
+    String: Double
   span:
-    start: 292
-    end: 293
-  raw: ;
-- kind: Newline
-  span:
-    start: 293
-    end: 294
-  raw: "\n"
-- kind: Identifier
-  span:
-    start: 294
+    start: 300
     end: 305
-  raw: gotoAndPlay
-- kind: OpenParen
+  raw: get
+- kind: CloseParen
   span:
     start: 305
     end: 306
-  raw: (
-- kind:
-    String: Double
+  raw: )
+- kind: Semicolon
   span:
     start: 306
-    end: 313
-  raw: scene
-- kind: Comma
+    end: 307
+  raw: ;
+- kind: Newline
   span:
-    start: 313
-    end: 314
-  raw: ","
-- kind: Integer
+    start: 307
+    end: 308
+  raw: "\n"
+- kind: Identifier
   span:
-    start: 315
+    start: 308
     end: 318
-  raw: "123"
-- kind: CloseParen
+  raw: getVersion
+- kind: OpenParen
   span:
     start: 318
     end: 319
-  raw: )
-- kind: Semicolon
+  raw: (
+- kind: CloseParen
   span:
     start: 319
     end: 320
-  raw: ;
-- kind: Newline
+  raw: )
+- kind: Semicolon
   span:
     start: 320
     end: 321
-  raw: "\n"
-- kind: Identifier
-  span:
-    start: 321
-    end: 332
-  raw: gotoAndPlay
-- kind: OpenParen
-  span:
-    start: 332
-    end: 333
-  raw: (
-- kind:
-    String: Double
-  span:
-    start: 333
-    end: 340
-  raw: scene
-- kind: Comma
-  span:
-    start: 340
-    end: 341
-  raw: ","
-- kind:
-    String: Double
-  span:
-    start: 342
-    end: 347
-  raw: "123"
-- kind: CloseParen
-  span:
-    start: 347
-    end: 348
-  raw: )
-- kind: Semicolon
-  span:
-    start: 348
-    end: 349
   raw: ;
 - kind: Newline
   span:
-    start: 349
-    end: 350
+    start: 321
+    end: 322
   raw: "\n"
 - kind: Identifier
   span:
-    start: 350
-    end: 361
+    start: 322
+    end: 333
   raw: gotoAndPlay
 - kind: OpenParen
   span:
-    start: 361
-    end: 362
+    start: 333
+    end: 334
+  raw: (
+- kind: Integer
+  span:
+    start: 334
+    end: 337
+  raw: "123"
+- kind: CloseParen
+  span:
+    start: 337
+    end: 338
+  raw: )
+- kind: Semicolon
+  span:
+    start: 338
+    end: 339
+  raw: ;
+- kind: Newline
+  span:
+    start: 339
+    end: 340
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 340
+    end: 351
+  raw: gotoAndPlay
+- kind: OpenParen
+  span:
+    start: 351
+    end: 352
   raw: (
 - kind:
     String: Double
   span:
-    start: 362
-    end: 369
-  raw: scene
-- kind: Comma
+    start: 352
+    end: 357
+  raw: "123"
+- kind: CloseParen
   span:
-    start: 369
-    end: 370
-  raw: ","
+    start: 357
+    end: 358
+  raw: )
+- kind: Semicolon
+  span:
+    start: 358
+    end: 359
+  raw: ;
+- kind: Newline
+  span:
+    start: 359
+    end: 360
+  raw: "\n"
 - kind: Identifier
+  span:
+    start: 360
+    end: 371
+  raw: GOTOandPLAY
+- kind: OpenParen
   span:
     start: 371
     end: 372
-  raw: x
-- kind: CloseParen
+  raw: (
+- kind: Identifier
   span:
     start: 372
     end: 373
-  raw: )
-- kind: Semicolon
+  raw: x
+- kind: CloseParen
   span:
     start: 373
     end: 374
-  raw: ;
-- kind: Newline
+  raw: )
+- kind: Semicolon
   span:
     start: 374
     end: 375
+  raw: ;
+- kind: Newline
+  span:
+    start: 375
+    end: 376
   raw: "\n"
 - kind: Identifier
   span:
-    start: 375
-    end: 386
+    start: 376
+    end: 387
   raw: gotoAndPlay
 - kind: OpenParen
-  span:
-    start: 386
-    end: 387
-  raw: (
-- kind: Identifier
   span:
     start: 387
     end: 388
-  raw: x
-- kind: CloseParen
+  raw: (
+- kind:
+    String: Double
   span:
     start: 388
-    end: 389
+    end: 395
+  raw: scene
+- kind: Comma
+  span:
+    start: 395
+    end: 396
+  raw: ","
+- kind: Integer
+  span:
+    start: 397
+    end: 400
+  raw: "123"
+- kind: CloseParen
+  span:
+    start: 400
+    end: 401
   raw: )
 - kind: Semicolon
   span:
-    start: 389
-    end: 390
+    start: 401
+    end: 402
   raw: ;
 - kind: Newline
-  span:
-    start: 390
-    end: 391
-  raw: "\n"
-- kind: Identifier
-  span:
-    start: 391
-    end: 402
-  raw: gotoAndPlay
-- kind: OpenParen
   span:
     start: 402
     end: 403
-  raw: (
-- kind: Integer
-  span:
-    start: 403
-    end: 408
-  raw: "65536"
-- kind: CloseParen
-  span:
-    start: 408
-    end: 409
-  raw: )
-- kind: Semicolon
-  span:
-    start: 409
-    end: 410
-  raw: ;
-- kind: Newline
-  span:
-    start: 410
-    end: 411
   raw: "\n"
 - kind: Identifier
   span:
-    start: 411
-    end: 422
+    start: 403
+    end: 414
   raw: gotoAndPlay
 - kind: OpenParen
+  span:
+    start: 414
+    end: 415
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 415
+    end: 422
+  raw: scene
+- kind: Comma
   span:
     start: 422
     end: 423
-  raw: (
-- kind: Integer
+  raw: ","
+- kind:
+    String: Double
   span:
-    start: 423
-    end: 428
-  raw: "65537"
-- kind: CloseParen
-  span:
-    start: 428
+    start: 424
     end: 429
-  raw: )
-- kind: Semicolon
+  raw: "123"
+- kind: CloseParen
   span:
     start: 429
     end: 430
-  raw: ;
-- kind: Newline
+  raw: )
+- kind: Semicolon
   span:
     start: 430
     end: 431
-  raw: "\n"
-- kind: Identifier
+  raw: ;
+- kind: Newline
   span:
     start: 431
-    end: 442
+    end: 432
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 432
+    end: 443
   raw: gotoAndPlay
 - kind: OpenParen
-  span:
-    start: 442
-    end: 443
-  raw: (
-- kind: Integer
   span:
     start: 443
-    end: 448
-  raw: "65538"
+    end: 444
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 444
+    end: 451
+  raw: scene
+- kind: Comma
+  span:
+    start: 451
+    end: 452
+  raw: ","
+- kind: Identifier
+  span:
+    start: 453
+    end: 454
+  raw: x
 - kind: CloseParen
   span:
-    start: 448
-    end: 449
+    start: 454
+    end: 455
   raw: )
 - kind: Semicolon
   span:
-    start: 449
-    end: 450
+    start: 455
+    end: 456
   raw: ;
 - kind: Newline
   span:
-    start: 450
-    end: 451
+    start: 456
+    end: 457
   raw: "\n"
 - kind: Identifier
   span:
-    start: 451
-    end: 462
+    start: 457
+    end: 468
   raw: gotoAndPlay
 - kind: OpenParen
   span:
-    start: 462
-    end: 463
+    start: 468
+    end: 469
   raw: (
-- kind: Integer
+- kind: Identifier
   span:
-    start: 463
-    end: 464
-  raw: "0"
+    start: 469
+    end: 470
+  raw: x
 - kind: CloseParen
   span:
-    start: 464
-    end: 465
+    start: 470
+    end: 471
   raw: )
 - kind: Semicolon
   span:
-    start: 465
-    end: 466
+    start: 471
+    end: 472
   raw: ;
 - kind: Newline
   span:
-    start: 466
-    end: 467
+    start: 472
+    end: 473
   raw: "\n"
 - kind: Identifier
   span:
-    start: 467
-    end: 478
-  raw: gotoAndStop
-- kind: OpenParen
-  span:
-    start: 478
-    end: 479
-  raw: (
-- kind: Integer
-  span:
-    start: 479
-    end: 482
-  raw: "123"
-- kind: CloseParen
-  span:
-    start: 482
-    end: 483
-  raw: )
-- kind: Semicolon
-  span:
-    start: 483
+    start: 473
     end: 484
-  raw: ;
-- kind: Newline
+  raw: gotoAndPlay
+- kind: OpenParen
   span:
     start: 484
     end: 485
-  raw: "\n"
-- kind: Identifier
+  raw: (
+- kind: Integer
   span:
     start: 485
-    end: 496
-  raw: gotoAndStop
-- kind: OpenParen
-  span:
-    start: 496
-    end: 497
-  raw: (
-- kind:
-    String: Double
-  span:
-    start: 497
-    end: 502
-  raw: "123"
+    end: 490
+  raw: "65536"
 - kind: CloseParen
   span:
-    start: 502
-    end: 503
+    start: 490
+    end: 491
   raw: )
 - kind: Semicolon
   span:
-    start: 503
-    end: 504
+    start: 491
+    end: 492
   raw: ;
 - kind: Newline
+  span:
+    start: 492
+    end: 493
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 493
+    end: 504
+  raw: gotoAndPlay
+- kind: OpenParen
   span:
     start: 504
     end: 505
-  raw: "\n"
-- kind: Identifier
+  raw: (
+- kind: Integer
   span:
     start: 505
-    end: 516
-  raw: gotoAndStop
-- kind: OpenParen
-  span:
-    start: 516
-    end: 517
-  raw: (
-- kind: Identifier
-  span:
-    start: 517
-    end: 518
-  raw: x
+    end: 510
+  raw: "65537"
 - kind: CloseParen
   span:
-    start: 518
-    end: 519
+    start: 510
+    end: 511
   raw: )
 - kind: Semicolon
   span:
-    start: 519
-    end: 520
+    start: 511
+    end: 512
   raw: ;
 - kind: Newline
   span:
-    start: 520
-    end: 521
+    start: 512
+    end: 513
   raw: "\n"
 - kind: Identifier
   span:
-    start: 521
-    end: 532
-  raw: gotoAndStop
+    start: 513
+    end: 524
+  raw: gotoAndPlay
 - kind: OpenParen
+  span:
+    start: 524
+    end: 525
+  raw: (
+- kind: Integer
+  span:
+    start: 525
+    end: 530
+  raw: "65538"
+- kind: CloseParen
+  span:
+    start: 530
+    end: 531
+  raw: )
+- kind: Semicolon
+  span:
+    start: 531
+    end: 532
+  raw: ;
+- kind: Newline
   span:
     start: 532
     end: 533
-  raw: (
-- kind:
-    String: Double
+  raw: "\n"
+- kind: Identifier
   span:
     start: 533
-    end: 540
-  raw: scene
-- kind: Comma
+    end: 544
+  raw: gotoAndPlay
+- kind: OpenParen
   span:
-    start: 540
-    end: 541
-  raw: ","
-- kind: Integer
-  span:
-    start: 542
+    start: 544
     end: 545
-  raw: "123"
-- kind: CloseParen
+  raw: (
+- kind: Integer
   span:
     start: 545
     end: 546
-  raw: )
-- kind: Semicolon
+  raw: "0"
+- kind: CloseParen
   span:
     start: 546
     end: 547
-  raw: ;
-- kind: Newline
+  raw: )
+- kind: Semicolon
   span:
     start: 547
     end: 548
+  raw: ;
+- kind: Newline
+  span:
+    start: 548
+    end: 549
   raw: "\n"
 - kind: Identifier
   span:
-    start: 548
-    end: 559
+    start: 549
+    end: 560
   raw: gotoAndStop
 - kind: OpenParen
   span:
-    start: 559
-    end: 560
-  raw: (
-- kind:
-    String: Double
-  span:
     start: 560
-    end: 567
-  raw: scene
-- kind: Comma
+    end: 561
+  raw: (
+- kind: Integer
   span:
-    start: 567
-    end: 568
-  raw: ","
-- kind:
-    String: Double
-  span:
-    start: 569
-    end: 574
+    start: 561
+    end: 564
   raw: "123"
 - kind: CloseParen
   span:
-    start: 574
-    end: 575
+    start: 564
+    end: 565
   raw: )
 - kind: Semicolon
   span:
-    start: 575
-    end: 576
+    start: 565
+    end: 566
   raw: ;
 - kind: Newline
   span:
-    start: 576
-    end: 577
+    start: 566
+    end: 567
   raw: "\n"
 - kind: Identifier
   span:
-    start: 577
-    end: 588
+    start: 567
+    end: 578
   raw: gotoAndStop
 - kind: OpenParen
   span:
-    start: 588
-    end: 589
+    start: 578
+    end: 579
   raw: (
 - kind:
     String: Double
   span:
-    start: 589
-    end: 596
-  raw: scene
-- kind: Comma
+    start: 579
+    end: 584
+  raw: "123"
+- kind: CloseParen
   span:
-    start: 596
-    end: 597
-  raw: ","
+    start: 584
+    end: 585
+  raw: )
+- kind: Semicolon
+  span:
+    start: 585
+    end: 586
+  raw: ;
+- kind: Newline
+  span:
+    start: 586
+    end: 587
+  raw: "\n"
 - kind: Identifier
+  span:
+    start: 587
+    end: 598
+  raw: gotoAndStop
+- kind: OpenParen
   span:
     start: 598
     end: 599
-  raw: x
-- kind: CloseParen
+  raw: (
+- kind: Identifier
   span:
     start: 599
     end: 600
-  raw: )
-- kind: Semicolon
+  raw: x
+- kind: CloseParen
   span:
     start: 600
     end: 601
-  raw: ;
-- kind: Newline
+  raw: )
+- kind: Semicolon
   span:
     start: 601
     end: 602
+  raw: ;
+- kind: Newline
+  span:
+    start: 602
+    end: 603
   raw: "\n"
 - kind: Identifier
   span:
-    start: 602
-    end: 613
+    start: 603
+    end: 614
   raw: gotoAndStop
 - kind: OpenParen
   span:
-    start: 613
-    end: 614
-  raw: (
-- kind: Identifier
-  span:
     start: 614
     end: 615
-  raw: x
-- kind: CloseParen
+  raw: (
+- kind:
+    String: Double
   span:
     start: 615
-    end: 616
-  raw: )
-- kind: Semicolon
-  span:
-    start: 616
-    end: 617
-  raw: ;
-- kind: Newline
-  span:
-    start: 617
-    end: 618
-  raw: "\n"
-- kind: Identifier
-  span:
-    start: 618
-    end: 621
-  raw: int
-- kind: OpenParen
-  span:
-    start: 621
     end: 622
-  raw: (
-- kind: Identifier
+  raw: scene
+- kind: Comma
   span:
     start: 622
     end: 623
-  raw: x
-- kind: CloseParen
-  span:
-    start: 623
-    end: 624
-  raw: )
-- kind: Semicolon
+  raw: ","
+- kind: Integer
   span:
     start: 624
-    end: 625
-  raw: ;
-- kind: Newline
-  span:
-    start: 625
-    end: 626
-  raw: "\n"
-- kind: Identifier
-  span:
-    start: 626
-    end: 632
-  raw: length
-- kind: OpenParen
-  span:
-    start: 632
-    end: 633
-  raw: (
-- kind: Identifier
-  span:
-    start: 633
-    end: 634
-  raw: x
+    end: 627
+  raw: "123"
 - kind: CloseParen
   span:
-    start: 634
-    end: 635
+    start: 627
+    end: 628
   raw: )
 - kind: Semicolon
   span:
-    start: 635
-    end: 636
+    start: 628
+    end: 629
   raw: ;
 - kind: Newline
   span:
-    start: 636
-    end: 637
+    start: 629
+    end: 630
   raw: "\n"
 - kind: Identifier
   span:
-    start: 637
-    end: 646
-  raw: loadMovie
+    start: 630
+    end: 641
+  raw: gotoAndStop
 - kind: OpenParen
   span:
-    start: 646
-    end: 647
+    start: 641
+    end: 642
   raw: (
 - kind:
     String: Double
   span:
-    start: 647
-    end: 652
-  raw: url
+    start: 642
+    end: 649
+  raw: scene
 - kind: Comma
   span:
-    start: 652
-    end: 653
+    start: 649
+    end: 650
   raw: ","
 - kind:
     String: Double
   span:
-    start: 654
-    end: 662
-  raw: target
+    start: 651
+    end: 656
+  raw: "123"
 - kind: CloseParen
   span:
-    start: 662
-    end: 663
+    start: 656
+    end: 657
   raw: )
 - kind: Semicolon
   span:
-    start: 663
-    end: 664
+    start: 657
+    end: 658
   raw: ;
 - kind: Newline
   span:
-    start: 664
-    end: 665
+    start: 658
+    end: 659
   raw: "\n"
 - kind: Identifier
   span:
-    start: 665
-    end: 674
-  raw: loadMovie
+    start: 659
+    end: 670
+  raw: gotoAndStop
 - kind: OpenParen
   span:
-    start: 674
-    end: 675
+    start: 670
+    end: 671
   raw: (
 - kind:
     String: Double
   span:
-    start: 675
-    end: 680
-  raw: url
+    start: 671
+    end: 678
+  raw: scene
 - kind: Comma
+  span:
+    start: 678
+    end: 679
+  raw: ","
+- kind: Identifier
   span:
     start: 680
     end: 681
-  raw: ","
-- kind:
-    String: Double
+  raw: x
+- kind: CloseParen
+  span:
+    start: 681
+    end: 682
+  raw: )
+- kind: Semicolon
   span:
     start: 682
-    end: 690
-  raw: target
-- kind: Comma
+    end: 683
+  raw: ;
+- kind: Newline
   span:
-    start: 690
-    end: 691
-  raw: ","
-- kind:
-    String: Double
+    start: 683
+    end: 684
+  raw: "\n"
+- kind: Identifier
   span:
-    start: 692
+    start: 684
+    end: 695
+  raw: gotoAndStop
+- kind: OpenParen
+  span:
+    start: 695
+    end: 696
+  raw: (
+- kind: Identifier
+  span:
+    start: 696
     end: 697
-  raw: get
+  raw: x
 - kind: CloseParen
   span:
     start: 697
@@ -1139,596 +1138,569 @@ input_file: samples/as2/special_functions.as
 - kind: Identifier
   span:
     start: 700
-    end: 712
-  raw: loadMovieNum
+    end: 703
+  raw: int
 - kind: OpenParen
   span:
-    start: 712
-    end: 713
+    start: 703
+    end: 704
   raw: (
-- kind:
-    String: Double
+- kind: Identifier
   span:
-    start: 713
+    start: 704
+    end: 705
+  raw: x
+- kind: CloseParen
+  span:
+    start: 705
+    end: 706
+  raw: )
+- kind: Semicolon
+  span:
+    start: 706
+    end: 707
+  raw: ;
+- kind: Newline
+  span:
+    start: 707
+    end: 708
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 708
+    end: 714
+  raw: length
+- kind: OpenParen
+  span:
+    start: 714
+    end: 715
+  raw: (
+- kind: Identifier
+  span:
+    start: 715
+    end: 716
+  raw: x
+- kind: CloseParen
+  span:
+    start: 716
+    end: 717
+  raw: )
+- kind: Semicolon
+  span:
+    start: 717
     end: 718
-  raw: url
-- kind: Comma
+  raw: ;
+- kind: Newline
   span:
     start: 718
     end: 719
-  raw: ","
-- kind: Integer
-  span:
-    start: 720
-    end: 722
-  raw: "12"
-- kind: CloseParen
-  span:
-    start: 722
-    end: 723
-  raw: )
-- kind: Semicolon
-  span:
-    start: 723
-    end: 724
-  raw: ;
-- kind: Newline
-  span:
-    start: 724
-    end: 725
   raw: "\n"
 - kind: Identifier
   span:
-    start: 725
-    end: 737
-  raw: loadMovieNum
+    start: 719
+    end: 728
+  raw: loadMovie
 - kind: OpenParen
   span:
-    start: 737
-    end: 738
+    start: 728
+    end: 729
   raw: (
 - kind:
     String: Double
   span:
-    start: 738
-    end: 743
+    start: 729
+    end: 734
   raw: url
 - kind: Comma
   span:
-    start: 743
-    end: 744
-  raw: ","
-- kind: Integer
-  span:
-    start: 745
-    end: 747
-  raw: "12"
-- kind: Comma
-  span:
-    start: 747
-    end: 748
+    start: 734
+    end: 735
   raw: ","
 - kind:
     String: Double
   span:
-    start: 749
-    end: 754
-  raw: get
+    start: 736
+    end: 744
+  raw: target
 - kind: CloseParen
   span:
-    start: 754
-    end: 755
+    start: 744
+    end: 745
   raw: )
 - kind: Semicolon
   span:
-    start: 755
-    end: 756
+    start: 745
+    end: 746
   raw: ;
 - kind: Newline
+  span:
+    start: 746
+    end: 747
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 747
+    end: 756
+  raw: loadMovie
+- kind: OpenParen
   span:
     start: 756
     end: 757
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 757
+    end: 762
+  raw: url
+- kind: Comma
+  span:
+    start: 762
+    end: 763
+  raw: ","
+- kind:
+    String: Double
+  span:
+    start: 764
+    end: 772
+  raw: target
+- kind: Comma
+  span:
+    start: 772
+    end: 773
+  raw: ","
+- kind:
+    String: Double
+  span:
+    start: 774
+    end: 779
+  raw: get
+- kind: CloseParen
+  span:
+    start: 779
+    end: 780
+  raw: )
+- kind: Semicolon
+  span:
+    start: 780
+    end: 781
+  raw: ;
+- kind: Newline
+  span:
+    start: 781
+    end: 782
   raw: "\n"
 - kind: Identifier
   span:
-    start: 757
-    end: 769
+    start: 782
+    end: 794
   raw: loadMovieNum
 - kind: OpenParen
   span:
-    start: 769
-    end: 770
+    start: 794
+    end: 795
   raw: (
 - kind:
     String: Double
   span:
-    start: 770
-    end: 775
+    start: 795
+    end: 800
   raw: url
 - kind: Comma
   span:
-    start: 775
-    end: 776
+    start: 800
+    end: 801
   raw: ","
-- kind: Identifier
+- kind: Integer
   span:
-    start: 777
-    end: 778
-  raw: x
-- kind: Comma
-  span:
-    start: 778
-    end: 779
-  raw: ","
-- kind:
-    String: Double
-  span:
-    start: 780
-    end: 785
-  raw: get
+    start: 802
+    end: 804
+  raw: "12"
 - kind: CloseParen
   span:
-    start: 785
-    end: 786
+    start: 804
+    end: 805
   raw: )
 - kind: Semicolon
   span:
-    start: 786
-    end: 787
+    start: 805
+    end: 806
   raw: ;
 - kind: Newline
   span:
-    start: 787
-    end: 788
+    start: 806
+    end: 807
   raw: "\n"
 - kind: Identifier
   span:
-    start: 788
-    end: 801
-  raw: loadVariables
-- kind: OpenParen
-  span:
-    start: 801
-    end: 802
-  raw: (
-- kind:
-    String: Double
-  span:
-    start: 802
-    end: 807
-  raw: url
-- kind: Comma
-  span:
     start: 807
-    end: 808
-  raw: ","
-- kind:
-    String: Double
-  span:
-    start: 809
-    end: 817
-  raw: target
-- kind: CloseParen
-  span:
-    start: 817
-    end: 818
-  raw: )
-- kind: Semicolon
-  span:
-    start: 818
     end: 819
-  raw: ;
-- kind: Newline
+  raw: loadMovieNum
+- kind: OpenParen
   span:
     start: 819
     end: 820
-  raw: "\n"
-- kind: Identifier
+  raw: (
+- kind:
+    String: Double
   span:
     start: 820
-    end: 833
-  raw: loadVariables
-- kind: OpenParen
-  span:
-    start: 833
-    end: 834
-  raw: (
-- kind:
-    String: Double
-  span:
-    start: 834
-    end: 839
+    end: 825
   raw: url
 - kind: Comma
   span:
-    start: 839
-    end: 840
+    start: 825
+    end: 826
   raw: ","
-- kind: Identifier
+- kind: Integer
   span:
-    start: 841
-    end: 842
-  raw: x
-- kind: CloseParen
-  span:
-    start: 842
-    end: 843
-  raw: )
-- kind: Semicolon
-  span:
-    start: 843
-    end: 844
-  raw: ;
-- kind: Newline
-  span:
-    start: 844
-    end: 845
-  raw: "\n"
-- kind: Identifier
-  span:
-    start: 845
-    end: 858
-  raw: loadVariables
-- kind: OpenParen
-  span:
-    start: 858
-    end: 859
-  raw: (
-- kind:
-    String: Double
-  span:
-    start: 859
-    end: 864
-  raw: url
+    start: 827
+    end: 829
+  raw: "12"
 - kind: Comma
   span:
-    start: 864
-    end: 865
+    start: 829
+    end: 830
   raw: ","
 - kind:
     String: Double
   span:
-    start: 866
-    end: 874
-  raw: target
-- kind: Comma
-  span:
-    start: 874
-    end: 875
-  raw: ","
-- kind:
-    String: Double
-  span:
-    start: 876
-    end: 881
+    start: 831
+    end: 836
   raw: get
 - kind: CloseParen
   span:
-    start: 881
-    end: 882
+    start: 836
+    end: 837
   raw: )
 - kind: Semicolon
   span:
-    start: 882
-    end: 883
+    start: 837
+    end: 838
   raw: ;
 - kind: Newline
+  span:
+    start: 838
+    end: 839
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 839
+    end: 851
+  raw: loadMovieNum
+- kind: OpenParen
+  span:
+    start: 851
+    end: 852
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 852
+    end: 857
+  raw: url
+- kind: Comma
+  span:
+    start: 857
+    end: 858
+  raw: ","
+- kind: Identifier
+  span:
+    start: 859
+    end: 860
+  raw: x
+- kind: Comma
+  span:
+    start: 860
+    end: 861
+  raw: ","
+- kind:
+    String: Double
+  span:
+    start: 862
+    end: 867
+  raw: get
+- kind: CloseParen
+  span:
+    start: 867
+    end: 868
+  raw: )
+- kind: Semicolon
+  span:
+    start: 868
+    end: 869
+  raw: ;
+- kind: Newline
+  span:
+    start: 869
+    end: 870
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 870
+    end: 883
+  raw: loadVariables
+- kind: OpenParen
   span:
     start: 883
     end: 884
-  raw: "\n"
-- kind: Identifier
-  span:
-    start: 884
-    end: 900
-  raw: loadVariablesNum
-- kind: OpenParen
-  span:
-    start: 900
-    end: 901
   raw: (
 - kind:
     String: Double
   span:
-    start: 901
-    end: 906
+    start: 884
+    end: 889
   raw: url
 - kind: Comma
   span:
-    start: 906
-    end: 907
+    start: 889
+    end: 890
   raw: ","
-- kind: Integer
+- kind:
+    String: Double
   span:
-    start: 908
-    end: 910
-  raw: "12"
+    start: 891
+    end: 899
+  raw: target
 - kind: CloseParen
   span:
-    start: 910
-    end: 911
+    start: 899
+    end: 900
   raw: )
 - kind: Semicolon
   span:
-    start: 911
-    end: 912
+    start: 900
+    end: 901
   raw: ;
 - kind: Newline
   span:
-    start: 912
-    end: 913
+    start: 901
+    end: 902
   raw: "\n"
 - kind: Identifier
   span:
-    start: 913
-    end: 929
-  raw: loadVariablesNum
+    start: 902
+    end: 915
+  raw: loadVariables
 - kind: OpenParen
   span:
-    start: 929
-    end: 930
+    start: 915
+    end: 916
   raw: (
 - kind:
     String: Double
   span:
-    start: 930
-    end: 935
+    start: 916
+    end: 921
   raw: url
 - kind: Comma
   span:
-    start: 935
-    end: 936
+    start: 921
+    end: 922
   raw: ","
-- kind: Integer
+- kind: Identifier
   span:
-    start: 937
-    end: 939
-  raw: "12"
-- kind: Comma
+    start: 923
+    end: 924
+  raw: x
+- kind: CloseParen
   span:
-    start: 939
+    start: 924
+    end: 925
+  raw: )
+- kind: Semicolon
+  span:
+    start: 925
+    end: 926
+  raw: ;
+- kind: Newline
+  span:
+    start: 926
+    end: 927
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 927
     end: 940
-  raw: ","
+  raw: loadVariables
+- kind: OpenParen
+  span:
+    start: 940
+    end: 941
+  raw: (
 - kind:
     String: Double
   span:
     start: 941
     end: 946
-  raw: get
-- kind: CloseParen
-  span:
-    start: 946
-    end: 947
-  raw: )
-- kind: Semicolon
-  span:
-    start: 947
-    end: 948
-  raw: ;
-- kind: Newline
-  span:
-    start: 948
-    end: 949
-  raw: "\n"
-- kind: Identifier
-  span:
-    start: 949
-    end: 965
-  raw: loadVariablesNum
-- kind: OpenParen
-  span:
-    start: 965
-    end: 966
-  raw: (
-- kind:
-    String: Double
-  span:
-    start: 966
-    end: 971
   raw: url
 - kind: Comma
   span:
-    start: 971
-    end: 972
-  raw: ","
-- kind: Identifier
-  span:
-    start: 973
-    end: 974
-  raw: x
-- kind: Comma
-  span:
-    start: 974
-    end: 975
+    start: 946
+    end: 947
   raw: ","
 - kind:
     String: Double
   span:
-    start: 976
-    end: 981
+    start: 948
+    end: 956
+  raw: target
+- kind: Comma
+  span:
+    start: 956
+    end: 957
+  raw: ","
+- kind:
+    String: Double
+  span:
+    start: 958
+    end: 963
   raw: get
 - kind: CloseParen
   span:
-    start: 981
-    end: 982
+    start: 963
+    end: 964
   raw: )
 - kind: Semicolon
+  span:
+    start: 964
+    end: 965
+  raw: ;
+- kind: Newline
+  span:
+    start: 965
+    end: 966
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 966
+    end: 982
+  raw: loadVariablesNum
+- kind: OpenParen
   span:
     start: 982
     end: 983
-  raw: ;
-- kind: Newline
+  raw: (
+- kind:
+    String: Double
   span:
     start: 983
-    end: 984
-  raw: "\n"
-- kind: Identifier
+    end: 988
+  raw: url
+- kind: Comma
   span:
-    start: 984
+    start: 988
     end: 989
-  raw: mbchr
-- kind: OpenParen
-  span:
-    start: 989
-    end: 990
-  raw: (
-- kind: Identifier
+  raw: ","
+- kind: Integer
   span:
     start: 990
-    end: 991
-  raw: x
-- kind: CloseParen
-  span:
-    start: 991
     end: 992
-  raw: )
-- kind: Semicolon
+  raw: "12"
+- kind: CloseParen
   span:
     start: 992
     end: 993
-  raw: ;
-- kind: Newline
+  raw: )
+- kind: Semicolon
   span:
     start: 993
     end: 994
-  raw: "\n"
-- kind: Identifier
+  raw: ;
+- kind: Newline
   span:
     start: 994
-    end: 1002
-  raw: mblength
-- kind: OpenParen
-  span:
-    start: 1002
-    end: 1003
-  raw: (
-- kind: Identifier
-  span:
-    start: 1003
-    end: 1004
-  raw: x
-- kind: CloseParen
-  span:
-    start: 1004
-    end: 1005
-  raw: )
-- kind: Semicolon
-  span:
-    start: 1005
-    end: 1006
-  raw: ;
-- kind: Newline
-  span:
-    start: 1006
-    end: 1007
+    end: 995
   raw: "\n"
 - kind: Identifier
   span:
-    start: 1007
-    end: 1012
-  raw: mbord
+    start: 995
+    end: 1011
+  raw: loadVariablesNum
 - kind: OpenParen
+  span:
+    start: 1011
+    end: 1012
+  raw: (
+- kind:
+    String: Double
   span:
     start: 1012
-    end: 1013
-  raw: (
-- kind: Identifier
-  span:
-    start: 1013
-    end: 1014
-  raw: x
-- kind: CloseParen
-  span:
-    start: 1014
-    end: 1015
-  raw: )
-- kind: Semicolon
-  span:
-    start: 1015
-    end: 1016
-  raw: ;
-- kind: Newline
-  span:
-    start: 1016
     end: 1017
-  raw: "\n"
-- kind: Identifier
+  raw: url
+- kind: Comma
   span:
     start: 1017
+    end: 1018
+  raw: ","
+- kind: Integer
+  span:
+    start: 1019
+    end: 1021
+  raw: "12"
+- kind: Comma
+  span:
+    start: 1021
+    end: 1022
+  raw: ","
+- kind:
+    String: Double
+  span:
+    start: 1023
     end: 1028
-  raw: mbsubstring
-- kind: OpenParen
+  raw: get
+- kind: CloseParen
   span:
     start: 1028
     end: 1029
-  raw: (
-- kind:
-    String: Double
-  span:
-    start: 1029
-    end: 1034
-  raw: abc
-- kind: Comma
-  span:
-    start: 1034
-    end: 1035
-  raw: ","
-- kind: Integer
-  span:
-    start: 1036
-    end: 1037
-  raw: "1"
-- kind: CloseParen
-  span:
-    start: 1037
-    end: 1038
   raw: )
 - kind: Semicolon
   span:
-    start: 1038
-    end: 1039
+    start: 1029
+    end: 1030
   raw: ;
 - kind: Newline
   span:
-    start: 1039
-    end: 1040
+    start: 1030
+    end: 1031
   raw: "\n"
 - kind: Identifier
   span:
-    start: 1040
-    end: 1051
-  raw: mbsubstring
+    start: 1031
+    end: 1047
+  raw: loadVariablesNum
 - kind: OpenParen
   span:
-    start: 1051
-    end: 1052
+    start: 1047
+    end: 1048
   raw: (
 - kind:
     String: Double
   span:
-    start: 1052
+    start: 1048
+    end: 1053
+  raw: url
+- kind: Comma
+  span:
+    start: 1053
+    end: 1054
+  raw: ","
+- kind: Identifier
+  span:
+    start: 1055
+    end: 1056
+  raw: x
+- kind: Comma
+  span:
+    start: 1056
     end: 1057
-  raw: abc
-- kind: Comma
-  span:
-    start: 1057
-    end: 1058
   raw: ","
-- kind: Integer
+- kind:
+    String: Double
   span:
-    start: 1059
-    end: 1060
-  raw: "1"
-- kind: Comma
-  span:
-    start: 1060
-    end: 1061
-  raw: ","
-- kind: Integer
-  span:
-    start: 1062
+    start: 1058
     end: 1063
-  raw: "2"
+  raw: get
 - kind: CloseParen
   span:
     start: 1063
@@ -1747,297 +1719,330 @@ input_file: samples/as2/special_functions.as
 - kind: Identifier
   span:
     start: 1066
-    end: 1075
-  raw: nextFrame
+    end: 1071
+  raw: mbchr
 - kind: OpenParen
+  span:
+    start: 1071
+    end: 1072
+  raw: (
+- kind: Identifier
+  span:
+    start: 1072
+    end: 1073
+  raw: x
+- kind: CloseParen
+  span:
+    start: 1073
+    end: 1074
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1074
+    end: 1075
+  raw: ;
+- kind: Newline
   span:
     start: 1075
     end: 1076
-  raw: (
-- kind: CloseParen
-  span:
-    start: 1076
-    end: 1077
-  raw: )
-- kind: Semicolon
-  span:
-    start: 1077
-    end: 1078
-  raw: ;
-- kind: Newline
-  span:
-    start: 1078
-    end: 1079
   raw: "\n"
 - kind: Identifier
   span:
-    start: 1079
-    end: 1088
-  raw: nextScene
+    start: 1076
+    end: 1084
+  raw: mblength
 - kind: OpenParen
+  span:
+    start: 1084
+    end: 1085
+  raw: (
+- kind: Identifier
+  span:
+    start: 1085
+    end: 1086
+  raw: x
+- kind: CloseParen
+  span:
+    start: 1086
+    end: 1087
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1087
+    end: 1088
+  raw: ;
+- kind: Newline
   span:
     start: 1088
     end: 1089
-  raw: (
-- kind: CloseParen
-  span:
-    start: 1089
-    end: 1090
-  raw: )
-- kind: Semicolon
-  span:
-    start: 1090
-    end: 1091
-  raw: ;
-- kind: Newline
-  span:
-    start: 1091
-    end: 1092
   raw: "\n"
 - kind: Identifier
   span:
-    start: 1092
-    end: 1098
-  raw: Number
+    start: 1089
+    end: 1094
+  raw: mbord
 - kind: OpenParen
+  span:
+    start: 1094
+    end: 1095
+  raw: (
+- kind: Identifier
+  span:
+    start: 1095
+    end: 1096
+  raw: x
+- kind: CloseParen
+  span:
+    start: 1096
+    end: 1097
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1097
+    end: 1098
+  raw: ;
+- kind: Newline
   span:
     start: 1098
     end: 1099
-  raw: (
+  raw: "\n"
 - kind: Identifier
   span:
     start: 1099
-    end: 1100
-  raw: x
-- kind: CloseParen
-  span:
-    start: 1100
-    end: 1101
-  raw: )
-- kind: Semicolon
-  span:
-    start: 1101
-    end: 1102
-  raw: ;
-- kind: Newline
-  span:
-    start: 1102
-    end: 1103
-  raw: "\n"
-- kind: Identifier
-  span:
-    start: 1103
-    end: 1106
-  raw: ord
-- kind: OpenParen
-  span:
-    start: 1106
-    end: 1107
-  raw: (
-- kind: Identifier
-  span:
-    start: 1107
-    end: 1108
-  raw: x
-- kind: CloseParen
-  span:
-    start: 1108
-    end: 1109
-  raw: )
-- kind: Semicolon
-  span:
-    start: 1109
     end: 1110
-  raw: ;
-- kind: Newline
+  raw: mbsubstring
+- kind: OpenParen
   span:
     start: 1110
     end: 1111
-  raw: "\n"
-- kind: Identifier
+  raw: (
+- kind:
+    String: Double
   span:
     start: 1111
-    end: 1115
-  raw: play
-- kind: OpenParen
-  span:
-    start: 1115
     end: 1116
-  raw: (
-- kind: CloseParen
+  raw: abc
+- kind: Comma
   span:
     start: 1116
     end: 1117
-  raw: )
-- kind: Semicolon
-  span:
-    start: 1117
-    end: 1118
-  raw: ;
-- kind: Newline
+  raw: ","
+- kind: Integer
   span:
     start: 1118
     end: 1119
-  raw: "\n"
-- kind: Identifier
-  span:
-    start: 1119
-    end: 1128
-  raw: prevFrame
-- kind: OpenParen
-  span:
-    start: 1128
-    end: 1129
-  raw: (
+  raw: "1"
 - kind: CloseParen
   span:
-    start: 1129
-    end: 1130
+    start: 1119
+    end: 1120
   raw: )
 - kind: Semicolon
   span:
-    start: 1130
-    end: 1131
+    start: 1120
+    end: 1121
   raw: ;
 - kind: Newline
   span:
-    start: 1131
-    end: 1132
+    start: 1121
+    end: 1122
   raw: "\n"
 - kind: Identifier
   span:
-    start: 1132
-    end: 1141
-  raw: prevScene
+    start: 1122
+    end: 1133
+  raw: mbsubstring
 - kind: OpenParen
+  span:
+    start: 1133
+    end: 1134
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1134
+    end: 1139
+  raw: abc
+- kind: Comma
+  span:
+    start: 1139
+    end: 1140
+  raw: ","
+- kind: Integer
   span:
     start: 1141
     end: 1142
-  raw: (
-- kind: CloseParen
+  raw: "1"
+- kind: Comma
   span:
     start: 1142
     end: 1143
-  raw: )
-- kind: Semicolon
-  span:
-    start: 1143
-    end: 1144
-  raw: ;
-- kind: Newline
+  raw: ","
+- kind: Integer
   span:
     start: 1144
     end: 1145
-  raw: "\n"
-- kind: Identifier
-  span:
-    start: 1145
-    end: 1150
-  raw: print
-- kind: OpenParen
-  span:
-    start: 1150
-    end: 1151
-  raw: (
-- kind:
-    String: Double
-  span:
-    start: 1151
-    end: 1156
-  raw: foo
-- kind: Comma
-  span:
-    start: 1156
-    end: 1157
-  raw: ","
-- kind:
-    String: Double
-  span:
-    start: 1158
-    end: 1164
-  raw: bmax
+  raw: "2"
 - kind: CloseParen
   span:
-    start: 1164
-    end: 1165
+    start: 1145
+    end: 1146
   raw: )
 - kind: Semicolon
   span:
-    start: 1165
-    end: 1166
+    start: 1146
+    end: 1147
   raw: ;
 - kind: Newline
   span:
-    start: 1166
-    end: 1167
+    start: 1147
+    end: 1148
   raw: "\n"
 - kind: Identifier
   span:
-    start: 1167
-    end: 1172
-  raw: print
+    start: 1148
+    end: 1157
+  raw: nextFrame
 - kind: OpenParen
+  span:
+    start: 1157
+    end: 1158
+  raw: (
+- kind: CloseParen
+  span:
+    start: 1158
+    end: 1159
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1159
+    end: 1160
+  raw: ;
+- kind: Newline
+  span:
+    start: 1160
+    end: 1161
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1161
+    end: 1170
+  raw: nextScene
+- kind: OpenParen
+  span:
+    start: 1170
+    end: 1171
+  raw: (
+- kind: CloseParen
+  span:
+    start: 1171
+    end: 1172
+  raw: )
+- kind: Semicolon
   span:
     start: 1172
     end: 1173
-  raw: (
-- kind: Identifier
-  span:
-    start: 1173
-    end: 1177
-  raw: this
-- kind: Comma
-  span:
-    start: 1177
-    end: 1178
-  raw: ","
-- kind:
-    String: Double
-  span:
-    start: 1179
-    end: 1187
-  raw: bframe
-- kind: CloseParen
-  span:
-    start: 1187
-    end: 1188
-  raw: )
-- kind: Semicolon
-  span:
-    start: 1188
-    end: 1189
   raw: ;
 - kind: Newline
   span:
-    start: 1189
-    end: 1190
+    start: 1173
+    end: 1174
   raw: "\n"
 - kind: Identifier
   span:
-    start: 1190
-    end: 1195
-  raw: print
+    start: 1174
+    end: 1180
+  raw: Number
 - kind: OpenParen
   span:
-    start: 1195
-    end: 1196
+    start: 1180
+    end: 1181
   raw: (
 - kind: Identifier
   span:
-    start: 1196
+    start: 1181
+    end: 1182
+  raw: x
+- kind: CloseParen
+  span:
+    start: 1182
+    end: 1183
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1183
+    end: 1184
+  raw: ;
+- kind: Newline
+  span:
+    start: 1184
+    end: 1185
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1185
+    end: 1188
+  raw: ord
+- kind: OpenParen
+  span:
+    start: 1188
+    end: 1189
+  raw: (
+- kind: Identifier
+  span:
+    start: 1189
+    end: 1190
+  raw: x
+- kind: CloseParen
+  span:
+    start: 1190
+    end: 1191
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1191
+    end: 1192
+  raw: ;
+- kind: Newline
+  span:
+    start: 1192
+    end: 1193
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1193
+    end: 1197
+  raw: play
+- kind: OpenParen
+  span:
+    start: 1197
+    end: 1198
+  raw: (
+- kind: CloseParen
+  span:
+    start: 1198
+    end: 1199
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1199
+    end: 1200
+  raw: ;
+- kind: Newline
+  span:
+    start: 1200
     end: 1201
-  raw: _root
-- kind: Comma
+  raw: "\n"
+- kind: Identifier
   span:
     start: 1201
-    end: 1202
-  raw: ","
-- kind:
-    String: Double
+    end: 1210
+  raw: prevFrame
+- kind: OpenParen
   span:
-    start: 1203
+    start: 1210
     end: 1211
-  raw: bmovie
+  raw: (
 - kind: CloseParen
   span:
     start: 1211
@@ -2056,785 +2061,749 @@ input_file: samples/as2/special_functions.as
 - kind: Identifier
   span:
     start: 1214
-    end: 1227
-  raw: printAsBitmap
+    end: 1223
+  raw: prevScene
 - kind: OpenParen
   span:
+    start: 1223
+    end: 1224
+  raw: (
+- kind: CloseParen
+  span:
+    start: 1224
+    end: 1225
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1225
+    end: 1226
+  raw: ;
+- kind: Newline
+  span:
+    start: 1226
+    end: 1227
+  raw: "\n"
+- kind: Identifier
+  span:
     start: 1227
-    end: 1228
+    end: 1232
+  raw: print
+- kind: OpenParen
+  span:
+    start: 1232
+    end: 1233
   raw: (
 - kind:
     String: Double
   span:
-    start: 1228
-    end: 1233
+    start: 1233
+    end: 1238
   raw: foo
 - kind: Comma
   span:
-    start: 1233
-    end: 1234
+    start: 1238
+    end: 1239
   raw: ","
 - kind:
     String: Double
   span:
-    start: 1235
-    end: 1241
+    start: 1240
+    end: 1246
   raw: bmax
 - kind: CloseParen
   span:
-    start: 1241
-    end: 1242
+    start: 1246
+    end: 1247
   raw: )
 - kind: Semicolon
   span:
-    start: 1242
-    end: 1243
+    start: 1247
+    end: 1248
   raw: ;
 - kind: Newline
   span:
-    start: 1243
-    end: 1244
+    start: 1248
+    end: 1249
   raw: "\n"
 - kind: Identifier
   span:
-    start: 1244
-    end: 1257
-  raw: printAsBitmap
+    start: 1249
+    end: 1254
+  raw: print
 - kind: OpenParen
   span:
-    start: 1257
-    end: 1258
+    start: 1254
+    end: 1255
   raw: (
 - kind: Identifier
   span:
-    start: 1258
-    end: 1262
+    start: 1255
+    end: 1259
   raw: this
 - kind: Comma
   span:
-    start: 1262
-    end: 1263
+    start: 1259
+    end: 1260
   raw: ","
 - kind:
     String: Double
   span:
-    start: 1264
-    end: 1272
+    start: 1261
+    end: 1269
   raw: bframe
 - kind: CloseParen
   span:
-    start: 1272
-    end: 1273
+    start: 1269
+    end: 1270
   raw: )
 - kind: Semicolon
   span:
-    start: 1273
-    end: 1274
+    start: 1270
+    end: 1271
   raw: ;
 - kind: Newline
   span:
-    start: 1274
-    end: 1275
+    start: 1271
+    end: 1272
   raw: "\n"
 - kind: Identifier
   span:
-    start: 1275
-    end: 1288
-  raw: printAsBitmap
+    start: 1272
+    end: 1277
+  raw: print
 - kind: OpenParen
   span:
-    start: 1288
-    end: 1289
+    start: 1277
+    end: 1278
   raw: (
 - kind: Identifier
   span:
-    start: 1289
-    end: 1294
+    start: 1278
+    end: 1283
   raw: _root
 - kind: Comma
   span:
-    start: 1294
-    end: 1295
+    start: 1283
+    end: 1284
   raw: ","
 - kind:
     String: Double
   span:
-    start: 1296
-    end: 1304
+    start: 1285
+    end: 1293
   raw: bmovie
 - kind: CloseParen
   span:
-    start: 1304
-    end: 1305
+    start: 1293
+    end: 1294
   raw: )
 - kind: Semicolon
   span:
-    start: 1305
-    end: 1306
+    start: 1294
+    end: 1295
   raw: ;
 - kind: Newline
   span:
-    start: 1306
-    end: 1307
+    start: 1295
+    end: 1296
   raw: "\n"
 - kind: Identifier
   span:
-    start: 1307
-    end: 1323
-  raw: printAsBitmapNum
+    start: 1296
+    end: 1309
+  raw: printAsBitmap
 - kind: OpenParen
+  span:
+    start: 1309
+    end: 1310
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1310
+    end: 1315
+  raw: foo
+- kind: Comma
+  span:
+    start: 1315
+    end: 1316
+  raw: ","
+- kind:
+    String: Double
+  span:
+    start: 1317
+    end: 1323
+  raw: bmax
+- kind: CloseParen
   span:
     start: 1323
     end: 1324
-  raw: (
-- kind:
-    String: Double
-  span:
-    start: 1324
-    end: 1329
-  raw: "123"
-- kind: Comma
-  span:
-    start: 1329
-    end: 1330
-  raw: ","
-- kind:
-    String: Double
-  span:
-    start: 1331
-    end: 1337
-  raw: bmax
-- kind: CloseParen
-  span:
-    start: 1337
-    end: 1338
   raw: )
 - kind: Semicolon
   span:
-    start: 1338
-    end: 1339
+    start: 1324
+    end: 1325
   raw: ;
 - kind: Newline
+  span:
+    start: 1325
+    end: 1326
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1326
+    end: 1339
+  raw: printAsBitmap
+- kind: OpenParen
   span:
     start: 1339
     end: 1340
-  raw: "\n"
+  raw: (
 - kind: Identifier
   span:
     start: 1340
+    end: 1344
+  raw: this
+- kind: Comma
+  span:
+    start: 1344
+    end: 1345
+  raw: ","
+- kind:
+    String: Double
+  span:
+    start: 1346
+    end: 1354
+  raw: bframe
+- kind: CloseParen
+  span:
+    start: 1354
+    end: 1355
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1355
     end: 1356
-  raw: printAsBitmapNum
-- kind: OpenParen
+  raw: ;
+- kind: Newline
   span:
     start: 1356
     end: 1357
-  raw: (
+  raw: "\n"
 - kind: Identifier
   span:
     start: 1357
-    end: 1358
-  raw: x
-- kind: Comma
-  span:
-    start: 1358
-    end: 1359
-  raw: ","
-- kind:
-    String: Double
-  span:
-    start: 1360
-    end: 1368
-  raw: bframe
-- kind: CloseParen
-  span:
-    start: 1368
-    end: 1369
-  raw: )
-- kind: Semicolon
-  span:
-    start: 1369
     end: 1370
-  raw: ;
-- kind: Newline
+  raw: printAsBitmap
+- kind: OpenParen
   span:
     start: 1370
     end: 1371
-  raw: "\n"
+  raw: (
 - kind: Identifier
   span:
     start: 1371
+    end: 1376
+  raw: _root
+- kind: Comma
+  span:
+    start: 1376
+    end: 1377
+  raw: ","
+- kind:
+    String: Double
+  span:
+    start: 1378
+    end: 1386
+  raw: bmovie
+- kind: CloseParen
+  span:
+    start: 1386
     end: 1387
-  raw: printAsBitmapNum
-- kind: OpenParen
+  raw: )
+- kind: Semicolon
   span:
     start: 1387
     end: 1388
-  raw: (
-- kind: Identifier
+  raw: ;
+- kind: Newline
   span:
     start: 1388
     end: 1389
-  raw: x
-- kind: Comma
-  span:
-    start: 1389
-    end: 1390
-  raw: ","
-- kind:
-    String: Double
-  span:
-    start: 1391
-    end: 1399
-  raw: bmovie
-- kind: CloseParen
-  span:
-    start: 1399
-    end: 1400
-  raw: )
-- kind: Semicolon
-  span:
-    start: 1400
-    end: 1401
-  raw: ;
-- kind: Newline
-  span:
-    start: 1401
-    end: 1402
   raw: "\n"
 - kind: Identifier
   span:
-    start: 1402
-    end: 1410
-  raw: printNum
+    start: 1389
+    end: 1405
+  raw: printAsBitmapNum
 - kind: OpenParen
   span:
-    start: 1410
-    end: 1411
+    start: 1405
+    end: 1406
   raw: (
 - kind:
     String: Double
   span:
-    start: 1411
-    end: 1416
+    start: 1406
+    end: 1411
   raw: "123"
 - kind: Comma
   span:
-    start: 1416
-    end: 1417
+    start: 1411
+    end: 1412
   raw: ","
 - kind:
     String: Double
   span:
-    start: 1418
-    end: 1424
+    start: 1413
+    end: 1419
   raw: bmax
 - kind: CloseParen
   span:
-    start: 1424
-    end: 1425
+    start: 1419
+    end: 1420
   raw: )
 - kind: Semicolon
   span:
-    start: 1425
-    end: 1426
+    start: 1420
+    end: 1421
   raw: ;
 - kind: Newline
   span:
-    start: 1426
-    end: 1427
+    start: 1421
+    end: 1422
   raw: "\n"
 - kind: Identifier
   span:
-    start: 1427
-    end: 1435
-  raw: printNum
+    start: 1422
+    end: 1438
+  raw: printAsBitmapNum
 - kind: OpenParen
   span:
-    start: 1435
-    end: 1436
+    start: 1438
+    end: 1439
   raw: (
 - kind: Identifier
   span:
-    start: 1436
-    end: 1437
+    start: 1439
+    end: 1440
   raw: x
 - kind: Comma
   span:
-    start: 1437
-    end: 1438
+    start: 1440
+    end: 1441
   raw: ","
 - kind:
     String: Double
   span:
-    start: 1439
-    end: 1447
+    start: 1442
+    end: 1450
   raw: bframe
 - kind: CloseParen
   span:
-    start: 1447
-    end: 1448
+    start: 1450
+    end: 1451
   raw: )
 - kind: Semicolon
   span:
-    start: 1448
-    end: 1449
+    start: 1451
+    end: 1452
   raw: ;
 - kind: Newline
   span:
-    start: 1449
-    end: 1450
+    start: 1452
+    end: 1453
   raw: "\n"
 - kind: Identifier
   span:
-    start: 1450
-    end: 1458
-  raw: printNum
+    start: 1453
+    end: 1469
+  raw: printAsBitmapNum
 - kind: OpenParen
   span:
-    start: 1458
-    end: 1459
+    start: 1469
+    end: 1470
   raw: (
 - kind: Identifier
   span:
-    start: 1459
-    end: 1460
+    start: 1470
+    end: 1471
   raw: x
 - kind: Comma
   span:
-    start: 1460
-    end: 1461
+    start: 1471
+    end: 1472
   raw: ","
 - kind:
     String: Double
   span:
-    start: 1462
-    end: 1470
+    start: 1473
+    end: 1481
   raw: bmovie
 - kind: CloseParen
   span:
-    start: 1470
-    end: 1471
+    start: 1481
+    end: 1482
   raw: )
 - kind: Semicolon
   span:
-    start: 1471
-    end: 1472
+    start: 1482
+    end: 1483
   raw: ;
 - kind: Newline
-  span:
-    start: 1472
-    end: 1473
-  raw: "\n"
-- kind: Identifier
-  span:
-    start: 1473
-    end: 1479
-  raw: random
-- kind: OpenParen
-  span:
-    start: 1479
-    end: 1480
-  raw: (
-- kind: Integer
-  span:
-    start: 1480
-    end: 1483
-  raw: "123"
-- kind: CloseParen
   span:
     start: 1483
     end: 1484
-  raw: )
-- kind: Semicolon
+  raw: "\n"
+- kind: Identifier
   span:
     start: 1484
-    end: 1485
-  raw: ;
-- kind: Newline
-  span:
-    start: 1485
-    end: 1486
-  raw: "\n"
-- kind: Identifier
-  span:
-    start: 1486
-    end: 1501
-  raw: removeMovieClip
+    end: 1492
+  raw: printNum
 - kind: OpenParen
   span:
-    start: 1501
-    end: 1502
+    start: 1492
+    end: 1493
   raw: (
-- kind: Identifier
+- kind:
+    String: Double
   span:
-    start: 1502
-    end: 1503
-  raw: x
+    start: 1493
+    end: 1498
+  raw: "123"
+- kind: Comma
+  span:
+    start: 1498
+    end: 1499
+  raw: ","
+- kind:
+    String: Double
+  span:
+    start: 1500
+    end: 1506
+  raw: bmax
 - kind: CloseParen
   span:
-    start: 1503
-    end: 1504
+    start: 1506
+    end: 1507
   raw: )
 - kind: Semicolon
   span:
-    start: 1504
-    end: 1505
+    start: 1507
+    end: 1508
   raw: ;
 - kind: Newline
   span:
-    start: 1505
-    end: 1506
+    start: 1508
+    end: 1509
   raw: "\n"
 - kind: Identifier
   span:
-    start: 1506
-    end: 1515
-  raw: startDrag
-- kind: OpenParen
-  span:
-    start: 1515
-    end: 1516
-  raw: (
-- kind: Identifier
-  span:
-    start: 1516
+    start: 1509
     end: 1517
-  raw: x
-- kind: CloseParen
+  raw: printNum
+- kind: OpenParen
   span:
     start: 1517
     end: 1518
-  raw: )
-- kind: Semicolon
+  raw: (
+- kind: Identifier
   span:
     start: 1518
     end: 1519
-  raw: ;
-- kind: Newline
+  raw: x
+- kind: Comma
   span:
     start: 1519
     end: 1520
-  raw: "\n"
-- kind: Identifier
+  raw: ","
+- kind:
+    String: Double
   span:
-    start: 1520
+    start: 1521
     end: 1529
-  raw: startDrag
-- kind: OpenParen
+  raw: bframe
+- kind: CloseParen
   span:
     start: 1529
     end: 1530
-  raw: (
-- kind: Identifier
+  raw: )
+- kind: Semicolon
   span:
     start: 1530
     end: 1531
-  raw: x
-- kind: Comma
+  raw: ;
+- kind: Newline
   span:
     start: 1531
     end: 1532
-  raw: ","
-- kind: Identifier
-  span:
-    start: 1533
-    end: 1537
-  raw: "true"
-- kind: CloseParen
-  span:
-    start: 1537
-    end: 1538
-  raw: )
-- kind: Semicolon
-  span:
-    start: 1538
-    end: 1539
-  raw: ;
-- kind: Newline
-  span:
-    start: 1539
-    end: 1540
   raw: "\n"
 - kind: Identifier
+  span:
+    start: 1532
+    end: 1540
+  raw: printNum
+- kind: OpenParen
   span:
     start: 1540
-    end: 1549
-  raw: startDrag
-- kind: OpenParen
-  span:
-    start: 1549
-    end: 1550
+    end: 1541
   raw: (
 - kind: Identifier
   span:
-    start: 1550
-    end: 1551
+    start: 1541
+    end: 1542
   raw: x
 - kind: Comma
   span:
-    start: 1551
-    end: 1552
+    start: 1542
+    end: 1543
   raw: ","
-- kind: Identifier
+- kind:
+    String: Double
   span:
-    start: 1553
-    end: 1558
-  raw: "false"
+    start: 1544
+    end: 1552
+  raw: bmovie
 - kind: CloseParen
   span:
-    start: 1558
-    end: 1559
+    start: 1552
+    end: 1553
   raw: )
 - kind: Semicolon
   span:
-    start: 1559
-    end: 1560
+    start: 1553
+    end: 1554
   raw: ;
 - kind: Newline
   span:
-    start: 1560
-    end: 1561
+    start: 1554
+    end: 1555
   raw: "\n"
 - kind: Identifier
   span:
-    start: 1561
-    end: 1570
-  raw: startDrag
+    start: 1555
+    end: 1561
+  raw: random
 - kind: OpenParen
   span:
-    start: 1570
-    end: 1571
+    start: 1561
+    end: 1562
   raw: (
-- kind: Identifier
-  span:
-    start: 1571
-    end: 1572
-  raw: x
-- kind: Comma
-  span:
-    start: 1572
-    end: 1573
-  raw: ","
-- kind: Identifier
-  span:
-    start: 1574
-    end: 1578
-  raw: "true"
-- kind: Comma
-  span:
-    start: 1578
-    end: 1579
-  raw: ","
 - kind: Integer
   span:
-    start: 1580
-    end: 1581
-  raw: "1"
-- kind: Comma
+    start: 1562
+    end: 1565
+  raw: "123"
+- kind: CloseParen
   span:
-    start: 1581
-    end: 1582
-  raw: ","
-- kind: Integer
+    start: 1565
+    end: 1566
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1566
+    end: 1567
+  raw: ;
+- kind: Newline
+  span:
+    start: 1567
+    end: 1568
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1568
+    end: 1583
+  raw: removeMovieClip
+- kind: OpenParen
   span:
     start: 1583
     end: 1584
-  raw: "2"
-- kind: Comma
+  raw: (
+- kind: Identifier
   span:
     start: 1584
     end: 1585
-  raw: ","
-- kind: Integer
-  span:
-    start: 1586
-    end: 1587
-  raw: "3"
-- kind: Comma
-  span:
-    start: 1587
-    end: 1588
-  raw: ","
-- kind: Integer
-  span:
-    start: 1589
-    end: 1590
-  raw: "4"
+  raw: x
 - kind: CloseParen
   span:
-    start: 1590
-    end: 1591
+    start: 1585
+    end: 1586
   raw: )
 - kind: Semicolon
   span:
-    start: 1591
-    end: 1592
+    start: 1586
+    end: 1587
   raw: ;
 - kind: Newline
   span:
-    start: 1592
-    end: 1593
+    start: 1587
+    end: 1588
   raw: "\n"
 - kind: Identifier
   span:
-    start: 1593
+    start: 1588
     end: 1597
-  raw: stop
+  raw: startDrag
 - kind: OpenParen
   span:
     start: 1597
     end: 1598
   raw: (
-- kind: CloseParen
+- kind: Identifier
   span:
     start: 1598
     end: 1599
-  raw: )
-- kind: Semicolon
+  raw: x
+- kind: CloseParen
   span:
     start: 1599
     end: 1600
-  raw: ;
-- kind: Newline
+  raw: )
+- kind: Semicolon
   span:
     start: 1600
     end: 1601
-  raw: "\n"
-- kind: Identifier
+  raw: ;
+- kind: Newline
   span:
     start: 1601
-    end: 1614
-  raw: stopAllSounds
-- kind: OpenParen
-  span:
-    start: 1614
-    end: 1615
-  raw: (
-- kind: CloseParen
-  span:
-    start: 1615
-    end: 1616
-  raw: )
-- kind: Semicolon
-  span:
-    start: 1616
-    end: 1617
-  raw: ;
-- kind: Newline
-  span:
-    start: 1617
-    end: 1618
+    end: 1602
   raw: "\n"
 - kind: Identifier
   span:
-    start: 1618
-    end: 1626
-  raw: stopDrag
+    start: 1602
+    end: 1611
+  raw: startDrag
 - kind: OpenParen
   span:
-    start: 1626
-    end: 1627
-  raw: (
-- kind: CloseParen
-  span:
-    start: 1627
-    end: 1628
-  raw: )
-- kind: Semicolon
-  span:
-    start: 1628
-    end: 1629
-  raw: ;
-- kind: Newline
-  span:
-    start: 1629
-    end: 1630
-  raw: "\n"
-- kind: Identifier
-  span:
-    start: 1630
-    end: 1636
-  raw: String
-- kind: OpenParen
-  span:
-    start: 1636
-    end: 1637
+    start: 1611
+    end: 1612
   raw: (
 - kind: Identifier
   span:
-    start: 1637
-    end: 1638
-  raw: x
-- kind: CloseParen
-  span:
-    start: 1638
-    end: 1639
-  raw: )
-- kind: Semicolon
-  span:
-    start: 1639
-    end: 1640
-  raw: ;
-- kind: Newline
-  span:
-    start: 1640
-    end: 1641
-  raw: "\n"
-- kind: Identifier
-  span:
-    start: 1641
-    end: 1650
-  raw: substring
-- kind: OpenParen
-  span:
-    start: 1650
-    end: 1651
-  raw: (
-- kind: Identifier
-  span:
-    start: 1651
-    end: 1652
+    start: 1612
+    end: 1613
   raw: x
 - kind: Comma
   span:
-    start: 1652
-    end: 1653
+    start: 1613
+    end: 1614
   raw: ","
-- kind: Integer
+- kind: Identifier
   span:
-    start: 1654
-    end: 1655
-  raw: "1"
+    start: 1615
+    end: 1619
+  raw: "true"
 - kind: CloseParen
   span:
-    start: 1655
-    end: 1656
+    start: 1619
+    end: 1620
   raw: )
 - kind: Semicolon
   span:
-    start: 1656
-    end: 1657
+    start: 1620
+    end: 1621
   raw: ;
 - kind: Newline
   span:
-    start: 1657
-    end: 1658
+    start: 1621
+    end: 1622
   raw: "\n"
 - kind: Identifier
   span:
-    start: 1658
-    end: 1667
-  raw: substring
+    start: 1622
+    end: 1631
+  raw: startDrag
 - kind: OpenParen
   span:
-    start: 1667
-    end: 1668
+    start: 1631
+    end: 1632
   raw: (
 - kind: Identifier
   span:
+    start: 1632
+    end: 1633
+  raw: x
+- kind: Comma
+  span:
+    start: 1633
+    end: 1634
+  raw: ","
+- kind: Identifier
+  span:
+    start: 1635
+    end: 1640
+  raw: "false"
+- kind: CloseParen
+  span:
+    start: 1640
+    end: 1641
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1641
+    end: 1642
+  raw: ;
+- kind: Newline
+  span:
+    start: 1642
+    end: 1643
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1643
+    end: 1652
+  raw: startDrag
+- kind: OpenParen
+  span:
+    start: 1652
+    end: 1653
+  raw: (
+- kind: Identifier
+  span:
+    start: 1653
+    end: 1654
+  raw: x
+- kind: Comma
+  span:
+    start: 1654
+    end: 1655
+  raw: ","
+- kind: Identifier
+  span:
+    start: 1656
+    end: 1660
+  raw: "true"
+- kind: Comma
+  span:
+    start: 1660
+    end: 1661
+  raw: ","
+- kind: Integer
+  span:
+    start: 1662
+    end: 1663
+  raw: "1"
+- kind: Comma
+  span:
+    start: 1663
+    end: 1664
+  raw: ","
+- kind: Integer
+  span:
+    start: 1665
+    end: 1666
+  raw: "2"
+- kind: Comma
+  span:
+    start: 1666
+    end: 1667
+  raw: ","
+- kind: Integer
+  span:
     start: 1668
     end: 1669
-  raw: x
+  raw: "3"
 - kind: Comma
   span:
     start: 1669
@@ -2844,205 +2813,390 @@ input_file: samples/as2/special_functions.as
   span:
     start: 1671
     end: 1672
-  raw: "1"
-- kind: Comma
+  raw: "4"
+- kind: CloseParen
   span:
     start: 1672
     end: 1673
-  raw: ","
-- kind: Integer
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1673
+    end: 1674
+  raw: ;
+- kind: Newline
   span:
     start: 1674
     end: 1675
-  raw: "2"
-- kind: CloseParen
+  raw: "\n"
+- kind: Identifier
   span:
     start: 1675
-    end: 1676
-  raw: )
-- kind: Semicolon
-  span:
-    start: 1676
-    end: 1677
-  raw: ;
-- kind: Newline
-  span:
-    start: 1677
-    end: 1678
-  raw: "\n"
-- kind: Identifier
-  span:
-    start: 1678
-    end: 1688
-  raw: targetPath
+    end: 1679
+  raw: stop
 - kind: OpenParen
   span:
-    start: 1688
-    end: 1689
+    start: 1679
+    end: 1680
   raw: (
-- kind: Identifier
-  span:
-    start: 1689
-    end: 1690
-  raw: x
 - kind: CloseParen
   span:
-    start: 1690
-    end: 1691
+    start: 1680
+    end: 1681
   raw: )
 - kind: Semicolon
   span:
-    start: 1691
-    end: 1692
+    start: 1681
+    end: 1682
   raw: ;
 - kind: Newline
   span:
-    start: 1692
-    end: 1693
+    start: 1682
+    end: 1683
   raw: "\n"
 - kind: Identifier
   span:
-    start: 1693
-    end: 1710
-  raw: toggleHighQuality
+    start: 1683
+    end: 1696
+  raw: stopAllSounds
 - kind: OpenParen
+  span:
+    start: 1696
+    end: 1697
+  raw: (
+- kind: CloseParen
+  span:
+    start: 1697
+    end: 1698
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1698
+    end: 1699
+  raw: ;
+- kind: Newline
+  span:
+    start: 1699
+    end: 1700
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1700
+    end: 1708
+  raw: stopDrag
+- kind: OpenParen
+  span:
+    start: 1708
+    end: 1709
+  raw: (
+- kind: CloseParen
+  span:
+    start: 1709
+    end: 1710
+  raw: )
+- kind: Semicolon
   span:
     start: 1710
     end: 1711
-  raw: (
-- kind: CloseParen
-  span:
-    start: 1711
-    end: 1712
-  raw: )
-- kind: Semicolon
-  span:
-    start: 1712
-    end: 1713
   raw: ;
 - kind: Newline
   span:
-    start: 1713
-    end: 1714
+    start: 1711
+    end: 1712
   raw: "\n"
 - kind: Identifier
   span:
-    start: 1714
-    end: 1719
-  raw: trace
+    start: 1712
+    end: 1718
+  raw: String
 - kind: OpenParen
+  span:
+    start: 1718
+    end: 1719
+  raw: (
+- kind: Identifier
   span:
     start: 1719
     end: 1720
+  raw: x
+- kind: CloseParen
+  span:
+    start: 1720
+    end: 1721
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1721
+    end: 1722
+  raw: ;
+- kind: Newline
+  span:
+    start: 1722
+    end: 1723
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1723
+    end: 1732
+  raw: substring
+- kind: OpenParen
+  span:
+    start: 1732
+    end: 1733
+  raw: (
+- kind: Identifier
+  span:
+    start: 1733
+    end: 1734
+  raw: x
+- kind: Comma
+  span:
+    start: 1734
+    end: 1735
+  raw: ","
+- kind: Integer
+  span:
+    start: 1736
+    end: 1737
+  raw: "1"
+- kind: CloseParen
+  span:
+    start: 1737
+    end: 1738
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1738
+    end: 1739
+  raw: ;
+- kind: Newline
+  span:
+    start: 1739
+    end: 1740
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1740
+    end: 1749
+  raw: substring
+- kind: OpenParen
+  span:
+    start: 1749
+    end: 1750
+  raw: (
+- kind: Identifier
+  span:
+    start: 1750
+    end: 1751
+  raw: x
+- kind: Comma
+  span:
+    start: 1751
+    end: 1752
+  raw: ","
+- kind: Integer
+  span:
+    start: 1753
+    end: 1754
+  raw: "1"
+- kind: Comma
+  span:
+    start: 1754
+    end: 1755
+  raw: ","
+- kind: Integer
+  span:
+    start: 1756
+    end: 1757
+  raw: "2"
+- kind: CloseParen
+  span:
+    start: 1757
+    end: 1758
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1758
+    end: 1759
+  raw: ;
+- kind: Newline
+  span:
+    start: 1759
+    end: 1760
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1760
+    end: 1770
+  raw: targetPath
+- kind: OpenParen
+  span:
+    start: 1770
+    end: 1771
+  raw: (
+- kind: Identifier
+  span:
+    start: 1771
+    end: 1772
+  raw: x
+- kind: CloseParen
+  span:
+    start: 1772
+    end: 1773
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1773
+    end: 1774
+  raw: ;
+- kind: Newline
+  span:
+    start: 1774
+    end: 1775
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1775
+    end: 1792
+  raw: toggleHighQuality
+- kind: OpenParen
+  span:
+    start: 1792
+    end: 1793
+  raw: (
+- kind: CloseParen
+  span:
+    start: 1793
+    end: 1794
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1794
+    end: 1795
+  raw: ;
+- kind: Newline
+  span:
+    start: 1795
+    end: 1796
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1796
+    end: 1801
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1801
+    end: 1802
   raw: (
 - kind:
     String: Double
   span:
-    start: 1720
-    end: 1729
+    start: 1802
+    end: 1811
   raw: message
 - kind: CloseParen
   span:
-    start: 1729
-    end: 1730
+    start: 1811
+    end: 1812
   raw: )
 - kind: Semicolon
   span:
-    start: 1730
-    end: 1731
+    start: 1812
+    end: 1813
   raw: ;
 - kind: Newline
   span:
-    start: 1731
-    end: 1732
+    start: 1813
+    end: 1814
   raw: "\n"
 - kind: Identifier
   span:
-    start: 1732
-    end: 1743
+    start: 1814
+    end: 1825
   raw: unloadMovie
 - kind: OpenParen
   span:
-    start: 1743
-    end: 1744
+    start: 1825
+    end: 1826
   raw: (
 - kind: Identifier
   span:
-    start: 1744
-    end: 1745
+    start: 1826
+    end: 1827
   raw: x
 - kind: CloseParen
   span:
-    start: 1745
-    end: 1746
+    start: 1827
+    end: 1828
   raw: )
 - kind: Semicolon
   span:
-    start: 1746
-    end: 1747
+    start: 1828
+    end: 1829
   raw: ;
 - kind: Newline
   span:
-    start: 1747
-    end: 1748
+    start: 1829
+    end: 1830
   raw: "\n"
 - kind: Identifier
   span:
-    start: 1748
-    end: 1762
+    start: 1830
+    end: 1844
   raw: unloadMovieNum
 - kind: OpenParen
   span:
-    start: 1762
-    end: 1763
+    start: 1844
+    end: 1845
   raw: (
 - kind: Identifier
   span:
-    start: 1763
-    end: 1764
+    start: 1845
+    end: 1846
   raw: x
 - kind: CloseParen
   span:
-    start: 1764
-    end: 1765
+    start: 1846
+    end: 1847
   raw: )
 - kind: Semicolon
   span:
-    start: 1765
-    end: 1766
+    start: 1847
+    end: 1848
   raw: ;
 - kind: Newline
   span:
-    start: 1766
-    end: 1767
+    start: 1848
+    end: 1849
   raw: "\n"
 - kind: Identifier
   span:
-    start: 1767
-    end: 1781
+    start: 1849
+    end: 1863
   raw: unloadMovieNum
 - kind: OpenParen
   span:
-    start: 1781
-    end: 1782
+    start: 1863
+    end: 1864
   raw: (
 - kind: Integer
   span:
-    start: 1782
-    end: 1785
+    start: 1864
+    end: 1867
   raw: "123"
 - kind: CloseParen
   span:
-    start: 1785
-    end: 1786
+    start: 1867
+    end: 1868
   raw: )
 - kind: Semicolon
   span:
-    start: 1786
-    end: 1787
+    start: 1868
+    end: 1869
   raw: ;
 - kind: Newline
   span:
-    start: 1787
-    end: 1788
+    start: 1869
+    end: 1870
   raw: "\n"

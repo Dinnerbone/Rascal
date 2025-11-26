@@ -1,4 +1,4 @@
-ConstantPool "x", "foo", "newname", "this", "getNextHighestDepth", "http://ruffle.rs", "window", "/:$version", "url", "target", "_level12", "_level", "abc", "print:#bmax", "print:#bframe", "print:", "_root", "printasbitmap:#bmax", "printasbitmap:#bframe", "printasbitmap:", "_level123", "message", ""
+ConstantPool "x", "foo", "newname", "this", "getNextHighestDepth", "FSCommand:", "FSCommand:x", "http://ruffle.rs", "window", "/:$version", "url", "target", "_level12", "_level", "abc", "print:#bmax", "print:#bframe", "print:", "_root", "printasbitmap:#bmax", "printasbitmap:#bframe", "printasbitmap:", "_level123", "message", ""
 Push 123
 Call
 Push constant0
@@ -23,14 +23,25 @@ Push constant4
 CallMethod
 Add2
 CloneSprite
+Push constant5
+Push constant0
+GetVariable
+StringAdd
+Push true
+GetURL2 false, false, 0
+Push constant6
+Push false
+GetURL2 false, false, 0
+GetUrl "FSCommand:x", ""
+GetUrl "FSCommand:x", "foo"
 GetTime
 Pop
 GetUrl "http://ruffle.rs", ""
 GetUrl "http://ruffle.rs", "window"
-Push constant5
-Push constant6
-GetURL2 false, false, 1
 Push constant7
+Push constant8
+GetURL2 false, false, 1
+Push constant9
 GetVariable
 Pop
 GotoFrame 122
@@ -79,40 +90,40 @@ Push constant0
 GetVariable
 StringLength
 Pop
-Push constant8
-Push constant9
+Push constant10
+Push constant11
 GetURL2 false, true, 0
-Push constant8
-Push constant9
+Push constant10
+Push constant11
 GetURL2 false, true, 1
 GetUrl "url", "_level12"
-Push constant8
 Push constant10
+Push constant12
 GetURL2 false, false, 1
-Push constant8
-Push constant11
+Push constant10
+Push constant13
 Push constant0
 GetVariable
 StringAdd
 GetURL2 false, false, 1
-Push constant8
-Push constant9
+Push constant10
+Push constant11
 GetURL2 true, true, 0
-Push constant8
+Push constant10
 Push constant0
 GetVariable
 GetURL2 true, true, 0
-Push constant8
-Push constant9
-GetURL2 true, true, 1
-Push constant8
 Push constant10
-GetURL2 true, false, 0
-Push constant8
-Push constant10
-GetURL2 true, false, 1
-Push constant8
 Push constant11
+GetURL2 true, true, 1
+Push constant10
+Push constant12
+GetURL2 true, false, 0
+Push constant10
+Push constant12
+GetURL2 true, false, 1
+Push constant10
+Push constant13
 Push constant0
 GetVariable
 StringAdd
@@ -129,12 +140,12 @@ Push constant0
 GetVariable
 MBCharToAscii
 Pop
-Push constant12
+Push constant14
 Push 1
 Push -1
 MBStringExtract
 Pop
-Push constant12
+Push constant14
 Push 1
 Push 2
 MBStringExtract
@@ -152,54 +163,54 @@ Pop
 Play
 PrevFrame
 GotoFrame 0
-Push constant13
-Push constant1
-GetURL2 false, false, 0
-Push constant14
-Push constant3
-GetVariable
-GetURL2 false, false, 0
 Push constant15
-Push constant16
-GetVariable
-GetURL2 false, false, 0
-Push constant17
 Push constant1
 GetURL2 false, false, 0
-Push constant18
+Push constant16
 Push constant3
 GetVariable
 GetURL2 false, false, 0
-Push constant19
-Push constant16
-GetVariable
-GetURL2 false, false, 0
 Push constant17
-Push constant20
-GetURL2 false, false, 0
 Push constant18
-Push constant11
-Push constant0
 GetVariable
-StringAdd
 GetURL2 false, false, 0
 Push constant19
-Push constant11
+Push constant1
+GetURL2 false, false, 0
+Push constant20
+Push constant3
+GetVariable
+GetURL2 false, false, 0
+Push constant21
+Push constant18
+GetVariable
+GetURL2 false, false, 0
+Push constant19
+Push constant22
+GetURL2 false, false, 0
+Push constant20
+Push constant13
 Push constant0
 GetVariable
 StringAdd
 GetURL2 false, false, 0
+Push constant21
 Push constant13
-Push constant20
-GetURL2 false, false, 0
-Push constant14
-Push constant11
 Push constant0
 GetVariable
 StringAdd
 GetURL2 false, false, 0
 Push constant15
-Push constant11
+Push constant22
+GetURL2 false, false, 0
+Push constant16
+Push constant13
+Push constant0
+GetVariable
+StringAdd
+GetURL2 false, false, 0
+Push constant17
+Push constant13
 Push constant0
 GetVariable
 StringAdd
@@ -258,14 +269,14 @@ GetVariable
 TargetPath
 Pop
 ToggleQuality
-Push constant21
+Push constant23
 Trace
-Push constant22
+Push constant24
 Push constant0
 GetVariable
 GetURL2 false, true, 0
-Push constant22
-Push constant11
+Push constant24
+Push constant13
 Push constant0
 GetVariable
 StringAdd

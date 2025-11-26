@@ -11,6 +11,8 @@ Ok:
         - newname
         - this
         - getNextHighestDepth
+        - "FSCommand:"
+        - "FSCommand:x"
         - "http://ruffle.rs"
         - window
         - "/:$version"
@@ -63,6 +65,32 @@ Ok:
     - CallMethod
     - Add2
     - CloneSprite
+    - Push:
+        - Constant: 5
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - StringAdd
+    - Push:
+        - "True"
+    - GetUrl2:
+        load_variables: false
+        load_target: false
+        method: 0
+    - Push:
+        - Constant: 6
+    - Push:
+        - "False"
+    - GetUrl2:
+        load_variables: false
+        load_target: false
+        method: 0
+    - GetUrl:
+        url: "FSCommand:x"
+        target: ""
+    - GetUrl:
+        url: "FSCommand:x"
+        target: foo
     - GetTime
     - Pop
     - GetUrl:
@@ -72,15 +100,15 @@ Ok:
         url: "http://ruffle.rs"
         target: window
     - Push:
-        - Constant: 5
+        - Constant: 7
     - Push:
-        - Constant: 6
+        - Constant: 8
     - GetUrl2:
         load_variables: false
         load_target: false
         method: 1
     - Push:
-        - Constant: 7
+        - Constant: 9
     - GetVariable
     - Pop
     - GotoFrame: 122
@@ -150,17 +178,17 @@ Ok:
     - StringLength
     - Pop
     - Push:
-        - Constant: 8
+        - Constant: 10
     - Push:
-        - Constant: 9
+        - Constant: 11
     - GetUrl2:
         load_variables: false
         load_target: true
         method: 0
     - Push:
-        - Constant: 8
+        - Constant: 10
     - Push:
-        - Constant: 9
+        - Constant: 11
     - GetUrl2:
         load_variables: false
         load_target: true
@@ -169,17 +197,17 @@ Ok:
         url: url
         target: _level12
     - Push:
-        - Constant: 8
-    - Push:
         - Constant: 10
+    - Push:
+        - Constant: 12
     - GetUrl2:
         load_variables: false
         load_target: false
         method: 1
     - Push:
-        - Constant: 8
+        - Constant: 10
     - Push:
-        - Constant: 11
+        - Constant: 13
     - Push:
         - Constant: 0
     - GetVariable
@@ -189,15 +217,15 @@ Ok:
         load_target: false
         method: 1
     - Push:
-        - Constant: 8
+        - Constant: 10
     - Push:
-        - Constant: 9
+        - Constant: 11
     - GetUrl2:
         load_variables: true
         load_target: true
         method: 0
     - Push:
-        - Constant: 8
+        - Constant: 10
     - Push:
         - Constant: 0
     - GetVariable
@@ -206,33 +234,33 @@ Ok:
         load_target: true
         method: 0
     - Push:
-        - Constant: 8
+        - Constant: 10
     - Push:
-        - Constant: 9
+        - Constant: 11
     - GetUrl2:
         load_variables: true
         load_target: true
         method: 1
     - Push:
-        - Constant: 8
-    - Push:
         - Constant: 10
+    - Push:
+        - Constant: 12
     - GetUrl2:
         load_variables: true
         load_target: false
         method: 0
     - Push:
-        - Constant: 8
-    - Push:
         - Constant: 10
+    - Push:
+        - Constant: 12
     - GetUrl2:
         load_variables: true
         load_target: false
         method: 1
     - Push:
-        - Constant: 8
+        - Constant: 10
     - Push:
-        - Constant: 11
+        - Constant: 13
     - Push:
         - Constant: 0
     - GetVariable
@@ -257,7 +285,7 @@ Ok:
     - MBCharToAscii
     - Pop
     - Push:
-        - Constant: 12
+        - Constant: 14
     - Push:
         - Integer: 1
     - Push:
@@ -265,7 +293,7 @@ Ok:
     - MBStringExtract
     - Pop
     - Push:
-        - Constant: 12
+        - Constant: 14
     - Push:
         - Integer: 1
     - Push:
@@ -288,41 +316,15 @@ Ok:
     - PrevFrame
     - GotoFrame: 0
     - Push:
-        - Constant: 13
-    - Push:
-        - Constant: 1
-    - GetUrl2:
-        load_variables: false
-        load_target: false
-        method: 0
-    - Push:
-        - Constant: 14
-    - Push:
-        - Constant: 3
-    - GetVariable
-    - GetUrl2:
-        load_variables: false
-        load_target: false
-        method: 0
-    - Push:
         - Constant: 15
     - Push:
-        - Constant: 16
-    - GetVariable
-    - GetUrl2:
-        load_variables: false
-        load_target: false
-        method: 0
-    - Push:
-        - Constant: 17
-    - Push:
         - Constant: 1
     - GetUrl2:
         load_variables: false
         load_target: false
         method: 0
     - Push:
-        - Constant: 18
+        - Constant: 16
     - Push:
         - Constant: 3
     - GetVariable
@@ -331,30 +333,10 @@ Ok:
         load_target: false
         method: 0
     - Push:
-        - Constant: 19
-    - Push:
-        - Constant: 16
-    - GetVariable
-    - GetUrl2:
-        load_variables: false
-        load_target: false
-        method: 0
-    - Push:
         - Constant: 17
     - Push:
-        - Constant: 20
-    - GetUrl2:
-        load_variables: false
-        load_target: false
-        method: 0
-    - Push:
         - Constant: 18
-    - Push:
-        - Constant: 11
-    - Push:
-        - Constant: 0
     - GetVariable
-    - StringAdd
     - GetUrl2:
         load_variables: false
         load_target: false
@@ -362,27 +344,53 @@ Ok:
     - Push:
         - Constant: 19
     - Push:
-        - Constant: 11
-    - Push:
-        - Constant: 0
-    - GetVariable
-    - StringAdd
+        - Constant: 1
     - GetUrl2:
         load_variables: false
         load_target: false
         method: 0
+    - Push:
+        - Constant: 20
+    - Push:
+        - Constant: 3
+    - GetVariable
+    - GetUrl2:
+        load_variables: false
+        load_target: false
+        method: 0
+    - Push:
+        - Constant: 21
+    - Push:
+        - Constant: 18
+    - GetVariable
+    - GetUrl2:
+        load_variables: false
+        load_target: false
+        method: 0
+    - Push:
+        - Constant: 19
+    - Push:
+        - Constant: 22
+    - GetUrl2:
+        load_variables: false
+        load_target: false
+        method: 0
+    - Push:
+        - Constant: 20
     - Push:
         - Constant: 13
     - Push:
-        - Constant: 20
+        - Constant: 0
+    - GetVariable
+    - StringAdd
     - GetUrl2:
         load_variables: false
         load_target: false
         method: 0
     - Push:
-        - Constant: 14
+        - Constant: 21
     - Push:
-        - Constant: 11
+        - Constant: 13
     - Push:
         - Constant: 0
     - GetVariable
@@ -394,7 +402,27 @@ Ok:
     - Push:
         - Constant: 15
     - Push:
-        - Constant: 11
+        - Constant: 22
+    - GetUrl2:
+        load_variables: false
+        load_target: false
+        method: 0
+    - Push:
+        - Constant: 16
+    - Push:
+        - Constant: 13
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - StringAdd
+    - GetUrl2:
+        load_variables: false
+        load_target: false
+        method: 0
+    - Push:
+        - Constant: 17
+    - Push:
+        - Constant: 13
     - Push:
         - Constant: 0
     - GetVariable
@@ -484,10 +512,10 @@ Ok:
     - Pop
     - ToggleQuality
     - Push:
-        - Constant: 21
+        - Constant: 23
     - Trace
     - Push:
-        - Constant: 22
+        - Constant: 24
     - Push:
         - Constant: 0
     - GetVariable
@@ -496,9 +524,9 @@ Ok:
         load_target: true
         method: 0
     - Push:
-        - Constant: 22
+        - Constant: 24
     - Push:
-        - Constant: 11
+        - Constant: 13
     - Push:
         - Constant: 0
     - GetVariable

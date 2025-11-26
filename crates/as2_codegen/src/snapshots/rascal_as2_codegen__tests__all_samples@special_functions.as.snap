@@ -3,7 +3,7 @@ source: crates/as2_codegen/src/tests.rs
 expression: result
 input_file: samples/as2/special_functions.as
 ---
-ConstantPool "x", "foo", "newname", "this", "getNextHighestDepth", "http://ruffle.rs", "window", "url", "target", "_level12", "_level", "abc", "print:#bmax", "print:#bframe", "print:", "_root", "printasbitmap:#bmax", "printasbitmap:#bframe", "printasbitmap:", "_level123", "message", ""
+ConstantPool "x", "foo", "newname", "this", "getNextHighestDepth", "FSCommand:", "FSCommand:x", "http://ruffle.rs", "window", "url", "target", "_level12", "_level", "abc", "print:#bmax", "print:#bframe", "print:", "_root", "printasbitmap:#bmax", "printasbitmap:#bframe", "printasbitmap:", "_level123", "message", ""
 Push 123
 Call
 Push constant0
@@ -25,11 +25,20 @@ Push constant4
 CallMethod
 Add2
 CloneSprite
+Push constant5, constant0
+GetVariable
+StringAdd
+Push true
+GetUrl2 false, false, 0
+Push constant6, false
+GetUrl2 false, false, 0
+GetUrl "FSCommand:x", ""
+GetUrl "FSCommand:x", "foo"
 GetTime
 Pop
 GetUrl "http://ruffle.rs", ""
 GetUrl "http://ruffle.rs", "window"
-Push constant5, constant6
+Push constant7, constant8
 GetUrl2 false, false, 1
 Push "/:$version"
 GetVariable
@@ -80,29 +89,29 @@ Push constant0
 GetVariable
 StringLength
 Pop
-Push constant7, constant8
+Push constant9, constant10
 GetUrl2 false, true, 0
-Push constant7, constant8
+Push constant9, constant10
 GetUrl2 false, true, 1
 GetUrl "url", "_level12"
-Push constant7, constant9
+Push constant9, constant11
 GetUrl2 false, false, 1
-Push constant7, constant10, constant0
+Push constant9, constant12, constant0
 GetVariable
 StringAdd
 GetUrl2 false, false, 1
-Push constant7, constant8
+Push constant9, constant10
 GetUrl2 true, true, 0
-Push constant7, constant0
+Push constant9, constant0
 GetVariable
 GetUrl2 true, true, 0
-Push constant7, constant8
+Push constant9, constant10
 GetUrl2 true, true, 1
-Push constant7, constant9
+Push constant9, constant11
 GetUrl2 true, false, 0
-Push constant7, constant9
+Push constant9, constant11
 GetUrl2 true, false, 1
-Push constant7, constant10, constant0
+Push constant9, constant12, constant0
 GetVariable
 StringAdd
 GetUrl2 true, false, 1
@@ -118,10 +127,10 @@ Push constant0
 GetVariable
 MBCharToAscii
 Pop
-Push constant11, 1, -1
+Push constant13, 1, -1
 MBStringExtract
 Pop
-Push constant11, 1, 2
+Push constant13, 1, 2
 MBStringExtract
 Pop
 NextFrame
@@ -137,39 +146,39 @@ Pop
 Play
 PrevFrame
 GotoFrame 0
-Push constant12, constant1
+Push constant14, constant1
 GetUrl2 false, false, 0
-Push constant13, constant3
+Push constant15, constant3
 GetVariable
 GetUrl2 false, false, 0
-Push constant14, constant15
+Push constant16, constant17
 GetVariable
 GetUrl2 false, false, 0
-Push constant16, constant1
+Push constant18, constant1
 GetUrl2 false, false, 0
-Push constant17, constant3
+Push constant19, constant3
 GetVariable
 GetUrl2 false, false, 0
-Push constant18, constant15
+Push constant20, constant17
 GetVariable
 GetUrl2 false, false, 0
-Push constant16, constant19
+Push constant18, constant21
 GetUrl2 false, false, 0
-Push constant17, constant10, constant0
-GetVariable
-StringAdd
-GetUrl2 false, false, 0
-Push constant18, constant10, constant0
+Push constant19, constant12, constant0
 GetVariable
 StringAdd
 GetUrl2 false, false, 0
-Push constant12, constant19
-GetUrl2 false, false, 0
-Push constant13, constant10, constant0
+Push constant20, constant12, constant0
 GetVariable
 StringAdd
 GetUrl2 false, false, 0
-Push constant14, constant10, constant0
+Push constant14, constant21
+GetUrl2 false, false, 0
+Push constant15, constant12, constant0
+GetVariable
+StringAdd
+GetUrl2 false, false, 0
+Push constant16, constant12, constant0
 GetVariable
 StringAdd
 GetUrl2 false, false, 0
@@ -213,12 +222,12 @@ GetVariable
 TargetPath
 Pop
 ToggleQuality
-Push constant20
+Push constant22
 Trace
-Push constant21, constant0
+Push constant23, constant0
 GetVariable
 GetUrl2 false, true, 0
-Push constant21, constant10, constant0
+Push constant23, constant12, constant0
 GetVariable
 StringAdd
 GetUrl2 false, true, 0

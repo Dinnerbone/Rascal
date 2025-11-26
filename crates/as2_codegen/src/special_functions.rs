@@ -18,6 +18,7 @@ pub(crate) fn gen_special_call(
         "chr" => fn_chr(context, builder, span, args),
         "duplicatemovieclip" => fn_duplicate_movie_clip(context, builder, span, args),
         "eval" => fn_eval(context, builder, span, args),
+        "fscommand" => fn_fscommand(context, builder, span, args),
         "gettimer" => fn_get_timer(builder, span, args),
         "geturl" => fn_get_url(context, builder, span, args),
         "getversion" => fn_get_version(builder, span, args),
@@ -666,6 +667,57 @@ fn fn_play(builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
     } else {
         builder.error("Wrong number of parameters; play requires exactly 0.", span);
     }
+}
+
+fn fn_fscommand(context: &mut ScriptContext, builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
+    if args.is_empty() || args.len() > 2 {
+        builder.error(
+            "Wrong number of parameters; FSCommand requires between 1 and 2.",
+            span,
+        );
+        return;
+    }
+
+    if let ExprKind::Constant(ConstantKind::String(command)) = &args[0].value {
+        let url = format!("FSCommand:{}", command);
+        if args.len() == 1 {
+            builder.action(Action::GetUrl {
+                url,
+                target: "".to_string(),
+            });
+            return;
+        } else if let ExprKind::Constant(ConstantKind::String(arg)) = &args[1].value {
+            builder.action(Action::GetUrl {
+                url,
+                target: arg.to_string(),
+            });
+            return;
+        }
+    }
+
+    match &args[0].value {
+        ExprKind::Constant(ConstantKind::String(target)) => {
+            let str = format!("FSCommand:{}", target);
+            let value = context.constants.add(&str);
+            builder.push(value);
+        }
+        _ => {
+            let value = context.constants.add("FSCommand:");
+            builder.push(value);
+            gen_expr(context, builder, &args[0], false);
+            builder.action(Action::StringAdd);
+        }
+    }
+    if args.len() == 2 {
+        gen_expr(context, builder, &args[1], false);
+    } else {
+        builder.push("");
+    }
+    builder.action(Action::GetUrl2 {
+        load_target: false,
+        load_variables: false,
+        method: 0,
+    });
 }
 
 fn fn_print(context: &mut ScriptContext, builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
