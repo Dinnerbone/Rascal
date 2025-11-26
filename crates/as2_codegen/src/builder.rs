@@ -1,11 +1,9 @@
-use crate::constants::Constants;
 use crate::error::Error;
 use ruasc_as2_pcode::{Action, Actions, PushValue};
 use ruasc_common::span::Span;
 
 #[derive(Debug)]
-pub(crate) struct CodeBuilder<'a> {
-    constants: &'a mut Constants,
+pub(crate) struct CodeBuilder {
     errors: Vec<Error>,
     actions: Actions,
     next_label: usize,
@@ -14,10 +12,9 @@ pub(crate) struct CodeBuilder<'a> {
     continue_label: Option<String>,
 }
 
-impl<'a> CodeBuilder<'a> {
-    pub fn new(constants: &'a mut Constants) -> Self {
+impl CodeBuilder {
+    pub fn new() -> Self {
         Self {
-            constants,
             errors: Vec::new(),
             actions: Actions::empty(),
             next_label: 0,
@@ -101,10 +98,6 @@ impl<'a> CodeBuilder<'a> {
         std::mem::replace(&mut self.continue_label, label)
     }
 
-    pub fn constants_mut(&mut self) -> &mut Constants {
-        self.constants
-    }
-
     pub fn error(&mut self, message: &'static str, span: Span) {
         self.errors.push(Error { message, span });
     }
@@ -121,8 +114,7 @@ mod tests {
 
     #[test]
     fn test_multiple_pushes() {
-        let mut constants = Constants::empty();
-        let mut builder = CodeBuilder::new(&mut constants);
+        let mut builder = CodeBuilder::new();
         builder.push(PushValue::True);
         builder.push(PushValue::False);
         assert_snapshot!(builder.actions, @"Push true, false");
@@ -130,8 +122,7 @@ mod tests {
 
     #[test]
     fn test_multiple_pushes_split_by_label() {
-        let mut constants = Constants::empty();
-        let mut builder = CodeBuilder::new(&mut constants);
+        let mut builder = CodeBuilder::new();
         builder.push(PushValue::True);
         builder.mark_label("loc0001".to_string());
         builder.push(PushValue::False);

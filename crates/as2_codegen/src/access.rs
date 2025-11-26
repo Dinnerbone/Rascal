@@ -1,4 +1,5 @@
 use crate::builder::CodeBuilder;
+use crate::context::ScriptContext;
 use crate::statement::gen_expr;
 use ruasc_as2::ast::{ConstantKind, Expr, ExprKind};
 use ruasc_as2_pcode::{Action, PushValue};
@@ -11,7 +12,11 @@ pub enum VariableAccess {
 }
 
 impl VariableAccess {
-    pub fn for_identifier(builder: &mut CodeBuilder, name: &str) -> Self {
+    pub fn for_identifier(
+        context: &mut ScriptContext,
+        builder: &mut CodeBuilder,
+        name: &str,
+    ) -> Self {
         match name {
             "true" => {
                 builder.push(true);
@@ -30,21 +35,27 @@ impl VariableAccess {
                 VariableAccess::Direct
             }
             name => {
-                let value = builder.constants_mut().add(name);
+                let value = context.constants.add(name);
                 builder.push(value);
                 VariableAccess::Variable
             }
         }
     }
 
-    pub fn for_constant(builder: &mut CodeBuilder, constant: &ConstantKind) -> Self {
+    pub fn for_constant(
+        context: &mut ScriptContext,
+        builder: &mut CodeBuilder,
+        constant: &ConstantKind,
+    ) -> Self {
         match constant {
             ConstantKind::String(str) => {
-                let value = builder.constants_mut().add(str);
+                let value = context.constants.add(str);
                 builder.push(value);
                 VariableAccess::Direct
             }
-            ConstantKind::Identifier(identifier) => Self::for_identifier(builder, identifier),
+            ConstantKind::Identifier(identifier) => {
+                Self::for_identifier(context, builder, identifier)
+            }
             ConstantKind::Float(value) => {
                 builder.push(*value);
                 VariableAccess::Direct
@@ -56,22 +67,22 @@ impl VariableAccess {
         }
     }
 
-    pub fn for_expr(builder: &mut CodeBuilder, expr: &Expr) -> Self {
+    pub fn for_expr(context: &mut ScriptContext, builder: &mut CodeBuilder, expr: &Expr) -> Self {
         match expr {
             Expr {
                 value: ExprKind::Constant(constant),
                 ..
-            } => Self::for_constant(builder, constant),
+            } => Self::for_constant(context, builder, constant),
             Expr {
                 value: ExprKind::Field(object, field),
                 ..
             } => {
-                gen_expr(builder, object, false);
-                gen_expr(builder, field, false);
+                gen_expr(context, builder, object, false);
+                gen_expr(context, builder, field, false);
                 VariableAccess::Object
             }
             _ => {
-                gen_expr(builder, expr, false);
+                gen_expr(context, builder, expr, false);
                 VariableAccess::Direct
             }
         }
