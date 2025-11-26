@@ -6,7 +6,6 @@ use ruasc_common::span::Span;
 pub(crate) struct CodeBuilder {
     errors: Vec<Error>,
     actions: Actions,
-    next_label: usize,
     stack_size: u32,
     break_label: Option<String>,
     continue_label: Option<String>,
@@ -17,7 +16,6 @@ impl CodeBuilder {
         Self {
             errors: Vec::new(),
             actions: Actions::empty(),
-            next_label: 0,
             stack_size: 0,
             break_label: None,
             continue_label: None,
@@ -43,12 +41,6 @@ impl CodeBuilder {
         // It's fine for stack to go negative - flash does this too. It's weird, though.
         let stack_size = ((self.stack_size as i32) + delta).max(0);
         self.stack_size = stack_size as u32;
-    }
-
-    pub fn create_label(&mut self) -> String {
-        let id = self.next_label;
-        self.next_label += 1;
-        format!("loc{:04x}", id)
     }
 
     pub fn mark_label(&mut self, label: String) {

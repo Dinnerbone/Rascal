@@ -96,8 +96,8 @@ fn gen_for_loop(
     body: &StatementKind,
 ) {
     let start_stack_size = builder.stack_size();
-    let end_label = builder.create_label();
-    let continue_label = builder.create_label();
+    let end_label = context.create_label();
+    let continue_label = context.create_label();
     let old_break = builder.set_break_label(Some(end_label.clone()));
     let old_continue = builder.set_continue_label(Some(continue_label.clone()));
 
@@ -137,7 +137,7 @@ fn gen_for_loop(
             if let Some(initialize) = initialize {
                 gen_statement(context, builder, initialize);
             }
-            let start_label = builder.create_label();
+            let start_label = context.create_label();
             builder.mark_label(start_label.clone());
             if !condition.is_empty() {
                 let last_cond = condition.len() - 1;
@@ -175,12 +175,12 @@ fn gen_if(
     yes: &StatementKind,
     no: &Option<Box<StatementKind>>,
 ) {
-    let end_label = builder.create_label();
+    let end_label = context.create_label();
     gen_expr(context, builder, condition, false);
     builder.action(Action::Not);
 
     if let Some(no) = no {
-        let no_label = builder.create_label();
+        let no_label = context.create_label();
         builder.action(Action::If(no_label.clone()));
         gen_statement(context, builder, yes);
         builder.action(Action::Jump(end_label.clone()));
@@ -201,8 +201,8 @@ fn gen_ternary(
     yes: &Expr,
     no: &Expr,
 ) {
-    let end_label = builder.create_label();
-    let no_label = builder.create_label();
+    let end_label = context.create_label();
+    let no_label = context.create_label();
 
     gen_expr(context, builder, condition, false);
     builder.action(Action::Not);
@@ -469,7 +469,7 @@ fn gen_binary_op(
             builder.action(Action::Not)
         }
         BinaryOperator::LogicalAnd => {
-            let end_label = builder.create_label();
+            let end_label = context.create_label();
             gen_expr(context, builder, left, false);
             builder.action(Action::PushDuplicate);
             builder.action(Action::Not);
@@ -479,7 +479,7 @@ fn gen_binary_op(
             builder.mark_label(end_label);
         }
         BinaryOperator::LogicalOr => {
-            let end_label = builder.create_label();
+            let end_label = context.create_label();
             gen_expr(context, builder, left, false);
             builder.action(Action::PushDuplicate);
             builder.action(Action::If(end_label.clone()));
