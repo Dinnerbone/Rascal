@@ -93,6 +93,7 @@ pub enum Action {
     CallMethod,
     CastOp,
     CharToAscii,
+    CloneSprite,
     ConstantPool(Vec<String>),
     Decrement,
     DefineFunction {
@@ -208,6 +209,7 @@ impl Action {
             Action::Call => -1,
             Action::CastOp => -1,
             Action::CharToAscii => 0,
+            Action::CloneSprite => -3,
             Action::ConstantPool(_) => 0,
             Action::Decrement => -1,
             Action::DefineFunction { .. } => 1,
@@ -294,6 +296,7 @@ impl std::fmt::Display for Action {
             Action::CallMethod => write!(f, "CallMethod"),
             Action::CastOp => write!(f, "CastOp"),
             Action::CharToAscii => write!(f, "CharToAscii"),
+            Action::CloneSprite => write!(f, "CloneSprite"),
             Action::ConstantPool(values) => {
                 write!(f, "ConstantPool ")?;
                 for (i, value) in values.iter().enumerate() {

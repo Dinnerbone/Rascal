@@ -166,7 +166,7 @@ impl<'a> ActionEncoder<'a> {
             Action::CallMethod => self.write_small_action(OpCode::CallMethod),
             Action::CastOp => self.write_small_action(OpCode::CastOp),
             Action::CharToAscii => self.write_small_action(OpCode::CharToAscii),
-            // Action::CloneSprite => self.write_small_action(OpCode::CloneSprite),
+            Action::CloneSprite => self.write_small_action(OpCode::CloneSprite),
             Action::ConstantPool(action) => self.write_constant_pool(action),
             Action::Decrement => self.write_small_action(OpCode::Decrement),
             Action::DefineFunction {

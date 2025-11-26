@@ -2,6 +2,7 @@ call(123);
 chr(x);
 eval(x);
 eval("x");
+duplicateMovieClip(foo, "newname", this.getNextHighestDepth());
 getTimer();
 getURL("http://ruffle.rs");
 getURL("http://ruffle.rs", "window");

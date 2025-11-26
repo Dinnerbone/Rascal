@@ -16,6 +16,7 @@ pub(crate) fn gen_special_call(
     match name.to_ascii_lowercase().as_str() {
         "call" => fn_call(context, builder, span, args),
         "chr" => fn_chr(context, builder, span, args),
+        "duplicatemovieclip" => fn_duplicate_movie_clip(context, builder, span, args),
         "eval" => fn_eval(context, builder, span, args),
         "gettimer" => fn_get_timer(builder, span, args),
         "geturl" => fn_get_url(context, builder, span, args),
@@ -85,6 +86,27 @@ fn fn_chr(context: &mut ScriptContext, builder: &mut CodeBuilder, span: Span, ar
         builder.action(Action::AsciiToChar);
     } else {
         builder.error("Wrong number of parameters; chr requires exactly 1.", span);
+    }
+}
+
+fn fn_duplicate_movie_clip(
+    context: &mut ScriptContext,
+    builder: &mut CodeBuilder,
+    span: Span,
+    args: &[Expr],
+) {
+    if args.len() == 3 {
+        gen_expr(context, builder, &args[0], false);
+        gen_expr(context, builder, &args[1], false);
+        builder.push(16384);
+        gen_expr(context, builder, &args[2], false);
+        builder.action(Action::Add2);
+        builder.action(Action::CloneSprite);
+    } else {
+        builder.error(
+            "Wrong number of parameters; duplicateMovieClip requires exactly 3.",
+            span,
+        );
     }
 }
 

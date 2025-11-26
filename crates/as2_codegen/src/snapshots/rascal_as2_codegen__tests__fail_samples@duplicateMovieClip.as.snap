@@ -1,0 +1,16 @@
+---
+source: crates/as2_codegen/src/tests.rs
+expression: result
+input_file: crates/as2_codegen/fail_samples/duplicateMovieClip.as
+---
+error: Compile error(s)
+  ╭▸ duplicateMovieClip.as:1:1
+  │
+1 │ duplicateMovieClip();
+  │ ━━━━━━━━━━━━━━━━━━━━ Wrong number of parameters; duplicateMovieClip requires exactly 3.
+2 │ duplicateMovieClip(a);
+  │ ━━━━━━━━━━━━━━━━━━━━━ Wrong number of parameters; duplicateMovieClip requires exactly 3.
+3 │ duplicateMovieClip(a, b);
+  │ ━━━━━━━━━━━━━━━━━━━━━━━━ Wrong number of parameters; duplicateMovieClip requires exactly 3.
+4 │ duplicateMovieClip(a, b, c, d);
+  ╰╴━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Wrong number of parameters; duplicateMovieClip requires exactly 3.

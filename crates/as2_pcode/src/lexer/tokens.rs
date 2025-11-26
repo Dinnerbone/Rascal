@@ -100,6 +100,7 @@ pub enum ActionName {
     CallMethod,
     CastOp,
     CharToAscii,
+    CloneSprite,
     ConstantPool,
     Decrement,
     DefineFunction,
