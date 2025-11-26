@@ -1,4 +1,4 @@
-use ruasc_common::span::Spanned;
+use rascal_common::span::Spanned;
 use serde::Serialize;
 use std::borrow::Cow;
 

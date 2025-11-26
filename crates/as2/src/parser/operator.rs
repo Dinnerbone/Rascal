@@ -2,7 +2,7 @@ use crate::ast::{BinaryOperator, Expr, ExprKind, UnaryOperator};
 use crate::lexer::operator::Operator;
 use crate::lexer::tokens::{Token, TokenKind};
 use crate::parser::Tokens;
-use ruasc_common::span::Span;
+use rascal_common::span::Span;
 use serde::Serialize;
 use std::cmp::Ordering;
 use winnow::error::ParserError;

@@ -2,12 +2,12 @@ use crate::access::VariableAccess;
 use crate::builder::CodeBuilder;
 use crate::context::ScriptContext;
 use crate::special_functions::gen_special_call;
-use ruasc_as2::ast::{
+use rascal_as2::ast::{
     Affix, BinaryOperator, ConstantKind, Declaration, Expr, ExprKind, ForCondition, Function,
     StatementKind, TryCatch, UnaryOperator,
 };
-use ruasc_as2_pcode::{Action, CatchTarget, PushValue};
-use ruasc_common::span::Span;
+use rascal_as2_pcode::{Action, CatchTarget, PushValue};
+use rascal_common::span::Span;
 
 pub(crate) fn gen_statements(
     context: &mut ScriptContext,

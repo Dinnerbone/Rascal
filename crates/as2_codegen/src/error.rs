@@ -1,6 +1,6 @@
 use annotate_snippets::renderer::DecorStyle;
 use annotate_snippets::{Annotation, AnnotationKind, Renderer};
-use ruasc_common::span::Span;
+use rascal_common::span::Span;
 
 #[derive(Debug, PartialEq)]
 pub(crate) struct Error {

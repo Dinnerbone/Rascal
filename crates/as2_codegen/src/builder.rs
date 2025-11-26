@@ -1,6 +1,6 @@
 use crate::error::Error;
-use ruasc_as2_pcode::{Action, Actions, PushValue};
-use ruasc_common::span::Span;
+use rascal_as2_pcode::{Action, Actions, PushValue};
+use rascal_common::span::Span;
 
 #[derive(Debug)]
 pub(crate) struct CodeBuilder {

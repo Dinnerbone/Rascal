@@ -1,8 +1,8 @@
 use crate::builder::CodeBuilder;
 use crate::context::ScriptContext;
 use crate::statement::gen_expr;
-use ruasc_as2::ast::{ConstantKind, Expr, ExprKind};
-use ruasc_as2_pcode::{Action, PushValue};
+use rascal_as2::ast::{ConstantKind, Expr, ExprKind};
+use rascal_as2_pcode::{Action, PushValue};
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum VariableAccess {

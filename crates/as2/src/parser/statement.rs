@@ -3,7 +3,7 @@ use crate::lexer::operator::Operator;
 use crate::lexer::tokens::{Keyword, TokenKind};
 use crate::parser::expression::{expr_list, expression, type_name};
 use crate::parser::{Tokens, identifier, skip_newlines};
-use ruasc_common::span::{Span, Spanned};
+use rascal_common::span::{Span, Spanned};
 use winnow::combinator::{alt, cond, cut_err, opt, peek, separated};
 use winnow::error::{ContextError, ErrMode, StrContext};
 use winnow::stream::Stream;

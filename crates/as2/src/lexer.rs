@@ -5,7 +5,7 @@ pub(crate) mod tokens;
 
 use crate::lexer::operator::lex_operator;
 use crate::lexer::tokens::{Keyword, QuoteKind, Token, TokenKind};
-use ruasc_common::span::Span;
+use rascal_common::span::Span;
 use winnow::stream::{AsBStr, AsChar, FindSlice, Location, Stream as _};
 
 pub(crate) type Stream<'i> = winnow::stream::LocatingSlice<&'i str>;

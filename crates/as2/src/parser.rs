@@ -1,5 +1,5 @@
 use crate::lexer::tokens::{QuoteKind, Token, TokenKind};
-use ruasc_common::span::Spanned;
+use rascal_common::span::Spanned;
 use std::borrow::Cow;
 use winnow::combinator::{alt, repeat};
 use winnow::error::{ContextError, ErrMode, ParseError};

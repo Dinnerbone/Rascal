@@ -2,8 +2,8 @@ use crate::builder::CodeBuilder;
 use crate::context::ScriptContext;
 use crate::error::CompileError;
 use crate::statement::gen_statements;
-use ruasc_as2::Document;
-use ruasc_as2_pcode::{Action, Actions};
+use rascal_as2::Document;
+use rascal_as2_pcode::{Action, Actions};
 
 mod access;
 mod builder;

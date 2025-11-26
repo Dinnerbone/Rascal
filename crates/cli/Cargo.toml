@@ -1,5 +1,5 @@
 [package]
-name = "ruasc_cli"
+name = "rascal_cli"
 authors.workspace = true
 edition.workspace = true
 license.workspace = true
@@ -8,10 +8,10 @@ version.workspace = true
 [dependencies]
 anyhow = "1"
 clap = { version = "4", features = ["derive"] }
-ruasc_as2 = { path = "../as2" }
-ruasc_as2_pcode = { path = "../as2_pcode" }
-ruasc_as2_codegen = { path = "../as2_codegen" }
+rascal_as2 = { path = "../as2" }
+rascal_as2_pcode = { path = "../as2_pcode" }
+rascal_as2_codegen = { path = "../as2_codegen" }
 
 [features]
 default = []
-winnow-debug = ["ruasc_as2/winnow-debug"]
+winnow-debug = ["rascal_as2/winnow-debug"]

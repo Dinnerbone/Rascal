@@ -1,5 +1,5 @@
 [package]
-name = "ruasc_as2_pcode"
+name = "rascal_as2_pcode"
 authors.workspace = true
 edition.workspace = true
 license.workspace = true
@@ -12,7 +12,7 @@ annotate-snippets = "0.12.8"
 indexmap = { version = "2.12.0", features = ["serde"] }
 swf = "0.2.2"
 byteorder = "1.5.0"
-ruasc_common = { path = "../common" }
+rascal_common = { path = "../common" }
 
 [dev-dependencies]
 insta = { version = "1.43.2", features = ["yaml", "glob"] }

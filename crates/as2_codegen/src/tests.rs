@@ -1,5 +1,5 @@
 use crate::ast_to_pcode;
-use ruasc_as2::ActionScript;
+use rascal_as2::ActionScript;
 
 #[test]
 fn test_all_samples() {

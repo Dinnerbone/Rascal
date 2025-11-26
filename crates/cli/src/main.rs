@@ -1,13 +1,13 @@
 use anyhow::Result;
 use clap::Parser;
-use ruasc_as2::ActionScript;
-use ruasc_as2_codegen::ast_to_pcode;
-use ruasc_as2_pcode::{PCode, pcode_to_swf};
+use rascal_as2::ActionScript;
+use rascal_as2_codegen::ast_to_pcode;
+use rascal_as2_pcode::{PCode, pcode_to_swf};
 use std::fs;
 use std::path::PathBuf;
 
 #[derive(Parser, Debug)]
-#[command(name = "ruasc", version, author, about)]
+#[command(name = "rascal", version, author, about)]
 struct Opt {
     /// Input source file to compile.
     #[arg(name = "FILE")]

@@ -1,6 +1,6 @@
 use crate::lexer::Stream;
 use crate::lexer::tokens::{Token, TokenKind};
-use ruasc_common::span::Span;
+use rascal_common::span::Span;
 use serde::Serialize;
 use winnow::stream::{AsBStr, Location, Stream as _};
 

@@ -1,6 +1,6 @@
 use crate::lexer::operator::Operator;
 use crate::parser::{Tokens, ignore_newlines};
-use ruasc_common::span::Span;
+use rascal_common::span::Span;
 use serde::Serialize;
 use winnow::Parser;
 use winnow::error::{ContextError, ErrMode};

@@ -4,7 +4,7 @@ use crate::lexer::tokens::{Keyword, TokenKind};
 use crate::parser::operator::{expr_for_binary_operator, expr_for_unary_operator};
 use crate::parser::statement::function;
 use crate::parser::{Tokens, identifier, operator, skip_newlines, string};
-use ruasc_common::span::{Span, Spanned};
+use rascal_common::span::{Span, Spanned};
 use std::borrow::Cow;
 use winnow::combinator::{alt, fail, opt, peek, separated};
 use winnow::error::{ContextError, ErrMode, StrContext};

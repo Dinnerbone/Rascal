@@ -1,10 +1,10 @@
 use crate::builder::CodeBuilder;
 use crate::context::ScriptContext;
 use crate::statement::gen_expr;
-use ruasc_as2::ast::{ConstantKind, Expr, ExprKind};
-use ruasc_as2_pcode::Action;
-use ruasc_as2_pcode::Action::GetUrl;
-use ruasc_common::span::Span;
+use rascal_as2::ast::{ConstantKind, Expr, ExprKind};
+use rascal_as2_pcode::Action;
+use rascal_as2_pcode::Action::GetUrl;
+use rascal_common::span::Span;
 
 pub(crate) fn gen_special_call(
     context: &mut ScriptContext,
