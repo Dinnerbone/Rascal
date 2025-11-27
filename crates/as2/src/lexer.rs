@@ -68,6 +68,7 @@ fn process_token<'a>(peek_byte: u8, stream: &mut Stream<'a>) -> Option<Token<'a>
         b':' => Some(lex_ascii_char(stream, TokenKind::Colon)),
         b'a'..=b'z' | b'A'..=b'Z' | b'_' | b'$' => Some(lex_identifier_or_keyword(stream)),
         b'0'..=b'9' | b'.' => Some(lex_integer_or_float(stream)),
+        b'@' => Some(lex_pcode(stream)),
         _ => {
             let start = stream.current_token_start();
             let raw = stream.next_slice(stream.eof_offset());
@@ -205,6 +206,44 @@ fn lex_crlf<'a>(stream: &mut Stream<'a>) -> Token<'a> {
     let span = Span::new_unchecked(start, end);
 
     Token::new(TokenKind::Newline, span, raw)
+}
+
+fn lex_pcode<'a>(stream: &mut Stream<'a>) -> Token<'a> {
+    if !stream.as_bstr().starts_with(b"@PCode {") {
+        // TODO, lexing should be able to throw errors
+        panic!("Invalid @PCode token! Syntax must be \"@PCode {{\" pcode here \"}}");
+    }
+    stream.next_slice(b"@PCode {".len());
+    let start_checkpoint = stream.checkpoint();
+    let start = stream.current_token_start();
+    let mut depth = 0;
+    loop {
+        if let Some(span) = stream.as_bstr().find_slice(('{', '}')) {
+            let found = stream.as_bstr()[span.start];
+            if found == b'{' {
+                let offset = span.end;
+                stream.next_slice(offset);
+                depth += 1;
+            } else if found == b'}' {
+                let offset = span.end;
+                stream.next_slice(offset);
+                if depth == 0 {
+                    break;
+                }
+                depth -= 1;
+            }
+        } else {
+            stream.finish();
+            break;
+        }
+    }
+    let end = stream.previous_token_end();
+    stream.reset(&start_checkpoint);
+    let raw = stream.next_slice(end - start - 1);
+    stream.next_slice(1);
+
+    let span = Span::new_unchecked(start, end);
+    Token::new(TokenKind::PCode, span, raw)
 }
 
 pub(crate) const ESCAPE: u8 = b'\\';

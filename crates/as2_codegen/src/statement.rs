@@ -6,7 +6,7 @@ use rascal_as2::ast::{
     Affix, BinaryOperator, ConstantKind, Declaration, Expr, ExprKind, ForCondition, Function,
     StatementKind, TryCatch, UnaryOperator,
 };
-use rascal_as2_pcode::{Action, CatchTarget, PushValue};
+use rascal_as2_pcode::{Action, CatchTarget, PCode, PushValue};
 use rascal_common::span::Span;
 
 pub(crate) fn gen_statements(
@@ -99,6 +99,14 @@ pub(crate) fn gen_statement(
         }
         StatementKind::While { condition, body } => {
             gen_while_loop(context, builder, condition, body)
+        }
+        StatementKind::InlinePCode(pcode) => {
+            let source = PCode::new("inline pcode", pcode);
+            // TODO raise this better
+            let actions = source
+                .to_actions()
+                .unwrap_or_else(|e| panic!("{}", e.to_string()));
+            builder.append(actions);
         }
     }
 }

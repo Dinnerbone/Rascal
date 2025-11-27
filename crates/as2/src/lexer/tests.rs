@@ -319,3 +319,45 @@ fn test_float_exponent_no_digits() {
     assert_eq!(kinds(input), vec![TokenKind::Period, TokenKind::Identifier]);
     assert_eq!(raws(input), vec![".".to_string(), "e".to_string()]);
 }
+
+#[test]
+fn test_pcode() {
+    let input = "continue @PCode {xxxxxxx} continue";
+    assert_eq!(
+        kinds(input),
+        vec![
+            TokenKind::Keyword(Keyword::Continue),
+            TokenKind::PCode,
+            TokenKind::Keyword(Keyword::Continue)
+        ]
+    );
+    assert_eq!(
+        raws(input),
+        vec![
+            "continue".to_string(),
+            "xxxxxxx".to_string(),
+            "continue".to_string()
+        ]
+    );
+}
+
+#[test]
+fn test_pcode_nested_braces() {
+    let input = "continue @PCode {{{}}} continue";
+    assert_eq!(
+        kinds(input),
+        vec![
+            TokenKind::Keyword(Keyword::Continue),
+            TokenKind::PCode,
+            TokenKind::Keyword(Keyword::Continue)
+        ]
+    );
+    assert_eq!(
+        raws(input),
+        vec![
+            "continue".to_string(),
+            "{{}}".to_string(),
+            "continue".to_string()
+        ]
+    );
+}

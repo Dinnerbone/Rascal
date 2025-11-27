@@ -1,0 +1,19 @@
+---
+source: crates/as2_codegen/src/tests.rs
+expression: result
+input_file: samples/as2/inline_pcode.as
+---
+ConstantPool "-- start of a very special message --", "-- end special message --", "Hello, world!", "traceThroughPcode"
+DefineFunction "traceThroughPcode", 1, "message" {
+Push constant0
+Trace
+Push "message"
+GetVariable
+Trace
+Push constant1
+Trace
+}
+Pop
+Push constant2, 1, constant3
+CallFunction
+Pop

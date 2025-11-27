@@ -55,6 +55,7 @@ pub(crate) fn statement<'i>(i: &mut Tokens<'i>) -> ModalResult<StatementKind<'i>
             TokenKind::CloseBrace.parse_next(i)?;
             StatementKind::Block(statements)
         }
+        TokenKind::PCode => StatementKind::InlinePCode(token.raw),
         _ => {
             i.reset(&checkpoint);
             expression.parse_next(i).map(StatementKind::Expr)?

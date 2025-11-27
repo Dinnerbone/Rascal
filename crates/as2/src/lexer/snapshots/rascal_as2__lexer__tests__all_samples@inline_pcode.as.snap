@@ -1,0 +1,159 @@
+---
+source: crates/as2/src/lexer/tests.rs
+expression: tokens
+input_file: samples/as2/inline_pcode.as
+---
+- kind:
+    Keyword: Function
+  span:
+    start: 0
+    end: 8
+  raw: function
+- kind: Identifier
+  span:
+    start: 9
+    end: 26
+  raw: traceThroughPcode
+- kind: OpenParen
+  span:
+    start: 26
+    end: 27
+  raw: (
+- kind: Identifier
+  span:
+    start: 27
+    end: 34
+  raw: message
+- kind: CloseParen
+  span:
+    start: 34
+    end: 35
+  raw: )
+- kind: OpenBrace
+  span:
+    start: 36
+    end: 37
+  raw: "{"
+- kind: Newline
+  span:
+    start: 37
+    end: 38
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 42
+    end: 47
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 47
+    end: 48
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 48
+    end: 87
+  raw: "-- start of a very special message --"
+- kind: CloseParen
+  span:
+    start: 87
+    end: 88
+  raw: )
+- kind: Semicolon
+  span:
+    start: 88
+    end: 89
+  raw: ;
+- kind: Newline
+  span:
+    start: 89
+    end: 90
+  raw: "\n"
+- kind: PCode
+  span:
+    start: 102
+    end: 165
+  raw: "\n        Push \"message\"\n        GetVariable\n        Trace\n    "
+- kind: Newline
+  span:
+    start: 165
+    end: 166
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 170
+    end: 175
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 175
+    end: 176
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 176
+    end: 203
+  raw: "-- end special message --"
+- kind: CloseParen
+  span:
+    start: 203
+    end: 204
+  raw: )
+- kind: Semicolon
+  span:
+    start: 204
+    end: 205
+  raw: ;
+- kind: Newline
+  span:
+    start: 205
+    end: 206
+  raw: "\n"
+- kind: CloseBrace
+  span:
+    start: 206
+    end: 207
+  raw: "}"
+- kind: Newline
+  span:
+    start: 207
+    end: 208
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 208
+    end: 209
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 209
+    end: 226
+  raw: traceThroughPcode
+- kind: OpenParen
+  span:
+    start: 226
+    end: 227
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 227
+    end: 242
+  raw: "Hello, world!"
+- kind: CloseParen
+  span:
+    start: 242
+    end: 243
+  raw: )
+- kind: Semicolon
+  span:
+    start: 243
+    end: 244
+  raw: ;
+- kind: Newline
+  span:
+    start: 244
+    end: 245
+  raw: "\n"
