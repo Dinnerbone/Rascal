@@ -6,9 +6,9 @@ input_file: samples/as2/typeof.as
 ConstantPool "num", "obj", "trace", "typeof num: ", "typeof obj: ", "typeof obj.num: ", "typeof obj.num + 1: ", "typeof obj.num == "number" ? ":)" : ":(": ", "number", ":)", ":(", "typeof obj.num + typeof obj.num: ", "typeof obj.trace: ", "typeof obj.trace(): ", "typeof(nonexistent, obj): ", "nonexistent"
 Push constant0, 1
 DefineLocal
-Push constant1, constant2, constant2
+Push constant1, constant0, 1, constant2, constant2
 GetVariable
-Push constant0, 1, 2
+Push 2
 InitObject
 DefineLocal
 Push constant3, constant0

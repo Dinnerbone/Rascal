@@ -503,7 +503,7 @@ fn gen_init_object(
     values: &[(&str, Expr)],
 ) {
     let num_fields = values.len() as i32;
-    for (key, value) in values.iter().rev() {
+    for (key, value) in values.iter() {
         let push_value = context.constants.add(key);
         builder.push(push_value);
         gen_expr(context, builder, value, false);

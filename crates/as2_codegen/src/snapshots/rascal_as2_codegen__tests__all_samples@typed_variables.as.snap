@@ -3,7 +3,7 @@ source: crates/as2_codegen/src/tests.rs
 expression: result
 input_file: samples/as2/typed_variables.as
 ---
-ConstantPool "a", "b", "Test message", "data", "valid", "isValid", "age", "name", "i", "arr", "length", "callback", "num", "str", "Hello", "flag", "obj", "numbers", "Array", "strings", "three", "two", "one", "someValue", "123", "numValue", "strValue", "userData", "scores", "String", "User", "id", "Number"
+ConstantPool "a", "b", "Test message", "data", "name", "age", "valid", "isValid", "i", "arr", "length", "callback", "num", "str", "Hello", "flag", "obj", "numbers", "Array", "strings", "three", "two", "one", "someValue", "123", "numValue", "strValue", "userData", "id", "Number", "String", "User", "scores"
 DefineFunction "add", 2, "a", "b" {
 Push constant0
 GetVariable
@@ -25,11 +25,11 @@ Trace
 }
 Pop
 DefineFunction "complexFunc", 3, "name", "age", "isValid" {
-Push constant4, constant5
+Push constant4, constant4
 GetVariable
-Push constant6, constant6
+Push constant5, constant5
 GetVariable
-Push constant7, constant7
+Push constant6, constant7
 GetVariable
 Push 3
 InitObject
@@ -91,14 +91,14 @@ DefineLocal
 Push constant26, 42
 ToString
 DefineLocal
-Push constant27, constant28, constant18, 3, 2, 1, 3
+Push constant27, constant28, constant29, 1
+StoreRegister 0
+SetVariable
+Push register0, constant4, constant30, constant31
+StoreRegister 0
+SetVariable
+Push register0, constant32, constant18, 3, 2, 1, 3
 InitArray
-StoreRegister 0
-SetVariable
-Push register0, constant7, constant29, constant30
-StoreRegister 0
-SetVariable
-Push register0, constant31, constant32, 1
 StoreRegister 0
 SetVariable
 Push register0, 3
