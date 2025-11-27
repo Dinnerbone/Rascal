@@ -97,6 +97,9 @@ pub(crate) fn gen_statement(
         StatementKind::TellTarget { target, body } => {
             gen_tell_target(context, builder, target, body)
         }
+        StatementKind::While { condition, body } => {
+            gen_while_loop(context, builder, condition, body)
+        }
     }
 }
 
@@ -164,6 +167,29 @@ fn gen_wait_for_frame(
     }
 
     builder.append(actions);
+}
+
+fn gen_while_loop(
+    context: &mut ScriptContext,
+    builder: &mut CodeBuilder,
+    condition: &Expr,
+    body: &StatementKind,
+) {
+    let start = context.create_label();
+    let end = context.create_label();
+    let old_break = builder.set_break_label(Some(end.clone()));
+    let old_continue = builder.set_continue_label(Some(start.clone()));
+
+    builder.mark_label(start.clone());
+    gen_expr(context, builder, condition, false);
+    builder.action(Action::Not);
+    builder.action(Action::If(end.clone()));
+    gen_statement(context, builder, body);
+
+    builder.action(Action::Jump(start));
+    builder.mark_label(end);
+    builder.set_break_label(old_break);
+    builder.set_continue_label(old_continue);
 }
 
 fn gen_for_loop(

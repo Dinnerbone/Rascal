@@ -299,6 +299,7 @@ fn lex_identifier_or_keyword<'a>(stream: &mut Stream<'a>) -> Token<'a> {
         "or" => TokenKind::Keyword(Keyword::Or),
         "not" => TokenKind::Keyword(Keyword::Not),
         // "add" => TokenKind::Keyword(Keyword::Add),
+        "while" => TokenKind::Keyword(Keyword::While),
         _ => TokenKind::Identifier,
     };
 

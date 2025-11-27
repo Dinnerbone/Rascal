@@ -134,6 +134,10 @@ pub enum StatementKind<'a> {
         condition: ForCondition<'a>,
         body: Box<StatementKind<'a>>,
     },
+    While {
+        condition: Expr<'a>,
+        body: Box<StatementKind<'a>>,
+    },
     If {
         condition: Expr<'a>,
         yes: Box<StatementKind<'a>>,

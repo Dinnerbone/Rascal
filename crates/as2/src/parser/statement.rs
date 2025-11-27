@@ -49,6 +49,7 @@ pub(crate) fn statement<'i>(i: &mut Tokens<'i>) -> ModalResult<StatementKind<'i>
         TokenKind::Keyword(Keyword::Try) => try_catch_finally.parse_next(i)?,
         TokenKind::Keyword(Keyword::IfFrameLoaded) => if_frame_loaded.parse_next(i)?,
         TokenKind::Keyword(Keyword::TellTarget) => tell_target.parse_next(i)?,
+        TokenKind::Keyword(Keyword::While) => while_loop.parse_next(i)?,
         TokenKind::OpenBrace => {
             let statements = statement_list(true).parse_next(i)?;
             TokenKind::CloseBrace.parse_next(i)?;
@@ -197,6 +198,18 @@ pub(crate) fn tell_target<'i>(i: &mut Tokens<'i>) -> ModalResult<StatementKind<'
 
     Ok(StatementKind::TellTarget {
         target,
+        body: Box::new(body),
+    })
+}
+
+pub(crate) fn while_loop<'i>(i: &mut Tokens<'i>) -> ModalResult<StatementKind<'i>> {
+    TokenKind::OpenParen.parse_next(i)?;
+    let condition = expression.parse_next(i)?;
+    TokenKind::CloseParen.parse_next(i)?;
+    let body = statement.parse_next(i)?;
+
+    Ok(StatementKind::While {
+        condition,
         body: Box::new(body),
     })
 }
@@ -702,6 +715,24 @@ mod stmt_tests {
             Ok(StatementKind::TellTarget {
                 target: s("target"),
                 body: Box::new(StatementKind::Block(vec![]))
+            })
+        )
+    }
+
+    #[test]
+    fn test_while() {
+        let tokens = build_tokens(&[
+            (TokenKind::Keyword(Keyword::While), "while"),
+            (TokenKind::OpenParen, "("),
+            (TokenKind::Identifier, "a"),
+            (TokenKind::CloseParen, ")"),
+            (TokenKind::Keyword(Keyword::Continue), "continue"),
+        ]);
+        assert_eq!(
+            parse_stmt(&tokens),
+            Ok(StatementKind::While {
+                condition: id("a"),
+                body: Box::new(StatementKind::Continue)
             })
         )
     }

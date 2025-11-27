@@ -125,4 +125,5 @@ pub enum Keyword {
     Or,
     Not,
     Add,
+    While,
 }

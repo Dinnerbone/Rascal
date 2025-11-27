@@ -1,0 +1,62 @@
+ConstantPool "x", "--", "end"
+Push constant0
+Push 0
+DefineLocal
+loc0020:Push constant0
+GetVariable
+Push 5
+Less2
+Not
+If loc0056
+Push constant0
+GetVariable
+Trace
+Push constant0
+Push constant0
+GetVariable
+Push 1
+Add2
+SetVariable
+Jump loc0020
+loc0056:Push constant0
+GetVariable
+Push 0
+Less2
+Not
+Not
+If loc0082
+Push constant0
+Push constant0
+GetVariable
+Decrement
+SetVariable
+Jump loc0056
+loc0082:Push constant1
+Trace
+loc0088:Push false
+If loc00df
+Push constant0
+GetVariable
+Push constant0
+Push constant0
+GetVariable
+Increment
+SetVariable
+Push 2
+Equals2
+Not
+If loc00b9
+Jump loc0088
+loc00b9:Push constant0
+GetVariable
+Push 5
+Equals2
+Not
+If loc00d3
+Jump loc00df
+loc00d3:Push constant0
+GetVariable
+Trace
+Jump loc0088
+loc00df:Push constant2
+Trace

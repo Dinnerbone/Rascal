@@ -1,0 +1,235 @@
+---
+source: crates/as2/src/parser/tests.rs
+expression: parsed
+input_file: samples/as2/while.as
+---
+Ok:
+  statements:
+    - Declare:
+        - name: x
+          value:
+            span:
+              start: 8
+              end: 9
+            value:
+              Constant:
+                Integer: 0
+    - While:
+        condition:
+          span:
+            start: 18
+            end: 23
+          value:
+            BinaryOperator:
+              - LessThan
+              - span:
+                  start: 18
+                  end: 19
+                value:
+                  Constant:
+                    Identifier: x
+              - span:
+                  start: 22
+                  end: 23
+                value:
+                  Constant:
+                    Integer: 5
+        body:
+          Block:
+            - Expr:
+                span:
+                  start: 28
+                  end: 36
+                value:
+                  Call:
+                    name:
+                      span:
+                        start: 28
+                        end: 33
+                      value:
+                        Constant:
+                          Identifier: trace
+                    args:
+                      - span:
+                          start: 34
+                          end: 35
+                        value:
+                          Constant:
+                            Identifier: x
+            - Expr:
+                span:
+                  start: 39
+                  end: 45
+                value:
+                  BinaryOperator:
+                    - AddAssign
+                    - span:
+                        start: 39
+                        end: 40
+                      value:
+                        Constant:
+                          Identifier: x
+                    - span:
+                        start: 44
+                        end: 45
+                      value:
+                        Constant:
+                          Integer: 1
+    - While:
+        condition:
+          span:
+            start: 57
+            end: 63
+          value:
+            BinaryOperator:
+              - GreaterThanEqual
+              - span:
+                  start: 57
+                  end: 58
+                value:
+                  Constant:
+                    Identifier: x
+              - span:
+                  start: 62
+                  end: 63
+                value:
+                  Constant:
+                    Integer: 0
+        body:
+          Expr:
+            span:
+              start: 66
+              end: 68
+            value:
+              UnaryOperator:
+                - Decrement: Postfix
+                - span:
+                    start: 65
+                    end: 66
+                  value:
+                    Constant:
+                      Identifier: x
+    - Expr:
+        span:
+          start: 71
+          end: 82
+        value:
+          Call:
+            name:
+              span:
+                start: 71
+                end: 76
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 77
+                  end: 81
+                value:
+                  Constant:
+                    String: "--"
+    - While:
+        condition:
+          span:
+            start: 92
+            end: 96
+          value:
+            Constant:
+              Identifier: "true"
+        body:
+          Block:
+            - If:
+                condition:
+                  span:
+                    start: 106
+                    end: 113
+                  value:
+                    BinaryOperator:
+                      - Equal
+                      - span:
+                          start: 106
+                          end: 108
+                        value:
+                          UnaryOperator:
+                            - Increment: Postfix
+                            - span:
+                                start: 105
+                                end: 106
+                              value:
+                                Constant:
+                                  Identifier: x
+                      - span:
+                          start: 112
+                          end: 113
+                        value:
+                          Constant:
+                            Integer: 2
+                "yes":
+                  Block:
+                    - Continue
+                "no": ~
+            - If:
+                condition:
+                  span:
+                    start: 137
+                    end: 143
+                  value:
+                    BinaryOperator:
+                      - Equal
+                      - span:
+                          start: 137
+                          end: 138
+                        value:
+                          Constant:
+                            Identifier: x
+                      - span:
+                          start: 142
+                          end: 143
+                        value:
+                          Constant:
+                            Integer: 5
+                "yes":
+                  Block:
+                    - Break
+                "no": ~
+            - Expr:
+                span:
+                  start: 160
+                  end: 168
+                value:
+                  Call:
+                    name:
+                      span:
+                        start: 160
+                        end: 165
+                      value:
+                        Constant:
+                          Identifier: trace
+                    args:
+                      - span:
+                          start: 166
+                          end: 167
+                        value:
+                          Constant:
+                            Identifier: x
+    - Expr:
+        span:
+          start: 172
+          end: 184
+        value:
+          Call:
+            name:
+              span:
+                start: 172
+                end: 177
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 178
+                  end: 183
+                value:
+                  Constant:
+                    String: end

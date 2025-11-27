@@ -1,0 +1,102 @@
+---
+source: crates/as2_pcode/src/parser/tests.rs
+expression: parsed
+input_file: samples/as2_pcode/while.pcode
+---
+Ok:
+  actions:
+    - ConstantPool:
+        - x
+        - "--"
+        - end
+    - Push:
+        - Constant: 0
+    - Push:
+        - Integer: 0
+    - DefineLocal
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Integer: 5
+    - Less2
+    - Not
+    - If: loc0056
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Trace
+    - Push:
+        - Constant: 0
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Integer: 1
+    - Add2
+    - SetVariable
+    - Jump: loc0020
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Integer: 0
+    - Less2
+    - Not
+    - Not
+    - If: loc0082
+    - Push:
+        - Constant: 0
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Decrement
+    - SetVariable
+    - Jump: loc0056
+    - Push:
+        - Constant: 1
+    - Trace
+    - Push:
+        - "False"
+    - If: loc00df
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 0
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Increment
+    - SetVariable
+    - Push:
+        - Integer: 2
+    - Equals2
+    - Not
+    - If: loc00b9
+    - Jump: loc0088
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Integer: 5
+    - Equals2
+    - Not
+    - If: loc00d3
+    - Jump: loc00df
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Trace
+    - Jump: loc0088
+    - Push:
+        - Constant: 2
+    - Trace
+  label_positions:
+    loc0020: 4
+    loc0056: 20
+    loc0082: 33
+    loc0088: 35
+    loc00b9: 49
+    loc00d3: 56
+    loc00df: 60
