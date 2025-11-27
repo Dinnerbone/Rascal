@@ -1066,7 +1066,7 @@ fn fn_unload_movie_num(
             gen_expr(context, builder, &args[0], false);
             builder.action(Action::StringAdd);
             builder.action(Action::GetUrl2 {
-                load_target: true,
+                load_target: false,
                 load_variables: false,
                 method: 0,
             });
