@@ -230,7 +230,7 @@ impl<'a> ActionEncoder<'a> {
             Action::RemoveSprite => self.write_small_action(OpCode::RemoveSprite),
             Action::Return => self.write_small_action(OpCode::Return),
             Action::SetMember => self.write_small_action(OpCode::SetMember),
-            // Action::SetProperty => self.write_small_action(OpCode::SetProperty),
+            Action::SetProperty => self.write_small_action(OpCode::SetProperty),
             Action::SetTarget(action) => self.write_set_target(action),
             Action::SetTarget2 => self.write_small_action(OpCode::SetTarget2),
             Action::SetVariable => self.write_small_action(OpCode::SetVariable),

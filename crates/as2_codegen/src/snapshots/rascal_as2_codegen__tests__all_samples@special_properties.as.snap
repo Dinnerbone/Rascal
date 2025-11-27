@@ -1,0 +1,591 @@
+---
+source: crates/as2_codegen/src/tests.rs
+expression: result
+input_file: samples/as2/special_properties.as
+---
+ConstantPool "-- _x --", "", "foo", "_x", "this", "foobar", "-- _y --", "_y", "-- _xscale --", "_xscale", "-- _yscale --", "_yscale", "-- _currentframe --", "_currentframe", "-- _totalframes --", "_totalframes", "-- _alpha --", "_alpha", "-- _visible --", "_visible", "-- _width --", "_width", "-- _height --", "_height", "-- _rotation --", "_rotation", "-- _target --", "_target", "value", "-- _framesloaded --", "_framesloaded", "-- _name --", "_name", "-- _droptarget --", "_droptarget", "-- _url --", "_url", "-- _highquality --", "_highquality", "-- _focusrect --", "_focusrect", "-- _soundbuftime --", "_soundbuftime", "-- _quality --", "_quality", "-- _xmouse --", "_xmouse", "-- _ymouse --", "_ymouse", "-- misc --"
+Push constant0
+Trace
+Push constant1, 0
+GetProperty
+Trace
+Push constant2
+GetVariable
+Push constant3
+GetMember
+Trace
+Push constant2
+GetVariable
+Push constant3
+GetMember
+Trace
+Push constant4
+GetVariable
+Push 0
+GetProperty
+Trace
+Push constant5
+GetVariable
+Push 0, 123
+SetProperty
+Push constant1, 0, 123
+SetProperty
+Push constant6
+Trace
+Push constant1, 1
+GetProperty
+Trace
+Push constant2
+GetVariable
+Push constant7
+GetMember
+Trace
+Push constant2
+GetVariable
+Push constant7
+GetMember
+Trace
+Push constant4
+GetVariable
+Push 1
+GetProperty
+Trace
+Push constant5
+GetVariable
+Push 1, 123
+SetProperty
+Push constant1, 1, 123
+SetProperty
+Push constant8
+Trace
+Push constant1, 2
+GetProperty
+Trace
+Push constant2
+GetVariable
+Push constant9
+GetMember
+Trace
+Push constant2
+GetVariable
+Push constant9
+GetMember
+Trace
+Push constant4
+GetVariable
+Push 2
+GetProperty
+Trace
+Push constant5
+GetVariable
+Push 2, 123
+SetProperty
+Push constant1, 2, 123
+SetProperty
+Push constant10
+Trace
+Push constant1, 3
+GetProperty
+Trace
+Push constant2
+GetVariable
+Push constant11
+GetMember
+Trace
+Push constant2
+GetVariable
+Push constant11
+GetMember
+Trace
+Push constant4
+GetVariable
+Push 3
+GetProperty
+Trace
+Push constant5
+GetVariable
+Push 3, 123
+SetProperty
+Push constant1, 3, 123
+SetProperty
+Push constant12
+Trace
+Push constant1, 4
+GetProperty
+Trace
+Push constant2
+GetVariable
+Push constant13
+GetMember
+Trace
+Push constant2
+GetVariable
+Push constant13
+GetMember
+Trace
+Push constant4
+GetVariable
+Push 4
+GetProperty
+Trace
+Push constant5
+GetVariable
+Push 4, 123
+SetProperty
+Push constant1, 4, 123
+SetProperty
+Push constant14
+Trace
+Push constant1, 5
+GetProperty
+Trace
+Push constant2
+GetVariable
+Push constant15
+GetMember
+Trace
+Push constant2
+GetVariable
+Push constant15
+GetMember
+Trace
+Push constant4
+GetVariable
+Push 5
+GetProperty
+Trace
+Push constant5
+GetVariable
+Push 5, 123
+SetProperty
+Push constant1, 5, 123
+SetProperty
+Push constant16
+Trace
+Push constant1, 6
+GetProperty
+Trace
+Push constant2
+GetVariable
+Push constant17
+GetMember
+Trace
+Push constant2
+GetVariable
+Push constant17
+GetMember
+Trace
+Push constant4
+GetVariable
+Push 6
+GetProperty
+Trace
+Push constant5
+GetVariable
+Push 6, 123
+SetProperty
+Push constant1, 6, 123
+SetProperty
+Push constant18
+Trace
+Push constant1, 7
+GetProperty
+Trace
+Push constant2
+GetVariable
+Push constant19
+GetMember
+Trace
+Push constant2
+GetVariable
+Push constant19
+GetMember
+Trace
+Push constant4
+GetVariable
+Push 7
+GetProperty
+Trace
+Push constant5
+GetVariable
+Push 7, false
+SetProperty
+Push constant1, 7, false
+SetProperty
+Push constant20
+Trace
+Push constant1, 8
+GetProperty
+Trace
+Push constant2
+GetVariable
+Push constant21
+GetMember
+Trace
+Push constant2
+GetVariable
+Push constant21
+GetMember
+Trace
+Push constant4
+GetVariable
+Push 8
+GetProperty
+Trace
+Push constant5
+GetVariable
+Push 8, 123
+SetProperty
+Push constant1, 8, 123
+SetProperty
+Push constant22
+Trace
+Push constant1, 9
+GetProperty
+Trace
+Push constant2
+GetVariable
+Push constant23
+GetMember
+Trace
+Push constant2
+GetVariable
+Push constant23
+GetMember
+Trace
+Push constant4
+GetVariable
+Push 9
+GetProperty
+Trace
+Push constant5
+GetVariable
+Push 9, 123
+SetProperty
+Push constant1, 9, 123
+SetProperty
+Push constant24
+Trace
+Push constant1, 10
+GetProperty
+Trace
+Push constant2
+GetVariable
+Push constant25
+GetMember
+Trace
+Push constant2
+GetVariable
+Push constant25
+GetMember
+Trace
+Push constant4
+GetVariable
+Push 10
+GetProperty
+Trace
+Push constant5
+GetVariable
+Push 10, 123
+SetProperty
+Push constant1, 10, 123
+SetProperty
+Push constant26
+Trace
+Push constant1, 11
+GetProperty
+Trace
+Push constant2
+GetVariable
+Push constant27
+GetMember
+Trace
+Push constant2
+GetVariable
+Push constant27
+GetMember
+Trace
+Push constant4
+GetVariable
+Push 11
+GetProperty
+Trace
+Push constant5
+GetVariable
+Push 11, constant28
+SetProperty
+Push constant1, 11, constant28
+SetProperty
+Push constant29
+Trace
+Push constant1, 12
+GetProperty
+Trace
+Push constant2
+GetVariable
+Push constant30
+GetMember
+Trace
+Push constant2
+GetVariable
+Push constant30
+GetMember
+Trace
+Push constant4
+GetVariable
+Push 12
+GetProperty
+Trace
+Push constant5
+GetVariable
+Push 12, 123
+SetProperty
+Push constant1, 12, 123
+SetProperty
+Push constant31
+Trace
+Push constant1, 13
+GetProperty
+Trace
+Push constant2
+GetVariable
+Push constant32
+GetMember
+Trace
+Push constant2
+GetVariable
+Push constant32
+GetMember
+Trace
+Push constant4
+GetVariable
+Push 13
+GetProperty
+Trace
+Push constant5
+GetVariable
+Push 13, constant28
+SetProperty
+Push constant1, 13, constant28
+SetProperty
+Push constant33
+Trace
+Push constant1, 14
+GetProperty
+Trace
+Push constant2
+GetVariable
+Push constant34
+GetMember
+Trace
+Push constant2
+GetVariable
+Push constant34
+GetMember
+Trace
+Push constant4
+GetVariable
+Push 14
+GetProperty
+Trace
+Push constant5
+GetVariable
+Push 14, constant28
+SetProperty
+Push constant1, 14, constant28
+SetProperty
+Push constant35
+Trace
+Push constant1, 15
+GetProperty
+Trace
+Push constant2
+GetVariable
+Push constant36
+GetMember
+Trace
+Push constant2
+GetVariable
+Push constant36
+GetMember
+Trace
+Push constant4
+GetVariable
+Push 15
+GetProperty
+Trace
+Push constant5
+GetVariable
+Push 15, constant28
+SetProperty
+Push constant1, 15, constant28
+SetProperty
+Push constant37
+Trace
+Push constant1, 16
+GetProperty
+Trace
+Push constant2
+GetVariable
+Push constant38
+GetMember
+Trace
+Push constant2
+GetVariable
+Push constant38
+GetMember
+Trace
+Push constant4
+GetVariable
+Push 16
+GetProperty
+Trace
+Push constant5
+GetVariable
+Push 16, 123
+SetProperty
+Push constant1, 16, 123
+SetProperty
+Push constant39
+Trace
+Push constant1, 17
+GetProperty
+Trace
+Push constant2
+GetVariable
+Push constant40
+GetMember
+Trace
+Push constant2
+GetVariable
+Push constant40
+GetMember
+Trace
+Push constant4
+GetVariable
+Push 17
+GetProperty
+Trace
+Push constant5
+GetVariable
+Push 17, 123
+SetProperty
+Push constant1, 17, true
+SetProperty
+Push constant41
+Trace
+Push constant1, 18
+GetProperty
+Trace
+Push constant2
+GetVariable
+Push constant42
+GetMember
+Trace
+Push constant2
+GetVariable
+Push constant42
+GetMember
+Trace
+Push constant4
+GetVariable
+Push 18
+GetProperty
+Trace
+Push constant5
+GetVariable
+Push 18, 123
+SetProperty
+Push constant1, 18, 123
+SetProperty
+Push constant43
+Trace
+Push constant1, 19
+GetProperty
+Trace
+Push constant2
+GetVariable
+Push constant44
+GetMember
+Trace
+Push constant2
+GetVariable
+Push constant44
+GetMember
+Trace
+Push constant4
+GetVariable
+Push 19
+GetProperty
+Trace
+Push constant5
+GetVariable
+Push 19, constant28
+SetProperty
+Push constant1, 19, constant28
+SetProperty
+Push constant45
+Trace
+Push constant1, 20
+GetProperty
+Trace
+Push constant2
+GetVariable
+Push constant46
+GetMember
+Trace
+Push constant2
+GetVariable
+Push constant46
+GetMember
+Trace
+Push constant4
+GetVariable
+Push 20
+GetProperty
+Trace
+Push constant5
+GetVariable
+Push 20, 123
+SetProperty
+Push constant1, 20, 123
+SetProperty
+Push constant47
+Trace
+Push constant1, 21
+GetProperty
+Trace
+Push constant2
+GetVariable
+Push constant48
+GetMember
+Trace
+Push constant2
+GetVariable
+Push constant48
+GetMember
+Trace
+Push constant4
+GetVariable
+Push 21
+GetProperty
+Trace
+Push constant5
+GetVariable
+Push 21, 123
+SetProperty
+Push constant1, 21, 123
+SetProperty
+Push constant49
+Trace
+Push constant1, 19
+GetProperty
+Trace
+Push constant1, 6, constant1, 6
+GetProperty
+Push 1.0
+Add2
+StoreRegister 0
+SetProperty
+Push register0
+Trace

@@ -1,5 +1,6 @@
 use crate::builder::CodeBuilder;
 use crate::context::ScriptContext;
+use crate::special_properties::get_special_property;
 use crate::statement::gen_expr;
 use rascal_as2::ast::{ConstantKind, Expr, ExprKind};
 use rascal_as2_pcode::Action;
@@ -19,6 +20,7 @@ pub(crate) fn gen_special_call(
         "duplicatemovieclip" => fn_duplicate_movie_clip(context, builder, span, args),
         "eval" => fn_eval(context, builder, span, args),
         "fscommand" => fn_fscommand(context, builder, span, args),
+        "getproperty" => fn_get_property(context, builder, span, args),
         "gettimer" => fn_get_timer(builder, span, args),
         "geturl" => fn_get_url(context, builder, span, args),
         "getversion" => fn_get_version(builder, span, args),
@@ -46,6 +48,7 @@ pub(crate) fn gen_special_call(
         "printasbitmapnum" => fn_print_as_bitmap_num(context, builder, span, args),
         "printnum" => fn_print_num(context, builder, span, args),
         "removemovieclip" => fn_remove_movie_clio(context, builder, span, args),
+        "setproperty" => fn_set_property(context, builder, span, args),
         "startdrag" => fn_start_drag(context, builder, span, args),
         "stop" => fn_stop(builder, span, args),
         "stopallsounds" => fn_stop_all_sounds(builder, span, args),
@@ -1028,6 +1031,61 @@ fn fn_unload_movie(
             span,
         );
     }
+}
+
+fn fn_get_property(
+    context: &mut ScriptContext,
+    builder: &mut CodeBuilder,
+    span: Span,
+    args: &[Expr],
+) {
+    if args.len() != 2 {
+        builder.error(
+            "Wrong number of parameters; getProperty requires exactly 2.",
+            span,
+        );
+        return;
+    }
+    let ExprKind::Constant(ConstantKind::Identifier(name)) = &args[1].value else {
+        builder.error("Property name expected in GetProperty.", args[1].span);
+        return;
+    };
+    let Some(property) = get_special_property(name) else {
+        builder.error("Property name expected in GetProperty.", args[1].span);
+        return;
+    };
+    gen_expr(context, builder, &args[0], false);
+    builder.push(property);
+    builder.action(Action::GetProperty);
+}
+
+fn fn_set_property(
+    context: &mut ScriptContext,
+    builder: &mut CodeBuilder,
+    span: Span,
+    args: &[Expr],
+) {
+    if args.len() != 3 {
+        builder.error(
+            "Wrong number of parameters; setProperty requires exactly 3.",
+            span,
+        );
+        return;
+    }
+    let ExprKind::Constant(ConstantKind::Identifier(name)) = &args[1].value else {
+        // [NA] I've been trying to match error messages to Flash, but... they say GetProperty here and that's just dumb. <_<
+        builder.error("Property name expected in SetProperty.", args[1].span);
+        return;
+    };
+    let Some(property) = get_special_property(name) else {
+        // [NA] I've been trying to match error messages to Flash, but... they say GetProperty here and that's just dumb. <_<
+        builder.error("Property name expected in SetProperty.", args[1].span);
+        return;
+    };
+    gen_expr(context, builder, &args[0], false);
+    builder.push(property);
+    gen_expr(context, builder, &args[2], false);
+    builder.action(Action::SetProperty);
 }
 
 fn fn_unload_movie_num(

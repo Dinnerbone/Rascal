@@ -1,0 +1,1075 @@
+---
+source: crates/as2_pcode/src/parser/tests.rs
+expression: parsed
+input_file: samples/as2_pcode/special_properties.pcode
+---
+Ok:
+  actions:
+    - ConstantPool:
+        - "-- _x --"
+        - ""
+        - foo
+        - _x
+        - this
+        - foobar
+        - "-- _y --"
+        - _y
+        - "-- _xscale --"
+        - _xscale
+        - "-- _yscale --"
+        - _yscale
+        - "-- _currentframe --"
+        - _currentframe
+        - "-- _totalframes --"
+        - _totalframes
+        - "-- _alpha --"
+        - _alpha
+        - "-- _visible --"
+        - _visible
+        - "-- _width --"
+        - _width
+        - "-- _height --"
+        - _height
+        - "-- _rotation --"
+        - _rotation
+        - "-- _target --"
+        - _target
+        - value
+        - "-- _framesloaded --"
+        - _framesloaded
+        - "-- _name --"
+        - _name
+        - "-- _droptarget --"
+        - _droptarget
+        - "-- _url --"
+        - _url
+        - "-- _highquality --"
+        - _highquality
+        - "-- _focusrect --"
+        - _focusrect
+        - "-- _soundbuftime --"
+        - _soundbuftime
+        - "-- _quality --"
+        - _quality
+        - "-- _xmouse --"
+        - _xmouse
+        - "-- _ymouse --"
+        - _ymouse
+        - "-- misc --"
+    - Push:
+        - Constant: 0
+    - Trace
+    - Push:
+        - Constant: 1
+    - Push:
+        - Integer: 0
+    - GetProperty
+    - Trace
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Push:
+        - Constant: 3
+    - GetMember
+    - Trace
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Push:
+        - Constant: 3
+    - GetMember
+    - Trace
+    - Push:
+        - Constant: 4
+    - GetVariable
+    - Push:
+        - Integer: 0
+    - GetProperty
+    - Trace
+    - Push:
+        - Constant: 5
+    - GetVariable
+    - Push:
+        - Integer: 0
+    - Push:
+        - Integer: 123
+    - SetProperty
+    - Push:
+        - Constant: 1
+    - Push:
+        - Integer: 0
+    - Push:
+        - Integer: 123
+    - SetProperty
+    - Push:
+        - Constant: 6
+    - Trace
+    - Push:
+        - Constant: 1
+    - Push:
+        - Integer: 1
+    - GetProperty
+    - Trace
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Push:
+        - Constant: 7
+    - GetMember
+    - Trace
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Push:
+        - Constant: 7
+    - GetMember
+    - Trace
+    - Push:
+        - Constant: 4
+    - GetVariable
+    - Push:
+        - Integer: 1
+    - GetProperty
+    - Trace
+    - Push:
+        - Constant: 5
+    - GetVariable
+    - Push:
+        - Integer: 1
+    - Push:
+        - Integer: 123
+    - SetProperty
+    - Push:
+        - Constant: 1
+    - Push:
+        - Integer: 1
+    - Push:
+        - Integer: 123
+    - SetProperty
+    - Push:
+        - Constant: 8
+    - Trace
+    - Push:
+        - Constant: 1
+    - Push:
+        - Integer: 2
+    - GetProperty
+    - Trace
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Push:
+        - Constant: 9
+    - GetMember
+    - Trace
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Push:
+        - Constant: 9
+    - GetMember
+    - Trace
+    - Push:
+        - Constant: 4
+    - GetVariable
+    - Push:
+        - Integer: 2
+    - GetProperty
+    - Trace
+    - Push:
+        - Constant: 5
+    - GetVariable
+    - Push:
+        - Integer: 2
+    - Push:
+        - Integer: 123
+    - SetProperty
+    - Push:
+        - Constant: 1
+    - Push:
+        - Integer: 2
+    - Push:
+        - Integer: 123
+    - SetProperty
+    - Push:
+        - Constant: 10
+    - Trace
+    - Push:
+        - Constant: 1
+    - Push:
+        - Integer: 3
+    - GetProperty
+    - Trace
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Push:
+        - Constant: 11
+    - GetMember
+    - Trace
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Push:
+        - Constant: 11
+    - GetMember
+    - Trace
+    - Push:
+        - Constant: 4
+    - GetVariable
+    - Push:
+        - Integer: 3
+    - GetProperty
+    - Trace
+    - Push:
+        - Constant: 5
+    - GetVariable
+    - Push:
+        - Integer: 3
+    - Push:
+        - Integer: 123
+    - SetProperty
+    - Push:
+        - Constant: 1
+    - Push:
+        - Integer: 3
+    - Push:
+        - Integer: 123
+    - SetProperty
+    - Push:
+        - Constant: 12
+    - Trace
+    - Push:
+        - Constant: 1
+    - Push:
+        - Integer: 4
+    - GetProperty
+    - Trace
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Push:
+        - Constant: 13
+    - GetMember
+    - Trace
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Push:
+        - Constant: 13
+    - GetMember
+    - Trace
+    - Push:
+        - Constant: 4
+    - GetVariable
+    - Push:
+        - Integer: 4
+    - GetProperty
+    - Trace
+    - Push:
+        - Constant: 5
+    - GetVariable
+    - Push:
+        - Integer: 4
+    - Push:
+        - Integer: 123
+    - SetProperty
+    - Push:
+        - Constant: 1
+    - Push:
+        - Integer: 4
+    - Push:
+        - Integer: 123
+    - SetProperty
+    - Push:
+        - Constant: 14
+    - Trace
+    - Push:
+        - Constant: 1
+    - Push:
+        - Integer: 5
+    - GetProperty
+    - Trace
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Push:
+        - Constant: 15
+    - GetMember
+    - Trace
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Push:
+        - Constant: 15
+    - GetMember
+    - Trace
+    - Push:
+        - Constant: 4
+    - GetVariable
+    - Push:
+        - Integer: 5
+    - GetProperty
+    - Trace
+    - Push:
+        - Constant: 5
+    - GetVariable
+    - Push:
+        - Integer: 5
+    - Push:
+        - Integer: 123
+    - SetProperty
+    - Push:
+        - Constant: 1
+    - Push:
+        - Integer: 5
+    - Push:
+        - Integer: 123
+    - SetProperty
+    - Push:
+        - Constant: 16
+    - Trace
+    - Push:
+        - Constant: 1
+    - Push:
+        - Integer: 6
+    - GetProperty
+    - Trace
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Push:
+        - Constant: 17
+    - GetMember
+    - Trace
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Push:
+        - Constant: 17
+    - GetMember
+    - Trace
+    - Push:
+        - Constant: 4
+    - GetVariable
+    - Push:
+        - Integer: 6
+    - GetProperty
+    - Trace
+    - Push:
+        - Constant: 5
+    - GetVariable
+    - Push:
+        - Integer: 6
+    - Push:
+        - Integer: 123
+    - SetProperty
+    - Push:
+        - Constant: 1
+    - Push:
+        - Integer: 6
+    - Push:
+        - Integer: 123
+    - SetProperty
+    - Push:
+        - Constant: 18
+    - Trace
+    - Push:
+        - Constant: 1
+    - Push:
+        - Integer: 7
+    - GetProperty
+    - Trace
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Push:
+        - Constant: 19
+    - GetMember
+    - Trace
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Push:
+        - Constant: 19
+    - GetMember
+    - Trace
+    - Push:
+        - Constant: 4
+    - GetVariable
+    - Push:
+        - Integer: 7
+    - GetProperty
+    - Trace
+    - Push:
+        - Constant: 5
+    - GetVariable
+    - Push:
+        - Integer: 7
+    - Push:
+        - "False"
+    - SetProperty
+    - Push:
+        - Constant: 1
+    - Push:
+        - Integer: 7
+    - Push:
+        - "False"
+    - SetProperty
+    - Push:
+        - Constant: 20
+    - Trace
+    - Push:
+        - Constant: 1
+    - Push:
+        - Integer: 8
+    - GetProperty
+    - Trace
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Push:
+        - Constant: 21
+    - GetMember
+    - Trace
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Push:
+        - Constant: 21
+    - GetMember
+    - Trace
+    - Push:
+        - Constant: 4
+    - GetVariable
+    - Push:
+        - Integer: 8
+    - GetProperty
+    - Trace
+    - Push:
+        - Constant: 5
+    - GetVariable
+    - Push:
+        - Integer: 8
+    - Push:
+        - Integer: 123
+    - SetProperty
+    - Push:
+        - Constant: 1
+    - Push:
+        - Integer: 8
+    - Push:
+        - Integer: 123
+    - SetProperty
+    - Push:
+        - Constant: 22
+    - Trace
+    - Push:
+        - Constant: 1
+    - Push:
+        - Integer: 9
+    - GetProperty
+    - Trace
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Push:
+        - Constant: 23
+    - GetMember
+    - Trace
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Push:
+        - Constant: 23
+    - GetMember
+    - Trace
+    - Push:
+        - Constant: 4
+    - GetVariable
+    - Push:
+        - Integer: 9
+    - GetProperty
+    - Trace
+    - Push:
+        - Constant: 5
+    - GetVariable
+    - Push:
+        - Integer: 9
+    - Push:
+        - Integer: 123
+    - SetProperty
+    - Push:
+        - Constant: 1
+    - Push:
+        - Integer: 9
+    - Push:
+        - Integer: 123
+    - SetProperty
+    - Push:
+        - Constant: 24
+    - Trace
+    - Push:
+        - Constant: 1
+    - Push:
+        - Integer: 10
+    - GetProperty
+    - Trace
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Push:
+        - Constant: 25
+    - GetMember
+    - Trace
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Push:
+        - Constant: 25
+    - GetMember
+    - Trace
+    - Push:
+        - Constant: 4
+    - GetVariable
+    - Push:
+        - Integer: 10
+    - GetProperty
+    - Trace
+    - Push:
+        - Constant: 5
+    - GetVariable
+    - Push:
+        - Integer: 10
+    - Push:
+        - Integer: 123
+    - SetProperty
+    - Push:
+        - Constant: 1
+    - Push:
+        - Integer: 10
+    - Push:
+        - Integer: 123
+    - SetProperty
+    - Push:
+        - Constant: 26
+    - Trace
+    - Push:
+        - Constant: 1
+    - Push:
+        - Integer: 11
+    - GetProperty
+    - Trace
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Push:
+        - Constant: 27
+    - GetMember
+    - Trace
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Push:
+        - Constant: 27
+    - GetMember
+    - Trace
+    - Push:
+        - Constant: 4
+    - GetVariable
+    - Push:
+        - Integer: 11
+    - GetProperty
+    - Trace
+    - Push:
+        - Constant: 5
+    - GetVariable
+    - Push:
+        - Integer: 11
+    - Push:
+        - Constant: 28
+    - SetProperty
+    - Push:
+        - Constant: 1
+    - Push:
+        - Integer: 11
+    - Push:
+        - Constant: 28
+    - SetProperty
+    - Push:
+        - Constant: 29
+    - Trace
+    - Push:
+        - Constant: 1
+    - Push:
+        - Integer: 12
+    - GetProperty
+    - Trace
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Push:
+        - Constant: 30
+    - GetMember
+    - Trace
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Push:
+        - Constant: 30
+    - GetMember
+    - Trace
+    - Push:
+        - Constant: 4
+    - GetVariable
+    - Push:
+        - Integer: 12
+    - GetProperty
+    - Trace
+    - Push:
+        - Constant: 5
+    - GetVariable
+    - Push:
+        - Integer: 12
+    - Push:
+        - Integer: 123
+    - SetProperty
+    - Push:
+        - Constant: 1
+    - Push:
+        - Integer: 12
+    - Push:
+        - Integer: 123
+    - SetProperty
+    - Push:
+        - Constant: 31
+    - Trace
+    - Push:
+        - Constant: 1
+    - Push:
+        - Integer: 13
+    - GetProperty
+    - Trace
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Push:
+        - Constant: 32
+    - GetMember
+    - Trace
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Push:
+        - Constant: 32
+    - GetMember
+    - Trace
+    - Push:
+        - Constant: 4
+    - GetVariable
+    - Push:
+        - Integer: 13
+    - GetProperty
+    - Trace
+    - Push:
+        - Constant: 5
+    - GetVariable
+    - Push:
+        - Integer: 13
+    - Push:
+        - Constant: 28
+    - SetProperty
+    - Push:
+        - Constant: 1
+    - Push:
+        - Integer: 13
+    - Push:
+        - Constant: 28
+    - SetProperty
+    - Push:
+        - Constant: 33
+    - Trace
+    - Push:
+        - Constant: 1
+    - Push:
+        - Integer: 14
+    - GetProperty
+    - Trace
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Push:
+        - Constant: 34
+    - GetMember
+    - Trace
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Push:
+        - Constant: 34
+    - GetMember
+    - Trace
+    - Push:
+        - Constant: 4
+    - GetVariable
+    - Push:
+        - Integer: 14
+    - GetProperty
+    - Trace
+    - Push:
+        - Constant: 5
+    - GetVariable
+    - Push:
+        - Integer: 14
+    - Push:
+        - Constant: 28
+    - SetProperty
+    - Push:
+        - Constant: 1
+    - Push:
+        - Integer: 14
+    - Push:
+        - Constant: 28
+    - SetProperty
+    - Push:
+        - Constant: 35
+    - Trace
+    - Push:
+        - Constant: 1
+    - Push:
+        - Integer: 15
+    - GetProperty
+    - Trace
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Push:
+        - Constant: 36
+    - GetMember
+    - Trace
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Push:
+        - Constant: 36
+    - GetMember
+    - Trace
+    - Push:
+        - Constant: 4
+    - GetVariable
+    - Push:
+        - Integer: 15
+    - GetProperty
+    - Trace
+    - Push:
+        - Constant: 5
+    - GetVariable
+    - Push:
+        - Integer: 15
+    - Push:
+        - Constant: 28
+    - SetProperty
+    - Push:
+        - Constant: 1
+    - Push:
+        - Integer: 15
+    - Push:
+        - Constant: 28
+    - SetProperty
+    - Push:
+        - Constant: 37
+    - Trace
+    - Push:
+        - Constant: 1
+    - Push:
+        - Integer: 16
+    - GetProperty
+    - Trace
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Push:
+        - Constant: 38
+    - GetMember
+    - Trace
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Push:
+        - Constant: 38
+    - GetMember
+    - Trace
+    - Push:
+        - Constant: 4
+    - GetVariable
+    - Push:
+        - Integer: 16
+    - GetProperty
+    - Trace
+    - Push:
+        - Constant: 5
+    - GetVariable
+    - Push:
+        - Integer: 16
+    - Push:
+        - Integer: 123
+    - SetProperty
+    - Push:
+        - Constant: 1
+    - Push:
+        - Integer: 16
+    - Push:
+        - Integer: 123
+    - SetProperty
+    - Push:
+        - Constant: 39
+    - Trace
+    - Push:
+        - Constant: 1
+    - Push:
+        - Integer: 17
+    - GetProperty
+    - Trace
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Push:
+        - Constant: 40
+    - GetMember
+    - Trace
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Push:
+        - Constant: 40
+    - GetMember
+    - Trace
+    - Push:
+        - Constant: 4
+    - GetVariable
+    - Push:
+        - Integer: 17
+    - GetProperty
+    - Trace
+    - Push:
+        - Constant: 5
+    - GetVariable
+    - Push:
+        - Integer: 17
+    - Push:
+        - Integer: 123
+    - SetProperty
+    - Push:
+        - Constant: 1
+    - Push:
+        - Integer: 17
+    - Push:
+        - "True"
+    - SetProperty
+    - Push:
+        - Constant: 41
+    - Trace
+    - Push:
+        - Constant: 1
+    - Push:
+        - Integer: 18
+    - GetProperty
+    - Trace
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Push:
+        - Constant: 42
+    - GetMember
+    - Trace
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Push:
+        - Constant: 42
+    - GetMember
+    - Trace
+    - Push:
+        - Constant: 4
+    - GetVariable
+    - Push:
+        - Integer: 18
+    - GetProperty
+    - Trace
+    - Push:
+        - Constant: 5
+    - GetVariable
+    - Push:
+        - Integer: 18
+    - Push:
+        - Integer: 123
+    - SetProperty
+    - Push:
+        - Constant: 1
+    - Push:
+        - Integer: 18
+    - Push:
+        - Integer: 123
+    - SetProperty
+    - Push:
+        - Constant: 43
+    - Trace
+    - Push:
+        - Constant: 1
+    - Push:
+        - Integer: 19
+    - GetProperty
+    - Trace
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Push:
+        - Constant: 44
+    - GetMember
+    - Trace
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Push:
+        - Constant: 44
+    - GetMember
+    - Trace
+    - Push:
+        - Constant: 4
+    - GetVariable
+    - Push:
+        - Integer: 19
+    - GetProperty
+    - Trace
+    - Push:
+        - Constant: 5
+    - GetVariable
+    - Push:
+        - Integer: 19
+    - Push:
+        - Constant: 28
+    - SetProperty
+    - Push:
+        - Constant: 1
+    - Push:
+        - Integer: 19
+    - Push:
+        - Constant: 28
+    - SetProperty
+    - Push:
+        - Constant: 45
+    - Trace
+    - Push:
+        - Constant: 1
+    - Push:
+        - Integer: 20
+    - GetProperty
+    - Trace
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Push:
+        - Constant: 46
+    - GetMember
+    - Trace
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Push:
+        - Constant: 46
+    - GetMember
+    - Trace
+    - Push:
+        - Constant: 4
+    - GetVariable
+    - Push:
+        - Integer: 20
+    - GetProperty
+    - Trace
+    - Push:
+        - Constant: 5
+    - GetVariable
+    - Push:
+        - Integer: 20
+    - Push:
+        - Integer: 123
+    - SetProperty
+    - Push:
+        - Constant: 1
+    - Push:
+        - Integer: 20
+    - Push:
+        - Integer: 123
+    - SetProperty
+    - Push:
+        - Constant: 47
+    - Trace
+    - Push:
+        - Constant: 1
+    - Push:
+        - Integer: 21
+    - GetProperty
+    - Trace
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Push:
+        - Constant: 48
+    - GetMember
+    - Trace
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Push:
+        - Constant: 48
+    - GetMember
+    - Trace
+    - Push:
+        - Constant: 4
+    - GetVariable
+    - Push:
+        - Integer: 21
+    - GetProperty
+    - Trace
+    - Push:
+        - Constant: 5
+    - GetVariable
+    - Push:
+        - Integer: 21
+    - Push:
+        - Integer: 123
+    - SetProperty
+    - Push:
+        - Constant: 1
+    - Push:
+        - Integer: 21
+    - Push:
+        - Integer: 123
+    - SetProperty
+    - Push:
+        - Constant: 49
+    - Trace
+    - Push:
+        - Constant: 1
+    - Push:
+        - Integer: 19
+    - GetProperty
+    - Trace
+    - Push:
+        - Constant: 1
+    - Push:
+        - Integer: 6
+    - Push:
+        - Constant: 1
+    - Push:
+        - Integer: 6
+    - GetProperty
+    - Push:
+        - Integer: 1
+    - Add2
+    - StoreRegister: 0
+    - SetProperty
+    - Push:
+        - Register: 0
+    - Trace
+  label_positions: {}

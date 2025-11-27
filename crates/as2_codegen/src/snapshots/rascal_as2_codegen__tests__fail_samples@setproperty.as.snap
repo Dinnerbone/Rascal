@@ -1,0 +1,20 @@
+---
+source: crates/as2_codegen/src/tests.rs
+expression: result
+input_file: crates/as2_codegen/fail_samples/setproperty.as
+---
+error: Compile error(s)
+  ╭▸ setproperty.as:1:1
+  │
+1 │ setProperty();
+  │ ━━━━━━━━━━━━━ Wrong number of parameters; setProperty requires exactly 3.
+2 │ setProperty(x);
+  │ ━━━━━━━━━━━━━━ Wrong number of parameters; setProperty requires exactly 3.
+3 │ setProperty(x, y);
+  │ ━━━━━━━━━━━━━━━━━ Wrong number of parameters; setProperty requires exactly 3.
+4 │ setProperty(x, y, z);
+  │                ━ Property name expected in SetProperty.
+5 │ setProperty(x, "_alpha", z);
+  │                ━━━━━━━━ Property name expected in SetProperty.
+6 │ setProperty(x, "_alpha", z, w);
+  ╰╴━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Wrong number of parameters; setProperty requires exactly 3.

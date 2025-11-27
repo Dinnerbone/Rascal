@@ -1,5 +1,6 @@
 use crate::builder::CodeBuilder;
 use crate::context::ScriptContext;
+use crate::special_properties::get_special_property;
 use crate::statement::gen_expr;
 use rascal_as2::ast::{ConstantKind, Expr, ExprKind};
 use rascal_as2_pcode::{Action, PushValue};
@@ -9,6 +10,7 @@ pub enum VariableAccess {
     Variable,
     Object,
     Direct,
+    SpecialProperty,
 }
 
 impl VariableAccess {
@@ -17,6 +19,11 @@ impl VariableAccess {
         builder: &mut CodeBuilder,
         name: &str,
     ) -> Self {
+        if let Some(property) = get_special_property(name) {
+            builder.push(context.constants.add(""));
+            builder.push(property);
+            return VariableAccess::SpecialProperty;
+        }
         match name {
             "true" => {
                 builder.push(true);
@@ -97,6 +104,9 @@ impl VariableAccess {
                 builder.action(Action::GetMember);
             }
             VariableAccess::Direct => {}
+            VariableAccess::SpecialProperty => {
+                builder.action(Action::GetProperty);
+            }
         }
     }
 
@@ -110,6 +120,9 @@ impl VariableAccess {
             }
             VariableAccess::Direct => {
                 unimplemented!("Cannot set a direct value")
+            }
+            VariableAccess::SpecialProperty => {
+                builder.action(Action::SetProperty);
             }
         }
     }
@@ -129,6 +142,11 @@ impl VariableAccess {
             VariableAccess::Direct => {
                 unimplemented!("Cannot get-and-set a direct value")
             }
+            VariableAccess::SpecialProperty => {
+                builder.action(Action::StoreRegister(0));
+                builder.action(Action::SetProperty);
+                builder.push(PushValue::Register(0));
+            }
         }
     }
 
@@ -142,6 +160,10 @@ impl VariableAccess {
             }
             VariableAccess::Direct => {
                 builder.action(Action::Delete2);
+            }
+            VariableAccess::SpecialProperty => {
+                // This actually generated invalid pcode in Flash... Not sure I care to replicate that.
+                unimplemented!("Cannot get-and-set a special property")
             }
         }
     }
@@ -157,6 +179,10 @@ impl VariableAccess {
             VariableAccess::Direct => {
                 builder.action_with_stack_delta(Action::NewMethod, -num_args - 2);
             }
+            VariableAccess::SpecialProperty => {
+                // This actually generated invalid pcode in Flash... Not sure I care to replicate that.
+                unimplemented!("Cannot call new on a special property")
+            }
         }
     }
 
@@ -170,6 +196,10 @@ impl VariableAccess {
             }
             VariableAccess::Direct => {
                 builder.action_with_stack_delta(Action::CallFunction, -num_args - 1);
+            }
+            VariableAccess::SpecialProperty => {
+                // This actually generated invalid pcode in Flash... Not sure I care to replicate that.
+                unimplemented!("Cannot call a special property")
             }
         }
     }

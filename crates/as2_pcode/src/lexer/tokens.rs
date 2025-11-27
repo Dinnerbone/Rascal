@@ -148,6 +148,7 @@ pub enum ActionName {
     RemoveSprite,
     Return,
     SetMember,
+    SetProperty,
     SetTarget,
     SetTarget2,
     SetVariable,
