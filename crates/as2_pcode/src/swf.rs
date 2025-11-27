@@ -299,11 +299,11 @@ impl<'a> ActionEncoder<'a> {
     fn write_goto_frame_2(&mut self, scene_bias: u16, play: bool) -> Result<()> {
         if scene_bias != 0 {
             self.write_action_header(OpCode::GotoFrame2, 3)?;
-            self.write_u8(if play { 0b11 } else { 0b01 })?;
+            self.write_u8(if play { 0b11 } else { 0b10 })?;
             self.write_u16(scene_bias)?;
         } else {
             self.write_action_header(OpCode::GotoFrame2, 1)?;
-            self.write_u8(if play { 0b10 } else { 0b00 })?;
+            self.write_u8(if play { 0b01 } else { 0b00 })?;
         }
         Ok(())
     }
