@@ -1,3 +1,4 @@
+use crate::lexer::tokens::Keyword;
 use rascal_common::span::Spanned;
 use serde::Serialize;
 use std::borrow::Cow;
@@ -78,6 +79,33 @@ pub enum BinaryOperator {
     LogicalAnd,
     LogicalOr,
     InstanceOf,
+    StringEqual,
+    StringGreaterThan,
+    StringGreaterThanEqual,
+    StringLessThan,
+    StringLessThanEqual,
+    StringNotEqual,
+    BooleanAnd,
+    BooleanOr,
+    StringAdd,
+}
+
+impl BinaryOperator {
+    pub(crate) fn for_keyword(keyword: Keyword) -> Option<BinaryOperator> {
+        match keyword {
+            Keyword::InstanceOf => Some(BinaryOperator::InstanceOf),
+            Keyword::Eq => Some(BinaryOperator::StringEqual),
+            Keyword::Gt => Some(BinaryOperator::StringGreaterThan),
+            Keyword::Ge => Some(BinaryOperator::StringGreaterThanEqual),
+            Keyword::Lt => Some(BinaryOperator::StringLessThan),
+            Keyword::Le => Some(BinaryOperator::StringLessThanEqual),
+            Keyword::Ne => Some(BinaryOperator::StringNotEqual),
+            Keyword::And => Some(BinaryOperator::BooleanAnd),
+            Keyword::Or => Some(BinaryOperator::BooleanOr),
+            Keyword::Add => Some(BinaryOperator::StringAdd),
+            _ => None,
+        }
+    }
 }
 
 #[derive(Debug, Clone, Copy, Serialize, PartialEq)]

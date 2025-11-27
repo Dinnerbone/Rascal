@@ -289,6 +289,16 @@ fn lex_identifier_or_keyword<'a>(stream: &mut Stream<'a>) -> Token<'a> {
         "finally" => TokenKind::Keyword(Keyword::Finally),
         "ifFrameLoaded" => TokenKind::Keyword(Keyword::IfFrameLoaded),
         "tellTarget" => TokenKind::Keyword(Keyword::TellTarget),
+        "eq" => TokenKind::Keyword(Keyword::Eq),
+        "gt" => TokenKind::Keyword(Keyword::Gt),
+        "ge" => TokenKind::Keyword(Keyword::Ge),
+        "lt" => TokenKind::Keyword(Keyword::Lt),
+        "le" => TokenKind::Keyword(Keyword::Le),
+        "ne" => TokenKind::Keyword(Keyword::Ne),
+        "and" => TokenKind::Keyword(Keyword::And),
+        "or" => TokenKind::Keyword(Keyword::Or),
+        "not" => TokenKind::Keyword(Keyword::Not),
+        // "add" => TokenKind::Keyword(Keyword::Add),
         _ => TokenKind::Identifier,
     };
 

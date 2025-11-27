@@ -101,8 +101,8 @@ pub(crate) fn expression<'i>(i: &mut Tokens<'i>) -> ModalResult<Expr<'i>> {
                 .context(StrContext::Label("expression"))
                 .parse_next(i)
         }
-        TokenKind::Operator(Operator::LogicalNot) => {
-            TokenKind::Operator(Operator::LogicalNot).parse_next(i)?;
+        TokenKind::Operator(Operator::LogicalNot) | TokenKind::Keyword(Keyword::Not) => {
+            any.parse_next(i)?;
             expression
                 .map(|e| expr_for_unary_operator(UnaryOperator::LogicalNot, Box::new(e), start))
                 .context(StrContext::Label("expression"))
@@ -410,16 +410,6 @@ fn expr_next<'i>(prior: Expr<'i>) -> impl Parser<Tokens<'i>, Expr<'i>, ErrMode<C
                 ))
                 .parse_next(i)
             }
-            TokenKind::Keyword(Keyword::InstanceOf) => {
-                TokenKind::Keyword(Keyword::InstanceOf).parse_next(i)?;
-                expression.parse_next(i).map(|next| {
-                    expr_for_binary_operator(
-                        BinaryOperator::InstanceOf,
-                        Box::new(prior),
-                        Box::new(next),
-                    )
-                })
-            }
             TokenKind::Question => {
                 TokenKind::Question.parse_next(i)?;
                 let yes = expression.parse_next(i)?;
@@ -445,6 +435,16 @@ fn expr_next<'i>(prior: Expr<'i>) -> impl Parser<Tokens<'i>, Expr<'i>, ErrMode<C
                 ))
                 .context(StrContext::Label("expression"))
                 .parse_next(i)
+            }
+            TokenKind::Keyword(keyword) => {
+                if let Some(binop) = BinaryOperator::for_keyword(keyword) {
+                    any.parse_next(i)?;
+                    expression.parse_next(i).map(|next| {
+                        expr_for_binary_operator(binop, Box::new(prior), Box::new(next))
+                    })
+                } else {
+                    Ok(prior)
+                }
             }
             _ => Ok(prior),
         }

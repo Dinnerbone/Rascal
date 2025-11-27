@@ -657,6 +657,24 @@ fn gen_binary_op(
             builder.mark_label(end_label);
         }
         BinaryOperator::InstanceOf => trivial(context, builder, Action::InstanceOf),
+        BinaryOperator::StringEqual => trivial(context, builder, Action::StringEquals),
+        BinaryOperator::StringGreaterThan => trivial(context, builder, Action::StringGreater),
+        BinaryOperator::StringGreaterThanEqual => {
+            trivial(context, builder, Action::StringLess);
+            builder.action(Action::Not);
+        }
+        BinaryOperator::StringLessThan => trivial(context, builder, Action::StringLess),
+        BinaryOperator::StringLessThanEqual => {
+            trivial(context, builder, Action::StringGreater);
+            builder.action(Action::Not);
+        }
+        BinaryOperator::StringNotEqual => {
+            trivial(context, builder, Action::StringEquals);
+            builder.action(Action::Not);
+        }
+        BinaryOperator::BooleanAnd => trivial(context, builder, Action::And),
+        BinaryOperator::BooleanOr => trivial(context, builder, Action::Or),
+        BinaryOperator::StringAdd => trivial(context, builder, Action::StringAdd),
     }
 }
 

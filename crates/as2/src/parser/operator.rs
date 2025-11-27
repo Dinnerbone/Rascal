@@ -38,22 +38,33 @@ impl BinaryOperator {
             BinaryOperator::Multiply | BinaryOperator::Divide | BinaryOperator::Modulo => {
                 OperatorPrecedence::MulDivMod
             }
-            BinaryOperator::Add | BinaryOperator::Sub => OperatorPrecedence::AddSub,
+            BinaryOperator::Add | BinaryOperator::Sub | BinaryOperator::StringAdd => {
+                OperatorPrecedence::AddSub
+            }
             BinaryOperator::BitShiftRight
             | BinaryOperator::BitShiftLeft
             | BinaryOperator::BitShiftRightUnsigned => OperatorPrecedence::BitShifts,
             BinaryOperator::LessThan
             | BinaryOperator::LessThanEqual
             | BinaryOperator::GreaterThan
-            | BinaryOperator::GreaterThanEqual => OperatorPrecedence::Comparison,
+            | BinaryOperator::GreaterThanEqual
+            | BinaryOperator::StringLessThan
+            | BinaryOperator::StringGreaterThan
+            | BinaryOperator::StringGreaterThanEqual
+            | BinaryOperator::StringLessThanEqual => OperatorPrecedence::Comparison,
             BinaryOperator::Equal
             | BinaryOperator::StrictEqual
             | BinaryOperator::NotEqual
-            | BinaryOperator::StrictNotEqual => OperatorPrecedence::Equality,
+            | BinaryOperator::StrictNotEqual
+            | BinaryOperator::StringEqual
+            | BinaryOperator::StringNotEqual => OperatorPrecedence::Equality,
             BinaryOperator::BitAnd | BinaryOperator::BitOr | BinaryOperator::BitXor => {
                 OperatorPrecedence::BitMath
             }
-            BinaryOperator::LogicalOr | BinaryOperator::LogicalAnd => OperatorPrecedence::Logic,
+            BinaryOperator::LogicalOr
+            | BinaryOperator::LogicalAnd
+            | BinaryOperator::BooleanAnd
+            | BinaryOperator::BooleanOr => OperatorPrecedence::Logic,
             BinaryOperator::Assign
             | BinaryOperator::AddAssign
             | BinaryOperator::SubAssign

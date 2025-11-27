@@ -87,6 +87,24 @@ fn test_identifiers_and_keyword() {
 }
 
 #[test]
+fn test_legacy_operators() {
+    assert_eq!(
+        kinds("eq gt ge lt le ne and not or"),
+        vec![
+            TokenKind::Keyword(Keyword::Eq),
+            TokenKind::Keyword(Keyword::Gt),
+            TokenKind::Keyword(Keyword::Ge),
+            TokenKind::Keyword(Keyword::Lt),
+            TokenKind::Keyword(Keyword::Le),
+            TokenKind::Keyword(Keyword::Ne),
+            TokenKind::Keyword(Keyword::And),
+            TokenKind::Keyword(Keyword::Not),
+            TokenKind::Keyword(Keyword::Or),
+        ]
+    );
+}
+
+#[test]
 fn test_operators_single_and_compound() {
     assert_eq!(
         kinds("+ = += - / * % ++ -- -= *= /= %= & ~ | >> << >>> ^ &= |= ^= >>= <<= >>>="),
