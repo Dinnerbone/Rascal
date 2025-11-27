@@ -231,8 +231,8 @@ impl<'a> ActionEncoder<'a> {
             Action::Return => self.write_small_action(OpCode::Return),
             Action::SetMember => self.write_small_action(OpCode::SetMember),
             // Action::SetProperty => self.write_small_action(OpCode::SetProperty),
-            // Action::SetTarget(action) => self.write_set_target(action),
-            // Action::SetTarget2 => self.write_small_action(OpCode::SetTarget2),
+            Action::SetTarget(action) => self.write_set_target(action),
+            Action::SetTarget2 => self.write_small_action(OpCode::SetTarget2),
             Action::SetVariable => self.write_small_action(OpCode::SetVariable),
             Action::StackSwap => self.write_small_action(OpCode::StackSwap),
             Action::StartDrag => self.write_small_action(OpCode::StartDrag),
@@ -502,6 +502,12 @@ impl<'a> ActionEncoder<'a> {
                 }
             }
         };
+        Ok(())
+    }
+
+    fn write_set_target(&mut self, target: &str) -> Result<()> {
+        self.write_action_header(OpCode::SetTarget, target.len() + 1)?;
+        self.write_string(SwfStr::from_utf8_str(target))?;
         Ok(())
     }
 

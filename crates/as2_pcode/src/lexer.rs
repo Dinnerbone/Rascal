@@ -278,6 +278,8 @@ fn lex_identifier_or_action<'a>(stream: &mut Stream<'a>) -> Token<'a> {
         "removesprite" => TokenKind::ActionName(ActionName::RemoveSprite),
         "return" => TokenKind::ActionName(ActionName::Return),
         "setmember" => TokenKind::ActionName(ActionName::SetMember),
+        "settarget" => TokenKind::ActionName(ActionName::SetTarget),
+        "settarget2" => TokenKind::ActionName(ActionName::SetTarget2),
         "setvariable" => TokenKind::ActionName(ActionName::SetVariable),
         "stackswap" => TokenKind::ActionName(ActionName::StackSwap),
         "startdrag" => TokenKind::ActionName(ActionName::StartDrag),

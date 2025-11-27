@@ -1,0 +1,76 @@
+---
+source: crates/as2_pcode/src/parser/tests.rs
+expression: parsed
+input_file: samples/as2_pcode/tell_target.pcode
+---
+Ok:
+  actions:
+    - ConstantPool:
+        - x
+        - this is x
+        - ""
+        - this is y
+        - this is z
+        - this is still y
+        - this is x again
+        - this is root
+        - this is still root
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - SetTarget2
+    - Push:
+        - Constant: 1
+    - Trace
+    - Push:
+        - Constant: 2
+    - Push:
+        - Integer: 11
+    - GetProperty
+    - SetTarget: y
+    - Push:
+        - Constant: 3
+    - Trace
+    - Push:
+        - Constant: 2
+    - Push:
+        - Integer: 11
+    - GetProperty
+    - SetTarget: z
+    - Push:
+        - Constant: 4
+    - Trace
+    - SetTarget: ""
+    - SetTarget2
+    - Push:
+        - Constant: 5
+    - Trace
+    - SetTarget: ""
+    - SetTarget2
+    - Push:
+        - Constant: 6
+    - Trace
+    - SetTarget: ""
+    - Push:
+        - Constant: 7
+    - Trace
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - SetTarget2
+    - SetTarget: ""
+    - Push:
+        - Constant: 8
+    - Trace
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - SetTarget2
+    - Push:
+        - Constant: 1
+    - Trace
+    - SetTarget: ""
+    - Push:
+        - Constant: 8
+    - Trace
+  label_positions: {}

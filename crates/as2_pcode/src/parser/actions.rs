@@ -109,6 +109,8 @@ pub(crate) fn action(i: &mut Tokens<'_>) -> ModalResult<Action> {
         ActionName::RemoveSprite => Action::RemoveSprite,
         ActionName::Return => Action::Return,
         ActionName::SetMember => Action::SetMember,
+        ActionName::SetTarget => set_target.parse_next(i)?,
+        ActionName::SetTarget2 => Action::SetTarget2,
         ActionName::SetVariable => Action::SetVariable,
         ActionName::StackSwap => Action::StackSwap,
         ActionName::StartDrag => Action::StartDrag,
@@ -198,6 +200,11 @@ pub fn register(i: &mut Tokens<'_>) -> ModalResult<u8> {
         TokenKind::Register(n) => Ok(n),
         _ => fail.parse_next(i),
     }
+}
+
+pub fn set_target(i: &mut Tokens<'_>) -> ModalResult<Action> {
+    let value = string.parse_next(i)?;
+    Ok(Action::SetTarget(value))
 }
 
 pub fn push(i: &mut Tokens<'_>) -> ModalResult<Action> {
@@ -467,6 +474,7 @@ mod tests {
         test_remove_sprite => RemoveSprite,
         test_return => Return,
         test_set_member => SetMember,
+        test_set_target2 => SetTarget2,
         test_set_variable => SetVariable,
         test_sack_swap => StackSwap,
         test_start_drag => StartDrag,
@@ -937,6 +945,21 @@ mod tests {
             parse_actions(&tokens),
             Ok(Actions {
                 actions: vec![Action::WaitForFrame2 { skip_count: 123 }],
+                label_positions: Default::default()
+            })
+        )
+    }
+
+    #[test]
+    fn test_set_target() {
+        let tokens = build_tokens(&[
+            (TokenKind::ActionName(ActionName::SetTarget), "setTarget"),
+            (TokenKind::String, "foo"),
+        ]);
+        assert_eq!(
+            parse_actions(&tokens),
+            Ok(Actions {
+                actions: vec![Action::SetTarget("foo".to_owned())],
                 label_positions: Default::default()
             })
         )
