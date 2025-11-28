@@ -25,6 +25,7 @@ pub(crate) fn actions<'i>(
                 let identifier = label.parse_next(i)?;
                 TokenKind::Colon.parse_next(i)?;
                 actions.push_label(identifier);
+                take_while(0.., TokenKind::Newline).parse_next(i)?;
                 continue;
             }
             actions.push(action.parse_next(i)?);
@@ -985,6 +986,23 @@ mod tests {
             Ok(Actions {
                 actions: vec![Action::SetTarget("foo".to_owned())],
                 label_positions: Default::default()
+            })
+        )
+    }
+
+    #[test]
+    fn test_label_on_own_line() {
+        let tokens = build_tokens(&[
+            (TokenKind::Identifier, "foo"),
+            (TokenKind::Colon, ":"),
+            (TokenKind::Newline, "\n"),
+            (TokenKind::ActionName(ActionName::End), "end"),
+        ]);
+        assert_eq!(
+            parse_actions(&tokens),
+            Ok(Actions {
+                actions: vec![Action::End],
+                label_positions: IndexMap::from([("foo".to_owned(), 0)])
             })
         )
     }
