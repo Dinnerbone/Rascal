@@ -14,6 +14,7 @@ Ok:
             value:
               Constant:
                 Integer: 10
+          type_name: ~
     - Declare:
         - name: b
           value:
@@ -23,6 +24,7 @@ Ok:
             value:
               Constant:
                 Integer: 3
+          type_name: ~
     - Expr:
         span:
           start: 129
@@ -449,6 +451,7 @@ Ok:
             value:
               Constant:
                 String: Hello
+          type_name: ~
     - Declare:
         - name: world
           value:
@@ -458,6 +461,7 @@ Ok:
             value:
               Constant:
                 String: World
+          type_name: ~
     - Expr:
         span:
           start: 504
@@ -528,6 +532,7 @@ Ok:
             value:
               Constant:
                 Integer: 5
+          type_name: ~
     - Expr:
         span:
           start: 612
@@ -814,6 +819,7 @@ Ok:
             value:
               Constant:
                 Integer: 5
+          type_name: ~
     - Declare:
         - name: three
           value:
@@ -823,6 +829,7 @@ Ok:
             value:
               Constant:
                 Integer: 3
+          type_name: ~
     - Expr:
         span:
           start: 873
@@ -1589,6 +1596,7 @@ Ok:
             value:
               Constant:
                 Integer: 6
+          type_name: ~
     - Declare:
         - name: seven
           value:
@@ -1598,6 +1606,7 @@ Ok:
             value:
               Constant:
                 Integer: 7
+          type_name: ~
     - Declare:
         - name: sevenStr
           value:
@@ -1607,6 +1616,7 @@ Ok:
             value:
               Constant:
                 String: "7"
+          type_name: ~
     - Expr:
         span:
           start: 1694
@@ -2057,6 +2067,7 @@ Ok:
             value:
               Constant:
                 Identifier: "true"
+          type_name: ~
     - Declare:
         - name: f
           value:
@@ -2066,6 +2077,7 @@ Ok:
             value:
               Constant:
                 Identifier: "false"
+          type_name: ~
     - Expr:
         span:
           start: 2229
@@ -2253,6 +2265,7 @@ Ok:
                   value:
                     Constant:
                       Identifier: b
+          type_name: ~
     - Expr:
         span:
           start: 2385
@@ -2300,6 +2313,7 @@ Ok:
                     value:
                       Constant:
                         String: value
+          type_name: ~
     - Expr:
         span:
           start: 2480

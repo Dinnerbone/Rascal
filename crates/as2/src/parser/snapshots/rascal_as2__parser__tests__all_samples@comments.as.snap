@@ -14,6 +14,7 @@ Ok:
             value:
               Constant:
                 String: "1"
+          type_name: ~
     - Declare:
         - name: b
           value:
@@ -23,6 +24,7 @@ Ok:
             value:
               Constant:
                 String: "2"
+          type_name: ~
     - Declare:
         - name: c
           value:
@@ -32,6 +34,7 @@ Ok:
             value:
               Constant:
                 String: "3"
+          type_name: ~
     - Declare:
         - name: d
           value:
@@ -41,6 +44,7 @@ Ok:
             value:
               Constant:
                 String: "4"
+          type_name: ~
     - Expr:
         span:
           start: 506
@@ -76,6 +80,7 @@ Ok:
             value:
               Constant:
                 String: "5"
+          type_name: ~
     - Declare:
         - name: f
           value:
@@ -85,6 +90,7 @@ Ok:
             value:
               Constant:
                 String: // not a comment
+          type_name: ~
     - Declare:
         - name: g
           value:
@@ -94,6 +100,7 @@ Ok:
             value:
               Constant:
                 String: /* not a comment */
+          type_name: ~
     - Declare:
         - name: h
           value:
@@ -103,6 +110,7 @@ Ok:
             value:
               Constant:
                 String: "\"/* still not a comment */\""
+          type_name: ~
     - Declare:
         - name: i
           value:
@@ -112,6 +120,7 @@ Ok:
             value:
               Constant:
                 String: "6"
+          type_name: ~
     - Declare:
         - name: j
           value:
@@ -121,6 +130,7 @@ Ok:
             value:
               Constant:
                 String: "7"
+          type_name: ~
     - Declare:
         - name: k
           value:
@@ -130,3 +140,4 @@ Ok:
             value:
               Constant:
                 String: "8"
+          type_name: ~

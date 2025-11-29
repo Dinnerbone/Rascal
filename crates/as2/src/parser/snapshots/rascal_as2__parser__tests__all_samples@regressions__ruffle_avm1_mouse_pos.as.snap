@@ -61,8 +61,10 @@ Ok:
     - Declare:
         - name: oldX
           value: ~
+          type_name: ~
         - name: oldY
           value: ~
+          type_name: ~
     - Expr:
         span:
           start: 353
@@ -275,6 +277,7 @@ Ok:
                             value:
                               Constant:
                                 Identifier: s133fpr15
+                    type_name: ~
               - ForIn:
                   condition:
                     Classic:
@@ -288,6 +291,7 @@ Ok:
                               value:
                                 Constant:
                                   Integer: 0
+                            type_name: ~
                       condition:
                         - span:
                             start: 597
@@ -353,6 +357,7 @@ Ok:
                                     value:
                                       Constant:
                                         Identifier: i
+                            type_name: ~
                       - Expr:
                           span:
                             start: 657

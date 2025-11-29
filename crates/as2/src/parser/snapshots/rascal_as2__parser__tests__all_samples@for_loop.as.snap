@@ -38,6 +38,7 @@ Ok:
                     value:
                       Constant:
                         Integer: 0
+                  type_name: ~
             condition:
               - span:
                   start: 38
@@ -121,6 +122,7 @@ Ok:
             value:
               Constant:
                 Integer: 3
+          type_name: ~
     - Expr:
         span:
           start: 167
@@ -252,6 +254,7 @@ Ok:
                     value:
                       Constant:
                         Integer: 0
+                  type_name: ~
             condition: []
             update:
               - span:
@@ -345,6 +348,7 @@ Ok:
                     value:
                       Constant:
                         Integer: 0
+                  type_name: ~
             condition:
               - span:
                   start: 513
@@ -429,6 +433,7 @@ Ok:
             value:
               Constant:
                 Integer: 0
+          type_name: ~
     - ForIn:
         condition:
           Classic:
@@ -542,6 +547,7 @@ Ok:
               end: 861
             value:
               InitObject: []
+          type_name: ~
     - Expr:
         span:
           start: 866
@@ -717,9 +723,11 @@ Ok:
                   value:
                     Constant:
                       Integer: 7
+          type_name: ~
     - Declare:
         - name: idx
           value: ~
+          type_name: ~
     - ForIn:
         condition:
           Enumerate:
@@ -822,6 +830,7 @@ Ok:
                     value:
                       Constant:
                         Integer: 0
+                  type_name: ~
                 - name: b
                   value:
                     span:
@@ -830,6 +839,7 @@ Ok:
                     value:
                       Constant:
                         Integer: 3
+                  type_name: ~
             condition:
               - span:
                   start: 1238
@@ -953,6 +963,7 @@ Ok:
                     value:
                       Constant:
                         Integer: 0
+                  type_name: ~
             condition:
               - span:
                   start: 1394
@@ -1100,6 +1111,7 @@ Ok:
                     value:
                       Constant:
                         Integer: 0
+                  type_name: ~
             condition:
               - span:
                   start: 1617
@@ -1147,6 +1159,7 @@ Ok:
                             value:
                               Constant:
                                 Integer: 0
+                          type_name: ~
                     condition:
                       - span:
                           start: 1663
@@ -1248,6 +1261,7 @@ Ok:
     - Declare:
         - name: z
           value: ~
+          type_name: ~
     - ForIn:
         condition:
           Classic:
@@ -1358,6 +1372,7 @@ Ok:
                     value:
                       Constant:
                         Integer: 0
+                  type_name: ~
             condition:
               - span:
                   start: 1990

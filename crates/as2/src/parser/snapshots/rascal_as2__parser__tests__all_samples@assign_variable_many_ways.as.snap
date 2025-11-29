@@ -26,6 +26,7 @@ Ok:
                   value:
                     Constant:
                       String: " "
+          type_name: ~
     - Expr:
         span:
           start: 29
@@ -105,8 +106,10 @@ Ok:
             value:
               Constant:
                 Integer: 1
+          type_name: ~
         - name: b
           value: ~
+          type_name: ~
         - name: c
           value:
             span:
@@ -115,6 +118,7 @@ Ok:
             value:
               Constant:
                 Integer: 3
+          type_name: ~
     - Expr:
         span:
           start: 108

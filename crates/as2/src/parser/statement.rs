@@ -103,7 +103,7 @@ fn declaration<'i>(i: &mut Tokens<'i>) -> ModalResult<Declaration<'i>> {
     let name = cut_err(identifier)
         .context(StrContext::Label("variable name"))
         .parse_next(i)?;
-    opt(type_name).parse_next(i)?;
+    let type_name = opt(type_name).parse_next(i)?;
     let equals = cut_err(opt(TokenKind::Operator(Operator::Assign)))
         .parse_next(i)?
         .is_some();
@@ -112,6 +112,7 @@ fn declaration<'i>(i: &mut Tokens<'i>) -> ModalResult<Declaration<'i>> {
     Ok(Declaration {
         name: name.value,
         value,
+        type_name,
     })
 }
 
@@ -406,7 +407,26 @@ mod stmt_tests {
             parse_stmt(&tokens),
             Ok(StatementKind::Declare(vec![Declaration {
                 name: "x",
-                value: None
+                value: None,
+                type_name: None,
+            }]))
+        );
+    }
+
+    #[test]
+    fn test_declare_assign_with_type() {
+        let tokens = build_tokens(&[
+            (TokenKind::Keyword(Keyword::Var), "var"),
+            (TokenKind::Identifier, "x"),
+            (TokenKind::Colon, ":"),
+            (TokenKind::Identifier, "String"),
+        ]);
+        assert_eq!(
+            parse_stmt(&tokens),
+            Ok(StatementKind::Declare(vec![Declaration {
+                name: "x",
+                value: None,
+                type_name: Some(Spanned::new(Span::default(), "String")),
             }]))
         );
     }
@@ -423,7 +443,28 @@ mod stmt_tests {
             parse_stmt(&tokens),
             Ok(StatementKind::Declare(vec![Declaration {
                 name: "x",
-                value: Some(s("hi"))
+                value: Some(s("hi")),
+                type_name: None,
+            }]))
+        );
+    }
+
+    #[test]
+    fn test_declare_assign_constant_with_type() {
+        let tokens = build_tokens(&[
+            (TokenKind::Keyword(Keyword::Var), "var"),
+            (TokenKind::Identifier, "x"),
+            (TokenKind::Colon, ":"),
+            (TokenKind::Identifier, "String"),
+            (TokenKind::Operator(Operator::Assign), "="),
+            (TokenKind::String(QuoteKind::Double), "hi"),
+        ]);
+        assert_eq!(
+            parse_stmt(&tokens),
+            Ok(StatementKind::Declare(vec![Declaration {
+                name: "x",
+                value: Some(s("hi")),
+                type_name: Some(Spanned::new(Span::default(), "String")),
             }]))
         );
     }
@@ -446,7 +487,8 @@ mod stmt_tests {
                 value: Some(ex(ExprKind::Call {
                     name: Box::new(id("foo")),
                     args: vec![id("a")]
-                }))
+                })),
+                type_name: None,
             }]))
         );
     }
@@ -528,7 +570,8 @@ mod stmt_tests {
                 condition: ForCondition::Classic {
                     initialize: Some(Box::new(StatementKind::Declare(vec![Declaration {
                         name: "i",
-                        value: Some(id("0"))
+                        value: Some(id("0")),
+                        type_name: None,
                     }]))),
                     condition: vec![ex(ExprKind::BinaryOperator(
                         BinaryOperator::LessThan,

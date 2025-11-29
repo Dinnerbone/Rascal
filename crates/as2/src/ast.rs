@@ -202,6 +202,7 @@ pub struct Function<'a> {
 pub struct Declaration<'a> {
     pub name: &'a str,
     pub value: Option<Expr<'a>>,
+    pub type_name: Option<Spanned<&'a str>>,
 }
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
