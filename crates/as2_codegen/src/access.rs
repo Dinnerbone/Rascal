@@ -19,7 +19,9 @@ impl VariableAccess {
         builder: &mut CodeBuilder,
         name: &str,
     ) -> Self {
-        if let Some(property) = get_special_property(name) {
+        if context.can_use_special_properties()
+            && let Some(property) = get_special_property(name)
+        {
             builder.push(context.constants.add(""));
             builder.push(property);
             return VariableAccess::SpecialProperty;

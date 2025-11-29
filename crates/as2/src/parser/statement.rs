@@ -50,6 +50,7 @@ pub(crate) fn statement<'i>(i: &mut Tokens<'i>) -> ModalResult<StatementKind<'i>
         TokenKind::Keyword(Keyword::IfFrameLoaded) => if_frame_loaded.parse_next(i)?,
         TokenKind::Keyword(Keyword::TellTarget) => tell_target.parse_next(i)?,
         TokenKind::Keyword(Keyword::While) => while_loop.parse_next(i)?,
+        TokenKind::Keyword(Keyword::With) => with.parse_next(i)?,
         TokenKind::OpenBrace => {
             let statements = statement_list(true).parse_next(i)?;
             TokenKind::CloseBrace.parse_next(i)?;
@@ -211,6 +212,18 @@ pub(crate) fn while_loop<'i>(i: &mut Tokens<'i>) -> ModalResult<StatementKind<'i
 
     Ok(StatementKind::While {
         condition,
+        body: Box::new(body),
+    })
+}
+
+pub(crate) fn with<'i>(i: &mut Tokens<'i>) -> ModalResult<StatementKind<'i>> {
+    TokenKind::OpenParen.parse_next(i)?;
+    let target = expression.parse_next(i)?;
+    TokenKind::CloseParen.parse_next(i)?;
+    let body = statement.parse_next(i)?;
+
+    Ok(StatementKind::With {
+        target,
         body: Box::new(body),
     })
 }
@@ -736,6 +749,34 @@ mod stmt_tests {
             Ok(StatementKind::While {
                 condition: id("a"),
                 body: Box::new(StatementKind::Continue)
+            })
+        )
+    }
+
+    #[test]
+    fn test_with() {
+        let tokens = build_tokens(&[
+            (TokenKind::Keyword(Keyword::With), "with"),
+            (TokenKind::OpenParen, "("),
+            (TokenKind::Identifier, "a"),
+            (TokenKind::CloseParen, ")"),
+            (TokenKind::OpenBrace, "{"),
+            (TokenKind::Identifier, "_alpha"),
+            (TokenKind::Operator(Operator::Assign), "="),
+            (TokenKind::Integer, "100"),
+            (TokenKind::CloseBrace, "}"),
+        ]);
+        assert_eq!(
+            parse_stmt(&tokens),
+            Ok(StatementKind::With {
+                target: id("a"),
+                body: Box::new(StatementKind::Block(vec![StatementKind::Expr(ex(
+                    ExprKind::BinaryOperator(
+                        BinaryOperator::Assign,
+                        Box::new(id("_alpha")),
+                        Box::new(ex(ExprKind::Constant(ConstantKind::Integer(100))))
+                    )
+                ))]))
             })
         )
     }

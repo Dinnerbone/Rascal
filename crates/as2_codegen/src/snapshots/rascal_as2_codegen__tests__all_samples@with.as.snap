@@ -1,0 +1,26 @@
+---
+source: crates/as2_codegen/src/tests.rs
+expression: result
+input_file: samples/as2/with.as
+---
+ConstantPool "foo", "createEmptyMovieClip", "", "_name"
+Push 1, constant0, 2, constant1
+CallFunction
+Pop
+Push constant2, 13
+GetProperty
+Trace
+Push constant0
+GetVariable
+With {
+Push constant3
+GetVariable
+Trace
+}
+Push constant0
+GetVariable
+With {
+Push constant3
+GetVariable
+Trace
+}

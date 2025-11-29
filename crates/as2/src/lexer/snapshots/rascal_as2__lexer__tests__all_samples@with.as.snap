@@ -1,0 +1,188 @@
+---
+source: crates/as2/src/lexer/tests.rs
+expression: tokens
+input_file: samples/as2/with.as
+---
+- kind: Identifier
+  span:
+    start: 0
+    end: 20
+  raw: createEmptyMovieClip
+- kind: OpenParen
+  span:
+    start: 20
+    end: 21
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 21
+    end: 26
+  raw: foo
+- kind: Comma
+  span:
+    start: 26
+    end: 27
+  raw: ","
+- kind: Integer
+  span:
+    start: 28
+    end: 29
+  raw: "1"
+- kind: CloseParen
+  span:
+    start: 29
+    end: 30
+  raw: )
+- kind: Semicolon
+  span:
+    start: 30
+    end: 31
+  raw: ;
+- kind: Newline
+  span:
+    start: 31
+    end: 32
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 32
+    end: 37
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 37
+    end: 38
+  raw: (
+- kind: Identifier
+  span:
+    start: 38
+    end: 43
+  raw: _name
+- kind: CloseParen
+  span:
+    start: 43
+    end: 44
+  raw: )
+- kind: Newline
+  span:
+    start: 44
+    end: 45
+  raw: "\n"
+- kind:
+    Keyword: With
+  span:
+    start: 45
+    end: 49
+  raw: with
+- kind: OpenParen
+  span:
+    start: 50
+    end: 51
+  raw: (
+- kind: Identifier
+  span:
+    start: 51
+    end: 54
+  raw: foo
+- kind: CloseParen
+  span:
+    start: 54
+    end: 55
+  raw: )
+- kind: OpenBrace
+  span:
+    start: 56
+    end: 57
+  raw: "{"
+- kind: Newline
+  span:
+    start: 57
+    end: 58
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 59
+    end: 64
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 64
+    end: 65
+  raw: (
+- kind: Identifier
+  span:
+    start: 65
+    end: 70
+  raw: _name
+- kind: CloseParen
+  span:
+    start: 70
+    end: 71
+  raw: )
+- kind: Semicolon
+  span:
+    start: 71
+    end: 72
+  raw: ;
+- kind: Newline
+  span:
+    start: 72
+    end: 73
+  raw: "\n"
+- kind: CloseBrace
+  span:
+    start: 73
+    end: 74
+  raw: "}"
+- kind: Newline
+  span:
+    start: 74
+    end: 75
+  raw: "\n"
+- kind:
+    Keyword: With
+  span:
+    start: 75
+    end: 79
+  raw: with
+- kind: OpenParen
+  span:
+    start: 80
+    end: 81
+  raw: (
+- kind: Identifier
+  span:
+    start: 81
+    end: 84
+  raw: foo
+- kind: CloseParen
+  span:
+    start: 84
+    end: 85
+  raw: )
+- kind: Identifier
+  span:
+    start: 86
+    end: 91
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 91
+    end: 92
+  raw: (
+- kind: Identifier
+  span:
+    start: 92
+    end: 97
+  raw: _name
+- kind: CloseParen
+  span:
+    start: 97
+    end: 98
+  raw: )
+- kind: Newline
+  span:
+    start: 98
+    end: 99
+  raw: "\n"

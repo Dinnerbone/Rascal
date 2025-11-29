@@ -108,6 +108,7 @@ pub(crate) fn gen_statement(
                 .unwrap_or_else(|e| panic!("{}", e.to_string()));
             builder.append(actions);
         }
+        StatementKind::With { target, body } => gen_with(context, builder, target, body),
     }
 }
 
@@ -141,6 +142,24 @@ fn gen_tell_target(
     if was_in_tell_target {
         builder.action(Action::SetTarget2);
     }
+}
+
+fn gen_with(
+    context: &mut ScriptContext,
+    builder: &mut CodeBuilder,
+    target: &Expr,
+    body: &StatementKind,
+) {
+    let could_use_special_properties = context.can_use_special_properties();
+    let mut sub_builder = CodeBuilder::new();
+    context.set_can_use_special_properties(false);
+    gen_statement(context, &mut sub_builder, body);
+    context.set_can_use_special_properties(could_use_special_properties);
+    let (actions, errors) = sub_builder.into_actions();
+    builder.add_errors(errors);
+
+    gen_expr(context, builder, target, false);
+    builder.action(Action::With(actions));
 }
 
 fn gen_wait_for_frame(

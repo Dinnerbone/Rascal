@@ -158,6 +158,10 @@ pub enum StatementKind<'a> {
         body: Box<StatementKind<'a>>,
     },
     InlinePCode(&'a str),
+    With {
+        target: Expr<'a>,
+        body: Box<StatementKind<'a>>,
+    },
 }
 
 #[derive(Debug, Clone, Serialize, PartialEq)]

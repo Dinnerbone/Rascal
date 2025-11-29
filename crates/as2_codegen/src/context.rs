@@ -5,6 +5,7 @@ pub struct ScriptContext {
     pub constants: Constants,
     pub next_label: usize,
     pub is_in_tell_target: bool,
+    pub can_use_special_properties: bool,
 }
 
 impl ScriptContext {
@@ -13,6 +14,7 @@ impl ScriptContext {
             constants: Constants::empty(),
             next_label: 0,
             is_in_tell_target: false,
+            can_use_special_properties: true,
         }
     }
 
@@ -28,6 +30,14 @@ impl ScriptContext {
 
     pub fn is_in_tell_target(&self) -> bool {
         self.is_in_tell_target
+    }
+
+    pub fn set_can_use_special_properties(&mut self, can_use_special_properties: bool) {
+        self.can_use_special_properties = can_use_special_properties;
+    }
+
+    pub fn can_use_special_properties(&self) -> bool {
+        self.can_use_special_properties
     }
 }
 
