@@ -184,4 +184,5 @@ pub enum ActionName {
     TypeOf,
     WaitForFrame,
     WaitForFrame2,
+    With,
 }

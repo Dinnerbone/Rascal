@@ -264,7 +264,7 @@ impl<'a> ActionEncoder<'a> {
                 self.write_wait_for_frame(*frame, *skip_count)
             }
             Action::WaitForFrame2 { skip_count } => self.write_wait_for_frame_2(*skip_count),
-            // Action::With(action) => self.write_with(action),
+            Action::With(actions) => self.write_with(actions),
             // Action::Unknown(action) => self.write_unknown(action),
         }
     }
@@ -347,6 +347,18 @@ impl<'a> ActionEncoder<'a> {
         self.output[length_offset..length_offset + 2].copy_from_slice(
             &((length_after_function - length_before_function) as u16).to_le_bytes(),
         );
+        Ok(())
+    }
+
+    fn write_with(&mut self, actions: &'a Actions) -> Result<()> {
+        self.write_action_header(OpCode::With, 2)?;
+        let length_offset = self.output.len();
+        self.write_u16(0)?;
+        let length_before = self.output.len();
+        self.write_actions(actions)?;
+        let length_after = self.output.len();
+        self.output[length_offset..length_offset + 2]
+            .copy_from_slice(&((length_after - length_before) as u16).to_le_bytes());
         Ok(())
     }
 

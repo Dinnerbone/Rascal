@@ -146,6 +146,7 @@ pub(crate) fn action(i: &mut Tokens<'_>) -> ModalResult<Action> {
         ActionName::TypeOf => Action::TypeOf,
         ActionName::WaitForFrame => wait_for_frame.parse_next(i)?,
         ActionName::WaitForFrame2 => wait_for_frame_2.parse_next(i)?,
+        ActionName::With => with.parse_next(i)?,
     })
 }
 
@@ -260,6 +261,13 @@ pub fn define_function(i: &mut Tokens<'_>) -> ModalResult<Action> {
         params: args,
         actions: body,
     })
+}
+
+pub fn with(i: &mut Tokens<'_>) -> ModalResult<Action> {
+    TokenKind::OpenBrace.parse_next(i)?;
+    let body = actions(true).parse_next(i)?;
+    TokenKind::CloseBrace.parse_next(i)?;
+    Ok(Action::With(body))
 }
 
 pub fn try_catch(i: &mut Tokens<'_>) -> ModalResult<Action> {
@@ -1003,6 +1011,28 @@ mod tests {
             Ok(Actions {
                 actions: vec![Action::End],
                 label_positions: IndexMap::from([("foo".to_owned(), 0)])
+            })
+        )
+    }
+
+    #[test]
+    fn test_with() {
+        let tokens = build_tokens(&[
+            (TokenKind::ActionName(ActionName::With), "with"),
+            (TokenKind::OpenBrace, "{"),
+            (TokenKind::Newline, "\n"),
+            (TokenKind::ActionName(ActionName::End), "end"),
+            (TokenKind::Newline, "\n"),
+            (TokenKind::CloseBrace, "}"),
+        ]);
+        assert_eq!(
+            parse_actions(&tokens),
+            Ok(Actions {
+                actions: vec![Action::With(Actions {
+                    actions: vec![Action::End],
+                    label_positions: Default::default()
+                })],
+                label_positions: Default::default()
             })
         )
     }

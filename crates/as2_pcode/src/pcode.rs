@@ -200,6 +200,7 @@ pub enum Action {
     WaitForFrame2 {
         skip_count: u8,
     },
+    With(Actions),
 }
 
 #[derive(Debug, PartialEq, Serialize, Clone)]
@@ -302,6 +303,7 @@ impl Action {
             Action::TypeOf => 0,
             Action::WaitForFrame { .. } => 0,
             Action::WaitForFrame2 { .. } => -1,
+            Action::With(_) => -1,
 
             Action::CallFunction => panic!("CallFunction must have explicit stack delta provided!"),
             Action::CallMethod => panic!("CallMethod must have explicit stack delta provided!"),
@@ -483,6 +485,11 @@ impl std::fmt::Display for Action {
             }
             Action::WaitForFrame2 { skip_count } => {
                 write!(f, "WaitForFrame2 {}", skip_count)
+            }
+            Action::With(actions) => {
+                writeln!(f, "With {{")?;
+                write!(f, "{}", actions)?;
+                write!(f, "}}")
             }
         }
     }
