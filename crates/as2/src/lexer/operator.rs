@@ -45,6 +45,50 @@ pub enum Operator {
     LogicalNot,
 }
 
+impl Operator {
+    pub fn text(&self) -> &'static str {
+        match self {
+            Operator::BitShiftRightUnsignedAssign => ">>>=",
+            Operator::BitShiftRightUnsigned => ">>>",
+            Operator::BitShiftRightAssign => ">>=",
+            Operator::BitShiftLeftAssign => "<<=",
+            Operator::StrictNotEqual => "!==",
+            Operator::StrictEqual => "===",
+            Operator::Increment => "++",
+            Operator::Decrement => "--",
+            Operator::AddAssign => "+=",
+            Operator::MultiplyAssign => "*=",
+            Operator::DivideAssign => "/=",
+            Operator::SubAssign => "-=",
+            Operator::ModuloAssign => "%=",
+            Operator::BitShiftRight => ">>",
+            Operator::BitShiftLeft => "<<",
+            Operator::BitAndAssign => "&=",
+            Operator::BitOrAssign => "|=",
+            Operator::BitXorAssign => "^=",
+            Operator::LessThanEqual => "<=",
+            Operator::GreaterThanEqual => ">=",
+            Operator::Equal => "==",
+            Operator::NotEqual => "!=",
+            Operator::LogicalAnd => "&&",
+            Operator::LogicalOr => "||",
+            Operator::Add => "+",
+            Operator::Assign => "=",
+            Operator::Sub => "-",
+            Operator::Divide => "/",
+            Operator::Multiply => "*",
+            Operator::Modulo => "%",
+            Operator::BitAnd => "&",
+            Operator::BitOr => "|",
+            Operator::BitNot => "~",
+            Operator::BitXor => "^",
+            Operator::LessThan => "<",
+            Operator::GreaterThan => ">",
+            Operator::LogicalNot => "!",
+        }
+    }
+}
+
 pub(crate) fn lex_operator<'a>(stream: &mut Stream<'a>) -> Token<'a> {
     // Operator lookup table: (pattern, operator)
     const OPERATORS: &[(&[u8], Operator)] = &[

@@ -272,7 +272,9 @@ pub(crate) fn function<'i>(i: &mut Tokens<'i>) -> ModalResult<Spanned<Function<'
         TokenKind::Comma,
     )
     .parse_next(i)?;
-    TokenKind::CloseParen.parse_next(i)?;
+    TokenKind::CloseParen
+        .context(StrContext::Expected(TokenKind::Comma.expected()))
+        .parse_next(i)?;
     opt(type_name).parse_next(i)?;
     TokenKind::OpenBrace.parse_next(i)?;
     let body = statement_list(true).parse_next(i)?;

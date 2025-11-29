@@ -7,8 +7,8 @@ use crate::parser::{Tokens, identifier, operator, skip_newlines, string};
 use rascal_common::span::{Span, Spanned};
 use std::borrow::Cow;
 use winnow::combinator::{alt, fail, opt, peek, separated};
+use winnow::error::ParserError;
 use winnow::error::{ContextError, ErrMode, StrContext};
-use winnow::error::{ParserError, StrContextValue};
 use winnow::token::any;
 use winnow::{ModalResult, Parser};
 
@@ -273,16 +273,7 @@ pub(crate) fn expression<'i>(i: &mut Tokens<'i>) -> ModalResult<Expr<'i>> {
             .context(StrContext::Label("expression"))
             .parse_next(i)
         }
-        _ => fail
-            .context(StrContext::Expected(StrContextValue::Description("string")))
-            .context(StrContext::Expected(StrContextValue::Description(
-                "identifier",
-            )))
-            .context(StrContext::Expected(StrContextValue::Description("float")))
-            .context(StrContext::Expected(StrContextValue::Description(
-                "integer",
-            )))
-            .parse_next(i),
+        _ => fail.parse_next(i),
     }
 }
 
