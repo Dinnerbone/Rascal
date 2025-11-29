@@ -1,0 +1,33 @@
+---
+source: crates/as2_codegen/src/tests.rs
+expression: result
+input_file: samples/as2/legacy_get_set.as
+---
+ConstantPool "y", "x", "get("x"): ", "get(x): ", "set(x, 15);", "x = ", "y = "
+Push constant0, 5
+DefineLocal
+Push constant1, constant0
+DefineLocal
+Push constant2, constant1
+GetVariable
+Add2
+Trace
+Push constant3, constant1
+GetVariable
+GetVariable
+Add2
+Trace
+Push constant4
+Trace
+Push constant1
+GetVariable
+Push 15
+SetVariable
+Push constant5, constant1
+GetVariable
+Add2
+Trace
+Push constant6, constant0
+GetVariable
+Add2
+Trace

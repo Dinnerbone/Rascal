@@ -398,6 +398,15 @@ pub fn gen_expr(
         }
         ExprKind::Void(_) => {}
         ExprKind::Function(function) => gen_function(context, builder, function),
+        ExprKind::GetVariable(name) => {
+            gen_expr(context, builder, name, false);
+            builder.action(Action::GetVariable);
+        }
+        ExprKind::SetVariable(name, value) => {
+            gen_expr(context, builder, name, false);
+            gen_expr(context, builder, value, false);
+            builder.action(Action::SetVariable);
+        }
     }
 }
 

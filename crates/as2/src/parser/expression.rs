@@ -247,6 +247,32 @@ pub(crate) fn expression<'i>(i: &mut Tokens<'i>) -> ModalResult<Expr<'i>> {
             .context(StrContext::Label("expression"))
             .parse_next(i)
         }
+        TokenKind::Keyword(Keyword::Get) => {
+            TokenKind::Keyword(Keyword::Get).parse_next(i)?;
+            TokenKind::OpenParen.parse_next(i)?;
+            let name = expression.parse_next(i)?;
+            let end = TokenKind::CloseParen.parse_next(i)?.span;
+            expr_next(Expr::new(
+                Span::encompassing(start, end),
+                ExprKind::GetVariable(Box::new(name)),
+            ))
+            .context(StrContext::Label("expression"))
+            .parse_next(i)
+        }
+        TokenKind::Keyword(Keyword::Set) => {
+            TokenKind::Keyword(Keyword::Set).parse_next(i)?;
+            TokenKind::OpenParen.parse_next(i)?;
+            let name = expression.parse_next(i)?;
+            TokenKind::Comma.parse_next(i)?;
+            let value = expression.parse_next(i)?;
+            let end = TokenKind::CloseParen.parse_next(i)?.span;
+            expr_next(Expr::new(
+                Span::encompassing(start, end),
+                ExprKind::SetVariable(Box::new(name), Box::new(value)),
+            ))
+            .context(StrContext::Label("expression"))
+            .parse_next(i)
+        }
         _ => fail
             .context(StrContext::Expected(StrContextValue::Description("string")))
             .context(StrContext::Expected(StrContextValue::Description(
@@ -1621,6 +1647,39 @@ mod tests {
                     args: vec![id("a")],
                 }))],
             })))
+        )
+    }
+
+    #[test]
+    fn test_get() {
+        let tokens = build_tokens(&[
+            (TokenKind::Keyword(Keyword::Get), "get"),
+            (TokenKind::OpenParen, "("),
+            (TokenKind::Identifier, "a"),
+            (TokenKind::CloseParen, ")"),
+        ]);
+        assert_eq!(
+            parse_expr(&tokens),
+            Ok(ex(ExprKind::GetVariable(Box::new(id("a")))))
+        )
+    }
+
+    #[test]
+    fn test_set() {
+        let tokens = build_tokens(&[
+            (TokenKind::Keyword(Keyword::Set), "set"),
+            (TokenKind::OpenParen, "("),
+            (TokenKind::Identifier, "a"),
+            (TokenKind::Comma, ","),
+            (TokenKind::Identifier, "b"),
+            (TokenKind::CloseParen, ")"),
+        ]);
+        assert_eq!(
+            parse_expr(&tokens),
+            Ok(ex(ExprKind::SetVariable(
+                Box::new(id("a")),
+                Box::new(id("b"))
+            )))
         )
     }
 }

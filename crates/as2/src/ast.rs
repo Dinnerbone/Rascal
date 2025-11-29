@@ -33,6 +33,8 @@ pub enum ExprKind<'a> {
     Delete(Vec<Expr<'a>>),
     Void(Vec<Expr<'a>>),
     Function(Function<'a>),
+    GetVariable(Box<Expr<'a>>),
+    SetVariable(Box<Expr<'a>>, Box<Expr<'a>>),
 }
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
