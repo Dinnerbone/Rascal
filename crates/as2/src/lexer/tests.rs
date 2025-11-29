@@ -55,7 +55,7 @@ fn test_non_ending_block_comment() {
 fn test_identifiers_and_keyword() {
     assert_eq!(
         kinds(
-            "var x _abc $d Var instanceof new typeof delete in void function return for if else break continue throw try catch finally ifFrameLoaded tellTarget while"
+            "var x _abc $d Var instanceof new typeof delete in void function return for if else break continue throw try catch finally ifFrameLoaded tellTarget while dynamic extends get implements interface private public set static case switch default class with"
         ),
         vec![
             TokenKind::Keyword(Keyword::Var),
@@ -83,6 +83,20 @@ fn test_identifiers_and_keyword() {
             TokenKind::Keyword(Keyword::IfFrameLoaded),
             TokenKind::Keyword(Keyword::TellTarget),
             TokenKind::Keyword(Keyword::While),
+            TokenKind::Keyword(Keyword::Dynamic),
+            TokenKind::Keyword(Keyword::Extends),
+            TokenKind::Keyword(Keyword::Get),
+            TokenKind::Keyword(Keyword::Implements),
+            TokenKind::Keyword(Keyword::Interface),
+            TokenKind::Keyword(Keyword::Private),
+            TokenKind::Keyword(Keyword::Public),
+            TokenKind::Keyword(Keyword::Set),
+            TokenKind::Keyword(Keyword::Static),
+            TokenKind::Keyword(Keyword::Case),
+            TokenKind::Keyword(Keyword::Switch),
+            TokenKind::Keyword(Keyword::Default),
+            TokenKind::Keyword(Keyword::Class),
+            TokenKind::Keyword(Keyword::With),
         ]
     );
 }
