@@ -81,8 +81,18 @@ Ok:
           Function:
             name: add
             args:
-              - a
-              - b
+              - name: a
+                type_name:
+                  span:
+                    start: 129
+                    end: 135
+                  value: Number
+              - name: b
+                type_name:
+                  span:
+                    start: 139
+                    end: 145
+                  value: Number
             body:
               - Return:
                   - span:
@@ -127,7 +137,12 @@ Ok:
           Function:
             name: processData
             args:
-              - data
+              - name: data
+                type_name:
+                  span:
+                    start: 264
+                    end: 270
+                  value: Object
             body:
               - Expr:
                   span:
@@ -277,9 +292,24 @@ Ok:
           Function:
             name: complexFunc
             args:
-              - name
-              - age
-              - isValid
+              - name: name
+                type_name:
+                  span:
+                    start: 510
+                    end: 516
+                  value: String
+              - name: age
+                type_name:
+                  span:
+                    start: 522
+                    end: 528
+                  value: Number
+              - name: isValid
+                type_name:
+                  span:
+                    start: 538
+                    end: 545
+                  value: Boolean
             body:
               - Return:
                   - span:
@@ -403,8 +433,18 @@ Ok:
           Function:
             name: forEach
             args:
-              - arr
-              - callback
+              - name: arr
+                type_name:
+                  span:
+                    start: 733
+                    end: 738
+                  value: Array
+              - name: callback
+                type_name:
+                  span:
+                    start: 749
+                    end: 757
+                  value: Function
             body:
               - ForIn:
                   condition:

@@ -1,5 +1,6 @@
 use crate::ast::{
-    Catch, Declaration, ForCondition, Function, StatementKind, SwitchElement, TryCatch,
+    Catch, Declaration, ForCondition, Function, FunctionArgument, StatementKind, SwitchElement,
+    TryCatch,
 };
 use crate::lexer::operator::Operator;
 use crate::lexer::tokens::{Keyword, TokenKind};
@@ -347,7 +348,10 @@ pub(crate) fn function<'i>(i: &mut Tokens<'i>) -> ModalResult<Spanned<Function<'
     TokenKind::OpenParen.parse_next(i)?;
     let args = separated(
         0..,
-        (identifier, opt(type_name)).map(|(i, _)| i.value),
+        (identifier, opt(type_name)).map(|(name, type_name)| FunctionArgument {
+            name: name.value,
+            type_name,
+        }),
         TokenKind::Comma,
     )
     .parse_next(i)?;

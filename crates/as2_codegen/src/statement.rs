@@ -598,7 +598,11 @@ fn gen_function(context: &mut ScriptContext, builder: &mut CodeBuilder, function
     builder.add_errors(errors);
     builder.action(Action::DefineFunction {
         name: function.name.map(ToOwned::to_owned).unwrap_or_default(),
-        params: function.args.iter().map(|s| s.to_string()).collect(),
+        params: function
+            .args
+            .iter()
+            .map(|arg| arg.name.to_string())
+            .collect(),
         actions,
     })
 }

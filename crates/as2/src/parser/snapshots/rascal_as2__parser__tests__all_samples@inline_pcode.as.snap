@@ -13,7 +13,8 @@ Ok:
           Function:
             name: traceThroughPcode
             args:
-              - message
+              - name: message
+                type_name: ~
             body:
               - Expr:
                   span:

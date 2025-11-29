@@ -475,7 +475,7 @@ pub(crate) fn expr_list<'i>(i: &mut Tokens<'i>) -> ModalResult<Vec<Expr<'i>>> {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::ast::{Function, StatementKind};
+    use crate::ast::{Function, FunctionArgument, StatementKind};
     use crate::lexer::operator::Operator;
     use crate::lexer::tokens::{QuoteKind, Token, TokenKind};
     use crate::parser::tests::build_tokens;
@@ -1620,6 +1620,8 @@ mod tests {
             (TokenKind::Identifier, "a"),
             (TokenKind::Comma, ","),
             (TokenKind::Identifier, "b"),
+            (TokenKind::Colon, ":"),
+            (TokenKind::Identifier, "Number"),
             (TokenKind::CloseParen, ")"),
             (TokenKind::OpenBrace, "{"),
             (TokenKind::Identifier, "trace"),
@@ -1632,7 +1634,16 @@ mod tests {
             parse_expr(&tokens),
             Ok(ex(ExprKind::Function(Function {
                 name: Some("func"),
-                args: vec!["a", "b"],
+                args: vec![
+                    FunctionArgument {
+                        name: "a",
+                        type_name: None
+                    },
+                    FunctionArgument {
+                        name: "b",
+                        type_name: Some(Spanned::new(Span::default(), "Number"))
+                    }
+                ],
                 body: vec![StatementKind::Expr(ex(ExprKind::Call {
                     name: Box::new(id("trace")),
                     args: vec![id("a")],
