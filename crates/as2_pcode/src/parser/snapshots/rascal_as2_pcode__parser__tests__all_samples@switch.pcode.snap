@@ -1,0 +1,101 @@
+---
+source: crates/as2_pcode/src/parser/tests.rs
+expression: parsed
+input_file: samples/as2_pcode/switch.pcode
+---
+Ok:
+  actions:
+    - ConstantPool:
+        - x
+        - c
+        - 1!
+        - 1 or 2!
+        - c!
+        - c or default!
+        - still c or default! no braces!
+        - null!
+        - "--"
+        - only default!
+        - end
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - StoreRegister: 0
+    - Push:
+        - Integer: 1
+    - StrictEquals
+    - If: loc00af
+    - Push:
+        - Register: 0
+    - Push:
+        - Integer: 2
+    - StrictEquals
+    - If: loc00b5
+    - Push:
+        - Register: 0
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - StrictEquals
+    - If: loc00c0
+    - Push:
+        - Register: 0
+    - Push:
+        - "Null"
+    - StrictEquals
+    - If: loc00d7
+    - Jump: loc00c6
+    - Push:
+        - Constant: 2
+    - Trace
+    - Push:
+        - Constant: 3
+    - Trace
+    - Jump: loc00dd
+    - Push:
+        - Constant: 4
+    - Trace
+    - Push:
+        - Constant: 5
+    - Trace
+    - Push:
+        - Constant: 6
+    - Trace
+    - Jump: loc00dd
+    - Push:
+        - Constant: 7
+    - Trace
+    - Push:
+        - Constant: 8
+    - Trace
+    - Push:
+        - Constant: 8
+    - Trace
+    - Jump: loc00ee
+    - Push:
+        - Constant: 9
+    - Trace
+    - Push:
+        - Constant: 8
+    - Trace
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - StoreRegister: 0
+    - Push:
+        - "True"
+    - StrictEquals
+    - If: loc0114
+    - Jump: loc0114
+    - Push:
+        - Constant: 10
+    - Trace
+  label_positions:
+    loc00af: 21
+    loc00b5: 23
+    loc00c0: 26
+    loc00c6: 28
+    loc00d7: 33
+    loc00dd: 35
+    loc00ee: 40
+    loc0114: 51

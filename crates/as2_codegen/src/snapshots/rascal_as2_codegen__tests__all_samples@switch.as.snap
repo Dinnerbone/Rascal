@@ -1,0 +1,55 @@
+---
+source: crates/as2_codegen/src/tests.rs
+expression: result
+input_file: samples/as2/switch.as
+---
+ConstantPool "x", "c", "1!", "1 or 2!", "c!", "c or default!", "still c or default! no braces!", "null!", "--", "only default!", "end"
+Push constant0
+GetVariable
+StoreRegister 0
+Push 1
+StrictEquals
+If loc0001
+Push register0, 2
+StrictEquals
+If loc0002
+Push register0, constant1
+GetVariable
+StrictEquals
+If loc0003
+Push register0, null
+StrictEquals
+If loc0005
+Jump loc0004
+loc0001:Push constant2
+Trace
+loc0002:Push constant3
+Trace
+Jump loc0000
+loc0003:Push constant4
+Trace
+loc0004:Push constant5
+Trace
+Push constant6
+Trace
+Jump loc0000
+loc0005:Push constant7
+Trace
+loc0000:Push constant8
+Trace
+Push constant8
+Trace
+Jump loc0008
+loc0008:Push constant9
+Trace
+loc0007:Push constant8
+Trace
+Push constant0
+GetVariable
+StoreRegister 0
+Push true
+StrictEquals
+If loc000a
+Jump loc0009
+loc000a:loc0009:Push constant10
+Trace

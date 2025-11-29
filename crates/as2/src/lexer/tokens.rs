@@ -172,7 +172,7 @@ pub enum Keyword {
 }
 
 impl Keyword {
-    fn text(&self) -> &'static str {
+    pub(crate) fn text(&self) -> &'static str {
         match self {
             Keyword::Var => "var",
             Keyword::InstanceOf => "instanceOf",

@@ -1,0 +1,53 @@
+ConstantPool "x", "c", "1!", "1 or 2!", "c!", "c or default!", "still c or default! no braces!", "null!", "--", "only default!", "end"
+Push constant0
+GetVariable
+StoreRegister 0
+Push 1
+StrictEquals
+If loc00af
+Push register0
+Push 2
+StrictEquals
+If loc00b5
+Push register0
+Push constant1
+GetVariable
+StrictEquals
+If loc00c0
+Push register0
+Push null
+StrictEquals
+If loc00d7
+Jump loc00c6
+loc00af:Push constant2
+Trace
+loc00b5:Push constant3
+Trace
+Jump loc00dd
+loc00c0:Push constant4
+Trace
+loc00c6:Push constant5
+Trace
+Push constant6
+Trace
+Jump loc00dd
+loc00d7:Push constant7
+Trace
+loc00dd:Push constant8
+Trace
+Push constant8
+Trace
+Jump loc00ee
+loc00ee:Push constant9
+Trace
+Push constant8
+Trace
+Push constant0
+GetVariable
+StoreRegister 0
+Push true
+StrictEquals
+If loc0114
+Jump loc0114
+loc0114:Push constant10
+Trace

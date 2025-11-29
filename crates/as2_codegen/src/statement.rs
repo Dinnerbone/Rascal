@@ -4,7 +4,7 @@ use crate::context::ScriptContext;
 use crate::special_functions::gen_special_call;
 use rascal_as2::ast::{
     Affix, BinaryOperator, ConstantKind, Declaration, Expr, ExprKind, ForCondition, Function,
-    StatementKind, TryCatch, UnaryOperator,
+    StatementKind, SwitchElement, TryCatch, UnaryOperator,
 };
 use rascal_as2_pcode::{Action, CatchTarget, PCode, PushValue};
 use rascal_common::span::Span;
@@ -109,6 +109,9 @@ pub(crate) fn gen_statement(
             builder.append(actions);
         }
         StatementKind::With { target, body } => gen_with(context, builder, target, body),
+        StatementKind::Switch { target, elements } => {
+            gen_switch(context, builder, target, elements)
+        }
     }
 }
 
@@ -142,6 +145,73 @@ fn gen_tell_target(
     if was_in_tell_target {
         builder.action(Action::SetTarget2);
     }
+}
+
+fn gen_switch(
+    context: &mut ScriptContext,
+    builder: &mut CodeBuilder,
+    target: &Expr,
+    elements: &[SwitchElement],
+) {
+    let break_label = context.create_label();
+    let mut conditionals = vec![];
+    let mut default_label = break_label.clone();
+
+    // First, generate labels and conditionals
+    for element in elements {
+        match element {
+            SwitchElement::Case(value) => {
+                conditionals.push((context.create_label(), value));
+            }
+            SwitchElement::Default => {
+                default_label = context.create_label();
+            }
+            _ => {}
+        }
+    }
+    if conditionals.is_empty() && default_label == break_label {
+        // Nothing found, no code to generate
+        return;
+    }
+    if !conditionals.is_empty() {
+        gen_expr(context, builder, target, false);
+        builder.action(Action::StoreRegister(0));
+        for (i, (label, value)) in conditionals.iter().enumerate() {
+            if i > 0 {
+                builder.push(PushValue::Register(0));
+            }
+            gen_expr(context, builder, value, false);
+            builder.action(Action::StrictEquals);
+            builder.action(Action::If(label.clone()));
+        }
+    }
+    builder.action(Action::Jump(default_label.clone()));
+
+    // Then the body of each case
+    let mut i = 0;
+    let mut has_case = false;
+    let old_break_label = builder.set_break_label(Some(break_label.clone()));
+    for element in elements {
+        match element {
+            SwitchElement::Case(_) => {
+                builder.mark_label(conditionals[i].0.clone());
+                i += 1;
+                has_case = true;
+            }
+            SwitchElement::Default => {
+                builder.mark_label(default_label.clone());
+                has_case = true;
+            }
+            SwitchElement::Statement(statement) => {
+                if has_case {
+                    gen_statement(context, builder, statement);
+                }
+            }
+        }
+    }
+
+    builder.set_break_label(old_break_label);
+    builder.mark_label(break_label);
 }
 
 fn gen_with(

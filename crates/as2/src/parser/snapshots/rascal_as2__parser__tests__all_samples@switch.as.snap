@@ -1,0 +1,332 @@
+---
+source: crates/as2/src/parser/tests.rs
+expression: parsed
+input_file: samples/as2/switch.as
+---
+Ok:
+  statements:
+    - Switch:
+        target:
+          span:
+            start: 7
+            end: 8
+          value:
+            Constant:
+              Identifier: x
+        elements:
+          - Case:
+              span:
+                start: 18
+                end: 19
+              value:
+                Constant:
+                  Integer: 1
+          - Statement:
+              Expr:
+                span:
+                  start: 21
+                  end: 32
+                value:
+                  Call:
+                    name:
+                      span:
+                        start: 21
+                        end: 26
+                      value:
+                        Constant:
+                          Identifier: trace
+                    args:
+                      - span:
+                          start: 27
+                          end: 31
+                        value:
+                          Constant:
+                            String: 1!
+          - Case:
+              span:
+                start: 40
+                end: 41
+              value:
+                Constant:
+                  Integer: 2
+          - Statement:
+              Block:
+                - Expr:
+                    span:
+                      start: 47
+                      end: 63
+                    value:
+                      Call:
+                        name:
+                          span:
+                            start: 47
+                            end: 52
+                          value:
+                            Constant:
+                              Identifier: trace
+                        args:
+                          - span:
+                              start: 53
+                              end: 62
+                            value:
+                              Constant:
+                                String: 1 or 2!
+                - Break
+          - Case:
+              span:
+                start: 83
+                end: 84
+              value:
+                Constant:
+                  Identifier: c
+          - Statement:
+              Block:
+                - Expr:
+                    span:
+                      start: 90
+                      end: 101
+                    value:
+                      Call:
+                        name:
+                          span:
+                            start: 90
+                            end: 95
+                          value:
+                            Constant:
+                              Identifier: trace
+                        args:
+                          - span:
+                              start: 96
+                              end: 100
+                            value:
+                              Constant:
+                                String: c!
+          - Default
+          - Statement:
+              Expr:
+                span:
+                  start: 118
+                  end: 140
+                value:
+                  Call:
+                    name:
+                      span:
+                        start: 118
+                        end: 123
+                      value:
+                        Constant:
+                          Identifier: trace
+                    args:
+                      - span:
+                          start: 124
+                          end: 139
+                        value:
+                          Constant:
+                            String: c or default!
+          - Statement:
+              Expr:
+                span:
+                  start: 143
+                  end: 182
+                value:
+                  Call:
+                    name:
+                      span:
+                        start: 143
+                        end: 148
+                      value:
+                        Constant:
+                          Identifier: trace
+                    args:
+                      - span:
+                          start: 149
+                          end: 181
+                        value:
+                          Constant:
+                            String: still c or default! no braces!
+          - Statement: Break
+          - Case:
+              span:
+                start: 198
+                end: 202
+              value:
+                Constant:
+                  Identifier: "null"
+          - Statement:
+              Expr:
+                span:
+                  start: 206
+                  end: 220
+                value:
+                  Call:
+                    name:
+                      span:
+                        start: 206
+                        end: 211
+                      value:
+                        Constant:
+                          Identifier: trace
+                    args:
+                      - span:
+                          start: 212
+                          end: 219
+                        value:
+                          Constant:
+                            String: null!
+    - Expr:
+        span:
+          start: 224
+          end: 235
+        value:
+          Call:
+            name:
+              span:
+                start: 224
+                end: 229
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 230
+                  end: 234
+                value:
+                  Constant:
+                    String: "--"
+    - Switch:
+        target:
+          span:
+            start: 244
+            end: 245
+          value:
+            Constant:
+              Identifier: x
+        elements:
+          - Statement:
+              Expr:
+                span:
+                  start: 250
+                  end: 267
+                value:
+                  Call:
+                    name:
+                      span:
+                        start: 250
+                        end: 255
+                      value:
+                        Constant:
+                          Identifier: trace
+                    args:
+                      - span:
+                          start: 256
+                          end: 266
+                        value:
+                          Constant:
+                            String: no case!
+    - Expr:
+        span:
+          start: 270
+          end: 281
+        value:
+          Call:
+            name:
+              span:
+                start: 270
+                end: 275
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 276
+                  end: 280
+                value:
+                  Constant:
+                    String: "--"
+    - Switch:
+        target:
+          span:
+            start: 290
+            end: 291
+          value:
+            Constant:
+              Identifier: x
+        elements:
+          - Default
+          - Statement:
+              Expr:
+                span:
+                  start: 305
+                  end: 327
+                value:
+                  Call:
+                    name:
+                      span:
+                        start: 305
+                        end: 310
+                      value:
+                        Constant:
+                          Identifier: trace
+                    args:
+                      - span:
+                          start: 311
+                          end: 326
+                        value:
+                          Constant:
+                            String: only default!
+    - Expr:
+        span:
+          start: 330
+          end: 341
+        value:
+          Call:
+            name:
+              span:
+                start: 330
+                end: 335
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 336
+                  end: 340
+                value:
+                  Constant:
+                    String: "--"
+    - Switch:
+        target:
+          span:
+            start: 350
+            end: 351
+          value:
+            Constant:
+              Identifier: x
+        elements:
+          - Case:
+              span:
+                start: 361
+                end: 365
+              value:
+                Constant:
+                  Identifier: "true"
+    - Expr:
+        span:
+          start: 369
+          end: 381
+        value:
+          Call:
+            name:
+              span:
+                start: 369
+                end: 374
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 375
+                  end: 380
+                value:
+                  Constant:
+                    String: end

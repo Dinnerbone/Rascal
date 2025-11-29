@@ -1,11 +1,13 @@
-use crate::ast::{Catch, Declaration, ForCondition, Function, StatementKind, TryCatch};
+use crate::ast::{
+    Catch, Declaration, ForCondition, Function, StatementKind, SwitchElement, TryCatch,
+};
 use crate::lexer::operator::Operator;
 use crate::lexer::tokens::{Keyword, TokenKind};
 use crate::parser::expression::{expr_list, expression, type_name};
 use crate::parser::{Tokens, identifier, skip_newlines};
 use rascal_common::span::{Span, Spanned};
 use winnow::combinator::{alt, cond, cut_err, opt, peek, separated};
-use winnow::error::{ContextError, ErrMode, StrContext};
+use winnow::error::{ContextError, ErrMode, StrContext, StrContextValue};
 use winnow::stream::Stream;
 use winnow::token::{any, take_while};
 use winnow::{ModalResult, Parser};
@@ -51,6 +53,7 @@ pub(crate) fn statement<'i>(i: &mut Tokens<'i>) -> ModalResult<StatementKind<'i>
         TokenKind::Keyword(Keyword::TellTarget) => tell_target.parse_next(i)?,
         TokenKind::Keyword(Keyword::While) => while_loop.parse_next(i)?,
         TokenKind::Keyword(Keyword::With) => with.parse_next(i)?,
+        TokenKind::Keyword(Keyword::Switch) => switch.parse_next(i)?,
         TokenKind::OpenBrace => {
             let statements = statement_list(true).parse_next(i)?;
             TokenKind::CloseBrace.parse_next(i)?;
@@ -228,6 +231,68 @@ pub(crate) fn with<'i>(i: &mut Tokens<'i>) -> ModalResult<StatementKind<'i>> {
     })
 }
 
+pub(crate) fn switch<'i>(i: &mut Tokens<'i>) -> ModalResult<StatementKind<'i>> {
+    TokenKind::OpenParen.parse_next(i)?;
+    let target = expression.parse_next(i)?;
+    TokenKind::CloseParen.parse_next(i)?;
+    let mut elements = vec![];
+
+    TokenKind::OpenBrace.parse_next(i)?;
+    skip_newlines(i)?;
+    let mut next = peek(any).parse_next(i)?;
+    let mut has_default = false;
+    while next.kind != TokenKind::CloseBrace {
+        match next.kind {
+            TokenKind::Keyword(Keyword::Case) => {
+                TokenKind::Keyword(Keyword::Case).parse_next(i)?;
+                let value = expression
+                    .context(StrContext::Label("value"))
+                    .parse_next(i)?;
+                TokenKind::Colon.parse_next(i)?;
+                elements.push(SwitchElement::Case(value));
+            }
+            TokenKind::Keyword(Keyword::Default) if !has_default => {
+                TokenKind::Keyword(Keyword::Default).parse_next(i)?;
+                TokenKind::Colon.parse_next(i)?;
+                elements.push(SwitchElement::Default);
+                has_default = true;
+            }
+            TokenKind::Newline | TokenKind::Semicolon => {
+                any.parse_next(i)?;
+            }
+            _ => {
+                let statement = if has_default {
+                    statement
+                        .context(StrContext::Expected(StrContextValue::StringLiteral(
+                            Keyword::Case.text(),
+                        )))
+                        .context(StrContext::Expected(StrContextValue::Description(
+                            "statement",
+                        )))
+                        .parse_next(i)?
+                } else {
+                    statement
+                        .context(StrContext::Expected(StrContextValue::StringLiteral(
+                            Keyword::Case.text(),
+                        )))
+                        .context(StrContext::Expected(StrContextValue::Description(
+                            "statement",
+                        )))
+                        .context(StrContext::Expected(StrContextValue::StringLiteral(
+                            Keyword::Default.text(),
+                        )))
+                        .parse_next(i)?
+                };
+                elements.push(SwitchElement::Statement(statement));
+            }
+        }
+        next = peek(any).parse_next(i)?;
+    }
+    TokenKind::CloseBrace.parse_next(i)?;
+
+    Ok(StatementKind::Switch { target, elements })
+}
+
 pub(crate) fn try_catch_finally<'i>(i: &mut Tokens<'i>) -> ModalResult<StatementKind<'i>> {
     TokenKind::OpenBrace.parse_next(i)?;
     let try_body = statement_list(true).parse_next(i)?;
@@ -307,7 +372,7 @@ pub(crate) fn function<'i>(i: &mut Tokens<'i>) -> ModalResult<Spanned<Function<'
 mod stmt_tests {
     use super::*;
     use crate::ast::{
-        Affix, BinaryOperator, ConstantKind, Expr, ExprKind, TryCatch, UnaryOperator,
+        Affix, BinaryOperator, ConstantKind, Expr, ExprKind, SwitchElement, TryCatch, UnaryOperator,
     };
     use crate::lexer::tokens::{Keyword, QuoteKind, Token, TokenKind};
     use crate::parser::tests::build_tokens;
@@ -777,6 +842,40 @@ mod stmt_tests {
                         Box::new(ex(ExprKind::Constant(ConstantKind::Integer(100))))
                     )
                 ))]))
+            })
+        )
+    }
+
+    #[test]
+    fn test_switch() {
+        let tokens = build_tokens(&[
+            (TokenKind::Keyword(Keyword::Switch), "switch"),
+            (TokenKind::OpenParen, "("),
+            (TokenKind::Identifier, "a"),
+            (TokenKind::CloseParen, ")"),
+            (TokenKind::OpenBrace, "{"),
+            (TokenKind::Keyword(Keyword::Case), "case"),
+            (TokenKind::Integer, "1"),
+            (TokenKind::Colon, ":"),
+            (TokenKind::Keyword(Keyword::Return), "return"),
+            (TokenKind::Semicolon, ";"),
+            (TokenKind::Keyword(Keyword::Default), "default"),
+            (TokenKind::Colon, ":"),
+            (TokenKind::Keyword(Keyword::Throw), "throw"),
+            (TokenKind::Identifier, "e"),
+            (TokenKind::Semicolon, ";"),
+            (TokenKind::CloseBrace, "}"),
+        ]);
+        assert_eq!(
+            parse_stmt(&tokens),
+            Ok(StatementKind::Switch {
+                target: id("a"),
+                elements: vec![
+                    SwitchElement::Case(ex(ExprKind::Constant(ConstantKind::Integer(1)))),
+                    SwitchElement::Statement(StatementKind::Return(vec![])),
+                    SwitchElement::Default,
+                    SwitchElement::Statement(StatementKind::Throw(vec![id("e")])),
+                ]
             })
         )
     }

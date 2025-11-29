@@ -162,6 +162,17 @@ pub enum StatementKind<'a> {
         target: Expr<'a>,
         body: Box<StatementKind<'a>>,
     },
+    Switch {
+        target: Expr<'a>,
+        elements: Vec<SwitchElement<'a>>,
+    },
+}
+
+#[derive(Debug, Clone, Serialize, PartialEq)]
+pub enum SwitchElement<'a> {
+    Case(Expr<'a>),
+    Default,
+    Statement(StatementKind<'a>),
 }
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
