@@ -1,0 +1,127 @@
+---
+source: crates/as2_pcode/src/parser/tests.rs
+expression: parsed
+input_file: samples/as2_pcode/switch_in_loop_break_continue.pcode
+---
+Ok:
+  actions:
+    - ConstantPool:
+        - i
+        - loop i=
+        - "  case 0 -> continue outer"
+        - "  case 1/2 -> fallthrough then break outer at 2"
+        - "  case 3 -> break switch only"
+        - "  case 4 -> continue outer from nested block"
+        - "  default -> normal work"
+        - "  after switch i="
+        - done
+    - Push:
+        - Constant: 0
+    - Push:
+        - Integer: 0
+    - DefineLocal
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Integer: 6
+    - Less2
+    - Not
+    - If: loc01e1
+    - Push:
+        - Constant: 1
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - StoreRegister: 0
+    - Push:
+        - Integer: 0
+    - StrictEquals
+    - If: loc0176
+    - Push:
+        - Register: 0
+    - Push:
+        - Integer: 1
+    - StrictEquals
+    - If: loc0181
+    - Push:
+        - Register: 0
+    - Push:
+        - Integer: 2
+    - StrictEquals
+    - If: loc0181
+    - Push:
+        - Register: 0
+    - Push:
+        - Integer: 3
+    - StrictEquals
+    - If: loc01a6
+    - Push:
+        - Register: 0
+    - Push:
+        - Integer: 4
+    - StrictEquals
+    - If: loc01b1
+    - Jump: loc01bc
+    - Push:
+        - Constant: 2
+    - Trace
+    - Jump: loc01cf
+    - Push:
+        - Constant: 3
+    - Trace
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Integer: 2
+    - Equals2
+    - Not
+    - If: loc01a1
+    - Jump: loc01c2
+    - Jump: loc01c2
+    - Push:
+        - Constant: 4
+    - Trace
+    - Jump: loc01c2
+    - Push:
+        - Constant: 5
+    - Trace
+    - Jump: loc01cf
+    - Push:
+        - Constant: 6
+    - Trace
+    - Push:
+        - Constant: 7
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 0
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Increment
+    - SetVariable
+    - Jump: loc00e7
+    - Push:
+        - Constant: 8
+    - Trace
+  label_positions:
+    loc00e7: 4
+    loc0176: 38
+    loc0181: 41
+    loc01a1: 50
+    loc01a6: 51
+    loc01b1: 54
+    loc01bc: 57
+    loc01c2: 59
+    loc01cf: 64
+    loc01e1: 70

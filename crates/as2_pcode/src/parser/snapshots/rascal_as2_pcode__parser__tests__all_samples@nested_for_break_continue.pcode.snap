@@ -1,0 +1,129 @@
+---
+source: crates/as2_pcode/src/parser/tests.rs
+expression: parsed
+input_file: samples/as2_pcode/nested_for_break_continue.pcode
+---
+Ok:
+  actions:
+    - ConstantPool:
+        - i
+        - outer i=
+        - j
+        - "  inner j="
+        - done
+    - Push:
+        - Constant: 0
+    - Push:
+        - Integer: 0
+    - DefineLocal
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Integer: 4
+    - Less2
+    - Not
+    - If: loc012d
+    - Push:
+        - Constant: 1
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 2
+    - Push:
+        - Integer: 0
+    - DefineLocal
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Push:
+        - Integer: 4
+    - Less2
+    - Not
+    - If: loc00e7
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Push:
+        - Integer: 1
+    - Equals2
+    - Not
+    - If: loc0097
+    - Jump: loc00d5
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Integer: 2
+    - Equals2
+    - PushDuplicate
+    - Not
+    - If: loc00bd
+    - Pop
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Push:
+        - Integer: 2
+    - Equals2
+    - Not
+    - If: loc00c8
+    - Jump: loc00e7
+    - Push:
+        - Constant: 3
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 2
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Increment
+    - SetVariable
+    - Jump: loc0068
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Integer: 1
+    - Equals2
+    - Not
+    - If: loc0101
+    - Jump: loc011b
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Integer: 3
+    - Equals2
+    - Not
+    - If: loc011b
+    - Jump: loc012d
+    - Push:
+        - Constant: 0
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Increment
+    - SetVariable
+    - Jump: loc0034
+    - Push:
+        - Constant: 4
+    - Trace
+  label_positions:
+    loc0034: 4
+    loc0068: 18
+    loc0097: 31
+    loc00bd: 43
+    loc00c8: 46
+    loc00d5: 51
+    loc00e7: 57
+    loc0101: 64
+    loc011b: 71
+    loc012d: 77

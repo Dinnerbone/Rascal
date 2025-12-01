@@ -77,12 +77,12 @@ pub(crate) fn gen_statement(
         StatementKind::ForIn { condition, body } => gen_for_loop(context, builder, condition, body),
         StatementKind::If { condition, yes, no } => gen_if(context, builder, condition, yes, no),
         StatementKind::Break => {
-            if let Some(label) = builder.break_label() {
+            if let Some(label) = context.break_label() {
                 builder.action(Action::Jump(label));
             }
         }
         StatementKind::Continue => {
-            if let Some(label) = builder.continue_label() {
+            if let Some(label) = context.continue_label() {
                 builder.action(Action::Jump(label));
             }
         }
@@ -190,7 +190,7 @@ fn gen_switch(
     // Then the body of each case
     let mut i = 0;
     let mut has_case = false;
-    let old_break_label = builder.set_break_label(Some(break_label.clone()));
+    let old_break_label = context.set_break_label(Some(break_label.clone()));
     for element in elements {
         match element {
             SwitchElement::Case(_) => {
@@ -210,7 +210,7 @@ fn gen_switch(
         }
     }
 
-    builder.set_break_label(old_break_label);
+    context.set_break_label(old_break_label);
     builder.mark_label(break_label);
 }
 
@@ -274,8 +274,8 @@ fn gen_while_loop(
 ) {
     let start = context.create_label();
     let end = context.create_label();
-    let old_break = builder.set_break_label(Some(end.clone()));
-    let old_continue = builder.set_continue_label(Some(start.clone()));
+    let old_break = context.set_break_label(Some(end.clone()));
+    let old_continue = context.set_continue_label(Some(start.clone()));
 
     builder.mark_label(start.clone());
     gen_expr(context, builder, condition, false);
@@ -285,8 +285,8 @@ fn gen_while_loop(
 
     builder.action(Action::Jump(start));
     builder.mark_label(end);
-    builder.set_break_label(old_break);
-    builder.set_continue_label(old_continue);
+    context.set_break_label(old_break);
+    context.set_continue_label(old_continue);
 }
 
 fn gen_for_loop(
@@ -298,8 +298,8 @@ fn gen_for_loop(
     let start_stack_size = builder.stack_size();
     let end_label = context.create_label();
     let continue_label = context.create_label();
-    let old_break = builder.set_break_label(Some(end_label.clone()));
-    let old_continue = builder.set_continue_label(Some(continue_label.clone()));
+    let old_break = context.set_break_label(Some(end_label.clone()));
+    let old_continue = context.set_continue_label(Some(continue_label.clone()));
 
     match condition {
         ForCondition::Enumerate {
@@ -364,8 +364,8 @@ fn gen_for_loop(
 
     builder.truncate_stack(start_stack_size);
     builder.mark_label(end_label);
-    builder.set_break_label(old_break);
-    builder.set_continue_label(old_continue);
+    context.set_break_label(old_break);
+    context.set_continue_label(old_continue);
 }
 
 fn gen_if(
@@ -593,6 +593,8 @@ fn gen_try_catch(context: &mut ScriptContext, builder: &mut CodeBuilder, try_cat
 
 fn gen_function(context: &mut ScriptContext, builder: &mut CodeBuilder, function: &Function) {
     let mut fun_builder = CodeBuilder::new();
+    let old_break = context.set_break_label(None);
+    let old_continue = context.set_continue_label(None);
     gen_statements(context, &mut fun_builder, &function.body);
     let (actions, errors) = fun_builder.into_actions();
     builder.add_errors(errors);
@@ -604,7 +606,9 @@ fn gen_function(context: &mut ScriptContext, builder: &mut CodeBuilder, function
             .map(|arg| arg.name.to_string())
             .collect(),
         actions,
-    })
+    });
+    context.set_break_label(old_break);
+    context.set_continue_label(old_continue);
 }
 
 fn gen_init_object(

@@ -1,0 +1,757 @@
+---
+source: crates/as2/src/lexer/tests.rs
+expression: tokens
+input_file: samples/as2/function_in_loop_break_continue.as
+---
+- kind:
+    Keyword: For
+  span:
+    start: 0
+    end: 3
+  raw: for
+- kind: OpenParen
+  span:
+    start: 4
+    end: 5
+  raw: (
+- kind:
+    Keyword: Var
+  span:
+    start: 5
+    end: 8
+  raw: var
+- kind: Identifier
+  span:
+    start: 9
+    end: 10
+  raw: i
+- kind:
+    Operator: Assign
+  span:
+    start: 11
+    end: 12
+  raw: "="
+- kind: Integer
+  span:
+    start: 13
+    end: 14
+  raw: "0"
+- kind: Semicolon
+  span:
+    start: 14
+    end: 15
+  raw: ;
+- kind: Identifier
+  span:
+    start: 16
+    end: 17
+  raw: i
+- kind:
+    Operator: LessThan
+  span:
+    start: 18
+    end: 19
+  raw: "<"
+- kind: Integer
+  span:
+    start: 20
+    end: 21
+  raw: "5"
+- kind: Semicolon
+  span:
+    start: 21
+    end: 22
+  raw: ;
+- kind: Identifier
+  span:
+    start: 23
+    end: 24
+  raw: i
+- kind:
+    Operator: Increment
+  span:
+    start: 24
+    end: 26
+  raw: ++
+- kind: CloseParen
+  span:
+    start: 26
+    end: 27
+  raw: )
+- kind: OpenBrace
+  span:
+    start: 28
+    end: 29
+  raw: "{"
+- kind: Newline
+  span:
+    start: 29
+    end: 30
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 34
+    end: 39
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 39
+    end: 40
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 40
+    end: 49
+  raw: loop i=
+- kind:
+    Operator: Add
+  span:
+    start: 50
+    end: 51
+  raw: +
+- kind: Identifier
+  span:
+    start: 52
+    end: 53
+  raw: i
+- kind: CloseParen
+  span:
+    start: 53
+    end: 54
+  raw: )
+- kind: Semicolon
+  span:
+    start: 54
+    end: 55
+  raw: ;
+- kind: Newline
+  span:
+    start: 55
+    end: 56
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 56
+    end: 57
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 110
+    end: 113
+  raw: var
+- kind: Identifier
+  span:
+    start: 114
+    end: 120
+  raw: decide
+- kind:
+    Operator: Assign
+  span:
+    start: 121
+    end: 122
+  raw: "="
+- kind:
+    Keyword: Function
+  span:
+    start: 123
+    end: 131
+  raw: function
+- kind: OpenParen
+  span:
+    start: 131
+    end: 132
+  raw: (
+- kind: Identifier
+  span:
+    start: 132
+    end: 133
+  raw: v
+- kind: CloseParen
+  span:
+    start: 133
+    end: 134
+  raw: )
+- kind: OpenBrace
+  span:
+    start: 135
+    end: 136
+  raw: "{"
+- kind: Newline
+  span:
+    start: 136
+    end: 137
+  raw: "\n"
+- kind:
+    Keyword: If
+  span:
+    start: 145
+    end: 147
+  raw: if
+- kind: OpenParen
+  span:
+    start: 148
+    end: 149
+  raw: (
+- kind: Identifier
+  span:
+    start: 149
+    end: 150
+  raw: v
+- kind:
+    Operator: Equal
+  span:
+    start: 151
+    end: 153
+  raw: "=="
+- kind: Integer
+  span:
+    start: 154
+    end: 155
+  raw: "1"
+- kind: CloseParen
+  span:
+    start: 155
+    end: 156
+  raw: )
+- kind: OpenBrace
+  span:
+    start: 157
+    end: 158
+  raw: "{"
+- kind: Newline
+  span:
+    start: 158
+    end: 159
+  raw: "\n"
+- kind:
+    Keyword: Return
+  span:
+    start: 171
+    end: 177
+  raw: return
+- kind:
+    String: Double
+  span:
+    start: 178
+    end: 188
+  raw: continue
+- kind: Semicolon
+  span:
+    start: 188
+    end: 189
+  raw: ;
+- kind: Newline
+  span:
+    start: 189
+    end: 190
+  raw: "\n"
+- kind: CloseBrace
+  span:
+    start: 198
+    end: 199
+  raw: "}"
+- kind: Newline
+  span:
+    start: 199
+    end: 200
+  raw: "\n"
+- kind:
+    Keyword: If
+  span:
+    start: 208
+    end: 210
+  raw: if
+- kind: OpenParen
+  span:
+    start: 211
+    end: 212
+  raw: (
+- kind: Identifier
+  span:
+    start: 212
+    end: 213
+  raw: v
+- kind:
+    Operator: Equal
+  span:
+    start: 214
+    end: 216
+  raw: "=="
+- kind: Integer
+  span:
+    start: 217
+    end: 218
+  raw: "3"
+- kind: CloseParen
+  span:
+    start: 218
+    end: 219
+  raw: )
+- kind: OpenBrace
+  span:
+    start: 220
+    end: 221
+  raw: "{"
+- kind: Newline
+  span:
+    start: 221
+    end: 222
+  raw: "\n"
+- kind:
+    Keyword: Return
+  span:
+    start: 234
+    end: 240
+  raw: return
+- kind:
+    String: Double
+  span:
+    start: 241
+    end: 248
+  raw: break
+- kind: Semicolon
+  span:
+    start: 248
+    end: 249
+  raw: ;
+- kind: Newline
+  span:
+    start: 249
+    end: 250
+  raw: "\n"
+- kind: CloseBrace
+  span:
+    start: 258
+    end: 259
+  raw: "}"
+- kind: Newline
+  span:
+    start: 259
+    end: 260
+  raw: "\n"
+- kind:
+    Keyword: Return
+  span:
+    start: 268
+    end: 274
+  raw: return
+- kind:
+    String: Double
+  span:
+    start: 275
+    end: 281
+  raw: none
+- kind: Semicolon
+  span:
+    start: 281
+    end: 282
+  raw: ;
+- kind: Newline
+  span:
+    start: 282
+    end: 283
+  raw: "\n"
+- kind: CloseBrace
+  span:
+    start: 287
+    end: 288
+  raw: "}"
+- kind: Semicolon
+  span:
+    start: 288
+    end: 289
+  raw: ;
+- kind: Newline
+  span:
+    start: 289
+    end: 290
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 290
+    end: 291
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 367
+    end: 370
+  raw: var
+- kind: Identifier
+  span:
+    start: 371
+    end: 378
+  raw: naughty
+- kind:
+    Operator: Assign
+  span:
+    start: 379
+    end: 380
+  raw: "="
+- kind:
+    Keyword: Function
+  span:
+    start: 381
+    end: 389
+  raw: function
+- kind: OpenParen
+  span:
+    start: 389
+    end: 390
+  raw: (
+- kind: CloseParen
+  span:
+    start: 390
+    end: 391
+  raw: )
+- kind: OpenBrace
+  span:
+    start: 392
+    end: 393
+  raw: "{"
+- kind: Newline
+  span:
+    start: 393
+    end: 394
+  raw: "\n"
+- kind:
+    Keyword: Break
+  span:
+    start: 402
+    end: 407
+  raw: break
+- kind: Semicolon
+  span:
+    start: 407
+    end: 408
+  raw: ;
+- kind: Newline
+  span:
+    start: 408
+    end: 409
+  raw: "\n"
+- kind: CloseBrace
+  span:
+    start: 413
+    end: 414
+  raw: "}"
+- kind: Semicolon
+  span:
+    start: 414
+    end: 415
+  raw: ;
+- kind: Newline
+  span:
+    start: 415
+    end: 416
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 420
+    end: 427
+  raw: naughty
+- kind: OpenParen
+  span:
+    start: 427
+    end: 428
+  raw: (
+- kind: CloseParen
+  span:
+    start: 428
+    end: 429
+  raw: )
+- kind: Semicolon
+  span:
+    start: 429
+    end: 430
+  raw: ;
+- kind: Newline
+  span:
+    start: 430
+    end: 431
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 431
+    end: 432
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 436
+    end: 439
+  raw: var
+- kind: Identifier
+  span:
+    start: 440
+    end: 446
+  raw: action
+- kind:
+    Operator: Assign
+  span:
+    start: 447
+    end: 448
+  raw: "="
+- kind: Identifier
+  span:
+    start: 449
+    end: 455
+  raw: decide
+- kind: OpenParen
+  span:
+    start: 455
+    end: 456
+  raw: (
+- kind: Identifier
+  span:
+    start: 456
+    end: 457
+  raw: i
+- kind: CloseParen
+  span:
+    start: 457
+    end: 458
+  raw: )
+- kind: Semicolon
+  span:
+    start: 458
+    end: 459
+  raw: ;
+- kind: Newline
+  span:
+    start: 459
+    end: 460
+  raw: "\n"
+- kind:
+    Keyword: If
+  span:
+    start: 464
+    end: 466
+  raw: if
+- kind: OpenParen
+  span:
+    start: 467
+    end: 468
+  raw: (
+- kind: Identifier
+  span:
+    start: 468
+    end: 474
+  raw: action
+- kind:
+    Operator: Equal
+  span:
+    start: 475
+    end: 477
+  raw: "=="
+- kind:
+    String: Double
+  span:
+    start: 478
+    end: 488
+  raw: continue
+- kind: CloseParen
+  span:
+    start: 488
+    end: 489
+  raw: )
+- kind: OpenBrace
+  span:
+    start: 490
+    end: 491
+  raw: "{"
+- kind: Newline
+  span:
+    start: 491
+    end: 492
+  raw: "\n"
+- kind:
+    Keyword: Continue
+  span:
+    start: 500
+    end: 508
+  raw: continue
+- kind: Semicolon
+  span:
+    start: 508
+    end: 509
+  raw: ;
+- kind: Newline
+  span:
+    start: 509
+    end: 510
+  raw: "\n"
+- kind: CloseBrace
+  span:
+    start: 514
+    end: 515
+  raw: "}"
+- kind: Newline
+  span:
+    start: 515
+    end: 516
+  raw: "\n"
+- kind:
+    Keyword: If
+  span:
+    start: 520
+    end: 522
+  raw: if
+- kind: OpenParen
+  span:
+    start: 523
+    end: 524
+  raw: (
+- kind: Identifier
+  span:
+    start: 524
+    end: 530
+  raw: action
+- kind:
+    Operator: Equal
+  span:
+    start: 531
+    end: 533
+  raw: "=="
+- kind:
+    String: Double
+  span:
+    start: 534
+    end: 541
+  raw: break
+- kind: CloseParen
+  span:
+    start: 541
+    end: 542
+  raw: )
+- kind: OpenBrace
+  span:
+    start: 543
+    end: 544
+  raw: "{"
+- kind: Newline
+  span:
+    start: 544
+    end: 545
+  raw: "\n"
+- kind:
+    Keyword: Break
+  span:
+    start: 553
+    end: 558
+  raw: break
+- kind: Semicolon
+  span:
+    start: 558
+    end: 559
+  raw: ;
+- kind: Newline
+  span:
+    start: 559
+    end: 560
+  raw: "\n"
+- kind: CloseBrace
+  span:
+    start: 564
+    end: 565
+  raw: "}"
+- kind: Newline
+  span:
+    start: 565
+    end: 566
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 566
+    end: 567
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 571
+    end: 576
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 576
+    end: 577
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 577
+    end: 588
+  raw: "  work i="
+- kind:
+    Operator: Add
+  span:
+    start: 589
+    end: 590
+  raw: +
+- kind: Identifier
+  span:
+    start: 591
+    end: 592
+  raw: i
+- kind: CloseParen
+  span:
+    start: 592
+    end: 593
+  raw: )
+- kind: Semicolon
+  span:
+    start: 593
+    end: 594
+  raw: ;
+- kind: Newline
+  span:
+    start: 594
+    end: 595
+  raw: "\n"
+- kind: CloseBrace
+  span:
+    start: 595
+    end: 596
+  raw: "}"
+- kind: Newline
+  span:
+    start: 596
+    end: 597
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 597
+    end: 598
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 598
+    end: 603
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 603
+    end: 604
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 604
+    end: 609
+  raw: end
+- kind: CloseParen
+  span:
+    start: 609
+    end: 610
+  raw: )
+- kind: Semicolon
+  span:
+    start: 610
+    end: 611
+  raw: ;
+- kind: Newline
+  span:
+    start: 611
+    end: 612
+  raw: "\n"

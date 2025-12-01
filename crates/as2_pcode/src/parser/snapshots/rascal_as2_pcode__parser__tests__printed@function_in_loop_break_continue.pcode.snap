@@ -1,0 +1,84 @@
+---
+source: crates/as2_pcode/src/parser/tests.rs
+expression: "parsed.unwrap_or_else(|_| Actions::empty())"
+input_file: samples/as2_pcode/function_in_loop_break_continue.pcode
+---
+ConstantPool "i", "loop i=", "decide", "v", "continue", "break", "none", "naughty", "action", "  work i=", "end"
+Push constant0
+Push 0
+DefineLocal
+loc005b:Push constant0
+GetVariable
+Push 5
+Less2
+Not
+If loc0151
+Push constant1
+Push constant0
+GetVariable
+Add2
+Trace
+Push constant2
+DefineFunction "", 1, "v" {
+Push constant3
+GetVariable
+Push 1
+Equals2
+Not
+If loc00a7
+Push constant4
+Return
+loc00a7:Push constant3
+GetVariable
+Push 3
+Equals2
+Not
+If loc00c2
+Push constant5
+Return
+loc00c2:Push constant6
+Return
+}
+DefineLocal
+Push constant7
+DefineFunction "", 0 {
+}
+DefineLocal
+Push 0
+Push constant7
+CallFunction
+Pop
+Push constant8
+Push constant0
+GetVariable
+Push 1
+Push constant2
+CallFunction
+DefineLocal
+Push constant8
+GetVariable
+Push constant4
+Equals2
+Not
+If loc011b
+Jump loc013f
+loc011b:Push constant8
+GetVariable
+Push constant5
+Equals2
+Not
+If loc0132
+Jump loc0151
+loc0132:Push constant9
+Push constant0
+GetVariable
+Add2
+Trace
+loc013f:Push constant0
+Push constant0
+GetVariable
+Increment
+SetVariable
+Jump loc005b
+loc0151:Push constant10
+Trace

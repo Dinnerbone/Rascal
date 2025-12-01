@@ -1,0 +1,79 @@
+ConstantPool "i", "outer i=", "j", "  inner j=", "done"
+Push constant0
+Push 0
+DefineLocal
+loc0034:Push constant0
+GetVariable
+Push 4
+Less2
+Not
+If loc012d
+Push constant1
+Push constant0
+GetVariable
+Add2
+Trace
+Push constant2
+Push 0
+DefineLocal
+loc0068:Push constant2
+GetVariable
+Push 4
+Less2
+Not
+If loc00e7
+Push constant2
+GetVariable
+Push 1
+Equals2
+Not
+If loc0097
+Jump loc00d5
+loc0097:Push constant0
+GetVariable
+Push 2
+Equals2
+PushDuplicate
+Not
+If loc00bd
+Pop
+Push constant2
+GetVariable
+Push 2
+Equals2
+loc00bd:Not
+If loc00c8
+Jump loc00e7
+loc00c8:Push constant3
+Push constant2
+GetVariable
+Add2
+Trace
+loc00d5:Push constant2
+Push constant2
+GetVariable
+Increment
+SetVariable
+Jump loc0068
+loc00e7:Push constant0
+GetVariable
+Push 1
+Equals2
+Not
+If loc0101
+Jump loc011b
+loc0101:Push constant0
+GetVariable
+Push 3
+Equals2
+Not
+If loc011b
+Jump loc012d
+loc011b:Push constant0
+Push constant0
+GetVariable
+Increment
+SetVariable
+Jump loc0034
+loc012d:Push constant4
+Trace

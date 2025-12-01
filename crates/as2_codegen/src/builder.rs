@@ -7,8 +7,6 @@ pub(crate) struct CodeBuilder {
     errors: Vec<Error>,
     actions: Actions,
     stack_size: u32,
-    break_label: Option<String>,
-    continue_label: Option<String>,
 }
 
 impl CodeBuilder {
@@ -17,8 +15,6 @@ impl CodeBuilder {
             errors: Vec::new(),
             actions: Actions::empty(),
             stack_size: 0,
-            break_label: None,
-            continue_label: None,
         }
     }
 
@@ -72,22 +68,6 @@ impl CodeBuilder {
         } else {
             self.action(Action::Push(vec![value.into()]));
         }
-    }
-
-    pub fn break_label(&self) -> Option<String> {
-        self.break_label.clone()
-    }
-
-    pub fn continue_label(&self) -> Option<String> {
-        self.continue_label.clone()
-    }
-
-    pub fn set_break_label(&mut self, label: Option<String>) -> Option<String> {
-        std::mem::replace(&mut self.break_label, label)
-    }
-
-    pub fn set_continue_label(&mut self, label: Option<String>) -> Option<String> {
-        std::mem::replace(&mut self.continue_label, label)
     }
 
     pub fn error(&mut self, message: &'static str, span: Span) {

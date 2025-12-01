@@ -6,6 +6,8 @@ pub struct ScriptContext {
     pub next_label: usize,
     pub is_in_tell_target: bool,
     pub can_use_special_properties: bool,
+    break_label: Option<String>,
+    continue_label: Option<String>,
 }
 
 impl ScriptContext {
@@ -15,6 +17,8 @@ impl ScriptContext {
             next_label: 0,
             is_in_tell_target: false,
             can_use_special_properties: true,
+            break_label: None,
+            continue_label: None,
         }
     }
 
@@ -38,6 +42,22 @@ impl ScriptContext {
 
     pub fn can_use_special_properties(&self) -> bool {
         self.can_use_special_properties
+    }
+
+    pub fn break_label(&self) -> Option<String> {
+        self.break_label.clone()
+    }
+
+    pub fn continue_label(&self) -> Option<String> {
+        self.continue_label.clone()
+    }
+
+    pub fn set_break_label(&mut self, label: Option<String>) -> Option<String> {
+        std::mem::replace(&mut self.break_label, label)
+    }
+
+    pub fn set_continue_label(&mut self, label: Option<String>) -> Option<String> {
+        std::mem::replace(&mut self.continue_label, label)
     }
 }
 

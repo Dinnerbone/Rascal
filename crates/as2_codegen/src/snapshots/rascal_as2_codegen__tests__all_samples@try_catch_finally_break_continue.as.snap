@@ -1,0 +1,101 @@
+---
+source: crates/as2_codegen/src/tests.rs
+expression: result
+input_file: samples/as2/try_catch_finally_break_continue.as
+---
+ConstantPool "i", "loop i=", "  try:i=", "boom@2", "boom@4", "  catch:", "e", "  finally:i=", "  after try/catch/finally i=", "done"
+Push constant0, 0
+DefineLocal
+loc0002:Push constant0
+GetVariable
+Push 6
+Less2
+Not
+If loc0000
+Push constant1, constant0
+GetVariable
+Add2
+Trace
+Try "e" {
+Push constant2, constant0
+GetVariable
+Add2
+Trace
+Push constant0
+GetVariable
+Push 1
+Equals2
+Not
+If loc0003
+Jump loc0001
+loc0003:Push constant0
+GetVariable
+Push 2
+Equals2
+Not
+If loc0004
+Push constant3
+Throw
+loc0004:Push constant0
+GetVariable
+Push 4
+Equals2
+Not
+If loc0005
+Push constant4
+Throw
+loc0005:
+}
+Catch {
+Push constant5, constant6
+GetVariable
+Add2
+Trace
+Push constant6
+GetVariable
+Push constant3
+Equals2
+Not
+If loc0006
+Jump loc0000
+loc0006:Push constant6
+GetVariable
+Push constant4
+Equals2
+Not
+If loc0007
+Jump loc0001
+loc0007:
+}
+Finally {
+Push constant7, constant0
+GetVariable
+Add2
+Trace
+Push constant0
+GetVariable
+Push 3
+Equals2
+Not
+If loc0008
+Jump loc0001
+loc0008:Push constant0
+GetVariable
+Push 5
+Equals2
+Not
+If loc0009
+Jump loc0000
+loc0009:
+}
+Push constant8, constant0
+GetVariable
+Add2
+Trace
+loc0001:Push constant0, constant0
+GetVariable
+Increment
+SetVariable
+Jump loc0002
+loc0000:Push constant9
+Trace

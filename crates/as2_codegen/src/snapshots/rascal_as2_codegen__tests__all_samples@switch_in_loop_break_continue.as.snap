@@ -1,0 +1,72 @@
+---
+source: crates/as2_codegen/src/tests.rs
+expression: result
+input_file: samples/as2/switch_in_loop_break_continue.as
+---
+ConstantPool "i", "loop i=", "  case 0 -> continue outer", "  case 1/2 -> fallthrough then break outer at 2", "  case 3 -> break switch only", "  case 4 -> continue outer from nested block", "  default -> normal work", "  after switch i=", "done"
+Push constant0, 0
+DefineLocal
+loc0002:Push constant0
+GetVariable
+Push 6
+Less2
+Not
+If loc0000
+Push constant1, constant0
+GetVariable
+Add2
+Trace
+Push constant0
+GetVariable
+StoreRegister 0
+Push 0
+StrictEquals
+If loc0004
+Push register0, 1
+StrictEquals
+If loc0005
+Push register0, 2
+StrictEquals
+If loc0006
+Push register0, 3
+StrictEquals
+If loc0007
+Push register0, 4
+StrictEquals
+If loc0008
+Jump loc0009
+loc0004:Push constant2
+Trace
+Jump loc0001
+loc0005:loc0006:Push constant3
+Trace
+Push constant0
+GetVariable
+Push 2
+Equals2
+Not
+If loc000a
+Jump loc0003
+loc000a:Jump loc0003
+loc0007:Push constant4
+Trace
+Jump loc0003
+loc0008:Push constant5
+Trace
+Push true
+Not
+If loc000b
+Jump loc0001
+loc000b:loc0009:Push constant6
+Trace
+loc0003:Push constant7, constant0
+GetVariable
+Add2
+Trace
+loc0001:Push constant0, constant0
+GetVariable
+Increment
+SetVariable
+Jump loc0002
+loc0000:Push constant8
+Trace

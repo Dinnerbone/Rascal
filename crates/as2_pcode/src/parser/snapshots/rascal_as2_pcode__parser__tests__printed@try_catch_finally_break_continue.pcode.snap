@@ -1,0 +1,106 @@
+---
+source: crates/as2_pcode/src/parser/tests.rs
+expression: "parsed.unwrap_or_else(|_| Actions::empty())"
+input_file: samples/as2_pcode/try_catch_finally_break_continue.pcode
+---
+ConstantPool "i", "loop i=", "  try:i=", "boom@2", "boom@4", "  catch:", "e", "  finally:i=", "  after try/catch/finally i=", "done"
+Push constant0
+Push 0
+DefineLocal
+loc0072:Push constant0
+GetVariable
+Push 6
+Less2
+Not
+If loc019d
+Push constant1
+Push constant0
+GetVariable
+Add2
+Trace
+Try "e" {
+Push constant2
+Push constant0
+GetVariable
+Add2
+Trace
+Push constant0
+GetVariable
+Push 1
+Equals2
+Not
+If loc00c7
+Jump loc018b
+loc00c7:Push constant0
+GetVariable
+Push 2
+Equals2
+Not
+If loc00e2
+Push constant3
+Throw
+loc00e2:Push constant0
+GetVariable
+Push 4
+Equals2
+Not
+If loc00fd
+Push constant4
+Throw
+loc00fd:Jump loc013d
+}
+Catch {
+Push constant5
+Push constant6
+GetVariable
+Add2
+Trace
+Push constant6
+GetVariable
+Push constant3
+Equals2
+Not
+If loc0126
+Jump loc019d
+loc0126:Push constant6
+GetVariable
+Push constant4
+Equals2
+Not
+If loc013d
+Jump loc018b
+}
+Finally {
+loc013d:Push constant7
+Push constant0
+GetVariable
+Add2
+Trace
+Push constant0
+GetVariable
+Push 3
+Equals2
+Not
+If loc0164
+Jump loc018b
+loc0164:Push constant0
+GetVariable
+Push 5
+Equals2
+Not
+If loc017e
+Jump loc019d
+}
+loc017e:Push constant8
+Push constant0
+GetVariable
+Add2
+Trace
+loc018b:Push constant0
+Push constant0
+GetVariable
+Increment
+SetVariable
+Jump loc0072
+loc019d:Push constant9
+Trace

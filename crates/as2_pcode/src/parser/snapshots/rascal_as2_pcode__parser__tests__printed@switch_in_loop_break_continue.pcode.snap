@@ -1,0 +1,77 @@
+---
+source: crates/as2_pcode/src/parser/tests.rs
+expression: "parsed.unwrap_or_else(|_| Actions::empty())"
+input_file: samples/as2_pcode/switch_in_loop_break_continue.pcode
+---
+ConstantPool "i", "loop i=", "  case 0 -> continue outer", "  case 1/2 -> fallthrough then break outer at 2", "  case 3 -> break switch only", "  case 4 -> continue outer from nested block", "  default -> normal work", "  after switch i=", "done"
+Push constant0
+Push 0
+DefineLocal
+loc00e7:Push constant0
+GetVariable
+Push 6
+Less2
+Not
+If loc01e1
+Push constant1
+Push constant0
+GetVariable
+Add2
+Trace
+Push constant0
+GetVariable
+StoreRegister 0
+Push 0
+StrictEquals
+If loc0176
+Push register0
+Push 1
+StrictEquals
+If loc0181
+Push register0
+Push 2
+StrictEquals
+If loc0181
+Push register0
+Push 3
+StrictEquals
+If loc01a6
+Push register0
+Push 4
+StrictEquals
+If loc01b1
+Jump loc01bc
+loc0176:Push constant2
+Trace
+Jump loc01cf
+loc0181:Push constant3
+Trace
+Push constant0
+GetVariable
+Push 2
+Equals2
+Not
+If loc01a1
+Jump loc01c2
+loc01a1:Jump loc01c2
+loc01a6:Push constant4
+Trace
+Jump loc01c2
+loc01b1:Push constant5
+Trace
+Jump loc01cf
+loc01bc:Push constant6
+Trace
+loc01c2:Push constant7
+Push constant0
+GetVariable
+Add2
+Trace
+loc01cf:Push constant0
+Push constant0
+GetVariable
+Increment
+SetVariable
+Jump loc00e7
+loc01e1:Push constant8
+Trace

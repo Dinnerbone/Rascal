@@ -1,0 +1,144 @@
+---
+source: crates/as2_pcode/src/parser/tests.rs
+expression: parsed
+input_file: samples/as2_pcode/function_in_loop_break_continue.pcode
+---
+Ok:
+  actions:
+    - ConstantPool:
+        - i
+        - loop i=
+        - decide
+        - v
+        - continue
+        - break
+        - none
+        - naughty
+        - action
+        - "  work i="
+        - end
+    - Push:
+        - Constant: 0
+    - Push:
+        - Integer: 0
+    - DefineLocal
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Integer: 5
+    - Less2
+    - Not
+    - If: loc0151
+    - Push:
+        - Constant: 1
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 2
+    - DefineFunction:
+        name: ""
+        params:
+          - v
+        actions:
+          actions:
+            - Push:
+                - Constant: 3
+            - GetVariable
+            - Push:
+                - Integer: 1
+            - Equals2
+            - Not
+            - If: loc00a7
+            - Push:
+                - Constant: 4
+            - Return
+            - Push:
+                - Constant: 3
+            - GetVariable
+            - Push:
+                - Integer: 3
+            - Equals2
+            - Not
+            - If: loc00c2
+            - Push:
+                - Constant: 5
+            - Return
+            - Push:
+                - Constant: 6
+            - Return
+          label_positions:
+            loc00a7: 8
+            loc00c2: 16
+    - DefineLocal
+    - Push:
+        - Constant: 7
+    - DefineFunction:
+        name: ""
+        params: []
+        actions:
+          actions: []
+          label_positions: {}
+    - DefineLocal
+    - Push:
+        - Integer: 0
+    - Push:
+        - Constant: 7
+    - CallFunction
+    - Pop
+    - Push:
+        - Constant: 8
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Integer: 1
+    - Push:
+        - Constant: 2
+    - CallFunction
+    - DefineLocal
+    - Push:
+        - Constant: 8
+    - GetVariable
+    - Push:
+        - Constant: 4
+    - Equals2
+    - Not
+    - If: loc011b
+    - Jump: loc013f
+    - Push:
+        - Constant: 8
+    - GetVariable
+    - Push:
+        - Constant: 5
+    - Equals2
+    - Not
+    - If: loc0132
+    - Jump: loc0151
+    - Push:
+        - Constant: 9
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 0
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Increment
+    - SetVariable
+    - Jump: loc005b
+    - Push:
+        - Constant: 10
+    - Trace
+  label_positions:
+    loc005b: 4
+    loc011b: 39
+    loc0132: 46
+    loc013f: 51
+    loc0151: 57
