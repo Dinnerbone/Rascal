@@ -55,7 +55,7 @@ fn test_non_ending_block_comment() {
 fn test_identifiers_and_keyword() {
     assert_eq!(
         kinds(
-            "var x _abc $d Var instanceof new typeof delete in void function return for if else break continue throw try catch finally ifFrameLoaded tellTarget while dynamic extends get implements interface private public set static case switch default class with"
+            "var x _abc $d Var instanceof new typeof delete in void function return for if else break continue throw try catch finally ifFrameLoaded tellTarget while dynamic extends get implements interface private public set static case switch default class with import"
         ),
         vec![
             TokenKind::Keyword(Keyword::Var),
@@ -97,6 +97,7 @@ fn test_identifiers_and_keyword() {
             TokenKind::Keyword(Keyword::Default),
             TokenKind::Keyword(Keyword::Class),
             TokenKind::Keyword(Keyword::With),
+            TokenKind::Keyword(Keyword::Import),
         ]
     );
 }

@@ -1,12 +1,52 @@
 use crate::ast;
 use crate::hir;
-use std::marker::PhantomData;
+use rascal_common::span::Span;
+use std::borrow::Cow;
+use std::collections::HashMap;
 
-struct ModuleContext<'src>(PhantomData<&'src ()>);
+struct ModuleContext<'src> {
+    imports: HashMap<&'src str, Vec<&'src str>>,
+}
 
 impl<'src> ModuleContext<'src> {
     fn new() -> Self {
-        Self(PhantomData)
+        Self {
+            imports: HashMap::new(),
+        }
+    }
+
+    fn import(&mut self, path: Vec<&'src str>, name: &'src str) {
+        self.imports.insert(name, path);
+    }
+
+    fn expand_identifier(&self, name: &'src str, span: Span) -> Option<hir::Expr<'src>> {
+        if let Some(path) = self.imports.get(name)
+            && !path.is_empty()
+        {
+            let mut parent = Box::new(hir::Expr::new(
+                span,
+                hir::ExprKind::Constant(hir::ConstantKind::Identifier(path.first().unwrap())),
+            ));
+            let wrap_parent = |parent: Box<hir::Expr<'src>>, child: &'src str| {
+                hir::Expr::new(
+                    span,
+                    hir::ExprKind::Field(
+                        parent,
+                        Box::new(hir::Expr::new(
+                            span,
+                            hir::ExprKind::Constant(hir::ConstantKind::String(Cow::Borrowed(
+                                child,
+                            ))),
+                        )),
+                    ),
+                )
+            };
+            for segment in path.iter().skip(1) {
+                parent = Box::new(wrap_parent(parent, segment));
+            }
+            return Some(wrap_parent(parent, name));
+        }
+        None
     }
 }
 
@@ -112,6 +152,10 @@ fn resolve_statement<'src>(
                 .map(|element| resolve_switch_element(context, element))
                 .collect(),
         },
+        ast::StatementKind::Import { path, name } => {
+            context.import(path, name);
+            hir::StatementKind::Block(vec![]) // todo, resolving statements shouldn't be a 1:1, we should be able to do nothing here
+        }
     }
 }
 
@@ -187,6 +231,13 @@ fn resolve_expr<'src>(
     input: ast::Expr<'src>,
 ) -> hir::Expr<'src> {
     let result = match input.value {
+        ast::ExprKind::Constant(ast::ConstantKind::Identifier(identifier)) => {
+            if let Some(path) = context.expand_identifier(identifier, input.span) {
+                return path;
+            } else {
+                hir::ExprKind::Constant(hir::ConstantKind::Identifier(identifier))
+            }
+        }
         ast::ExprKind::Constant(value) => hir::ExprKind::Constant(value),
         ast::ExprKind::Call { name, args } => hir::ExprKind::Call {
             name: resolve_expr_box(context, name),

@@ -353,6 +353,7 @@ fn lex_identifier_or_keyword<'a>(stream: &mut Stream<'a>) -> Token<'a> {
         "default" => TokenKind::Keyword(Keyword::Default),
         "class" => TokenKind::Keyword(Keyword::Class),
         "with" => TokenKind::Keyword(Keyword::With),
+        "import" => TokenKind::Keyword(Keyword::Import),
         _ => TokenKind::Identifier,
     };
 

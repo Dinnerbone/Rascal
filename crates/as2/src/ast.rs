@@ -164,6 +164,10 @@ pub enum StatementKind<'a> {
         target: Expr<'a>,
         elements: Vec<SwitchElement<'a>>,
     },
+    Import {
+        path: Vec<&'a str>,
+        name: &'a str,
+    },
 }
 
 #[derive(Debug, Clone, Serialize, PartialEq)]

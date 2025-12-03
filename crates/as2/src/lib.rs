@@ -1,3 +1,5 @@
+extern crate core;
+
 use crate::lexer::Lexer;
 use crate::lexer::tokens::Token;
 use crate::parser::ActionScriptError;

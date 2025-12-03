@@ -1,0 +1,117 @@
+---
+source: crates/as2_pcode/src/parser/tests.rs
+expression: parsed
+input_file: samples/as2_pcode/regular_imports.pcode
+---
+Ok:
+  actions:
+    - ConstantPool:
+        - flash
+        - geom
+        - Point
+        - display
+        - BitmapData
+        - myBitmap
+        - myPoint
+        - createPoint
+    - DefineFunction:
+        name: createPoint
+        params: []
+        actions:
+          actions:
+            - Push:
+                - Integer: 5
+                - Integer: 5
+                - Integer: 2
+                - Constant: 0
+            - GetVariable
+            - Push:
+                - Constant: 1
+            - GetMember
+            - Push:
+                - Constant: 2
+            - NewMethod
+            - Return
+          label_positions: {}
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 3
+    - GetMember
+    - Push:
+        - Constant: 4
+    - GetMember
+    - Trace
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetMember
+    - Push:
+        - Constant: 2
+    - GetMember
+    - Trace
+    - Push:
+        - Constant: 5
+        - Integer: 100
+        - Integer: 100
+        - Integer: 2
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 3
+    - GetMember
+    - Push:
+        - Constant: 4
+    - NewMethod
+    - DefineLocal
+    - Push:
+        - Constant: 5
+    - GetVariable
+    - Trace
+    - Push:
+        - Constant: 6
+        - Integer: 20
+        - Integer: 10
+        - Integer: 2
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetMember
+    - Push:
+        - Constant: 2
+    - NewMethod
+    - DefineLocal
+    - Push:
+        - Constant: 6
+    - GetVariable
+    - Trace
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 3
+    - GetMember
+    - Push:
+        - Constant: 4
+    - GetMember
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 3
+    - GetMember
+    - Push:
+        - Constant: 4
+    - GetMember
+    - Equals2
+    - Trace
+    - Push:
+        - Integer: 0
+        - Constant: 7
+    - CallFunction
+    - Trace
+  label_positions: {}

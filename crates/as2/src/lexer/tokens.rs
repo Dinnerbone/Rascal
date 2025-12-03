@@ -169,6 +169,7 @@ pub enum Keyword {
     Default,
     Class,
     With,
+    Import,
 }
 
 impl Keyword {
@@ -219,6 +220,7 @@ impl Keyword {
             Keyword::Default => "default",
             Keyword::Class => "class",
             Keyword::With => "with",
+            Keyword::Import => "import",
         }
     }
 }

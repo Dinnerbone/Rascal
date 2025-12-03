@@ -1,0 +1,67 @@
+---
+source: crates/as2_codegen/src/tests.rs
+expression: result
+input_file: samples/as2/regular_imports.as
+---
+ConstantPool "flash", "geom", "Point", "display", "BitmapData", "myBitmap", "myPoint", "createPoint"
+DefineFunction "createPoint", 0 {
+Push 5, 5, 2, constant0
+GetVariable
+Push constant1
+GetMember
+Push constant2
+NewMethod
+Return
+}
+Pop
+Push constant0
+GetVariable
+Push constant3
+GetMember
+Push constant4
+GetMember
+Trace
+Push constant0
+GetVariable
+Push constant1
+GetMember
+Push constant2
+GetMember
+Trace
+Push constant5, 100, 100, 2, constant0
+GetVariable
+Push constant3
+GetMember
+Push constant4
+NewMethod
+DefineLocal
+Push constant5
+GetVariable
+Trace
+Push constant6, 20, 10, 2, constant0
+GetVariable
+Push constant1
+GetMember
+Push constant2
+NewMethod
+DefineLocal
+Push constant6
+GetVariable
+Trace
+Push constant0
+GetVariable
+Push constant3
+GetMember
+Push constant4
+GetMember
+Push constant0
+GetVariable
+Push constant3
+GetMember
+Push constant4
+GetMember
+Equals2
+Trace
+Push 0, constant7
+CallFunction
+Trace

@@ -1,0 +1,21 @@
+ConstantPool "BitmapData", "flash", "display", "beforeImport", "afterImport"
+DefineFunction "beforeImport", 0 {
+Push constant0
+GetVariable
+Trace
+}
+DefineFunction "afterImport", 0 {
+Push constant1
+GetVariable
+Push constant2
+GetMember
+Push constant0
+GetMember
+Trace
+}
+Push 0, constant3
+CallFunction
+Pop
+Push 0, constant4
+CallFunction
+Pop

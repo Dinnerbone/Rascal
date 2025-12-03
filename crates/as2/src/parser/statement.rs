@@ -55,6 +55,7 @@ pub(crate) fn statement<'i>(i: &mut Tokens<'i>) -> ModalResult<StatementKind<'i>
         TokenKind::Keyword(Keyword::While) => while_loop.parse_next(i)?,
         TokenKind::Keyword(Keyword::With) => with.parse_next(i)?,
         TokenKind::Keyword(Keyword::Switch) => switch.parse_next(i)?,
+        TokenKind::Keyword(Keyword::Import) => import.parse_next(i)?,
         TokenKind::OpenBrace => {
             let statements = statement_list(true).parse_next(i)?;
             TokenKind::CloseBrace.parse_next(i)?;
@@ -231,6 +232,15 @@ pub(crate) fn with<'i>(i: &mut Tokens<'i>) -> ModalResult<StatementKind<'i>> {
         target,
         body: Box::new(body),
     })
+}
+
+pub(crate) fn import<'i>(i: &mut Tokens<'i>) -> ModalResult<StatementKind<'i>> {
+    let mut path: Vec<&'i str> =
+        separated(1.., identifier.map(|i| i.value), TokenKind::Period).parse_next(i)?;
+
+    // We know that path must have at least one value, per the limit above
+    let name = path.pop().unwrap();
+    Ok(StatementKind::Import { path, name })
 }
 
 pub(crate) fn switch<'i>(i: &mut Tokens<'i>) -> ModalResult<StatementKind<'i>> {
@@ -923,6 +933,25 @@ mod stmt_tests {
                     SwitchElement::Default,
                     SwitchElement::Statement(StatementKind::Throw(vec![id("e")])),
                 ]
+            })
+        )
+    }
+
+    #[test]
+    fn test_import() {
+        let tokens = build_tokens(&[
+            (TokenKind::Keyword(Keyword::Import), "import"),
+            (TokenKind::Identifier, "foo"),
+            (TokenKind::Period, "."),
+            (TokenKind::Identifier, "bar"),
+            (TokenKind::Period, "."),
+            (TokenKind::Identifier, "baz"),
+        ]);
+        assert_eq!(
+            parse_stmt(&tokens),
+            Ok(StatementKind::Import {
+                name: "baz",
+                path: vec!["foo", "bar"]
             })
         )
     }
