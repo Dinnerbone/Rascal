@@ -162,28 +162,23 @@ Ok:
                         Constant:
                           String: "a && b = "
                     - span:
-                        start: 157
-                        end: 165
+                        start: 158
+                        end: 164
                       value:
-                        Parenthesis:
-                          span:
-                            start: 158
-                            end: 164
-                          value:
-                            BinaryOperator:
-                              - LogicalAnd
-                              - span:
-                                  start: 158
-                                  end: 159
-                                value:
-                                  Constant:
-                                    Identifier: a
-                              - span:
-                                  start: 163
-                                  end: 164
-                                value:
-                                  Constant:
-                                    Identifier: b
+                        BinaryOperator:
+                          - LogicalAnd
+                          - span:
+                              start: 158
+                              end: 159
+                            value:
+                              Constant:
+                                Identifier: a
+                          - span:
+                              start: 163
+                              end: 164
+                            value:
+                              Constant:
+                                Identifier: b
     - Expr:
         span:
           start: 177
@@ -211,28 +206,23 @@ Ok:
                         Constant:
                           String: "b && c = "
                     - span:
-                        start: 197
-                        end: 205
+                        start: 198
+                        end: 204
                       value:
-                        Parenthesis:
-                          span:
-                            start: 198
-                            end: 204
-                          value:
-                            BinaryOperator:
-                              - LogicalAnd
-                              - span:
-                                  start: 198
-                                  end: 199
-                                value:
-                                  Constant:
-                                    Identifier: b
-                              - span:
-                                  start: 203
-                                  end: 204
-                                value:
-                                  Constant:
-                                    Identifier: c
+                        BinaryOperator:
+                          - LogicalAnd
+                          - span:
+                              start: 198
+                              end: 199
+                            value:
+                              Constant:
+                                Identifier: b
+                          - span:
+                              start: 203
+                              end: 204
+                            value:
+                              Constant:
+                                Identifier: c
     - Expr:
         span:
           start: 217
@@ -280,28 +270,23 @@ Ok:
                         Constant:
                           String: "a || b = "
                     - span:
-                        start: 272
-                        end: 280
+                        start: 273
+                        end: 279
                       value:
-                        Parenthesis:
-                          span:
-                            start: 273
-                            end: 279
-                          value:
-                            BinaryOperator:
-                              - LogicalOr
-                              - span:
-                                  start: 273
-                                  end: 274
-                                value:
-                                  Constant:
-                                    Identifier: a
-                              - span:
-                                  start: 278
-                                  end: 279
-                                value:
-                                  Constant:
-                                    Identifier: b
+                        BinaryOperator:
+                          - LogicalOr
+                          - span:
+                              start: 273
+                              end: 274
+                            value:
+                              Constant:
+                                Identifier: a
+                          - span:
+                              start: 278
+                              end: 279
+                            value:
+                              Constant:
+                                Identifier: b
     - Expr:
         span:
           start: 291
@@ -329,28 +314,23 @@ Ok:
                         Constant:
                           String: "b || c = "
                     - span:
-                        start: 311
-                        end: 319
+                        start: 312
+                        end: 318
                       value:
-                        Parenthesis:
-                          span:
-                            start: 312
-                            end: 318
-                          value:
-                            BinaryOperator:
-                              - LogicalOr
-                              - span:
-                                  start: 312
-                                  end: 313
-                                value:
-                                  Constant:
-                                    Identifier: b
-                              - span:
-                                  start: 317
-                                  end: 318
-                                value:
-                                  Constant:
-                                    Identifier: c
+                        BinaryOperator:
+                          - LogicalOr
+                          - span:
+                              start: 312
+                              end: 313
+                            value:
+                              Constant:
+                                Identifier: b
+                          - span:
+                              start: 317
+                              end: 318
+                            value:
+                              Constant:
+                                Identifier: c
     - Expr:
         span:
           start: 330
@@ -398,40 +378,35 @@ Ok:
                         Constant:
                           String: "a && c && b = "
                     - span:
-                        start: 417
-                        end: 430
+                        start: 418
+                        end: 429
                       value:
-                        Parenthesis:
-                          span:
-                            start: 418
-                            end: 429
-                          value:
-                            BinaryOperator:
-                              - LogicalAnd
-                              - span:
-                                  start: 418
-                                  end: 424
-                                value:
-                                  BinaryOperator:
-                                    - LogicalAnd
-                                    - span:
-                                        start: 418
-                                        end: 419
-                                      value:
-                                        Constant:
-                                          Identifier: a
-                                    - span:
-                                        start: 423
-                                        end: 424
-                                      value:
-                                        Constant:
-                                          Identifier: c
-                              - span:
-                                  start: 428
-                                  end: 429
-                                value:
-                                  Constant:
-                                    Identifier: b
+                        BinaryOperator:
+                          - LogicalAnd
+                          - span:
+                              start: 418
+                              end: 424
+                            value:
+                              BinaryOperator:
+                                - LogicalAnd
+                                - span:
+                                    start: 418
+                                    end: 419
+                                  value:
+                                    Constant:
+                                      Identifier: a
+                                - span:
+                                    start: 423
+                                    end: 424
+                                  value:
+                                    Constant:
+                                      Identifier: c
+                          - span:
+                              start: 428
+                              end: 429
+                            value:
+                              Constant:
+                                Identifier: b
     - Expr:
         span:
           start: 443
@@ -459,45 +434,35 @@ Ok:
                         Constant:
                           String: "((a && c) && b) = "
                     - span:
-                        start: 472
-                        end: 487
+                        start: 473
+                        end: 486
                       value:
-                        Parenthesis:
-                          span:
-                            start: 473
-                            end: 486
-                          value:
-                            BinaryOperator:
-                              - LogicalAnd
-                              - span:
-                                  start: 473
-                                  end: 481
-                                value:
-                                  Parenthesis:
-                                    span:
-                                      start: 474
-                                      end: 480
-                                    value:
-                                      BinaryOperator:
-                                        - LogicalAnd
-                                        - span:
-                                            start: 474
-                                            end: 475
-                                          value:
-                                            Constant:
-                                              Identifier: a
-                                        - span:
-                                            start: 479
-                                            end: 480
-                                          value:
-                                            Constant:
-                                              Identifier: c
-                              - span:
-                                  start: 485
-                                  end: 486
-                                value:
-                                  Constant:
-                                    Identifier: b
+                        BinaryOperator:
+                          - LogicalAnd
+                          - span:
+                              start: 474
+                              end: 480
+                            value:
+                              BinaryOperator:
+                                - LogicalAnd
+                                - span:
+                                    start: 474
+                                    end: 475
+                                  value:
+                                    Constant:
+                                      Identifier: a
+                                - span:
+                                    start: 479
+                                    end: 480
+                                  value:
+                                    Constant:
+                                      Identifier: c
+                          - span:
+                              start: 485
+                              end: 486
+                            value:
+                              Constant:
+                                Identifier: b
     - Expr:
         span:
           start: 499
@@ -545,40 +510,35 @@ Ok:
                         Constant:
                           String: "a || b || c = "
                     - span:
-                        start: 539
-                        end: 552
+                        start: 540
+                        end: 551
                       value:
-                        Parenthesis:
-                          span:
-                            start: 540
-                            end: 551
-                          value:
-                            BinaryOperator:
-                              - LogicalOr
-                              - span:
-                                  start: 540
-                                  end: 546
-                                value:
-                                  BinaryOperator:
-                                    - LogicalOr
-                                    - span:
-                                        start: 540
-                                        end: 541
-                                      value:
-                                        Constant:
-                                          Identifier: a
-                                    - span:
-                                        start: 545
-                                        end: 546
-                                      value:
-                                        Constant:
-                                          Identifier: b
-                              - span:
-                                  start: 550
-                                  end: 551
-                                value:
-                                  Constant:
-                                    Identifier: c
+                        BinaryOperator:
+                          - LogicalOr
+                          - span:
+                              start: 540
+                              end: 546
+                            value:
+                              BinaryOperator:
+                                - LogicalOr
+                                - span:
+                                    start: 540
+                                    end: 541
+                                  value:
+                                    Constant:
+                                      Identifier: a
+                                - span:
+                                    start: 545
+                                    end: 546
+                                  value:
+                                    Constant:
+                                      Identifier: b
+                          - span:
+                              start: 550
+                              end: 551
+                            value:
+                              Constant:
+                                Identifier: c
     - Expr:
         span:
           start: 563
@@ -606,45 +566,35 @@ Ok:
                         Constant:
                           String: "((a || b) || c) = "
                     - span:
-                        start: 592
-                        end: 607
+                        start: 593
+                        end: 606
                       value:
-                        Parenthesis:
-                          span:
-                            start: 593
-                            end: 606
-                          value:
-                            BinaryOperator:
-                              - LogicalOr
-                              - span:
-                                  start: 593
-                                  end: 601
-                                value:
-                                  Parenthesis:
-                                    span:
-                                      start: 594
-                                      end: 600
-                                    value:
-                                      BinaryOperator:
-                                        - LogicalOr
-                                        - span:
-                                            start: 594
-                                            end: 595
-                                          value:
-                                            Constant:
-                                              Identifier: a
-                                        - span:
-                                            start: 599
-                                            end: 600
-                                          value:
-                                            Constant:
-                                              Identifier: b
-                              - span:
-                                  start: 605
-                                  end: 606
-                                value:
-                                  Constant:
-                                    Identifier: c
+                        BinaryOperator:
+                          - LogicalOr
+                          - span:
+                              start: 594
+                              end: 600
+                            value:
+                              BinaryOperator:
+                                - LogicalOr
+                                - span:
+                                    start: 594
+                                    end: 595
+                                  value:
+                                    Constant:
+                                      Identifier: a
+                                - span:
+                                    start: 599
+                                    end: 600
+                                  value:
+                                    Constant:
+                                      Identifier: b
+                          - span:
+                              start: 605
+                              end: 606
+                            value:
+                              Constant:
+                                Identifier: c
     - Expr:
         span:
           start: 618
@@ -692,40 +642,35 @@ Ok:
                         Constant:
                           String: "a || b && c = "
                     - span:
-                        start: 706
-                        end: 719
+                        start: 707
+                        end: 718
                       value:
-                        Parenthesis:
-                          span:
-                            start: 707
-                            end: 718
-                          value:
-                            BinaryOperator:
-                              - LogicalAnd
-                              - span:
-                                  start: 707
-                                  end: 713
-                                value:
-                                  BinaryOperator:
-                                    - LogicalOr
-                                    - span:
-                                        start: 707
-                                        end: 708
-                                      value:
-                                        Constant:
-                                          Identifier: a
-                                    - span:
-                                        start: 712
-                                        end: 713
-                                      value:
-                                        Constant:
-                                          Identifier: b
-                              - span:
-                                  start: 717
-                                  end: 718
-                                value:
-                                  Constant:
-                                    Identifier: c
+                        BinaryOperator:
+                          - LogicalAnd
+                          - span:
+                              start: 707
+                              end: 713
+                            value:
+                              BinaryOperator:
+                                - LogicalOr
+                                - span:
+                                    start: 707
+                                    end: 708
+                                  value:
+                                    Constant:
+                                      Identifier: a
+                                - span:
+                                    start: 712
+                                    end: 713
+                                  value:
+                                    Constant:
+                                      Identifier: b
+                          - span:
+                              start: 717
+                              end: 718
+                            value:
+                              Constant:
+                                Identifier: c
     - Expr:
         span:
           start: 731
@@ -753,45 +698,35 @@ Ok:
                         Constant:
                           String: "(a || (b && c)) = "
                     - span:
-                        start: 760
-                        end: 775
+                        start: 761
+                        end: 774
                       value:
-                        Parenthesis:
-                          span:
-                            start: 761
-                            end: 774
-                          value:
-                            BinaryOperator:
-                              - LogicalOr
-                              - span:
-                                  start: 761
-                                  end: 762
-                                value:
-                                  Constant:
-                                    Identifier: a
-                              - span:
-                                  start: 766
-                                  end: 774
-                                value:
-                                  Parenthesis:
-                                    span:
-                                      start: 767
-                                      end: 773
-                                    value:
-                                      BinaryOperator:
-                                        - LogicalAnd
-                                        - span:
-                                            start: 767
-                                            end: 768
-                                          value:
-                                            Constant:
-                                              Identifier: b
-                                        - span:
-                                            start: 772
-                                            end: 773
-                                          value:
-                                            Constant:
-                                              Identifier: c
+                        BinaryOperator:
+                          - LogicalOr
+                          - span:
+                              start: 761
+                              end: 762
+                            value:
+                              Constant:
+                                Identifier: a
+                          - span:
+                              start: 767
+                              end: 773
+                            value:
+                              BinaryOperator:
+                                - LogicalAnd
+                                - span:
+                                    start: 767
+                                    end: 768
+                                  value:
+                                    Constant:
+                                      Identifier: b
+                                - span:
+                                    start: 772
+                                    end: 773
+                                  value:
+                                    Constant:
+                                      Identifier: c
     - Expr:
         span:
           start: 786
@@ -869,40 +804,35 @@ Ok:
                         Constant:
                           String: "x && y || z = "
                     - span:
-                        start: 890
-                        end: 903
+                        start: 891
+                        end: 902
                       value:
-                        Parenthesis:
-                          span:
-                            start: 891
-                            end: 902
-                          value:
-                            BinaryOperator:
-                              - LogicalOr
-                              - span:
-                                  start: 891
-                                  end: 897
-                                value:
-                                  BinaryOperator:
-                                    - LogicalAnd
-                                    - span:
-                                        start: 891
-                                        end: 892
-                                      value:
-                                        Constant:
-                                          Identifier: x
-                                    - span:
-                                        start: 896
-                                        end: 897
-                                      value:
-                                        Constant:
-                                          Identifier: y
-                              - span:
-                                  start: 901
-                                  end: 902
-                                value:
-                                  Constant:
-                                    Identifier: z
+                        BinaryOperator:
+                          - LogicalOr
+                          - span:
+                              start: 891
+                              end: 897
+                            value:
+                              BinaryOperator:
+                                - LogicalAnd
+                                - span:
+                                    start: 891
+                                    end: 892
+                                  value:
+                                    Constant:
+                                      Identifier: x
+                                - span:
+                                    start: 896
+                                    end: 897
+                                  value:
+                                    Constant:
+                                      Identifier: y
+                          - span:
+                              start: 901
+                              end: 902
+                            value:
+                              Constant:
+                                Identifier: z
     - Expr:
         span:
           start: 915
@@ -930,42 +860,32 @@ Ok:
                         Constant:
                           String: "((x && y) || z) = "
                     - span:
-                        start: 944
-                        end: 959
+                        start: 945
+                        end: 958
                       value:
-                        Parenthesis:
-                          span:
-                            start: 945
-                            end: 958
-                          value:
-                            BinaryOperator:
-                              - LogicalOr
-                              - span:
-                                  start: 945
-                                  end: 953
-                                value:
-                                  Parenthesis:
-                                    span:
-                                      start: 946
-                                      end: 952
-                                    value:
-                                      BinaryOperator:
-                                        - LogicalAnd
-                                        - span:
-                                            start: 946
-                                            end: 947
-                                          value:
-                                            Constant:
-                                              Identifier: x
-                                        - span:
-                                            start: 951
-                                            end: 952
-                                          value:
-                                            Constant:
-                                              Identifier: y
-                              - span:
-                                  start: 957
-                                  end: 958
-                                value:
-                                  Constant:
-                                    Identifier: z
+                        BinaryOperator:
+                          - LogicalOr
+                          - span:
+                              start: 946
+                              end: 952
+                            value:
+                              BinaryOperator:
+                                - LogicalAnd
+                                - span:
+                                    start: 946
+                                    end: 947
+                                  value:
+                                    Constant:
+                                      Identifier: x
+                                - span:
+                                    start: 951
+                                    end: 952
+                                  value:
+                                    Constant:
+                                      Identifier: y
+                          - span:
+                              start: 957
+                              end: 958
+                            value:
+                              Constant:
+                                Identifier: z

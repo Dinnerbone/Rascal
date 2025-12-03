@@ -51,35 +51,30 @@ Ok:
                                       Constant:
                                         Integer: 1
                                   - span:
-                                      start: 101
-                                      end: 112
+                                      start: 102
+                                      end: 111
                                     value:
-                                      Parenthesis:
-                                        span:
-                                          start: 102
-                                          end: 111
-                                        value:
-                                          BinaryOperator:
-                                            - Add
-                                            - span:
-                                                start: 102
-                                                end: 103
-                                              value:
-                                                Constant:
-                                                  Integer: 1
-                                            - span:
-                                                start: 106
-                                                end: 111
-                                              value:
-                                                Call:
-                                                  name:
-                                                    span:
-                                                      start: 106
-                                                      end: 109
-                                                    value:
-                                                      Constant:
-                                                        Identifier: bad
-                                                  args: []
+                                      BinaryOperator:
+                                        - Add
+                                        - span:
+                                            start: 102
+                                            end: 103
+                                          value:
+                                            Constant:
+                                              Integer: 1
+                                        - span:
+                                            start: 106
+                                            end: 111
+                                          value:
+                                            Call:
+                                              name:
+                                                span:
+                                                  start: 106
+                                                  end: 109
+                                                value:
+                                                  Constant:
+                                                    Identifier: bad
+                                              args: []
                       typed_catches: []
                       catch_all:
                         name:

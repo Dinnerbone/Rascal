@@ -19,7 +19,6 @@ pub enum ExprKind<'a> {
     },
     BinaryOperator(BinaryOperator, Box<Expr<'a>>, Box<Expr<'a>>),
     UnaryOperator(UnaryOperator, Box<Expr<'a>>),
-    Parenthesis(Box<Expr<'a>>),
     Ternary {
         condition: Box<Expr<'a>>,
         yes: Box<Expr<'a>>,

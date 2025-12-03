@@ -58,21 +58,16 @@ Ok:
                         Constant:
                           String: "delete num: "
                     - span:
-                        start: 56
-                        end: 68
+                        start: 57
+                        end: 67
                       value:
-                        Parenthesis:
-                          span:
-                            start: 57
-                            end: 67
-                          value:
-                            Delete:
-                              - span:
-                                  start: 64
-                                  end: 67
-                                value:
-                                  Constant:
-                                    Identifier: num
+                        Delete:
+                          - span:
+                              start: 64
+                              end: 67
+                            value:
+                              Constant:
+                                Identifier: num
     - Expr:
         span:
           start: 79
@@ -100,21 +95,16 @@ Ok:
                         Constant:
                           String: "delete obj: "
                     - span:
-                        start: 102
-                        end: 114
+                        start: 103
+                        end: 113
                       value:
-                        Parenthesis:
-                          span:
-                            start: 103
-                            end: 113
-                          value:
-                            Delete:
-                              - span:
-                                  start: 110
-                                  end: 113
-                                value:
-                                  Constant:
-                                    Identifier: obj
+                        Delete:
+                          - span:
+                              start: 110
+                              end: 113
+                            value:
+                              Constant:
+                                Identifier: obj
     - Declare:
         - name: obj
           value:
@@ -158,32 +148,27 @@ Ok:
                         Constant:
                           String: "delete obj.num: "
                     - span:
-                        start: 172
-                        end: 188
+                        start: 173
+                        end: 187
                       value:
-                        Parenthesis:
-                          span:
-                            start: 173
-                            end: 187
-                          value:
-                            Delete:
-                              - span:
-                                  start: 183
-                                  end: 187
-                                value:
-                                  Field:
-                                    - span:
-                                        start: 180
-                                        end: 183
-                                      value:
-                                        Constant:
-                                          Identifier: obj
-                                    - span:
-                                        start: 184
-                                        end: 187
-                                      value:
-                                        Constant:
-                                          String: num
+                        Delete:
+                          - span:
+                              start: 183
+                              end: 187
+                            value:
+                              Field:
+                                - span:
+                                    start: 180
+                                    end: 183
+                                  value:
+                                    Constant:
+                                      Identifier: obj
+                                - span:
+                                    start: 184
+                                    end: 187
+                                  value:
+                                    Constant:
+                                      String: num
     - Declare:
         - name: obj
           value:
@@ -227,44 +212,39 @@ Ok:
                         Constant:
                           String: "delete obj.num + 1: "
                     - span:
-                        start: 250
-                        end: 270
+                        start: 251
+                        end: 269
                       value:
-                        Parenthesis:
-                          span:
-                            start: 251
-                            end: 269
-                          value:
-                            BinaryOperator:
-                              - Add
-                              - span:
-                                  start: 251
-                                  end: 265
-                                value:
-                                  Delete:
-                                    - span:
-                                        start: 261
-                                        end: 265
-                                      value:
-                                        Field:
-                                          - span:
-                                              start: 258
-                                              end: 261
-                                            value:
-                                              Constant:
-                                                Identifier: obj
-                                          - span:
-                                              start: 262
-                                              end: 265
-                                            value:
-                                              Constant:
-                                                String: num
-                              - span:
-                                  start: 268
-                                  end: 269
-                                value:
-                                  Constant:
-                                    Integer: 1
+                        BinaryOperator:
+                          - Add
+                          - span:
+                              start: 251
+                              end: 265
+                            value:
+                              Delete:
+                                - span:
+                                    start: 261
+                                    end: 265
+                                  value:
+                                    Field:
+                                      - span:
+                                          start: 258
+                                          end: 261
+                                        value:
+                                          Constant:
+                                            Identifier: obj
+                                      - span:
+                                          start: 262
+                                          end: 265
+                                        value:
+                                          Constant:
+                                            String: num
+                          - span:
+                              start: 268
+                              end: 269
+                            value:
+                              Constant:
+                                Integer: 1
     - Declare:
         - name: obj
           value:
@@ -308,52 +288,47 @@ Ok:
                         Constant:
                           String: "delete obj.num == \"number\" ? \":)\" : \":(\": "
                     - span:
-                        start: 357
-                        end: 387
+                        start: 358
+                        end: 386
                       value:
-                        Parenthesis:
-                          span:
-                            start: 358
-                            end: 386
-                          value:
-                            Ternary:
-                              condition:
-                                span:
-                                  start: 358
-                                  end: 372
-                                value:
-                                  Delete:
-                                    - span:
-                                        start: 368
-                                        end: 372
-                                      value:
-                                        Field:
-                                          - span:
-                                              start: 365
-                                              end: 368
-                                            value:
-                                              Constant:
-                                                Identifier: obj
-                                          - span:
-                                              start: 369
-                                              end: 372
-                                            value:
-                                              Constant:
-                                                String: num
-                              "yes":
-                                span:
-                                  start: 375
-                                  end: 379
-                                value:
-                                  Constant:
-                                    String: ":)"
-                              "no":
-                                span:
-                                  start: 382
-                                  end: 386
-                                value:
-                                  Constant:
-                                    String: ":("
+                        Ternary:
+                          condition:
+                            span:
+                              start: 358
+                              end: 372
+                            value:
+                              Delete:
+                                - span:
+                                    start: 368
+                                    end: 372
+                                  value:
+                                    Field:
+                                      - span:
+                                          start: 365
+                                          end: 368
+                                        value:
+                                          Constant:
+                                            Identifier: obj
+                                      - span:
+                                          start: 369
+                                          end: 372
+                                        value:
+                                          Constant:
+                                            String: num
+                          "yes":
+                            span:
+                              start: 375
+                              end: 379
+                            value:
+                              Constant:
+                                String: ":)"
+                          "no":
+                            span:
+                              start: 382
+                              end: 386
+                            value:
+                              Constant:
+                                String: ":("
     - Declare:
         - name: obj
           value:
@@ -397,60 +372,55 @@ Ok:
                         Constant:
                           String: "delete obj.num + delete obj.num: "
                     - span:
-                        start: 460
-                        end: 493
+                        start: 461
+                        end: 492
                       value:
-                        Parenthesis:
-                          span:
-                            start: 461
-                            end: 492
-                          value:
-                            BinaryOperator:
-                              - Add
-                              - span:
-                                  start: 461
-                                  end: 475
-                                value:
-                                  Delete:
-                                    - span:
-                                        start: 471
-                                        end: 475
-                                      value:
-                                        Field:
-                                          - span:
-                                              start: 468
-                                              end: 471
-                                            value:
-                                              Constant:
-                                                Identifier: obj
-                                          - span:
-                                              start: 472
-                                              end: 475
-                                            value:
-                                              Constant:
-                                                String: num
-                              - span:
-                                  start: 478
-                                  end: 492
-                                value:
-                                  Delete:
-                                    - span:
-                                        start: 488
-                                        end: 492
-                                      value:
-                                        Field:
-                                          - span:
-                                              start: 485
-                                              end: 488
-                                            value:
-                                              Constant:
-                                                Identifier: obj
-                                          - span:
-                                              start: 489
-                                              end: 492
-                                            value:
-                                              Constant:
-                                                String: num
+                        BinaryOperator:
+                          - Add
+                          - span:
+                              start: 461
+                              end: 475
+                            value:
+                              Delete:
+                                - span:
+                                    start: 471
+                                    end: 475
+                                  value:
+                                    Field:
+                                      - span:
+                                          start: 468
+                                          end: 471
+                                        value:
+                                          Constant:
+                                            Identifier: obj
+                                      - span:
+                                          start: 472
+                                          end: 475
+                                        value:
+                                          Constant:
+                                            String: num
+                          - span:
+                              start: 478
+                              end: 492
+                            value:
+                              Delete:
+                                - span:
+                                    start: 488
+                                    end: 492
+                                  value:
+                                    Field:
+                                      - span:
+                                          start: 485
+                                          end: 488
+                                        value:
+                                          Constant:
+                                            Identifier: obj
+                                      - span:
+                                          start: 489
+                                          end: 492
+                                        value:
+                                          Constant:
+                                            String: num
     - Declare:
         - name: obj
           value:
@@ -501,32 +471,27 @@ Ok:
                         Constant:
                           String: "delete obj.trace: "
                     - span:
-                        start: 564
-                        end: 582
+                        start: 565
+                        end: 581
                       value:
-                        Parenthesis:
-                          span:
-                            start: 565
-                            end: 581
-                          value:
-                            Delete:
-                              - span:
-                                  start: 575
-                                  end: 581
-                                value:
-                                  Field:
-                                    - span:
-                                        start: 572
-                                        end: 575
-                                      value:
-                                        Constant:
-                                          Identifier: obj
-                                    - span:
-                                        start: 576
-                                        end: 581
-                                      value:
-                                        Constant:
-                                          String: trace
+                        Delete:
+                          - span:
+                              start: 575
+                              end: 581
+                            value:
+                              Field:
+                                - span:
+                                    start: 572
+                                    end: 575
+                                  value:
+                                    Constant:
+                                      Identifier: obj
+                                - span:
+                                    start: 576
+                                    end: 581
+                                  value:
+                                    Constant:
+                                      String: trace
     - Declare:
         - name: obj
           value:
@@ -577,39 +542,34 @@ Ok:
                         Constant:
                           String: "delete obj.trace(): "
                     - span:
-                        start: 658
-                        end: 678
+                        start: 659
+                        end: 677
                       value:
-                        Parenthesis:
-                          span:
-                            start: 659
-                            end: 677
-                          value:
-                            Delete:
-                              - span:
-                                  start: 669
-                                  end: 677
-                                value:
-                                  Call:
-                                    name:
-                                      span:
-                                        start: 669
-                                        end: 675
-                                      value:
-                                        Field:
-                                          - span:
-                                              start: 666
-                                              end: 669
-                                            value:
-                                              Constant:
-                                                Identifier: obj
-                                          - span:
-                                              start: 670
-                                              end: 675
-                                            value:
-                                              Constant:
-                                                String: trace
-                                    args: []
+                        Delete:
+                          - span:
+                              start: 669
+                              end: 677
+                            value:
+                              Call:
+                                name:
+                                  span:
+                                    start: 669
+                                    end: 675
+                                  value:
+                                    Field:
+                                      - span:
+                                          start: 666
+                                          end: 669
+                                        value:
+                                          Constant:
+                                            Identifier: obj
+                                      - span:
+                                          start: 670
+                                          end: 675
+                                        value:
+                                          Constant:
+                                            String: trace
+                                args: []
     - Expr:
         span:
           start: 690
@@ -637,24 +597,19 @@ Ok:
                         Constant:
                           String: "delete(nonexistent, obj): "
                     - span:
-                        start: 727
-                        end: 753
+                        start: 728
+                        end: 752
                       value:
-                        Parenthesis:
-                          span:
-                            start: 728
-                            end: 752
-                          value:
-                            Delete:
-                              - span:
-                                  start: 735
-                                  end: 746
-                                value:
-                                  Constant:
-                                    Identifier: nonexistent
-                              - span:
-                                  start: 748
-                                  end: 751
-                                value:
-                                  Constant:
-                                    Identifier: obj
+                        Delete:
+                          - span:
+                              start: 735
+                              end: 746
+                            value:
+                              Constant:
+                                Identifier: nonexistent
+                          - span:
+                              start: 748
+                              end: 751
+                            value:
+                              Constant:
+                                Identifier: obj

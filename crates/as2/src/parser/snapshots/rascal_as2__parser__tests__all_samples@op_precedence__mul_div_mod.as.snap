@@ -162,40 +162,35 @@ Ok:
                         Constant:
                           String: "a * b / c = "
                     - span:
-                        start: 267
-                        end: 278
+                        start: 268
+                        end: 277
                       value:
-                        Parenthesis:
-                          span:
-                            start: 268
-                            end: 277
-                          value:
-                            BinaryOperator:
-                              - Divide
-                              - span:
-                                  start: 268
-                                  end: 273
-                                value:
-                                  BinaryOperator:
-                                    - Multiply
-                                    - span:
-                                        start: 268
-                                        end: 269
-                                      value:
-                                        Constant:
-                                          Identifier: a
-                                    - span:
-                                        start: 272
-                                        end: 273
-                                      value:
-                                        Constant:
-                                          Identifier: b
-                              - span:
-                                  start: 276
-                                  end: 277
-                                value:
-                                  Constant:
-                                    Identifier: c
+                        BinaryOperator:
+                          - Divide
+                          - span:
+                              start: 268
+                              end: 273
+                            value:
+                              BinaryOperator:
+                                - Multiply
+                                - span:
+                                    start: 268
+                                    end: 269
+                                  value:
+                                    Constant:
+                                      Identifier: a
+                                - span:
+                                    start: 272
+                                    end: 273
+                                  value:
+                                    Constant:
+                                      Identifier: b
+                          - span:
+                              start: 276
+                              end: 277
+                            value:
+                              Constant:
+                                Identifier: c
     - Expr:
         span:
           start: 287
@@ -223,45 +218,35 @@ Ok:
                         Constant:
                           String: "(a * b) / c = "
                     - span:
-                        start: 312
-                        end: 325
+                        start: 313
+                        end: 324
                       value:
-                        Parenthesis:
-                          span:
-                            start: 313
-                            end: 324
-                          value:
-                            BinaryOperator:
-                              - Divide
-                              - span:
-                                  start: 313
-                                  end: 320
-                                value:
-                                  Parenthesis:
-                                    span:
-                                      start: 314
-                                      end: 319
-                                    value:
-                                      BinaryOperator:
-                                        - Multiply
-                                        - span:
-                                            start: 314
-                                            end: 315
-                                          value:
-                                            Constant:
-                                              Identifier: a
-                                        - span:
-                                            start: 318
-                                            end: 319
-                                          value:
-                                            Constant:
-                                              Identifier: b
-                              - span:
-                                  start: 323
-                                  end: 324
-                                value:
-                                  Constant:
-                                    Identifier: c
+                        BinaryOperator:
+                          - Divide
+                          - span:
+                              start: 314
+                              end: 319
+                            value:
+                              BinaryOperator:
+                                - Multiply
+                                - span:
+                                    start: 314
+                                    end: 315
+                                  value:
+                                    Constant:
+                                      Identifier: a
+                                - span:
+                                    start: 318
+                                    end: 319
+                                  value:
+                                    Constant:
+                                      Identifier: b
+                          - span:
+                              start: 323
+                              end: 324
+                            value:
+                              Constant:
+                                Identifier: c
     - Expr:
         span:
           start: 334
@@ -309,40 +294,35 @@ Ok:
                         Constant:
                           String: "a / b * c = "
                     - span:
-                        start: 372
-                        end: 383
+                        start: 373
+                        end: 382
                       value:
-                        Parenthesis:
-                          span:
-                            start: 373
-                            end: 382
-                          value:
-                            BinaryOperator:
-                              - Multiply
-                              - span:
-                                  start: 373
-                                  end: 378
-                                value:
-                                  BinaryOperator:
-                                    - Divide
-                                    - span:
-                                        start: 373
-                                        end: 374
-                                      value:
-                                        Constant:
-                                          Identifier: a
-                                    - span:
-                                        start: 377
-                                        end: 378
-                                      value:
-                                        Constant:
-                                          Identifier: b
-                              - span:
-                                  start: 381
-                                  end: 382
-                                value:
-                                  Constant:
-                                    Identifier: c
+                        BinaryOperator:
+                          - Multiply
+                          - span:
+                              start: 373
+                              end: 378
+                            value:
+                              BinaryOperator:
+                                - Divide
+                                - span:
+                                    start: 373
+                                    end: 374
+                                  value:
+                                    Constant:
+                                      Identifier: a
+                                - span:
+                                    start: 377
+                                    end: 378
+                                  value:
+                                    Constant:
+                                      Identifier: b
+                          - span:
+                              start: 381
+                              end: 382
+                            value:
+                              Constant:
+                                Identifier: c
     - Expr:
         span:
           start: 396
@@ -370,45 +350,35 @@ Ok:
                         Constant:
                           String: "(a / b) * c = "
                     - span:
-                        start: 421
-                        end: 434
+                        start: 422
+                        end: 433
                       value:
-                        Parenthesis:
-                          span:
-                            start: 422
-                            end: 433
-                          value:
-                            BinaryOperator:
-                              - Multiply
-                              - span:
-                                  start: 422
-                                  end: 429
-                                value:
-                                  Parenthesis:
-                                    span:
-                                      start: 423
-                                      end: 428
-                                    value:
-                                      BinaryOperator:
-                                        - Divide
-                                        - span:
-                                            start: 423
-                                            end: 424
-                                          value:
-                                            Constant:
-                                              Identifier: a
-                                        - span:
-                                            start: 427
-                                            end: 428
-                                          value:
-                                            Constant:
-                                              Identifier: b
-                              - span:
-                                  start: 432
-                                  end: 433
-                                value:
-                                  Constant:
-                                    Identifier: c
+                        BinaryOperator:
+                          - Multiply
+                          - span:
+                              start: 423
+                              end: 428
+                            value:
+                              BinaryOperator:
+                                - Divide
+                                - span:
+                                    start: 423
+                                    end: 424
+                                  value:
+                                    Constant:
+                                      Identifier: a
+                                - span:
+                                    start: 427
+                                    end: 428
+                                  value:
+                                    Constant:
+                                      Identifier: b
+                          - span:
+                              start: 432
+                              end: 433
+                            value:
+                              Constant:
+                                Identifier: c
     - Expr:
         span:
           start: 447
@@ -456,40 +426,35 @@ Ok:
                         Constant:
                           String: "a % b * c = "
                     - span:
-                        start: 485
-                        end: 496
+                        start: 486
+                        end: 495
                       value:
-                        Parenthesis:
-                          span:
-                            start: 486
-                            end: 495
-                          value:
-                            BinaryOperator:
-                              - Multiply
-                              - span:
-                                  start: 486
-                                  end: 491
-                                value:
-                                  BinaryOperator:
-                                    - Modulo
-                                    - span:
-                                        start: 486
-                                        end: 487
-                                      value:
-                                        Constant:
-                                          Identifier: a
-                                    - span:
-                                        start: 490
-                                        end: 491
-                                      value:
-                                        Constant:
-                                          Identifier: b
-                              - span:
-                                  start: 494
-                                  end: 495
-                                value:
-                                  Constant:
-                                    Identifier: c
+                        BinaryOperator:
+                          - Multiply
+                          - span:
+                              start: 486
+                              end: 491
+                            value:
+                              BinaryOperator:
+                                - Modulo
+                                - span:
+                                    start: 486
+                                    end: 487
+                                  value:
+                                    Constant:
+                                      Identifier: a
+                                - span:
+                                    start: 490
+                                    end: 491
+                                  value:
+                                    Constant:
+                                      Identifier: b
+                          - span:
+                              start: 494
+                              end: 495
+                            value:
+                              Constant:
+                                Identifier: c
     - Expr:
         span:
           start: 504
@@ -517,45 +482,35 @@ Ok:
                         Constant:
                           String: "(a % b) * c = "
                     - span:
-                        start: 529
-                        end: 542
+                        start: 530
+                        end: 541
                       value:
-                        Parenthesis:
-                          span:
-                            start: 530
-                            end: 541
-                          value:
-                            BinaryOperator:
-                              - Multiply
-                              - span:
-                                  start: 530
-                                  end: 537
-                                value:
-                                  Parenthesis:
-                                    span:
-                                      start: 531
-                                      end: 536
-                                    value:
-                                      BinaryOperator:
-                                        - Modulo
-                                        - span:
-                                            start: 531
-                                            end: 532
-                                          value:
-                                            Constant:
-                                              Identifier: a
-                                        - span:
-                                            start: 535
-                                            end: 536
-                                          value:
-                                            Constant:
-                                              Identifier: b
-                              - span:
-                                  start: 540
-                                  end: 541
-                                value:
-                                  Constant:
-                                    Identifier: c
+                        BinaryOperator:
+                          - Multiply
+                          - span:
+                              start: 531
+                              end: 536
+                            value:
+                              BinaryOperator:
+                                - Modulo
+                                - span:
+                                    start: 531
+                                    end: 532
+                                  value:
+                                    Constant:
+                                      Identifier: a
+                                - span:
+                                    start: 535
+                                    end: 536
+                                  value:
+                                    Constant:
+                                      Identifier: b
+                          - span:
+                              start: 540
+                              end: 541
+                            value:
+                              Constant:
+                                Identifier: c
     - Expr:
         span:
           start: 550
@@ -603,40 +558,35 @@ Ok:
                         Constant:
                           String: "a * b % c = "
                     - span:
-                        start: 588
-                        end: 599
+                        start: 589
+                        end: 598
                       value:
-                        Parenthesis:
-                          span:
-                            start: 589
-                            end: 598
-                          value:
-                            BinaryOperator:
-                              - Modulo
-                              - span:
-                                  start: 589
-                                  end: 594
-                                value:
-                                  BinaryOperator:
-                                    - Multiply
-                                    - span:
-                                        start: 589
-                                        end: 590
-                                      value:
-                                        Constant:
-                                          Identifier: a
-                                    - span:
-                                        start: 593
-                                        end: 594
-                                      value:
-                                        Constant:
-                                          Identifier: b
-                              - span:
-                                  start: 597
-                                  end: 598
-                                value:
-                                  Constant:
-                                    Identifier: c
+                        BinaryOperator:
+                          - Modulo
+                          - span:
+                              start: 589
+                              end: 594
+                            value:
+                              BinaryOperator:
+                                - Multiply
+                                - span:
+                                    start: 589
+                                    end: 590
+                                  value:
+                                    Constant:
+                                      Identifier: a
+                                - span:
+                                    start: 593
+                                    end: 594
+                                  value:
+                                    Constant:
+                                      Identifier: b
+                          - span:
+                              start: 597
+                              end: 598
+                            value:
+                              Constant:
+                                Identifier: c
     - Expr:
         span:
           start: 607
@@ -664,45 +614,35 @@ Ok:
                         Constant:
                           String: "(a * b) % c = "
                     - span:
-                        start: 632
-                        end: 645
+                        start: 633
+                        end: 644
                       value:
-                        Parenthesis:
-                          span:
-                            start: 633
-                            end: 644
-                          value:
-                            BinaryOperator:
-                              - Modulo
-                              - span:
-                                  start: 633
-                                  end: 640
-                                value:
-                                  Parenthesis:
-                                    span:
-                                      start: 634
-                                      end: 639
-                                    value:
-                                      BinaryOperator:
-                                        - Multiply
-                                        - span:
-                                            start: 634
-                                            end: 635
-                                          value:
-                                            Constant:
-                                              Identifier: a
-                                        - span:
-                                            start: 638
-                                            end: 639
-                                          value:
-                                            Constant:
-                                              Identifier: b
-                              - span:
-                                  start: 643
-                                  end: 644
-                                value:
-                                  Constant:
-                                    Identifier: c
+                        BinaryOperator:
+                          - Modulo
+                          - span:
+                              start: 634
+                              end: 639
+                            value:
+                              BinaryOperator:
+                                - Multiply
+                                - span:
+                                    start: 634
+                                    end: 635
+                                  value:
+                                    Constant:
+                                      Identifier: a
+                                - span:
+                                    start: 638
+                                    end: 639
+                                  value:
+                                    Constant:
+                                      Identifier: b
+                          - span:
+                              start: 643
+                              end: 644
+                            value:
+                              Constant:
+                                Identifier: c
     - Expr:
         span:
           start: 653
@@ -750,40 +690,35 @@ Ok:
                         Constant:
                           String: "a % b / c = "
                     - span:
-                        start: 691
-                        end: 702
+                        start: 692
+                        end: 701
                       value:
-                        Parenthesis:
-                          span:
-                            start: 692
-                            end: 701
-                          value:
-                            BinaryOperator:
-                              - Divide
-                              - span:
-                                  start: 692
-                                  end: 697
-                                value:
-                                  BinaryOperator:
-                                    - Modulo
-                                    - span:
-                                        start: 692
-                                        end: 693
-                                      value:
-                                        Constant:
-                                          Identifier: a
-                                    - span:
-                                        start: 696
-                                        end: 697
-                                      value:
-                                        Constant:
-                                          Identifier: b
-                              - span:
-                                  start: 700
-                                  end: 701
-                                value:
-                                  Constant:
-                                    Identifier: c
+                        BinaryOperator:
+                          - Divide
+                          - span:
+                              start: 692
+                              end: 697
+                            value:
+                              BinaryOperator:
+                                - Modulo
+                                - span:
+                                    start: 692
+                                    end: 693
+                                  value:
+                                    Constant:
+                                      Identifier: a
+                                - span:
+                                    start: 696
+                                    end: 697
+                                  value:
+                                    Constant:
+                                      Identifier: b
+                          - span:
+                              start: 700
+                              end: 701
+                            value:
+                              Constant:
+                                Identifier: c
     - Expr:
         span:
           start: 712
@@ -811,45 +746,35 @@ Ok:
                         Constant:
                           String: "(a % b) / c = "
                     - span:
-                        start: 737
-                        end: 750
+                        start: 738
+                        end: 749
                       value:
-                        Parenthesis:
-                          span:
-                            start: 738
-                            end: 749
-                          value:
-                            BinaryOperator:
-                              - Divide
-                              - span:
-                                  start: 738
-                                  end: 745
-                                value:
-                                  Parenthesis:
-                                    span:
-                                      start: 739
-                                      end: 744
-                                    value:
-                                      BinaryOperator:
-                                        - Modulo
-                                        - span:
-                                            start: 739
-                                            end: 740
-                                          value:
-                                            Constant:
-                                              Identifier: a
-                                        - span:
-                                            start: 743
-                                            end: 744
-                                          value:
-                                            Constant:
-                                              Identifier: b
-                              - span:
-                                  start: 748
-                                  end: 749
-                                value:
-                                  Constant:
-                                    Identifier: c
+                        BinaryOperator:
+                          - Divide
+                          - span:
+                              start: 739
+                              end: 744
+                            value:
+                              BinaryOperator:
+                                - Modulo
+                                - span:
+                                    start: 739
+                                    end: 740
+                                  value:
+                                    Constant:
+                                      Identifier: a
+                                - span:
+                                    start: 743
+                                    end: 744
+                                  value:
+                                    Constant:
+                                      Identifier: b
+                          - span:
+                              start: 748
+                              end: 749
+                            value:
+                              Constant:
+                                Identifier: c
     - Expr:
         span:
           start: 760
@@ -897,40 +822,35 @@ Ok:
                         Constant:
                           String: "a / b % c = "
                     - span:
-                        start: 798
-                        end: 809
+                        start: 799
+                        end: 808
                       value:
-                        Parenthesis:
-                          span:
-                            start: 799
-                            end: 808
-                          value:
-                            BinaryOperator:
-                              - Modulo
-                              - span:
-                                  start: 799
-                                  end: 804
-                                value:
-                                  BinaryOperator:
-                                    - Divide
-                                    - span:
-                                        start: 799
-                                        end: 800
-                                      value:
-                                        Constant:
-                                          Identifier: a
-                                    - span:
-                                        start: 803
-                                        end: 804
-                                      value:
-                                        Constant:
-                                          Identifier: b
-                              - span:
-                                  start: 807
-                                  end: 808
-                                value:
-                                  Constant:
-                                    Identifier: c
+                        BinaryOperator:
+                          - Modulo
+                          - span:
+                              start: 799
+                              end: 804
+                            value:
+                              BinaryOperator:
+                                - Divide
+                                - span:
+                                    start: 799
+                                    end: 800
+                                  value:
+                                    Constant:
+                                      Identifier: a
+                                - span:
+                                    start: 803
+                                    end: 804
+                                  value:
+                                    Constant:
+                                      Identifier: b
+                          - span:
+                              start: 807
+                              end: 808
+                            value:
+                              Constant:
+                                Identifier: c
     - Expr:
         span:
           start: 821
@@ -958,45 +878,35 @@ Ok:
                         Constant:
                           String: "(a / b) % c = "
                     - span:
-                        start: 846
-                        end: 859
+                        start: 847
+                        end: 858
                       value:
-                        Parenthesis:
-                          span:
-                            start: 847
-                            end: 858
-                          value:
-                            BinaryOperator:
-                              - Modulo
-                              - span:
-                                  start: 847
-                                  end: 854
-                                value:
-                                  Parenthesis:
-                                    span:
-                                      start: 848
-                                      end: 853
-                                    value:
-                                      BinaryOperator:
-                                        - Divide
-                                        - span:
-                                            start: 848
-                                            end: 849
-                                          value:
-                                            Constant:
-                                              Identifier: a
-                                        - span:
-                                            start: 852
-                                            end: 853
-                                          value:
-                                            Constant:
-                                              Identifier: b
-                              - span:
-                                  start: 857
-                                  end: 858
-                                value:
-                                  Constant:
-                                    Identifier: c
+                        BinaryOperator:
+                          - Modulo
+                          - span:
+                              start: 848
+                              end: 853
+                            value:
+                              BinaryOperator:
+                                - Divide
+                                - span:
+                                    start: 848
+                                    end: 849
+                                  value:
+                                    Constant:
+                                      Identifier: a
+                                - span:
+                                    start: 852
+                                    end: 853
+                                  value:
+                                    Constant:
+                                      Identifier: b
+                          - span:
+                              start: 857
+                              end: 858
+                            value:
+                              Constant:
+                                Identifier: c
     - Expr:
         span:
           start: 871
@@ -1044,52 +954,47 @@ Ok:
                         Constant:
                           String: "Nested: a * b / c * b = "
                     - span:
-                        start: 921
-                        end: 936
+                        start: 922
+                        end: 935
                       value:
-                        Parenthesis:
-                          span:
-                            start: 922
-                            end: 935
-                          value:
-                            BinaryOperator:
-                              - Multiply
-                              - span:
-                                  start: 922
-                                  end: 931
-                                value:
-                                  BinaryOperator:
-                                    - Divide
-                                    - span:
-                                        start: 922
-                                        end: 927
-                                      value:
-                                        BinaryOperator:
-                                          - Multiply
-                                          - span:
-                                              start: 922
-                                              end: 923
-                                            value:
-                                              Constant:
-                                                Identifier: a
-                                          - span:
-                                              start: 926
-                                              end: 927
-                                            value:
-                                              Constant:
-                                                Identifier: b
-                                    - span:
-                                        start: 930
-                                        end: 931
-                                      value:
-                                        Constant:
-                                          Identifier: c
-                              - span:
-                                  start: 934
-                                  end: 935
-                                value:
-                                  Constant:
-                                    Identifier: b
+                        BinaryOperator:
+                          - Multiply
+                          - span:
+                              start: 922
+                              end: 931
+                            value:
+                              BinaryOperator:
+                                - Divide
+                                - span:
+                                    start: 922
+                                    end: 927
+                                  value:
+                                    BinaryOperator:
+                                      - Multiply
+                                      - span:
+                                          start: 922
+                                          end: 923
+                                        value:
+                                          Constant:
+                                            Identifier: a
+                                      - span:
+                                          start: 926
+                                          end: 927
+                                        value:
+                                          Constant:
+                                            Identifier: b
+                                - span:
+                                    start: 930
+                                    end: 931
+                                  value:
+                                    Constant:
+                                      Identifier: c
+                          - span:
+                              start: 934
+                              end: 935
+                            value:
+                              Constant:
+                                Identifier: b
     - Expr:
         span:
           start: 946
@@ -1117,59 +1022,44 @@ Ok:
                         Constant:
                           String: "Nested reference: (((a * b) / c) * b) = "
                     - span:
-                        start: 997
-                        end: 1016
+                        start: 998
+                        end: 1015
                       value:
-                        Parenthesis:
-                          span:
-                            start: 998
-                            end: 1015
-                          value:
-                            BinaryOperator:
-                              - Multiply
-                              - span:
-                                  start: 998
-                                  end: 1011
-                                value:
-                                  Parenthesis:
-                                    span:
-                                      start: 999
-                                      end: 1010
-                                    value:
-                                      BinaryOperator:
-                                        - Divide
-                                        - span:
-                                            start: 999
-                                            end: 1006
-                                          value:
-                                            Parenthesis:
-                                              span:
-                                                start: 1000
-                                                end: 1005
-                                              value:
-                                                BinaryOperator:
-                                                  - Multiply
-                                                  - span:
-                                                      start: 1000
-                                                      end: 1001
-                                                    value:
-                                                      Constant:
-                                                        Identifier: a
-                                                  - span:
-                                                      start: 1004
-                                                      end: 1005
-                                                    value:
-                                                      Constant:
-                                                        Identifier: b
-                                        - span:
-                                            start: 1009
-                                            end: 1010
-                                          value:
-                                            Constant:
-                                              Identifier: c
-                              - span:
-                                  start: 1014
-                                  end: 1015
-                                value:
-                                  Constant:
-                                    Identifier: b
+                        BinaryOperator:
+                          - Multiply
+                          - span:
+                              start: 999
+                              end: 1010
+                            value:
+                              BinaryOperator:
+                                - Divide
+                                - span:
+                                    start: 1000
+                                    end: 1005
+                                  value:
+                                    BinaryOperator:
+                                      - Multiply
+                                      - span:
+                                          start: 1000
+                                          end: 1001
+                                        value:
+                                          Constant:
+                                            Identifier: a
+                                      - span:
+                                          start: 1004
+                                          end: 1005
+                                        value:
+                                          Constant:
+                                            Identifier: b
+                                - span:
+                                    start: 1009
+                                    end: 1010
+                                  value:
+                                    Constant:
+                                      Identifier: c
+                          - span:
+                              start: 1014
+                              end: 1015
+                            value:
+                              Constant:
+                                Identifier: b

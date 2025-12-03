@@ -359,28 +359,23 @@ Ok:
                     BinaryOperator:
                       - Multiply
                       - span:
-                          start: 769
-                          end: 780
+                          start: 770
+                          end: 779
                         value:
-                          Parenthesis:
-                            span:
-                              start: 770
-                              end: 779
-                            value:
-                              BinaryOperator:
-                                - Add
-                                - span:
-                                    start: 770
-                                    end: 774
-                                  value:
-                                    Constant:
-                                      Integer: 16
-                                - span:
-                                    start: 777
-                                    end: 779
-                                  value:
-                                    Constant:
-                                      Integer: 15
+                          BinaryOperator:
+                            - Add
+                            - span:
+                                start: 770
+                                end: 774
+                              value:
+                                Constant:
+                                  Integer: 16
+                            - span:
+                                start: 777
+                                end: 779
+                              value:
+                                Constant:
+                                  Integer: 15
                       - span:
                           start: 783
                           end: 788

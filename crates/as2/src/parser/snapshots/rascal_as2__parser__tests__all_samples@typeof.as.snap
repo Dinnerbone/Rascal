@@ -65,21 +65,16 @@ Ok:
                         Constant:
                           String: "typeof num: "
                     - span:
-                        start: 70
-                        end: 82
+                        start: 71
+                        end: 81
                       value:
-                        Parenthesis:
-                          span:
-                            start: 71
-                            end: 81
-                          value:
-                            TypeOf:
-                              - span:
-                                  start: 78
-                                  end: 81
-                                value:
-                                  Constant:
-                                    Identifier: num
+                        TypeOf:
+                          - span:
+                              start: 78
+                              end: 81
+                            value:
+                              Constant:
+                                Identifier: num
     - Expr:
         span:
           start: 95
@@ -107,21 +102,16 @@ Ok:
                         Constant:
                           String: "typeof obj: "
                     - span:
-                        start: 118
-                        end: 130
+                        start: 119
+                        end: 129
                       value:
-                        Parenthesis:
-                          span:
-                            start: 119
-                            end: 129
-                          value:
-                            TypeOf:
-                              - span:
-                                  start: 126
-                                  end: 129
-                                value:
-                                  Constant:
-                                    Identifier: obj
+                        TypeOf:
+                          - span:
+                              start: 126
+                              end: 129
+                            value:
+                              Constant:
+                                Identifier: obj
     - Expr:
         span:
           start: 143
@@ -149,32 +139,27 @@ Ok:
                         Constant:
                           String: "typeof obj.num: "
                     - span:
-                        start: 170
-                        end: 186
+                        start: 171
+                        end: 185
                       value:
-                        Parenthesis:
-                          span:
-                            start: 171
-                            end: 185
-                          value:
-                            TypeOf:
-                              - span:
-                                  start: 181
-                                  end: 185
-                                value:
-                                  Field:
-                                    - span:
-                                        start: 178
-                                        end: 181
-                                      value:
-                                        Constant:
-                                          Identifier: obj
-                                    - span:
-                                        start: 182
-                                        end: 185
-                                      value:
-                                        Constant:
-                                          String: num
+                        TypeOf:
+                          - span:
+                              start: 181
+                              end: 185
+                            value:
+                              Field:
+                                - span:
+                                    start: 178
+                                    end: 181
+                                  value:
+                                    Constant:
+                                      Identifier: obj
+                                - span:
+                                    start: 182
+                                    end: 185
+                                  value:
+                                    Constant:
+                                      String: num
     - Expr:
         span:
           start: 199
@@ -202,44 +187,39 @@ Ok:
                         Constant:
                           String: "typeof obj.num + 1: "
                     - span:
-                        start: 230
-                        end: 250
+                        start: 231
+                        end: 249
                       value:
-                        Parenthesis:
-                          span:
-                            start: 231
-                            end: 249
-                          value:
-                            BinaryOperator:
-                              - Add
-                              - span:
-                                  start: 231
-                                  end: 245
-                                value:
-                                  TypeOf:
-                                    - span:
-                                        start: 241
-                                        end: 245
-                                      value:
-                                        Field:
-                                          - span:
-                                              start: 238
-                                              end: 241
-                                            value:
-                                              Constant:
-                                                Identifier: obj
-                                          - span:
-                                              start: 242
-                                              end: 245
-                                            value:
-                                              Constant:
-                                                String: num
-                              - span:
-                                  start: 248
-                                  end: 249
-                                value:
-                                  Constant:
-                                    Integer: 1
+                        BinaryOperator:
+                          - Add
+                          - span:
+                              start: 231
+                              end: 245
+                            value:
+                              TypeOf:
+                                - span:
+                                    start: 241
+                                    end: 245
+                                  value:
+                                    Field:
+                                      - span:
+                                          start: 238
+                                          end: 241
+                                        value:
+                                          Constant:
+                                            Identifier: obj
+                                      - span:
+                                          start: 242
+                                          end: 245
+                                        value:
+                                          Constant:
+                                            String: num
+                          - span:
+                              start: 248
+                              end: 249
+                            value:
+                              Constant:
+                                Integer: 1
     - Expr:
         span:
           start: 264
@@ -267,64 +247,59 @@ Ok:
                         Constant:
                           String: "typeof obj.num == \"number\" ? \":)\" : \":(\": "
                     - span:
-                        start: 323
-                        end: 365
+                        start: 324
+                        end: 364
                       value:
-                        Parenthesis:
-                          span:
-                            start: 324
-                            end: 364
-                          value:
-                            Ternary:
-                              condition:
-                                span:
-                                  start: 334
-                                  end: 350
-                                value:
-                                  BinaryOperator:
-                                    - Equal
-                                    - span:
-                                        start: 324
-                                        end: 338
-                                      value:
-                                        TypeOf:
-                                          - span:
-                                              start: 334
-                                              end: 338
-                                            value:
-                                              Field:
-                                                - span:
-                                                    start: 331
-                                                    end: 334
-                                                  value:
-                                                    Constant:
-                                                      Identifier: obj
-                                                - span:
-                                                    start: 335
-                                                    end: 338
-                                                  value:
-                                                    Constant:
-                                                      String: num
-                                    - span:
-                                        start: 342
-                                        end: 350
-                                      value:
-                                        Constant:
-                                          String: number
-                              "yes":
-                                span:
-                                  start: 353
-                                  end: 357
-                                value:
-                                  Constant:
-                                    String: ":)"
-                              "no":
-                                span:
-                                  start: 360
-                                  end: 364
-                                value:
-                                  Constant:
-                                    String: ":("
+                        Ternary:
+                          condition:
+                            span:
+                              start: 334
+                              end: 350
+                            value:
+                              BinaryOperator:
+                                - Equal
+                                - span:
+                                    start: 324
+                                    end: 338
+                                  value:
+                                    TypeOf:
+                                      - span:
+                                          start: 334
+                                          end: 338
+                                        value:
+                                          Field:
+                                            - span:
+                                                start: 331
+                                                end: 334
+                                              value:
+                                                Constant:
+                                                  Identifier: obj
+                                            - span:
+                                                start: 335
+                                                end: 338
+                                              value:
+                                                Constant:
+                                                  String: num
+                                - span:
+                                    start: 342
+                                    end: 350
+                                  value:
+                                    Constant:
+                                      String: number
+                          "yes":
+                            span:
+                              start: 353
+                              end: 357
+                            value:
+                              Constant:
+                                String: ":)"
+                          "no":
+                            span:
+                              start: 360
+                              end: 364
+                            value:
+                              Constant:
+                                String: ":("
     - Expr:
         span:
           start: 374
@@ -352,60 +327,55 @@ Ok:
                         Constant:
                           String: "typeof obj.num + typeof obj.num: "
                     - span:
-                        start: 418
-                        end: 451
+                        start: 419
+                        end: 450
                       value:
-                        Parenthesis:
-                          span:
-                            start: 419
-                            end: 450
-                          value:
-                            BinaryOperator:
-                              - Add
-                              - span:
-                                  start: 419
-                                  end: 433
-                                value:
-                                  TypeOf:
-                                    - span:
-                                        start: 429
-                                        end: 433
-                                      value:
-                                        Field:
-                                          - span:
-                                              start: 426
-                                              end: 429
-                                            value:
-                                              Constant:
-                                                Identifier: obj
-                                          - span:
-                                              start: 430
-                                              end: 433
-                                            value:
-                                              Constant:
-                                                String: num
-                              - span:
-                                  start: 436
-                                  end: 450
-                                value:
-                                  TypeOf:
-                                    - span:
-                                        start: 446
-                                        end: 450
-                                      value:
-                                        Field:
-                                          - span:
-                                              start: 443
-                                              end: 446
-                                            value:
-                                              Constant:
-                                                Identifier: obj
-                                          - span:
-                                              start: 447
-                                              end: 450
-                                            value:
-                                              Constant:
-                                                String: num
+                        BinaryOperator:
+                          - Add
+                          - span:
+                              start: 419
+                              end: 433
+                            value:
+                              TypeOf:
+                                - span:
+                                    start: 429
+                                    end: 433
+                                  value:
+                                    Field:
+                                      - span:
+                                          start: 426
+                                          end: 429
+                                        value:
+                                          Constant:
+                                            Identifier: obj
+                                      - span:
+                                          start: 430
+                                          end: 433
+                                        value:
+                                          Constant:
+                                            String: num
+                          - span:
+                              start: 436
+                              end: 450
+                            value:
+                              TypeOf:
+                                - span:
+                                    start: 446
+                                    end: 450
+                                  value:
+                                    Field:
+                                      - span:
+                                          start: 443
+                                          end: 446
+                                        value:
+                                          Constant:
+                                            Identifier: obj
+                                      - span:
+                                          start: 447
+                                          end: 450
+                                        value:
+                                          Constant:
+                                            String: num
     - Expr:
         span:
           start: 470
@@ -433,32 +403,27 @@ Ok:
                         Constant:
                           String: "typeof obj.trace: "
                     - span:
-                        start: 499
-                        end: 517
+                        start: 500
+                        end: 516
                       value:
-                        Parenthesis:
-                          span:
-                            start: 500
-                            end: 516
-                          value:
-                            TypeOf:
-                              - span:
-                                  start: 510
-                                  end: 516
-                                value:
-                                  Field:
-                                    - span:
-                                        start: 507
-                                        end: 510
-                                      value:
-                                        Constant:
-                                          Identifier: obj
-                                    - span:
-                                        start: 511
-                                        end: 516
-                                      value:
-                                        Constant:
-                                          String: trace
+                        TypeOf:
+                          - span:
+                              start: 510
+                              end: 516
+                            value:
+                              Field:
+                                - span:
+                                    start: 507
+                                    end: 510
+                                  value:
+                                    Constant:
+                                      Identifier: obj
+                                - span:
+                                    start: 511
+                                    end: 516
+                                  value:
+                                    Constant:
+                                      String: trace
     - Expr:
         span:
           start: 532
@@ -486,39 +451,34 @@ Ok:
                         Constant:
                           String: "typeof obj.trace(): "
                     - span:
-                        start: 563
-                        end: 583
+                        start: 564
+                        end: 582
                       value:
-                        Parenthesis:
-                          span:
-                            start: 564
-                            end: 582
-                          value:
-                            TypeOf:
-                              - span:
-                                  start: 574
-                                  end: 582
-                                value:
-                                  Call:
-                                    name:
-                                      span:
-                                        start: 574
-                                        end: 580
-                                      value:
-                                        Field:
-                                          - span:
-                                              start: 571
-                                              end: 574
-                                            value:
-                                              Constant:
-                                                Identifier: obj
-                                          - span:
-                                              start: 575
-                                              end: 580
-                                            value:
-                                              Constant:
-                                                String: trace
-                                    args: []
+                        TypeOf:
+                          - span:
+                              start: 574
+                              end: 582
+                            value:
+                              Call:
+                                name:
+                                  span:
+                                    start: 574
+                                    end: 580
+                                  value:
+                                    Field:
+                                      - span:
+                                          start: 571
+                                          end: 574
+                                        value:
+                                          Constant:
+                                            Identifier: obj
+                                      - span:
+                                          start: 575
+                                          end: 580
+                                        value:
+                                          Constant:
+                                            String: trace
+                                args: []
     - Expr:
         span:
           start: 599
@@ -546,24 +506,19 @@ Ok:
                         Constant:
                           String: "typeof(nonexistent, obj): "
                     - span:
-                        start: 636
-                        end: 662
+                        start: 637
+                        end: 661
                       value:
-                        Parenthesis:
-                          span:
-                            start: 637
-                            end: 661
-                          value:
-                            TypeOf:
-                              - span:
-                                  start: 644
-                                  end: 655
-                                value:
-                                  Constant:
-                                    Identifier: nonexistent
-                              - span:
-                                  start: 657
-                                  end: 660
-                                value:
-                                  Constant:
-                                    Identifier: obj
+                        TypeOf:
+                          - span:
+                              start: 644
+                              end: 655
+                            value:
+                              Constant:
+                                Identifier: nonexistent
+                          - span:
+                              start: 657
+                              end: 660
+                            value:
+                              Constant:
+                                Identifier: obj

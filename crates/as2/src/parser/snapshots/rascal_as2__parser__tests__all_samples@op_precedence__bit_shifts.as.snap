@@ -162,40 +162,35 @@ Ok:
                         Constant:
                           String: "a << b >> c = "
                     - span:
-                        start: 163
-                        end: 176
+                        start: 164
+                        end: 175
                       value:
-                        Parenthesis:
-                          span:
-                            start: 164
-                            end: 175
-                          value:
-                            BinaryOperator:
-                              - BitShiftRight
-                              - span:
-                                  start: 164
-                                  end: 170
-                                value:
-                                  BinaryOperator:
-                                    - BitShiftLeft
-                                    - span:
-                                        start: 164
-                                        end: 165
-                                      value:
-                                        Constant:
-                                          Identifier: a
-                                    - span:
-                                        start: 169
-                                        end: 170
-                                      value:
-                                        Constant:
-                                          Identifier: b
-                              - span:
-                                  start: 174
-                                  end: 175
-                                value:
-                                  Constant:
-                                    Identifier: c
+                        BinaryOperator:
+                          - BitShiftRight
+                          - span:
+                              start: 164
+                              end: 170
+                            value:
+                              BinaryOperator:
+                                - BitShiftLeft
+                                - span:
+                                    start: 164
+                                    end: 165
+                                  value:
+                                    Constant:
+                                      Identifier: a
+                                - span:
+                                    start: 169
+                                    end: 170
+                                  value:
+                                    Constant:
+                                      Identifier: b
+                          - span:
+                              start: 174
+                              end: 175
+                            value:
+                              Constant:
+                                Identifier: c
     - Expr:
         span:
           start: 185
@@ -223,45 +218,35 @@ Ok:
                         Constant:
                           String: "((a << b) >> c) = "
                     - span:
-                        start: 214
-                        end: 229
+                        start: 215
+                        end: 228
                       value:
-                        Parenthesis:
-                          span:
-                            start: 215
-                            end: 228
-                          value:
-                            BinaryOperator:
-                              - BitShiftRight
-                              - span:
-                                  start: 215
-                                  end: 223
-                                value:
-                                  Parenthesis:
-                                    span:
-                                      start: 216
-                                      end: 222
-                                    value:
-                                      BinaryOperator:
-                                        - BitShiftLeft
-                                        - span:
-                                            start: 216
-                                            end: 217
-                                          value:
-                                            Constant:
-                                              Identifier: a
-                                        - span:
-                                            start: 221
-                                            end: 222
-                                          value:
-                                            Constant:
-                                              Identifier: b
-                              - span:
-                                  start: 227
-                                  end: 228
-                                value:
-                                  Constant:
-                                    Identifier: c
+                        BinaryOperator:
+                          - BitShiftRight
+                          - span:
+                              start: 216
+                              end: 222
+                            value:
+                              BinaryOperator:
+                                - BitShiftLeft
+                                - span:
+                                    start: 216
+                                    end: 217
+                                  value:
+                                    Constant:
+                                      Identifier: a
+                                - span:
+                                    start: 221
+                                    end: 222
+                                  value:
+                                    Constant:
+                                      Identifier: b
+                          - span:
+                              start: 227
+                              end: 228
+                            value:
+                              Constant:
+                                Identifier: c
     - Expr:
         span:
           start: 238
@@ -309,40 +294,35 @@ Ok:
                         Constant:
                           String: "a >> b << c = "
                     - span:
-                        start: 278
-                        end: 291
+                        start: 279
+                        end: 290
                       value:
-                        Parenthesis:
-                          span:
-                            start: 279
-                            end: 290
-                          value:
-                            BinaryOperator:
-                              - BitShiftLeft
-                              - span:
-                                  start: 279
-                                  end: 285
-                                value:
-                                  BinaryOperator:
-                                    - BitShiftRight
-                                    - span:
-                                        start: 279
-                                        end: 280
-                                      value:
-                                        Constant:
-                                          Identifier: a
-                                    - span:
-                                        start: 284
-                                        end: 285
-                                      value:
-                                        Constant:
-                                          Identifier: b
-                              - span:
-                                  start: 289
-                                  end: 290
-                                value:
-                                  Constant:
-                                    Identifier: c
+                        BinaryOperator:
+                          - BitShiftLeft
+                          - span:
+                              start: 279
+                              end: 285
+                            value:
+                              BinaryOperator:
+                                - BitShiftRight
+                                - span:
+                                    start: 279
+                                    end: 280
+                                  value:
+                                    Constant:
+                                      Identifier: a
+                                - span:
+                                    start: 284
+                                    end: 285
+                                  value:
+                                    Constant:
+                                      Identifier: b
+                          - span:
+                              start: 289
+                              end: 290
+                            value:
+                              Constant:
+                                Identifier: c
     - Expr:
         span:
           start: 299
@@ -370,45 +350,35 @@ Ok:
                         Constant:
                           String: "((a >> b) << c) = "
                     - span:
-                        start: 328
-                        end: 343
+                        start: 329
+                        end: 342
                       value:
-                        Parenthesis:
-                          span:
-                            start: 329
-                            end: 342
-                          value:
-                            BinaryOperator:
-                              - BitShiftLeft
-                              - span:
-                                  start: 329
-                                  end: 337
-                                value:
-                                  Parenthesis:
-                                    span:
-                                      start: 330
-                                      end: 336
-                                    value:
-                                      BinaryOperator:
-                                        - BitShiftRight
-                                        - span:
-                                            start: 330
-                                            end: 331
-                                          value:
-                                            Constant:
-                                              Identifier: a
-                                        - span:
-                                            start: 335
-                                            end: 336
-                                          value:
-                                            Constant:
-                                              Identifier: b
-                              - span:
-                                  start: 341
-                                  end: 342
-                                value:
-                                  Constant:
-                                    Identifier: c
+                        BinaryOperator:
+                          - BitShiftLeft
+                          - span:
+                              start: 330
+                              end: 336
+                            value:
+                              BinaryOperator:
+                                - BitShiftRight
+                                - span:
+                                    start: 330
+                                    end: 331
+                                  value:
+                                    Constant:
+                                      Identifier: a
+                                - span:
+                                    start: 335
+                                    end: 336
+                                  value:
+                                    Constant:
+                                      Identifier: b
+                          - span:
+                              start: 341
+                              end: 342
+                            value:
+                              Constant:
+                                Identifier: c
     - Expr:
         span:
           start: 351
@@ -456,40 +426,35 @@ Ok:
                         Constant:
                           String: "a >>> b >> c = "
                     - span:
-                        start: 392
-                        end: 406
+                        start: 393
+                        end: 405
                       value:
-                        Parenthesis:
-                          span:
-                            start: 393
-                            end: 405
-                          value:
-                            BinaryOperator:
-                              - BitShiftRight
-                              - span:
-                                  start: 393
-                                  end: 400
-                                value:
-                                  BinaryOperator:
-                                    - BitShiftRightUnsigned
-                                    - span:
-                                        start: 393
-                                        end: 394
-                                      value:
-                                        Constant:
-                                          Identifier: a
-                                    - span:
-                                        start: 399
-                                        end: 400
-                                      value:
-                                        Constant:
-                                          Identifier: b
-                              - span:
-                                  start: 404
-                                  end: 405
-                                value:
-                                  Constant:
-                                    Identifier: c
+                        BinaryOperator:
+                          - BitShiftRight
+                          - span:
+                              start: 393
+                              end: 400
+                            value:
+                              BinaryOperator:
+                                - BitShiftRightUnsigned
+                                - span:
+                                    start: 393
+                                    end: 394
+                                  value:
+                                    Constant:
+                                      Identifier: a
+                                - span:
+                                    start: 399
+                                    end: 400
+                                  value:
+                                    Constant:
+                                      Identifier: b
+                          - span:
+                              start: 404
+                              end: 405
+                            value:
+                              Constant:
+                                Identifier: c
     - Expr:
         span:
           start: 414
@@ -517,45 +482,35 @@ Ok:
                         Constant:
                           String: "((a >>> b) >> c) = "
                     - span:
-                        start: 444
-                        end: 460
+                        start: 445
+                        end: 459
                       value:
-                        Parenthesis:
-                          span:
-                            start: 445
-                            end: 459
-                          value:
-                            BinaryOperator:
-                              - BitShiftRight
-                              - span:
-                                  start: 445
-                                  end: 454
-                                value:
-                                  Parenthesis:
-                                    span:
-                                      start: 446
-                                      end: 453
-                                    value:
-                                      BinaryOperator:
-                                        - BitShiftRightUnsigned
-                                        - span:
-                                            start: 446
-                                            end: 447
-                                          value:
-                                            Constant:
-                                              Identifier: a
-                                        - span:
-                                            start: 452
-                                            end: 453
-                                          value:
-                                            Constant:
-                                              Identifier: b
-                              - span:
-                                  start: 458
-                                  end: 459
-                                value:
-                                  Constant:
-                                    Identifier: c
+                        BinaryOperator:
+                          - BitShiftRight
+                          - span:
+                              start: 446
+                              end: 453
+                            value:
+                              BinaryOperator:
+                                - BitShiftRightUnsigned
+                                - span:
+                                    start: 446
+                                    end: 447
+                                  value:
+                                    Constant:
+                                      Identifier: a
+                                - span:
+                                    start: 452
+                                    end: 453
+                                  value:
+                                    Constant:
+                                      Identifier: b
+                          - span:
+                              start: 458
+                              end: 459
+                            value:
+                              Constant:
+                                Identifier: c
     - Expr:
         span:
           start: 468
@@ -603,52 +558,47 @@ Ok:
                         Constant:
                           String: "a << b >> c >>> b = "
                     - span:
-                        start: 531
-                        end: 550
+                        start: 532
+                        end: 549
                       value:
-                        Parenthesis:
-                          span:
-                            start: 532
-                            end: 549
-                          value:
-                            BinaryOperator:
-                              - BitShiftRightUnsigned
-                              - span:
-                                  start: 532
-                                  end: 543
-                                value:
-                                  BinaryOperator:
-                                    - BitShiftRight
-                                    - span:
-                                        start: 532
-                                        end: 538
-                                      value:
-                                        BinaryOperator:
-                                          - BitShiftLeft
-                                          - span:
-                                              start: 532
-                                              end: 533
-                                            value:
-                                              Constant:
-                                                Identifier: a
-                                          - span:
-                                              start: 537
-                                              end: 538
-                                            value:
-                                              Constant:
-                                                Identifier: b
-                                    - span:
-                                        start: 542
-                                        end: 543
-                                      value:
-                                        Constant:
-                                          Identifier: c
-                              - span:
-                                  start: 548
-                                  end: 549
-                                value:
-                                  Constant:
-                                    Identifier: b
+                        BinaryOperator:
+                          - BitShiftRightUnsigned
+                          - span:
+                              start: 532
+                              end: 543
+                            value:
+                              BinaryOperator:
+                                - BitShiftRight
+                                - span:
+                                    start: 532
+                                    end: 538
+                                  value:
+                                    BinaryOperator:
+                                      - BitShiftLeft
+                                      - span:
+                                          start: 532
+                                          end: 533
+                                        value:
+                                          Constant:
+                                            Identifier: a
+                                      - span:
+                                          start: 537
+                                          end: 538
+                                        value:
+                                          Constant:
+                                            Identifier: b
+                                - span:
+                                    start: 542
+                                    end: 543
+                                  value:
+                                    Constant:
+                                      Identifier: c
+                          - span:
+                              start: 548
+                              end: 549
+                            value:
+                              Constant:
+                                Identifier: b
     - Expr:
         span:
           start: 558
@@ -676,62 +626,47 @@ Ok:
                         Constant:
                           String: "(((a << b) >> c) >>> b) = "
                     - span:
-                        start: 595
-                        end: 618
+                        start: 596
+                        end: 617
                       value:
-                        Parenthesis:
-                          span:
-                            start: 596
-                            end: 617
-                          value:
-                            BinaryOperator:
-                              - BitShiftRightUnsigned
-                              - span:
-                                  start: 596
-                                  end: 611
-                                value:
-                                  Parenthesis:
-                                    span:
-                                      start: 597
-                                      end: 610
-                                    value:
-                                      BinaryOperator:
-                                        - BitShiftRight
-                                        - span:
-                                            start: 597
-                                            end: 605
-                                          value:
-                                            Parenthesis:
-                                              span:
-                                                start: 598
-                                                end: 604
-                                              value:
-                                                BinaryOperator:
-                                                  - BitShiftLeft
-                                                  - span:
-                                                      start: 598
-                                                      end: 599
-                                                    value:
-                                                      Constant:
-                                                        Identifier: a
-                                                  - span:
-                                                      start: 603
-                                                      end: 604
-                                                    value:
-                                                      Constant:
-                                                        Identifier: b
-                                        - span:
-                                            start: 609
-                                            end: 610
-                                          value:
-                                            Constant:
-                                              Identifier: c
-                              - span:
-                                  start: 616
-                                  end: 617
-                                value:
-                                  Constant:
-                                    Identifier: b
+                        BinaryOperator:
+                          - BitShiftRightUnsigned
+                          - span:
+                              start: 597
+                              end: 610
+                            value:
+                              BinaryOperator:
+                                - BitShiftRight
+                                - span:
+                                    start: 598
+                                    end: 604
+                                  value:
+                                    BinaryOperator:
+                                      - BitShiftLeft
+                                      - span:
+                                          start: 598
+                                          end: 599
+                                        value:
+                                          Constant:
+                                            Identifier: a
+                                      - span:
+                                          start: 603
+                                          end: 604
+                                        value:
+                                          Constant:
+                                            Identifier: b
+                                - span:
+                                    start: 609
+                                    end: 610
+                                  value:
+                                    Constant:
+                                      Identifier: c
+                          - span:
+                              start: 616
+                              end: 617
+                            value:
+                              Constant:
+                                Identifier: b
     - Expr:
         span:
           start: 626
@@ -779,40 +714,35 @@ Ok:
                         Constant:
                           String: "a << b + c = "
                     - span:
-                        start: 718
-                        end: 730
+                        start: 719
+                        end: 729
                       value:
-                        Parenthesis:
-                          span:
-                            start: 719
-                            end: 729
-                          value:
-                            BinaryOperator:
-                              - BitShiftLeft
-                              - span:
-                                  start: 719
-                                  end: 720
-                                value:
-                                  Constant:
-                                    Identifier: a
-                              - span:
-                                  start: 724
-                                  end: 729
-                                value:
-                                  BinaryOperator:
-                                    - Add
-                                    - span:
-                                        start: 724
-                                        end: 725
-                                      value:
-                                        Constant:
-                                          Identifier: b
-                                    - span:
-                                        start: 728
-                                        end: 729
-                                      value:
-                                        Constant:
-                                          Identifier: c
+                        BinaryOperator:
+                          - BitShiftLeft
+                          - span:
+                              start: 719
+                              end: 720
+                            value:
+                              Constant:
+                                Identifier: a
+                          - span:
+                              start: 724
+                              end: 729
+                            value:
+                              BinaryOperator:
+                                - Add
+                                - span:
+                                    start: 724
+                                    end: 725
+                                  value:
+                                    Constant:
+                                      Identifier: b
+                                - span:
+                                    start: 728
+                                    end: 729
+                                  value:
+                                    Constant:
+                                      Identifier: c
     - Expr:
         span:
           start: 739
@@ -840,45 +770,35 @@ Ok:
                         Constant:
                           String: "a << (b + c) = "
                     - span:
-                        start: 765
-                        end: 779
+                        start: 766
+                        end: 778
                       value:
-                        Parenthesis:
-                          span:
-                            start: 766
-                            end: 778
-                          value:
-                            BinaryOperator:
-                              - BitShiftLeft
-                              - span:
-                                  start: 766
-                                  end: 767
-                                value:
-                                  Constant:
-                                    Identifier: a
-                              - span:
-                                  start: 771
-                                  end: 778
-                                value:
-                                  Parenthesis:
-                                    span:
-                                      start: 772
-                                      end: 777
-                                    value:
-                                      BinaryOperator:
-                                        - Add
-                                        - span:
-                                            start: 772
-                                            end: 773
-                                          value:
-                                            Constant:
-                                              Identifier: b
-                                        - span:
-                                            start: 776
-                                            end: 777
-                                          value:
-                                            Constant:
-                                              Identifier: c
+                        BinaryOperator:
+                          - BitShiftLeft
+                          - span:
+                              start: 766
+                              end: 767
+                            value:
+                              Constant:
+                                Identifier: a
+                          - span:
+                              start: 772
+                              end: 777
+                            value:
+                              BinaryOperator:
+                                - Add
+                                - span:
+                                    start: 772
+                                    end: 773
+                                  value:
+                                    Constant:
+                                      Identifier: b
+                                - span:
+                                    start: 776
+                                    end: 777
+                                  value:
+                                    Constant:
+                                      Identifier: c
     - Expr:
         span:
           start: 823
@@ -926,40 +846,35 @@ Ok:
                         Constant:
                           String: "a * b << c = "
                     - span:
-                        start: 861
-                        end: 873
+                        start: 862
+                        end: 872
                       value:
-                        Parenthesis:
-                          span:
-                            start: 862
-                            end: 872
-                          value:
-                            BinaryOperator:
-                              - BitShiftLeft
-                              - span:
-                                  start: 862
-                                  end: 867
-                                value:
-                                  BinaryOperator:
-                                    - Multiply
-                                    - span:
-                                        start: 862
-                                        end: 863
-                                      value:
-                                        Constant:
-                                          Identifier: a
-                                    - span:
-                                        start: 866
-                                        end: 867
-                                      value:
-                                        Constant:
-                                          Identifier: b
-                              - span:
-                                  start: 871
-                                  end: 872
-                                value:
-                                  Constant:
-                                    Identifier: c
+                        BinaryOperator:
+                          - BitShiftLeft
+                          - span:
+                              start: 862
+                              end: 867
+                            value:
+                              BinaryOperator:
+                                - Multiply
+                                - span:
+                                    start: 862
+                                    end: 863
+                                  value:
+                                    Constant:
+                                      Identifier: a
+                                - span:
+                                    start: 866
+                                    end: 867
+                                  value:
+                                    Constant:
+                                      Identifier: b
+                          - span:
+                              start: 871
+                              end: 872
+                            value:
+                              Constant:
+                                Identifier: c
     - Expr:
         span:
           start: 882
@@ -987,42 +902,32 @@ Ok:
                         Constant:
                           String: "(a * b) << c = "
                     - span:
-                        start: 908
-                        end: 922
+                        start: 909
+                        end: 921
                       value:
-                        Parenthesis:
-                          span:
-                            start: 909
-                            end: 921
-                          value:
-                            BinaryOperator:
-                              - BitShiftLeft
-                              - span:
-                                  start: 909
-                                  end: 916
-                                value:
-                                  Parenthesis:
-                                    span:
-                                      start: 910
-                                      end: 915
-                                    value:
-                                      BinaryOperator:
-                                        - Multiply
-                                        - span:
-                                            start: 910
-                                            end: 911
-                                          value:
-                                            Constant:
-                                              Identifier: a
-                                        - span:
-                                            start: 914
-                                            end: 915
-                                          value:
-                                            Constant:
-                                              Identifier: b
-                              - span:
-                                  start: 920
-                                  end: 921
-                                value:
-                                  Constant:
-                                    Identifier: c
+                        BinaryOperator:
+                          - BitShiftLeft
+                          - span:
+                              start: 910
+                              end: 915
+                            value:
+                              BinaryOperator:
+                                - Multiply
+                                - span:
+                                    start: 910
+                                    end: 911
+                                  value:
+                                    Constant:
+                                      Identifier: a
+                                - span:
+                                    start: 914
+                                    end: 915
+                                  value:
+                                    Constant:
+                                      Identifier: b
+                          - span:
+                              start: 920
+                              end: 921
+                            value:
+                              Constant:
+                                Identifier: c

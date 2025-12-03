@@ -150,7 +150,7 @@ fn resolve_expr(input: ast::Expr) -> hir::Expr {
         ast::ExprKind::UnaryOperator(op, value) => {
             hir::ExprKind::UnaryOperator(op, resolve_expr_box(value))
         }
-        ast::ExprKind::Parenthesis(expr) => hir::ExprKind::Parenthesis(resolve_expr_box(expr)),
+        ast::ExprKind::Parenthesis(expr) => return resolve_expr(*expr),
         ast::ExprKind::Ternary { condition, yes, no } => hir::ExprKind::Ternary {
             condition: resolve_expr_box(condition),
             yes: resolve_expr_box(yes),

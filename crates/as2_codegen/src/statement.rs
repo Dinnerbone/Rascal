@@ -453,7 +453,6 @@ pub fn gen_expr(
         ExprKind::UnaryOperator(op, exr) => {
             gen_unary_op(context, builder, *op, exr, will_discard_result)
         }
-        ExprKind::Parenthesis(expr) => gen_expr(context, builder, expr, will_discard_result),
         ExprKind::Ternary { condition, yes, no } => {
             gen_ternary(context, builder, condition, yes, no)
         }

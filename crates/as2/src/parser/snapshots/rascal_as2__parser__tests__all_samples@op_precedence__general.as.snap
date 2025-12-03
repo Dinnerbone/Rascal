@@ -154,40 +154,35 @@ Ok:
                         Constant:
                           String: "one + two * three = "
                     - span:
-                        start: 323
-                        end: 342
+                        start: 324
+                        end: 341
                       value:
-                        Parenthesis:
-                          span:
-                            start: 324
-                            end: 341
-                          value:
-                            BinaryOperator:
-                              - Add
-                              - span:
-                                  start: 324
-                                  end: 327
-                                value:
-                                  Constant:
-                                    Identifier: one
-                              - span:
-                                  start: 330
-                                  end: 341
-                                value:
-                                  BinaryOperator:
-                                    - Multiply
-                                    - span:
-                                        start: 330
-                                        end: 333
-                                      value:
-                                        Constant:
-                                          Identifier: two
-                                    - span:
-                                        start: 336
-                                        end: 341
-                                      value:
-                                        Constant:
-                                          Identifier: three
+                        BinaryOperator:
+                          - Add
+                          - span:
+                              start: 324
+                              end: 327
+                            value:
+                              Constant:
+                                Identifier: one
+                          - span:
+                              start: 330
+                              end: 341
+                            value:
+                              BinaryOperator:
+                                - Multiply
+                                - span:
+                                    start: 330
+                                    end: 333
+                                  value:
+                                    Constant:
+                                      Identifier: two
+                                - span:
+                                    start: 336
+                                    end: 341
+                                  value:
+                                    Constant:
+                                      Identifier: three
     - Expr:
         span:
           start: 380
@@ -215,45 +210,35 @@ Ok:
                         Constant:
                           String: "(one + two) * three = "
                     - span:
-                        start: 413
-                        end: 434
+                        start: 414
+                        end: 433
                       value:
-                        Parenthesis:
-                          span:
-                            start: 414
-                            end: 433
-                          value:
-                            BinaryOperator:
-                              - Multiply
-                              - span:
-                                  start: 414
-                                  end: 425
-                                value:
-                                  Parenthesis:
-                                    span:
-                                      start: 415
-                                      end: 424
-                                    value:
-                                      BinaryOperator:
-                                        - Add
-                                        - span:
-                                            start: 415
-                                            end: 418
-                                          value:
-                                            Constant:
-                                              Identifier: one
-                                        - span:
-                                            start: 421
-                                            end: 424
-                                          value:
-                                            Constant:
-                                              Identifier: two
-                              - span:
-                                  start: 428
-                                  end: 433
-                                value:
-                                  Constant:
-                                    Identifier: three
+                        BinaryOperator:
+                          - Multiply
+                          - span:
+                              start: 415
+                              end: 424
+                            value:
+                              BinaryOperator:
+                                - Add
+                                - span:
+                                    start: 415
+                                    end: 418
+                                  value:
+                                    Constant:
+                                      Identifier: one
+                                - span:
+                                    start: 421
+                                    end: 424
+                                  value:
+                                    Constant:
+                                      Identifier: two
+                          - span:
+                              start: 428
+                              end: 433
+                            value:
+                              Constant:
+                                Identifier: three
     - Expr:
         span:
           start: 527
@@ -281,34 +266,29 @@ Ok:
                         Constant:
                           String: "-one * two = "
                     - span:
-                        start: 551
-                        end: 563
+                        start: 552
+                        end: 562
                       value:
-                        Parenthesis:
-                          span:
-                            start: 552
-                            end: 562
-                          value:
-                            BinaryOperator:
-                              - Multiply
-                              - span:
-                                  start: 552
-                                  end: 556
-                                value:
-                                  UnaryOperator:
-                                    - Sub
-                                    - span:
-                                        start: 553
-                                        end: 556
-                                      value:
-                                        Constant:
-                                          Identifier: one
-                              - span:
-                                  start: 559
-                                  end: 562
-                                value:
-                                  Constant:
-                                    Identifier: two
+                        BinaryOperator:
+                          - Multiply
+                          - span:
+                              start: 552
+                              end: 556
+                            value:
+                              UnaryOperator:
+                                - Sub
+                                - span:
+                                    start: 553
+                                    end: 556
+                                  value:
+                                    Constant:
+                                      Identifier: one
+                          - span:
+                              start: 559
+                              end: 562
+                            value:
+                              Constant:
+                                Identifier: two
     - Expr:
         span:
           start: 612
@@ -336,39 +316,29 @@ Ok:
                         Constant:
                           String: "-(one * two) = "
                     - span:
-                        start: 638
-                        end: 652
+                        start: 639
+                        end: 651
                       value:
-                        Parenthesis:
-                          span:
-                            start: 639
-                            end: 651
-                          value:
-                            UnaryOperator:
-                              - Sub
-                              - span:
-                                  start: 640
-                                  end: 651
-                                value:
-                                  Parenthesis:
-                                    span:
-                                      start: 641
-                                      end: 650
-                                    value:
-                                      BinaryOperator:
-                                        - Multiply
-                                        - span:
-                                            start: 641
-                                            end: 644
-                                          value:
-                                            Constant:
-                                              Identifier: one
-                                        - span:
-                                            start: 647
-                                            end: 650
-                                          value:
-                                            Constant:
-                                              Identifier: two
+                        UnaryOperator:
+                          - Sub
+                          - span:
+                              start: 641
+                              end: 650
+                            value:
+                              BinaryOperator:
+                                - Multiply
+                                - span:
+                                    start: 641
+                                    end: 644
+                                  value:
+                                    Constant:
+                                      Identifier: one
+                                - span:
+                                    start: 647
+                                    end: 650
+                                  value:
+                                    Constant:
+                                      Identifier: two
     - Expr:
         span:
           start: 724
@@ -415,40 +385,35 @@ Ok:
                         Constant:
                           String: "++p + p++ = "
                     - span:
-                        start: 756
-                        end: 767
+                        start: 757
+                        end: 766
                       value:
-                        Parenthesis:
-                          span:
-                            start: 757
-                            end: 766
-                          value:
-                            BinaryOperator:
-                              - Add
-                              - span:
-                                  start: 757
-                                  end: 760
-                                value:
-                                  UnaryOperator:
-                                    - Increment: Prefix
-                                    - span:
-                                        start: 759
-                                        end: 760
-                                      value:
-                                        Constant:
-                                          Identifier: p
-                              - span:
-                                  start: 764
-                                  end: 766
-                                value:
-                                  UnaryOperator:
-                                    - Increment: Postfix
-                                    - span:
-                                        start: 763
-                                        end: 764
-                                      value:
-                                        Constant:
-                                          Identifier: p
+                        BinaryOperator:
+                          - Add
+                          - span:
+                              start: 757
+                              end: 760
+                            value:
+                              UnaryOperator:
+                                - Increment: Prefix
+                                - span:
+                                    start: 759
+                                    end: 760
+                                  value:
+                                    Constant:
+                                      Identifier: p
+                          - span:
+                              start: 764
+                              end: 766
+                            value:
+                              UnaryOperator:
+                                - Increment: Postfix
+                                - span:
+                                    start: 763
+                                    end: 764
+                                  value:
+                                    Constant:
+                                      Identifier: p
     - Expr:
         span:
           start: 851
@@ -495,34 +460,29 @@ Ok:
                         Constant:
                           String: "p++ * 2 = "
                     - span:
-                        start: 881
-                        end: 890
+                        start: 883
+                        end: 889
                       value:
-                        Parenthesis:
-                          span:
-                            start: 883
-                            end: 889
-                          value:
-                            BinaryOperator:
-                              - Multiply
-                              - span:
-                                  start: 883
-                                  end: 885
-                                value:
-                                  UnaryOperator:
-                                    - Increment: Postfix
-                                    - span:
-                                        start: 882
-                                        end: 883
-                                      value:
-                                        Constant:
-                                          Identifier: p
-                              - span:
-                                  start: 888
-                                  end: 889
-                                value:
-                                  Constant:
-                                    Integer: 2
+                        BinaryOperator:
+                          - Multiply
+                          - span:
+                              start: 883
+                              end: 885
+                            value:
+                              UnaryOperator:
+                                - Increment: Postfix
+                                - span:
+                                    start: 882
+                                    end: 883
+                                  value:
+                                    Constant:
+                                      Identifier: p
+                          - span:
+                              start: 888
+                              end: 889
+                            value:
+                              Constant:
+                                Integer: 2
     - Expr:
         span:
           start: 976
@@ -569,34 +529,29 @@ Ok:
                         Constant:
                           String: "2 * ++p = "
                     - span:
-                        start: 1006
-                        end: 1015
+                        start: 1007
+                        end: 1014
                       value:
-                        Parenthesis:
-                          span:
-                            start: 1007
-                            end: 1014
-                          value:
-                            BinaryOperator:
-                              - Multiply
-                              - span:
-                                  start: 1007
-                                  end: 1008
-                                value:
-                                  Constant:
-                                    Integer: 2
-                              - span:
-                                  start: 1011
-                                  end: 1014
-                                value:
-                                  UnaryOperator:
-                                    - Increment: Prefix
-                                    - span:
-                                        start: 1013
-                                        end: 1014
-                                      value:
-                                        Constant:
-                                          Identifier: p
+                        BinaryOperator:
+                          - Multiply
+                          - span:
+                              start: 1007
+                              end: 1008
+                            value:
+                              Constant:
+                                Integer: 2
+                          - span:
+                              start: 1011
+                              end: 1014
+                            value:
+                              UnaryOperator:
+                                - Increment: Prefix
+                                - span:
+                                    start: 1013
+                                    end: 1014
+                                  value:
+                                    Constant:
+                                      Identifier: p
     - Expr:
         span:
           start: 1144
@@ -624,40 +579,35 @@ Ok:
                         Constant:
                           String: "four / two * two = "
                     - span:
-                        start: 1174
-                        end: 1192
+                        start: 1175
+                        end: 1191
                       value:
-                        Parenthesis:
-                          span:
-                            start: 1175
-                            end: 1191
-                          value:
-                            BinaryOperator:
-                              - Multiply
-                              - span:
-                                  start: 1175
-                                  end: 1185
-                                value:
-                                  BinaryOperator:
-                                    - Divide
-                                    - span:
-                                        start: 1175
-                                        end: 1179
-                                      value:
-                                        Constant:
-                                          Identifier: four
-                                    - span:
-                                        start: 1182
-                                        end: 1185
-                                      value:
-                                        Constant:
-                                          Identifier: two
-                              - span:
-                                  start: 1188
-                                  end: 1191
-                                value:
-                                  Constant:
-                                    Identifier: two
+                        BinaryOperator:
+                          - Multiply
+                          - span:
+                              start: 1175
+                              end: 1185
+                            value:
+                              BinaryOperator:
+                                - Divide
+                                - span:
+                                    start: 1175
+                                    end: 1179
+                                  value:
+                                    Constant:
+                                      Identifier: four
+                                - span:
+                                    start: 1182
+                                    end: 1185
+                                  value:
+                                    Constant:
+                                      Identifier: two
+                          - span:
+                              start: 1188
+                              end: 1191
+                            value:
+                              Constant:
+                                Identifier: two
     - Expr:
         span:
           start: 1269
@@ -685,40 +635,35 @@ Ok:
                         Constant:
                           String: "one + two << one = "
                     - span:
-                        start: 1299
-                        end: 1317
+                        start: 1300
+                        end: 1316
                       value:
-                        Parenthesis:
-                          span:
-                            start: 1300
-                            end: 1316
-                          value:
-                            BinaryOperator:
-                              - BitShiftLeft
-                              - span:
-                                  start: 1300
-                                  end: 1309
-                                value:
-                                  BinaryOperator:
-                                    - Add
-                                    - span:
-                                        start: 1300
-                                        end: 1303
-                                      value:
-                                        Constant:
-                                          Identifier: one
-                                    - span:
-                                        start: 1306
-                                        end: 1309
-                                      value:
-                                        Constant:
-                                          Identifier: two
-                              - span:
-                                  start: 1313
-                                  end: 1316
-                                value:
-                                  Constant:
-                                    Identifier: one
+                        BinaryOperator:
+                          - BitShiftLeft
+                          - span:
+                              start: 1300
+                              end: 1309
+                            value:
+                              BinaryOperator:
+                                - Add
+                                - span:
+                                    start: 1300
+                                    end: 1303
+                                  value:
+                                    Constant:
+                                      Identifier: one
+                                - span:
+                                    start: 1306
+                                    end: 1309
+                                  value:
+                                    Constant:
+                                      Identifier: two
+                          - span:
+                              start: 1313
+                              end: 1316
+                            value:
+                              Constant:
+                                Identifier: one
     - Expr:
         span:
           start: 1343
@@ -746,45 +691,35 @@ Ok:
                         Constant:
                           String: "(one + two) << one = "
                     - span:
-                        start: 1375
-                        end: 1395
+                        start: 1376
+                        end: 1394
                       value:
-                        Parenthesis:
-                          span:
-                            start: 1376
-                            end: 1394
-                          value:
-                            BinaryOperator:
-                              - BitShiftLeft
-                              - span:
-                                  start: 1376
-                                  end: 1387
-                                value:
-                                  Parenthesis:
-                                    span:
-                                      start: 1377
-                                      end: 1386
-                                    value:
-                                      BinaryOperator:
-                                        - Add
-                                        - span:
-                                            start: 1377
-                                            end: 1380
-                                          value:
-                                            Constant:
-                                              Identifier: one
-                                        - span:
-                                            start: 1383
-                                            end: 1386
-                                          value:
-                                            Constant:
-                                              Identifier: two
-                              - span:
-                                  start: 1391
-                                  end: 1394
-                                value:
-                                  Constant:
-                                    Identifier: one
+                        BinaryOperator:
+                          - BitShiftLeft
+                          - span:
+                              start: 1377
+                              end: 1386
+                            value:
+                              BinaryOperator:
+                                - Add
+                                - span:
+                                    start: 1377
+                                    end: 1380
+                                  value:
+                                    Constant:
+                                      Identifier: one
+                                - span:
+                                    start: 1383
+                                    end: 1386
+                                  value:
+                                    Constant:
+                                      Identifier: two
+                          - span:
+                              start: 1391
+                              end: 1394
+                            value:
+                              Constant:
+                                Identifier: one
     - Expr:
         span:
           start: 1435
@@ -812,45 +747,35 @@ Ok:
                         Constant:
                           String: "one + (two << one) = "
                     - span:
-                        start: 1467
-                        end: 1487
+                        start: 1468
+                        end: 1486
                       value:
-                        Parenthesis:
-                          span:
-                            start: 1468
-                            end: 1486
-                          value:
-                            BinaryOperator:
-                              - Add
-                              - span:
-                                  start: 1468
-                                  end: 1471
-                                value:
-                                  Constant:
-                                    Identifier: one
-                              - span:
-                                  start: 1474
-                                  end: 1486
-                                value:
-                                  Parenthesis:
-                                    span:
-                                      start: 1475
-                                      end: 1485
-                                    value:
-                                      BinaryOperator:
-                                        - BitShiftLeft
-                                        - span:
-                                            start: 1475
-                                            end: 1478
-                                          value:
-                                            Constant:
-                                              Identifier: two
-                                        - span:
-                                            start: 1482
-                                            end: 1485
-                                          value:
-                                            Constant:
-                                              Identifier: one
+                        BinaryOperator:
+                          - Add
+                          - span:
+                              start: 1468
+                              end: 1471
+                            value:
+                              Constant:
+                                Identifier: one
+                          - span:
+                              start: 1475
+                              end: 1485
+                            value:
+                              BinaryOperator:
+                                - BitShiftLeft
+                                - span:
+                                    start: 1475
+                                    end: 1478
+                                  value:
+                                    Constant:
+                                      Identifier: two
+                                - span:
+                                    start: 1482
+                                    end: 1485
+                                  value:
+                                    Constant:
+                                      Identifier: one
     - Expr:
         span:
           start: 1571
@@ -878,40 +803,35 @@ Ok:
                         Constant:
                           String: "one + two < five = "
                     - span:
-                        start: 1601
-                        end: 1619
+                        start: 1602
+                        end: 1618
                       value:
-                        Parenthesis:
-                          span:
-                            start: 1602
-                            end: 1618
-                          value:
-                            BinaryOperator:
-                              - LessThan
-                              - span:
-                                  start: 1602
-                                  end: 1611
-                                value:
-                                  BinaryOperator:
-                                    - Add
-                                    - span:
-                                        start: 1602
-                                        end: 1605
-                                      value:
-                                        Constant:
-                                          Identifier: one
-                                    - span:
-                                        start: 1608
-                                        end: 1611
-                                      value:
-                                        Constant:
-                                          Identifier: two
-                              - span:
-                                  start: 1614
-                                  end: 1618
-                                value:
-                                  Constant:
-                                    Identifier: five
+                        BinaryOperator:
+                          - LessThan
+                          - span:
+                              start: 1602
+                              end: 1611
+                            value:
+                              BinaryOperator:
+                                - Add
+                                - span:
+                                    start: 1602
+                                    end: 1605
+                                  value:
+                                    Constant:
+                                      Identifier: one
+                                - span:
+                                    start: 1608
+                                    end: 1611
+                                  value:
+                                    Constant:
+                                      Identifier: two
+                          - span:
+                              start: 1614
+                              end: 1618
+                            value:
+                              Constant:
+                                Identifier: five
     - Expr:
         span:
           start: 1644
@@ -939,45 +859,35 @@ Ok:
                         Constant:
                           String: "(one + two) < five = "
                     - span:
-                        start: 1676
-                        end: 1696
+                        start: 1677
+                        end: 1695
                       value:
-                        Parenthesis:
-                          span:
-                            start: 1677
-                            end: 1695
-                          value:
-                            BinaryOperator:
-                              - LessThan
-                              - span:
-                                  start: 1677
-                                  end: 1688
-                                value:
-                                  Parenthesis:
-                                    span:
-                                      start: 1678
-                                      end: 1687
-                                    value:
-                                      BinaryOperator:
-                                        - Add
-                                        - span:
-                                            start: 1678
-                                            end: 1681
-                                          value:
-                                            Constant:
-                                              Identifier: one
-                                        - span:
-                                            start: 1684
-                                            end: 1687
-                                          value:
-                                            Constant:
-                                              Identifier: two
-                              - span:
-                                  start: 1691
-                                  end: 1695
-                                value:
-                                  Constant:
-                                    Identifier: five
+                        BinaryOperator:
+                          - LessThan
+                          - span:
+                              start: 1678
+                              end: 1687
+                            value:
+                              BinaryOperator:
+                                - Add
+                                - span:
+                                    start: 1678
+                                    end: 1681
+                                  value:
+                                    Constant:
+                                      Identifier: one
+                                - span:
+                                    start: 1684
+                                    end: 1687
+                                  value:
+                                    Constant:
+                                      Identifier: two
+                          - span:
+                              start: 1691
+                              end: 1695
+                            value:
+                              Constant:
+                                Identifier: five
     - Expr:
         span:
           start: 1733
@@ -1005,45 +915,35 @@ Ok:
                         Constant:
                           String: "one + (two < five) = "
                     - span:
-                        start: 1765
-                        end: 1785
+                        start: 1766
+                        end: 1784
                       value:
-                        Parenthesis:
-                          span:
-                            start: 1766
-                            end: 1784
-                          value:
-                            BinaryOperator:
-                              - Add
-                              - span:
-                                  start: 1766
-                                  end: 1769
-                                value:
-                                  Constant:
-                                    Identifier: one
-                              - span:
-                                  start: 1772
-                                  end: 1784
-                                value:
-                                  Parenthesis:
-                                    span:
-                                      start: 1773
-                                      end: 1783
-                                    value:
-                                      BinaryOperator:
-                                        - LessThan
-                                        - span:
-                                            start: 1773
-                                            end: 1776
-                                          value:
-                                            Constant:
-                                              Identifier: two
-                                        - span:
-                                            start: 1779
-                                            end: 1783
-                                          value:
-                                            Constant:
-                                              Identifier: five
+                        BinaryOperator:
+                          - Add
+                          - span:
+                              start: 1766
+                              end: 1769
+                            value:
+                              Constant:
+                                Identifier: one
+                          - span:
+                              start: 1773
+                              end: 1783
+                            value:
+                              BinaryOperator:
+                                - LessThan
+                                - span:
+                                    start: 1773
+                                    end: 1776
+                                  value:
+                                    Constant:
+                                      Identifier: two
+                                - span:
+                                    start: 1779
+                                    end: 1783
+                                  value:
+                                    Constant:
+                                      Identifier: five
     - Expr:
         span:
           start: 1967
@@ -1071,40 +971,35 @@ Ok:
                         Constant:
                           String: "one + two == three = "
                     - span:
-                        start: 1999
-                        end: 2019
+                        start: 2000
+                        end: 2018
                       value:
-                        Parenthesis:
-                          span:
-                            start: 2000
-                            end: 2018
-                          value:
-                            BinaryOperator:
-                              - Equal
-                              - span:
-                                  start: 2000
-                                  end: 2009
-                                value:
-                                  BinaryOperator:
-                                    - Add
-                                    - span:
-                                        start: 2000
-                                        end: 2003
-                                      value:
-                                        Constant:
-                                          Identifier: one
-                                    - span:
-                                        start: 2006
-                                        end: 2009
-                                      value:
-                                        Constant:
-                                          Identifier: two
-                              - span:
-                                  start: 2013
-                                  end: 2018
-                                value:
-                                  Constant:
-                                    Identifier: three
+                        BinaryOperator:
+                          - Equal
+                          - span:
+                              start: 2000
+                              end: 2009
+                            value:
+                              BinaryOperator:
+                                - Add
+                                - span:
+                                    start: 2000
+                                    end: 2003
+                                  value:
+                                    Constant:
+                                      Identifier: one
+                                - span:
+                                    start: 2006
+                                    end: 2009
+                                  value:
+                                    Constant:
+                                      Identifier: two
+                          - span:
+                              start: 2013
+                              end: 2018
+                            value:
+                              Constant:
+                                Identifier: three
     - Expr:
         span:
           start: 2045
@@ -1132,45 +1027,35 @@ Ok:
                         Constant:
                           String: "(one + two) == three = "
                     - span:
-                        start: 2079
-                        end: 2101
+                        start: 2080
+                        end: 2100
                       value:
-                        Parenthesis:
-                          span:
-                            start: 2080
-                            end: 2100
-                          value:
-                            BinaryOperator:
-                              - Equal
-                              - span:
-                                  start: 2080
-                                  end: 2091
-                                value:
-                                  Parenthesis:
-                                    span:
-                                      start: 2081
-                                      end: 2090
-                                    value:
-                                      BinaryOperator:
-                                        - Add
-                                        - span:
-                                            start: 2081
-                                            end: 2084
-                                          value:
-                                            Constant:
-                                              Identifier: one
-                                        - span:
-                                            start: 2087
-                                            end: 2090
-                                          value:
-                                            Constant:
-                                              Identifier: two
-                              - span:
-                                  start: 2095
-                                  end: 2100
-                                value:
-                                  Constant:
-                                    Identifier: three
+                        BinaryOperator:
+                          - Equal
+                          - span:
+                              start: 2081
+                              end: 2090
+                            value:
+                              BinaryOperator:
+                                - Add
+                                - span:
+                                    start: 2081
+                                    end: 2084
+                                  value:
+                                    Constant:
+                                      Identifier: one
+                                - span:
+                                    start: 2087
+                                    end: 2090
+                                  value:
+                                    Constant:
+                                      Identifier: two
+                          - span:
+                              start: 2095
+                              end: 2100
+                            value:
+                              Constant:
+                                Identifier: three
     - Expr:
         span:
           start: 2125
@@ -1198,45 +1083,35 @@ Ok:
                         Constant:
                           String: "one + (two == three) = "
                     - span:
-                        start: 2159
-                        end: 2181
+                        start: 2160
+                        end: 2180
                       value:
-                        Parenthesis:
-                          span:
-                            start: 2160
-                            end: 2180
-                          value:
-                            BinaryOperator:
-                              - Add
-                              - span:
-                                  start: 2160
-                                  end: 2163
-                                value:
-                                  Constant:
-                                    Identifier: one
-                              - span:
-                                  start: 2166
-                                  end: 2180
-                                value:
-                                  Parenthesis:
-                                    span:
-                                      start: 2167
-                                      end: 2179
-                                    value:
-                                      BinaryOperator:
-                                        - Equal
-                                        - span:
-                                            start: 2167
-                                            end: 2170
-                                          value:
-                                            Constant:
-                                              Identifier: two
-                                        - span:
-                                            start: 2174
-                                            end: 2179
-                                          value:
-                                            Constant:
-                                              Identifier: three
+                        BinaryOperator:
+                          - Add
+                          - span:
+                              start: 2160
+                              end: 2163
+                            value:
+                              Constant:
+                                Identifier: one
+                          - span:
+                              start: 2167
+                              end: 2179
+                            value:
+                              BinaryOperator:
+                                - Equal
+                                - span:
+                                    start: 2167
+                                    end: 2170
+                                  value:
+                                    Constant:
+                                      Identifier: two
+                                - span:
+                                    start: 2174
+                                    end: 2179
+                                  value:
+                                    Constant:
+                                      Identifier: three
     - Expr:
         span:
           start: 2268
@@ -1264,40 +1139,35 @@ Ok:
                         Constant:
                           String: "one | two == three = "
                     - span:
-                        start: 2300
-                        end: 2320
+                        start: 2301
+                        end: 2319
                       value:
-                        Parenthesis:
-                          span:
-                            start: 2301
-                            end: 2319
-                          value:
-                            BinaryOperator:
-                              - BitOr
-                              - span:
-                                  start: 2301
-                                  end: 2304
-                                value:
-                                  Constant:
-                                    Identifier: one
-                              - span:
-                                  start: 2307
-                                  end: 2319
-                                value:
-                                  BinaryOperator:
-                                    - Equal
-                                    - span:
-                                        start: 2307
-                                        end: 2310
-                                      value:
-                                        Constant:
-                                          Identifier: two
-                                    - span:
-                                        start: 2314
-                                        end: 2319
-                                      value:
-                                        Constant:
-                                          Identifier: three
+                        BinaryOperator:
+                          - BitOr
+                          - span:
+                              start: 2301
+                              end: 2304
+                            value:
+                              Constant:
+                                Identifier: one
+                          - span:
+                              start: 2307
+                              end: 2319
+                            value:
+                              BinaryOperator:
+                                - Equal
+                                - span:
+                                    start: 2307
+                                    end: 2310
+                                  value:
+                                    Constant:
+                                      Identifier: two
+                                - span:
+                                    start: 2314
+                                    end: 2319
+                                  value:
+                                    Constant:
+                                      Identifier: three
     - Expr:
         span:
           start: 2357
@@ -1325,45 +1195,35 @@ Ok:
                         Constant:
                           String: "(one | two) == three = "
                     - span:
-                        start: 2391
-                        end: 2413
+                        start: 2392
+                        end: 2412
                       value:
-                        Parenthesis:
-                          span:
-                            start: 2392
-                            end: 2412
-                          value:
-                            BinaryOperator:
-                              - Equal
-                              - span:
-                                  start: 2392
-                                  end: 2403
-                                value:
-                                  Parenthesis:
-                                    span:
-                                      start: 2393
-                                      end: 2402
-                                    value:
-                                      BinaryOperator:
-                                        - BitOr
-                                        - span:
-                                            start: 2393
-                                            end: 2396
-                                          value:
-                                            Constant:
-                                              Identifier: one
-                                        - span:
-                                            start: 2399
-                                            end: 2402
-                                          value:
-                                            Constant:
-                                              Identifier: two
-                              - span:
-                                  start: 2407
-                                  end: 2412
-                                value:
-                                  Constant:
-                                    Identifier: three
+                        BinaryOperator:
+                          - Equal
+                          - span:
+                              start: 2393
+                              end: 2402
+                            value:
+                              BinaryOperator:
+                                - BitOr
+                                - span:
+                                    start: 2393
+                                    end: 2396
+                                  value:
+                                    Constant:
+                                      Identifier: one
+                                - span:
+                                    start: 2399
+                                    end: 2402
+                                  value:
+                                    Constant:
+                                      Identifier: two
+                          - span:
+                              start: 2407
+                              end: 2412
+                            value:
+                              Constant:
+                                Identifier: three
     - Expr:
         span:
           start: 2448
@@ -1391,45 +1251,35 @@ Ok:
                         Constant:
                           String: "one | (two == three) = "
                     - span:
-                        start: 2482
-                        end: 2504
+                        start: 2483
+                        end: 2503
                       value:
-                        Parenthesis:
-                          span:
-                            start: 2483
-                            end: 2503
-                          value:
-                            BinaryOperator:
-                              - BitOr
-                              - span:
-                                  start: 2483
-                                  end: 2486
-                                value:
-                                  Constant:
-                                    Identifier: one
-                              - span:
-                                  start: 2489
-                                  end: 2503
-                                value:
-                                  Parenthesis:
-                                    span:
-                                      start: 2490
-                                      end: 2502
-                                    value:
-                                      BinaryOperator:
-                                        - Equal
-                                        - span:
-                                            start: 2490
-                                            end: 2493
-                                          value:
-                                            Constant:
-                                              Identifier: two
-                                        - span:
-                                            start: 2497
-                                            end: 2502
-                                          value:
-                                            Constant:
-                                              Identifier: three
+                        BinaryOperator:
+                          - BitOr
+                          - span:
+                              start: 2483
+                              end: 2486
+                            value:
+                              Constant:
+                                Identifier: one
+                          - span:
+                              start: 2490
+                              end: 2502
+                            value:
+                              BinaryOperator:
+                                - Equal
+                                - span:
+                                    start: 2490
+                                    end: 2493
+                                  value:
+                                    Constant:
+                                      Identifier: two
+                                - span:
+                                    start: 2497
+                                    end: 2502
+                                  value:
+                                    Constant:
+                                      Identifier: three
     - Expr:
         span:
           start: 2566
@@ -1457,40 +1307,35 @@ Ok:
                         Constant:
                           String: "one & three | two = "
                     - span:
-                        start: 2597
-                        end: 2618
+                        start: 2598
+                        end: 2617
                       value:
-                        Parenthesis:
-                          span:
-                            start: 2598
-                            end: 2617
-                          value:
-                            BinaryOperator:
-                              - BitOr
-                              - span:
-                                  start: 2598
-                                  end: 2609
-                                value:
-                                  BinaryOperator:
-                                    - BitAnd
-                                    - span:
-                                        start: 2598
-                                        end: 2601
-                                      value:
-                                        Constant:
-                                          Identifier: one
-                                    - span:
-                                        start: 2604
-                                        end: 2609
-                                      value:
-                                        Constant:
-                                          Identifier: three
-                              - span:
-                                  start: 2614
-                                  end: 2617
-                                value:
-                                  Constant:
-                                    Identifier: two
+                        BinaryOperator:
+                          - BitOr
+                          - span:
+                              start: 2598
+                              end: 2609
+                            value:
+                              BinaryOperator:
+                                - BitAnd
+                                - span:
+                                    start: 2598
+                                    end: 2601
+                                  value:
+                                    Constant:
+                                      Identifier: one
+                                - span:
+                                    start: 2604
+                                    end: 2609
+                                  value:
+                                    Constant:
+                                      Identifier: three
+                          - span:
+                              start: 2614
+                              end: 2617
+                            value:
+                              Constant:
+                                Identifier: two
     - Expr:
         span:
           start: 2658
@@ -1518,45 +1363,35 @@ Ok:
                         Constant:
                           String: "(one & three) | two = "
                     - span:
-                        start: 2691
-                        end: 2712
+                        start: 2692
+                        end: 2711
                       value:
-                        Parenthesis:
-                          span:
-                            start: 2692
-                            end: 2711
-                          value:
-                            BinaryOperator:
-                              - BitOr
-                              - span:
-                                  start: 2692
-                                  end: 2705
-                                value:
-                                  Parenthesis:
-                                    span:
-                                      start: 2693
-                                      end: 2704
-                                    value:
-                                      BinaryOperator:
-                                        - BitAnd
-                                        - span:
-                                            start: 2693
-                                            end: 2696
-                                          value:
-                                            Constant:
-                                              Identifier: one
-                                        - span:
-                                            start: 2699
-                                            end: 2704
-                                          value:
-                                            Constant:
-                                              Identifier: three
-                              - span:
-                                  start: 2708
-                                  end: 2711
-                                value:
-                                  Constant:
-                                    Identifier: two
+                        BinaryOperator:
+                          - BitOr
+                          - span:
+                              start: 2693
+                              end: 2704
+                            value:
+                              BinaryOperator:
+                                - BitAnd
+                                - span:
+                                    start: 2693
+                                    end: 2696
+                                  value:
+                                    Constant:
+                                      Identifier: one
+                                - span:
+                                    start: 2699
+                                    end: 2704
+                                  value:
+                                    Constant:
+                                      Identifier: three
+                          - span:
+                              start: 2708
+                              end: 2711
+                            value:
+                              Constant:
+                                Identifier: two
     - Expr:
         span:
           start: 2752
@@ -1584,45 +1419,35 @@ Ok:
                         Constant:
                           String: "one & (three | two) = "
                     - span:
-                        start: 2785
-                        end: 2806
+                        start: 2786
+                        end: 2805
                       value:
-                        Parenthesis:
-                          span:
-                            start: 2786
-                            end: 2805
-                          value:
-                            BinaryOperator:
-                              - BitAnd
-                              - span:
-                                  start: 2786
-                                  end: 2789
-                                value:
-                                  Constant:
-                                    Identifier: one
-                              - span:
-                                  start: 2792
-                                  end: 2805
-                                value:
-                                  Parenthesis:
-                                    span:
-                                      start: 2793
-                                      end: 2804
-                                    value:
-                                      BinaryOperator:
-                                        - BitOr
-                                        - span:
-                                            start: 2793
-                                            end: 2798
-                                          value:
-                                            Constant:
-                                              Identifier: three
-                                        - span:
-                                            start: 2801
-                                            end: 2804
-                                          value:
-                                            Constant:
-                                              Identifier: two
+                        BinaryOperator:
+                          - BitAnd
+                          - span:
+                              start: 2786
+                              end: 2789
+                            value:
+                              Constant:
+                                Identifier: one
+                          - span:
+                              start: 2793
+                              end: 2804
+                            value:
+                              BinaryOperator:
+                                - BitOr
+                                - span:
+                                    start: 2793
+                                    end: 2798
+                                  value:
+                                    Constant:
+                                      Identifier: three
+                                - span:
+                                    start: 2801
+                                    end: 2804
+                                  value:
+                                    Constant:
+                                      Identifier: two
     - Expr:
         span:
           start: 2889
@@ -1650,22 +1475,17 @@ Ok:
                         Constant:
                           String: "~one = "
                     - span:
-                        start: 2907
-                        end: 2913
+                        start: 2908
+                        end: 2912
                       value:
-                        Parenthesis:
-                          span:
-                            start: 2908
-                            end: 2912
-                          value:
-                            UnaryOperator:
-                              - BitNot
-                              - span:
-                                  start: 2909
-                                  end: 2912
-                                value:
-                                  Constant:
-                                    Identifier: one
+                        UnaryOperator:
+                          - BitNot
+                          - span:
+                              start: 2909
+                              end: 2912
+                            value:
+                              Constant:
+                                Identifier: one
     - Expr:
         span:
           start: 2977
@@ -1693,28 +1513,23 @@ Ok:
                         Constant:
                           String: "-~one = "
                     - span:
-                        start: 2996
-                        end: 3003
+                        start: 2997
+                        end: 3002
                       value:
-                        Parenthesis:
-                          span:
-                            start: 2997
-                            end: 3002
-                          value:
-                            UnaryOperator:
-                              - Sub
-                              - span:
-                                  start: 2998
-                                  end: 3002
-                                value:
-                                  UnaryOperator:
-                                    - BitNot
-                                    - span:
-                                        start: 2999
-                                        end: 3002
-                                      value:
-                                        Constant:
-                                          Identifier: one
+                        UnaryOperator:
+                          - Sub
+                          - span:
+                              start: 2998
+                              end: 3002
+                            value:
+                              UnaryOperator:
+                                - BitNot
+                                - span:
+                                    start: 2999
+                                    end: 3002
+                                  value:
+                                    Constant:
+                                      Identifier: one
     - Expr:
         span:
           start: 3120
@@ -1742,57 +1557,47 @@ Ok:
                         Constant:
                           String: "(one < two && three > two) = "
                     - span:
-                        start: 3160
-                        end: 3188
+                        start: 3162
+                        end: 3186
                       value:
-                        Parenthesis:
-                          span:
-                            start: 3161
-                            end: 3187
-                          value:
-                            Parenthesis:
-                              span:
-                                start: 3162
-                                end: 3186
-                              value:
-                                BinaryOperator:
-                                  - LogicalAnd
-                                  - span:
-                                      start: 3162
-                                      end: 3171
-                                    value:
-                                      BinaryOperator:
-                                        - LessThan
-                                        - span:
-                                            start: 3162
-                                            end: 3165
-                                          value:
-                                            Constant:
-                                              Identifier: one
-                                        - span:
-                                            start: 3168
-                                            end: 3171
-                                          value:
-                                            Constant:
-                                              Identifier: two
-                                  - span:
-                                      start: 3175
-                                      end: 3186
-                                    value:
-                                      BinaryOperator:
-                                        - GreaterThan
-                                        - span:
-                                            start: 3175
-                                            end: 3180
-                                          value:
-                                            Constant:
-                                              Identifier: three
-                                        - span:
-                                            start: 3183
-                                            end: 3186
-                                          value:
-                                            Constant:
-                                              Identifier: two
+                        BinaryOperator:
+                          - LogicalAnd
+                          - span:
+                              start: 3162
+                              end: 3171
+                            value:
+                              BinaryOperator:
+                                - LessThan
+                                - span:
+                                    start: 3162
+                                    end: 3165
+                                  value:
+                                    Constant:
+                                      Identifier: one
+                                - span:
+                                    start: 3168
+                                    end: 3171
+                                  value:
+                                    Constant:
+                                      Identifier: two
+                          - span:
+                              start: 3175
+                              end: 3186
+                            value:
+                              BinaryOperator:
+                                - GreaterThan
+                                - span:
+                                    start: 3175
+                                    end: 3180
+                                  value:
+                                    Constant:
+                                      Identifier: three
+                                - span:
+                                    start: 3183
+                                    end: 3186
+                                  value:
+                                    Constant:
+                                      Identifier: two
     - Expr:
         span:
           start: 3215
@@ -1820,57 +1625,47 @@ Ok:
                         Constant:
                           String: "(one > two || three > two) = "
                     - span:
-                        start: 3255
-                        end: 3283
+                        start: 3257
+                        end: 3281
                       value:
-                        Parenthesis:
-                          span:
-                            start: 3256
-                            end: 3282
-                          value:
-                            Parenthesis:
-                              span:
-                                start: 3257
-                                end: 3281
-                              value:
-                                BinaryOperator:
-                                  - LogicalOr
-                                  - span:
-                                      start: 3257
-                                      end: 3266
-                                    value:
-                                      BinaryOperator:
-                                        - GreaterThan
-                                        - span:
-                                            start: 3257
-                                            end: 3260
-                                          value:
-                                            Constant:
-                                              Identifier: one
-                                        - span:
-                                            start: 3263
-                                            end: 3266
-                                          value:
-                                            Constant:
-                                              Identifier: two
-                                  - span:
-                                      start: 3270
-                                      end: 3281
-                                    value:
-                                      BinaryOperator:
-                                        - GreaterThan
-                                        - span:
-                                            start: 3270
-                                            end: 3275
-                                          value:
-                                            Constant:
-                                              Identifier: three
-                                        - span:
-                                            start: 3278
-                                            end: 3281
-                                          value:
-                                            Constant:
-                                              Identifier: two
+                        BinaryOperator:
+                          - LogicalOr
+                          - span:
+                              start: 3257
+                              end: 3266
+                            value:
+                              BinaryOperator:
+                                - GreaterThan
+                                - span:
+                                    start: 3257
+                                    end: 3260
+                                  value:
+                                    Constant:
+                                      Identifier: one
+                                - span:
+                                    start: 3263
+                                    end: 3266
+                                  value:
+                                    Constant:
+                                      Identifier: two
+                          - span:
+                              start: 3270
+                              end: 3281
+                            value:
+                              BinaryOperator:
+                                - GreaterThan
+                                - span:
+                                    start: 3270
+                                    end: 3275
+                                  value:
+                                    Constant:
+                                      Identifier: three
+                                - span:
+                                    start: 3278
+                                    end: 3281
+                                  value:
+                                    Constant:
+                                      Identifier: two
     - Expr:
         span:
           start: 3382
@@ -1898,52 +1693,47 @@ Ok:
                         Constant:
                           String: "one & three && two > zero = "
                     - span:
-                        start: 3421
-                        end: 3448
+                        start: 3422
+                        end: 3447
                       value:
-                        Parenthesis:
-                          span:
-                            start: 3422
-                            end: 3447
-                          value:
-                            BinaryOperator:
-                              - LogicalAnd
-                              - span:
-                                  start: 3422
-                                  end: 3433
-                                value:
-                                  BinaryOperator:
-                                    - BitAnd
-                                    - span:
-                                        start: 3422
-                                        end: 3425
-                                      value:
-                                        Constant:
-                                          Identifier: one
-                                    - span:
-                                        start: 3428
-                                        end: 3433
-                                      value:
-                                        Constant:
-                                          Identifier: three
-                              - span:
-                                  start: 3437
-                                  end: 3447
-                                value:
-                                  BinaryOperator:
-                                    - GreaterThan
-                                    - span:
-                                        start: 3437
-                                        end: 3440
-                                      value:
-                                        Constant:
-                                          Identifier: two
-                                    - span:
-                                        start: 3443
-                                        end: 3447
-                                      value:
-                                        Constant:
-                                          Identifier: zero
+                        BinaryOperator:
+                          - LogicalAnd
+                          - span:
+                              start: 3422
+                              end: 3433
+                            value:
+                              BinaryOperator:
+                                - BitAnd
+                                - span:
+                                    start: 3422
+                                    end: 3425
+                                  value:
+                                    Constant:
+                                      Identifier: one
+                                - span:
+                                    start: 3428
+                                    end: 3433
+                                  value:
+                                    Constant:
+                                      Identifier: three
+                          - span:
+                              start: 3437
+                              end: 3447
+                            value:
+                              BinaryOperator:
+                                - GreaterThan
+                                - span:
+                                    start: 3437
+                                    end: 3440
+                                  value:
+                                    Constant:
+                                      Identifier: two
+                                - span:
+                                    start: 3443
+                                    end: 3447
+                                  value:
+                                    Constant:
+                                      Identifier: zero
     - Expr:
         span:
           start: 3549
@@ -1971,48 +1761,43 @@ Ok:
                         Constant:
                           String: "one < two ? five : ten = "
                     - span:
-                        start: 3585
-                        end: 3609
+                        start: 3592
+                        end: 3608
                       value:
-                        Parenthesis:
-                          span:
-                            start: 3592
-                            end: 3608
-                          value:
-                            Ternary:
-                              condition:
-                                span:
-                                  start: 3586
-                                  end: 3595
-                                value:
-                                  BinaryOperator:
-                                    - LessThan
-                                    - span:
-                                        start: 3586
-                                        end: 3589
-                                      value:
-                                        Constant:
-                                          Identifier: one
-                                    - span:
-                                        start: 3592
-                                        end: 3595
-                                      value:
-                                        Constant:
-                                          Identifier: two
-                              "yes":
-                                span:
-                                  start: 3598
-                                  end: 3602
-                                value:
-                                  Constant:
-                                    Identifier: five
-                              "no":
-                                span:
-                                  start: 3605
-                                  end: 3608
-                                value:
-                                  Constant:
-                                    Identifier: ten
+                        Ternary:
+                          condition:
+                            span:
+                              start: 3586
+                              end: 3595
+                            value:
+                              BinaryOperator:
+                                - LessThan
+                                - span:
+                                    start: 3586
+                                    end: 3589
+                                  value:
+                                    Constant:
+                                      Identifier: one
+                                - span:
+                                    start: 3592
+                                    end: 3595
+                                  value:
+                                    Constant:
+                                      Identifier: two
+                          "yes":
+                            span:
+                              start: 3598
+                              end: 3602
+                            value:
+                              Constant:
+                                Identifier: five
+                          "no":
+                            span:
+                              start: 3605
+                              end: 3608
+                            value:
+                              Constant:
+                                Identifier: ten
     - Expr:
         span:
           start: 3624
@@ -2040,60 +1825,55 @@ Ok:
                         Constant:
                           String: "one + two < three ? five : ten = "
                     - span:
-                        start: 3668
-                        end: 3700
+                        start: 3675
+                        end: 3699
                       value:
-                        Parenthesis:
-                          span:
-                            start: 3675
-                            end: 3699
-                          value:
-                            Ternary:
-                              condition:
-                                span:
-                                  start: 3669
-                                  end: 3686
-                                value:
-                                  BinaryOperator:
-                                    - LessThan
-                                    - span:
-                                        start: 3669
-                                        end: 3678
-                                      value:
-                                        BinaryOperator:
-                                          - Add
-                                          - span:
-                                              start: 3669
-                                              end: 3672
-                                            value:
-                                              Constant:
-                                                Identifier: one
-                                          - span:
-                                              start: 3675
-                                              end: 3678
-                                            value:
-                                              Constant:
-                                                Identifier: two
-                                    - span:
-                                        start: 3681
-                                        end: 3686
-                                      value:
-                                        Constant:
-                                          Identifier: three
-                              "yes":
-                                span:
-                                  start: 3689
-                                  end: 3693
-                                value:
-                                  Constant:
-                                    Identifier: five
-                              "no":
-                                span:
-                                  start: 3696
-                                  end: 3699
-                                value:
-                                  Constant:
-                                    Identifier: ten
+                        Ternary:
+                          condition:
+                            span:
+                              start: 3669
+                              end: 3686
+                            value:
+                              BinaryOperator:
+                                - LessThan
+                                - span:
+                                    start: 3669
+                                    end: 3678
+                                  value:
+                                    BinaryOperator:
+                                      - Add
+                                      - span:
+                                          start: 3669
+                                          end: 3672
+                                        value:
+                                          Constant:
+                                            Identifier: one
+                                      - span:
+                                          start: 3675
+                                          end: 3678
+                                        value:
+                                          Constant:
+                                            Identifier: two
+                                - span:
+                                    start: 3681
+                                    end: 3686
+                                  value:
+                                    Constant:
+                                      Identifier: three
+                          "yes":
+                            span:
+                              start: 3689
+                              end: 3693
+                            value:
+                              Constant:
+                                Identifier: five
+                          "no":
+                            span:
+                              start: 3696
+                              end: 3699
+                            value:
+                              Constant:
+                                Identifier: ten
     - Expr:
         span:
           start: 3791
@@ -2440,39 +2220,34 @@ Ok:
                         Constant:
                           String: "obj.x + two = "
                     - span:
-                        start: 4304
-                        end: 4317
+                        start: 4308
+                        end: 4316
                       value:
-                        Parenthesis:
-                          span:
-                            start: 4308
-                            end: 4316
-                          value:
-                            BinaryOperator:
-                              - Add
-                              - span:
-                                  start: 4308
-                                  end: 4310
-                                value:
-                                  Field:
-                                    - span:
-                                        start: 4305
-                                        end: 4308
-                                      value:
-                                        Constant:
-                                          Identifier: obj
-                                    - span:
-                                        start: 4309
-                                        end: 4310
-                                      value:
-                                        Constant:
-                                          String: x
-                              - span:
-                                  start: 4313
-                                  end: 4316
-                                value:
-                                  Constant:
-                                    Identifier: two
+                        BinaryOperator:
+                          - Add
+                          - span:
+                              start: 4308
+                              end: 4310
+                            value:
+                              Field:
+                                - span:
+                                    start: 4305
+                                    end: 4308
+                                  value:
+                                    Constant:
+                                      Identifier: obj
+                                - span:
+                                    start: 4309
+                                    end: 4310
+                                  value:
+                                    Constant:
+                                      String: x
+                          - span:
+                              start: 4313
+                              end: 4316
+                            value:
+                              Constant:
+                                Identifier: two
     - Expr:
         span:
           start: 4428
@@ -2624,28 +2399,23 @@ Ok:
                 Ternary:
                   condition:
                     span:
-                      start: 4697
-                      end: 4704
+                      start: 4698
+                      end: 4703
                     value:
-                      Parenthesis:
-                        span:
-                          start: 4698
-                          end: 4703
-                        value:
-                          BinaryOperator:
-                            - GreaterThan
-                            - span:
-                                start: 4698
-                                end: 4699
-                              value:
-                                Constant:
-                                  Identifier: b
-                            - span:
-                                start: 4702
-                                end: 4703
-                              value:
-                                Constant:
-                                  Identifier: c
+                      BinaryOperator:
+                        - GreaterThan
+                        - span:
+                            start: 4698
+                            end: 4699
+                          value:
+                            Constant:
+                              Identifier: b
+                        - span:
+                            start: 4702
+                            end: 4703
+                          value:
+                            Constant:
+                              Identifier: c
                   "yes":
                     span:
                       start: 4707
@@ -2776,164 +2546,139 @@ Ok:
                         Constant:
                           String: "a + b * c << one & three == ((a + (b * c)) << one & three) ? five : ten = "
                     - span:
-                        start: 5005
-                        end: 5082
+                        start: 5037
+                        end: 5080
                       value:
-                        Parenthesis:
-                          span:
-                            start: 5037
-                            end: 5080
-                          value:
-                            Ternary:
-                              condition:
-                                span:
-                                  start: 5007
-                                  end: 5067
-                                value:
-                                  BinaryOperator:
-                                    - Equal
-                                    - span:
-                                        start: 5007
-                                        end: 5033
-                                      value:
-                                        Parenthesis:
-                                          span:
-                                            start: 5008
-                                            end: 5032
-                                          value:
-                                            BinaryOperator:
-                                              - BitAnd
-                                              - span:
-                                                  start: 5008
-                                                  end: 5024
-                                                value:
-                                                  BinaryOperator:
-                                                    - BitShiftLeft
-                                                    - span:
-                                                        start: 5008
-                                                        end: 5017
-                                                      value:
-                                                        BinaryOperator:
-                                                          - Add
-                                                          - span:
-                                                              start: 5008
-                                                              end: 5009
-                                                            value:
-                                                              Constant:
-                                                                Identifier: a
-                                                          - span:
-                                                              start: 5012
-                                                              end: 5017
-                                                            value:
-                                                              BinaryOperator:
-                                                                - Multiply
-                                                                - span:
-                                                                    start: 5012
-                                                                    end: 5013
-                                                                  value:
-                                                                    Constant:
-                                                                      Identifier: b
-                                                                - span:
-                                                                    start: 5016
-                                                                    end: 5017
-                                                                  value:
-                                                                    Constant:
-                                                                      Identifier: c
-                                                    - span:
-                                                        start: 5021
-                                                        end: 5024
-                                                      value:
-                                                        Constant:
-                                                          Identifier: one
-                                              - span:
-                                                  start: 5027
-                                                  end: 5032
-                                                value:
-                                                  Constant:
-                                                    Identifier: three
-                                    - span:
-                                        start: 5037
-                                        end: 5067
-                                      value:
-                                        Parenthesis:
-                                          span:
-                                            start: 5038
-                                            end: 5066
-                                          value:
-                                            BinaryOperator:
-                                              - BitAnd
-                                              - span:
-                                                  start: 5038
-                                                  end: 5058
-                                                value:
-                                                  BinaryOperator:
-                                                    - BitShiftLeft
-                                                    - span:
-                                                        start: 5038
-                                                        end: 5051
-                                                      value:
-                                                        Parenthesis:
-                                                          span:
-                                                            start: 5039
-                                                            end: 5050
+                        Ternary:
+                          condition:
+                            span:
+                              start: 5007
+                              end: 5067
+                            value:
+                              BinaryOperator:
+                                - Equal
+                                - span:
+                                    start: 5008
+                                    end: 5032
+                                  value:
+                                    BinaryOperator:
+                                      - BitAnd
+                                      - span:
+                                          start: 5008
+                                          end: 5024
+                                        value:
+                                          BinaryOperator:
+                                            - BitShiftLeft
+                                            - span:
+                                                start: 5008
+                                                end: 5017
+                                              value:
+                                                BinaryOperator:
+                                                  - Add
+                                                  - span:
+                                                      start: 5008
+                                                      end: 5009
+                                                    value:
+                                                      Constant:
+                                                        Identifier: a
+                                                  - span:
+                                                      start: 5012
+                                                      end: 5017
+                                                    value:
+                                                      BinaryOperator:
+                                                        - Multiply
+                                                        - span:
+                                                            start: 5012
+                                                            end: 5013
                                                           value:
-                                                            BinaryOperator:
-                                                              - Add
-                                                              - span:
-                                                                  start: 5039
-                                                                  end: 5040
-                                                                value:
-                                                                  Constant:
-                                                                    Identifier: a
-                                                              - span:
-                                                                  start: 5043
-                                                                  end: 5050
-                                                                value:
-                                                                  Parenthesis:
-                                                                    span:
-                                                                      start: 5044
-                                                                      end: 5049
-                                                                    value:
-                                                                      BinaryOperator:
-                                                                        - Multiply
-                                                                        - span:
-                                                                            start: 5044
-                                                                            end: 5045
-                                                                          value:
-                                                                            Constant:
-                                                                              Identifier: b
-                                                                        - span:
-                                                                            start: 5048
-                                                                            end: 5049
-                                                                          value:
-                                                                            Constant:
-                                                                              Identifier: c
-                                                    - span:
-                                                        start: 5055
-                                                        end: 5058
-                                                      value:
-                                                        Constant:
-                                                          Identifier: one
-                                              - span:
-                                                  start: 5061
-                                                  end: 5066
-                                                value:
-                                                  Constant:
-                                                    Identifier: three
-                              "yes":
-                                span:
-                                  start: 5070
-                                  end: 5074
-                                value:
-                                  Constant:
-                                    Identifier: five
-                              "no":
-                                span:
-                                  start: 5077
-                                  end: 5080
-                                value:
-                                  Constant:
-                                    Identifier: ten
+                                                            Constant:
+                                                              Identifier: b
+                                                        - span:
+                                                            start: 5016
+                                                            end: 5017
+                                                          value:
+                                                            Constant:
+                                                              Identifier: c
+                                            - span:
+                                                start: 5021
+                                                end: 5024
+                                              value:
+                                                Constant:
+                                                  Identifier: one
+                                      - span:
+                                          start: 5027
+                                          end: 5032
+                                        value:
+                                          Constant:
+                                            Identifier: three
+                                - span:
+                                    start: 5038
+                                    end: 5066
+                                  value:
+                                    BinaryOperator:
+                                      - BitAnd
+                                      - span:
+                                          start: 5038
+                                          end: 5058
+                                        value:
+                                          BinaryOperator:
+                                            - BitShiftLeft
+                                            - span:
+                                                start: 5039
+                                                end: 5050
+                                              value:
+                                                BinaryOperator:
+                                                  - Add
+                                                  - span:
+                                                      start: 5039
+                                                      end: 5040
+                                                    value:
+                                                      Constant:
+                                                        Identifier: a
+                                                  - span:
+                                                      start: 5044
+                                                      end: 5049
+                                                    value:
+                                                      BinaryOperator:
+                                                        - Multiply
+                                                        - span:
+                                                            start: 5044
+                                                            end: 5045
+                                                          value:
+                                                            Constant:
+                                                              Identifier: b
+                                                        - span:
+                                                            start: 5048
+                                                            end: 5049
+                                                          value:
+                                                            Constant:
+                                                              Identifier: c
+                                            - span:
+                                                start: 5055
+                                                end: 5058
+                                              value:
+                                                Constant:
+                                                  Identifier: one
+                                      - span:
+                                          start: 5061
+                                          end: 5066
+                                        value:
+                                          Constant:
+                                            Identifier: three
+                          "yes":
+                            span:
+                              start: 5070
+                              end: 5074
+                            value:
+                              Constant:
+                                Identifier: five
+                          "no":
+                            span:
+                              start: 5077
+                              end: 5080
+                            value:
+                              Constant:
+                                Identifier: ten
     - Expr:
         span:
           start: 5177
@@ -2961,28 +2706,23 @@ Ok:
                         Constant:
                           String: "+one + +two = "
                     - span:
-                        start: 5202
-                        end: 5215
+                        start: 5204
+                        end: 5214
                       value:
-                        Parenthesis:
-                          span:
-                            start: 5204
-                            end: 5214
-                          value:
-                            BinaryOperator:
-                              - Add
-                              - span:
-                                  start: 5204
-                                  end: 5207
-                                value:
-                                  Constant:
-                                    Identifier: one
-                              - span:
-                                  start: 5211
-                                  end: 5214
-                                value:
-                                  Constant:
-                                    Identifier: two
+                        BinaryOperator:
+                          - Add
+                          - span:
+                              start: 5204
+                              end: 5207
+                            value:
+                              Constant:
+                                Identifier: one
+                          - span:
+                              start: 5211
+                              end: 5214
+                            value:
+                              Constant:
+                                Identifier: two
     - Expr:
         span:
           start: 5254
@@ -3010,40 +2750,35 @@ Ok:
                         Constant:
                           String: "-one + -two = "
                     - span:
-                        start: 5279
-                        end: 5292
+                        start: 5280
+                        end: 5291
                       value:
-                        Parenthesis:
-                          span:
-                            start: 5280
-                            end: 5291
-                          value:
-                            BinaryOperator:
-                              - Add
-                              - span:
-                                  start: 5280
-                                  end: 5284
-                                value:
-                                  UnaryOperator:
-                                    - Sub
-                                    - span:
-                                        start: 5281
-                                        end: 5284
-                                      value:
-                                        Constant:
-                                          Identifier: one
-                              - span:
-                                  start: 5287
-                                  end: 5291
-                                value:
-                                  UnaryOperator:
-                                    - Sub
-                                    - span:
-                                        start: 5288
-                                        end: 5291
-                                      value:
-                                        Constant:
-                                          Identifier: two
+                        BinaryOperator:
+                          - Add
+                          - span:
+                              start: 5280
+                              end: 5284
+                            value:
+                              UnaryOperator:
+                                - Sub
+                                - span:
+                                    start: 5281
+                                    end: 5284
+                                  value:
+                                    Constant:
+                                      Identifier: one
+                          - span:
+                              start: 5287
+                              end: 5291
+                            value:
+                              UnaryOperator:
+                                - Sub
+                                - span:
+                                    start: 5288
+                                    end: 5291
+                                  value:
+                                    Constant:
+                                      Identifier: two
     - Expr:
         span:
           start: 5387
@@ -3071,40 +2806,35 @@ Ok:
                         Constant:
                           String: "ten % three + one = "
                     - span:
-                        start: 5418
-                        end: 5437
+                        start: 5419
+                        end: 5436
                       value:
-                        Parenthesis:
-                          span:
-                            start: 5419
-                            end: 5436
-                          value:
-                            BinaryOperator:
-                              - Add
-                              - span:
-                                  start: 5419
-                                  end: 5430
-                                value:
-                                  BinaryOperator:
-                                    - Modulo
-                                    - span:
-                                        start: 5419
-                                        end: 5422
-                                      value:
-                                        Constant:
-                                          Identifier: ten
-                                    - span:
-                                        start: 5425
-                                        end: 5430
-                                      value:
-                                        Constant:
-                                          Identifier: three
-                              - span:
-                                  start: 5433
-                                  end: 5436
-                                value:
-                                  Constant:
-                                    Identifier: one
+                        BinaryOperator:
+                          - Add
+                          - span:
+                              start: 5419
+                              end: 5430
+                            value:
+                              BinaryOperator:
+                                - Modulo
+                                - span:
+                                    start: 5419
+                                    end: 5422
+                                  value:
+                                    Constant:
+                                      Identifier: ten
+                                - span:
+                                    start: 5425
+                                    end: 5430
+                                  value:
+                                    Constant:
+                                      Identifier: three
+                          - span:
+                              start: 5433
+                              end: 5436
+                            value:
+                              Constant:
+                                Identifier: one
     - Expr:
         span:
           start: 5464
@@ -3132,45 +2862,35 @@ Ok:
                         Constant:
                           String: "(ten % three) + one = "
                     - span:
-                        start: 5497
-                        end: 5518
+                        start: 5498
+                        end: 5517
                       value:
-                        Parenthesis:
-                          span:
-                            start: 5498
-                            end: 5517
-                          value:
-                            BinaryOperator:
-                              - Add
-                              - span:
-                                  start: 5498
-                                  end: 5511
-                                value:
-                                  Parenthesis:
-                                    span:
-                                      start: 5499
-                                      end: 5510
-                                    value:
-                                      BinaryOperator:
-                                        - Modulo
-                                        - span:
-                                            start: 5499
-                                            end: 5502
-                                          value:
-                                            Constant:
-                                              Identifier: ten
-                                        - span:
-                                            start: 5505
-                                            end: 5510
-                                          value:
-                                            Constant:
-                                              Identifier: three
-                              - span:
-                                  start: 5514
-                                  end: 5517
-                                value:
-                                  Constant:
-                                    Identifier: one
+                        BinaryOperator:
+                          - Add
+                          - span:
+                              start: 5499
+                              end: 5510
+                            value:
+                              BinaryOperator:
+                                - Modulo
+                                - span:
+                                    start: 5499
+                                    end: 5502
+                                  value:
+                                    Constant:
+                                      Identifier: ten
+                                - span:
+                                    start: 5505
+                                    end: 5510
+                                  value:
+                                    Constant:
+                                      Identifier: three
+                          - span:
+                              start: 5514
+                              end: 5517
+                            value:
+                              Constant:
+                                Identifier: one
     - Expr:
         span:
           start: 5608
@@ -3198,49 +2918,44 @@ Ok:
                         Constant:
                           String: "one + two * three > four = "
                     - span:
-                        start: 5646
-                        end: 5672
+                        start: 5647
+                        end: 5671
                       value:
-                        Parenthesis:
-                          span:
-                            start: 5647
-                            end: 5671
-                          value:
-                            BinaryOperator:
-                              - GreaterThan
-                              - span:
-                                  start: 5647
-                                  end: 5664
-                                value:
-                                  BinaryOperator:
-                                    - Add
-                                    - span:
-                                        start: 5647
-                                        end: 5650
-                                      value:
-                                        Constant:
-                                          Identifier: one
-                                    - span:
-                                        start: 5653
-                                        end: 5664
-                                      value:
-                                        BinaryOperator:
-                                          - Multiply
-                                          - span:
-                                              start: 5653
-                                              end: 5656
-                                            value:
-                                              Constant:
-                                                Identifier: two
-                                          - span:
-                                              start: 5659
-                                              end: 5664
-                                            value:
-                                              Constant:
-                                                Identifier: three
-                              - span:
-                                  start: 5667
-                                  end: 5671
-                                value:
-                                  Constant:
-                                    Identifier: four
+                        BinaryOperator:
+                          - GreaterThan
+                          - span:
+                              start: 5647
+                              end: 5664
+                            value:
+                              BinaryOperator:
+                                - Add
+                                - span:
+                                    start: 5647
+                                    end: 5650
+                                  value:
+                                    Constant:
+                                      Identifier: one
+                                - span:
+                                    start: 5653
+                                    end: 5664
+                                  value:
+                                    BinaryOperator:
+                                      - Multiply
+                                      - span:
+                                          start: 5653
+                                          end: 5656
+                                        value:
+                                          Constant:
+                                            Identifier: two
+                                      - span:
+                                          start: 5659
+                                          end: 5664
+                                        value:
+                                          Constant:
+                                            Identifier: three
+                          - span:
+                              start: 5667
+                              end: 5671
+                            value:
+                              Constant:
+                                Identifier: four
