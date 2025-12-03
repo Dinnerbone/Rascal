@@ -1,9 +1,10 @@
-use crate::lexer::tokens::Keyword;
 use rascal_common::span::Spanned;
 use serde::Serialize;
-use std::borrow::Cow;
 
 pub type Expr<'a> = Spanned<ExprKind<'a>>;
+pub type Constant<'a> = Spanned<ConstantKind<'a>>;
+pub type Statement<'a> = Spanned<StatementKind<'a>>;
+pub use crate::ast::{Affix, BinaryOperator, ConstantKind, UnaryOperator};
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
 pub enum ExprKind<'a> {
@@ -33,94 +34,6 @@ pub enum ExprKind<'a> {
     Function(Function<'a>),
     GetVariable(Box<Expr<'a>>),
     SetVariable(Box<Expr<'a>>, Box<Expr<'a>>),
-}
-
-#[derive(Debug, Clone, Serialize, PartialEq)]
-pub enum ConstantKind<'a> {
-    String(Cow<'a, str>),
-    Identifier(&'a str),
-    Float(f64),
-    Integer(i32),
-}
-
-#[derive(Debug, Clone, Copy, Serialize, PartialEq)]
-pub enum BinaryOperator {
-    Add,
-    Assign,
-    AddAssign,
-    Sub,
-    SubAssign,
-    Divide,
-    DivideAssign,
-    Multiply,
-    MultiplyAssign,
-    Modulo,
-    ModuloAssign,
-    BitAnd,
-    BitAndAssign,
-    BitOr,
-    BitOrAssign,
-    BitXor,
-    BitXorAssign,
-    BitShiftLeft,
-    BitShiftLeftAssign,
-    BitShiftRight,
-    BitShiftRightAssign,
-    BitShiftRightUnsigned,
-    BitShiftRightUnsignedAssign,
-    Equal,
-    StrictEqual,
-    NotEqual,
-    StrictNotEqual,
-    LessThan,
-    LessThanEqual,
-    GreaterThan,
-    GreaterThanEqual,
-    LogicalAnd,
-    LogicalOr,
-    InstanceOf,
-    StringEqual,
-    StringGreaterThan,
-    StringGreaterThanEqual,
-    StringLessThan,
-    StringLessThanEqual,
-    StringNotEqual,
-    BooleanAnd,
-    BooleanOr,
-    StringAdd,
-}
-
-impl BinaryOperator {
-    pub(crate) fn for_keyword(keyword: Keyword) -> Option<BinaryOperator> {
-        match keyword {
-            Keyword::InstanceOf => Some(BinaryOperator::InstanceOf),
-            Keyword::Eq => Some(BinaryOperator::StringEqual),
-            Keyword::Gt => Some(BinaryOperator::StringGreaterThan),
-            Keyword::Ge => Some(BinaryOperator::StringGreaterThanEqual),
-            Keyword::Lt => Some(BinaryOperator::StringLessThan),
-            Keyword::Le => Some(BinaryOperator::StringLessThanEqual),
-            Keyword::Ne => Some(BinaryOperator::StringNotEqual),
-            Keyword::And => Some(BinaryOperator::BooleanAnd),
-            Keyword::Or => Some(BinaryOperator::BooleanOr),
-            Keyword::Add => Some(BinaryOperator::StringAdd),
-            _ => None,
-        }
-    }
-}
-
-#[derive(Debug, Clone, Copy, Serialize, PartialEq)]
-pub enum UnaryOperator {
-    Sub,
-    BitNot,
-    Increment(Affix),
-    Decrement(Affix),
-    LogicalNot,
-}
-
-#[derive(Debug, Clone, Copy, Serialize, PartialEq)]
-pub enum Affix {
-    Postfix,
-    Prefix,
 }
 
 #[derive(Debug, Clone, Serialize, PartialEq)]

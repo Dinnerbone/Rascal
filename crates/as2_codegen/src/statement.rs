@@ -2,7 +2,7 @@ use crate::access::VariableAccess;
 use crate::builder::CodeBuilder;
 use crate::context::ScriptContext;
 use crate::special_functions::gen_special_call;
-use rascal_as2::ast::{
+use rascal_as2::hir::{
     Affix, BinaryOperator, ConstantKind, Declaration, Expr, ExprKind, ForCondition, Function,
     StatementKind, SwitchElement, TryCatch, UnaryOperator,
 };

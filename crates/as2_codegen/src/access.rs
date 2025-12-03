@@ -2,7 +2,7 @@ use crate::builder::CodeBuilder;
 use crate::context::ScriptContext;
 use crate::special_properties::get_special_property;
 use crate::statement::gen_expr;
-use rascal_as2::ast::{ConstantKind, Expr, ExprKind};
+use rascal_as2::hir::{ConstantKind, Expr, ExprKind};
 use rascal_as2_pcode::{Action, PushValue};
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
