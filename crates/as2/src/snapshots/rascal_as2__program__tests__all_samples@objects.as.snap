@@ -1,0 +1,306 @@
+---
+source: crates/as2/src/program.rs
+expression: parsed
+input_file: samples/as2/objects.as
+---
+Ok:
+  initial_script:
+    - Declare:
+        - name: o
+          value:
+            span:
+              start: 8
+              end: 25
+            value:
+              InitObject:
+                - - a
+                  - span:
+                      start: 12
+                      end: 13
+                    value:
+                      Constant:
+                        Integer: 1
+                - - b
+                  - span:
+                      start: 18
+                      end: 24
+                    value:
+                      Constant:
+                        Identifier: Object
+          type_name: ~
+    - Expr:
+        span:
+          start: 27
+          end: 47
+        value:
+          Call:
+            name:
+              span:
+                start: 27
+                end: 32
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 33
+                  end: 46
+                value:
+                  BinaryOperator:
+                    - Add
+                    - span:
+                        start: 33
+                        end: 40
+                      value:
+                        Constant:
+                          String: "o.a: "
+                    - span:
+                        start: 44
+                        end: 46
+                      value:
+                        Field:
+                          - span:
+                              start: 43
+                              end: 44
+                            value:
+                              Constant:
+                                Identifier: o
+                          - span:
+                              start: 45
+                              end: 46
+                            value:
+                              Constant:
+                                String: a
+    - Expr:
+        span:
+          start: 49
+          end: 69
+        value:
+          Call:
+            name:
+              span:
+                start: 49
+                end: 54
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 55
+                  end: 68
+                value:
+                  BinaryOperator:
+                    - Add
+                    - span:
+                        start: 55
+                        end: 62
+                      value:
+                        Constant:
+                          String: "o.b: "
+                    - span:
+                        start: 66
+                        end: 68
+                      value:
+                        Field:
+                          - span:
+                              start: 65
+                              end: 66
+                            value:
+                              Constant:
+                                Identifier: o
+                          - span:
+                              start: 67
+                              end: 68
+                            value:
+                              Constant:
+                                String: b
+    - Expr:
+        span:
+          start: 71
+          end: 109
+        value:
+          Call:
+            name:
+              span:
+                start: 71
+                end: 76
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 77
+                  end: 99
+                value:
+                  BinaryOperator:
+                    - Add
+                    - span:
+                        start: 77
+                        end: 93
+                      value:
+                        Constant:
+                          String: "new Object(): "
+                    - span:
+                        start: 96
+                        end: 99
+                      value:
+                        New:
+                          name:
+                            span:
+                              start: 100
+                              end: 106
+                            value:
+                              Constant:
+                                Identifier: Object
+                          args: []
+    - Expr:
+        span:
+          start: 111
+          end: 179
+        value:
+          Call:
+            name:
+              span:
+                start: 111
+                end: 116
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 117
+                  end: 177
+                value:
+                  BinaryOperator:
+                    - Add
+                    - span:
+                        start: 117
+                        end: 148
+                      value:
+                        Constant:
+                          String: "new Object(1, 2, {}, false): "
+                    - span:
+                        start: 151
+                        end: 177
+                      value:
+                        New:
+                          name:
+                            span:
+                              start: 155
+                              end: 161
+                            value:
+                              Constant:
+                                Identifier: Object
+                          args:
+                            - span:
+                                start: 162
+                                end: 163
+                              value:
+                                Constant:
+                                  Integer: 1
+                            - span:
+                                start: 165
+                                end: 166
+                              value:
+                                Constant:
+                                  Integer: 2
+                            - span:
+                                start: 168
+                                end: 170
+                              value:
+                                InitObject: []
+                            - span:
+                                start: 172
+                                end: 177
+                              value:
+                                Constant:
+                                  Identifier: "false"
+    - Expr:
+        span:
+          start: 181
+          end: 215
+        value:
+          Call:
+            name:
+              span:
+                start: 181
+                end: 186
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 187
+                  end: 214
+                value:
+                  BinaryOperator:
+                    - Add
+                    - span:
+                        start: 187
+                        end: 201
+                      value:
+                        Constant:
+                          String: "new Object: "
+                    - span:
+                        start: 204
+                        end: 214
+                      value:
+                        New:
+                          name:
+                            span:
+                              start: 208
+                              end: 214
+                            value:
+                              Constant:
+                                Identifier: Object
+                          args: []
+    - Expr:
+        span:
+          start: 217
+          end: 249
+        value:
+          Call:
+            name:
+              span:
+                start: 217
+                end: 222
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 223
+                  end: 242
+                value:
+                  BinaryOperator:
+                    - Add
+                    - span:
+                        start: 223
+                        end: 236
+                      value:
+                        Constant:
+                          String: "new o.b(): "
+                    - span:
+                        start: 239
+                        end: 242
+                      value:
+                        New:
+                          name:
+                            span:
+                              start: 244
+                              end: 246
+                            value:
+                              Field:
+                                - span:
+                                    start: 243
+                                    end: 244
+                                  value:
+                                    Constant:
+                                      Identifier: o
+                                - span:
+                                    start: 245
+                                    end: 246
+                                  value:
+                                    Constant:
+                                      String: b
+                          args: []

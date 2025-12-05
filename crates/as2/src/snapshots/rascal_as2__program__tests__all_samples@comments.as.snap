@@ -1,0 +1,143 @@
+---
+source: crates/as2/src/program.rs
+expression: parsed
+input_file: samples/as2/comments.as
+---
+Ok:
+  initial_script:
+    - Declare:
+        - name: a
+          value:
+            span:
+              start: 116
+              end: 119
+            value:
+              Constant:
+                String: "1"
+          type_name: ~
+    - Declare:
+        - name: b
+          value:
+            span:
+              start: 248
+              end: 251
+            value:
+              Constant:
+                String: "2"
+          type_name: ~
+    - Declare:
+        - name: c
+          value:
+            span:
+              start: 371
+              end: 374
+            value:
+              Constant:
+                String: "3"
+          type_name: ~
+    - Declare:
+        - name: d
+          value:
+            span:
+              start: 451
+              end: 454
+            value:
+              Constant:
+                String: "4"
+          type_name: ~
+    - Expr:
+        span:
+          start: 506
+          end: 578
+        value:
+          Call:
+            name:
+              span:
+                start: 506
+                end: 510
+              value:
+                Constant:
+                  Identifier: test
+            args:
+              - span:
+                  start: 529
+                  end: 530
+                value:
+                  Constant:
+                    Identifier: a
+              - span:
+                  start: 575
+                  end: 576
+                value:
+                  Constant:
+                    Identifier: b
+    - Declare:
+        - name: e
+          value:
+            span:
+              start: 656
+              end: 659
+            value:
+              Constant:
+                String: "5"
+          type_name: ~
+    - Declare:
+        - name: f
+          value:
+            span:
+              start: 670
+              end: 688
+            value:
+              Constant:
+                String: // not a comment
+          type_name: ~
+    - Declare:
+        - name: g
+          value:
+            span:
+              start: 727
+              end: 748
+            value:
+              Constant:
+                String: /* not a comment */
+          type_name: ~
+    - Declare:
+        - name: h
+          value:
+            span:
+              start: 793
+              end: 824
+            value:
+              Constant:
+                String: "\"/* still not a comment */\""
+          type_name: ~
+    - Declare:
+        - name: i
+          value:
+            span:
+              start: 898
+              end: 901
+            value:
+              Constant:
+                String: "6"
+          type_name: ~
+    - Declare:
+        - name: j
+          value:
+            span:
+              start: 1042
+              end: 1045
+            value:
+              Constant:
+                String: "7"
+          type_name: ~
+    - Declare:
+        - name: k
+          value:
+            span:
+              start: 1115
+              end: 1118
+            value:
+              Constant:
+                String: "8"
+          type_name: ~

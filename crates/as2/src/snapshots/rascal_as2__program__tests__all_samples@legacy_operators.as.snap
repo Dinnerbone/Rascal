@@ -1,0 +1,289 @@
+---
+source: crates/as2/src/program.rs
+expression: parsed
+input_file: samples/as2/legacy_operators.as
+---
+Ok:
+  initial_script:
+    - Expr:
+        span:
+          start: 0
+          end: 13
+        value:
+          Call:
+            name:
+              span:
+                start: 0
+                end: 5
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 6
+                  end: 12
+                value:
+                  BinaryOperator:
+                    - StringEqual
+                    - span:
+                        start: 6
+                        end: 7
+                      value:
+                        Constant:
+                          Identifier: a
+                    - span:
+                        start: 11
+                        end: 12
+                      value:
+                        Constant:
+                          Identifier: b
+    - Expr:
+        span:
+          start: 15
+          end: 28
+        value:
+          Call:
+            name:
+              span:
+                start: 15
+                end: 20
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 21
+                  end: 27
+                value:
+                  BinaryOperator:
+                    - StringGreaterThan
+                    - span:
+                        start: 21
+                        end: 22
+                      value:
+                        Constant:
+                          Identifier: a
+                    - span:
+                        start: 26
+                        end: 27
+                      value:
+                        Constant:
+                          Identifier: b
+    - Expr:
+        span:
+          start: 30
+          end: 43
+        value:
+          Call:
+            name:
+              span:
+                start: 30
+                end: 35
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 36
+                  end: 42
+                value:
+                  BinaryOperator:
+                    - StringGreaterThanEqual
+                    - span:
+                        start: 36
+                        end: 37
+                      value:
+                        Constant:
+                          Identifier: a
+                    - span:
+                        start: 41
+                        end: 42
+                      value:
+                        Constant:
+                          Identifier: b
+    - Expr:
+        span:
+          start: 45
+          end: 58
+        value:
+          Call:
+            name:
+              span:
+                start: 45
+                end: 50
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 51
+                  end: 57
+                value:
+                  BinaryOperator:
+                    - StringLessThan
+                    - span:
+                        start: 51
+                        end: 52
+                      value:
+                        Constant:
+                          Identifier: a
+                    - span:
+                        start: 56
+                        end: 57
+                      value:
+                        Constant:
+                          Identifier: b
+    - Expr:
+        span:
+          start: 60
+          end: 73
+        value:
+          Call:
+            name:
+              span:
+                start: 60
+                end: 65
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 66
+                  end: 72
+                value:
+                  BinaryOperator:
+                    - StringLessThanEqual
+                    - span:
+                        start: 66
+                        end: 67
+                      value:
+                        Constant:
+                          Identifier: a
+                    - span:
+                        start: 71
+                        end: 72
+                      value:
+                        Constant:
+                          Identifier: b
+    - Expr:
+        span:
+          start: 75
+          end: 88
+        value:
+          Call:
+            name:
+              span:
+                start: 75
+                end: 80
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 81
+                  end: 87
+                value:
+                  BinaryOperator:
+                    - StringNotEqual
+                    - span:
+                        start: 81
+                        end: 82
+                      value:
+                        Constant:
+                          Identifier: a
+                    - span:
+                        start: 86
+                        end: 87
+                      value:
+                        Constant:
+                          Identifier: b
+    - Expr:
+        span:
+          start: 90
+          end: 104
+        value:
+          Call:
+            name:
+              span:
+                start: 90
+                end: 95
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 96
+                  end: 103
+                value:
+                  BinaryOperator:
+                    - BooleanAnd
+                    - span:
+                        start: 96
+                        end: 97
+                      value:
+                        Constant:
+                          Identifier: a
+                    - span:
+                        start: 102
+                        end: 103
+                      value:
+                        Constant:
+                          Identifier: b
+    - Expr:
+        span:
+          start: 106
+          end: 118
+        value:
+          Call:
+            name:
+              span:
+                start: 106
+                end: 111
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 112
+                  end: 117
+                value:
+                  UnaryOperator:
+                    - LogicalNot
+                    - span:
+                        start: 116
+                        end: 117
+                      value:
+                        Constant:
+                          Identifier: a
+    - Expr:
+        span:
+          start: 120
+          end: 133
+        value:
+          Call:
+            name:
+              span:
+                start: 120
+                end: 125
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 126
+                  end: 132
+                value:
+                  BinaryOperator:
+                    - BooleanOr
+                    - span:
+                        start: 126
+                        end: 127
+                      value:
+                        Constant:
+                          Identifier: a
+                    - span:
+                        start: 131
+                        end: 132
+                      value:
+                        Constant:
+                          Identifier: b

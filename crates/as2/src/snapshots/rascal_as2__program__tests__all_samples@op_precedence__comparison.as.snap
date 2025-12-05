@@ -1,0 +1,865 @@
+---
+source: crates/as2/src/program.rs
+expression: parsed
+input_file: samples/as2/op_precedence/comparison.as
+---
+Ok:
+  initial_script:
+    - Declare:
+        - name: a
+          value:
+            span:
+              start: 21
+              end: 23
+            value:
+              Constant:
+                Integer: 10
+          type_name: ~
+    - Declare:
+        - name: b
+          value:
+            span:
+              start: 33
+              end: 34
+            value:
+              Constant:
+                Integer: 5
+          type_name: ~
+    - Declare:
+        - name: c
+          value:
+            span:
+              start: 44
+              end: 45
+            value:
+              Constant:
+                Integer: 7
+          type_name: ~
+    - Expr:
+        span:
+          start: 48
+          end: 89
+        value:
+          Call:
+            name:
+              span:
+                start: 48
+                end: 53
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 54
+                  end: 88
+                value:
+                  BinaryOperator:
+                    - Add
+                    - span:
+                        start: 54
+                        end: 84
+                      value:
+                        BinaryOperator:
+                          - Add
+                          - span:
+                              start: 54
+                              end: 75
+                            value:
+                              BinaryOperator:
+                                - Add
+                                - span:
+                                    start: 54
+                                    end: 71
+                                  value:
+                                    BinaryOperator:
+                                      - Add
+                                      - span:
+                                          start: 54
+                                          end: 62
+                                        value:
+                                          BinaryOperator:
+                                            - Add
+                                            - span:
+                                                start: 54
+                                                end: 58
+                                              value:
+                                                Constant:
+                                                  String: a=
+                                            - span:
+                                                start: 61
+                                                end: 62
+                                              value:
+                                                Constant:
+                                                  Identifier: a
+                                      - span:
+                                          start: 65
+                                          end: 71
+                                        value:
+                                          Constant:
+                                            String: ", b="
+                                - span:
+                                    start: 74
+                                    end: 75
+                                  value:
+                                    Constant:
+                                      Identifier: b
+                          - span:
+                              start: 78
+                              end: 84
+                            value:
+                              Constant:
+                                String: ", c="
+                    - span:
+                        start: 87
+                        end: 88
+                      value:
+                        Constant:
+                          Identifier: c
+    - Expr:
+        span:
+          start: 91
+          end: 104
+        value:
+          Call:
+            name:
+              span:
+                start: 91
+                end: 96
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 97
+                  end: 103
+                value:
+                  Constant:
+                    String: "----"
+    - Expr:
+        span:
+          start: 128
+          end: 155
+        value:
+          Call:
+            name:
+              span:
+                start: 128
+                end: 133
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 134
+                  end: 154
+                value:
+                  BinaryOperator:
+                    - Add
+                    - span:
+                        start: 134
+                        end: 144
+                      value:
+                        Constant:
+                          String: "a > b = "
+                    - span:
+                        start: 148
+                        end: 153
+                      value:
+                        BinaryOperator:
+                          - GreaterThan
+                          - span:
+                              start: 148
+                              end: 149
+                            value:
+                              Constant:
+                                Identifier: a
+                          - span:
+                              start: 152
+                              end: 153
+                            value:
+                              Constant:
+                                Identifier: b
+    - Expr:
+        span:
+          start: 167
+          end: 194
+        value:
+          Call:
+            name:
+              span:
+                start: 167
+                end: 172
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 173
+                  end: 193
+                value:
+                  BinaryOperator:
+                    - Add
+                    - span:
+                        start: 173
+                        end: 183
+                      value:
+                        Constant:
+                          String: "a < b = "
+                    - span:
+                        start: 187
+                        end: 192
+                      value:
+                        BinaryOperator:
+                          - LessThan
+                          - span:
+                              start: 187
+                              end: 188
+                            value:
+                              Constant:
+                                Identifier: a
+                          - span:
+                              start: 191
+                              end: 192
+                            value:
+                              Constant:
+                                Identifier: b
+    - Expr:
+        span:
+          start: 207
+          end: 236
+        value:
+          Call:
+            name:
+              span:
+                start: 207
+                end: 212
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 213
+                  end: 235
+                value:
+                  BinaryOperator:
+                    - Add
+                    - span:
+                        start: 213
+                        end: 224
+                      value:
+                        Constant:
+                          String: "a >= b = "
+                    - span:
+                        start: 228
+                        end: 234
+                      value:
+                        BinaryOperator:
+                          - GreaterThanEqual
+                          - span:
+                              start: 228
+                              end: 229
+                            value:
+                              Constant:
+                                Identifier: a
+                          - span:
+                              start: 233
+                              end: 234
+                            value:
+                              Constant:
+                                Identifier: b
+    - Expr:
+        span:
+          start: 246
+          end: 275
+        value:
+          Call:
+            name:
+              span:
+                start: 246
+                end: 251
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 252
+                  end: 274
+                value:
+                  BinaryOperator:
+                    - Add
+                    - span:
+                        start: 252
+                        end: 263
+                      value:
+                        Constant:
+                          String: "a <= b = "
+                    - span:
+                        start: 267
+                        end: 273
+                      value:
+                        BinaryOperator:
+                          - LessThanEqual
+                          - span:
+                              start: 267
+                              end: 268
+                            value:
+                              Constant:
+                                Identifier: a
+                          - span:
+                              start: 272
+                              end: 273
+                            value:
+                              Constant:
+                                Identifier: b
+    - Expr:
+        span:
+          start: 286
+          end: 298
+        value:
+          Call:
+            name:
+              span:
+                start: 286
+                end: 291
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 292
+                  end: 297
+                value:
+                  Constant:
+                    String: "---"
+    - Expr:
+        span:
+          start: 329
+          end: 366
+        value:
+          Call:
+            name:
+              span:
+                start: 329
+                end: 334
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 335
+                  end: 365
+                value:
+                  BinaryOperator:
+                    - Add
+                    - span:
+                        start: 335
+                        end: 350
+                      value:
+                        Constant:
+                          String: "a > b >= c = "
+                    - span:
+                        start: 354
+                        end: 364
+                      value:
+                        BinaryOperator:
+                          - GreaterThanEqual
+                          - span:
+                              start: 354
+                              end: 359
+                            value:
+                              BinaryOperator:
+                                - GreaterThan
+                                - span:
+                                    start: 354
+                                    end: 355
+                                  value:
+                                    Constant:
+                                      Identifier: a
+                                - span:
+                                    start: 358
+                                    end: 359
+                                  value:
+                                    Constant:
+                                      Identifier: b
+                          - span:
+                              start: 363
+                              end: 364
+                            value:
+                              Constant:
+                                Identifier: c
+    - Expr:
+        span:
+          start: 377
+          end: 420
+        value:
+          Call:
+            name:
+              span:
+                start: 377
+                end: 382
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 383
+                  end: 419
+                value:
+                  BinaryOperator:
+                    - Add
+                    - span:
+                        start: 383
+                        end: 402
+                      value:
+                        Constant:
+                          String: "((a > b) >= c) = "
+                    - span:
+                        start: 406
+                        end: 418
+                      value:
+                        BinaryOperator:
+                          - GreaterThanEqual
+                          - span:
+                              start: 407
+                              end: 412
+                            value:
+                              BinaryOperator:
+                                - GreaterThan
+                                - span:
+                                    start: 407
+                                    end: 408
+                                  value:
+                                    Constant:
+                                      Identifier: a
+                                - span:
+                                    start: 411
+                                    end: 412
+                                  value:
+                                    Constant:
+                                      Identifier: b
+                          - span:
+                              start: 417
+                              end: 418
+                            value:
+                              Constant:
+                                Identifier: c
+    - Expr:
+        span:
+          start: 431
+          end: 443
+        value:
+          Call:
+            name:
+              span:
+                start: 431
+                end: 436
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 437
+                  end: 442
+                value:
+                  Constant:
+                    String: "---"
+    - Expr:
+        span:
+          start: 446
+          end: 483
+        value:
+          Call:
+            name:
+              span:
+                start: 446
+                end: 451
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 452
+                  end: 482
+                value:
+                  BinaryOperator:
+                    - Add
+                    - span:
+                        start: 452
+                        end: 467
+                      value:
+                        Constant:
+                          String: "a < b <= c = "
+                    - span:
+                        start: 471
+                        end: 481
+                      value:
+                        BinaryOperator:
+                          - LessThanEqual
+                          - span:
+                              start: 471
+                              end: 476
+                            value:
+                              BinaryOperator:
+                                - LessThan
+                                - span:
+                                    start: 471
+                                    end: 472
+                                  value:
+                                    Constant:
+                                      Identifier: a
+                                - span:
+                                    start: 475
+                                    end: 476
+                                  value:
+                                    Constant:
+                                      Identifier: b
+                          - span:
+                              start: 480
+                              end: 481
+                            value:
+                              Constant:
+                                Identifier: c
+    - Expr:
+        span:
+          start: 493
+          end: 536
+        value:
+          Call:
+            name:
+              span:
+                start: 493
+                end: 498
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 499
+                  end: 535
+                value:
+                  BinaryOperator:
+                    - Add
+                    - span:
+                        start: 499
+                        end: 518
+                      value:
+                        Constant:
+                          String: "((a < b) <= c) = "
+                    - span:
+                        start: 522
+                        end: 534
+                      value:
+                        BinaryOperator:
+                          - LessThanEqual
+                          - span:
+                              start: 523
+                              end: 528
+                            value:
+                              BinaryOperator:
+                                - LessThan
+                                - span:
+                                    start: 523
+                                    end: 524
+                                  value:
+                                    Constant:
+                                      Identifier: a
+                                - span:
+                                    start: 527
+                                    end: 528
+                                  value:
+                                    Constant:
+                                      Identifier: b
+                          - span:
+                              start: 533
+                              end: 534
+                            value:
+                              Constant:
+                                Identifier: c
+    - Expr:
+        span:
+          start: 546
+          end: 558
+        value:
+          Call:
+            name:
+              span:
+                start: 546
+                end: 551
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 552
+                  end: 557
+                value:
+                  Constant:
+                    String: "---"
+    - Expr:
+        span:
+          start: 587
+          end: 622
+        value:
+          Call:
+            name:
+              span:
+                start: 587
+                end: 592
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 593
+                  end: 621
+                value:
+                  BinaryOperator:
+                    - Add
+                    - span:
+                        start: 593
+                        end: 607
+                      value:
+                        Constant:
+                          String: "a + b > c = "
+                    - span:
+                        start: 611
+                        end: 620
+                      value:
+                        BinaryOperator:
+                          - GreaterThan
+                          - span:
+                              start: 611
+                              end: 616
+                            value:
+                              BinaryOperator:
+                                - Add
+                                - span:
+                                    start: 611
+                                    end: 612
+                                  value:
+                                    Constant:
+                                      Identifier: a
+                                - span:
+                                    start: 615
+                                    end: 616
+                                  value:
+                                    Constant:
+                                      Identifier: b
+                          - span:
+                              start: 619
+                              end: 620
+                            value:
+                              Constant:
+                                Identifier: c
+    - Expr:
+        span:
+          start: 632
+          end: 673
+        value:
+          Call:
+            name:
+              span:
+                start: 632
+                end: 637
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 638
+                  end: 672
+                value:
+                  BinaryOperator:
+                    - Add
+                    - span:
+                        start: 638
+                        end: 656
+                      value:
+                        Constant:
+                          String: "((a + b) > c) = "
+                    - span:
+                        start: 660
+                        end: 671
+                      value:
+                        BinaryOperator:
+                          - GreaterThan
+                          - span:
+                              start: 661
+                              end: 666
+                            value:
+                              BinaryOperator:
+                                - Add
+                                - span:
+                                    start: 661
+                                    end: 662
+                                  value:
+                                    Constant:
+                                      Identifier: a
+                                - span:
+                                    start: 665
+                                    end: 666
+                                  value:
+                                    Constant:
+                                      Identifier: b
+                          - span:
+                              start: 670
+                              end: 671
+                            value:
+                              Constant:
+                                Identifier: c
+    - Expr:
+        span:
+          start: 683
+          end: 695
+        value:
+          Call:
+            name:
+              span:
+                start: 683
+                end: 688
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 689
+                  end: 694
+                value:
+                  Constant:
+                    String: "---"
+    - Expr:
+        span:
+          start: 698
+          end: 743
+        value:
+          Call:
+            name:
+              span:
+                start: 698
+                end: 703
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 704
+                  end: 742
+                value:
+                  BinaryOperator:
+                    - Add
+                    - span:
+                        start: 704
+                        end: 723
+                      value:
+                        Constant:
+                          String: "a * b <= c + 5 = "
+                    - span:
+                        start: 727
+                        end: 741
+                      value:
+                        BinaryOperator:
+                          - LessThanEqual
+                          - span:
+                              start: 727
+                              end: 732
+                            value:
+                              BinaryOperator:
+                                - Multiply
+                                - span:
+                                    start: 727
+                                    end: 728
+                                  value:
+                                    Constant:
+                                      Identifier: a
+                                - span:
+                                    start: 731
+                                    end: 732
+                                  value:
+                                    Constant:
+                                      Identifier: b
+                          - span:
+                              start: 736
+                              end: 741
+                            value:
+                              BinaryOperator:
+                                - Add
+                                - span:
+                                    start: 736
+                                    end: 737
+                                  value:
+                                    Constant:
+                                      Identifier: c
+                                - span:
+                                    start: 740
+                                    end: 741
+                                  value:
+                                    Constant:
+                                      Integer: 5
+    - Expr:
+        span:
+          start: 754
+          end: 809
+        value:
+          Call:
+            name:
+              span:
+                start: 754
+                end: 759
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 760
+                  end: 808
+                value:
+                  BinaryOperator:
+                    - Add
+                    - span:
+                        start: 760
+                        end: 785
+                      value:
+                        Constant:
+                          String: "((a * b) <= (c + 5)) = "
+                    - span:
+                        start: 789
+                        end: 807
+                      value:
+                        BinaryOperator:
+                          - LessThanEqual
+                          - span:
+                              start: 790
+                              end: 795
+                            value:
+                              BinaryOperator:
+                                - Multiply
+                                - span:
+                                    start: 790
+                                    end: 791
+                                  value:
+                                    Constant:
+                                      Identifier: a
+                                - span:
+                                    start: 794
+                                    end: 795
+                                  value:
+                                    Constant:
+                                      Identifier: b
+                          - span:
+                              start: 801
+                              end: 806
+                            value:
+                              BinaryOperator:
+                                - Add
+                                - span:
+                                    start: 801
+                                    end: 802
+                                  value:
+                                    Constant:
+                                      Identifier: c
+                                - span:
+                                    start: 805
+                                    end: 806
+                                  value:
+                                    Constant:
+                                      Integer: 5

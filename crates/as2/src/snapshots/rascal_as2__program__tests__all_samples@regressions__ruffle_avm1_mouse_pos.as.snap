@@ -1,0 +1,504 @@
+---
+source: crates/as2/src/program.rs
+expression: parsed
+input_file: samples/as2/regressions/ruffle_avm1_mouse_pos.as
+---
+Ok:
+  initial_script:
+    - Expr:
+        span:
+          start: 309
+          end: 334
+        value:
+          BinaryOperator:
+            - Assign
+            - span:
+                start: 309
+                end: 317
+              value:
+                Field:
+                  - span:
+                      start: 307
+                      end: 309
+                    value:
+                      Constant:
+                        Identifier: zs
+                  - span:
+                      start: 310
+                      end: 317
+                    value:
+                      Constant:
+                        String: _xscale
+            - span:
+                start: 322
+                end: 334
+              value:
+                BinaryOperator:
+                  - Assign
+                  - span:
+                      start: 322
+                      end: 330
+                    value:
+                      Field:
+                        - span:
+                            start: 320
+                            end: 322
+                          value:
+                            Constant:
+                              Identifier: zs
+                        - span:
+                            start: 323
+                            end: 330
+                          value:
+                            Constant:
+                              String: _yscale
+                  - span:
+                      start: 333
+                      end: 334
+                    value:
+                      Constant:
+                        Integer: 0
+    - Declare:
+        - name: oldX
+          value: ~
+          type_name: ~
+        - name: oldY
+          value: ~
+          type_name: ~
+    - Expr:
+        span:
+          start: 353
+          end: 732
+        value:
+          Function:
+            name: dump
+            args: []
+            body:
+              - If:
+                  condition:
+                    span:
+                      start: 380
+                      end: 414
+                    value:
+                      BinaryOperator:
+                        - LogicalAnd
+                        - span:
+                            start: 380
+                            end: 395
+                          value:
+                            BinaryOperator:
+                              - Equal
+                              - span:
+                                  start: 380
+                                  end: 387
+                                value:
+                                  Constant:
+                                    Identifier: _xmouse
+                              - span:
+                                  start: 391
+                                  end: 395
+                                value:
+                                  Constant:
+                                    Identifier: oldX
+                        - span:
+                            start: 399
+                            end: 414
+                          value:
+                            BinaryOperator:
+                              - Equal
+                              - span:
+                                  start: 399
+                                  end: 406
+                                value:
+                                  Constant:
+                                    Identifier: _ymouse
+                              - span:
+                                  start: 410
+                                  end: 414
+                                value:
+                                  Constant:
+                                    Identifier: oldY
+                  "yes":
+                    Return: []
+                  "no": ~
+              - Expr:
+                  span:
+                    start: 437
+                    end: 451
+                  value:
+                    BinaryOperator:
+                      - Assign
+                      - span:
+                          start: 437
+                          end: 441
+                        value:
+                          Constant:
+                            Identifier: oldX
+                      - span:
+                          start: 444
+                          end: 451
+                        value:
+                          Constant:
+                            Identifier: _xmouse
+              - Expr:
+                  span:
+                    start: 457
+                    end: 471
+                  value:
+                    BinaryOperator:
+                      - Assign
+                      - span:
+                          start: 457
+                          end: 461
+                        value:
+                          Constant:
+                            Identifier: oldY
+                      - span:
+                          start: 464
+                          end: 471
+                        value:
+                          Constant:
+                            Identifier: _ymouse
+              - Expr:
+                  span:
+                    start: 478
+                    end: 517
+                  value:
+                    Call:
+                      name:
+                        span:
+                          start: 478
+                          end: 483
+                        value:
+                          Constant:
+                            Identifier: trace
+                      args:
+                        - span:
+                            start: 484
+                            end: 516
+                          value:
+                            BinaryOperator:
+                              - Add
+                              - span:
+                                  start: 484
+                                  end: 507
+                                value:
+                                  BinaryOperator:
+                                    - Add
+                                    - span:
+                                        start: 484
+                                        end: 503
+                                      value:
+                                        BinaryOperator:
+                                          - Add
+                                          - span:
+                                              start: 484
+                                              end: 495
+                                            value:
+                                              BinaryOperator:
+                                                - Add
+                                                - span:
+                                                    start: 484
+                                                    end: 491
+                                                  value:
+                                                    Constant:
+                                                      String: _root
+                                                - span:
+                                                    start: 492
+                                                    end: 495
+                                                  value:
+                                                    Constant:
+                                                      String: " "
+                                          - span:
+                                              start: 496
+                                              end: 503
+                                            value:
+                                              Constant:
+                                                Identifier: _xmouse
+                                    - span:
+                                        start: 504
+                                        end: 507
+                                      value:
+                                        Constant:
+                                          String: " "
+                              - span:
+                                  start: 509
+                                  end: 516
+                                value:
+                                  Constant:
+                                    Identifier: _ymouse
+              - Declare:
+                  - name: clips
+                    value:
+                      span:
+                        start: 535
+                        end: 577
+                      value:
+                        InitArray:
+                          - span:
+                              start: 536
+                              end: 538
+                            value:
+                              Constant:
+                                Identifier: id
+                          - span:
+                              start: 540
+                              end: 542
+                            value:
+                              Constant:
+                                Identifier: zs
+                          - span:
+                              start: 544
+                              end: 546
+                            value:
+                              Constant:
+                                Identifier: ip
+                          - span:
+                              start: 548
+                              end: 550
+                            value:
+                              Constant:
+                                Identifier: fp
+                          - span:
+                              start: 552
+                              end: 557
+                            value:
+                              Constant:
+                                Identifier: s42fp
+                          - span:
+                              start: 559
+                              end: 565
+                            value:
+                              Constant:
+                                Identifier: s133fp
+                          - span:
+                              start: 567
+                              end: 576
+                            value:
+                              Constant:
+                                Identifier: s133fpr15
+                    type_name: ~
+              - ForIn:
+                  condition:
+                    Classic:
+                      initialize:
+                        Declare:
+                          - name: i
+                            value:
+                              span:
+                                start: 594
+                                end: 595
+                              value:
+                                Constant:
+                                  Integer: 0
+                            type_name: ~
+                      condition:
+                        - span:
+                            start: 597
+                            end: 611
+                          value:
+                            BinaryOperator:
+                              - LessThan
+                              - span:
+                                  start: 597
+                                  end: 598
+                                value:
+                                  Constant:
+                                    Identifier: i
+                              - span:
+                                  start: 604
+                                  end: 611
+                                value:
+                                  Field:
+                                    - span:
+                                        start: 599
+                                        end: 604
+                                      value:
+                                        Constant:
+                                          Identifier: clips
+                                    - span:
+                                        start: 605
+                                        end: 611
+                                      value:
+                                        Constant:
+                                          String: length
+                      update:
+                        - span:
+                            start: 614
+                            end: 616
+                          value:
+                            UnaryOperator:
+                              - Increment: Postfix
+                              - span:
+                                  start: 613
+                                  end: 614
+                                value:
+                                  Constant:
+                                    Identifier: i
+                  body:
+                    Block:
+                      - Declare:
+                          - name: clip
+                            value:
+                              span:
+                                start: 644
+                                end: 647
+                              value:
+                                Field:
+                                  - span:
+                                      start: 639
+                                      end: 644
+                                    value:
+                                      Constant:
+                                        Identifier: clips
+                                  - span:
+                                      start: 645
+                                      end: 646
+                                    value:
+                                      Constant:
+                                        Identifier: i
+                            type_name: ~
+                      - Expr:
+                          span:
+                            start: 657
+                            end: 708
+                          value:
+                            Call:
+                              name:
+                                span:
+                                  start: 657
+                                  end: 662
+                                value:
+                                  Constant:
+                                    Identifier: trace
+                              args:
+                                - span:
+                                    start: 667
+                                    end: 707
+                                  value:
+                                    BinaryOperator:
+                                      - Add
+                                      - span:
+                                          start: 667
+                                          end: 694
+                                        value:
+                                          BinaryOperator:
+                                            - Add
+                                            - span:
+                                                start: 667
+                                                end: 690
+                                              value:
+                                                BinaryOperator:
+                                                  - Add
+                                                  - span:
+                                                      start: 667
+                                                      end: 677
+                                                    value:
+                                                      BinaryOperator:
+                                                        - Add
+                                                        - span:
+                                                            start: 667
+                                                            end: 673
+                                                          value:
+                                                            Field:
+                                                              - span:
+                                                                  start: 663
+                                                                  end: 667
+                                                                value:
+                                                                  Constant:
+                                                                    Identifier: clip
+                                                              - span:
+                                                                  start: 668
+                                                                  end: 673
+                                                                value:
+                                                                  Constant:
+                                                                    String: _name
+                                                        - span:
+                                                            start: 674
+                                                            end: 677
+                                                          value:
+                                                            Constant:
+                                                              String: " "
+                                                  - span:
+                                                      start: 682
+                                                      end: 690
+                                                    value:
+                                                      Field:
+                                                        - span:
+                                                            start: 678
+                                                            end: 682
+                                                          value:
+                                                            Constant:
+                                                              Identifier: clip
+                                                        - span:
+                                                            start: 683
+                                                            end: 690
+                                                          value:
+                                                            Constant:
+                                                              String: _xmouse
+                                            - span:
+                                                start: 691
+                                                end: 694
+                                              value:
+                                                Constant:
+                                                  String: " "
+                                      - span:
+                                          start: 699
+                                          end: 707
+                                        value:
+                                          Field:
+                                            - span:
+                                                start: 695
+                                                end: 699
+                                              value:
+                                                Constant:
+                                                  Identifier: clip
+                                            - span:
+                                                start: 700
+                                                end: 707
+                                              value:
+                                                Constant:
+                                                  String: _ymouse
+              - Expr:
+                  span:
+                    start: 720
+                    end: 729
+                  value:
+                    Call:
+                      name:
+                        span:
+                          start: 720
+                          end: 725
+                        value:
+                          Constant:
+                            Identifier: trace
+                      args:
+                        - span:
+                            start: 726
+                            end: 728
+                          value:
+                            Constant:
+                              String: ""
+    - Expr:
+        span:
+          start: 734
+          end: 773
+        value:
+          Function:
+            name: onEnterFrame
+            args: []
+            body:
+              - Expr:
+                  span:
+                    start: 764
+                    end: 770
+                  value:
+                    Call:
+                      name:
+                        span:
+                          start: 764
+                          end: 768
+                        value:
+                          Constant:
+                            Identifier: dump
+                      args: []

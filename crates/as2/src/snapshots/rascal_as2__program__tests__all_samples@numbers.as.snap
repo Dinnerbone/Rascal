@@ -1,0 +1,1255 @@
+---
+source: crates/as2/src/program.rs
+expression: parsed
+input_file: samples/as2/numbers.as
+---
+Ok:
+  initial_script:
+    - Declare:
+        - name: i0
+          value:
+            span:
+              start: 29
+              end: 30
+            value:
+              Constant:
+                Integer: 0
+          type_name: ~
+    - Declare:
+        - name: i1
+          value:
+            span:
+              start: 41
+              end: 42
+            value:
+              Constant:
+                Integer: 1
+          type_name: ~
+    - Declare:
+        - name: i42
+          value:
+            span:
+              start: 54
+              end: 56
+            value:
+              Constant:
+                Integer: 42
+          type_name: ~
+    - Declare:
+        - name: iLarge
+          value:
+            span:
+              start: 71
+              end: 81
+            value:
+              Constant:
+                Integer: 2147483647
+          type_name: ~
+    - Declare:
+        - name: iLargePlusOne
+          value:
+            span:
+              start: 114
+              end: 124
+            value:
+              Constant:
+                Float: 2147483648
+          type_name: ~
+    - Declare:
+        - name: f0
+          value:
+            span:
+              start: 180
+              end: 183
+            value:
+              Constant:
+                Float: 0
+          type_name: ~
+    - Declare:
+        - name: f1
+          value:
+            span:
+              start: 194
+              end: 198
+            value:
+              Constant:
+                Float: 1.23
+          type_name: ~
+    - Declare:
+        - name: fLeadingDot
+          value:
+            span:
+              start: 218
+              end: 220
+            value:
+              Constant:
+                Float: 0.5
+          type_name: ~
+    - Declare:
+        - name: fTrailingDot
+          value:
+            span:
+              start: 257
+              end: 259
+            value:
+              Constant:
+                Float: 5
+          type_name: ~
+    - Declare:
+        - name: h0
+          value:
+            span:
+              start: 333
+              end: 336
+            value:
+              Constant:
+                Integer: 0
+          type_name: ~
+    - Declare:
+        - name: hMix
+          value:
+            span:
+              start: 349
+              end: 355
+            value:
+              Constant:
+                Integer: 6699
+          type_name: ~
+    - Declare:
+        - name: hMaxByte
+          value:
+            span:
+              start: 372
+              end: 376
+            value:
+              Constant:
+                Integer: 255
+          type_name: ~
+    - Declare:
+        - name: eBig
+          value:
+            span:
+              start: 411
+              end: 415
+            value:
+              Constant:
+                Float: 10000000000
+          type_name: ~
+    - Declare:
+        - name: eSmall
+          value:
+            span:
+              start: 430
+              end: 435
+            value:
+              Constant:
+                Float: 0.0000000001
+          type_name: ~
+    - Declare:
+        - name: ePlus
+          value:
+            span:
+              start: 449
+              end: 455
+            value:
+              Constant:
+                Float: 2500
+          type_name: ~
+    - Declare:
+        - name: eLeadingDot
+          value:
+            span:
+              start: 475
+              end: 479
+            value:
+              Constant:
+                Float: 50
+          type_name: ~
+    - Declare:
+        - name: eTrailingDot
+          value:
+            span:
+              start: 500
+              end: 504
+            value:
+              Constant:
+                Float: 5000
+          type_name: ~
+    - Declare:
+        - name: eSci
+          value:
+            span:
+              start: 517
+              end: 525
+            value:
+              Constant:
+                Float: 602200000000000000000000
+          type_name: ~
+    - Declare:
+        - name: nDec
+          value:
+            span:
+              start: 577
+              end: 581
+            value:
+              UnaryOperator:
+                - Sub
+                - span:
+                    start: 578
+                    end: 581
+                  value:
+                    Constant:
+                      Integer: 123
+          type_name: ~
+    - Declare:
+        - name: nHex
+          value:
+            span:
+              start: 594
+              end: 599
+            value:
+              UnaryOperator:
+                - Sub
+                - span:
+                    start: 595
+                    end: 599
+                  value:
+                    Constant:
+                      Integer: 255
+          type_name: ~
+    - Declare:
+        - name: nFloat
+          value:
+            span:
+              start: 614
+              end: 619
+            value:
+              UnaryOperator:
+                - Sub
+                - span:
+                    start: 615
+                    end: 619
+                  value:
+                    Constant:
+                      Float: 3.14
+          type_name: ~
+    - Declare:
+        - name: pDec
+          value:
+            span:
+              start: 633
+              end: 634
+            value:
+              Constant:
+                Integer: 7
+          type_name: ~
+    - Declare:
+        - name: sum
+          value:
+            span:
+              start: 690
+              end: 699
+            value:
+              BinaryOperator:
+                - Add
+                - span:
+                    start: 690
+                    end: 695
+                  value:
+                    BinaryOperator:
+                      - Add
+                      - span:
+                          start: 690
+                          end: 691
+                        value:
+                          Constant:
+                            Integer: 1
+                      - span:
+                          start: 694
+                          end: 695
+                        value:
+                          Constant:
+                            Integer: 2
+                - span:
+                    start: 698
+                    end: 699
+                  value:
+                    Constant:
+                      Integer: 3
+          type_name: ~
+    - Declare:
+        - name: diff
+          value:
+            span:
+              start: 712
+              end: 718
+            value:
+              BinaryOperator:
+                - Sub
+                - span:
+                    start: 712
+                    end: 714
+                  value:
+                    Constant:
+                      Integer: 10
+                - span:
+                    start: 717
+                    end: 718
+                  value:
+                    Constant:
+                      Integer: 4
+          type_name: ~
+    - Declare:
+        - name: prod
+          value:
+            span:
+              start: 731
+              end: 736
+            value:
+              BinaryOperator:
+                - Multiply
+                - span:
+                    start: 731
+                    end: 732
+                  value:
+                    Constant:
+                      Integer: 6
+                - span:
+                    start: 735
+                    end: 736
+                  value:
+                    Constant:
+                      Integer: 7
+          type_name: ~
+    - Declare:
+        - name: quot
+          value:
+            span:
+              start: 749
+              end: 755
+            value:
+              BinaryOperator:
+                - Divide
+                - span:
+                    start: 749
+                    end: 751
+                  value:
+                    Constant:
+                      Integer: 22
+                - span:
+                    start: 754
+                    end: 755
+                  value:
+                    Constant:
+                      Integer: 7
+          type_name: ~
+    - Declare:
+        - name: combo
+          value:
+            span:
+              start: 769
+              end: 794
+            value:
+              BinaryOperator:
+                - Sub
+                - span:
+                    start: 769
+                    end: 788
+                  value:
+                    BinaryOperator:
+                      - Multiply
+                      - span:
+                          start: 770
+                          end: 779
+                        value:
+                          BinaryOperator:
+                            - Add
+                            - span:
+                                start: 770
+                                end: 774
+                              value:
+                                Constant:
+                                  Integer: 16
+                            - span:
+                                start: 777
+                                end: 779
+                              value:
+                                Constant:
+                                  Integer: 15
+                      - span:
+                          start: 783
+                          end: 788
+                        value:
+                          Constant:
+                            Float: 25
+                - span:
+                    start: 791
+                    end: 794
+                  value:
+                    Constant:
+                      Float: 0.75
+          type_name: ~
+    - Expr:
+        span:
+          start: 797
+          end: 816
+        value:
+          Call:
+            name:
+              span:
+                start: 797
+                end: 802
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 803
+                  end: 815
+                value:
+                  BinaryOperator:
+                    - Add
+                    - span:
+                        start: 803
+                        end: 810
+                      value:
+                        Constant:
+                          String: "i0 = "
+                    - span:
+                        start: 813
+                        end: 815
+                      value:
+                        Constant:
+                          Identifier: i0
+    - Expr:
+        span:
+          start: 818
+          end: 837
+        value:
+          Call:
+            name:
+              span:
+                start: 818
+                end: 823
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 824
+                  end: 836
+                value:
+                  BinaryOperator:
+                    - Add
+                    - span:
+                        start: 824
+                        end: 831
+                      value:
+                        Constant:
+                          String: "i1 = "
+                    - span:
+                        start: 834
+                        end: 836
+                      value:
+                        Constant:
+                          Identifier: i1
+    - Expr:
+        span:
+          start: 839
+          end: 860
+        value:
+          Call:
+            name:
+              span:
+                start: 839
+                end: 844
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 845
+                  end: 859
+                value:
+                  BinaryOperator:
+                    - Add
+                    - span:
+                        start: 845
+                        end: 853
+                      value:
+                        Constant:
+                          String: "i42 = "
+                    - span:
+                        start: 856
+                        end: 859
+                      value:
+                        Constant:
+                          Identifier: i42
+    - Expr:
+        span:
+          start: 862
+          end: 889
+        value:
+          Call:
+            name:
+              span:
+                start: 862
+                end: 867
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 868
+                  end: 888
+                value:
+                  BinaryOperator:
+                    - Add
+                    - span:
+                        start: 868
+                        end: 879
+                      value:
+                        Constant:
+                          String: "iLarge = "
+                    - span:
+                        start: 882
+                        end: 888
+                      value:
+                        Constant:
+                          Identifier: iLarge
+    - Expr:
+        span:
+          start: 891
+          end: 932
+        value:
+          Call:
+            name:
+              span:
+                start: 891
+                end: 896
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 897
+                  end: 931
+                value:
+                  BinaryOperator:
+                    - Add
+                    - span:
+                        start: 897
+                        end: 915
+                      value:
+                        Constant:
+                          String: "iLargePlusOne = "
+                    - span:
+                        start: 918
+                        end: 931
+                      value:
+                        Constant:
+                          Identifier: iLargePlusOne
+    - Expr:
+        span:
+          start: 935
+          end: 954
+        value:
+          Call:
+            name:
+              span:
+                start: 935
+                end: 940
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 941
+                  end: 953
+                value:
+                  BinaryOperator:
+                    - Add
+                    - span:
+                        start: 941
+                        end: 948
+                      value:
+                        Constant:
+                          String: "f0 = "
+                    - span:
+                        start: 951
+                        end: 953
+                      value:
+                        Constant:
+                          Identifier: f0
+    - Expr:
+        span:
+          start: 956
+          end: 975
+        value:
+          Call:
+            name:
+              span:
+                start: 956
+                end: 961
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 962
+                  end: 974
+                value:
+                  BinaryOperator:
+                    - Add
+                    - span:
+                        start: 962
+                        end: 969
+                      value:
+                        Constant:
+                          String: "f1 = "
+                    - span:
+                        start: 972
+                        end: 974
+                      value:
+                        Constant:
+                          Identifier: f1
+    - Expr:
+        span:
+          start: 977
+          end: 1014
+        value:
+          Call:
+            name:
+              span:
+                start: 977
+                end: 982
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 983
+                  end: 1013
+                value:
+                  BinaryOperator:
+                    - Add
+                    - span:
+                        start: 983
+                        end: 999
+                      value:
+                        Constant:
+                          String: "fLeadingDot = "
+                    - span:
+                        start: 1002
+                        end: 1013
+                      value:
+                        Constant:
+                          Identifier: fLeadingDot
+    - Expr:
+        span:
+          start: 1016
+          end: 1055
+        value:
+          Call:
+            name:
+              span:
+                start: 1016
+                end: 1021
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 1022
+                  end: 1054
+                value:
+                  BinaryOperator:
+                    - Add
+                    - span:
+                        start: 1022
+                        end: 1039
+                      value:
+                        Constant:
+                          String: "fTrailingDot = "
+                    - span:
+                        start: 1042
+                        end: 1054
+                      value:
+                        Constant:
+                          Identifier: fTrailingDot
+    - Expr:
+        span:
+          start: 1058
+          end: 1077
+        value:
+          Call:
+            name:
+              span:
+                start: 1058
+                end: 1063
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 1064
+                  end: 1076
+                value:
+                  BinaryOperator:
+                    - Add
+                    - span:
+                        start: 1064
+                        end: 1071
+                      value:
+                        Constant:
+                          String: "h0 = "
+                    - span:
+                        start: 1074
+                        end: 1076
+                      value:
+                        Constant:
+                          Identifier: h0
+    - Expr:
+        span:
+          start: 1079
+          end: 1102
+        value:
+          Call:
+            name:
+              span:
+                start: 1079
+                end: 1084
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 1085
+                  end: 1101
+                value:
+                  BinaryOperator:
+                    - Add
+                    - span:
+                        start: 1085
+                        end: 1094
+                      value:
+                        Constant:
+                          String: "hMix = "
+                    - span:
+                        start: 1097
+                        end: 1101
+                      value:
+                        Constant:
+                          Identifier: hMix
+    - Expr:
+        span:
+          start: 1104
+          end: 1135
+        value:
+          Call:
+            name:
+              span:
+                start: 1104
+                end: 1109
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 1110
+                  end: 1134
+                value:
+                  BinaryOperator:
+                    - Add
+                    - span:
+                        start: 1110
+                        end: 1123
+                      value:
+                        Constant:
+                          String: "hMaxByte = "
+                    - span:
+                        start: 1126
+                        end: 1134
+                      value:
+                        Constant:
+                          Identifier: hMaxByte
+    - Expr:
+        span:
+          start: 1138
+          end: 1161
+        value:
+          Call:
+            name:
+              span:
+                start: 1138
+                end: 1143
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 1144
+                  end: 1160
+                value:
+                  BinaryOperator:
+                    - Add
+                    - span:
+                        start: 1144
+                        end: 1153
+                      value:
+                        Constant:
+                          String: "eBig = "
+                    - span:
+                        start: 1156
+                        end: 1160
+                      value:
+                        Constant:
+                          Identifier: eBig
+    - Expr:
+        span:
+          start: 1163
+          end: 1190
+        value:
+          Call:
+            name:
+              span:
+                start: 1163
+                end: 1168
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 1169
+                  end: 1189
+                value:
+                  BinaryOperator:
+                    - Add
+                    - span:
+                        start: 1169
+                        end: 1180
+                      value:
+                        Constant:
+                          String: "eSmall = "
+                    - span:
+                        start: 1183
+                        end: 1189
+                      value:
+                        Constant:
+                          Identifier: eSmall
+    - Expr:
+        span:
+          start: 1192
+          end: 1217
+        value:
+          Call:
+            name:
+              span:
+                start: 1192
+                end: 1197
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 1198
+                  end: 1216
+                value:
+                  BinaryOperator:
+                    - Add
+                    - span:
+                        start: 1198
+                        end: 1208
+                      value:
+                        Constant:
+                          String: "ePlus = "
+                    - span:
+                        start: 1211
+                        end: 1216
+                      value:
+                        Constant:
+                          Identifier: ePlus
+    - Expr:
+        span:
+          start: 1219
+          end: 1256
+        value:
+          Call:
+            name:
+              span:
+                start: 1219
+                end: 1224
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 1225
+                  end: 1255
+                value:
+                  BinaryOperator:
+                    - Add
+                    - span:
+                        start: 1225
+                        end: 1241
+                      value:
+                        Constant:
+                          String: "eLeadingDot = "
+                    - span:
+                        start: 1244
+                        end: 1255
+                      value:
+                        Constant:
+                          Identifier: eLeadingDot
+    - Expr:
+        span:
+          start: 1258
+          end: 1297
+        value:
+          Call:
+            name:
+              span:
+                start: 1258
+                end: 1263
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 1264
+                  end: 1296
+                value:
+                  BinaryOperator:
+                    - Add
+                    - span:
+                        start: 1264
+                        end: 1281
+                      value:
+                        Constant:
+                          String: "eTrailingDot = "
+                    - span:
+                        start: 1284
+                        end: 1296
+                      value:
+                        Constant:
+                          Identifier: eTrailingDot
+    - Expr:
+        span:
+          start: 1299
+          end: 1322
+        value:
+          Call:
+            name:
+              span:
+                start: 1299
+                end: 1304
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 1305
+                  end: 1321
+                value:
+                  BinaryOperator:
+                    - Add
+                    - span:
+                        start: 1305
+                        end: 1314
+                      value:
+                        Constant:
+                          String: "eSci = "
+                    - span:
+                        start: 1317
+                        end: 1321
+                      value:
+                        Constant:
+                          Identifier: eSci
+    - Expr:
+        span:
+          start: 1325
+          end: 1348
+        value:
+          Call:
+            name:
+              span:
+                start: 1325
+                end: 1330
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 1331
+                  end: 1347
+                value:
+                  BinaryOperator:
+                    - Add
+                    - span:
+                        start: 1331
+                        end: 1340
+                      value:
+                        Constant:
+                          String: "nDec = "
+                    - span:
+                        start: 1343
+                        end: 1347
+                      value:
+                        Constant:
+                          Identifier: nDec
+    - Expr:
+        span:
+          start: 1350
+          end: 1373
+        value:
+          Call:
+            name:
+              span:
+                start: 1350
+                end: 1355
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 1356
+                  end: 1372
+                value:
+                  BinaryOperator:
+                    - Add
+                    - span:
+                        start: 1356
+                        end: 1365
+                      value:
+                        Constant:
+                          String: "nHex = "
+                    - span:
+                        start: 1368
+                        end: 1372
+                      value:
+                        Constant:
+                          Identifier: nHex
+    - Expr:
+        span:
+          start: 1375
+          end: 1402
+        value:
+          Call:
+            name:
+              span:
+                start: 1375
+                end: 1380
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 1381
+                  end: 1401
+                value:
+                  BinaryOperator:
+                    - Add
+                    - span:
+                        start: 1381
+                        end: 1392
+                      value:
+                        Constant:
+                          String: "nFloat = "
+                    - span:
+                        start: 1395
+                        end: 1401
+                      value:
+                        Constant:
+                          Identifier: nFloat
+    - Expr:
+        span:
+          start: 1404
+          end: 1427
+        value:
+          Call:
+            name:
+              span:
+                start: 1404
+                end: 1409
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 1410
+                  end: 1426
+                value:
+                  BinaryOperator:
+                    - Add
+                    - span:
+                        start: 1410
+                        end: 1419
+                      value:
+                        Constant:
+                          String: "pDec = "
+                    - span:
+                        start: 1422
+                        end: 1426
+                      value:
+                        Constant:
+                          Identifier: pDec
+    - Expr:
+        span:
+          start: 1430
+          end: 1451
+        value:
+          Call:
+            name:
+              span:
+                start: 1430
+                end: 1435
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 1436
+                  end: 1450
+                value:
+                  BinaryOperator:
+                    - Add
+                    - span:
+                        start: 1436
+                        end: 1444
+                      value:
+                        Constant:
+                          String: "sum = "
+                    - span:
+                        start: 1447
+                        end: 1450
+                      value:
+                        Constant:
+                          Identifier: sum
+    - Expr:
+        span:
+          start: 1453
+          end: 1476
+        value:
+          Call:
+            name:
+              span:
+                start: 1453
+                end: 1458
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 1459
+                  end: 1475
+                value:
+                  BinaryOperator:
+                    - Add
+                    - span:
+                        start: 1459
+                        end: 1468
+                      value:
+                        Constant:
+                          String: "diff = "
+                    - span:
+                        start: 1471
+                        end: 1475
+                      value:
+                        Constant:
+                          Identifier: diff
+    - Expr:
+        span:
+          start: 1478
+          end: 1501
+        value:
+          Call:
+            name:
+              span:
+                start: 1478
+                end: 1483
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 1484
+                  end: 1500
+                value:
+                  BinaryOperator:
+                    - Add
+                    - span:
+                        start: 1484
+                        end: 1493
+                      value:
+                        Constant:
+                          String: "prod = "
+                    - span:
+                        start: 1496
+                        end: 1500
+                      value:
+                        Constant:
+                          Identifier: prod
+    - Expr:
+        span:
+          start: 1503
+          end: 1526
+        value:
+          Call:
+            name:
+              span:
+                start: 1503
+                end: 1508
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 1509
+                  end: 1525
+                value:
+                  BinaryOperator:
+                    - Add
+                    - span:
+                        start: 1509
+                        end: 1518
+                      value:
+                        Constant:
+                          String: "quot = "
+                    - span:
+                        start: 1521
+                        end: 1525
+                      value:
+                        Constant:
+                          Identifier: quot
+    - Expr:
+        span:
+          start: 1528
+          end: 1553
+        value:
+          Call:
+            name:
+              span:
+                start: 1528
+                end: 1533
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 1534
+                  end: 1552
+                value:
+                  BinaryOperator:
+                    - Add
+                    - span:
+                        start: 1534
+                        end: 1544
+                      value:
+                        Constant:
+                          String: "combo = "
+                    - span:
+                        start: 1547
+                        end: 1552
+                      value:
+                        Constant:
+                          Identifier: combo

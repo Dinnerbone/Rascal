@@ -1,7 +1,7 @@
 use anyhow::Result;
 use clap::Parser;
-use rascal_as2::ActionScript;
-use rascal_as2_codegen::ast_to_pcode;
+use rascal_as2::program::{FileSystemSourceProvider, ProgramBuilder};
+use rascal_as2_codegen::hir_to_pcode;
 use rascal_as2_pcode::{PCode, pcode_to_swf};
 use std::fs;
 use std::path::PathBuf;
@@ -17,11 +17,13 @@ struct Opt {
 fn main() -> Result<()> {
     let opt = Opt::parse();
     let src = fs::read_to_string(&opt.src)?;
-    let filename = opt.src.file_name().unwrap().to_string_lossy();
+    let filename = opt.src.to_string_lossy();
     let pcode = if filename.ends_with(".as") {
-        let actionscript = ActionScript::new(&filename, &src);
-        let document = actionscript.to_ast().unwrap_or_else(|e| panic!("{}", e));
-        ast_to_pcode(&filename, &src, &document).unwrap_or_else(|e| panic!("{}", e))
+        let mut builder =
+            ProgramBuilder::new(FileSystemSourceProvider::with_root(PathBuf::from(".")));
+        builder.add_script(&filename);
+        let parsed = builder.build().unwrap();
+        hir_to_pcode(&filename, &src, &parsed.initial_script).unwrap()
     } else {
         let pcode = PCode::new(&filename, &src);
         pcode.to_actions().unwrap_or_else(|e| panic!("{}", e))

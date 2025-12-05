@@ -1,0 +1,135 @@
+---
+source: crates/as2/src/program.rs
+expression: parsed
+input_file: samples/as2/if_frame_loaded.as
+---
+Ok:
+  initial_script:
+    - WaitForFrame:
+        frame:
+          span:
+            start: 14
+            end: 15
+          value:
+            Constant:
+              Integer: 2
+        scene: ~
+        if_loaded:
+          Expr:
+            span:
+              start: 17
+              end: 37
+            value:
+              Call:
+                name:
+                  span:
+                    start: 17
+                    end: 22
+                  value:
+                    Constant:
+                      Identifier: trace
+                args:
+                  - span:
+                      start: 23
+                      end: 36
+                    value:
+                      Constant:
+                        String: single line
+    - WaitForFrame:
+        frame:
+          span:
+            start: 63
+            end: 68
+          value:
+            Constant:
+              Identifier: frame
+        scene:
+          span:
+            start: 54
+            end: 61
+          value:
+            Constant:
+              String: scene
+        if_loaded:
+          Block:
+            - Expr:
+                span:
+                  start: 73
+                  end: 87
+                value:
+                  Call:
+                    name:
+                      span:
+                        start: 73
+                        end: 78
+                      value:
+                        Constant:
+                          Identifier: trace
+                    args:
+                      - span:
+                          start: 79
+                          end: 86
+                        value:
+                          Constant:
+                            String: block
+    - WaitForFrame:
+        frame:
+          span:
+            start: 106
+            end: 107
+          value:
+            Constant:
+              Integer: 3
+        scene: ~
+        if_loaded:
+          If:
+            condition:
+              span:
+                start: 113
+                end: 117
+              value:
+                Constant:
+                  Identifier: this
+            "yes":
+              Block:
+                - Expr:
+                    span:
+                      start: 122
+                      end: 149
+                    value:
+                      Call:
+                        name:
+                          span:
+                            start: 122
+                            end: 127
+                          value:
+                            Constant:
+                              Identifier: trace
+                        args:
+                          - span:
+                              start: 128
+                              end: 148
+                            value:
+                              Constant:
+                                String: nested conditions!
+            "no": ~
+    - Expr:
+        span:
+          start: 154
+          end: 167
+        value:
+          Call:
+            name:
+              span:
+                start: 154
+                end: 159
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 160
+                  end: 166
+                value:
+                  Constant:
+                    String: end!

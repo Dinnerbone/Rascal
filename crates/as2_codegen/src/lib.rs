@@ -2,7 +2,7 @@ use crate::builder::CodeBuilder;
 use crate::context::ScriptContext;
 use crate::error::CompileError;
 use crate::statement::gen_statements;
-use rascal_as2::Document;
+use rascal_as2::hir::StatementKind;
 use rascal_as2_pcode::{Action, Actions};
 
 mod access;
@@ -16,15 +16,15 @@ mod statement;
 #[cfg(test)]
 mod tests;
 
-pub fn ast_to_pcode<'a>(
+pub fn hir_to_pcode<'a>(
     filename: &'a str,
     source: &'a str,
-    ast: &Document,
+    statements: &[StatementKind],
 ) -> Result<Actions, CompileError<'a>> {
     let mut context = ScriptContext::new();
     let mut builder = CodeBuilder::new();
     builder.action(Action::ConstantPool(vec![])); // Reserve space for the constant pool
-    gen_statements(&mut context, &mut builder, &ast.statements);
+    gen_statements(&mut context, &mut builder, statements);
     let (mut actions, errors) = builder.into_actions();
     actions.replace_action(
         0,

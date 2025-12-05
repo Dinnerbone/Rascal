@@ -1,0 +1,426 @@
+---
+source: crates/as2/src/program.rs
+expression: parsed
+input_file: samples/as2/try_catch_finally_break_continue.as
+---
+Ok:
+  initial_script:
+    - ForIn:
+        condition:
+          Classic:
+            initialize:
+              Declare:
+                - name: i
+                  value:
+                    span:
+                      start: 13
+                      end: 14
+                    value:
+                      Constant:
+                        Integer: 0
+                  type_name: ~
+            condition:
+              - span:
+                  start: 16
+                  end: 21
+                value:
+                  BinaryOperator:
+                    - LessThan
+                    - span:
+                        start: 16
+                        end: 17
+                      value:
+                        Constant:
+                          Identifier: i
+                    - span:
+                        start: 20
+                        end: 21
+                      value:
+                        Constant:
+                          Integer: 6
+            update:
+              - span:
+                  start: 24
+                  end: 26
+                value:
+                  UnaryOperator:
+                    - Increment: Postfix
+                    - span:
+                        start: 23
+                        end: 24
+                      value:
+                        Constant:
+                          Identifier: i
+        body:
+          Block:
+            - Expr:
+                span:
+                  start: 34
+                  end: 54
+                value:
+                  Call:
+                    name:
+                      span:
+                        start: 34
+                        end: 39
+                      value:
+                        Constant:
+                          Identifier: trace
+                    args:
+                      - span:
+                          start: 40
+                          end: 53
+                        value:
+                          BinaryOperator:
+                            - Add
+                            - span:
+                                start: 40
+                                end: 49
+                              value:
+                                Constant:
+                                  String: loop i=
+                            - span:
+                                start: 52
+                                end: 53
+                              value:
+                                Constant:
+                                  Identifier: i
+            - Try:
+                try_body:
+                  - Expr:
+                      span:
+                        start: 74
+                        end: 95
+                      value:
+                        Call:
+                          name:
+                            span:
+                              start: 74
+                              end: 79
+                            value:
+                              Constant:
+                                Identifier: trace
+                          args:
+                            - span:
+                                start: 80
+                                end: 94
+                              value:
+                                BinaryOperator:
+                                  - Add
+                                  - span:
+                                      start: 80
+                                      end: 90
+                                    value:
+                                      Constant:
+                                        String: "  try:i="
+                                  - span:
+                                      start: 93
+                                      end: 94
+                                    value:
+                                      Constant:
+                                        Identifier: i
+                  - If:
+                      condition:
+                        span:
+                          start: 109
+                          end: 115
+                        value:
+                          BinaryOperator:
+                            - Equal
+                            - span:
+                                start: 109
+                                end: 110
+                              value:
+                                Constant:
+                                  Identifier: i
+                            - span:
+                                start: 114
+                                end: 115
+                              value:
+                                Constant:
+                                  Integer: 1
+                      "yes":
+                        Block:
+                          - Continue
+                      "no": ~
+                  - If:
+                      condition:
+                        span:
+                          start: 203
+                          end: 209
+                        value:
+                          BinaryOperator:
+                            - Equal
+                            - span:
+                                start: 203
+                                end: 204
+                              value:
+                                Constant:
+                                  Identifier: i
+                            - span:
+                                start: 208
+                                end: 209
+                              value:
+                                Constant:
+                                  Integer: 2
+                      "yes":
+                        Block:
+                          - Throw:
+                              - span:
+                                  start: 292
+                                  end: 300
+                                value:
+                                  Constant:
+                                    String: boom@2
+                      "no": ~
+                  - If:
+                      condition:
+                        span:
+                          start: 324
+                          end: 330
+                        value:
+                          BinaryOperator:
+                            - Equal
+                            - span:
+                                start: 324
+                                end: 325
+                              value:
+                                Constant:
+                                  Identifier: i
+                            - span:
+                                start: 329
+                                end: 330
+                              value:
+                                Constant:
+                                  Integer: 4
+                      "yes":
+                        Block:
+                          - Throw:
+                              - span:
+                                  start: 419
+                                  end: 427
+                                value:
+                                  Constant:
+                                    String: boom@4
+                      "no": ~
+                typed_catches: []
+                catch_all:
+                  name:
+                    span:
+                      start: 452
+                      end: 453
+                    value: e
+                  body:
+                    - Expr:
+                        span:
+                          start: 465
+                          end: 486
+                        value:
+                          Call:
+                            name:
+                              span:
+                                start: 465
+                                end: 470
+                              value:
+                                Constant:
+                                  Identifier: trace
+                            args:
+                              - span:
+                                  start: 471
+                                  end: 485
+                                value:
+                                  BinaryOperator:
+                                    - Add
+                                    - span:
+                                        start: 471
+                                        end: 481
+                                      value:
+                                        Constant:
+                                          String: "  catch:"
+                                    - span:
+                                        start: 484
+                                        end: 485
+                                      value:
+                                        Constant:
+                                          Identifier: e
+                    - If:
+                        condition:
+                          span:
+                            start: 500
+                            end: 513
+                          value:
+                            BinaryOperator:
+                              - Equal
+                              - span:
+                                  start: 500
+                                  end: 501
+                                value:
+                                  Constant:
+                                    Identifier: e
+                              - span:
+                                  start: 505
+                                  end: 513
+                                value:
+                                  Constant:
+                                    String: boom@2
+                        "yes":
+                          Block:
+                            - Break
+                        "no": ~
+                    - If:
+                        condition:
+                          span:
+                            start: 605
+                            end: 618
+                          value:
+                            BinaryOperator:
+                              - Equal
+                              - span:
+                                  start: 605
+                                  end: 606
+                                value:
+                                  Constant:
+                                    Identifier: e
+                              - span:
+                                  start: 610
+                                  end: 618
+                                value:
+                                  Constant:
+                                    String: boom@4
+                        "yes":
+                          Block:
+                            - Continue
+                        "no": ~
+                finally:
+                  - Expr:
+                      span:
+                        start: 728
+                        end: 753
+                      value:
+                        Call:
+                          name:
+                            span:
+                              start: 728
+                              end: 733
+                            value:
+                              Constant:
+                                Identifier: trace
+                          args:
+                            - span:
+                                start: 734
+                                end: 752
+                              value:
+                                BinaryOperator:
+                                  - Add
+                                  - span:
+                                      start: 734
+                                      end: 748
+                                    value:
+                                      Constant:
+                                        String: "  finally:i="
+                                  - span:
+                                      start: 751
+                                      end: 752
+                                    value:
+                                      Constant:
+                                        Identifier: i
+                  - If:
+                      condition:
+                        span:
+                          start: 843
+                          end: 849
+                        value:
+                          BinaryOperator:
+                            - Equal
+                            - span:
+                                start: 843
+                                end: 844
+                              value:
+                                Constant:
+                                  Identifier: i
+                            - span:
+                                start: 848
+                                end: 849
+                              value:
+                                Constant:
+                                  Integer: 3
+                      "yes":
+                        Block:
+                          - Continue
+                      "no": ~
+                  - If:
+                      condition:
+                        span:
+                          start: 897
+                          end: 903
+                        value:
+                          BinaryOperator:
+                            - Equal
+                            - span:
+                                start: 897
+                                end: 898
+                              value:
+                                Constant:
+                                  Identifier: i
+                            - span:
+                                start: 902
+                                end: 903
+                              value:
+                                Constant:
+                                  Integer: 5
+                      "yes":
+                        Block:
+                          - Break
+                      "no": ~
+            - Expr:
+                span:
+                  start: 947
+                  end: 988
+                value:
+                  Call:
+                    name:
+                      span:
+                        start: 947
+                        end: 952
+                      value:
+                        Constant:
+                          Identifier: trace
+                    args:
+                      - span:
+                          start: 953
+                          end: 987
+                        value:
+                          BinaryOperator:
+                            - Add
+                            - span:
+                                start: 953
+                                end: 983
+                              value:
+                                Constant:
+                                  String: "  after try/catch/finally i="
+                            - span:
+                                start: 986
+                                end: 987
+                              value:
+                                Constant:
+                                  Identifier: i
+    - Expr:
+        span:
+          start: 993
+          end: 1006
+        value:
+          Call:
+            name:
+              span:
+                start: 993
+                end: 998
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 999
+                  end: 1005
+                value:
+                  Constant:
+                    String: done

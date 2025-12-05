@@ -1,0 +1,37 @@
+---
+source: crates/as2/src/program.rs
+expression: parsed
+input_file: samples/as2/assign_variable_and_trace.as
+---
+Ok:
+  initial_script:
+    - Declare:
+        - name: message
+          value:
+            span:
+              start: 14
+              end: 27
+            value:
+              Constant:
+                String: Hello World
+          type_name: ~
+    - Expr:
+        span:
+          start: 29
+          end: 43
+        value:
+          Call:
+            name:
+              span:
+                start: 29
+                end: 34
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 35
+                  end: 42
+                value:
+                  Constant:
+                    Identifier: message

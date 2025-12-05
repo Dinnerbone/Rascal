@@ -1,0 +1,27 @@
+---
+source: crates/as2/src/program.rs
+expression: parsed
+input_file: samples/as2/trace_hello_world.as
+---
+Ok:
+  initial_script:
+    - Expr:
+        span:
+          start: 0
+          end: 20
+        value:
+          Call:
+            name:
+              span:
+                start: 0
+                end: 5
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 6
+                  end: 19
+                value:
+                  Constant:
+                    String: Hello World

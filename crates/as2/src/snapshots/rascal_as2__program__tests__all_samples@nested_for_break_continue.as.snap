@@ -1,0 +1,307 @@
+---
+source: crates/as2/src/program.rs
+expression: parsed
+input_file: samples/as2/nested_for_break_continue.as
+---
+Ok:
+  initial_script:
+    - ForIn:
+        condition:
+          Classic:
+            initialize:
+              Declare:
+                - name: i
+                  value:
+                    span:
+                      start: 13
+                      end: 14
+                    value:
+                      Constant:
+                        Integer: 0
+                  type_name: ~
+            condition:
+              - span:
+                  start: 16
+                  end: 21
+                value:
+                  BinaryOperator:
+                    - LessThan
+                    - span:
+                        start: 16
+                        end: 17
+                      value:
+                        Constant:
+                          Identifier: i
+                    - span:
+                        start: 20
+                        end: 21
+                      value:
+                        Constant:
+                          Integer: 4
+            update:
+              - span:
+                  start: 24
+                  end: 26
+                value:
+                  UnaryOperator:
+                    - Increment: Postfix
+                    - span:
+                        start: 23
+                        end: 24
+                      value:
+                        Constant:
+                          Identifier: i
+        body:
+          Block:
+            - Expr:
+                span:
+                  start: 34
+                  end: 55
+                value:
+                  Call:
+                    name:
+                      span:
+                        start: 34
+                        end: 39
+                      value:
+                        Constant:
+                          Identifier: trace
+                    args:
+                      - span:
+                          start: 40
+                          end: 54
+                        value:
+                          BinaryOperator:
+                            - Add
+                            - span:
+                                start: 40
+                                end: 50
+                              value:
+                                Constant:
+                                  String: outer i=
+                            - span:
+                                start: 53
+                                end: 54
+                              value:
+                                Constant:
+                                  Identifier: i
+            - ForIn:
+                condition:
+                  Classic:
+                    initialize:
+                      Declare:
+                        - name: j
+                          value:
+                            span:
+                              start: 75
+                              end: 76
+                            value:
+                              Constant:
+                                Integer: 0
+                          type_name: ~
+                    condition:
+                      - span:
+                          start: 78
+                          end: 83
+                        value:
+                          BinaryOperator:
+                            - LessThan
+                            - span:
+                                start: 78
+                                end: 79
+                              value:
+                                Constant:
+                                  Identifier: j
+                            - span:
+                                start: 82
+                                end: 83
+                              value:
+                                Constant:
+                                  Integer: 4
+                    update:
+                      - span:
+                          start: 86
+                          end: 88
+                        value:
+                          UnaryOperator:
+                            - Increment: Postfix
+                            - span:
+                                start: 85
+                                end: 86
+                              value:
+                                Constant:
+                                  Identifier: j
+                body:
+                  Block:
+                    - If:
+                        condition:
+                          span:
+                            start: 164
+                            end: 170
+                          value:
+                            BinaryOperator:
+                              - Equal
+                              - span:
+                                  start: 164
+                                  end: 165
+                                value:
+                                  Constant:
+                                    Identifier: j
+                              - span:
+                                  start: 169
+                                  end: 170
+                                value:
+                                  Constant:
+                                    Integer: 1
+                        "yes":
+                          Block:
+                            - Continue
+                        "no": ~
+                    - If:
+                        condition:
+                          span:
+                            start: 287
+                            end: 303
+                          value:
+                            BinaryOperator:
+                              - LogicalAnd
+                              - span:
+                                  start: 287
+                                  end: 293
+                                value:
+                                  BinaryOperator:
+                                    - Equal
+                                    - span:
+                                        start: 287
+                                        end: 288
+                                      value:
+                                        Constant:
+                                          Identifier: i
+                                    - span:
+                                        start: 292
+                                        end: 293
+                                      value:
+                                        Constant:
+                                          Integer: 2
+                              - span:
+                                  start: 297
+                                  end: 303
+                                value:
+                                  BinaryOperator:
+                                    - Equal
+                                    - span:
+                                        start: 297
+                                        end: 298
+                                      value:
+                                        Constant:
+                                          Identifier: j
+                                    - span:
+                                        start: 302
+                                        end: 303
+                                      value:
+                                        Constant:
+                                          Integer: 2
+                        "yes":
+                          Block:
+                            - Break
+                        "no": ~
+                    - Expr:
+                        span:
+                          start: 345
+                          end: 368
+                        value:
+                          Call:
+                            name:
+                              span:
+                                start: 345
+                                end: 350
+                              value:
+                                Constant:
+                                  Identifier: trace
+                            args:
+                              - span:
+                                  start: 351
+                                  end: 367
+                                value:
+                                  BinaryOperator:
+                                    - Add
+                                    - span:
+                                        start: 351
+                                        end: 363
+                                      value:
+                                        Constant:
+                                          String: "  inner j="
+                                    - span:
+                                        start: 366
+                                        end: 367
+                                      value:
+                                        Constant:
+                                          Identifier: j
+            - If:
+                condition:
+                  span:
+                    start: 432
+                    end: 438
+                  value:
+                    BinaryOperator:
+                      - Equal
+                      - span:
+                          start: 432
+                          end: 433
+                        value:
+                          Constant:
+                            Identifier: i
+                      - span:
+                          start: 437
+                          end: 438
+                        value:
+                          Constant:
+                            Integer: 1
+                "yes":
+                  Block:
+                    - Continue
+                "no": ~
+            - If:
+                condition:
+                  span:
+                    start: 534
+                    end: 540
+                  value:
+                    BinaryOperator:
+                      - Equal
+                      - span:
+                          start: 534
+                          end: 535
+                        value:
+                          Constant:
+                            Identifier: i
+                      - span:
+                          start: 539
+                          end: 540
+                        value:
+                          Constant:
+                            Integer: 3
+                "yes":
+                  Block:
+                    - Break
+                "no": ~
+    - Expr:
+        span:
+          start: 568
+          end: 581
+        value:
+          Call:
+            name:
+              span:
+                start: 568
+                end: 573
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 574
+                  end: 580
+                value:
+                  Constant:
+                    String: done

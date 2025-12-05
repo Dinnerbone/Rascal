@@ -1,0 +1,2035 @@
+---
+source: crates/as2/src/program.rs
+expression: parsed
+input_file: samples/as2/special_functions.as
+---
+Ok:
+  initial_script:
+    - Expr:
+        span:
+          start: 0
+          end: 9
+        value:
+          Call:
+            name:
+              span:
+                start: 0
+                end: 4
+              value:
+                Constant:
+                  Identifier: call
+            args:
+              - span:
+                  start: 5
+                  end: 8
+                value:
+                  Constant:
+                    Integer: 123
+    - Expr:
+        span:
+          start: 11
+          end: 17
+        value:
+          Call:
+            name:
+              span:
+                start: 11
+                end: 14
+              value:
+                Constant:
+                  Identifier: chr
+            args:
+              - span:
+                  start: 15
+                  end: 16
+                value:
+                  Constant:
+                    Identifier: x
+    - Expr:
+        span:
+          start: 19
+          end: 26
+        value:
+          Call:
+            name:
+              span:
+                start: 19
+                end: 23
+              value:
+                Constant:
+                  Identifier: eval
+            args:
+              - span:
+                  start: 24
+                  end: 25
+                value:
+                  Constant:
+                    Identifier: x
+    - Expr:
+        span:
+          start: 28
+          end: 37
+        value:
+          Call:
+            name:
+              span:
+                start: 28
+                end: 32
+              value:
+                Constant:
+                  Identifier: eval
+            args:
+              - span:
+                  start: 33
+                  end: 36
+                value:
+                  Constant:
+                    String: x
+    - Expr:
+        span:
+          start: 39
+          end: 101
+        value:
+          Call:
+            name:
+              span:
+                start: 39
+                end: 57
+              value:
+                Constant:
+                  Identifier: duplicateMovieClip
+            args:
+              - span:
+                  start: 58
+                  end: 61
+                value:
+                  Constant:
+                    Identifier: foo
+              - span:
+                  start: 63
+                  end: 72
+                value:
+                  Constant:
+                    String: newname
+              - span:
+                  start: 78
+                  end: 100
+                value:
+                  Call:
+                    name:
+                      span:
+                        start: 78
+                        end: 98
+                      value:
+                        Field:
+                          - span:
+                              start: 74
+                              end: 78
+                            value:
+                              Constant:
+                                Identifier: this
+                          - span:
+                              start: 79
+                              end: 98
+                            value:
+                              Constant:
+                                String: getNextHighestDepth
+                    args: []
+    - Expr:
+        span:
+          start: 103
+          end: 121
+        value:
+          Call:
+            name:
+              span:
+                start: 103
+                end: 112
+              value:
+                Constant:
+                  Identifier: fscommand
+            args:
+              - span:
+                  start: 113
+                  end: 114
+                value:
+                  Constant:
+                    Identifier: x
+              - span:
+                  start: 116
+                  end: 120
+                value:
+                  Constant:
+                    Identifier: "true"
+    - Expr:
+        span:
+          start: 123
+          end: 144
+        value:
+          Call:
+            name:
+              span:
+                start: 123
+                end: 132
+              value:
+                Constant:
+                  Identifier: fscommand
+            args:
+              - span:
+                  start: 133
+                  end: 136
+                value:
+                  Constant:
+                    String: x
+              - span:
+                  start: 138
+                  end: 143
+                value:
+                  Constant:
+                    Identifier: "false"
+    - Expr:
+        span:
+          start: 146
+          end: 160
+        value:
+          Call:
+            name:
+              span:
+                start: 146
+                end: 155
+              value:
+                Constant:
+                  Identifier: fscommand
+            args:
+              - span:
+                  start: 156
+                  end: 159
+                value:
+                  Constant:
+                    String: x
+    - Expr:
+        span:
+          start: 162
+          end: 183
+        value:
+          Call:
+            name:
+              span:
+                start: 162
+                end: 171
+              value:
+                Constant:
+                  Identifier: fscommand
+            args:
+              - span:
+                  start: 172
+                  end: 175
+                value:
+                  Constant:
+                    String: x
+              - span:
+                  start: 177
+                  end: 182
+                value:
+                  Constant:
+                    String: foo
+    - Expr:
+        span:
+          start: 185
+          end: 195
+        value:
+          Call:
+            name:
+              span:
+                start: 185
+                end: 193
+              value:
+                Constant:
+                  Identifier: getTimer
+            args: []
+    - Expr:
+        span:
+          start: 197
+          end: 223
+        value:
+          Call:
+            name:
+              span:
+                start: 197
+                end: 203
+              value:
+                Constant:
+                  Identifier: getURL
+            args:
+              - span:
+                  start: 204
+                  end: 222
+                value:
+                  Constant:
+                    String: "http://ruffle.rs"
+    - Expr:
+        span:
+          start: 225
+          end: 261
+        value:
+          Call:
+            name:
+              span:
+                start: 225
+                end: 231
+              value:
+                Constant:
+                  Identifier: getURL
+            args:
+              - span:
+                  start: 232
+                  end: 250
+                value:
+                  Constant:
+                    String: "http://ruffle.rs"
+              - span:
+                  start: 252
+                  end: 260
+                value:
+                  Constant:
+                    String: window
+    - Expr:
+        span:
+          start: 263
+          end: 306
+        value:
+          Call:
+            name:
+              span:
+                start: 263
+                end: 269
+              value:
+                Constant:
+                  Identifier: GETurl
+            args:
+              - span:
+                  start: 270
+                  end: 288
+                value:
+                  Constant:
+                    String: "http://ruffle.rs"
+              - span:
+                  start: 290
+                  end: 298
+                value:
+                  Constant:
+                    String: window
+              - span:
+                  start: 300
+                  end: 305
+                value:
+                  Constant:
+                    String: get
+    - Expr:
+        span:
+          start: 308
+          end: 320
+        value:
+          Call:
+            name:
+              span:
+                start: 308
+                end: 318
+              value:
+                Constant:
+                  Identifier: getVersion
+            args: []
+    - Expr:
+        span:
+          start: 322
+          end: 338
+        value:
+          Call:
+            name:
+              span:
+                start: 322
+                end: 333
+              value:
+                Constant:
+                  Identifier: gotoAndPlay
+            args:
+              - span:
+                  start: 334
+                  end: 337
+                value:
+                  Constant:
+                    Integer: 123
+    - Expr:
+        span:
+          start: 340
+          end: 358
+        value:
+          Call:
+            name:
+              span:
+                start: 340
+                end: 351
+              value:
+                Constant:
+                  Identifier: gotoAndPlay
+            args:
+              - span:
+                  start: 352
+                  end: 357
+                value:
+                  Constant:
+                    String: "123"
+    - Expr:
+        span:
+          start: 360
+          end: 374
+        value:
+          Call:
+            name:
+              span:
+                start: 360
+                end: 371
+              value:
+                Constant:
+                  Identifier: GOTOandPLAY
+            args:
+              - span:
+                  start: 372
+                  end: 373
+                value:
+                  Constant:
+                    Identifier: x
+    - Expr:
+        span:
+          start: 376
+          end: 401
+        value:
+          Call:
+            name:
+              span:
+                start: 376
+                end: 387
+              value:
+                Constant:
+                  Identifier: gotoAndPlay
+            args:
+              - span:
+                  start: 388
+                  end: 395
+                value:
+                  Constant:
+                    String: scene
+              - span:
+                  start: 397
+                  end: 400
+                value:
+                  Constant:
+                    Integer: 123
+    - Expr:
+        span:
+          start: 403
+          end: 430
+        value:
+          Call:
+            name:
+              span:
+                start: 403
+                end: 414
+              value:
+                Constant:
+                  Identifier: gotoAndPlay
+            args:
+              - span:
+                  start: 415
+                  end: 422
+                value:
+                  Constant:
+                    String: scene
+              - span:
+                  start: 424
+                  end: 429
+                value:
+                  Constant:
+                    String: "123"
+    - Expr:
+        span:
+          start: 432
+          end: 455
+        value:
+          Call:
+            name:
+              span:
+                start: 432
+                end: 443
+              value:
+                Constant:
+                  Identifier: gotoAndPlay
+            args:
+              - span:
+                  start: 444
+                  end: 451
+                value:
+                  Constant:
+                    String: scene
+              - span:
+                  start: 453
+                  end: 454
+                value:
+                  Constant:
+                    Identifier: x
+    - Expr:
+        span:
+          start: 457
+          end: 471
+        value:
+          Call:
+            name:
+              span:
+                start: 457
+                end: 468
+              value:
+                Constant:
+                  Identifier: gotoAndPlay
+            args:
+              - span:
+                  start: 469
+                  end: 470
+                value:
+                  Constant:
+                    Identifier: x
+    - Expr:
+        span:
+          start: 473
+          end: 491
+        value:
+          Call:
+            name:
+              span:
+                start: 473
+                end: 484
+              value:
+                Constant:
+                  Identifier: gotoAndPlay
+            args:
+              - span:
+                  start: 485
+                  end: 490
+                value:
+                  Constant:
+                    Integer: 65536
+    - Expr:
+        span:
+          start: 493
+          end: 511
+        value:
+          Call:
+            name:
+              span:
+                start: 493
+                end: 504
+              value:
+                Constant:
+                  Identifier: gotoAndPlay
+            args:
+              - span:
+                  start: 505
+                  end: 510
+                value:
+                  Constant:
+                    Integer: 65537
+    - Expr:
+        span:
+          start: 513
+          end: 531
+        value:
+          Call:
+            name:
+              span:
+                start: 513
+                end: 524
+              value:
+                Constant:
+                  Identifier: gotoAndPlay
+            args:
+              - span:
+                  start: 525
+                  end: 530
+                value:
+                  Constant:
+                    Integer: 65538
+    - Expr:
+        span:
+          start: 533
+          end: 547
+        value:
+          Call:
+            name:
+              span:
+                start: 533
+                end: 544
+              value:
+                Constant:
+                  Identifier: gotoAndPlay
+            args:
+              - span:
+                  start: 545
+                  end: 546
+                value:
+                  Constant:
+                    Integer: 0
+    - Expr:
+        span:
+          start: 549
+          end: 565
+        value:
+          Call:
+            name:
+              span:
+                start: 549
+                end: 560
+              value:
+                Constant:
+                  Identifier: gotoAndStop
+            args:
+              - span:
+                  start: 561
+                  end: 564
+                value:
+                  Constant:
+                    Integer: 123
+    - Expr:
+        span:
+          start: 567
+          end: 585
+        value:
+          Call:
+            name:
+              span:
+                start: 567
+                end: 578
+              value:
+                Constant:
+                  Identifier: gotoAndStop
+            args:
+              - span:
+                  start: 579
+                  end: 584
+                value:
+                  Constant:
+                    String: "123"
+    - Expr:
+        span:
+          start: 587
+          end: 601
+        value:
+          Call:
+            name:
+              span:
+                start: 587
+                end: 598
+              value:
+                Constant:
+                  Identifier: gotoAndStop
+            args:
+              - span:
+                  start: 599
+                  end: 600
+                value:
+                  Constant:
+                    Identifier: x
+    - Expr:
+        span:
+          start: 603
+          end: 628
+        value:
+          Call:
+            name:
+              span:
+                start: 603
+                end: 614
+              value:
+                Constant:
+                  Identifier: gotoAndStop
+            args:
+              - span:
+                  start: 615
+                  end: 622
+                value:
+                  Constant:
+                    String: scene
+              - span:
+                  start: 624
+                  end: 627
+                value:
+                  Constant:
+                    Integer: 123
+    - Expr:
+        span:
+          start: 630
+          end: 657
+        value:
+          Call:
+            name:
+              span:
+                start: 630
+                end: 641
+              value:
+                Constant:
+                  Identifier: gotoAndStop
+            args:
+              - span:
+                  start: 642
+                  end: 649
+                value:
+                  Constant:
+                    String: scene
+              - span:
+                  start: 651
+                  end: 656
+                value:
+                  Constant:
+                    String: "123"
+    - Expr:
+        span:
+          start: 659
+          end: 682
+        value:
+          Call:
+            name:
+              span:
+                start: 659
+                end: 670
+              value:
+                Constant:
+                  Identifier: gotoAndStop
+            args:
+              - span:
+                  start: 671
+                  end: 678
+                value:
+                  Constant:
+                    String: scene
+              - span:
+                  start: 680
+                  end: 681
+                value:
+                  Constant:
+                    Identifier: x
+    - Expr:
+        span:
+          start: 684
+          end: 698
+        value:
+          Call:
+            name:
+              span:
+                start: 684
+                end: 695
+              value:
+                Constant:
+                  Identifier: gotoAndStop
+            args:
+              - span:
+                  start: 696
+                  end: 697
+                value:
+                  Constant:
+                    Identifier: x
+    - Expr:
+        span:
+          start: 700
+          end: 706
+        value:
+          Call:
+            name:
+              span:
+                start: 700
+                end: 703
+              value:
+                Constant:
+                  Identifier: int
+            args:
+              - span:
+                  start: 704
+                  end: 705
+                value:
+                  Constant:
+                    Identifier: x
+    - Expr:
+        span:
+          start: 708
+          end: 717
+        value:
+          Call:
+            name:
+              span:
+                start: 708
+                end: 714
+              value:
+                Constant:
+                  Identifier: length
+            args:
+              - span:
+                  start: 715
+                  end: 716
+                value:
+                  Constant:
+                    Identifier: x
+    - Expr:
+        span:
+          start: 719
+          end: 745
+        value:
+          Call:
+            name:
+              span:
+                start: 719
+                end: 728
+              value:
+                Constant:
+                  Identifier: loadMovie
+            args:
+              - span:
+                  start: 729
+                  end: 734
+                value:
+                  Constant:
+                    String: url
+              - span:
+                  start: 736
+                  end: 744
+                value:
+                  Constant:
+                    String: target
+    - Expr:
+        span:
+          start: 747
+          end: 780
+        value:
+          Call:
+            name:
+              span:
+                start: 747
+                end: 756
+              value:
+                Constant:
+                  Identifier: loadMovie
+            args:
+              - span:
+                  start: 757
+                  end: 762
+                value:
+                  Constant:
+                    String: url
+              - span:
+                  start: 764
+                  end: 772
+                value:
+                  Constant:
+                    String: target
+              - span:
+                  start: 774
+                  end: 779
+                value:
+                  Constant:
+                    String: get
+    - Expr:
+        span:
+          start: 782
+          end: 805
+        value:
+          Call:
+            name:
+              span:
+                start: 782
+                end: 794
+              value:
+                Constant:
+                  Identifier: loadMovieNum
+            args:
+              - span:
+                  start: 795
+                  end: 800
+                value:
+                  Constant:
+                    String: url
+              - span:
+                  start: 802
+                  end: 804
+                value:
+                  Constant:
+                    Integer: 12
+    - Expr:
+        span:
+          start: 807
+          end: 837
+        value:
+          Call:
+            name:
+              span:
+                start: 807
+                end: 819
+              value:
+                Constant:
+                  Identifier: loadMovieNum
+            args:
+              - span:
+                  start: 820
+                  end: 825
+                value:
+                  Constant:
+                    String: url
+              - span:
+                  start: 827
+                  end: 829
+                value:
+                  Constant:
+                    Integer: 12
+              - span:
+                  start: 831
+                  end: 836
+                value:
+                  Constant:
+                    String: get
+    - Expr:
+        span:
+          start: 839
+          end: 868
+        value:
+          Call:
+            name:
+              span:
+                start: 839
+                end: 851
+              value:
+                Constant:
+                  Identifier: loadMovieNum
+            args:
+              - span:
+                  start: 852
+                  end: 857
+                value:
+                  Constant:
+                    String: url
+              - span:
+                  start: 859
+                  end: 860
+                value:
+                  Constant:
+                    Identifier: x
+              - span:
+                  start: 862
+                  end: 867
+                value:
+                  Constant:
+                    String: get
+    - Expr:
+        span:
+          start: 870
+          end: 900
+        value:
+          Call:
+            name:
+              span:
+                start: 870
+                end: 883
+              value:
+                Constant:
+                  Identifier: loadVariables
+            args:
+              - span:
+                  start: 884
+                  end: 889
+                value:
+                  Constant:
+                    String: url
+              - span:
+                  start: 891
+                  end: 899
+                value:
+                  Constant:
+                    String: target
+    - Expr:
+        span:
+          start: 902
+          end: 925
+        value:
+          Call:
+            name:
+              span:
+                start: 902
+                end: 915
+              value:
+                Constant:
+                  Identifier: loadVariables
+            args:
+              - span:
+                  start: 916
+                  end: 921
+                value:
+                  Constant:
+                    String: url
+              - span:
+                  start: 923
+                  end: 924
+                value:
+                  Constant:
+                    Identifier: x
+    - Expr:
+        span:
+          start: 927
+          end: 964
+        value:
+          Call:
+            name:
+              span:
+                start: 927
+                end: 940
+              value:
+                Constant:
+                  Identifier: loadVariables
+            args:
+              - span:
+                  start: 941
+                  end: 946
+                value:
+                  Constant:
+                    String: url
+              - span:
+                  start: 948
+                  end: 956
+                value:
+                  Constant:
+                    String: target
+              - span:
+                  start: 958
+                  end: 963
+                value:
+                  Constant:
+                    String: get
+    - Expr:
+        span:
+          start: 966
+          end: 993
+        value:
+          Call:
+            name:
+              span:
+                start: 966
+                end: 982
+              value:
+                Constant:
+                  Identifier: loadVariablesNum
+            args:
+              - span:
+                  start: 983
+                  end: 988
+                value:
+                  Constant:
+                    String: url
+              - span:
+                  start: 990
+                  end: 992
+                value:
+                  Constant:
+                    Integer: 12
+    - Expr:
+        span:
+          start: 995
+          end: 1029
+        value:
+          Call:
+            name:
+              span:
+                start: 995
+                end: 1011
+              value:
+                Constant:
+                  Identifier: loadVariablesNum
+            args:
+              - span:
+                  start: 1012
+                  end: 1017
+                value:
+                  Constant:
+                    String: url
+              - span:
+                  start: 1019
+                  end: 1021
+                value:
+                  Constant:
+                    Integer: 12
+              - span:
+                  start: 1023
+                  end: 1028
+                value:
+                  Constant:
+                    String: get
+    - Expr:
+        span:
+          start: 1031
+          end: 1064
+        value:
+          Call:
+            name:
+              span:
+                start: 1031
+                end: 1047
+              value:
+                Constant:
+                  Identifier: loadVariablesNum
+            args:
+              - span:
+                  start: 1048
+                  end: 1053
+                value:
+                  Constant:
+                    String: url
+              - span:
+                  start: 1055
+                  end: 1056
+                value:
+                  Constant:
+                    Identifier: x
+              - span:
+                  start: 1058
+                  end: 1063
+                value:
+                  Constant:
+                    String: get
+    - Expr:
+        span:
+          start: 1066
+          end: 1074
+        value:
+          Call:
+            name:
+              span:
+                start: 1066
+                end: 1071
+              value:
+                Constant:
+                  Identifier: mbchr
+            args:
+              - span:
+                  start: 1072
+                  end: 1073
+                value:
+                  Constant:
+                    Identifier: x
+    - Expr:
+        span:
+          start: 1076
+          end: 1087
+        value:
+          Call:
+            name:
+              span:
+                start: 1076
+                end: 1084
+              value:
+                Constant:
+                  Identifier: mblength
+            args:
+              - span:
+                  start: 1085
+                  end: 1086
+                value:
+                  Constant:
+                    Identifier: x
+    - Expr:
+        span:
+          start: 1089
+          end: 1097
+        value:
+          Call:
+            name:
+              span:
+                start: 1089
+                end: 1094
+              value:
+                Constant:
+                  Identifier: mbord
+            args:
+              - span:
+                  start: 1095
+                  end: 1096
+                value:
+                  Constant:
+                    Identifier: x
+    - Expr:
+        span:
+          start: 1099
+          end: 1120
+        value:
+          Call:
+            name:
+              span:
+                start: 1099
+                end: 1110
+              value:
+                Constant:
+                  Identifier: mbsubstring
+            args:
+              - span:
+                  start: 1111
+                  end: 1116
+                value:
+                  Constant:
+                    String: abc
+              - span:
+                  start: 1118
+                  end: 1119
+                value:
+                  Constant:
+                    Integer: 1
+    - Expr:
+        span:
+          start: 1122
+          end: 1146
+        value:
+          Call:
+            name:
+              span:
+                start: 1122
+                end: 1133
+              value:
+                Constant:
+                  Identifier: mbsubstring
+            args:
+              - span:
+                  start: 1134
+                  end: 1139
+                value:
+                  Constant:
+                    String: abc
+              - span:
+                  start: 1141
+                  end: 1142
+                value:
+                  Constant:
+                    Integer: 1
+              - span:
+                  start: 1144
+                  end: 1145
+                value:
+                  Constant:
+                    Integer: 2
+    - Expr:
+        span:
+          start: 1148
+          end: 1159
+        value:
+          Call:
+            name:
+              span:
+                start: 1148
+                end: 1157
+              value:
+                Constant:
+                  Identifier: nextFrame
+            args: []
+    - Expr:
+        span:
+          start: 1161
+          end: 1172
+        value:
+          Call:
+            name:
+              span:
+                start: 1161
+                end: 1170
+              value:
+                Constant:
+                  Identifier: nextScene
+            args: []
+    - Expr:
+        span:
+          start: 1174
+          end: 1183
+        value:
+          Call:
+            name:
+              span:
+                start: 1174
+                end: 1180
+              value:
+                Constant:
+                  Identifier: Number
+            args:
+              - span:
+                  start: 1181
+                  end: 1182
+                value:
+                  Constant:
+                    Identifier: x
+    - Expr:
+        span:
+          start: 1185
+          end: 1191
+        value:
+          Call:
+            name:
+              span:
+                start: 1185
+                end: 1188
+              value:
+                Constant:
+                  Identifier: ord
+            args:
+              - span:
+                  start: 1189
+                  end: 1190
+                value:
+                  Constant:
+                    Identifier: x
+    - Expr:
+        span:
+          start: 1193
+          end: 1199
+        value:
+          Call:
+            name:
+              span:
+                start: 1193
+                end: 1197
+              value:
+                Constant:
+                  Identifier: play
+            args: []
+    - Expr:
+        span:
+          start: 1201
+          end: 1212
+        value:
+          Call:
+            name:
+              span:
+                start: 1201
+                end: 1210
+              value:
+                Constant:
+                  Identifier: prevFrame
+            args: []
+    - Expr:
+        span:
+          start: 1214
+          end: 1225
+        value:
+          Call:
+            name:
+              span:
+                start: 1214
+                end: 1223
+              value:
+                Constant:
+                  Identifier: prevScene
+            args: []
+    - Expr:
+        span:
+          start: 1227
+          end: 1247
+        value:
+          Call:
+            name:
+              span:
+                start: 1227
+                end: 1232
+              value:
+                Constant:
+                  Identifier: print
+            args:
+              - span:
+                  start: 1233
+                  end: 1238
+                value:
+                  Constant:
+                    String: foo
+              - span:
+                  start: 1240
+                  end: 1246
+                value:
+                  Constant:
+                    String: bmax
+    - Expr:
+        span:
+          start: 1249
+          end: 1270
+        value:
+          Call:
+            name:
+              span:
+                start: 1249
+                end: 1254
+              value:
+                Constant:
+                  Identifier: print
+            args:
+              - span:
+                  start: 1255
+                  end: 1259
+                value:
+                  Constant:
+                    Identifier: this
+              - span:
+                  start: 1261
+                  end: 1269
+                value:
+                  Constant:
+                    String: bframe
+    - Expr:
+        span:
+          start: 1272
+          end: 1294
+        value:
+          Call:
+            name:
+              span:
+                start: 1272
+                end: 1277
+              value:
+                Constant:
+                  Identifier: print
+            args:
+              - span:
+                  start: 1278
+                  end: 1283
+                value:
+                  Constant:
+                    Identifier: _root
+              - span:
+                  start: 1285
+                  end: 1293
+                value:
+                  Constant:
+                    String: bmovie
+    - Expr:
+        span:
+          start: 1296
+          end: 1324
+        value:
+          Call:
+            name:
+              span:
+                start: 1296
+                end: 1309
+              value:
+                Constant:
+                  Identifier: printAsBitmap
+            args:
+              - span:
+                  start: 1310
+                  end: 1315
+                value:
+                  Constant:
+                    String: foo
+              - span:
+                  start: 1317
+                  end: 1323
+                value:
+                  Constant:
+                    String: bmax
+    - Expr:
+        span:
+          start: 1326
+          end: 1355
+        value:
+          Call:
+            name:
+              span:
+                start: 1326
+                end: 1339
+              value:
+                Constant:
+                  Identifier: printAsBitmap
+            args:
+              - span:
+                  start: 1340
+                  end: 1344
+                value:
+                  Constant:
+                    Identifier: this
+              - span:
+                  start: 1346
+                  end: 1354
+                value:
+                  Constant:
+                    String: bframe
+    - Expr:
+        span:
+          start: 1357
+          end: 1387
+        value:
+          Call:
+            name:
+              span:
+                start: 1357
+                end: 1370
+              value:
+                Constant:
+                  Identifier: printAsBitmap
+            args:
+              - span:
+                  start: 1371
+                  end: 1376
+                value:
+                  Constant:
+                    Identifier: _root
+              - span:
+                  start: 1378
+                  end: 1386
+                value:
+                  Constant:
+                    String: bmovie
+    - Expr:
+        span:
+          start: 1389
+          end: 1420
+        value:
+          Call:
+            name:
+              span:
+                start: 1389
+                end: 1405
+              value:
+                Constant:
+                  Identifier: printAsBitmapNum
+            args:
+              - span:
+                  start: 1406
+                  end: 1411
+                value:
+                  Constant:
+                    String: "123"
+              - span:
+                  start: 1413
+                  end: 1419
+                value:
+                  Constant:
+                    String: bmax
+    - Expr:
+        span:
+          start: 1422
+          end: 1451
+        value:
+          Call:
+            name:
+              span:
+                start: 1422
+                end: 1438
+              value:
+                Constant:
+                  Identifier: printAsBitmapNum
+            args:
+              - span:
+                  start: 1439
+                  end: 1440
+                value:
+                  Constant:
+                    Identifier: x
+              - span:
+                  start: 1442
+                  end: 1450
+                value:
+                  Constant:
+                    String: bframe
+    - Expr:
+        span:
+          start: 1453
+          end: 1482
+        value:
+          Call:
+            name:
+              span:
+                start: 1453
+                end: 1469
+              value:
+                Constant:
+                  Identifier: printAsBitmapNum
+            args:
+              - span:
+                  start: 1470
+                  end: 1471
+                value:
+                  Constant:
+                    Identifier: x
+              - span:
+                  start: 1473
+                  end: 1481
+                value:
+                  Constant:
+                    String: bmovie
+    - Expr:
+        span:
+          start: 1484
+          end: 1507
+        value:
+          Call:
+            name:
+              span:
+                start: 1484
+                end: 1492
+              value:
+                Constant:
+                  Identifier: printNum
+            args:
+              - span:
+                  start: 1493
+                  end: 1498
+                value:
+                  Constant:
+                    String: "123"
+              - span:
+                  start: 1500
+                  end: 1506
+                value:
+                  Constant:
+                    String: bmax
+    - Expr:
+        span:
+          start: 1509
+          end: 1530
+        value:
+          Call:
+            name:
+              span:
+                start: 1509
+                end: 1517
+              value:
+                Constant:
+                  Identifier: printNum
+            args:
+              - span:
+                  start: 1518
+                  end: 1519
+                value:
+                  Constant:
+                    Identifier: x
+              - span:
+                  start: 1521
+                  end: 1529
+                value:
+                  Constant:
+                    String: bframe
+    - Expr:
+        span:
+          start: 1532
+          end: 1553
+        value:
+          Call:
+            name:
+              span:
+                start: 1532
+                end: 1540
+              value:
+                Constant:
+                  Identifier: printNum
+            args:
+              - span:
+                  start: 1541
+                  end: 1542
+                value:
+                  Constant:
+                    Identifier: x
+              - span:
+                  start: 1544
+                  end: 1552
+                value:
+                  Constant:
+                    String: bmovie
+    - Expr:
+        span:
+          start: 1555
+          end: 1566
+        value:
+          Call:
+            name:
+              span:
+                start: 1555
+                end: 1561
+              value:
+                Constant:
+                  Identifier: random
+            args:
+              - span:
+                  start: 1562
+                  end: 1565
+                value:
+                  Constant:
+                    Integer: 123
+    - Expr:
+        span:
+          start: 1568
+          end: 1586
+        value:
+          Call:
+            name:
+              span:
+                start: 1568
+                end: 1583
+              value:
+                Constant:
+                  Identifier: removeMovieClip
+            args:
+              - span:
+                  start: 1584
+                  end: 1585
+                value:
+                  Constant:
+                    Identifier: x
+    - Expr:
+        span:
+          start: 1588
+          end: 1600
+        value:
+          Call:
+            name:
+              span:
+                start: 1588
+                end: 1597
+              value:
+                Constant:
+                  Identifier: startDrag
+            args:
+              - span:
+                  start: 1598
+                  end: 1599
+                value:
+                  Constant:
+                    Identifier: x
+    - Expr:
+        span:
+          start: 1602
+          end: 1620
+        value:
+          Call:
+            name:
+              span:
+                start: 1602
+                end: 1611
+              value:
+                Constant:
+                  Identifier: startDrag
+            args:
+              - span:
+                  start: 1612
+                  end: 1613
+                value:
+                  Constant:
+                    Identifier: x
+              - span:
+                  start: 1615
+                  end: 1619
+                value:
+                  Constant:
+                    Identifier: "true"
+    - Expr:
+        span:
+          start: 1622
+          end: 1641
+        value:
+          Call:
+            name:
+              span:
+                start: 1622
+                end: 1631
+              value:
+                Constant:
+                  Identifier: startDrag
+            args:
+              - span:
+                  start: 1632
+                  end: 1633
+                value:
+                  Constant:
+                    Identifier: x
+              - span:
+                  start: 1635
+                  end: 1640
+                value:
+                  Constant:
+                    Identifier: "false"
+    - Expr:
+        span:
+          start: 1643
+          end: 1673
+        value:
+          Call:
+            name:
+              span:
+                start: 1643
+                end: 1652
+              value:
+                Constant:
+                  Identifier: startDrag
+            args:
+              - span:
+                  start: 1653
+                  end: 1654
+                value:
+                  Constant:
+                    Identifier: x
+              - span:
+                  start: 1656
+                  end: 1660
+                value:
+                  Constant:
+                    Identifier: "true"
+              - span:
+                  start: 1662
+                  end: 1663
+                value:
+                  Constant:
+                    Integer: 1
+              - span:
+                  start: 1665
+                  end: 1666
+                value:
+                  Constant:
+                    Integer: 2
+              - span:
+                  start: 1668
+                  end: 1669
+                value:
+                  Constant:
+                    Integer: 3
+              - span:
+                  start: 1671
+                  end: 1672
+                value:
+                  Constant:
+                    Integer: 4
+    - Expr:
+        span:
+          start: 1675
+          end: 1681
+        value:
+          Call:
+            name:
+              span:
+                start: 1675
+                end: 1679
+              value:
+                Constant:
+                  Identifier: stop
+            args: []
+    - Expr:
+        span:
+          start: 1683
+          end: 1698
+        value:
+          Call:
+            name:
+              span:
+                start: 1683
+                end: 1696
+              value:
+                Constant:
+                  Identifier: stopAllSounds
+            args: []
+    - Expr:
+        span:
+          start: 1700
+          end: 1710
+        value:
+          Call:
+            name:
+              span:
+                start: 1700
+                end: 1708
+              value:
+                Constant:
+                  Identifier: stopDrag
+            args: []
+    - Expr:
+        span:
+          start: 1712
+          end: 1721
+        value:
+          Call:
+            name:
+              span:
+                start: 1712
+                end: 1718
+              value:
+                Constant:
+                  Identifier: String
+            args:
+              - span:
+                  start: 1719
+                  end: 1720
+                value:
+                  Constant:
+                    Identifier: x
+    - Expr:
+        span:
+          start: 1723
+          end: 1738
+        value:
+          Call:
+            name:
+              span:
+                start: 1723
+                end: 1732
+              value:
+                Constant:
+                  Identifier: substring
+            args:
+              - span:
+                  start: 1733
+                  end: 1734
+                value:
+                  Constant:
+                    Identifier: x
+              - span:
+                  start: 1736
+                  end: 1737
+                value:
+                  Constant:
+                    Integer: 1
+    - Expr:
+        span:
+          start: 1740
+          end: 1758
+        value:
+          Call:
+            name:
+              span:
+                start: 1740
+                end: 1749
+              value:
+                Constant:
+                  Identifier: substring
+            args:
+              - span:
+                  start: 1750
+                  end: 1751
+                value:
+                  Constant:
+                    Identifier: x
+              - span:
+                  start: 1753
+                  end: 1754
+                value:
+                  Constant:
+                    Integer: 1
+              - span:
+                  start: 1756
+                  end: 1757
+                value:
+                  Constant:
+                    Integer: 2
+    - Expr:
+        span:
+          start: 1760
+          end: 1773
+        value:
+          Call:
+            name:
+              span:
+                start: 1760
+                end: 1770
+              value:
+                Constant:
+                  Identifier: targetPath
+            args:
+              - span:
+                  start: 1771
+                  end: 1772
+                value:
+                  Constant:
+                    Identifier: x
+    - Expr:
+        span:
+          start: 1775
+          end: 1794
+        value:
+          Call:
+            name:
+              span:
+                start: 1775
+                end: 1792
+              value:
+                Constant:
+                  Identifier: toggleHighQuality
+            args: []
+    - Expr:
+        span:
+          start: 1796
+          end: 1812
+        value:
+          Call:
+            name:
+              span:
+                start: 1796
+                end: 1801
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 1802
+                  end: 1811
+                value:
+                  Constant:
+                    String: message
+    - Expr:
+        span:
+          start: 1814
+          end: 1828
+        value:
+          Call:
+            name:
+              span:
+                start: 1814
+                end: 1825
+              value:
+                Constant:
+                  Identifier: unloadMovie
+            args:
+              - span:
+                  start: 1826
+                  end: 1827
+                value:
+                  Constant:
+                    Identifier: x
+    - Expr:
+        span:
+          start: 1830
+          end: 1847
+        value:
+          Call:
+            name:
+              span:
+                start: 1830
+                end: 1844
+              value:
+                Constant:
+                  Identifier: unloadMovieNum
+            args:
+              - span:
+                  start: 1845
+                  end: 1846
+                value:
+                  Constant:
+                    Identifier: x
+    - Expr:
+        span:
+          start: 1849
+          end: 1868
+        value:
+          Call:
+            name:
+              span:
+                start: 1849
+                end: 1863
+              value:
+                Constant:
+                  Identifier: unloadMovieNum
+            args:
+              - span:
+                  start: 1864
+                  end: 1867
+                value:
+                  Constant:
+                    Integer: 123

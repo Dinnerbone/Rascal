@@ -1,0 +1,476 @@
+---
+source: crates/as2/src/program.rs
+expression: parsed
+input_file: samples/as2/regressions/ruffle_avm1_edittext_drag_select.as
+---
+Ok:
+  initial_script:
+    - Declare:
+        - name: listener
+          value:
+            span:
+              start: 15
+              end: 18
+            value:
+              New:
+                name:
+                  span:
+                    start: 19
+                    end: 25
+                  value:
+                    Constant:
+                      Identifier: Object
+                args: []
+          type_name: ~
+    - Expr:
+        span:
+          start: 37
+          end: 130
+        value:
+          BinaryOperator:
+            - Assign
+            - span:
+                start: 37
+                end: 49
+              value:
+                Field:
+                  - span:
+                      start: 29
+                      end: 37
+                    value:
+                      Constant:
+                        Identifier: listener
+                  - span:
+                      start: 38
+                      end: 49
+                    value:
+                      Constant:
+                        String: onMouseDown
+            - span:
+                start: 52
+                end: 130
+              value:
+                Function:
+                  name: ~
+                  args: []
+                  body:
+                    - Expr:
+                        span:
+                          start: 69
+                          end: 128
+                        value:
+                          Call:
+                            name:
+                              span:
+                                start: 69
+                                end: 74
+                              value:
+                                Constant:
+                                  Identifier: trace
+                            args:
+                              - span:
+                                  start: 75
+                                  end: 127
+                                value:
+                                  BinaryOperator:
+                                    - Add
+                                    - span:
+                                        start: 75
+                                        end: 111
+                                      value:
+                                        BinaryOperator:
+                                          - Add
+                                          - span:
+                                              start: 75
+                                              end: 105
+                                            value:
+                                              BinaryOperator:
+                                                - Add
+                                                - span:
+                                                    start: 75
+                                                    end: 89
+                                                  value:
+                                                    Constant:
+                                                      String: "Mouse down: "
+                                                - span:
+                                                    start: 97
+                                                    end: 105
+                                                  value:
+                                                    Field:
+                                                      - span:
+                                                          start: 92
+                                                          end: 97
+                                                        value:
+                                                          Constant:
+                                                            Identifier: _root
+                                                      - span:
+                                                          start: 98
+                                                          end: 105
+                                                        value:
+                                                          Constant:
+                                                            String: _xmouse
+                                          - span:
+                                              start: 108
+                                              end: 111
+                                            value:
+                                              Constant:
+                                                String: ","
+                                    - span:
+                                        start: 119
+                                        end: 127
+                                      value:
+                                        Field:
+                                          - span:
+                                              start: 114
+                                              end: 119
+                                            value:
+                                              Constant:
+                                                Identifier: _root
+                                          - span:
+                                              start: 120
+                                              end: 127
+                                            value:
+                                              Constant:
+                                                String: _ymouse
+    - Expr:
+        span:
+          start: 140
+          end: 346
+        value:
+          BinaryOperator:
+            - Assign
+            - span:
+                start: 140
+                end: 150
+              value:
+                Field:
+                  - span:
+                      start: 132
+                      end: 140
+                    value:
+                      Constant:
+                        Identifier: listener
+                  - span:
+                      start: 141
+                      end: 150
+                    value:
+                      Constant:
+                        String: onMouseUp
+            - span:
+                start: 153
+                end: 346
+              value:
+                Function:
+                  name: ~
+                  args: []
+                  body:
+                    - Expr:
+                        span:
+                          start: 170
+                          end: 227
+                        value:
+                          Call:
+                            name:
+                              span:
+                                start: 170
+                                end: 175
+                              value:
+                                Constant:
+                                  Identifier: trace
+                            args:
+                              - span:
+                                  start: 176
+                                  end: 226
+                                value:
+                                  BinaryOperator:
+                                    - Add
+                                    - span:
+                                        start: 176
+                                        end: 210
+                                      value:
+                                        BinaryOperator:
+                                          - Add
+                                          - span:
+                                              start: 176
+                                              end: 204
+                                            value:
+                                              BinaryOperator:
+                                                - Add
+                                                - span:
+                                                    start: 176
+                                                    end: 188
+                                                  value:
+                                                    Constant:
+                                                      String: "Mouse up: "
+                                                - span:
+                                                    start: 196
+                                                    end: 204
+                                                  value:
+                                                    Field:
+                                                      - span:
+                                                          start: 191
+                                                          end: 196
+                                                        value:
+                                                          Constant:
+                                                            Identifier: _root
+                                                      - span:
+                                                          start: 197
+                                                          end: 204
+                                                        value:
+                                                          Constant:
+                                                            String: _xmouse
+                                          - span:
+                                              start: 207
+                                              end: 210
+                                            value:
+                                              Constant:
+                                                String: ","
+                                    - span:
+                                        start: 218
+                                        end: 226
+                                      value:
+                                        Field:
+                                          - span:
+                                              start: 213
+                                              end: 218
+                                            value:
+                                              Constant:
+                                                Identifier: _root
+                                          - span:
+                                              start: 219
+                                              end: 226
+                                            value:
+                                              Constant:
+                                                String: _ymouse
+                    - Expr:
+                        span:
+                          start: 236
+                          end: 262
+                        value:
+                          Call:
+                            name:
+                              span:
+                                start: 236
+                                end: 247
+                              value:
+                                Field:
+                                  - span:
+                                      start: 232
+                                      end: 236
+                                    value:
+                                      Constant:
+                                        Identifier: text
+                                  - span:
+                                      start: 237
+                                      end: 247
+                                    value:
+                                      Constant:
+                                        String: replaceSel
+                            args:
+                              - span:
+                                  start: 248
+                                  end: 261
+                                value:
+                                  Constant:
+                                    String: "<selection>"
+                    - Expr:
+                        span:
+                          start: 268
+                          end: 343
+                        value:
+                          Call:
+                            name:
+                              span:
+                                start: 268
+                                end: 273
+                              value:
+                                Constant:
+                                  Identifier: trace
+                            args:
+                              - span:
+                                  start: 274
+                                  end: 342
+                                value:
+                                  BinaryOperator:
+                                    - Add
+                                    - span:
+                                        start: 274
+                                        end: 282
+                                      value:
+                                        Constant:
+                                          String: "Text: "
+                                    - span:
+                                        start: 330
+                                        end: 342
+                                      value:
+                                        Call:
+                                          name:
+                                            span:
+                                              start: 330
+                                              end: 335
+                                            value:
+                                              Field:
+                                                - span:
+                                                    start: 318
+                                                    end: 330
+                                                  value:
+                                                    Call:
+                                                      name:
+                                                        span:
+                                                          start: 318
+                                                          end: 324
+                                                        value:
+                                                          Field:
+                                                            - span:
+                                                                start: 306
+                                                                end: 318
+                                                              value:
+                                                                Call:
+                                                                  name:
+                                                                    span:
+                                                                      start: 306
+                                                                      end: 311
+                                                                    value:
+                                                                      Field:
+                                                                        - span:
+                                                                            start: 294
+                                                                            end: 306
+                                                                          value:
+                                                                            Call:
+                                                                              name:
+                                                                                span:
+                                                                                  start: 294
+                                                                                  end: 300
+                                                                                value:
+                                                                                  Field:
+                                                                                    - span:
+                                                                                        start: 289
+                                                                                        end: 294
+                                                                                      value:
+                                                                                        Field:
+                                                                                          - span:
+                                                                                              start: 285
+                                                                                              end: 289
+                                                                                            value:
+                                                                                              Constant:
+                                                                                                Identifier: text
+                                                                                          - span:
+                                                                                              start: 290
+                                                                                              end: 294
+                                                                                            value:
+                                                                                              Constant:
+                                                                                                String: text
+                                                                                    - span:
+                                                                                        start: 295
+                                                                                        end: 300
+                                                                                      value:
+                                                                                        Constant:
+                                                                                          String: split
+                                                                              args:
+                                                                                - span:
+                                                                                    start: 301
+                                                                                    end: 305
+                                                                                  value:
+                                                                                    Constant:
+                                                                                      String: "\r"
+                                                                        - span:
+                                                                            start: 307
+                                                                            end: 311
+                                                                          value:
+                                                                            Constant:
+                                                                              String: join
+                                                                  args:
+                                                                    - span:
+                                                                        start: 312
+                                                                        end: 317
+                                                                      value:
+                                                                        Constant:
+                                                                          String: "\\n"
+                                                            - span:
+                                                                start: 319
+                                                                end: 324
+                                                              value:
+                                                                Constant:
+                                                                  String: split
+                                                      args:
+                                                        - span:
+                                                            start: 325
+                                                            end: 329
+                                                          value:
+                                                            Constant:
+                                                              String: "\n"
+                                                - span:
+                                                    start: 331
+                                                    end: 335
+                                                  value:
+                                                    Constant:
+                                                      String: join
+                                          args:
+                                            - span:
+                                                start: 336
+                                                end: 341
+                                              value:
+                                                Constant:
+                                                  String: "\\n"
+    - Expr:
+        span:
+          start: 351
+          end: 373
+        value:
+          Call:
+            name:
+              span:
+                start: 351
+                end: 363
+              value:
+                Field:
+                  - span:
+                      start: 348
+                      end: 351
+                    value:
+                      Constant:
+                        Identifier: Key
+                  - span:
+                      start: 352
+                      end: 363
+                    value:
+                      Constant:
+                        String: addListener
+            args:
+              - span:
+                  start: 364
+                  end: 372
+                value:
+                  Constant:
+                    Identifier: listener
+    - Expr:
+        span:
+          start: 380
+          end: 402
+        value:
+          Call:
+            name:
+              span:
+                start: 380
+                end: 392
+              value:
+                Field:
+                  - span:
+                      start: 375
+                      end: 380
+                    value:
+                      Constant:
+                        Identifier: Mouse
+                  - span:
+                      start: 381
+                      end: 392
+                    value:
+                      Constant:
+                        String: addListener
+            args:
+              - span:
+                  start: 393
+                  end: 401
+                value:
+                  Constant:
+                    Identifier: listener

@@ -1,0 +1,1428 @@
+---
+source: crates/as2/src/program.rs
+expression: parsed
+input_file: samples/as2/for_loop.as
+---
+Ok:
+  initial_script:
+    - Expr:
+        span:
+          start: 0
+          end: 20
+        value:
+          Call:
+            name:
+              span:
+                start: 0
+                end: 5
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 6
+                  end: 19
+                value:
+                  Constant:
+                    String: for_classic
+    - ForIn:
+        condition:
+          Classic:
+            initialize:
+              Declare:
+                - name: i
+                  value:
+                    span:
+                      start: 35
+                      end: 36
+                    value:
+                      Constant:
+                        Integer: 0
+                  type_name: ~
+            condition:
+              - span:
+                  start: 38
+                  end: 43
+                value:
+                  BinaryOperator:
+                    - LessThan
+                    - span:
+                        start: 38
+                        end: 39
+                      value:
+                        Constant:
+                          Identifier: i
+                    - span:
+                        start: 42
+                        end: 43
+                      value:
+                        Constant:
+                          Integer: 3
+            update:
+              - span:
+                  start: 46
+                  end: 48
+                value:
+                  UnaryOperator:
+                    - Increment: Postfix
+                    - span:
+                        start: 45
+                        end: 46
+                      value:
+                        Constant:
+                          Identifier: i
+        body:
+          Block:
+            - Expr:
+                span:
+                  start: 56
+                  end: 64
+                value:
+                  Call:
+                    name:
+                      span:
+                        start: 56
+                        end: 61
+                      value:
+                        Constant:
+                          Identifier: trace
+                    args:
+                      - span:
+                          start: 62
+                          end: 63
+                        value:
+                          Constant:
+                            Identifier: i
+    - Expr:
+        span:
+          start: 134
+          end: 154
+        value:
+          Call:
+            name:
+              span:
+                start: 134
+                end: 139
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 140
+                  end: 153
+                value:
+                  Constant:
+                    String: for_no_init
+    - Declare:
+        - name: j
+          value:
+            span:
+              start: 164
+              end: 165
+            value:
+              Constant:
+                Integer: 3
+          type_name: ~
+    - Expr:
+        span:
+          start: 167
+          end: 181
+        value:
+          Call:
+            name:
+              span:
+                start: 167
+                end: 172
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 173
+                  end: 180
+                value:
+                  Constant:
+                    String: start
+    - ForIn:
+        condition:
+          Classic:
+            initialize: ~
+            condition:
+              - span:
+                  start: 190
+                  end: 195
+                value:
+                  BinaryOperator:
+                    - LessThan
+                    - span:
+                        start: 190
+                        end: 191
+                      value:
+                        Constant:
+                          Identifier: j
+                    - span:
+                        start: 194
+                        end: 195
+                      value:
+                        Constant:
+                          Integer: 6
+            update:
+              - span:
+                  start: 198
+                  end: 200
+                value:
+                  UnaryOperator:
+                    - Increment: Postfix
+                    - span:
+                        start: 197
+                        end: 198
+                      value:
+                        Constant:
+                          Identifier: j
+        body:
+          Block:
+            - Expr:
+                span:
+                  start: 208
+                  end: 216
+                value:
+                  Call:
+                    name:
+                      span:
+                        start: 208
+                        end: 213
+                      value:
+                        Constant:
+                          Identifier: trace
+                    args:
+                      - span:
+                          start: 214
+                          end: 215
+                        value:
+                          Constant:
+                            Identifier: j
+    - Expr:
+        span:
+          start: 220
+          end: 232
+        value:
+          Call:
+            name:
+              span:
+                start: 220
+                end: 225
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 226
+                  end: 231
+                value:
+                  Constant:
+                    String: end
+    - Expr:
+        span:
+          start: 300
+          end: 325
+        value:
+          Call:
+            name:
+              span:
+                start: 300
+                end: 305
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 306
+                  end: 324
+                value:
+                  Constant:
+                    String: for_no_condition
+    - ForIn:
+        condition:
+          Classic:
+            initialize:
+              Declare:
+                - name: k
+                  value:
+                    span:
+                      start: 340
+                      end: 341
+                    value:
+                      Constant:
+                        Integer: 0
+                  type_name: ~
+            condition: []
+            update:
+              - span:
+                  start: 346
+                  end: 348
+                value:
+                  UnaryOperator:
+                    - Increment: Postfix
+                    - span:
+                        start: 345
+                        end: 346
+                      value:
+                        Constant:
+                          Identifier: k
+        body:
+          Block:
+            - Expr:
+                span:
+                  start: 356
+                  end: 364
+                value:
+                  Call:
+                    name:
+                      span:
+                        start: 356
+                        end: 361
+                      value:
+                        Constant:
+                          Identifier: trace
+                    args:
+                      - span:
+                          start: 362
+                          end: 363
+                        value:
+                          Constant:
+                            Identifier: k
+            - If:
+                condition:
+                  span:
+                    start: 374
+                    end: 380
+                  value:
+                    BinaryOperator:
+                      - GreaterThanEqual
+                      - span:
+                          start: 374
+                          end: 375
+                        value:
+                          Constant:
+                            Identifier: k
+                      - span:
+                          start: 379
+                          end: 380
+                        value:
+                          Constant:
+                            Integer: 3
+                "yes":
+                  Block:
+                    - Break
+                "no": ~
+    - Expr:
+        span:
+          start: 473
+          end: 495
+        value:
+          Call:
+            name:
+              span:
+                start: 473
+                end: 478
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 479
+                  end: 494
+                value:
+                  Constant:
+                    String: for_no_update
+    - ForIn:
+        condition:
+          Classic:
+            initialize:
+              Declare:
+                - name: n
+                  value:
+                    span:
+                      start: 510
+                      end: 511
+                    value:
+                      Constant:
+                        Integer: 0
+                  type_name: ~
+            condition:
+              - span:
+                  start: 513
+                  end: 518
+                value:
+                  BinaryOperator:
+                    - LessThan
+                    - span:
+                        start: 513
+                        end: 514
+                      value:
+                        Constant:
+                          Identifier: n
+                    - span:
+                        start: 517
+                        end: 518
+                      value:
+                        Constant:
+                          Integer: 3
+            update: []
+        body:
+          Block:
+            - Expr:
+                span:
+                  start: 528
+                  end: 536
+                value:
+                  Call:
+                    name:
+                      span:
+                        start: 528
+                        end: 533
+                      value:
+                        Constant:
+                          Identifier: trace
+                    args:
+                      - span:
+                          start: 534
+                          end: 535
+                        value:
+                          Constant:
+                            Identifier: n
+            - Expr:
+                span:
+                  start: 543
+                  end: 545
+                value:
+                  UnaryOperator:
+                    - Increment: Postfix
+                    - span:
+                        start: 542
+                        end: 543
+                      value:
+                        Constant:
+                          Identifier: n
+    - Expr:
+        span:
+          start: 615
+          end: 639
+        value:
+          Call:
+            name:
+              span:
+                start: 615
+                end: 620
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 621
+                  end: 638
+                value:
+                  Constant:
+                    String: for_all_omitted
+    - Declare:
+        - name: count
+          value:
+            span:
+              start: 653
+              end: 654
+            value:
+              Constant:
+                Integer: 0
+          type_name: ~
+    - ForIn:
+        condition:
+          Classic:
+            initialize: ~
+            condition: []
+            update: []
+        body:
+          Block:
+            - Expr:
+                span:
+                  start: 671
+                  end: 684
+                value:
+                  Call:
+                    name:
+                      span:
+                        start: 671
+                        end: 676
+                      value:
+                        Constant:
+                          Identifier: trace
+                    args:
+                      - span:
+                          start: 677
+                          end: 683
+                        value:
+                          Constant:
+                            String: loop
+            - Expr:
+                span:
+                  start: 695
+                  end: 697
+                value:
+                  UnaryOperator:
+                    - Increment: Postfix
+                    - span:
+                        start: 690
+                        end: 695
+                      value:
+                        Constant:
+                          Identifier: count
+            - If:
+                condition:
+                  span:
+                    start: 707
+                    end: 717
+                  value:
+                    BinaryOperator:
+                      - Equal
+                      - span:
+                          start: 707
+                          end: 712
+                        value:
+                          Constant:
+                            Identifier: count
+                      - span:
+                          start: 716
+                          end: 717
+                        value:
+                          Constant:
+                            Integer: 3
+                "yes":
+                  Block:
+                    - Break
+                "no": ~
+    - Expr:
+        span:
+          start: 744
+          end: 757
+        value:
+          Call:
+            name:
+              span:
+                start: 744
+                end: 749
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 750
+                  end: 756
+                value:
+                  Constant:
+                    String: done
+    - Expr:
+        span:
+          start: 825
+          end: 847
+        value:
+          Call:
+            name:
+              span:
+                start: 825
+                end: 830
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 831
+                  end: 846
+                value:
+                  Constant:
+                    String: for_in_object
+    - Declare:
+        - name: obj
+          value:
+            span:
+              start: 859
+              end: 861
+            value:
+              InitObject: []
+          type_name: ~
+    - Expr:
+        span:
+          start: 866
+          end: 873
+        value:
+          BinaryOperator:
+            - Assign
+            - span:
+                start: 866
+                end: 868
+              value:
+                Field:
+                  - span:
+                      start: 863
+                      end: 866
+                    value:
+                      Constant:
+                        Identifier: obj
+                  - span:
+                      start: 867
+                      end: 868
+                    value:
+                      Constant:
+                        String: a
+            - span:
+                start: 871
+                end: 873
+              value:
+                Constant:
+                  Integer: 10
+    - Expr:
+        span:
+          start: 878
+          end: 885
+        value:
+          BinaryOperator:
+            - Assign
+            - span:
+                start: 878
+                end: 880
+              value:
+                Field:
+                  - span:
+                      start: 875
+                      end: 878
+                    value:
+                      Constant:
+                        Identifier: obj
+                  - span:
+                      start: 879
+                      end: 880
+                    value:
+                      Constant:
+                        String: b
+            - span:
+                start: 883
+                end: 885
+              value:
+                Constant:
+                  Integer: 20
+    - ForIn:
+        condition:
+          Enumerate:
+            variable: key
+            declare: true
+            object:
+              span:
+                start: 903
+                end: 906
+              value:
+                Constant:
+                  Identifier: obj
+        body:
+          Block:
+            - Expr:
+                span:
+                  start: 914
+                  end: 941
+                value:
+                  Call:
+                    name:
+                      span:
+                        start: 914
+                        end: 919
+                      value:
+                        Constant:
+                          Identifier: trace
+                    args:
+                      - span:
+                          start: 920
+                          end: 940
+                        value:
+                          BinaryOperator:
+                            - Add
+                            - span:
+                                start: 920
+                                end: 929
+                              value:
+                                BinaryOperator:
+                                  - Add
+                                  - span:
+                                      start: 920
+                                      end: 923
+                                    value:
+                                      Constant:
+                                        Identifier: key
+                                  - span:
+                                      start: 926
+                                      end: 929
+                                    value:
+                                      Constant:
+                                        String: "="
+                            - span:
+                                start: 935
+                                end: 940
+                              value:
+                                Field:
+                                  - span:
+                                      start: 932
+                                      end: 935
+                                    value:
+                                      Constant:
+                                        Identifier: obj
+                                  - span:
+                                      start: 936
+                                      end: 939
+                                    value:
+                                      Constant:
+                                        Identifier: key
+    - Expr:
+        span:
+          start: 1011
+          end: 1032
+        value:
+          Call:
+            name:
+              span:
+                start: 1011
+                end: 1016
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 1017
+                  end: 1031
+                value:
+                  Constant:
+                    String: for_in_array
+    - Declare:
+        - name: arr
+          value:
+            span:
+              start: 1044
+              end: 1053
+            value:
+              InitArray:
+                - span:
+                    start: 1045
+                    end: 1046
+                  value:
+                    Constant:
+                      Integer: 5
+                - span:
+                    start: 1048
+                    end: 1049
+                  value:
+                    Constant:
+                      Integer: 6
+                - span:
+                    start: 1051
+                    end: 1052
+                  value:
+                    Constant:
+                      Integer: 7
+          type_name: ~
+    - Declare:
+        - name: idx
+          value: ~
+          type_name: ~
+    - ForIn:
+        condition:
+          Enumerate:
+            variable: idx
+            declare: false
+            object:
+              span:
+                start: 1076
+                end: 1079
+              value:
+                Constant:
+                  Identifier: arr
+        body:
+          Block:
+            - Expr:
+                span:
+                  start: 1087
+                  end: 1114
+                value:
+                  Call:
+                    name:
+                      span:
+                        start: 1087
+                        end: 1092
+                      value:
+                        Constant:
+                          Identifier: trace
+                    args:
+                      - span:
+                          start: 1093
+                          end: 1113
+                        value:
+                          BinaryOperator:
+                            - Add
+                            - span:
+                                start: 1093
+                                end: 1102
+                              value:
+                                BinaryOperator:
+                                  - Add
+                                  - span:
+                                      start: 1093
+                                      end: 1096
+                                    value:
+                                      Constant:
+                                        Identifier: idx
+                                  - span:
+                                      start: 1099
+                                      end: 1102
+                                    value:
+                                      Constant:
+                                        String: "="
+                            - span:
+                                start: 1108
+                                end: 1113
+                              value:
+                                Field:
+                                  - span:
+                                      start: 1105
+                                      end: 1108
+                                    value:
+                                      Constant:
+                                        Identifier: arr
+                                  - span:
+                                      start: 1109
+                                      end: 1112
+                                    value:
+                                      Constant:
+                                        Identifier: idx
+    - Expr:
+        span:
+          start: 1184
+          end: 1213
+        value:
+          Call:
+            name:
+              span:
+                start: 1184
+                end: 1189
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 1190
+                  end: 1212
+                value:
+                  Constant:
+                    String: for_multiple_clauses
+    - ForIn:
+        condition:
+          Classic:
+            initialize:
+              Declare:
+                - name: a
+                  value:
+                    span:
+                      start: 1228
+                      end: 1229
+                    value:
+                      Constant:
+                        Integer: 0
+                  type_name: ~
+                - name: b
+                  value:
+                    span:
+                      start: 1235
+                      end: 1236
+                    value:
+                      Constant:
+                        Integer: 3
+                  type_name: ~
+            condition:
+              - span:
+                  start: 1238
+                  end: 1243
+                value:
+                  BinaryOperator:
+                    - LessThan
+                    - span:
+                        start: 1238
+                        end: 1239
+                      value:
+                        Constant:
+                          Identifier: a
+                    - span:
+                        start: 1242
+                        end: 1243
+                      value:
+                        Constant:
+                          Identifier: b
+            update:
+              - span:
+                  start: 1246
+                  end: 1248
+                value:
+                  UnaryOperator:
+                    - Increment: Postfix
+                    - span:
+                        start: 1245
+                        end: 1246
+                      value:
+                        Constant:
+                          Identifier: a
+              - span:
+                  start: 1251
+                  end: 1253
+                value:
+                  UnaryOperator:
+                    - Decrement: Postfix
+                    - span:
+                        start: 1250
+                        end: 1251
+                      value:
+                        Constant:
+                          Identifier: b
+        body:
+          Block:
+            - Expr:
+                span:
+                  start: 1261
+                  end: 1279
+                value:
+                  Call:
+                    name:
+                      span:
+                        start: 1261
+                        end: 1266
+                      value:
+                        Constant:
+                          Identifier: trace
+                    args:
+                      - span:
+                          start: 1267
+                          end: 1278
+                        value:
+                          BinaryOperator:
+                            - Add
+                            - span:
+                                start: 1267
+                                end: 1274
+                              value:
+                                BinaryOperator:
+                                  - Add
+                                  - span:
+                                      start: 1267
+                                      end: 1268
+                                    value:
+                                      Constant:
+                                        Identifier: a
+                                  - span:
+                                      start: 1271
+                                      end: 1274
+                                    value:
+                                      Constant:
+                                        String: ","
+                            - span:
+                                start: 1277
+                                end: 1278
+                              value:
+                                Constant:
+                                  Identifier: b
+    - Expr:
+        span:
+          start: 1349
+          end: 1376
+        value:
+          Call:
+            name:
+              span:
+                start: 1349
+                end: 1354
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 1355
+                  end: 1375
+                value:
+                  Constant:
+                    String: for_continue_break
+    - ForIn:
+        condition:
+          Classic:
+            initialize:
+              Declare:
+                - name: x
+                  value:
+                    span:
+                      start: 1391
+                      end: 1392
+                    value:
+                      Constant:
+                        Integer: 0
+                  type_name: ~
+            condition:
+              - span:
+                  start: 1394
+                  end: 1400
+                value:
+                  BinaryOperator:
+                    - LessThan
+                    - span:
+                        start: 1394
+                        end: 1395
+                      value:
+                        Constant:
+                          Identifier: x
+                    - span:
+                        start: 1398
+                        end: 1400
+                      value:
+                        Constant:
+                          Integer: 10
+            update:
+              - span:
+                  start: 1403
+                  end: 1405
+                value:
+                  UnaryOperator:
+                    - Increment: Postfix
+                    - span:
+                        start: 1402
+                        end: 1403
+                      value:
+                        Constant:
+                          Identifier: x
+        body:
+          Block:
+            - If:
+                condition:
+                  span:
+                    start: 1417
+                    end: 1423
+                  value:
+                    BinaryOperator:
+                      - Equal
+                      - span:
+                          start: 1417
+                          end: 1418
+                        value:
+                          Constant:
+                            Identifier: x
+                      - span:
+                          start: 1422
+                          end: 1423
+                        value:
+                          Constant:
+                            Integer: 5
+                "yes":
+                  Block:
+                    - Break
+                "no": ~
+            - If:
+                condition:
+                  span:
+                    start: 1456
+                    end: 1466
+                  value:
+                    BinaryOperator:
+                      - Equal
+                      - span:
+                          start: 1456
+                          end: 1461
+                        value:
+                          BinaryOperator:
+                            - Modulo
+                            - span:
+                                start: 1456
+                                end: 1457
+                              value:
+                                Constant:
+                                  Identifier: x
+                            - span:
+                                start: 1460
+                                end: 1461
+                              value:
+                                Constant:
+                                  Integer: 2
+                      - span:
+                          start: 1465
+                          end: 1466
+                        value:
+                          Constant:
+                            Integer: 1
+                "yes":
+                  Block:
+                    - Continue
+                "no": ~
+            - Expr:
+                span:
+                  start: 1498
+                  end: 1506
+                value:
+                  Call:
+                    name:
+                      span:
+                        start: 1498
+                        end: 1503
+                      value:
+                        Constant:
+                          Identifier: trace
+                    args:
+                      - span:
+                          start: 1504
+                          end: 1505
+                        value:
+                          Constant:
+                            Identifier: x
+    - Expr:
+        span:
+          start: 1576
+          end: 1595
+        value:
+          Call:
+            name:
+              span:
+                start: 1576
+                end: 1581
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 1582
+                  end: 1594
+                value:
+                  Constant:
+                    String: for_nested
+    - ForIn:
+        condition:
+          Classic:
+            initialize:
+              Declare:
+                - name: outer
+                  value:
+                    span:
+                      start: 1614
+                      end: 1615
+                    value:
+                      Constant:
+                        Integer: 0
+                  type_name: ~
+            condition:
+              - span:
+                  start: 1617
+                  end: 1626
+                value:
+                  BinaryOperator:
+                    - LessThan
+                    - span:
+                        start: 1617
+                        end: 1622
+                      value:
+                        Constant:
+                          Identifier: outer
+                    - span:
+                        start: 1625
+                        end: 1626
+                      value:
+                        Constant:
+                          Integer: 2
+            update:
+              - span:
+                  start: 1633
+                  end: 1635
+                value:
+                  UnaryOperator:
+                    - Increment: Postfix
+                    - span:
+                        start: 1628
+                        end: 1633
+                      value:
+                        Constant:
+                          Identifier: outer
+        body:
+          Block:
+            - ForIn:
+                condition:
+                  Classic:
+                    initialize:
+                      Declare:
+                        - name: inner
+                          value:
+                            span:
+                              start: 1660
+                              end: 1661
+                            value:
+                              Constant:
+                                Integer: 0
+                          type_name: ~
+                    condition:
+                      - span:
+                          start: 1663
+                          end: 1672
+                        value:
+                          BinaryOperator:
+                            - LessThan
+                            - span:
+                                start: 1663
+                                end: 1668
+                              value:
+                                Constant:
+                                  Identifier: inner
+                            - span:
+                                start: 1671
+                                end: 1672
+                              value:
+                                Constant:
+                                  Integer: 2
+                    update:
+                      - span:
+                          start: 1679
+                          end: 1681
+                        value:
+                          UnaryOperator:
+                            - Increment: Postfix
+                            - span:
+                                start: 1674
+                                end: 1679
+                              value:
+                                Constant:
+                                  Identifier: inner
+                body:
+                  Block:
+                    - Expr:
+                        span:
+                          start: 1693
+                          end: 1719
+                        value:
+                          Call:
+                            name:
+                              span:
+                                start: 1693
+                                end: 1698
+                              value:
+                                Constant:
+                                  Identifier: trace
+                            args:
+                              - span:
+                                  start: 1699
+                                  end: 1718
+                                value:
+                                  BinaryOperator:
+                                    - Add
+                                    - span:
+                                        start: 1699
+                                        end: 1710
+                                      value:
+                                        BinaryOperator:
+                                          - Add
+                                          - span:
+                                              start: 1699
+                                              end: 1704
+                                            value:
+                                              Constant:
+                                                Identifier: outer
+                                          - span:
+                                              start: 1707
+                                              end: 1710
+                                            value:
+                                              Constant:
+                                                String: ","
+                                    - span:
+                                        start: 1713
+                                        end: 1718
+                                      value:
+                                        Constant:
+                                          Identifier: inner
+    - Expr:
+        span:
+          start: 1795
+          end: 1820
+        value:
+          Call:
+            name:
+              span:
+                start: 1795
+                end: 1800
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 1801
+                  end: 1819
+                value:
+                  Constant:
+                    String: for_existing_var
+    - Declare:
+        - name: z
+          value: ~
+          type_name: ~
+    - ForIn:
+        condition:
+          Classic:
+            initialize:
+              Expr:
+                span:
+                  start: 1834
+                  end: 1839
+                value:
+                  BinaryOperator:
+                    - Assign
+                    - span:
+                        start: 1834
+                        end: 1835
+                      value:
+                        Constant:
+                          Identifier: z
+                    - span:
+                        start: 1838
+                        end: 1839
+                      value:
+                        Constant:
+                          Integer: 1
+            condition:
+              - span:
+                  start: 1841
+                  end: 1847
+                value:
+                  BinaryOperator:
+                    - LessThanEqual
+                    - span:
+                        start: 1841
+                        end: 1842
+                      value:
+                        Constant:
+                          Identifier: z
+                    - span:
+                        start: 1846
+                        end: 1847
+                      value:
+                        Constant:
+                          Integer: 3
+            update:
+              - span:
+                  start: 1850
+                  end: 1852
+                value:
+                  UnaryOperator:
+                    - Increment: Postfix
+                    - span:
+                        start: 1849
+                        end: 1850
+                      value:
+                        Constant:
+                          Identifier: z
+        body:
+          Block:
+            - Expr:
+                span:
+                  start: 1860
+                  end: 1868
+                value:
+                  Call:
+                    name:
+                      span:
+                        start: 1860
+                        end: 1865
+                      value:
+                        Constant:
+                          Identifier: trace
+                    args:
+                      - span:
+                          start: 1866
+                          end: 1867
+                        value:
+                          Constant:
+                            Identifier: z
+    - Expr:
+        span:
+          start: 1938
+          end: 1972
+        value:
+          Call:
+            name:
+              span:
+                start: 1938
+                end: 1943
+              value:
+                Constant:
+                  Identifier: trace
+            args:
+              - span:
+                  start: 1944
+                  end: 1971
+                value:
+                  Constant:
+                    String: for_single_statement_body
+    - ForIn:
+        condition:
+          Classic:
+            initialize:
+              Declare:
+                - name: q
+                  value:
+                    span:
+                      start: 1987
+                      end: 1988
+                    value:
+                      Constant:
+                        Integer: 0
+                  type_name: ~
+            condition:
+              - span:
+                  start: 1990
+                  end: 1995
+                value:
+                  BinaryOperator:
+                    - LessThan
+                    - span:
+                        start: 1990
+                        end: 1991
+                      value:
+                        Constant:
+                          Identifier: q
+                    - span:
+                        start: 1994
+                        end: 1995
+                      value:
+                        Constant:
+                          Integer: 3
+            update:
+              - span:
+                  start: 1998
+                  end: 2000
+                value:
+                  UnaryOperator:
+                    - Increment: Postfix
+                    - span:
+                        start: 1997
+                        end: 1998
+                      value:
+                        Constant:
+                          Identifier: q
+        body:
+          Expr:
+            span:
+              start: 2006
+              end: 2014
+            value:
+              Call:
+                name:
+                  span:
+                    start: 2006
+                    end: 2011
+                  value:
+                    Constant:
+                      Identifier: trace
+                args:
+                  - span:
+                      start: 2012
+                      end: 2013
+                    value:
+                      Constant:
+                        Identifier: q
