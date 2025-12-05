@@ -15,7 +15,6 @@ pub(crate) fn gen_special_call(
     args: &[Expr],
 ) -> bool {
     match name.to_ascii_lowercase().as_str() {
-        "call" => fn_call(context, builder, span, args),
         "chr" => fn_chr(context, builder, span, args),
         "duplicatemovieclip" => fn_duplicate_movie_clip(context, builder, span, args),
         "fscommand" => fn_fscommand(context, builder, span, args),
@@ -63,15 +62,6 @@ pub(crate) fn gen_special_call(
         _ => return false,
     };
     true
-}
-
-fn fn_call(context: &mut ScriptContext, builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
-    if args.len() == 1 {
-        gen_expr(context, builder, &args[0], false);
-        builder.action(Action::Call);
-    } else {
-        builder.error("Wrong number of parameters; call requires exactly 1.", span);
-    }
 }
 
 fn fn_chr(context: &mut ScriptContext, builder: &mut CodeBuilder, span: Span, args: &[Expr]) {

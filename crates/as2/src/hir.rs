@@ -17,6 +17,7 @@ pub enum ExprKind {
         name: Box<Expr>,
         args: Vec<Expr>,
     },
+    CallFrame(Box<Expr>),
     BinaryOperator(BinaryOperator, Box<Expr>, Box<Expr>),
     UnaryOperator(UnaryOperator, Box<Expr>),
     Ternary {

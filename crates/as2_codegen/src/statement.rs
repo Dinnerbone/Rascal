@@ -495,6 +495,10 @@ pub fn gen_expr(
             gen_expr(context, builder, value, false);
             builder.action(Action::SetVariable);
         }
+        ExprKind::CallFrame(frame) => {
+            gen_expr(context, builder, frame, false);
+            builder.action(Action::Call);
+        }
     }
 }
 

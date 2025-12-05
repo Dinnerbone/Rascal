@@ -10,21 +10,13 @@ Ok:
           start: 0
           end: 9
         value:
-          Call:
-            name:
-              span:
-                start: 0
-                end: 4
-              value:
-                Constant:
-                  Identifier: call
-            args:
-              - span:
-                  start: 5
-                  end: 8
-                value:
-                  Constant:
-                    Integer: 123
+          CallFrame:
+            span:
+              start: 5
+              end: 8
+            value:
+              Constant:
+                Integer: 123
     - Expr:
         span:
           start: 11
