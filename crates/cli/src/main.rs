@@ -22,7 +22,7 @@ fn main() -> Result<()> {
         let mut builder =
             ProgramBuilder::new(FileSystemSourceProvider::with_root(PathBuf::from(".")));
         builder.add_script(&filename);
-        let parsed = builder.build().unwrap();
+        let parsed = builder.build().unwrap_or_else(|e| panic!("{}", e));
         hir_to_pcode(&filename, &src, &parsed.initial_script).unwrap()
     } else {
         let pcode = PCode::new(&filename, &src);

@@ -1,9 +1,8 @@
+use crate::error::{Error, ErrorSet};
 use crate::lexer::Lexer;
-use crate::parser::ActionScriptError;
 use crate::resolver::resolve_hir;
 use crate::{hir, parser};
 use serde::Serialize;
-use std::io::Error;
 use std::path::PathBuf;
 
 pub trait SourceProvider {
@@ -21,7 +20,7 @@ impl FileSystemSourceProvider {
 }
 
 impl SourceProvider for FileSystemSourceProvider {
-    fn load(&self, path: &str) -> Result<String, Error> {
+    fn load(&self, path: &str) -> Result<String, std::io::Error> {
         std::fs::read_to_string(self.root.join(path))
     }
 }
@@ -50,17 +49,31 @@ impl<P: SourceProvider> ProgramBuilder<P> {
         }
     }
 
-    pub fn build(self) -> Result<Program, String> {
+    pub fn build(self) -> Result<Program, Error> {
         let mut initial_script = vec![];
+        let mut errors = ErrorSet::new();
 
         for path in self.scripts {
-            let source = self.provider.load(&path).map_err(|e| e.to_string())?;
+            let source = match self.provider.load(&path) {
+                Ok(source) => source,
+                Err(e) => {
+                    errors.add_io_error(&path, e);
+                    continue;
+                }
+            };
             let tokens = Lexer::new(&source).into_vec();
-            let ast = parser::parse_document(&tokens)
-                .map_err(|e| ActionScriptError::from_parse(&path, &source, e).to_string())?;
+            let ast = match parser::parse_document(&tokens) {
+                Ok(ast) => ast,
+                Err(e) => {
+                    errors.add_parsing_error(&path, &source, e.into());
+                    continue;
+                }
+            };
             let mut hir = resolve_hir(ast);
             initial_script.append(&mut hir.statements);
         }
+
+        errors.error_unless_empty()?;
 
         Ok(Program { initial_script })
     }

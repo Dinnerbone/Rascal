@@ -10,6 +10,7 @@ winnow = "0.7.13"
 serde = { version = "1.0.228", features = ["derive"] }
 annotate-snippets = "0.12.8"
 rascal_common = { path = "../common" }
+indexmap = { version = "2.12.0", features = ["serde"] }
 
 [dev-dependencies]
 insta = { version = "1.43.2", features = ["yaml", "glob"] }

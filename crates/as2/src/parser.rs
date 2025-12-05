@@ -8,7 +8,6 @@ use winnow::token::literal;
 use winnow::{ModalResult, Parser};
 
 pub(crate) mod document;
-mod error;
 mod expression;
 mod operator;
 mod statement;
@@ -18,7 +17,6 @@ mod tests;
 pub(crate) type Tokens<'i> = TokenSlice<'i, Token<'i>>;
 
 use crate::ast::Document;
-pub use crate::parser::error::ActionScriptError;
 
 pub fn parse_document<'i>(
     source: &'i [Token<'i>],
