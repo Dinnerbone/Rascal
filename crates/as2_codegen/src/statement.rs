@@ -423,7 +423,7 @@ fn gen_declarations(
     declarations: &[Declaration],
 ) {
     for declaration in declarations {
-        let value = context.constants.add(declaration.name);
+        let value = context.constants.add(&declaration.name);
         builder.push(value);
         if let Some(value) = &declaration.value {
             gen_expr(context, builder, value, false);
@@ -533,7 +533,7 @@ fn gen_try_catch(context: &mut ScriptContext, builder: &mut CodeBuilder, try_cat
                 catch_builder.action(Action::Pop);
             }
             first = false;
-            catch_builder.push(type_name.value);
+            catch_builder.push(type_name.value.to_owned());
             catch_builder.action(Action::GetVariable);
             catch_builder.push(PushValue::Register(0));
             catch_builder.action(Action::CastOp);
@@ -541,7 +541,7 @@ fn gen_try_catch(context: &mut ScriptContext, builder: &mut CodeBuilder, try_cat
             catch_builder.push(PushValue::Null);
             catch_builder.action(Action::Equals2);
             catch_builder.action(Action::If(next_label.clone()));
-            catch_builder.push(catch.name.value);
+            catch_builder.push(catch.name.value.to_owned());
             catch_builder.action(Action::StackSwap);
             catch_builder.action(Action::DefineLocal);
             gen_statements(context, &mut catch_builder, &catch.body);
@@ -552,7 +552,7 @@ fn gen_try_catch(context: &mut ScriptContext, builder: &mut CodeBuilder, try_cat
         if let Some(catch) = &try_catch.catch_all {
             catch_builder.action(Action::Pop);
             catch_builder.push(PushValue::Register(0));
-            catch_builder.push(catch.name.value);
+            catch_builder.push(catch.name.value.to_owned());
             catch_builder.action(Action::StackSwap);
             catch_builder.action(Action::DefineLocal);
             gen_statements(context, &mut catch_builder, &catch.body);
@@ -598,7 +598,7 @@ fn gen_function(context: &mut ScriptContext, builder: &mut CodeBuilder, function
     let (actions, errors) = fun_builder.into_actions();
     builder.add_errors(errors);
     builder.action(Action::DefineFunction {
-        name: function.name.map(ToOwned::to_owned).unwrap_or_default(),
+        name: function.name.clone().unwrap_or_default(),
         params: function
             .args
             .iter()
@@ -613,7 +613,7 @@ fn gen_function(context: &mut ScriptContext, builder: &mut CodeBuilder, function
 fn gen_init_object(
     context: &mut ScriptContext,
     builder: &mut CodeBuilder,
-    values: &[(&str, Expr)],
+    values: &[(String, Expr)],
 ) {
     let num_fields = values.len() as i32;
     for (key, value) in values.iter() {

@@ -1,141 +1,149 @@
 use rascal_common::span::Spanned;
 use serde::Serialize;
 
-pub type Expr<'a> = Spanned<ExprKind<'a>>;
-pub type Constant<'a> = Spanned<ConstantKind<'a>>;
-pub type Statement<'a> = Spanned<StatementKind<'a>>;
-pub use crate::ast::{Affix, BinaryOperator, ConstantKind, UnaryOperator};
+pub type Expr = Spanned<ExprKind>;
+pub type Constant = Spanned<ConstantKind>;
+pub type Statement = Spanned<StatementKind>;
+pub use crate::ast::{Affix, BinaryOperator, UnaryOperator};
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
-pub enum ExprKind<'a> {
-    Constant(ConstantKind<'a>),
+pub enum ExprKind {
+    Constant(ConstantKind),
     Call {
-        name: Box<Expr<'a>>,
-        args: Vec<Expr<'a>>,
+        name: Box<Expr>,
+        args: Vec<Expr>,
     },
     New {
-        name: Box<Expr<'a>>,
-        args: Vec<Expr<'a>>,
+        name: Box<Expr>,
+        args: Vec<Expr>,
     },
-    BinaryOperator(BinaryOperator, Box<Expr<'a>>, Box<Expr<'a>>),
-    UnaryOperator(UnaryOperator, Box<Expr<'a>>),
+    BinaryOperator(BinaryOperator, Box<Expr>, Box<Expr>),
+    UnaryOperator(UnaryOperator, Box<Expr>),
     Ternary {
-        condition: Box<Expr<'a>>,
-        yes: Box<Expr<'a>>,
-        no: Box<Expr<'a>>,
+        condition: Box<Expr>,
+        yes: Box<Expr>,
+        no: Box<Expr>,
     },
-    InitObject(Vec<(&'a str, Expr<'a>)>),
-    InitArray(Vec<Expr<'a>>),
-    Field(Box<Expr<'a>>, Box<Expr<'a>>),
-    TypeOf(Vec<Expr<'a>>),
-    Delete(Vec<Expr<'a>>),
-    Void(Vec<Expr<'a>>),
-    Function(Function<'a>),
-    GetVariable(Box<Expr<'a>>),
-    SetVariable(Box<Expr<'a>>, Box<Expr<'a>>),
+    InitObject(Vec<(String, Expr)>),
+    InitArray(Vec<Expr>),
+    Field(Box<Expr>, Box<Expr>),
+    TypeOf(Vec<Expr>),
+    Delete(Vec<Expr>),
+    Void(Vec<Expr>),
+    Function(Function),
+    GetVariable(Box<Expr>),
+    SetVariable(Box<Expr>, Box<Expr>),
 }
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
-pub enum StatementKind<'a> {
-    Declare(Vec<Declaration<'a>>),
-    Return(Vec<Expr<'a>>),
-    Throw(Vec<Expr<'a>>),
-    Expr(Expr<'a>),
-    Block(Vec<StatementKind<'a>>),
+pub enum ConstantKind {
+    String(String),
+    Identifier(String),
+    Float(f64),
+    Integer(i32),
+}
+
+#[derive(Debug, Clone, Serialize, PartialEq)]
+pub enum StatementKind {
+    Declare(Vec<Declaration>),
+    Return(Vec<Expr>),
+    Throw(Vec<Expr>),
+    Expr(Expr),
+    Block(Vec<StatementKind>),
     ForIn {
-        condition: ForCondition<'a>,
-        body: Box<StatementKind<'a>>,
+        condition: ForCondition,
+        body: Box<StatementKind>,
     },
     While {
-        condition: Expr<'a>,
-        body: Box<StatementKind<'a>>,
+        condition: Expr,
+        body: Box<StatementKind>,
     },
     If {
-        condition: Expr<'a>,
-        yes: Box<StatementKind<'a>>,
-        no: Option<Box<StatementKind<'a>>>,
+        condition: Expr,
+        yes: Box<StatementKind>,
+        no: Option<Box<StatementKind>>,
     },
     Break,
     Continue,
-    Try(TryCatch<'a>),
+    Try(TryCatch),
     WaitForFrame {
-        frame: Expr<'a>,
-        scene: Option<Expr<'a>>,
-        if_loaded: Box<StatementKind<'a>>,
+        frame: Expr,
+        scene: Option<Expr>,
+        if_loaded: Box<StatementKind>,
     },
     TellTarget {
-        target: Expr<'a>,
-        body: Box<StatementKind<'a>>,
+        target: Expr,
+        body: Box<StatementKind>,
     },
-    InlinePCode(&'a str),
+    InlinePCode(String),
     With {
-        target: Expr<'a>,
-        body: Box<StatementKind<'a>>,
+        target: Expr,
+        body: Box<StatementKind>,
     },
     Switch {
-        target: Expr<'a>,
-        elements: Vec<SwitchElement<'a>>,
+        target: Expr,
+        elements: Vec<SwitchElement>,
     },
 }
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
-pub enum SwitchElement<'a> {
-    Case(Expr<'a>),
+pub enum SwitchElement {
+    Case(Expr),
     Default,
-    Statement(StatementKind<'a>),
+    Statement(StatementKind),
 }
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
-pub enum ForCondition<'a> {
+pub enum ForCondition {
     Enumerate {
-        variable: &'a str,
+        variable: String,
         declare: bool,
-        object: Expr<'a>,
+        object: Expr,
     },
     Classic {
-        initialize: Option<Box<StatementKind<'a>>>,
+        initialize: Option<Box<StatementKind>>,
         // This is technically incorrect, we treat `a++, b++` as two different expressions, but they should be one (and we'd have a `Next(a, b)` expression)
         // Unfortunately that seems difficult to implement _correctly_, so this is a good stopgap (did anyone even use `,` in regular code, outside for loops?)
-        condition: Vec<Expr<'a>>,
-        update: Vec<Expr<'a>>,
+        condition: Vec<Expr>,
+        update: Vec<Expr>,
     },
 }
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
-pub struct Function<'a> {
-    pub name: Option<&'a str>,
-    pub args: Vec<FunctionArgument<'a>>,
-    pub body: Vec<StatementKind<'a>>,
+pub struct Function {
+    pub name: Option<String>,
+    pub args: Vec<FunctionArgument>,
+    pub body: Vec<StatementKind>,
 }
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
-pub struct FunctionArgument<'a> {
-    pub name: &'a str,
-    pub type_name: Option<Spanned<&'a str>>,
+pub struct FunctionArgument {
+    pub name: String,
+    pub type_name: Option<Spanned<String>>,
 }
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
-pub struct Declaration<'a> {
-    pub name: &'a str,
-    pub value: Option<Expr<'a>>,
-    pub type_name: Option<Spanned<&'a str>>,
+pub struct Declaration {
+    pub name: String,
+    pub value: Option<Expr>,
+    pub type_name: Option<Spanned<String>>,
 }
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
-pub struct TryCatch<'a> {
-    pub try_body: Vec<StatementKind<'a>>,
-    pub typed_catches: Vec<(Spanned<&'a str>, Catch<'a>)>,
-    pub catch_all: Option<Catch<'a>>,
-    pub finally: Vec<StatementKind<'a>>,
+pub struct TryCatch {
+    pub try_body: Vec<StatementKind>,
+    pub typed_catches: Vec<(Spanned<String>, Catch)>,
+    pub catch_all: Option<Catch>,
+    pub finally: Vec<StatementKind>,
 }
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
-pub struct Catch<'a> {
-    pub name: Spanned<&'a str>,
-    pub body: Vec<StatementKind<'a>>,
+pub struct Catch {
+    pub name: Spanned<String>,
+    pub body: Vec<StatementKind>,
 }
 
 #[derive(Debug, Serialize)]
-pub struct Document<'src> {
-    pub statements: Vec<StatementKind<'src>>,
+pub struct Document {
+    pub statements: Vec<StatementKind>,
 }

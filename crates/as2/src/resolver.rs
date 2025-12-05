@@ -1,48 +1,47 @@
 use crate::ast;
 use crate::hir;
-use rascal_common::span::Span;
-use std::borrow::Cow;
+use rascal_common::span::{Span, Spanned};
 use std::collections::HashMap;
 
-struct ModuleContext<'src> {
-    imports: HashMap<&'src str, Vec<&'src str>>,
+struct ModuleContext {
+    imports: HashMap<String, Vec<String>>,
 }
 
-impl<'src> ModuleContext<'src> {
+impl ModuleContext {
     fn new() -> Self {
         Self {
             imports: HashMap::new(),
         }
     }
 
-    fn import(&mut self, path: Vec<&'src str>, name: &'src str) {
+    fn import(&mut self, path: Vec<String>, name: String) {
         self.imports.insert(name, path);
     }
 
-    fn expand_identifier(&self, name: &'src str, span: Span) -> Option<hir::Expr<'src>> {
-        if let Some(path) = self.imports.get(name)
+    fn expand_identifier(&self, name: String, span: Span) -> Option<hir::Expr> {
+        if let Some(path) = self.imports.get(&name)
             && !path.is_empty()
         {
             let mut parent = Box::new(hir::Expr::new(
                 span,
-                hir::ExprKind::Constant(hir::ConstantKind::Identifier(path.first().unwrap())),
+                hir::ExprKind::Constant(hir::ConstantKind::Identifier(
+                    path.first().unwrap().to_owned(),
+                )),
             ));
-            let wrap_parent = |parent: Box<hir::Expr<'src>>, child: &'src str| {
+            let wrap_parent = |parent: Box<hir::Expr>, child: String| {
                 hir::Expr::new(
                     span,
                     hir::ExprKind::Field(
                         parent,
                         Box::new(hir::Expr::new(
                             span,
-                            hir::ExprKind::Constant(hir::ConstantKind::String(Cow::Borrowed(
-                                child,
-                            ))),
+                            hir::ExprKind::Constant(hir::ConstantKind::String(child)),
                         )),
                     ),
                 )
             };
             for segment in path.iter().skip(1) {
-                parent = Box::new(wrap_parent(parent, segment));
+                parent = Box::new(wrap_parent(parent, segment.to_owned()));
             }
             return Some(wrap_parent(parent, name));
         }
@@ -57,10 +56,10 @@ pub fn resolve_hir(ast: ast::Document) -> hir::Document {
     }
 }
 
-fn resolve_statement_vec<'src>(
-    context: &mut ModuleContext<'src>,
-    input: Vec<ast::StatementKind<'src>>,
-) -> Vec<hir::StatementKind<'src>> {
+fn resolve_statement_vec(
+    context: &mut ModuleContext,
+    input: Vec<ast::StatementKind>,
+) -> Vec<hir::StatementKind> {
     input
         .into_iter()
         .map(|statement| resolve_statement(context, statement))
@@ -68,24 +67,23 @@ fn resolve_statement_vec<'src>(
 }
 
 #[expect(clippy::boxed_local)]
-fn resolve_statement_box<'src>(
-    context: &mut ModuleContext<'src>,
-    input: Box<ast::StatementKind<'src>>,
-) -> Box<hir::StatementKind<'src>> {
+fn resolve_statement_box(
+    context: &mut ModuleContext,
+    input: Box<ast::StatementKind>,
+) -> Box<hir::StatementKind> {
     Box::new(resolve_statement(context, *input))
 }
 
-fn resolve_statement<'src>(
-    context: &mut ModuleContext<'src>,
-    input: ast::StatementKind<'src>,
-) -> hir::StatementKind<'src> {
+fn resolve_statement(context: &mut ModuleContext, input: ast::StatementKind) -> hir::StatementKind {
     match input {
         ast::StatementKind::Declare(declarations) => hir::StatementKind::Declare(
             declarations
                 .into_iter()
                 .map(|d| hir::Declaration {
-                    name: d.name,
-                    type_name: d.type_name,
+                    name: d.name.to_owned(),
+                    type_name: d
+                        .type_name
+                        .map(|s| Spanned::new(s.span, s.value.to_owned())),
                     value: d.value.map(|expr| resolve_expr(context, expr)),
                 })
                 .collect(),
@@ -123,7 +121,12 @@ fn resolve_statement<'src>(
             typed_catches: try_catch
                 .typed_catches
                 .into_iter()
-                .map(|(type_name, catch)| (type_name, resolve_catch(context, catch)))
+                .map(|(type_name, catch)| {
+                    (
+                        Spanned::new(type_name.span, type_name.value.to_owned()),
+                        resolve_catch(context, catch),
+                    )
+                })
                 .collect(),
             finally: resolve_statement_vec(context, try_catch.finally),
         }),
@@ -140,7 +143,7 @@ fn resolve_statement<'src>(
             target: resolve_expr(context, target),
             body: resolve_statement_box(context, body),
         },
-        ast::StatementKind::InlinePCode(pcode) => hir::StatementKind::InlinePCode(pcode),
+        ast::StatementKind::InlinePCode(pcode) => hir::StatementKind::InlinePCode(pcode.to_owned()),
         ast::StatementKind::With { target, body } => hir::StatementKind::With {
             target: resolve_expr(context, target),
             body: resolve_statement_box(context, body),
@@ -153,23 +156,26 @@ fn resolve_statement<'src>(
                 .collect(),
         },
         ast::StatementKind::Import { path, name } => {
-            context.import(path, name);
+            context.import(
+                path.iter().map(|s| (*s).to_owned()).collect(),
+                name.to_owned(),
+            );
             hir::StatementKind::Block(vec![]) // todo, resolving statements shouldn't be a 1:1, we should be able to do nothing here
         }
     }
 }
 
-fn resolve_for_condition<'src>(
-    context: &mut ModuleContext<'src>,
-    input: ast::ForCondition<'src>,
-) -> hir::ForCondition<'src> {
+fn resolve_for_condition(
+    context: &mut ModuleContext,
+    input: ast::ForCondition,
+) -> hir::ForCondition {
     match input {
         ast::ForCondition::Enumerate {
             variable,
             declare,
             object,
         } => hir::ForCondition::Enumerate {
-            variable,
+            variable: variable.to_owned(),
             declare,
             object: resolve_expr(context, object),
         },
@@ -185,20 +191,17 @@ fn resolve_for_condition<'src>(
     }
 }
 
-fn resolve_catch<'src>(
-    context: &mut ModuleContext<'src>,
-    input: ast::Catch<'src>,
-) -> hir::Catch<'src> {
+fn resolve_catch(context: &mut ModuleContext, input: ast::Catch) -> hir::Catch {
     hir::Catch {
-        name: input.name,
+        name: Spanned::new(input.name.span, input.name.value.to_owned()),
         body: resolve_statement_vec(context, input.body),
     }
 }
 
-fn resolve_switch_element<'src>(
-    context: &mut ModuleContext<'src>,
-    input: ast::SwitchElement<'src>,
-) -> hir::SwitchElement<'src> {
+fn resolve_switch_element(
+    context: &mut ModuleContext,
+    input: ast::SwitchElement,
+) -> hir::SwitchElement {
     match input {
         ast::SwitchElement::Case(expr) => hir::SwitchElement::Case(resolve_expr(context, expr)),
         ast::SwitchElement::Default => hir::SwitchElement::Default,
@@ -209,36 +212,36 @@ fn resolve_switch_element<'src>(
 }
 
 #[expect(clippy::boxed_local)]
-fn resolve_expr_box<'src>(
-    context: &mut ModuleContext<'src>,
-    input: Box<ast::Expr<'src>>,
-) -> Box<hir::Expr<'src>> {
+fn resolve_expr_box(context: &mut ModuleContext, input: Box<ast::Expr>) -> Box<hir::Expr> {
     Box::new(resolve_expr(context, *input))
 }
 
-fn resolve_expr_vec<'src>(
-    context: &mut ModuleContext<'src>,
-    input: Vec<ast::Expr<'src>>,
-) -> Vec<hir::Expr<'src>> {
+fn resolve_expr_vec(context: &mut ModuleContext, input: Vec<ast::Expr>) -> Vec<hir::Expr> {
     input
         .into_iter()
         .map(|expr| resolve_expr(context, expr))
         .collect()
 }
 
-fn resolve_expr<'src>(
-    context: &mut ModuleContext<'src>,
-    input: ast::Expr<'src>,
-) -> hir::Expr<'src> {
+fn resolve_constant(constant: ast::ConstantKind) -> hir::ConstantKind {
+    match constant {
+        ast::ConstantKind::String(v) => hir::ConstantKind::String(v.to_string()),
+        ast::ConstantKind::Identifier(v) => hir::ConstantKind::Identifier(v.to_owned()),
+        ast::ConstantKind::Float(v) => hir::ConstantKind::Float(v),
+        ast::ConstantKind::Integer(v) => hir::ConstantKind::Integer(v),
+    }
+}
+
+fn resolve_expr(context: &mut ModuleContext, input: ast::Expr) -> hir::Expr {
     let result = match input.value {
         ast::ExprKind::Constant(ast::ConstantKind::Identifier(identifier)) => {
-            if let Some(path) = context.expand_identifier(identifier, input.span) {
+            if let Some(path) = context.expand_identifier(identifier.to_owned(), input.span) {
                 return path;
             } else {
-                hir::ExprKind::Constant(hir::ConstantKind::Identifier(identifier))
+                hir::ExprKind::Constant(hir::ConstantKind::Identifier(identifier.to_owned()))
             }
         }
-        ast::ExprKind::Constant(value) => hir::ExprKind::Constant(value),
+        ast::ExprKind::Constant(value) => hir::ExprKind::Constant(resolve_constant(value)),
         ast::ExprKind::Call { name, args } => hir::ExprKind::Call {
             name: resolve_expr_box(context, name),
             args: resolve_expr_vec(context, args),
@@ -264,7 +267,7 @@ fn resolve_expr<'src>(
         ast::ExprKind::InitObject(values) => hir::ExprKind::InitObject(
             values
                 .into_iter()
-                .map(|(name, value)| (name, resolve_expr(context, value)))
+                .map(|(name, value)| (name.to_owned(), resolve_expr(context, value)))
                 .collect(),
         ),
         ast::ExprKind::InitArray(values) => hir::ExprKind::InitArray(
@@ -309,18 +312,17 @@ fn resolve_expr<'src>(
     hir::Expr::new(input.span, result)
 }
 
-fn resolve_function<'src>(
-    context: &mut ModuleContext<'src>,
-    input: ast::Function<'src>,
-) -> hir::Function<'src> {
+fn resolve_function(context: &mut ModuleContext, input: ast::Function) -> hir::Function {
     hir::Function {
-        name: input.name,
+        name: input.name.map(|name| name.to_owned()),
         args: input
             .args
             .into_iter()
             .map(|arg| hir::FunctionArgument {
-                name: arg.name,
-                type_name: arg.type_name,
+                name: arg.name.to_owned(),
+                type_name: arg
+                    .type_name
+                    .map(|s| Spanned::new(s.span, s.value.to_owned())),
             })
             .collect(),
         body: resolve_statement_vec(context, input.body),

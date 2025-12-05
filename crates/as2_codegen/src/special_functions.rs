@@ -863,13 +863,13 @@ fn fn_start_drag(
     let target = &args[0]; // Only guaranteed argument
     let lock = match args.get(1) {
         Some(Expr {
-            value: ExprKind::Constant(ConstantKind::Identifier("true")),
+            value: ExprKind::Constant(ConstantKind::Identifier(value)),
             ..
-        }) => 1,
+        }) if value == "true" => 1,
         Some(Expr {
-            value: ExprKind::Constant(ConstantKind::Identifier("false")),
+            value: ExprKind::Constant(ConstantKind::Identifier(value)),
             ..
-        }) => 0,
+        }) if value == "false" => 0,
         None => 0,
         Some(other) => {
             builder.error("Lock center parameter must be true or false", other.span);
