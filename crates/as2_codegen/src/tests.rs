@@ -28,10 +28,12 @@ fn test_fail_samples() {
             path.parent().unwrap().to_owned(),
         ));
         builder.add_script(&filename);
-        let parsed = builder.build().unwrap();
-        let result = match hir_to_pcode(&filename, &src, &parsed.initial_script) {
-            Ok(v) => v.to_string(),
-            Err(e) => e.to_string(),
+        let result = match builder.build() {
+            Ok(parsed) => match hir_to_pcode(&filename, &src, &parsed.initial_script) {
+                Ok(v) => v.to_string(),
+                Err(e) => e.to_string(),
+            },
+            Err(e) => e.to_string_plain(),
         };
         insta::assert_snapshot!(result);
     });

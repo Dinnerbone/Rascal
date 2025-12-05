@@ -12,6 +12,10 @@ pub(crate) struct ParsingError {
 }
 
 impl ParsingError {
+    pub(crate) fn new(error: String, span: Span) -> Self {
+        Self { error, span }
+    }
+
     fn annotation<'a>(&'a self) -> Annotation<'a> {
         AnnotationKind::Primary
             .span(self.span.start..self.span.end)
@@ -92,6 +96,20 @@ impl ErrorSet {
 #[derive(Debug)]
 pub struct Error(pub(crate) ErrorSet);
 
+impl Error {
+    pub fn to_string_plain(&self) -> String {
+        let report = self.0.report();
+        let renderer = Renderer::plain().decor_style(DecorStyle::Unicode);
+        renderer.render(&report)
+    }
+
+    pub fn to_string_styled(&self) -> String {
+        let report = self.0.report();
+        let renderer = Renderer::styled().decor_style(DecorStyle::Unicode);
+        renderer.render(&report)
+    }
+}
+
 #[cfg(test)]
 impl serde::Serialize for Error {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -104,13 +122,11 @@ impl serde::Serialize for Error {
 
 impl std::fmt::Display for Error {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        let report = self.0.report();
-        let renderer = if cfg!(test) {
-            Renderer::plain().decor_style(DecorStyle::Unicode)
+        if cfg!(test) {
+            self.to_string_plain().fmt(f)
         } else {
-            Renderer::styled().decor_style(DecorStyle::Unicode)
-        };
-        renderer.render(&report).fmt(f)
+            self.to_string_styled().fmt(f)
+        }
     }
 }
 

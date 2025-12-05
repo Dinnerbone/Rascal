@@ -18,7 +18,6 @@ pub(crate) fn gen_special_call(
         "call" => fn_call(context, builder, span, args),
         "chr" => fn_chr(context, builder, span, args),
         "duplicatemovieclip" => fn_duplicate_movie_clip(context, builder, span, args),
-        "eval" => fn_eval(context, builder, span, args),
         "fscommand" => fn_fscommand(context, builder, span, args),
         "getproperty" => fn_get_property(context, builder, span, args),
         "gettimer" => fn_get_timer(builder, span, args),
@@ -72,15 +71,6 @@ fn fn_call(context: &mut ScriptContext, builder: &mut CodeBuilder, span: Span, a
         builder.action(Action::Call);
     } else {
         builder.error("Wrong number of parameters; call requires exactly 1.", span);
-    }
-}
-
-fn fn_eval(context: &mut ScriptContext, builder: &mut CodeBuilder, span: Span, args: &[Expr]) {
-    if args.len() == 1 {
-        gen_expr(context, builder, &args[0], false);
-        builder.action(Action::GetVariable);
-    } else {
-        builder.error("Wrong number of parameters; eval requires exactly 1.", span);
     }
 }
 

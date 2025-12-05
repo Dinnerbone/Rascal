@@ -1,21 +1,32 @@
+mod special_functions;
+
 use crate::ast;
+use crate::error::ParsingError;
 use crate::hir;
+use crate::resolver::special_functions::resolve_special_call;
 use rascal_common::span::{Span, Spanned};
 use std::collections::HashMap;
 
 struct ModuleContext {
     imports: HashMap<String, Vec<String>>,
+    errors: Vec<ParsingError>,
 }
 
 impl ModuleContext {
     fn new() -> Self {
         Self {
             imports: HashMap::new(),
+            errors: vec![],
         }
     }
 
     fn import(&mut self, path: Vec<String>, name: String) {
         self.imports.insert(name, path);
+    }
+
+    fn error(&mut self, message: impl ToString, span: Span) {
+        self.errors
+            .push(ParsingError::new(message.to_string(), span));
     }
 
     fn expand_identifier(&self, name: String, span: Span) -> Option<hir::Expr> {
@@ -49,11 +60,10 @@ impl ModuleContext {
     }
 }
 
-pub fn resolve_hir(ast: ast::Document) -> hir::Document {
+pub fn resolve_hir(ast: ast::Document) -> (hir::Document, Vec<ParsingError>) {
     let mut context = ModuleContext::new();
-    hir::Document {
-        statements: resolve_statement_vec(&mut context, ast.statements),
-    }
+    let statements = resolve_statement_vec(&mut context, ast.statements);
+    (hir::Document { statements }, context.errors)
 }
 
 fn resolve_statement_vec(
@@ -233,6 +243,7 @@ fn resolve_constant(constant: ast::ConstantKind) -> hir::ConstantKind {
 }
 
 fn resolve_expr(context: &mut ModuleContext, input: ast::Expr) -> hir::Expr {
+    let span = input.span;
     let result = match input.value {
         ast::ExprKind::Constant(ast::ConstantKind::Identifier(identifier)) => {
             if let Some(path) = context.expand_identifier(identifier.to_owned(), input.span) {
@@ -242,10 +253,7 @@ fn resolve_expr(context: &mut ModuleContext, input: ast::Expr) -> hir::Expr {
             }
         }
         ast::ExprKind::Constant(value) => hir::ExprKind::Constant(resolve_constant(value)),
-        ast::ExprKind::Call { name, args } => hir::ExprKind::Call {
-            name: resolve_expr_box(context, name),
-            args: resolve_expr_vec(context, args),
-        },
+        ast::ExprKind::Call { name, args } => resolve_call(context, span, name, args),
         ast::ExprKind::New { name, args } => hir::ExprKind::New {
             name: resolve_expr_box(context, name),
             args: resolve_expr_vec(context, args),
@@ -310,6 +318,26 @@ fn resolve_expr(context: &mut ModuleContext, input: ast::Expr) -> hir::Expr {
         ),
     };
     hir::Expr::new(input.span, result)
+}
+
+fn resolve_call(
+    context: &mut ModuleContext,
+    span: Span,
+    name: Box<ast::Expr>,
+    args: Vec<ast::Expr>,
+) -> hir::ExprKind {
+    if let ast::Expr {
+        value: ast::ExprKind::Constant(ast::ConstantKind::Identifier(name)),
+        ..
+    } = *name
+        && let Some(special) = resolve_special_call(context, span, name, &args)
+    {
+        return special;
+    }
+    hir::ExprKind::Call {
+        name: resolve_expr_box(context, name),
+        args: resolve_expr_vec(context, args),
+    }
 }
 
 fn resolve_function(context: &mut ModuleContext, input: ast::Function) -> hir::Function {

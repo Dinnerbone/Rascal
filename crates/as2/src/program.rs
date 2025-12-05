@@ -69,7 +69,10 @@ impl<P: SourceProvider> ProgramBuilder<P> {
                     continue;
                 }
             };
-            let mut hir = resolve_hir(ast);
+            let (mut hir, hir_errors) = resolve_hir(ast);
+            for error in hir_errors {
+                errors.add_parsing_error(&path, &source, error);
+            }
             initial_script.append(&mut hir.statements);
         }
 
