@@ -3,7 +3,7 @@ use rascal_as2::program::{FileSystemSourceProvider, ProgramBuilder};
 
 #[test]
 fn test_all_samples() {
-    insta::glob!("../../../samples", "**/*.as", |path| {
+    insta::glob!("../../../samples/as2", "**/*.as", |path| {
         let src = std::fs::read_to_string(path).expect("failed to read sample");
         let filename = path.file_name().unwrap().to_string_lossy();
         let mut builder = ProgramBuilder::new(FileSystemSourceProvider::with_root(
@@ -21,7 +21,7 @@ fn test_all_samples() {
 
 #[test]
 fn test_fail_samples() {
-    insta::glob!("../fail_samples", "**/*.as", |path| {
+    insta::glob!("../../../samples/as2_errors", "**/*.as", |path| {
         let src = std::fs::read_to_string(path).expect("failed to read sample");
         let filename = path.file_name().unwrap().to_string_lossy();
         let mut builder = ProgramBuilder::new(FileSystemSourceProvider::with_root(
