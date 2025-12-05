@@ -1,13 +1,11 @@
 use crate::access::VariableAccess;
 use crate::builder::CodeBuilder;
 use crate::context::ScriptContext;
-use crate::special_functions::gen_special_call;
 use rascal_as2::hir::{
     Affix, BinaryOperator, ConstantKind, Declaration, Expr, ExprKind, ForCondition, Function,
-    StatementKind, SwitchElement, TryCatch, UnaryOperator,
+    GetUrlMethod, StatementKind, SwitchElement, TryCatch, UnaryOperator,
 };
 use rascal_as2_pcode::{Action, CatchTarget, PCode, PushValue};
-use rascal_common::span::Span;
 
 pub(crate) fn gen_statements(
     context: &mut ScriptContext,
@@ -440,12 +438,12 @@ pub fn gen_expr(
     expr: &Expr,
     will_discard_result: bool,
 ) {
-    let (span, kind) = (expr.span, &expr.value);
+    let (_span, kind) = (expr.span, &expr.value);
     match kind {
         ExprKind::Constant(constant) => {
             VariableAccess::for_constant(context, builder, constant).get_value(builder)
         }
-        ExprKind::Call { name, args } => gen_call(context, builder, span, name, args),
+        ExprKind::Call { name, args } => gen_call(context, builder, name, args),
         ExprKind::New { name, args } => gen_new(context, builder, name, args),
         ExprKind::BinaryOperator(op, left, right) => {
             gen_binary_op(context, builder, *op, left, right, will_discard_result)
@@ -499,7 +497,217 @@ pub fn gen_expr(
             gen_expr(context, builder, frame, false);
             builder.action(Action::Call);
         }
+        ExprKind::AsciiToChar(value) => {
+            gen_expr(context, builder, value, false);
+            builder.action(Action::AsciiToChar);
+        }
+        ExprKind::MBAsciiToChar(value) => {
+            gen_expr(context, builder, value, false);
+            builder.action(Action::MBAsciiToChar);
+        }
+        ExprKind::DuplicateMovieClip {
+            source,
+            target,
+            depth,
+        } => {
+            gen_expr(context, builder, source, false);
+            gen_expr(context, builder, target, false);
+            builder.push(16384);
+            gen_expr(context, builder, depth, false);
+            builder.action(Action::Add2);
+            builder.action(Action::CloneSprite);
+        }
+        ExprKind::GetTime => {
+            builder.action(Action::GetTime);
+        }
+        ExprKind::GotoFrame(frame, play) => match &frame.value {
+            ExprKind::Constant(ConstantKind::String(label)) => {
+                builder.action(Action::GotoLabel(label.to_string()));
+                if *play {
+                    builder.action(Action::Play);
+                }
+            }
+            ExprKind::Constant(ConstantKind::Integer(frame_number)) => {
+                let mut frame_number = *frame_number;
+                if frame_number != 0 {
+                    frame_number = frame_number.wrapping_sub(1);
+                }
+                builder.action(Action::GotoFrame((frame_number & 0xFFFF) as u16));
+                if *play {
+                    builder.action(Action::Play);
+                }
+            }
+            _ => {
+                gen_expr(context, builder, frame, false);
+                builder.action(Action::GotoFrame2 {
+                    scene_bias: 0,
+                    play: *play,
+                });
+            }
+        },
+        ExprKind::GetUrl {
+            target,
+            url,
+            load_variables,
+            load_target,
+            method,
+        } => {
+            gen_get_url(
+                context,
+                builder,
+                target,
+                url,
+                *load_variables,
+                *load_target,
+                *method,
+            );
+        }
+        ExprKind::CastToInteger(value) => {
+            gen_expr(context, builder, value, false);
+            builder.action(Action::ToInteger);
+        }
+        ExprKind::CastToNumber(value) => {
+            gen_expr(context, builder, value, false);
+            builder.action(Action::ToNumber);
+        }
+        ExprKind::CastToString(value) => {
+            gen_expr(context, builder, value, false);
+            builder.action(Action::ToString);
+        }
+        ExprKind::StringLength(value) => {
+            gen_expr(context, builder, value, false);
+            builder.action(Action::StringLength);
+        }
+        ExprKind::MBStringLength(value) => {
+            gen_expr(context, builder, value, false);
+            builder.action(Action::MBStringLength);
+        }
+        ExprKind::CharToAscii(value) => {
+            gen_expr(context, builder, value, false);
+            builder.action(Action::CharToAscii);
+        }
+        ExprKind::MBCharToAscii(value) => {
+            gen_expr(context, builder, value, false);
+            builder.action(Action::MBCharToAscii);
+        }
+        ExprKind::Substring {
+            string,
+            start,
+            length,
+        } => {
+            gen_expr(context, builder, string, false);
+            gen_expr(context, builder, start, false);
+            gen_expr(context, builder, length, false);
+            builder.action(Action::StringExtract);
+        }
+        ExprKind::MBSubstring {
+            string,
+            start,
+            length,
+        } => {
+            gen_expr(context, builder, string, false);
+            gen_expr(context, builder, start, false);
+            gen_expr(context, builder, length, false);
+            builder.action(Action::MBStringExtract);
+        }
+        ExprKind::NextFrame => builder.action(Action::NextFrame),
+        ExprKind::PreviousFrame => builder.action(Action::PrevFrame),
+        ExprKind::Play => builder.action(Action::Play),
+        ExprKind::Stop => builder.action(Action::Stop),
+        ExprKind::StartDrag {
+            target,
+            lock,
+            constraints,
+        } => {
+            let stack_delta = if let Some((a, b, c, d)) = constraints {
+                gen_expr(context, builder, a, false);
+                gen_expr(context, builder, b, false);
+                gen_expr(context, builder, c, false);
+                gen_expr(context, builder, d, false);
+                builder.push(1);
+                -7
+            } else {
+                builder.push(0);
+                -3
+            };
+            builder.push(if *lock { 1 } else { 0 });
+            gen_expr(context, builder, target, false);
+            builder.action_with_stack_delta(Action::StartDrag, stack_delta);
+        }
+        ExprKind::StopSounds => builder.action(Action::StopSounds),
+        ExprKind::EndDrag => builder.action(Action::EndDrag),
+        ExprKind::ToggleQuality => builder.action(Action::ToggleQuality),
+        ExprKind::GetTargetPath(expr) => {
+            gen_expr(context, builder, expr, false);
+            builder.action(Action::TargetPath);
+        }
+        ExprKind::Trace(expr) => {
+            gen_expr(context, builder, expr, false);
+            builder.action(Action::Trace);
+        }
+        ExprKind::RemoveSprite(expr) => {
+            gen_expr(context, builder, expr, false);
+            builder.action(Action::RemoveSprite);
+        }
+        ExprKind::GetRandomNumber(expr) => {
+            gen_expr(context, builder, expr, false);
+            builder.action(Action::RandomNumber);
+        }
+        ExprKind::GetProperty(target, property) => {
+            gen_expr(context, builder, target, false);
+            builder.push(*property);
+            builder.action(Action::GetProperty);
+        }
+        ExprKind::SetProperty(target, property, value) => {
+            gen_expr(context, builder, target, false);
+            builder.push(*property);
+            gen_expr(context, builder, value, false);
+            builder.action(Action::SetProperty);
+        }
     }
+}
+
+fn gen_get_url(
+    context: &mut ScriptContext,
+    builder: &mut CodeBuilder,
+    target: &Expr,
+    url: &Expr,
+    load_variables: bool,
+    load_target: bool,
+    method: GetUrlMethod,
+) {
+    // First we see if getUrl is viable - it requires constant values and no loading
+    if !load_target
+        && !load_variables
+        && method == GetUrlMethod::None
+        && let Expr {
+            value: ExprKind::Constant(ConstantKind::String(url)),
+            ..
+        } = url
+        && let Expr {
+            value: ExprKind::Constant(ConstantKind::String(target)),
+            ..
+        } = target
+    {
+        builder.action(Action::GetUrl {
+            url: url.to_string(),
+            target: target.to_string(),
+        });
+        return;
+    }
+
+    // We can't use the "classic" getUrl, so let's use the stack
+    gen_expr(context, builder, url, false);
+    gen_expr(context, builder, target, false);
+    builder.action(Action::GetUrl2 {
+        load_variables,
+        load_target,
+        method: match method {
+            GetUrlMethod::None => 0,
+            GetUrlMethod::Get => 1,
+            GetUrlMethod::Post => 2,
+        },
+    });
 }
 
 fn gen_try_catch(context: &mut ScriptContext, builder: &mut CodeBuilder, try_catch: &TryCatch) {
@@ -821,22 +1029,7 @@ fn gen_binary_op(
     }
 }
 
-fn gen_call(
-    context: &mut ScriptContext,
-    builder: &mut CodeBuilder,
-    span: Span,
-    name: &Expr,
-    args: &[Expr],
-) {
-    if let Expr {
-        value: ExprKind::Constant(ConstantKind::Identifier(identifier)),
-        ..
-    } = name
-        && gen_special_call(context, builder, span, identifier, args)
-    {
-        return;
-    }
-
+fn gen_call(context: &mut ScriptContext, builder: &mut CodeBuilder, name: &Expr, args: &[Expr]) {
     for arg in args.iter().rev() {
         gen_expr(context, builder, arg, false);
     }

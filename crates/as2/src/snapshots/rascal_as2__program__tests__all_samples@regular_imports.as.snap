@@ -12,85 +12,69 @@ Ok:
           start: 59
           end: 76
         value:
-          Call:
-            name:
-              span:
-                start: 59
-                end: 64
-              value:
-                Constant:
-                  Identifier: trace
-            args:
-              - span:
-                  start: 65
-                  end: 75
-                value:
-                  Field:
-                    - span:
-                        start: 65
-                        end: 75
-                      value:
-                        Field:
-                          - span:
-                              start: 65
-                              end: 75
-                            value:
-                              Constant:
-                                Identifier: flash
-                          - span:
-                              start: 65
-                              end: 75
-                            value:
-                              Constant:
-                                String: display
-                    - span:
-                        start: 65
-                        end: 75
-                      value:
-                        Constant:
-                          String: BitmapData
+          Trace:
+            span:
+              start: 65
+              end: 75
+            value:
+              Field:
+                - span:
+                    start: 65
+                    end: 75
+                  value:
+                    Field:
+                      - span:
+                          start: 65
+                          end: 75
+                        value:
+                          Constant:
+                            Identifier: flash
+                      - span:
+                          start: 65
+                          end: 75
+                        value:
+                          Constant:
+                            String: display
+                - span:
+                    start: 65
+                    end: 75
+                  value:
+                    Constant:
+                      String: BitmapData
     - Expr:
         span:
           start: 78
           end: 90
         value:
-          Call:
-            name:
-              span:
-                start: 78
-                end: 83
-              value:
-                Constant:
-                  Identifier: trace
-            args:
-              - span:
-                  start: 84
-                  end: 89
-                value:
-                  Field:
-                    - span:
-                        start: 84
-                        end: 89
-                      value:
-                        Field:
-                          - span:
-                              start: 84
-                              end: 89
-                            value:
-                              Constant:
-                                Identifier: flash
-                          - span:
-                              start: 84
-                              end: 89
-                            value:
-                              Constant:
-                                String: geom
-                    - span:
-                        start: 84
-                        end: 89
-                      value:
-                        Constant:
-                          String: Point
+          Trace:
+            span:
+              start: 84
+              end: 89
+            value:
+              Field:
+                - span:
+                    start: 84
+                    end: 89
+                  value:
+                    Field:
+                      - span:
+                          start: 84
+                          end: 89
+                        value:
+                          Constant:
+                            Identifier: flash
+                      - span:
+                          start: 84
+                          end: 89
+                        value:
+                          Constant:
+                            String: geom
+                - span:
+                    start: 84
+                    end: 89
+                  value:
+                    Constant:
+                      String: Point
     - Declare:
         - name: myBitmap
           value:
@@ -147,21 +131,13 @@ Ok:
           start: 134
           end: 149
         value:
-          Call:
-            name:
-              span:
-                start: 134
-                end: 139
-              value:
-                Constant:
-                  Identifier: trace
-            args:
-              - span:
-                  start: 140
-                  end: 148
-                value:
-                  Constant:
-                    Identifier: myBitmap
+          Trace:
+            span:
+              start: 140
+              end: 148
+            value:
+              Constant:
+                Identifier: myBitmap
     - Declare:
         - name: myPoint
           value:
@@ -218,97 +194,81 @@ Ok:
           start: 185
           end: 199
         value:
-          Call:
-            name:
-              span:
-                start: 185
-                end: 190
-              value:
-                Constant:
-                  Identifier: trace
-            args:
-              - span:
-                  start: 191
-                  end: 198
-                value:
-                  Constant:
-                    Identifier: myPoint
+          Trace:
+            span:
+              start: 191
+              end: 198
+            value:
+              Constant:
+                Identifier: myPoint
     - Expr:
         span:
           start: 202
           end: 247
         value:
-          Call:
-            name:
-              span:
-                start: 202
-                end: 207
-              value:
-                Constant:
-                  Identifier: trace
-            args:
-              - span:
-                  start: 208
-                  end: 246
-                value:
-                  BinaryOperator:
-                    - Equal
-                    - span:
-                        start: 208
-                        end: 218
-                      value:
-                        Field:
-                          - span:
-                              start: 208
-                              end: 218
-                            value:
-                              Field:
-                                - span:
-                                    start: 208
-                                    end: 218
-                                  value:
-                                    Constant:
-                                      Identifier: flash
-                                - span:
-                                    start: 208
-                                    end: 218
-                                  value:
-                                    Constant:
-                                      String: display
-                          - span:
-                              start: 208
-                              end: 218
-                            value:
-                              Constant:
-                                String: BitmapData
-                    - span:
-                        start: 235
-                        end: 246
-                      value:
-                        Field:
-                          - span:
-                              start: 227
-                              end: 235
-                            value:
-                              Field:
-                                - span:
-                                    start: 222
-                                    end: 227
-                                  value:
-                                    Constant:
-                                      Identifier: flash
-                                - span:
-                                    start: 228
-                                    end: 235
-                                  value:
-                                    Constant:
-                                      String: display
-                          - span:
-                              start: 236
-                              end: 246
-                            value:
-                              Constant:
-                                String: BitmapData
+          Trace:
+            span:
+              start: 208
+              end: 246
+            value:
+              BinaryOperator:
+                - Equal
+                - span:
+                    start: 208
+                    end: 218
+                  value:
+                    Field:
+                      - span:
+                          start: 208
+                          end: 218
+                        value:
+                          Field:
+                            - span:
+                                start: 208
+                                end: 218
+                              value:
+                                Constant:
+                                  Identifier: flash
+                            - span:
+                                start: 208
+                                end: 218
+                              value:
+                                Constant:
+                                  String: display
+                      - span:
+                          start: 208
+                          end: 218
+                        value:
+                          Constant:
+                            String: BitmapData
+                - span:
+                    start: 235
+                    end: 246
+                  value:
+                    Field:
+                      - span:
+                          start: 227
+                          end: 235
+                        value:
+                          Field:
+                            - span:
+                                start: 222
+                                end: 227
+                              value:
+                                Constant:
+                                  Identifier: flash
+                            - span:
+                                start: 228
+                                end: 235
+                              value:
+                                Constant:
+                                  String: display
+                      - span:
+                          start: 236
+                          end: 246
+                        value:
+                          Constant:
+                            String: BitmapData
     - Expr:
         span:
           start: 250
@@ -371,25 +331,17 @@ Ok:
           start: 305
           end: 325
         value:
-          Call:
-            name:
-              span:
-                start: 305
-                end: 310
-              value:
-                Constant:
-                  Identifier: trace
-            args:
-              - span:
-                  start: 311
-                  end: 324
-                value:
-                  Call:
-                    name:
-                      span:
-                        start: 311
-                        end: 322
-                      value:
-                        Constant:
-                          Identifier: createPoint
-                    args: []
+          Trace:
+            span:
+              start: 311
+              end: 324
+            value:
+              Call:
+                name:
+                  span:
+                    start: 311
+                    end: 322
+                  value:
+                    Constant:
+                      Identifier: createPoint
+                args: []

@@ -58,33 +58,25 @@ Ok:
                   start: 34
                   end: 54
                 value:
-                  Call:
-                    name:
-                      span:
-                        start: 34
-                        end: 39
-                      value:
-                        Constant:
-                          Identifier: trace
-                    args:
-                      - span:
-                          start: 40
-                          end: 53
-                        value:
-                          BinaryOperator:
-                            - Add
-                            - span:
-                                start: 40
-                                end: 49
-                              value:
-                                Constant:
-                                  String: loop i=
-                            - span:
-                                start: 52
-                                end: 53
-                              value:
-                                Constant:
-                                  Identifier: i
+                  Trace:
+                    span:
+                      start: 40
+                      end: 53
+                    value:
+                      BinaryOperator:
+                        - Add
+                        - span:
+                            start: 40
+                            end: 49
+                          value:
+                            Constant:
+                              String: loop i=
+                        - span:
+                            start: 52
+                            end: 53
+                          value:
+                            Constant:
+                              Identifier: i
             - Declare:
                 - name: decide
                   value:
@@ -269,50 +261,34 @@ Ok:
                   start: 571
                   end: 593
                 value:
-                  Call:
-                    name:
-                      span:
-                        start: 571
-                        end: 576
-                      value:
-                        Constant:
-                          Identifier: trace
-                    args:
-                      - span:
-                          start: 577
-                          end: 592
-                        value:
-                          BinaryOperator:
-                            - Add
-                            - span:
-                                start: 577
-                                end: 588
-                              value:
-                                Constant:
-                                  String: "  work i="
-                            - span:
-                                start: 591
-                                end: 592
-                              value:
-                                Constant:
-                                  Identifier: i
+                  Trace:
+                    span:
+                      start: 577
+                      end: 592
+                    value:
+                      BinaryOperator:
+                        - Add
+                        - span:
+                            start: 577
+                            end: 588
+                          value:
+                            Constant:
+                              String: "  work i="
+                        - span:
+                            start: 591
+                            end: 592
+                          value:
+                            Constant:
+                              Identifier: i
     - Expr:
         span:
           start: 598
           end: 610
         value:
-          Call:
-            name:
-              span:
-                start: 598
-                end: 603
-              value:
-                Constant:
-                  Identifier: trace
-            args:
-              - span:
-                  start: 604
-                  end: 609
-                value:
-                  Constant:
-                    String: end
+          Trace:
+            span:
+              start: 604
+              end: 609
+            value:
+              Constant:
+                String: end

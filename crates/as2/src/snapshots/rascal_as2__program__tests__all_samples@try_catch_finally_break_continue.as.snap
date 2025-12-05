@@ -58,33 +58,25 @@ Ok:
                   start: 34
                   end: 54
                 value:
-                  Call:
-                    name:
-                      span:
-                        start: 34
-                        end: 39
-                      value:
-                        Constant:
-                          Identifier: trace
-                    args:
-                      - span:
-                          start: 40
-                          end: 53
-                        value:
-                          BinaryOperator:
-                            - Add
-                            - span:
-                                start: 40
-                                end: 49
-                              value:
-                                Constant:
-                                  String: loop i=
-                            - span:
-                                start: 52
-                                end: 53
-                              value:
-                                Constant:
-                                  Identifier: i
+                  Trace:
+                    span:
+                      start: 40
+                      end: 53
+                    value:
+                      BinaryOperator:
+                        - Add
+                        - span:
+                            start: 40
+                            end: 49
+                          value:
+                            Constant:
+                              String: loop i=
+                        - span:
+                            start: 52
+                            end: 53
+                          value:
+                            Constant:
+                              Identifier: i
             - Try:
                 try_body:
                   - Expr:
@@ -92,33 +84,25 @@ Ok:
                         start: 74
                         end: 95
                       value:
-                        Call:
-                          name:
-                            span:
-                              start: 74
-                              end: 79
-                            value:
-                              Constant:
-                                Identifier: trace
-                          args:
-                            - span:
-                                start: 80
-                                end: 94
-                              value:
-                                BinaryOperator:
-                                  - Add
-                                  - span:
-                                      start: 80
-                                      end: 90
-                                    value:
-                                      Constant:
-                                        String: "  try:i="
-                                  - span:
-                                      start: 93
-                                      end: 94
-                                    value:
-                                      Constant:
-                                        Identifier: i
+                        Trace:
+                          span:
+                            start: 80
+                            end: 94
+                          value:
+                            BinaryOperator:
+                              - Add
+                              - span:
+                                  start: 80
+                                  end: 90
+                                value:
+                                  Constant:
+                                    String: "  try:i="
+                              - span:
+                                  start: 93
+                                  end: 94
+                                value:
+                                  Constant:
+                                    Identifier: i
                   - If:
                       condition:
                         span:
@@ -216,33 +200,25 @@ Ok:
                           start: 465
                           end: 486
                         value:
-                          Call:
-                            name:
-                              span:
-                                start: 465
-                                end: 470
-                              value:
-                                Constant:
-                                  Identifier: trace
-                            args:
-                              - span:
-                                  start: 471
-                                  end: 485
-                                value:
-                                  BinaryOperator:
-                                    - Add
-                                    - span:
-                                        start: 471
-                                        end: 481
-                                      value:
-                                        Constant:
-                                          String: "  catch:"
-                                    - span:
-                                        start: 484
-                                        end: 485
-                                      value:
-                                        Constant:
-                                          Identifier: e
+                          Trace:
+                            span:
+                              start: 471
+                              end: 485
+                            value:
+                              BinaryOperator:
+                                - Add
+                                - span:
+                                    start: 471
+                                    end: 481
+                                  value:
+                                    Constant:
+                                      String: "  catch:"
+                                - span:
+                                    start: 484
+                                    end: 485
+                                  value:
+                                    Constant:
+                                      Identifier: e
                     - If:
                         condition:
                           span:
@@ -297,33 +273,25 @@ Ok:
                         start: 728
                         end: 753
                       value:
-                        Call:
-                          name:
-                            span:
-                              start: 728
-                              end: 733
-                            value:
-                              Constant:
-                                Identifier: trace
-                          args:
-                            - span:
-                                start: 734
-                                end: 752
-                              value:
-                                BinaryOperator:
-                                  - Add
-                                  - span:
-                                      start: 734
-                                      end: 748
-                                    value:
-                                      Constant:
-                                        String: "  finally:i="
-                                  - span:
-                                      start: 751
-                                      end: 752
-                                    value:
-                                      Constant:
-                                        Identifier: i
+                        Trace:
+                          span:
+                            start: 734
+                            end: 752
+                          value:
+                            BinaryOperator:
+                              - Add
+                              - span:
+                                  start: 734
+                                  end: 748
+                                value:
+                                  Constant:
+                                    String: "  finally:i="
+                              - span:
+                                  start: 751
+                                  end: 752
+                                value:
+                                  Constant:
+                                    Identifier: i
                   - If:
                       condition:
                         span:
@@ -377,50 +345,34 @@ Ok:
                   start: 947
                   end: 988
                 value:
-                  Call:
-                    name:
-                      span:
-                        start: 947
-                        end: 952
-                      value:
-                        Constant:
-                          Identifier: trace
-                    args:
-                      - span:
-                          start: 953
-                          end: 987
-                        value:
-                          BinaryOperator:
-                            - Add
-                            - span:
-                                start: 953
-                                end: 983
-                              value:
-                                Constant:
-                                  String: "  after try/catch/finally i="
-                            - span:
-                                start: 986
-                                end: 987
-                              value:
-                                Constant:
-                                  Identifier: i
+                  Trace:
+                    span:
+                      start: 953
+                      end: 987
+                    value:
+                      BinaryOperator:
+                        - Add
+                        - span:
+                            start: 953
+                            end: 983
+                          value:
+                            Constant:
+                              String: "  after try/catch/finally i="
+                        - span:
+                            start: 986
+                            end: 987
+                          value:
+                            Constant:
+                              Identifier: i
     - Expr:
         span:
           start: 993
           end: 1006
         value:
-          Call:
-            name:
-              span:
-                start: 993
-                end: 998
-              value:
-                Constant:
-                  Identifier: trace
-            args:
-              - span:
-                  start: 999
-                  end: 1005
-                value:
-                  Constant:
-                    String: done
+          Trace:
+            span:
+              start: 999
+              end: 1005
+            value:
+              Constant:
+                String: done

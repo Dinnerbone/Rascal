@@ -20,18 +20,10 @@ Ok:
           start: 29
           end: 43
         value:
-          Call:
-            name:
-              span:
-                start: 29
-                end: 34
-              value:
-                Constant:
-                  Identifier: trace
-            args:
-              - span:
-                  start: 35
-                  end: 42
-                value:
-                  Constant:
-                    Identifier: message
+          Trace:
+            span:
+              start: 35
+              end: 42
+            value:
+              Constant:
+                Identifier: message

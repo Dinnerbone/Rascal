@@ -19,21 +19,13 @@ Ok:
                     start: 27
                     end: 44
                   value:
-                    Call:
-                      name:
-                        span:
-                          start: 27
-                          end: 32
-                        value:
-                          Constant:
-                            Identifier: trace
-                      args:
-                        - span:
-                            start: 33
-                            end: 43
-                          value:
-                            Constant:
-                              Identifier: BitmapData
+                    Trace:
+                      span:
+                        start: 33
+                        end: 43
+                      value:
+                        Constant:
+                          Identifier: BitmapData
     - Block: []
     - Expr:
         span:
@@ -49,43 +41,35 @@ Ok:
                     start: 107
                     end: 124
                   value:
-                    Call:
-                      name:
-                        span:
-                          start: 107
-                          end: 112
-                        value:
-                          Constant:
-                            Identifier: trace
-                      args:
-                        - span:
-                            start: 113
-                            end: 123
-                          value:
-                            Field:
-                              - span:
-                                  start: 113
-                                  end: 123
-                                value:
-                                  Field:
-                                    - span:
-                                        start: 113
-                                        end: 123
-                                      value:
-                                        Constant:
-                                          Identifier: flash
-                                    - span:
-                                        start: 113
-                                        end: 123
-                                      value:
-                                        Constant:
-                                          String: display
-                              - span:
-                                  start: 113
-                                  end: 123
-                                value:
-                                  Constant:
-                                    String: BitmapData
+                    Trace:
+                      span:
+                        start: 113
+                        end: 123
+                      value:
+                        Field:
+                          - span:
+                              start: 113
+                              end: 123
+                            value:
+                              Field:
+                                - span:
+                                    start: 113
+                                    end: 123
+                                  value:
+                                    Constant:
+                                      Identifier: flash
+                                - span:
+                                    start: 113
+                                    end: 123
+                                  value:
+                                    Constant:
+                                      String: display
+                          - span:
+                              start: 113
+                              end: 123
+                            value:
+                              Constant:
+                                String: BitmapData
     - Expr:
         span:
           start: 128

@@ -40,713 +40,577 @@ Ok:
           start: 57
           end: 98
         value:
-          Call:
-            name:
-              span:
-                start: 57
-                end: 62
-              value:
-                Constant:
-                  Identifier: trace
-            args:
-              - span:
-                  start: 63
-                  end: 97
-                value:
-                  BinaryOperator:
-                    - Add
-                    - span:
-                        start: 63
-                        end: 93
-                      value:
-                        BinaryOperator:
-                          - Add
-                          - span:
-                              start: 63
-                              end: 84
-                            value:
-                              BinaryOperator:
-                                - Add
-                                - span:
-                                    start: 63
-                                    end: 80
-                                  value:
-                                    BinaryOperator:
-                                      - Add
-                                      - span:
-                                          start: 63
-                                          end: 71
-                                        value:
-                                          BinaryOperator:
-                                            - Add
-                                            - span:
-                                                start: 63
-                                                end: 67
-                                              value:
-                                                Constant:
-                                                  String: a=
-                                            - span:
-                                                start: 70
-                                                end: 71
-                                              value:
-                                                Constant:
-                                                  Identifier: a
-                                      - span:
-                                          start: 74
-                                          end: 80
-                                        value:
-                                          Constant:
-                                            String: ", b="
-                                - span:
-                                    start: 83
-                                    end: 84
-                                  value:
-                                    Constant:
-                                      Identifier: b
-                          - span:
-                              start: 87
-                              end: 93
-                            value:
-                              Constant:
-                                String: ", c="
-                    - span:
-                        start: 96
-                        end: 97
-                      value:
-                        Constant:
-                          Identifier: c
+          Trace:
+            span:
+              start: 63
+              end: 97
+            value:
+              BinaryOperator:
+                - Add
+                - span:
+                    start: 63
+                    end: 93
+                  value:
+                    BinaryOperator:
+                      - Add
+                      - span:
+                          start: 63
+                          end: 84
+                        value:
+                          BinaryOperator:
+                            - Add
+                            - span:
+                                start: 63
+                                end: 80
+                              value:
+                                BinaryOperator:
+                                  - Add
+                                  - span:
+                                      start: 63
+                                      end: 71
+                                    value:
+                                      BinaryOperator:
+                                        - Add
+                                        - span:
+                                            start: 63
+                                            end: 67
+                                          value:
+                                            Constant:
+                                              String: a=
+                                        - span:
+                                            start: 70
+                                            end: 71
+                                          value:
+                                            Constant:
+                                              Identifier: a
+                                  - span:
+                                      start: 74
+                                      end: 80
+                                    value:
+                                      Constant:
+                                        String: ", b="
+                            - span:
+                                start: 83
+                                end: 84
+                              value:
+                                Constant:
+                                  Identifier: b
+                      - span:
+                          start: 87
+                          end: 93
+                        value:
+                          Constant:
+                            String: ", c="
+                - span:
+                    start: 96
+                    end: 97
+                  value:
+                    Constant:
+                      Identifier: c
     - Expr:
         span:
           start: 100
           end: 113
         value:
-          Call:
-            name:
-              span:
-                start: 100
-                end: 105
-              value:
-                Constant:
-                  Identifier: trace
-            args:
-              - span:
-                  start: 106
-                  end: 112
-                value:
-                  Constant:
-                    String: "----"
+          Trace:
+            span:
+              start: 106
+              end: 112
+            value:
+              Constant:
+                String: "----"
     - Expr:
         span:
           start: 137
           end: 166
         value:
-          Call:
-            name:
-              span:
-                start: 137
-                end: 142
-              value:
-                Constant:
-                  Identifier: trace
-            args:
-              - span:
-                  start: 143
-                  end: 165
-                value:
-                  BinaryOperator:
-                    - Add
-                    - span:
-                        start: 143
-                        end: 154
-                      value:
-                        Constant:
-                          String: "a && b = "
-                    - span:
-                        start: 158
-                        end: 164
-                      value:
-                        BinaryOperator:
-                          - LogicalAnd
-                          - span:
-                              start: 158
-                              end: 159
-                            value:
-                              Constant:
-                                Identifier: a
-                          - span:
-                              start: 163
-                              end: 164
-                            value:
-                              Constant:
-                                Identifier: b
+          Trace:
+            span:
+              start: 143
+              end: 165
+            value:
+              BinaryOperator:
+                - Add
+                - span:
+                    start: 143
+                    end: 154
+                  value:
+                    Constant:
+                      String: "a && b = "
+                - span:
+                    start: 158
+                    end: 164
+                  value:
+                    BinaryOperator:
+                      - LogicalAnd
+                      - span:
+                          start: 158
+                          end: 159
+                        value:
+                          Constant:
+                            Identifier: a
+                      - span:
+                          start: 163
+                          end: 164
+                        value:
+                          Constant:
+                            Identifier: b
     - Expr:
         span:
           start: 177
           end: 206
         value:
-          Call:
-            name:
-              span:
-                start: 177
-                end: 182
-              value:
-                Constant:
-                  Identifier: trace
-            args:
-              - span:
-                  start: 183
-                  end: 205
-                value:
-                  BinaryOperator:
-                    - Add
-                    - span:
-                        start: 183
-                        end: 194
-                      value:
-                        Constant:
-                          String: "b && c = "
-                    - span:
-                        start: 198
-                        end: 204
-                      value:
-                        BinaryOperator:
-                          - LogicalAnd
-                          - span:
-                              start: 198
-                              end: 199
-                            value:
-                              Constant:
-                                Identifier: b
-                          - span:
-                              start: 203
-                              end: 204
-                            value:
-                              Constant:
-                                Identifier: c
+          Trace:
+            span:
+              start: 183
+              end: 205
+            value:
+              BinaryOperator:
+                - Add
+                - span:
+                    start: 183
+                    end: 194
+                  value:
+                    Constant:
+                      String: "b && c = "
+                - span:
+                    start: 198
+                    end: 204
+                  value:
+                    BinaryOperator:
+                      - LogicalAnd
+                      - span:
+                          start: 198
+                          end: 199
+                        value:
+                          Constant:
+                            Identifier: b
+                      - span:
+                          start: 203
+                          end: 204
+                        value:
+                          Constant:
+                            Identifier: c
     - Expr:
         span:
           start: 217
           end: 229
         value:
-          Call:
-            name:
-              span:
-                start: 217
-                end: 222
-              value:
-                Constant:
-                  Identifier: trace
-            args:
-              - span:
-                  start: 223
-                  end: 228
-                value:
-                  Constant:
-                    String: "---"
+          Trace:
+            span:
+              start: 223
+              end: 228
+            value:
+              Constant:
+                String: "---"
     - Expr:
         span:
           start: 252
           end: 281
         value:
-          Call:
-            name:
-              span:
-                start: 252
-                end: 257
-              value:
-                Constant:
-                  Identifier: trace
-            args:
-              - span:
-                  start: 258
-                  end: 280
-                value:
-                  BinaryOperator:
-                    - Add
-                    - span:
-                        start: 258
-                        end: 269
-                      value:
-                        Constant:
-                          String: "a || b = "
-                    - span:
-                        start: 273
-                        end: 279
-                      value:
-                        BinaryOperator:
-                          - LogicalOr
-                          - span:
-                              start: 273
-                              end: 274
-                            value:
-                              Constant:
-                                Identifier: a
-                          - span:
-                              start: 278
-                              end: 279
-                            value:
-                              Constant:
-                                Identifier: b
+          Trace:
+            span:
+              start: 258
+              end: 280
+            value:
+              BinaryOperator:
+                - Add
+                - span:
+                    start: 258
+                    end: 269
+                  value:
+                    Constant:
+                      String: "a || b = "
+                - span:
+                    start: 273
+                    end: 279
+                  value:
+                    BinaryOperator:
+                      - LogicalOr
+                      - span:
+                          start: 273
+                          end: 274
+                        value:
+                          Constant:
+                            Identifier: a
+                      - span:
+                          start: 278
+                          end: 279
+                        value:
+                          Constant:
+                            Identifier: b
     - Expr:
         span:
           start: 291
           end: 320
         value:
-          Call:
-            name:
-              span:
-                start: 291
-                end: 296
-              value:
-                Constant:
-                  Identifier: trace
-            args:
-              - span:
-                  start: 297
-                  end: 319
-                value:
-                  BinaryOperator:
-                    - Add
-                    - span:
-                        start: 297
-                        end: 308
-                      value:
-                        Constant:
-                          String: "b || c = "
-                    - span:
-                        start: 312
-                        end: 318
-                      value:
-                        BinaryOperator:
-                          - LogicalOr
-                          - span:
-                              start: 312
-                              end: 313
-                            value:
-                              Constant:
-                                Identifier: b
-                          - span:
-                              start: 317
-                              end: 318
-                            value:
-                              Constant:
-                                Identifier: c
+          Trace:
+            span:
+              start: 297
+              end: 319
+            value:
+              BinaryOperator:
+                - Add
+                - span:
+                    start: 297
+                    end: 308
+                  value:
+                    Constant:
+                      String: "b || c = "
+                - span:
+                    start: 312
+                    end: 318
+                  value:
+                    BinaryOperator:
+                      - LogicalOr
+                      - span:
+                          start: 312
+                          end: 313
+                        value:
+                          Constant:
+                            Identifier: b
+                      - span:
+                          start: 317
+                          end: 318
+                        value:
+                          Constant:
+                            Identifier: c
     - Expr:
         span:
           start: 330
           end: 342
         value:
-          Call:
-            name:
-              span:
-                start: 330
-                end: 335
-              value:
-                Constant:
-                  Identifier: trace
-            args:
-              - span:
-                  start: 336
-                  end: 341
-                value:
-                  Constant:
-                    String: "---"
+          Trace:
+            span:
+              start: 336
+              end: 341
+            value:
+              Constant:
+                String: "---"
     - Expr:
         span:
           start: 392
           end: 431
         value:
-          Call:
-            name:
-              span:
-                start: 392
-                end: 397
-              value:
-                Constant:
-                  Identifier: trace
-            args:
-              - span:
-                  start: 398
-                  end: 430
-                value:
-                  BinaryOperator:
-                    - Add
-                    - span:
-                        start: 398
-                        end: 414
-                      value:
-                        Constant:
-                          String: "a && c && b = "
-                    - span:
-                        start: 418
-                        end: 429
-                      value:
-                        BinaryOperator:
-                          - LogicalAnd
-                          - span:
-                              start: 418
-                              end: 424
-                            value:
-                              BinaryOperator:
-                                - LogicalAnd
-                                - span:
-                                    start: 418
-                                    end: 419
-                                  value:
-                                    Constant:
-                                      Identifier: a
-                                - span:
-                                    start: 423
-                                    end: 424
-                                  value:
-                                    Constant:
-                                      Identifier: c
-                          - span:
-                              start: 428
-                              end: 429
-                            value:
-                              Constant:
-                                Identifier: b
+          Trace:
+            span:
+              start: 398
+              end: 430
+            value:
+              BinaryOperator:
+                - Add
+                - span:
+                    start: 398
+                    end: 414
+                  value:
+                    Constant:
+                      String: "a && c && b = "
+                - span:
+                    start: 418
+                    end: 429
+                  value:
+                    BinaryOperator:
+                      - LogicalAnd
+                      - span:
+                          start: 418
+                          end: 424
+                        value:
+                          BinaryOperator:
+                            - LogicalAnd
+                            - span:
+                                start: 418
+                                end: 419
+                              value:
+                                Constant:
+                                  Identifier: a
+                            - span:
+                                start: 423
+                                end: 424
+                              value:
+                                Constant:
+                                  Identifier: c
+                      - span:
+                          start: 428
+                          end: 429
+                        value:
+                          Constant:
+                            Identifier: b
     - Expr:
         span:
           start: 443
           end: 488
         value:
-          Call:
-            name:
-              span:
-                start: 443
-                end: 448
-              value:
-                Constant:
-                  Identifier: trace
-            args:
-              - span:
-                  start: 449
-                  end: 487
-                value:
-                  BinaryOperator:
-                    - Add
-                    - span:
-                        start: 449
-                        end: 469
-                      value:
-                        Constant:
-                          String: "((a && c) && b) = "
-                    - span:
-                        start: 473
-                        end: 486
-                      value:
-                        BinaryOperator:
-                          - LogicalAnd
-                          - span:
-                              start: 474
-                              end: 480
-                            value:
-                              BinaryOperator:
-                                - LogicalAnd
-                                - span:
-                                    start: 474
-                                    end: 475
-                                  value:
-                                    Constant:
-                                      Identifier: a
-                                - span:
-                                    start: 479
-                                    end: 480
-                                  value:
-                                    Constant:
-                                      Identifier: c
-                          - span:
-                              start: 485
-                              end: 486
-                            value:
-                              Constant:
-                                Identifier: b
+          Trace:
+            span:
+              start: 449
+              end: 487
+            value:
+              BinaryOperator:
+                - Add
+                - span:
+                    start: 449
+                    end: 469
+                  value:
+                    Constant:
+                      String: "((a && c) && b) = "
+                - span:
+                    start: 473
+                    end: 486
+                  value:
+                    BinaryOperator:
+                      - LogicalAnd
+                      - span:
+                          start: 474
+                          end: 480
+                        value:
+                          BinaryOperator:
+                            - LogicalAnd
+                            - span:
+                                start: 474
+                                end: 475
+                              value:
+                                Constant:
+                                  Identifier: a
+                            - span:
+                                start: 479
+                                end: 480
+                              value:
+                                Constant:
+                                  Identifier: c
+                      - span:
+                          start: 485
+                          end: 486
+                        value:
+                          Constant:
+                            Identifier: b
     - Expr:
         span:
           start: 499
           end: 511
         value:
-          Call:
-            name:
-              span:
-                start: 499
-                end: 504
-              value:
-                Constant:
-                  Identifier: trace
-            args:
-              - span:
-                  start: 505
-                  end: 510
-                value:
-                  Constant:
-                    String: "---"
+          Trace:
+            span:
+              start: 505
+              end: 510
+            value:
+              Constant:
+                String: "---"
     - Expr:
         span:
           start: 514
           end: 553
         value:
-          Call:
-            name:
-              span:
-                start: 514
-                end: 519
-              value:
-                Constant:
-                  Identifier: trace
-            args:
-              - span:
-                  start: 520
-                  end: 552
-                value:
-                  BinaryOperator:
-                    - Add
-                    - span:
-                        start: 520
-                        end: 536
-                      value:
-                        Constant:
-                          String: "a || b || c = "
-                    - span:
-                        start: 540
-                        end: 551
-                      value:
-                        BinaryOperator:
-                          - LogicalOr
-                          - span:
-                              start: 540
-                              end: 546
-                            value:
-                              BinaryOperator:
-                                - LogicalOr
-                                - span:
-                                    start: 540
-                                    end: 541
-                                  value:
-                                    Constant:
-                                      Identifier: a
-                                - span:
-                                    start: 545
-                                    end: 546
-                                  value:
-                                    Constant:
-                                      Identifier: b
-                          - span:
-                              start: 550
-                              end: 551
-                            value:
-                              Constant:
-                                Identifier: c
+          Trace:
+            span:
+              start: 520
+              end: 552
+            value:
+              BinaryOperator:
+                - Add
+                - span:
+                    start: 520
+                    end: 536
+                  value:
+                    Constant:
+                      String: "a || b || c = "
+                - span:
+                    start: 540
+                    end: 551
+                  value:
+                    BinaryOperator:
+                      - LogicalOr
+                      - span:
+                          start: 540
+                          end: 546
+                        value:
+                          BinaryOperator:
+                            - LogicalOr
+                            - span:
+                                start: 540
+                                end: 541
+                              value:
+                                Constant:
+                                  Identifier: a
+                            - span:
+                                start: 545
+                                end: 546
+                              value:
+                                Constant:
+                                  Identifier: b
+                      - span:
+                          start: 550
+                          end: 551
+                        value:
+                          Constant:
+                            Identifier: c
     - Expr:
         span:
           start: 563
           end: 608
         value:
-          Call:
-            name:
-              span:
-                start: 563
-                end: 568
-              value:
-                Constant:
-                  Identifier: trace
-            args:
-              - span:
-                  start: 569
-                  end: 607
-                value:
-                  BinaryOperator:
-                    - Add
-                    - span:
-                        start: 569
-                        end: 589
-                      value:
-                        Constant:
-                          String: "((a || b) || c) = "
-                    - span:
-                        start: 593
-                        end: 606
-                      value:
-                        BinaryOperator:
-                          - LogicalOr
-                          - span:
-                              start: 594
-                              end: 600
-                            value:
-                              BinaryOperator:
-                                - LogicalOr
-                                - span:
-                                    start: 594
-                                    end: 595
-                                  value:
-                                    Constant:
-                                      Identifier: a
-                                - span:
-                                    start: 599
-                                    end: 600
-                                  value:
-                                    Constant:
-                                      Identifier: b
-                          - span:
-                              start: 605
-                              end: 606
-                            value:
-                              Constant:
-                                Identifier: c
+          Trace:
+            span:
+              start: 569
+              end: 607
+            value:
+              BinaryOperator:
+                - Add
+                - span:
+                    start: 569
+                    end: 589
+                  value:
+                    Constant:
+                      String: "((a || b) || c) = "
+                - span:
+                    start: 593
+                    end: 606
+                  value:
+                    BinaryOperator:
+                      - LogicalOr
+                      - span:
+                          start: 594
+                          end: 600
+                        value:
+                          BinaryOperator:
+                            - LogicalOr
+                            - span:
+                                start: 594
+                                end: 595
+                              value:
+                                Constant:
+                                  Identifier: a
+                            - span:
+                                start: 599
+                                end: 600
+                              value:
+                                Constant:
+                                  Identifier: b
+                      - span:
+                          start: 605
+                          end: 606
+                        value:
+                          Constant:
+                            Identifier: c
     - Expr:
         span:
           start: 618
           end: 630
         value:
-          Call:
-            name:
-              span:
-                start: 618
-                end: 623
-              value:
-                Constant:
-                  Identifier: trace
-            args:
-              - span:
-                  start: 624
-                  end: 629
-                value:
-                  Constant:
-                    String: "---"
+          Trace:
+            span:
+              start: 624
+              end: 629
+            value:
+              Constant:
+                String: "---"
     - Expr:
         span:
           start: 681
           end: 720
         value:
-          Call:
-            name:
-              span:
-                start: 681
-                end: 686
-              value:
-                Constant:
-                  Identifier: trace
-            args:
-              - span:
-                  start: 687
-                  end: 719
-                value:
-                  BinaryOperator:
-                    - Add
-                    - span:
-                        start: 687
-                        end: 703
-                      value:
-                        Constant:
-                          String: "a || b && c = "
-                    - span:
-                        start: 707
-                        end: 718
-                      value:
-                        BinaryOperator:
-                          - LogicalAnd
-                          - span:
-                              start: 707
-                              end: 713
-                            value:
-                              BinaryOperator:
-                                - LogicalOr
-                                - span:
-                                    start: 707
-                                    end: 708
-                                  value:
-                                    Constant:
-                                      Identifier: a
-                                - span:
-                                    start: 712
-                                    end: 713
-                                  value:
-                                    Constant:
-                                      Identifier: b
-                          - span:
-                              start: 717
-                              end: 718
-                            value:
-                              Constant:
-                                Identifier: c
+          Trace:
+            span:
+              start: 687
+              end: 719
+            value:
+              BinaryOperator:
+                - Add
+                - span:
+                    start: 687
+                    end: 703
+                  value:
+                    Constant:
+                      String: "a || b && c = "
+                - span:
+                    start: 707
+                    end: 718
+                  value:
+                    BinaryOperator:
+                      - LogicalAnd
+                      - span:
+                          start: 707
+                          end: 713
+                        value:
+                          BinaryOperator:
+                            - LogicalOr
+                            - span:
+                                start: 707
+                                end: 708
+                              value:
+                                Constant:
+                                  Identifier: a
+                            - span:
+                                start: 712
+                                end: 713
+                              value:
+                                Constant:
+                                  Identifier: b
+                      - span:
+                          start: 717
+                          end: 718
+                        value:
+                          Constant:
+                            Identifier: c
     - Expr:
         span:
           start: 731
           end: 776
         value:
-          Call:
-            name:
-              span:
-                start: 731
-                end: 736
-              value:
-                Constant:
-                  Identifier: trace
-            args:
-              - span:
-                  start: 737
-                  end: 775
-                value:
-                  BinaryOperator:
-                    - Add
-                    - span:
-                        start: 737
-                        end: 757
-                      value:
-                        Constant:
-                          String: "(a || (b && c)) = "
-                    - span:
-                        start: 761
-                        end: 774
-                      value:
-                        BinaryOperator:
-                          - LogicalOr
-                          - span:
-                              start: 761
-                              end: 762
-                            value:
-                              Constant:
-                                Identifier: a
-                          - span:
-                              start: 767
-                              end: 773
-                            value:
-                              BinaryOperator:
-                                - LogicalAnd
-                                - span:
-                                    start: 767
-                                    end: 768
-                                  value:
-                                    Constant:
-                                      Identifier: b
-                                - span:
-                                    start: 772
-                                    end: 773
-                                  value:
-                                    Constant:
-                                      Identifier: c
+          Trace:
+            span:
+              start: 737
+              end: 775
+            value:
+              BinaryOperator:
+                - Add
+                - span:
+                    start: 737
+                    end: 757
+                  value:
+                    Constant:
+                      String: "(a || (b && c)) = "
+                - span:
+                    start: 761
+                    end: 774
+                  value:
+                    BinaryOperator:
+                      - LogicalOr
+                      - span:
+                          start: 761
+                          end: 762
+                        value:
+                          Constant:
+                            Identifier: a
+                      - span:
+                          start: 767
+                          end: 773
+                        value:
+                          BinaryOperator:
+                            - LogicalAnd
+                            - span:
+                                start: 767
+                                end: 768
+                              value:
+                                Constant:
+                                  Identifier: b
+                            - span:
+                                start: 772
+                                end: 773
+                              value:
+                                Constant:
+                                  Identifier: c
     - Expr:
         span:
           start: 786
           end: 798
         value:
-          Call:
-            name:
-              span:
-                start: 786
-                end: 791
-              value:
-                Constant:
-                  Identifier: trace
-            args:
-              - span:
-                  start: 792
-                  end: 797
-                value:
-                  Constant:
-                    String: "---"
+          Trace:
+            span:
+              start: 792
+              end: 797
+            value:
+              Constant:
+                String: "---"
     - Declare:
         - name: x
           value:
@@ -782,110 +646,94 @@ Ok:
           start: 865
           end: 904
         value:
-          Call:
-            name:
-              span:
-                start: 865
-                end: 870
-              value:
-                Constant:
-                  Identifier: trace
-            args:
-              - span:
-                  start: 871
-                  end: 903
-                value:
-                  BinaryOperator:
-                    - Add
-                    - span:
-                        start: 871
-                        end: 887
-                      value:
-                        Constant:
-                          String: "x && y || z = "
-                    - span:
-                        start: 891
-                        end: 902
-                      value:
-                        BinaryOperator:
-                          - LogicalOr
-                          - span:
-                              start: 891
-                              end: 897
-                            value:
-                              BinaryOperator:
-                                - LogicalAnd
-                                - span:
-                                    start: 891
-                                    end: 892
-                                  value:
-                                    Constant:
-                                      Identifier: x
-                                - span:
-                                    start: 896
-                                    end: 897
-                                  value:
-                                    Constant:
-                                      Identifier: y
-                          - span:
-                              start: 901
-                              end: 902
-                            value:
-                              Constant:
-                                Identifier: z
+          Trace:
+            span:
+              start: 871
+              end: 903
+            value:
+              BinaryOperator:
+                - Add
+                - span:
+                    start: 871
+                    end: 887
+                  value:
+                    Constant:
+                      String: "x && y || z = "
+                - span:
+                    start: 891
+                    end: 902
+                  value:
+                    BinaryOperator:
+                      - LogicalOr
+                      - span:
+                          start: 891
+                          end: 897
+                        value:
+                          BinaryOperator:
+                            - LogicalAnd
+                            - span:
+                                start: 891
+                                end: 892
+                              value:
+                                Constant:
+                                  Identifier: x
+                            - span:
+                                start: 896
+                                end: 897
+                              value:
+                                Constant:
+                                  Identifier: y
+                      - span:
+                          start: 901
+                          end: 902
+                        value:
+                          Constant:
+                            Identifier: z
     - Expr:
         span:
           start: 915
           end: 960
         value:
-          Call:
-            name:
-              span:
-                start: 915
-                end: 920
-              value:
-                Constant:
-                  Identifier: trace
-            args:
-              - span:
-                  start: 921
-                  end: 959
-                value:
-                  BinaryOperator:
-                    - Add
-                    - span:
-                        start: 921
-                        end: 941
-                      value:
-                        Constant:
-                          String: "((x && y) || z) = "
-                    - span:
-                        start: 945
-                        end: 958
-                      value:
-                        BinaryOperator:
-                          - LogicalOr
-                          - span:
-                              start: 946
-                              end: 952
-                            value:
-                              BinaryOperator:
-                                - LogicalAnd
-                                - span:
-                                    start: 946
-                                    end: 947
-                                  value:
-                                    Constant:
-                                      Identifier: x
-                                - span:
-                                    start: 951
-                                    end: 952
-                                  value:
-                                    Constant:
-                                      Identifier: y
-                          - span:
-                              start: 957
-                              end: 958
-                            value:
-                              Constant:
-                                Identifier: z
+          Trace:
+            span:
+              start: 921
+              end: 959
+            value:
+              BinaryOperator:
+                - Add
+                - span:
+                    start: 921
+                    end: 941
+                  value:
+                    Constant:
+                      String: "((x && y) || z) = "
+                - span:
+                    start: 945
+                    end: 958
+                  value:
+                    BinaryOperator:
+                      - LogicalOr
+                      - span:
+                          start: 946
+                          end: 952
+                        value:
+                          BinaryOperator:
+                            - LogicalAnd
+                            - span:
+                                start: 946
+                                end: 947
+                              value:
+                                Constant:
+                                  Identifier: x
+                            - span:
+                                start: 951
+                                end: 952
+                              value:
+                                Constant:
+                                  Identifier: y
+                      - span:
+                          start: 957
+                          end: 958
+                        value:
+                          Constant:
+                            Identifier: z

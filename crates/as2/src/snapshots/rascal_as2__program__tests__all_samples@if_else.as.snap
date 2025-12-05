@@ -91,42 +91,26 @@ Ok:
               start: 122
               end: 139
             value:
-              Call:
-                name:
-                  span:
-                    start: 122
-                    end: 127
-                  value:
-                    Constant:
-                      Identifier: trace
-                args:
-                  - span:
-                      start: 128
-                      end: 138
-                    value:
-                      Constant:
-                        String: positive
+              Trace:
+                span:
+                  start: 128
+                  end: 138
+                value:
+                  Constant:
+                    String: positive
         "no":
           Expr:
             span:
               start: 146
               end: 163
             value:
-              Call:
-                name:
-                  span:
-                    start: 146
-                    end: 151
-                  value:
-                    Constant:
-                      Identifier: trace
-                args:
-                  - span:
-                      start: 152
-                      end: 162
-                    value:
-                      Constant:
-                        String: negative
+              Trace:
+                span:
+                  start: 152
+                  end: 162
+                value:
+                  Constant:
+                    String: negative
     - If:
         condition:
           span:
@@ -154,21 +138,13 @@ Ok:
                   start: 209
                   end: 226
                 value:
-                  Call:
-                    name:
-                      span:
-                        start: 209
-                        end: 214
-                      value:
-                        Constant:
-                          Identifier: trace
-                    args:
-                      - span:
-                          start: 215
-                          end: 225
-                        value:
-                          Constant:
-                            String: negative
+                  Trace:
+                    span:
+                      start: 215
+                      end: 225
+                    value:
+                      Constant:
+                        String: negative
         "no":
           If:
             condition:
@@ -197,21 +173,13 @@ Ok:
                       start: 252
                       end: 269
                     value:
-                      Call:
-                        name:
-                          span:
-                            start: 252
-                            end: 257
-                          value:
-                            Constant:
-                              Identifier: trace
-                        args:
-                          - span:
-                              start: 258
-                              end: 268
-                            value:
-                              Constant:
-                                String: positive
+                      Trace:
+                        span:
+                          start: 258
+                          end: 268
+                        value:
+                          Constant:
+                            String: positive
             "no":
               If:
                 condition:
@@ -240,21 +208,13 @@ Ok:
                           start: 296
                           end: 309
                         value:
-                          Call:
-                            name:
-                              span:
-                                start: 296
-                                end: 301
-                              value:
-                                Constant:
-                                  Identifier: trace
-                            args:
-                              - span:
-                                  start: 302
-                                  end: 308
-                                value:
-                                  Constant:
-                                    String: zero
+                          Trace:
+                            span:
+                              start: 302
+                              end: 308
+                            value:
+                              Constant:
+                                String: zero
                 "no":
                   Block:
                     - Expr:
@@ -262,21 +222,13 @@ Ok:
                           start: 324
                           end: 342
                         value:
-                          Call:
-                            name:
-                              span:
-                                start: 324
-                                end: 329
-                              value:
-                                Constant:
-                                  Identifier: trace
-                            args:
-                              - span:
-                                  start: 330
-                                  end: 341
-                                value:
-                                  Constant:
-                                    String: undefined
+                          Trace:
+                            span:
+                              start: 330
+                              end: 341
+                            value:
+                              Constant:
+                                String: undefined
     - If:
         condition:
           span:
@@ -314,21 +266,13 @@ Ok:
               start: 444
               end: 459
             value:
-              Call:
-                name:
-                  span:
-                    start: 444
-                    end: 449
-                  value:
-                    Constant:
-                      Identifier: trace
-                args:
-                  - span:
-                      start: 450
-                      end: 458
-                    value:
-                      Constant:
-                        String: single
+              Trace:
+                span:
+                  start: 450
+                  end: 458
+                value:
+                  Constant:
+                    String: single
         "no":
           Block: []
     - If:
@@ -378,21 +322,13 @@ Ok:
                   start: 540
                   end: 562
                 value:
-                  Call:
-                    name:
-                      span:
-                        start: 540
-                        end: 545
-                      value:
-                        Constant:
-                          Identifier: trace
-                    args:
-                      - span:
-                          start: 546
-                          end: 561
-                        value:
-                          Constant:
-                            String: both positive
+                  Trace:
+                    span:
+                      start: 546
+                      end: 561
+                    value:
+                      Constant:
+                        String: both positive
             "no":
               If:
                 condition:
@@ -420,42 +356,26 @@ Ok:
                       start: 592
                       end: 623
                     value:
-                      Call:
-                        name:
-                          span:
-                            start: 592
-                            end: 597
-                          value:
-                            Constant:
-                              Identifier: trace
-                        args:
-                          - span:
-                              start: 598
-                              end: 622
-                            value:
-                              Constant:
-                                String: "x positive, y negative"
+                      Trace:
+                        span:
+                          start: 598
+                          end: 622
+                        value:
+                          Constant:
+                            String: "x positive, y negative"
                 "no":
                   Expr:
                     span:
                       start: 642
                       end: 669
                     value:
-                      Call:
-                        name:
-                          span:
-                            start: 642
-                            end: 647
-                          value:
-                            Constant:
-                              Identifier: trace
-                        args:
-                          - span:
-                              start: 648
-                              end: 668
-                            value:
-                              Constant:
-                                String: "x positive, y zero"
+                      Trace:
+                        span:
+                          start: 648
+                          end: 668
+                        value:
+                          Constant:
+                            String: "x positive, y zero"
         "no": ~
     - If:
         condition:
@@ -582,40 +502,24 @@ Ok:
                   start: 1029
                   end: 1039
                 value:
-                  Call:
-                    name:
-                      span:
-                        start: 1029
-                        end: 1034
-                      value:
-                        Constant:
-                          Identifier: trace
-                    args:
-                      - span:
-                          start: 1035
-                          end: 1038
-                        value:
-                          Constant:
-                            String: y
+                  Trace:
+                    span:
+                      start: 1035
+                      end: 1038
+                    value:
+                      Constant:
+                        String: y
             "no":
               Expr:
                 span:
                   start: 1050
                   end: 1073
                 value:
-                  Call:
-                    name:
-                      span:
-                        start: 1050
-                        end: 1055
-                      value:
-                        Constant:
-                          Identifier: trace
-                    args:
-                      - span:
-                          start: 1056
-                          end: 1072
-                        value:
-                          Constant:
-                            String: ambiguous else
+                  Trace:
+                    span:
+                      start: 1056
+                      end: 1072
+                    value:
+                      Constant:
+                        String: ambiguous else
         "no": ~

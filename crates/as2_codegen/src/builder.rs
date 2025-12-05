@@ -70,6 +70,7 @@ impl CodeBuilder {
         }
     }
 
+    #[expect(dead_code)]
     pub fn error(&mut self, message: &'static str, span: Span) {
         self.errors.push(Error { message, span });
     }

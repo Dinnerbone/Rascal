@@ -88,33 +88,25 @@ Ok:
                                 start: 140
                                 end: 161
                               value:
-                                Call:
-                                  name:
-                                    span:
-                                      start: 140
-                                      end: 145
-                                    value:
-                                      Constant:
-                                        Identifier: trace
-                                  args:
-                                    - span:
-                                        start: 146
-                                        end: 160
-                                      value:
-                                        BinaryOperator:
-                                          - Add
-                                          - span:
-                                              start: 146
-                                              end: 156
-                                            value:
-                                              Constant:
-                                                String: "caught: "
-                                          - span:
-                                              start: 159
-                                              end: 160
-                                            value:
-                                              Constant:
-                                                Identifier: e
+                                Trace:
+                                  span:
+                                    start: 146
+                                    end: 160
+                                  value:
+                                    BinaryOperator:
+                                      - Add
+                                      - span:
+                                          start: 146
+                                          end: 156
+                                        value:
+                                          Constant:
+                                            String: "caught: "
+                                      - span:
+                                          start: 159
+                                          end: 160
+                                        value:
+                                          Constant:
+                                            Identifier: e
                           - Return:
                               - span:
                                   start: 178
@@ -129,71 +121,55 @@ Ok:
           start: 191
           end: 203
         value:
-          Call:
-            name:
-              span:
-                start: 191
-                end: 196
-              value:
-                Constant:
-                  Identifier: trace
-            args:
-              - span:
-                  start: 197
-                  end: 202
-                value:
-                  Call:
-                    name:
-                      span:
-                        start: 197
-                        end: 200
-                      value:
-                        Constant:
-                          Identifier: foo
-                    args: []
+          Trace:
+            span:
+              start: 197
+              end: 202
+            value:
+              Call:
+                name:
+                  span:
+                    start: 197
+                    end: 200
+                  value:
+                    Constant:
+                      Identifier: foo
+                args: []
     - Expr:
         span:
           start: 205
           end: 225
         value:
-          Call:
-            name:
-              span:
-                start: 205
-                end: 210
-              value:
-                Constant:
-                  Identifier: trace
-            args:
-              - span:
-                  start: 211
-                  end: 224
-                value:
-                  BinaryOperator:
-                    - Add
-                    - span:
-                        start: 211
-                        end: 216
-                      value:
-                        Call:
-                          name:
-                            span:
-                              start: 211
-                              end: 214
-                            value:
-                              Constant:
-                                Identifier: foo
-                          args: []
-                    - span:
-                        start: 219
-                        end: 224
-                      value:
-                        Call:
-                          name:
-                            span:
-                              start: 219
-                              end: 222
-                            value:
-                              Constant:
-                                Identifier: foo
-                          args: []
+          Trace:
+            span:
+              start: 211
+              end: 224
+            value:
+              BinaryOperator:
+                - Add
+                - span:
+                    start: 211
+                    end: 216
+                  value:
+                    Call:
+                      name:
+                        span:
+                          start: 211
+                          end: 214
+                        value:
+                          Constant:
+                            Identifier: foo
+                      args: []
+                - span:
+                    start: 219
+                    end: 224
+                  value:
+                    Call:
+                      name:
+                        span:
+                          start: 219
+                          end: 222
+                        value:
+                          Constant:
+                            Identifier: foo
+                      args: []

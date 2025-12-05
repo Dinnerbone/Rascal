@@ -58,33 +58,25 @@ Ok:
                   start: 34
                   end: 54
                 value:
-                  Call:
-                    name:
-                      span:
-                        start: 34
-                        end: 39
-                      value:
-                        Constant:
-                          Identifier: trace
-                    args:
-                      - span:
-                          start: 40
-                          end: 53
-                        value:
-                          BinaryOperator:
-                            - Add
-                            - span:
-                                start: 40
-                                end: 49
-                              value:
-                                Constant:
-                                  String: loop i=
-                            - span:
-                                start: 52
-                                end: 53
-                              value:
-                                Constant:
-                                  Identifier: i
+                  Trace:
+                    span:
+                      start: 40
+                      end: 53
+                    value:
+                      BinaryOperator:
+                        - Add
+                        - span:
+                            start: 40
+                            end: 49
+                          value:
+                            Constant:
+                              String: loop i=
+                        - span:
+                            start: 52
+                            end: 53
+                          value:
+                            Constant:
+                              Identifier: i
             - Switch:
                 target:
                   span:
@@ -107,21 +99,13 @@ Ok:
                           start: 101
                           end: 136
                         value:
-                          Call:
-                            name:
-                              span:
-                                start: 101
-                                end: 106
-                              value:
-                                Constant:
-                                  Identifier: trace
-                            args:
-                              - span:
-                                  start: 107
-                                  end: 135
-                                value:
-                                  Constant:
-                                    String: "  case 0 -> continue outer"
+                          Trace:
+                            span:
+                              start: 107
+                              end: 135
+                            value:
+                              Constant:
+                                String: "  case 0 -> continue outer"
                   - Statement: Continue
                   - Case:
                       span:
@@ -144,21 +128,13 @@ Ok:
                               start: 254
                               end: 310
                             value:
-                              Call:
-                                name:
-                                  span:
-                                    start: 254
-                                    end: 259
-                                  value:
-                                    Constant:
-                                      Identifier: trace
-                                args:
-                                  - span:
-                                      start: 260
-                                      end: 309
-                                    value:
-                                      Constant:
-                                        String: "  case 1/2 -> fallthrough then break outer at 2"
+                              Trace:
+                                span:
+                                  start: 260
+                                  end: 309
+                                value:
+                                  Constant:
+                                    String: "  case 1/2 -> fallthrough then break outer at 2"
                         - If:
                             condition:
                               span:
@@ -197,21 +173,13 @@ Ok:
                           start: 539
                           end: 577
                         value:
-                          Call:
-                            name:
-                              span:
-                                start: 539
-                                end: 544
-                              value:
-                                Constant:
-                                  Identifier: trace
-                            args:
-                              - span:
-                                  start: 545
-                                  end: 576
-                                value:
-                                  Constant:
-                                    String: "  case 3 -> break switch only"
+                          Trace:
+                            span:
+                              start: 545
+                              end: 576
+                            value:
+                              Constant:
+                                String: "  case 3 -> break switch only"
                   - Statement: Break
                   - Case:
                       span:
@@ -226,21 +194,13 @@ Ok:
                           start: 696
                           end: 749
                         value:
-                          Call:
-                            name:
-                              span:
-                                start: 696
-                                end: 701
-                              value:
-                                Constant:
-                                  Identifier: trace
-                            args:
-                              - span:
-                                  start: 702
-                                  end: 748
-                                value:
-                                  Constant:
-                                    String: "  case 4 -> continue outer from nested block"
+                          Trace:
+                            span:
+                              start: 702
+                              end: 748
+                            value:
+                              Constant:
+                                String: "  case 4 -> continue outer from nested block"
                   - Statement:
                       Block:
                         - If:
@@ -262,70 +222,46 @@ Ok:
                           start: 933
                           end: 966
                         value:
-                          Call:
-                            name:
-                              span:
-                                start: 933
-                                end: 938
-                              value:
-                                Constant:
-                                  Identifier: trace
-                            args:
-                              - span:
-                                  start: 939
-                                  end: 965
-                                value:
-                                  Constant:
-                                    String: "  default -> normal work"
+                          Trace:
+                            span:
+                              start: 939
+                              end: 965
+                            value:
+                              Constant:
+                                String: "  default -> normal work"
             - Expr:
                 span:
                   start: 979
                   end: 1009
                 value:
-                  Call:
-                    name:
-                      span:
-                        start: 979
-                        end: 984
-                      value:
-                        Constant:
-                          Identifier: trace
-                    args:
-                      - span:
-                          start: 985
-                          end: 1008
-                        value:
-                          BinaryOperator:
-                            - Add
-                            - span:
-                                start: 985
-                                end: 1004
-                              value:
-                                Constant:
-                                  String: "  after switch i="
-                            - span:
-                                start: 1007
-                                end: 1008
-                              value:
-                                Constant:
-                                  Identifier: i
+                  Trace:
+                    span:
+                      start: 985
+                      end: 1008
+                    value:
+                      BinaryOperator:
+                        - Add
+                        - span:
+                            start: 985
+                            end: 1004
+                          value:
+                            Constant:
+                              String: "  after switch i="
+                        - span:
+                            start: 1007
+                            end: 1008
+                          value:
+                            Constant:
+                              Identifier: i
     - Expr:
         span:
           start: 1014
           end: 1027
         value:
-          Call:
-            name:
-              span:
-                start: 1014
-                end: 1019
-              value:
-                Constant:
-                  Identifier: trace
-            args:
-              - span:
-                  start: 1020
-                  end: 1026
-                value:
-                  Constant:
-                    String: done
+          Trace:
+            span:
+              start: 1020
+              end: 1026
+            value:
+              Constant:
+                String: done

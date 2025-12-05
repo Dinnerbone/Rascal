@@ -17,7 +17,15 @@ pub enum ExprKind {
         name: Box<Expr>,
         args: Vec<Expr>,
     },
+    DuplicateMovieClip {
+        source: Box<Expr>,
+        target: Box<Expr>,
+        depth: Box<Expr>,
+    },
+    AsciiToChar(Box<Expr>),
+    MBAsciiToChar(Box<Expr>),
     CallFrame(Box<Expr>),
+    GetTime,
     BinaryOperator(BinaryOperator, Box<Expr>, Box<Expr>),
     UnaryOperator(UnaryOperator, Box<Expr>),
     Ternary {
@@ -34,6 +42,57 @@ pub enum ExprKind {
     Function(Function),
     GetVariable(Box<Expr>),
     SetVariable(Box<Expr>, Box<Expr>),
+    GotoFrame(Box<Expr>, bool),
+    GetUrl {
+        target: Box<Expr>,
+        url: Box<Expr>,
+        load_variables: bool,
+        load_target: bool,
+        method: GetUrlMethod,
+    },
+    CastToInteger(Box<Expr>),
+    CastToNumber(Box<Expr>),
+    CastToString(Box<Expr>),
+    StringLength(Box<Expr>),
+    MBStringLength(Box<Expr>),
+    CharToAscii(Box<Expr>),
+    MBCharToAscii(Box<Expr>),
+    Substring {
+        string: Box<Expr>,
+        start: Box<Expr>,
+        length: Box<Expr>,
+    },
+    MBSubstring {
+        string: Box<Expr>,
+        start: Box<Expr>,
+        length: Box<Expr>,
+    },
+    NextFrame,
+    PreviousFrame,
+    Play,
+    Stop,
+    StopSounds,
+    StartDrag {
+        target: Box<Expr>,
+        lock: bool,
+        #[expect(clippy::type_complexity)]
+        constraints: Option<(Box<Expr>, Box<Expr>, Box<Expr>, Box<Expr>)>,
+    },
+    EndDrag,
+    GetTargetPath(Box<Expr>),
+    Trace(Box<Expr>),
+    RemoveSprite(Box<Expr>),
+    GetRandomNumber(Box<Expr>),
+    GetProperty(Box<Expr>, i32),
+    SetProperty(Box<Expr>, i32, Box<Expr>),
+    ToggleQuality,
+}
+
+#[derive(Debug, Copy, Clone, Serialize, PartialEq)]
+pub enum GetUrlMethod {
+    None,
+    Get,
+    Post,
 }
 
 #[derive(Debug, Clone, Serialize, PartialEq)]

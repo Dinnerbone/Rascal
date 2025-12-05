@@ -27,21 +27,13 @@ Ok:
                   start: 24
                   end: 33
                 value:
-                  Call:
-                    name:
-                      span:
-                        start: 24
-                        end: 30
-                      value:
-                        Constant:
-                          Identifier: random
-                    args:
-                      - span:
-                          start: 31
-                          end: 32
-                        value:
-                          Constant:
-                            Integer: 2
+                  GetRandomNumber:
+                    span:
+                      start: 31
+                      end: 32
+                    value:
+                      Constant:
+                        Integer: 2
               - span:
                   start: 37
                   end: 38
@@ -85,21 +77,13 @@ Ok:
                   start: 82
                   end: 107
                 value:
-                  Call:
-                    name:
-                      span:
-                        start: 82
-                        end: 87
-                      value:
-                        Constant:
-                          Identifier: trace
-                    args:
-                      - span:
-                          start: 88
-                          end: 106
-                        value:
-                          Constant:
-                            String: Success! Hurrah!
+                  Trace:
+                    span:
+                      start: 88
+                      end: 106
+                    value:
+                      Constant:
+                        String: Success! Hurrah!
         "no":
           Block:
             - Expr:
@@ -107,38 +91,22 @@ Ok:
                   start: 121
                   end: 139
                 value:
-                  Call:
-                    name:
-                      span:
-                        start: 121
-                        end: 126
-                      value:
-                        Constant:
-                          Identifier: trace
-                    args:
-                      - span:
-                          start: 127
-                          end: 138
-                        value:
-                          Constant:
-                            String: "Failed :("
+                  Trace:
+                    span:
+                      start: 127
+                      end: 138
+                    value:
+                      Constant:
+                        String: "Failed :("
     - Expr:
         span:
           start: 143
           end: 161
         value:
-          Call:
-            name:
-              span:
-                start: 143
-                end: 148
-              value:
-                Constant:
-                  Identifier: trace
-            args:
-              - span:
-                  start: 149
-                  end: 160
-                value:
-                  Constant:
-                    String: "-- end --"
+          Trace:
+            span:
+              start: 149
+              end: 160
+            value:
+              Constant:
+                String: "-- end --"

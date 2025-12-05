@@ -10,7 +10,6 @@ mod builder;
 mod constants;
 mod context;
 mod error;
-mod special_functions;
 mod special_properties;
 mod statement;
 #[cfg(test)]

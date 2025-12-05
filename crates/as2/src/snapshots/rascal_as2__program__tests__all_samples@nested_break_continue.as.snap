@@ -58,33 +58,25 @@ Ok:
                   start: 31
                   end: 48
                 value:
-                  Call:
-                    name:
-                      span:
-                        start: 31
-                        end: 36
-                      value:
-                        Constant:
-                          Identifier: trace
-                    args:
-                      - span:
-                          start: 37
-                          end: 47
-                        value:
-                          BinaryOperator:
-                            - Add
-                            - span:
-                                start: 37
-                                end: 43
-                              value:
-                                Constant:
-                                  String: "i = "
-                            - span:
-                                start: 46
-                                end: 47
-                              value:
-                                Constant:
-                                  Identifier: i
+                  Trace:
+                    span:
+                      start: 37
+                      end: 47
+                    value:
+                      BinaryOperator:
+                        - Add
+                        - span:
+                            start: 37
+                            end: 43
+                          value:
+                            Constant:
+                              String: "i = "
+                        - span:
+                            start: 46
+                            end: 47
+                          value:
+                            Constant:
+                              Identifier: i
             - ForIn:
                 condition:
                   Classic:
@@ -149,21 +141,13 @@ Ok:
                                         start: 108
                                         end: 140
                                       value:
-                                        Call:
-                                          name:
-                                            span:
-                                              start: 108
-                                              end: 113
-                                            value:
-                                              Constant:
-                                                Identifier: trace
-                                          args:
-                                            - span:
-                                                start: 114
-                                                end: 139
-                                              value:
-                                                Constant:
-                                                  String: trying to break from fn
+                                        Trace:
+                                          span:
+                                            start: 114
+                                            end: 139
+                                          value:
+                                            Constant:
+                                              String: trying to break from fn
                                   - Break
                           type_name: ~
                     - Expr:
@@ -171,33 +155,25 @@ Ok:
                           start: 158
                           end: 175
                         value:
-                          Call:
-                            name:
-                              span:
-                                start: 158
-                                end: 163
-                              value:
-                                Constant:
-                                  Identifier: trace
-                            args:
-                              - span:
-                                  start: 164
-                                  end: 174
-                                value:
-                                  BinaryOperator:
-                                    - Add
-                                    - span:
-                                        start: 164
-                                        end: 170
-                                      value:
-                                        Constant:
-                                          String: "j = "
-                                    - span:
-                                        start: 173
-                                        end: 174
-                                      value:
-                                        Constant:
-                                          Identifier: j
+                          Trace:
+                            span:
+                              start: 164
+                              end: 174
+                            value:
+                              BinaryOperator:
+                                - Add
+                                - span:
+                                    start: 164
+                                    end: 170
+                                  value:
+                                    Constant:
+                                      String: "j = "
+                                - span:
+                                    start: 173
+                                    end: 174
+                                  value:
+                                    Constant:
+                                      Identifier: j
                     - If:
                         condition:
                           span:

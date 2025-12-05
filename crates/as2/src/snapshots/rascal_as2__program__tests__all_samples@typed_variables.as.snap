@@ -149,21 +149,13 @@ Ok:
                     start: 283
                     end: 294
                   value:
-                    Call:
-                      name:
-                        span:
-                          start: 283
-                          end: 288
-                        value:
-                          Constant:
-                            Identifier: trace
-                      args:
-                        - span:
-                            start: 289
-                            end: 293
-                          value:
-                            Constant:
-                              Identifier: data
+                    Trace:
+                      span:
+                        start: 289
+                        end: 293
+                      value:
+                        Constant:
+                          Identifier: data
     - Declare:
         - name: numbers
           value:
@@ -237,21 +229,13 @@ Ok:
               start: 430
               end: 447
             value:
-              Call:
-                name:
-                  span:
-                    start: 430
-                    end: 436
-                  value:
-                    Constant:
-                      Identifier: Number
-                args:
-                  - span:
-                      start: 437
-                      end: 446
-                    value:
-                      Constant:
-                        Identifier: someValue
+              CastToNumber:
+                span:
+                  start: 437
+                  end: 446
+                value:
+                  Constant:
+                    Identifier: someValue
           type_name:
             span:
               start: 421
@@ -264,21 +248,13 @@ Ok:
               start: 471
               end: 481
             value:
-              Call:
-                name:
-                  span:
-                    start: 471
-                    end: 477
-                  value:
-                    Constant:
-                      Identifier: String
-                args:
-                  - span:
-                      start: 478
-                      end: 480
-                    value:
-                      Constant:
-                        Integer: 42
+              CastToString:
+                span:
+                  start: 478
+                  end: 480
+                value:
+                  Constant:
+                    Integer: 42
           type_name:
             span:
               start: 462

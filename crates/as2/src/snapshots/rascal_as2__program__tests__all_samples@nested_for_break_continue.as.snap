@@ -58,33 +58,25 @@ Ok:
                   start: 34
                   end: 55
                 value:
-                  Call:
-                    name:
-                      span:
-                        start: 34
-                        end: 39
-                      value:
-                        Constant:
-                          Identifier: trace
-                    args:
-                      - span:
-                          start: 40
-                          end: 54
-                        value:
-                          BinaryOperator:
-                            - Add
-                            - span:
-                                start: 40
-                                end: 50
-                              value:
-                                Constant:
-                                  String: outer i=
-                            - span:
-                                start: 53
-                                end: 54
-                              value:
-                                Constant:
-                                  Identifier: i
+                  Trace:
+                    span:
+                      start: 40
+                      end: 54
+                    value:
+                      BinaryOperator:
+                        - Add
+                        - span:
+                            start: 40
+                            end: 50
+                          value:
+                            Constant:
+                              String: outer i=
+                        - span:
+                            start: 53
+                            end: 54
+                          value:
+                            Constant:
+                              Identifier: i
             - ForIn:
                 condition:
                   Classic:
@@ -210,33 +202,25 @@ Ok:
                           start: 345
                           end: 368
                         value:
-                          Call:
-                            name:
-                              span:
-                                start: 345
-                                end: 350
-                              value:
-                                Constant:
-                                  Identifier: trace
-                            args:
-                              - span:
-                                  start: 351
-                                  end: 367
-                                value:
-                                  BinaryOperator:
-                                    - Add
-                                    - span:
-                                        start: 351
-                                        end: 363
-                                      value:
-                                        Constant:
-                                          String: "  inner j="
-                                    - span:
-                                        start: 366
-                                        end: 367
-                                      value:
-                                        Constant:
-                                          Identifier: j
+                          Trace:
+                            span:
+                              start: 351
+                              end: 367
+                            value:
+                              BinaryOperator:
+                                - Add
+                                - span:
+                                    start: 351
+                                    end: 363
+                                  value:
+                                    Constant:
+                                      String: "  inner j="
+                                - span:
+                                    start: 366
+                                    end: 367
+                                  value:
+                                    Constant:
+                                      Identifier: j
             - If:
                 condition:
                   span:
@@ -290,18 +274,10 @@ Ok:
           start: 568
           end: 581
         value:
-          Call:
-            name:
-              span:
-                start: 568
-                end: 573
-              value:
-                Constant:
-                  Identifier: trace
-            args:
-              - span:
-                  start: 574
-                  end: 580
-                value:
-                  Constant:
-                    String: done
+          Trace:
+            span:
+              start: 574
+              end: 580
+            value:
+              Constant:
+                String: done

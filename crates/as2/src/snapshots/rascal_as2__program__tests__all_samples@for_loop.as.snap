@@ -10,21 +10,13 @@ Ok:
           start: 0
           end: 20
         value:
-          Call:
-            name:
-              span:
-                start: 0
-                end: 5
-              value:
-                Constant:
-                  Identifier: trace
-            args:
-              - span:
-                  start: 6
-                  end: 19
-                value:
-                  Constant:
-                    String: for_classic
+          Trace:
+            span:
+              start: 6
+              end: 19
+            value:
+              Constant:
+                String: for_classic
     - ForIn:
         condition:
           Classic:
@@ -78,41 +70,25 @@ Ok:
                   start: 56
                   end: 64
                 value:
-                  Call:
-                    name:
-                      span:
-                        start: 56
-                        end: 61
-                      value:
-                        Constant:
-                          Identifier: trace
-                    args:
-                      - span:
-                          start: 62
-                          end: 63
-                        value:
-                          Constant:
-                            Identifier: i
+                  Trace:
+                    span:
+                      start: 62
+                      end: 63
+                    value:
+                      Constant:
+                        Identifier: i
     - Expr:
         span:
           start: 134
           end: 154
         value:
-          Call:
-            name:
-              span:
-                start: 134
-                end: 139
-              value:
-                Constant:
-                  Identifier: trace
-            args:
-              - span:
-                  start: 140
-                  end: 153
-                value:
-                  Constant:
-                    String: for_no_init
+          Trace:
+            span:
+              start: 140
+              end: 153
+            value:
+              Constant:
+                String: for_no_init
     - Declare:
         - name: j
           value:
@@ -128,21 +104,13 @@ Ok:
           start: 167
           end: 181
         value:
-          Call:
-            name:
-              span:
-                start: 167
-                end: 172
-              value:
-                Constant:
-                  Identifier: trace
-            args:
-              - span:
-                  start: 173
-                  end: 180
-                value:
-                  Constant:
-                    String: start
+          Trace:
+            span:
+              start: 173
+              end: 180
+            value:
+              Constant:
+                String: start
     - ForIn:
         condition:
           Classic:
@@ -186,61 +154,37 @@ Ok:
                   start: 208
                   end: 216
                 value:
-                  Call:
-                    name:
-                      span:
-                        start: 208
-                        end: 213
-                      value:
-                        Constant:
-                          Identifier: trace
-                    args:
-                      - span:
-                          start: 214
-                          end: 215
-                        value:
-                          Constant:
-                            Identifier: j
+                  Trace:
+                    span:
+                      start: 214
+                      end: 215
+                    value:
+                      Constant:
+                        Identifier: j
     - Expr:
         span:
           start: 220
           end: 232
         value:
-          Call:
-            name:
-              span:
-                start: 220
-                end: 225
-              value:
-                Constant:
-                  Identifier: trace
-            args:
-              - span:
-                  start: 226
-                  end: 231
-                value:
-                  Constant:
-                    String: end
+          Trace:
+            span:
+              start: 226
+              end: 231
+            value:
+              Constant:
+                String: end
     - Expr:
         span:
           start: 300
           end: 325
         value:
-          Call:
-            name:
-              span:
-                start: 300
-                end: 305
-              value:
-                Constant:
-                  Identifier: trace
-            args:
-              - span:
-                  start: 306
-                  end: 324
-                value:
-                  Constant:
-                    String: for_no_condition
+          Trace:
+            span:
+              start: 306
+              end: 324
+            value:
+              Constant:
+                String: for_no_condition
     - ForIn:
         condition:
           Classic:
@@ -276,21 +220,13 @@ Ok:
                   start: 356
                   end: 364
                 value:
-                  Call:
-                    name:
-                      span:
-                        start: 356
-                        end: 361
-                      value:
-                        Constant:
-                          Identifier: trace
-                    args:
-                      - span:
-                          start: 362
-                          end: 363
-                        value:
-                          Constant:
-                            Identifier: k
+                  Trace:
+                    span:
+                      start: 362
+                      end: 363
+                    value:
+                      Constant:
+                        Identifier: k
             - If:
                 condition:
                   span:
@@ -320,21 +256,13 @@ Ok:
           start: 473
           end: 495
         value:
-          Call:
-            name:
-              span:
-                start: 473
-                end: 478
-              value:
-                Constant:
-                  Identifier: trace
-            args:
-              - span:
-                  start: 479
-                  end: 494
-                value:
-                  Constant:
-                    String: for_no_update
+          Trace:
+            span:
+              start: 479
+              end: 494
+            value:
+              Constant:
+                String: for_no_update
     - ForIn:
         condition:
           Classic:
@@ -376,21 +304,13 @@ Ok:
                   start: 528
                   end: 536
                 value:
-                  Call:
-                    name:
-                      span:
-                        start: 528
-                        end: 533
-                      value:
-                        Constant:
-                          Identifier: trace
-                    args:
-                      - span:
-                          start: 534
-                          end: 535
-                        value:
-                          Constant:
-                            Identifier: n
+                  Trace:
+                    span:
+                      start: 534
+                      end: 535
+                    value:
+                      Constant:
+                        Identifier: n
             - Expr:
                 span:
                   start: 543
@@ -409,21 +329,13 @@ Ok:
           start: 615
           end: 639
         value:
-          Call:
-            name:
-              span:
-                start: 615
-                end: 620
-              value:
-                Constant:
-                  Identifier: trace
-            args:
-              - span:
-                  start: 621
-                  end: 638
-                value:
-                  Constant:
-                    String: for_all_omitted
+          Trace:
+            span:
+              start: 621
+              end: 638
+            value:
+              Constant:
+                String: for_all_omitted
     - Declare:
         - name: count
           value:
@@ -447,21 +359,13 @@ Ok:
                   start: 671
                   end: 684
                 value:
-                  Call:
-                    name:
-                      span:
-                        start: 671
-                        end: 676
-                      value:
-                        Constant:
-                          Identifier: trace
-                    args:
-                      - span:
-                          start: 677
-                          end: 683
-                        value:
-                          Constant:
-                            String: loop
+                  Trace:
+                    span:
+                      start: 677
+                      end: 683
+                    value:
+                      Constant:
+                        String: loop
             - Expr:
                 span:
                   start: 695
@@ -504,41 +408,25 @@ Ok:
           start: 744
           end: 757
         value:
-          Call:
-            name:
-              span:
-                start: 744
-                end: 749
-              value:
-                Constant:
-                  Identifier: trace
-            args:
-              - span:
-                  start: 750
-                  end: 756
-                value:
-                  Constant:
-                    String: done
+          Trace:
+            span:
+              start: 750
+              end: 756
+            value:
+              Constant:
+                String: done
     - Expr:
         span:
           start: 825
           end: 847
         value:
-          Call:
-            name:
-              span:
-                start: 825
-                end: 830
-              value:
-                Constant:
-                  Identifier: trace
-            args:
-              - span:
-                  start: 831
-                  end: 846
-                value:
-                  Constant:
-                    String: for_in_object
+          Trace:
+            span:
+              start: 831
+              end: 846
+            value:
+              Constant:
+                String: for_in_object
     - Declare:
         - name: obj
           value:
@@ -627,76 +515,60 @@ Ok:
                   start: 914
                   end: 941
                 value:
-                  Call:
-                    name:
-                      span:
-                        start: 914
-                        end: 919
-                      value:
-                        Constant:
-                          Identifier: trace
-                    args:
-                      - span:
-                          start: 920
-                          end: 940
-                        value:
-                          BinaryOperator:
-                            - Add
-                            - span:
-                                start: 920
-                                end: 929
-                              value:
-                                BinaryOperator:
-                                  - Add
-                                  - span:
-                                      start: 920
-                                      end: 923
-                                    value:
-                                      Constant:
-                                        Identifier: key
-                                  - span:
-                                      start: 926
-                                      end: 929
-                                    value:
-                                      Constant:
-                                        String: "="
-                            - span:
-                                start: 935
-                                end: 940
-                              value:
-                                Field:
-                                  - span:
-                                      start: 932
-                                      end: 935
-                                    value:
-                                      Constant:
-                                        Identifier: obj
-                                  - span:
-                                      start: 936
-                                      end: 939
-                                    value:
-                                      Constant:
-                                        Identifier: key
+                  Trace:
+                    span:
+                      start: 920
+                      end: 940
+                    value:
+                      BinaryOperator:
+                        - Add
+                        - span:
+                            start: 920
+                            end: 929
+                          value:
+                            BinaryOperator:
+                              - Add
+                              - span:
+                                  start: 920
+                                  end: 923
+                                value:
+                                  Constant:
+                                    Identifier: key
+                              - span:
+                                  start: 926
+                                  end: 929
+                                value:
+                                  Constant:
+                                    String: "="
+                        - span:
+                            start: 935
+                            end: 940
+                          value:
+                            Field:
+                              - span:
+                                  start: 932
+                                  end: 935
+                                value:
+                                  Constant:
+                                    Identifier: obj
+                              - span:
+                                  start: 936
+                                  end: 939
+                                value:
+                                  Constant:
+                                    Identifier: key
     - Expr:
         span:
           start: 1011
           end: 1032
         value:
-          Call:
-            name:
-              span:
-                start: 1011
-                end: 1016
-              value:
-                Constant:
-                  Identifier: trace
-            args:
-              - span:
-                  start: 1017
-                  end: 1031
-                value:
-                  Constant:
-                    String: for_in_array
+          Trace:
+            span:
+              start: 1017
+              end: 1031
+            value:
+              Constant:
+                String: for_in_array
     - Declare:
         - name: arr
           value:
@@ -747,76 +619,60 @@ Ok:
                   start: 1087
                   end: 1114
                 value:
-                  Call:
-                    name:
-                      span:
-                        start: 1087
-                        end: 1092
-                      value:
-                        Constant:
-                          Identifier: trace
-                    args:
-                      - span:
-                          start: 1093
-                          end: 1113
-                        value:
-                          BinaryOperator:
-                            - Add
-                            - span:
-                                start: 1093
-                                end: 1102
-                              value:
-                                BinaryOperator:
-                                  - Add
-                                  - span:
-                                      start: 1093
-                                      end: 1096
-                                    value:
-                                      Constant:
-                                        Identifier: idx
-                                  - span:
-                                      start: 1099
-                                      end: 1102
-                                    value:
-                                      Constant:
-                                        String: "="
-                            - span:
-                                start: 1108
-                                end: 1113
-                              value:
-                                Field:
-                                  - span:
-                                      start: 1105
-                                      end: 1108
-                                    value:
-                                      Constant:
-                                        Identifier: arr
-                                  - span:
-                                      start: 1109
-                                      end: 1112
-                                    value:
-                                      Constant:
-                                        Identifier: idx
+                  Trace:
+                    span:
+                      start: 1093
+                      end: 1113
+                    value:
+                      BinaryOperator:
+                        - Add
+                        - span:
+                            start: 1093
+                            end: 1102
+                          value:
+                            BinaryOperator:
+                              - Add
+                              - span:
+                                  start: 1093
+                                  end: 1096
+                                value:
+                                  Constant:
+                                    Identifier: idx
+                              - span:
+                                  start: 1099
+                                  end: 1102
+                                value:
+                                  Constant:
+                                    String: "="
+                        - span:
+                            start: 1108
+                            end: 1113
+                          value:
+                            Field:
+                              - span:
+                                  start: 1105
+                                  end: 1108
+                                value:
+                                  Constant:
+                                    Identifier: arr
+                              - span:
+                                  start: 1109
+                                  end: 1112
+                                value:
+                                  Constant:
+                                    Identifier: idx
     - Expr:
         span:
           start: 1184
           end: 1213
         value:
-          Call:
-            name:
-              span:
-                start: 1184
-                end: 1189
-              value:
-                Constant:
-                  Identifier: trace
-            args:
-              - span:
-                  start: 1190
-                  end: 1212
-                value:
-                  Constant:
-                    String: for_multiple_clauses
+          Trace:
+            span:
+              start: 1190
+              end: 1212
+            value:
+              Constant:
+                String: for_multiple_clauses
     - ForIn:
         condition:
           Classic:
@@ -891,65 +747,49 @@ Ok:
                   start: 1261
                   end: 1279
                 value:
-                  Call:
-                    name:
-                      span:
-                        start: 1261
-                        end: 1266
-                      value:
-                        Constant:
-                          Identifier: trace
-                    args:
-                      - span:
-                          start: 1267
-                          end: 1278
-                        value:
-                          BinaryOperator:
-                            - Add
-                            - span:
-                                start: 1267
-                                end: 1274
-                              value:
-                                BinaryOperator:
-                                  - Add
-                                  - span:
-                                      start: 1267
-                                      end: 1268
-                                    value:
-                                      Constant:
-                                        Identifier: a
-                                  - span:
-                                      start: 1271
-                                      end: 1274
-                                    value:
-                                      Constant:
-                                        String: ","
-                            - span:
-                                start: 1277
-                                end: 1278
-                              value:
-                                Constant:
-                                  Identifier: b
+                  Trace:
+                    span:
+                      start: 1267
+                      end: 1278
+                    value:
+                      BinaryOperator:
+                        - Add
+                        - span:
+                            start: 1267
+                            end: 1274
+                          value:
+                            BinaryOperator:
+                              - Add
+                              - span:
+                                  start: 1267
+                                  end: 1268
+                                value:
+                                  Constant:
+                                    Identifier: a
+                              - span:
+                                  start: 1271
+                                  end: 1274
+                                value:
+                                  Constant:
+                                    String: ","
+                        - span:
+                            start: 1277
+                            end: 1278
+                          value:
+                            Constant:
+                              Identifier: b
     - Expr:
         span:
           start: 1349
           end: 1376
         value:
-          Call:
-            name:
-              span:
-                start: 1349
-                end: 1354
-              value:
-                Constant:
-                  Identifier: trace
-            args:
-              - span:
-                  start: 1355
-                  end: 1375
-                value:
-                  Constant:
-                    String: for_continue_break
+          Trace:
+            span:
+              start: 1355
+              end: 1375
+            value:
+              Constant:
+                String: for_continue_break
     - ForIn:
         condition:
           Classic:
@@ -1063,41 +903,25 @@ Ok:
                   start: 1498
                   end: 1506
                 value:
-                  Call:
-                    name:
-                      span:
-                        start: 1498
-                        end: 1503
-                      value:
-                        Constant:
-                          Identifier: trace
-                    args:
-                      - span:
-                          start: 1504
-                          end: 1505
-                        value:
-                          Constant:
-                            Identifier: x
+                  Trace:
+                    span:
+                      start: 1504
+                      end: 1505
+                    value:
+                      Constant:
+                        Identifier: x
     - Expr:
         span:
           start: 1576
           end: 1595
         value:
-          Call:
-            name:
-              span:
-                start: 1576
-                end: 1581
-              value:
-                Constant:
-                  Identifier: trace
-            args:
-              - span:
-                  start: 1582
-                  end: 1594
-                value:
-                  Constant:
-                    String: for_nested
+          Trace:
+            span:
+              start: 1582
+              end: 1594
+            value:
+              Constant:
+                String: for_nested
     - ForIn:
         condition:
           Classic:
@@ -1199,65 +1023,49 @@ Ok:
                           start: 1693
                           end: 1719
                         value:
-                          Call:
-                            name:
-                              span:
-                                start: 1693
-                                end: 1698
-                              value:
-                                Constant:
-                                  Identifier: trace
-                            args:
-                              - span:
-                                  start: 1699
-                                  end: 1718
-                                value:
-                                  BinaryOperator:
-                                    - Add
-                                    - span:
-                                        start: 1699
-                                        end: 1710
-                                      value:
-                                        BinaryOperator:
-                                          - Add
-                                          - span:
-                                              start: 1699
-                                              end: 1704
-                                            value:
-                                              Constant:
-                                                Identifier: outer
-                                          - span:
-                                              start: 1707
-                                              end: 1710
-                                            value:
-                                              Constant:
-                                                String: ","
-                                    - span:
-                                        start: 1713
-                                        end: 1718
-                                      value:
-                                        Constant:
-                                          Identifier: inner
+                          Trace:
+                            span:
+                              start: 1699
+                              end: 1718
+                            value:
+                              BinaryOperator:
+                                - Add
+                                - span:
+                                    start: 1699
+                                    end: 1710
+                                  value:
+                                    BinaryOperator:
+                                      - Add
+                                      - span:
+                                          start: 1699
+                                          end: 1704
+                                        value:
+                                          Constant:
+                                            Identifier: outer
+                                      - span:
+                                          start: 1707
+                                          end: 1710
+                                        value:
+                                          Constant:
+                                            String: ","
+                                - span:
+                                    start: 1713
+                                    end: 1718
+                                  value:
+                                    Constant:
+                                      Identifier: inner
     - Expr:
         span:
           start: 1795
           end: 1820
         value:
-          Call:
-            name:
-              span:
-                start: 1795
-                end: 1800
-              value:
-                Constant:
-                  Identifier: trace
-            args:
-              - span:
-                  start: 1801
-                  end: 1819
-                value:
-                  Constant:
-                    String: for_existing_var
+          Trace:
+            span:
+              start: 1801
+              end: 1819
+            value:
+              Constant:
+                String: for_existing_var
     - Declare:
         - name: z
           value: ~
@@ -1324,41 +1132,25 @@ Ok:
                   start: 1860
                   end: 1868
                 value:
-                  Call:
-                    name:
-                      span:
-                        start: 1860
-                        end: 1865
-                      value:
-                        Constant:
-                          Identifier: trace
-                    args:
-                      - span:
-                          start: 1866
-                          end: 1867
-                        value:
-                          Constant:
-                            Identifier: z
+                  Trace:
+                    span:
+                      start: 1866
+                      end: 1867
+                    value:
+                      Constant:
+                        Identifier: z
     - Expr:
         span:
           start: 1938
           end: 1972
         value:
-          Call:
-            name:
-              span:
-                start: 1938
-                end: 1943
-              value:
-                Constant:
-                  Identifier: trace
-            args:
-              - span:
-                  start: 1944
-                  end: 1971
-                value:
-                  Constant:
-                    String: for_single_statement_body
+          Trace:
+            span:
+              start: 1944
+              end: 1971
+            value:
+              Constant:
+                String: for_single_statement_body
     - ForIn:
         condition:
           Classic:
@@ -1411,18 +1203,10 @@ Ok:
               start: 2006
               end: 2014
             value:
-              Call:
-                name:
-                  span:
-                    start: 2006
-                    end: 2011
-                  value:
-                    Constant:
-                      Identifier: trace
-                args:
-                  - span:
-                      start: 2012
-                      end: 2013
-                    value:
-                      Constant:
-                        Identifier: q
+              Trace:
+                span:
+                  start: 2012
+                  end: 2013
+                value:
+                  Constant:
+                    Identifier: q

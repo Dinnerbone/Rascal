@@ -1,4 +1,5 @@
 mod special_functions;
+mod special_properties;
 
 use crate::ast;
 use crate::error::ParsingError;

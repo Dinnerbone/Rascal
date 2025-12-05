@@ -40,670 +40,550 @@ Ok:
           start: 51
           end: 92
         value:
-          Call:
-            name:
-              span:
-                start: 51
-                end: 56
-              value:
-                Constant:
-                  Identifier: trace
-            args:
-              - span:
-                  start: 57
-                  end: 91
-                value:
-                  BinaryOperator:
-                    - Add
-                    - span:
-                        start: 57
-                        end: 87
-                      value:
-                        BinaryOperator:
-                          - Add
-                          - span:
-                              start: 57
-                              end: 78
-                            value:
-                              BinaryOperator:
-                                - Add
-                                - span:
-                                    start: 57
-                                    end: 74
-                                  value:
-                                    BinaryOperator:
-                                      - Add
-                                      - span:
-                                          start: 57
-                                          end: 65
-                                        value:
-                                          BinaryOperator:
-                                            - Add
-                                            - span:
-                                                start: 57
-                                                end: 61
-                                              value:
-                                                Constant:
-                                                  String: a=
-                                            - span:
-                                                start: 64
-                                                end: 65
-                                              value:
-                                                Constant:
-                                                  Identifier: a
-                                      - span:
-                                          start: 68
-                                          end: 74
-                                        value:
-                                          Constant:
-                                            String: ", b="
-                                - span:
-                                    start: 77
-                                    end: 78
-                                  value:
-                                    Constant:
-                                      Identifier: b
-                          - span:
-                              start: 81
-                              end: 87
-                            value:
-                              Constant:
-                                String: ", c="
-                    - span:
-                        start: 90
-                        end: 91
-                      value:
-                        Constant:
-                          Identifier: c
+          Trace:
+            span:
+              start: 57
+              end: 91
+            value:
+              BinaryOperator:
+                - Add
+                - span:
+                    start: 57
+                    end: 87
+                  value:
+                    BinaryOperator:
+                      - Add
+                      - span:
+                          start: 57
+                          end: 78
+                        value:
+                          BinaryOperator:
+                            - Add
+                            - span:
+                                start: 57
+                                end: 74
+                              value:
+                                BinaryOperator:
+                                  - Add
+                                  - span:
+                                      start: 57
+                                      end: 65
+                                    value:
+                                      BinaryOperator:
+                                        - Add
+                                        - span:
+                                            start: 57
+                                            end: 61
+                                          value:
+                                            Constant:
+                                              String: a=
+                                        - span:
+                                            start: 64
+                                            end: 65
+                                          value:
+                                            Constant:
+                                              Identifier: a
+                                  - span:
+                                      start: 68
+                                      end: 74
+                                    value:
+                                      Constant:
+                                        String: ", b="
+                            - span:
+                                start: 77
+                                end: 78
+                              value:
+                                Constant:
+                                  Identifier: b
+                      - span:
+                          start: 81
+                          end: 87
+                        value:
+                          Constant:
+                            String: ", c="
+                - span:
+                    start: 90
+                    end: 91
+                  value:
+                    Constant:
+                      Identifier: c
     - Expr:
         span:
           start: 94
           end: 107
         value:
-          Call:
-            name:
-              span:
-                start: 94
-                end: 99
-              value:
-                Constant:
-                  Identifier: trace
-            args:
-              - span:
-                  start: 100
-                  end: 106
-                value:
-                  Constant:
-                    String: "----"
+          Trace:
+            span:
+              start: 100
+              end: 106
+            value:
+              Constant:
+                String: "----"
     - Expr:
         span:
           start: 144
           end: 173
         value:
-          Call:
-            name:
-              span:
-                start: 144
-                end: 149
-              value:
-                Constant:
-                  Identifier: trace
-            args:
-              - span:
-                  start: 150
-                  end: 172
-                value:
-                  BinaryOperator:
-                    - Add
-                    - span:
-                        start: 150
-                        end: 161
-                      value:
-                        Constant:
-                          String: "a == b = "
-                    - span:
-                        start: 165
-                        end: 171
-                      value:
-                        BinaryOperator:
-                          - Equal
-                          - span:
-                              start: 165
-                              end: 166
-                            value:
-                              Constant:
-                                Identifier: a
-                          - span:
-                              start: 170
-                              end: 171
-                            value:
-                              Constant:
-                                Identifier: b
+          Trace:
+            span:
+              start: 150
+              end: 172
+            value:
+              BinaryOperator:
+                - Add
+                - span:
+                    start: 150
+                    end: 161
+                  value:
+                    Constant:
+                      String: "a == b = "
+                - span:
+                    start: 165
+                    end: 171
+                  value:
+                    BinaryOperator:
+                      - Equal
+                      - span:
+                          start: 165
+                          end: 166
+                        value:
+                          Constant:
+                            Identifier: a
+                      - span:
+                          start: 170
+                          end: 171
+                        value:
+                          Constant:
+                            Identifier: b
     - Expr:
         span:
           start: 217
           end: 246
         value:
-          Call:
-            name:
-              span:
-                start: 217
-                end: 222
-              value:
-                Constant:
-                  Identifier: trace
-            args:
-              - span:
-                  start: 223
-                  end: 245
-                value:
-                  BinaryOperator:
-                    - Add
-                    - span:
-                        start: 223
-                        end: 234
-                      value:
-                        Constant:
-                          String: "a != b = "
-                    - span:
-                        start: 238
-                        end: 244
-                      value:
-                        BinaryOperator:
-                          - NotEqual
-                          - span:
-                              start: 238
-                              end: 239
-                            value:
-                              Constant:
-                                Identifier: a
-                          - span:
-                              start: 243
-                              end: 244
-                            value:
-                              Constant:
-                                Identifier: b
+          Trace:
+            span:
+              start: 223
+              end: 245
+            value:
+              BinaryOperator:
+                - Add
+                - span:
+                    start: 223
+                    end: 234
+                  value:
+                    Constant:
+                      String: "a != b = "
+                - span:
+                    start: 238
+                    end: 244
+                  value:
+                    BinaryOperator:
+                      - NotEqual
+                      - span:
+                          start: 238
+                          end: 239
+                        value:
+                          Constant:
+                            Identifier: a
+                      - span:
+                          start: 243
+                          end: 244
+                        value:
+                          Constant:
+                            Identifier: b
     - Expr:
         span:
           start: 259
           end: 271
         value:
-          Call:
-            name:
-              span:
-                start: 259
-                end: 264
-              value:
-                Constant:
-                  Identifier: trace
-            args:
-              - span:
-                  start: 265
-                  end: 270
-                value:
-                  Constant:
-                    String: "---"
+          Trace:
+            span:
+              start: 265
+              end: 270
+            value:
+              Constant:
+                String: "---"
     - Expr:
         span:
           start: 307
           end: 338
         value:
-          Call:
-            name:
-              span:
-                start: 307
-                end: 312
-              value:
-                Constant:
-                  Identifier: trace
-            args:
-              - span:
-                  start: 313
-                  end: 337
-                value:
-                  BinaryOperator:
-                    - Add
-                    - span:
-                        start: 313
-                        end: 325
-                      value:
-                        Constant:
-                          String: "a === b = "
-                    - span:
-                        start: 329
-                        end: 336
-                      value:
-                        BinaryOperator:
-                          - StrictEqual
-                          - span:
-                              start: 329
-                              end: 330
-                            value:
-                              Constant:
-                                Identifier: a
-                          - span:
-                              start: 335
-                              end: 336
-                            value:
-                              Constant:
-                                Identifier: b
+          Trace:
+            span:
+              start: 313
+              end: 337
+            value:
+              BinaryOperator:
+                - Add
+                - span:
+                    start: 313
+                    end: 325
+                  value:
+                    Constant:
+                      String: "a === b = "
+                - span:
+                    start: 329
+                    end: 336
+                  value:
+                    BinaryOperator:
+                      - StrictEqual
+                      - span:
+                          start: 329
+                          end: 330
+                        value:
+                          Constant:
+                            Identifier: a
+                      - span:
+                          start: 335
+                          end: 336
+                        value:
+                          Constant:
+                            Identifier: b
     - Expr:
         span:
           start: 349
           end: 380
         value:
-          Call:
-            name:
-              span:
-                start: 349
-                end: 354
-              value:
-                Constant:
-                  Identifier: trace
-            args:
-              - span:
-                  start: 355
-                  end: 379
-                value:
-                  BinaryOperator:
-                    - Add
-                    - span:
-                        start: 355
-                        end: 367
-                      value:
-                        Constant:
-                          String: "a !== b = "
-                    - span:
-                        start: 371
-                        end: 378
-                      value:
-                        BinaryOperator:
-                          - StrictNotEqual
-                          - span:
-                              start: 371
-                              end: 372
-                            value:
-                              Constant:
-                                Identifier: a
-                          - span:
-                              start: 377
-                              end: 378
-                            value:
-                              Constant:
-                                Identifier: b
+          Trace:
+            span:
+              start: 355
+              end: 379
+            value:
+              BinaryOperator:
+                - Add
+                - span:
+                    start: 355
+                    end: 367
+                  value:
+                    Constant:
+                      String: "a !== b = "
+                - span:
+                    start: 371
+                    end: 378
+                  value:
+                    BinaryOperator:
+                      - StrictNotEqual
+                      - span:
+                          start: 371
+                          end: 372
+                        value:
+                          Constant:
+                            Identifier: a
+                      - span:
+                          start: 377
+                          end: 378
+                        value:
+                          Constant:
+                            Identifier: b
     - Expr:
         span:
           start: 390
           end: 402
         value:
-          Call:
-            name:
-              span:
-                start: 390
-                end: 395
-              value:
-                Constant:
-                  Identifier: trace
-            args:
-              - span:
-                  start: 396
-                  end: 401
-                value:
-                  Constant:
-                    String: "---"
+          Trace:
+            span:
+              start: 396
+              end: 401
+            value:
+              Constant:
+                String: "---"
     - Expr:
         span:
           start: 433
           end: 472
         value:
-          Call:
-            name:
-              span:
-                start: 433
-                end: 438
-              value:
-                Constant:
-                  Identifier: trace
-            args:
-              - span:
-                  start: 439
-                  end: 471
-                value:
-                  BinaryOperator:
-                    - Add
-                    - span:
-                        start: 439
-                        end: 455
-                      value:
-                        Constant:
-                          String: "a == b == c = "
-                    - span:
-                        start: 459
-                        end: 470
-                      value:
-                        BinaryOperator:
-                          - Equal
-                          - span:
-                              start: 459
-                              end: 465
-                            value:
-                              BinaryOperator:
-                                - Equal
-                                - span:
-                                    start: 459
-                                    end: 460
-                                  value:
-                                    Constant:
-                                      Identifier: a
-                                - span:
-                                    start: 464
-                                    end: 465
-                                  value:
-                                    Constant:
-                                      Identifier: b
-                          - span:
-                              start: 469
-                              end: 470
-                            value:
-                              Constant:
-                                Identifier: c
+          Trace:
+            span:
+              start: 439
+              end: 471
+            value:
+              BinaryOperator:
+                - Add
+                - span:
+                    start: 439
+                    end: 455
+                  value:
+                    Constant:
+                      String: "a == b == c = "
+                - span:
+                    start: 459
+                    end: 470
+                  value:
+                    BinaryOperator:
+                      - Equal
+                      - span:
+                          start: 459
+                          end: 465
+                        value:
+                          BinaryOperator:
+                            - Equal
+                            - span:
+                                start: 459
+                                end: 460
+                              value:
+                                Constant:
+                                  Identifier: a
+                            - span:
+                                start: 464
+                                end: 465
+                              value:
+                                Constant:
+                                  Identifier: b
+                      - span:
+                          start: 469
+                          end: 470
+                        value:
+                          Constant:
+                            Identifier: c
     - Expr:
         span:
           start: 483
           end: 528
         value:
-          Call:
-            name:
-              span:
-                start: 483
-                end: 488
-              value:
-                Constant:
-                  Identifier: trace
-            args:
-              - span:
-                  start: 489
-                  end: 527
-                value:
-                  BinaryOperator:
-                    - Add
-                    - span:
-                        start: 489
-                        end: 509
-                      value:
-                        Constant:
-                          String: "((a == b) == c) = "
-                    - span:
-                        start: 513
-                        end: 526
-                      value:
-                        BinaryOperator:
-                          - Equal
-                          - span:
-                              start: 514
-                              end: 520
-                            value:
-                              BinaryOperator:
-                                - Equal
-                                - span:
-                                    start: 514
-                                    end: 515
-                                  value:
-                                    Constant:
-                                      Identifier: a
-                                - span:
-                                    start: 519
-                                    end: 520
-                                  value:
-                                    Constant:
-                                      Identifier: b
-                          - span:
-                              start: 525
-                              end: 526
-                            value:
-                              Constant:
-                                Identifier: c
+          Trace:
+            span:
+              start: 489
+              end: 527
+            value:
+              BinaryOperator:
+                - Add
+                - span:
+                    start: 489
+                    end: 509
+                  value:
+                    Constant:
+                      String: "((a == b) == c) = "
+                - span:
+                    start: 513
+                    end: 526
+                  value:
+                    BinaryOperator:
+                      - Equal
+                      - span:
+                          start: 514
+                          end: 520
+                        value:
+                          BinaryOperator:
+                            - Equal
+                            - span:
+                                start: 514
+                                end: 515
+                              value:
+                                Constant:
+                                  Identifier: a
+                            - span:
+                                start: 519
+                                end: 520
+                              value:
+                                Constant:
+                                  Identifier: b
+                      - span:
+                          start: 525
+                          end: 526
+                        value:
+                          Constant:
+                            Identifier: c
     - Expr:
         span:
           start: 540
           end: 583
         value:
-          Call:
-            name:
-              span:
-                start: 540
-                end: 545
-              value:
-                Constant:
-                  Identifier: trace
-            args:
-              - span:
-                  start: 546
-                  end: 582
-                value:
-                  BinaryOperator:
-                    - Add
-                    - span:
-                        start: 546
-                        end: 564
-                      value:
-                        Constant:
-                          String: "a !== b !== c = "
-                    - span:
-                        start: 568
-                        end: 581
-                      value:
-                        BinaryOperator:
-                          - StrictNotEqual
-                          - span:
-                              start: 568
-                              end: 575
-                            value:
-                              BinaryOperator:
-                                - StrictNotEqual
-                                - span:
-                                    start: 568
-                                    end: 569
-                                  value:
-                                    Constant:
-                                      Identifier: a
-                                - span:
-                                    start: 574
-                                    end: 575
-                                  value:
-                                    Constant:
-                                      Identifier: b
-                          - span:
-                              start: 580
-                              end: 581
-                            value:
-                              Constant:
-                                Identifier: c
+          Trace:
+            span:
+              start: 546
+              end: 582
+            value:
+              BinaryOperator:
+                - Add
+                - span:
+                    start: 546
+                    end: 564
+                  value:
+                    Constant:
+                      String: "a !== b !== c = "
+                - span:
+                    start: 568
+                    end: 581
+                  value:
+                    BinaryOperator:
+                      - StrictNotEqual
+                      - span:
+                          start: 568
+                          end: 575
+                        value:
+                          BinaryOperator:
+                            - StrictNotEqual
+                            - span:
+                                start: 568
+                                end: 569
+                              value:
+                                Constant:
+                                  Identifier: a
+                            - span:
+                                start: 574
+                                end: 575
+                              value:
+                                Constant:
+                                  Identifier: b
+                      - span:
+                          start: 580
+                          end: 581
+                        value:
+                          Constant:
+                            Identifier: c
     - Expr:
         span:
           start: 593
           end: 642
         value:
-          Call:
-            name:
-              span:
-                start: 593
-                end: 598
-              value:
-                Constant:
-                  Identifier: trace
-            args:
-              - span:
-                  start: 599
-                  end: 641
-                value:
-                  BinaryOperator:
-                    - Add
-                    - span:
-                        start: 599
-                        end: 621
-                      value:
-                        Constant:
-                          String: "((a !== b) !== c) = "
-                    - span:
-                        start: 625
-                        end: 640
-                      value:
-                        BinaryOperator:
-                          - StrictNotEqual
-                          - span:
-                              start: 626
-                              end: 633
-                            value:
-                              BinaryOperator:
-                                - StrictNotEqual
-                                - span:
-                                    start: 626
-                                    end: 627
-                                  value:
-                                    Constant:
-                                      Identifier: a
-                                - span:
-                                    start: 632
-                                    end: 633
-                                  value:
-                                    Constant:
-                                      Identifier: b
-                          - span:
-                              start: 639
-                              end: 640
-                            value:
-                              Constant:
-                                Identifier: c
+          Trace:
+            span:
+              start: 599
+              end: 641
+            value:
+              BinaryOperator:
+                - Add
+                - span:
+                    start: 599
+                    end: 621
+                  value:
+                    Constant:
+                      String: "((a !== b) !== c) = "
+                - span:
+                    start: 625
+                    end: 640
+                  value:
+                    BinaryOperator:
+                      - StrictNotEqual
+                      - span:
+                          start: 626
+                          end: 633
+                        value:
+                          BinaryOperator:
+                            - StrictNotEqual
+                            - span:
+                                start: 626
+                                end: 627
+                              value:
+                                Constant:
+                                  Identifier: a
+                            - span:
+                                start: 632
+                                end: 633
+                              value:
+                                Constant:
+                                  Identifier: b
+                      - span:
+                          start: 639
+                          end: 640
+                        value:
+                          Constant:
+                            Identifier: c
     - Expr:
         span:
           start: 652
           end: 664
         value:
-          Call:
-            name:
-              span:
-                start: 652
-                end: 657
-              value:
-                Constant:
-                  Identifier: trace
-            args:
-              - span:
-                  start: 658
-                  end: 663
-                value:
-                  Constant:
-                    String: "---"
+          Trace:
+            span:
+              start: 658
+              end: 663
+            value:
+              Constant:
+                String: "---"
     - Expr:
         span:
           start: 703
           end: 740
         value:
-          Call:
-            name:
-              span:
-                start: 703
-                end: 708
-              value:
-                Constant:
-                  Identifier: trace
-            args:
-              - span:
-                  start: 709
-                  end: 739
-                value:
-                  BinaryOperator:
-                    - Add
-                    - span:
-                        start: 709
-                        end: 724
-                      value:
-                        Constant:
-                          String: "a == b > c = "
-                    - span:
-                        start: 728
-                        end: 738
-                      value:
-                        BinaryOperator:
-                          - Equal
-                          - span:
-                              start: 728
-                              end: 729
-                            value:
-                              Constant:
-                                Identifier: a
-                          - span:
-                              start: 733
-                              end: 738
-                            value:
-                              BinaryOperator:
-                                - GreaterThan
-                                - span:
-                                    start: 733
-                                    end: 734
-                                  value:
-                                    Constant:
-                                      Identifier: b
-                                - span:
-                                    start: 737
-                                    end: 738
-                                  value:
-                                    Constant:
-                                      Identifier: c
+          Trace:
+            span:
+              start: 709
+              end: 739
+            value:
+              BinaryOperator:
+                - Add
+                - span:
+                    start: 709
+                    end: 724
+                  value:
+                    Constant:
+                      String: "a == b > c = "
+                - span:
+                    start: 728
+                    end: 738
+                  value:
+                    BinaryOperator:
+                      - Equal
+                      - span:
+                          start: 728
+                          end: 729
+                        value:
+                          Constant:
+                            Identifier: a
+                      - span:
+                          start: 733
+                          end: 738
+                        value:
+                          BinaryOperator:
+                            - GreaterThan
+                            - span:
+                                start: 733
+                                end: 734
+                              value:
+                                Constant:
+                                  Identifier: b
+                            - span:
+                                start: 737
+                                end: 738
+                              value:
+                                Constant:
+                                  Identifier: c
     - Expr:
         span:
           start: 751
           end: 794
         value:
-          Call:
-            name:
-              span:
-                start: 751
-                end: 756
-              value:
-                Constant:
-                  Identifier: trace
-            args:
-              - span:
-                  start: 757
-                  end: 793
-                value:
-                  BinaryOperator:
-                    - Add
-                    - span:
-                        start: 757
-                        end: 776
-                      value:
-                        Constant:
-                          String: "(a == (b > c)) = "
-                    - span:
-                        start: 780
-                        end: 792
-                      value:
-                        BinaryOperator:
-                          - Equal
-                          - span:
-                              start: 780
-                              end: 781
-                            value:
-                              Constant:
-                                Identifier: a
-                          - span:
-                              start: 786
-                              end: 791
-                            value:
-                              BinaryOperator:
-                                - GreaterThan
-                                - span:
-                                    start: 786
-                                    end: 787
-                                  value:
-                                    Constant:
-                                      Identifier: b
-                                - span:
-                                    start: 790
-                                    end: 791
-                                  value:
-                                    Constant:
-                                      Identifier: c
+          Trace:
+            span:
+              start: 757
+              end: 793
+            value:
+              BinaryOperator:
+                - Add
+                - span:
+                    start: 757
+                    end: 776
+                  value:
+                    Constant:
+                      String: "(a == (b > c)) = "
+                - span:
+                    start: 780
+                    end: 792
+                  value:
+                    BinaryOperator:
+                      - Equal
+                      - span:
+                          start: 780
+                          end: 781
+                        value:
+                          Constant:
+                            Identifier: a
+                      - span:
+                          start: 786
+                          end: 791
+                        value:
+                          BinaryOperator:
+                            - GreaterThan
+                            - span:
+                                start: 786
+                                end: 787
+                              value:
+                                Constant:
+                                  Identifier: b
+                            - span:
+                                start: 790
+                                end: 791
+                              value:
+                                Constant:
+                                  Identifier: c

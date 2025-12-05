@@ -42,21 +42,13 @@ Ok:
                   start: 28
                   end: 36
                 value:
-                  Call:
-                    name:
-                      span:
-                        start: 28
-                        end: 33
-                      value:
-                        Constant:
-                          Identifier: trace
-                    args:
-                      - span:
-                          start: 34
-                          end: 35
-                        value:
-                          Constant:
-                            Identifier: x
+                  Trace:
+                    span:
+                      start: 34
+                      end: 35
+                    value:
+                      Constant:
+                        Identifier: x
             - Expr:
                 span:
                   start: 39
@@ -115,21 +107,13 @@ Ok:
           start: 71
           end: 82
         value:
-          Call:
-            name:
-              span:
-                start: 71
-                end: 76
-              value:
-                Constant:
-                  Identifier: trace
-            args:
-              - span:
-                  start: 77
-                  end: 81
-                value:
-                  Constant:
-                    String: "--"
+          Trace:
+            span:
+              start: 77
+              end: 81
+            value:
+              Constant:
+                String: "--"
     - While:
         condition:
           span:
@@ -199,38 +183,22 @@ Ok:
                   start: 160
                   end: 168
                 value:
-                  Call:
-                    name:
-                      span:
-                        start: 160
-                        end: 165
-                      value:
-                        Constant:
-                          Identifier: trace
-                    args:
-                      - span:
-                          start: 166
-                          end: 167
-                        value:
-                          Constant:
-                            Identifier: x
+                  Trace:
+                    span:
+                      start: 166
+                      end: 167
+                    value:
+                      Constant:
+                        Identifier: x
     - Expr:
         span:
           start: 172
           end: 184
         value:
-          Call:
-            name:
-              span:
-                start: 172
-                end: 177
-              value:
-                Constant:
-                  Identifier: trace
-            args:
-              - span:
-                  start: 178
-                  end: 183
-                value:
-                  Constant:
-                    String: end
+          Trace:
+            span:
+              start: 178
+              end: 183
+            value:
+              Constant:
+                String: end
