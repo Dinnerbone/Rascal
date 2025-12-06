@@ -3,21 +3,28 @@ mod special_properties;
 
 use crate::ast;
 use crate::error::ParsingError;
+use crate::global_types::GLOBAL_TYPES;
 use crate::hir;
+use crate::program::SourceProvider;
 use crate::resolver::special_functions::resolve_special_call;
+use indexmap::IndexSet;
 use rascal_common::span::{Span, Spanned};
 use std::collections::HashMap;
 
-struct ModuleContext {
+struct ModuleContext<'a> {
     imports: HashMap<String, Vec<String>>,
     errors: Vec<ParsingError>,
+    dependencies: IndexSet<String>,
+    provider: &'a dyn SourceProvider,
 }
 
-impl ModuleContext {
-    fn new() -> Self {
+impl<'a> ModuleContext<'a> {
+    fn new(provider: &'a dyn SourceProvider) -> Self {
         Self {
             imports: HashMap::new(),
             errors: vec![],
+            dependencies: IndexSet::new(),
+            provider,
         }
     }
 
@@ -59,12 +66,35 @@ impl ModuleContext {
         }
         None
     }
+
+    fn add_dependency(&mut self, span: Span, name: &str, required: bool) {
+        if GLOBAL_TYPES.contains(&name) {
+            return;
+        }
+        if !self.provider.is_file(&(name.replace(".", "/") + ".as")) {
+            if required {
+                self.error(
+                    format!("The class or interface `{}` could not be loaded.", name),
+                    span,
+                );
+            }
+            return;
+        }
+        self.dependencies.insert(name.to_owned());
+    }
 }
 
-pub fn resolve_hir(ast: ast::Document) -> (hir::Document, Vec<ParsingError>) {
-    let mut context = ModuleContext::new();
+pub fn resolve_hir<P: SourceProvider>(
+    provider: &P,
+    ast: ast::Document,
+) -> (hir::Document, Vec<ParsingError>, IndexSet<String>) {
+    let mut context = ModuleContext::new(provider);
     let statements = resolve_statement_vec(&mut context, &ast.statements);
-    (hir::Document { statements }, context.errors)
+    (
+        hir::Document { statements },
+        context.errors,
+        context.dependencies,
+    )
 }
 
 fn resolve_statement_vec(
@@ -94,9 +124,7 @@ fn resolve_statement(
                 .iter()
                 .map(|d| hir::Declaration {
                     name: d.name.to_owned(),
-                    type_name: d
-                        .type_name
-                        .map(|s| Spanned::new(s.span, s.value.to_owned())),
+                    type_name: resolve_opt_type_name(context, &d.type_name),
                     value: d.value.as_ref().map(|expr| resolve_expr(context, expr)),
                 })
                 .collect(),
@@ -139,7 +167,7 @@ fn resolve_statement(
                 .iter()
                 .map(|(type_name, catch)| {
                     (
-                        Spanned::new(type_name.span, type_name.value.to_owned()),
+                        resolve_type_name(context, type_name),
                         resolve_catch(context, catch),
                     )
                 })
@@ -299,10 +327,20 @@ fn resolve_expr(context: &mut ModuleContext, input: &ast::Expr) -> hir::Expr {
                 .map(|expr| resolve_expr(context, expr))
                 .collect(),
         ),
-        ast::ExprKind::Field(object, field) => hir::ExprKind::Field(
-            resolve_expr_box(context, object),
-            resolve_expr_box(context, field),
-        ),
+        ast::ExprKind::Field(object, field) => {
+            // This looks weird and it will match on parts of the same expr multiple times (e.g. `(a.b).(c)` + `(a).(b)` both get checked)
+            // But Flash works this way too. `foo.bar.baz.enabled = true` will try to load `foo.as`, `foo/bar.as`, `foo/bar/baz.as` and even `foo/bar/baz/enabled.as`
+            // There's simply no way to know if such a reference is for a class on disk, without just assuming it'll work at runtime and possibly load something extra if we find it.
+            // (Actually - there's one caveat here; Flash won't check if it knows there's a variable by the same name/prefix in scope, but at the time of writing this, Rascal doesn't have scope resolution)
+            if let Some(path) = try_field_to_path(&object.value, &field.value) {
+                context.add_dependency(span, &path, false);
+            }
+
+            hir::ExprKind::Field(
+                resolve_expr_box(context, object),
+                resolve_expr_box(context, field),
+            )
+        }
         ast::ExprKind::TypeOf(values) => hir::ExprKind::TypeOf(
             values
                 .iter()
@@ -335,6 +373,43 @@ fn resolve_expr(context: &mut ModuleContext, input: &ast::Expr) -> hir::Expr {
     hir::Expr::new(input.span, result)
 }
 
+fn try_field_to_path(obj: &ast::ExprKind, key: &ast::ExprKind) -> Option<String> {
+    let mut path = vec![];
+
+    if let ast::ExprKind::Constant(ast::ConstantKind::String(identifier)) = key {
+        path.push(identifier.as_ref());
+    } else {
+        return None;
+    }
+
+    let mut parent = obj;
+    loop {
+        match parent {
+            ast::ExprKind::Constant(ast::ConstantKind::Identifier(identifier)) => {
+                path.push(identifier);
+                break;
+            }
+            ast::ExprKind::Field(obj, key) => {
+                parent = obj;
+                if let ast::ExprKind::Constant(ast::ConstantKind::String(key)) = &key.value {
+                    path.push(key);
+                } else {
+                    return None;
+                }
+            }
+            _ => return None,
+        }
+    }
+
+    Some(
+        path.iter()
+            .rev()
+            .map(|s| (*s).to_owned())
+            .collect::<Vec<_>>()
+            .join("."),
+    )
+}
+
 fn resolve_call(
     context: &mut ModuleContext,
     span: Span,
@@ -363,11 +438,23 @@ fn resolve_function(context: &mut ModuleContext, input: &ast::Function) -> hir::
             .iter()
             .map(|arg| hir::FunctionArgument {
                 name: arg.name.to_owned(),
-                type_name: arg
-                    .type_name
-                    .map(|s| Spanned::new(s.span, s.value.to_owned())),
+                type_name: resolve_opt_type_name(context, &arg.type_name),
             })
             .collect(),
         body: resolve_statement_vec(context, &input.body),
     }
+}
+
+fn resolve_type_name(context: &mut ModuleContext, type_name: &Spanned<&str>) -> Spanned<String> {
+    context.add_dependency(type_name.span, type_name.value, true);
+    Spanned::new(type_name.span, type_name.value.to_owned())
+}
+
+fn resolve_opt_type_name(
+    context: &mut ModuleContext,
+    type_name: &Option<Spanned<&str>>,
+) -> Option<Spanned<String>> {
+    type_name
+        .as_ref()
+        .map(|type_name| resolve_type_name(context, type_name))
 }
