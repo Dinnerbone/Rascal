@@ -223,8 +223,7 @@ fn gen_with(
     context.set_can_use_special_properties(false);
     gen_statement(context, &mut sub_builder, body);
     context.set_can_use_special_properties(could_use_special_properties);
-    let (actions, errors) = sub_builder.into_actions();
-    builder.add_errors(errors);
+    let actions = sub_builder.into_actions();
 
     gen_expr(context, builder, target, false);
     builder.action(Action::With(actions));
@@ -238,8 +237,7 @@ fn gen_wait_for_frame(
 ) {
     let mut sub_builder = CodeBuilder::new();
     gen_statement(context, &mut sub_builder, if_loaded);
-    let (actions, errors) = sub_builder.into_actions();
-    builder.add_errors(errors);
+    let actions = sub_builder.into_actions();
     let num_actions = actions.actions().len();
 
     match frame.value {
@@ -714,8 +712,7 @@ fn gen_try_catch(context: &mut ScriptContext, builder: &mut CodeBuilder, try_cat
     let mut end_label: Option<String> = None;
     let mut try_builder = CodeBuilder::new();
     gen_statements(context, &mut try_builder, &try_catch.try_body);
-    let (try_body, errors) = try_builder.into_actions();
-    builder.add_errors(errors);
+    let try_body = try_builder.into_actions();
 
     let catch_body = if try_catch.typed_catches.is_empty() && try_catch.catch_all.is_none() {
         // Nothing to do
@@ -726,8 +723,7 @@ fn gen_try_catch(context: &mut ScriptContext, builder: &mut CodeBuilder, try_cat
         // A single catch-all block
         let mut catch_builder = CodeBuilder::new();
         gen_statements(context, &mut catch_builder, &catch_all.body);
-        let (catch_body, errors) = catch_builder.into_actions();
-        builder.add_errors(errors);
+        let catch_body = catch_builder.into_actions();
         Some((
             CatchTarget::Variable(catch_all.name.value.to_owned()),
             catch_body,
@@ -774,8 +770,7 @@ fn gen_try_catch(context: &mut ScriptContext, builder: &mut CodeBuilder, try_cat
             catch_builder.action(Action::Throw);
         }
 
-        let (catch_body, errors) = catch_builder.into_actions();
-        builder.add_errors(errors);
+        let catch_body = catch_builder.into_actions();
         Some((catch_target, catch_body))
     };
 
@@ -787,8 +782,7 @@ fn gen_try_catch(context: &mut ScriptContext, builder: &mut CodeBuilder, try_cat
             finally_builder.mark_label(end_label);
         }
         gen_statements(context, &mut finally_builder, &try_catch.finally);
-        let (finally_body, errors) = finally_builder.into_actions();
-        builder.add_errors(errors);
+        let finally_body = finally_builder.into_actions();
         Some(finally_body)
     };
 
@@ -807,8 +801,7 @@ fn gen_function(context: &mut ScriptContext, builder: &mut CodeBuilder, function
     let old_break = context.set_break_label(None);
     let old_continue = context.set_continue_label(None);
     gen_statements(context, &mut fun_builder, &function.body);
-    let (actions, errors) = fun_builder.into_actions();
-    builder.add_errors(errors);
+    let actions = fun_builder.into_actions();
     builder.action(Action::DefineFunction {
         name: function.name.clone().unwrap_or_default(),
         params: function

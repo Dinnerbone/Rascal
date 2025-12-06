@@ -1,10 +1,7 @@
-use crate::error::Error;
 use rascal_as2_pcode::{Action, Actions, PushValue};
-use rascal_common::span::Span;
 
 #[derive(Debug)]
 pub(crate) struct CodeBuilder {
-    errors: Vec<Error>,
     actions: Actions,
     stack_size: u32,
 }
@@ -12,14 +9,13 @@ pub(crate) struct CodeBuilder {
 impl CodeBuilder {
     pub fn new() -> Self {
         Self {
-            errors: Vec::new(),
             actions: Actions::empty(),
             stack_size: 0,
         }
     }
 
-    pub fn into_actions(self) -> (Actions, Vec<Error>) {
-        (self.actions, self.errors)
+    pub fn into_actions(self) -> Actions {
+        self.actions
     }
 
     pub fn stack_size(&self) -> u32 {
@@ -68,15 +64,6 @@ impl CodeBuilder {
         } else {
             self.action(Action::Push(vec![value.into()]));
         }
-    }
-
-    #[expect(dead_code)]
-    pub fn error(&mut self, message: &'static str, span: Span) {
-        self.errors.push(Error { message, span });
-    }
-
-    pub fn add_errors(&mut self, mut errors: Vec<Error>) {
-        self.errors.append(&mut errors);
     }
 
     pub fn append(&mut self, actions: Actions) {

@@ -23,7 +23,7 @@ fn main() -> Result<()> {
             ProgramBuilder::new(FileSystemSourceProvider::with_root(PathBuf::from(".")));
         builder.add_script(&filename);
         let parsed = builder.build().unwrap_or_else(|e| panic!("{}", e));
-        hir_to_pcode(&filename, &src, &parsed.initial_script).unwrap()
+        hir_to_pcode(&parsed.initial_script)
     } else {
         let pcode = PCode::new(&filename, &src);
         pcode.to_actions().unwrap_or_else(|e| panic!("{}", e))
