@@ -21,7 +21,7 @@ fn fn_call_frame(
     args: &[ast::Expr],
 ) -> Option<hir::ExprKind> {
     if args.len() == 1 {
-        let frame = resolve_expr(context, args[0].clone());
+        let frame = resolve_expr(context, &args[0]);
         Some(hir::ExprKind::CallFrame(Box::new(frame)))
     } else {
         context.error("Wrong number of parameters; call requires exactly 1.", span);
@@ -31,7 +31,7 @@ fn fn_call_frame(
 
 fn fn_eval(context: &mut ModuleContext, span: Span, args: &[ast::Expr]) -> Option<hir::ExprKind> {
     if args.len() == 1 {
-        let name = resolve_expr(context, args[0].clone());
+        let name = resolve_expr(context, &args[0]);
         Some(hir::ExprKind::GetVariable(Box::new(name)))
     } else {
         context.error("Wrong number of parameters; eval requires exactly 1.", span);
