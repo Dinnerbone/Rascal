@@ -3,10 +3,14 @@ source: crates/as2/src/program.rs
 expression: parsed
 input_file: samples/as2_errors/special_functions/number.as
 ---
-error: Compile error(s)
+error: Wrong number of parameters; number requires exactly 1.
   ╭▸ number.as:1:1
   │
 1 │ Number();
-  │ ━━━━━━━━ Wrong number of parameters; number requires exactly 1.
+  │ ━━━━━━━━
+  ╰╴
+error: Wrong number of parameters; number requires exactly 1.
+  ╭▸ number.as:2:1
+  │
 2 │ Number(1, 2);
-  ╰╴━━━━━━━━━━━━ Wrong number of parameters; number requires exactly 1.
+  ╰╴━━━━━━━━━━━━

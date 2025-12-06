@@ -3,8 +3,8 @@ source: crates/as2/src/program.rs
 expression: parsed
 input_file: samples/as2_errors/special_functions/prevframe.as
 ---
-error: Compile error(s)
+error: Wrong number of parameters; prevFrame requires exactly 0.
   ╭▸ prevframe.as:1:1
   │
 1 │ prevFrame(true);
-  ╰╴━━━━━━━━━━━━━━━ Wrong number of parameters; prevFrame requires exactly 0.
+  ╰╴━━━━━━━━━━━━━━━

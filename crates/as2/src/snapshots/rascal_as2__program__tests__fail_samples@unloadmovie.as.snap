@@ -3,10 +3,14 @@ source: crates/as2/src/program.rs
 expression: parsed
 input_file: samples/as2_errors/special_functions/unloadmovie.as
 ---
-error: Compile error(s)
+error: Wrong number of parameters; unloadMovie requires exactly 1.
   ╭▸ unloadmovie.as:1:1
   │
 1 │ unloadMovie();
-  │ ━━━━━━━━━━━━━ Wrong number of parameters; unloadMovie requires exactly 1.
+  │ ━━━━━━━━━━━━━
+  ╰╴
+error: Wrong number of parameters; unloadMovie requires exactly 1.
+  ╭▸ unloadmovie.as:2:1
+  │
 2 │ unloadMovie(x, y);
-  ╰╴━━━━━━━━━━━━━━━━━ Wrong number of parameters; unloadMovie requires exactly 1.
+  ╰╴━━━━━━━━━━━━━━━━━

@@ -3,10 +3,14 @@ source: crates/as2/src/program.rs
 expression: parsed
 input_file: samples/as2_errors/special_functions/mblength.as
 ---
-error: Compile error(s)
+error: Wrong number of parameters; mblength requires exactly 1.
   ╭▸ mblength.as:1:1
   │
 1 │ mblength();
-  │ ━━━━━━━━━━ Wrong number of parameters; mblength requires exactly 1.
+  │ ━━━━━━━━━━
+  ╰╴
+error: Wrong number of parameters; mblength requires exactly 1.
+  ╭▸ mblength.as:2:1
+  │
 2 │ mblength("a", "b");
-  ╰╴━━━━━━━━━━━━━━━━━━ Wrong number of parameters; mblength requires exactly 1.
+  ╰╴━━━━━━━━━━━━━━━━━━

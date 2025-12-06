@@ -3,8 +3,8 @@ source: crates/as2/src/program.rs
 expression: parsed
 input_file: samples/as2_errors/special_functions/gettimer.as
 ---
-error: Compile error(s)
+error: Wrong number of parameters; getTimer requires exactly 0.
   ╭▸ gettimer.as:1:1
   │
 1 │ getTimer(true);
-  ╰╴━━━━━━━━━━━━━━ Wrong number of parameters; getTimer requires exactly 0.
+  ╰╴━━━━━━━━━━━━━━

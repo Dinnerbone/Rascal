@@ -3,16 +3,29 @@ source: crates/as2/src/program.rs
 expression: parsed
 input_file: samples/as2_errors/special_functions/print.as
 ---
-error: Compile error(s)
+error: Wrong number of parameters; print requires exactly 2.
   ╭▸ print.as:1:1
   │
 1 │ print();
-  │ ━━━━━━━ Wrong number of parameters; print requires exactly 2.
+  │ ━━━━━━━
+  ╰╴
+error: Wrong number of parameters; print requires exactly 2.
+  ╭▸ print.as:2:1
+  │
 2 │ print(this);
-  │ ━━━━━━━━━━━ Wrong number of parameters; print requires exactly 2.
+  ╰╴━━━━━━━━━━━
+error: Bounds type must be bmovie, bframe or bmax.
+  ╭▸ print.as:3:13
+  │
 3 │ print(this, "foo");
-  │             ━━━━━ Bounds type must be bmovie, bframe or bmax.
+  ╰╴            ━━━━━
+error: Bounds type must be bmovie, bframe or bmax.
+  ╭▸ print.as:4:13
+  │
 4 │ print(this, foo);
-  │             ━━━ Bounds type must be bmovie, bframe or bmax.
+  ╰╴            ━━━
+error: Wrong number of parameters; print requires exactly 2.
+  ╭▸ print.as:5:1
+  │
 5 │ print(this, "bmax", true);
-  ╰╴━━━━━━━━━━━━━━━━━━━━━━━━━ Wrong number of parameters; print requires exactly 2.
+  ╰╴━━━━━━━━━━━━━━━━━━━━━━━━━

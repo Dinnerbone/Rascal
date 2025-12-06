@@ -3,16 +3,29 @@ source: crates/as2/src/program.rs
 expression: parsed
 input_file: samples/as2_errors/special_functions/loadvariables.as
 ---
-error: Compile error(s)
+error: Wrong number of parameters; loadVariables requires between 2 and 3.
   ╭▸ loadvariables.as:1:1
   │
 1 │ loadVariables();
-  │ ━━━━━━━━━━━━━━━ Wrong number of parameters; loadVariables requires between 2 and 3.
+  │ ━━━━━━━━━━━━━━━
+  ╰╴
+error: Wrong number of parameters; loadVariables requires between 2 and 3.
+  ╭▸ loadvariables.as:2:1
+  │
 2 │ loadVariables("http://ruffle.rs");
-  │ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Wrong number of parameters; loadVariables requires between 2 and 3.
+  ╰╴━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+error: Wrong number of parameters; loadVariables requires between 2 and 3.
+  ╭▸ loadvariables.as:3:1
+  │
 3 │ loadVariables("http://ruffle.rs", "window", "get", "foo");
-  │ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Wrong number of parameters; loadVariables requires between 2 and 3.
+  ╰╴━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+error: Method name must be GET or POST.
+  ╭▸ loadvariables.as:4:45
+  │
 4 │ loadVariables("http://ruffle.rs", "window", x);
-  │                                             ━ Method name must be GET or POST.
+  ╰╴                                            ━
+error: Method name must be GET or POST.
+  ╭▸ loadvariables.as:5:45
+  │
 5 │ loadVariables("http://ruffle.rs", "window", "foo");
-  ╰╴                                            ━━━━━ Method name must be GET or POST.
+  ╰╴                                            ━━━━━

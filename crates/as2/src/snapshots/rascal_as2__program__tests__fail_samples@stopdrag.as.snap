@@ -3,8 +3,8 @@ source: crates/as2/src/program.rs
 expression: parsed
 input_file: samples/as2_errors/special_functions/stopdrag.as
 ---
-error: Compile error(s)
+error: Wrong number of parameters; stopDrag requires exactly 0.
   ╭▸ stopdrag.as:1:1
   │
 1 │ stopDrag(true);
-  ╰╴━━━━━━━━━━━━━━ Wrong number of parameters; stopDrag requires exactly 0.
+  ╰╴━━━━━━━━━━━━━━

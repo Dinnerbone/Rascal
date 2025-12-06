@@ -3,8 +3,8 @@ source: crates/as2/src/program.rs
 expression: parsed
 input_file: samples/as2_errors/special_functions/stopallsounds.as
 ---
-error: Compile error(s)
+error: Wrong number of parameters; stopAllSounds requires exactly 0.
   ╭▸ stopallsounds.as:1:1
   │
 1 │ stopAllSounds(true);
-  ╰╴━━━━━━━━━━━━━━━━━━━ Wrong number of parameters; stopAllSounds requires exactly 0.
+  ╰╴━━━━━━━━━━━━━━━━━━━

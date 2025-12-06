@@ -3,12 +3,19 @@ source: crates/as2/src/program.rs
 expression: parsed
 input_file: samples/as2_errors/special_functions/substring.as
 ---
-error: Compile error(s)
+error: Wrong number of parameters; substring requires between 2 and 3.
   ╭▸ substring.as:1:1
   │
 1 │ substring();
-  │ ━━━━━━━━━━━ Wrong number of parameters; substring requires between 2 and 3.
+  │ ━━━━━━━━━━━
+  ╰╴
+error: Wrong number of parameters; substring requires between 2 and 3.
+  ╭▸ substring.as:2:1
+  │
 2 │ substring("a");
-  │ ━━━━━━━━━━━━━━ Wrong number of parameters; substring requires between 2 and 3.
+  ╰╴━━━━━━━━━━━━━━
+error: Wrong number of parameters; substring requires between 2 and 3.
+  ╭▸ substring.as:3:1
+  │
 3 │ substring("a", 1, 2, 3);
-  ╰╴━━━━━━━━━━━━━━━━━━━━━━━ Wrong number of parameters; substring requires between 2 and 3.
+  ╰╴━━━━━━━━━━━━━━━━━━━━━━━

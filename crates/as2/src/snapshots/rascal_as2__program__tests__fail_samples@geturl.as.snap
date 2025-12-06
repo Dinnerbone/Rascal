@@ -3,14 +3,24 @@ source: crates/as2/src/program.rs
 expression: parsed
 input_file: samples/as2_errors/special_functions/geturl.as
 ---
-error: Compile error(s)
+error: Wrong number of parameters; getURL requires between 1 and 3.
   ╭▸ geturl.as:1:1
   │
 1 │ getURL();
-  │ ━━━━━━━━ Wrong number of parameters; getURL requires between 1 and 3.
+  │ ━━━━━━━━
+  ╰╴
+error: Wrong number of parameters; getURL requires between 1 and 3.
+  ╭▸ geturl.as:2:1
+  │
 2 │ getURL("http://ruffle.rs", "window", "get", "foo");
-  │ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Wrong number of parameters; getURL requires between 1 and 3.
+  ╰╴━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+error: Method name must be GET or POST.
+  ╭▸ geturl.as:3:38
+  │
 3 │ getURL("http://ruffle.rs", "window", x);
-  │                                      ━ Method name must be GET or POST.
+  ╰╴                                     ━
+error: Method name must be GET or POST.
+  ╭▸ geturl.as:4:38
+  │
 4 │ getURL("http://ruffle.rs", "window", "foo");
-  ╰╴                                     ━━━━━ Method name must be GET or POST.
+  ╰╴                                     ━━━━━

@@ -3,16 +3,29 @@ source: crates/as2/src/program.rs
 expression: parsed
 input_file: samples/as2_errors/special_functions/getproperty.as
 ---
-error: Compile error(s)
+error: Wrong number of parameters; getProperty requires exactly 2.
   ╭▸ getproperty.as:1:1
   │
 1 │ getProperty();
-  │ ━━━━━━━━━━━━━ Wrong number of parameters; getProperty requires exactly 2.
+  │ ━━━━━━━━━━━━━
+  ╰╴
+error: Wrong number of parameters; getProperty requires exactly 2.
+  ╭▸ getproperty.as:2:1
+  │
 2 │ getProperty(x);
-  │ ━━━━━━━━━━━━━━ Wrong number of parameters; getProperty requires exactly 2.
+  ╰╴━━━━━━━━━━━━━━
+error: Property name expected in GetProperty.
+  ╭▸ getproperty.as:3:16
+  │
 3 │ getProperty(x, y);
-  │                ━ Property name expected in GetProperty.
+  ╰╴               ━
+error: Wrong number of parameters; getProperty requires exactly 2.
+  ╭▸ getproperty.as:4:1
+  │
 4 │ getProperty(x, y, z);
-  │ ━━━━━━━━━━━━━━━━━━━━ Wrong number of parameters; getProperty requires exactly 2.
+  ╰╴━━━━━━━━━━━━━━━━━━━━
+error: Property name expected in GetProperty.
+  ╭▸ getproperty.as:5:16
+  │
 5 │ getProperty(x, "_alpha");
-  ╰╴               ━━━━━━━━ Property name expected in GetProperty.
+  ╰╴               ━━━━━━━━

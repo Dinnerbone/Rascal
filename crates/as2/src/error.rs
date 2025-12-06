@@ -17,9 +17,7 @@ impl ParsingError {
     }
 
     fn annotation<'a>(&'a self) -> Annotation<'a> {
-        AnnotationKind::Primary
-            .span(self.span.start..self.span.end)
-            .label(&self.error)
+        AnnotationKind::Primary.span(self.span.start..self.span.end)
     }
 }
 
@@ -65,15 +63,15 @@ impl ErrorSet {
     pub fn report<'a>(&'a self) -> Vec<Group<'a>> {
         let mut report = vec![];
         for (filename, (source, errors)) in &self.files {
-            let mut source = annotate_snippets::Snippet::source(source).path(filename);
             for error in errors {
+                let mut source = annotate_snippets::Snippet::source(source).path(filename);
                 source = source.annotation(error.annotation());
+                report.push(
+                    annotate_snippets::Level::ERROR
+                        .primary_title(error.error.to_string())
+                        .element(source),
+                )
             }
-            report.push(
-                annotate_snippets::Level::ERROR
-                    .primary_title("Compile error(s)")
-                    .element(source),
-            )
         }
         for (filename, error) in &self.io_errors {
             report.push(

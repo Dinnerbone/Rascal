@@ -3,10 +3,14 @@ source: crates/as2/src/program.rs
 expression: parsed
 input_file: samples/as2_errors/special_functions/mbord.as
 ---
-error: Compile error(s)
+error: Wrong number of parameters; mbord requires exactly 1.
   ╭▸ mbord.as:1:1
   │
 1 │ mbord();
-  │ ━━━━━━━ Wrong number of parameters; mbord requires exactly 1.
+  │ ━━━━━━━
+  ╰╴
+error: Wrong number of parameters; mbord requires exactly 1.
+  ╭▸ mbord.as:2:1
+  │
 2 │ mbord("a", "b");
-  ╰╴━━━━━━━━━━━━━━━ Wrong number of parameters; mbord requires exactly 1.
+  ╰╴━━━━━━━━━━━━━━━

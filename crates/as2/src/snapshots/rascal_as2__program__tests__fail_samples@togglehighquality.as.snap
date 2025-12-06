@@ -3,8 +3,8 @@ source: crates/as2/src/program.rs
 expression: parsed
 input_file: samples/as2_errors/special_functions/togglehighquality.as
 ---
-error: Compile error(s)
+error: Wrong number of parameters; toggleHighQuality requires exactly 0.
   ╭▸ togglehighquality.as:1:1
   │
 1 │ toggleHighQuality(true);
-  ╰╴━━━━━━━━━━━━━━━━━━━━━━━ Wrong number of parameters; toggleHighQuality requires exactly 0.
+  ╰╴━━━━━━━━━━━━━━━━━━━━━━━

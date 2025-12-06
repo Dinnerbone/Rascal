@@ -3,20 +3,39 @@ source: crates/as2/src/program.rs
 expression: parsed
 input_file: samples/as2_errors/special_functions/startdrag.as
 ---
-error: Compile error(s)
+error: Wrong number of parameters; startDrag requires between 1 and 6.
   ╭▸ startdrag.as:1:1
   │
 1 │ startDrag();
-  │ ━━━━━━━━━━━ Wrong number of parameters; startDrag requires between 1 and 6.
+  │ ━━━━━━━━━━━
+  ╰╴
+error: Lock center parameter must be true or false
+  ╭▸ startdrag.as:2:14
+  │
 2 │ startDrag(x, "maybe");
-  │              ━━━━━━━ Lock center parameter must be true or false
+  ╰╴             ━━━━━━━
+error: Lock center parameter must be true or false
+  ╭▸ startdrag.as:3:14
+  │
 3 │ startDrag(x, "true");
-  │              ━━━━━━ Lock center parameter must be true or false
+  ╰╴             ━━━━━━
+error: startDrag requires 1 (target), 2 (target+lock) or 6 (target+lock+constraint) parameters.
+  ╭▸ startdrag.as:4:1
+  │
 4 │ startDrag(x, true, 1);
-  │ ━━━━━━━━━━━━━━━━━━━━━ startDrag requires 1 (target), 2 (target+lock) or 6 (target+lock+constraint) parameters.
+  ╰╴━━━━━━━━━━━━━━━━━━━━━
+error: startDrag requires 1 (target), 2 (target+lock) or 6 (target+lock+constraint) parameters.
+  ╭▸ startdrag.as:5:1
+  │
 5 │ startDrag(x, true, 1, 2);
-  │ ━━━━━━━━━━━━━━━━━━━━━━━━ startDrag requires 1 (target), 2 (target+lock) or 6 (target+lock+constraint) parameters.
+  ╰╴━━━━━━━━━━━━━━━━━━━━━━━━
+error: startDrag requires 1 (target), 2 (target+lock) or 6 (target+lock+constraint) parameters.
+  ╭▸ startdrag.as:6:1
+  │
 6 │ startDrag(x, true, 1, 2, 3);
-  │ ━━━━━━━━━━━━━━━━━━━━━━━━━━━ startDrag requires 1 (target), 2 (target+lock) or 6 (target+lock+constraint) parameters.
+  ╰╴━━━━━━━━━━━━━━━━━━━━━━━━━━━
+error: Wrong number of parameters; startDrag requires between 1 and 6.
+  ╭▸ startdrag.as:7:1
+  │
 7 │ startDrag(x, true, 1, 2, 3, 4, 5);
-  ╰╴━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Wrong number of parameters; startDrag requires between 1 and 6.
+  ╰╴━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

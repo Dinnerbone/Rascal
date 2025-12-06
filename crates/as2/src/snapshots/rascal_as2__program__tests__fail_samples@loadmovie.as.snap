@@ -3,16 +3,29 @@ source: crates/as2/src/program.rs
 expression: parsed
 input_file: samples/as2_errors/special_functions/loadmovie.as
 ---
-error: Compile error(s)
+error: Wrong number of parameters; loadMovie requires between 2 and 3.
   ╭▸ loadmovie.as:1:1
   │
 1 │ loadMovie();
-  │ ━━━━━━━━━━━ Wrong number of parameters; loadMovie requires between 2 and 3.
+  │ ━━━━━━━━━━━
+  ╰╴
+error: Wrong number of parameters; loadMovie requires between 2 and 3.
+  ╭▸ loadmovie.as:2:1
+  │
 2 │ loadMovie("http://ruffle.rs");
-  │ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Wrong number of parameters; loadMovie requires between 2 and 3.
+  ╰╴━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+error: Wrong number of parameters; loadMovie requires between 2 and 3.
+  ╭▸ loadmovie.as:3:1
+  │
 3 │ loadMovie("http://ruffle.rs", "window", "get", "foo");
-  │ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Wrong number of parameters; loadMovie requires between 2 and 3.
+  ╰╴━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+error: Method name must be GET or POST.
+  ╭▸ loadmovie.as:4:41
+  │
 4 │ loadMovie("http://ruffle.rs", "window", x);
-  │                                         ━ Method name must be GET or POST.
+  ╰╴                                        ━
+error: Method name must be GET or POST.
+  ╭▸ loadmovie.as:5:41
+  │
 5 │ loadMovie("http://ruffle.rs", "window", "foo");
-  ╰╴                                        ━━━━━ Method name must be GET or POST.
+  ╰╴                                        ━━━━━

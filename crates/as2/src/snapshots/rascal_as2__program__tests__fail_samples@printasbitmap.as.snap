@@ -3,16 +3,29 @@ source: crates/as2/src/program.rs
 expression: parsed
 input_file: samples/as2_errors/special_functions/printasbitmap.as
 ---
-error: Compile error(s)
+error: Wrong number of parameters; printAsBitmap requires exactly 2.
   ╭▸ printasbitmap.as:1:1
   │
 1 │ printAsBitmap();
-  │ ━━━━━━━━━━━━━━━ Wrong number of parameters; printAsBitmap requires exactly 2.
+  │ ━━━━━━━━━━━━━━━
+  ╰╴
+error: Wrong number of parameters; printAsBitmap requires exactly 2.
+  ╭▸ printasbitmap.as:2:1
+  │
 2 │ printAsBitmap(this);
-  │ ━━━━━━━━━━━━━━━━━━━ Wrong number of parameters; printAsBitmap requires exactly 2.
+  ╰╴━━━━━━━━━━━━━━━━━━━
+error: Bounds type must be bmovie, bframe or bmax.
+  ╭▸ printasbitmap.as:3:21
+  │
 3 │ printAsBitmap(this, "foo");
-  │                     ━━━━━ Bounds type must be bmovie, bframe or bmax.
+  ╰╴                    ━━━━━
+error: Bounds type must be bmovie, bframe or bmax.
+  ╭▸ printasbitmap.as:4:21
+  │
 4 │ printAsBitmap(this, foo);
-  │                     ━━━ Bounds type must be bmovie, bframe or bmax.
+  ╰╴                    ━━━
+error: Wrong number of parameters; printAsBitmap requires exactly 2.
+  ╭▸ printasbitmap.as:5:1
+  │
 5 │ printAsBitmap(this, "bmax", true);
-  ╰╴━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Wrong number of parameters; printAsBitmap requires exactly 2.
+  ╰╴━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

@@ -3,14 +3,24 @@ source: crates/as2/src/program.rs
 expression: parsed
 input_file: samples/as2_errors/special_functions/duplicateMovieClip.as
 ---
-error: Compile error(s)
+error: Wrong number of parameters; duplicateMovieClip requires exactly 3.
   ╭▸ duplicateMovieClip.as:1:1
   │
 1 │ duplicateMovieClip();
-  │ ━━━━━━━━━━━━━━━━━━━━ Wrong number of parameters; duplicateMovieClip requires exactly 3.
+  │ ━━━━━━━━━━━━━━━━━━━━
+  ╰╴
+error: Wrong number of parameters; duplicateMovieClip requires exactly 3.
+  ╭▸ duplicateMovieClip.as:2:1
+  │
 2 │ duplicateMovieClip(a);
-  │ ━━━━━━━━━━━━━━━━━━━━━ Wrong number of parameters; duplicateMovieClip requires exactly 3.
+  ╰╴━━━━━━━━━━━━━━━━━━━━━
+error: Wrong number of parameters; duplicateMovieClip requires exactly 3.
+  ╭▸ duplicateMovieClip.as:3:1
+  │
 3 │ duplicateMovieClip(a, b);
-  │ ━━━━━━━━━━━━━━━━━━━━━━━━ Wrong number of parameters; duplicateMovieClip requires exactly 3.
+  ╰╴━━━━━━━━━━━━━━━━━━━━━━━━
+error: Wrong number of parameters; duplicateMovieClip requires exactly 3.
+  ╭▸ duplicateMovieClip.as:4:1
+  │
 4 │ duplicateMovieClip(a, b, c, d);
-  ╰╴━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Wrong number of parameters; duplicateMovieClip requires exactly 3.
+  ╰╴━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
