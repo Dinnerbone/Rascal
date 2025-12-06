@@ -101,6 +101,7 @@ pub enum ConstantKind {
     Identifier(String),
     Float(f64),
     Integer(i32),
+    Boolean(bool),
 }
 
 #[derive(Debug, Clone, Serialize, PartialEq)]

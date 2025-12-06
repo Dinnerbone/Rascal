@@ -27,14 +27,6 @@ impl VariableAccess {
             return VariableAccess::SpecialProperty;
         }
         match name {
-            "true" => {
-                builder.push(true);
-                VariableAccess::Direct
-            }
-            "false" => {
-                builder.push(false);
-                VariableAccess::Direct
-            }
             "null" => {
                 builder.push(PushValue::Null);
                 VariableAccess::Direct
@@ -70,6 +62,10 @@ impl VariableAccess {
                 VariableAccess::Direct
             }
             ConstantKind::Integer(value) => {
+                builder.push(*value);
+                VariableAccess::Direct
+            }
+            ConstantKind::Boolean(value) => {
                 builder.push(*value);
                 VariableAccess::Direct
             }

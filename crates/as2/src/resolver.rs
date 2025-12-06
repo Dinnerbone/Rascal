@@ -245,7 +245,11 @@ fn resolve_expr_vec(context: &mut ModuleContext, input: &[ast::Expr]) -> Vec<hir
 fn resolve_constant(constant: &ast::ConstantKind) -> hir::ConstantKind {
     match constant {
         ast::ConstantKind::String(v) => hir::ConstantKind::String(v.to_string()),
-        ast::ConstantKind::Identifier(v) => hir::ConstantKind::Identifier((*v).to_owned()),
+        ast::ConstantKind::Identifier(v) => match *v {
+            "true" => hir::ConstantKind::Boolean(true),
+            "false" => hir::ConstantKind::Boolean(false),
+            other => hir::ConstantKind::Identifier(other.to_owned()),
+        },
         ast::ConstantKind::Float(v) => hir::ConstantKind::Float(*v),
         ast::ConstantKind::Integer(v) => hir::ConstantKind::Integer(*v),
     }
@@ -258,7 +262,9 @@ fn resolve_expr(context: &mut ModuleContext, input: &ast::Expr) -> hir::Expr {
             if let Some(path) = context.expand_identifier((*identifier).to_owned(), input.span) {
                 return path;
             } else {
-                hir::ExprKind::Constant(hir::ConstantKind::Identifier((*identifier).to_owned()))
+                hir::ExprKind::Constant(resolve_constant(&ast::ConstantKind::Identifier(
+                    identifier,
+                )))
             }
         }
         ast::ExprKind::Constant(value) => hir::ExprKind::Constant(resolve_constant(value)),
