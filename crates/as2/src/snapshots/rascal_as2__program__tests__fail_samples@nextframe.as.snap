@@ -1,0 +1,10 @@
+---
+source: crates/as2/src/program.rs
+expression: parsed
+input_file: samples/as2_errors/special_functions/nextframe.as
+---
+error: Compile error(s)
+  ╭▸ nextframe.as:1:1
+  │
+1 │ nextFrame(1);
+  ╰╴━━━━━━━━━━━━ Wrong number of parameters; nextFrame requires exactly 0.

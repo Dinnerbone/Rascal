@@ -1,0 +1,10 @@
+---
+source: crates/as2/src/program.rs
+expression: parsed
+input_file: samples/as2_errors/special_functions/prevscene.as
+---
+error: Compile error(s)
+  ╭▸ prevscene.as:1:1
+  │
+1 │ prevScene(true);
+  ╰╴━━━━━━━━━━━━━━━ Wrong number of parameters; prevScene requires exactly 0.

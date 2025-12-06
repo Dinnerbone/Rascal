@@ -1,0 +1,12 @@
+---
+source: crates/as2/src/program.rs
+expression: parsed
+input_file: samples/as2_errors/special_functions/chr.as
+---
+error: Compile error(s)
+  ╭▸ chr.as:1:1
+  │
+1 │ chr();
+  │ ━━━━━ Wrong number of parameters; chr requires exactly 1.
+2 │ chr("a", "b");
+  ╰╴━━━━━━━━━━━━━ Wrong number of parameters; chr requires exactly 1.

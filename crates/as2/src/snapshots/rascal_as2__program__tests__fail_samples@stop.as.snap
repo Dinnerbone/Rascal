@@ -1,0 +1,10 @@
+---
+source: crates/as2/src/program.rs
+expression: parsed
+input_file: samples/as2_errors/special_functions/stop.as
+---
+error: Compile error(s)
+  ╭▸ stop.as:1:1
+  │
+1 │ stop(true);
+  ╰╴━━━━━━━━━━ Wrong number of parameters; stop requires exactly 0.

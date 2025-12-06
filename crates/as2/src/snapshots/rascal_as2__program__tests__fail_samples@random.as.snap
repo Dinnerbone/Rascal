@@ -1,0 +1,13 @@
+---
+source: crates/as2/src/program.rs
+expression: parsed
+input_file: samples/as2_errors/special_functions/random.as
+---
+error: Compile error(s)
+  ╭▸ random.as:1:1
+  │
+1 │ random();
+  │ ━━━━━━━━ Wrong number of parameters; random requires exactly 1.
+2 │ random(1);
+3 │ random(1, 2);
+  ╰╴━━━━━━━━━━━━ Wrong number of parameters; random requires exactly 1.

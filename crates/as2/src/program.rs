@@ -97,4 +97,16 @@ mod tests {
             insta::assert_yaml_snapshot!(parsed);
         });
     }
+
+    #[test]
+    fn test_fail_samples() {
+        insta::glob!("../../../samples/as2_errors", "**/*.as", |path| {
+            let mut builder = ProgramBuilder::new(FileSystemSourceProvider::with_root(
+                path.parent().unwrap().to_owned(),
+            ));
+            builder.add_script(path.file_name().unwrap().to_str().unwrap());
+            let parsed = builder.build().unwrap_err();
+            insta::assert_snapshot!(parsed);
+        });
+    }
 }

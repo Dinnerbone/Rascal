@@ -1,0 +1,12 @@
+---
+source: crates/as2/src/program.rs
+expression: parsed
+input_file: samples/as2_errors/special_functions/fscommand.as
+---
+error: Compile error(s)
+  ╭▸ fscommand.as:1:1
+  │
+1 │ fscommand();
+  │ ━━━━━━━━━━━ Wrong number of parameters; FSCommand requires between 1 and 2.
+2 │ fscommand(a, b, c);
+  ╰╴━━━━━━━━━━━━━━━━━━ Wrong number of parameters; FSCommand requires between 1 and 2.

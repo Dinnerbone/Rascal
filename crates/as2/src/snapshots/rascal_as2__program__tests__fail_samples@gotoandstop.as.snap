@@ -1,0 +1,14 @@
+---
+source: crates/as2/src/program.rs
+expression: parsed
+input_file: samples/as2_errors/special_functions/gotoandstop.as
+---
+error: Compile error(s)
+  ╭▸ gotoandstop.as:1:1
+  │
+1 │ gotoAndStop();
+  │ ━━━━━━━━━━━━━ Wrong number of parameters; gotoAndStop requires between 1 and 2.
+2 │ gotoAndStop(x, 123);
+  │             ━ Scene name must be quoted string.
+3 │ gotoAndStop("foo", 123, true);
+  ╰╴━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Wrong number of parameters; gotoAndStop requires between 1 and 2.

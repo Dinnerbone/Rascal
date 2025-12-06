@@ -1,0 +1,12 @@
+---
+source: crates/as2/src/program.rs
+expression: parsed
+input_file: samples/as2_errors/special_functions/eval.as
+---
+error: Compile error(s)
+  ╭▸ eval.as:1:1
+  │
+1 │ eval();
+  │ ━━━━━━ Wrong number of parameters; eval requires exactly 1.
+2 │ eval(1, 2);
+  ╰╴━━━━━━━━━━ Wrong number of parameters; eval requires exactly 1.

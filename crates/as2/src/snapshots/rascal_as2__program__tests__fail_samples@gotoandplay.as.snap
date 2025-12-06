@@ -1,0 +1,14 @@
+---
+source: crates/as2/src/program.rs
+expression: parsed
+input_file: samples/as2_errors/special_functions/gotoandplay.as
+---
+error: Compile error(s)
+  ╭▸ gotoandplay.as:1:1
+  │
+1 │ gotoAndPlay();
+  │ ━━━━━━━━━━━━━ Wrong number of parameters; gotoAndPlay requires between 1 and 2.
+2 │ gotoAndPlay(x, 123);
+  │             ━ Scene name must be quoted string.
+3 │ gotoAndPlay("foo", 123, true);
+  ╰╴━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Wrong number of parameters; gotoAndPlay requires between 1 and 2.

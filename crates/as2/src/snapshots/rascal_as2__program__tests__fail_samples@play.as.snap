@@ -1,0 +1,10 @@
+---
+source: crates/as2/src/program.rs
+expression: parsed
+input_file: samples/as2_errors/special_functions/play.as
+---
+error: Compile error(s)
+  ╭▸ play.as:1:1
+  │
+1 │ play(true);
+  ╰╴━━━━━━━━━━ Wrong number of parameters; play requires exactly 0.

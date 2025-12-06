@@ -1,0 +1,10 @@
+---
+source: crates/as2/src/program.rs
+expression: parsed
+input_file: samples/as2_errors/special_functions/nextscene.as
+---
+error: Compile error(s)
+  ╭▸ nextscene.as:1:1
+  │
+1 │ nextScene(1);
+  ╰╴━━━━━━━━━━━━ Wrong number of parameters; nextScene requires exactly 0.

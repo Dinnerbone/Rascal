@@ -1,0 +1,12 @@
+---
+source: crates/as2/src/program.rs
+expression: parsed
+input_file: samples/as2_errors/special_functions/length.as
+---
+error: Compile error(s)
+  ╭▸ length.as:1:1
+  │
+1 │ length();
+  │ ━━━━━━━━ Wrong number of parameters; length requires exactly 1.
+2 │ length("a", "b");
+  ╰╴━━━━━━━━━━━━━━━━ Wrong number of parameters; length requires exactly 1.

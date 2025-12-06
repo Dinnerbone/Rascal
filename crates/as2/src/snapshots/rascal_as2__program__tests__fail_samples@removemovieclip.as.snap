@@ -1,0 +1,12 @@
+---
+source: crates/as2/src/program.rs
+expression: parsed
+input_file: samples/as2_errors/special_functions/removemovieclip.as
+---
+error: Compile error(s)
+  ╭▸ removemovieclip.as:1:1
+  │
+1 │ removeMovieClip();
+  │ ━━━━━━━━━━━━━━━━━ Wrong number of parameters; removeMovieClip requires exactly 1.
+2 │ removeMovieClip(a, b);
+  ╰╴━━━━━━━━━━━━━━━━━━━━━ Wrong number of parameters; removeMovieClip requires exactly 1.

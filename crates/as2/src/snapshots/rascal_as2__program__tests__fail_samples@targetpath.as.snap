@@ -1,0 +1,12 @@
+---
+source: crates/as2/src/program.rs
+expression: parsed
+input_file: samples/as2_errors/special_functions/targetpath.as
+---
+error: Compile error(s)
+  ╭▸ targetpath.as:1:1
+  │
+1 │ targetPath();
+  │ ━━━━━━━━━━━━ Wrong number of parameters; targetPath requires exactly 1.
+2 │ targetPath(x, y);
+  ╰╴━━━━━━━━━━━━━━━━ Wrong number of parameters; targetPath requires exactly 1.

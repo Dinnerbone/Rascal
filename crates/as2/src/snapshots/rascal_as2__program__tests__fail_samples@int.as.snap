@@ -1,0 +1,12 @@
+---
+source: crates/as2/src/program.rs
+expression: parsed
+input_file: samples/as2_errors/special_functions/int.as
+---
+error: Compile error(s)
+  ╭▸ int.as:1:1
+  │
+1 │ int();
+  │ ━━━━━ Wrong number of parameters; int requires exactly 1.
+2 │ int("a", "b");
+  ╰╴━━━━━━━━━━━━━ Wrong number of parameters; int requires exactly 1.

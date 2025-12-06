@@ -1,0 +1,12 @@
+---
+source: crates/as2/src/program.rs
+expression: parsed
+input_file: samples/as2_errors/special_functions/mbchr.as
+---
+error: Compile error(s)
+  ╭▸ mbchr.as:1:1
+  │
+1 │ mbchr();
+  │ ━━━━━━━ Wrong number of parameters; mbchr requires exactly 1.
+2 │ mbchr("a", "b");
+  ╰╴━━━━━━━━━━━━━━━ Wrong number of parameters; mbchr requires exactly 1.

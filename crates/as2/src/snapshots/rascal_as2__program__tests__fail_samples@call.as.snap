@@ -1,0 +1,12 @@
+---
+source: crates/as2/src/program.rs
+expression: parsed
+input_file: samples/as2_errors/special_functions/call.as
+---
+error: Compile error(s)
+  ╭▸ call.as:1:1
+  │
+1 │ call();
+  │ ━━━━━━ Wrong number of parameters; call requires exactly 1.
+2 │ call(1, 2);
+  ╰╴━━━━━━━━━━ Wrong number of parameters; call requires exactly 1.

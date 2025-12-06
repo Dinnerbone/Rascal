@@ -1,0 +1,12 @@
+---
+source: crates/as2/src/program.rs
+expression: parsed
+input_file: samples/as2_errors/special_functions/string.as
+---
+error: Compile error(s)
+  ╭▸ string.as:1:1
+  │
+1 │ String();
+  │ ━━━━━━━━ Wrong number of parameters; String requires exactly 1.
+2 │ String(x, y);
+  ╰╴━━━━━━━━━━━━ Wrong number of parameters; String requires exactly 1.

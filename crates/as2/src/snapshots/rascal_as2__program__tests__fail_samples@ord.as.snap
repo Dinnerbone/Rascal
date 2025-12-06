@@ -1,0 +1,12 @@
+---
+source: crates/as2/src/program.rs
+expression: parsed
+input_file: samples/as2_errors/special_functions/ord.as
+---
+error: Compile error(s)
+  ╭▸ ord.as:1:1
+  │
+1 │ ord();
+  │ ━━━━━ Wrong number of parameters; ord requires exactly 1.
+2 │ ord(a, b);
+  ╰╴━━━━━━━━━ Wrong number of parameters; ord requires exactly 1.
