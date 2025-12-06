@@ -3,7 +3,7 @@ source: crates/as2_codegen/src/tests.rs
 expression: result
 input_file: samples/as2/special_functions.as
 ---
-ConstantPool "x", "foo", "newname", "this", "getNextHighestDepth", "FSCommand:", "", "http://ruffle.rs", "window", "/:$version", "url", "target", "_level", "abc", "print:#bframe", "print:", "_root", "printasbitmap:#bframe", "printasbitmap:", "printasbitmap:#bmax", "_level:", "123", "print:#bmax", "message"
+ConstantPool "x", "foo", "newname", "this", "getNextHighestDepth", "FSCommand:", "FSCommand:x", "http://ruffle.rs", "window", "/:$version", "url", "target", "_level", "abc", "print:#bframe", "print:", "_root", "printasbitmap:#bframe", "printasbitmap:", "_level:", "message", ""
 Push 123
 Call
 Push constant0
@@ -30,18 +30,10 @@ GetVariable
 StringAdd
 Push true
 GetUrl2 false, false, 0
-Push constant5, constant0
-StringAdd
-Push false
+Push constant6, false
 GetUrl2 false, false, 0
-Push constant5, constant0
-StringAdd
-Push constant6
-GetUrl2 false, false, 0
-Push constant5, constant0
-StringAdd
-Push constant1
-GetUrl2 false, false, 0
+GetUrl "FSCommand:x", ""
+GetUrl "FSCommand:x", "foo"
 GetTime
 Pop
 GetUrl "http://ruffle.rs", ""
@@ -173,25 +165,21 @@ GetUrl2 false, false, 0
 Push constant18, constant16
 GetVariable
 GetUrl2 false, false, 0
-Push constant19, constant20, constant21
-StringAdd
-GetUrl2 false, false, 0
-Push constant17, constant20, constant0
+GetUrl "printasbitmap:#bmax", "_level:123"
+Push constant17, constant19, constant0
 GetVariable
 StringAdd
 GetUrl2 false, false, 0
-Push constant18, constant20, constant0
+Push constant18, constant19, constant0
 GetVariable
 StringAdd
 GetUrl2 false, false, 0
-Push constant22, constant20, constant21
-StringAdd
-GetUrl2 false, false, 0
-Push constant14, constant20, constant0
+GetUrl "print:#bmax", "_level:123"
+Push constant14, constant19, constant0
 GetVariable
 StringAdd
 GetUrl2 false, false, 0
-Push constant15, constant20, constant0
+Push constant15, constant19, constant0
 GetVariable
 StringAdd
 GetUrl2 false, false, 0
@@ -239,15 +227,15 @@ GetVariable
 TargetPath
 Pop
 ToggleQuality
-Push constant23
+Push constant20
 Trace
-Push constant6, constant0
+Push constant21, constant0
 GetVariable
 GetUrl2 false, true, 0
-Push constant6, constant12, constant0
+Push constant21, constant12, constant0
 GetVariable
 StringAdd
 GetUrl2 false, false, 0
-Push constant6, constant12, 123
+Push constant21, constant12, 123
 StringAdd
 GetUrl2 false, false, 0

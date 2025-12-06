@@ -88,6 +88,212 @@ pub enum ExprKind {
     ToggleQuality,
 }
 
+impl ExprKind {
+    pub(crate) fn simplify(&mut self, anything_changed: &mut bool) {
+        match self {
+            ExprKind::Constant(_) => {}
+            ExprKind::Call { name, args } => {
+                name.value.simplify(anything_changed);
+                for arg in args {
+                    arg.value.simplify(anything_changed);
+                }
+            }
+            ExprKind::New { name, args } => {
+                name.value.simplify(anything_changed);
+                for arg in args {
+                    arg.value.simplify(anything_changed);
+                }
+            }
+            ExprKind::DuplicateMovieClip {
+                target,
+                depth,
+                source,
+            } => {
+                target.value.simplify(anything_changed);
+                depth.value.simplify(anything_changed);
+                source.value.simplify(anything_changed);
+            }
+            ExprKind::AsciiToChar(expr) => {
+                expr.value.simplify(anything_changed);
+            }
+            ExprKind::MBAsciiToChar(expr) => {
+                expr.value.simplify(anything_changed);
+            }
+            ExprKind::CallFrame(expr) => {
+                expr.value.simplify(anything_changed);
+            }
+            ExprKind::GetTime => {}
+            ExprKind::BinaryOperator(op, left, right) => {
+                left.value.simplify(anything_changed);
+                right.value.simplify(anything_changed);
+                if let ExprKind::Constant(left) = &left.value
+                    && let ExprKind::Constant(right) = &right.value
+                {
+                    #[expect(clippy::single_match)]
+                    match (op, left, right) {
+                        (
+                            BinaryOperator::StringAdd,
+                            ConstantKind::String(left),
+                            ConstantKind::String(right),
+                        ) => {
+                            *self = ExprKind::Constant(ConstantKind::String(format!(
+                                "{}{}",
+                                left, right
+                            )));
+                            *anything_changed = true;
+                        }
+                        _ => {}
+                    }
+                }
+            }
+            ExprKind::UnaryOperator(op, expr) => {
+                expr.value.simplify(anything_changed);
+                if let ExprKind::Constant(value) = &expr.value {
+                    #[expect(clippy::single_match)]
+                    match (op, value) {
+                        (UnaryOperator::LogicalNot, ConstantKind::Boolean(value)) => {
+                            *self = ExprKind::Constant(ConstantKind::Boolean(!value));
+                            *anything_changed = true;
+                        }
+                        _ => {}
+                    }
+                }
+            }
+            ExprKind::Ternary { condition, yes, no } => {
+                condition.value.simplify(anything_changed);
+                yes.value.simplify(anything_changed);
+                no.value.simplify(anything_changed);
+            }
+            ExprKind::InitObject(values) => {
+                for (_key, value) in values {
+                    value.value.simplify(anything_changed);
+                }
+            }
+            ExprKind::InitArray(values) => {
+                for value in values {
+                    value.value.simplify(anything_changed);
+                }
+            }
+            ExprKind::Field(obj, key) => {
+                obj.value.simplify(anything_changed);
+                key.value.simplify(anything_changed);
+            }
+            ExprKind::TypeOf(values) => {
+                for value in values {
+                    value.value.simplify(anything_changed);
+                }
+            }
+            ExprKind::Delete(values) => {
+                for value in values {
+                    value.value.simplify(anything_changed);
+                }
+            }
+            ExprKind::Void(values) => {
+                for value in values {
+                    value.value.simplify(anything_changed);
+                }
+            }
+            ExprKind::Function(function) => {
+                for statement in &mut function.body {
+                    statement.simplify(anything_changed);
+                }
+            }
+            ExprKind::GetVariable(key) => {
+                key.value.simplify(anything_changed);
+            }
+            ExprKind::SetVariable(key, value) => {
+                key.value.simplify(anything_changed);
+                value.value.simplify(anything_changed);
+            }
+            ExprKind::GotoFrame(frame, _scene_change) => {
+                frame.value.simplify(anything_changed);
+            }
+            ExprKind::GetUrl { url, target, .. } => {
+                url.value.simplify(anything_changed);
+                target.value.simplify(anything_changed);
+            }
+            ExprKind::CastToInteger(expr) => {
+                expr.value.simplify(anything_changed);
+            }
+            ExprKind::CastToNumber(expr) => {
+                expr.value.simplify(anything_changed);
+            }
+            ExprKind::CastToString(expr) => {
+                expr.value.simplify(anything_changed);
+            }
+            ExprKind::StringLength(expr) => {
+                expr.value.simplify(anything_changed);
+            }
+            ExprKind::MBStringLength(expr) => {
+                expr.value.simplify(anything_changed);
+            }
+            ExprKind::CharToAscii(expr) => {
+                expr.value.simplify(anything_changed);
+            }
+            ExprKind::MBCharToAscii(expr) => {
+                expr.value.simplify(anything_changed);
+            }
+            ExprKind::Substring {
+                start,
+                length,
+                string,
+            } => {
+                string.value.simplify(anything_changed);
+                start.value.simplify(anything_changed);
+                length.value.simplify(anything_changed);
+            }
+            ExprKind::MBSubstring {
+                start,
+                length,
+                string,
+            } => {
+                string.value.simplify(anything_changed);
+                start.value.simplify(anything_changed);
+                length.value.simplify(anything_changed);
+            }
+            ExprKind::NextFrame => {}
+            ExprKind::PreviousFrame => {}
+            ExprKind::Play => {}
+            ExprKind::Stop => {}
+            ExprKind::StopSounds => {}
+            ExprKind::StartDrag {
+                target,
+                constraints,
+                ..
+            } => {
+                target.value.simplify(anything_changed);
+                if let Some((a, b, c, d)) = constraints {
+                    a.value.simplify(anything_changed);
+                    b.value.simplify(anything_changed);
+                    c.value.simplify(anything_changed);
+                    d.value.simplify(anything_changed);
+                }
+            }
+            ExprKind::EndDrag => {}
+            ExprKind::GetTargetPath(expr) => {
+                expr.value.simplify(anything_changed);
+            }
+            ExprKind::Trace(expr) => {
+                expr.value.simplify(anything_changed);
+            }
+            ExprKind::RemoveSprite(expr) => {
+                expr.value.simplify(anything_changed);
+            }
+            ExprKind::GetRandomNumber(expr) => {
+                expr.value.simplify(anything_changed);
+            }
+            ExprKind::GetProperty(obj, _property) => {
+                obj.value.simplify(anything_changed);
+            }
+            ExprKind::SetProperty(obj, _property, value) => {
+                obj.value.simplify(anything_changed);
+                value.value.simplify(anything_changed);
+            }
+            ExprKind::ToggleQuality => {}
+        }
+    }
+}
+
 #[derive(Debug, Copy, Clone, Serialize, PartialEq)]
 pub enum GetUrlMethod {
     None,
@@ -147,6 +353,109 @@ pub enum StatementKind {
     },
 }
 
+impl StatementKind {
+    pub(crate) fn simplify(&mut self, anything_changed: &mut bool) {
+        match self {
+            StatementKind::Declare(declarations) => {
+                for declaration in declarations {
+                    if let Some(value) = &mut declaration.value {
+                        value.value.simplify(anything_changed);
+                    }
+                }
+            }
+            StatementKind::Return(values) => {
+                for value in values {
+                    value.value.simplify(anything_changed);
+                }
+            }
+            StatementKind::Throw(values) => {
+                for value in values {
+                    value.value.simplify(anything_changed);
+                }
+            }
+            StatementKind::Expr(expr) => expr.value.simplify(anything_changed),
+            StatementKind::Block(statements) => {
+                for statement in statements {
+                    statement.simplify(anything_changed);
+                }
+            }
+            StatementKind::ForIn { condition, body } => {
+                match condition {
+                    ForCondition::Enumerate { object, .. } => {
+                        object.value.simplify(anything_changed);
+                    }
+                    ForCondition::Classic {
+                        initialize,
+                        condition,
+                        update,
+                    } => {
+                        if let Some(initialize) = initialize.as_mut() {
+                            initialize.simplify(anything_changed);
+                        }
+                        for value in condition {
+                            value.value.simplify(anything_changed);
+                        }
+                        for value in update {
+                            value.value.simplify(anything_changed);
+                        }
+                    }
+                }
+                body.simplify(anything_changed);
+            }
+            StatementKind::While { condition, body } => {
+                condition.value.simplify(anything_changed);
+                body.simplify(anything_changed);
+            }
+            StatementKind::If { condition, yes, no } => {
+                condition.value.simplify(anything_changed);
+                yes.simplify(anything_changed);
+                if let Some(no) = no.as_mut() {
+                    no.simplify(anything_changed);
+                }
+            }
+            StatementKind::Break => {}
+            StatementKind::Continue => {}
+            StatementKind::Try(try_catch) => {
+                try_catch.simplify(anything_changed);
+            }
+            StatementKind::WaitForFrame {
+                frame,
+                scene,
+                if_loaded,
+            } => {
+                frame.value.simplify(anything_changed);
+                if let Some(scene) = scene {
+                    scene.value.simplify(anything_changed);
+                }
+                if_loaded.simplify(anything_changed);
+            }
+            StatementKind::TellTarget { target, body } => {
+                target.value.simplify(anything_changed);
+                body.simplify(anything_changed);
+            }
+            StatementKind::InlinePCode(_) => {}
+            StatementKind::With { target, body } => {
+                target.value.simplify(anything_changed);
+                body.simplify(anything_changed);
+            }
+            StatementKind::Switch { target, elements } => {
+                target.value.simplify(anything_changed);
+                for element in elements {
+                    match element {
+                        SwitchElement::Case(expr) => {
+                            expr.value.simplify(anything_changed);
+                        }
+                        SwitchElement::Default => {}
+                        SwitchElement::Statement(statement) => {
+                            statement.simplify(anything_changed);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
 #[derive(Debug, Clone, Serialize, PartialEq)]
 pub enum SwitchElement {
     Case(Expr),
@@ -198,13 +507,50 @@ pub struct TryCatch {
     pub finally: Vec<StatementKind>,
 }
 
+impl TryCatch {
+    pub(crate) fn simplify(&mut self, anything_changed: &mut bool) {
+        for statement in &mut self.try_body {
+            statement.simplify(anything_changed);
+        }
+        for (_, catch) in &mut self.typed_catches {
+            catch.simplify(anything_changed);
+        }
+        if let Some(catch_all) = &mut self.catch_all {
+            catch_all.simplify(anything_changed);
+        }
+        for statement in &mut self.finally {
+            statement.simplify(anything_changed);
+        }
+    }
+}
+
 #[derive(Debug, Clone, Serialize, PartialEq)]
 pub struct Catch {
     pub name: Spanned<String>,
     pub body: Vec<StatementKind>,
 }
 
+impl Catch {
+    pub(crate) fn simplify(&mut self, anything_changed: &mut bool) {
+        for statement in &mut self.body {
+            statement.simplify(anything_changed);
+        }
+    }
+}
+
 #[derive(Debug, Serialize)]
 pub struct Document {
     pub statements: Vec<StatementKind>,
+}
+
+impl Document {
+    pub(crate) fn simplify(&mut self) -> bool {
+        let mut anything_changed = false;
+
+        for statement in &mut self.statements {
+            statement.simplify(&mut anything_changed);
+        }
+
+        anything_changed
+    }
 }

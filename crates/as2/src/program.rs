@@ -73,6 +73,9 @@ impl<P: SourceProvider> ProgramBuilder<P> {
             for error in hir_errors {
                 errors.add_parsing_error(&path, &source, error);
             }
+            while hir.simplify() {
+                // Keep going until nothing changed
+            }
             initial_script.append(&mut hir.statements);
         }
 
