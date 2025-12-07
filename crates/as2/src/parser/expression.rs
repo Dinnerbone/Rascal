@@ -475,7 +475,7 @@ pub(crate) fn expr_list<'i>(i: &mut Tokens<'i>) -> ModalResult<Vec<Expr<'i>>> {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::ast::{Function, FunctionArgument, StatementKind};
+    use crate::ast::{Function, FunctionArgument, Statement, StatementKind};
     use crate::lexer::operator::Operator;
     use crate::lexer::tokens::{QuoteKind, Token, TokenKind};
     use crate::parser::tests::build_tokens;
@@ -1644,10 +1644,13 @@ mod tests {
                         type_name: Some(Spanned::new(Span::default(), "Number"))
                     }
                 ],
-                body: vec![StatementKind::Expr(ex(ExprKind::Call {
-                    name: Box::new(id("trace")),
-                    args: vec![id("a")],
-                }))],
+                body: vec![Statement::new(
+                    Span::default(),
+                    StatementKind::Expr(ex(ExprKind::Call {
+                        name: Box::new(id("trace")),
+                        args: vec![id("a")],
+                    }))
+                )],
             })))
         )
     }

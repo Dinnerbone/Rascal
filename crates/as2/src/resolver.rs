@@ -99,7 +99,7 @@ pub fn resolve_hir<P: SourceProvider>(
 
 fn resolve_statement_vec(
     context: &mut ModuleContext,
-    input: &[ast::StatementKind],
+    input: &[ast::Statement],
 ) -> Vec<hir::StatementKind> {
     input
         .iter()

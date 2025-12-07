@@ -4,6 +4,7 @@ use serde::Serialize;
 use std::borrow::Cow;
 
 pub type Expr<'a> = Spanned<ExprKind<'a>>;
+pub type Statement<'a> = Spanned<StatementKind<'a>>;
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
 pub enum ExprKind<'a> {
@@ -129,19 +130,19 @@ pub enum StatementKind<'a> {
     Return(Vec<Expr<'a>>),
     Throw(Vec<Expr<'a>>),
     Expr(Expr<'a>),
-    Block(Vec<StatementKind<'a>>),
+    Block(Vec<Statement<'a>>),
     ForIn {
         condition: ForCondition<'a>,
-        body: Box<StatementKind<'a>>,
+        body: Box<Statement<'a>>,
     },
     While {
         condition: Expr<'a>,
-        body: Box<StatementKind<'a>>,
+        body: Box<Statement<'a>>,
     },
     If {
         condition: Expr<'a>,
-        yes: Box<StatementKind<'a>>,
-        no: Option<Box<StatementKind<'a>>>,
+        yes: Box<Statement<'a>>,
+        no: Option<Box<Statement<'a>>>,
     },
     Break,
     Continue,
@@ -149,16 +150,16 @@ pub enum StatementKind<'a> {
     WaitForFrame {
         frame: Expr<'a>,
         scene: Option<Expr<'a>>,
-        if_loaded: Box<StatementKind<'a>>,
+        if_loaded: Box<Statement<'a>>,
     },
     TellTarget {
         target: Expr<'a>,
-        body: Box<StatementKind<'a>>,
+        body: Box<Statement<'a>>,
     },
     InlinePCode(&'a str),
     With {
         target: Expr<'a>,
-        body: Box<StatementKind<'a>>,
+        body: Box<Statement<'a>>,
     },
     Switch {
         target: Expr<'a>,
@@ -174,7 +175,7 @@ pub enum StatementKind<'a> {
 pub enum SwitchElement<'a> {
     Case(Expr<'a>),
     Default,
-    Statement(StatementKind<'a>),
+    Statement(Statement<'a>),
 }
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
@@ -185,7 +186,7 @@ pub enum ForCondition<'a> {
         object: Expr<'a>,
     },
     Classic {
-        initialize: Option<Box<StatementKind<'a>>>,
+        initialize: Option<Box<Statement<'a>>>,
         // This is technically incorrect, we treat `a++, b++` as two different expressions, but they should be one (and we'd have a `Next(a, b)` expression)
         // Unfortunately that seems difficult to implement _correctly_, so this is a good stopgap (did anyone even use `,` in regular code, outside for loops?)
         condition: Vec<Expr<'a>>,
@@ -197,7 +198,7 @@ pub enum ForCondition<'a> {
 pub struct Function<'a> {
     pub name: Option<&'a str>,
     pub args: Vec<FunctionArgument<'a>>,
-    pub body: Vec<StatementKind<'a>>,
+    pub body: Vec<Statement<'a>>,
 }
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
@@ -215,19 +216,19 @@ pub struct Declaration<'a> {
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
 pub struct TryCatch<'a> {
-    pub try_body: Vec<StatementKind<'a>>,
+    pub try_body: Vec<Statement<'a>>,
     pub typed_catches: Vec<(Spanned<&'a str>, Catch<'a>)>,
     pub catch_all: Option<Catch<'a>>,
-    pub finally: Vec<StatementKind<'a>>,
+    pub finally: Vec<Statement<'a>>,
 }
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
 pub struct Catch<'a> {
     pub name: Spanned<&'a str>,
-    pub body: Vec<StatementKind<'a>>,
+    pub body: Vec<Statement<'a>>,
 }
 
 #[derive(Debug, Serialize)]
 pub struct Document<'src> {
-    pub statements: Vec<StatementKind<'src>>,
+    pub statements: Vec<Statement<'src>>,
 }

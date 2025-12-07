@@ -70,10 +70,10 @@ impl<P: SourceProvider> ProgramBuilder<P> {
             pending_classes: &mut Vec<String>,
             path: &str,
         ) -> Option<Document> {
-            let source = match provider.load(&path) {
+            let source = match provider.load(path) {
                 Ok(source) => source,
                 Err(e) => {
-                    errors.add_io_error(&path, e);
+                    errors.add_io_error(path, e);
                     return None;
                 }
             };
@@ -81,13 +81,13 @@ impl<P: SourceProvider> ProgramBuilder<P> {
             let ast = match parser::parse_document(&tokens) {
                 Ok(ast) => ast,
                 Err(e) => {
-                    errors.add_parsing_error(&path, &source, e.into());
+                    errors.add_parsing_error(path, &source, e.into());
                     return None;
                 }
             };
             let (mut hir, hir_errors, dependencies) = resolve_hir(provider, ast);
             for error in hir_errors {
-                errors.add_parsing_error(&path, &source, error);
+                errors.add_parsing_error(path, &source, error);
             }
             for name in dependencies {
                 if !loaded_classes.contains(&name) {
