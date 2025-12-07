@@ -125,7 +125,11 @@ fn resolve_statement(
                 .map(|d| hir::Declaration {
                     name: d.name.to_owned(),
                     type_name: resolve_opt_type_name(context, &d.type_name),
-                    value: d.value.as_ref().map(|expr| resolve_expr(context, expr)),
+                    value: d
+                        .value
+                        .value
+                        .as_ref()
+                        .map(|expr| resolve_expr(context, expr)),
                 })
                 .collect(),
         ),

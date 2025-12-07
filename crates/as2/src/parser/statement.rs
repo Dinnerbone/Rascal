@@ -18,9 +18,12 @@ pub(crate) fn statement<'i>(i: &mut Tokens<'i>) -> ModalResult<StatementKind<'i>
     skip_newlines(i)?;
     let token = any.parse_next(i)?;
     let result = match token.kind {
-        TokenKind::Keyword(Keyword::Var) => declaration_list
-            .context(StrContext::Label("declaration"))
-            .parse_next(i)?,
+        TokenKind::Keyword(Keyword::Var) => {
+            let declarations = declaration_list
+                .context(StrContext::Label("declaration"))
+                .parse_next(i)?;
+            StatementKind::Declare(declarations)
+        }
         TokenKind::Keyword(Keyword::Return) => {
             let values = if opt(TokenKind::OpenParen).parse_next(i)?.is_some() {
                 let values = expr_list.parse_next(i)?;
@@ -94,28 +97,37 @@ pub(crate) fn statement_list<'i>(
     }
 }
 
-fn declaration_list<'i>(i: &mut Tokens<'i>) -> ModalResult<StatementKind<'i>> {
+fn declaration_list<'i>(i: &mut Tokens<'i>) -> ModalResult<Vec<Spanned<Declaration<'i>>>> {
     skip_newlines(i)?;
     let declarations = separated(0.., declaration, TokenKind::Comma).parse_next(i)?;
 
-    Ok(StatementKind::Declare(declarations))
+    Ok(declarations)
 }
 
-fn declaration<'i>(i: &mut Tokens<'i>) -> ModalResult<Declaration<'i>> {
+fn declaration<'i>(i: &mut Tokens<'i>) -> ModalResult<Spanned<Declaration<'i>>> {
     let name = cut_err(identifier)
         .context(StrContext::Label("variable name"))
         .parse_next(i)?;
+    let start = name.span;
     let type_name = opt(type_name).parse_next(i)?;
     let equals = cut_err(opt(TokenKind::Operator(Operator::Assign)))
         .parse_next(i)?
         .is_some();
     let value = cond(equals, expression).parse_next(i)?;
+    let end = value
+        .as_ref()
+        .map(|v| v.span)
+        .or_else(|| type_name.as_ref().map(|t| t.span))
+        .unwrap_or(start);
 
-    Ok(Declaration {
-        name: name.value,
-        value,
-        type_name,
-    })
+    Ok(Spanned::new(
+        Span::encompassing(start, end),
+        Declaration {
+            name: name.value,
+            value,
+            type_name,
+        },
+    ))
 }
 
 fn if_else<'i>(i: &mut Tokens<'i>) -> ModalResult<StatementKind<'i>> {
@@ -155,7 +167,8 @@ fn for_loop<'i>(i: &mut Tokens<'i>) -> ModalResult<StatementKind<'i>> {
         let (init, _, cond, _, next) = (
             opt(alt((
                 expression.map(StatementKind::Expr),
-                (TokenKind::Keyword(Keyword::Var), declaration_list).map(|v| v.1),
+                (TokenKind::Keyword(Keyword::Var), declaration_list)
+                    .map(|v| StatementKind::Declare(v.1)),
             ))),
             TokenKind::Semicolon,
             separated(0.., expression, TokenKind::Comma),
@@ -419,11 +432,14 @@ mod stmt_tests {
         ]);
         assert_eq!(
             parse_stmt(&tokens),
-            Ok(StatementKind::Declare(vec![Declaration {
-                name: "x",
-                value: None,
-                type_name: None,
-            }]))
+            Ok(StatementKind::Declare(vec![Spanned::new(
+                Span::default(),
+                Declaration {
+                    name: "x",
+                    value: None,
+                    type_name: None,
+                }
+            )]))
         );
     }
 
@@ -437,11 +453,14 @@ mod stmt_tests {
         ]);
         assert_eq!(
             parse_stmt(&tokens),
-            Ok(StatementKind::Declare(vec![Declaration {
-                name: "x",
-                value: None,
-                type_name: Some(Spanned::new(Span::default(), "String")),
-            }]))
+            Ok(StatementKind::Declare(vec![Spanned::new(
+                Span::default(),
+                Declaration {
+                    name: "x",
+                    value: None,
+                    type_name: Some(Spanned::new(Span::default(), "String")),
+                }
+            )]))
         );
     }
 
@@ -455,11 +474,14 @@ mod stmt_tests {
         ]);
         assert_eq!(
             parse_stmt(&tokens),
-            Ok(StatementKind::Declare(vec![Declaration {
-                name: "x",
-                value: Some(s("hi")),
-                type_name: None,
-            }]))
+            Ok(StatementKind::Declare(vec![Spanned::new(
+                Span::default(),
+                Declaration {
+                    name: "x",
+                    value: Some(s("hi")),
+                    type_name: None,
+                }
+            )]))
         );
     }
 
@@ -475,11 +497,14 @@ mod stmt_tests {
         ]);
         assert_eq!(
             parse_stmt(&tokens),
-            Ok(StatementKind::Declare(vec![Declaration {
-                name: "x",
-                value: Some(s("hi")),
-                type_name: Some(Spanned::new(Span::default(), "String")),
-            }]))
+            Ok(StatementKind::Declare(vec![Spanned::new(
+                Span::default(),
+                Declaration {
+                    name: "x",
+                    value: Some(s("hi")),
+                    type_name: Some(Spanned::new(Span::default(), "String")),
+                }
+            )]))
         );
     }
 
@@ -496,14 +521,17 @@ mod stmt_tests {
         ]);
         assert_eq!(
             parse_stmt(&tokens),
-            Ok(StatementKind::Declare(vec![Declaration {
-                name: "x",
-                value: Some(ex(ExprKind::Call {
-                    name: Box::new(id("foo")),
-                    args: vec![id("a")]
-                })),
-                type_name: None,
-            }]))
+            Ok(StatementKind::Declare(vec![Spanned::new(
+                Span::default(),
+                Declaration {
+                    name: "x",
+                    value: Some(ex(ExprKind::Call {
+                        name: Box::new(id("foo")),
+                        args: vec![id("a")]
+                    })),
+                    type_name: None,
+                }
+            )]))
         );
     }
 
@@ -582,11 +610,14 @@ mod stmt_tests {
             parse_stmt(&tokens),
             Ok(StatementKind::ForIn {
                 condition: ForCondition::Classic {
-                    initialize: Some(Box::new(StatementKind::Declare(vec![Declaration {
-                        name: "i",
-                        value: Some(id("0")),
-                        type_name: None,
-                    }]))),
+                    initialize: Some(Box::new(StatementKind::Declare(vec![Spanned::new(
+                        Span::default(),
+                        Declaration {
+                            name: "i",
+                            value: Some(id("0")),
+                            type_name: None,
+                        }
+                    )]))),
                     condition: vec![ex(ExprKind::BinaryOperator(
                         BinaryOperator::LessThan,
                         Box::new(id("i")),

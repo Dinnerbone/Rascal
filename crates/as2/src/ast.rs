@@ -125,7 +125,7 @@ pub enum Affix {
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
 pub enum StatementKind<'a> {
-    Declare(Vec<Declaration<'a>>),
+    Declare(Vec<Spanned<Declaration<'a>>>),
     Return(Vec<Expr<'a>>),
     Throw(Vec<Expr<'a>>),
     Expr(Expr<'a>),
