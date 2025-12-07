@@ -16,15 +16,17 @@ struct ModuleContext<'a> {
     errors: Vec<ParsingError>,
     dependencies: IndexSet<String>,
     provider: &'a dyn SourceProvider,
+    is_script: bool,
 }
 
 impl<'a> ModuleContext<'a> {
-    fn new(provider: &'a dyn SourceProvider) -> Self {
+    fn new(provider: &'a dyn SourceProvider, is_script: bool) -> Self {
         Self {
             imports: HashMap::new(),
             errors: vec![],
             dependencies: IndexSet::new(),
             provider,
+            is_script,
         }
     }
 
@@ -87,14 +89,16 @@ impl<'a> ModuleContext<'a> {
 pub fn resolve_hir<P: SourceProvider>(
     provider: &P,
     ast: ast::Document,
+    is_script: bool,
+    expected_name: &str,
 ) -> (hir::Document, Vec<ParsingError>, IndexSet<String>) {
-    let mut context = ModuleContext::new(provider);
-    let statements = resolve_statement_vec(&mut context, &ast.statements);
-    (
-        hir::Document { statements },
-        context.errors,
-        context.dependencies,
-    )
+    let mut context = ModuleContext::new(provider, is_script);
+    let document = if is_script {
+        hir::Document::Script(resolve_statement_vec(&mut context, &ast.statements))
+    } else {
+        resolve_class_or_interface(&mut context, &ast.statements, expected_name)
+    };
+    (document, context.errors, context.dependencies)
 }
 
 fn resolve_statement_vec(
@@ -107,18 +111,74 @@ fn resolve_statement_vec(
         .collect()
 }
 
+fn resolve_class_or_interface(
+    context: &mut ModuleContext,
+    input: &[ast::Statement],
+    expected_name: &str,
+) -> hir::Document {
+    let mut result = None;
+    for statement in input {
+        match &statement.value {
+            ast::StatementKind::Interface {
+                name,
+                extends,
+                body,
+            } => {
+                if name.value == expected_name {
+                    if result.is_some() {
+                        context.error(
+                            "Only one class or interface can be defined per ActionScript 2.0 .as file.",
+                            statement.span,
+                        );
+                        continue;
+                    }
+                    if let Some(extends) = extends {
+                        context.add_dependency(extends.span, extends.value, true);
+                    }
+                    result = Some(hir::Document::Interface(resolve_interface(
+                        context,
+                        name.value.to_owned(),
+                        extends.map(|e| e.value.to_owned()),
+                        body,
+                    )));
+                } else {
+                    context.error(
+                        format!("The class '{0}' needs to be defined in a file whose relative path is '{0}.as'.", name.value), name.span
+                    );
+                }
+            }
+            _ => context.error(
+                "ActionScript 2.0 class scripts may only define class or interface constructs.",
+                statement.span,
+            ),
+        }
+    }
+
+    result.unwrap_or(hir::Document::Invalid)
+}
+
+fn resolve_interface(
+    context: &mut ModuleContext,
+    name: String,
+    extends: Option<String>,
+    body: &[ast::Statement],
+) -> hir::Interface {
+    hir::Interface {
+        name,
+        extends,
+        body: resolve_statement_vec(context, body),
+    }
+}
+
 fn resolve_statement_box(
     context: &mut ModuleContext,
-    input: &ast::StatementKind,
+    input: &ast::Statement,
 ) -> Box<hir::StatementKind> {
     Box::new(resolve_statement(context, input))
 }
 
-fn resolve_statement(
-    context: &mut ModuleContext,
-    input: &ast::StatementKind,
-) -> hir::StatementKind {
-    match input {
+fn resolve_statement(context: &mut ModuleContext, input: &ast::Statement) -> hir::StatementKind {
+    match &input.value {
         ast::StatementKind::Declare(declarations) => hir::StatementKind::Declare(
             declarations
                 .iter()
@@ -211,6 +271,21 @@ fn resolve_statement(
                 (*name).to_owned(),
             );
             hir::StatementKind::Block(vec![]) // todo, resolving statements shouldn't be a 1:1, we should be able to do nothing here
+        }
+        ast::StatementKind::Interface { .. } => {
+            if context.is_script {
+                context.error(
+                    "Classes may only be defined in external ActionScript 2.0 class scripts.",
+                    input.span,
+                );
+                hir::StatementKind::Block(vec![]) // todo, resolving statements shouldn't be a 1:1, we should be able to do nothing here
+            } else {
+                context.error(
+                    "Class and interface definitions cannot be nested.",
+                    input.span,
+                );
+                hir::StatementKind::Block(vec![]) // todo, resolving statements shouldn't be a 1:1, we should be able to do nothing here
+            }
         }
     }
 }

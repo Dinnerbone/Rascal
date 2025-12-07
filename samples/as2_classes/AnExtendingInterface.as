@@ -1,0 +1,2 @@
+interface AnExtendingInterface extends AnEmptyInterface {
+}

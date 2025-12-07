@@ -82,6 +82,10 @@ pub(crate) fn statement<'i>(i: &mut Tokens<'i>) -> ModalResult<Statement<'i>> {
             let result = tell_target.parse_next(i)?;
             Statement::new(Span::encompassing(start, result.span), result.value)
         }
+        TokenKind::Keyword(Keyword::Interface) => {
+            let result = interface.parse_next(i)?;
+            Statement::new(Span::encompassing(start, result.span), result.value)
+        }
         TokenKind::Keyword(Keyword::While) => {
             let result = while_loop.parse_next(i)?;
             Statement::new(Span::encompassing(start, result.span), result.value)
@@ -169,6 +173,23 @@ fn declaration<'i>(i: &mut Tokens<'i>) -> ModalResult<Spanned<Declaration<'i>>> 
             name: name.value,
             value,
             type_name,
+        },
+    ))
+}
+
+fn interface<'i>(i: &mut Tokens<'i>) -> ModalResult<Statement<'i>> {
+    let name = identifier.parse_next(i)?;
+    let extends =
+        opt((TokenKind::Keyword(Keyword::Extends), identifier).map(|(_, id)| id)).parse_next(i)?;
+    TokenKind::OpenBrace.parse_next(i)?;
+    let end = TokenKind::CloseBrace.parse_next(i)?.span;
+
+    Ok(Statement::new(
+        Span::encompassing(name.span, end),
+        StatementKind::Interface {
+            name,
+            extends,
+            body: vec![],
         },
     ))
 }
@@ -1191,6 +1212,50 @@ mod stmt_tests {
                 StatementKind::Import {
                     name: "baz",
                     path: vec!["foo", "bar"]
+                }
+            ))
+        )
+    }
+
+    #[test]
+    fn test_bare_interface() {
+        let tokens = build_tokens(&[
+            (TokenKind::Keyword(Keyword::Interface), "interface"),
+            (TokenKind::Identifier, "Foo"),
+            (TokenKind::OpenBrace, "{"),
+            (TokenKind::CloseBrace, "}"),
+        ]);
+        assert_eq!(
+            parse_stmt(&tokens),
+            Ok(Statement::new(
+                Span::default(),
+                StatementKind::Interface {
+                    name: Spanned::new(Span::default(), "Foo"),
+                    extends: None,
+                    body: vec![],
+                }
+            ))
+        )
+    }
+
+    #[test]
+    fn test_extending_interface() {
+        let tokens = build_tokens(&[
+            (TokenKind::Keyword(Keyword::Interface), "interface"),
+            (TokenKind::Identifier, "Foo"),
+            (TokenKind::Keyword(Keyword::Extends), "extends"),
+            (TokenKind::Identifier, "Bar"),
+            (TokenKind::OpenBrace, "{"),
+            (TokenKind::CloseBrace, "}"),
+        ]);
+        assert_eq!(
+            parse_stmt(&tokens),
+            Ok(Statement::new(
+                Span::default(),
+                StatementKind::Interface {
+                    name: Spanned::new(Span::default(), "Foo"),
+                    extends: Some(Spanned::new(Span::default(), "Bar")),
+                    body: vec![],
                 }
             ))
         )

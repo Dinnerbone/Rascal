@@ -1,0 +1,42 @@
+---
+source: crates/as2/src/lexer/tests.rs
+expression: tokens
+input_file: samples/as2/AnExtendingInterface.as
+---
+- kind:
+    Keyword: Interface
+  span:
+    start: 0
+    end: 9
+  raw: interface
+- kind: Identifier
+  span:
+    start: 10
+    end: 30
+  raw: AnExtendingInterface
+- kind:
+    Keyword: Extends
+  span:
+    start: 31
+    end: 38
+  raw: extends
+- kind: Identifier
+  span:
+    start: 39
+    end: 50
+  raw: AnInterface
+- kind: OpenBrace
+  span:
+    start: 51
+    end: 52
+  raw: "{"
+- kind: Newline
+  span:
+    start: 52
+    end: 53
+  raw: "\n"
+- kind: CloseBrace
+  span:
+    start: 53
+    end: 54
+  raw: "}"

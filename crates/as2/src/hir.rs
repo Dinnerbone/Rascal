@@ -538,17 +538,36 @@ impl Catch {
     }
 }
 
+#[derive(Debug, Clone, Serialize, PartialEq)]
+pub struct Interface {
+    pub name: String,
+    pub extends: Option<String>,
+    pub body: Vec<StatementKind>,
+}
+
 #[derive(Debug, Serialize)]
-pub struct Document {
-    pub statements: Vec<StatementKind>,
+pub enum Document {
+    Script(Vec<StatementKind>),
+    Interface(Interface),
+    Invalid,
 }
 
 impl Document {
     pub(crate) fn simplify(&mut self) -> bool {
         let mut anything_changed = false;
 
-        for statement in &mut self.statements {
-            statement.simplify(&mut anything_changed);
+        match self {
+            Document::Script(statements) => {
+                for statement in statements {
+                    statement.simplify(&mut anything_changed);
+                }
+            }
+            Document::Interface(interface) => {
+                for statement in &mut interface.body {
+                    statement.simplify(&mut anything_changed);
+                }
+            }
+            Document::Invalid => {}
         }
 
         anything_changed

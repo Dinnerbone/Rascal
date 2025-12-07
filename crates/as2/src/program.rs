@@ -36,16 +36,22 @@ impl SourceProvider for FileSystemSourceProvider {
 #[derive(Debug, Serialize)]
 pub struct Program {
     pub initial_script: Vec<hir::StatementKind>,
+    pub interfaces: Vec<hir::Interface>,
 }
 
 pub struct ProgramBuilder<P> {
     provider: P,
     scripts: Vec<String>,
+    classes: Vec<String>,
 }
 
 impl<P> ProgramBuilder<P> {
     pub fn add_script(&mut self, path: &str) {
         self.scripts.push(path.to_owned());
+    }
+
+    pub fn add_class(&mut self, path: &str) {
+        self.classes.push(path.to_owned());
     }
 }
 
@@ -54,14 +60,16 @@ impl<P: SourceProvider> ProgramBuilder<P> {
         Self {
             provider,
             scripts: vec![],
+            classes: vec![],
         }
     }
 
     pub fn build(self) -> Result<Program, Error> {
         let mut initial_script = vec![];
+        let mut interfaces = vec![];
         let mut errors = ErrorSet::new();
         let loaded_classes = IndexSet::new();
-        let mut pending_classes = Vec::new();
+        let mut pending_classes = self.classes;
 
         fn load_file<P: SourceProvider>(
             provider: &P,
@@ -69,6 +77,7 @@ impl<P: SourceProvider> ProgramBuilder<P> {
             loaded_classes: &IndexSet<String>,
             pending_classes: &mut Vec<String>,
             path: &str,
+            is_script: bool,
         ) -> Option<Document> {
             let source = match provider.load(path) {
                 Ok(source) => source,
@@ -85,7 +94,9 @@ impl<P: SourceProvider> ProgramBuilder<P> {
                     return None;
                 }
             };
-            let (mut hir, hir_errors, dependencies) = resolve_hir(provider, ast);
+            let expected_name = path.split('/').next_back().unwrap().split('.').next().unwrap();
+            let (mut hir, hir_errors, dependencies) =
+                resolve_hir(provider, ast, is_script, expected_name);
             for error in hir_errors {
                 errors.add_parsing_error(path, &source, error);
             }
@@ -107,18 +118,33 @@ impl<P: SourceProvider> ProgramBuilder<P> {
                 &loaded_classes,
                 &mut pending_classes,
                 &path,
-            ) {
-                initial_script.extend(document.statements);
-            }
+                true,
+            )
+                && let Document::Script(statements) = document {
+                    initial_script.extend(statements);
+                }
         }
 
-        if !pending_classes.is_empty() {
-            unimplemented!("Pending classes: {:?}", pending_classes);
+        for path in std::mem::take(&mut pending_classes) {
+            if let Some(document) = load_file(
+                &self.provider,
+                &mut errors,
+                &loaded_classes,
+                &mut pending_classes,
+                &path,
+                false,
+            )
+                && let Document::Interface(interface) = document {
+                    interfaces.push(interface);
+                }
         }
 
         errors.error_unless_empty()?;
 
-        Ok(Program { initial_script })
+        Ok(Program {
+            initial_script,
+            interfaces,
+        })
     }
 }
 
@@ -133,6 +159,14 @@ mod tests {
                 path.parent().unwrap().to_owned(),
             ));
             builder.add_script(path.file_name().unwrap().to_str().unwrap());
+            let parsed = builder.build();
+            insta::assert_yaml_snapshot!(parsed);
+        });
+        insta::glob!("../../../samples/as2_classes", "*.as", |path| {
+            let mut builder = ProgramBuilder::new(FileSystemSourceProvider::with_root(
+                path.parent().unwrap().to_owned(),
+            ));
+            builder.add_class(path.file_name().unwrap().to_str().unwrap());
             let parsed = builder.build();
             insta::assert_yaml_snapshot!(parsed);
         });

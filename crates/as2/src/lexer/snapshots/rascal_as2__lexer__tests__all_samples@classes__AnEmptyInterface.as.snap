@@ -1,0 +1,36 @@
+---
+source: crates/as2/src/lexer/tests.rs
+expression: tokens
+input_file: samples/as2/classes/AnEmptyInterface.as
+---
+- kind:
+    Keyword: Interface
+  span:
+    start: 0
+    end: 9
+  raw: interface
+- kind: Identifier
+  span:
+    start: 10
+    end: 21
+  raw: AnInterface
+- kind: OpenBrace
+  span:
+    start: 22
+    end: 23
+  raw: "{"
+- kind: Newline
+  span:
+    start: 23
+    end: 24
+  raw: "\n"
+- kind: CloseBrace
+  span:
+    start: 24
+    end: 25
+  raw: "}"
+- kind: Newline
+  span:
+    start: 25
+    end: 26
+  raw: "\n"

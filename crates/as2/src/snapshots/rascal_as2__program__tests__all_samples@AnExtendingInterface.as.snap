@@ -1,0 +1,11 @@
+---
+source: crates/as2/src/program.rs
+expression: parsed
+input_file: samples/as2_classes/AnExtendingInterface.as
+---
+Ok:
+  initial_script: []
+  interfaces:
+    - name: AnExtendingInterface
+      extends: AnEmptyInterface
+      body: []

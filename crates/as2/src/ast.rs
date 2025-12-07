@@ -169,6 +169,11 @@ pub enum StatementKind<'a> {
         path: Vec<&'a str>,
         name: &'a str,
     },
+    Interface {
+        name: Spanned<&'a str>,
+        extends: Option<Spanned<&'a str>>,
+        body: Vec<Statement<'a>>,
+    },
 }
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
