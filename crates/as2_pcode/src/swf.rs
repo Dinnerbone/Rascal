@@ -6,7 +6,7 @@ use std::collections::HashMap;
 use std::io::Result;
 use std::io::Write;
 use swf::write::SwfWriteExt;
-use swf::{Fixed8, SwfStr, Tag, Twips};
+use swf::{CharacterId, ExportedAsset, Fixed8, Sprite, SwfStr, Tag, Twips};
 
 impl<'a> ActionEncoder<'a> {}
 
@@ -19,8 +19,32 @@ pub fn pcode_to_swf(actions: &CompiledProgram) -> swf::error::Result<Vec<u8>> {
     } else {
         None
     };
+    let mut modules = vec![];
+    for (name, actions) in &actions.extra_modules {
+        let mut result = ActionEncoder::new();
+        result.write_actions(actions)?;
+        result.patch_labels();
+        modules.push((format!("__Packages.{}", name), result.output));
+    }
+    modules.reverse();
 
     let mut tags = vec![Tag::SetBackgroundColor(swf::Color::WHITE)];
+    for (i, (name, module)) in modules.iter().enumerate() {
+        let id = (i + 1) as CharacterId;
+        tags.push(Tag::DefineSprite(Sprite {
+            id,
+            num_frames: 0,
+            tags: vec![Tag::End],
+        }));
+        tags.push(Tag::ExportAssets(vec![ExportedAsset {
+            id,
+            name: SwfStr::from_utf8_str(name),
+        }]));
+        tags.push(Tag::DoInitAction {
+            id,
+            action_data: module,
+        })
+    }
     if let Some(initializer) = &initializer {
         tags.push(Tag::DoAction(initializer))
     }

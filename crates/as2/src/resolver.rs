@@ -138,7 +138,7 @@ fn resolve_class_or_interface(
                     result = Some(hir::Document::Interface(resolve_interface(
                         context,
                         name.value.to_owned(),
-                        extends.map(|e| e.value.to_owned()),
+                        extends.map(|e| Spanned::new(e.span, e.value.to_owned())),
                         body,
                     )));
                 } else {
@@ -160,12 +160,15 @@ fn resolve_class_or_interface(
 fn resolve_interface(
     context: &mut ModuleContext,
     name: String,
-    extends: Option<String>,
+    extends: Option<Spanned<String>>,
     body: &[ast::Statement],
 ) -> hir::Interface {
+    if let Some(extends) = &extends {
+        context.add_dependency(extends.span, &extends.value, true);
+    }
     hir::Interface {
         name,
-        extends,
+        extends: extends.map(|e| e.value),
         body: resolve_statement_vec(context, body),
     }
 }

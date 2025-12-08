@@ -68,13 +68,13 @@ impl<P: SourceProvider> ProgramBuilder<P> {
         let mut initial_script = vec![];
         let mut interfaces = vec![];
         let mut errors = ErrorSet::new();
-        let loaded_classes = IndexSet::new();
+        let mut loaded_classes = IndexSet::new();
         let mut pending_classes = self.classes;
 
         fn load_file<P: SourceProvider>(
             provider: &P,
             errors: &mut ErrorSet,
-            loaded_classes: &IndexSet<String>,
+            loaded_classes: &mut IndexSet<String>,
             pending_classes: &mut Vec<String>,
             path: &str,
             is_script: bool,
@@ -94,15 +94,21 @@ impl<P: SourceProvider> ProgramBuilder<P> {
                     return None;
                 }
             };
-            let expected_name = path.split('/').next_back().unwrap().split('.').next().unwrap();
+            let expected_name = path
+                .split('/')
+                .next_back()
+                .unwrap()
+                .split('.')
+                .next()
+                .unwrap();
             let (mut hir, hir_errors, dependencies) =
                 resolve_hir(provider, ast, is_script, expected_name);
             for error in hir_errors {
                 errors.add_parsing_error(path, &source, error);
             }
             for name in dependencies {
-                if !loaded_classes.contains(&name) {
-                    pending_classes.push(name);
+                if loaded_classes.insert(name.to_owned()) {
+                    pending_classes.push(name + ".as"); // TODO do better :D
                 }
             }
             while hir.simplify() {
@@ -115,28 +121,28 @@ impl<P: SourceProvider> ProgramBuilder<P> {
             if let Some(document) = load_file(
                 &self.provider,
                 &mut errors,
-                &loaded_classes,
+                &mut loaded_classes,
                 &mut pending_classes,
                 &path,
                 true,
-            )
-                && let Document::Script(statements) = document {
-                    initial_script.extend(statements);
-                }
+            ) && let Document::Script(statements) = document
+            {
+                initial_script.extend(statements);
+            }
         }
 
-        for path in std::mem::take(&mut pending_classes) {
+        while let Some(path) = pending_classes.pop() {
             if let Some(document) = load_file(
                 &self.provider,
                 &mut errors,
-                &loaded_classes,
+                &mut loaded_classes,
                 &mut pending_classes,
                 &path,
                 false,
-            )
-                && let Document::Interface(interface) = document {
-                    interfaces.push(interface);
-                }
+            ) && let Document::Interface(interface) = document
+            {
+                interfaces.push(interface);
+            }
         }
 
         errors.error_unless_empty()?;

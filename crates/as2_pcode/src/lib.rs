@@ -17,6 +17,7 @@ pub use swf::pcode_to_swf;
 #[derive(Serialize)]
 pub struct CompiledProgram {
     pub initializer: Option<Actions>,
+    pub extra_modules: Vec<(String, Actions)>,
 }
 
 pub struct PCode<'a> {

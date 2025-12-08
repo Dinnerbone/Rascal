@@ -4,3 +4,72 @@ expression: result
 input_file: samples/as2_classes/AnExtendingInterface.as
 ---
 initializer: ~
+extra_modules:
+  - - AnExtendingInterface
+    - actions:
+        - ConstantPool: []
+        - Push:
+            - String: _global
+        - GetVariable
+        - Push:
+            - String: AnExtendingInterface
+        - GetMember
+        - Not
+        - Not
+        - If: loc0000
+        - Push:
+            - String: _global
+        - GetVariable
+        - Push:
+            - String: AnExtendingInterface
+        - DefineFunction:
+            name: ""
+            params: []
+            actions:
+              actions: []
+              label_positions: {}
+        - SetMember
+        - Push:
+            - String: _global
+        - GetVariable
+        - Push:
+            - String: AnEmptyInterface
+        - GetMember
+        - Push:
+            - Integer: 1
+            - String: _global
+        - GetVariable
+        - Push:
+            - String: AnExtendingInterface
+        - GetMember
+        - ImplementsOp
+        - Pop
+      label_positions:
+        loc0000: 22
+  - - AnEmptyInterface
+    - actions:
+        - ConstantPool: []
+        - Push:
+            - String: _global
+        - GetVariable
+        - Push:
+            - String: AnEmptyInterface
+        - GetMember
+        - Not
+        - Not
+        - If: loc0000
+        - Push:
+            - String: _global
+        - GetVariable
+        - Push:
+            - String: AnEmptyInterface
+        - DefineFunction:
+            name: ""
+            params: []
+            actions:
+              actions: []
+              label_positions: {}
+        - SetMember
+        - Pop
+      label_positions:
+        loc0000: 13
