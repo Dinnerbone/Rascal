@@ -3,104 +3,233 @@ source: crates/as2_codegen/src/tests.rs
 expression: result
 input_file: samples/as2/typed_variables.as
 ---
-ConstantPool "a", "b", "Test message", "data", "name", "age", "valid", "isValid", "i", "arr", "length", "callback", "num", "str", "Hello", "flag", "obj", "numbers", "Array", "strings", "three", "two", "one", "someValue", "123", "numValue", "strValue", "userData", "id", "Number", "String", "User", "scores"
-DefineFunction "add", 2, "a", "b" {
-Push constant0
-GetVariable
-Push constant1
-GetVariable
-Add2
-Return
-}
-Pop
-DefineFunction "getMessage", 0 {
-Push constant2
-Return
-}
-Pop
-DefineFunction "processData", 1, "data" {
-Push constant3
-GetVariable
-Trace
-}
-Pop
-DefineFunction "complexFunc", 3, "name", "age", "isValid" {
-Push constant4, constant4
-GetVariable
-Push constant5, constant5
-GetVariable
-Push constant6, constant7
-GetVariable
-Push 3
-InitObject
-Return
-}
-Pop
-DefineFunction "forEach", 2, "arr", "callback" {
-Push constant8, 0
-DefineLocal
-loc0002:Push constant8
-GetVariable
-Push constant9
-GetVariable
-Push constant10
-GetMember
-Less2
-Not
-If loc0000
-Push constant9
-GetVariable
-Push constant8
-GetVariable
-GetMember
-Push 1, constant11
-CallFunction
-Pop
-loc0001:Push constant8, constant8
-GetVariable
-Increment
-SetVariable
-Jump loc0002
-loc0000:
-}
-Pop
-Push constant12, 42
-DefineLocal
-Push constant13, constant14
-DefineLocal
-Push constant15, true
-DefineLocal
-Push constant16, 0
-InitObject
-DefineLocal
-Push constant9, 0
-InitArray
-DefineLocal
-Push constant17, 0, constant18
-NewObject
-DefineLocal
-Push constant19, constant20, constant21, constant22, 3
-InitArray
-DefineLocal
-Push constant23, constant24
-DefineLocal
-Push constant25, constant23
-GetVariable
-ToNumber
-DefineLocal
-Push constant26, 42
-ToString
-DefineLocal
-Push constant27, constant28, constant29, 1
-StoreRegister 0
-SetVariable
-Push register0, constant4, constant30, constant31
-StoreRegister 0
-SetVariable
-Push register0, constant32, constant18, 3, 2, 1, 3
-InitArray
-StoreRegister 0
-SetVariable
-Push register0, 3
-InitObject
-DefineLocal
+initializer:
+  actions:
+    - ConstantPool:
+        - a
+        - b
+        - Test message
+        - data
+        - name
+        - age
+        - valid
+        - isValid
+        - i
+        - arr
+        - length
+        - callback
+        - num
+        - str
+        - Hello
+        - flag
+        - obj
+        - numbers
+        - Array
+        - strings
+        - three
+        - two
+        - one
+        - someValue
+        - "123"
+        - numValue
+        - strValue
+        - userData
+        - id
+        - Number
+        - String
+        - User
+        - scores
+    - DefineFunction:
+        name: add
+        params:
+          - a
+          - b
+        actions:
+          actions:
+            - Push:
+                - Constant: 0
+            - GetVariable
+            - Push:
+                - Constant: 1
+            - GetVariable
+            - Add2
+            - Return
+          label_positions: {}
+    - Pop
+    - DefineFunction:
+        name: getMessage
+        params: []
+        actions:
+          actions:
+            - Push:
+                - Constant: 2
+            - Return
+          label_positions: {}
+    - Pop
+    - DefineFunction:
+        name: processData
+        params:
+          - data
+        actions:
+          actions:
+            - Push:
+                - Constant: 3
+            - GetVariable
+            - Trace
+          label_positions: {}
+    - Pop
+    - DefineFunction:
+        name: complexFunc
+        params:
+          - name
+          - age
+          - isValid
+        actions:
+          actions:
+            - Push:
+                - Constant: 4
+                - Constant: 4
+            - GetVariable
+            - Push:
+                - Constant: 5
+                - Constant: 5
+            - GetVariable
+            - Push:
+                - Constant: 6
+                - Constant: 7
+            - GetVariable
+            - Push:
+                - Integer: 3
+            - InitObject
+            - Return
+          label_positions: {}
+    - Pop
+    - DefineFunction:
+        name: forEach
+        params:
+          - arr
+          - callback
+        actions:
+          actions:
+            - Push:
+                - Constant: 8
+                - Integer: 0
+            - DefineLocal
+            - Push:
+                - Constant: 8
+            - GetVariable
+            - Push:
+                - Constant: 9
+            - GetVariable
+            - Push:
+                - Constant: 10
+            - GetMember
+            - Less2
+            - Not
+            - If: loc0000
+            - Push:
+                - Constant: 9
+            - GetVariable
+            - Push:
+                - Constant: 8
+            - GetVariable
+            - GetMember
+            - Push:
+                - Integer: 1
+                - Constant: 11
+            - CallFunction
+            - Pop
+            - Push:
+                - Constant: 8
+                - Constant: 8
+            - GetVariable
+            - Increment
+            - SetVariable
+            - Jump: loc0002
+          label_positions:
+            loc0002: 2
+            loc0001: 19
+            loc0000: 24
+    - Pop
+    - Push:
+        - Constant: 12
+        - Integer: 42
+    - DefineLocal
+    - Push:
+        - Constant: 13
+        - Constant: 14
+    - DefineLocal
+    - Push:
+        - Constant: 15
+        - "True"
+    - DefineLocal
+    - Push:
+        - Constant: 16
+        - Integer: 0
+    - InitObject
+    - DefineLocal
+    - Push:
+        - Constant: 9
+        - Integer: 0
+    - InitArray
+    - DefineLocal
+    - Push:
+        - Constant: 17
+        - Integer: 0
+        - Constant: 18
+    - NewObject
+    - DefineLocal
+    - Push:
+        - Constant: 19
+        - Constant: 20
+        - Constant: 21
+        - Constant: 22
+        - Integer: 3
+    - InitArray
+    - DefineLocal
+    - Push:
+        - Constant: 23
+        - Constant: 24
+    - DefineLocal
+    - Push:
+        - Constant: 25
+        - Constant: 23
+    - GetVariable
+    - ToNumber
+    - DefineLocal
+    - Push:
+        - Constant: 26
+        - Integer: 42
+    - ToString
+    - DefineLocal
+    - Push:
+        - Constant: 27
+        - Constant: 28
+        - Constant: 29
+        - Integer: 1
+    - StoreRegister: 0
+    - SetVariable
+    - Push:
+        - Register: 0
+        - Constant: 4
+        - Constant: 30
+        - Constant: 31
+    - StoreRegister: 0
+    - SetVariable
+    - Push:
+        - Register: 0
+        - Constant: 32
+        - Constant: 18
+        - Integer: 3
+        - Integer: 2
+        - Integer: 1
+        - Integer: 3
+    - InitArray
+    - StoreRegister: 0
+    - SetVariable
+    - Push:
+        - Register: 0
+        - Integer: 3
+    - InitObject
+    - DefineLocal
+  label_positions: {}

@@ -3,38 +3,73 @@ source: crates/as2_codegen/src/tests.rs
 expression: result
 input_file: samples/as2/assign_variable_many_ways.as
 ---
-ConstantPool "message", "Hello", " ", "World", "!", "a", "b", "c", "a: ", "b: ", "c: "
-Push constant0, constant1, constant2
-Add2
-DefineLocal
-Push constant0, constant0
-GetVariable
-Push constant3
-Add2
-SetVariable
-Push constant0, constant0
-GetVariable
-Push constant4
-Add2
-SetVariable
-Push constant0
-GetVariable
-Trace
-Push constant5, 1
-DefineLocal
-Push constant6
-DefineLocal2
-Push constant7, 3
-DefineLocal
-Push constant8, constant5
-GetVariable
-Add2
-Trace
-Push constant9, constant6
-GetVariable
-Add2
-Trace
-Push constant10, constant7
-GetVariable
-Add2
-Trace
+initializer:
+  actions:
+    - ConstantPool:
+        - message
+        - Hello
+        - " "
+        - World
+        - "!"
+        - a
+        - b
+        - c
+        - "a: "
+        - "b: "
+        - "c: "
+    - Push:
+        - Constant: 0
+        - Constant: 1
+        - Constant: 2
+    - Add2
+    - DefineLocal
+    - Push:
+        - Constant: 0
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 3
+    - Add2
+    - SetVariable
+    - Push:
+        - Constant: 0
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 4
+    - Add2
+    - SetVariable
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Trace
+    - Push:
+        - Constant: 5
+        - Integer: 1
+    - DefineLocal
+    - Push:
+        - Constant: 6
+    - DefineLocal2
+    - Push:
+        - Constant: 7
+        - Integer: 3
+    - DefineLocal
+    - Push:
+        - Constant: 8
+        - Constant: 5
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 9
+        - Constant: 6
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 10
+        - Constant: 7
+    - GetVariable
+    - Add2
+    - Trace
+  label_positions: {}

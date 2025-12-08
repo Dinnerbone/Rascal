@@ -3,76 +3,122 @@ source: crates/as2_codegen/src/tests.rs
 expression: result
 input_file: samples/as2/nested_for_break_continue.as
 ---
-ConstantPool "i", "outer i=", "j", "  inner j=", "done"
-Push constant0, 0
-DefineLocal
-loc0002:Push constant0
-GetVariable
-Push 4
-Less2
-Not
-If loc0000
-Push constant1, constant0
-GetVariable
-Add2
-Trace
-Push constant2, 0
-DefineLocal
-loc0005:Push constant2
-GetVariable
-Push 4
-Less2
-Not
-If loc0003
-Push constant2
-GetVariable
-Push 1
-Equals2
-Not
-If loc0006
-Jump loc0004
-loc0006:Push constant0
-GetVariable
-Push 2
-Equals2
-PushDuplicate
-Not
-If loc0008
-Pop
-Push constant2
-GetVariable
-Push 2
-Equals2
-loc0008:Not
-If loc0007
-Jump loc0003
-loc0007:Push constant3, constant2
-GetVariable
-Add2
-Trace
-loc0004:Push constant2, constant2
-GetVariable
-Increment
-SetVariable
-Jump loc0005
-loc0003:Push constant0
-GetVariable
-Push 1
-Equals2
-Not
-If loc0009
-Jump loc0001
-loc0009:Push constant0
-GetVariable
-Push 3
-Equals2
-Not
-If loc000a
-Jump loc0000
-loc000a:loc0001:Push constant0, constant0
-GetVariable
-Increment
-SetVariable
-Jump loc0002
-loc0000:Push constant4
-Trace
+initializer:
+  actions:
+    - ConstantPool:
+        - i
+        - outer i=
+        - j
+        - "  inner j="
+        - done
+    - Push:
+        - Constant: 0
+        - Integer: 0
+    - DefineLocal
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Integer: 4
+    - Less2
+    - Not
+    - If: loc0000
+    - Push:
+        - Constant: 1
+        - Constant: 0
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 2
+        - Integer: 0
+    - DefineLocal
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Push:
+        - Integer: 4
+    - Less2
+    - Not
+    - If: loc0003
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Push:
+        - Integer: 1
+    - Equals2
+    - Not
+    - If: loc0006
+    - Jump: loc0004
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Integer: 2
+    - Equals2
+    - PushDuplicate
+    - Not
+    - If: loc0008
+    - Pop
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Push:
+        - Integer: 2
+    - Equals2
+    - Not
+    - If: loc0007
+    - Jump: loc0003
+    - Push:
+        - Constant: 3
+        - Constant: 2
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 2
+        - Constant: 2
+    - GetVariable
+    - Increment
+    - SetVariable
+    - Jump: loc0005
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Integer: 1
+    - Equals2
+    - Not
+    - If: loc0009
+    - Jump: loc0001
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Integer: 3
+    - Equals2
+    - Not
+    - If: loc000a
+    - Jump: loc0000
+    - Push:
+        - Constant: 0
+        - Constant: 0
+    - GetVariable
+    - Increment
+    - SetVariable
+    - Jump: loc0002
+    - Push:
+        - Constant: 4
+    - Trace
+  label_positions:
+    loc0002: 3
+    loc0005: 15
+    loc0006: 28
+    loc0008: 40
+    loc0007: 43
+    loc0004: 47
+    loc0003: 52
+    loc0009: 59
+    loc000a: 66
+    loc0001: 66
+    loc0000: 71

@@ -3,26 +3,46 @@ source: crates/as2_codegen/src/tests.rs
 expression: result
 input_file: samples/as2/block.as
 ---
-ConstantPool "outside", "visible", "inside", "outside: ", ", inside: "
-Push constant0, constant1
-DefineLocal
-Push constant2, constant1
-DefineLocal
-Push constant3, constant0
-GetVariable
-Add2
-Push constant4
-Add2
-Push constant2
-GetVariable
-Add2
-Trace
-Push constant3, constant0
-GetVariable
-Add2
-Push constant4
-Add2
-Push constant2
-GetVariable
-Add2
-Trace
+initializer:
+  actions:
+    - ConstantPool:
+        - outside
+        - visible
+        - inside
+        - "outside: "
+        - ", inside: "
+    - Push:
+        - Constant: 0
+        - Constant: 1
+    - DefineLocal
+    - Push:
+        - Constant: 2
+        - Constant: 1
+    - DefineLocal
+    - Push:
+        - Constant: 3
+        - Constant: 0
+    - GetVariable
+    - Add2
+    - Push:
+        - Constant: 4
+    - Add2
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 3
+        - Constant: 0
+    - GetVariable
+    - Add2
+    - Push:
+        - Constant: 4
+    - Add2
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Add2
+    - Trace
+  label_positions: {}

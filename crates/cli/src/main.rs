@@ -2,7 +2,7 @@ use anyhow::Result;
 use clap::Parser;
 use rascal_as2::program::{FileSystemSourceProvider, ProgramBuilder};
 use rascal_as2_codegen::hir_to_pcode;
-use rascal_as2_pcode::{PCode, pcode_to_swf};
+use rascal_as2_pcode::{CompiledProgram, PCode, pcode_to_swf};
 use std::fs;
 use std::path::PathBuf;
 
@@ -23,10 +23,12 @@ fn main() -> Result<()> {
             ProgramBuilder::new(FileSystemSourceProvider::with_root(PathBuf::from(".")));
         builder.add_script(&filename);
         let parsed = builder.build().unwrap_or_else(|e| panic!("{}", e));
-        hir_to_pcode(&parsed.initial_script)
+        hir_to_pcode(&parsed)
     } else {
         let pcode = PCode::new(&filename, &src);
-        pcode.to_actions().unwrap_or_else(|e| panic!("{}", e))
+        CompiledProgram {
+            initializer: Some(pcode.to_actions().unwrap_or_else(|e| panic!("{}", e))),
+        }
     };
     let swf = pcode_to_swf(&pcode)?;
     fs::write(opt.src.with_extension("swf"), swf)?;

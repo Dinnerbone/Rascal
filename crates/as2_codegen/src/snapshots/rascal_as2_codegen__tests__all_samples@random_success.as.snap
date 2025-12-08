@@ -3,25 +3,45 @@ source: crates/as2_codegen/src/tests.rs
 expression: result
 input_file: samples/as2/random_success.as
 ---
-ConstantPool "success", "Success! Hurrah!", "Failed :(", "-- end --"
-Push constant0, true
-DefineLocal
-Push 2
-RandomNumber
-Push 0
-Equals2
-Not
-If loc0000
-Push constant0, false
-SetVariable
-loc0000:Push constant0
-GetVariable
-Not
-If loc0002
-Push constant1
-Trace
-Jump loc0001
-loc0002:Push constant2
-Trace
-loc0001:Push constant3
-Trace
+initializer:
+  actions:
+    - ConstantPool:
+        - success
+        - Success! Hurrah!
+        - "Failed :("
+        - "-- end --"
+    - Push:
+        - Constant: 0
+        - "True"
+    - DefineLocal
+    - Push:
+        - Integer: 2
+    - RandomNumber
+    - Push:
+        - Integer: 0
+    - Equals2
+    - Not
+    - If: loc0000
+    - Push:
+        - Constant: 0
+        - "False"
+    - SetVariable
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Not
+    - If: loc0002
+    - Push:
+        - Constant: 1
+    - Trace
+    - Jump: loc0001
+    - Push:
+        - Constant: 2
+    - Trace
+    - Push:
+        - Constant: 3
+    - Trace
+  label_positions:
+    loc0000: 11
+    loc0002: 18
+    loc0001: 20

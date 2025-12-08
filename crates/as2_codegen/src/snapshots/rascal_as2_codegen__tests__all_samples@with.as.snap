@@ -3,24 +3,43 @@ source: crates/as2_codegen/src/tests.rs
 expression: result
 input_file: samples/as2/with.as
 ---
-ConstantPool "foo", "createEmptyMovieClip", "", "_name"
-Push 1, constant0, 2, constant1
-CallFunction
-Pop
-Push constant2, 13
-GetProperty
-Trace
-Push constant0
-GetVariable
-With {
-Push constant3
-GetVariable
-Trace
-}
-Push constant0
-GetVariable
-With {
-Push constant3
-GetVariable
-Trace
-}
+initializer:
+  actions:
+    - ConstantPool:
+        - foo
+        - createEmptyMovieClip
+        - ""
+        - _name
+    - Push:
+        - Integer: 1
+        - Constant: 0
+        - Integer: 2
+        - Constant: 1
+    - CallFunction
+    - Pop
+    - Push:
+        - Constant: 2
+        - Integer: 13
+    - GetProperty
+    - Trace
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - With:
+        actions:
+          - Push:
+              - Constant: 3
+          - GetVariable
+          - Trace
+        label_positions: {}
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - With:
+        actions:
+          - Push:
+              - Constant: 3
+          - GetVariable
+          - Trace
+        label_positions: {}
+  label_positions: {}

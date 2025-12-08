@@ -3,99 +3,157 @@ source: crates/as2_codegen/src/tests.rs
 expression: result
 input_file: samples/as2/try_catch_finally_break_continue.as
 ---
-ConstantPool "i", "loop i=", "  try:i=", "boom@2", "boom@4", "  catch:", "e", "  finally:i=", "  after try/catch/finally i=", "done"
-Push constant0, 0
-DefineLocal
-loc0002:Push constant0
-GetVariable
-Push 6
-Less2
-Not
-If loc0000
-Push constant1, constant0
-GetVariable
-Add2
-Trace
-Try "e" {
-Push constant2, constant0
-GetVariable
-Add2
-Trace
-Push constant0
-GetVariable
-Push 1
-Equals2
-Not
-If loc0003
-Jump loc0001
-loc0003:Push constant0
-GetVariable
-Push 2
-Equals2
-Not
-If loc0004
-Push constant3
-Throw
-loc0004:Push constant0
-GetVariable
-Push 4
-Equals2
-Not
-If loc0005
-Push constant4
-Throw
-loc0005:
-}
-Catch {
-Push constant5, constant6
-GetVariable
-Add2
-Trace
-Push constant6
-GetVariable
-Push constant3
-Equals2
-Not
-If loc0006
-Jump loc0000
-loc0006:Push constant6
-GetVariable
-Push constant4
-Equals2
-Not
-If loc0007
-Jump loc0001
-loc0007:
-}
-Finally {
-Push constant7, constant0
-GetVariable
-Add2
-Trace
-Push constant0
-GetVariable
-Push 3
-Equals2
-Not
-If loc0008
-Jump loc0001
-loc0008:Push constant0
-GetVariable
-Push 5
-Equals2
-Not
-If loc0009
-Jump loc0000
-loc0009:
-}
-Push constant8, constant0
-GetVariable
-Add2
-Trace
-loc0001:Push constant0, constant0
-GetVariable
-Increment
-SetVariable
-Jump loc0002
-loc0000:Push constant9
-Trace
+initializer:
+  actions:
+    - ConstantPool:
+        - i
+        - loop i=
+        - "  try:i="
+        - boom@2
+        - boom@4
+        - "  catch:"
+        - e
+        - "  finally:i="
+        - "  after try/catch/finally i="
+        - done
+    - Push:
+        - Constant: 0
+        - Integer: 0
+    - DefineLocal
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Integer: 6
+    - Less2
+    - Not
+    - If: loc0000
+    - Push:
+        - Constant: 1
+        - Constant: 0
+    - GetVariable
+    - Add2
+    - Trace
+    - Try:
+        try_body:
+          actions:
+            - Push:
+                - Constant: 2
+                - Constant: 0
+            - GetVariable
+            - Add2
+            - Trace
+            - Push:
+                - Constant: 0
+            - GetVariable
+            - Push:
+                - Integer: 1
+            - Equals2
+            - Not
+            - If: loc0003
+            - Jump: loc0001
+            - Push:
+                - Constant: 0
+            - GetVariable
+            - Push:
+                - Integer: 2
+            - Equals2
+            - Not
+            - If: loc0004
+            - Push:
+                - Constant: 3
+            - Throw
+            - Push:
+                - Constant: 0
+            - GetVariable
+            - Push:
+                - Integer: 4
+            - Equals2
+            - Not
+            - If: loc0005
+            - Push:
+                - Constant: 4
+            - Throw
+          label_positions:
+            loc0003: 11
+            loc0004: 19
+            loc0005: 27
+        catch_body:
+          - Variable: e
+          - actions:
+              - Push:
+                  - Constant: 5
+                  - Constant: 6
+              - GetVariable
+              - Add2
+              - Trace
+              - Push:
+                  - Constant: 6
+              - GetVariable
+              - Push:
+                  - Constant: 3
+              - Equals2
+              - Not
+              - If: loc0006
+              - Jump: loc0000
+              - Push:
+                  - Constant: 6
+              - GetVariable
+              - Push:
+                  - Constant: 4
+              - Equals2
+              - Not
+              - If: loc0007
+              - Jump: loc0001
+            label_positions:
+              loc0006: 11
+              loc0007: 18
+        finally_body:
+          actions:
+            - Push:
+                - Constant: 7
+                - Constant: 0
+            - GetVariable
+            - Add2
+            - Trace
+            - Push:
+                - Constant: 0
+            - GetVariable
+            - Push:
+                - Integer: 3
+            - Equals2
+            - Not
+            - If: loc0008
+            - Jump: loc0001
+            - Push:
+                - Constant: 0
+            - GetVariable
+            - Push:
+                - Integer: 5
+            - Equals2
+            - Not
+            - If: loc0009
+            - Jump: loc0000
+          label_positions:
+            loc0008: 11
+            loc0009: 18
+    - Push:
+        - Constant: 8
+        - Constant: 0
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 0
+        - Constant: 0
+    - GetVariable
+    - Increment
+    - SetVariable
+    - Jump: loc0002
+    - Push:
+        - Constant: 9
+    - Trace
+  label_positions:
+    loc0002: 3
+    loc0001: 18
+    loc0000: 23

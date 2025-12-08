@@ -3,86 +3,147 @@ source: crates/as2_codegen/src/tests.rs
 expression: result
 input_file: samples/as2/typeof.as
 ---
-ConstantPool "num", "obj", "trace", "typeof num: ", "typeof obj: ", "typeof obj.num: ", "typeof obj.num + 1: ", "typeof obj.num == "number" ? ":)" : ":(": ", "number", ":)", ":(", "typeof obj.num + typeof obj.num: ", "typeof obj.trace: ", "typeof obj.trace(): ", "typeof(nonexistent, obj): ", "nonexistent"
-Push constant0, 1
-DefineLocal
-Push constant1, constant0, 1, constant2, constant2
-GetVariable
-Push 2
-InitObject
-DefineLocal
-Push constant3, constant0
-GetVariable
-TypeOf
-Add2
-Trace
-Push constant4, constant1
-GetVariable
-TypeOf
-Add2
-Trace
-Push constant5, constant1
-GetVariable
-Push constant0
-GetMember
-TypeOf
-Add2
-Trace
-Push constant6, constant1
-GetVariable
-Push constant0
-GetMember
-TypeOf
-Push 1
-Add2
-Add2
-Trace
-Push constant7, constant1
-GetVariable
-Push constant0
-GetMember
-TypeOf
-Push constant8
-Equals2
-Not
-If loc0001
-Push constant9
-Jump loc0000
-loc0001:Push constant10
-loc0000:Add2
-Trace
-Push constant11, constant1
-GetVariable
-Push constant0
-GetMember
-TypeOf
-Push constant1
-GetVariable
-Push constant0
-GetMember
-TypeOf
-Add2
-Add2
-Trace
-Push constant12, constant1
-GetVariable
-Push constant2
-GetMember
-TypeOf
-Add2
-Trace
-Push constant13, 0, constant1
-GetVariable
-Push constant2
-CallMethod
-TypeOf
-Add2
-Trace
-Push constant14, constant15
-GetVariable
-Pop
-Push constant1
-GetVariable
-TypeOf
-Add2
-Trace
+initializer:
+  actions:
+    - ConstantPool:
+        - num
+        - obj
+        - trace
+        - "typeof num: "
+        - "typeof obj: "
+        - "typeof obj.num: "
+        - "typeof obj.num + 1: "
+        - "typeof obj.num == \"number\" ? \":)\" : \":(\": "
+        - number
+        - ":)"
+        - ":("
+        - "typeof obj.num + typeof obj.num: "
+        - "typeof obj.trace: "
+        - "typeof obj.trace(): "
+        - "typeof(nonexistent, obj): "
+        - nonexistent
+    - Push:
+        - Constant: 0
+        - Integer: 1
+    - DefineLocal
+    - Push:
+        - Constant: 1
+        - Constant: 0
+        - Integer: 1
+        - Constant: 2
+        - Constant: 2
+    - GetVariable
+    - Push:
+        - Integer: 2
+    - InitObject
+    - DefineLocal
+    - Push:
+        - Constant: 3
+        - Constant: 0
+    - GetVariable
+    - TypeOf
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 4
+        - Constant: 1
+    - GetVariable
+    - TypeOf
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 5
+        - Constant: 1
+    - GetVariable
+    - Push:
+        - Constant: 0
+    - GetMember
+    - TypeOf
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 6
+        - Constant: 1
+    - GetVariable
+    - Push:
+        - Constant: 0
+    - GetMember
+    - TypeOf
+    - Push:
+        - Integer: 1
+    - Add2
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 7
+        - Constant: 1
+    - GetVariable
+    - Push:
+        - Constant: 0
+    - GetMember
+    - TypeOf
+    - Push:
+        - Constant: 8
+    - Equals2
+    - Not
+    - If: loc0001
+    - Push:
+        - Constant: 9
+    - Jump: loc0000
+    - Push:
+        - Constant: 10
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 11
+        - Constant: 1
+    - GetVariable
+    - Push:
+        - Constant: 0
+    - GetMember
+    - TypeOf
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Push:
+        - Constant: 0
+    - GetMember
+    - TypeOf
+    - Add2
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 12
+        - Constant: 1
+    - GetVariable
+    - Push:
+        - Constant: 2
+    - GetMember
+    - TypeOf
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 13
+        - Integer: 0
+        - Constant: 1
+    - GetVariable
+    - Push:
+        - Constant: 2
+    - CallMethod
+    - TypeOf
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 14
+        - Constant: 15
+    - GetVariable
+    - Pop
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - TypeOf
+    - Add2
+    - Trace
+  label_positions:
+    loc0001: 45
+    loc0000: 46

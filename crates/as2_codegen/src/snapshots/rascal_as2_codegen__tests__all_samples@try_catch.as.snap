@@ -3,134 +3,229 @@ source: crates/as2_codegen/src/tests.rs
 expression: result
 input_file: samples/as2/try_catch.as
 ---
-ConstantPool " -- try catch finally -- ", "try!", "message", "Hello World!", "catch!", "e", "finally!", " -- try catch -- ", "test", "caught something! ", " -- try catch(MovieClip) finally -- ", "this", " -- try catch(MovieClip) catch(Number) --", "catch something of MovieClip!", "catch something of Number!", "catch anything else!", " -- try finally -- ", "If you see this, it didn't throw! :("
-Push constant0
-Trace
-Try "e" {
-Push constant1
-Trace
-Push constant2, constant3
-DefineLocal
-Push constant2
-GetVariable
-Throw
-}
-Catch {
-Push constant4
-Trace
-Push constant5
-GetVariable
-Trace
-}
-Finally {
-Push constant6
-Trace
-}
-Push constant7
-Trace
-Try "e" {
-Push constant1
-Trace
-Push constant8
-Throw
-}
-Catch {
-Push constant9, constant5
-GetVariable
-Add2
-Trace
-}
-Push constant10
-Trace
-Try register"0" {
-Push constant1
-Trace
-Push constant11
-GetVariable
-Throw
-}
-Catch {
-Push "MovieClip"
-GetVariable
-Push register0
-CastOp
-PushDuplicate
-Push null
-Equals2
-If loc0001
-Push "e"
-StackSwap
-DefineLocal
-Push constant9, constant5
-GetVariable
-Add2
-Trace
-Jump loc0000
-loc0001:Pop
-Push register0
-Throw
-}
-Finally {
-loc0000:Push constant6
-Trace
-}
-Push constant12
-Trace
-Try register"0" {
-Push constant1
-Trace
-Push constant11
-GetVariable
-Throw
-}
-Catch {
-Push "MovieClip"
-GetVariable
-Push register0
-CastOp
-PushDuplicate
-Push null
-Equals2
-If loc0003
-Push "e"
-StackSwap
-DefineLocal
-Push constant13
-Trace
-Jump loc0002
-loc0003:Pop
-Push "Number"
-GetVariable
-Push register0
-CastOp
-PushDuplicate
-Push null
-Equals2
-If loc0004
-Push "e"
-StackSwap
-DefineLocal
-Push constant14
-Trace
-Jump loc0002
-loc0004:Pop
-Push register0, "e"
-StackSwap
-DefineLocal
-Push constant15
-Trace
-}
-loc0002:Push constant16
-Trace
-Try {
-Push constant1
-Trace
-Push null
-Throw
-}
-Finally {
-Push constant6
-Trace
-}
-Push constant17
-Trace
+initializer:
+  actions:
+    - ConstantPool:
+        - " -- try catch finally -- "
+        - try!
+        - message
+        - Hello World!
+        - catch!
+        - e
+        - finally!
+        - " -- try catch -- "
+        - test
+        - "caught something! "
+        - " -- try catch(MovieClip) finally -- "
+        - this
+        - " -- try catch(MovieClip) catch(Number) --"
+        - catch something of MovieClip!
+        - catch something of Number!
+        - catch anything else!
+        - " -- try finally -- "
+        - "If you see this, it didn't throw! :("
+    - Push:
+        - Constant: 0
+    - Trace
+    - Try:
+        try_body:
+          actions:
+            - Push:
+                - Constant: 1
+            - Trace
+            - Push:
+                - Constant: 2
+                - Constant: 3
+            - DefineLocal
+            - Push:
+                - Constant: 2
+            - GetVariable
+            - Throw
+          label_positions: {}
+        catch_body:
+          - Variable: e
+          - actions:
+              - Push:
+                  - Constant: 4
+              - Trace
+              - Push:
+                  - Constant: 5
+              - GetVariable
+              - Trace
+            label_positions: {}
+        finally_body:
+          actions:
+            - Push:
+                - Constant: 6
+            - Trace
+          label_positions: {}
+    - Push:
+        - Constant: 7
+    - Trace
+    - Try:
+        try_body:
+          actions:
+            - Push:
+                - Constant: 1
+            - Trace
+            - Push:
+                - Constant: 8
+            - Throw
+          label_positions: {}
+        catch_body:
+          - Variable: e
+          - actions:
+              - Push:
+                  - Constant: 9
+                  - Constant: 5
+              - GetVariable
+              - Add2
+              - Trace
+            label_positions: {}
+        finally_body: ~
+    - Push:
+        - Constant: 10
+    - Trace
+    - Try:
+        try_body:
+          actions:
+            - Push:
+                - Constant: 1
+            - Trace
+            - Push:
+                - Constant: 11
+            - GetVariable
+            - Throw
+          label_positions: {}
+        catch_body:
+          - Register: 0
+          - actions:
+              - Push:
+                  - String: MovieClip
+              - GetVariable
+              - Push:
+                  - Register: 0
+              - CastOp
+              - PushDuplicate
+              - Push:
+                  - "Null"
+              - Equals2
+              - If: loc0001
+              - Push:
+                  - String: e
+              - StackSwap
+              - DefineLocal
+              - Push:
+                  - Constant: 9
+                  - Constant: 5
+              - GetVariable
+              - Add2
+              - Trace
+              - Jump: loc0000
+              - Pop
+              - Push:
+                  - Register: 0
+              - Throw
+            label_positions:
+              loc0001: 16
+        finally_body:
+          actions:
+            - Push:
+                - Constant: 6
+            - Trace
+          label_positions:
+            loc0000: 0
+    - Push:
+        - Constant: 12
+    - Trace
+    - Try:
+        try_body:
+          actions:
+            - Push:
+                - Constant: 1
+            - Trace
+            - Push:
+                - Constant: 11
+            - GetVariable
+            - Throw
+          label_positions: {}
+        catch_body:
+          - Register: 0
+          - actions:
+              - Push:
+                  - String: MovieClip
+              - GetVariable
+              - Push:
+                  - Register: 0
+              - CastOp
+              - PushDuplicate
+              - Push:
+                  - "Null"
+              - Equals2
+              - If: loc0003
+              - Push:
+                  - String: e
+              - StackSwap
+              - DefineLocal
+              - Push:
+                  - Constant: 13
+              - Trace
+              - Jump: loc0002
+              - Pop
+              - Push:
+                  - String: Number
+              - GetVariable
+              - Push:
+                  - Register: 0
+              - CastOp
+              - PushDuplicate
+              - Push:
+                  - "Null"
+              - Equals2
+              - If: loc0004
+              - Push:
+                  - String: e
+              - StackSwap
+              - DefineLocal
+              - Push:
+                  - Constant: 14
+              - Trace
+              - Jump: loc0002
+              - Pop
+              - Push:
+                  - Register: 0
+                  - String: e
+              - StackSwap
+              - DefineLocal
+              - Push:
+                  - Constant: 15
+              - Trace
+            label_positions:
+              loc0003: 14
+              loc0004: 29
+        finally_body: ~
+    - Push:
+        - Constant: 16
+    - Trace
+    - Try:
+        try_body:
+          actions:
+            - Push:
+                - Constant: 1
+            - Trace
+            - Push:
+                - "Null"
+            - Throw
+          label_positions: {}
+        catch_body: ~
+        finally_body:
+          actions:
+            - Push:
+                - Constant: 6
+            - Trace
+          label_positions: {}
+    - Push:
+        - Constant: 17
+    - Trace
+  label_positions:
+    loc0002: 13

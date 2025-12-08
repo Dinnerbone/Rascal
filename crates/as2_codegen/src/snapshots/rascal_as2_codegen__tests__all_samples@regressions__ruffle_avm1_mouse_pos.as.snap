@@ -3,121 +3,217 @@ source: crates/as2_codegen/src/tests.rs
 expression: result
 input_file: samples/as2/regressions/ruffle_avm1_mouse_pos.as
 ---
-ConstantPool "", "oldX", "oldY", "_root", " ", "clips", "s133fpr15", "s133fp", "s42fp", "fp", "ip", "zs", "id", "i", "length", "clip", "_name", "_xmouse", "_ymouse", "dump", "_xscale", "_yscale"
-DefineFunction "dump", 0 {
-Push constant0, 20
-GetProperty
-Push constant1
-GetVariable
-Equals2
-PushDuplicate
-Not
-If loc0001
-Pop
-Push constant0, 21
-GetProperty
-Push constant2
-GetVariable
-Equals2
-loc0001:Not
-If loc0000
-Push undefined
-Return
-loc0000:Push constant1, constant0, 20
-GetProperty
-SetVariable
-Push constant2, constant0, 21
-GetProperty
-SetVariable
-Push constant3, constant4
-Add2
-Push constant0, 20
-GetProperty
-Add2
-Push constant4
-Add2
-Push constant0, 21
-GetProperty
-Add2
-Trace
-Push constant5, constant6
-GetVariable
-Push constant7
-GetVariable
-Push constant8
-GetVariable
-Push constant9
-GetVariable
-Push constant10
-GetVariable
-Push constant11
-GetVariable
-Push constant12
-GetVariable
-Push 7
-InitArray
-DefineLocal
-Push constant13, 0
-DefineLocal
-loc0004:Push constant13
-GetVariable
-Push constant5
-GetVariable
-Push constant14
-GetMember
-Less2
-Not
-If loc0002
-Push constant15, constant5
-GetVariable
-Push constant13
-GetVariable
-GetMember
-DefineLocal
-Push constant15
-GetVariable
-Push constant16
-GetMember
-Push constant4
-Add2
-Push constant15
-GetVariable
-Push constant17
-GetMember
-Add2
-Push constant4
-Add2
-Push constant15
-GetVariable
-Push constant18
-GetMember
-Add2
-Trace
-loc0003:Push constant13, constant13
-GetVariable
-Increment
-SetVariable
-Jump loc0004
-loc0002:Push constant0
-Trace
-}
-Pop
-DefineFunction "onEnterFrame", 0 {
-Push 0, constant19
-CallFunction
-Pop
-}
-Pop
-Push constant11
-GetVariable
-Push constant20, constant11
-GetVariable
-Push constant21, 0
-StoreRegister 0
-SetMember
-Push register0
-SetMember
-Push constant1
-DefineLocal2
-Push constant2
-DefineLocal2
+initializer:
+  actions:
+    - ConstantPool:
+        - ""
+        - oldX
+        - oldY
+        - _root
+        - " "
+        - clips
+        - s133fpr15
+        - s133fp
+        - s42fp
+        - fp
+        - ip
+        - zs
+        - id
+        - i
+        - length
+        - clip
+        - _name
+        - _xmouse
+        - _ymouse
+        - dump
+        - _xscale
+        - _yscale
+    - DefineFunction:
+        name: dump
+        params: []
+        actions:
+          actions:
+            - Push:
+                - Constant: 0
+                - Integer: 20
+            - GetProperty
+            - Push:
+                - Constant: 1
+            - GetVariable
+            - Equals2
+            - PushDuplicate
+            - Not
+            - If: loc0001
+            - Pop
+            - Push:
+                - Constant: 0
+                - Integer: 21
+            - GetProperty
+            - Push:
+                - Constant: 2
+            - GetVariable
+            - Equals2
+            - Not
+            - If: loc0000
+            - Push:
+                - Undefined
+            - Return
+            - Push:
+                - Constant: 1
+                - Constant: 0
+                - Integer: 20
+            - GetProperty
+            - SetVariable
+            - Push:
+                - Constant: 2
+                - Constant: 0
+                - Integer: 21
+            - GetProperty
+            - SetVariable
+            - Push:
+                - Constant: 3
+                - Constant: 4
+            - Add2
+            - Push:
+                - Constant: 0
+                - Integer: 20
+            - GetProperty
+            - Add2
+            - Push:
+                - Constant: 4
+            - Add2
+            - Push:
+                - Constant: 0
+                - Integer: 21
+            - GetProperty
+            - Add2
+            - Trace
+            - Push:
+                - Constant: 5
+                - Constant: 6
+            - GetVariable
+            - Push:
+                - Constant: 7
+            - GetVariable
+            - Push:
+                - Constant: 8
+            - GetVariable
+            - Push:
+                - Constant: 9
+            - GetVariable
+            - Push:
+                - Constant: 10
+            - GetVariable
+            - Push:
+                - Constant: 11
+            - GetVariable
+            - Push:
+                - Constant: 12
+            - GetVariable
+            - Push:
+                - Integer: 7
+            - InitArray
+            - DefineLocal
+            - Push:
+                - Constant: 13
+                - Integer: 0
+            - DefineLocal
+            - Push:
+                - Constant: 13
+            - GetVariable
+            - Push:
+                - Constant: 5
+            - GetVariable
+            - Push:
+                - Constant: 14
+            - GetMember
+            - Less2
+            - Not
+            - If: loc0002
+            - Push:
+                - Constant: 15
+                - Constant: 5
+            - GetVariable
+            - Push:
+                - Constant: 13
+            - GetVariable
+            - GetMember
+            - DefineLocal
+            - Push:
+                - Constant: 15
+            - GetVariable
+            - Push:
+                - Constant: 16
+            - GetMember
+            - Push:
+                - Constant: 4
+            - Add2
+            - Push:
+                - Constant: 15
+            - GetVariable
+            - Push:
+                - Constant: 17
+            - GetMember
+            - Add2
+            - Push:
+                - Constant: 4
+            - Add2
+            - Push:
+                - Constant: 15
+            - GetVariable
+            - Push:
+                - Constant: 18
+            - GetMember
+            - Add2
+            - Trace
+            - Push:
+                - Constant: 13
+                - Constant: 13
+            - GetVariable
+            - Increment
+            - SetVariable
+            - Jump: loc0004
+            - Push:
+                - Constant: 0
+            - Trace
+          label_positions:
+            loc0001: 14
+            loc0000: 18
+            loc0004: 54
+            loc0003: 88
+            loc0002: 93
+    - Pop
+    - DefineFunction:
+        name: onEnterFrame
+        params: []
+        actions:
+          actions:
+            - Push:
+                - Integer: 0
+                - Constant: 19
+            - CallFunction
+            - Pop
+          label_positions: {}
+    - Pop
+    - Push:
+        - Constant: 11
+    - GetVariable
+    - Push:
+        - Constant: 20
+        - Constant: 11
+    - GetVariable
+    - Push:
+        - Constant: 21
+        - Integer: 0
+    - StoreRegister: 0
+    - SetMember
+    - Push:
+        - Register: 0
+    - SetMember
+    - Push:
+        - Constant: 1
+    - DefineLocal2
+    - Push:
+        - Constant: 2
+    - DefineLocal2
+  label_positions: {}

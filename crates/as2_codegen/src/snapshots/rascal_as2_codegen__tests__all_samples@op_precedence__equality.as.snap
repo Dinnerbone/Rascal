@@ -3,126 +3,200 @@ source: crates/as2_codegen/src/tests.rs
 expression: result
 input_file: samples/as2/op_precedence/equality.as
 ---
-ConstantPool "a", "b", "10", "c", "a=", ", b=", ", c=", "----", "a == b = ", "a != b = ", "---", "a === b = ", "a !== b = ", "a == b == c = ", "((a == b) == c) = ", "a !== b !== c = ", "((a !== b) !== c) = ", "a == b > c = ", "(a == (b > c)) = "
-Push constant0, 10
-DefineLocal
-Push constant1, constant2
-DefineLocal
-Push constant3, 5
-DefineLocal
-Push constant4, constant0
-GetVariable
-Add2
-Push constant5
-Add2
-Push constant1
-GetVariable
-Add2
-Push constant6
-Add2
-Push constant3
-GetVariable
-Add2
-Trace
-Push constant7
-Trace
-Push constant8, constant0
-GetVariable
-Push constant1
-GetVariable
-Equals2
-Add2
-Trace
-Push constant9, constant0
-GetVariable
-Push constant1
-GetVariable
-Equals2
-Not
-Add2
-Trace
-Push constant10
-Trace
-Push constant11, constant0
-GetVariable
-Push constant1
-GetVariable
-StrictEquals
-Add2
-Trace
-Push constant12, constant0
-GetVariable
-Push constant1
-GetVariable
-StrictEquals
-Not
-Add2
-Trace
-Push constant10
-Trace
-Push constant13, constant0
-GetVariable
-Push constant1
-GetVariable
-Equals2
-Push constant3
-GetVariable
-Equals2
-Add2
-Trace
-Push constant14, constant0
-GetVariable
-Push constant1
-GetVariable
-Equals2
-Push constant3
-GetVariable
-Equals2
-Add2
-Trace
-Push constant15, constant0
-GetVariable
-Push constant1
-GetVariable
-StrictEquals
-Not
-Push constant3
-GetVariable
-StrictEquals
-Not
-Add2
-Trace
-Push constant16, constant0
-GetVariable
-Push constant1
-GetVariable
-StrictEquals
-Not
-Push constant3
-GetVariable
-StrictEquals
-Not
-Add2
-Trace
-Push constant10
-Trace
-Push constant17, constant0
-GetVariable
-Push constant1
-GetVariable
-Push constant3
-GetVariable
-Greater
-Equals2
-Add2
-Trace
-Push constant18, constant0
-GetVariable
-Push constant1
-GetVariable
-Push constant3
-GetVariable
-Greater
-Equals2
-Add2
-Trace
+initializer:
+  actions:
+    - ConstantPool:
+        - a
+        - b
+        - "10"
+        - c
+        - a=
+        - ", b="
+        - ", c="
+        - "----"
+        - "a == b = "
+        - "a != b = "
+        - "---"
+        - "a === b = "
+        - "a !== b = "
+        - "a == b == c = "
+        - "((a == b) == c) = "
+        - "a !== b !== c = "
+        - "((a !== b) !== c) = "
+        - "a == b > c = "
+        - "(a == (b > c)) = "
+    - Push:
+        - Constant: 0
+        - Integer: 10
+    - DefineLocal
+    - Push:
+        - Constant: 1
+        - Constant: 2
+    - DefineLocal
+    - Push:
+        - Constant: 3
+        - Integer: 5
+    - DefineLocal
+    - Push:
+        - Constant: 4
+        - Constant: 0
+    - GetVariable
+    - Add2
+    - Push:
+        - Constant: 5
+    - Add2
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Add2
+    - Push:
+        - Constant: 6
+    - Add2
+    - Push:
+        - Constant: 3
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 7
+    - Trace
+    - Push:
+        - Constant: 8
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Equals2
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 9
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Equals2
+    - Not
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 10
+    - Trace
+    - Push:
+        - Constant: 11
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - StrictEquals
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 12
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - StrictEquals
+    - Not
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 10
+    - Trace
+    - Push:
+        - Constant: 13
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Equals2
+    - Push:
+        - Constant: 3
+    - GetVariable
+    - Equals2
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 14
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Equals2
+    - Push:
+        - Constant: 3
+    - GetVariable
+    - Equals2
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 15
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - StrictEquals
+    - Not
+    - Push:
+        - Constant: 3
+    - GetVariable
+    - StrictEquals
+    - Not
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 16
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - StrictEquals
+    - Not
+    - Push:
+        - Constant: 3
+    - GetVariable
+    - StrictEquals
+    - Not
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 10
+    - Trace
+    - Push:
+        - Constant: 17
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Push:
+        - Constant: 3
+    - GetVariable
+    - Greater
+    - Equals2
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 18
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Push:
+        - Constant: 3
+    - GetVariable
+    - Greater
+    - Equals2
+    - Add2
+    - Trace
+  label_positions: {}

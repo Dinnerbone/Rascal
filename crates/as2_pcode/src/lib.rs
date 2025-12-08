@@ -5,6 +5,7 @@ pub use crate::pcode::Action;
 pub use crate::pcode::Actions;
 pub use crate::pcode::CatchTarget;
 pub use crate::pcode::PushValue;
+use serde::Serialize;
 
 mod lexer;
 mod parser;
@@ -12,6 +13,11 @@ mod pcode;
 mod swf;
 
 pub use swf::pcode_to_swf;
+
+#[derive(Serialize)]
+pub struct CompiledProgram {
+    pub initializer: Option<Actions>,
+}
 
 pub struct PCode<'a> {
     filename: &'a str,

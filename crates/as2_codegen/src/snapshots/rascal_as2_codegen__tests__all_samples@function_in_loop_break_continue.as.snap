@@ -3,75 +3,135 @@ source: crates/as2_codegen/src/tests.rs
 expression: result
 input_file: samples/as2/function_in_loop_break_continue.as
 ---
-ConstantPool "i", "loop i=", "decide", "v", "continue", "break", "none", "naughty", "action", "  work i=", "end"
-Push constant0, 0
-DefineLocal
-loc0002:Push constant0
-GetVariable
-Push 5
-Less2
-Not
-If loc0000
-Push constant1, constant0
-GetVariable
-Add2
-Trace
-Push constant2
-DefineFunction "", 1, "v" {
-Push constant3
-GetVariable
-Push 1
-Equals2
-Not
-If loc0003
-Push constant4
-Return
-loc0003:Push constant3
-GetVariable
-Push 3
-Equals2
-Not
-If loc0004
-Push constant5
-Return
-loc0004:Push constant6
-Return
-}
-DefineLocal
-Push constant7
-DefineFunction "", 0 {
-}
-DefineLocal
-Push 0, constant7
-CallFunction
-Pop
-Push constant8, constant0
-GetVariable
-Push 1, constant2
-CallFunction
-DefineLocal
-Push constant8
-GetVariable
-Push constant4
-Equals2
-Not
-If loc0005
-Jump loc0001
-loc0005:Push constant8
-GetVariable
-Push constant5
-Equals2
-Not
-If loc0006
-Jump loc0000
-loc0006:Push constant9, constant0
-GetVariable
-Add2
-Trace
-loc0001:Push constant0, constant0
-GetVariable
-Increment
-SetVariable
-Jump loc0002
-loc0000:Push constant10
-Trace
+initializer:
+  actions:
+    - ConstantPool:
+        - i
+        - loop i=
+        - decide
+        - v
+        - continue
+        - break
+        - none
+        - naughty
+        - action
+        - "  work i="
+        - end
+    - Push:
+        - Constant: 0
+        - Integer: 0
+    - DefineLocal
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Integer: 5
+    - Less2
+    - Not
+    - If: loc0000
+    - Push:
+        - Constant: 1
+        - Constant: 0
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 2
+    - DefineFunction:
+        name: ""
+        params:
+          - v
+        actions:
+          actions:
+            - Push:
+                - Constant: 3
+            - GetVariable
+            - Push:
+                - Integer: 1
+            - Equals2
+            - Not
+            - If: loc0003
+            - Push:
+                - Constant: 4
+            - Return
+            - Push:
+                - Constant: 3
+            - GetVariable
+            - Push:
+                - Integer: 3
+            - Equals2
+            - Not
+            - If: loc0004
+            - Push:
+                - Constant: 5
+            - Return
+            - Push:
+                - Constant: 6
+            - Return
+          label_positions:
+            loc0003: 8
+            loc0004: 16
+    - DefineLocal
+    - Push:
+        - Constant: 7
+    - DefineFunction:
+        name: ""
+        params: []
+        actions:
+          actions: []
+          label_positions: {}
+    - DefineLocal
+    - Push:
+        - Integer: 0
+        - Constant: 7
+    - CallFunction
+    - Pop
+    - Push:
+        - Constant: 8
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Integer: 1
+        - Constant: 2
+    - CallFunction
+    - DefineLocal
+    - Push:
+        - Constant: 8
+    - GetVariable
+    - Push:
+        - Constant: 4
+    - Equals2
+    - Not
+    - If: loc0005
+    - Jump: loc0001
+    - Push:
+        - Constant: 8
+    - GetVariable
+    - Push:
+        - Constant: 5
+    - Equals2
+    - Not
+    - If: loc0006
+    - Jump: loc0000
+    - Push:
+        - Constant: 9
+        - Constant: 0
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 0
+        - Constant: 0
+    - GetVariable
+    - Increment
+    - SetVariable
+    - Jump: loc0002
+    - Push:
+        - Constant: 10
+    - Trace
+  label_positions:
+    loc0002: 3
+    loc0005: 34
+    loc0006: 41
+    loc0001: 45
+    loc0000: 50

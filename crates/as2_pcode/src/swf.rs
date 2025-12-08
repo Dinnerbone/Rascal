@@ -1,3 +1,4 @@
+use crate::CompiledProgram;
 use crate::pcode::{Action, Actions, CatchTarget, PushValue};
 use byteorder::{LittleEndian, WriteBytesExt};
 use indexmap::IndexMap;
@@ -9,10 +10,21 @@ use swf::{Fixed8, SwfStr, Tag, Twips};
 
 impl<'a> ActionEncoder<'a> {}
 
-pub fn pcode_to_swf(actions: &Actions) -> swf::error::Result<Vec<u8>> {
-    let mut result = ActionEncoder::new();
-    result.write_actions(actions)?;
-    result.patch_labels();
+pub fn pcode_to_swf(actions: &CompiledProgram) -> swf::error::Result<Vec<u8>> {
+    let initializer = if let Some(initializer) = &actions.initializer {
+        let mut result = ActionEncoder::new();
+        result.write_actions(initializer)?;
+        result.patch_labels();
+        Some(result.output)
+    } else {
+        None
+    };
+
+    let mut tags = vec![Tag::SetBackgroundColor(swf::Color::WHITE)];
+    if let Some(initializer) = &initializer {
+        tags.push(Tag::DoAction(initializer))
+    }
+    tags.push(Tag::ShowFrame);
 
     let mut swf = Vec::new();
     swf::write::write_swf(
@@ -28,11 +40,7 @@ pub fn pcode_to_swf(actions: &Actions) -> swf::error::Result<Vec<u8>> {
             frame_rate: Fixed8::ONE,
             num_frames: 1,
         },
-        &[
-            Tag::SetBackgroundColor(swf::Color::WHITE),
-            Tag::DoAction(&result.output),
-            Tag::ShowFrame,
-        ],
+        &tags,
         &mut swf,
     )?;
     Ok(swf)

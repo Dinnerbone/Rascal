@@ -3,6 +3,11 @@ source: crates/as2_codegen/src/tests.rs
 expression: result
 input_file: samples/as2/trace_hello_world.as
 ---
-ConstantPool "Hello World"
-Push constant0
-Trace
+initializer:
+  actions:
+    - ConstantPool:
+        - Hello World
+    - Push:
+        - Constant: 0
+    - Trace
+  label_positions: {}

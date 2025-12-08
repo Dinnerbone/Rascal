@@ -3,38 +3,75 @@ source: crates/as2_codegen/src/tests.rs
 expression: result
 input_file: samples/as2/try_catch_stack.as
 ---
-ConstantPool "bad", "oh noes!", "foo", "caught: ", "e"
-Push constant0
-DefineFunction "", 0 {
-Push constant1
-Throw
-}
-DefineLocal
-Push constant2
-DefineFunction "", 0 {
-Try "e" {
-Push 1, 1, 0, constant0
-CallFunction
-Add2
-Add2
-Return
-}
-Catch {
-Push constant3, constant4
-GetVariable
-Add2
-Trace
-Push 5
-Return
-}
-}
-DefineLocal
-Push 0, constant2
-CallFunction
-Trace
-Push 0, constant2
-CallFunction
-Push 0, constant2
-CallFunction
-Add2
-Trace
+initializer:
+  actions:
+    - ConstantPool:
+        - bad
+        - oh noes!
+        - foo
+        - "caught: "
+        - e
+    - Push:
+        - Constant: 0
+    - DefineFunction:
+        name: ""
+        params: []
+        actions:
+          actions:
+            - Push:
+                - Constant: 1
+            - Throw
+          label_positions: {}
+    - DefineLocal
+    - Push:
+        - Constant: 2
+    - DefineFunction:
+        name: ""
+        params: []
+        actions:
+          actions:
+            - Try:
+                try_body:
+                  actions:
+                    - Push:
+                        - Integer: 1
+                        - Integer: 1
+                        - Integer: 0
+                        - Constant: 0
+                    - CallFunction
+                    - Add2
+                    - Add2
+                    - Return
+                  label_positions: {}
+                catch_body:
+                  - Variable: e
+                  - actions:
+                      - Push:
+                          - Constant: 3
+                          - Constant: 4
+                      - GetVariable
+                      - Add2
+                      - Trace
+                      - Push:
+                          - Integer: 5
+                      - Return
+                    label_positions: {}
+                finally_body: ~
+          label_positions: {}
+    - DefineLocal
+    - Push:
+        - Integer: 0
+        - Constant: 2
+    - CallFunction
+    - Trace
+    - Push:
+        - Integer: 0
+        - Constant: 2
+    - CallFunction
+    - Push:
+        - Integer: 0
+        - Constant: 2
+    - CallFunction
+    - Add2
+    - Trace
+  label_positions: {}

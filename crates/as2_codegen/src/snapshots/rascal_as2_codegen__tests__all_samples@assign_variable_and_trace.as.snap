@@ -3,9 +3,17 @@ source: crates/as2_codegen/src/tests.rs
 expression: result
 input_file: samples/as2/assign_variable_and_trace.as
 ---
-ConstantPool "message", "Hello World"
-Push constant0, constant1
-DefineLocal
-Push constant0
-GetVariable
-Trace
+initializer:
+  actions:
+    - ConstantPool:
+        - message
+        - Hello World
+    - Push:
+        - Constant: 0
+        - Constant: 1
+    - DefineLocal
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Trace
+  label_positions: {}

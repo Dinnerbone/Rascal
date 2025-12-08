@@ -3,239 +3,487 @@ source: crates/as2_codegen/src/tests.rs
 expression: result
 input_file: samples/as2/special_functions.as
 ---
-ConstantPool "x", "foo", "newname", "this", "getNextHighestDepth", "FSCommand:", "FSCommand:x", "http://ruffle.rs", "window", "/:$version", "url", "target", "_level", "abc", "print:#bframe", "print:", "_root", "printasbitmap:#bframe", "printasbitmap:", "_level:", "message", ""
-Push 123
-Call
-Push constant0
-GetVariable
-AsciiToChar
-Pop
-Push constant0
-GetVariable
-GetVariable
-Pop
-Push constant0
-GetVariable
-Pop
-Push constant1
-GetVariable
-Push constant2, 16384, 0, constant3
-GetVariable
-Push constant4
-CallMethod
-Add2
-CloneSprite
-Push constant5, constant0
-GetVariable
-StringAdd
-Push true
-GetUrl2 false, false, 0
-Push constant6, false
-GetUrl2 false, false, 0
-GetUrl "FSCommand:x", ""
-GetUrl "FSCommand:x", "foo"
-GetTime
-Pop
-GetUrl "http://ruffle.rs", ""
-GetUrl "http://ruffle.rs", "window"
-Push constant7, constant8
-GetUrl2 false, false, 1
-Push constant9
-GetVariable
-Pop
-GotoFrame 122
-Play
-GotoLabel "123"
-Play
-Push constant0
-GetVariable
-GotoFrame2 false, true
-GotoFrame 122
-Play
-GotoLabel "123"
-Play
-Push constant0
-GetVariable
-GotoFrame2 false, true
-Push constant0
-GetVariable
-GotoFrame2 false, true
-GotoFrame 65535
-Play
-GotoFrame 0
-Play
-GotoFrame 1
-Play
-GotoFrame 0
-Play
-GotoFrame 122
-GotoLabel "123"
-Push constant0
-GetVariable
-GotoFrame2 false, false
-GotoFrame 122
-GotoLabel "123"
-Push constant0
-GetVariable
-GotoFrame2 false, false
-Push constant0
-GetVariable
-GotoFrame2 false, false
-Push constant0
-GetVariable
-ToInteger
-Pop
-Push constant0
-GetVariable
-StringLength
-Pop
-Push constant10, constant11
-GetUrl2 false, true, 0
-Push constant10, constant11
-GetUrl2 false, true, 1
-Push constant10, constant12, 12
-StringAdd
-GetUrl2 false, false, 0
-Push constant10, constant12, 12
-StringAdd
-GetUrl2 false, false, 1
-Push constant10, constant12, constant0
-GetVariable
-StringAdd
-GetUrl2 false, false, 1
-Push constant10, constant11
-GetUrl2 true, true, 0
-Push constant10, constant0
-GetVariable
-GetUrl2 true, true, 0
-Push constant10, constant11
-GetUrl2 true, true, 1
-Push constant10, constant12, 12
-StringAdd
-GetUrl2 true, false, 0
-Push constant10, constant12, 12
-StringAdd
-GetUrl2 true, false, 1
-Push constant10, constant12, constant0
-GetVariable
-StringAdd
-GetUrl2 true, false, 1
-Push constant0
-GetVariable
-MBAsciiToChar
-Pop
-Push constant0
-GetVariable
-MBStringLength
-Pop
-Push constant0
-GetVariable
-MBCharToAscii
-Pop
-Push constant13, constant13, -1
-MBStringExtract
-Pop
-Push constant13, constant13, 2
-MBStringExtract
-Pop
-NextFrame
-GotoFrame 0
-Push constant0
-GetVariable
-ToNumber
-Pop
-Push constant0
-GetVariable
-CharToAscii
-Pop
-Play
-PrevFrame
-GotoFrame 0
-GetUrl "print:#bmax", "foo"
-Push constant14, constant3
-GetVariable
-GetUrl2 false, false, 0
-Push constant15, constant16
-GetVariable
-GetUrl2 false, false, 0
-GetUrl "printasbitmap:#bmax", "foo"
-Push constant17, constant3
-GetVariable
-GetUrl2 false, false, 0
-Push constant18, constant16
-GetVariable
-GetUrl2 false, false, 0
-GetUrl "printasbitmap:#bmax", "_level:123"
-Push constant17, constant19, constant0
-GetVariable
-StringAdd
-GetUrl2 false, false, 0
-Push constant18, constant19, constant0
-GetVariable
-StringAdd
-GetUrl2 false, false, 0
-GetUrl "print:#bmax", "_level:123"
-Push constant14, constant19, constant0
-GetVariable
-StringAdd
-GetUrl2 false, false, 0
-Push constant15, constant19, constant0
-GetVariable
-StringAdd
-GetUrl2 false, false, 0
-Push 123
-RandomNumber
-Pop
-Push constant0
-GetVariable
-RemoveSprite
-Push 0, 0, constant0
-GetVariable
-StartDrag
-Push 0, 1, constant0
-GetVariable
-StartDrag
-Push 0, 0, constant0
-GetVariable
-StartDrag
-Push 1, 2, 3, 4, 1, 1, constant0
-GetVariable
-StartDrag
-Stop
-StopSounds
-EndDrag
-Push constant0
-GetVariable
-ToString
-Pop
-Push constant0
-GetVariable
-Push constant0
-GetVariable
-Push -1
-StringExtract
-Pop
-Push constant0
-GetVariable
-Push constant0
-GetVariable
-Push 2
-StringExtract
-Pop
-Push constant0
-GetVariable
-TargetPath
-Pop
-ToggleQuality
-Push constant20
-Trace
-Push constant21, constant0
-GetVariable
-GetUrl2 false, true, 0
-Push constant21, constant12, constant0
-GetVariable
-StringAdd
-GetUrl2 false, false, 0
-Push constant21, constant12, 123
-StringAdd
-GetUrl2 false, false, 0
+initializer:
+  actions:
+    - ConstantPool:
+        - x
+        - foo
+        - newname
+        - this
+        - getNextHighestDepth
+        - "FSCommand:"
+        - "FSCommand:x"
+        - "http://ruffle.rs"
+        - window
+        - "/:$version"
+        - url
+        - target
+        - _level
+        - abc
+        - "print:#bframe"
+        - "print:"
+        - _root
+        - "printasbitmap:#bframe"
+        - "printasbitmap:"
+        - "_level:"
+        - message
+        - ""
+    - Push:
+        - Integer: 123
+    - Call
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - AsciiToChar
+    - Pop
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - GetVariable
+    - Pop
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Pop
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Push:
+        - Constant: 2
+        - Integer: 16384
+        - Integer: 0
+        - Constant: 3
+    - GetVariable
+    - Push:
+        - Constant: 4
+    - CallMethod
+    - Add2
+    - CloneSprite
+    - Push:
+        - Constant: 5
+        - Constant: 0
+    - GetVariable
+    - StringAdd
+    - Push:
+        - "True"
+    - GetUrl2:
+        load_variables: false
+        load_target: false
+        method: 0
+    - Push:
+        - Constant: 6
+        - "False"
+    - GetUrl2:
+        load_variables: false
+        load_target: false
+        method: 0
+    - GetUrl:
+        url: "FSCommand:x"
+        target: ""
+    - GetUrl:
+        url: "FSCommand:x"
+        target: foo
+    - GetTime
+    - Pop
+    - GetUrl:
+        url: "http://ruffle.rs"
+        target: ""
+    - GetUrl:
+        url: "http://ruffle.rs"
+        target: window
+    - Push:
+        - Constant: 7
+        - Constant: 8
+    - GetUrl2:
+        load_variables: false
+        load_target: false
+        method: 1
+    - Push:
+        - Constant: 9
+    - GetVariable
+    - Pop
+    - GotoFrame: 122
+    - Play
+    - GotoLabel: "123"
+    - Play
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - GotoFrame2:
+        scene_bias: 0
+        play: true
+    - GotoFrame: 122
+    - Play
+    - GotoLabel: "123"
+    - Play
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - GotoFrame2:
+        scene_bias: 0
+        play: true
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - GotoFrame2:
+        scene_bias: 0
+        play: true
+    - GotoFrame: 65535
+    - Play
+    - GotoFrame: 0
+    - Play
+    - GotoFrame: 1
+    - Play
+    - GotoFrame: 0
+    - Play
+    - GotoFrame: 122
+    - GotoLabel: "123"
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - GotoFrame2:
+        scene_bias: 0
+        play: false
+    - GotoFrame: 122
+    - GotoLabel: "123"
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - GotoFrame2:
+        scene_bias: 0
+        play: false
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - GotoFrame2:
+        scene_bias: 0
+        play: false
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - ToInteger
+    - Pop
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - StringLength
+    - Pop
+    - Push:
+        - Constant: 10
+        - Constant: 11
+    - GetUrl2:
+        load_variables: false
+        load_target: true
+        method: 0
+    - Push:
+        - Constant: 10
+        - Constant: 11
+    - GetUrl2:
+        load_variables: false
+        load_target: true
+        method: 1
+    - Push:
+        - Constant: 10
+        - Constant: 12
+        - Integer: 12
+    - StringAdd
+    - GetUrl2:
+        load_variables: false
+        load_target: false
+        method: 0
+    - Push:
+        - Constant: 10
+        - Constant: 12
+        - Integer: 12
+    - StringAdd
+    - GetUrl2:
+        load_variables: false
+        load_target: false
+        method: 1
+    - Push:
+        - Constant: 10
+        - Constant: 12
+        - Constant: 0
+    - GetVariable
+    - StringAdd
+    - GetUrl2:
+        load_variables: false
+        load_target: false
+        method: 1
+    - Push:
+        - Constant: 10
+        - Constant: 11
+    - GetUrl2:
+        load_variables: true
+        load_target: true
+        method: 0
+    - Push:
+        - Constant: 10
+        - Constant: 0
+    - GetVariable
+    - GetUrl2:
+        load_variables: true
+        load_target: true
+        method: 0
+    - Push:
+        - Constant: 10
+        - Constant: 11
+    - GetUrl2:
+        load_variables: true
+        load_target: true
+        method: 1
+    - Push:
+        - Constant: 10
+        - Constant: 12
+        - Integer: 12
+    - StringAdd
+    - GetUrl2:
+        load_variables: true
+        load_target: false
+        method: 0
+    - Push:
+        - Constant: 10
+        - Constant: 12
+        - Integer: 12
+    - StringAdd
+    - GetUrl2:
+        load_variables: true
+        load_target: false
+        method: 1
+    - Push:
+        - Constant: 10
+        - Constant: 12
+        - Constant: 0
+    - GetVariable
+    - StringAdd
+    - GetUrl2:
+        load_variables: true
+        load_target: false
+        method: 1
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - MBAsciiToChar
+    - Pop
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - MBStringLength
+    - Pop
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - MBCharToAscii
+    - Pop
+    - Push:
+        - Constant: 13
+        - Constant: 13
+        - Integer: -1
+    - MBStringExtract
+    - Pop
+    - Push:
+        - Constant: 13
+        - Constant: 13
+        - Integer: 2
+    - MBStringExtract
+    - Pop
+    - NextFrame
+    - GotoFrame: 0
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - ToNumber
+    - Pop
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - CharToAscii
+    - Pop
+    - Play
+    - PrevFrame
+    - GotoFrame: 0
+    - GetUrl:
+        url: "print:#bmax"
+        target: foo
+    - Push:
+        - Constant: 14
+        - Constant: 3
+    - GetVariable
+    - GetUrl2:
+        load_variables: false
+        load_target: false
+        method: 0
+    - Push:
+        - Constant: 15
+        - Constant: 16
+    - GetVariable
+    - GetUrl2:
+        load_variables: false
+        load_target: false
+        method: 0
+    - GetUrl:
+        url: "printasbitmap:#bmax"
+        target: foo
+    - Push:
+        - Constant: 17
+        - Constant: 3
+    - GetVariable
+    - GetUrl2:
+        load_variables: false
+        load_target: false
+        method: 0
+    - Push:
+        - Constant: 18
+        - Constant: 16
+    - GetVariable
+    - GetUrl2:
+        load_variables: false
+        load_target: false
+        method: 0
+    - GetUrl:
+        url: "printasbitmap:#bmax"
+        target: "_level:123"
+    - Push:
+        - Constant: 17
+        - Constant: 19
+        - Constant: 0
+    - GetVariable
+    - StringAdd
+    - GetUrl2:
+        load_variables: false
+        load_target: false
+        method: 0
+    - Push:
+        - Constant: 18
+        - Constant: 19
+        - Constant: 0
+    - GetVariable
+    - StringAdd
+    - GetUrl2:
+        load_variables: false
+        load_target: false
+        method: 0
+    - GetUrl:
+        url: "print:#bmax"
+        target: "_level:123"
+    - Push:
+        - Constant: 14
+        - Constant: 19
+        - Constant: 0
+    - GetVariable
+    - StringAdd
+    - GetUrl2:
+        load_variables: false
+        load_target: false
+        method: 0
+    - Push:
+        - Constant: 15
+        - Constant: 19
+        - Constant: 0
+    - GetVariable
+    - StringAdd
+    - GetUrl2:
+        load_variables: false
+        load_target: false
+        method: 0
+    - Push:
+        - Integer: 123
+    - RandomNumber
+    - Pop
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - RemoveSprite
+    - Push:
+        - Integer: 0
+        - Integer: 0
+        - Constant: 0
+    - GetVariable
+    - StartDrag
+    - Push:
+        - Integer: 0
+        - Integer: 1
+        - Constant: 0
+    - GetVariable
+    - StartDrag
+    - Push:
+        - Integer: 0
+        - Integer: 0
+        - Constant: 0
+    - GetVariable
+    - StartDrag
+    - Push:
+        - Integer: 1
+        - Integer: 2
+        - Integer: 3
+        - Integer: 4
+        - Integer: 1
+        - Integer: 1
+        - Constant: 0
+    - GetVariable
+    - StartDrag
+    - Stop
+    - StopSounds
+    - EndDrag
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - ToString
+    - Pop
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Integer: -1
+    - StringExtract
+    - Pop
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Integer: 2
+    - StringExtract
+    - Pop
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - TargetPath
+    - Pop
+    - ToggleQuality
+    - Push:
+        - Constant: 20
+    - Trace
+    - Push:
+        - Constant: 21
+        - Constant: 0
+    - GetVariable
+    - GetUrl2:
+        load_variables: false
+        load_target: true
+        method: 0
+    - Push:
+        - Constant: 21
+        - Constant: 12
+        - Constant: 0
+    - GetVariable
+    - StringAdd
+    - GetUrl2:
+        load_variables: false
+        load_target: false
+        method: 0
+    - Push:
+        - Constant: 21
+        - Constant: 12
+        - Integer: 123
+    - StringAdd
+    - GetUrl2:
+        load_variables: false
+        load_target: false
+        method: 0
+  label_positions: {}

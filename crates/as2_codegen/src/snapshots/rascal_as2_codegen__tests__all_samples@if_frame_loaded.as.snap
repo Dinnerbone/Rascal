@@ -3,21 +3,42 @@ source: crates/as2_codegen/src/tests.rs
 expression: result
 input_file: samples/as2/if_frame_loaded.as
 ---
-ConstantPool "single line", "block", "frame", "this", "nested conditions!", "end!"
-WaitForFrame 1, 2
-Push constant0
-Trace
-Push constant2
-GetVariable
-WaitForFrame2 2
-Push constant1
-Trace
-WaitForFrame 2, 6
-Push constant3
-GetVariable
-Not
-If loc0000
-Push constant4
-Trace
-loc0000:Push constant5
-Trace
+initializer:
+  actions:
+    - ConstantPool:
+        - single line
+        - block
+        - frame
+        - this
+        - nested conditions!
+        - end!
+    - WaitForFrame:
+        frame: 1
+        skip_count: 2
+    - Push:
+        - Constant: 0
+    - Trace
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - WaitForFrame2:
+        skip_count: 2
+    - Push:
+        - Constant: 1
+    - Trace
+    - WaitForFrame:
+        frame: 2
+        skip_count: 6
+    - Push:
+        - Constant: 3
+    - GetVariable
+    - Not
+    - If: loc0000
+    - Push:
+        - Constant: 4
+    - Trace
+    - Push:
+        - Constant: 5
+    - Trace
+  label_positions:
+    loc0000: 16

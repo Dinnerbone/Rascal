@@ -3,41 +3,83 @@ source: crates/as2_codegen/src/tests.rs
 expression: result
 input_file: samples/as2/objects.as
 ---
-ConstantPool "o", "a", "b", "Object", "o.a: ", "o.b: ", "new Object(): ", "new Object(1, 2, {}, false): ", "new Object: ", "new o.b(): "
-Push constant0, constant1, 1, constant2, constant3
-GetVariable
-Push 2
-InitObject
-DefineLocal
-Push constant4, constant0
-GetVariable
-Push constant1
-GetMember
-Add2
-Trace
-Push constant5, constant0
-GetVariable
-Push constant2
-GetMember
-Add2
-Trace
-Push constant6, 0, constant3
-NewObject
-Add2
-Trace
-Push constant7, false, 0
-InitObject
-Push 2, 1, 4, constant3
-NewObject
-Add2
-Trace
-Push constant8, 0, constant3
-NewObject
-Add2
-Trace
-Push constant9, 0, constant0
-GetVariable
-Push constant2
-NewMethod
-Add2
-Trace
+initializer:
+  actions:
+    - ConstantPool:
+        - o
+        - a
+        - b
+        - Object
+        - "o.a: "
+        - "o.b: "
+        - "new Object(): "
+        - "new Object(1, 2, {}, false): "
+        - "new Object: "
+        - "new o.b(): "
+    - Push:
+        - Constant: 0
+        - Constant: 1
+        - Integer: 1
+        - Constant: 2
+        - Constant: 3
+    - GetVariable
+    - Push:
+        - Integer: 2
+    - InitObject
+    - DefineLocal
+    - Push:
+        - Constant: 4
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetMember
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 5
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 2
+    - GetMember
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 6
+        - Integer: 0
+        - Constant: 3
+    - NewObject
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 7
+        - "False"
+        - Integer: 0
+    - InitObject
+    - Push:
+        - Integer: 2
+        - Integer: 1
+        - Integer: 4
+        - Constant: 3
+    - NewObject
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 8
+        - Integer: 0
+        - Constant: 3
+    - NewObject
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 9
+        - Integer: 0
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 2
+    - NewMethod
+    - Add2
+    - Trace
+  label_positions: {}

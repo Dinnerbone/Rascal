@@ -3,200 +3,314 @@ source: crates/as2_codegen/src/tests.rs
 expression: result
 input_file: samples/as2/op_precedence/logic.as
 ---
-ConstantPool "a", "b", "c", "a=", ", b=", ", c=", "----", "a && b = ", "b && c = ", "---", "a || b = ", "b || c = ", "a && c && b = ", "((a && c) && b) = ", "a || b || c = ", "((a || b) || c) = ", "a || b && c = ", "(a || (b && c)) = ", "x", "y", "z", "x && y || z = ", "((x && y) || z) = "
-Push constant0, true
-DefineLocal
-Push constant1, false
-DefineLocal
-Push constant2, true
-DefineLocal
-Push constant3, constant0
-GetVariable
-Add2
-Push constant4
-Add2
-Push constant1
-GetVariable
-Add2
-Push constant5
-Add2
-Push constant2
-GetVariable
-Add2
-Trace
-Push constant6
-Trace
-Push constant7, constant0
-GetVariable
-PushDuplicate
-Not
-If loc0000
-Pop
-Push constant1
-GetVariable
-loc0000:Add2
-Trace
-Push constant8, constant1
-GetVariable
-PushDuplicate
-Not
-If loc0001
-Pop
-Push constant2
-GetVariable
-loc0001:Add2
-Trace
-Push constant9
-Trace
-Push constant10, constant0
-GetVariable
-PushDuplicate
-If loc0002
-Pop
-Push constant1
-GetVariable
-loc0002:Add2
-Trace
-Push constant11, constant1
-GetVariable
-PushDuplicate
-If loc0003
-Pop
-Push constant2
-GetVariable
-loc0003:Add2
-Trace
-Push constant9
-Trace
-Push constant12, constant0
-GetVariable
-PushDuplicate
-Not
-If loc0005
-Pop
-Push constant2
-GetVariable
-loc0005:PushDuplicate
-Not
-If loc0004
-Pop
-Push constant1
-GetVariable
-loc0004:Add2
-Trace
-Push constant13, constant0
-GetVariable
-PushDuplicate
-Not
-If loc0007
-Pop
-Push constant2
-GetVariable
-loc0007:PushDuplicate
-Not
-If loc0006
-Pop
-Push constant1
-GetVariable
-loc0006:Add2
-Trace
-Push constant9
-Trace
-Push constant14, constant0
-GetVariable
-PushDuplicate
-If loc0009
-Pop
-Push constant1
-GetVariable
-loc0009:PushDuplicate
-If loc0008
-Pop
-Push constant2
-GetVariable
-loc0008:Add2
-Trace
-Push constant15, constant0
-GetVariable
-PushDuplicate
-If loc000b
-Pop
-Push constant1
-GetVariable
-loc000b:PushDuplicate
-If loc000a
-Pop
-Push constant2
-GetVariable
-loc000a:Add2
-Trace
-Push constant9
-Trace
-Push constant16, constant0
-GetVariable
-PushDuplicate
-If loc000d
-Pop
-Push constant1
-GetVariable
-loc000d:PushDuplicate
-Not
-If loc000c
-Pop
-Push constant2
-GetVariable
-loc000c:Add2
-Trace
-Push constant17, constant0
-GetVariable
-PushDuplicate
-If loc000e
-Pop
-Push constant1
-GetVariable
-PushDuplicate
-Not
-If loc000f
-Pop
-Push constant2
-GetVariable
-loc000f:loc000e:Add2
-Trace
-Push constant9
-Trace
-Push constant18, false
-DefineLocal
-Push constant19, true
-DefineLocal
-Push constant20, false
-DefineLocal
-Push constant21, constant18
-GetVariable
-PushDuplicate
-Not
-If loc0011
-Pop
-Push constant19
-GetVariable
-loc0011:PushDuplicate
-If loc0010
-Pop
-Push constant20
-GetVariable
-loc0010:Add2
-Trace
-Push constant22, constant18
-GetVariable
-PushDuplicate
-Not
-If loc0013
-Pop
-Push constant19
-GetVariable
-loc0013:PushDuplicate
-If loc0012
-Pop
-Push constant20
-GetVariable
-loc0012:Add2
-Trace
+initializer:
+  actions:
+    - ConstantPool:
+        - a
+        - b
+        - c
+        - a=
+        - ", b="
+        - ", c="
+        - "----"
+        - "a && b = "
+        - "b && c = "
+        - "---"
+        - "a || b = "
+        - "b || c = "
+        - "a && c && b = "
+        - "((a && c) && b) = "
+        - "a || b || c = "
+        - "((a || b) || c) = "
+        - "a || b && c = "
+        - "(a || (b && c)) = "
+        - x
+        - y
+        - z
+        - "x && y || z = "
+        - "((x && y) || z) = "
+    - Push:
+        - Constant: 0
+        - "True"
+    - DefineLocal
+    - Push:
+        - Constant: 1
+        - "False"
+    - DefineLocal
+    - Push:
+        - Constant: 2
+        - "True"
+    - DefineLocal
+    - Push:
+        - Constant: 3
+        - Constant: 0
+    - GetVariable
+    - Add2
+    - Push:
+        - Constant: 4
+    - Add2
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Add2
+    - Push:
+        - Constant: 5
+    - Add2
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 6
+    - Trace
+    - Push:
+        - Constant: 7
+        - Constant: 0
+    - GetVariable
+    - PushDuplicate
+    - Not
+    - If: loc0000
+    - Pop
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 8
+        - Constant: 1
+    - GetVariable
+    - PushDuplicate
+    - Not
+    - If: loc0001
+    - Pop
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 9
+    - Trace
+    - Push:
+        - Constant: 10
+        - Constant: 0
+    - GetVariable
+    - PushDuplicate
+    - If: loc0002
+    - Pop
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 11
+        - Constant: 1
+    - GetVariable
+    - PushDuplicate
+    - If: loc0003
+    - Pop
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 9
+    - Trace
+    - Push:
+        - Constant: 12
+        - Constant: 0
+    - GetVariable
+    - PushDuplicate
+    - Not
+    - If: loc0005
+    - Pop
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - PushDuplicate
+    - Not
+    - If: loc0004
+    - Pop
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 13
+        - Constant: 0
+    - GetVariable
+    - PushDuplicate
+    - Not
+    - If: loc0007
+    - Pop
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - PushDuplicate
+    - Not
+    - If: loc0006
+    - Pop
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 9
+    - Trace
+    - Push:
+        - Constant: 14
+        - Constant: 0
+    - GetVariable
+    - PushDuplicate
+    - If: loc0009
+    - Pop
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - PushDuplicate
+    - If: loc0008
+    - Pop
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 15
+        - Constant: 0
+    - GetVariable
+    - PushDuplicate
+    - If: loc000b
+    - Pop
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - PushDuplicate
+    - If: loc000a
+    - Pop
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 9
+    - Trace
+    - Push:
+        - Constant: 16
+        - Constant: 0
+    - GetVariable
+    - PushDuplicate
+    - If: loc000d
+    - Pop
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - PushDuplicate
+    - Not
+    - If: loc000c
+    - Pop
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 17
+        - Constant: 0
+    - GetVariable
+    - PushDuplicate
+    - If: loc000e
+    - Pop
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - PushDuplicate
+    - Not
+    - If: loc000f
+    - Pop
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 9
+    - Trace
+    - Push:
+        - Constant: 18
+        - "False"
+    - DefineLocal
+    - Push:
+        - Constant: 19
+        - "True"
+    - DefineLocal
+    - Push:
+        - Constant: 20
+        - "False"
+    - DefineLocal
+    - Push:
+        - Constant: 21
+        - Constant: 18
+    - GetVariable
+    - PushDuplicate
+    - Not
+    - If: loc0011
+    - Pop
+    - Push:
+        - Constant: 19
+    - GetVariable
+    - PushDuplicate
+    - If: loc0010
+    - Pop
+    - Push:
+        - Constant: 20
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 22
+        - Constant: 18
+    - GetVariable
+    - PushDuplicate
+    - Not
+    - If: loc0013
+    - Pop
+    - Push:
+        - Constant: 19
+    - GetVariable
+    - PushDuplicate
+    - If: loc0012
+    - Pop
+    - Push:
+        - Constant: 20
+    - GetVariable
+    - Add2
+    - Trace
+  label_positions:
+    loc0000: 31
+    loc0001: 41
+    loc0002: 52
+    loc0003: 61
+    loc0005: 73
+    loc0004: 79
+    loc0007: 89
+    loc0006: 95
+    loc0009: 106
+    loc0008: 111
+    loc000b: 120
+    loc000a: 125
+    loc000d: 136
+    loc000c: 142
+    loc000f: 157
+    loc000e: 157
+    loc0011: 175
+    loc0010: 180
+    loc0013: 190
+    loc0012: 195

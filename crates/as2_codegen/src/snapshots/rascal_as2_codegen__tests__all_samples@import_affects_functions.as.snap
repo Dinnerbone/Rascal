@@ -3,26 +3,50 @@ source: crates/as2_codegen/src/tests.rs
 expression: result
 input_file: samples/as2/import_affects_functions.as
 ---
-ConstantPool "BitmapData", "flash", "display", "beforeImport", "afterImport"
-DefineFunction "beforeImport", 0 {
-Push constant0
-GetVariable
-Trace
-}
-Pop
-DefineFunction "afterImport", 0 {
-Push constant1
-GetVariable
-Push constant2
-GetMember
-Push constant0
-GetMember
-Trace
-}
-Pop
-Push 0, constant3
-CallFunction
-Pop
-Push 0, constant4
-CallFunction
-Pop
+initializer:
+  actions:
+    - ConstantPool:
+        - BitmapData
+        - flash
+        - display
+        - beforeImport
+        - afterImport
+    - DefineFunction:
+        name: beforeImport
+        params: []
+        actions:
+          actions:
+            - Push:
+                - Constant: 0
+            - GetVariable
+            - Trace
+          label_positions: {}
+    - Pop
+    - DefineFunction:
+        name: afterImport
+        params: []
+        actions:
+          actions:
+            - Push:
+                - Constant: 1
+            - GetVariable
+            - Push:
+                - Constant: 2
+            - GetMember
+            - Push:
+                - Constant: 0
+            - GetMember
+            - Trace
+          label_positions: {}
+    - Pop
+    - Push:
+        - Integer: 0
+        - Constant: 3
+    - CallFunction
+    - Pop
+    - Push:
+        - Integer: 0
+        - Constant: 4
+    - CallFunction
+    - Pop
+  label_positions: {}

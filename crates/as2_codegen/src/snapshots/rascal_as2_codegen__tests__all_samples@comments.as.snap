@@ -3,33 +3,85 @@ source: crates/as2_codegen/src/tests.rs
 expression: result
 input_file: samples/as2/comments.as
 ---
-ConstantPool "a", "1", "b", "2", "c", "3", "d", "4", "test", "e", "5", "f", "// not a comment", "g", "/* not a comment */", "h", ""/* still not a comment */"", "i", "6", "j", "7", "k", "8"
-Push constant0, constant1
-DefineLocal
-Push constant2, constant3
-DefineLocal
-Push constant4, constant5
-DefineLocal
-Push constant6, constant7
-DefineLocal
-Push constant2
-GetVariable
-Push constant0
-GetVariable
-Push 2, constant8
-CallFunction
-Pop
-Push constant9, constant10
-DefineLocal
-Push constant11, constant12
-DefineLocal
-Push constant13, constant14
-DefineLocal
-Push constant15, constant16
-DefineLocal
-Push constant17, constant18
-DefineLocal
-Push constant19, constant20
-DefineLocal
-Push constant21, constant22
-DefineLocal
+initializer:
+  actions:
+    - ConstantPool:
+        - a
+        - "1"
+        - b
+        - "2"
+        - c
+        - "3"
+        - d
+        - "4"
+        - test
+        - e
+        - "5"
+        - f
+        - // not a comment
+        - g
+        - /* not a comment */
+        - h
+        - "\"/* still not a comment */\""
+        - i
+        - "6"
+        - j
+        - "7"
+        - k
+        - "8"
+    - Push:
+        - Constant: 0
+        - Constant: 1
+    - DefineLocal
+    - Push:
+        - Constant: 2
+        - Constant: 3
+    - DefineLocal
+    - Push:
+        - Constant: 4
+        - Constant: 5
+    - DefineLocal
+    - Push:
+        - Constant: 6
+        - Constant: 7
+    - DefineLocal
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Integer: 2
+        - Constant: 8
+    - CallFunction
+    - Pop
+    - Push:
+        - Constant: 9
+        - Constant: 10
+    - DefineLocal
+    - Push:
+        - Constant: 11
+        - Constant: 12
+    - DefineLocal
+    - Push:
+        - Constant: 13
+        - Constant: 14
+    - DefineLocal
+    - Push:
+        - Constant: 15
+        - Constant: 16
+    - DefineLocal
+    - Push:
+        - Constant: 17
+        - Constant: 18
+    - DefineLocal
+    - Push:
+        - Constant: 19
+        - Constant: 20
+    - DefineLocal
+    - Push:
+        - Constant: 21
+        - Constant: 22
+    - DefineLocal
+  label_positions: {}

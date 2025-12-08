@@ -3,79 +3,157 @@ source: crates/as2_codegen/src/tests.rs
 expression: result
 input_file: samples/as2/regressions/ruffle_avm1_edittext_drag_select.as
 ---
-ConstantPool "listener", "Object", "onMouseDown", "Mouse down: ", "_root", "_xmouse", ",", "_ymouse", "onMouseUp", "Mouse up: ", "<selection>", "text", "replaceSel", "Text: ", "\n", "
-", "", "split", "join", "Key", "addListener", "Mouse"
-Push constant0, 0, constant1
-NewObject
-DefineLocal
-Push constant0
-GetVariable
-Push constant2
-DefineFunction "", 0 {
-Push constant3, constant4
-GetVariable
-Push constant5
-GetMember
-Add2
-Push constant6
-Add2
-Push constant4
-GetVariable
-Push constant7
-GetMember
-Add2
-Trace
-}
-SetMember
-Push constant0
-GetVariable
-Push constant8
-DefineFunction "", 0 {
-Push constant9, constant4
-GetVariable
-Push constant5
-GetMember
-Add2
-Push constant6
-Add2
-Push constant4
-GetVariable
-Push constant7
-GetMember
-Add2
-Trace
-Push constant10, 1, constant11
-GetVariable
-Push constant12
-CallMethod
-Pop
-Push constant13, constant14, 1, constant15, 1, constant14, 1, constant16, 1, constant11
-GetVariable
-Push constant11
-GetMember
-Push constant17
-CallMethod
-Push constant18
-CallMethod
-Push constant17
-CallMethod
-Push constant18
-CallMethod
-Add2
-Trace
-}
-SetMember
-Push constant0
-GetVariable
-Push 1, constant19
-GetVariable
-Push constant20
-CallMethod
-Pop
-Push constant0
-GetVariable
-Push 1, constant21
-GetVariable
-Push constant20
-CallMethod
-Pop
+initializer:
+  actions:
+    - ConstantPool:
+        - listener
+        - Object
+        - onMouseDown
+        - "Mouse down: "
+        - _root
+        - _xmouse
+        - ","
+        - _ymouse
+        - onMouseUp
+        - "Mouse up: "
+        - "<selection>"
+        - text
+        - replaceSel
+        - "Text: "
+        - "\\n"
+        - "\n"
+        - "\r"
+        - split
+        - join
+        - Key
+        - addListener
+        - Mouse
+    - Push:
+        - Constant: 0
+        - Integer: 0
+        - Constant: 1
+    - NewObject
+    - DefineLocal
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 2
+    - DefineFunction:
+        name: ""
+        params: []
+        actions:
+          actions:
+            - Push:
+                - Constant: 3
+                - Constant: 4
+            - GetVariable
+            - Push:
+                - Constant: 5
+            - GetMember
+            - Add2
+            - Push:
+                - Constant: 6
+            - Add2
+            - Push:
+                - Constant: 4
+            - GetVariable
+            - Push:
+                - Constant: 7
+            - GetMember
+            - Add2
+            - Trace
+          label_positions: {}
+    - SetMember
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 8
+    - DefineFunction:
+        name: ""
+        params: []
+        actions:
+          actions:
+            - Push:
+                - Constant: 9
+                - Constant: 4
+            - GetVariable
+            - Push:
+                - Constant: 5
+            - GetMember
+            - Add2
+            - Push:
+                - Constant: 6
+            - Add2
+            - Push:
+                - Constant: 4
+            - GetVariable
+            - Push:
+                - Constant: 7
+            - GetMember
+            - Add2
+            - Trace
+            - Push:
+                - Constant: 10
+                - Integer: 1
+                - Constant: 11
+            - GetVariable
+            - Push:
+                - Constant: 12
+            - CallMethod
+            - Pop
+            - Push:
+                - Constant: 13
+                - Constant: 14
+                - Integer: 1
+                - Constant: 15
+                - Integer: 1
+                - Constant: 14
+                - Integer: 1
+                - Constant: 16
+                - Integer: 1
+                - Constant: 11
+            - GetVariable
+            - Push:
+                - Constant: 11
+            - GetMember
+            - Push:
+                - Constant: 17
+            - CallMethod
+            - Push:
+                - Constant: 18
+            - CallMethod
+            - Push:
+                - Constant: 17
+            - CallMethod
+            - Push:
+                - Constant: 18
+            - CallMethod
+            - Add2
+            - Trace
+          label_positions: {}
+    - SetMember
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Integer: 1
+        - Constant: 19
+    - GetVariable
+    - Push:
+        - Constant: 20
+    - CallMethod
+    - Pop
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Integer: 1
+        - Constant: 21
+    - GetVariable
+    - Push:
+        - Constant: 20
+    - CallMethod
+    - Pop
+  label_positions: {}

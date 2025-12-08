@@ -3,385 +3,654 @@ source: crates/as2_codegen/src/tests.rs
 expression: result
 input_file: samples/as2/operators.as
 ---
-ConstantPool "a", "b", "a + b = ", "a - b = ", "a * b = ", "a / b = ", "a % b = ", "++a = ", "--a = ", "a++ = ", "a-- = ", "hello", "Hello", "world", "World", "hello + " " + world = ", " ", "x", "x = ", "x += 2 => ", "x -= 2 => ", "x *= 3 => ", "x /= 5 => ", "x %= 2 => ", "five", "three", "five & three = ", "five | three = ", "five ^ three = ", "~five = ", "five << 1 = ", "five >> 1 = ", "five >>> 1 = ", "five &= three => ", "five |= three => ", "five ^= three => ", "five <<= 1 => ", "five >>= 1 => ", "five >>>= 1 => ", "six", "seven", "sevenStr", "7", "six == seven: ", "six != seven: ", "six < seven: ", "six <= seven: ", "six > seven: ", "six >= seven: ", "sevenStr == seven: ", "sevenStr === seven: ", "sevenStr !== seven: ", "t", "f", "t && f: ", "t || f: ", "!t: ", "max", "(a > b) ? a : b = ", "obj", "key", "value", "obj instanceof Object: ", "Object"
-Push constant0, 10
-DefineLocal
-Push constant1, 3
-DefineLocal
-Push constant2, constant0
-GetVariable
-Push constant1
-GetVariable
-Add2
-Add2
-Trace
-Push constant3, constant0
-GetVariable
-Push constant1
-GetVariable
-Subtract
-Add2
-Trace
-Push constant4, constant0
-GetVariable
-Push constant1
-GetVariable
-Multiply
-Add2
-Trace
-Push constant5, constant0
-GetVariable
-Push constant1
-GetVariable
-Divide
-Add2
-Trace
-Push constant6, constant0
-GetVariable
-Push constant1
-GetVariable
-Modulo
-Add2
-Trace
-Push constant7, constant0, constant0
-GetVariable
-Increment
-StoreRegister 0
-SetVariable
-Push register0
-Add2
-Trace
-Push constant8, constant0, constant0
-GetVariable
-Decrement
-StoreRegister 0
-SetVariable
-Push register0
-Add2
-Trace
-Push constant9, constant0
-GetVariable
-Push constant0, constant0
-GetVariable
-Increment
-SetVariable
-Add2
-Trace
-Push constant10, constant0
-GetVariable
-Push constant0, constant0
-GetVariable
-Decrement
-SetVariable
-Add2
-Trace
-Push constant11, constant12
-DefineLocal
-Push constant13, constant14
-DefineLocal
-Push constant15, constant11
-GetVariable
-Push constant16
-Add2
-Push constant13
-GetVariable
-Add2
-Add2
-Trace
-Push constant17, 5
-DefineLocal
-Push constant18, constant17
-GetVariable
-Add2
-Trace
-Push constant19, constant17, constant17
-GetVariable
-Push 2
-Add2
-StoreRegister 0
-SetVariable
-Push register0
-Add2
-Trace
-Push constant20, constant17, constant17
-GetVariable
-Push 2
-Subtract
-StoreRegister 0
-SetVariable
-Push register0
-Add2
-Trace
-Push constant21, constant17, constant17
-GetVariable
-Push 3
-Multiply
-StoreRegister 0
-SetVariable
-Push register0
-Add2
-Trace
-Push constant22, constant17, constant17
-GetVariable
-Push 5
-Divide
-StoreRegister 0
-SetVariable
-Push register0
-Add2
-Trace
-Push constant23, constant17, constant17
-GetVariable
-Push 2
-Modulo
-StoreRegister 0
-SetVariable
-Push register0
-Add2
-Trace
-Push constant24, 5
-DefineLocal
-Push constant25, 3
-DefineLocal
-Push constant26, constant24
-GetVariable
-Push constant25
-GetVariable
-BitAnd
-Add2
-Trace
-Push constant27, constant24
-GetVariable
-Push constant25
-GetVariable
-BitOr
-Add2
-Trace
-Push constant28, constant24
-GetVariable
-Push constant25
-GetVariable
-BitXor
-Add2
-Trace
-Push constant29, constant24
-GetVariable
-Push -1
-BitXor
-Add2
-Trace
-Push constant30, constant24
-GetVariable
-Push 1
-BitLShift
-Add2
-Trace
-Push constant31, constant24
-GetVariable
-Push 1
-BitRShift
-Add2
-Trace
-Push constant32, constant24
-GetVariable
-Push 1
-BitURShift
-Add2
-Trace
-Push constant24, 5
-SetVariable
-Push constant24, constant24
-GetVariable
-Push constant25
-GetVariable
-BitAnd
-SetVariable
-Push constant33, constant24
-GetVariable
-Add2
-Trace
-Push constant24, 5
-SetVariable
-Push constant24, constant24
-GetVariable
-Push constant25
-GetVariable
-BitOr
-SetVariable
-Push constant34, constant24
-GetVariable
-Add2
-Trace
-Push constant24, 5
-SetVariable
-Push constant24, constant24
-GetVariable
-Push constant25
-GetVariable
-BitXor
-SetVariable
-Push constant35, constant24
-GetVariable
-Add2
-Trace
-Push constant24, 5
-SetVariable
-Push constant24, constant24
-GetVariable
-Push 1
-BitLShift
-SetVariable
-Push constant36, constant24
-GetVariable
-Add2
-Trace
-Push constant24, 5
-SetVariable
-Push constant24, constant24
-GetVariable
-Push 1
-BitRShift
-SetVariable
-Push constant37, constant24
-GetVariable
-Add2
-Trace
-Push constant24, 5
-SetVariable
-Push constant24, constant24
-GetVariable
-Push 1
-BitURShift
-SetVariable
-Push constant38, constant24
-GetVariable
-Add2
-Trace
-Push constant39, 6
-DefineLocal
-Push constant40, 7
-DefineLocal
-Push constant41, constant42
-DefineLocal
-Push constant43, constant39
-GetVariable
-Push constant40
-GetVariable
-Equals2
-Add2
-Trace
-Push constant44, constant39
-GetVariable
-Push constant40
-GetVariable
-Equals2
-Not
-Add2
-Trace
-Push constant45, constant39
-GetVariable
-Push constant40
-GetVariable
-Less2
-Add2
-Trace
-Push constant46, constant39
-GetVariable
-Push constant40
-GetVariable
-Greater
-Not
-Add2
-Trace
-Push constant47, constant39
-GetVariable
-Push constant40
-GetVariable
-Greater
-Add2
-Trace
-Push constant48, constant39
-GetVariable
-Push constant40
-GetVariable
-Less2
-Not
-Add2
-Trace
-Push constant49, constant41
-GetVariable
-Push constant40
-GetVariable
-Equals2
-Add2
-Trace
-Push constant50, constant41
-GetVariable
-Push constant40
-GetVariable
-StrictEquals
-Add2
-Trace
-Push constant51, constant41
-GetVariable
-Push constant40
-GetVariable
-StrictEquals
-Not
-Add2
-Trace
-Push constant52, true
-DefineLocal
-Push constant53, false
-DefineLocal
-Push constant54, constant52
-GetVariable
-PushDuplicate
-Not
-If loc0000
-Pop
-Push constant53
-GetVariable
-loc0000:Add2
-Trace
-Push constant55, constant52
-GetVariable
-PushDuplicate
-If loc0001
-Pop
-Push constant53
-GetVariable
-loc0001:Add2
-Trace
-Push constant56, constant52
-GetVariable
-Not
-Add2
-Trace
-Push constant57, constant0
-GetVariable
-Push constant1
-GetVariable
-Greater
-Not
-If loc0003
-Push constant0
-GetVariable
-Jump loc0002
-loc0003:Push constant1
-GetVariable
-loc0002:DefineLocal
-Push constant58, constant57
-GetVariable
-Add2
-Trace
-Push constant59, constant60, constant61, 1
-InitObject
-DefineLocal
-Push constant62, constant59
-GetVariable
-Push constant63
-GetVariable
-InstanceOf
-Add2
-Trace
+initializer:
+  actions:
+    - ConstantPool:
+        - a
+        - b
+        - "a + b = "
+        - "a - b = "
+        - "a * b = "
+        - "a / b = "
+        - "a % b = "
+        - "++a = "
+        - "--a = "
+        - "a++ = "
+        - "a-- = "
+        - hello
+        - Hello
+        - world
+        - World
+        - "hello + \" \" + world = "
+        - " "
+        - x
+        - "x = "
+        - "x += 2 => "
+        - "x -= 2 => "
+        - "x *= 3 => "
+        - "x /= 5 => "
+        - "x %= 2 => "
+        - five
+        - three
+        - "five & three = "
+        - "five | three = "
+        - "five ^ three = "
+        - "~five = "
+        - "five << 1 = "
+        - "five >> 1 = "
+        - "five >>> 1 = "
+        - "five &= three => "
+        - "five |= three => "
+        - "five ^= three => "
+        - "five <<= 1 => "
+        - "five >>= 1 => "
+        - "five >>>= 1 => "
+        - six
+        - seven
+        - sevenStr
+        - "7"
+        - "six == seven: "
+        - "six != seven: "
+        - "six < seven: "
+        - "six <= seven: "
+        - "six > seven: "
+        - "six >= seven: "
+        - "sevenStr == seven: "
+        - "sevenStr === seven: "
+        - "sevenStr !== seven: "
+        - t
+        - f
+        - "t && f: "
+        - "t || f: "
+        - "!t: "
+        - max
+        - "(a > b) ? a : b = "
+        - obj
+        - key
+        - value
+        - "obj instanceof Object: "
+        - Object
+    - Push:
+        - Constant: 0
+        - Integer: 10
+    - DefineLocal
+    - Push:
+        - Constant: 1
+        - Integer: 3
+    - DefineLocal
+    - Push:
+        - Constant: 2
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Add2
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 3
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Subtract
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 4
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Multiply
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 5
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Divide
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 6
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Modulo
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 7
+        - Constant: 0
+        - Constant: 0
+    - GetVariable
+    - Increment
+    - StoreRegister: 0
+    - SetVariable
+    - Push:
+        - Register: 0
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 8
+        - Constant: 0
+        - Constant: 0
+    - GetVariable
+    - Decrement
+    - StoreRegister: 0
+    - SetVariable
+    - Push:
+        - Register: 0
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 9
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 0
+        - Constant: 0
+    - GetVariable
+    - Increment
+    - SetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 10
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 0
+        - Constant: 0
+    - GetVariable
+    - Decrement
+    - SetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 11
+        - Constant: 12
+    - DefineLocal
+    - Push:
+        - Constant: 13
+        - Constant: 14
+    - DefineLocal
+    - Push:
+        - Constant: 15
+        - Constant: 11
+    - GetVariable
+    - Push:
+        - Constant: 16
+    - Add2
+    - Push:
+        - Constant: 13
+    - GetVariable
+    - Add2
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 17
+        - Integer: 5
+    - DefineLocal
+    - Push:
+        - Constant: 18
+        - Constant: 17
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 19
+        - Constant: 17
+        - Constant: 17
+    - GetVariable
+    - Push:
+        - Integer: 2
+    - Add2
+    - StoreRegister: 0
+    - SetVariable
+    - Push:
+        - Register: 0
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 20
+        - Constant: 17
+        - Constant: 17
+    - GetVariable
+    - Push:
+        - Integer: 2
+    - Subtract
+    - StoreRegister: 0
+    - SetVariable
+    - Push:
+        - Register: 0
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 21
+        - Constant: 17
+        - Constant: 17
+    - GetVariable
+    - Push:
+        - Integer: 3
+    - Multiply
+    - StoreRegister: 0
+    - SetVariable
+    - Push:
+        - Register: 0
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 22
+        - Constant: 17
+        - Constant: 17
+    - GetVariable
+    - Push:
+        - Integer: 5
+    - Divide
+    - StoreRegister: 0
+    - SetVariable
+    - Push:
+        - Register: 0
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 23
+        - Constant: 17
+        - Constant: 17
+    - GetVariable
+    - Push:
+        - Integer: 2
+    - Modulo
+    - StoreRegister: 0
+    - SetVariable
+    - Push:
+        - Register: 0
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 24
+        - Integer: 5
+    - DefineLocal
+    - Push:
+        - Constant: 25
+        - Integer: 3
+    - DefineLocal
+    - Push:
+        - Constant: 26
+        - Constant: 24
+    - GetVariable
+    - Push:
+        - Constant: 25
+    - GetVariable
+    - BitAnd
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 27
+        - Constant: 24
+    - GetVariable
+    - Push:
+        - Constant: 25
+    - GetVariable
+    - BitOr
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 28
+        - Constant: 24
+    - GetVariable
+    - Push:
+        - Constant: 25
+    - GetVariable
+    - BitXor
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 29
+        - Constant: 24
+    - GetVariable
+    - Push:
+        - Integer: -1
+    - BitXor
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 30
+        - Constant: 24
+    - GetVariable
+    - Push:
+        - Integer: 1
+    - BitLShift
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 31
+        - Constant: 24
+    - GetVariable
+    - Push:
+        - Integer: 1
+    - BitRShift
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 32
+        - Constant: 24
+    - GetVariable
+    - Push:
+        - Integer: 1
+    - BitURShift
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 24
+        - Integer: 5
+    - SetVariable
+    - Push:
+        - Constant: 24
+        - Constant: 24
+    - GetVariable
+    - Push:
+        - Constant: 25
+    - GetVariable
+    - BitAnd
+    - SetVariable
+    - Push:
+        - Constant: 33
+        - Constant: 24
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 24
+        - Integer: 5
+    - SetVariable
+    - Push:
+        - Constant: 24
+        - Constant: 24
+    - GetVariable
+    - Push:
+        - Constant: 25
+    - GetVariable
+    - BitOr
+    - SetVariable
+    - Push:
+        - Constant: 34
+        - Constant: 24
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 24
+        - Integer: 5
+    - SetVariable
+    - Push:
+        - Constant: 24
+        - Constant: 24
+    - GetVariable
+    - Push:
+        - Constant: 25
+    - GetVariable
+    - BitXor
+    - SetVariable
+    - Push:
+        - Constant: 35
+        - Constant: 24
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 24
+        - Integer: 5
+    - SetVariable
+    - Push:
+        - Constant: 24
+        - Constant: 24
+    - GetVariable
+    - Push:
+        - Integer: 1
+    - BitLShift
+    - SetVariable
+    - Push:
+        - Constant: 36
+        - Constant: 24
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 24
+        - Integer: 5
+    - SetVariable
+    - Push:
+        - Constant: 24
+        - Constant: 24
+    - GetVariable
+    - Push:
+        - Integer: 1
+    - BitRShift
+    - SetVariable
+    - Push:
+        - Constant: 37
+        - Constant: 24
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 24
+        - Integer: 5
+    - SetVariable
+    - Push:
+        - Constant: 24
+        - Constant: 24
+    - GetVariable
+    - Push:
+        - Integer: 1
+    - BitURShift
+    - SetVariable
+    - Push:
+        - Constant: 38
+        - Constant: 24
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 39
+        - Integer: 6
+    - DefineLocal
+    - Push:
+        - Constant: 40
+        - Integer: 7
+    - DefineLocal
+    - Push:
+        - Constant: 41
+        - Constant: 42
+    - DefineLocal
+    - Push:
+        - Constant: 43
+        - Constant: 39
+    - GetVariable
+    - Push:
+        - Constant: 40
+    - GetVariable
+    - Equals2
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 44
+        - Constant: 39
+    - GetVariable
+    - Push:
+        - Constant: 40
+    - GetVariable
+    - Equals2
+    - Not
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 45
+        - Constant: 39
+    - GetVariable
+    - Push:
+        - Constant: 40
+    - GetVariable
+    - Less2
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 46
+        - Constant: 39
+    - GetVariable
+    - Push:
+        - Constant: 40
+    - GetVariable
+    - Greater
+    - Not
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 47
+        - Constant: 39
+    - GetVariable
+    - Push:
+        - Constant: 40
+    - GetVariable
+    - Greater
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 48
+        - Constant: 39
+    - GetVariable
+    - Push:
+        - Constant: 40
+    - GetVariable
+    - Less2
+    - Not
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 49
+        - Constant: 41
+    - GetVariable
+    - Push:
+        - Constant: 40
+    - GetVariable
+    - Equals2
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 50
+        - Constant: 41
+    - GetVariable
+    - Push:
+        - Constant: 40
+    - GetVariable
+    - StrictEquals
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 51
+        - Constant: 41
+    - GetVariable
+    - Push:
+        - Constant: 40
+    - GetVariable
+    - StrictEquals
+    - Not
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 52
+        - "True"
+    - DefineLocal
+    - Push:
+        - Constant: 53
+        - "False"
+    - DefineLocal
+    - Push:
+        - Constant: 54
+        - Constant: 52
+    - GetVariable
+    - PushDuplicate
+    - Not
+    - If: loc0000
+    - Pop
+    - Push:
+        - Constant: 53
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 55
+        - Constant: 52
+    - GetVariable
+    - PushDuplicate
+    - If: loc0001
+    - Pop
+    - Push:
+        - Constant: 53
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 56
+        - Constant: 52
+    - GetVariable
+    - Not
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 57
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Greater
+    - Not
+    - If: loc0003
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Jump: loc0002
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - DefineLocal
+    - Push:
+        - Constant: 58
+        - Constant: 57
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 59
+        - Constant: 60
+        - Constant: 61
+        - Integer: 1
+    - InitObject
+    - DefineLocal
+    - Push:
+        - Constant: 62
+        - Constant: 59
+    - GetVariable
+    - Push:
+        - Constant: 63
+    - GetVariable
+    - InstanceOf
+    - Add2
+    - Trace
+  label_positions:
+    loc0000: 339
+    loc0001: 348
+    loc0003: 365
+    loc0002: 367

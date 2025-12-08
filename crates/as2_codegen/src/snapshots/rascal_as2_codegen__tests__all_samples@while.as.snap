@@ -3,62 +3,98 @@ source: crates/as2_codegen/src/tests.rs
 expression: result
 input_file: samples/as2/while.as
 ---
-ConstantPool "x", "--", "end"
-Push constant0, 0
-DefineLocal
-loc0000:Push constant0
-GetVariable
-Push 5
-Less2
-Not
-If loc0001
-Push constant0
-GetVariable
-Trace
-Push constant0, constant0
-GetVariable
-Push 1
-Add2
-SetVariable
-Jump loc0000
-loc0001:loc0002:Push constant0
-GetVariable
-Push 0
-Less2
-Not
-Not
-If loc0003
-Push constant0, constant0
-GetVariable
-Decrement
-SetVariable
-Jump loc0002
-loc0003:Push constant1
-Trace
-loc0004:Push true
-Not
-If loc0005
-Push constant0
-GetVariable
-Push constant0, constant0
-GetVariable
-Increment
-SetVariable
-Push 2
-Equals2
-Not
-If loc0006
-Jump loc0004
-loc0006:Push constant0
-GetVariable
-Push 5
-Equals2
-Not
-If loc0007
-Jump loc0005
-loc0007:Push constant0
-GetVariable
-Trace
-Jump loc0004
-loc0005:Push constant2
-Trace
+initializer:
+  actions:
+    - ConstantPool:
+        - x
+        - "--"
+        - end
+    - Push:
+        - Constant: 0
+        - Integer: 0
+    - DefineLocal
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Integer: 5
+    - Less2
+    - Not
+    - If: loc0001
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Trace
+    - Push:
+        - Constant: 0
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Integer: 1
+    - Add2
+    - SetVariable
+    - Jump: loc0000
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Integer: 0
+    - Less2
+    - Not
+    - Not
+    - If: loc0003
+    - Push:
+        - Constant: 0
+        - Constant: 0
+    - GetVariable
+    - Decrement
+    - SetVariable
+    - Jump: loc0002
+    - Push:
+        - Constant: 1
+    - Trace
+    - Push:
+        - "True"
+    - Not
+    - If: loc0005
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 0
+        - Constant: 0
+    - GetVariable
+    - Increment
+    - SetVariable
+    - Push:
+        - Integer: 2
+    - Equals2
+    - Not
+    - If: loc0006
+    - Jump: loc0004
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Integer: 5
+    - Equals2
+    - Not
+    - If: loc0007
+    - Jump: loc0005
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Trace
+    - Jump: loc0004
+    - Push:
+        - Constant: 2
+    - Trace
+  label_positions:
+    loc0000: 3
+    loc0001: 18
+    loc0002: 18
+    loc0003: 30
+    loc0004: 32
+    loc0006: 46
+    loc0007: 53
+    loc0005: 57

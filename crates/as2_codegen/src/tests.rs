@@ -10,8 +10,8 @@ fn test_all_samples() {
         ));
         builder.add_script(&filename);
         let parsed = builder.build().unwrap();
-        let result = hir_to_pcode(&parsed.initial_script).to_string();
-        insta::assert_snapshot!(result);
+        let result = hir_to_pcode(&parsed);
+        insta::assert_yaml_snapshot!(result);
     });
     insta::glob!("../../../samples/as2_classes", "*.as", |path| {
         let filename = path.file_name().unwrap().to_string_lossy();
@@ -20,7 +20,7 @@ fn test_all_samples() {
         ));
         builder.add_class(&filename);
         let parsed = builder.build().unwrap();
-        let result = hir_to_pcode(&parsed.initial_script).to_string();
-        insta::assert_snapshot!(result);
+        let result = hir_to_pcode(&parsed);
+        insta::assert_yaml_snapshot!(result);
     });
 }

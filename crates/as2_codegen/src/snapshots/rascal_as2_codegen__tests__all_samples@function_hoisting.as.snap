@@ -3,98 +3,183 @@ source: crates/as2_codegen/src/tests.rs
 expression: result
 input_file: samples/as2/function_hoisting.as
 ---
-ConstantPool "function within a function!", "first function!", "functionWithinAFunction", "firstVar = ", "firstVar", ", secondVar = ", "secondVar", "second function!", "second function! (but redefined!)", "third function!", "Unused function!", "firstFunction", "secondFunction", "thirdFunction"
-DefineFunction "firstFunction", 0 {
-DefineFunction "functionWithinAFunction", 0 {
-Push constant0
-Trace
-}
-Pop
-Push constant1
-Trace
-Push 0, constant2
-CallFunction
-Pop
-Push constant3, constant4
-GetVariable
-Add2
-Push constant5
-Add2
-Push constant6
-GetVariable
-Add2
-Trace
-}
-Pop
-DefineFunction "secondFunction", 0 {
-Push constant7
-Trace
-Push constant3, constant4
-GetVariable
-Add2
-Push constant5
-Add2
-Push constant6
-GetVariable
-Add2
-Trace
-}
-Pop
-DefineFunction "secondFunction", 0 {
-Push constant8
-Trace
-Push constant3, constant4
-GetVariable
-Add2
-Push constant5
-Add2
-Push constant6
-GetVariable
-Add2
-Trace
-}
-Pop
-DefineFunction "thirdFunction", 0 {
-Push constant9
-Trace
-}
-Pop
-DefineFunction "unusedFunction", 0 {
-Push constant10
-Trace
-}
-Pop
-Push constant4, 1
-DefineLocal
-Push 0, constant11
-CallFunction
-Pop
-Push 0, constant12
-CallFunction
-Pop
-Push constant6, 2
-DefineLocal
-Push 0, constant11
-CallFunction
-Pop
-Push 0, constant12
-CallFunction
-Pop
-Push 0, constant11
-CallFunction
-Pop
-Push 0, constant12
-CallFunction
-Pop
-Push 0, constant11
-CallFunction
-Pop
-Push 0, constant12
-CallFunction
-Pop
-Push 0, constant2
-CallFunction
-Pop
-Push 0, constant13
-CallFunction
-Pop
+initializer:
+  actions:
+    - ConstantPool:
+        - function within a function!
+        - first function!
+        - functionWithinAFunction
+        - "firstVar = "
+        - firstVar
+        - ", secondVar = "
+        - secondVar
+        - second function!
+        - second function! (but redefined!)
+        - third function!
+        - Unused function!
+        - firstFunction
+        - secondFunction
+        - thirdFunction
+    - DefineFunction:
+        name: firstFunction
+        params: []
+        actions:
+          actions:
+            - DefineFunction:
+                name: functionWithinAFunction
+                params: []
+                actions:
+                  actions:
+                    - Push:
+                        - Constant: 0
+                    - Trace
+                  label_positions: {}
+            - Pop
+            - Push:
+                - Constant: 1
+            - Trace
+            - Push:
+                - Integer: 0
+                - Constant: 2
+            - CallFunction
+            - Pop
+            - Push:
+                - Constant: 3
+                - Constant: 4
+            - GetVariable
+            - Add2
+            - Push:
+                - Constant: 5
+            - Add2
+            - Push:
+                - Constant: 6
+            - GetVariable
+            - Add2
+            - Trace
+          label_positions: {}
+    - Pop
+    - DefineFunction:
+        name: secondFunction
+        params: []
+        actions:
+          actions:
+            - Push:
+                - Constant: 7
+            - Trace
+            - Push:
+                - Constant: 3
+                - Constant: 4
+            - GetVariable
+            - Add2
+            - Push:
+                - Constant: 5
+            - Add2
+            - Push:
+                - Constant: 6
+            - GetVariable
+            - Add2
+            - Trace
+          label_positions: {}
+    - Pop
+    - DefineFunction:
+        name: secondFunction
+        params: []
+        actions:
+          actions:
+            - Push:
+                - Constant: 8
+            - Trace
+            - Push:
+                - Constant: 3
+                - Constant: 4
+            - GetVariable
+            - Add2
+            - Push:
+                - Constant: 5
+            - Add2
+            - Push:
+                - Constant: 6
+            - GetVariable
+            - Add2
+            - Trace
+          label_positions: {}
+    - Pop
+    - DefineFunction:
+        name: thirdFunction
+        params: []
+        actions:
+          actions:
+            - Push:
+                - Constant: 9
+            - Trace
+          label_positions: {}
+    - Pop
+    - DefineFunction:
+        name: unusedFunction
+        params: []
+        actions:
+          actions:
+            - Push:
+                - Constant: 10
+            - Trace
+          label_positions: {}
+    - Pop
+    - Push:
+        - Constant: 4
+        - Integer: 1
+    - DefineLocal
+    - Push:
+        - Integer: 0
+        - Constant: 11
+    - CallFunction
+    - Pop
+    - Push:
+        - Integer: 0
+        - Constant: 12
+    - CallFunction
+    - Pop
+    - Push:
+        - Constant: 6
+        - Integer: 2
+    - DefineLocal
+    - Push:
+        - Integer: 0
+        - Constant: 11
+    - CallFunction
+    - Pop
+    - Push:
+        - Integer: 0
+        - Constant: 12
+    - CallFunction
+    - Pop
+    - Push:
+        - Integer: 0
+        - Constant: 11
+    - CallFunction
+    - Pop
+    - Push:
+        - Integer: 0
+        - Constant: 12
+    - CallFunction
+    - Pop
+    - Push:
+        - Integer: 0
+        - Constant: 11
+    - CallFunction
+    - Pop
+    - Push:
+        - Integer: 0
+        - Constant: 12
+    - CallFunction
+    - Pop
+    - Push:
+        - Integer: 0
+        - Constant: 2
+    - CallFunction
+    - Pop
+    - Push:
+        - Integer: 0
+        - Constant: 13
+    - CallFunction
+    - Pop
+  label_positions: {}

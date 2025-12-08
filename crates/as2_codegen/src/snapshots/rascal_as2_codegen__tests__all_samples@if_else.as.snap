@@ -3,142 +3,242 @@ source: crates/as2_codegen/src/tests.rs
 expression: result
 input_file: samples/as2/if_else.as
 ---
-ConstantPool "condition", "x", "y", "doSomething", "positive", "negative", "zero", "undefined", "single", "both positive", "x positive, y negative", "x positive, y zero", "otherCondition", "doSomethingElse", "doFinal", "statement1", "statement2", "ambiguous else"
-Push constant0, true
-DefineLocal
-Push constant1, 1
-DefineLocal
-Push constant2, -1
-DefineLocal
-Push constant0
-GetVariable
-Not
-If loc0000
-Push 0, constant3
-CallFunction
-Pop
-loc0000:Push constant1
-GetVariable
-Push 0
-Greater
-Not
-If loc0002
-Push constant4
-Trace
-Jump loc0001
-loc0002:Push constant5
-Trace
-loc0001:Push constant1
-GetVariable
-Push 0
-Less2
-Not
-If loc0004
-Push constant5
-Trace
-Jump loc0003
-loc0004:Push constant1
-GetVariable
-Push 0
-Greater
-Not
-If loc0006
-Push constant4
-Trace
-Jump loc0005
-loc0006:Push constant1
-GetVariable
-Push 0
-Equals2
-Not
-If loc0008
-Push constant6
-Trace
-Jump loc0007
-loc0008:Push constant7
-Trace
-loc0007:loc0005:loc0003:Push constant0
-GetVariable
-Not
-If loc0009
-loc0009:Push constant0
-GetVariable
-Not
-If loc000b
-Jump loc000a
-loc000b:loc000a:Push constant0
-GetVariable
-Not
-If loc000d
-Push constant8
-Trace
-Jump loc000c
-loc000d:loc000c:Push constant1
-GetVariable
-Push 0
-Greater
-Not
-If loc000e
-Push constant2
-GetVariable
-Push 0
-Greater
-Not
-If loc0010
-Push constant9
-Trace
-Jump loc000f
-loc0010:Push constant2
-GetVariable
-Push 0
-Less2
-Not
-If loc0012
-Push constant10
-Trace
-Jump loc0011
-loc0012:Push constant11
-Trace
-loc0011:loc000f:loc000e:Push constant0
-GetVariable
-Not
-If loc0014
-Push 0, constant3
-CallFunction
-Pop
-Jump loc0013
-loc0014:Push constant12
-GetVariable
-Not
-If loc0016
-Push 0, constant13
-CallFunction
-Pop
-Jump loc0015
-loc0016:Push 0, constant14
-CallFunction
-Pop
-loc0015:loc0013:Push constant0
-GetVariable
-Not
-If loc0017
-Push 0, constant15
-CallFunction
-Pop
-loc0017:Push 0, constant16
-CallFunction
-Pop
-Push constant1
-GetVariable
-Not
-If loc0018
-Push constant2
-GetVariable
-Not
-If loc001a
-Push constant2
-Trace
-Jump loc0019
-loc001a:Push constant17
-Trace
-loc0019:loc0018:
+initializer:
+  actions:
+    - ConstantPool:
+        - condition
+        - x
+        - y
+        - doSomething
+        - positive
+        - negative
+        - zero
+        - undefined
+        - single
+        - both positive
+        - "x positive, y negative"
+        - "x positive, y zero"
+        - otherCondition
+        - doSomethingElse
+        - doFinal
+        - statement1
+        - statement2
+        - ambiguous else
+    - Push:
+        - Constant: 0
+        - "True"
+    - DefineLocal
+    - Push:
+        - Constant: 1
+        - Integer: 1
+    - DefineLocal
+    - Push:
+        - Constant: 2
+        - Integer: -1
+    - DefineLocal
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Not
+    - If: loc0000
+    - Push:
+        - Integer: 0
+        - Constant: 3
+    - CallFunction
+    - Pop
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Push:
+        - Integer: 0
+    - Greater
+    - Not
+    - If: loc0002
+    - Push:
+        - Constant: 4
+    - Trace
+    - Jump: loc0001
+    - Push:
+        - Constant: 5
+    - Trace
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Push:
+        - Integer: 0
+    - Less2
+    - Not
+    - If: loc0004
+    - Push:
+        - Constant: 5
+    - Trace
+    - Jump: loc0003
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Push:
+        - Integer: 0
+    - Greater
+    - Not
+    - If: loc0006
+    - Push:
+        - Constant: 4
+    - Trace
+    - Jump: loc0005
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Push:
+        - Integer: 0
+    - Equals2
+    - Not
+    - If: loc0008
+    - Push:
+        - Constant: 6
+    - Trace
+    - Jump: loc0007
+    - Push:
+        - Constant: 7
+    - Trace
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Not
+    - If: loc0009
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Not
+    - If: loc000b
+    - Jump: loc000a
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Not
+    - If: loc000d
+    - Push:
+        - Constant: 8
+    - Trace
+    - Jump: loc000c
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Push:
+        - Integer: 0
+    - Greater
+    - Not
+    - If: loc000e
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Push:
+        - Integer: 0
+    - Greater
+    - Not
+    - If: loc0010
+    - Push:
+        - Constant: 9
+    - Trace
+    - Jump: loc000f
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Push:
+        - Integer: 0
+    - Less2
+    - Not
+    - If: loc0012
+    - Push:
+        - Constant: 10
+    - Trace
+    - Jump: loc0011
+    - Push:
+        - Constant: 11
+    - Trace
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Not
+    - If: loc0014
+    - Push:
+        - Integer: 0
+        - Constant: 3
+    - CallFunction
+    - Pop
+    - Jump: loc0013
+    - Push:
+        - Constant: 12
+    - GetVariable
+    - Not
+    - If: loc0016
+    - Push:
+        - Integer: 0
+        - Constant: 13
+    - CallFunction
+    - Pop
+    - Jump: loc0015
+    - Push:
+        - Integer: 0
+        - Constant: 14
+    - CallFunction
+    - Pop
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Not
+    - If: loc0017
+    - Push:
+        - Integer: 0
+        - Constant: 15
+    - CallFunction
+    - Pop
+    - Push:
+        - Integer: 0
+        - Constant: 16
+    - CallFunction
+    - Pop
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Not
+    - If: loc0018
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Not
+    - If: loc001a
+    - Push:
+        - Constant: 2
+    - Trace
+    - Jump: loc0019
+    - Push:
+        - Constant: 17
+    - Trace
+  label_positions:
+    loc0000: 14
+    loc0002: 23
+    loc0001: 25
+    loc0004: 34
+    loc0006: 43
+    loc0008: 52
+    loc0007: 54
+    loc0005: 54
+    loc0003: 54
+    loc0009: 58
+    loc000b: 63
+    loc000a: 63
+    loc000d: 70
+    loc000c: 70
+    loc0010: 85
+    loc0012: 94
+    loc0011: 96
+    loc000f: 96
+    loc000e: 96
+    loc0014: 104
+    loc0016: 112
+    loc0015: 115
+    loc0013: 115
+    loc0017: 122
+    loc001a: 136
+    loc0019: 138
+    loc0018: 138
