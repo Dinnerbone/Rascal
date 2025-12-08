@@ -4,6 +4,7 @@ use crate::ast::{
 };
 use crate::lexer::operator::Operator;
 use crate::lexer::tokens::{Keyword, TokenKind};
+use crate::parser::class::class;
 use crate::parser::expression::{expr_list, expression, type_name};
 use crate::parser::{Tokens, identifier, skip_newlines};
 use rascal_common::span::{Span, Spanned};
@@ -84,6 +85,10 @@ pub(crate) fn statement<'i>(i: &mut Tokens<'i>) -> ModalResult<Statement<'i>> {
         }
         TokenKind::Keyword(Keyword::Interface) => {
             let result = interface.parse_next(i)?;
+            Statement::new(Span::encompassing(start, result.span), result.value)
+        }
+        TokenKind::Keyword(Keyword::Class) => {
+            let result = class.parse_next(i)?;
             Statement::new(Span::encompassing(start, result.span), result.value)
         }
         TokenKind::Keyword(Keyword::While) => {

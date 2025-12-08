@@ -132,14 +132,39 @@ fn resolve_class_or_interface(
                         );
                         continue;
                     }
-                    if let Some(extends) = extends {
-                        context.add_dependency(extends.span, extends.value, true);
-                    }
                     result = Some(hir::Document::Interface(resolve_interface(
                         context,
                         name.value.to_owned(),
                         extends.map(|e| Spanned::new(e.span, e.value.to_owned())),
                         body,
+                    )));
+                } else {
+                    context.error(
+                        format!("The class '{0}' needs to be defined in a file whose relative path is '{0}.as'.", name.value), name.span
+                    );
+                }
+            }
+            ast::StatementKind::Class {
+                name,
+                extends,
+                implements,
+            } => {
+                if name.value == expected_name {
+                    if result.is_some() {
+                        context.error(
+                            "Only one class or interface can be defined per ActionScript 2.0 .as file.",
+                            statement.span,
+                        );
+                        continue;
+                    }
+                    result = Some(hir::Document::Class(resolve_class(
+                        context,
+                        name.value.to_owned(),
+                        extends.map(|e| Spanned::new(e.span, e.value.to_owned())),
+                        &implements
+                            .iter()
+                            .map(|i| Spanned::new(i.span, i.value.to_owned()))
+                            .collect::<Vec<_>>(),
                     )));
                 } else {
                     context.error(
@@ -203,6 +228,25 @@ fn resolve_interface(
         name,
         extends: extends.map(|e| e.value),
         functions,
+    }
+}
+
+fn resolve_class(
+    context: &mut ModuleContext,
+    name: String,
+    extends: Option<Spanned<String>>,
+    implements: &[Spanned<String>],
+) -> hir::Class {
+    if let Some(extends) = &extends {
+        context.add_dependency(extends.span, &extends.value, true);
+    }
+    for interface in implements {
+        context.add_dependency(interface.span, &interface.value, true);
+    }
+    hir::Class {
+        name,
+        extends: extends.map(|e| e.value),
+        implements: implements.iter().map(|i| i.value.to_owned()).collect(),
     }
 }
 
@@ -308,7 +352,7 @@ fn resolve_statement(context: &mut ModuleContext, input: &ast::Statement) -> hir
             );
             hir::StatementKind::Block(vec![]) // todo, resolving statements shouldn't be a 1:1, we should be able to do nothing here
         }
-        ast::StatementKind::Interface { .. } => {
+        ast::StatementKind::Interface { .. } | ast::StatementKind::Class { .. } => {
             if context.is_script {
                 context.error(
                     "Classes may only be defined in external ActionScript 2.0 class scripts.",

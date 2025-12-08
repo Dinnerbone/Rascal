@@ -37,6 +37,7 @@ impl SourceProvider for FileSystemSourceProvider {
 pub struct Program {
     pub initial_script: Vec<hir::StatementKind>,
     pub interfaces: Vec<hir::Interface>,
+    pub classes: Vec<hir::Class>,
 }
 
 pub struct ProgramBuilder<P> {
@@ -67,6 +68,7 @@ impl<P: SourceProvider> ProgramBuilder<P> {
     pub fn build(self) -> Result<Program, Error> {
         let mut initial_script = vec![];
         let mut interfaces = vec![];
+        let mut classes = vec![];
         let mut errors = ErrorSet::new();
         let mut loaded_classes = IndexSet::new();
         let mut pending_classes = self.classes;
@@ -139,9 +141,16 @@ impl<P: SourceProvider> ProgramBuilder<P> {
                 &mut pending_classes,
                 &path,
                 false,
-            ) && let Document::Interface(interface) = document
-            {
-                interfaces.push(interface);
+            ) {
+                match document {
+                    Document::Interface(interface) => {
+                        interfaces.push(interface);
+                    }
+                    Document::Class(class) => {
+                        classes.push(class);
+                    }
+                    _ => {}
+                }
             }
         }
 
@@ -150,6 +159,7 @@ impl<P: SourceProvider> ProgramBuilder<P> {
         Ok(Program {
             initial_script,
             interfaces,
+            classes,
         })
     }
 }

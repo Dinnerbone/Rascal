@@ -7,6 +7,7 @@ use winnow::stream::TokenSlice;
 use winnow::token::literal;
 use winnow::{ModalResult, Parser};
 
+mod class;
 pub(crate) mod document;
 mod expression;
 mod operator;

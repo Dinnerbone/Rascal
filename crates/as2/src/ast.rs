@@ -174,6 +174,11 @@ pub enum StatementKind<'a> {
         extends: Option<Spanned<&'a str>>,
         body: Vec<Spanned<FunctionSignature<'a>>>,
     },
+    Class {
+        name: Spanned<&'a str>,
+        extends: Option<Spanned<&'a str>>,
+        implements: Vec<Spanned<&'a str>>,
+    },
 }
 
 #[derive(Debug, Clone, Serialize, PartialEq)]

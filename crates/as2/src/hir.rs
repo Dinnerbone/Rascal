@@ -552,10 +552,18 @@ pub struct Interface {
     pub functions: IndexMap<String, FunctionSignature>,
 }
 
+#[derive(Debug, Clone, Serialize, PartialEq)]
+pub struct Class {
+    pub name: String,
+    pub extends: Option<String>,
+    pub implements: Vec<String>,
+}
+
 #[derive(Debug, Serialize)]
 pub enum Document {
     Script(Vec<StatementKind>),
     Interface(Interface),
+    Class(Class),
     Invalid,
 }
 
@@ -570,6 +578,7 @@ impl Document {
                 }
             }
             Document::Interface(_interface) => {}
+            Document::Class(_class) => {}
             Document::Invalid => {}
         }
 
