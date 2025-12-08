@@ -484,7 +484,7 @@ pub fn gen_expr(
             }
         }
         ExprKind::Void(_) => {}
-        ExprKind::Function(function) => gen_function(context, builder, function),
+        ExprKind::Function(function) => gen_function(context, builder, function, true),
         ExprKind::GetVariable(name) => {
             gen_expr(context, builder, name, false);
             builder.action(Action::GetVariable);
@@ -799,19 +799,24 @@ fn gen_try_catch(context: &mut ScriptContext, builder: &mut CodeBuilder, try_cat
     }
 }
 
-fn gen_function(context: &mut ScriptContext, builder: &mut CodeBuilder, function: &Function) {
+pub(crate) fn gen_function(
+    context: &mut ScriptContext,
+    builder: &mut CodeBuilder,
+    function: &Function,
+    with_name: bool,
+) {
     let mut fun_builder = CodeBuilder::new();
     let old_break = context.set_break_label(None);
     let old_continue = context.set_continue_label(None);
     gen_statements(context, &mut fun_builder, &function.body);
     let actions = fun_builder.into_actions();
+    let name = if with_name {
+        function.signature.name.clone().map(|s| s.value)
+    } else {
+        None
+    };
     builder.action(Action::DefineFunction {
-        name: function
-            .signature
-            .name
-            .clone()
-            .map(|s| s.value)
-            .unwrap_or_default(),
+        name: name.unwrap_or_default(),
         params: function
             .signature
             .args

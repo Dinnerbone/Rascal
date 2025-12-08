@@ -28,9 +28,11 @@ pub fn pcode_to_swf(actions: &CompiledProgram) -> swf::error::Result<Vec<u8>> {
         result.patch_labels();
         modules.push((format!("__Packages.{}", name), result.output));
     }
-    modules.reverse();
 
     let mut tags = vec![Tag::SetBackgroundColor(swf::Color::WHITE)];
+    if let Some(initializer) = &initializer {
+        tags.push(Tag::DoAction(initializer))
+    }
     for (i, (name, module)) in modules.iter().enumerate() {
         let id = (i + 1) as CharacterId;
         tags.push(Tag::DefineSprite(Sprite {
@@ -46,9 +48,6 @@ pub fn pcode_to_swf(actions: &CompiledProgram) -> swf::error::Result<Vec<u8>> {
             id,
             action_data: module,
         })
-    }
-    if let Some(initializer) = &initializer {
-        tags.push(Tag::DoAction(initializer))
     }
     tags.push(Tag::ShowFrame);
 

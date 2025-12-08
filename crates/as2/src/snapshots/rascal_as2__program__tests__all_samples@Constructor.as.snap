@@ -1,0 +1,40 @@
+---
+source: crates/as2/src/program.rs
+expression: parsed
+input_file: samples/as2_classes/Constructor.as
+---
+Ok:
+  initial_script: []
+  interfaces: []
+  classes:
+    - name: Constructor
+      extends: ~
+      implements: []
+      functions:
+        - signature:
+            name:
+              span:
+                start: 33
+                end: 44
+              value: Constructor
+            args:
+              - name: name
+                type_name:
+                  span:
+                    start: 51
+                    end: 57
+                  value: String
+            return_type: ~
+          body:
+            - Expr:
+                span:
+                  start: 69
+                  end: 84
+                value:
+                  Trace:
+                    span:
+                      start: 75
+                      end: 83
+                    value:
+                      Constant:
+                        String: Hello!

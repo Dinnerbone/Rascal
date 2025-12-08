@@ -1,0 +1,140 @@
+---
+source: crates/as2/src/program.rs
+expression: parsed
+input_file: samples/as2_classes/ClassMembersTest.as
+---
+Ok:
+  initial_script: []
+  interfaces:
+    - name: AnEmptyInterface
+      extends: ~
+      functions: {}
+  classes:
+    - name: ClassMembersTest
+      extends: ~
+      implements:
+        - AnEmptyInterface
+      functions:
+        - signature:
+            name:
+              span:
+                start: 66
+                end: 70
+              value: test
+            args: []
+            return_type: ~
+          body:
+            - Expr:
+                span:
+                  start: 83
+                  end: 97
+                value:
+                  Trace:
+                    span:
+                      start: 89
+                      end: 96
+                    value:
+                      Constant:
+                        String: test!
+        - signature:
+            name:
+              span:
+                start: 201
+                end: 206
+              value: greet
+            args:
+              - name: name
+                type_name:
+                  span:
+                    start: 213
+                    end: 219
+                  value: String
+            return_type:
+              span:
+                start: 222
+                end: 226
+              value: Void
+          body:
+            - Expr:
+                span:
+                  start: 237
+                  end: 264
+                value:
+                  Trace:
+                    span:
+                      start: 243
+                      end: 263
+                    value:
+                      BinaryOperator:
+                        - Add
+                        - span:
+                            start: 243
+                            end: 257
+                          value:
+                            BinaryOperator:
+                              - Add
+                              - span:
+                                  start: 243
+                                  end: 250
+                                value:
+                                  Constant:
+                                    String: "Hey, "
+                              - span:
+                                  start: 253
+                                  end: 257
+                                value:
+                                  Constant:
+                                    Identifier: name
+                        - span:
+                            start: 260
+                            end: 263
+                          value:
+                            Constant:
+                              String: "!"
+      constructor:
+        signature:
+          name:
+            span:
+              start: 119
+              end: 135
+            value: ClassMembersTest
+          args:
+            - name: name
+              type_name:
+                span:
+                  start: 142
+                  end: 148
+                value: String
+          return_type: ~
+        body:
+          - Expr:
+              span:
+                start: 164
+                end: 179
+              value:
+                Call:
+                  name:
+                    span:
+                      start: 164
+                      end: 170
+                    value:
+                      Field:
+                        - span:
+                            start: 160
+                            end: 164
+                          value:
+                            Constant:
+                              Identifier: this
+                        - span:
+                            start: 165
+                            end: 170
+                          value:
+                            Constant:
+                              String: greet
+                  args:
+                    - span:
+                        start: 171
+                        end: 178
+                      value:
+                        Constant:
+                          String: world

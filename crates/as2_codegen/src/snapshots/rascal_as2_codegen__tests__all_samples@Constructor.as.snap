@@ -1,0 +1,56 @@
+---
+source: crates/as2_codegen/src/tests.rs
+expression: result
+input_file: samples/as2_classes/Constructor.as
+---
+initializer: ~
+extra_modules:
+  - - Constructor
+    - actions:
+        - ConstantPool: []
+        - Push:
+            - String: _global
+        - GetVariable
+        - Push:
+            - String: Constructor
+        - GetMember
+        - Not
+        - Not
+        - If: loc0000
+        - Push:
+            - String: _global
+        - GetVariable
+        - Push:
+            - String: Constructor
+        - DefineFunction:
+            name: ""
+            params: []
+            actions:
+              actions: []
+              label_positions: {}
+        - StoreRegister: 1
+        - SetMember
+        - Push:
+            - Register: 1
+            - String: prototype
+        - GetMember
+        - StoreRegister: 2
+        - Pop
+        - Push:
+            - Integer: 1
+            - "Null"
+            - String: _global
+        - GetVariable
+        - Push:
+            - String: Constructor
+        - GetMember
+        - Push:
+            - String: prototype
+        - GetMember
+        - Push:
+            - Integer: 3
+            - String: ASSetPropFlags
+        - CallFunction
+        - Pop
+      label_positions:
+        loc0000: 26

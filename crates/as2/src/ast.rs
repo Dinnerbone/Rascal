@@ -178,7 +178,13 @@ pub enum StatementKind<'a> {
         name: Spanned<&'a str>,
         extends: Option<Spanned<&'a str>>,
         implements: Vec<Spanned<&'a str>>,
+        members: Vec<Spanned<ClassMember<'a>>>,
     },
+}
+
+#[derive(Debug, Clone, Serialize, PartialEq)]
+pub enum ClassMember<'a> {
+    Function(Function<'a>),
 }
 
 #[derive(Debug, Clone, Serialize, PartialEq)]

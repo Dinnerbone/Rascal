@@ -557,6 +557,8 @@ pub struct Class {
     pub name: String,
     pub extends: Option<String>,
     pub implements: Vec<String>,
+    pub functions: Vec<Function>,
+    pub constructor: Function,
 }
 
 #[derive(Debug, Serialize)]

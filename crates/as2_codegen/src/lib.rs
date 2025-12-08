@@ -1,6 +1,6 @@
 use crate::builder::CodeBuilder;
 use crate::context::ScriptContext;
-use crate::statement::gen_statements;
+use crate::statement::{gen_function, gen_statements};
 use rascal_as2::hir::{Class, Interface, StatementKind};
 use rascal_as2::program::Program;
 use rascal_as2_pcode::{Action, Actions, CompiledProgram, PushValue};
@@ -21,11 +21,11 @@ pub fn hir_to_pcode(program: &Program) -> CompiledProgram {
         Some(script_to_actions(&program.initial_script))
     };
     let mut extra_modules = vec![];
-    for interface in &program.interfaces {
+    for interface in program.interfaces.iter().rev() {
         let actions = interface_to_actions(interface);
         extra_modules.push((interface.name.to_owned(), actions));
     }
-    for class in &program.classes {
+    for class in program.classes.iter().rev() {
         let actions = class_to_actions(class);
         extra_modules.push((class.name.to_owned(), actions));
     }
@@ -101,19 +101,7 @@ fn class_to_actions(class: &Class) -> Actions {
         builder.push("_global");
         builder.action(Action::GetVariable);
         builder.push(class.name.as_str());
-        let mut constructor = CodeBuilder::new();
-        // TODO this should be done for HIR
-        if class.extends.is_some() {
-            constructor.push(0);
-            constructor.push("super");
-            constructor.action_with_stack_delta(Action::CallFunction, -2);
-            constructor.action(Action::Pop);
-        }
-        builder.action(Action::DefineFunction {
-            name: "".to_string(),
-            params: vec![],
-            actions: constructor.into_actions(),
-        });
+        gen_function(context, builder, &class.constructor, false);
         builder.action(Action::StoreRegister(1));
         builder.action(Action::SetMember);
 
@@ -152,6 +140,14 @@ fn class_to_actions(class: &Class) -> Actions {
             builder.action(Action::GetMember);
             builder
                 .action_with_stack_delta(Action::ImplementsOp, -2 - class.implements.len() as i32);
+        }
+
+        // Functions!
+        for function in &class.functions {
+            builder.push(PushValue::Register(2));
+            builder.push(function.signature.name.clone().unwrap().value); // Guaranteed to exist
+            gen_function(context, builder, function, false);
+            builder.action(Action::SetMember);
         }
 
         // Make the prototype not enumerable

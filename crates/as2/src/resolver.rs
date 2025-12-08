@@ -9,7 +9,7 @@ use crate::program::SourceProvider;
 use crate::resolver::special_functions::resolve_special_call;
 use indexmap::{IndexMap, IndexSet};
 use rascal_common::span::{Span, Spanned};
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 
 struct ModuleContext<'a> {
     imports: HashMap<String, Vec<String>>,
@@ -148,6 +148,7 @@ fn resolve_class_or_interface(
                 name,
                 extends,
                 implements,
+                members,
             } => {
                 if name.value == expected_name {
                     if result.is_some() {
@@ -159,12 +160,13 @@ fn resolve_class_or_interface(
                     }
                     result = Some(hir::Document::Class(resolve_class(
                         context,
-                        name.value.to_owned(),
+                        Spanned::new(name.span, name.value.to_owned()),
                         extends.map(|e| Spanned::new(e.span, e.value.to_owned())),
                         &implements
                             .iter()
                             .map(|i| Spanned::new(i.span, i.value.to_owned()))
                             .collect::<Vec<_>>(),
+                        members,
                     )));
                 } else {
                     context.error(
@@ -233,9 +235,10 @@ fn resolve_interface(
 
 fn resolve_class(
     context: &mut ModuleContext,
-    name: String,
+    class_name: Spanned<String>,
     extends: Option<Spanned<String>>,
     implements: &[Spanned<String>],
+    members: &[Spanned<ast::ClassMember>],
 ) -> hir::Class {
     if let Some(extends) = &extends {
         context.add_dependency(extends.span, &extends.value, true);
@@ -243,10 +246,44 @@ fn resolve_class(
     for interface in implements {
         context.add_dependency(interface.span, &interface.value, true);
     }
+    let mut seen_names = HashSet::new();
+    let mut functions = vec![];
+    let mut constructor = hir::Function {
+        signature: hir::FunctionSignature {
+            name: Some(class_name.clone()),
+            args: vec![],
+            return_type: None,
+        },
+        body: vec![], // TODO super()
+    };
+    for member in members {
+        match &member.value {
+            ast::ClassMember::Function(function) => {
+                let Some(function_name) = function.signature.name else {
+                    context.error("All member functions need to have names.", member.span);
+                    continue;
+                };
+                if !seen_names.insert(function_name.value.to_owned()) {
+                    context.error(
+                        "The same member name may not be repeated more than once.",
+                        function_name.span,
+                    );
+                    continue;
+                }
+                if function_name.value == class_name.value {
+                    constructor = resolve_function(context, function);
+                } else {
+                    functions.push(resolve_function(context, function));
+                }
+            }
+        }
+    }
     hir::Class {
-        name,
+        name: class_name.value,
         extends: extends.map(|e| e.value),
         implements: implements.iter().map(|i| i.value.to_owned()).collect(),
+        functions,
+        constructor,
     }
 }
 
@@ -456,10 +493,16 @@ fn resolve_expr(context: &mut ModuleContext, input: &ast::Expr) -> hir::Expr {
         }
         ast::ExprKind::Constant(value) => hir::ExprKind::Constant(resolve_constant(value)),
         ast::ExprKind::Call { name, args } => resolve_call(context, span, name, args),
-        ast::ExprKind::New { name, args } => hir::ExprKind::New {
-            name: resolve_expr_box(context, name),
-            args: resolve_expr_vec(context, args),
-        },
+        ast::ExprKind::New { name, args } => {
+            if let ast::ExprKind::Constant(ast::ConstantKind::Identifier(identifier)) = &name.value
+            {
+                context.add_dependency(span, identifier, false);
+            }
+            hir::ExprKind::New {
+                name: resolve_expr_box(context, name),
+                args: resolve_expr_vec(context, args),
+            }
+        }
         ast::ExprKind::BinaryOperator(op, left, right) => hir::ExprKind::BinaryOperator(
             *op,
             resolve_expr_box(context, left),

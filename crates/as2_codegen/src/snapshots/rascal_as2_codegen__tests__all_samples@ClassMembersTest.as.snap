@@ -1,0 +1,147 @@
+---
+source: crates/as2_codegen/src/tests.rs
+expression: result
+input_file: samples/as2_classes/ClassMembersTest.as
+---
+initializer: ~
+extra_modules:
+  - - AnEmptyInterface
+    - actions:
+        - ConstantPool: []
+        - Push:
+            - String: _global
+        - GetVariable
+        - Push:
+            - String: AnEmptyInterface
+        - GetMember
+        - Not
+        - Not
+        - If: loc0000
+        - Push:
+            - String: _global
+        - GetVariable
+        - Push:
+            - String: AnEmptyInterface
+        - DefineFunction:
+            name: ""
+            params: []
+            actions:
+              actions: []
+              label_positions: {}
+        - SetMember
+        - Pop
+      label_positions:
+        loc0000: 13
+  - - ClassMembersTest
+    - actions:
+        - ConstantPool:
+            - world
+            - this
+            - greet
+            - test!
+            - "Hey, "
+            - name
+            - "!"
+        - Push:
+            - String: _global
+        - GetVariable
+        - Push:
+            - String: ClassMembersTest
+        - GetMember
+        - Not
+        - Not
+        - If: loc0000
+        - Push:
+            - String: _global
+        - GetVariable
+        - Push:
+            - String: ClassMembersTest
+        - DefineFunction:
+            name: ""
+            params:
+              - name
+            actions:
+              actions:
+                - Push:
+                    - Constant: 0
+                    - Integer: 1
+                    - Constant: 1
+                - GetVariable
+                - Push:
+                    - Constant: 2
+                - CallMethod
+                - Pop
+              label_positions: {}
+        - StoreRegister: 1
+        - SetMember
+        - Push:
+            - Register: 1
+            - String: prototype
+        - GetMember
+        - StoreRegister: 2
+        - Pop
+        - Push:
+            - String: _global
+        - GetVariable
+        - Push:
+            - String: AnEmptyInterface
+        - GetMember
+        - Push:
+            - Integer: 1
+            - String: _global
+        - GetVariable
+        - Push:
+            - String: ClassMembersTest
+        - GetMember
+        - ImplementsOp
+        - Push:
+            - Register: 2
+            - String: test
+        - DefineFunction:
+            name: ""
+            params: []
+            actions:
+              actions:
+                - Push:
+                    - Constant: 3
+                - Trace
+              label_positions: {}
+        - SetMember
+        - Push:
+            - Register: 2
+            - String: greet
+        - DefineFunction:
+            name: ""
+            params:
+              - name
+            actions:
+              actions:
+                - Push:
+                    - Constant: 4
+                    - Constant: 5
+                - GetVariable
+                - Add2
+                - Push:
+                    - Constant: 6
+                - Add2
+                - Trace
+              label_positions: {}
+        - SetMember
+        - Push:
+            - Integer: 1
+            - "Null"
+            - String: _global
+        - GetVariable
+        - Push:
+            - String: ClassMembersTest
+        - GetMember
+        - Push:
+            - String: prototype
+        - GetMember
+        - Push:
+            - Integer: 3
+            - String: ASSetPropFlags
+        - CallFunction
+        - Pop
+      label_positions:
+        loc0000: 41
