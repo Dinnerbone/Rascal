@@ -7,7 +7,7 @@ use crate::lexer::tokens::{Keyword, TokenKind};
 use crate::parser::expression::{expr_list, expression, type_name};
 use crate::parser::{Tokens, identifier, skip_newlines};
 use rascal_common::span::{Span, Spanned};
-use winnow::combinator::{alt, cond, cut_err, opt, peek, separated};
+use winnow::combinator::{alt, cond, cut_err, fail, opt, peek, separated};
 use winnow::error::{ContextError, ErrMode, StrContext, StrContextValue};
 use winnow::stream::Stream;
 use winnow::token::{any, take_while};
@@ -182,6 +182,29 @@ fn interface<'i>(i: &mut Tokens<'i>) -> ModalResult<Statement<'i>> {
     let extends =
         opt((TokenKind::Keyword(Keyword::Extends), identifier).map(|(_, id)| id)).parse_next(i)?;
     TokenKind::OpenBrace.parse_next(i)?;
+
+    skip_newlines.parse_next(i)?;
+    let mut body = vec![];
+    loop {
+        let next = peek(any).parse_next(i)?;
+        match next.kind {
+            TokenKind::CloseBrace => break,
+            TokenKind::Semicolon | TokenKind::Newline => {
+                any.parse_next(i)?;
+            }
+            TokenKind::Keyword(Keyword::Function) => {
+                body.push(function_signature.parse_next(i)?);
+            }
+            _ => {
+                fail.context(StrContext::Expected(StrContextValue::StringLiteral(
+                    "function",
+                )))
+                .parse_next(i)?;
+                unreachable!()
+            }
+        }
+        skip_newlines.parse_next(i)?;
+    }
     let end = TokenKind::CloseBrace.parse_next(i)?.span;
 
     Ok(Statement::new(
@@ -189,7 +212,7 @@ fn interface<'i>(i: &mut Tokens<'i>) -> ModalResult<Statement<'i>> {
         StatementKind::Interface {
             name,
             extends,
-            body: vec![],
+            body,
         },
     ))
 }
@@ -468,6 +491,23 @@ pub(crate) fn try_catch_finally<'i>(i: &mut Tokens<'i>) -> ModalResult<Statement
 }
 
 pub(crate) fn function<'i>(i: &mut Tokens<'i>) -> ModalResult<Spanned<Function<'i>>> {
+    let signature = function_signature.parse_next(i)?;
+    TokenKind::OpenBrace.parse_next(i)?;
+    let body = statement_list(true).parse_next(i)?;
+    let end = TokenKind::CloseBrace.parse_next(i)?.span;
+
+    Ok(Spanned::new(
+        Span::encompassing(signature.span, end),
+        Function {
+            signature: signature.value,
+            body,
+        },
+    ))
+}
+
+pub(crate) fn function_signature<'i>(
+    i: &mut Tokens<'i>,
+) -> ModalResult<Spanned<FunctionSignature<'i>>> {
     let start = TokenKind::Keyword(Keyword::Function).parse_next(i)?.span;
     let name = opt(identifier).parse_next(i)?;
     TokenKind::OpenParen.parse_next(i)?;
@@ -480,23 +520,19 @@ pub(crate) fn function<'i>(i: &mut Tokens<'i>) -> ModalResult<Spanned<Function<'
         TokenKind::Comma,
     )
     .parse_next(i)?;
-    TokenKind::CloseParen
+    let paren_end = TokenKind::CloseParen
         .context(StrContext::Expected(TokenKind::Comma.expected()))
-        .parse_next(i)?;
+        .parse_next(i)?
+        .span;
     let return_type = opt(type_name).parse_next(i)?;
-    TokenKind::OpenBrace.parse_next(i)?;
-    let body = statement_list(true).parse_next(i)?;
-    let end = TokenKind::CloseBrace.parse_next(i)?.span;
+    let end = return_type.map(|t| t.span).unwrap_or(paren_end);
 
     Ok(Spanned::new(
         Span::encompassing(start, end),
-        Function {
-            signature: FunctionSignature {
-                name,
-                args,
-                return_type,
-            },
-            body,
+        FunctionSignature {
+            name,
+            args,
+            return_type,
         },
     ))
 }

@@ -8,7 +8,15 @@ Ok:
   interfaces:
     - name: AnExtendingInterface
       extends: AnEmptyInterface
-      functions: {}
+      functions:
+        test:
+          name:
+            span:
+              start: 71
+              end: 75
+            value: test
+          args: []
+          return_type: ~
     - name: AnEmptyInterface
       extends: ~
       functions: {}
