@@ -11,8 +11,14 @@ Ok:
           end: 63
         value:
           Function:
-            name: test
-            args: []
+            signature:
+              name:
+                span:
+                  start: 9
+                  end: 13
+                value: test
+              args: []
+              return_type: ~
             body:
               - Expr:
                   span:
@@ -33,7 +39,6 @@ Ok:
                     value:
                       Constant:
                         String: ":)"
-            return_type: ~
     - Declare:
         - name: anon
           value:
@@ -42,12 +47,14 @@ Ok:
               end: 172
             value:
               Function:
-                name: ~
-                args:
-                  - name: a
-                    type_name: ~
-                  - name: b
-                    type_name: ~
+                signature:
+                  name: ~
+                  args:
+                    - name: a
+                      type_name: ~
+                    - name: b
+                      type_name: ~
+                  return_type: ~
                 body:
                   - Expr:
                       span:
@@ -109,7 +116,6 @@ Ok:
                                 value:
                                   Constant:
                                     Identifier: b
-                return_type: ~
           type_name: ~
     - Expr:
         span:

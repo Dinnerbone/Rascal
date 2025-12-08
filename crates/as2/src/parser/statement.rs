@@ -1,6 +1,6 @@
 use crate::ast::{
-    Catch, Declaration, ForCondition, Function, FunctionArgument, Statement, StatementKind,
-    SwitchElement, TryCatch,
+    Catch, Declaration, ForCondition, Function, FunctionArgument, FunctionSignature, Statement,
+    StatementKind, SwitchElement, TryCatch,
 };
 use crate::lexer::operator::Operator;
 use crate::lexer::tokens::{Keyword, TokenKind};
@@ -491,10 +491,12 @@ pub(crate) fn function<'i>(i: &mut Tokens<'i>) -> ModalResult<Spanned<Function<'
     Ok(Spanned::new(
         Span::encompassing(start, end),
         Function {
-            name: name.map(|n| n.value),
-            args,
+            signature: FunctionSignature {
+                name,
+                args,
+                return_type,
+            },
             body,
-            return_type,
         },
     ))
 }

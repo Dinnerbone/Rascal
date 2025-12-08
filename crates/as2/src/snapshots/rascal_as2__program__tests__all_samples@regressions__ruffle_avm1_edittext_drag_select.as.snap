@@ -51,8 +51,10 @@ Ok:
                 end: 130
               value:
                 Function:
-                  name: ~
-                  args: []
+                  signature:
+                    name: ~
+                    args: []
+                    return_type: ~
                   body:
                     - Expr:
                         span:
@@ -124,7 +126,6 @@ Ok:
                                         value:
                                           Constant:
                                             String: _ymouse
-                  return_type: ~
     - Expr:
         span:
           start: 140
@@ -154,8 +155,10 @@ Ok:
                 end: 346
               value:
                 Function:
-                  name: ~
-                  args: []
+                  signature:
+                    name: ~
+                    args: []
+                    return_type: ~
                   body:
                     - Expr:
                         span:
@@ -389,7 +392,6 @@ Ok:
                                           value:
                                             Constant:
                                               String: "\\n"
-                  return_type: ~
     - Expr:
         span:
           start: 351

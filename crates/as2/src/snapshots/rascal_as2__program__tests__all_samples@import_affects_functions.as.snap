@@ -11,8 +11,14 @@ Ok:
           end: 47
         value:
           Function:
-            name: beforeImport
-            args: []
+            signature:
+              name:
+                span:
+                  start: 9
+                  end: 21
+                value: beforeImport
+              args: []
+              return_type: ~
             body:
               - Expr:
                   span:
@@ -26,7 +32,6 @@ Ok:
                       value:
                         Constant:
                           Identifier: BitmapData
-            return_type: ~
     - Block: []
     - Expr:
         span:
@@ -34,8 +39,14 @@ Ok:
           end: 127
         value:
           Function:
-            name: afterImport
-            args: []
+            signature:
+              name:
+                span:
+                  start: 90
+                  end: 101
+                value: afterImport
+              args: []
+              return_type: ~
             body:
               - Expr:
                   span:
@@ -71,7 +82,6 @@ Ok:
                             value:
                               Constant:
                                 String: BitmapData
-            return_type: ~
     - Expr:
         span:
           start: 128

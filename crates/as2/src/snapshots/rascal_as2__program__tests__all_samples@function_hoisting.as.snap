@@ -49,8 +49,14 @@ Ok:
           end: 283
         value:
           Function:
-            name: firstFunction
-            args: []
+            signature:
+              name:
+                span:
+                  start: 62
+                  end: 75
+                value: firstFunction
+              args: []
+              return_type: ~
             body:
               - Expr:
                   span:
@@ -132,8 +138,14 @@ Ok:
                     end: 281
                   value:
                     Function:
-                      name: functionWithinAFunction
-                      args: []
+                      signature:
+                        name:
+                          span:
+                            start: 211
+                            end: 234
+                          value: functionWithinAFunction
+                        args: []
+                        return_type: ~
                       body:
                         - Expr:
                             span:
@@ -147,8 +159,6 @@ Ok:
                                 value:
                                   Constant:
                                     String: function within a function!
-                      return_type: ~
-            return_type: ~
     - Declare:
         - name: secondVar
           value:
@@ -193,8 +203,14 @@ Ok:
           end: 460
         value:
           Function:
-            name: secondFunction
-            args: []
+            signature:
+              name:
+                span:
+                  start: 347
+                  end: 361
+                value: secondFunction
+              args: []
+              return_type: ~
             body:
               - Expr:
                   span:
@@ -256,7 +272,6 @@ Ok:
                             value:
                               Constant:
                                 Identifier: secondVar
-            return_type: ~
     - Expr:
         span:
           start: 461
@@ -291,8 +306,14 @@ Ok:
           end: 635
         value:
           Function:
-            name: secondFunction
-            args: []
+            signature:
+              name:
+                span:
+                  start: 505
+                  end: 519
+                value: secondFunction
+              args: []
+              return_type: ~
             body:
               - Expr:
                   span:
@@ -354,7 +375,6 @@ Ok:
                             value:
                               Constant:
                                 Identifier: secondVar
-            return_type: ~
     - Expr:
         span:
           start: 636
@@ -403,8 +423,14 @@ Ok:
           end: 753
         value:
           Function:
-            name: thirdFunction
-            args: []
+            signature:
+              name:
+                span:
+                  start: 707
+                  end: 720
+                value: thirdFunction
+              args: []
+              return_type: ~
             body:
               - Expr:
                   span:
@@ -418,7 +444,6 @@ Ok:
                       value:
                         Constant:
                           String: third function!
-            return_type: ~
     - Expr:
         span:
           start: 754
@@ -439,8 +464,14 @@ Ok:
           end: 828
         value:
           Function:
-            name: unusedFunction
-            args: []
+            signature:
+              name:
+                span:
+                  start: 780
+                  end: 794
+                value: unusedFunction
+              args: []
+              return_type: ~
             body:
               - Expr:
                   span:
@@ -454,5 +485,4 @@ Ok:
                       value:
                         Constant:
                           String: Unused function!
-            return_type: ~
   interfaces: []

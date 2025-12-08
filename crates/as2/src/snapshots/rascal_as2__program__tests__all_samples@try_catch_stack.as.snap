@@ -13,8 +13,10 @@ Ok:
               end: 46
             value:
               Function:
-                name: ~
-                args: []
+                signature:
+                  name: ~
+                  args: []
+                  return_type: ~
                 body:
                   - Throw:
                       - span:
@@ -23,7 +25,6 @@ Ok:
                         value:
                           Constant:
                             String: oh noes!
-                return_type: ~
           type_name: ~
     - Declare:
         - name: foo
@@ -33,8 +34,10 @@ Ok:
               end: 188
             value:
               Function:
-                name: ~
-                args: []
+                signature:
+                  name: ~
+                  args: []
+                  return_type: ~
                 body:
                   - Try:
                       try_body:
@@ -116,7 +119,6 @@ Ok:
                                   Constant:
                                     Integer: 5
                       finally: []
-                return_type: ~
           type_name: ~
     - Expr:
         span:

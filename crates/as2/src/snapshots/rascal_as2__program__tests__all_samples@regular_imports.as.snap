@@ -275,8 +275,14 @@ Ok:
           end: 304
         value:
           Function:
-            name: createPoint
-            args: []
+            signature:
+              name:
+                span:
+                  start: 259
+                  end: 270
+                value: createPoint
+              args: []
+              return_type: ~
             body:
               - Return:
                   - span:
@@ -326,7 +332,6 @@ Ok:
                             value:
                               Constant:
                                 Integer: 5
-            return_type: ~
     - Expr:
         span:
           start: 305

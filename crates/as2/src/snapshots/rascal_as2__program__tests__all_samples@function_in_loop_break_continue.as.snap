@@ -85,10 +85,12 @@ Ok:
                       end: 288
                     value:
                       Function:
-                        name: ~
-                        args:
-                          - name: v
-                            type_name: ~
+                        signature:
+                          name: ~
+                          args:
+                            - name: v
+                              type_name: ~
+                          return_type: ~
                         body:
                           - If:
                               condition:
@@ -157,7 +159,6 @@ Ok:
                                 value:
                                   Constant:
                                     String: none
-                        return_type: ~
                   type_name: ~
             - Declare:
                 - name: naughty
@@ -167,11 +168,12 @@ Ok:
                       end: 414
                     value:
                       Function:
-                        name: ~
-                        args: []
+                        signature:
+                          name: ~
+                          args: []
+                          return_type: ~
                         body:
                           - Break
-                        return_type: ~
                   type_name: ~
             - Expr:
                 span:

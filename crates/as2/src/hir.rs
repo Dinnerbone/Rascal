@@ -1,3 +1,4 @@
+use indexmap::IndexMap;
 use rascal_common::span::Spanned;
 use serde::Serialize;
 
@@ -481,9 +482,14 @@ pub enum ForCondition {
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
 pub struct Function {
-    pub name: Option<String>,
-    pub args: Vec<FunctionArgument>,
+    pub signature: FunctionSignature,
     pub body: Vec<StatementKind>,
+}
+
+#[derive(Debug, Clone, Serialize, PartialEq)]
+pub struct FunctionSignature {
+    pub name: Option<Spanned<String>>,
+    pub args: Vec<FunctionArgument>,
     pub return_type: Option<Spanned<String>>,
 }
 
@@ -543,7 +549,7 @@ impl Catch {
 pub struct Interface {
     pub name: String,
     pub extends: Option<String>,
-    pub body: Vec<StatementKind>,
+    pub functions: IndexMap<String, FunctionSignature>,
 }
 
 #[derive(Debug, Serialize)]
@@ -563,11 +569,7 @@ impl Document {
                     statement.simplify(&mut anything_changed);
                 }
             }
-            Document::Interface(interface) => {
-                for statement in &mut interface.body {
-                    statement.simplify(&mut anything_changed);
-                }
-            }
+            Document::Interface(_interface) => {}
             Document::Invalid => {}
         }
 

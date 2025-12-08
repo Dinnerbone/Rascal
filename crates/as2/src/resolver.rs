@@ -7,7 +7,7 @@ use crate::global_types::GLOBAL_TYPES;
 use crate::hir;
 use crate::program::SourceProvider;
 use crate::resolver::special_functions::resolve_special_call;
-use indexmap::IndexSet;
+use indexmap::{IndexMap, IndexSet};
 use rascal_common::span::{Span, Spanned};
 use std::collections::HashMap;
 
@@ -161,15 +161,48 @@ fn resolve_interface(
     context: &mut ModuleContext,
     name: String,
     extends: Option<Spanned<String>>,
-    body: &[ast::Statement],
+    body: &[Spanned<ast::FunctionSignature>],
 ) -> hir::Interface {
     if let Some(extends) = &extends {
         context.add_dependency(extends.span, &extends.value, true);
     }
+    let mut functions = IndexMap::new();
+    for function in body {
+        let Some(function_name) = function.name else {
+            context.error("All member functions need to have names.", function.span);
+            continue;
+        };
+        if functions
+            .insert(
+                function_name.value.to_owned(),
+                hir::FunctionSignature {
+                    name: Some(Spanned::new(
+                        function_name.span,
+                        function_name.value.to_owned(),
+                    )),
+                    args: function
+                        .args
+                        .iter()
+                        .map(|arg| hir::FunctionArgument {
+                            name: arg.name.to_owned(),
+                            type_name: resolve_opt_type_name(context, &arg.type_name),
+                        })
+                        .collect(),
+                    return_type: resolve_opt_type_name(context, &function.return_type),
+                },
+            )
+            .is_some()
+        {
+            context.error(
+                "The same member name may not be repeated more than once.",
+                function_name.span,
+            );
+        }
+    }
     hir::Interface {
         name,
         extends: extends.map(|e| e.value),
-        body: resolve_statement_vec(context, body),
+        functions,
     }
 }
 
@@ -514,17 +547,23 @@ fn resolve_call(
 
 fn resolve_function(context: &mut ModuleContext, input: &ast::Function) -> hir::Function {
     hir::Function {
-        name: input.name.map(|name| name.to_owned()),
-        args: input
-            .args
-            .iter()
-            .map(|arg| hir::FunctionArgument {
-                name: arg.name.to_owned(),
-                type_name: resolve_opt_type_name(context, &arg.type_name),
-            })
-            .collect(),
+        signature: hir::FunctionSignature {
+            name: input
+                .signature
+                .name
+                .map(|name| Spanned::new(name.span, name.value.to_owned())),
+            args: input
+                .signature
+                .args
+                .iter()
+                .map(|arg| hir::FunctionArgument {
+                    name: arg.name.to_owned(),
+                    type_name: resolve_opt_type_name(context, &arg.type_name),
+                })
+                .collect(),
+            return_type: resolve_opt_type_name(context, &input.signature.return_type),
+        },
         body: resolve_statement_vec(context, &input.body),
-        return_type: resolve_opt_type_name(context, &input.return_type),
     }
 }
 

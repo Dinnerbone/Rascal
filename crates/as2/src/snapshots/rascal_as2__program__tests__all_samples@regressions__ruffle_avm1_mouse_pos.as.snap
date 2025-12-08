@@ -71,8 +71,14 @@ Ok:
           end: 732
         value:
           Function:
-            name: dump
-            args: []
+            signature:
+              name:
+                span:
+                  start: 362
+                  end: 366
+                value: dump
+              args: []
+              return_type: ~
             body:
               - If:
                   condition:
@@ -455,15 +461,20 @@ Ok:
                       value:
                         Constant:
                           String: ""
-            return_type: ~
     - Expr:
         span:
           start: 734
           end: 773
         value:
           Function:
-            name: onEnterFrame
-            args: []
+            signature:
+              name:
+                span:
+                  start: 743
+                  end: 755
+                value: onEnterFrame
+              args: []
+              return_type: ~
             body:
               - Expr:
                   span:
@@ -479,5 +490,4 @@ Ok:
                           Constant:
                             Identifier: dump
                       args: []
-            return_type: ~
   interfaces: []

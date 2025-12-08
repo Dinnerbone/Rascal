@@ -172,7 +172,7 @@ pub enum StatementKind<'a> {
     Interface {
         name: Spanned<&'a str>,
         extends: Option<Spanned<&'a str>>,
-        body: Vec<Statement<'a>>,
+        body: Vec<Spanned<FunctionSignature<'a>>>,
     },
 }
 
@@ -201,9 +201,14 @@ pub enum ForCondition<'a> {
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
 pub struct Function<'a> {
-    pub name: Option<&'a str>,
-    pub args: Vec<FunctionArgument<'a>>,
+    pub signature: FunctionSignature<'a>,
     pub body: Vec<Statement<'a>>,
+}
+
+#[derive(Debug, Clone, Serialize, PartialEq)]
+pub struct FunctionSignature<'a> {
+    pub name: Option<Spanned<&'a str>>,
+    pub args: Vec<FunctionArgument<'a>>,
     pub return_type: Option<Spanned<&'a str>>,
 }
 

@@ -3,7 +3,7 @@ use crate::builder::CodeBuilder;
 use crate::context::ScriptContext;
 use rascal_as2::hir::{
     Affix, BinaryOperator, ConstantKind, Declaration, Expr, ExprKind, ForCondition, Function,
-    GetUrlMethod, StatementKind, SwitchElement, TryCatch, UnaryOperator,
+    FunctionSignature, GetUrlMethod, StatementKind, SwitchElement, TryCatch, UnaryOperator,
 };
 use rascal_as2_pcode::{Action, CatchTarget, PCode, PushValue};
 
@@ -18,7 +18,10 @@ pub(crate) fn gen_statements(
         if matches!(
             statement,
             StatementKind::Expr(Expr {
-                value: ExprKind::Function(Function { name: Some(_), .. }),
+                value: ExprKind::Function(Function {
+                    signature: FunctionSignature { name: Some(_), .. },
+                    ..
+                }),
                 ..
             })
         ) {
@@ -803,8 +806,14 @@ fn gen_function(context: &mut ScriptContext, builder: &mut CodeBuilder, function
     gen_statements(context, &mut fun_builder, &function.body);
     let actions = fun_builder.into_actions();
     builder.action(Action::DefineFunction {
-        name: function.name.clone().unwrap_or_default(),
+        name: function
+            .signature
+            .name
+            .clone()
+            .map(|s| s.value)
+            .unwrap_or_default(),
         params: function
+            .signature
             .args
             .iter()
             .map(|arg| arg.name.to_string())

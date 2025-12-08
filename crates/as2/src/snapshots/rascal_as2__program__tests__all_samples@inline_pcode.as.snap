@@ -11,10 +11,16 @@ Ok:
           end: 207
         value:
           Function:
-            name: traceThroughPcode
-            args:
-              - name: message
-                type_name: ~
+            signature:
+              name:
+                span:
+                  start: 9
+                  end: 26
+                value: traceThroughPcode
+              args:
+                - name: message
+                  type_name: ~
+              return_type: ~
             body:
               - Expr:
                   span:
@@ -41,7 +47,6 @@ Ok:
                       value:
                         Constant:
                           String: "-- end special message --"
-            return_type: ~
     - Expr:
         span:
           start: 209

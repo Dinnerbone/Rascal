@@ -79,20 +79,30 @@ Ok:
           end: 175
         value:
           Function:
-            name: add
-            args:
-              - name: a
-                type_name:
-                  span:
-                    start: 129
-                    end: 135
-                  value: Number
-              - name: b
-                type_name:
-                  span:
-                    start: 139
-                    end: 145
-                  value: Number
+            signature:
+              name:
+                span:
+                  start: 123
+                  end: 126
+                value: add
+              args:
+                - name: a
+                  type_name:
+                    span:
+                      start: 129
+                      end: 135
+                    value: Number
+                - name: b
+                  type_name:
+                    span:
+                      start: 139
+                      end: 145
+                    value: Number
+              return_type:
+                span:
+                  start: 147
+                  end: 153
+                value: Number
             body:
               - Return:
                   - span:
@@ -113,19 +123,24 @@ Ok:
                           value:
                             Constant:
                               Identifier: b
-            return_type:
-              span:
-                start: 147
-                end: 153
-              value: Number
     - Expr:
         span:
           start: 177
           end: 236
         value:
           Function:
-            name: getMessage
-            args: []
+            signature:
+              name:
+                span:
+                  start: 186
+                  end: 196
+                value: getMessage
+              args: []
+              return_type:
+                span:
+                  start: 199
+                  end: 205
+                value: String
             body:
               - Return:
                   - span:
@@ -134,25 +149,30 @@ Ok:
                     value:
                       Constant:
                         String: Test message
-            return_type:
-              span:
-                start: 199
-                end: 205
-              value: String
     - Expr:
         span:
           start: 238
           end: 297
         value:
           Function:
-            name: processData
-            args:
-              - name: data
-                type_name:
-                  span:
-                    start: 264
-                    end: 270
-                  value: Object
+            signature:
+              name:
+                span:
+                  start: 247
+                  end: 258
+                value: processData
+              args:
+                - name: data
+                  type_name:
+                    span:
+                      start: 264
+                      end: 270
+                    value: Object
+              return_type:
+                span:
+                  start: 272
+                  end: 276
+                value: Void
             body:
               - Expr:
                   span:
@@ -166,11 +186,6 @@ Ok:
                       value:
                         Constant:
                           Identifier: data
-            return_type:
-              span:
-                start: 272
-                end: 276
-              value: Void
     - Declare:
         - name: numbers
           value:
@@ -281,26 +296,36 @@ Ok:
           end: 608
         value:
           Function:
-            name: complexFunc
-            args:
-              - name: name
-                type_name:
-                  span:
-                    start: 510
-                    end: 516
-                  value: String
-              - name: age
-                type_name:
-                  span:
-                    start: 522
-                    end: 528
-                  value: Number
-              - name: isValid
-                type_name:
-                  span:
-                    start: 538
-                    end: 545
-                  value: Boolean
+            signature:
+              name:
+                span:
+                  start: 493
+                  end: 504
+                value: complexFunc
+              args:
+                - name: name
+                  type_name:
+                    span:
+                      start: 510
+                      end: 516
+                    value: String
+                - name: age
+                  type_name:
+                    span:
+                      start: 522
+                      end: 528
+                    value: Number
+                - name: isValid
+                  type_name:
+                    span:
+                      start: 538
+                      end: 545
+                    value: Boolean
+              return_type:
+                span:
+                  start: 547
+                  end: 553
+                value: Object
             body:
               - Return:
                   - span:
@@ -329,11 +354,6 @@ Ok:
                             value:
                               Constant:
                                 Identifier: isValid
-            return_type:
-              span:
-                start: 547
-                end: 553
-              value: Object
     - Declare:
         - name: userData
           value:
@@ -427,20 +447,30 @@ Ok:
           end: 849
         value:
           Function:
-            name: forEach
-            args:
-              - name: arr
-                type_name:
-                  span:
-                    start: 733
-                    end: 738
-                  value: Array
-              - name: callback
-                type_name:
-                  span:
-                    start: 749
-                    end: 757
-                  value: Function
+            signature:
+              name:
+                span:
+                  start: 721
+                  end: 728
+                value: forEach
+              args:
+                - name: arr
+                  type_name:
+                    span:
+                      start: 733
+                      end: 738
+                    value: Array
+                - name: callback
+                  type_name:
+                    span:
+                      start: 749
+                      end: 757
+                    value: Function
+              return_type:
+                span:
+                  start: 759
+                  end: 763
+                value: Void
             body:
               - ForIn:
                   condition:
@@ -536,9 +566,4 @@ Ok:
                                         value:
                                           Constant:
                                             Identifier: i
-            return_type:
-              span:
-                start: 759
-                end: 763
-              value: Void
   interfaces: []

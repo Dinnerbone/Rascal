@@ -133,8 +133,10 @@ Ok:
                               end: 155
                             value:
                               Function:
-                                name: ~
-                                args: []
+                                signature:
+                                  name: ~
+                                  args: []
+                                  return_type: ~
                                 body:
                                   - Expr:
                                       span:
@@ -149,7 +151,6 @@ Ok:
                                             Constant:
                                               String: trying to break from fn
                                   - Break
-                                return_type: ~
                           type_name: ~
                     - Expr:
                         span:
