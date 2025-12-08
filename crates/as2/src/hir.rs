@@ -484,6 +484,7 @@ pub struct Function {
     pub name: Option<String>,
     pub args: Vec<FunctionArgument>,
     pub body: Vec<StatementKind>,
+    pub return_type: Option<Spanned<String>>,
 }
 
 #[derive(Debug, Clone, Serialize, PartialEq)]

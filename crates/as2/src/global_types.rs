@@ -63,4 +63,5 @@ pub(crate) const GLOBAL_TYPES: &[&str] = &[
     "XML",
     "XMLNode",
     "XMLSocket",
+    "Void",
 ];

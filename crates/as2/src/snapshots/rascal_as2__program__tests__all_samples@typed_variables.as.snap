@@ -113,6 +113,11 @@ Ok:
                           value:
                             Constant:
                               Identifier: b
+            return_type:
+              span:
+                start: 147
+                end: 153
+              value: Number
     - Expr:
         span:
           start: 177
@@ -129,6 +134,11 @@ Ok:
                     value:
                       Constant:
                         String: Test message
+            return_type:
+              span:
+                start: 199
+                end: 205
+              value: String
     - Expr:
         span:
           start: 238
@@ -156,6 +166,11 @@ Ok:
                       value:
                         Constant:
                           Identifier: data
+            return_type:
+              span:
+                start: 272
+                end: 276
+              value: Void
     - Declare:
         - name: numbers
           value:
@@ -314,6 +329,11 @@ Ok:
                             value:
                               Constant:
                                 Identifier: isValid
+            return_type:
+              span:
+                start: 547
+                end: 553
+              value: Object
     - Declare:
         - name: userData
           value:
@@ -516,4 +536,9 @@ Ok:
                                         value:
                                           Constant:
                                             Identifier: i
+            return_type:
+              span:
+                start: 759
+                end: 763
+              value: Void
   interfaces: []

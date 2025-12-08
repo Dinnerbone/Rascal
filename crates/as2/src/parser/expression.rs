@@ -1651,6 +1651,7 @@ mod tests {
                         args: vec![id("a")],
                     }))
                 )],
+                return_type: None,
             })))
         )
     }

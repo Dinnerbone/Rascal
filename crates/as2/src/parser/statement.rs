@@ -483,7 +483,7 @@ pub(crate) fn function<'i>(i: &mut Tokens<'i>) -> ModalResult<Spanned<Function<'
     TokenKind::CloseParen
         .context(StrContext::Expected(TokenKind::Comma.expected()))
         .parse_next(i)?;
-    opt(type_name).parse_next(i)?;
+    let return_type = opt(type_name).parse_next(i)?;
     TokenKind::OpenBrace.parse_next(i)?;
     let body = statement_list(true).parse_next(i)?;
     let end = TokenKind::CloseBrace.parse_next(i)?.span;
@@ -494,6 +494,7 @@ pub(crate) fn function<'i>(i: &mut Tokens<'i>) -> ModalResult<Spanned<Function<'
             name: name.map(|n| n.value),
             args,
             body,
+            return_type,
         },
     ))
 }

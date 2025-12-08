@@ -204,6 +204,7 @@ pub struct Function<'a> {
     pub name: Option<&'a str>,
     pub args: Vec<FunctionArgument<'a>>,
     pub body: Vec<Statement<'a>>,
+    pub return_type: Option<Spanned<&'a str>>,
 }
 
 #[derive(Debug, Clone, Serialize, PartialEq)]

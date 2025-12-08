@@ -524,6 +524,7 @@ fn resolve_function(context: &mut ModuleContext, input: &ast::Function) -> hir::
             })
             .collect(),
         body: resolve_statement_vec(context, &input.body),
+        return_type: resolve_opt_type_name(context, &input.return_type),
     }
 }
 
