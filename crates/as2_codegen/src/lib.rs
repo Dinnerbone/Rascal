@@ -1,6 +1,6 @@
 use crate::builder::CodeBuilder;
 use crate::context::ScriptContext;
-use crate::statement::{gen_function, gen_statements};
+use crate::statement::{gen_expr, gen_function, gen_statements};
 use rascal_as2::hir::{Class, Interface, StatementKind};
 use rascal_as2::program::Program;
 use rascal_as2_pcode::{Action, Actions, CompiledProgram, PushValue};
@@ -148,6 +148,16 @@ fn class_to_actions(class: &Class) -> Actions {
             builder.push(function.signature.name.clone().unwrap().value); // Guaranteed to exist
             gen_function(context, builder, function, false);
             builder.action(Action::SetMember);
+        }
+
+        // Variables!
+        for variable in &class.variables {
+            if let Some(value) = &variable.value {
+                builder.push(PushValue::Register(2));
+                builder.push(variable.name.as_str());
+                gen_expr(context, builder, value, false);
+                builder.action(Action::SetMember);
+            }
         }
 
         // Make the prototype not enumerable

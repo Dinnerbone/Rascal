@@ -558,6 +558,7 @@ pub struct Class {
     pub extends: Option<String>,
     pub implements: Vec<String>,
     pub functions: Vec<Function>,
+    pub variables: Vec<Declaration>,
     pub constructor: Function,
 }
 

@@ -18,123 +18,144 @@ Ok:
         - signature:
             name:
               span:
-                start: 66
-                end: 70
+                start: 142
+                end: 146
               value: test
             args: []
             return_type: ~
           body:
             - Expr:
                 span:
-                  start: 83
-                  end: 97
+                  start: 159
+                  end: 173
                 value:
                   Trace:
                     span:
-                      start: 89
-                      end: 96
+                      start: 165
+                      end: 172
                     value:
                       Constant:
                         String: test!
         - signature:
             name:
               span:
-                start: 201
-                end: 206
+                start: 277
+                end: 282
               value: greet
             args:
               - name: name
                 type_name:
                   span:
-                    start: 213
-                    end: 219
+                    start: 289
+                    end: 295
                   value: String
             return_type:
               span:
-                start: 222
-                end: 226
+                start: 298
+                end: 302
               value: Void
           body:
             - Expr:
                 span:
-                  start: 237
-                  end: 264
+                  start: 313
+                  end: 340
                 value:
                   Trace:
                     span:
-                      start: 243
-                      end: 263
+                      start: 319
+                      end: 339
                     value:
                       BinaryOperator:
                         - Add
                         - span:
-                            start: 243
-                            end: 257
+                            start: 319
+                            end: 333
                           value:
                             BinaryOperator:
                               - Add
                               - span:
-                                  start: 243
-                                  end: 250
+                                  start: 319
+                                  end: 326
                                 value:
                                   Constant:
                                     String: "Hey, "
                               - span:
-                                  start: 253
-                                  end: 257
+                                  start: 329
+                                  end: 333
                                 value:
                                   Constant:
                                     Identifier: name
                         - span:
-                            start: 260
-                            end: 263
+                            start: 336
+                            end: 339
                           value:
                             Constant:
                               String: "!"
+      variables:
+        - name:
+            span:
+              start: 61
+              end: 88
+            value: regularPropertyWithoutValue
+          value: ~
+          type_name: ~
+        - name:
+            span:
+              start: 98
+              end: 122
+            value: regularPropertySetToFive
+          value:
+            span:
+              start: 125
+              end: 126
+            value:
+              Constant:
+                Integer: 5
+          type_name: ~
       constructor:
         signature:
           name:
             span:
-              start: 119
-              end: 135
+              start: 195
+              end: 211
             value: ClassMembersTest
           args:
             - name: name
               type_name:
                 span:
-                  start: 142
-                  end: 148
+                  start: 218
+                  end: 224
                 value: String
           return_type: ~
         body:
           - Expr:
               span:
-                start: 164
-                end: 179
+                start: 240
+                end: 255
               value:
                 Call:
                   name:
                     span:
-                      start: 164
-                      end: 170
+                      start: 240
+                      end: 246
                     value:
                       Field:
                         - span:
-                            start: 160
-                            end: 164
+                            start: 236
+                            end: 240
                           value:
                             Constant:
                               Identifier: this
                         - span:
-                            start: 165
-                            end: 170
+                            start: 241
+                            end: 246
                           value:
                             Constant:
                               String: greet
                   args:
                     - span:
-                        start: 171
-                        end: 178
+                        start: 247
+                        end: 254
                       value:
                         Constant:
                           String: world

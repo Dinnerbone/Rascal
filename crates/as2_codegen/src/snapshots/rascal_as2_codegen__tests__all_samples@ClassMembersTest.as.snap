@@ -128,6 +128,11 @@ extra_modules:
               label_positions: {}
         - SetMember
         - Push:
+            - Register: 2
+            - String: regularPropertySetToFive
+            - Integer: 5
+        - SetMember
+        - Push:
             - Integer: 1
             - "Null"
             - String: _global
@@ -144,4 +149,4 @@ extra_modules:
         - CallFunction
         - Pop
       label_positions:
-        loc0000: 41
+        loc0000: 43

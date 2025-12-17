@@ -1,6 +1,6 @@
 use crate::ast::{ClassMember, Statement, StatementKind};
 use crate::lexer::tokens::{Keyword, TokenKind};
-use crate::parser::statement::function;
+use crate::parser::statement::{declaration, function};
 use crate::parser::{Tokens, identifier, skip_newlines};
 use rascal_common::span::{Span, Spanned};
 use winnow::combinator::{fail, opt, peek, separated};
@@ -36,6 +36,14 @@ pub(crate) fn class<'i>(i: &mut Tokens<'i>) -> ModalResult<Statement<'i>> {
                         .map(|f| Spanned::new(f.span, ClassMember::Function(f.value)))
                         .parse_next(i)?,
                 );
+            }
+            TokenKind::Keyword(Keyword::Var) => {
+                let start = TokenKind::Keyword(Keyword::Var).parse_next(i)?.span;
+                let declaration = declaration.parse_next(i)?;
+                members.push(Spanned::new(
+                    Span::encompassing(start, declaration.span),
+                    ClassMember::Variable(declaration.value),
+                ));
             }
             _ => {
                 fail.context(StrContext::Expected(

@@ -248,6 +248,7 @@ fn resolve_class(
     }
     let mut seen_names = HashSet::new();
     let mut functions = vec![];
+    let mut variables = vec![];
     let mut constructor = hir::Function {
         signature: hir::FunctionSignature {
             name: Some(class_name.clone()),
@@ -276,6 +277,33 @@ fn resolve_class(
                     functions.push(resolve_function(context, function));
                 }
             }
+            ast::ClassMember::Variable(declaration) => {
+                if !seen_names.insert(declaration.name.value.to_owned()) {
+                    context.error(
+                        "The same member name may not be repeated more than once.",
+                        declaration.name.span,
+                    );
+                    continue;
+                }
+                // If the value is anything other than a constant (not identifier), throw an error
+                if let Some(value) = &declaration.value {
+                    match &value.value {
+                        ast::ExprKind::Constant(
+                            ast::ConstantKind::String(_)
+                            | ast::ConstantKind::Float(_)
+                            | ast::ConstantKind::Integer(_),
+                        ) => {}
+                        _ => {
+                            context.error(
+                                "Variables may only be initialized with constants.",
+                                value.span,
+                            );
+                            continue;
+                        }
+                    };
+                }
+                variables.push(resolve_declaration(context, declaration));
+            }
         }
     }
     hir::Class {
@@ -283,6 +311,7 @@ fn resolve_class(
         extends: extends.map(|e| e.value),
         implements: implements.iter().map(|i| i.value.to_owned()).collect(),
         functions,
+        variables,
         constructor,
     }
 }
@@ -299,15 +328,7 @@ fn resolve_statement(context: &mut ModuleContext, input: &ast::Statement) -> hir
         ast::StatementKind::Declare(declarations) => hir::StatementKind::Declare(
             declarations
                 .iter()
-                .map(|d| hir::Declaration {
-                    name: Spanned::new(d.name.span, d.name.value.to_owned()),
-                    type_name: resolve_opt_type_name(context, &d.type_name),
-                    value: d
-                        .value
-                        .value
-                        .as_ref()
-                        .map(|expr| resolve_expr(context, expr)),
-                })
+                .map(|d| resolve_declaration(context, d))
                 .collect(),
         ),
         ast::StatementKind::Return(values) => {
@@ -432,6 +453,14 @@ fn resolve_for_condition(
             condition: resolve_expr_vec(context, condition),
             update: resolve_expr_vec(context, update),
         },
+    }
+}
+
+fn resolve_declaration(context: &mut ModuleContext, input: &ast::Declaration) -> hir::Declaration {
+    hir::Declaration {
+        name: Spanned::new(input.name.span, input.name.value.to_owned()),
+        type_name: resolve_opt_type_name(context, &input.type_name),
+        value: input.value.as_ref().map(|expr| resolve_expr(context, expr)),
     }
 }
 

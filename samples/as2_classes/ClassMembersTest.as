@@ -1,4 +1,7 @@
 class ClassMembersTest implements AnEmptyInterface {
+    var regularPropertyWithoutValue;
+    var regularPropertySetToFive = 5;
+
     function test() {
         trace("test!");
     }

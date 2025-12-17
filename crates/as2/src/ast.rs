@@ -185,6 +185,7 @@ pub enum StatementKind<'a> {
 #[derive(Debug, Clone, Serialize, PartialEq)]
 pub enum ClassMember<'a> {
     Function(Function<'a>),
+    Variable(Declaration<'a>),
 }
 
 #[derive(Debug, Clone, Serialize, PartialEq)]

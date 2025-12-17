@@ -156,7 +156,7 @@ fn declaration_list<'i>(i: &mut Tokens<'i>) -> ModalResult<Vec<Spanned<Declarati
     Ok(declarations)
 }
 
-fn declaration<'i>(i: &mut Tokens<'i>) -> ModalResult<Spanned<Declaration<'i>>> {
+pub(crate) fn declaration<'i>(i: &mut Tokens<'i>) -> ModalResult<Spanned<Declaration<'i>>> {
     let name = cut_err(identifier)
         .context(StrContext::Label("variable name"))
         .parse_next(i)?;
