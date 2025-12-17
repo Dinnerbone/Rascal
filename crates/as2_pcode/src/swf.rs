@@ -14,6 +14,7 @@ pub fn pcode_to_swf(actions: &CompiledProgram) -> swf::error::Result<Vec<u8>> {
     let initializer = if let Some(initializer) = &actions.initializer {
         let mut result = ActionEncoder::new();
         result.write_actions(initializer)?;
+        result.write_small_action(OpCode::End)?;
         result.patch_labels();
         Some(result.output)
     } else {
@@ -23,6 +24,7 @@ pub fn pcode_to_swf(actions: &CompiledProgram) -> swf::error::Result<Vec<u8>> {
     for (name, actions) in &actions.extra_modules {
         let mut result = ActionEncoder::new();
         result.write_actions(actions)?;
+        result.write_small_action(OpCode::End)?;
         result.patch_labels();
         modules.push((format!("__Packages.{}", name), result.output));
     }
