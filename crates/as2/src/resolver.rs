@@ -158,7 +158,7 @@ fn resolve_class_or_interface(
                         );
                         continue;
                     }
-                    result = Some(hir::Document::Class(resolve_class(
+                    result = Some(hir::Document::Class(Box::new(resolve_class(
                         context,
                         Spanned::new(name.span, name.value.to_owned()),
                         extends.map(|e| Spanned::new(e.span, e.value.to_owned())),
@@ -167,7 +167,7 @@ fn resolve_class_or_interface(
                             .map(|i| Spanned::new(i.span, i.value.to_owned()))
                             .collect::<Vec<_>>(),
                         members,
-                    )));
+                    ))));
                 } else {
                     context.error(
                         format!("The class '{0}' needs to be defined in a file whose relative path is '{0}.as'.", name.value), name.span
@@ -247,8 +247,8 @@ fn resolve_class(
         context.add_dependency(interface.span, &interface.value, true);
     }
     let mut seen_names = HashSet::new();
-    let mut functions = vec![];
-    let mut variables = vec![];
+    let mut functions = IndexMap::new();
+    let mut variables = IndexMap::new();
     let mut constructor = hir::Function {
         signature: hir::FunctionSignature {
             name: Some(class_name.clone()),
@@ -274,7 +274,10 @@ fn resolve_class(
                 if function_name.value == class_name.value {
                     constructor = resolve_function(context, function);
                 } else {
-                    functions.push(resolve_function(context, function));
+                    functions.insert(
+                        function_name.value.to_owned(),
+                        resolve_function(context, function),
+                    );
                 }
             }
             ast::ClassMember::Variable(declaration) => {
@@ -302,7 +305,10 @@ fn resolve_class(
                         }
                     };
                 }
-                variables.push(resolve_declaration(context, declaration));
+                variables.insert(
+                    declaration.name.value.to_owned(),
+                    resolve_declaration(context, declaration),
+                );
             }
         }
     }

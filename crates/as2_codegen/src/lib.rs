@@ -143,18 +143,18 @@ fn class_to_actions(class: &Class) -> Actions {
         }
 
         // Functions!
-        for function in &class.functions {
+        for (name, function) in &class.functions {
             builder.push(PushValue::Register(2));
-            builder.push(function.signature.name.clone().unwrap().value); // Guaranteed to exist
+            builder.push(name.as_str());
             gen_function(context, builder, function, false);
             builder.action(Action::SetMember);
         }
 
         // Variables!
-        for variable in &class.variables {
+        for (name, variable) in &class.variables {
             if let Some(value) = &variable.value {
                 builder.push(PushValue::Register(2));
-                builder.push(variable.name.as_str());
+                builder.push(name.as_str());
                 gen_expr(context, builder, value, false);
                 builder.action(Action::SetMember);
             }

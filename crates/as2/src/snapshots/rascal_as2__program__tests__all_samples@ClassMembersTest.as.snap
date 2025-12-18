@@ -15,7 +15,8 @@ Ok:
       implements:
         - AnEmptyInterface
       functions:
-        - signature:
+        test:
+          signature:
             name:
               span:
                 start: 142
@@ -36,7 +37,8 @@ Ok:
                     value:
                       Constant:
                         String: test!
-        - signature:
+        greet:
+          signature:
             name:
               span:
                 start: 277
@@ -92,14 +94,16 @@ Ok:
                             Constant:
                               String: "!"
       variables:
-        - name:
+        regularPropertyWithoutValue:
+          name:
             span:
               start: 61
               end: 88
             value: regularPropertyWithoutValue
           value: ~
           type_name: ~
-        - name:
+        regularPropertySetToFive:
+          name:
             span:
               start: 98
               end: 122

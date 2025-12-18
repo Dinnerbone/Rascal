@@ -147,7 +147,7 @@ impl<P: SourceProvider> ProgramBuilder<P> {
                         interfaces.push(interface);
                     }
                     Document::Class(class) => {
-                        classes.push(class);
+                        classes.push(*class);
                     }
                     _ => {}
                 }

@@ -557,8 +557,8 @@ pub struct Class {
     pub name: String,
     pub extends: Option<String>,
     pub implements: Vec<String>,
-    pub functions: Vec<Function>,
-    pub variables: Vec<Declaration>,
+    pub functions: IndexMap<String, Function>,
+    pub variables: IndexMap<String, Declaration>,
     pub constructor: Function,
 }
 
@@ -566,7 +566,7 @@ pub struct Class {
 pub enum Document {
     Script(Vec<StatementKind>),
     Interface(Interface),
-    Class(Class),
+    Class(Box<Class>),
     Invalid,
 }
 
