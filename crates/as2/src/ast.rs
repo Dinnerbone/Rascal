@@ -1,7 +1,8 @@
 use crate::lexer::tokens::Keyword;
-use rascal_common::span::Spanned;
+use rascal_common::span::{Span, Spanned};
 use serde::Serialize;
 use std::borrow::Cow;
+use std::collections::HashMap;
 
 pub type Expr<'a> = Spanned<ExprKind<'a>>;
 pub type Statement<'a> = Spanned<StatementKind<'a>>;
@@ -175,7 +176,10 @@ pub enum StatementKind<'a> {
         name: Spanned<&'a str>,
         extends: Option<Spanned<&'a str>>,
         implements: Vec<Spanned<&'a str>>,
-        members: Vec<Spanned<ClassMember<'a>>>,
+        members: Vec<(
+            Spanned<ClassMember<'a>>,
+            HashMap<ClassMemberAttribute, Span>,
+        )>,
     },
 }
 
@@ -189,6 +193,11 @@ pub struct Import<'a> {
 pub enum ClassMember<'a> {
     Function(Function<'a>),
     Variable(Declaration<'a>),
+}
+
+#[derive(Debug, Clone, Serialize, PartialEq, Hash, Eq)]
+pub enum ClassMemberAttribute {
+    Static,
 }
 
 #[derive(Debug, Clone, Serialize, PartialEq)]

@@ -17,18 +17,20 @@ struct ModuleContext<'a> {
     dependencies: IndexSet<String>,
     provider: &'a dyn SourceProvider,
     is_script: bool,
-    class_members: HashSet<String>,
+    class_name: String,
+    class_members: HashMap<String, bool>,
 }
 
 impl<'a> ModuleContext<'a> {
-    fn new(provider: &'a dyn SourceProvider, is_script: bool) -> Self {
+    fn new(provider: &'a dyn SourceProvider, is_script: bool, class_name: String) -> Self {
         Self {
             imports: HashMap::new(),
             errors: vec![],
             dependencies: IndexSet::new(),
             provider,
             is_script,
-            class_members: HashSet::new(),
+            class_name,
+            class_members: HashMap::new(),
         }
     }
 
@@ -42,14 +44,22 @@ impl<'a> ModuleContext<'a> {
     }
 
     fn expand_identifier(&self, name: String, span: Span) -> Option<hir::Expr> {
-        if self.class_members.contains(&name) {
+        if let Some(is_static) = self.class_members.get(&name) {
+            let parent = if *is_static {
+                Box::new(hir::Expr::new(
+                    span,
+                    hir::ExprKind::Constant(hir::ConstantKind::Identifier(self.class_name.clone())),
+                ))
+            } else {
+                Box::new(hir::Expr::new(
+                    span,
+                    hir::ExprKind::Constant(hir::ConstantKind::This),
+                ))
+            };
             return Some(hir::Expr::new(
                 span,
                 hir::ExprKind::Field(
-                    Box::new(hir::Expr::new(
-                        span,
-                        hir::ExprKind::Constant(hir::ConstantKind::This),
-                    )),
+                    parent,
                     Box::new(hir::Expr::new(
                         span,
                         hir::ExprKind::Constant(hir::ConstantKind::String(name)),
@@ -110,8 +120,8 @@ impl<'a> ModuleContext<'a> {
         self.dependencies.insert(name.to_owned());
     }
 
-    fn add_class_member(&mut self, name: &str) {
-        self.class_members.insert(name.to_owned());
+    fn add_class_member(&mut self, name: &str, is_static: bool) {
+        self.class_members.insert(name.to_owned(), is_static);
     }
 }
 
@@ -121,7 +131,7 @@ pub fn resolve_hir<P: SourceProvider>(
     is_script: bool,
     expected_name: &str,
 ) -> (hir::Document, Vec<ParsingError>, IndexSet<String>) {
-    let mut context = ModuleContext::new(provider, is_script);
+    let mut context = ModuleContext::new(provider, is_script, expected_name.to_owned());
     let document = if is_script {
         hir::Document::Script(resolve_statement_vec(&mut context, &ast.statements))
     } else {
@@ -277,7 +287,10 @@ fn resolve_class(
     class_name: Spanned<String>,
     extends: Option<Spanned<String>>,
     implements: &[Spanned<String>],
-    members: &[Spanned<ast::ClassMember>],
+    members: &[(
+        Spanned<ast::ClassMember>,
+        HashMap<ast::ClassMemberAttribute, Span>,
+    )],
 ) -> hir::Class {
     let expanded_extends = if let Some(extends) = &extends {
         let expanded = context.expand_typename(&extends.value);
@@ -293,13 +306,13 @@ fn resolve_class(
         expanded_implements.push(expanded);
     }
     let mut seen_names = HashSet::new();
-    let mut variables = IndexMap::new();
+    let mut fields = IndexMap::new();
 
     // Functions/constructor will be resolved later, once we know all the class member names
     let mut functions = IndexMap::new();
     let mut constructor = None;
 
-    for member in members {
+    for (member, attributes) in members {
         match &member.value {
             ast::ClassMember::Function(function) => {
                 let Some(function_name) = function.signature.name else {
@@ -314,10 +327,17 @@ fn resolve_class(
                     continue;
                 }
                 if function_name.value == class_name.value {
+                    if let Some(attr_span) = attributes.get(&ast::ClassMemberAttribute::Static) {
+                        context.error("The only attributes allowed for constructor functions are public and private.", *attr_span);
+                        continue;
+                    }
                     constructor = Some(function);
                 } else {
-                    context.add_class_member(function_name.value);
-                    functions.insert(function_name.value.to_owned(), function);
+                    context.add_class_member(
+                        function_name.value,
+                        attributes.contains_key(&ast::ClassMemberAttribute::Static),
+                    );
+                    functions.insert(function_name.value.to_owned(), (function, attributes));
                 }
             }
             ast::ClassMember::Variable(declaration) => {
@@ -328,7 +348,10 @@ fn resolve_class(
                     );
                     continue;
                 }
-                context.add_class_member(declaration.name.value);
+                context.add_class_member(
+                    declaration.name.value,
+                    attributes.contains_key(&ast::ClassMemberAttribute::Static),
+                );
                 // If the value is anything other than a constant (not identifier), throw an error
                 if let Some(value) = &declaration.value {
                     match &value.value {
@@ -346,17 +369,30 @@ fn resolve_class(
                         }
                     };
                 }
-                variables.insert(
+                fields.insert(
                     declaration.name.value.to_owned(),
-                    resolve_declaration(context, declaration),
+                    hir::Field {
+                        type_name: resolve_opt_type_name(context, &declaration.type_name),
+                        value: declaration
+                            .value
+                            .as_ref()
+                            .map(|expr| resolve_expr(context, expr)),
+                        is_static: attributes.contains_key(&ast::ClassMemberAttribute::Static),
+                    },
                 );
             }
         }
     }
 
     let mut resolved_functions = IndexMap::new();
-    for (name, function) in functions {
-        resolved_functions.insert(name, resolve_function(context, function));
+    for (name, (function, attributes)) in functions {
+        resolved_functions.insert(
+            name,
+            hir::Method {
+                function: resolve_function(context, function),
+                is_static: attributes.contains_key(&ast::ClassMemberAttribute::Static),
+            },
+        );
     }
     let resolved_constructor = constructor
         .map(|function| resolve_function(context, function))
@@ -374,7 +410,7 @@ fn resolve_class(
         extends: expanded_extends,
         implements: expanded_implements,
         functions: resolved_functions,
-        variables,
+        fields,
         constructor: resolved_constructor,
     }
 }

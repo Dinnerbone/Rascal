@@ -143,17 +143,25 @@ fn class_to_actions(class: &Class) -> Actions {
         }
 
         // Functions!
-        for (name, function) in &class.functions {
-            builder.push(PushValue::Register(2));
+        for (name, method) in &class.functions {
+            if method.is_static {
+                builder.push(PushValue::Register(1));
+            } else {
+                builder.push(PushValue::Register(2));
+            }
             builder.push(name.as_str());
-            gen_function(context, builder, function, false);
+            gen_function(context, builder, &method.function, false);
             builder.action(Action::SetMember);
         }
 
-        // Variables!
-        for (name, variable) in &class.variables {
-            if let Some(value) = &variable.value {
-                builder.push(PushValue::Register(2));
+        // Fields!
+        for (name, field) in &class.fields {
+            if let Some(value) = &field.value {
+                if field.is_static {
+                    builder.push(PushValue::Register(1));
+                } else {
+                    builder.push(PushValue::Register(2));
+                }
                 builder.push(name.as_str());
                 gen_expr(context, builder, value, false);
                 builder.action(Action::SetMember);

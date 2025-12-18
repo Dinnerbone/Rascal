@@ -4,6 +4,7 @@ class ClassMembersTest implements AnEmptyInterface {
     var regularPropertyWithoutValue;
     var regularPropertySetToFive = 5;
     var BitmapData = "BitmapData on class!";
+    static var scream = "Ahhh!";
 
     function test() {
         trace("test!");
@@ -17,6 +18,11 @@ class ClassMembersTest implements AnEmptyInterface {
 
     function greet(name: String): Void {
         trace("Hey, " + name + "!");
+        shoutStatically();
+    }
+
+    static function shoutStatically() {
+        trace(scream);
     }
 
     function maybeABitmapData(): BitmapData {

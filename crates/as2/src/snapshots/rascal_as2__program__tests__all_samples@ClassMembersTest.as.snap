@@ -16,119 +16,176 @@ Ok:
         - AnEmptyInterface
       functions:
         test:
-          signature:
-            name:
-              span:
-                start: 221
-                end: 225
-              value: test
-            args: []
-            return_type: ~
-          body:
-            - Expr:
+          function:
+            signature:
+              name:
                 span:
-                  start: 238
-                  end: 252
-                value:
-                  Trace:
+                  start: 254
+                  end: 258
+                value: test
+              args: []
+              return_type: ~
+            body:
+              - Expr:
+                  span:
+                    start: 271
+                    end: 285
+                  value:
+                    Trace:
+                      span:
+                        start: 277
+                        end: 284
+                      value:
+                        Constant:
+                          String: test!
+          is_static: false
+        greet:
+          function:
+            signature:
+              name:
+                span:
+                  start: 489
+                  end: 494
+                value: greet
+              args:
+                - name: name
+                  type_name:
                     span:
-                      start: 244
-                      end: 251
+                      start: 501
+                      end: 507
+                    value: String
+              return_type:
+                span:
+                  start: 510
+                  end: 514
+                value: Void
+            body:
+              - Expr:
+                  span:
+                    start: 525
+                    end: 552
+                  value:
+                    Trace:
+                      span:
+                        start: 531
+                        end: 551
+                      value:
+                        BinaryOperator:
+                          - Add
+                          - span:
+                              start: 531
+                              end: 545
+                            value:
+                              BinaryOperator:
+                                - Add
+                                - span:
+                                    start: 531
+                                    end: 538
+                                  value:
+                                    Constant:
+                                      String: "Hey, "
+                                - span:
+                                    start: 541
+                                    end: 545
+                                  value:
+                                    Constant:
+                                      Identifier: name
+                          - span:
+                              start: 548
+                              end: 551
+                            value:
+                              Constant:
+                                String: "!"
+              - Expr:
+                  span:
+                    start: 562
+                    end: 579
+                  value:
+                    Call:
+                      name:
+                        span:
+                          start: 562
+                          end: 577
+                        value:
+                          Field:
+                            - span:
+                                start: 562
+                                end: 577
+                              value:
+                                Constant:
+                                  Identifier: ClassMembersTest
+                            - span:
+                                start: 562
+                                end: 577
+                              value:
+                                Constant:
+                                  String: shoutStatically
+                      args: []
+          is_static: false
+        shoutStatically:
+          function:
+            signature:
+              name:
+                span:
+                  start: 608
+                  end: 623
+                value: shoutStatically
+              args: []
+              return_type: ~
+            body:
+              - Expr:
+                  span:
+                    start: 636
+                    end: 649
+                  value:
+                    Trace:
+                      span:
+                        start: 642
+                        end: 648
+                      value:
+                        Field:
+                          - span:
+                              start: 642
+                              end: 648
+                            value:
+                              Constant:
+                                Identifier: ClassMembersTest
+                          - span:
+                              start: 642
+                              end: 648
+                            value:
+                              Constant:
+                                String: scream
+          is_static: true
+        maybeABitmapData:
+          function:
+            signature:
+              name:
+                span:
+                  start: 671
+                  end: 687
+                value: maybeABitmapData
+              args: []
+              return_type:
+                span:
+                  start: 691
+                  end: 701
+                value: flash.display.BitmapData
+            body:
+              - Return:
+                  - span:
+                      start: 719
+                      end: 723
                     value:
                       Constant:
-                        String: test!
-        greet:
-          signature:
-            name:
-              span:
-                start: 456
-                end: 461
-              value: greet
-            args:
-              - name: name
-                type_name:
-                  span:
-                    start: 468
-                    end: 474
-                  value: String
-            return_type:
-              span:
-                start: 477
-                end: 481
-              value: Void
-          body:
-            - Expr:
-                span:
-                  start: 492
-                  end: 519
-                value:
-                  Trace:
-                    span:
-                      start: 498
-                      end: 518
-                    value:
-                      BinaryOperator:
-                        - Add
-                        - span:
-                            start: 498
-                            end: 512
-                          value:
-                            BinaryOperator:
-                              - Add
-                              - span:
-                                  start: 498
-                                  end: 505
-                                value:
-                                  Constant:
-                                    String: "Hey, "
-                              - span:
-                                  start: 508
-                                  end: 512
-                                value:
-                                  Constant:
-                                    Identifier: name
-                        - span:
-                            start: 515
-                            end: 518
-                          value:
-                            Constant:
-                              String: "!"
-        maybeABitmapData:
-          signature:
-            name:
-              span:
-                start: 541
-                end: 557
-              value: maybeABitmapData
-            args: []
-            return_type:
-              span:
-                start: 561
-                end: 571
-              value: flash.display.BitmapData
-          body:
-            - Return:
-                - span:
-                    start: 589
-                    end: 593
-                  value:
-                    Constant:
-                      Identifier: "null"
-      variables:
+                        Identifier: "null"
+          is_static: false
+      fields:
         regularPropertyWithoutValue:
-          name:
-            span:
-              start: 95
-              end: 122
-            value: regularPropertyWithoutValue
           value: ~
           type_name: ~
+          is_static: false
         regularPropertySetToFive:
-          name:
-            span:
-              start: 132
-              end: 156
-            value: regularPropertySetToFive
           value:
             span:
               start: 159
@@ -137,12 +194,8 @@ Ok:
               Constant:
                 Integer: 5
           type_name: ~
+          is_static: false
         BitmapData:
-          name:
-            span:
-              start: 170
-              end: 180
-            value: BitmapData
           value:
             span:
               start: 183
@@ -151,105 +204,116 @@ Ok:
               Constant:
                 String: BitmapData on class!
           type_name: ~
+          is_static: false
+        scream:
+          value:
+            span:
+              start: 231
+              end: 238
+            value:
+              Constant:
+                String: Ahhh!
+          type_name: ~
+          is_static: true
       constructor:
         signature:
           name:
             span:
-              start: 274
-              end: 290
+              start: 307
+              end: 323
             value: ClassMembersTest
           args:
             - name: name
               type_name:
                 span:
-                  start: 297
-                  end: 303
+                  start: 330
+                  end: 336
                 value: String
           return_type: ~
         body:
           - Expr:
               span:
-                start: 315
-                end: 329
+                start: 348
+                end: 362
               value:
                 Call:
                   name:
                     span:
-                      start: 315
-                      end: 320
+                      start: 348
+                      end: 353
                     value:
                       Field:
                         - span:
-                            start: 315
-                            end: 320
+                            start: 348
+                            end: 353
                           value:
                             Constant: This
                         - span:
-                            start: 315
-                            end: 320
+                            start: 348
+                            end: 353
                           value:
                             Constant:
                               String: greet
                   args:
                     - span:
-                        start: 321
-                        end: 328
+                        start: 354
+                        end: 361
                       value:
                         Constant:
                           String: world
           - Expr:
               span:
-                start: 339
-                end: 356
+                start: 372
+                end: 389
               value:
                 Trace:
                   span:
-                    start: 345
-                    end: 355
+                    start: 378
+                    end: 388
                   value:
                     Field:
                       - span:
-                          start: 345
-                          end: 355
+                          start: 378
+                          end: 388
                         value:
                           Constant: This
                       - span:
-                          start: 345
-                          end: 355
+                          start: 378
+                          end: 388
                         value:
                           Constant:
                             String: BitmapData
           - Expr:
               span:
-                start: 366
-                end: 434
+                start: 399
+                end: 467
               value:
                 Trace:
                   span:
-                    start: 372
-                    end: 433
+                    start: 405
+                    end: 466
                   value:
                     BinaryOperator:
                       - Add
                       - span:
-                          start: 372
-                          end: 403
+                          start: 405
+                          end: 436
                         value:
                           Constant:
                             String: "regularPropertyWithoutValue: "
                       - span:
-                          start: 406
-                          end: 433
+                          start: 439
+                          end: 466
                         value:
                           Field:
                             - span:
-                                start: 406
-                                end: 433
+                                start: 439
+                                end: 466
                               value:
                                 Constant: This
                             - span:
-                                start: 406
-                                end: 433
+                                start: 439
+                                end: 466
                               value:
                                 Constant:
                                   String: regularPropertyWithoutValue

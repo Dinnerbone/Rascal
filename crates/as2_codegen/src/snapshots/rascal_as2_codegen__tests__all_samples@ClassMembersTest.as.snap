@@ -45,7 +45,11 @@ extra_modules:
             - "Hey, "
             - name
             - "!"
+            - ClassMembersTest
+            - shoutStatically
+            - scream
             - BitmapData on class!
+            - Ahhh!
         - Push:
             - String: _global
         - GetVariable
@@ -145,6 +149,31 @@ extra_modules:
                     - Constant: 9
                 - Add2
                 - Trace
+                - Push:
+                    - Integer: 0
+                    - Constant: 10
+                - GetVariable
+                - Push:
+                    - Constant: 11
+                - CallMethod
+                - Pop
+              label_positions: {}
+        - SetMember
+        - Push:
+            - Register: 1
+            - String: shoutStatically
+        - DefineFunction:
+            name: ""
+            params: []
+            actions:
+              actions:
+                - Push:
+                    - Constant: 10
+                - GetVariable
+                - Push:
+                    - Constant: 12
+                - GetMember
+                - Trace
               label_positions: {}
         - SetMember
         - Push:
@@ -168,7 +197,12 @@ extra_modules:
         - Push:
             - Register: 2
             - String: BitmapData
-            - Constant: 10
+            - Constant: 13
+        - SetMember
+        - Push:
+            - Register: 1
+            - String: scream
+            - Constant: 14
         - SetMember
         - Push:
             - Integer: 1
@@ -187,4 +221,4 @@ extra_modules:
         - CallFunction
         - Pop
       label_positions:
-        loc0000: 48
+        loc0000: 53

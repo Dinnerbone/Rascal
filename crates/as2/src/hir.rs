@@ -482,6 +482,12 @@ pub enum ForCondition {
 }
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
+pub struct Method {
+    pub function: Function,
+    pub is_static: bool,
+}
+
+#[derive(Debug, Clone, Serialize, PartialEq)]
 pub struct Function {
     pub signature: FunctionSignature,
     pub body: Vec<StatementKind>,
@@ -505,6 +511,13 @@ pub struct Declaration {
     pub name: Spanned<String>,
     pub value: Option<Expr>,
     pub type_name: Option<Spanned<String>>,
+}
+
+#[derive(Debug, Clone, Serialize, PartialEq)]
+pub struct Field {
+    pub value: Option<Expr>,
+    pub type_name: Option<Spanned<String>>,
+    pub is_static: bool,
 }
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
@@ -558,8 +571,8 @@ pub struct Class {
     pub name: String,
     pub extends: Option<String>,
     pub implements: Vec<String>,
-    pub functions: IndexMap<String, Function>,
-    pub variables: IndexMap<String, Declaration>,
+    pub functions: IndexMap<String, Method>,
+    pub fields: IndexMap<String, Field>,
     pub constructor: Function,
 }
 
