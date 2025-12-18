@@ -18,7 +18,7 @@ fn test_all_samples() {
         let mut builder = ProgramBuilder::new(FileSystemSourceProvider::with_root(
             path.parent().unwrap().to_owned(),
         ));
-        builder.add_class(&filename);
+        builder.add_class(filename.strip_suffix(".as").unwrap());
         let parsed = builder.build().unwrap();
         let result = hir_to_pcode(&parsed);
         insta::assert_yaml_snapshot!(result);

@@ -10,7 +10,16 @@ use winnow::token::any;
 use winnow::{ModalResult, Parser};
 
 pub(crate) fn class<'i>(i: &mut Tokens<'i>) -> ModalResult<Statement<'i>> {
-    let name = identifier.parse_next(i)?;
+    let path: Vec<Spanned<&'i str>> =
+        separated(1.., identifier, TokenKind::Period).parse_next(i)?;
+    // Path is guaranteed to have at least one element, so this is safe
+    let name_span = Span::encompassing(path[0].span, path.last().unwrap().span);
+    let name = path
+        .into_iter()
+        .map(|s| s.value)
+        .collect::<Vec<_>>()
+        .join(".");
+
     // It's `extends` then `implements` - the other way around is not supported by Flash
     let extends =
         opt((TokenKind::Keyword(Keyword::Extends), identifier).map(|(_, id)| id)).parse_next(i)?;
@@ -87,9 +96,9 @@ pub(crate) fn class<'i>(i: &mut Tokens<'i>) -> ModalResult<Statement<'i>> {
     let end = TokenKind::CloseBrace.parse_next(i)?.span;
 
     Ok(Statement::new(
-        Span::encompassing(name.span, end),
+        Span::encompassing(name_span, end),
         StatementKind::Class {
-            name,
+            name: Spanned::new(name_span, name),
             extends,
             implements: implements.unwrap_or_default(),
             members,

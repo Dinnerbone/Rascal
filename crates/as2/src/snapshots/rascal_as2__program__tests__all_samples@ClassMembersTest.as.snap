@@ -20,21 +20,21 @@ Ok:
             signature:
               name:
                 span:
-                  start: 254
-                  end: 258
+                  start: 283
+                  end: 287
                 value: test
               args: []
               return_type: ~
             body:
               - Expr:
                   span:
-                    start: 271
-                    end: 285
+                    start: 300
+                    end: 314
                   value:
                     Trace:
                       span:
-                        start: 277
-                        end: 284
+                        start: 306
+                        end: 313
                       value:
                         Constant:
                           String: test!
@@ -44,79 +44,79 @@ Ok:
             signature:
               name:
                 span:
-                  start: 489
-                  end: 494
+                  start: 567
+                  end: 572
                 value: greet
               args:
                 - name: name
                   type_name:
                     span:
-                      start: 501
-                      end: 507
+                      start: 579
+                      end: 585
                     value: String
               return_type:
                 span:
-                  start: 510
-                  end: 514
+                  start: 588
+                  end: 592
                 value: Void
             body:
               - Expr:
                   span:
-                    start: 525
-                    end: 552
+                    start: 603
+                    end: 630
                   value:
                     Trace:
                       span:
-                        start: 531
-                        end: 551
+                        start: 609
+                        end: 629
                       value:
                         BinaryOperator:
                           - Add
                           - span:
-                              start: 531
-                              end: 545
+                              start: 609
+                              end: 623
                             value:
                               BinaryOperator:
                                 - Add
                                 - span:
-                                    start: 531
-                                    end: 538
+                                    start: 609
+                                    end: 616
                                   value:
                                     Constant:
                                       String: "Hey, "
                                 - span:
-                                    start: 541
-                                    end: 545
+                                    start: 619
+                                    end: 623
                                   value:
                                     Constant:
                                       Identifier: name
                           - span:
-                              start: 548
-                              end: 551
+                              start: 626
+                              end: 629
                             value:
                               Constant:
                                 String: "!"
               - Expr:
                   span:
-                    start: 562
-                    end: 579
+                    start: 640
+                    end: 657
                   value:
                     Call:
                       name:
                         span:
-                          start: 562
-                          end: 577
+                          start: 640
+                          end: 655
                         value:
                           Field:
                             - span:
-                                start: 562
-                                end: 577
+                                start: 640
+                                end: 655
                               value:
                                 Constant:
                                   Identifier: ClassMembersTest
                             - span:
-                                start: 562
-                                end: 577
+                                start: 640
+                                end: 655
                               value:
                                 Constant:
                                   String: shoutStatically
@@ -127,32 +127,32 @@ Ok:
             signature:
               name:
                 span:
-                  start: 608
-                  end: 623
+                  start: 686
+                  end: 701
                 value: shoutStatically
               args: []
               return_type: ~
             body:
               - Expr:
                   span:
-                    start: 636
-                    end: 649
+                    start: 714
+                    end: 727
                   value:
                     Trace:
                       span:
-                        start: 642
-                        end: 648
+                        start: 720
+                        end: 726
                       value:
                         Field:
                           - span:
-                              start: 642
-                              end: 648
+                              start: 720
+                              end: 726
                             value:
                               Constant:
                                 Identifier: ClassMembersTest
                           - span:
-                              start: 642
-                              end: 648
+                              start: 720
+                              end: 726
                             value:
                               Constant:
                                 String: scream
@@ -162,20 +162,20 @@ Ok:
             signature:
               name:
                 span:
-                  start: 671
-                  end: 687
+                  start: 749
+                  end: 765
                 value: maybeABitmapData
               args: []
               return_type:
                 span:
-                  start: 691
-                  end: 701
+                  start: 769
+                  end: 779
                 value: flash.display.BitmapData
             body:
               - Return:
                   - span:
-                      start: 719
-                      end: 723
+                      start: 797
+                      end: 801
                     value:
                       Constant:
                         Identifier: "null"
@@ -185,8 +185,8 @@ Ok:
             signature:
               name:
                 span:
-                  start: 766
-                  end: 772
+                  start: 844
+                  end: 850
                 value: secret
               args: []
               return_type: ~
@@ -197,8 +197,8 @@ Ok:
             signature:
               name:
                 span:
-                  start: 799
-                  end: 809
+                  start: 877
+                  end: 887
                 value: notASecret
               args: []
               return_type: ~
@@ -212,8 +212,8 @@ Ok:
         regularPropertySetToFive:
           value:
             span:
-              start: 159
-              end: 160
+              start: 188
+              end: 189
             value:
               Constant:
                 Integer: 5
@@ -222,8 +222,8 @@ Ok:
         BitmapData:
           value:
             span:
-              start: 183
-              end: 205
+              start: 212
+              end: 234
             value:
               Constant:
                 String: BitmapData on class!
@@ -232,8 +232,8 @@ Ok:
         scream:
           value:
             span:
-              start: 231
-              end: 238
+              start: 260
+              end: 267
             value:
               Constant:
                 String: Ahhh!
@@ -243,101 +243,305 @@ Ok:
         signature:
           name:
             span:
-              start: 307
-              end: 323
+              start: 336
+              end: 352
             value: ClassMembersTest
           args:
             - name: name
               type_name:
                 span:
-                  start: 330
-                  end: 336
+                  start: 359
+                  end: 365
                 value: String
           return_type: ~
         body:
           - Expr:
               span:
-                start: 348
-                end: 362
+                start: 377
+                end: 391
               value:
                 Call:
                   name:
                     span:
-                      start: 348
-                      end: 353
+                      start: 377
+                      end: 382
                     value:
                       Field:
                         - span:
-                            start: 348
-                            end: 353
+                            start: 377
+                            end: 382
                           value:
                             Constant: This
                         - span:
-                            start: 348
-                            end: 353
+                            start: 377
+                            end: 382
                           value:
                             Constant:
                               String: greet
                   args:
                     - span:
-                        start: 354
-                        end: 361
+                        start: 383
+                        end: 390
                       value:
                         Constant:
                           String: world
           - Expr:
               span:
-                start: 372
-                end: 389
+                start: 401
+                end: 418
               value:
                 Trace:
                   span:
-                    start: 378
-                    end: 388
+                    start: 407
+                    end: 417
                   value:
                     Field:
                       - span:
-                          start: 378
-                          end: 388
+                          start: 407
+                          end: 417
                         value:
                           Constant: This
                       - span:
-                          start: 378
-                          end: 388
+                          start: 407
+                          end: 417
                         value:
                           Constant:
                             String: BitmapData
           - Expr:
               span:
-                start: 399
-                end: 467
+                start: 428
+                end: 496
               value:
                 Trace:
                   span:
-                    start: 405
-                    end: 466
+                    start: 434
+                    end: 495
                   value:
                     BinaryOperator:
                       - Add
                       - span:
-                          start: 405
-                          end: 436
+                          start: 434
+                          end: 465
                         value:
                           Constant:
                             String: "regularPropertyWithoutValue: "
                       - span:
-                          start: 439
-                          end: 466
+                          start: 468
+                          end: 495
                         value:
                           Field:
                             - span:
-                                start: 439
-                                end: 466
+                                start: 468
+                                end: 495
                               value:
                                 Constant: This
                             - span:
-                                start: 439
-                                end: 466
+                                start: 468
+                                end: 495
                               value:
                                 Constant:
                                   String: regularPropertyWithoutValue
+          - Expr:
+              span:
+                start: 507
+                end: 545
+              value:
+                Trace:
+                  span:
+                    start: 534
+                    end: 544
+                  value:
+                    Call:
+                      name:
+                        span:
+                          start: 534
+                          end: 542
+                        value:
+                          Field:
+                            - span:
+                                start: 525
+                                end: 534
+                              value:
+                                Call:
+                                  name:
+                                    span:
+                                      start: 525
+                                      end: 532
+                                    value:
+                                      Field:
+                                        - span:
+                                            start: 513
+                                            end: 525
+                                          value:
+                                            Field:
+                                              - span:
+                                                  start: 513
+                                                  end: 525
+                                                value:
+                                                  Field:
+                                                    - span:
+                                                        start: 513
+                                                        end: 525
+                                                      value:
+                                                        Constant:
+                                                          Identifier: path
+                                                    - span:
+                                                        start: 513
+                                                        end: 525
+                                                      value:
+                                                        Constant:
+                                                          String: to
+                                              - span:
+                                                  start: 513
+                                                  end: 525
+                                                value:
+                                                  Constant:
+                                                    String: ANestedClass
+                                        - span:
+                                            start: 526
+                                            end: 532
+                                          value:
+                                            Constant:
+                                              String: create
+                                  args: []
+                            - span:
+                                start: 535
+                                end: 542
+                              value:
+                                Constant:
+                                  String: success
+                      args: []
+    - name: path.to.ANestedClass
+      extends: ~
+      implements: []
+      functions:
+        create:
+          function:
+            signature:
+              name:
+                span:
+                  start: 94
+                  end: 100
+                value: create
+              args: []
+              return_type:
+                span:
+                  start: 104
+                  end: 116
+                value: path.to.ANestedClass
+            body:
+              - Return:
+                  - span:
+                      start: 134
+                      end: 137
+                    value:
+                      New:
+                        name:
+                          span:
+                            start: 138
+                            end: 150
+                          value:
+                            Field:
+                              - span:
+                                  start: 138
+                                  end: 150
+                                value:
+                                  Field:
+                                    - span:
+                                        start: 138
+                                        end: 150
+                                      value:
+                                        Constant:
+                                          Identifier: path
+                                    - span:
+                                        start: 138
+                                        end: 150
+                                      value:
+                                        Constant:
+                                          String: to
+                              - span:
+                                  start: 138
+                                  end: 150
+                                value:
+                                  Constant:
+                                    String: ANestedClass
+                        args: []
+          is_static: true
+        success:
+          function:
+            signature:
+              name:
+                span:
+                  start: 181
+                  end: 188
+                value: success
+              args: []
+              return_type: ~
+            body:
+              - Expr:
+                  span:
+                    start: 201
+                    end: 228
+                  value:
+                    Trace:
+                      span:
+                        start: 219
+                        end: 227
+                      value:
+                        Field:
+                          - span:
+                              start: 207
+                              end: 219
+                            value:
+                              Field:
+                                - span:
+                                    start: 207
+                                    end: 219
+                                  value:
+                                    Field:
+                                      - span:
+                                          start: 207
+                                          end: 219
+                                        value:
+                                          Constant:
+                                            Identifier: path
+                                      - span:
+                                          start: 207
+                                          end: 219
+                                        value:
+                                          Constant:
+                                            String: to
+                                - span:
+                                    start: 207
+                                    end: 219
+                                  value:
+                                    Constant:
+                                      String: ANestedClass
+                          - span:
+                              start: 220
+                              end: 227
+                            value:
+                              Constant:
+                                String: message
+          is_static: false
+      fields:
+        message:
+          value:
+            span:
+              start: 54
+              end: 64
+            value:
+              Constant:
+                String: Success!
+          type_name: ~
+          is_static: true
+      constructor:
+        signature:
+          name:
+            span:
+              start: 6
+              end: 26
+            value: path.to.ANestedClass
+          args: []
+          return_type: ~
+        body: []

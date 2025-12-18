@@ -1,12 +1,12 @@
 mod special_functions;
 mod special_properties;
 
-use crate::ast;
 use crate::error::ParsingError;
 use crate::global_types::GLOBAL_TYPES;
 use crate::hir;
 use crate::program::SourceProvider;
 use crate::resolver::special_functions::resolve_special_call;
+use crate::{ast, type_path_to_file_path};
 use indexmap::{IndexMap, IndexSet};
 use rascal_common::span::{Span, Spanned};
 use std::collections::{HashMap, HashSet};
@@ -34,7 +34,8 @@ impl<'a> ModuleContext<'a> {
         }
     }
 
-    fn import(&mut self, path: Vec<String>, name: String) {
+    fn import(&mut self, span: Span, path: Vec<String>, name: String) {
+        self.add_dependency(span, &format!("{}.{}", path.join("."), name), true);
         self.imports.insert(name, path);
     }
 
@@ -108,7 +109,7 @@ impl<'a> ModuleContext<'a> {
         if GLOBAL_TYPES.contains(&name) {
             return;
         }
-        if !self.provider.is_file(&(name.replace(".", "/") + ".as")) {
+        if !self.provider.is_file(&type_path_to_file_path(name)) {
             if required {
                 self.error(
                     format!("The class or interface `{}` could not be loaded.", name),
@@ -160,6 +161,7 @@ fn resolve_class_or_interface(
         match &statement.value {
             ast::StatementKind::Import(import) => {
                 context.import(
+                    statement.span,
                     import.path.iter().map(|s| (*s).to_owned()).collect(),
                     (*import.name).to_owned(),
                 );
@@ -292,6 +294,19 @@ fn resolve_class(
         HashMap<ast::ClassMemberAttribute, Span>,
     )],
 ) -> hir::Class {
+    // Implicit `import path.to.MyOwnClass`
+    let segments: Vec<&str> = class_name.split(".").collect();
+    if segments.len() > 1 {
+        context.import(
+            class_name.span,
+            segments[..segments.len() - 1]
+                .iter()
+                .map(|s| (*s).to_owned())
+                .collect(),
+            segments[segments.len() - 1].to_owned(),
+        );
+    }
+
     let expanded_extends = if let Some(extends) = &extends {
         let expanded = context.expand_typename(&extends.value);
         context.add_dependency(extends.span, &expanded, true);
@@ -504,6 +519,7 @@ fn resolve_statement(context: &mut ModuleContext, input: &ast::Statement) -> hir
         },
         ast::StatementKind::Import(import) => {
             context.import(
+                input.span,
                 import.path.iter().map(|s| (*s).to_owned()).collect(),
                 (*import.name).to_owned(),
             );

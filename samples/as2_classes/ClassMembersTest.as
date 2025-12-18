@@ -1,4 +1,5 @@
 import flash.display.BitmapData;
+import path.to.ANestedClass;
 
 class ClassMembersTest implements AnEmptyInterface {
     var regularPropertyWithoutValue;
@@ -14,6 +15,8 @@ class ClassMembersTest implements AnEmptyInterface {
         greet("world");
         trace(BitmapData);
         trace("regularPropertyWithoutValue: " + regularPropertyWithoutValue);
+
+        trace(ANestedClass.create().success());
     }
 
     function greet(name: String): Void {

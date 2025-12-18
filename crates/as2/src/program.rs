@@ -2,7 +2,7 @@ use crate::error::{Error, ErrorSet};
 use crate::hir::Document;
 use crate::lexer::Lexer;
 use crate::resolver::resolve_hir;
-use crate::{hir, parser};
+use crate::{hir, parser, type_path_to_file_path};
 use indexmap::IndexSet;
 use serde::Serialize;
 use std::path::PathBuf;
@@ -79,6 +79,7 @@ impl<P: SourceProvider> ProgramBuilder<P> {
             loaded_classes: &mut IndexSet<String>,
             pending_classes: &mut Vec<String>,
             path: &str,
+            type_name: &str,
             is_script: bool,
         ) -> Option<Document> {
             let source = match provider.load(path) {
@@ -96,21 +97,14 @@ impl<P: SourceProvider> ProgramBuilder<P> {
                     return None;
                 }
             };
-            let expected_name = path
-                .split('/')
-                .next_back()
-                .unwrap()
-                .split('.')
-                .next()
-                .unwrap();
             let (mut hir, hir_errors, dependencies) =
-                resolve_hir(provider, ast, is_script, expected_name);
+                resolve_hir(provider, ast, is_script, type_name);
             for error in hir_errors {
                 errors.add_parsing_error(path, &source, error);
             }
             for name in dependencies {
                 if loaded_classes.insert(name.to_owned()) {
-                    pending_classes.push(name + ".as"); // TODO do better :D
+                    pending_classes.push(name);
                 }
             }
             while hir.simplify() {
@@ -126,6 +120,7 @@ impl<P: SourceProvider> ProgramBuilder<P> {
                 &mut loaded_classes,
                 &mut pending_classes,
                 &path,
+                "",
                 true,
             ) && let Document::Script(statements) = document
             {
@@ -133,13 +128,14 @@ impl<P: SourceProvider> ProgramBuilder<P> {
             }
         }
 
-        while let Some(path) = pending_classes.pop() {
+        while let Some(type_name) = pending_classes.pop() {
             if let Some(document) = load_file(
                 &self.provider,
                 &mut errors,
                 &mut loaded_classes,
                 &mut pending_classes,
-                &path,
+                &type_path_to_file_path(&type_name),
+                &type_name,
                 false,
             ) {
                 match document {
@@ -182,7 +178,14 @@ mod tests {
             let mut builder = ProgramBuilder::new(FileSystemSourceProvider::with_root(
                 path.parent().unwrap().to_owned(),
             ));
-            builder.add_class(path.file_name().unwrap().to_str().unwrap());
+            builder.add_class(
+                path.file_name()
+                    .unwrap()
+                    .to_str()
+                    .unwrap()
+                    .strip_suffix(".as")
+                    .unwrap(),
+            );
             let parsed = builder.build();
             insta::assert_yaml_snapshot!(parsed);
         });

@@ -32,6 +32,173 @@ extra_modules:
         - Pop
       label_positions:
         loc0000: 13
+  - - path.to.ANestedClass
+    - actions:
+        - ConstantPool:
+            - path
+            - to
+            - ANestedClass
+            - message
+            - Success!
+        - Push:
+            - String: _global
+        - GetVariable
+        - Push:
+            - String: path
+        - GetMember
+        - Not
+        - Not
+        - If: loc0000
+        - Push:
+            - String: _global
+        - GetVariable
+        - Push:
+            - String: path
+            - Integer: 0
+            - String: Object
+        - NewObject
+        - SetMember
+        - Pop
+        - Push:
+            - String: _global
+        - GetVariable
+        - Push:
+            - String: path
+        - GetMember
+        - Push:
+            - String: to
+        - GetMember
+        - Not
+        - Not
+        - If: loc0001
+        - Push:
+            - String: _global
+        - GetVariable
+        - Push:
+            - String: path
+        - GetMember
+        - Push:
+            - String: to
+            - Integer: 0
+            - String: Object
+        - NewObject
+        - SetMember
+        - Pop
+        - Push:
+            - String: _global
+        - GetVariable
+        - Push:
+            - String: path
+        - GetMember
+        - Push:
+            - String: to
+        - GetMember
+        - Push:
+            - String: ANestedClass
+        - GetMember
+        - Not
+        - Not
+        - If: loc0002
+        - Push:
+            - String: _global
+        - GetVariable
+        - Push:
+            - String: path
+        - GetMember
+        - Push:
+            - String: to
+        - GetMember
+        - Push:
+            - String: ANestedClass
+        - DefineFunction:
+            name: ""
+            params: []
+            actions:
+              actions: []
+              label_positions: {}
+        - StoreRegister: 1
+        - SetMember
+        - Push:
+            - Register: 1
+            - String: prototype
+        - GetMember
+        - StoreRegister: 2
+        - Pop
+        - Push:
+            - Register: 1
+            - String: create
+        - DefineFunction:
+            name: ""
+            params: []
+            actions:
+              actions:
+                - Push:
+                    - Integer: 0
+                    - Constant: 0
+                - GetVariable
+                - Push:
+                    - Constant: 1
+                - GetMember
+                - Push:
+                    - Constant: 2
+                - NewMethod
+                - Return
+              label_positions: {}
+        - SetMember
+        - Push:
+            - Register: 2
+            - String: success
+        - DefineFunction:
+            name: ""
+            params: []
+            actions:
+              actions:
+                - Push:
+                    - Constant: 0
+                - GetVariable
+                - Push:
+                    - Constant: 1
+                - GetMember
+                - Push:
+                    - Constant: 2
+                - GetMember
+                - Push:
+                    - Constant: 3
+                - GetMember
+                - Trace
+              label_positions: {}
+        - SetMember
+        - Push:
+            - Register: 1
+            - String: message
+            - Constant: 4
+        - SetMember
+        - Push:
+            - Integer: 1
+            - "Null"
+            - String: _global
+        - GetVariable
+        - Push:
+            - String: path
+        - GetMember
+        - Push:
+            - String: to
+        - GetMember
+        - Push:
+            - String: ANestedClass
+        - GetMember
+        - Push:
+            - String: prototype
+        - GetMember
+        - Push:
+            - Integer: 3
+            - String: ASSetPropFlags
+        - CallFunction
+        - Pop
+      label_positions:
+        loc0000: 13
+        loc0001: 30
+        loc0002: 76
   - - ClassMembersTest
     - actions:
         - ConstantPool:
@@ -41,6 +208,11 @@ extra_modules:
             - BitmapData
             - "regularPropertyWithoutValue: "
             - regularPropertyWithoutValue
+            - path
+            - to
+            - ANestedClass
+            - create
+            - success
             - test!
             - "Hey, "
             - name
@@ -95,6 +267,24 @@ extra_modules:
                 - GetMember
                 - Add2
                 - Trace
+                - Push:
+                    - Integer: 0
+                    - Integer: 0
+                    - Constant: 6
+                - GetVariable
+                - Push:
+                    - Constant: 7
+                - GetMember
+                - Push:
+                    - Constant: 8
+                - GetMember
+                - Push:
+                    - Constant: 9
+                - CallMethod
+                - Push:
+                    - Constant: 10
+                - CallMethod
+                - Trace
               label_positions: {}
         - StoreRegister: 1
         - SetMember
@@ -127,7 +317,7 @@ extra_modules:
             actions:
               actions:
                 - Push:
-                    - Constant: 6
+                    - Constant: 11
                 - Trace
               label_positions: {}
         - SetMember
@@ -141,20 +331,20 @@ extra_modules:
             actions:
               actions:
                 - Push:
-                    - Constant: 7
-                    - Constant: 8
+                    - Constant: 12
+                    - Constant: 13
                 - GetVariable
                 - Add2
                 - Push:
-                    - Constant: 9
+                    - Constant: 14
                 - Add2
                 - Trace
                 - Push:
                     - Integer: 0
-                    - Constant: 10
+                    - Constant: 15
                 - GetVariable
                 - Push:
-                    - Constant: 11
+                    - Constant: 16
                 - CallMethod
                 - Pop
               label_positions: {}
@@ -168,10 +358,10 @@ extra_modules:
             actions:
               actions:
                 - Push:
-                    - Constant: 10
+                    - Constant: 15
                 - GetVariable
                 - Push:
-                    - Constant: 12
+                    - Constant: 17
                 - GetMember
                 - Trace
               label_positions: {}
@@ -217,12 +407,12 @@ extra_modules:
         - Push:
             - Register: 2
             - String: BitmapData
-            - Constant: 13
+            - Constant: 18
         - SetMember
         - Push:
             - Register: 1
             - String: scream
-            - Constant: 14
+            - Constant: 19
         - SetMember
         - Push:
             - Integer: 1

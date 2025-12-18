@@ -85,105 +85,143 @@ fn interface_to_actions(interface: &Interface) -> Actions {
     })
 }
 
+fn create_if_not_exists<F>(
+    context: &mut ScriptContext,
+    builder: &mut CodeBuilder,
+    path: &[&str],
+    generator: F,
+) where
+    F: FnOnce(&mut ScriptContext, &mut CodeBuilder),
+{
+    let end = context.create_label();
+    builder.push("_global");
+    builder.action(Action::GetVariable);
+    for segment in path {
+        builder.push(*segment);
+        builder.action(Action::GetMember);
+    }
+    builder.action(Action::Not);
+    builder.action(Action::Not);
+    builder.action(Action::If(end.clone()));
+
+    builder.push("_global");
+    builder.action(Action::GetVariable);
+    if path.len() > 1 {
+        for segment in &path[0..path.len() - 1] {
+            builder.push(*segment);
+            builder.action(Action::GetMember);
+        }
+    }
+    builder.push(path[path.len() - 1]);
+
+    generator(context, builder);
+
+    builder.mark_label(end);
+    builder.action(Action::Pop);
+}
+
 fn class_to_actions(class: &Class) -> Actions {
     generate_actions(|context, builder| {
-        // First check that it doesn't already exist
-        let end = context.create_label();
-        builder.push("_global");
-        builder.action(Action::GetVariable);
-        builder.push(class.name.as_str());
-        builder.action(Action::GetMember);
-        builder.action(Action::Not);
-        builder.action(Action::Not);
-        builder.action(Action::If(end.clone()));
-
-        // Define the constructor (that's the class object, kinda)
-        builder.push("_global");
-        builder.action(Action::GetVariable);
-        builder.push(class.name.as_str());
-        gen_function(context, builder, &class.constructor, false);
-        builder.action(Action::StoreRegister(1));
-        builder.action(Action::SetMember);
-
-        // If we extend something, set that association too
-        // TODO: This doesn't handle paths yet ("foo.bar.Baz")
-        if let Some(extends) = &class.extends {
-            builder.push("_global");
-            builder.action(Action::GetVariable);
-            builder.push(class.name.as_str());
-            builder.action(Action::GetMember);
-            builder.push(extends.as_str());
-            builder.action(Action::GetVariable); // Not sure why this isn't _global.name, but Flash :D
-            builder.action(Action::Extends);
-        }
-
-        // Set up the prototype
-        builder.push(PushValue::Register(1));
-        builder.push("prototype");
-        builder.action(Action::GetMember);
-        builder.action(Action::StoreRegister(2));
-        builder.action(Action::Pop);
-
-        // If we implement some interfaces, set those associations too
-        // TODO: This doesn't handle paths yet ("foo.bar.Baz")
-        if !class.implements.is_empty() {
-            for name in &class.implements {
-                builder.push("_global");
-                builder.action(Action::GetVariable);
-                builder.push(name.as_str());
-                builder.action(Action::GetMember);
-            }
-            builder.push(class.implements.len() as i32);
-            builder.push("_global");
-            builder.action(Action::GetVariable);
-            builder.push(class.name.as_str());
-            builder.action(Action::GetMember);
-            builder
-                .action_with_stack_delta(Action::ImplementsOp, -2 - class.implements.len() as i32);
-        }
-
-        // Functions!
-        for (name, method) in &class.functions {
-            if method.is_static {
-                builder.push(PushValue::Register(1));
-            } else {
-                builder.push(PushValue::Register(2));
-            }
-            builder.push(name.as_str());
-            gen_function(context, builder, &method.function, false);
-            builder.action(Action::SetMember);
-        }
-
-        // Fields!
-        for (name, field) in &class.fields {
-            if let Some(value) = &field.value {
-                if field.is_static {
-                    builder.push(PushValue::Register(1));
+        let segments: Vec<&str> = class.name.split(".").collect();
+        for i in 1..=segments.len() {
+            create_if_not_exists(context, builder, &segments[0..i], |context, builder| {
+                if i < segments.len() {
+                    builder.push(0);
+                    builder.push("Object");
+                    builder.action(Action::NewObject);
+                    builder.action(Action::SetMember);
                 } else {
-                    builder.push(PushValue::Register(2));
+                    // Define the constructor (that's the class object, kinda)
+                    gen_function(context, builder, &class.constructor, false);
+                    builder.action(Action::StoreRegister(1));
+                    builder.action(Action::SetMember);
+
+                    // If we extend something, set that association too
+                    // TODO: This doesn't handle paths yet ("foo.bar.Baz")
+                    if let Some(extends) = &class.extends {
+                        builder.push("_global");
+                        builder.action(Action::GetVariable);
+                        builder.push(class.name.as_str());
+                        builder.action(Action::GetMember);
+                        builder.push(extends.as_str());
+                        builder.action(Action::GetVariable); // Not sure why this isn't _global.name, but Flash :D
+                        builder.action(Action::Extends);
+                    }
+
+                    // Set up the prototype
+                    builder.push(PushValue::Register(1));
+                    builder.push("prototype");
+                    builder.action(Action::GetMember);
+                    builder.action(Action::StoreRegister(2));
+                    builder.action(Action::Pop);
+
+                    // If we implement some interfaces, set those associations too
+                    // TODO: This doesn't handle paths yet ("foo.bar.Baz")
+                    if !class.implements.is_empty() {
+                        for name in &class.implements {
+                            builder.push("_global");
+                            builder.action(Action::GetVariable);
+                            builder.push(name.as_str());
+                            builder.action(Action::GetMember);
+                        }
+                        builder.push(class.implements.len() as i32);
+                        builder.push("_global");
+                        builder.action(Action::GetVariable);
+                        builder.push(class.name.as_str());
+                        builder.action(Action::GetMember);
+                        builder.action_with_stack_delta(
+                            Action::ImplementsOp,
+                            -2 - class.implements.len() as i32,
+                        );
+                    }
+
+                    // Functions!
+                    for (name, method) in &class.functions {
+                        if method.is_static {
+                            builder.push(PushValue::Register(1));
+                        } else {
+                            builder.push(PushValue::Register(2));
+                        }
+                        builder.push(name.as_str());
+                        gen_function(context, builder, &method.function, false);
+                        builder.action(Action::SetMember);
+                    }
+
+                    // Fields!
+                    for (name, field) in &class.fields {
+                        if let Some(value) = &field.value {
+                            if field.is_static {
+                                builder.push(PushValue::Register(1));
+                            } else {
+                                builder.push(PushValue::Register(2));
+                            }
+                            builder.push(name.as_str());
+                            gen_expr(context, builder, value, false);
+                            builder.action(Action::SetMember);
+                        }
+                    }
+
+                    // Make the prototype not enumerable
+                    builder.push(1);
+                    builder.push(PushValue::Null);
+                    builder.push("_global");
+                    builder.action(Action::GetVariable);
+                    if segments.len() > 1 {
+                        for segment in &segments[0..segments.len() - 1] {
+                            builder.push(*segment);
+                            builder.action(Action::GetMember);
+                        }
+                    }
+                    builder.push(segments[segments.len() - 1]);
+                    builder.action(Action::GetMember);
+                    builder.push("prototype");
+                    builder.action(Action::GetMember);
+                    builder.push(3);
+                    builder.push("ASSetPropFlags");
+                    builder.action_with_stack_delta(Action::CallFunction, -5);
                 }
-                builder.push(name.as_str());
-                gen_expr(context, builder, value, false);
-                builder.action(Action::SetMember);
-            }
+            })
         }
-
-        // Make the prototype not enumerable
-        builder.push(1);
-        builder.push(PushValue::Null);
-        builder.push("_global");
-        builder.action(Action::GetVariable);
-        builder.push(class.name.as_str());
-        builder.action(Action::GetMember);
-        builder.push("prototype");
-        builder.action(Action::GetMember);
-        builder.push(3);
-        builder.push("ASSetPropFlags");
-        builder.action_with_stack_delta(Action::CallFunction, -5);
-
-        // Done
-        builder.mark_label(end);
-        builder.action(Action::Pop); // This is one pop too many - but that's fine, it's what Flash does
     })
 }
 

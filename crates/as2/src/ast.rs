@@ -173,7 +173,7 @@ pub enum StatementKind<'a> {
         body: Vec<Spanned<FunctionSignature<'a>>>,
     },
     Class {
-        name: Spanned<&'a str>,
+        name: Spanned<String>,
         extends: Option<Spanned<&'a str>>,
         implements: Vec<Spanned<&'a str>>,
         members: Vec<(
