@@ -38,10 +38,14 @@ extra_modules:
             - world
             - this
             - greet
+            - BitmapData
+            - "regularPropertyWithoutValue: "
+            - regularPropertyWithoutValue
             - test!
             - "Hey, "
             - name
             - "!"
+            - BitmapData on class!
         - Push:
             - String: _global
         - GetVariable
@@ -71,6 +75,22 @@ extra_modules:
                     - Constant: 2
                 - CallMethod
                 - Pop
+                - Push:
+                    - Constant: 1
+                - GetVariable
+                - Push:
+                    - Constant: 3
+                - GetMember
+                - Trace
+                - Push:
+                    - Constant: 4
+                    - Constant: 1
+                - GetVariable
+                - Push:
+                    - Constant: 5
+                - GetMember
+                - Add2
+                - Trace
               label_positions: {}
         - StoreRegister: 1
         - SetMember
@@ -103,7 +123,7 @@ extra_modules:
             actions:
               actions:
                 - Push:
-                    - Constant: 3
+                    - Constant: 6
                 - Trace
               label_positions: {}
         - SetMember
@@ -117,12 +137,12 @@ extra_modules:
             actions:
               actions:
                 - Push:
-                    - Constant: 4
-                    - Constant: 5
+                    - Constant: 7
+                    - Constant: 8
                 - GetVariable
                 - Add2
                 - Push:
-                    - Constant: 6
+                    - Constant: 9
                 - Add2
                 - Trace
               label_positions: {}
@@ -131,6 +151,11 @@ extra_modules:
             - Register: 2
             - String: regularPropertySetToFive
             - Integer: 5
+        - SetMember
+        - Push:
+            - Register: 2
+            - String: BitmapData
+            - Constant: 10
         - SetMember
         - Push:
             - Integer: 1
@@ -149,4 +174,4 @@ extra_modules:
         - CallFunction
         - Pop
       label_positions:
-        loc0000: 43
+        loc0000: 45

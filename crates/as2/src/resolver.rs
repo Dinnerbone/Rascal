@@ -17,6 +17,7 @@ struct ModuleContext<'a> {
     dependencies: IndexSet<String>,
     provider: &'a dyn SourceProvider,
     is_script: bool,
+    class_members: HashSet<String>,
 }
 
 impl<'a> ModuleContext<'a> {
@@ -27,6 +28,7 @@ impl<'a> ModuleContext<'a> {
             dependencies: IndexSet::new(),
             provider,
             is_script,
+            class_members: HashSet::new(),
         }
     }
 
@@ -40,6 +42,21 @@ impl<'a> ModuleContext<'a> {
     }
 
     fn expand_identifier(&self, name: String, span: Span) -> Option<hir::Expr> {
+        if self.class_members.contains(&name) {
+            return Some(hir::Expr::new(
+                span,
+                hir::ExprKind::Field(
+                    Box::new(hir::Expr::new(
+                        span,
+                        hir::ExprKind::Constant(hir::ConstantKind::Identifier("this".to_string())),
+                    )),
+                    Box::new(hir::Expr::new(
+                        span,
+                        hir::ExprKind::Constant(hir::ConstantKind::String(name)),
+                    )),
+                ),
+            ));
+        }
         if let Some(path) = self.imports.get(&name)
             && !path.is_empty()
         {
@@ -83,6 +100,10 @@ impl<'a> ModuleContext<'a> {
             return;
         }
         self.dependencies.insert(name.to_owned());
+    }
+
+    fn add_class_member(&mut self, name: &str) {
+        self.class_members.insert(name.to_owned());
     }
 }
 
@@ -247,16 +268,12 @@ fn resolve_class(
         context.add_dependency(interface.span, &interface.value, true);
     }
     let mut seen_names = HashSet::new();
-    let mut functions = IndexMap::new();
     let mut variables = IndexMap::new();
-    let mut constructor = hir::Function {
-        signature: hir::FunctionSignature {
-            name: Some(class_name.clone()),
-            args: vec![],
-            return_type: None,
-        },
-        body: vec![], // TODO super()
-    };
+
+    // Functions/constructor will be resolved later, once we know all the class member names
+    let mut functions = IndexMap::new();
+    let mut constructor = None;
+
     for member in members {
         match &member.value {
             ast::ClassMember::Function(function) => {
@@ -272,12 +289,10 @@ fn resolve_class(
                     continue;
                 }
                 if function_name.value == class_name.value {
-                    constructor = resolve_function(context, function);
+                    constructor = Some(function);
                 } else {
-                    functions.insert(
-                        function_name.value.to_owned(),
-                        resolve_function(context, function),
-                    );
+                    context.add_class_member(function_name.value);
+                    functions.insert(function_name.value.to_owned(), function);
                 }
             }
             ast::ClassMember::Variable(declaration) => {
@@ -288,6 +303,7 @@ fn resolve_class(
                     );
                     continue;
                 }
+                context.add_class_member(declaration.name.value);
                 // If the value is anything other than a constant (not identifier), throw an error
                 if let Some(value) = &declaration.value {
                     match &value.value {
@@ -312,13 +328,29 @@ fn resolve_class(
             }
         }
     }
+
+    let mut resolved_functions = IndexMap::new();
+    for (name, function) in functions {
+        resolved_functions.insert(name, resolve_function(context, function));
+    }
+    let resolved_constructor = constructor
+        .map(|function| resolve_function(context, function))
+        .unwrap_or_else(|| hir::Function {
+            signature: hir::FunctionSignature {
+                name: Some(class_name.clone()),
+                args: vec![],
+                return_type: None,
+            },
+            body: vec![], // TODO super()
+        });
+
     hir::Class {
         name: class_name.value,
         extends: extends.map(|e| e.value),
         implements: implements.iter().map(|i| i.value.to_owned()).collect(),
-        functions,
+        functions: resolved_functions,
         variables,
-        constructor,
+        constructor: resolved_constructor,
     }
 }
 
