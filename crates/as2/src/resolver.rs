@@ -48,7 +48,7 @@ impl<'a> ModuleContext<'a> {
                 hir::ExprKind::Field(
                     Box::new(hir::Expr::new(
                         span,
-                        hir::ExprKind::Constant(hir::ConstantKind::Identifier("this".to_string())),
+                        hir::ExprKind::Constant(hir::ConstantKind::This),
                     )),
                     Box::new(hir::Expr::new(
                         span,

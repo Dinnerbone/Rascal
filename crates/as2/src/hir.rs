@@ -309,6 +309,7 @@ pub enum ConstantKind {
     Float(f64),
     Integer(i32),
     Boolean(bool),
+    This,
 }
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
