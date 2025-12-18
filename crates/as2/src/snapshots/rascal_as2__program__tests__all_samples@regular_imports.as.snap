@@ -76,7 +76,11 @@ Ok:
                     Constant:
                       String: Point
     - Declare:
-        - name: myBitmap
+        - name:
+            span:
+              start: 97
+              end: 105
+            value: myBitmap
           value:
             span:
               start: 108
@@ -139,7 +143,11 @@ Ok:
               Constant:
                 Identifier: myBitmap
     - Declare:
-        - name: myPoint
+        - name:
+            span:
+              start: 156
+              end: 163
+            value: myPoint
           value:
             span:
               start: 166

@@ -6,7 +6,11 @@ input_file: samples/as2/typed_variables.as
 Ok:
   initial_script:
     - Declare:
-        - name: num
+        - name:
+            span:
+              start: 4
+              end: 7
+            value: num
           value:
             span:
               start: 17
@@ -20,7 +24,11 @@ Ok:
               end: 14
             value: Number
     - Declare:
-        - name: str
+        - name:
+            span:
+              start: 25
+              end: 28
+            value: str
           value:
             span:
               start: 38
@@ -34,7 +42,11 @@ Ok:
               end: 35
             value: String
     - Declare:
-        - name: flag
+        - name:
+            span:
+              start: 51
+              end: 55
+            value: flag
           value:
             span:
               start: 66
@@ -48,7 +60,11 @@ Ok:
               end: 63
             value: Boolean
     - Declare:
-        - name: obj
+        - name:
+            span:
+              start: 76
+              end: 79
+            value: obj
           value:
             span:
               start: 89
@@ -61,7 +77,11 @@ Ok:
               end: 86
             value: Object
     - Declare:
-        - name: arr
+        - name:
+            span:
+              start: 97
+              end: 100
+            value: arr
           value:
             span:
               start: 109
@@ -187,7 +207,11 @@ Ok:
                         Constant:
                           Identifier: data
     - Declare:
-        - name: numbers
+        - name:
+            span:
+              start: 303
+              end: 310
+            value: numbers
           value:
             span:
               start: 319
@@ -208,7 +232,11 @@ Ok:
               end: 316
             value: Array
     - Declare:
-        - name: strings
+        - name:
+            span:
+              start: 336
+              end: 343
+            value: strings
           value:
             span:
               start: 352
@@ -239,7 +267,11 @@ Ok:
               end: 349
             value: Array
     - Declare:
-        - name: someValue
+        - name:
+            span:
+              start: 382
+              end: 391
+            value: someValue
           value:
             span:
               start: 401
@@ -253,7 +285,11 @@ Ok:
               end: 398
             value: Object
     - Declare:
-        - name: numValue
+        - name:
+            span:
+              start: 412
+              end: 420
+            value: numValue
           value:
             span:
               start: 430
@@ -272,7 +308,11 @@ Ok:
               end: 427
             value: Number
     - Declare:
-        - name: strValue
+        - name:
+            span:
+              start: 453
+              end: 461
+            value: strValue
           value:
             span:
               start: 471
@@ -355,7 +395,11 @@ Ok:
                               Constant:
                                 Identifier: isValid
     - Declare:
-        - name: userData
+        - name:
+            span:
+              start: 614
+              end: 622
+            value: userData
           value:
             span:
               start: 632
@@ -477,7 +521,11 @@ Ok:
                     Classic:
                       initialize:
                         Declare:
-                          - name: i
+                          - name:
+                              span:
+                                start: 779
+                                end: 780
+                              value: i
                             value:
                               span:
                                 start: 790

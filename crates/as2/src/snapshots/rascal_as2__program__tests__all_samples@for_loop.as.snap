@@ -22,7 +22,11 @@ Ok:
           Classic:
             initialize:
               Declare:
-                - name: i
+                - name:
+                    span:
+                      start: 31
+                      end: 32
+                    value: i
                   value:
                     span:
                       start: 35
@@ -90,7 +94,11 @@ Ok:
               Constant:
                 String: for_no_init
     - Declare:
-        - name: j
+        - name:
+            span:
+              start: 160
+              end: 161
+            value: j
           value:
             span:
               start: 164
@@ -190,7 +198,11 @@ Ok:
           Classic:
             initialize:
               Declare:
-                - name: k
+                - name:
+                    span:
+                      start: 336
+                      end: 337
+                    value: k
                   value:
                     span:
                       start: 340
@@ -268,7 +280,11 @@ Ok:
           Classic:
             initialize:
               Declare:
-                - name: n
+                - name:
+                    span:
+                      start: 506
+                      end: 507
+                    value: n
                   value:
                     span:
                       start: 510
@@ -337,7 +353,11 @@ Ok:
               Constant:
                 String: for_all_omitted
     - Declare:
-        - name: count
+        - name:
+            span:
+              start: 645
+              end: 650
+            value: count
           value:
             span:
               start: 653
@@ -428,7 +448,11 @@ Ok:
               Constant:
                 String: for_in_object
     - Declare:
-        - name: obj
+        - name:
+            span:
+              start: 853
+              end: 856
+            value: obj
           value:
             span:
               start: 859
@@ -570,7 +594,11 @@ Ok:
               Constant:
                 String: for_in_array
     - Declare:
-        - name: arr
+        - name:
+            span:
+              start: 1038
+              end: 1041
+            value: arr
           value:
             span:
               start: 1044
@@ -597,7 +625,11 @@ Ok:
                       Integer: 7
           type_name: ~
     - Declare:
-        - name: idx
+        - name:
+            span:
+              start: 1059
+              end: 1062
+            value: idx
           value: ~
           type_name: ~
     - ForIn:
@@ -678,7 +710,11 @@ Ok:
           Classic:
             initialize:
               Declare:
-                - name: a
+                - name:
+                    span:
+                      start: 1224
+                      end: 1225
+                    value: a
                   value:
                     span:
                       start: 1228
@@ -687,7 +723,11 @@ Ok:
                       Constant:
                         Integer: 0
                   type_name: ~
-                - name: b
+                - name:
+                    span:
+                      start: 1231
+                      end: 1232
+                    value: b
                   value:
                     span:
                       start: 1235
@@ -795,7 +835,11 @@ Ok:
           Classic:
             initialize:
               Declare:
-                - name: x
+                - name:
+                    span:
+                      start: 1387
+                      end: 1388
+                    value: x
                   value:
                     span:
                       start: 1391
@@ -927,7 +971,11 @@ Ok:
           Classic:
             initialize:
               Declare:
-                - name: outer
+                - name:
+                    span:
+                      start: 1606
+                      end: 1611
+                    value: outer
                   value:
                     span:
                       start: 1614
@@ -975,7 +1023,11 @@ Ok:
                   Classic:
                     initialize:
                       Declare:
-                        - name: inner
+                        - name:
+                            span:
+                              start: 1652
+                              end: 1657
+                            value: inner
                           value:
                             span:
                               start: 1660
@@ -1067,7 +1119,11 @@ Ok:
               Constant:
                 String: for_existing_var
     - Declare:
-        - name: z
+        - name:
+            span:
+              start: 1826
+              end: 1827
+            value: z
           value: ~
           type_name: ~
     - ForIn:
@@ -1156,7 +1212,11 @@ Ok:
           Classic:
             initialize:
               Declare:
-                - name: q
+                - name:
+                    span:
+                      start: 1983
+                      end: 1984
+                    value: q
                   value:
                     span:
                       start: 1987

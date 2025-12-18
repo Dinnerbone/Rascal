@@ -6,7 +6,11 @@ input_file: samples/as2/typeof.as
 Ok:
   initial_script:
     - Declare:
-        - name: num
+        - name:
+            span:
+              start: 4
+              end: 7
+            value: num
           value:
             span:
               start: 10
@@ -16,7 +20,11 @@ Ok:
                 Integer: 1
           type_name: ~
     - Declare:
-        - name: obj
+        - name:
+            span:
+              start: 17
+              end: 20
+            value: obj
           value:
             span:
               start: 23

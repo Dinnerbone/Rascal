@@ -6,7 +6,11 @@ input_file: samples/as2/assign_variable_many_ways.as
 Ok:
   initial_script:
     - Declare:
-        - name: message
+        - name:
+            span:
+              start: 4
+              end: 11
+            value: message
           value:
             span:
               start: 14
@@ -90,7 +94,11 @@ Ok:
               Constant:
                 Identifier: message
     - Declare:
-        - name: a
+        - name:
+            span:
+              start: 95
+              end: 96
+            value: a
           value:
             span:
               start: 97
@@ -99,10 +107,18 @@ Ok:
               Constant:
                 Integer: 1
           type_name: ~
-        - name: b
+        - name:
+            span:
+              start: 100
+              end: 101
+            value: b
           value: ~
           type_name: ~
-        - name: c
+        - name:
+            span:
+              start: 103
+              end: 104
+            value: c
           value:
             span:
               start: 105

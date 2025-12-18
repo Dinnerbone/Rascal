@@ -10,7 +10,11 @@ Ok:
           Classic:
             initialize:
               Declare:
-                - name: i
+                - name:
+                    span:
+                      start: 9
+                      end: 10
+                    value: i
                   value:
                     span:
                       start: 13

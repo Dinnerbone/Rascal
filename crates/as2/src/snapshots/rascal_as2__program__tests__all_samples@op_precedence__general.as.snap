@@ -6,7 +6,11 @@ input_file: samples/as2/op_precedence/general.as
 Ok:
   initial_script:
     - Declare:
-        - name: one
+        - name:
+            span:
+              start: 83
+              end: 86
+            value: one
           value:
             span:
               start: 89
@@ -16,7 +20,11 @@ Ok:
                 Integer: 1
           type_name: ~
     - Declare:
-        - name: two
+        - name:
+            span:
+              start: 96
+              end: 99
+            value: two
           value:
             span:
               start: 102
@@ -26,7 +34,11 @@ Ok:
                 Integer: 2
           type_name: ~
     - Declare:
-        - name: three
+        - name:
+            span:
+              start: 109
+              end: 114
+            value: three
           value:
             span:
               start: 117
@@ -36,7 +48,11 @@ Ok:
                 Integer: 3
           type_name: ~
     - Declare:
-        - name: four
+        - name:
+            span:
+              start: 124
+              end: 128
+            value: four
           value:
             span:
               start: 131
@@ -46,7 +62,11 @@ Ok:
                 Integer: 4
           type_name: ~
     - Declare:
-        - name: five
+        - name:
+            span:
+              start: 138
+              end: 142
+            value: five
           value:
             span:
               start: 145
@@ -56,7 +76,11 @@ Ok:
                 Integer: 5
           type_name: ~
     - Declare:
-        - name: ten
+        - name:
+            span:
+              start: 152
+              end: 155
+            value: ten
           value:
             span:
               start: 158
@@ -66,7 +90,11 @@ Ok:
                 Integer: 10
           type_name: ~
     - Declare:
-        - name: zero
+        - name:
+            span:
+              start: 166
+              end: 170
+            value: zero
           value:
             span:
               start: 173
@@ -76,7 +104,11 @@ Ok:
                 Integer: 0
           type_name: ~
     - Declare:
-        - name: negOne
+        - name:
+            span:
+              start: 180
+              end: 186
+            value: negOne
           value:
             span:
               start: 189
@@ -92,23 +124,43 @@ Ok:
                       Integer: 1
           type_name: ~
     - Declare:
-        - name: a
+        - name:
+            span:
+              start: 197
+              end: 198
+            value: a
           value: ~
           type_name: ~
     - Declare:
-        - name: b
+        - name:
+            span:
+              start: 204
+              end: 205
+            value: b
           value: ~
           type_name: ~
     - Declare:
-        - name: c
+        - name:
+            span:
+              start: 211
+              end: 212
+            value: c
           value: ~
           type_name: ~
     - Declare:
-        - name: p
+        - name:
+            span:
+              start: 218
+              end: 219
+            value: p
           value: ~
           type_name: ~
     - Declare:
-        - name: s
+        - name:
+            span:
+              start: 225
+              end: 226
+            value: s
           value:
             span:
               start: 229
@@ -118,7 +170,11 @@ Ok:
                 String: s
           type_name: ~
     - Declare:
-        - name: t
+        - name:
+            span:
+              start: 238
+              end: 239
+            value: t
           value:
             span:
               start: 242
@@ -1883,7 +1939,11 @@ Ok:
                     Constant:
                       Identifier: a
     - Declare:
-        - name: obj
+        - name:
+            span:
+              start: 4248
+              end: 4251
+            value: obj
           value:
             span:
               start: 4254

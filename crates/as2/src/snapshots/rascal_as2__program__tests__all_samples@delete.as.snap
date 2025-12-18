@@ -6,7 +6,11 @@ input_file: samples/as2/delete.as
 Ok:
   initial_script:
     - Declare:
-        - name: num
+        - name:
+            span:
+              start: 4
+              end: 7
+            value: num
           value:
             span:
               start: 10
@@ -16,7 +20,11 @@ Ok:
                 Integer: 1
           type_name: ~
     - Declare:
-        - name: obj
+        - name:
+            span:
+              start: 17
+              end: 20
+            value: obj
           value:
             span:
               start: 23
@@ -90,7 +98,11 @@ Ok:
                           Constant:
                             Identifier: obj
     - Declare:
-        - name: obj
+        - name:
+            span:
+              start: 129
+              end: 132
+            value: obj
           value:
             span:
               start: 135
@@ -146,7 +158,11 @@ Ok:
                                 Constant:
                                   String: num
     - Declare:
-        - name: obj
+        - name:
+            span:
+              start: 203
+              end: 206
+            value: obj
           value:
             span:
               start: 209
@@ -214,7 +230,11 @@ Ok:
                           Constant:
                             Integer: 1
     - Declare:
-        - name: obj
+        - name:
+            span:
+              start: 282
+              end: 285
+            value: obj
           value:
             span:
               start: 288
@@ -290,7 +310,11 @@ Ok:
                           Constant:
                             String: ":("
     - Declare:
-        - name: obj
+        - name:
+            span:
+              start: 400
+              end: 403
+            value: obj
           value:
             span:
               start: 406
@@ -374,7 +398,11 @@ Ok:
                                       Constant:
                                         String: num
     - Declare:
-        - name: obj
+        - name:
+            span:
+              start: 505
+              end: 508
+            value: obj
           value:
             span:
               start: 511
@@ -437,7 +465,11 @@ Ok:
                                 Constant:
                                   String: trace
     - Declare:
-        - name: obj
+        - name:
+            span:
+              start: 597
+              end: 600
+            value: obj
           value:
             span:
               start: 603

@@ -300,7 +300,7 @@ fn resolve_statement(context: &mut ModuleContext, input: &ast::Statement) -> hir
             declarations
                 .iter()
                 .map(|d| hir::Declaration {
-                    name: d.name.to_owned(),
+                    name: Spanned::new(d.name.span, d.name.value.to_owned()),
                     type_name: resolve_opt_type_name(context, &d.type_name),
                     value: d
                         .value

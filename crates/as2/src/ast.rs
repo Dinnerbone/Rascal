@@ -231,7 +231,7 @@ pub struct FunctionArgument<'a> {
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
 pub struct Declaration<'a> {
-    pub name: &'a str,
+    pub name: Spanned<&'a str>,
     pub value: Option<Expr<'a>>,
     pub type_name: Option<Spanned<&'a str>>,
 }

@@ -6,7 +6,11 @@ input_file: samples/as2/op_precedence/bit_math.as
 Ok:
   initial_script:
     - Declare:
-        - name: a
+        - name:
+            span:
+              start: 4
+              end: 5
+            value: a
           value:
             span:
               start: 8
@@ -16,7 +20,11 @@ Ok:
                 Integer: 12
           type_name: ~
     - Declare:
-        - name: b
+        - name:
+            span:
+              start: 27
+              end: 28
+            value: b
           value:
             span:
               start: 31
@@ -26,7 +34,11 @@ Ok:
                 Integer: 5
           type_name: ~
     - Declare:
-        - name: c
+        - name:
+            span:
+              start: 50
+              end: 51
+            value: c
           value:
             span:
               start: 54

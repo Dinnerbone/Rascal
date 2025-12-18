@@ -40,7 +40,11 @@ Ok:
                       Constant:
                         String: ":)"
     - Declare:
-        - name: anon
+        - name:
+            span:
+              start: 69
+              end: 73
+            value: anon
           value:
             span:
               start: 76

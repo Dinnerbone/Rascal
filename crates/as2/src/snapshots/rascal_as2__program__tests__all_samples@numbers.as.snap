@@ -6,7 +6,11 @@ input_file: samples/as2/numbers.as
 Ok:
   initial_script:
     - Declare:
-        - name: i0
+        - name:
+            span:
+              start: 24
+              end: 26
+            value: i0
           value:
             span:
               start: 29
@@ -16,7 +20,11 @@ Ok:
                 Integer: 0
           type_name: ~
     - Declare:
-        - name: i1
+        - name:
+            span:
+              start: 36
+              end: 38
+            value: i1
           value:
             span:
               start: 41
@@ -26,7 +34,11 @@ Ok:
                 Integer: 1
           type_name: ~
     - Declare:
-        - name: i42
+        - name:
+            span:
+              start: 48
+              end: 51
+            value: i42
           value:
             span:
               start: 54
@@ -36,7 +48,11 @@ Ok:
                 Integer: 42
           type_name: ~
     - Declare:
-        - name: iLarge
+        - name:
+            span:
+              start: 62
+              end: 68
+            value: iLarge
           value:
             span:
               start: 71
@@ -46,7 +62,11 @@ Ok:
                 Integer: 2147483647
           type_name: ~
     - Declare:
-        - name: iLargePlusOne
+        - name:
+            span:
+              start: 98
+              end: 111
+            value: iLargePlusOne
           value:
             span:
               start: 114
@@ -56,7 +76,11 @@ Ok:
                 Float: 2147483648
           type_name: ~
     - Declare:
-        - name: f0
+        - name:
+            span:
+              start: 175
+              end: 177
+            value: f0
           value:
             span:
               start: 180
@@ -66,7 +90,11 @@ Ok:
                 Float: 0
           type_name: ~
     - Declare:
-        - name: f1
+        - name:
+            span:
+              start: 189
+              end: 191
+            value: f1
           value:
             span:
               start: 194
@@ -76,7 +104,11 @@ Ok:
                 Float: 1.23
           type_name: ~
     - Declare:
-        - name: fLeadingDot
+        - name:
+            span:
+              start: 204
+              end: 215
+            value: fLeadingDot
           value:
             span:
               start: 218
@@ -86,7 +118,11 @@ Ok:
                 Float: 0.5
           type_name: ~
     - Declare:
-        - name: fTrailingDot
+        - name:
+            span:
+              start: 242
+              end: 254
+            value: fTrailingDot
           value:
             span:
               start: 257
@@ -96,7 +132,11 @@ Ok:
                 Float: 5
           type_name: ~
     - Declare:
-        - name: h0
+        - name:
+            span:
+              start: 328
+              end: 330
+            value: h0
           value:
             span:
               start: 333
@@ -106,7 +146,11 @@ Ok:
                 Integer: 0
           type_name: ~
     - Declare:
-        - name: hMix
+        - name:
+            span:
+              start: 342
+              end: 346
+            value: hMix
           value:
             span:
               start: 349
@@ -116,7 +160,11 @@ Ok:
                 Integer: 6699
           type_name: ~
     - Declare:
-        - name: hMaxByte
+        - name:
+            span:
+              start: 361
+              end: 369
+            value: hMaxByte
           value:
             span:
               start: 372
@@ -126,7 +174,11 @@ Ok:
                 Integer: 255
           type_name: ~
     - Declare:
-        - name: eBig
+        - name:
+            span:
+              start: 404
+              end: 408
+            value: eBig
           value:
             span:
               start: 411
@@ -136,7 +188,11 @@ Ok:
                 Float: 10000000000
           type_name: ~
     - Declare:
-        - name: eSmall
+        - name:
+            span:
+              start: 421
+              end: 427
+            value: eSmall
           value:
             span:
               start: 430
@@ -146,7 +202,11 @@ Ok:
                 Float: 0.0000000001
           type_name: ~
     - Declare:
-        - name: ePlus
+        - name:
+            span:
+              start: 441
+              end: 446
+            value: ePlus
           value:
             span:
               start: 449
@@ -156,7 +216,11 @@ Ok:
                 Float: 2500
           type_name: ~
     - Declare:
-        - name: eLeadingDot
+        - name:
+            span:
+              start: 461
+              end: 472
+            value: eLeadingDot
           value:
             span:
               start: 475
@@ -166,7 +230,11 @@ Ok:
                 Float: 50
           type_name: ~
     - Declare:
-        - name: eTrailingDot
+        - name:
+            span:
+              start: 485
+              end: 497
+            value: eTrailingDot
           value:
             span:
               start: 500
@@ -176,7 +244,11 @@ Ok:
                 Float: 5000
           type_name: ~
     - Declare:
-        - name: eSci
+        - name:
+            span:
+              start: 510
+              end: 514
+            value: eSci
           value:
             span:
               start: 517
@@ -186,7 +258,11 @@ Ok:
                 Float: 602200000000000000000000
           type_name: ~
     - Declare:
-        - name: nDec
+        - name:
+            span:
+              start: 570
+              end: 574
+            value: nDec
           value:
             span:
               start: 577
@@ -202,7 +278,11 @@ Ok:
                       Integer: 123
           type_name: ~
     - Declare:
-        - name: nHex
+        - name:
+            span:
+              start: 587
+              end: 591
+            value: nHex
           value:
             span:
               start: 594
@@ -218,7 +298,11 @@ Ok:
                       Integer: 255
           type_name: ~
     - Declare:
-        - name: nFloat
+        - name:
+            span:
+              start: 605
+              end: 611
+            value: nFloat
           value:
             span:
               start: 614
@@ -234,7 +318,11 @@ Ok:
                       Float: 3.14
           type_name: ~
     - Declare:
-        - name: pDec
+        - name:
+            span:
+              start: 625
+              end: 629
+            value: pDec
           value:
             span:
               start: 633
@@ -244,7 +332,11 @@ Ok:
                 Integer: 7
           type_name: ~
     - Declare:
-        - name: sum
+        - name:
+            span:
+              start: 684
+              end: 687
+            value: sum
           value:
             span:
               start: 690
@@ -278,7 +370,11 @@ Ok:
                       Integer: 3
           type_name: ~
     - Declare:
-        - name: diff
+        - name:
+            span:
+              start: 705
+              end: 709
+            value: diff
           value:
             span:
               start: 712
@@ -300,7 +396,11 @@ Ok:
                       Integer: 4
           type_name: ~
     - Declare:
-        - name: prod
+        - name:
+            span:
+              start: 724
+              end: 728
+            value: prod
           value:
             span:
               start: 731
@@ -322,7 +422,11 @@ Ok:
                       Integer: 7
           type_name: ~
     - Declare:
-        - name: quot
+        - name:
+            span:
+              start: 742
+              end: 746
+            value: quot
           value:
             span:
               start: 749
@@ -344,7 +448,11 @@ Ok:
                       Integer: 7
           type_name: ~
     - Declare:
-        - name: combo
+        - name:
+            span:
+              start: 761
+              end: 766
+            value: combo
           value:
             span:
               start: 769

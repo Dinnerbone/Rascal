@@ -6,7 +6,11 @@ input_file: samples/as2/while.as
 Ok:
   initial_script:
     - Declare:
-        - name: x
+        - name:
+            span:
+              start: 4
+              end: 5
+            value: x
           value:
             span:
               start: 8

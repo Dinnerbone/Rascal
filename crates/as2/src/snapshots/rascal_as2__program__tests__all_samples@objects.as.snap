@@ -6,7 +6,11 @@ input_file: samples/as2/objects.as
 Ok:
   initial_script:
     - Declare:
-        - name: o
+        - name:
+            span:
+              start: 4
+              end: 5
+            value: o
           value:
             span:
               start: 8

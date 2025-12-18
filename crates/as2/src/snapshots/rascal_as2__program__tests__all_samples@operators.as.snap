@@ -6,7 +6,11 @@ input_file: samples/as2/operators.as
 Ok:
   initial_script:
     - Declare:
-        - name: a
+        - name:
+            span:
+              start: 109
+              end: 110
+            value: a
           value:
             span:
               start: 113
@@ -16,7 +20,11 @@ Ok:
                 Integer: 10
           type_name: ~
     - Declare:
-        - name: b
+        - name:
+            span:
+              start: 121
+              end: 122
+            value: b
           value:
             span:
               start: 125
@@ -326,7 +334,11 @@ Ok:
                           Constant:
                             Identifier: a
     - Declare:
-        - name: hello
+        - name:
+            span:
+              start: 466
+              end: 471
+            value: hello
           value:
             span:
               start: 474
@@ -336,7 +348,11 @@ Ok:
                 String: Hello
           type_name: ~
     - Declare:
-        - name: world
+        - name:
+            span:
+              start: 487
+              end: 492
+            value: world
           value:
             span:
               start: 495
@@ -394,7 +410,11 @@ Ok:
                           Constant:
                             Identifier: world
     - Declare:
-        - name: x
+        - name:
+            span:
+              start: 605
+              end: 606
+            value: x
           value:
             span:
               start: 609
@@ -608,7 +628,11 @@ Ok:
                           Constant:
                             Integer: 2
     - Declare:
-        - name: five
+        - name:
+            span:
+              start: 848
+              end: 852
+            value: five
           value:
             span:
               start: 855
@@ -618,7 +642,11 @@ Ok:
                 Integer: 5
           type_name: ~
     - Declare:
-        - name: three
+        - name:
+            span:
+              start: 862
+              end: 867
+            value: three
           value:
             span:
               start: 870
@@ -1246,7 +1274,11 @@ Ok:
                     Constant:
                       Identifier: five
     - Declare:
-        - name: six
+        - name:
+            span:
+              start: 1650
+              end: 1653
+            value: six
           value:
             span:
               start: 1656
@@ -1256,7 +1288,11 @@ Ok:
                 Integer: 6
           type_name: ~
     - Declare:
-        - name: seven
+        - name:
+            span:
+              start: 1663
+              end: 1668
+            value: seven
           value:
             span:
               start: 1671
@@ -1266,7 +1302,11 @@ Ok:
                 Integer: 7
           type_name: ~
     - Declare:
-        - name: sevenStr
+        - name:
+            span:
+              start: 1678
+              end: 1686
+            value: sevenStr
           value:
             span:
               start: 1689
@@ -1600,7 +1640,11 @@ Ok:
                           Constant:
                             Identifier: seven
     - Declare:
-        - name: t
+        - name:
+            span:
+              start: 2204
+              end: 2205
+            value: t
           value:
             span:
               start: 2208
@@ -1610,7 +1654,11 @@ Ok:
                 Boolean: true
           type_name: ~
     - Declare:
-        - name: f
+        - name:
+            span:
+              start: 2218
+              end: 2219
+            value: f
           value:
             span:
               start: 2222
@@ -1722,7 +1770,11 @@ Ok:
                           Constant:
                             Identifier: t
     - Declare:
-        - name: max
+        - name:
+            span:
+              start: 2362
+              end: 2365
+            value: max
           value:
             span:
               start: 2368
@@ -1788,7 +1840,11 @@ Ok:
                     Constant:
                       Identifier: max
     - Declare:
-        - name: obj
+        - name:
+            span:
+              start: 2458
+              end: 2461
+            value: obj
           value:
             span:
               start: 2464

@@ -6,7 +6,11 @@ input_file: samples/as2/assign_variable_and_trace.as
 Ok:
   initial_script:
     - Declare:
-        - name: message
+        - name:
+            span:
+              start: 4
+              end: 11
+            value: message
           value:
             span:
               start: 14

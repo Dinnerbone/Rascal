@@ -6,7 +6,11 @@ input_file: samples/as2/block.as
 Ok:
   initial_script:
     - Declare:
-        - name: outside
+        - name:
+            span:
+              start: 97
+              end: 104
+            value: outside
           value:
             span:
               start: 107
@@ -17,7 +21,11 @@ Ok:
           type_name: ~
     - Block:
         - Declare:
-            - name: inside
+            - name:
+                span:
+                  start: 128
+                  end: 134
+                value: inside
               value:
                 span:
                   start: 137

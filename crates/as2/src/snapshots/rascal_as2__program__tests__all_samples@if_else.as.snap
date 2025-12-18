@@ -6,7 +6,11 @@ input_file: samples/as2/if_else.as
 Ok:
   initial_script:
     - Declare:
-        - name: condition
+        - name:
+            span:
+              start: 4
+              end: 13
+            value: condition
           value:
             span:
               start: 16
@@ -16,7 +20,11 @@ Ok:
                 Boolean: true
           type_name: ~
     - Declare:
-        - name: x
+        - name:
+            span:
+              start: 26
+              end: 27
+            value: x
           value:
             span:
               start: 30
@@ -26,7 +34,11 @@ Ok:
                 Integer: 1
           type_name: ~
     - Declare:
-        - name: y
+        - name:
+            span:
+              start: 37
+              end: 38
+            value: y
           value:
             span:
               start: 41

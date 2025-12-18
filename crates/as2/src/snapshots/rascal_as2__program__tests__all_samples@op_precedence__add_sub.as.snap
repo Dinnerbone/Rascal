@@ -6,7 +6,11 @@ input_file: samples/as2/op_precedence/add_sub.as
 Ok:
   initial_script:
     - Declare:
-        - name: a
+        - name:
+            span:
+              start: 4
+              end: 5
+            value: a
           value:
             span:
               start: 8
@@ -16,7 +20,11 @@ Ok:
                 Integer: 10
           type_name: ~
     - Declare:
-        - name: b
+        - name:
+            span:
+              start: 16
+              end: 17
+            value: b
           value:
             span:
               start: 20
@@ -26,7 +34,11 @@ Ok:
                 Integer: 5
           type_name: ~
     - Declare:
-        - name: c
+        - name:
+            span:
+              start: 27
+              end: 28
+            value: c
           value:
             span:
               start: 31

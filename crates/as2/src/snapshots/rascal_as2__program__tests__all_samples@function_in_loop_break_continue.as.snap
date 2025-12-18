@@ -10,7 +10,11 @@ Ok:
           Classic:
             initialize:
               Declare:
-                - name: i
+                - name:
+                    span:
+                      start: 9
+                      end: 10
+                    value: i
                   value:
                     span:
                       start: 13
@@ -78,7 +82,11 @@ Ok:
                             Constant:
                               Identifier: i
             - Declare:
-                - name: decide
+                - name:
+                    span:
+                      start: 114
+                      end: 120
+                    value: decide
                   value:
                     span:
                       start: 123
@@ -161,7 +169,11 @@ Ok:
                                     String: none
                   type_name: ~
             - Declare:
-                - name: naughty
+                - name:
+                    span:
+                      start: 371
+                      end: 378
+                    value: naughty
                   value:
                     span:
                       start: 381
@@ -190,7 +202,11 @@ Ok:
                           Identifier: naughty
                     args: []
             - Declare:
-                - name: action
+                - name:
+                    span:
+                      start: 440
+                      end: 446
+                    value: action
                   value:
                     span:
                       start: 449

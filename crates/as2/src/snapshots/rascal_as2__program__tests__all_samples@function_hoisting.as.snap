@@ -6,7 +6,11 @@ input_file: samples/as2/function_hoisting.as
 Ok:
   initial_script:
     - Declare:
-        - name: firstVar
+        - name:
+            span:
+              start: 4
+              end: 12
+            value: firstVar
           value:
             span:
               start: 15
@@ -160,7 +164,11 @@ Ok:
                                   Constant:
                                     String: function within a function!
     - Declare:
-        - name: secondVar
+        - name:
+            span:
+              start: 288
+              end: 297
+            value: secondVar
           value:
             span:
               start: 300

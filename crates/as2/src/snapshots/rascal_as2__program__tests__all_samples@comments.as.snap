@@ -6,7 +6,11 @@ input_file: samples/as2/comments.as
 Ok:
   initial_script:
     - Declare:
-        - name: a
+        - name:
+            span:
+              start: 112
+              end: 113
+            value: a
           value:
             span:
               start: 116
@@ -16,7 +20,11 @@ Ok:
                 String: "1"
           type_name: ~
     - Declare:
-        - name: b
+        - name:
+            span:
+              start: 244
+              end: 245
+            value: b
           value:
             span:
               start: 248
@@ -26,7 +34,11 @@ Ok:
                 String: "2"
           type_name: ~
     - Declare:
-        - name: c
+        - name:
+            span:
+              start: 311
+              end: 312
+            value: c
           value:
             span:
               start: 371
@@ -36,7 +48,11 @@ Ok:
                 String: "3"
           type_name: ~
     - Declare:
-        - name: d
+        - name:
+            span:
+              start: 447
+              end: 448
+            value: d
           value:
             span:
               start: 451
@@ -72,7 +88,11 @@ Ok:
                   Constant:
                     Identifier: b
     - Declare:
-        - name: e
+        - name:
+            span:
+              start: 652
+              end: 653
+            value: e
           value:
             span:
               start: 656
@@ -82,7 +102,11 @@ Ok:
                 String: "5"
           type_name: ~
     - Declare:
-        - name: f
+        - name:
+            span:
+              start: 666
+              end: 667
+            value: f
           value:
             span:
               start: 670
@@ -92,7 +116,11 @@ Ok:
                 String: // not a comment
           type_name: ~
     - Declare:
-        - name: g
+        - name:
+            span:
+              start: 723
+              end: 724
+            value: g
           value:
             span:
               start: 727
@@ -102,7 +130,11 @@ Ok:
                 String: /* not a comment */
           type_name: ~
     - Declare:
-        - name: h
+        - name:
+            span:
+              start: 789
+              end: 790
+            value: h
           value:
             span:
               start: 793
@@ -112,7 +144,11 @@ Ok:
                 String: "\"/* still not a comment */\""
           type_name: ~
     - Declare:
-        - name: i
+        - name:
+            span:
+              start: 894
+              end: 895
+            value: i
           value:
             span:
               start: 898
@@ -122,7 +158,11 @@ Ok:
                 String: "6"
           type_name: ~
     - Declare:
-        - name: j
+        - name:
+            span:
+              start: 1038
+              end: 1039
+            value: j
           value:
             span:
               start: 1042
@@ -132,7 +172,11 @@ Ok:
                 String: "7"
           type_name: ~
     - Declare:
-        - name: k
+        - name:
+            span:
+              start: 1111
+              end: 1112
+            value: k
           value:
             span:
               start: 1115

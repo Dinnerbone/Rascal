@@ -59,10 +59,18 @@ Ok:
                       Constant:
                         Integer: 0
     - Declare:
-        - name: oldX
+        - name:
+            span:
+              start: 340
+              end: 344
+            value: oldX
           value: ~
           type_name: ~
-        - name: oldY
+        - name:
+            span:
+              start: 346
+              end: 350
+            value: oldY
           value: ~
           type_name: ~
     - Expr:
@@ -226,7 +234,11 @@ Ok:
                               Constant:
                                 Identifier: _ymouse
               - Declare:
-                  - name: clips
+                  - name:
+                      span:
+                        start: 527
+                        end: 532
+                      value: clips
                     value:
                       span:
                         start: 535
@@ -281,7 +293,11 @@ Ok:
                     Classic:
                       initialize:
                         Declare:
-                          - name: i
+                          - name:
+                              span:
+                                start: 592
+                                end: 593
+                              value: i
                             value:
                               span:
                                 start: 594
@@ -336,7 +352,11 @@ Ok:
                   body:
                     Block:
                       - Declare:
-                          - name: clip
+                          - name:
+                              span:
+                                start: 632
+                                end: 636
+                              value: clip
                             value:
                               span:
                                 start: 644

@@ -6,7 +6,11 @@ input_file: samples/as2/op_precedence/mul_div_mod.as
 Ok:
   initial_script:
     - Declare:
-        - name: a
+        - name:
+            span:
+              start: 75
+              end: 76
+            value: a
           value:
             span:
               start: 79
@@ -16,7 +20,11 @@ Ok:
                 Integer: 20
           type_name: ~
     - Declare:
-        - name: b
+        - name:
+            span:
+              start: 87
+              end: 88
+            value: b
           value:
             span:
               start: 91
@@ -26,7 +34,11 @@ Ok:
                 Integer: 6
           type_name: ~
     - Declare:
-        - name: c
+        - name:
+            span:
+              start: 98
+              end: 99
+            value: c
           value:
             span:
               start: 102

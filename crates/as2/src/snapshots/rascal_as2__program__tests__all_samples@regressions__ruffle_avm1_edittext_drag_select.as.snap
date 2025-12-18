@@ -6,7 +6,11 @@ input_file: samples/as2/regressions/ruffle_avm1_edittext_drag_select.as
 Ok:
   initial_script:
     - Declare:
-        - name: listener
+        - name:
+            span:
+              start: 4
+              end: 12
+            value: listener
           value:
             span:
               start: 15

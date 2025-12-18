@@ -6,7 +6,11 @@ input_file: samples/as2/op_precedence/comparison.as
 Ok:
   initial_script:
     - Declare:
-        - name: a
+        - name:
+            span:
+              start: 17
+              end: 18
+            value: a
           value:
             span:
               start: 21
@@ -16,7 +20,11 @@ Ok:
                 Integer: 10
           type_name: ~
     - Declare:
-        - name: b
+        - name:
+            span:
+              start: 29
+              end: 30
+            value: b
           value:
             span:
               start: 33
@@ -26,7 +34,11 @@ Ok:
                 Integer: 5
           type_name: ~
     - Declare:
-        - name: c
+        - name:
+            span:
+              start: 40
+              end: 41
+            value: c
           value:
             span:
               start: 44

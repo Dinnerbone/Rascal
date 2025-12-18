@@ -501,7 +501,7 @@ pub struct FunctionArgument {
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
 pub struct Declaration {
-    pub name: String,
+    pub name: Spanned<String>,
     pub value: Option<Expr>,
     pub type_name: Option<Spanned<String>>,
 }

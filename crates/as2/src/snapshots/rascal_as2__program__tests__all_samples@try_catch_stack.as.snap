@@ -6,7 +6,11 @@ input_file: samples/as2/try_catch_stack.as
 Ok:
   initial_script:
     - Declare:
-        - name: bad
+        - name:
+            span:
+              start: 4
+              end: 7
+            value: bad
           value:
             span:
               start: 10
@@ -27,7 +31,11 @@ Ok:
                             String: oh noes!
           type_name: ~
     - Declare:
-        - name: foo
+        - name:
+            span:
+              start: 53
+              end: 56
+            value: foo
           value:
             span:
               start: 59

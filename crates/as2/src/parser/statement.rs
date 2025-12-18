@@ -175,7 +175,7 @@ fn declaration<'i>(i: &mut Tokens<'i>) -> ModalResult<Spanned<Declaration<'i>>> 
     Ok(Spanned::new(
         Span::encompassing(start, end),
         Declaration {
-            name: name.value,
+            name,
             value,
             type_name,
         },
@@ -583,7 +583,7 @@ mod stmt_tests {
                 StatementKind::Declare(vec![Spanned::new(
                     Span::default(),
                     Declaration {
-                        name: "x",
+                        name: Spanned::new(Span::default(), "x"),
                         value: None,
                         type_name: None,
                     }
@@ -607,7 +607,7 @@ mod stmt_tests {
                 StatementKind::Declare(vec![Spanned::new(
                     Span::default(),
                     Declaration {
-                        name: "x",
+                        name: Spanned::new(Span::default(), "x"),
                         value: None,
                         type_name: Some(Spanned::new(Span::default(), "String")),
                     }
@@ -631,7 +631,7 @@ mod stmt_tests {
                 StatementKind::Declare(vec![Spanned::new(
                     Span::default(),
                     Declaration {
-                        name: "x",
+                        name: Spanned::new(Span::default(), "x"),
                         value: Some(s("hi")),
                         type_name: None,
                     }
@@ -657,7 +657,7 @@ mod stmt_tests {
                 StatementKind::Declare(vec![Spanned::new(
                     Span::default(),
                     Declaration {
-                        name: "x",
+                        name: Spanned::new(Span::default(), "x"),
                         value: Some(s("hi")),
                         type_name: Some(Spanned::new(Span::default(), "String")),
                     }
@@ -684,7 +684,7 @@ mod stmt_tests {
                 StatementKind::Declare(vec![Spanned::new(
                     Span::default(),
                     Declaration {
-                        name: "x",
+                        name: Spanned::new(Span::default(), "x"),
                         value: Some(ex(ExprKind::Call {
                             name: Box::new(id("foo")),
                             args: vec![id("a")]
@@ -802,7 +802,7 @@ mod stmt_tests {
                             StatementKind::Declare(vec![Spanned::new(
                                 Span::default(),
                                 Declaration {
-                                    name: "i",
+                                    name: Spanned::new(Span::default(), "i"),
                                     value: Some(id("0")),
                                     type_name: None,
                                 }

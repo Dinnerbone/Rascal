@@ -6,7 +6,11 @@ input_file: samples/as2/random_success.as
 Ok:
   initial_script:
     - Declare:
-        - name: success
+        - name:
+            span:
+              start: 4
+              end: 11
+            value: success
           value:
             span:
               start: 14

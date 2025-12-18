@@ -6,7 +6,11 @@ input_file: samples/as2/op_precedence/logic.as
 Ok:
   initial_script:
     - Declare:
-        - name: a
+        - name:
+            span:
+              start: 17
+              end: 18
+            value: a
           value:
             span:
               start: 21
@@ -16,7 +20,11 @@ Ok:
                 Boolean: true
           type_name: ~
     - Declare:
-        - name: b
+        - name:
+            span:
+              start: 31
+              end: 32
+            value: b
           value:
             span:
               start: 35
@@ -26,7 +34,11 @@ Ok:
                 Boolean: false
           type_name: ~
     - Declare:
-        - name: c
+        - name:
+            span:
+              start: 46
+              end: 47
+            value: c
           value:
             span:
               start: 50
@@ -612,7 +624,11 @@ Ok:
               Constant:
                 String: "---"
     - Declare:
-        - name: x
+        - name:
+            span:
+              start: 825
+              end: 826
+            value: x
           value:
             span:
               start: 829
@@ -622,7 +638,11 @@ Ok:
                 Boolean: false
           type_name: ~
     - Declare:
-        - name: y
+        - name:
+            span:
+              start: 840
+              end: 841
+            value: y
           value:
             span:
               start: 844
@@ -632,7 +652,11 @@ Ok:
                 Boolean: true
           type_name: ~
     - Declare:
-        - name: z
+        - name:
+            span:
+              start: 854
+              end: 855
+            value: z
           value:
             span:
               start: 858

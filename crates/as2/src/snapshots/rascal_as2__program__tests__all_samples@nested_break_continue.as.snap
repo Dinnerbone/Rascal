@@ -10,7 +10,11 @@ Ok:
           Classic:
             initialize:
               Declare:
-                - name: i
+                - name:
+                    span:
+                      start: 9
+                      end: 10
+                    value: i
                   value:
                     span:
                       start: 13
@@ -82,7 +86,11 @@ Ok:
                   Classic:
                     initialize:
                       Declare:
-                        - name: j
+                        - name:
+                            span:
+                              start: 60
+                              end: 61
+                            value: j
                           value:
                             span:
                               start: 64
@@ -126,7 +134,11 @@ Ok:
                 body:
                   Block:
                     - Declare:
-                        - name: fn
+                        - name:
+                            span:
+                              start: 87
+                              end: 89
+                            value: fn
                           value:
                             span:
                               start: 92
