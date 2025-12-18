@@ -191,6 +191,26 @@ extra_modules:
         - SetMember
         - Push:
             - Register: 2
+            - String: secret
+        - DefineFunction:
+            name: ""
+            params: []
+            actions:
+              actions: []
+              label_positions: {}
+        - SetMember
+        - Push:
+            - Register: 2
+            - String: notASecret
+        - DefineFunction:
+            name: ""
+            params: []
+            actions:
+              actions: []
+              label_positions: {}
+        - SetMember
+        - Push:
+            - Register: 2
             - String: regularPropertySetToFive
             - Integer: 5
         - SetMember
@@ -221,4 +241,4 @@ extra_modules:
         - CallFunction
         - Pop
       label_positions:
-        loc0000: 53
+        loc0000: 59

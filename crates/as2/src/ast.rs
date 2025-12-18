@@ -198,6 +198,8 @@ pub enum ClassMember<'a> {
 #[derive(Debug, Clone, Serialize, PartialEq, Hash, Eq)]
 pub enum ClassMemberAttribute {
     Static,
+    Public,
+    Private,
 }
 
 #[derive(Debug, Clone, Serialize, PartialEq)]

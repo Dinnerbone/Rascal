@@ -180,6 +180,30 @@ Ok:
                       Constant:
                         Identifier: "null"
           is_static: false
+        secret:
+          function:
+            signature:
+              name:
+                span:
+                  start: 766
+                  end: 772
+                value: secret
+              args: []
+              return_type: ~
+            body: []
+          is_static: false
+        notASecret:
+          function:
+            signature:
+              name:
+                span:
+                  start: 799
+                  end: 809
+                value: notASecret
+              args: []
+              return_type: ~
+            body: []
+          is_static: false
       fields:
         regularPropertyWithoutValue:
           value: ~

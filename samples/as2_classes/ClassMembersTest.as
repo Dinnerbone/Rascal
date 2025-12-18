@@ -28,4 +28,8 @@ class ClassMembersTest implements AnEmptyInterface {
     function maybeABitmapData(): BitmapData {
         return null; // maybe not
     }
+
+    private function secret() {}
+
+    public function notASecret() {}
 }

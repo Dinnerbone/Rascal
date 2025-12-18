@@ -57,6 +57,20 @@ pub(crate) fn class<'i>(i: &mut Tokens<'i>) -> ModalResult<Statement<'i>> {
                 let span = TokenKind::Keyword(Keyword::Static).parse_next(i)?.span;
                 attributes.insert(ClassMemberAttribute::Static, span);
             }
+            TokenKind::Keyword(Keyword::Private)
+                if !attributes.contains_key(&ClassMemberAttribute::Public)
+                    && !attributes.contains_key(&ClassMemberAttribute::Private) =>
+            {
+                let span = TokenKind::Keyword(Keyword::Private).parse_next(i)?.span;
+                attributes.insert(ClassMemberAttribute::Private, span);
+            }
+            TokenKind::Keyword(Keyword::Public)
+                if !attributes.contains_key(&ClassMemberAttribute::Public)
+                    && !attributes.contains_key(&ClassMemberAttribute::Private) =>
+            {
+                let span = TokenKind::Keyword(Keyword::Public).parse_next(i)?.span;
+                attributes.insert(ClassMemberAttribute::Public, span);
+            }
             _ => {
                 fail.context(StrContext::Expected(
                     TokenKind::Keyword(Keyword::Function).expected(),
