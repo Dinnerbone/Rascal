@@ -149,6 +149,19 @@ extra_modules:
         - SetMember
         - Push:
             - Register: 2
+            - String: maybeABitmapData
+        - DefineFunction:
+            name: ""
+            params: []
+            actions:
+              actions:
+                - Push:
+                    - "Null"
+                - Return
+              label_positions: {}
+        - SetMember
+        - Push:
+            - Register: 2
             - String: regularPropertySetToFive
             - Integer: 5
         - SetMember
@@ -174,4 +187,4 @@ extra_modules:
         - CallFunction
         - Pop
       label_positions:
-        loc0000: 45
+        loc0000: 48

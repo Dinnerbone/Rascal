@@ -18,4 +18,8 @@ class ClassMembersTest implements AnEmptyInterface {
     function greet(name: String): Void {
         trace("Hey, " + name + "!");
     }
+
+    function maybeABitmapData(): BitmapData {
+        return null; // maybe not
+    }
 }

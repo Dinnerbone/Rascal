@@ -86,6 +86,14 @@ impl<'a> ModuleContext<'a> {
         None
     }
 
+    fn expand_typename(&self, name: &str) -> String {
+        if let Some(path) = self.imports.get(name) {
+            format!("{}.{name}", path.join("."))
+        } else {
+            name.to_owned()
+        }
+    }
+
     fn add_dependency(&mut self, span: Span, name: &str, required: bool) {
         if GLOBAL_TYPES.contains(&name) {
             return;
@@ -217,9 +225,13 @@ fn resolve_interface(
     extends: Option<Spanned<String>>,
     body: &[Spanned<ast::FunctionSignature>],
 ) -> hir::Interface {
-    if let Some(extends) = &extends {
-        context.add_dependency(extends.span, &extends.value, true);
-    }
+    let expanded_extends = if let Some(extends) = &extends {
+        let expanded = context.expand_typename(&extends.value);
+        context.add_dependency(extends.span, &expanded, true);
+        Some(expanded)
+    } else {
+        None
+    };
     let mut functions = IndexMap::new();
     for function in body {
         let Some(function_name) = function.name else {
@@ -255,7 +267,7 @@ fn resolve_interface(
     }
     hir::Interface {
         name,
-        extends: extends.map(|e| e.value),
+        extends: expanded_extends,
         functions,
     }
 }
@@ -267,11 +279,18 @@ fn resolve_class(
     implements: &[Spanned<String>],
     members: &[Spanned<ast::ClassMember>],
 ) -> hir::Class {
-    if let Some(extends) = &extends {
-        context.add_dependency(extends.span, &extends.value, true);
-    }
+    let expanded_extends = if let Some(extends) = &extends {
+        let expanded = context.expand_typename(&extends.value);
+        context.add_dependency(extends.span, &expanded, true);
+        Some(expanded)
+    } else {
+        None
+    };
+    let mut expanded_implements = vec![];
     for interface in implements {
-        context.add_dependency(interface.span, &interface.value, true);
+        let expanded = context.expand_typename(&interface.value);
+        context.add_dependency(interface.span, &expanded, true);
+        expanded_implements.push(expanded);
     }
     let mut seen_names = HashSet::new();
     let mut variables = IndexMap::new();
@@ -352,8 +371,8 @@ fn resolve_class(
 
     hir::Class {
         name: class_name.value,
-        extends: extends.map(|e| e.value),
-        implements: implements.iter().map(|i| i.value.to_owned()).collect(),
+        extends: expanded_extends,
+        implements: expanded_implements,
         functions: resolved_functions,
         variables,
         constructor: resolved_constructor,
@@ -728,8 +747,9 @@ fn resolve_function(context: &mut ModuleContext, input: &ast::Function) -> hir::
 }
 
 fn resolve_type_name(context: &mut ModuleContext, type_name: &Spanned<&str>) -> Spanned<String> {
-    context.add_dependency(type_name.span, type_name.value, true);
-    Spanned::new(type_name.span, type_name.value.to_owned())
+    let expanded = context.expand_typename(type_name.value);
+    context.add_dependency(type_name.span, &expanded, true);
+    Spanned::new(type_name.span, expanded)
 }
 
 fn resolve_opt_type_name(

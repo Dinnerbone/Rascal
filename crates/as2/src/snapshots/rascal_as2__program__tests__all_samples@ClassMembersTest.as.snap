@@ -93,6 +93,27 @@ Ok:
                           value:
                             Constant:
                               String: "!"
+        maybeABitmapData:
+          signature:
+            name:
+              span:
+                start: 541
+                end: 557
+              value: maybeABitmapData
+            args: []
+            return_type:
+              span:
+                start: 561
+                end: 571
+              value: flash.display.BitmapData
+          body:
+            - Return:
+                - span:
+                    start: 589
+                    end: 593
+                  value:
+                    Constant:
+                      Identifier: "null"
       variables:
         regularPropertyWithoutValue:
           name:
