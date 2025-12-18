@@ -140,6 +140,12 @@ fn resolve_class_or_interface(
     let mut result = None;
     for statement in input {
         match &statement.value {
+            ast::StatementKind::Import(import) => {
+                context.import(
+                    import.path.iter().map(|s| (*s).to_owned()).collect(),
+                    (*import.name).to_owned(),
+                );
+            }
             ast::StatementKind::Interface {
                 name,
                 extends,
@@ -441,10 +447,10 @@ fn resolve_statement(context: &mut ModuleContext, input: &ast::Statement) -> hir
                 .map(|element| resolve_switch_element(context, element))
                 .collect(),
         },
-        ast::StatementKind::Import { path, name } => {
+        ast::StatementKind::Import(import) => {
             context.import(
-                path.iter().map(|s| (*s).to_owned()).collect(),
-                (*name).to_owned(),
+                import.path.iter().map(|s| (*s).to_owned()).collect(),
+                (*import.name).to_owned(),
             );
             hir::StatementKind::Block(vec![]) // todo, resolving statements shouldn't be a 1:1, we should be able to do nothing here
         }

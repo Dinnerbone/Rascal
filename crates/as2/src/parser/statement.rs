@@ -1,6 +1,6 @@
 use crate::ast::{
-    Catch, Declaration, ForCondition, Function, FunctionArgument, FunctionSignature, Statement,
-    StatementKind, SwitchElement, TryCatch,
+    Catch, Declaration, ForCondition, Function, FunctionArgument, FunctionSignature, Import,
+    Statement, StatementKind, SwitchElement, TryCatch,
 };
 use crate::lexer::operator::Operator;
 use crate::lexer::tokens::{Keyword, TokenKind};
@@ -105,7 +105,10 @@ pub(crate) fn statement<'i>(i: &mut Tokens<'i>) -> ModalResult<Statement<'i>> {
         }
         TokenKind::Keyword(Keyword::Import) => {
             let result = import.parse_next(i)?;
-            Statement::new(Span::encompassing(start, result.span), result.value)
+            Statement::new(
+                Span::encompassing(start, result.span),
+                StatementKind::Import(result.value),
+            )
         }
         TokenKind::OpenBrace => {
             let statements = statement_list(true).parse_next(i)?;
@@ -365,7 +368,7 @@ pub(crate) fn with<'i>(i: &mut Tokens<'i>) -> ModalResult<Statement<'i>> {
     ))
 }
 
-pub(crate) fn import<'i>(i: &mut Tokens<'i>) -> ModalResult<Statement<'i>> {
+pub(crate) fn import<'i>(i: &mut Tokens<'i>) -> ModalResult<Spanned<Import<'i>>> {
     let path: Vec<Spanned<&'i str>> =
         separated(1.., identifier, TokenKind::Period).parse_next(i)?;
 
@@ -374,9 +377,9 @@ pub(crate) fn import<'i>(i: &mut Tokens<'i>) -> ModalResult<Statement<'i>> {
     let end = path.last().unwrap().span;
     let mut path = path.into_iter().map(|p| p.value).collect::<Vec<_>>();
     let name = path.pop().unwrap();
-    Ok(Statement::new(
+    Ok(Spanned::new(
         Span::encompassing(start, end),
-        StatementKind::Import { path, name },
+        Import { path, name },
     ))
 }
 
@@ -1253,10 +1256,10 @@ mod stmt_tests {
             parse_stmt(&tokens),
             Ok(Statement::new(
                 Span::default(),
-                StatementKind::Import {
+                StatementKind::Import(Import {
                     name: "baz",
                     path: vec!["foo", "bar"]
-                }
+                })
             ))
         )
     }

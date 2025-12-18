@@ -1,3 +1,5 @@
+import flash.display.BitmapData;
+
 class ClassMembersTest implements AnEmptyInterface {
     var regularPropertyWithoutValue;
     var regularPropertySetToFive = 5;
