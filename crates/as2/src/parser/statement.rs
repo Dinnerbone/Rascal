@@ -186,9 +186,13 @@ pub(crate) fn declaration<'i>(i: &mut Tokens<'i>) -> ModalResult<Spanned<Declara
 }
 
 fn interface<'i>(i: &mut Tokens<'i>) -> ModalResult<Statement<'i>> {
-    let name = identifier.parse_next(i)?;
-    let extends =
-        opt((TokenKind::Keyword(Keyword::Extends), identifier).map(|(_, id)| id)).parse_next(i)?;
+    let name = dot_separated_identifiers.parse_next(i)?;
+    let extends = opt((
+        TokenKind::Keyword(Keyword::Extends),
+        dot_separated_identifiers,
+    )
+        .map(|(_, id)| id))
+    .parse_next(i)?;
     TokenKind::OpenBrace.parse_next(i)?;
 
     skip_newlines.parse_next(i)?;
@@ -223,6 +227,19 @@ fn interface<'i>(i: &mut Tokens<'i>) -> ModalResult<Statement<'i>> {
             body,
         },
     ))
+}
+
+pub(crate) fn dot_separated_identifiers<'i>(i: &mut Tokens<'i>) -> ModalResult<Spanned<String>> {
+    let path: Vec<Spanned<&'i str>> =
+        separated(1.., identifier, TokenKind::Period).parse_next(i)?;
+    // Path is guaranteed to have at least one element, so this is safe
+    let name_span = Span::encompassing(path[0].span, path.last().unwrap().span);
+    let name = path
+        .into_iter()
+        .map(|s| s.value)
+        .collect::<Vec<_>>()
+        .join(".");
+    Ok(Spanned::new(name_span, name))
 }
 
 fn if_else<'i>(i: &mut Tokens<'i>) -> ModalResult<Statement<'i>> {
@@ -1277,7 +1294,7 @@ mod stmt_tests {
             Ok(Statement::new(
                 Span::default(),
                 StatementKind::Interface {
-                    name: Spanned::new(Span::default(), "Foo"),
+                    name: Spanned::new(Span::default(), "Foo".to_owned()),
                     extends: None,
                     body: vec![],
                 }
@@ -1300,8 +1317,8 @@ mod stmt_tests {
             Ok(Statement::new(
                 Span::default(),
                 StatementKind::Interface {
-                    name: Spanned::new(Span::default(), "Foo"),
-                    extends: Some(Spanned::new(Span::default(), "Bar")),
+                    name: Spanned::new(Span::default(), "Foo".to_owned()),
+                    extends: Some(Spanned::new(Span::default(), "Bar".to_owned())),
                     body: vec![],
                 }
             ))

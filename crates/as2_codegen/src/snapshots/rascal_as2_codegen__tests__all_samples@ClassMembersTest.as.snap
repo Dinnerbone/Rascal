@@ -5,6 +5,91 @@ input_file: samples/as2_classes/ClassMembersTest.as
 ---
 initializer: ~
 extra_modules:
+  - - path.to.ANestedInterface
+    - actions:
+        - ConstantPool: []
+        - Push:
+            - String: _global
+        - GetVariable
+        - Push:
+            - String: path
+        - GetMember
+        - Not
+        - Not
+        - If: loc0000
+        - Push:
+            - String: _global
+        - GetVariable
+        - Push:
+            - String: path
+            - Integer: 0
+            - String: Object
+        - NewObject
+        - SetMember
+        - Pop
+        - Push:
+            - String: _global
+        - GetVariable
+        - Push:
+            - String: path
+        - GetMember
+        - Push:
+            - String: to
+        - GetMember
+        - Not
+        - Not
+        - If: loc0001
+        - Push:
+            - String: _global
+        - GetVariable
+        - Push:
+            - String: path
+        - GetMember
+        - Push:
+            - String: to
+            - Integer: 0
+            - String: Object
+        - NewObject
+        - SetMember
+        - Pop
+        - Push:
+            - String: _global
+        - GetVariable
+        - Push:
+            - String: path
+        - GetMember
+        - Push:
+            - String: to
+        - GetMember
+        - Push:
+            - String: ANestedInterface
+        - GetMember
+        - Not
+        - Not
+        - If: loc0002
+        - Push:
+            - String: _global
+        - GetVariable
+        - Push:
+            - String: path
+        - GetMember
+        - Push:
+            - String: to
+        - GetMember
+        - Push:
+            - String: ANestedInterface
+        - DefineFunction:
+            name: ""
+            params: []
+            actions:
+              actions: []
+              label_positions: {}
+        - SetMember
+        - Pop
+      label_positions:
+        loc0000: 13
+        loc0001: 30
+        loc0002: 51
   - - AnEmptyInterface
     - actions:
         - ConstantPool: []
@@ -32,6 +117,116 @@ extra_modules:
         - Pop
       label_positions:
         loc0000: 13
+  - - path.to.ANestedBaseClass
+    - actions:
+        - ConstantPool: []
+        - Push:
+            - String: _global
+        - GetVariable
+        - Push:
+            - String: path
+        - GetMember
+        - Not
+        - Not
+        - If: loc0000
+        - Push:
+            - String: _global
+        - GetVariable
+        - Push:
+            - String: path
+            - Integer: 0
+            - String: Object
+        - NewObject
+        - SetMember
+        - Pop
+        - Push:
+            - String: _global
+        - GetVariable
+        - Push:
+            - String: path
+        - GetMember
+        - Push:
+            - String: to
+        - GetMember
+        - Not
+        - Not
+        - If: loc0001
+        - Push:
+            - String: _global
+        - GetVariable
+        - Push:
+            - String: path
+        - GetMember
+        - Push:
+            - String: to
+            - Integer: 0
+            - String: Object
+        - NewObject
+        - SetMember
+        - Pop
+        - Push:
+            - String: _global
+        - GetVariable
+        - Push:
+            - String: path
+        - GetMember
+        - Push:
+            - String: to
+        - GetMember
+        - Push:
+            - String: ANestedBaseClass
+        - GetMember
+        - Not
+        - Not
+        - If: loc0002
+        - Push:
+            - String: _global
+        - GetVariable
+        - Push:
+            - String: path
+        - GetMember
+        - Push:
+            - String: to
+        - GetMember
+        - Push:
+            - String: ANestedBaseClass
+        - DefineFunction:
+            name: ""
+            params: []
+            actions:
+              actions: []
+              label_positions: {}
+        - StoreRegister: 1
+        - SetMember
+        - Push:
+            - Register: 1
+            - String: prototype
+        - GetMember
+        - StoreRegister: 2
+        - Pop
+        - Push:
+            - Integer: 1
+            - "Null"
+            - String: path
+        - GetVariable
+        - Push:
+            - String: to
+        - GetMember
+        - Push:
+            - String: ANestedBaseClass
+        - GetMember
+        - Push:
+            - String: prototype
+        - GetMember
+        - Push:
+            - Integer: 3
+            - String: ASSetPropFlags
+        - CallFunction
+        - Pop
+      label_positions:
+        loc0000: 13
+        loc0001: 30
+        loc0002: 66
   - - path.to.ANestedClass
     - actions:
         - ConstantPool:
@@ -119,11 +314,56 @@ extra_modules:
         - StoreRegister: 1
         - SetMember
         - Push:
+            - String: path
+        - GetVariable
+        - Push:
+            - String: to
+        - GetMember
+        - Push:
+            - String: ANestedClass
+        - GetMember
+        - Push:
+            - String: path
+        - GetVariable
+        - Push:
+            - String: to
+        - GetMember
+        - Push:
+            - String: ANestedBaseClass
+        - GetMember
+        - Extends
+        - Push:
             - Register: 1
             - String: prototype
         - GetMember
         - StoreRegister: 2
         - Pop
+        - Push:
+            - String: _global
+        - GetVariable
+        - Push:
+            - String: path
+        - GetMember
+        - Push:
+            - String: to
+        - GetMember
+        - Push:
+            - String: ANestedInterface
+        - GetMember
+        - Push:
+            - Integer: 1
+            - String: _global
+        - GetVariable
+        - Push:
+            - String: path
+        - GetMember
+        - Push:
+            - String: to
+        - GetMember
+        - Push:
+            - String: ANestedClass
+        - GetMember
+        - ImplementsOp
         - Push:
             - Register: 1
             - String: create
@@ -176,11 +416,8 @@ extra_modules:
         - Push:
             - Integer: 1
             - "Null"
-            - String: _global
-        - GetVariable
-        - Push:
             - String: path
-        - GetMember
+        - GetVariable
         - Push:
             - String: to
         - GetMember
@@ -198,7 +435,7 @@ extra_modules:
       label_positions:
         loc0000: 13
         loc0001: 30
-        loc0002: 76
+        loc0002: 104
   - - ClassMembersTest
     - actions:
         - ConstantPool:
@@ -417,11 +654,8 @@ extra_modules:
         - Push:
             - Integer: 1
             - "Null"
-            - String: _global
-        - GetVariable
-        - Push:
             - String: ClassMembersTest
-        - GetMember
+        - GetVariable
         - Push:
             - String: prototype
         - GetMember
@@ -431,4 +665,4 @@ extra_modules:
         - CallFunction
         - Pop
       label_positions:
-        loc0000: 59
+        loc0000: 57

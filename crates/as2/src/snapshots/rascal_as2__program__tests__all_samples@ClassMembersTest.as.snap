@@ -9,6 +9,17 @@ Ok:
     - name: AnEmptyInterface
       extends: ~
       functions: {}
+    - name: path.to.ANestedInterface
+      extends: ~
+      functions:
+        success:
+          name:
+            span:
+              start: 47
+              end: 54
+            value: success
+          args: []
+          return_type: ~
   classes:
     - name: ClassMembersTest
       extends: ~
@@ -412,56 +423,57 @@ Ok:
                                   String: success
                       args: []
     - name: path.to.ANestedClass
-      extends: ~
-      implements: []
+      extends: path.to.ANestedBaseClass
+      implements:
+        - path.to.ANestedInterface
       functions:
         create:
           function:
             signature:
               name:
                 span:
-                  start: 94
-                  end: 100
+                  start: 163
+                  end: 169
                 value: create
               args: []
               return_type:
                 span:
-                  start: 104
-                  end: 116
+                  start: 173
+                  end: 185
                 value: path.to.ANestedClass
             body:
               - Return:
                   - span:
-                      start: 134
-                      end: 137
+                      start: 203
+                      end: 206
                     value:
                       New:
                         name:
                           span:
-                            start: 138
-                            end: 150
+                            start: 207
+                            end: 219
                           value:
                             Field:
                               - span:
-                                  start: 138
-                                  end: 150
+                                  start: 207
+                                  end: 219
                                 value:
                                   Field:
                                     - span:
-                                        start: 138
-                                        end: 150
+                                        start: 207
+                                        end: 219
                                       value:
                                         Constant:
                                           Identifier: path
                                     - span:
-                                        start: 138
-                                        end: 150
+                                        start: 207
+                                        end: 219
                                       value:
                                         Constant:
                                           String: to
                               - span:
-                                  start: 138
-                                  end: 150
+                                  start: 207
+                                  end: 219
                                 value:
                                   Constant:
                                     String: ANestedClass
@@ -472,54 +484,54 @@ Ok:
             signature:
               name:
                 span:
-                  start: 181
-                  end: 188
+                  start: 250
+                  end: 257
                 value: success
               args: []
               return_type: ~
             body:
               - Expr:
                   span:
-                    start: 201
-                    end: 228
+                    start: 270
+                    end: 297
                   value:
                     Trace:
                       span:
-                        start: 219
-                        end: 227
+                        start: 288
+                        end: 296
                       value:
                         Field:
                           - span:
-                              start: 207
-                              end: 219
+                              start: 276
+                              end: 288
                             value:
                               Field:
                                 - span:
-                                    start: 207
-                                    end: 219
+                                    start: 276
+                                    end: 288
                                   value:
                                     Field:
                                       - span:
-                                          start: 207
-                                          end: 219
+                                          start: 276
+                                          end: 288
                                         value:
                                           Constant:
                                             Identifier: path
                                       - span:
-                                          start: 207
-                                          end: 219
+                                          start: 276
+                                          end: 288
                                         value:
                                           Constant:
                                             String: to
                                 - span:
-                                    start: 207
-                                    end: 219
+                                    start: 276
+                                    end: 288
                                   value:
                                     Constant:
                                       String: ANestedClass
                           - span:
-                              start: 220
-                              end: 227
+                              start: 289
+                              end: 296
                             value:
                               Constant:
                                 String: message
@@ -528,8 +540,8 @@ Ok:
         message:
           value:
             span:
-              start: 54
-              end: 64
+              start: 123
+              end: 133
             value:
               Constant:
                 String: Success!
@@ -542,6 +554,21 @@ Ok:
               start: 6
               end: 26
             value: path.to.ANestedClass
+          args: []
+          return_type: ~
+        body: []
+    - name: path.to.ANestedBaseClass
+      extends: ~
+      implements: []
+      functions: {}
+      fields: {}
+      constructor:
+        signature:
+          name:
+            span:
+              start: 6
+              end: 30
+            value: path.to.ANestedBaseClass
           args: []
           return_type: ~
         body: []

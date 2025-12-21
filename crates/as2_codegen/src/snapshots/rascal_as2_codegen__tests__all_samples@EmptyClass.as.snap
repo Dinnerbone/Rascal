@@ -39,11 +39,8 @@ extra_modules:
         - Push:
             - Integer: 1
             - "Null"
-            - String: _global
-        - GetVariable
-        - Push:
             - String: EmptyClass
-        - GetMember
+        - GetVariable
         - Push:
             - String: prototype
         - GetMember
@@ -53,4 +50,4 @@ extra_modules:
         - CallFunction
         - Pop
       label_positions:
-        loc0000: 26
+        loc0000: 24

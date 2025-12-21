@@ -168,14 +168,14 @@ pub enum StatementKind<'a> {
     },
     Import(Import<'a>),
     Interface {
-        name: Spanned<&'a str>,
-        extends: Option<Spanned<&'a str>>,
+        name: Spanned<String>,
+        extends: Option<Spanned<String>>,
         body: Vec<Spanned<FunctionSignature<'a>>>,
     },
     Class {
         name: Spanned<String>,
-        extends: Option<Spanned<&'a str>>,
-        implements: Vec<Spanned<&'a str>>,
+        extends: Option<Spanned<String>>,
+        implements: Vec<Spanned<String>>,
         members: Vec<(
             Spanned<ClassMember<'a>>,
             HashMap<ClassMemberAttribute, Span>,

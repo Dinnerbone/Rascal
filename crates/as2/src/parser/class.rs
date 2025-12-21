@@ -1,7 +1,7 @@
 use crate::ast::{ClassMember, ClassMemberAttribute, Statement, StatementKind};
 use crate::lexer::tokens::{Keyword, TokenKind};
-use crate::parser::statement::{declaration, function};
-use crate::parser::{Tokens, identifier, skip_newlines};
+use crate::parser::statement::{declaration, dot_separated_identifiers, function};
+use crate::parser::{Tokens, skip_newlines};
 use rascal_common::span::{Span, Spanned};
 use std::collections::HashMap;
 use winnow::combinator::{fail, opt, peek, separated};
@@ -10,22 +10,18 @@ use winnow::token::any;
 use winnow::{ModalResult, Parser};
 
 pub(crate) fn class<'i>(i: &mut Tokens<'i>) -> ModalResult<Statement<'i>> {
-    let path: Vec<Spanned<&'i str>> =
-        separated(1.., identifier, TokenKind::Period).parse_next(i)?;
-    // Path is guaranteed to have at least one element, so this is safe
-    let name_span = Span::encompassing(path[0].span, path.last().unwrap().span);
-    let name = path
-        .into_iter()
-        .map(|s| s.value)
-        .collect::<Vec<_>>()
-        .join(".");
+    let name = dot_separated_identifiers.parse_next(i)?;
 
     // It's `extends` then `implements` - the other way around is not supported by Flash
-    let extends =
-        opt((TokenKind::Keyword(Keyword::Extends), identifier).map(|(_, id)| id)).parse_next(i)?;
-    let implements: Option<Vec<Spanned<&'i str>>> = opt((
+    let extends = opt((
+        TokenKind::Keyword(Keyword::Extends),
+        dot_separated_identifiers,
+    )
+        .map(|(_, id)| id))
+    .parse_next(i)?;
+    let implements: Option<Vec<Spanned<String>>> = opt((
         TokenKind::Keyword(Keyword::Implements),
-        separated(1.., identifier, TokenKind::Comma),
+        separated(1.., dot_separated_identifiers, TokenKind::Comma),
     )
         .map(|(_, id)| id))
     .parse_next(i)?;
@@ -96,9 +92,9 @@ pub(crate) fn class<'i>(i: &mut Tokens<'i>) -> ModalResult<Statement<'i>> {
     let end = TokenKind::CloseBrace.parse_next(i)?.span;
 
     Ok(Statement::new(
-        Span::encompassing(name_span, end),
+        Span::encompassing(name.span, end),
         StatementKind::Class {
-            name: Spanned::new(name_span, name),
+            name,
             extends,
             implements: implements.unwrap_or_default(),
             members,

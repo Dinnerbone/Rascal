@@ -43,45 +43,33 @@ fn script_to_actions(statements: &[StatementKind]) -> Actions {
 
 fn interface_to_actions(interface: &Interface) -> Actions {
     generate_actions(|context, builder| {
-        // First check that it doesn't already exist
-        let end = context.create_label();
-        builder.push("_global");
-        builder.action(Action::GetVariable);
-        builder.push(interface.name.as_str());
-        builder.action(Action::GetMember);
-        builder.action(Action::Not);
-        builder.action(Action::Not);
-        builder.action(Action::If(end.clone()));
+        let segments: Vec<&str> = interface.name.split(".").collect();
+        for i in 1..=segments.len() {
+            create_if_not_exists(context, builder, &segments[0..i], |_context, builder| {
+                if i < segments.len() {
+                    builder.push(0);
+                    builder.push("Object");
+                    builder.action(Action::NewObject);
+                    builder.action(Action::SetMember);
+                } else {
+                    // Actually define the interface (it's actually just an empty function)
+                    builder.action(Action::DefineFunction {
+                        name: "".to_string(),
+                        params: vec![],
+                        actions: Actions::empty(),
+                    });
+                    builder.action(Action::SetMember);
 
-        // Actually define the interface (it's actually just an empty function)
-        builder.push("_global");
-        builder.action(Action::GetVariable);
-        builder.push(interface.name.as_str());
-        builder.action(Action::DefineFunction {
-            name: "".to_string(),
-            params: vec![],
-            actions: Actions::empty(),
-        });
-        builder.action(Action::SetMember);
-
-        // If we extend something, set that association too
-        // TODO: This doesn't handle paths yet ("foo.bar.Baz")
-        if let Some(extends) = &interface.extends {
-            builder.push("_global");
-            builder.action(Action::GetVariable);
-            builder.push(extends.as_str());
-            builder.action(Action::GetMember);
-            builder.push(1);
-            builder.push("_global");
-            builder.action(Action::GetVariable);
-            builder.push(interface.name.as_str());
-            builder.action(Action::GetMember);
-            builder.action_with_stack_delta(Action::ImplementsOp, -3);
+                    // If we extend something, set that association too
+                    if let Some(extends) = &interface.extends {
+                        get_type_path(builder, extends, true);
+                        builder.push(1);
+                        get_type_path(builder, &interface.name, true);
+                        builder.action_with_stack_delta(Action::ImplementsOp, -3);
+                    }
+                }
+            })
         }
-
-        // Done
-        builder.mark_label(end);
-        builder.action(Action::Pop); // This is one pop too many - but that's fine, it's what Flash does
     })
 }
 
@@ -139,12 +127,8 @@ fn class_to_actions(class: &Class) -> Actions {
                     // If we extend something, set that association too
                     // TODO: This doesn't handle paths yet ("foo.bar.Baz")
                     if let Some(extends) = &class.extends {
-                        builder.push("_global");
-                        builder.action(Action::GetVariable);
-                        builder.push(class.name.as_str());
-                        builder.action(Action::GetMember);
-                        builder.push(extends.as_str());
-                        builder.action(Action::GetVariable); // Not sure why this isn't _global.name, but Flash :D
+                        get_type_path(builder, &class.name, false);
+                        get_type_path(builder, extends, false);
                         builder.action(Action::Extends);
                     }
 
@@ -159,16 +143,10 @@ fn class_to_actions(class: &Class) -> Actions {
                     // TODO: This doesn't handle paths yet ("foo.bar.Baz")
                     if !class.implements.is_empty() {
                         for name in &class.implements {
-                            builder.push("_global");
-                            builder.action(Action::GetVariable);
-                            builder.push(name.as_str());
-                            builder.action(Action::GetMember);
+                            get_type_path(builder, name, true);
                         }
                         builder.push(class.implements.len() as i32);
-                        builder.push("_global");
-                        builder.action(Action::GetVariable);
-                        builder.push(class.name.as_str());
-                        builder.action(Action::GetMember);
+                        get_type_path(builder, &class.name, true);
                         builder.action_with_stack_delta(
                             Action::ImplementsOp,
                             -2 - class.implements.len() as i32,
@@ -204,16 +182,7 @@ fn class_to_actions(class: &Class) -> Actions {
                     // Make the prototype not enumerable
                     builder.push(1);
                     builder.push(PushValue::Null);
-                    builder.push("_global");
-                    builder.action(Action::GetVariable);
-                    if segments.len() > 1 {
-                        for segment in &segments[0..segments.len() - 1] {
-                            builder.push(*segment);
-                            builder.action(Action::GetMember);
-                        }
-                    }
-                    builder.push(segments[segments.len() - 1]);
-                    builder.action(Action::GetMember);
+                    get_type_path(builder, &class.name, false);
                     builder.push("prototype");
                     builder.action(Action::GetMember);
                     builder.push(3);
@@ -223,6 +192,25 @@ fn class_to_actions(class: &Class) -> Actions {
             })
         }
     })
+}
+
+fn get_type_path(builder: &mut CodeBuilder, type_name: &str, from_global: bool) {
+    let segments: Vec<&str> = type_name.split(".").collect();
+    let mut first = true;
+    if from_global {
+        builder.push("_global");
+        builder.action(Action::GetVariable);
+        first = false;
+    }
+    for segment in segments {
+        builder.push(segment);
+        if first {
+            builder.action(Action::GetVariable);
+            first = false;
+        } else {
+            builder.action(Action::GetMember);
+        }
+    }
 }
 
 fn generate_actions<F>(f: F) -> Actions

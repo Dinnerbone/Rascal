@@ -1,4 +1,4 @@
-class path.to.ANestedClass {
+class path.to.ANestedClass extends path.to.ANestedBaseClass implements path.to.ANestedInterface {
     static var message = "Success!";
 
     public static function create(): ANestedClass {

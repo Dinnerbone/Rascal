@@ -182,7 +182,7 @@ fn resolve_class_or_interface(
                     result = Some(hir::Document::Interface(resolve_interface(
                         context,
                         name.value.to_owned(),
-                        extends.map(|e| Spanned::new(e.span, e.value.to_owned())),
+                        extends.clone(),
                         body,
                     )));
                 } else {
@@ -208,11 +208,8 @@ fn resolve_class_or_interface(
                     result = Some(hir::Document::Class(Box::new(resolve_class(
                         context,
                         Spanned::new(name.span, name.value.to_owned()),
-                        extends.map(|e| Spanned::new(e.span, e.value.to_owned())),
-                        &implements
-                            .iter()
-                            .map(|i| Spanned::new(i.span, i.value.to_owned()))
-                            .collect::<Vec<_>>(),
+                        extends.clone(),
+                        implements,
                         members,
                     ))));
                 } else {
