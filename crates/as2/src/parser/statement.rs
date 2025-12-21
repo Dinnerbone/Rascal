@@ -87,6 +87,11 @@ pub(crate) fn statement<'i>(i: &mut Tokens<'i>) -> ModalResult<Statement<'i>> {
             let result = interface.parse_next(i)?;
             Statement::new(Span::encompassing(start, result.span), result.value)
         }
+        TokenKind::Keyword(Keyword::Dynamic) => {
+            TokenKind::Keyword(Keyword::Class).parse_next(i)?;
+            let result = class.parse_next(i)?;
+            Statement::new(Span::encompassing(start, result.span), result.value)
+        }
         TokenKind::Keyword(Keyword::Class) => {
             let result = class.parse_next(i)?;
             Statement::new(Span::encompassing(start, result.span), result.value)

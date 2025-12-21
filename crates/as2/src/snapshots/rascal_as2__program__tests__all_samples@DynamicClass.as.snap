@@ -1,0 +1,24 @@
+---
+source: crates/as2/src/program.rs
+expression: parsed
+input_file: samples/as2_classes/DynamicClass.as
+---
+Ok:
+  initial_script: []
+  interfaces: []
+  classes:
+    - name: DynamicClass
+      extends: ~
+      implements: []
+      functions: {}
+      fields: {}
+      constructor:
+        signature:
+          name:
+            span:
+              start: 14
+              end: 26
+            value: DynamicClass
+          args: []
+          return_type: ~
+        body: []
