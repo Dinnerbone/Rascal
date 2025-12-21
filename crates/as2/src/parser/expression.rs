@@ -475,7 +475,9 @@ pub(crate) fn expr_list<'i>(i: &mut Tokens<'i>) -> ModalResult<Vec<Expr<'i>>> {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::ast::{Function, FunctionArgument, FunctionSignature, Statement, StatementKind};
+    use crate::ast::{
+        Function, FunctionArgument, FunctionSignature, FunctionType, Statement, StatementKind,
+    };
     use crate::lexer::operator::Operator;
     use crate::lexer::tokens::{QuoteKind, Token, TokenKind};
     use crate::parser::tests::build_tokens;
@@ -1646,6 +1648,105 @@ mod tests {
                         }
                     ],
                     return_type: None,
+                    function_type: FunctionType::Regular,
+                },
+                body: vec![Statement::new(
+                    Span::default(),
+                    StatementKind::Expr(ex(ExprKind::Call {
+                        name: Box::new(id("trace")),
+                        args: vec![id("a")],
+                    }))
+                )]
+            })))
+        )
+    }
+
+    #[test]
+    fn test_function_definition_getter() {
+        let tokens = build_tokens(&[
+            (TokenKind::Keyword(Keyword::Function), "function"),
+            (TokenKind::Keyword(Keyword::Get), "get"),
+            (TokenKind::Identifier, "func"),
+            (TokenKind::OpenParen, "("),
+            (TokenKind::Identifier, "a"),
+            (TokenKind::Comma, ","),
+            (TokenKind::Identifier, "b"),
+            (TokenKind::Colon, ":"),
+            (TokenKind::Identifier, "Number"),
+            (TokenKind::CloseParen, ")"),
+            (TokenKind::OpenBrace, "{"),
+            (TokenKind::Identifier, "trace"),
+            (TokenKind::OpenParen, "("),
+            (TokenKind::Identifier, "a"),
+            (TokenKind::CloseParen, ")"),
+            (TokenKind::CloseBrace, "}"),
+        ]);
+        assert_eq!(
+            parse_expr(&tokens),
+            Ok(ex(ExprKind::Function(Function {
+                signature: FunctionSignature {
+                    name: Some(Spanned::new(Span::default(), "func")),
+                    args: vec![
+                        FunctionArgument {
+                            name: "a",
+                            type_name: None
+                        },
+                        FunctionArgument {
+                            name: "b",
+                            type_name: Some(Spanned::new(Span::default(), "Number"))
+                        }
+                    ],
+                    return_type: None,
+                    function_type: FunctionType::Getter,
+                },
+                body: vec![Statement::new(
+                    Span::default(),
+                    StatementKind::Expr(ex(ExprKind::Call {
+                        name: Box::new(id("trace")),
+                        args: vec![id("a")],
+                    }))
+                )]
+            })))
+        )
+    }
+
+    #[test]
+    fn test_function_definition_setter() {
+        let tokens = build_tokens(&[
+            (TokenKind::Keyword(Keyword::Function), "function"),
+            (TokenKind::Keyword(Keyword::Set), "set"),
+            (TokenKind::Identifier, "func"),
+            (TokenKind::OpenParen, "("),
+            (TokenKind::Identifier, "a"),
+            (TokenKind::Comma, ","),
+            (TokenKind::Identifier, "b"),
+            (TokenKind::Colon, ":"),
+            (TokenKind::Identifier, "Number"),
+            (TokenKind::CloseParen, ")"),
+            (TokenKind::OpenBrace, "{"),
+            (TokenKind::Identifier, "trace"),
+            (TokenKind::OpenParen, "("),
+            (TokenKind::Identifier, "a"),
+            (TokenKind::CloseParen, ")"),
+            (TokenKind::CloseBrace, "}"),
+        ]);
+        assert_eq!(
+            parse_expr(&tokens),
+            Ok(ex(ExprKind::Function(Function {
+                signature: FunctionSignature {
+                    name: Some(Spanned::new(Span::default(), "func")),
+                    args: vec![
+                        FunctionArgument {
+                            name: "a",
+                            type_name: None
+                        },
+                        FunctionArgument {
+                            name: "b",
+                            type_name: Some(Spanned::new(Span::default(), "Number"))
+                        }
+                    ],
+                    return_type: None,
+                    function_type: FunctionType::Setter,
                 },
                 body: vec![Statement::new(
                     Span::default(),

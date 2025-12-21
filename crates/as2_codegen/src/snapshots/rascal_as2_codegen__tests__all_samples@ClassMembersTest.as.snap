@@ -450,6 +450,8 @@ extra_modules:
             - ANestedClass
             - create
             - success
+            - virtualProperty
+            - a value
             - test!
             - "Hey, "
             - name
@@ -457,6 +459,16 @@ extra_modules:
             - ClassMembersTest
             - shoutStatically
             - scream
+            - virtual!
+            - getter
+            - "New value: "
+            - value
+            - __get__onlySetter
+            - "Virtually setting to "
+            - __get__virtualProperty
+            - Static!
+            - __get__virtualPropertyProbablyStatic
+            - __get__virtualPropertyProbablyNotStatic
             - BitmapData on class!
             - Ahhh!
         - Push:
@@ -522,6 +534,20 @@ extra_modules:
                     - Constant: 10
                 - CallMethod
                 - Trace
+                - Push:
+                    - Constant: 1
+                - GetVariable
+                - Push:
+                    - Constant: 11
+                    - Constant: 12
+                - SetMember
+                - Push:
+                    - Constant: 1
+                - GetVariable
+                - Push:
+                    - Constant: 11
+                - GetMember
+                - Trace
               label_positions: {}
         - StoreRegister: 1
         - SetMember
@@ -554,7 +580,7 @@ extra_modules:
             actions:
               actions:
                 - Push:
-                    - Constant: 11
+                    - Constant: 13
                 - Trace
               label_positions: {}
         - SetMember
@@ -568,20 +594,20 @@ extra_modules:
             actions:
               actions:
                 - Push:
-                    - Constant: 12
-                    - Constant: 13
+                    - Constant: 14
+                    - Constant: 15
                 - GetVariable
                 - Add2
                 - Push:
-                    - Constant: 14
+                    - Constant: 16
                 - Add2
                 - Trace
                 - Push:
                     - Integer: 0
-                    - Constant: 15
+                    - Constant: 17
                 - GetVariable
                 - Push:
-                    - Constant: 16
+                    - Constant: 18
                 - CallMethod
                 - Pop
               label_positions: {}
@@ -595,10 +621,10 @@ extra_modules:
             actions:
               actions:
                 - Push:
-                    - Constant: 15
+                    - Constant: 17
                 - GetVariable
                 - Push:
-                    - Constant: 17
+                    - Constant: 19
                 - GetMember
                 - Trace
               label_positions: {}
@@ -638,19 +664,245 @@ extra_modules:
         - SetMember
         - Push:
             - Register: 2
+            - String: __get__virtualProperty
+        - DefineFunction:
+            name: ""
+            params: []
+            actions:
+              actions:
+                - Push:
+                    - Constant: 20
+                - Return
+              label_positions: {}
+        - SetMember
+        - Push:
+            - Register: 2
+            - String: __get__onlyGetter
+        - DefineFunction:
+            name: ""
+            params: []
+            actions:
+              actions:
+                - Push:
+                    - Constant: 21
+                - Return
+              label_positions: {}
+        - SetMember
+        - Push:
+            - Register: 2
+            - String: __set__onlySetter
+        - DefineFunction:
+            name: ""
+            params:
+              - value
+            actions:
+              actions:
+                - Push:
+                    - Constant: 22
+                    - Constant: 23
+                - GetVariable
+                - Add2
+                - Trace
+                - Push:
+                    - Integer: 0
+                    - Constant: 1
+                - GetVariable
+                - Push:
+                    - Constant: 24
+                - CallMethod
+                - Return
+              label_positions: {}
+        - SetMember
+        - Push:
+            - Register: 2
+            - String: __set__virtualProperty
+        - DefineFunction:
+            name: ""
+            params:
+              - value
+            actions:
+              actions:
+                - Push:
+                    - Constant: 25
+                    - Constant: 23
+                - GetVariable
+                - Add2
+                - Trace
+                - Push:
+                    - Integer: 0
+                    - Constant: 1
+                - GetVariable
+                - Push:
+                    - Constant: 26
+                - CallMethod
+                - Return
+              label_positions: {}
+        - SetMember
+        - Push:
+            - Register: 1
+            - String: __get__virtualPropertyProbablyStatic
+        - DefineFunction:
+            name: ""
+            params: []
+            actions:
+              actions:
+                - Push:
+                    - Constant: 27
+                - Return
+              label_positions: {}
+        - SetMember
+        - Push:
+            - Register: 2
+            - String: __set__virtualPropertyProbablyStatic
+        - DefineFunction:
+            name: ""
+            params:
+              - value
+            actions:
+              actions:
+                - Push:
+                    - Constant: 22
+                    - Constant: 23
+                - GetVariable
+                - Add2
+                - Trace
+                - Push:
+                    - Integer: 0
+                    - Constant: 1
+                - GetVariable
+                - Push:
+                    - Constant: 28
+                - CallMethod
+                - Return
+              label_positions: {}
+        - SetMember
+        - Push:
+            - Register: 2
+            - String: __set__virtualPropertyProbablyNotStatic
+        - DefineFunction:
+            name: ""
+            params:
+              - value
+            actions:
+              actions:
+                - Push:
+                    - Constant: 22
+                    - Constant: 23
+                - GetVariable
+                - Add2
+                - Trace
+                - Push:
+                    - Integer: 0
+                    - Constant: 1
+                - GetVariable
+                - Push:
+                    - Constant: 29
+                - CallMethod
+                - Return
+              label_positions: {}
+        - SetMember
+        - Push:
+            - Register: 1
+            - String: __get__virtualPropertyProbablyNotStatic
+        - DefineFunction:
+            name: ""
+            params: []
+            actions:
+              actions:
+                - Push:
+                    - Constant: 27
+                - Return
+              label_positions: {}
+        - SetMember
+        - Push:
+            - Register: 2
             - String: regularPropertySetToFive
             - Integer: 5
         - SetMember
         - Push:
             - Register: 2
             - String: BitmapData
-            - Constant: 18
+            - Constant: 30
         - SetMember
         - Push:
             - Register: 1
             - String: scream
-            - Constant: 19
+            - Constant: 31
         - SetMember
+        - Push:
+            - Register: 2
+            - String: __set__virtualProperty
+        - GetMember
+        - Push:
+            - Register: 2
+            - String: __get__virtualProperty
+        - GetMember
+        - Push:
+            - String: virtualProperty
+            - Integer: 3
+            - Register: 2
+            - String: addProperty
+        - CallMethod
+        - DefineFunction:
+            name: ""
+            params: []
+            actions:
+              actions: []
+              label_positions: {}
+        - Push:
+            - Register: 2
+            - String: __get__onlyGetter
+        - GetMember
+        - Push:
+            - String: onlyGetter
+            - Integer: 3
+            - Register: 2
+            - String: addProperty
+        - CallMethod
+        - Push:
+            - Register: 2
+            - String: __set__onlySetter
+        - GetMember
+        - DefineFunction:
+            name: ""
+            params: []
+            actions:
+              actions: []
+              label_positions: {}
+        - Push:
+            - String: onlySetter
+            - Integer: 3
+            - Register: 2
+            - String: addProperty
+        - CallMethod
+        - Push:
+            - Register: 1
+            - String: __set__virtualPropertyProbablyStatic
+        - GetMember
+        - Push:
+            - Register: 1
+            - String: __get__virtualPropertyProbablyStatic
+        - GetMember
+        - Push:
+            - String: virtualPropertyProbablyStatic
+            - Integer: 3
+            - Register: 1
+            - String: addProperty
+        - CallMethod
+        - Push:
+            - Register: 2
+            - String: __set__virtualPropertyProbablyNotStatic
+        - GetMember
+        - Push:
+            - Register: 2
+            - String: __get__virtualPropertyProbablyNotStatic
+        - GetMember
+        - Push:
+            - String: virtualPropertyProbablyNotStatic
+            - Integer: 3
+            - Register: 2
+            - String: addProperty
+        - CallMethod
         - Push:
             - Integer: 1
             - "Null"
@@ -665,4 +917,4 @@ extra_modules:
         - CallFunction
         - Pop
       label_positions:
-        loc0000: 57
+        loc0000: 109

@@ -572,8 +572,17 @@ pub struct Class {
     pub extends: Option<String>,
     pub implements: Vec<String>,
     pub functions: IndexMap<String, Method>,
+    pub virtual_properties: IndexMap<String, VirtualProperty>,
     pub fields: IndexMap<String, Field>,
     pub constructor: Function,
+}
+
+#[derive(Debug, Clone, Serialize, PartialEq)]
+pub struct VirtualProperty {
+    pub name: String,
+    pub getter: Option<String>,
+    pub setter: Option<String>,
+    pub is_static: bool,
 }
 
 #[derive(Debug, Serialize)]

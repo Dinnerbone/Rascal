@@ -1,6 +1,6 @@
 use crate::ast::{
-    Catch, Declaration, ForCondition, Function, FunctionArgument, FunctionSignature, Import,
-    Statement, StatementKind, SwitchElement, TryCatch,
+    Catch, Declaration, ForCondition, Function, FunctionArgument, FunctionSignature, FunctionType,
+    Import, Statement, StatementKind, SwitchElement, TryCatch,
 };
 use crate::lexer::operator::Operator;
 use crate::lexer::tokens::{Keyword, TokenKind};
@@ -539,6 +539,12 @@ pub(crate) fn function_signature<'i>(
     i: &mut Tokens<'i>,
 ) -> ModalResult<Spanned<FunctionSignature<'i>>> {
     let start = TokenKind::Keyword(Keyword::Function).parse_next(i)?.span;
+    let function_type = opt(alt((
+        TokenKind::Keyword(Keyword::Get).map(|_| FunctionType::Getter),
+        TokenKind::Keyword(Keyword::Set).map(|_| FunctionType::Setter),
+    )))
+    .parse_next(i)?
+    .unwrap_or(FunctionType::Regular);
     let name = opt(identifier).parse_next(i)?;
     TokenKind::OpenParen.parse_next(i)?;
     let args = separated(
@@ -563,6 +569,7 @@ pub(crate) fn function_signature<'i>(
             name,
             args,
             return_type,
+            function_type,
         },
     ))
 }

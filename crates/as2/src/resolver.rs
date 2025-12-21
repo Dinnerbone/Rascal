@@ -9,6 +9,7 @@ use crate::resolver::special_functions::resolve_special_call;
 use crate::{ast, type_path_to_file_path};
 use indexmap::{IndexMap, IndexSet};
 use rascal_common::span::{Span, Spanned};
+use std::borrow::Cow;
 use std::collections::{HashMap, HashSet};
 
 struct ModuleContext<'a> {
@@ -247,6 +248,13 @@ fn resolve_interface(
             context.error("All member functions need to have names.", function.span);
             continue;
         };
+        if function.function_type != ast::FunctionType::Regular {
+            context.error(
+                "Getter/setter declarations are not permitted in interfaces.",
+                function.span,
+            );
+            continue;
+        }
         if functions
             .insert(
                 function_name.value.to_owned(),
@@ -322,6 +330,7 @@ fn resolve_class(
 
     // Functions/constructor will be resolved later, once we know all the class member names
     let mut functions = IndexMap::new();
+    let mut virtual_properties = IndexMap::new();
     let mut constructor = None;
 
     for (member, attributes) in members {
@@ -331,16 +340,45 @@ fn resolve_class(
                     context.error("All member functions need to have names.", member.span);
                     continue;
                 };
-                if !seen_names.insert(function_name.value.to_owned()) {
+                let internal_name = match function.signature.function_type {
+                    ast::FunctionType::Getter => format!("__get__{}", function_name.value),
+                    ast::FunctionType::Setter => format!("__set__{}", function_name.value),
+                    ast::FunctionType::Regular => function_name.value.to_owned(),
+                };
+                if !seen_names.insert(internal_name.to_owned()) {
                     context.error(
                         "The same member name may not be repeated more than once.",
                         function_name.span,
                     );
                     continue;
                 }
+                if function.signature.function_type != ast::FunctionType::Regular {
+                    let property = virtual_properties
+                        .entry(function_name.value.to_owned())
+                        .or_insert_with(|| hir::VirtualProperty {
+                            name: function_name.value.to_owned(),
+                            getter: None,
+                            setter: None,
+                            // See a bug here? The first definition classes the staticness for the whole property. This matches Flash.
+                            is_static: attributes.contains_key(&ast::ClassMemberAttribute::Static),
+                        });
+                    match function.signature.function_type {
+                        ast::FunctionType::Regular => unreachable!(),
+                        ast::FunctionType::Getter => {
+                            property.getter = Some(internal_name.clone());
+                        }
+                        ast::FunctionType::Setter => {
+                            property.setter = Some(internal_name.clone());
+                        }
+                    }
+                }
                 if function_name.value == class_name.value {
                     if let Some(attr_span) = attributes.get(&ast::ClassMemberAttribute::Static) {
                         context.error("The only attributes allowed for constructor functions are public and private.", *attr_span);
+                        continue;
+                    }
+                    if function.signature.function_type != ast::FunctionType::Regular {
+                        context.error("The only attributes allowed for constructor functions are public and private.", function_name.span);
                         continue;
                     }
                     constructor = Some(function);
@@ -349,7 +387,7 @@ fn resolve_class(
                         function_name.value,
                         attributes.contains_key(&ast::ClassMemberAttribute::Static),
                     );
-                    functions.insert(function_name.value.to_owned(), (function, attributes));
+                    functions.insert(internal_name, (function, attributes));
                 }
             }
             ast::ClassMember::Variable(declaration) => {
@@ -401,13 +439,17 @@ fn resolve_class(
         resolved_functions.insert(
             name,
             hir::Method {
-                function: resolve_function(context, function),
+                function: resolve_function(
+                    context,
+                    function,
+                    attributes.contains_key(&ast::ClassMemberAttribute::Static),
+                ),
                 is_static: attributes.contains_key(&ast::ClassMemberAttribute::Static),
             },
         );
     }
     let resolved_constructor = constructor
-        .map(|function| resolve_function(context, function))
+        .map(|function| resolve_function(context, function, false))
         .unwrap_or_else(|| hir::Function {
             signature: hir::FunctionSignature {
                 name: Some(class_name.clone()),
@@ -424,6 +466,7 @@ fn resolve_class(
         functions: resolved_functions,
         fields,
         constructor: resolved_constructor,
+        virtual_properties,
     }
 }
 
@@ -703,7 +746,13 @@ fn resolve_expr(context: &mut ModuleContext, input: &ast::Expr) -> hir::Expr {
                 .collect(),
         ),
         ast::ExprKind::Function(function) => {
-            hir::ExprKind::Function(resolve_function(context, function))
+            if function.signature.function_type != ast::FunctionType::Regular {
+                context.error(
+                    "Getter/setter declarations are not permitted here.",
+                    input.span,
+                );
+            }
+            hir::ExprKind::Function(resolve_function(context, function, false))
         }
         ast::ExprKind::GetVariable(name) => {
             hir::ExprKind::GetVariable(resolve_expr_box(context, name))
@@ -773,7 +822,46 @@ fn resolve_call(
     }
 }
 
-fn resolve_function(context: &mut ModuleContext, input: &ast::Function) -> hir::Function {
+fn resolve_function(
+    context: &mut ModuleContext,
+    input: &ast::Function,
+    is_static: bool,
+) -> hir::Function {
+    let mut body = resolve_statement_vec(context, &input.body);
+    if let Some(name) = input.signature.name
+        && input.signature.function_type == ast::FunctionType::Setter
+    {
+        // No idea why Flash does this, but every `set function foo(value)` gets a `return __get_foo();` at the end.
+        let mut getter = Box::new(ast::Expr::new(
+            name.span,
+            ast::ExprKind::Constant(ast::ConstantKind::String(Cow::Owned(format!(
+                "__get__{}",
+                name.value
+            )))),
+        ));
+        if !is_static {
+            getter = Box::new(ast::Expr::new(
+                name.span,
+                ast::ExprKind::Field(
+                    Box::new(ast::Expr::new(
+                        name.span,
+                        ast::ExprKind::Constant(ast::ConstantKind::Identifier("this")),
+                    )),
+                    getter,
+                ),
+            ))
+        };
+        body.push(hir::StatementKind::Return(vec![resolve_expr(
+            context,
+            &ast::Expr::new(
+                name.span,
+                ast::ExprKind::Call {
+                    name: getter,
+                    args: vec![],
+                },
+            ),
+        )]))
+    }
     hir::Function {
         signature: hir::FunctionSignature {
             name: input
@@ -791,7 +879,7 @@ fn resolve_function(context: &mut ModuleContext, input: &ast::Function) -> hir::
                 .collect(),
             return_type: resolve_opt_type_name(context, &input.signature.return_type),
         },
-        body: resolve_statement_vec(context, &input.body),
+        body,
     }
 }
 

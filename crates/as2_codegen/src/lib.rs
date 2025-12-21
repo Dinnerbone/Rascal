@@ -179,6 +179,42 @@ fn class_to_actions(class: &Class) -> Actions {
                         }
                     }
 
+                    // Getter/setter virtual properties!
+                    for (name, virtual_property) in &class.virtual_properties {
+                        let owner = if virtual_property.is_static {
+                            PushValue::Register(1)
+                        } else {
+                            PushValue::Register(2)
+                        };
+                        if let Some(setter) = &virtual_property.setter {
+                            builder.push(owner.clone());
+                            builder.push(setter.as_str());
+                            builder.action(Action::GetMember);
+                        } else {
+                            builder.action(Action::DefineFunction {
+                                name: "".to_string(),
+                                params: vec![],
+                                actions: Actions::empty(),
+                            })
+                        }
+                        if let Some(getter) = &virtual_property.getter {
+                            builder.push(owner.clone());
+                            builder.push(getter.as_str());
+                            builder.action(Action::GetMember);
+                        } else {
+                            builder.action(Action::DefineFunction {
+                                name: "".to_string(),
+                                params: vec![],
+                                actions: Actions::empty(),
+                            })
+                        }
+                        builder.push(name.as_str());
+                        builder.push(3);
+                        builder.push(owner);
+                        builder.push("addProperty");
+                        builder.action_with_stack_delta(Action::CallMethod, -5);
+                    }
+
                     // Make the prototype not enumerable
                     builder.push(1);
                     builder.push(PushValue::Null);

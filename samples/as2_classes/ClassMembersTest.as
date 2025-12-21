@@ -17,6 +17,9 @@ class ClassMembersTest implements AnEmptyInterface {
         trace("regularPropertyWithoutValue: " + regularPropertyWithoutValue);
 
         trace(ANestedClass.create().success());
+
+        virtualProperty = "a value";
+        trace(virtualProperty);
     }
 
     function greet(name: String): Void {
@@ -35,4 +38,36 @@ class ClassMembersTest implements AnEmptyInterface {
     private function secret() {}
 
     public function notASecret() {}
+
+    function get virtualProperty() {
+        return "virtual!";
+    }
+
+    function get onlyGetter() {
+        return "getter";
+    }
+
+    function set onlySetter(value) {
+        trace("New value: " + value);
+    }
+
+    function set virtualProperty(value) {
+        trace("Virtually setting to " + value);
+    }
+
+    static function get virtualPropertyProbablyStatic() {
+        return "Static!";
+    }
+
+    function set virtualPropertyProbablyStatic(value) {
+        trace("New value: " + value);
+    }
+
+    function set virtualPropertyProbablyNotStatic(value) {
+        trace("New value: " + value);
+    }
+
+    static function get virtualPropertyProbablyNotStatic() {
+        return "Static!";
+    }
 }

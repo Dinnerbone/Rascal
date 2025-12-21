@@ -236,6 +236,14 @@ pub struct FunctionSignature<'a> {
     pub name: Option<Spanned<&'a str>>,
     pub args: Vec<FunctionArgument<'a>>,
     pub return_type: Option<Spanned<&'a str>>,
+    pub function_type: FunctionType,
+}
+
+#[derive(Debug, Clone, Serialize, PartialEq, Copy)]
+pub enum FunctionType {
+    Regular,
+    Getter,
+    Setter,
 }
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
