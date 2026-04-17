@@ -27,9 +27,9 @@ pub fn parse_document<'i>(
 
 fn string<'i>(i: &mut Tokens<'i>) -> ModalResult<Spanned<Cow<'i, str>>> {
     skip_newlines(i)?;
-    let (kind, raw, span) = alt((
-        TokenKind::String(QuoteKind::Double).map(|t| (QuoteKind::Double, t.raw, t.span)),
-        TokenKind::String(QuoteKind::Single).map(|t| (QuoteKind::Single, t.raw, t.span)),
+    let (raw, span) = alt((
+        TokenKind::String(QuoteKind::Double).map(|t| (t.raw, t.span)),
+        TokenKind::String(QuoteKind::Single).map(|t| (t.raw, t.span)),
     ))
     .parse_next(i)?;
     if !raw.contains("\\") {
@@ -44,8 +44,8 @@ fn string<'i>(i: &mut Tokens<'i>) -> ModalResult<Spanned<Cow<'i, str>>> {
                 Some('r') => out.push('\r'),
                 Some('t') => out.push('\t'),
                 Some('\\') => out.push('\\'),
-                Some('"') if matches!(kind, QuoteKind::Double) => out.push('"'),
-                Some('\'') if matches!(kind, QuoteKind::Single) => out.push('\''),
+                Some('"') => out.push('"'),
+                Some('\'') => out.push('\''),
                 Some(other) => {
                     out.push('\\');
                     out.push(other);
