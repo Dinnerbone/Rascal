@@ -6,7 +6,7 @@ use crate::parser::statement::function;
 use crate::parser::{Tokens, identifier, operator, skip_newlines, string};
 use rascal_common::span::{Span, Spanned};
 use std::borrow::Cow;
-use winnow::combinator::{alt, fail, opt, peek, separated};
+use winnow::combinator::{alt, fail, peek, separated};
 use winnow::error::ParserError;
 use winnow::error::{ContextError, ErrMode, StrContext};
 use winnow::token::any;
@@ -148,61 +148,42 @@ pub(crate) fn expression<'i>(i: &mut Tokens<'i>) -> ModalResult<Expr<'i>> {
         }
         TokenKind::Keyword(Keyword::TypeOf) => {
             TokenKind::Keyword(Keyword::TypeOf).parse_next(i)?;
-            let expr = if opt(TokenKind::OpenParen).parse_next(i)?.is_some() {
-                let values = expr_list.parse_next(i)?;
-                let end = TokenKind::CloseParen.parse_next(i)?.span;
-                Expr::new(Span::encompassing(start, end), ExprKind::TypeOf(values))
-            } else {
-                let mut value = expression.parse_next(i)?;
-                rewrite_leftmost_expr(&mut value, |expr| {
-                    Expr::new(
-                        Span::encompassing(start, expr.span),
-                        ExprKind::TypeOf(vec![expr]),
-                    )
-                });
-                value
-            };
-            expr_next(expr)
+            let mut value = expression.parse_next(i)?;
+            rewrite_leftmost_expr(&mut value, |expr| {
+                Expr::new(
+                    Span::encompassing(start, expr.span),
+                    ExprKind::TypeOf(Box::new(expr)),
+                )
+            });
+            expr_next(value)
                 .context(StrContext::Label("expression"))
                 .parse_next(i)
         }
         TokenKind::Keyword(Keyword::Delete) => {
             TokenKind::Keyword(Keyword::Delete).parse_next(i)?;
-            let expr = if opt(TokenKind::OpenParen).parse_next(i)?.is_some() {
-                let values = expr_list.parse_next(i)?;
-                let end = TokenKind::CloseParen.parse_next(i)?.span;
-                Expr::new(Span::encompassing(start, end), ExprKind::Delete(values))
-            } else {
-                let mut value = expression.parse_next(i)?;
-                rewrite_leftmost_expr(&mut value, |expr| {
-                    Expr::new(
-                        Span::encompassing(start, expr.span),
-                        ExprKind::Delete(vec![expr]),
-                    )
-                });
-                value
-            };
-            expr_next(expr)
+            let mut value = expression.parse_next(i)?;
+            rewrite_leftmost_expr(&mut value, |expr| {
+                Expr::new(
+                    Span::encompassing(start, expr.span),
+                    ExprKind::Delete(Box::new(expr)),
+                )
+            });
+            expr_next(value)
                 .context(StrContext::Label("expression"))
                 .parse_next(i)
         }
         TokenKind::Keyword(Keyword::Void) => {
             TokenKind::Keyword(Keyword::Void).parse_next(i)?;
-            let (values, end) = if opt(TokenKind::OpenParen).parse_next(i)?.is_some() {
-                let values = expr_list.parse_next(i)?;
-                let end = TokenKind::CloseParen.parse_next(i)?.span;
-                (values, end)
-            } else {
-                let value = expression.parse_next(i)?;
-                let span = value.span;
-                (vec![value], span)
-            };
-            expr_next(Expr::new(
-                Span::encompassing(start, end),
-                ExprKind::Void(values),
-            ))
-            .context(StrContext::Label("expression"))
-            .parse_next(i)
+            let mut value = expression.parse_next(i)?;
+            rewrite_leftmost_expr(&mut value, |expr| {
+                Expr::new(
+                    Span::encompassing(start, expr.span),
+                    ExprKind::Void(Box::new(expr)),
+                )
+            });
+            expr_next(value)
+                .context(StrContext::Label("expression"))
+                .parse_next(i)
         }
         TokenKind::String(_) | TokenKind::Identifier | TokenKind::Float | TokenKind::Integer => {
             let val = constant
@@ -1455,25 +1436,9 @@ mod tests {
             parse_expr(&tokens),
             Ok(ex(ExprKind::BinaryOperator(
                 BinaryOperator::Add,
-                Box::new(ex(ExprKind::TypeOf(vec![id("a")]))),
+                Box::new(ex(ExprKind::TypeOf(Box::new(id("a"))))),
                 Box::new(id("b")),
             )))
-        )
-    }
-
-    #[test]
-    fn test_typeof_as_function() {
-        let tokens = build_tokens(&[
-            (TokenKind::Keyword(Keyword::TypeOf), "typeof"),
-            (TokenKind::OpenParen, "("),
-            (TokenKind::Identifier, "a"),
-            (TokenKind::Comma, ","),
-            (TokenKind::Identifier, "b"),
-            (TokenKind::CloseParen, ")"),
-        ]);
-        assert_eq!(
-            parse_expr(&tokens),
-            Ok(ex(ExprKind::TypeOf(vec![id("a"), id("b")])))
         )
     }
 
@@ -1552,22 +1517,9 @@ mod tests {
             (TokenKind::Keyword(Keyword::Delete), "delete"),
             (TokenKind::Identifier, "a"),
         ]);
-        assert_eq!(parse_expr(&tokens), Ok(ex(ExprKind::Delete(vec![id("a")]))))
-    }
-
-    #[test]
-    fn test_delete_as_function() {
-        let tokens = build_tokens(&[
-            (TokenKind::Keyword(Keyword::Delete), "delete"),
-            (TokenKind::OpenParen, "("),
-            (TokenKind::Identifier, "a"),
-            (TokenKind::Comma, ","),
-            (TokenKind::Identifier, "b"),
-            (TokenKind::CloseParen, ")"),
-        ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(ex(ExprKind::Delete(vec![id("a"), id("b")])))
+            Ok(ex(ExprKind::Delete(Box::new(id("a")))))
         )
     }
 
@@ -1581,10 +1533,10 @@ mod tests {
         ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(ex(ExprKind::Delete(vec![ex(ExprKind::Field(
+            Ok(ex(ExprKind::Delete(Box::new(ex(ExprKind::Field(
                 Box::new(id("a")),
                 Box::new(s("a"))
-            ))])))
+            ))))))
         )
     }
 
@@ -1594,22 +1546,9 @@ mod tests {
             (TokenKind::Keyword(Keyword::Void), "void"),
             (TokenKind::Identifier, "a"),
         ]);
-        assert_eq!(parse_expr(&tokens), Ok(ex(ExprKind::Void(vec![id("a")]))))
-    }
-
-    #[test]
-    fn test_void_as_function() {
-        let tokens = build_tokens(&[
-            (TokenKind::Keyword(Keyword::Void), "void"),
-            (TokenKind::OpenParen, "("),
-            (TokenKind::Identifier, "a"),
-            (TokenKind::Comma, ","),
-            (TokenKind::Identifier, "b"),
-            (TokenKind::CloseParen, ")"),
-        ]);
         assert_eq!(
             parse_expr(&tokens),
-            Ok(ex(ExprKind::Void(vec![id("a"), id("b")])))
+            Ok(ex(ExprKind::Void(Box::new(id("a")))))
         )
     }
 

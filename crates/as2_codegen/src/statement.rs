@@ -461,27 +461,12 @@ pub fn gen_expr(
             let access = VariableAccess::for_expr(context, builder, expr);
             access.get_value(builder);
         }
-        ExprKind::TypeOf(exprs) => {
-            let stack_size = builder.stack_size();
-            let last = exprs.len() - 1;
-            for (i, expr) in exprs.iter().enumerate() {
-                builder.truncate_stack(stack_size);
-                gen_expr(context, builder, expr, i != last);
-            }
+        ExprKind::TypeOf(expr) => {
+            gen_expr(context, builder, expr, false);
             builder.action(Action::TypeOf);
         }
-        ExprKind::Delete(exprs) => {
-            let mut access: Option<VariableAccess> = None;
-            for expr in exprs {
-                if let Some(access) = &mut access {
-                    access.get_value(builder);
-                    builder.action(Action::Pop);
-                }
-                access = Some(VariableAccess::for_expr(context, builder, expr));
-            }
-            if let Some(access) = access {
-                access.delete(builder);
-            }
+        ExprKind::Delete(expr) => {
+            VariableAccess::for_expr(context, builder, expr).delete(builder);
         }
         ExprKind::Void(_) => {}
         ExprKind::Function(function) => gen_function(context, builder, function, true),

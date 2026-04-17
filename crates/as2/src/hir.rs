@@ -37,9 +37,9 @@ pub enum ExprKind {
     InitObject(Vec<(String, Expr)>),
     InitArray(Vec<Expr>),
     Field(Box<Expr>, Box<Expr>),
-    TypeOf(Vec<Expr>),
-    Delete(Vec<Expr>),
-    Void(Vec<Expr>),
+    TypeOf(Box<Expr>),
+    Delete(Box<Expr>),
+    Void(Box<Expr>),
     Function(Function),
     GetVariable(Box<Expr>),
     SetVariable(Box<Expr>, Box<Expr>),
@@ -179,20 +179,14 @@ impl ExprKind {
                 obj.value.simplify(anything_changed);
                 key.value.simplify(anything_changed);
             }
-            ExprKind::TypeOf(values) => {
-                for value in values {
-                    value.value.simplify(anything_changed);
-                }
+            ExprKind::TypeOf(value) => {
+                value.value.simplify(anything_changed);
             }
-            ExprKind::Delete(values) => {
-                for value in values {
-                    value.value.simplify(anything_changed);
-                }
+            ExprKind::Delete(value) => {
+                value.value.simplify(anything_changed);
             }
-            ExprKind::Void(values) => {
-                for value in values {
-                    value.value.simplify(anything_changed);
-                }
+            ExprKind::Void(value) => {
+                value.value.simplify(anything_changed);
             }
             ExprKind::Function(function) => {
                 for statement in &mut function.body {

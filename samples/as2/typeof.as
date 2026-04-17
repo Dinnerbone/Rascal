@@ -8,4 +8,3 @@ trace("typeof obj.num == \"number\" ? \":)\" : \":(\": " + (typeof obj.num == "n
 trace("typeof obj.num + typeof obj.num: " + (typeof obj.num + typeof obj.num)); // numbernumber
 trace("typeof obj.trace: " + (typeof obj.trace)); // function
 trace("typeof obj.trace(): " + (typeof obj.trace())); // undefined
-trace("typeof(nonexistent, obj): " + (typeof(nonexistent, obj))); // object

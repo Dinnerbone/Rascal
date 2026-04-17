@@ -727,24 +727,9 @@ fn resolve_expr(context: &mut ModuleContext, input: &ast::Expr) -> hir::Expr {
                 resolve_expr_box(context, field),
             )
         }
-        ast::ExprKind::TypeOf(values) => hir::ExprKind::TypeOf(
-            values
-                .iter()
-                .map(|expr| resolve_expr(context, expr))
-                .collect(),
-        ),
-        ast::ExprKind::Delete(values) => hir::ExprKind::Delete(
-            values
-                .iter()
-                .map(|expr| resolve_expr(context, expr))
-                .collect(),
-        ),
-        ast::ExprKind::Void(values) => hir::ExprKind::Void(
-            values
-                .iter()
-                .map(|expr| resolve_expr(context, expr))
-                .collect(),
-        ),
+        ast::ExprKind::TypeOf(value) => hir::ExprKind::TypeOf(resolve_expr_box(context, value)),
+        ast::ExprKind::Delete(value) => hir::ExprKind::Delete(resolve_expr_box(context, value)),
+        ast::ExprKind::Void(value) => hir::ExprKind::Void(resolve_expr_box(context, value)),
         ast::ExprKind::Function(function) => {
             if function.signature.function_type != ast::FunctionType::Regular {
                 context.error(

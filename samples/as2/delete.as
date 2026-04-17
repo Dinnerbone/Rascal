@@ -14,4 +14,3 @@ var obj = {num: 1, trace: trace};
 trace("delete obj.trace: " + (delete obj.trace)); // true
 var obj = {num: 1, trace: trace};
 trace("delete obj.trace(): " + (delete obj.trace())); // false
-trace("delete(nonexistent, obj): " + (delete(nonexistent, obj))); // false, because of a Flash compiler bug
