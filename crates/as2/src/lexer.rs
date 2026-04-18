@@ -17,7 +17,7 @@ pub struct Lexer<'i> {
 impl<'i> Lexer<'i> {
     pub fn new(input: &'i str) -> Self {
         Self {
-            stream: Stream::new(input),
+            stream: Stream::new(input.strip_prefix('\u{FEFF}').unwrap_or(input)),
         }
     }
 
