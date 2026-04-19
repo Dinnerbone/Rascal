@@ -29,7 +29,6 @@ initializer:
                 - Constant: 1
             - Return
           label_positions: {}
-    - Pop
     - Push:
         - Constant: 2
     - DefineFunction:
@@ -74,5 +73,12 @@ initializer:
     - CallFunction
     - Add2
     - Trace
+    - DefineFunction:
+        name: ""
+        params: []
+        actions:
+          actions: []
+          label_positions: {}
+    - Pop
   label_positions: {}
 extra_modules: []

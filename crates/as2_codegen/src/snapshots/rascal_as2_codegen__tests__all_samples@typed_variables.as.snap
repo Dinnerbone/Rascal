@@ -55,7 +55,6 @@ initializer:
             - Add2
             - Return
           label_positions: {}
-    - Pop
     - DefineFunction:
         name: getMessage
         params: []
@@ -65,7 +64,6 @@ initializer:
                 - Constant: 2
             - Return
           label_positions: {}
-    - Pop
     - DefineFunction:
         name: processData
         params:
@@ -77,7 +75,6 @@ initializer:
             - GetVariable
             - Trace
           label_positions: {}
-    - Pop
     - DefineFunction:
         name: complexFunc
         params:
@@ -103,7 +100,6 @@ initializer:
             - InitObject
             - Return
           label_positions: {}
-    - Pop
     - DefineFunction:
         name: forEach
         params:
@@ -150,7 +146,6 @@ initializer:
             loc0002: 2
             loc0001: 19
             loc0000: 24
-    - Pop
     - Push:
         - Constant: 12
         - Integer: 42

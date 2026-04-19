@@ -21,7 +21,6 @@ initializer:
             - GetVariable
             - Trace
           label_positions: {}
-    - Pop
     - DefineFunction:
         name: afterImport
         params: []
@@ -38,7 +37,6 @@ initializer:
             - GetMember
             - Trace
           label_positions: {}
-    - Pop
     - Push:
         - Integer: 0
         - Constant: 3

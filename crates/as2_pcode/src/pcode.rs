@@ -228,7 +228,13 @@ impl Action {
             Action::CloneSprite => -3,
             Action::ConstantPool(_) => 0,
             Action::Decrement => -1,
-            Action::DefineFunction { .. } => 1,
+            Action::DefineFunction { name, .. } => {
+                if name.is_empty() {
+                    1
+                } else {
+                    0
+                }
+            }
             Action::DefineLocal => -2,
             Action::DefineLocal2 => -1,
             Action::Delete => -2,

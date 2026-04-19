@@ -11,3 +11,4 @@ anon("aa", "bb");
 
 trace(test() + test());
 
+function() {}

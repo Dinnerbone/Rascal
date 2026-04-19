@@ -34,7 +34,6 @@ initializer:
                         - Constant: 0
                     - Trace
                   label_positions: {}
-            - Pop
             - Push:
                 - Constant: 1
             - Trace
@@ -57,7 +56,6 @@ initializer:
             - Add2
             - Trace
           label_positions: {}
-    - Pop
     - DefineFunction:
         name: secondFunction
         params: []
@@ -80,7 +78,6 @@ initializer:
             - Add2
             - Trace
           label_positions: {}
-    - Pop
     - DefineFunction:
         name: secondFunction
         params: []
@@ -103,7 +100,6 @@ initializer:
             - Add2
             - Trace
           label_positions: {}
-    - Pop
     - DefineFunction:
         name: thirdFunction
         params: []
@@ -113,7 +109,6 @@ initializer:
                 - Constant: 9
             - Trace
           label_positions: {}
-    - Pop
     - DefineFunction:
         name: unusedFunction
         params: []
@@ -123,7 +118,6 @@ initializer:
                 - Constant: 10
             - Trace
           label_positions: {}
-    - Pop
     - Push:
         - Constant: 4
         - Integer: 1
