@@ -227,7 +227,7 @@ impl Action {
             Action::CharToAscii => 0,
             Action::CloneSprite => -3,
             Action::ConstantPool(_) => 0,
-            Action::Decrement => -1,
+            Action::Decrement => 0,
             Action::DefineFunction { name, .. } => {
                 if name.is_empty() {
                     1
@@ -258,7 +258,7 @@ impl Action {
             Action::GotoLabel(_) => 0,
             Action::Greater => -1,
             Action::If(_) => -1,
-            Action::Increment => -1,
+            Action::Increment => 0,
             Action::InstanceOf => -1,
             Action::Jump(_) => 0,
             Action::Less => -1,
