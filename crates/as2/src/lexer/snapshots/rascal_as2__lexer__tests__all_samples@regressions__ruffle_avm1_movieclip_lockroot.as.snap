@@ -1,0 +1,4085 @@
+---
+source: crates/as2/src/lexer/tests.rs
+expression: tokens
+input_file: samples/as2/regressions/ruffle_avm1_movieclip_lockroot.as
+---
+- kind:
+    Keyword: Var
+  span:
+    start: 0
+    end: 3
+  raw: var
+- kind: Identifier
+  span:
+    start: 4
+    end: 10
+  raw: levels
+- kind:
+    Operator: Assign
+  span:
+    start: 11
+    end: 12
+  raw: "="
+- kind: Integer
+  span:
+    start: 13
+    end: 14
+  raw: "1"
+- kind: Semicolon
+  span:
+    start: 14
+    end: 15
+  raw: ;
+- kind: Newline
+  span:
+    start: 15
+    end: 16
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 16
+    end: 17
+  raw: "\n"
+- kind:
+    Keyword: Function
+  span:
+    start: 17
+    end: 25
+  raw: function
+- kind: Identifier
+  span:
+    start: 26
+    end: 33
+  raw: testSet
+- kind: OpenParen
+  span:
+    start: 33
+    end: 34
+  raw: (
+- kind: Identifier
+  span:
+    start: 34
+    end: 39
+  raw: value
+- kind: CloseParen
+  span:
+    start: 39
+    end: 40
+  raw: )
+- kind: OpenBrace
+  span:
+    start: 41
+    end: 42
+  raw: "{"
+- kind: Newline
+  span:
+    start: 42
+    end: 43
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 44
+    end: 47
+  raw: var
+- kind: Identifier
+  span:
+    start: 48
+    end: 58
+  raw: valueLabel
+- kind:
+    Operator: Assign
+  span:
+    start: 59
+    end: 60
+  raw: "="
+- kind:
+    Keyword: TypeOf
+  span:
+    start: 61
+    end: 67
+  raw: typeof
+- kind: Identifier
+  span:
+    start: 68
+    end: 73
+  raw: value
+- kind:
+    Operator: Equal
+  span:
+    start: 74
+    end: 76
+  raw: "=="
+- kind:
+    String: Double
+  span:
+    start: 77
+    end: 85
+  raw: string
+- kind: Question
+  span:
+    start: 86
+    end: 87
+  raw: "?"
+- kind:
+    String: Double
+  span:
+    start: 88
+    end: 92
+  raw: "\\\""
+- kind:
+    Operator: Add
+  span:
+    start: 93
+    end: 94
+  raw: +
+- kind: Identifier
+  span:
+    start: 95
+    end: 100
+  raw: value
+- kind:
+    Operator: Add
+  span:
+    start: 101
+    end: 102
+  raw: +
+- kind:
+    String: Double
+  span:
+    start: 103
+    end: 107
+  raw: "\\\""
+- kind: Colon
+  span:
+    start: 108
+    end: 109
+  raw: ":"
+- kind: Identifier
+  span:
+    start: 110
+    end: 115
+  raw: value
+- kind: Semicolon
+  span:
+    start: 115
+    end: 116
+  raw: ;
+- kind: Newline
+  span:
+    start: 116
+    end: 117
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 118
+    end: 122
+  raw: this
+- kind: Period
+  span:
+    start: 122
+    end: 123
+  raw: "."
+- kind: Identifier
+  span:
+    start: 123
+    end: 132
+  raw: _lockroot
+- kind:
+    Operator: Assign
+  span:
+    start: 133
+    end: 134
+  raw: "="
+- kind: Identifier
+  span:
+    start: 135
+    end: 140
+  raw: "false"
+- kind: Semicolon
+  span:
+    start: 140
+    end: 141
+  raw: ;
+- kind: Newline
+  span:
+    start: 141
+    end: 142
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 143
+    end: 147
+  raw: this
+- kind: Period
+  span:
+    start: 147
+    end: 148
+  raw: "."
+- kind: Identifier
+  span:
+    start: 148
+    end: 157
+  raw: _lockroot
+- kind:
+    Operator: Assign
+  span:
+    start: 158
+    end: 159
+  raw: "="
+- kind: Identifier
+  span:
+    start: 160
+    end: 165
+  raw: value
+- kind: Semicolon
+  span:
+    start: 165
+    end: 166
+  raw: ;
+- kind: Newline
+  span:
+    start: 166
+    end: 167
+  raw: "\n"
+- kind:
+    Keyword: If
+  span:
+    start: 168
+    end: 170
+  raw: if
+- kind: OpenParen
+  span:
+    start: 171
+    end: 172
+  raw: (
+- kind: Identifier
+  span:
+    start: 172
+    end: 176
+  raw: this
+- kind: Period
+  span:
+    start: 176
+    end: 177
+  raw: "."
+- kind: Identifier
+  span:
+    start: 177
+    end: 186
+  raw: _lockroot
+- kind: CloseParen
+  span:
+    start: 186
+    end: 187
+  raw: )
+- kind: OpenBrace
+  span:
+    start: 188
+    end: 189
+  raw: "{"
+- kind: Newline
+  span:
+    start: 189
+    end: 190
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 192
+    end: 197
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 197
+    end: 198
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 198
+    end: 229
+  raw: "Parent: setting _lockroot to "
+- kind:
+    Operator: Add
+  span:
+    start: 230
+    end: 231
+  raw: +
+- kind: Identifier
+  span:
+    start: 232
+    end: 242
+  raw: valueLabel
+- kind:
+    Operator: Add
+  span:
+    start: 243
+    end: 244
+  raw: +
+- kind:
+    String: Double
+  span:
+    start: 245
+    end: 264
+  raw: " sets it to true."
+- kind: CloseParen
+  span:
+    start: 264
+    end: 265
+  raw: )
+- kind: Semicolon
+  span:
+    start: 265
+    end: 266
+  raw: ;
+- kind: Newline
+  span:
+    start: 266
+    end: 267
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 269
+    end: 273
+  raw: this
+- kind: Period
+  span:
+    start: 273
+    end: 274
+  raw: "."
+- kind: Identifier
+  span:
+    start: 274
+    end: 283
+  raw: _lockroot
+- kind:
+    Operator: Assign
+  span:
+    start: 284
+    end: 285
+  raw: "="
+- kind: Identifier
+  span:
+    start: 286
+    end: 291
+  raw: "false"
+- kind: Semicolon
+  span:
+    start: 291
+    end: 292
+  raw: ;
+- kind: Newline
+  span:
+    start: 292
+    end: 293
+  raw: "\n"
+- kind:
+    Keyword: Return
+  span:
+    start: 295
+    end: 301
+  raw: return
+- kind: Semicolon
+  span:
+    start: 301
+    end: 302
+  raw: ;
+- kind: Newline
+  span:
+    start: 302
+    end: 303
+  raw: "\n"
+- kind: CloseBrace
+  span:
+    start: 304
+    end: 305
+  raw: "}"
+- kind: Newline
+  span:
+    start: 305
+    end: 306
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 307
+    end: 311
+  raw: this
+- kind: Period
+  span:
+    start: 311
+    end: 312
+  raw: "."
+- kind: Identifier
+  span:
+    start: 312
+    end: 321
+  raw: _lockroot
+- kind:
+    Operator: Assign
+  span:
+    start: 322
+    end: 323
+  raw: "="
+- kind: Identifier
+  span:
+    start: 324
+    end: 328
+  raw: "true"
+- kind: Semicolon
+  span:
+    start: 328
+    end: 329
+  raw: ;
+- kind: Newline
+  span:
+    start: 329
+    end: 330
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 331
+    end: 335
+  raw: this
+- kind: Period
+  span:
+    start: 335
+    end: 336
+  raw: "."
+- kind: Identifier
+  span:
+    start: 336
+    end: 345
+  raw: _lockroot
+- kind:
+    Operator: Assign
+  span:
+    start: 346
+    end: 347
+  raw: "="
+- kind: Identifier
+  span:
+    start: 348
+    end: 353
+  raw: value
+- kind: Semicolon
+  span:
+    start: 353
+    end: 354
+  raw: ;
+- kind: Newline
+  span:
+    start: 354
+    end: 355
+  raw: "\n"
+- kind:
+    Keyword: If
+  span:
+    start: 356
+    end: 358
+  raw: if
+- kind: OpenParen
+  span:
+    start: 359
+    end: 360
+  raw: (
+- kind:
+    Operator: LogicalNot
+  span:
+    start: 360
+    end: 361
+  raw: "!"
+- kind: Identifier
+  span:
+    start: 361
+    end: 365
+  raw: this
+- kind: Period
+  span:
+    start: 365
+    end: 366
+  raw: "."
+- kind: Identifier
+  span:
+    start: 366
+    end: 375
+  raw: _lockroot
+- kind: CloseParen
+  span:
+    start: 375
+    end: 376
+  raw: )
+- kind: OpenBrace
+  span:
+    start: 377
+    end: 378
+  raw: "{"
+- kind: Newline
+  span:
+    start: 378
+    end: 379
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 381
+    end: 386
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 386
+    end: 387
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 387
+    end: 418
+  raw: "Parent: setting _lockroot to "
+- kind:
+    Operator: Add
+  span:
+    start: 419
+    end: 420
+  raw: +
+- kind: Identifier
+  span:
+    start: 421
+    end: 431
+  raw: valueLabel
+- kind:
+    Operator: Add
+  span:
+    start: 432
+    end: 433
+  raw: +
+- kind:
+    String: Double
+  span:
+    start: 434
+    end: 454
+  raw: " sets it to false."
+- kind: CloseParen
+  span:
+    start: 454
+    end: 455
+  raw: )
+- kind: Semicolon
+  span:
+    start: 455
+    end: 456
+  raw: ;
+- kind: Newline
+  span:
+    start: 456
+    end: 457
+  raw: "\n"
+- kind:
+    Keyword: Return
+  span:
+    start: 459
+    end: 465
+  raw: return
+- kind: Semicolon
+  span:
+    start: 465
+    end: 466
+  raw: ;
+- kind: Newline
+  span:
+    start: 466
+    end: 467
+  raw: "\n"
+- kind: CloseBrace
+  span:
+    start: 468
+    end: 469
+  raw: "}"
+- kind: Newline
+  span:
+    start: 469
+    end: 470
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 470
+    end: 471
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 472
+    end: 476
+  raw: this
+- kind: Period
+  span:
+    start: 476
+    end: 477
+  raw: "."
+- kind: Identifier
+  span:
+    start: 477
+    end: 486
+  raw: _lockroot
+- kind:
+    Operator: Assign
+  span:
+    start: 487
+    end: 488
+  raw: "="
+- kind: Identifier
+  span:
+    start: 489
+    end: 494
+  raw: "false"
+- kind: Semicolon
+  span:
+    start: 494
+    end: 495
+  raw: ;
+- kind: Newline
+  span:
+    start: 495
+    end: 496
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 497
+    end: 502
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 502
+    end: 503
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 503
+    end: 534
+  raw: "Parent: setting _lockroot to "
+- kind:
+    Operator: Add
+  span:
+    start: 535
+    end: 536
+  raw: +
+- kind: Identifier
+  span:
+    start: 537
+    end: 547
+  raw: valueLabel
+- kind:
+    Operator: Add
+  span:
+    start: 548
+    end: 549
+  raw: +
+- kind:
+    String: Double
+  span:
+    start: 550
+    end: 567
+  raw: " has no effect."
+- kind: CloseParen
+  span:
+    start: 567
+    end: 568
+  raw: )
+- kind: Semicolon
+  span:
+    start: 568
+    end: 569
+  raw: ;
+- kind: Newline
+  span:
+    start: 569
+    end: 570
+  raw: "\n"
+- kind: CloseBrace
+  span:
+    start: 570
+    end: 571
+  raw: "}"
+- kind: Newline
+  span:
+    start: 571
+    end: 572
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 572
+    end: 573
+  raw: "\n"
+- kind:
+    Keyword: Function
+  span:
+    start: 573
+    end: 581
+  raw: function
+- kind: Identifier
+  span:
+    start: 582
+    end: 590
+  raw: testSelf
+- kind: OpenParen
+  span:
+    start: 590
+    end: 591
+  raw: (
+- kind: CloseParen
+  span:
+    start: 591
+    end: 592
+  raw: )
+- kind: OpenBrace
+  span:
+    start: 593
+    end: 594
+  raw: "{"
+- kind: Newline
+  span:
+    start: 594
+    end: 595
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 631
+    end: 636
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 636
+    end: 637
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 637
+    end: 656
+  raw: "Parent: level is "
+- kind:
+    Operator: Add
+  span:
+    start: 657
+    end: 658
+  raw: +
+- kind: Identifier
+  span:
+    start: 659
+    end: 663
+  raw: this
+- kind:
+    Operator: Add
+  span:
+    start: 664
+    end: 665
+  raw: +
+- kind:
+    String: Double
+  span:
+    start: 666
+    end: 678
+  raw: ", root is "
+- kind:
+    Operator: Add
+  span:
+    start: 679
+    end: 680
+  raw: +
+- kind: Identifier
+  span:
+    start: 681
+    end: 686
+  raw: _root
+- kind:
+    Operator: Add
+  span:
+    start: 687
+    end: 688
+  raw: +
+- kind:
+    String: Double
+  span:
+    start: 689
+    end: 706
+  raw: ", _lockroot is "
+- kind:
+    Operator: Add
+  span:
+    start: 707
+    end: 708
+  raw: +
+- kind: Identifier
+  span:
+    start: 709
+    end: 713
+  raw: this
+- kind: Period
+  span:
+    start: 713
+    end: 714
+  raw: "."
+- kind: Identifier
+  span:
+    start: 714
+    end: 723
+  raw: _lockroot
+- kind: CloseParen
+  span:
+    start: 723
+    end: 724
+  raw: )
+- kind: Semicolon
+  span:
+    start: 724
+    end: 725
+  raw: ;
+- kind: Newline
+  span:
+    start: 725
+    end: 726
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 726
+    end: 727
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 748
+    end: 755
+  raw: testSet
+- kind: OpenParen
+  span:
+    start: 755
+    end: 756
+  raw: (
+- kind: Identifier
+  span:
+    start: 756
+    end: 760
+  raw: "true"
+- kind: CloseParen
+  span:
+    start: 760
+    end: 761
+  raw: )
+- kind: Semicolon
+  span:
+    start: 761
+    end: 762
+  raw: ;
+- kind: Identifier
+  span:
+    start: 773
+    end: 780
+  raw: testSet
+- kind: OpenParen
+  span:
+    start: 780
+    end: 781
+  raw: (
+- kind: Identifier
+  span:
+    start: 781
+    end: 786
+  raw: "false"
+- kind: CloseParen
+  span:
+    start: 786
+    end: 787
+  raw: )
+- kind: Semicolon
+  span:
+    start: 787
+    end: 788
+  raw: ;
+- kind: Identifier
+  span:
+    start: 799
+    end: 806
+  raw: testSet
+- kind: OpenParen
+  span:
+    start: 806
+    end: 807
+  raw: (
+- kind: Identifier
+  span:
+    start: 807
+    end: 816
+  raw: undefined
+- kind: CloseParen
+  span:
+    start: 816
+    end: 817
+  raw: )
+- kind: Semicolon
+  span:
+    start: 817
+    end: 818
+  raw: ;
+- kind: Identifier
+  span:
+    start: 828
+    end: 835
+  raw: testSet
+- kind: OpenParen
+  span:
+    start: 835
+    end: 836
+  raw: (
+- kind: Identifier
+  span:
+    start: 836
+    end: 840
+  raw: "null"
+- kind: CloseParen
+  span:
+    start: 840
+    end: 841
+  raw: )
+- kind: Semicolon
+  span:
+    start: 841
+    end: 842
+  raw: ;
+- kind: Identifier
+  span:
+    start: 853
+    end: 860
+  raw: testSet
+- kind: OpenParen
+  span:
+    start: 860
+    end: 861
+  raw: (
+- kind: Identifier
+  span:
+    start: 861
+    end: 864
+  raw: "NaN"
+- kind: CloseParen
+  span:
+    start: 864
+    end: 865
+  raw: )
+- kind: Semicolon
+  span:
+    start: 865
+    end: 866
+  raw: ;
+- kind: Identifier
+  span:
+    start: 877
+    end: 884
+  raw: testSet
+- kind: OpenParen
+  span:
+    start: 884
+    end: 885
+  raw: (
+- kind:
+    Operator: Sub
+  span:
+    start: 885
+    end: 886
+  raw: "-"
+- kind: Integer
+  span:
+    start: 886
+    end: 887
+  raw: "1"
+- kind: CloseParen
+  span:
+    start: 887
+    end: 888
+  raw: )
+- kind: Semicolon
+  span:
+    start: 888
+    end: 889
+  raw: ;
+- kind: Identifier
+  span:
+    start: 899
+    end: 906
+  raw: testSet
+- kind: OpenParen
+  span:
+    start: 906
+    end: 907
+  raw: (
+- kind: Integer
+  span:
+    start: 907
+    end: 908
+  raw: "0"
+- kind: CloseParen
+  span:
+    start: 908
+    end: 909
+  raw: )
+- kind: Semicolon
+  span:
+    start: 909
+    end: 910
+  raw: ;
+- kind: Identifier
+  span:
+    start: 921
+    end: 928
+  raw: testSet
+- kind: OpenParen
+  span:
+    start: 928
+    end: 929
+  raw: (
+- kind: Integer
+  span:
+    start: 929
+    end: 930
+  raw: "1"
+- kind: CloseParen
+  span:
+    start: 930
+    end: 931
+  raw: )
+- kind: Semicolon
+  span:
+    start: 931
+    end: 932
+  raw: ;
+- kind: Identifier
+  span:
+    start: 942
+    end: 949
+  raw: testSet
+- kind: OpenParen
+  span:
+    start: 949
+    end: 950
+  raw: (
+- kind: Integer
+  span:
+    start: 950
+    end: 954
+  raw: "1337"
+- kind: CloseParen
+  span:
+    start: 954
+    end: 955
+  raw: )
+- kind: Semicolon
+  span:
+    start: 955
+    end: 956
+  raw: ;
+- kind: Identifier
+  span:
+    start: 966
+    end: 973
+  raw: testSet
+- kind: OpenParen
+  span:
+    start: 973
+    end: 974
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 974
+    end: 980
+  raw: "true"
+- kind: CloseParen
+  span:
+    start: 980
+    end: 981
+  raw: )
+- kind: Semicolon
+  span:
+    start: 981
+    end: 982
+  raw: ;
+- kind: Identifier
+  span:
+    start: 992
+    end: 999
+  raw: testSet
+- kind: OpenParen
+  span:
+    start: 999
+    end: 1000
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1000
+    end: 1007
+  raw: "false"
+- kind: CloseParen
+  span:
+    start: 1007
+    end: 1008
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1008
+    end: 1009
+  raw: ;
+- kind: Identifier
+  span:
+    start: 1019
+    end: 1026
+  raw: testSet
+- kind: OpenParen
+  span:
+    start: 1026
+    end: 1027
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1027
+    end: 1032
+  raw: foo
+- kind: CloseParen
+  span:
+    start: 1032
+    end: 1033
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1033
+    end: 1034
+  raw: ;
+- kind: Identifier
+  span:
+    start: 1044
+    end: 1051
+  raw: testSet
+- kind: OpenParen
+  span:
+    start: 1051
+    end: 1052
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1052
+    end: 1054
+  raw: ""
+- kind: CloseParen
+  span:
+    start: 1054
+    end: 1055
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1055
+    end: 1056
+  raw: ;
+- kind: Identifier
+  span:
+    start: 1067
+    end: 1074
+  raw: testSet
+- kind: OpenParen
+  span:
+    start: 1074
+    end: 1075
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1075
+    end: 1078
+  raw: "0"
+- kind: CloseParen
+  span:
+    start: 1078
+    end: 1079
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1079
+    end: 1080
+  raw: ;
+- kind: Identifier
+  span:
+    start: 1090
+    end: 1097
+  raw: testSet
+- kind: OpenParen
+  span:
+    start: 1097
+    end: 1098
+  raw: (
+- kind: OpenBrace
+  span:
+    start: 1098
+    end: 1099
+  raw: "{"
+- kind: CloseBrace
+  span:
+    start: 1099
+    end: 1100
+  raw: "}"
+- kind: CloseParen
+  span:
+    start: 1100
+    end: 1101
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1101
+    end: 1102
+  raw: ;
+- kind: CloseBrace
+  span:
+    start: 1111
+    end: 1112
+  raw: "}"
+- kind: Newline
+  span:
+    start: 1112
+    end: 1113
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 1113
+    end: 1114
+  raw: "\n"
+- kind:
+    Keyword: Function
+  span:
+    start: 1114
+    end: 1122
+  raw: function
+- kind: Identifier
+  span:
+    start: 1123
+    end: 1135
+  raw: testChildren
+- kind: OpenParen
+  span:
+    start: 1135
+    end: 1136
+  raw: (
+- kind: CloseParen
+  span:
+    start: 1136
+    end: 1137
+  raw: )
+- kind: OpenBrace
+  span:
+    start: 1138
+    end: 1139
+  raw: "{"
+- kind: Newline
+  span:
+    start: 1139
+    end: 1140
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 1280
+    end: 1281
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1290
+    end: 1310
+  raw: createEmptyMovieClip
+- kind: OpenParen
+  span:
+    start: 1310
+    end: 1311
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1311
+    end: 1319
+  raw: child1
+- kind: Comma
+  span:
+    start: 1319
+    end: 1320
+  raw: ","
+- kind: Identifier
+  span:
+    start: 1321
+    end: 1327
+  raw: levels
+- kind:
+    Operator: Increment
+  span:
+    start: 1327
+    end: 1329
+  raw: ++
+- kind: CloseParen
+  span:
+    start: 1329
+    end: 1330
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1330
+    end: 1331
+  raw: ;
+- kind: Newline
+  span:
+    start: 1331
+    end: 1332
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1333
+    end: 1339
+  raw: child1
+- kind: Period
+  span:
+    start: 1339
+    end: 1340
+  raw: "."
+- kind: Identifier
+  span:
+    start: 1340
+    end: 1349
+  raw: loadMovie
+- kind: OpenParen
+  span:
+    start: 1349
+    end: 1350
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1350
+    end: 1361
+  raw: child.swf
+- kind: CloseParen
+  span:
+    start: 1361
+    end: 1362
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1362
+    end: 1363
+  raw: ;
+- kind: Newline
+  span:
+    start: 1363
+    end: 1364
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1365
+    end: 1385
+  raw: createEmptyMovieClip
+- kind: OpenParen
+  span:
+    start: 1385
+    end: 1386
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1386
+    end: 1394
+  raw: child2
+- kind: Comma
+  span:
+    start: 1394
+    end: 1395
+  raw: ","
+- kind: Identifier
+  span:
+    start: 1396
+    end: 1402
+  raw: levels
+- kind:
+    Operator: Increment
+  span:
+    start: 1402
+    end: 1404
+  raw: ++
+- kind: CloseParen
+  span:
+    start: 1404
+    end: 1405
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1405
+    end: 1406
+  raw: ;
+- kind: Newline
+  span:
+    start: 1406
+    end: 1407
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1408
+    end: 1414
+  raw: child2
+- kind: Period
+  span:
+    start: 1414
+    end: 1415
+  raw: "."
+- kind: Identifier
+  span:
+    start: 1415
+    end: 1424
+  raw: _lockroot
+- kind:
+    Operator: Assign
+  span:
+    start: 1425
+    end: 1426
+  raw: "="
+- kind: Identifier
+  span:
+    start: 1427
+    end: 1431
+  raw: "true"
+- kind: Semicolon
+  span:
+    start: 1431
+    end: 1432
+  raw: ;
+- kind: Newline
+  span:
+    start: 1432
+    end: 1433
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1434
+    end: 1440
+  raw: child2
+- kind: Period
+  span:
+    start: 1440
+    end: 1441
+  raw: "."
+- kind: Identifier
+  span:
+    start: 1441
+    end: 1450
+  raw: loadMovie
+- kind: OpenParen
+  span:
+    start: 1450
+    end: 1451
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1451
+    end: 1462
+  raw: child.swf
+- kind: CloseParen
+  span:
+    start: 1462
+    end: 1463
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1463
+    end: 1464
+  raw: ;
+- kind: Newline
+  span:
+    start: 1464
+    end: 1465
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1466
+    end: 1486
+  raw: createEmptyMovieClip
+- kind: OpenParen
+  span:
+    start: 1486
+    end: 1487
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1487
+    end: 1495
+  raw: child3
+- kind: Comma
+  span:
+    start: 1495
+    end: 1496
+  raw: ","
+- kind: Identifier
+  span:
+    start: 1497
+    end: 1503
+  raw: levels
+- kind:
+    Operator: Increment
+  span:
+    start: 1503
+    end: 1505
+  raw: ++
+- kind: CloseParen
+  span:
+    start: 1505
+    end: 1506
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1506
+    end: 1507
+  raw: ;
+- kind: Newline
+  span:
+    start: 1507
+    end: 1508
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1509
+    end: 1515
+  raw: child3
+- kind: Period
+  span:
+    start: 1515
+    end: 1516
+  raw: "."
+- kind: Identifier
+  span:
+    start: 1516
+    end: 1525
+  raw: loadMovie
+- kind: OpenParen
+  span:
+    start: 1525
+    end: 1526
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1526
+    end: 1537
+  raw: child.swf
+- kind: CloseParen
+  span:
+    start: 1537
+    end: 1538
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1538
+    end: 1539
+  raw: ;
+- kind: Newline
+  span:
+    start: 1539
+    end: 1540
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 1540
+    end: 1541
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1569
+    end: 1579
+  raw: setTimeout
+- kind: OpenParen
+  span:
+    start: 1579
+    end: 1580
+  raw: (
+- kind: Identifier
+  span:
+    start: 1580
+    end: 1599
+  raw: createGrandChildren
+- kind: Comma
+  span:
+    start: 1599
+    end: 1600
+  raw: ","
+- kind: Integer
+  span:
+    start: 1601
+    end: 1603
+  raw: "50"
+- kind: CloseParen
+  span:
+    start: 1603
+    end: 1604
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1604
+    end: 1605
+  raw: ;
+- kind: Newline
+  span:
+    start: 1605
+    end: 1606
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 1606
+    end: 1607
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1624
+    end: 1634
+  raw: setTimeout
+- kind: OpenParen
+  span:
+    start: 1634
+    end: 1635
+  raw: (
+- kind: Identifier
+  span:
+    start: 1635
+    end: 1650
+  raw: testAllChildren
+- kind: Comma
+  span:
+    start: 1650
+    end: 1651
+  raw: ","
+- kind: Integer
+  span:
+    start: 1652
+    end: 1655
+  raw: "250"
+- kind: CloseParen
+  span:
+    start: 1655
+    end: 1656
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1656
+    end: 1657
+  raw: ;
+- kind: Newline
+  span:
+    start: 1657
+    end: 1658
+  raw: "\n"
+- kind: CloseBrace
+  span:
+    start: 1658
+    end: 1659
+  raw: "}"
+- kind: Newline
+  span:
+    start: 1659
+    end: 1660
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 1660
+    end: 1661
+  raw: "\n"
+- kind:
+    Keyword: Function
+  span:
+    start: 1661
+    end: 1669
+  raw: function
+- kind: Identifier
+  span:
+    start: 1670
+    end: 1689
+  raw: createGrandChildren
+- kind: OpenParen
+  span:
+    start: 1689
+    end: 1690
+  raw: (
+- kind: CloseParen
+  span:
+    start: 1690
+    end: 1691
+  raw: )
+- kind: OpenBrace
+  span:
+    start: 1692
+    end: 1693
+  raw: "{"
+- kind: Newline
+  span:
+    start: 1693
+    end: 1694
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1715
+    end: 1720
+  raw: _root
+- kind: Period
+  span:
+    start: 1720
+    end: 1721
+  raw: "."
+- kind: Identifier
+  span:
+    start: 1721
+    end: 1727
+  raw: child1
+- kind: Period
+  span:
+    start: 1727
+    end: 1728
+  raw: "."
+- kind: Identifier
+  span:
+    start: 1728
+    end: 1748
+  raw: createEmptyMovieClip
+- kind: OpenParen
+  span:
+    start: 1748
+    end: 1749
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1749
+    end: 1757
+  raw: child1
+- kind: Comma
+  span:
+    start: 1757
+    end: 1758
+  raw: ","
+- kind: Identifier
+  span:
+    start: 1759
+    end: 1765
+  raw: levels
+- kind:
+    Operator: Increment
+  span:
+    start: 1765
+    end: 1767
+  raw: ++
+- kind: CloseParen
+  span:
+    start: 1767
+    end: 1768
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1768
+    end: 1769
+  raw: ;
+- kind: Newline
+  span:
+    start: 1769
+    end: 1770
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1771
+    end: 1776
+  raw: _root
+- kind: Period
+  span:
+    start: 1776
+    end: 1777
+  raw: "."
+- kind: Identifier
+  span:
+    start: 1777
+    end: 1783
+  raw: child1
+- kind: Period
+  span:
+    start: 1783
+    end: 1784
+  raw: "."
+- kind: Identifier
+  span:
+    start: 1784
+    end: 1790
+  raw: child1
+- kind: Period
+  span:
+    start: 1790
+    end: 1791
+  raw: "."
+- kind: Identifier
+  span:
+    start: 1791
+    end: 1800
+  raw: loadMovie
+- kind: OpenParen
+  span:
+    start: 1800
+    end: 1801
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1801
+    end: 1812
+  raw: child.swf
+- kind: CloseParen
+  span:
+    start: 1812
+    end: 1813
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1813
+    end: 1814
+  raw: ;
+- kind: Newline
+  span:
+    start: 1814
+    end: 1815
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1816
+    end: 1821
+  raw: _root
+- kind: Period
+  span:
+    start: 1821
+    end: 1822
+  raw: "."
+- kind: Identifier
+  span:
+    start: 1822
+    end: 1828
+  raw: child1
+- kind: Period
+  span:
+    start: 1828
+    end: 1829
+  raw: "."
+- kind: Identifier
+  span:
+    start: 1829
+    end: 1849
+  raw: createEmptyMovieClip
+- kind: OpenParen
+  span:
+    start: 1849
+    end: 1850
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1850
+    end: 1858
+  raw: child2
+- kind: Comma
+  span:
+    start: 1858
+    end: 1859
+  raw: ","
+- kind: Identifier
+  span:
+    start: 1860
+    end: 1866
+  raw: levels
+- kind:
+    Operator: Increment
+  span:
+    start: 1866
+    end: 1868
+  raw: ++
+- kind: CloseParen
+  span:
+    start: 1868
+    end: 1869
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1869
+    end: 1870
+  raw: ;
+- kind: Newline
+  span:
+    start: 1870
+    end: 1871
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1872
+    end: 1877
+  raw: _root
+- kind: Period
+  span:
+    start: 1877
+    end: 1878
+  raw: "."
+- kind: Identifier
+  span:
+    start: 1878
+    end: 1884
+  raw: child1
+- kind: Period
+  span:
+    start: 1884
+    end: 1885
+  raw: "."
+- kind: Identifier
+  span:
+    start: 1885
+    end: 1891
+  raw: child2
+- kind: Period
+  span:
+    start: 1891
+    end: 1892
+  raw: "."
+- kind: Identifier
+  span:
+    start: 1892
+    end: 1901
+  raw: _lockroot
+- kind:
+    Operator: Assign
+  span:
+    start: 1902
+    end: 1903
+  raw: "="
+- kind: Identifier
+  span:
+    start: 1904
+    end: 1908
+  raw: "true"
+- kind: Semicolon
+  span:
+    start: 1908
+    end: 1909
+  raw: ;
+- kind: Newline
+  span:
+    start: 1909
+    end: 1910
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1911
+    end: 1916
+  raw: _root
+- kind: Period
+  span:
+    start: 1916
+    end: 1917
+  raw: "."
+- kind: Identifier
+  span:
+    start: 1917
+    end: 1923
+  raw: child1
+- kind: Period
+  span:
+    start: 1923
+    end: 1924
+  raw: "."
+- kind: Identifier
+  span:
+    start: 1924
+    end: 1930
+  raw: child2
+- kind: Period
+  span:
+    start: 1930
+    end: 1931
+  raw: "."
+- kind: Identifier
+  span:
+    start: 1931
+    end: 1940
+  raw: loadMovie
+- kind: OpenParen
+  span:
+    start: 1940
+    end: 1941
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1941
+    end: 1952
+  raw: child.swf
+- kind: CloseParen
+  span:
+    start: 1952
+    end: 1953
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1953
+    end: 1954
+  raw: ;
+- kind: Newline
+  span:
+    start: 1954
+    end: 1955
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1956
+    end: 1961
+  raw: _root
+- kind: Period
+  span:
+    start: 1961
+    end: 1962
+  raw: "."
+- kind: Identifier
+  span:
+    start: 1962
+    end: 1968
+  raw: child1
+- kind: Period
+  span:
+    start: 1968
+    end: 1969
+  raw: "."
+- kind: Identifier
+  span:
+    start: 1969
+    end: 1989
+  raw: createEmptyMovieClip
+- kind: OpenParen
+  span:
+    start: 1989
+    end: 1990
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1990
+    end: 1998
+  raw: child3
+- kind: Comma
+  span:
+    start: 1998
+    end: 1999
+  raw: ","
+- kind: Identifier
+  span:
+    start: 2000
+    end: 2006
+  raw: levels
+- kind:
+    Operator: Increment
+  span:
+    start: 2006
+    end: 2008
+  raw: ++
+- kind: CloseParen
+  span:
+    start: 2008
+    end: 2009
+  raw: )
+- kind: Semicolon
+  span:
+    start: 2009
+    end: 2010
+  raw: ;
+- kind: Newline
+  span:
+    start: 2010
+    end: 2011
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 2012
+    end: 2017
+  raw: _root
+- kind: Period
+  span:
+    start: 2017
+    end: 2018
+  raw: "."
+- kind: Identifier
+  span:
+    start: 2018
+    end: 2024
+  raw: child1
+- kind: Period
+  span:
+    start: 2024
+    end: 2025
+  raw: "."
+- kind: Identifier
+  span:
+    start: 2025
+    end: 2031
+  raw: child3
+- kind: Period
+  span:
+    start: 2031
+    end: 2032
+  raw: "."
+- kind: Identifier
+  span:
+    start: 2032
+    end: 2041
+  raw: loadMovie
+- kind: OpenParen
+  span:
+    start: 2041
+    end: 2042
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 2042
+    end: 2053
+  raw: child.swf
+- kind: CloseParen
+  span:
+    start: 2053
+    end: 2054
+  raw: )
+- kind: Semicolon
+  span:
+    start: 2054
+    end: 2055
+  raw: ;
+- kind: Newline
+  span:
+    start: 2055
+    end: 2056
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 2056
+    end: 2057
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 2058
+    end: 2063
+  raw: _root
+- kind: Period
+  span:
+    start: 2063
+    end: 2064
+  raw: "."
+- kind: Identifier
+  span:
+    start: 2064
+    end: 2070
+  raw: child2
+- kind: Period
+  span:
+    start: 2070
+    end: 2071
+  raw: "."
+- kind: Identifier
+  span:
+    start: 2071
+    end: 2091
+  raw: createEmptyMovieClip
+- kind: OpenParen
+  span:
+    start: 2091
+    end: 2092
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 2092
+    end: 2100
+  raw: child1
+- kind: Comma
+  span:
+    start: 2100
+    end: 2101
+  raw: ","
+- kind: Identifier
+  span:
+    start: 2102
+    end: 2108
+  raw: levels
+- kind:
+    Operator: Increment
+  span:
+    start: 2108
+    end: 2110
+  raw: ++
+- kind: CloseParen
+  span:
+    start: 2110
+    end: 2111
+  raw: )
+- kind: Semicolon
+  span:
+    start: 2111
+    end: 2112
+  raw: ;
+- kind: Newline
+  span:
+    start: 2112
+    end: 2113
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 2114
+    end: 2119
+  raw: _root
+- kind: Period
+  span:
+    start: 2119
+    end: 2120
+  raw: "."
+- kind: Identifier
+  span:
+    start: 2120
+    end: 2126
+  raw: child2
+- kind: Period
+  span:
+    start: 2126
+    end: 2127
+  raw: "."
+- kind: Identifier
+  span:
+    start: 2127
+    end: 2133
+  raw: child1
+- kind: Period
+  span:
+    start: 2133
+    end: 2134
+  raw: "."
+- kind: Identifier
+  span:
+    start: 2134
+    end: 2143
+  raw: loadMovie
+- kind: OpenParen
+  span:
+    start: 2143
+    end: 2144
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 2144
+    end: 2155
+  raw: child.swf
+- kind: CloseParen
+  span:
+    start: 2155
+    end: 2156
+  raw: )
+- kind: Semicolon
+  span:
+    start: 2156
+    end: 2157
+  raw: ;
+- kind: Newline
+  span:
+    start: 2157
+    end: 2158
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 2159
+    end: 2164
+  raw: _root
+- kind: Period
+  span:
+    start: 2164
+    end: 2165
+  raw: "."
+- kind: Identifier
+  span:
+    start: 2165
+    end: 2171
+  raw: child2
+- kind: Period
+  span:
+    start: 2171
+    end: 2172
+  raw: "."
+- kind: Identifier
+  span:
+    start: 2172
+    end: 2192
+  raw: createEmptyMovieClip
+- kind: OpenParen
+  span:
+    start: 2192
+    end: 2193
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 2193
+    end: 2201
+  raw: child2
+- kind: Comma
+  span:
+    start: 2201
+    end: 2202
+  raw: ","
+- kind: Identifier
+  span:
+    start: 2203
+    end: 2209
+  raw: levels
+- kind:
+    Operator: Increment
+  span:
+    start: 2209
+    end: 2211
+  raw: ++
+- kind: CloseParen
+  span:
+    start: 2211
+    end: 2212
+  raw: )
+- kind: Semicolon
+  span:
+    start: 2212
+    end: 2213
+  raw: ;
+- kind: Newline
+  span:
+    start: 2213
+    end: 2214
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 2215
+    end: 2220
+  raw: _root
+- kind: Period
+  span:
+    start: 2220
+    end: 2221
+  raw: "."
+- kind: Identifier
+  span:
+    start: 2221
+    end: 2227
+  raw: child2
+- kind: Period
+  span:
+    start: 2227
+    end: 2228
+  raw: "."
+- kind: Identifier
+  span:
+    start: 2228
+    end: 2234
+  raw: child2
+- kind: Period
+  span:
+    start: 2234
+    end: 2235
+  raw: "."
+- kind: Identifier
+  span:
+    start: 2235
+    end: 2244
+  raw: _lockroot
+- kind:
+    Operator: Assign
+  span:
+    start: 2245
+    end: 2246
+  raw: "="
+- kind: Identifier
+  span:
+    start: 2247
+    end: 2251
+  raw: "true"
+- kind: Semicolon
+  span:
+    start: 2251
+    end: 2252
+  raw: ;
+- kind: Newline
+  span:
+    start: 2252
+    end: 2253
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 2254
+    end: 2259
+  raw: _root
+- kind: Period
+  span:
+    start: 2259
+    end: 2260
+  raw: "."
+- kind: Identifier
+  span:
+    start: 2260
+    end: 2266
+  raw: child2
+- kind: Period
+  span:
+    start: 2266
+    end: 2267
+  raw: "."
+- kind: Identifier
+  span:
+    start: 2267
+    end: 2273
+  raw: child2
+- kind: Period
+  span:
+    start: 2273
+    end: 2274
+  raw: "."
+- kind: Identifier
+  span:
+    start: 2274
+    end: 2283
+  raw: loadMovie
+- kind: OpenParen
+  span:
+    start: 2283
+    end: 2284
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 2284
+    end: 2295
+  raw: child.swf
+- kind: CloseParen
+  span:
+    start: 2295
+    end: 2296
+  raw: )
+- kind: Semicolon
+  span:
+    start: 2296
+    end: 2297
+  raw: ;
+- kind: Newline
+  span:
+    start: 2297
+    end: 2298
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 2299
+    end: 2304
+  raw: _root
+- kind: Period
+  span:
+    start: 2304
+    end: 2305
+  raw: "."
+- kind: Identifier
+  span:
+    start: 2305
+    end: 2311
+  raw: child2
+- kind: Period
+  span:
+    start: 2311
+    end: 2312
+  raw: "."
+- kind: Identifier
+  span:
+    start: 2312
+    end: 2332
+  raw: createEmptyMovieClip
+- kind: OpenParen
+  span:
+    start: 2332
+    end: 2333
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 2333
+    end: 2341
+  raw: child3
+- kind: Comma
+  span:
+    start: 2341
+    end: 2342
+  raw: ","
+- kind: Identifier
+  span:
+    start: 2343
+    end: 2349
+  raw: levels
+- kind:
+    Operator: Increment
+  span:
+    start: 2349
+    end: 2351
+  raw: ++
+- kind: CloseParen
+  span:
+    start: 2351
+    end: 2352
+  raw: )
+- kind: Semicolon
+  span:
+    start: 2352
+    end: 2353
+  raw: ;
+- kind: Newline
+  span:
+    start: 2353
+    end: 2354
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 2355
+    end: 2360
+  raw: _root
+- kind: Period
+  span:
+    start: 2360
+    end: 2361
+  raw: "."
+- kind: Identifier
+  span:
+    start: 2361
+    end: 2367
+  raw: child2
+- kind: Period
+  span:
+    start: 2367
+    end: 2368
+  raw: "."
+- kind: Identifier
+  span:
+    start: 2368
+    end: 2374
+  raw: child3
+- kind: Period
+  span:
+    start: 2374
+    end: 2375
+  raw: "."
+- kind: Identifier
+  span:
+    start: 2375
+    end: 2384
+  raw: loadMovie
+- kind: OpenParen
+  span:
+    start: 2384
+    end: 2385
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 2385
+    end: 2396
+  raw: child.swf
+- kind: CloseParen
+  span:
+    start: 2396
+    end: 2397
+  raw: )
+- kind: Semicolon
+  span:
+    start: 2397
+    end: 2398
+  raw: ;
+- kind: Newline
+  span:
+    start: 2398
+    end: 2399
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 2399
+    end: 2400
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 2401
+    end: 2406
+  raw: _root
+- kind: Period
+  span:
+    start: 2406
+    end: 2407
+  raw: "."
+- kind: Identifier
+  span:
+    start: 2407
+    end: 2413
+  raw: child3
+- kind: Period
+  span:
+    start: 2413
+    end: 2414
+  raw: "."
+- kind: Identifier
+  span:
+    start: 2414
+    end: 2434
+  raw: createEmptyMovieClip
+- kind: OpenParen
+  span:
+    start: 2434
+    end: 2435
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 2435
+    end: 2443
+  raw: child1
+- kind: Comma
+  span:
+    start: 2443
+    end: 2444
+  raw: ","
+- kind: Identifier
+  span:
+    start: 2445
+    end: 2451
+  raw: levels
+- kind:
+    Operator: Increment
+  span:
+    start: 2451
+    end: 2453
+  raw: ++
+- kind: CloseParen
+  span:
+    start: 2453
+    end: 2454
+  raw: )
+- kind: Semicolon
+  span:
+    start: 2454
+    end: 2455
+  raw: ;
+- kind: Newline
+  span:
+    start: 2455
+    end: 2456
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 2457
+    end: 2462
+  raw: _root
+- kind: Period
+  span:
+    start: 2462
+    end: 2463
+  raw: "."
+- kind: Identifier
+  span:
+    start: 2463
+    end: 2469
+  raw: child3
+- kind: Period
+  span:
+    start: 2469
+    end: 2470
+  raw: "."
+- kind: Identifier
+  span:
+    start: 2470
+    end: 2476
+  raw: child1
+- kind: Period
+  span:
+    start: 2476
+    end: 2477
+  raw: "."
+- kind: Identifier
+  span:
+    start: 2477
+    end: 2486
+  raw: loadMovie
+- kind: OpenParen
+  span:
+    start: 2486
+    end: 2487
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 2487
+    end: 2498
+  raw: child.swf
+- kind: CloseParen
+  span:
+    start: 2498
+    end: 2499
+  raw: )
+- kind: Semicolon
+  span:
+    start: 2499
+    end: 2500
+  raw: ;
+- kind: Newline
+  span:
+    start: 2500
+    end: 2501
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 2502
+    end: 2507
+  raw: _root
+- kind: Period
+  span:
+    start: 2507
+    end: 2508
+  raw: "."
+- kind: Identifier
+  span:
+    start: 2508
+    end: 2514
+  raw: child3
+- kind: Period
+  span:
+    start: 2514
+    end: 2515
+  raw: "."
+- kind: Identifier
+  span:
+    start: 2515
+    end: 2535
+  raw: createEmptyMovieClip
+- kind: OpenParen
+  span:
+    start: 2535
+    end: 2536
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 2536
+    end: 2544
+  raw: child2
+- kind: Comma
+  span:
+    start: 2544
+    end: 2545
+  raw: ","
+- kind: Identifier
+  span:
+    start: 2546
+    end: 2552
+  raw: levels
+- kind:
+    Operator: Increment
+  span:
+    start: 2552
+    end: 2554
+  raw: ++
+- kind: CloseParen
+  span:
+    start: 2554
+    end: 2555
+  raw: )
+- kind: Semicolon
+  span:
+    start: 2555
+    end: 2556
+  raw: ;
+- kind: Newline
+  span:
+    start: 2556
+    end: 2557
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 2558
+    end: 2563
+  raw: _root
+- kind: Period
+  span:
+    start: 2563
+    end: 2564
+  raw: "."
+- kind: Identifier
+  span:
+    start: 2564
+    end: 2570
+  raw: child3
+- kind: Period
+  span:
+    start: 2570
+    end: 2571
+  raw: "."
+- kind: Identifier
+  span:
+    start: 2571
+    end: 2577
+  raw: child2
+- kind: Period
+  span:
+    start: 2577
+    end: 2578
+  raw: "."
+- kind: Identifier
+  span:
+    start: 2578
+    end: 2587
+  raw: _lockroot
+- kind:
+    Operator: Assign
+  span:
+    start: 2588
+    end: 2589
+  raw: "="
+- kind: Identifier
+  span:
+    start: 2590
+    end: 2594
+  raw: "true"
+- kind: Semicolon
+  span:
+    start: 2594
+    end: 2595
+  raw: ;
+- kind: Newline
+  span:
+    start: 2595
+    end: 2596
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 2597
+    end: 2602
+  raw: _root
+- kind: Period
+  span:
+    start: 2602
+    end: 2603
+  raw: "."
+- kind: Identifier
+  span:
+    start: 2603
+    end: 2609
+  raw: child3
+- kind: Period
+  span:
+    start: 2609
+    end: 2610
+  raw: "."
+- kind: Identifier
+  span:
+    start: 2610
+    end: 2616
+  raw: child2
+- kind: Period
+  span:
+    start: 2616
+    end: 2617
+  raw: "."
+- kind: Identifier
+  span:
+    start: 2617
+    end: 2626
+  raw: loadMovie
+- kind: OpenParen
+  span:
+    start: 2626
+    end: 2627
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 2627
+    end: 2638
+  raw: child.swf
+- kind: CloseParen
+  span:
+    start: 2638
+    end: 2639
+  raw: )
+- kind: Semicolon
+  span:
+    start: 2639
+    end: 2640
+  raw: ;
+- kind: Newline
+  span:
+    start: 2640
+    end: 2641
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 2642
+    end: 2647
+  raw: _root
+- kind: Period
+  span:
+    start: 2647
+    end: 2648
+  raw: "."
+- kind: Identifier
+  span:
+    start: 2648
+    end: 2654
+  raw: child3
+- kind: Period
+  span:
+    start: 2654
+    end: 2655
+  raw: "."
+- kind: Identifier
+  span:
+    start: 2655
+    end: 2675
+  raw: createEmptyMovieClip
+- kind: OpenParen
+  span:
+    start: 2675
+    end: 2676
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 2676
+    end: 2684
+  raw: child3
+- kind: Comma
+  span:
+    start: 2684
+    end: 2685
+  raw: ","
+- kind: Identifier
+  span:
+    start: 2686
+    end: 2692
+  raw: levels
+- kind:
+    Operator: Increment
+  span:
+    start: 2692
+    end: 2694
+  raw: ++
+- kind: CloseParen
+  span:
+    start: 2694
+    end: 2695
+  raw: )
+- kind: Semicolon
+  span:
+    start: 2695
+    end: 2696
+  raw: ;
+- kind: Newline
+  span:
+    start: 2696
+    end: 2697
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 2698
+    end: 2703
+  raw: _root
+- kind: Period
+  span:
+    start: 2703
+    end: 2704
+  raw: "."
+- kind: Identifier
+  span:
+    start: 2704
+    end: 2710
+  raw: child3
+- kind: Period
+  span:
+    start: 2710
+    end: 2711
+  raw: "."
+- kind: Identifier
+  span:
+    start: 2711
+    end: 2717
+  raw: child3
+- kind: Period
+  span:
+    start: 2717
+    end: 2718
+  raw: "."
+- kind: Identifier
+  span:
+    start: 2718
+    end: 2727
+  raw: loadMovie
+- kind: OpenParen
+  span:
+    start: 2727
+    end: 2728
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 2728
+    end: 2739
+  raw: child.swf
+- kind: CloseParen
+  span:
+    start: 2739
+    end: 2740
+  raw: )
+- kind: Semicolon
+  span:
+    start: 2740
+    end: 2741
+  raw: ;
+- kind: Newline
+  span:
+    start: 2741
+    end: 2742
+  raw: "\n"
+- kind: CloseBrace
+  span:
+    start: 2742
+    end: 2743
+  raw: "}"
+- kind: Newline
+  span:
+    start: 2743
+    end: 2744
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 2744
+    end: 2745
+  raw: "\n"
+- kind:
+    Keyword: Function
+  span:
+    start: 2745
+    end: 2753
+  raw: function
+- kind: Identifier
+  span:
+    start: 2754
+    end: 2769
+  raw: testAllChildren
+- kind: OpenParen
+  span:
+    start: 2769
+    end: 2770
+  raw: (
+- kind: CloseParen
+  span:
+    start: 2770
+    end: 2771
+  raw: )
+- kind: OpenBrace
+  span:
+    start: 2772
+    end: 2773
+  raw: "{"
+- kind: Newline
+  span:
+    start: 2773
+    end: 2774
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 2775
+    end: 2780
+  raw: _root
+- kind: Period
+  span:
+    start: 2780
+    end: 2781
+  raw: "."
+- kind: Identifier
+  span:
+    start: 2781
+    end: 2787
+  raw: child1
+- kind: Period
+  span:
+    start: 2787
+    end: 2788
+  raw: "."
+- kind: Identifier
+  span:
+    start: 2788
+    end: 2792
+  raw: test
+- kind: OpenParen
+  span:
+    start: 2792
+    end: 2793
+  raw: (
+- kind: CloseParen
+  span:
+    start: 2793
+    end: 2794
+  raw: )
+- kind: Semicolon
+  span:
+    start: 2794
+    end: 2795
+  raw: ;
+- kind: Identifier
+  span:
+    start: 2832
+    end: 2837
+  raw: _root
+- kind: Period
+  span:
+    start: 2837
+    end: 2838
+  raw: "."
+- kind: Identifier
+  span:
+    start: 2838
+    end: 2844
+  raw: child2
+- kind: Period
+  span:
+    start: 2844
+    end: 2845
+  raw: "."
+- kind: Identifier
+  span:
+    start: 2845
+    end: 2849
+  raw: test
+- kind: OpenParen
+  span:
+    start: 2849
+    end: 2850
+  raw: (
+- kind: CloseParen
+  span:
+    start: 2850
+    end: 2851
+  raw: )
+- kind: Semicolon
+  span:
+    start: 2851
+    end: 2852
+  raw: ;
+- kind: Identifier
+  span:
+    start: 2885
+    end: 2890
+  raw: _root
+- kind: Period
+  span:
+    start: 2890
+    end: 2891
+  raw: "."
+- kind: Identifier
+  span:
+    start: 2891
+    end: 2897
+  raw: child3
+- kind: Period
+  span:
+    start: 2897
+    end: 2898
+  raw: "."
+- kind: Identifier
+  span:
+    start: 2898
+    end: 2905
+  raw: setLock
+- kind: OpenParen
+  span:
+    start: 2905
+    end: 2906
+  raw: (
+- kind: Identifier
+  span:
+    start: 2906
+    end: 2910
+  raw: "true"
+- kind: CloseParen
+  span:
+    start: 2910
+    end: 2911
+  raw: )
+- kind: Semicolon
+  span:
+    start: 2911
+    end: 2912
+  raw: ;
+- kind: Newline
+  span:
+    start: 2912
+    end: 2913
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 2914
+    end: 2919
+  raw: _root
+- kind: Period
+  span:
+    start: 2919
+    end: 2920
+  raw: "."
+- kind: Identifier
+  span:
+    start: 2920
+    end: 2926
+  raw: child3
+- kind: Period
+  span:
+    start: 2926
+    end: 2927
+  raw: "."
+- kind: Identifier
+  span:
+    start: 2927
+    end: 2931
+  raw: test
+- kind: OpenParen
+  span:
+    start: 2931
+    end: 2932
+  raw: (
+- kind: CloseParen
+  span:
+    start: 2932
+    end: 2933
+  raw: )
+- kind: Semicolon
+  span:
+    start: 2933
+    end: 2934
+  raw: ;
+- kind: Newline
+  span:
+    start: 2966
+    end: 2967
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 2968
+    end: 2973
+  raw: _root
+- kind: Period
+  span:
+    start: 2973
+    end: 2974
+  raw: "."
+- kind: Identifier
+  span:
+    start: 2974
+    end: 2980
+  raw: child1
+- kind: Period
+  span:
+    start: 2980
+    end: 2981
+  raw: "."
+- kind: Identifier
+  span:
+    start: 2981
+    end: 2987
+  raw: child1
+- kind: Period
+  span:
+    start: 2987
+    end: 2988
+  raw: "."
+- kind: Identifier
+  span:
+    start: 2988
+    end: 2992
+  raw: test
+- kind: OpenParen
+  span:
+    start: 2992
+    end: 2993
+  raw: (
+- kind: CloseParen
+  span:
+    start: 2993
+    end: 2994
+  raw: )
+- kind: Semicolon
+  span:
+    start: 2994
+    end: 2995
+  raw: ;
+- kind: Identifier
+  span:
+    start: 3032
+    end: 3037
+  raw: _root
+- kind: Period
+  span:
+    start: 3037
+    end: 3038
+  raw: "."
+- kind: Identifier
+  span:
+    start: 3038
+    end: 3044
+  raw: child1
+- kind: Period
+  span:
+    start: 3044
+    end: 3045
+  raw: "."
+- kind: Identifier
+  span:
+    start: 3045
+    end: 3051
+  raw: child2
+- kind: Period
+  span:
+    start: 3051
+    end: 3052
+  raw: "."
+- kind: Identifier
+  span:
+    start: 3052
+    end: 3056
+  raw: test
+- kind: OpenParen
+  span:
+    start: 3056
+    end: 3057
+  raw: (
+- kind: CloseParen
+  span:
+    start: 3057
+    end: 3058
+  raw: )
+- kind: Semicolon
+  span:
+    start: 3058
+    end: 3059
+  raw: ;
+- kind: Identifier
+  span:
+    start: 3092
+    end: 3097
+  raw: _root
+- kind: Period
+  span:
+    start: 3097
+    end: 3098
+  raw: "."
+- kind: Identifier
+  span:
+    start: 3098
+    end: 3104
+  raw: child1
+- kind: Period
+  span:
+    start: 3104
+    end: 3105
+  raw: "."
+- kind: Identifier
+  span:
+    start: 3105
+    end: 3111
+  raw: child3
+- kind: Period
+  span:
+    start: 3111
+    end: 3112
+  raw: "."
+- kind: Identifier
+  span:
+    start: 3112
+    end: 3119
+  raw: setLock
+- kind: OpenParen
+  span:
+    start: 3119
+    end: 3120
+  raw: (
+- kind: Identifier
+  span:
+    start: 3120
+    end: 3124
+  raw: "true"
+- kind: CloseParen
+  span:
+    start: 3124
+    end: 3125
+  raw: )
+- kind: Semicolon
+  span:
+    start: 3125
+    end: 3126
+  raw: ;
+- kind: Newline
+  span:
+    start: 3126
+    end: 3127
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 3128
+    end: 3133
+  raw: _root
+- kind: Period
+  span:
+    start: 3133
+    end: 3134
+  raw: "."
+- kind: Identifier
+  span:
+    start: 3134
+    end: 3140
+  raw: child1
+- kind: Period
+  span:
+    start: 3140
+    end: 3141
+  raw: "."
+- kind: Identifier
+  span:
+    start: 3141
+    end: 3147
+  raw: child3
+- kind: Period
+  span:
+    start: 3147
+    end: 3148
+  raw: "."
+- kind: Identifier
+  span:
+    start: 3148
+    end: 3152
+  raw: test
+- kind: OpenParen
+  span:
+    start: 3152
+    end: 3153
+  raw: (
+- kind: CloseParen
+  span:
+    start: 3153
+    end: 3154
+  raw: )
+- kind: Semicolon
+  span:
+    start: 3154
+    end: 3155
+  raw: ;
+- kind: Newline
+  span:
+    start: 3187
+    end: 3188
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 3189
+    end: 3194
+  raw: _root
+- kind: Period
+  span:
+    start: 3194
+    end: 3195
+  raw: "."
+- kind: Identifier
+  span:
+    start: 3195
+    end: 3201
+  raw: child2
+- kind: Period
+  span:
+    start: 3201
+    end: 3202
+  raw: "."
+- kind: Identifier
+  span:
+    start: 3202
+    end: 3208
+  raw: child1
+- kind: Period
+  span:
+    start: 3208
+    end: 3209
+  raw: "."
+- kind: Identifier
+  span:
+    start: 3209
+    end: 3213
+  raw: test
+- kind: OpenParen
+  span:
+    start: 3213
+    end: 3214
+  raw: (
+- kind: CloseParen
+  span:
+    start: 3214
+    end: 3215
+  raw: )
+- kind: Semicolon
+  span:
+    start: 3215
+    end: 3216
+  raw: ;
+- kind: Identifier
+  span:
+    start: 3252
+    end: 3257
+  raw: _root
+- kind: Period
+  span:
+    start: 3257
+    end: 3258
+  raw: "."
+- kind: Identifier
+  span:
+    start: 3258
+    end: 3264
+  raw: child2
+- kind: Period
+  span:
+    start: 3264
+    end: 3265
+  raw: "."
+- kind: Identifier
+  span:
+    start: 3265
+    end: 3271
+  raw: child2
+- kind: Period
+  span:
+    start: 3271
+    end: 3272
+  raw: "."
+- kind: Identifier
+  span:
+    start: 3272
+    end: 3276
+  raw: test
+- kind: OpenParen
+  span:
+    start: 3276
+    end: 3277
+  raw: (
+- kind: CloseParen
+  span:
+    start: 3277
+    end: 3278
+  raw: )
+- kind: Semicolon
+  span:
+    start: 3278
+    end: 3279
+  raw: ;
+- kind: Identifier
+  span:
+    start: 3312
+    end: 3317
+  raw: _root
+- kind: Period
+  span:
+    start: 3317
+    end: 3318
+  raw: "."
+- kind: Identifier
+  span:
+    start: 3318
+    end: 3324
+  raw: child2
+- kind: Period
+  span:
+    start: 3324
+    end: 3325
+  raw: "."
+- kind: Identifier
+  span:
+    start: 3325
+    end: 3331
+  raw: child3
+- kind: Period
+  span:
+    start: 3331
+    end: 3332
+  raw: "."
+- kind: Identifier
+  span:
+    start: 3332
+    end: 3339
+  raw: setLock
+- kind: OpenParen
+  span:
+    start: 3339
+    end: 3340
+  raw: (
+- kind: Identifier
+  span:
+    start: 3340
+    end: 3344
+  raw: "true"
+- kind: CloseParen
+  span:
+    start: 3344
+    end: 3345
+  raw: )
+- kind: Semicolon
+  span:
+    start: 3345
+    end: 3346
+  raw: ;
+- kind: Newline
+  span:
+    start: 3346
+    end: 3347
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 3348
+    end: 3353
+  raw: _root
+- kind: Period
+  span:
+    start: 3353
+    end: 3354
+  raw: "."
+- kind: Identifier
+  span:
+    start: 3354
+    end: 3360
+  raw: child2
+- kind: Period
+  span:
+    start: 3360
+    end: 3361
+  raw: "."
+- kind: Identifier
+  span:
+    start: 3361
+    end: 3367
+  raw: child3
+- kind: Period
+  span:
+    start: 3367
+    end: 3368
+  raw: "."
+- kind: Identifier
+  span:
+    start: 3368
+    end: 3372
+  raw: test
+- kind: OpenParen
+  span:
+    start: 3372
+    end: 3373
+  raw: (
+- kind: CloseParen
+  span:
+    start: 3373
+    end: 3374
+  raw: )
+- kind: Semicolon
+  span:
+    start: 3374
+    end: 3375
+  raw: ;
+- kind: Newline
+  span:
+    start: 3407
+    end: 3408
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 3409
+    end: 3414
+  raw: _root
+- kind: Period
+  span:
+    start: 3414
+    end: 3415
+  raw: "."
+- kind: Identifier
+  span:
+    start: 3415
+    end: 3421
+  raw: child3
+- kind: Period
+  span:
+    start: 3421
+    end: 3422
+  raw: "."
+- kind: Identifier
+  span:
+    start: 3422
+    end: 3428
+  raw: child1
+- kind: Period
+  span:
+    start: 3428
+    end: 3429
+  raw: "."
+- kind: Identifier
+  span:
+    start: 3429
+    end: 3433
+  raw: test
+- kind: OpenParen
+  span:
+    start: 3433
+    end: 3434
+  raw: (
+- kind: CloseParen
+  span:
+    start: 3434
+    end: 3435
+  raw: )
+- kind: Semicolon
+  span:
+    start: 3435
+    end: 3436
+  raw: ;
+- kind: Identifier
+  span:
+    start: 3472
+    end: 3477
+  raw: _root
+- kind: Period
+  span:
+    start: 3477
+    end: 3478
+  raw: "."
+- kind: Identifier
+  span:
+    start: 3478
+    end: 3484
+  raw: child3
+- kind: Period
+  span:
+    start: 3484
+    end: 3485
+  raw: "."
+- kind: Identifier
+  span:
+    start: 3485
+    end: 3491
+  raw: child2
+- kind: Period
+  span:
+    start: 3491
+    end: 3492
+  raw: "."
+- kind: Identifier
+  span:
+    start: 3492
+    end: 3496
+  raw: test
+- kind: OpenParen
+  span:
+    start: 3496
+    end: 3497
+  raw: (
+- kind: CloseParen
+  span:
+    start: 3497
+    end: 3498
+  raw: )
+- kind: Semicolon
+  span:
+    start: 3498
+    end: 3499
+  raw: ;
+- kind: Identifier
+  span:
+    start: 3532
+    end: 3537
+  raw: _root
+- kind: Period
+  span:
+    start: 3537
+    end: 3538
+  raw: "."
+- kind: Identifier
+  span:
+    start: 3538
+    end: 3544
+  raw: child3
+- kind: Period
+  span:
+    start: 3544
+    end: 3545
+  raw: "."
+- kind: Identifier
+  span:
+    start: 3545
+    end: 3551
+  raw: child3
+- kind: Period
+  span:
+    start: 3551
+    end: 3552
+  raw: "."
+- kind: Identifier
+  span:
+    start: 3552
+    end: 3559
+  raw: setLock
+- kind: OpenParen
+  span:
+    start: 3559
+    end: 3560
+  raw: (
+- kind: Identifier
+  span:
+    start: 3560
+    end: 3564
+  raw: "true"
+- kind: CloseParen
+  span:
+    start: 3564
+    end: 3565
+  raw: )
+- kind: Semicolon
+  span:
+    start: 3565
+    end: 3566
+  raw: ;
+- kind: Newline
+  span:
+    start: 3566
+    end: 3567
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 3568
+    end: 3573
+  raw: _root
+- kind: Period
+  span:
+    start: 3573
+    end: 3574
+  raw: "."
+- kind: Identifier
+  span:
+    start: 3574
+    end: 3580
+  raw: child3
+- kind: Period
+  span:
+    start: 3580
+    end: 3581
+  raw: "."
+- kind: Identifier
+  span:
+    start: 3581
+    end: 3587
+  raw: child3
+- kind: Period
+  span:
+    start: 3587
+    end: 3588
+  raw: "."
+- kind: Identifier
+  span:
+    start: 3588
+    end: 3592
+  raw: test
+- kind: OpenParen
+  span:
+    start: 3592
+    end: 3593
+  raw: (
+- kind: CloseParen
+  span:
+    start: 3593
+    end: 3594
+  raw: )
+- kind: Semicolon
+  span:
+    start: 3594
+    end: 3595
+  raw: ;
+- kind: Newline
+  span:
+    start: 3627
+    end: 3628
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 3629
+    end: 3634
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 3634
+    end: 3635
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 3635
+    end: 3652
+  raw: All tests done.
+- kind: CloseParen
+  span:
+    start: 3652
+    end: 3653
+  raw: )
+- kind: Semicolon
+  span:
+    start: 3653
+    end: 3654
+  raw: ;
+- kind: Newline
+  span:
+    start: 3654
+    end: 3655
+  raw: "\n"
+- kind: CloseBrace
+  span:
+    start: 3655
+    end: 3656
+  raw: "}"
+- kind: Newline
+  span:
+    start: 3656
+    end: 3657
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 3657
+    end: 3658
+  raw: "\n"
+- kind:
+    Keyword: Function
+  span:
+    start: 3658
+    end: 3666
+  raw: function
+- kind: Identifier
+  span:
+    start: 3667
+    end: 3671
+  raw: test
+- kind: OpenParen
+  span:
+    start: 3671
+    end: 3672
+  raw: (
+- kind: CloseParen
+  span:
+    start: 3672
+    end: 3673
+  raw: )
+- kind: OpenBrace
+  span:
+    start: 3674
+    end: 3675
+  raw: "{"
+- kind: Newline
+  span:
+    start: 3675
+    end: 3676
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 3677
+    end: 3685
+  raw: testSelf
+- kind: OpenParen
+  span:
+    start: 3685
+    end: 3686
+  raw: (
+- kind: CloseParen
+  span:
+    start: 3686
+    end: 3687
+  raw: )
+- kind: Semicolon
+  span:
+    start: 3687
+    end: 3688
+  raw: ;
+- kind: Newline
+  span:
+    start: 3688
+    end: 3689
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 3690
+    end: 3702
+  raw: testChildren
+- kind: OpenParen
+  span:
+    start: 3702
+    end: 3703
+  raw: (
+- kind: CloseParen
+  span:
+    start: 3703
+    end: 3704
+  raw: )
+- kind: Semicolon
+  span:
+    start: 3704
+    end: 3705
+  raw: ;
+- kind: Newline
+  span:
+    start: 3705
+    end: 3706
+  raw: "\n"
+- kind: CloseBrace
+  span:
+    start: 3706
+    end: 3707
+  raw: "}"
+- kind: Newline
+  span:
+    start: 3707
+    end: 3708
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 3708
+    end: 3709
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 3709
+    end: 3713
+  raw: test
+- kind: OpenParen
+  span:
+    start: 3713
+    end: 3714
+  raw: (
+- kind: CloseParen
+  span:
+    start: 3714
+    end: 3715
+  raw: )
+- kind: Semicolon
+  span:
+    start: 3715
+    end: 3716
+  raw: ;
+- kind: Newline
+  span:
+    start: 3716
+    end: 3717
+  raw: "\n"
