@@ -38,6 +38,7 @@ impl From<ParseError<Tokens<'_>, ContextError>> for ParsingError {
 pub(crate) struct ErrorSet {
     files: IndexMap<String, (String, Vec<ParsingError>)>,
     io_errors: Vec<(String, std::io::Error)>,
+    misc_errors: Vec<String>,
 }
 
 impl ErrorSet {
@@ -45,6 +46,7 @@ impl ErrorSet {
         Self {
             files: IndexMap::new(),
             io_errors: vec![],
+            misc_errors: vec![],
         }
     }
 
@@ -58,6 +60,10 @@ impl ErrorSet {
 
     pub fn add_io_error(&mut self, filename: &str, error: std::io::Error) {
         self.io_errors.push((filename.to_owned(), error));
+    }
+
+    pub fn add_misc_error(&mut self, error: String) {
+        self.misc_errors.push(error);
     }
 
     pub fn report<'a>(&'a self) -> Vec<Group<'a>> {
@@ -79,6 +85,13 @@ impl ErrorSet {
                     .primary_title(error.to_string())
                     .element(annotate_snippets::Origin::path(filename)),
             )
+        }
+        for error in &self.misc_errors {
+            report.push(
+                annotate_snippets::Level::ERROR
+                    .primary_title(error.clone())
+                    .element(annotate_snippets::Level::ERROR.message(error.clone())),
+            );
         }
         report
     }

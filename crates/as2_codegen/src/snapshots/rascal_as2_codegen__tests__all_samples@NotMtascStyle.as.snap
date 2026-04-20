@@ -1,0 +1,67 @@
+---
+source: crates/as2_codegen/src/tests.rs
+expression: result
+input_file: samples/as2_classes/NotMtascStyle.as
+---
+initializer: ~
+extra_modules:
+  - - NotMtascStyle
+    - actions:
+        - ConstantPool:
+            - Not actually the main method!
+        - Push:
+            - String: _global
+        - GetVariable
+        - Push:
+            - String: NotMtascStyle
+        - GetMember
+        - Not
+        - Not
+        - If: loc0000
+        - Push:
+            - String: _global
+        - GetVariable
+        - Push:
+            - String: NotMtascStyle
+        - DefineFunction:
+            name: ""
+            params: []
+            actions:
+              actions: []
+              label_positions: {}
+        - StoreRegister: 1
+        - SetMember
+        - Push:
+            - Register: 1
+            - String: prototype
+        - GetMember
+        - StoreRegister: 2
+        - Pop
+        - Push:
+            - Register: 2
+            - String: main
+        - DefineFunction:
+            name: ""
+            params: []
+            actions:
+              actions:
+                - Push:
+                    - Constant: 0
+                - Trace
+              label_positions: {}
+        - SetMember
+        - Push:
+            - Integer: 1
+            - "Null"
+            - String: NotMtascStyle
+        - GetVariable
+        - Push:
+            - String: prototype
+        - GetMember
+        - Push:
+            - Integer: 3
+            - String: ASSetPropFlags
+        - CallFunction
+        - Pop
+      label_positions:
+        loc0000: 27

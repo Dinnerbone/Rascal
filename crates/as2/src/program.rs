@@ -1,9 +1,10 @@
 use crate::error::{Error, ErrorSet};
-use crate::hir::Document;
+use crate::hir::{ConstantKind, Document, Expr, ExprKind, StatementKind};
 use crate::lexer::Lexer;
 use crate::resolver::resolve_hir;
 use crate::{hir, parser, type_path_to_file_path};
 use indexmap::IndexSet;
+use rascal_common::span::Span;
 use serde::Serialize;
 use std::path::PathBuf;
 
@@ -128,13 +129,16 @@ impl<P: SourceProvider> ProgramBuilder<P> {
             }
         }
 
+        let mut entry_point_class = vec![];
+
         while let Some(type_name) = pending_classes.pop() {
+            let filename = type_path_to_file_path(&type_name);
             if let Some(document) = load_file(
                 &self.provider,
                 &mut errors,
                 &mut loaded_classes,
                 &mut pending_classes,
-                &type_path_to_file_path(&type_name),
+                &filename,
                 &type_name,
                 false,
             ) {
@@ -143,12 +147,30 @@ impl<P: SourceProvider> ProgramBuilder<P> {
                         interfaces.push(interface);
                     }
                     Document::Class(class) => {
+                        if let Some(main) = class.functions.get("main")
+                            && main.is_static
+                        {
+                            entry_point_class.push(class.name.clone());
+                        }
                         classes.push(*class);
                     }
                     _ => {}
                 }
             }
         }
+
+        match entry_point_class.len() {
+            0 => {
+                if initial_script.is_empty() {
+                    errors.add_misc_error("No entry point found (either 'static function main()' inside a class, or the initial file must be a script)".to_owned());
+                }
+            }
+            1 => initial_script.push(call_main_method(entry_point_class.first().unwrap())),
+            _ => errors.add_misc_error(format!(
+                "Conflicting entry points found on classes: {}",
+                entry_point_class.join(", ")
+            )),
+        };
 
         errors.error_unless_empty()?;
 
@@ -158,6 +180,46 @@ impl<P: SourceProvider> ProgramBuilder<P> {
             classes,
         })
     }
+}
+
+fn call_main_method(class: &str) -> StatementKind {
+    let mut path = class.split(".").collect::<Vec<&str>>();
+    path.push("main");
+    let path: Vec<String> = path.into_iter().map(|s| s.to_owned()).collect();
+
+    let mut name = None;
+    for part in path.into_iter() {
+        if let Some(prev) = name.take() {
+            name = Some(Expr::new(
+                Span::default(),
+                ExprKind::Field(
+                    Box::new(prev),
+                    Box::new(Expr::new(
+                        Span::default(),
+                        ExprKind::Constant(ConstantKind::String(part)),
+                    )),
+                ),
+            ));
+        } else {
+            name = Some(Expr::new(
+                Span::default(),
+                ExprKind::Constant(ConstantKind::Identifier(part)),
+            ));
+        }
+    }
+    // Name has to be something, as we always added 'main' to the path
+    let name = name.unwrap();
+
+    StatementKind::Expr(Expr::new(
+        Span::default(),
+        ExprKind::Call {
+            name: Box::new(name),
+            args: vec![Expr::new(
+                Span::default(),
+                ExprKind::Constant(ConstantKind::This),
+            )],
+        },
+    ))
 }
 
 #[cfg(test)]
@@ -201,5 +263,85 @@ mod tests {
             let parsed = builder.build().unwrap_err();
             insta::assert_snapshot!(parsed);
         });
+    }
+
+    #[test]
+    fn test_main_method_simple() {
+        assert_eq!(
+            call_main_method("foo"),
+            StatementKind::Expr(Expr::new(
+                Span::default(),
+                ExprKind::Call {
+                    name: Box::new(Expr::new(
+                        Span::default(),
+                        ExprKind::Field(
+                            Box::new(Expr::new(
+                                Span::default(),
+                                ExprKind::Constant(ConstantKind::Identifier("foo".to_owned()))
+                            )),
+                            Box::new(Expr::new(
+                                Span::default(),
+                                ExprKind::Constant(ConstantKind::String("main".to_owned()))
+                            ))
+                        )
+                    )),
+                    args: vec![Expr::new(
+                        Span::default(),
+                        ExprKind::Constant(ConstantKind::This)
+                    )]
+                }
+            ))
+        );
+    }
+
+    #[test]
+    fn test_main_method_path() {
+        assert_eq!(
+            call_main_method("foo.bar.baz"),
+            StatementKind::Expr(Expr::new(
+                Span::default(),
+                ExprKind::Call {
+                    name: Box::new(Expr::new(
+                        Span::default(),
+                        ExprKind::Field(
+                            Box::new(Expr::new(
+                                Span::default(),
+                                ExprKind::Field(
+                                    Box::new(Expr::new(
+                                        Span::default(),
+                                        ExprKind::Field(
+                                            Box::new(Expr::new(
+                                                Span::default(),
+                                                ExprKind::Constant(ConstantKind::Identifier(
+                                                    "foo".to_owned()
+                                                ))
+                                            )),
+                                            Box::new(Expr::new(
+                                                Span::default(),
+                                                ExprKind::Constant(ConstantKind::String(
+                                                    "bar".to_owned()
+                                                ))
+                                            ))
+                                        )
+                                    )),
+                                    Box::new(Expr::new(
+                                        Span::default(),
+                                        ExprKind::Constant(ConstantKind::String("baz".to_owned()))
+                                    )),
+                                )
+                            )),
+                            Box::new(Expr::new(
+                                Span::default(),
+                                ExprKind::Constant(ConstantKind::String("main".to_owned()))
+                            ))
+                        )
+                    )),
+                    args: vec![Expr::new(
+                        Span::default(),
+                        ExprKind::Constant(ConstantKind::This)
+                    )]
+                }
+            ))
+        );
     }
 }
