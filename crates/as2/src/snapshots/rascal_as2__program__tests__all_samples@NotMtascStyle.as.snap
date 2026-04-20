@@ -1,0 +1,49 @@
+---
+source: crates/as2/src/program.rs
+expression: parsed
+input_file: samples/as2_classes/NotMtascStyle.as
+---
+Ok:
+  initial_script: []
+  interfaces: []
+  classes:
+    - name: NotMtascStyle
+      extends: ~
+      implements: []
+      functions:
+        main:
+          function:
+            signature:
+              name:
+                span:
+                  start: 42
+                  end: 46
+                value: main
+              args: []
+              return_type: ~
+            body:
+              - Expr:
+                  span:
+                    start: 59
+                    end: 97
+                  value:
+                    Trace:
+                      span:
+                        start: 65
+                        end: 96
+                      value:
+                        Constant:
+                          String: Not actually the main method!
+          is_static: false
+      virtual_properties: {}
+      fields: {}
+      constructor:
+        signature:
+          name:
+            span:
+              start: 6
+              end: 19
+            value: NotMtascStyle
+          args: []
+          return_type: ~
+        body: []
