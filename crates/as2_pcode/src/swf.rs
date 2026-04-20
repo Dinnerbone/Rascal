@@ -10,7 +10,7 @@ use swf::{CharacterId, ExportedAsset, Fixed8, Sprite, SwfStr, Tag, Twips};
 
 impl<'a> ActionEncoder<'a> {}
 
-pub fn pcode_to_swf(program: &CompiledProgram) -> swf::error::Result<Vec<u8>> {
+pub fn pcode_to_swf(program: &CompiledProgram, frame_rate: f32) -> swf::error::Result<Vec<u8>> {
     let initializer = if let Some(initializer) = &program.initializer {
         let mut result = ActionEncoder::new();
         result.write_actions(initializer)?;
@@ -62,7 +62,7 @@ pub fn pcode_to_swf(program: &CompiledProgram) -> swf::error::Result<Vec<u8>> {
                 y_min: Twips::ZERO,
                 y_max: Twips::from_pixels_i32(100),
             },
-            frame_rate: Fixed8::ONE,
+            frame_rate: Fixed8::from_f32(frame_rate),
             num_frames: 1,
         },
         &tags,
