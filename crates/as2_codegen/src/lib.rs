@@ -14,7 +14,7 @@ mod statement;
 #[cfg(test)]
 mod tests;
 
-pub fn hir_to_pcode(program: &Program) -> CompiledProgram {
+pub fn hir_to_pcode(program: &Program, swf_version: u8) -> CompiledProgram {
     let initializer = if program.initial_script.is_empty() {
         None
     } else {
@@ -32,6 +32,7 @@ pub fn hir_to_pcode(program: &Program) -> CompiledProgram {
     CompiledProgram {
         initializer,
         extra_modules,
+        swf_version,
     }
 }
 

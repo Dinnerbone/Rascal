@@ -18,6 +18,7 @@ pub use swf::pcode_to_swf;
 pub struct CompiledProgram {
     pub initializer: Option<Actions>,
     pub extra_modules: Vec<(String, Actions)>,
+    pub swf_version: u8,
 }
 
 pub struct PCode<'a> {

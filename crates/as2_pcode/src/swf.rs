@@ -10,8 +10,8 @@ use swf::{CharacterId, ExportedAsset, Fixed8, Sprite, SwfStr, Tag, Twips};
 
 impl<'a> ActionEncoder<'a> {}
 
-pub fn pcode_to_swf(actions: &CompiledProgram) -> swf::error::Result<Vec<u8>> {
-    let initializer = if let Some(initializer) = &actions.initializer {
+pub fn pcode_to_swf(program: &CompiledProgram) -> swf::error::Result<Vec<u8>> {
+    let initializer = if let Some(initializer) = &program.initializer {
         let mut result = ActionEncoder::new();
         result.write_actions(initializer)?;
         result.write_small_action(OpCode::End)?;
@@ -21,7 +21,7 @@ pub fn pcode_to_swf(actions: &CompiledProgram) -> swf::error::Result<Vec<u8>> {
         None
     };
     let mut modules = vec![];
-    for (name, actions) in &actions.extra_modules {
+    for (name, actions) in &program.extra_modules {
         let mut result = ActionEncoder::new();
         result.write_actions(actions)?;
         result.write_small_action(OpCode::End)?;
@@ -55,7 +55,7 @@ pub fn pcode_to_swf(actions: &CompiledProgram) -> swf::error::Result<Vec<u8>> {
     swf::write::write_swf(
         &swf::Header {
             compression: swf::Compression::None,
-            version: 15,
+            version: program.swf_version,
             stage_size: swf::Rectangle {
                 x_min: Twips::ZERO,
                 x_max: Twips::from_pixels_i32(100),
