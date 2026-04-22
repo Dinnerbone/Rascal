@@ -9,6 +9,10 @@ keywords.workspace = true
 description.workspace = true
 categories = ["compilers", "parser-implementations", "command-line-utilities"]
 
+[[bin]]
+name = "rascal"
+path = "src/main.rs"
+
 [dependencies]
 anyhow = "1"
 clap = { version = "4", features = ["derive"] }
