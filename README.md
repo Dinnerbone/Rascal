@@ -21,8 +21,7 @@ A basic CLI is provided for compiling ActionScript files to SWF files.
 
 For full CLI usage, run `rascal --help`.
 
-There are two kinds of inputs, and they are intermixable. At least one entry point must be specified: either a script,
-or **one** class with a `static function main()` method.
+There are two kinds of inputs, and they are intermixable.
 
 - `rascal foo.as` - Compiles a script (not a class, loose code) into a SWF file.
     - Multiple script files can be specified, and they will execute in the order they are specified.
@@ -30,6 +29,7 @@ or **one** class with a `static function main()` method.
   into a SWF file.
     - The classpath defaults to working directory, but can be specified via the `--classpath` flag.
     - Multiple class names can be specified, and they will be loaded in the order they are specified.
+    - If one (and only one) class has a `static function main()`, it will be executed as the entry point to the swf.
 
 Various options about the output are available:
 

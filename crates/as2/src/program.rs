@@ -179,11 +179,7 @@ impl<P: SourceProvider> ProgramBuilder<P> {
         }
 
         match entry_point_class.len() {
-            0 => {
-                if initial_script.is_empty() {
-                    errors.add_misc_error("No entry point found (either 'static function main()' inside a class, or the initial file must be a script)".to_owned());
-                }
-            }
+            0 => {} // It's fine to have no entry point... even if it _may_ not entirely make sense :D
             1 => initial_script.push(call_main_method(entry_point_class.first().unwrap())),
             _ => errors.add_misc_error(format!(
                 "Conflicting entry points found on classes: {}",
