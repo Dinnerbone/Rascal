@@ -19,10 +19,27 @@ A basic CLI is provided for compiling ActionScript files to SWF files.
 
 ### Usage
 
-For now, it's a simple `rascal filename.as` or `rascal filename.pcode`, and it will output `filename.swf`.
+For full CLI usage, run `rascal --help`.
 
-This definitely needs some love with more options - including multiple input files, SWF version, optimisation levels,
-etc.
+There are two kinds of inputs, and they are intermixable. At least one entry point must be specified: either a script,
+or **one** class with a `static function main()` method.
+
+- `rascal foo.as` - Compiles a script (not a class, loose code) into a SWF file.
+    - Multiple script files can be specified, and they will execute in the order they are specified.
+- `rascal -c some.ClassName` - Compiles a class named `some.ClassName` (expected to be available at `some/ClassName.as`)
+  into a SWF file.
+    - The classpath defaults to working directory, but can be specified via the `--classpath` flag.
+    - Multiple class names can be specified, and they will be loaded in the order they are specified.
+
+Various options about the output are available:
+
+- `-o foo.swf`/`--output foo.swf` - The output SWF file
+    - This defaults to either the first script file + `.swf`, else `output.swf`
+- `-v 10`/`--swf-version 10` - The version of SWF file to produce
+    - This defaults to 15,
+      which [corresponds to Flash Player 11.2](https://github.com/ruffle-rs/ruffle/wiki/SWF-version-chart)
+- `--frame-rate 30` - The frame rate of the SWF file
+    - This defaults to 24
 
 ## Library
 
