@@ -1,7 +1,7 @@
+use crate::internal::as2_pcode::{Action, Actions, CatchTarget, PushValue};
 use crate::program::CompiledProgram;
 use byteorder::{LittleEndian, WriteBytesExt};
 use indexmap::IndexMap;
-use rascal_as2_pcode::{Action, Actions, CatchTarget, PushValue};
 use std::collections::HashMap;
 use std::io::Result;
 use std::io::Write;

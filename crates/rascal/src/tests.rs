@@ -1,5 +1,5 @@
 use crate::ProgramBuilder;
-use rascal_common::provider::FileSystemSourceProvider;
+use crate::provider::FileSystemSourceProvider;
 
 #[test]
 fn test_all_samples() {
