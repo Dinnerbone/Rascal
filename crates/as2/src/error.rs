@@ -97,7 +97,7 @@ impl ErrorSet {
     }
 
     pub fn error_unless_empty(self) -> Result<(), Error> {
-        if self.io_errors.is_empty() && self.files.is_empty() {
+        if self.io_errors.is_empty() && self.files.is_empty() && self.misc_errors.is_empty() {
             return Ok(());
         }
         Err(Error(self))
