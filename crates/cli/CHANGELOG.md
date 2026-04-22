@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.1](https://github.com/Dinnerbone/Rascal/compare/rascal_cli-v0.2.0...rascal_cli-v0.2.1) - 2026-04-22
+
+### Other
+
+- Install the CLI as `rascal`, not `rascal_cli`
+
 ## [0.2.0](https://github.com/Dinnerbone/Rascal/compare/rascal_cli-v0.1.2...rascal_cli-v0.2.0) - 2026-04-22
 
 ### Other
