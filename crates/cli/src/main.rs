@@ -4,7 +4,7 @@ use rascal_as2::program::{FileSystemSourceProvider, ProgramBuilder};
 use rascal_as2_codegen::hir_to_pcode;
 use rascal_as2_pcode::pcode_to_swf;
 use std::fs;
-use std::path::{Path, PathBuf};
+use std::path::PathBuf;
 
 #[derive(Parser, Debug)]
 #[command(name = "rascal", version, author, about)]
@@ -38,6 +38,12 @@ struct Opt {
     #[arg(short, long)]
     class: Vec<String>,
 
+    /// Adds a directory to be searched for classes.
+    ///
+    /// If no classpaths are specified, the current working directory will be used instead.
+    #[arg(long, long)]
+    classpath: Vec<PathBuf>,
+
     /// SWF version to use.
     #[arg(short = 'v', long, default_value_t = 15)]
     swf_version: u8,
@@ -48,10 +54,12 @@ struct Opt {
 }
 
 fn main() -> Result<()> {
-    let opt = Opt::parse();
+    let mut opt = Opt::parse();
 
-    let root = Path::new(".");
-    let provider = FileSystemSourceProvider::with_root(root.to_owned());
+    if opt.classpath.is_empty() {
+        opt.classpath.push(PathBuf::from("."));
+    }
+    let provider = FileSystemSourceProvider::with_roots(opt.classpath);
     let mut builder = ProgramBuilder::new(provider);
 
     for src in &opt.script {
