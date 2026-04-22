@@ -2,20 +2,23 @@ use anyhow::Result;
 use clap::Parser;
 use rascal_as2::program::{FileSystemSourceProvider, ProgramBuilder};
 use rascal_as2_codegen::hir_to_pcode;
-use rascal_as2_pcode::{CompiledProgram, PCode, pcode_to_swf};
+use rascal_as2_pcode::pcode_to_swf;
 use std::fs;
 use std::path::{Path, PathBuf};
 
 #[derive(Parser, Debug)]
 #[command(name = "rascal", version, author, about)]
 struct Opt {
-    /// Input source file to compile.
-    #[arg(name = "FILE")]
-    src: PathBuf,
+    /// A loose script (not class file) to add to the compiled program.
+    ///
+    /// Multiple scripts may be added to one program.
+    /// Scripts will be executed in order that they are added.
+    #[arg(name = "SCRIPT")]
+    script: Vec<PathBuf>,
 
     /// Output file path. This will be overwritten if it already exists.
     ///
-    /// If not specified, the input path (with ".swf" instead of ".as") will be used.
+    /// If not specified, the first script path (with ".swf" instead of ".as") will be used.
     #[arg(short, long)]
     output: Option<PathBuf>,
 
@@ -30,24 +33,22 @@ struct Opt {
 
 fn main() -> Result<()> {
     let opt = Opt::parse();
-    let filename = opt.src.to_string_lossy();
-    let pcode = if filename.ends_with(".as") {
-        let root = opt.src.parent().unwrap_or_else(|| Path::new("."));
-        let provider = FileSystemSourceProvider::with_root(root.to_owned());
-        let mut builder = ProgramBuilder::new(provider);
-        builder.add_script(&opt.src.file_name().unwrap().to_string_lossy());
-        let parsed = builder.build().unwrap_or_else(|e| panic!("{}", e));
-        hir_to_pcode(&parsed, opt.swf_version)
-    } else {
-        let src = fs::read_to_string(&opt.src)?;
-        let pcode = PCode::new(&filename, &src);
-        CompiledProgram {
-            initializer: Some(pcode.to_actions().unwrap_or_else(|e| panic!("{}", e))),
-            extra_modules: vec![],
-            swf_version: opt.swf_version,
-        }
+
+    let Some(first_script) = opt.script.first() else {
+        return Err(anyhow::anyhow!("No scripts specified (see --help)."));
     };
-    let output_path = opt.output.unwrap_or_else(|| opt.src.with_extension("swf"));
+
+    let root = first_script.parent().unwrap_or_else(|| Path::new("."));
+    let provider = FileSystemSourceProvider::with_root(root.to_owned());
+    let mut builder = ProgramBuilder::new(provider);
+    for src in &opt.script {
+        builder.add_script(&src.file_name().unwrap().to_string_lossy());
+    }
+    let parsed = builder.build().unwrap_or_else(|e| panic!("{}", e));
+    let pcode = hir_to_pcode(&parsed, opt.swf_version);
+    let output_path = opt
+        .output
+        .unwrap_or_else(|| first_script.with_extension("swf"));
     let swf = pcode_to_swf(&pcode, opt.frame_rate)?;
     fs::write(&output_path, swf)?;
     Ok(())
