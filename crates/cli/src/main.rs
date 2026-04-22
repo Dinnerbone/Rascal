@@ -1,7 +1,7 @@
 use anyhow::Result;
 use clap::Parser;
+use rascal::FileSystemSourceProvider;
 use rascal::ProgramBuilder;
-use rascal::provider::FileSystemSourceProvider;
 use std::fs;
 use std::path::PathBuf;
 

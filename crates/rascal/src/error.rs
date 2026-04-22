@@ -1,7 +1,7 @@
+use crate::internal::as2::error::ParsingError;
 use annotate_snippets::renderer::DecorStyle;
 use annotate_snippets::{Group, Renderer};
 use indexmap::IndexMap;
-use rascal_as2::error::ParsingError;
 
 #[derive(Debug)]
 pub(crate) struct ErrorSet {

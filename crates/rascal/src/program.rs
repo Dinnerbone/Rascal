@@ -1,12 +1,12 @@
 use crate::error::{Error, ErrorSet};
+use crate::internal::as2::lexer::Lexer;
+use crate::internal::as2::resolver::resolve_hir;
+use crate::internal::as2::{hir, parser, type_path_to_file_path};
+use crate::internal::as2_codegen::{class_to_actions, interface_to_actions, script_to_actions};
+use crate::internal::as2_pcode::Actions;
+use crate::internal::span::Span;
+use crate::provider::SourceProvider;
 use indexmap::IndexSet;
-use rascal_as2::lexer::Lexer;
-use rascal_as2::resolver::resolve_hir;
-use rascal_as2::{hir, parser, type_path_to_file_path};
-use rascal_as2_codegen::{class_to_actions, interface_to_actions, script_to_actions};
-use rascal_as2_pcode::Actions;
-use rascal_common::provider::SourceProvider;
-use rascal_common::span::Span;
 use serde::Serialize;
 
 #[derive(Debug, Serialize)]
@@ -233,7 +233,7 @@ fn call_main_method(class: &str) -> hir::StatementKind {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use rascal_common::provider::FileSystemSourceProvider;
+    use crate::provider::FileSystemSourceProvider;
 
     #[test]
     fn test_all_samples() {

@@ -496,44 +496,8 @@ dependencies = [
  "byteorder",
  "indexmap",
  "insta",
- "rascal_as2",
- "rascal_as2_codegen",
- "rascal_as2_pcode",
- "rascal_common",
  "serde",
  "swf",
-]
-
-[[package]]
-name = "rascal_as2"
-version = "0.1.0"
-dependencies = [
- "annotate-snippets",
- "indexmap",
- "insta",
- "rascal_common",
- "serde",
- "winnow",
-]
-
-[[package]]
-name = "rascal_as2_codegen"
-version = "0.1.0"
-dependencies = [
- "insta",
- "rascal_as2",
- "rascal_as2_pcode",
-]
-
-[[package]]
-name = "rascal_as2_pcode"
-version = "0.1.0"
-dependencies = [
- "annotate-snippets",
- "indexmap",
- "insta",
- "rascal_common",
- "serde",
  "winnow",
 ]
 
@@ -544,14 +508,6 @@ dependencies = [
  "anyhow",
  "clap",
  "rascal",
-]
-
-[[package]]
-name = "rascal_common"
-version = "0.1.0"
-dependencies = [
- "serde",
- "winnow",
 ]
 
 [[package]]
@@ -894,9 +850,9 @@ checksum = "d6bbff5f0aada427a1e5a6da5f1f98158182f26556f345ac9e04d36d0ebed650"
 
 [[package]]
 name = "winnow"
-version = "1.0.1"
+version = "1.0.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "09dac053f1cd375980747450bfc7250c264eaae0583872e845c0c7cd578872b5"
+checksum = "2ee1708bef14716a11bae175f579062d4554d95be2c6829f518df847b7b3fdd0"
 dependencies = [
  "anstream",
  "anstyle",
