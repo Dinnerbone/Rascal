@@ -43,7 +43,24 @@ Various options about the output are available:
 
 ## Library
 
-TODO :D
+Super simple API right now:
+
+```rust
+use rascal::ProgramBuilder;
+use rascal::provider::FileSystemSourceProvider;
+fn main() {
+    // A source provider is responsible for resolving files during compilation.
+    // A file system source provider is provided for convenience, which takes a root directory as a "class path".
+    let source_provider = FileSystemSourceProvider::with_root(PathBuf::from("."));
+    let program = ProgramBuilder::new(source_provider)
+        .add_script("foo.as") // Adds `foo.as` as a script to run
+        .add_class("some.ClassName") // Adds `some/ClassName.as` as a class to load
+        .build()?;
+    let compiled_program = program.compile(/* swf_version= */ 15);
+    let swf = compiled_program.to_swf(/* frame_rate= */ 24.0)?;
+    // Do something with the SWF file.
+}
+```
 
 ## License
 
