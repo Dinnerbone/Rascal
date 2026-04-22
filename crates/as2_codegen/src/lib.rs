@@ -2,8 +2,7 @@ use crate::builder::CodeBuilder;
 use crate::context::ScriptContext;
 use crate::statement::{gen_expr, gen_function, gen_statements};
 use rascal_as2::hir::{Class, Interface, StatementKind};
-use rascal_as2::program::Program;
-use rascal_as2_pcode::{Action, Actions, CompiledProgram, PushValue};
+use rascal_as2_pcode::{Action, Actions, PushValue};
 
 mod access;
 mod builder;
@@ -11,38 +10,14 @@ mod constants;
 mod context;
 mod special_properties;
 mod statement;
-#[cfg(test)]
-mod tests;
 
-pub fn hir_to_pcode(program: &Program, swf_version: u8) -> CompiledProgram {
-    let initializer = if program.initial_script.is_empty() {
-        None
-    } else {
-        Some(script_to_actions(&program.initial_script))
-    };
-    let mut extra_modules = vec![];
-    for interface in program.interfaces.iter().rev() {
-        let actions = interface_to_actions(interface);
-        extra_modules.push((interface.name.to_owned(), actions));
-    }
-    for class in program.classes.iter().rev() {
-        let actions = class_to_actions(class);
-        extra_modules.push((class.name.to_owned(), actions));
-    }
-    CompiledProgram {
-        initializer,
-        extra_modules,
-        swf_version,
-    }
-}
-
-fn script_to_actions(statements: &[StatementKind]) -> Actions {
+pub fn script_to_actions(statements: &[StatementKind]) -> Actions {
     generate_actions(|context, builder| {
         gen_statements(context, builder, statements);
     })
 }
 
-fn interface_to_actions(interface: &Interface) -> Actions {
+pub fn interface_to_actions(interface: &Interface) -> Actions {
     generate_actions(|context, builder| {
         let segments: Vec<&str> = interface.name.split(".").collect();
         for i in 1..=segments.len() {
@@ -109,7 +84,7 @@ fn create_if_not_exists<F>(
     builder.action(Action::Pop);
 }
 
-fn class_to_actions(class: &Class) -> Actions {
+pub fn class_to_actions(class: &Class) -> Actions {
     generate_actions(|context, builder| {
         let segments: Vec<&str> = class.name.split(".").collect();
         for i in 1..=segments.len() {

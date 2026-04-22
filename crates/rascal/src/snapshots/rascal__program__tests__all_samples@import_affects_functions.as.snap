@@ -1,0 +1,114 @@
+---
+source: crates/rascal/src/program.rs
+expression: parsed
+input_file: samples/as2/import_affects_functions.as
+---
+Ok:
+  initial_script:
+    - Expr:
+        span:
+          start: 0
+          end: 47
+        value:
+          Function:
+            signature:
+              name:
+                span:
+                  start: 9
+                  end: 21
+                value: beforeImport
+              args: []
+              return_type: ~
+            body:
+              - Expr:
+                  span:
+                    start: 27
+                    end: 44
+                  value:
+                    Trace:
+                      span:
+                        start: 33
+                        end: 43
+                      value:
+                        Constant:
+                          Identifier: BitmapData
+    - Block: []
+    - Expr:
+        span:
+          start: 81
+          end: 127
+        value:
+          Function:
+            signature:
+              name:
+                span:
+                  start: 90
+                  end: 101
+                value: afterImport
+              args: []
+              return_type: ~
+            body:
+              - Expr:
+                  span:
+                    start: 107
+                    end: 124
+                  value:
+                    Trace:
+                      span:
+                        start: 113
+                        end: 123
+                      value:
+                        Field:
+                          - span:
+                              start: 113
+                              end: 123
+                            value:
+                              Field:
+                                - span:
+                                    start: 113
+                                    end: 123
+                                  value:
+                                    Constant:
+                                      Identifier: flash
+                                - span:
+                                    start: 113
+                                    end: 123
+                                  value:
+                                    Constant:
+                                      String: display
+                          - span:
+                              start: 113
+                              end: 123
+                            value:
+                              Constant:
+                                String: BitmapData
+    - Expr:
+        span:
+          start: 128
+          end: 142
+        value:
+          Call:
+            name:
+              span:
+                start: 128
+                end: 140
+              value:
+                Constant:
+                  Identifier: beforeImport
+            args: []
+    - Expr:
+        span:
+          start: 143
+          end: 156
+        value:
+          Call:
+            name:
+              span:
+                start: 143
+                end: 154
+              value:
+                Constant:
+                  Identifier: afterImport
+            args: []
+  interfaces: []
+  classes: []

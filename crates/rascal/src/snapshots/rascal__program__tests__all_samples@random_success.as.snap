@@ -1,0 +1,118 @@
+---
+source: crates/rascal/src/program.rs
+expression: parsed
+input_file: samples/as2/random_success.as
+---
+Ok:
+  initial_script:
+    - Declare:
+        - name:
+            span:
+              start: 4
+              end: 11
+            value: success
+          value:
+            span:
+              start: 14
+              end: 18
+            value:
+              Constant:
+                Boolean: true
+          type_name: ~
+    - If:
+        condition:
+          span:
+            start: 24
+            end: 38
+          value:
+            BinaryOperator:
+              - Equal
+              - span:
+                  start: 24
+                  end: 33
+                value:
+                  GetRandomNumber:
+                    span:
+                      start: 31
+                      end: 32
+                    value:
+                      Constant:
+                        Integer: 2
+              - span:
+                  start: 37
+                  end: 38
+                value:
+                  Constant:
+                    Integer: 0
+        "yes":
+          Block:
+            - Expr:
+                span:
+                  start: 45
+                  end: 60
+                value:
+                  BinaryOperator:
+                    - Assign
+                    - span:
+                        start: 45
+                        end: 52
+                      value:
+                        Constant:
+                          Identifier: success
+                    - span:
+                        start: 55
+                        end: 60
+                      value:
+                        Constant:
+                          Boolean: false
+        "no": ~
+    - If:
+        condition:
+          span:
+            start: 68
+            end: 75
+          value:
+            Constant:
+              Identifier: success
+        "yes":
+          Block:
+            - Expr:
+                span:
+                  start: 82
+                  end: 107
+                value:
+                  Trace:
+                    span:
+                      start: 88
+                      end: 106
+                    value:
+                      Constant:
+                        String: Success! Hurrah!
+        "no":
+          Block:
+            - Expr:
+                span:
+                  start: 121
+                  end: 139
+                value:
+                  Trace:
+                    span:
+                      start: 127
+                      end: 138
+                    value:
+                      Constant:
+                        String: "Failed :("
+    - Expr:
+        span:
+          start: 143
+          end: 161
+        value:
+          Trace:
+            span:
+              start: 149
+              end: 160
+            value:
+              Constant:
+                String: "-- end --"
+  interfaces: []
+  classes: []

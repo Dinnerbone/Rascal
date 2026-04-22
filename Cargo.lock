@@ -489,6 +489,22 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "69cdb34c158ceb288df11e18b4bd39de994f6657d83847bdffdbd7f346754b0f"
 
 [[package]]
+name = "rascal"
+version = "0.1.0"
+dependencies = [
+ "annotate-snippets",
+ "byteorder",
+ "indexmap",
+ "insta",
+ "rascal_as2",
+ "rascal_as2_codegen",
+ "rascal_as2_pcode",
+ "rascal_common",
+ "serde",
+ "swf",
+]
+
+[[package]]
 name = "rascal_as2"
 version = "0.1.0"
 dependencies = [
@@ -504,11 +520,9 @@ dependencies = [
 name = "rascal_as2_codegen"
 version = "0.1.0"
 dependencies = [
- "annotate-snippets",
  "insta",
  "rascal_as2",
  "rascal_as2_pcode",
- "rascal_common",
 ]
 
 [[package]]
@@ -516,12 +530,10 @@ name = "rascal_as2_pcode"
 version = "0.1.0"
 dependencies = [
  "annotate-snippets",
- "byteorder",
  "indexmap",
  "insta",
  "rascal_common",
  "serde",
- "swf",
  "winnow",
 ]
 
@@ -531,21 +543,14 @@ version = "0.1.0"
 dependencies = [
  "anyhow",
  "clap",
- "rascal_as2",
- "rascal_as2_codegen",
- "rascal_as2_pcode",
+ "rascal",
 ]
 
 [[package]]
 name = "rascal_common"
 version = "0.1.0"
 dependencies = [
- "annotate-snippets",
- "byteorder",
- "indexmap",
- "insta",
  "serde",
- "swf",
  "winnow",
 ]
 

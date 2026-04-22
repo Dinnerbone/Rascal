@@ -3,8 +3,8 @@ use serde::Serialize;
 
 #[derive(Debug, PartialEq, Serialize, Clone)]
 pub struct Actions {
-    pub(crate) actions: Vec<Action>,
-    pub(crate) label_positions: IndexMap<String, usize>,
+    pub actions: Vec<Action>,
+    pub label_positions: IndexMap<String, usize>,
 }
 
 impl Actions {

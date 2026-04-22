@@ -1,0 +1,16 @@
+---
+source: crates/rascal/src/program.rs
+expression: parsed
+input_file: samples/as2_errors/special_functions/targetpath.as
+---
+error: Wrong number of parameters; targetPath requires exactly 1.
+  ╭▸ targetpath.as:1:1
+  │
+1 │ targetPath();
+  │ ━━━━━━━━━━━━
+  ╰╴
+error: Wrong number of parameters; targetPath requires exactly 1.
+  ╭▸ targetpath.as:2:1
+  │
+2 │ targetPath(x, y);
+  ╰╴━━━━━━━━━━━━━━━━

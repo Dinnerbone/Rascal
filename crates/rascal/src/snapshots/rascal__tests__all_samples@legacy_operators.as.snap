@@ -1,0 +1,85 @@
+---
+source: crates/rascal/src/tests.rs
+expression: result
+input_file: samples/as2/legacy_operators.as
+---
+initializer:
+  actions:
+    - ConstantPool:
+        - a
+        - b
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - StringEquals
+    - Trace
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - StringGreater
+    - Trace
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - StringLess
+    - Not
+    - Trace
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - StringLess
+    - Trace
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - StringGreater
+    - Not
+    - Trace
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - StringEquals
+    - Not
+    - Trace
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - And
+    - Trace
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Not
+    - Trace
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Or
+    - Trace
+  label_positions: {}
+extra_modules: []
+swf_version: 15

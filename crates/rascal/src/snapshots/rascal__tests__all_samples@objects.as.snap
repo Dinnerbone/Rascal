@@ -1,0 +1,87 @@
+---
+source: crates/rascal/src/tests.rs
+expression: result
+input_file: samples/as2/objects.as
+---
+initializer:
+  actions:
+    - ConstantPool:
+        - o
+        - a
+        - b
+        - Object
+        - "o.a: "
+        - "o.b: "
+        - "new Object(): "
+        - "new Object(1, 2, {}, false): "
+        - "new Object: "
+        - "new o.b(): "
+    - Push:
+        - Constant: 0
+        - Constant: 1
+        - Integer: 1
+        - Constant: 2
+        - Constant: 3
+    - GetVariable
+    - Push:
+        - Integer: 2
+    - InitObject
+    - DefineLocal
+    - Push:
+        - Constant: 4
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetMember
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 5
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 2
+    - GetMember
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 6
+        - Integer: 0
+        - Constant: 3
+    - NewObject
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 7
+        - "False"
+        - Integer: 0
+    - InitObject
+    - Push:
+        - Integer: 2
+        - Integer: 1
+        - Integer: 4
+        - Constant: 3
+    - NewObject
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 8
+        - Integer: 0
+        - Constant: 3
+    - NewObject
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 9
+        - Integer: 0
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 2
+    - NewMethod
+    - Add2
+    - Trace
+  label_positions: {}
+extra_modules: []
+swf_version: 15

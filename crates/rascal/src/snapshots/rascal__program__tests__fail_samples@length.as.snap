@@ -1,0 +1,16 @@
+---
+source: crates/rascal/src/program.rs
+expression: parsed
+input_file: samples/as2_errors/special_functions/length.as
+---
+error: Wrong number of parameters; length requires exactly 1.
+  ╭▸ length.as:1:1
+  │
+1 │ length();
+  │ ━━━━━━━━
+  ╰╴
+error: Wrong number of parameters; length requires exactly 1.
+  ╭▸ length.as:2:1
+  │
+2 │ length("a", "b");
+  ╰╴━━━━━━━━━━━━━━━━

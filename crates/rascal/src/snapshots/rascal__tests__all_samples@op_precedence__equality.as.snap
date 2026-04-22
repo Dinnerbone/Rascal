@@ -1,0 +1,204 @@
+---
+source: crates/rascal/src/tests.rs
+expression: result
+input_file: samples/as2/op_precedence/equality.as
+---
+initializer:
+  actions:
+    - ConstantPool:
+        - a
+        - b
+        - "10"
+        - c
+        - a=
+        - ", b="
+        - ", c="
+        - "----"
+        - "a == b = "
+        - "a != b = "
+        - "---"
+        - "a === b = "
+        - "a !== b = "
+        - "a == b == c = "
+        - "((a == b) == c) = "
+        - "a !== b !== c = "
+        - "((a !== b) !== c) = "
+        - "a == b > c = "
+        - "(a == (b > c)) = "
+    - Push:
+        - Constant: 0
+        - Integer: 10
+    - DefineLocal
+    - Push:
+        - Constant: 1
+        - Constant: 2
+    - DefineLocal
+    - Push:
+        - Constant: 3
+        - Integer: 5
+    - DefineLocal
+    - Push:
+        - Constant: 4
+        - Constant: 0
+    - GetVariable
+    - Add2
+    - Push:
+        - Constant: 5
+    - Add2
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Add2
+    - Push:
+        - Constant: 6
+    - Add2
+    - Push:
+        - Constant: 3
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 7
+    - Trace
+    - Push:
+        - Constant: 8
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Equals2
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 9
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Equals2
+    - Not
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 10
+    - Trace
+    - Push:
+        - Constant: 11
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - StrictEquals
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 12
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - StrictEquals
+    - Not
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 10
+    - Trace
+    - Push:
+        - Constant: 13
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Equals2
+    - Push:
+        - Constant: 3
+    - GetVariable
+    - Equals2
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 14
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Equals2
+    - Push:
+        - Constant: 3
+    - GetVariable
+    - Equals2
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 15
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - StrictEquals
+    - Not
+    - Push:
+        - Constant: 3
+    - GetVariable
+    - StrictEquals
+    - Not
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 16
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - StrictEquals
+    - Not
+    - Push:
+        - Constant: 3
+    - GetVariable
+    - StrictEquals
+    - Not
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 10
+    - Trace
+    - Push:
+        - Constant: 17
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Push:
+        - Constant: 3
+    - GetVariable
+    - Greater
+    - Equals2
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 18
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Push:
+        - Constant: 3
+    - GetVariable
+    - Greater
+    - Equals2
+    - Add2
+    - Trace
+  label_positions: {}
+extra_modules: []
+swf_version: 15

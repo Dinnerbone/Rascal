@@ -1,0 +1,41 @@
+---
+source: crates/rascal/src/program.rs
+expression: parsed
+input_file: samples/as2_errors/special_functions/startdrag.as
+---
+error: Wrong number of parameters; startDrag requires between 1 and 6.
+  ╭▸ startdrag.as:1:1
+  │
+1 │ startDrag();
+  │ ━━━━━━━━━━━
+  ╰╴
+error: Lock center parameter must be true or false
+  ╭▸ startdrag.as:2:14
+  │
+2 │ startDrag(x, "maybe");
+  ╰╴             ━━━━━━━
+error: Lock center parameter must be true or false
+  ╭▸ startdrag.as:3:14
+  │
+3 │ startDrag(x, "true");
+  ╰╴             ━━━━━━
+error: startDrag requires 1 (target), 2 (target+lock) or 6 (target+lock+constraint) parameters.
+  ╭▸ startdrag.as:4:1
+  │
+4 │ startDrag(x, true, 1);
+  ╰╴━━━━━━━━━━━━━━━━━━━━━
+error: startDrag requires 1 (target), 2 (target+lock) or 6 (target+lock+constraint) parameters.
+  ╭▸ startdrag.as:5:1
+  │
+5 │ startDrag(x, true, 1, 2);
+  ╰╴━━━━━━━━━━━━━━━━━━━━━━━━
+error: startDrag requires 1 (target), 2 (target+lock) or 6 (target+lock+constraint) parameters.
+  ╭▸ startdrag.as:6:1
+  │
+6 │ startDrag(x, true, 1, 2, 3);
+  ╰╴━━━━━━━━━━━━━━━━━━━━━━━━━━━
+error: Wrong number of parameters; startDrag requires between 1 and 6.
+  ╭▸ startdrag.as:7:1
+  │
+7 │ startDrag(x, true, 1, 2, 3, 4, 5);
+  ╰╴━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

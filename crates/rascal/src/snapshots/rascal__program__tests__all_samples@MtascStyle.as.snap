@@ -1,0 +1,79 @@
+---
+source: crates/rascal/src/program.rs
+expression: parsed
+input_file: samples/as2_classes/MtascStyle.as
+---
+Ok:
+  initial_script:
+    - Expr:
+        span:
+          start: 0
+          end: 0
+        value:
+          Call:
+            name:
+              span:
+                start: 0
+                end: 0
+              value:
+                Field:
+                  - span:
+                      start: 0
+                      end: 0
+                    value:
+                      Constant:
+                        Identifier: MtascStyle
+                  - span:
+                      start: 0
+                      end: 0
+                    value:
+                      Constant:
+                        String: main
+            args:
+              - span:
+                  start: 0
+                  end: 0
+                value:
+                  Constant: This
+  interfaces: []
+  classes:
+    - name: MtascStyle
+      extends: ~
+      implements: []
+      functions:
+        main:
+          function:
+            signature:
+              name:
+                span:
+                  start: 46
+                  end: 50
+                value: main
+              args: []
+              return_type: ~
+            body:
+              - Expr:
+                  span:
+                    start: 63
+                    end: 84
+                  value:
+                    Trace:
+                      span:
+                        start: 69
+                        end: 83
+                      value:
+                        Constant:
+                          String: Main method!
+          is_static: true
+      virtual_properties: {}
+      fields: {}
+      constructor:
+        signature:
+          name:
+            span:
+              start: 6
+              end: 16
+            value: MtascStyle
+          args: []
+          return_type: ~
+        body: []

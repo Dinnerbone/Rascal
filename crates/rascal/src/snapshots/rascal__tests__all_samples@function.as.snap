@@ -1,0 +1,85 @@
+---
+source: crates/rascal/src/tests.rs
+expression: result
+input_file: samples/as2/function.as
+---
+initializer:
+  actions:
+    - ConstantPool:
+        - Test called!
+        - ":)"
+        - anon
+        - Anonymous function called!
+        - "a = "
+        - a
+        - ", b = "
+        - b
+        - bb
+        - aa
+        - test
+    - DefineFunction:
+        name: test
+        params: []
+        actions:
+          actions:
+            - Push:
+                - Constant: 0
+            - Trace
+            - Push:
+                - Constant: 1
+            - Return
+          label_positions: {}
+    - Push:
+        - Constant: 2
+    - DefineFunction:
+        name: ""
+        params:
+          - a
+          - b
+        actions:
+          actions:
+            - Push:
+                - Constant: 3
+            - Trace
+            - Push:
+                - Constant: 4
+                - Constant: 5
+            - GetVariable
+            - Add2
+            - Push:
+                - Constant: 6
+            - Add2
+            - Push:
+                - Constant: 7
+            - GetVariable
+            - Add2
+            - Trace
+          label_positions: {}
+    - DefineLocal
+    - Push:
+        - Constant: 8
+        - Constant: 9
+        - Integer: 2
+        - Constant: 2
+    - CallFunction
+    - Pop
+    - Push:
+        - Integer: 0
+        - Constant: 10
+    - CallFunction
+    - Push:
+        - Integer: 0
+        - Constant: 10
+    - CallFunction
+    - Add2
+    - Trace
+    - DefineFunction:
+        name: ""
+        params: []
+        actions:
+          actions: []
+          label_positions: {}
+    - Pop
+  label_positions: {}
+extra_modules: []
+swf_version: 15

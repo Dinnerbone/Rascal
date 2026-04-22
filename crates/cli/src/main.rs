@@ -1,8 +1,7 @@
 use anyhow::Result;
 use clap::Parser;
-use rascal_as2::program::{FileSystemSourceProvider, ProgramBuilder};
-use rascal_as2_codegen::hir_to_pcode;
-use rascal_as2_pcode::pcode_to_swf;
+use rascal::ProgramBuilder;
+use rascal::provider::FileSystemSourceProvider;
 use std::fs;
 use std::path::PathBuf;
 
@@ -80,12 +79,12 @@ fn main() -> Result<()> {
     }
 
     let parsed = builder.build().unwrap_or_else(|e| panic!("{}", e));
-    let pcode = hir_to_pcode(&parsed, opt.swf_version);
+    let pcode = parsed.compile(opt.swf_version);
     let output_path = opt
         .output
         .or_else(|| opt.script.first().map(|s| s.with_extension("swf")))
         .unwrap_or_else(|| PathBuf::from("output.swf"));
-    let swf = pcode_to_swf(&pcode, opt.frame_rate)?;
+    let swf = pcode.to_swf(opt.frame_rate)?;
     fs::write(&output_path, swf)?;
     Ok(())
 }

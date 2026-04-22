@@ -1,0 +1,86 @@
+---
+source: crates/rascal/src/tests.rs
+expression: result
+input_file: samples/as2/op_precedence/inc_dec.as
+---
+initializer:
+  actions:
+    - ConstantPool:
+        - a
+        - trc
+        - msg
+    - Push:
+        - Constant: 0
+        - Integer: 10
+    - DefineLocal
+    - Push:
+        - Constant: 1
+    - DefineFunction:
+        name: ""
+        params:
+          - msg
+        actions:
+          actions:
+            - Push:
+                - Constant: 2
+            - GetVariable
+            - Trace
+          label_positions: {}
+    - DefineLocal
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 0
+        - Constant: 0
+    - GetVariable
+    - Increment
+    - SetVariable
+    - Push:
+        - Integer: 1
+        - Constant: 1
+    - CallFunction
+    - Pop
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 0
+        - Constant: 0
+    - GetVariable
+    - Decrement
+    - SetVariable
+    - Push:
+        - Integer: 1
+        - Constant: 1
+    - CallFunction
+    - Pop
+    - Push:
+        - Constant: 0
+        - Constant: 0
+    - GetVariable
+    - Increment
+    - StoreRegister: 0
+    - SetVariable
+    - Push:
+        - Register: 0
+        - Integer: 1
+        - Constant: 1
+    - CallFunction
+    - Pop
+    - Push:
+        - Constant: 0
+        - Constant: 0
+    - GetVariable
+    - Decrement
+    - StoreRegister: 0
+    - SetVariable
+    - Push:
+        - Register: 0
+        - Integer: 1
+        - Constant: 1
+    - CallFunction
+    - Pop
+  label_positions: {}
+extra_modules: []
+swf_version: 15
