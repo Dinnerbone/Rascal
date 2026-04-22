@@ -13,6 +13,12 @@ struct Opt {
     #[arg(name = "FILE")]
     src: PathBuf,
 
+    /// Output file path. This will be overwritten if it already exists.
+    ///
+    /// If not specified, the input path (with ".swf" instead of ".as") will be used.
+    #[arg(short, long)]
+    output: Option<PathBuf>,
+
     /// SWF version to use.
     #[arg(short = 'v', long, default_value_t = 15)]
     swf_version: u8,
@@ -41,7 +47,8 @@ fn main() -> Result<()> {
             swf_version: opt.swf_version,
         }
     };
+    let output_path = opt.output.unwrap_or_else(|| opt.src.with_extension("swf"));
     let swf = pcode_to_swf(&pcode, opt.frame_rate)?;
-    fs::write(opt.src.with_extension("swf"), swf)?;
+    fs::write(&output_path, swf)?;
     Ok(())
 }
