@@ -1,0 +1,31 @@
+---
+source: crates/rascal/src/program.rs
+expression: parsed
+input_file: samples/as2_errors/special_functions/print.as
+---
+error: Wrong number of parameters; print requires exactly 2.
+  ╭▸ print.as:1:1
+  │
+1 │ print();
+  │ ━━━━━━━
+  ╰╴
+error: Wrong number of parameters; print requires exactly 2.
+  ╭▸ print.as:2:1
+  │
+2 │ print(this);
+  ╰╴━━━━━━━━━━━
+error: Bounds type must be bmovie, bframe or bmax.
+  ╭▸ print.as:3:13
+  │
+3 │ print(this, "foo");
+  ╰╴            ━━━━━
+error: Bounds type must be bmovie, bframe or bmax.
+  ╭▸ print.as:4:13
+  │
+4 │ print(this, foo);
+  ╰╴            ━━━
+error: Wrong number of parameters; print requires exactly 2.
+  ╭▸ print.as:5:1
+  │
+5 │ print(this, "bmax", true);
+  ╰╴━━━━━━━━━━━━━━━━━━━━━━━━━

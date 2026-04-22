@@ -1,0 +1,139 @@
+---
+source: crates/rascal/src/tests.rs
+expression: result
+input_file: samples/as2/function_in_loop_break_continue.as
+---
+initializer:
+  actions:
+    - ConstantPool:
+        - i
+        - loop i=
+        - decide
+        - v
+        - continue
+        - break
+        - none
+        - naughty
+        - action
+        - "  work i="
+        - end
+    - Push:
+        - Constant: 0
+        - Integer: 0
+    - DefineLocal
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Integer: 5
+    - Less2
+    - Not
+    - If: loc0000
+    - Push:
+        - Constant: 1
+        - Constant: 0
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 2
+    - DefineFunction:
+        name: ""
+        params:
+          - v
+        actions:
+          actions:
+            - Push:
+                - Constant: 3
+            - GetVariable
+            - Push:
+                - Integer: 1
+            - Equals2
+            - Not
+            - If: loc0003
+            - Push:
+                - Constant: 4
+            - Return
+            - Push:
+                - Constant: 3
+            - GetVariable
+            - Push:
+                - Integer: 3
+            - Equals2
+            - Not
+            - If: loc0004
+            - Push:
+                - Constant: 5
+            - Return
+            - Push:
+                - Constant: 6
+            - Return
+          label_positions:
+            loc0003: 8
+            loc0004: 16
+    - DefineLocal
+    - Push:
+        - Constant: 7
+    - DefineFunction:
+        name: ""
+        params: []
+        actions:
+          actions: []
+          label_positions: {}
+    - DefineLocal
+    - Push:
+        - Integer: 0
+        - Constant: 7
+    - CallFunction
+    - Pop
+    - Push:
+        - Constant: 8
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Integer: 1
+        - Constant: 2
+    - CallFunction
+    - DefineLocal
+    - Push:
+        - Constant: 8
+    - GetVariable
+    - Push:
+        - Constant: 4
+    - Equals2
+    - Not
+    - If: loc0005
+    - Jump: loc0001
+    - Push:
+        - Constant: 8
+    - GetVariable
+    - Push:
+        - Constant: 5
+    - Equals2
+    - Not
+    - If: loc0006
+    - Jump: loc0000
+    - Push:
+        - Constant: 9
+        - Constant: 0
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 0
+        - Constant: 0
+    - GetVariable
+    - Increment
+    - SetVariable
+    - Jump: loc0002
+    - Push:
+        - Constant: 10
+    - Trace
+  label_positions:
+    loc0002: 3
+    loc0005: 34
+    loc0006: 41
+    loc0001: 45
+    loc0000: 50
+extra_modules: []
+swf_version: 15

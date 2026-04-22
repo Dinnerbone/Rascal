@@ -1,0 +1,126 @@
+---
+source: crates/rascal/src/tests.rs
+expression: result
+input_file: samples/as2/nested_for_break_continue.as
+---
+initializer:
+  actions:
+    - ConstantPool:
+        - i
+        - outer i=
+        - j
+        - "  inner j="
+        - done
+    - Push:
+        - Constant: 0
+        - Integer: 0
+    - DefineLocal
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Integer: 4
+    - Less2
+    - Not
+    - If: loc0000
+    - Push:
+        - Constant: 1
+        - Constant: 0
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 2
+        - Integer: 0
+    - DefineLocal
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Push:
+        - Integer: 4
+    - Less2
+    - Not
+    - If: loc0003
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Push:
+        - Integer: 1
+    - Equals2
+    - Not
+    - If: loc0006
+    - Jump: loc0004
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Integer: 2
+    - Equals2
+    - PushDuplicate
+    - Not
+    - If: loc0008
+    - Pop
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Push:
+        - Integer: 2
+    - Equals2
+    - Not
+    - If: loc0007
+    - Jump: loc0003
+    - Push:
+        - Constant: 3
+        - Constant: 2
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 2
+        - Constant: 2
+    - GetVariable
+    - Increment
+    - SetVariable
+    - Jump: loc0005
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Integer: 1
+    - Equals2
+    - Not
+    - If: loc0009
+    - Jump: loc0001
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Integer: 3
+    - Equals2
+    - Not
+    - If: loc000a
+    - Jump: loc0000
+    - Push:
+        - Constant: 0
+        - Constant: 0
+    - GetVariable
+    - Increment
+    - SetVariable
+    - Jump: loc0002
+    - Push:
+        - Constant: 4
+    - Trace
+  label_positions:
+    loc0002: 3
+    loc0005: 15
+    loc0006: 28
+    loc0008: 40
+    loc0007: 43
+    loc0004: 47
+    loc0003: 52
+    loc0009: 59
+    loc000a: 66
+    loc0001: 66
+    loc0000: 71
+extra_modules: []
+swf_version: 15

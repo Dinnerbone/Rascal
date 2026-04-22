@@ -1,0 +1,166 @@
+---
+source: crates/rascal/src/program.rs
+expression: parsed
+input_file: samples/as2/tell_target.as
+---
+Ok:
+  initial_script:
+    - TellTarget:
+        target:
+          span:
+            start: 11
+            end: 12
+          value:
+            Constant:
+              Identifier: x
+        body:
+          Block:
+            - Expr:
+                span:
+                  start: 17
+                  end: 35
+                value:
+                  Trace:
+                    span:
+                      start: 23
+                      end: 34
+                    value:
+                      Constant:
+                        String: this is x
+            - TellTarget:
+                target:
+                  span:
+                    start: 50
+                    end: 53
+                  value:
+                    Constant:
+                      String: y
+                body:
+                  Block:
+                    - Expr:
+                        span:
+                          start: 59
+                          end: 77
+                        value:
+                          Trace:
+                            span:
+                              start: 65
+                              end: 76
+                            value:
+                              Constant:
+                                String: this is y
+                    - TellTarget:
+                        target:
+                          span:
+                            start: 92
+                            end: 95
+                          value:
+                            Constant:
+                              String: z
+                        body:
+                          Block:
+                            - Expr:
+                                span:
+                                  start: 102
+                                  end: 120
+                                value:
+                                  Trace:
+                                    span:
+                                      start: 108
+                                      end: 119
+                                    value:
+                                      Constant:
+                                        String: this is z
+                    - Expr:
+                        span:
+                          start: 128
+                          end: 152
+                        value:
+                          Trace:
+                            span:
+                              start: 134
+                              end: 151
+                            value:
+                              Constant:
+                                String: this is still y
+            - Expr:
+                span:
+                  start: 159
+                  end: 183
+                value:
+                  Trace:
+                    span:
+                      start: 165
+                      end: 182
+                    value:
+                      Constant:
+                        String: this is x again
+    - Expr:
+        span:
+          start: 187
+          end: 208
+        value:
+          Trace:
+            span:
+              start: 193
+              end: 207
+            value:
+              Constant:
+                String: this is root
+    - TellTarget:
+        target:
+          span:
+            start: 221
+            end: 222
+          value:
+            Constant:
+              Identifier: x
+        body:
+          Block: []
+    - Expr:
+        span:
+          start: 225
+          end: 252
+        value:
+          Trace:
+            span:
+              start: 231
+              end: 251
+            value:
+              Constant:
+                String: this is still root
+    - TellTarget:
+        target:
+          span:
+            start: 265
+            end: 266
+          value:
+            Constant:
+              Identifier: x
+        body:
+          Expr:
+            span:
+              start: 268
+              end: 286
+            value:
+              Trace:
+                span:
+                  start: 274
+                  end: 285
+                value:
+                  Constant:
+                    String: this is x
+    - Expr:
+        span:
+          start: 288
+          end: 315
+        value:
+          Trace:
+            span:
+              start: 294
+              end: 314
+            value:
+              Constant:
+                String: this is still root
+  interfaces: []
+  classes: []

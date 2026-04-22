@@ -1,0 +1,46 @@
+---
+source: crates/rascal/src/tests.rs
+expression: result
+input_file: samples/as2/if_frame_loaded.as
+---
+initializer:
+  actions:
+    - ConstantPool:
+        - single line
+        - block
+        - frame
+        - this
+        - nested conditions!
+        - end!
+    - WaitForFrame:
+        frame: 1
+        skip_count: 2
+    - Push:
+        - Constant: 0
+    - Trace
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - WaitForFrame2:
+        skip_count: 2
+    - Push:
+        - Constant: 1
+    - Trace
+    - WaitForFrame:
+        frame: 2
+        skip_count: 6
+    - Push:
+        - Constant: 3
+    - GetVariable
+    - Not
+    - If: loc0000
+    - Push:
+        - Constant: 4
+    - Trace
+    - Push:
+        - Constant: 5
+    - Trace
+  label_positions:
+    loc0000: 16
+extra_modules: []
+swf_version: 15

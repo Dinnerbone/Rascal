@@ -1,0 +1,159 @@
+---
+source: crates/rascal/src/program.rs
+expression: parsed
+input_file: samples/as2/op_precedence/inc_dec.as
+---
+Ok:
+  initial_script:
+    - Declare:
+        - name:
+            span:
+              start: 4
+              end: 5
+            value: a
+          value:
+            span:
+              start: 8
+              end: 10
+            value:
+              Constant:
+                Integer: 10
+          type_name: ~
+    - Declare:
+        - name:
+            span:
+              start: 126
+              end: 129
+            value: trc
+          value:
+            span:
+              start: 132
+              end: 165
+            value:
+              Function:
+                signature:
+                  name: ~
+                  args:
+                    - name: msg
+                      type_name: ~
+                  return_type: ~
+                body:
+                  - Expr:
+                      span:
+                        start: 152
+                        end: 162
+                      value:
+                        Trace:
+                          span:
+                            start: 158
+                            end: 161
+                          value:
+                            Constant:
+                              Identifier: msg
+          type_name: ~
+    - Expr:
+        span:
+          start: 167
+          end: 175
+        value:
+          Call:
+            name:
+              span:
+                start: 167
+                end: 170
+              value:
+                Constant:
+                  Identifier: trc
+            args:
+              - span:
+                  start: 172
+                  end: 174
+                value:
+                  UnaryOperator:
+                    - Increment: Postfix
+                    - span:
+                        start: 171
+                        end: 172
+                      value:
+                        Constant:
+                          Identifier: a
+    - Expr:
+        span:
+          start: 177
+          end: 185
+        value:
+          Call:
+            name:
+              span:
+                start: 177
+                end: 180
+              value:
+                Constant:
+                  Identifier: trc
+            args:
+              - span:
+                  start: 182
+                  end: 184
+                value:
+                  UnaryOperator:
+                    - Decrement: Postfix
+                    - span:
+                        start: 181
+                        end: 182
+                      value:
+                        Constant:
+                          Identifier: a
+    - Expr:
+        span:
+          start: 187
+          end: 195
+        value:
+          Call:
+            name:
+              span:
+                start: 187
+                end: 190
+              value:
+                Constant:
+                  Identifier: trc
+            args:
+              - span:
+                  start: 191
+                  end: 194
+                value:
+                  UnaryOperator:
+                    - Increment: Prefix
+                    - span:
+                        start: 193
+                        end: 194
+                      value:
+                        Constant:
+                          Identifier: a
+    - Expr:
+        span:
+          start: 197
+          end: 205
+        value:
+          Call:
+            name:
+              span:
+                start: 197
+                end: 200
+              value:
+                Constant:
+                  Identifier: trc
+            args:
+              - span:
+                  start: 201
+                  end: 204
+                value:
+                  UnaryOperator:
+                    - Decrement: Prefix
+                    - span:
+                        start: 203
+                        end: 204
+                      value:
+                        Constant:
+                          Identifier: a
+  interfaces: []
+  classes: []

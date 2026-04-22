@@ -1,0 +1,354 @@
+---
+source: crates/rascal/src/tests.rs
+expression: result
+input_file: samples/as2/numbers.as
+---
+initializer:
+  actions:
+    - ConstantPool:
+        - i0
+        - i1
+        - i42
+        - iLarge
+        - iLargePlusOne
+        - f0
+        - f1
+        - fLeadingDot
+        - fTrailingDot
+        - h0
+        - hMix
+        - hMaxByte
+        - eBig
+        - eSmall
+        - ePlus
+        - eLeadingDot
+        - eTrailingDot
+        - eSci
+        - nDec
+        - nHex
+        - nFloat
+        - pDec
+        - sum
+        - diff
+        - prod
+        - quot
+        - combo
+        - "i0 = "
+        - "i1 = "
+        - "i42 = "
+        - "iLarge = "
+        - "iLargePlusOne = "
+        - "f0 = "
+        - "f1 = "
+        - "fLeadingDot = "
+        - "fTrailingDot = "
+        - "h0 = "
+        - "hMix = "
+        - "hMaxByte = "
+        - "eBig = "
+        - "eSmall = "
+        - "ePlus = "
+        - "eLeadingDot = "
+        - "eTrailingDot = "
+        - "eSci = "
+        - "nDec = "
+        - "nHex = "
+        - "nFloat = "
+        - "pDec = "
+        - "sum = "
+        - "diff = "
+        - "prod = "
+        - "quot = "
+        - "combo = "
+    - Push:
+        - Constant: 0
+        - Integer: 0
+    - DefineLocal
+    - Push:
+        - Constant: 1
+        - Integer: 1
+    - DefineLocal
+    - Push:
+        - Constant: 2
+        - Integer: 42
+    - DefineLocal
+    - Push:
+        - Constant: 3
+        - Integer: 2147483647
+    - DefineLocal
+    - Push:
+        - Constant: 4
+        - Float: 2147483648
+    - DefineLocal
+    - Push:
+        - Constant: 5
+        - Float: 0
+    - DefineLocal
+    - Push:
+        - Constant: 6
+        - Float: 1.23
+    - DefineLocal
+    - Push:
+        - Constant: 7
+        - Float: 0.5
+    - DefineLocal
+    - Push:
+        - Constant: 8
+        - Float: 5
+    - DefineLocal
+    - Push:
+        - Constant: 9
+        - Integer: 0
+    - DefineLocal
+    - Push:
+        - Constant: 10
+        - Integer: 6699
+    - DefineLocal
+    - Push:
+        - Constant: 11
+        - Integer: 255
+    - DefineLocal
+    - Push:
+        - Constant: 12
+        - Float: 10000000000
+    - DefineLocal
+    - Push:
+        - Constant: 13
+        - Float: 0.0000000001
+    - DefineLocal
+    - Push:
+        - Constant: 14
+        - Float: 2500
+    - DefineLocal
+    - Push:
+        - Constant: 15
+        - Float: 50
+    - DefineLocal
+    - Push:
+        - Constant: 16
+        - Float: 5000
+    - DefineLocal
+    - Push:
+        - Constant: 17
+        - Float: 602200000000000000000000
+    - DefineLocal
+    - Push:
+        - Constant: 18
+        - Integer: -123
+    - DefineLocal
+    - Push:
+        - Constant: 19
+        - Integer: -255
+    - DefineLocal
+    - Push:
+        - Constant: 20
+        - Float: -3.14
+    - DefineLocal
+    - Push:
+        - Constant: 21
+        - Integer: 7
+    - DefineLocal
+    - Push:
+        - Constant: 22
+        - Integer: 1
+        - Integer: 2
+    - Add2
+    - Push:
+        - Integer: 3
+    - Add2
+    - DefineLocal
+    - Push:
+        - Constant: 23
+        - Integer: 10
+        - Integer: 4
+    - Subtract
+    - DefineLocal
+    - Push:
+        - Constant: 24
+        - Integer: 6
+        - Integer: 7
+    - Multiply
+    - DefineLocal
+    - Push:
+        - Constant: 25
+        - Integer: 22
+        - Integer: 7
+    - Divide
+    - DefineLocal
+    - Push:
+        - Constant: 26
+        - Integer: 16
+        - Integer: 15
+    - Add2
+    - Push:
+        - Float: 25
+    - Multiply
+    - Push:
+        - Float: 0.75
+    - Subtract
+    - DefineLocal
+    - Push:
+        - Constant: 27
+        - Constant: 0
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 28
+        - Constant: 1
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 29
+        - Constant: 2
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 30
+        - Constant: 3
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 31
+        - Constant: 4
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 32
+        - Constant: 5
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 33
+        - Constant: 6
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 34
+        - Constant: 7
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 35
+        - Constant: 8
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 36
+        - Constant: 9
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 37
+        - Constant: 10
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 38
+        - Constant: 11
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 39
+        - Constant: 12
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 40
+        - Constant: 13
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 41
+        - Constant: 14
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 42
+        - Constant: 15
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 43
+        - Constant: 16
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 44
+        - Constant: 17
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 45
+        - Constant: 18
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 46
+        - Constant: 19
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 47
+        - Constant: 20
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 48
+        - Constant: 21
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 49
+        - Constant: 22
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 50
+        - Constant: 23
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 51
+        - Constant: 24
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 52
+        - Constant: 25
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 53
+        - Constant: 26
+    - GetVariable
+    - Add2
+    - Trace
+  label_positions: {}
+extra_modules: []
+swf_version: 15

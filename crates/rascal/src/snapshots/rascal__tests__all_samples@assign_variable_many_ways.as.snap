@@ -1,0 +1,77 @@
+---
+source: crates/rascal/src/tests.rs
+expression: result
+input_file: samples/as2/assign_variable_many_ways.as
+---
+initializer:
+  actions:
+    - ConstantPool:
+        - message
+        - Hello
+        - " "
+        - World
+        - "!"
+        - a
+        - b
+        - c
+        - "a: "
+        - "b: "
+        - "c: "
+    - Push:
+        - Constant: 0
+        - Constant: 1
+        - Constant: 2
+    - Add2
+    - DefineLocal
+    - Push:
+        - Constant: 0
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 3
+    - Add2
+    - SetVariable
+    - Push:
+        - Constant: 0
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 4
+    - Add2
+    - SetVariable
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Trace
+    - Push:
+        - Constant: 5
+        - Integer: 1
+    - DefineLocal
+    - Push:
+        - Constant: 6
+    - DefineLocal2
+    - Push:
+        - Constant: 7
+        - Integer: 3
+    - DefineLocal
+    - Push:
+        - Constant: 8
+        - Constant: 5
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 9
+        - Constant: 6
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 10
+        - Constant: 7
+    - GetVariable
+    - Add2
+    - Trace
+  label_positions: {}
+extra_modules: []
+swf_version: 15

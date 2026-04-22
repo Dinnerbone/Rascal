@@ -1,14 +1,13 @@
 extern crate core;
 
-mod ast;
-mod error;
+pub mod ast;
+pub mod error;
 mod global_types;
 pub mod hir;
-mod lexer;
-mod parser;
-pub mod program;
-mod resolver;
+pub mod lexer;
+pub mod parser;
+pub mod resolver;
 
-pub(crate) fn type_path_to_file_path(input: &str) -> String {
+pub fn type_path_to_file_path(input: &str) -> String {
     format!("{}.as", input.replace('.', "/"))
 }

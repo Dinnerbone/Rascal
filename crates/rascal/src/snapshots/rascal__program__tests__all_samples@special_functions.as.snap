@@ -1,0 +1,1665 @@
+---
+source: crates/rascal/src/program.rs
+expression: parsed
+input_file: samples/as2/special_functions.as
+---
+Ok:
+  initial_script:
+    - Expr:
+        span:
+          start: 0
+          end: 9
+        value:
+          CallFrame:
+            span:
+              start: 5
+              end: 8
+            value:
+              Constant:
+                Integer: 123
+    - Expr:
+        span:
+          start: 11
+          end: 17
+        value:
+          AsciiToChar:
+            span:
+              start: 15
+              end: 16
+            value:
+              Constant:
+                Identifier: x
+    - Expr:
+        span:
+          start: 19
+          end: 26
+        value:
+          GetVariable:
+            span:
+              start: 24
+              end: 25
+            value:
+              Constant:
+                Identifier: x
+    - Expr:
+        span:
+          start: 28
+          end: 37
+        value:
+          GetVariable:
+            span:
+              start: 33
+              end: 36
+            value:
+              Constant:
+                String: x
+    - Expr:
+        span:
+          start: 39
+          end: 101
+        value:
+          DuplicateMovieClip:
+            source:
+              span:
+                start: 58
+                end: 61
+              value:
+                Constant:
+                  Identifier: foo
+            target:
+              span:
+                start: 63
+                end: 72
+              value:
+                Constant:
+                  String: newname
+            depth:
+              span:
+                start: 78
+                end: 100
+              value:
+                Call:
+                  name:
+                    span:
+                      start: 78
+                      end: 98
+                    value:
+                      Field:
+                        - span:
+                            start: 74
+                            end: 78
+                          value:
+                            Constant:
+                              Identifier: this
+                        - span:
+                            start: 79
+                            end: 98
+                          value:
+                            Constant:
+                              String: getNextHighestDepth
+                  args: []
+    - Expr:
+        span:
+          start: 103
+          end: 121
+        value:
+          GetUrl:
+            target:
+              span:
+                start: 116
+                end: 120
+              value:
+                Constant:
+                  Boolean: true
+            url:
+              span:
+                start: 103
+                end: 121
+              value:
+                BinaryOperator:
+                  - StringAdd
+                  - span:
+                      start: 103
+                      end: 121
+                    value:
+                      Constant:
+                        String: "FSCommand:"
+                  - span:
+                      start: 113
+                      end: 114
+                    value:
+                      Constant:
+                        Identifier: x
+            load_variables: false
+            load_target: false
+            method: None
+    - Expr:
+        span:
+          start: 123
+          end: 144
+        value:
+          GetUrl:
+            target:
+              span:
+                start: 138
+                end: 143
+              value:
+                Constant:
+                  Boolean: false
+            url:
+              span:
+                start: 123
+                end: 144
+              value:
+                Constant:
+                  String: "FSCommand:x"
+            load_variables: false
+            load_target: false
+            method: None
+    - Expr:
+        span:
+          start: 146
+          end: 160
+        value:
+          GetUrl:
+            target:
+              span:
+                start: 146
+                end: 160
+              value:
+                Constant:
+                  String: ""
+            url:
+              span:
+                start: 146
+                end: 160
+              value:
+                Constant:
+                  String: "FSCommand:x"
+            load_variables: false
+            load_target: false
+            method: None
+    - Expr:
+        span:
+          start: 162
+          end: 183
+        value:
+          GetUrl:
+            target:
+              span:
+                start: 177
+                end: 182
+              value:
+                Constant:
+                  String: foo
+            url:
+              span:
+                start: 162
+                end: 183
+              value:
+                Constant:
+                  String: "FSCommand:x"
+            load_variables: false
+            load_target: false
+            method: None
+    - Expr:
+        span:
+          start: 185
+          end: 195
+        value: GetTime
+    - Expr:
+        span:
+          start: 197
+          end: 223
+        value:
+          GetUrl:
+            target:
+              span:
+                start: 197
+                end: 223
+              value:
+                Constant:
+                  String: ""
+            url:
+              span:
+                start: 204
+                end: 222
+              value:
+                Constant:
+                  String: "http://ruffle.rs"
+            load_variables: false
+            load_target: false
+            method: None
+    - Expr:
+        span:
+          start: 225
+          end: 261
+        value:
+          GetUrl:
+            target:
+              span:
+                start: 252
+                end: 260
+              value:
+                Constant:
+                  String: window
+            url:
+              span:
+                start: 232
+                end: 250
+              value:
+                Constant:
+                  String: "http://ruffle.rs"
+            load_variables: false
+            load_target: false
+            method: None
+    - Expr:
+        span:
+          start: 263
+          end: 306
+        value:
+          GetUrl:
+            target:
+              span:
+                start: 290
+                end: 298
+              value:
+                Constant:
+                  String: window
+            url:
+              span:
+                start: 270
+                end: 288
+              value:
+                Constant:
+                  String: "http://ruffle.rs"
+            load_variables: false
+            load_target: false
+            method: Get
+    - Expr:
+        span:
+          start: 308
+          end: 320
+        value:
+          GetVariable:
+            span:
+              start: 308
+              end: 320
+            value:
+              Constant:
+                String: "/:$version"
+    - Expr:
+        span:
+          start: 322
+          end: 338
+        value:
+          GotoFrame:
+            - span:
+                start: 334
+                end: 337
+              value:
+                Constant:
+                  Integer: 123
+            - true
+    - Expr:
+        span:
+          start: 340
+          end: 358
+        value:
+          GotoFrame:
+            - span:
+                start: 352
+                end: 357
+              value:
+                Constant:
+                  String: "123"
+            - true
+    - Expr:
+        span:
+          start: 360
+          end: 374
+        value:
+          GotoFrame:
+            - span:
+                start: 372
+                end: 373
+              value:
+                Constant:
+                  Identifier: x
+            - true
+    - Expr:
+        span:
+          start: 376
+          end: 401
+        value:
+          GotoFrame:
+            - span:
+                start: 397
+                end: 400
+              value:
+                Constant:
+                  Integer: 123
+            - true
+    - Expr:
+        span:
+          start: 403
+          end: 430
+        value:
+          GotoFrame:
+            - span:
+                start: 424
+                end: 429
+              value:
+                Constant:
+                  String: "123"
+            - true
+    - Expr:
+        span:
+          start: 432
+          end: 455
+        value:
+          GotoFrame:
+            - span:
+                start: 453
+                end: 454
+              value:
+                Constant:
+                  Identifier: x
+            - true
+    - Expr:
+        span:
+          start: 457
+          end: 471
+        value:
+          GotoFrame:
+            - span:
+                start: 469
+                end: 470
+              value:
+                Constant:
+                  Identifier: x
+            - true
+    - Expr:
+        span:
+          start: 473
+          end: 491
+        value:
+          GotoFrame:
+            - span:
+                start: 485
+                end: 490
+              value:
+                Constant:
+                  Integer: 65536
+            - true
+    - Expr:
+        span:
+          start: 493
+          end: 511
+        value:
+          GotoFrame:
+            - span:
+                start: 505
+                end: 510
+              value:
+                Constant:
+                  Integer: 65537
+            - true
+    - Expr:
+        span:
+          start: 513
+          end: 531
+        value:
+          GotoFrame:
+            - span:
+                start: 525
+                end: 530
+              value:
+                Constant:
+                  Integer: 65538
+            - true
+    - Expr:
+        span:
+          start: 533
+          end: 547
+        value:
+          GotoFrame:
+            - span:
+                start: 545
+                end: 546
+              value:
+                Constant:
+                  Integer: 0
+            - true
+    - Expr:
+        span:
+          start: 549
+          end: 565
+        value:
+          GotoFrame:
+            - span:
+                start: 561
+                end: 564
+              value:
+                Constant:
+                  Integer: 123
+            - false
+    - Expr:
+        span:
+          start: 567
+          end: 585
+        value:
+          GotoFrame:
+            - span:
+                start: 579
+                end: 584
+              value:
+                Constant:
+                  String: "123"
+            - false
+    - Expr:
+        span:
+          start: 587
+          end: 601
+        value:
+          GotoFrame:
+            - span:
+                start: 599
+                end: 600
+              value:
+                Constant:
+                  Identifier: x
+            - false
+    - Expr:
+        span:
+          start: 603
+          end: 628
+        value:
+          GotoFrame:
+            - span:
+                start: 624
+                end: 627
+              value:
+                Constant:
+                  Integer: 123
+            - false
+    - Expr:
+        span:
+          start: 630
+          end: 657
+        value:
+          GotoFrame:
+            - span:
+                start: 651
+                end: 656
+              value:
+                Constant:
+                  String: "123"
+            - false
+    - Expr:
+        span:
+          start: 659
+          end: 682
+        value:
+          GotoFrame:
+            - span:
+                start: 680
+                end: 681
+              value:
+                Constant:
+                  Identifier: x
+            - false
+    - Expr:
+        span:
+          start: 684
+          end: 698
+        value:
+          GotoFrame:
+            - span:
+                start: 696
+                end: 697
+              value:
+                Constant:
+                  Identifier: x
+            - false
+    - Expr:
+        span:
+          start: 700
+          end: 706
+        value:
+          CastToInteger:
+            span:
+              start: 704
+              end: 705
+            value:
+              Constant:
+                Identifier: x
+    - Expr:
+        span:
+          start: 708
+          end: 717
+        value:
+          StringLength:
+            span:
+              start: 715
+              end: 716
+            value:
+              Constant:
+                Identifier: x
+    - Expr:
+        span:
+          start: 719
+          end: 745
+        value:
+          GetUrl:
+            target:
+              span:
+                start: 736
+                end: 744
+              value:
+                Constant:
+                  String: target
+            url:
+              span:
+                start: 729
+                end: 734
+              value:
+                Constant:
+                  String: url
+            load_variables: false
+            load_target: true
+            method: None
+    - Expr:
+        span:
+          start: 747
+          end: 780
+        value:
+          GetUrl:
+            target:
+              span:
+                start: 764
+                end: 772
+              value:
+                Constant:
+                  String: target
+            url:
+              span:
+                start: 757
+                end: 762
+              value:
+                Constant:
+                  String: url
+            load_variables: false
+            load_target: true
+            method: Get
+    - Expr:
+        span:
+          start: 782
+          end: 805
+        value:
+          GetUrl:
+            target:
+              span:
+                start: 782
+                end: 805
+              value:
+                BinaryOperator:
+                  - StringAdd
+                  - span:
+                      start: 782
+                      end: 805
+                    value:
+                      Constant:
+                        String: _level
+                  - span:
+                      start: 802
+                      end: 804
+                    value:
+                      Constant:
+                        Integer: 12
+            url:
+              span:
+                start: 795
+                end: 800
+              value:
+                Constant:
+                  String: url
+            load_variables: false
+            load_target: false
+            method: None
+    - Expr:
+        span:
+          start: 807
+          end: 837
+        value:
+          GetUrl:
+            target:
+              span:
+                start: 807
+                end: 837
+              value:
+                BinaryOperator:
+                  - StringAdd
+                  - span:
+                      start: 807
+                      end: 837
+                    value:
+                      Constant:
+                        String: _level
+                  - span:
+                      start: 827
+                      end: 829
+                    value:
+                      Constant:
+                        Integer: 12
+            url:
+              span:
+                start: 820
+                end: 825
+              value:
+                Constant:
+                  String: url
+            load_variables: false
+            load_target: false
+            method: Get
+    - Expr:
+        span:
+          start: 839
+          end: 868
+        value:
+          GetUrl:
+            target:
+              span:
+                start: 839
+                end: 868
+              value:
+                BinaryOperator:
+                  - StringAdd
+                  - span:
+                      start: 839
+                      end: 868
+                    value:
+                      Constant:
+                        String: _level
+                  - span:
+                      start: 859
+                      end: 860
+                    value:
+                      Constant:
+                        Identifier: x
+            url:
+              span:
+                start: 852
+                end: 857
+              value:
+                Constant:
+                  String: url
+            load_variables: false
+            load_target: false
+            method: Get
+    - Expr:
+        span:
+          start: 870
+          end: 900
+        value:
+          GetUrl:
+            target:
+              span:
+                start: 891
+                end: 899
+              value:
+                Constant:
+                  String: target
+            url:
+              span:
+                start: 884
+                end: 889
+              value:
+                Constant:
+                  String: url
+            load_variables: true
+            load_target: true
+            method: None
+    - Expr:
+        span:
+          start: 902
+          end: 925
+        value:
+          GetUrl:
+            target:
+              span:
+                start: 923
+                end: 924
+              value:
+                Constant:
+                  Identifier: x
+            url:
+              span:
+                start: 916
+                end: 921
+              value:
+                Constant:
+                  String: url
+            load_variables: true
+            load_target: true
+            method: None
+    - Expr:
+        span:
+          start: 927
+          end: 964
+        value:
+          GetUrl:
+            target:
+              span:
+                start: 948
+                end: 956
+              value:
+                Constant:
+                  String: target
+            url:
+              span:
+                start: 941
+                end: 946
+              value:
+                Constant:
+                  String: url
+            load_variables: true
+            load_target: true
+            method: Get
+    - Expr:
+        span:
+          start: 966
+          end: 993
+        value:
+          GetUrl:
+            target:
+              span:
+                start: 966
+                end: 993
+              value:
+                BinaryOperator:
+                  - StringAdd
+                  - span:
+                      start: 966
+                      end: 993
+                    value:
+                      Constant:
+                        String: _level
+                  - span:
+                      start: 990
+                      end: 992
+                    value:
+                      Constant:
+                        Integer: 12
+            url:
+              span:
+                start: 983
+                end: 988
+              value:
+                Constant:
+                  String: url
+            load_variables: true
+            load_target: false
+            method: None
+    - Expr:
+        span:
+          start: 995
+          end: 1029
+        value:
+          GetUrl:
+            target:
+              span:
+                start: 995
+                end: 1029
+              value:
+                BinaryOperator:
+                  - StringAdd
+                  - span:
+                      start: 995
+                      end: 1029
+                    value:
+                      Constant:
+                        String: _level
+                  - span:
+                      start: 1019
+                      end: 1021
+                    value:
+                      Constant:
+                        Integer: 12
+            url:
+              span:
+                start: 1012
+                end: 1017
+              value:
+                Constant:
+                  String: url
+            load_variables: true
+            load_target: false
+            method: Get
+    - Expr:
+        span:
+          start: 1031
+          end: 1064
+        value:
+          GetUrl:
+            target:
+              span:
+                start: 1031
+                end: 1064
+              value:
+                BinaryOperator:
+                  - StringAdd
+                  - span:
+                      start: 1031
+                      end: 1064
+                    value:
+                      Constant:
+                        String: _level
+                  - span:
+                      start: 1055
+                      end: 1056
+                    value:
+                      Constant:
+                        Identifier: x
+            url:
+              span:
+                start: 1048
+                end: 1053
+              value:
+                Constant:
+                  String: url
+            load_variables: true
+            load_target: false
+            method: Get
+    - Expr:
+        span:
+          start: 1066
+          end: 1074
+        value:
+          MBAsciiToChar:
+            span:
+              start: 1072
+              end: 1073
+            value:
+              Constant:
+                Identifier: x
+    - Expr:
+        span:
+          start: 1076
+          end: 1087
+        value:
+          MBStringLength:
+            span:
+              start: 1085
+              end: 1086
+            value:
+              Constant:
+                Identifier: x
+    - Expr:
+        span:
+          start: 1089
+          end: 1097
+        value:
+          MBCharToAscii:
+            span:
+              start: 1095
+              end: 1096
+            value:
+              Constant:
+                Identifier: x
+    - Expr:
+        span:
+          start: 1099
+          end: 1120
+        value:
+          MBSubstring:
+            string:
+              span:
+                start: 1111
+                end: 1116
+              value:
+                Constant:
+                  String: abc
+            start:
+              span:
+                start: 1111
+                end: 1116
+              value:
+                Constant:
+                  String: abc
+            length:
+              span:
+                start: 1099
+                end: 1120
+              value:
+                Constant:
+                  Integer: -1
+    - Expr:
+        span:
+          start: 1122
+          end: 1146
+        value:
+          MBSubstring:
+            string:
+              span:
+                start: 1134
+                end: 1139
+              value:
+                Constant:
+                  String: abc
+            start:
+              span:
+                start: 1134
+                end: 1139
+              value:
+                Constant:
+                  String: abc
+            length:
+              span:
+                start: 1144
+                end: 1145
+              value:
+                Constant:
+                  Integer: 2
+    - Expr:
+        span:
+          start: 1148
+          end: 1159
+        value: NextFrame
+    - Expr:
+        span:
+          start: 1161
+          end: 1172
+        value:
+          GotoFrame:
+            - span:
+                start: 1161
+                end: 1172
+              value:
+                Constant:
+                  Integer: 0
+            - false
+    - Expr:
+        span:
+          start: 1174
+          end: 1183
+        value:
+          CastToNumber:
+            span:
+              start: 1181
+              end: 1182
+            value:
+              Constant:
+                Identifier: x
+    - Expr:
+        span:
+          start: 1185
+          end: 1191
+        value:
+          CharToAscii:
+            span:
+              start: 1189
+              end: 1190
+            value:
+              Constant:
+                Identifier: x
+    - Expr:
+        span:
+          start: 1193
+          end: 1199
+        value: Play
+    - Expr:
+        span:
+          start: 1201
+          end: 1212
+        value: PreviousFrame
+    - Expr:
+        span:
+          start: 1214
+          end: 1225
+        value:
+          GotoFrame:
+            - span:
+                start: 1214
+                end: 1225
+              value:
+                Constant:
+                  Integer: 0
+            - false
+    - Expr:
+        span:
+          start: 1227
+          end: 1247
+        value:
+          GetUrl:
+            target:
+              span:
+                start: 1233
+                end: 1238
+              value:
+                Constant:
+                  String: foo
+            url:
+              span:
+                start: 1240
+                end: 1246
+              value:
+                Constant:
+                  String: "print:#bmax"
+            load_variables: false
+            load_target: false
+            method: None
+    - Expr:
+        span:
+          start: 1249
+          end: 1270
+        value:
+          GetUrl:
+            target:
+              span:
+                start: 1255
+                end: 1259
+              value:
+                Constant:
+                  Identifier: this
+            url:
+              span:
+                start: 1261
+                end: 1269
+              value:
+                Constant:
+                  String: "print:#bframe"
+            load_variables: false
+            load_target: false
+            method: None
+    - Expr:
+        span:
+          start: 1272
+          end: 1294
+        value:
+          GetUrl:
+            target:
+              span:
+                start: 1278
+                end: 1283
+              value:
+                Constant:
+                  Identifier: _root
+            url:
+              span:
+                start: 1285
+                end: 1293
+              value:
+                Constant:
+                  String: "print:"
+            load_variables: false
+            load_target: false
+            method: None
+    - Expr:
+        span:
+          start: 1296
+          end: 1324
+        value:
+          GetUrl:
+            target:
+              span:
+                start: 1310
+                end: 1315
+              value:
+                Constant:
+                  String: foo
+            url:
+              span:
+                start: 1317
+                end: 1323
+              value:
+                Constant:
+                  String: "printasbitmap:#bmax"
+            load_variables: false
+            load_target: false
+            method: None
+    - Expr:
+        span:
+          start: 1326
+          end: 1355
+        value:
+          GetUrl:
+            target:
+              span:
+                start: 1340
+                end: 1344
+              value:
+                Constant:
+                  Identifier: this
+            url:
+              span:
+                start: 1346
+                end: 1354
+              value:
+                Constant:
+                  String: "printasbitmap:#bframe"
+            load_variables: false
+            load_target: false
+            method: None
+    - Expr:
+        span:
+          start: 1357
+          end: 1387
+        value:
+          GetUrl:
+            target:
+              span:
+                start: 1371
+                end: 1376
+              value:
+                Constant:
+                  Identifier: _root
+            url:
+              span:
+                start: 1378
+                end: 1386
+              value:
+                Constant:
+                  String: "printasbitmap:"
+            load_variables: false
+            load_target: false
+            method: None
+    - Expr:
+        span:
+          start: 1389
+          end: 1420
+        value:
+          GetUrl:
+            target:
+              span:
+                start: 1389
+                end: 1420
+              value:
+                Constant:
+                  String: "_level:123"
+            url:
+              span:
+                start: 1413
+                end: 1419
+              value:
+                Constant:
+                  String: "printasbitmap:#bmax"
+            load_variables: false
+            load_target: false
+            method: None
+    - Expr:
+        span:
+          start: 1422
+          end: 1451
+        value:
+          GetUrl:
+            target:
+              span:
+                start: 1422
+                end: 1451
+              value:
+                BinaryOperator:
+                  - StringAdd
+                  - span:
+                      start: 1422
+                      end: 1451
+                    value:
+                      Constant:
+                        String: "_level:"
+                  - span:
+                      start: 1439
+                      end: 1440
+                    value:
+                      Constant:
+                        Identifier: x
+            url:
+              span:
+                start: 1442
+                end: 1450
+              value:
+                Constant:
+                  String: "printasbitmap:#bframe"
+            load_variables: false
+            load_target: false
+            method: None
+    - Expr:
+        span:
+          start: 1453
+          end: 1482
+        value:
+          GetUrl:
+            target:
+              span:
+                start: 1453
+                end: 1482
+              value:
+                BinaryOperator:
+                  - StringAdd
+                  - span:
+                      start: 1453
+                      end: 1482
+                    value:
+                      Constant:
+                        String: "_level:"
+                  - span:
+                      start: 1470
+                      end: 1471
+                    value:
+                      Constant:
+                        Identifier: x
+            url:
+              span:
+                start: 1473
+                end: 1481
+              value:
+                Constant:
+                  String: "printasbitmap:"
+            load_variables: false
+            load_target: false
+            method: None
+    - Expr:
+        span:
+          start: 1484
+          end: 1507
+        value:
+          GetUrl:
+            target:
+              span:
+                start: 1484
+                end: 1507
+              value:
+                Constant:
+                  String: "_level:123"
+            url:
+              span:
+                start: 1500
+                end: 1506
+              value:
+                Constant:
+                  String: "print:#bmax"
+            load_variables: false
+            load_target: false
+            method: None
+    - Expr:
+        span:
+          start: 1509
+          end: 1530
+        value:
+          GetUrl:
+            target:
+              span:
+                start: 1509
+                end: 1530
+              value:
+                BinaryOperator:
+                  - StringAdd
+                  - span:
+                      start: 1509
+                      end: 1530
+                    value:
+                      Constant:
+                        String: "_level:"
+                  - span:
+                      start: 1518
+                      end: 1519
+                    value:
+                      Constant:
+                        Identifier: x
+            url:
+              span:
+                start: 1521
+                end: 1529
+              value:
+                Constant:
+                  String: "print:#bframe"
+            load_variables: false
+            load_target: false
+            method: None
+    - Expr:
+        span:
+          start: 1532
+          end: 1553
+        value:
+          GetUrl:
+            target:
+              span:
+                start: 1532
+                end: 1553
+              value:
+                BinaryOperator:
+                  - StringAdd
+                  - span:
+                      start: 1532
+                      end: 1553
+                    value:
+                      Constant:
+                        String: "_level:"
+                  - span:
+                      start: 1541
+                      end: 1542
+                    value:
+                      Constant:
+                        Identifier: x
+            url:
+              span:
+                start: 1544
+                end: 1552
+              value:
+                Constant:
+                  String: "print:"
+            load_variables: false
+            load_target: false
+            method: None
+    - Expr:
+        span:
+          start: 1555
+          end: 1566
+        value:
+          GetRandomNumber:
+            span:
+              start: 1562
+              end: 1565
+            value:
+              Constant:
+                Integer: 123
+    - Expr:
+        span:
+          start: 1568
+          end: 1586
+        value:
+          RemoveSprite:
+            span:
+              start: 1584
+              end: 1585
+            value:
+              Constant:
+                Identifier: x
+    - Expr:
+        span:
+          start: 1588
+          end: 1600
+        value:
+          StartDrag:
+            target:
+              span:
+                start: 1598
+                end: 1599
+              value:
+                Constant:
+                  Identifier: x
+            lock: false
+            constraints: ~
+    - Expr:
+        span:
+          start: 1602
+          end: 1620
+        value:
+          StartDrag:
+            target:
+              span:
+                start: 1612
+                end: 1613
+              value:
+                Constant:
+                  Identifier: x
+            lock: true
+            constraints: ~
+    - Expr:
+        span:
+          start: 1622
+          end: 1641
+        value:
+          StartDrag:
+            target:
+              span:
+                start: 1632
+                end: 1633
+              value:
+                Constant:
+                  Identifier: x
+            lock: false
+            constraints: ~
+    - Expr:
+        span:
+          start: 1643
+          end: 1673
+        value:
+          StartDrag:
+            target:
+              span:
+                start: 1653
+                end: 1654
+              value:
+                Constant:
+                  Identifier: x
+            lock: true
+            constraints:
+              - span:
+                  start: 1662
+                  end: 1663
+                value:
+                  Constant:
+                    Integer: 1
+              - span:
+                  start: 1665
+                  end: 1666
+                value:
+                  Constant:
+                    Integer: 2
+              - span:
+                  start: 1668
+                  end: 1669
+                value:
+                  Constant:
+                    Integer: 3
+              - span:
+                  start: 1671
+                  end: 1672
+                value:
+                  Constant:
+                    Integer: 4
+    - Expr:
+        span:
+          start: 1675
+          end: 1681
+        value: Stop
+    - Expr:
+        span:
+          start: 1683
+          end: 1698
+        value: StopSounds
+    - Expr:
+        span:
+          start: 1700
+          end: 1710
+        value: EndDrag
+    - Expr:
+        span:
+          start: 1712
+          end: 1721
+        value:
+          CastToString:
+            span:
+              start: 1719
+              end: 1720
+            value:
+              Constant:
+                Identifier: x
+    - Expr:
+        span:
+          start: 1723
+          end: 1738
+        value:
+          Substring:
+            string:
+              span:
+                start: 1733
+                end: 1734
+              value:
+                Constant:
+                  Identifier: x
+            start:
+              span:
+                start: 1733
+                end: 1734
+              value:
+                Constant:
+                  Identifier: x
+            length:
+              span:
+                start: 1723
+                end: 1738
+              value:
+                Constant:
+                  Integer: -1
+    - Expr:
+        span:
+          start: 1740
+          end: 1758
+        value:
+          Substring:
+            string:
+              span:
+                start: 1750
+                end: 1751
+              value:
+                Constant:
+                  Identifier: x
+            start:
+              span:
+                start: 1750
+                end: 1751
+              value:
+                Constant:
+                  Identifier: x
+            length:
+              span:
+                start: 1756
+                end: 1757
+              value:
+                Constant:
+                  Integer: 2
+    - Expr:
+        span:
+          start: 1760
+          end: 1773
+        value:
+          GetTargetPath:
+            span:
+              start: 1771
+              end: 1772
+            value:
+              Constant:
+                Identifier: x
+    - Expr:
+        span:
+          start: 1775
+          end: 1794
+        value: ToggleQuality
+    - Expr:
+        span:
+          start: 1796
+          end: 1812
+        value:
+          Trace:
+            span:
+              start: 1802
+              end: 1811
+            value:
+              Constant:
+                String: message
+    - Expr:
+        span:
+          start: 1814
+          end: 1828
+        value:
+          GetUrl:
+            target:
+              span:
+                start: 1826
+                end: 1827
+              value:
+                Constant:
+                  Identifier: x
+            url:
+              span:
+                start: 1814
+                end: 1828
+              value:
+                Constant:
+                  String: ""
+            load_variables: false
+            load_target: true
+            method: None
+    - Expr:
+        span:
+          start: 1830
+          end: 1847
+        value:
+          GetUrl:
+            target:
+              span:
+                start: 1830
+                end: 1847
+              value:
+                BinaryOperator:
+                  - StringAdd
+                  - span:
+                      start: 1830
+                      end: 1847
+                    value:
+                      Constant:
+                        String: _level
+                  - span:
+                      start: 1845
+                      end: 1846
+                    value:
+                      Constant:
+                        Identifier: x
+            url:
+              span:
+                start: 1830
+                end: 1847
+              value:
+                Constant:
+                  String: ""
+            load_variables: false
+            load_target: false
+            method: None
+    - Expr:
+        span:
+          start: 1849
+          end: 1868
+        value:
+          GetUrl:
+            target:
+              span:
+                start: 1849
+                end: 1868
+              value:
+                BinaryOperator:
+                  - StringAdd
+                  - span:
+                      start: 1849
+                      end: 1868
+                    value:
+                      Constant:
+                        String: _level
+                  - span:
+                      start: 1864
+                      end: 1867
+                    value:
+                      Constant:
+                        Integer: 123
+            url:
+              span:
+                start: 1849
+                end: 1868
+              value:
+                Constant:
+                  String: ""
+            load_variables: false
+            load_target: false
+            method: None
+  interfaces: []
+  classes: []

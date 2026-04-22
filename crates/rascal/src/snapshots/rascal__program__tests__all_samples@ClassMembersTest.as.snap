@@ -1,0 +1,981 @@
+---
+source: crates/rascal/src/program.rs
+expression: parsed
+input_file: samples/as2_classes/ClassMembersTest.as
+---
+Ok:
+  initial_script: []
+  interfaces:
+    - name: AnEmptyInterface
+      extends: ~
+      functions: {}
+    - name: path.to.ANestedInterface
+      extends: ~
+      functions:
+        success:
+          name:
+            span:
+              start: 47
+              end: 54
+            value: success
+          args: []
+          return_type: ~
+  classes:
+    - name: ClassMembersTest
+      extends: ~
+      implements:
+        - AnEmptyInterface
+      functions:
+        test:
+          function:
+            signature:
+              name:
+                span:
+                  start: 283
+                  end: 287
+                value: test
+              args: []
+              return_type: ~
+            body:
+              - Expr:
+                  span:
+                    start: 300
+                    end: 314
+                  value:
+                    Trace:
+                      span:
+                        start: 306
+                        end: 313
+                      value:
+                        Constant:
+                          String: test!
+          is_static: false
+        greet:
+          function:
+            signature:
+              name:
+                span:
+                  start: 637
+                  end: 642
+                value: greet
+              args:
+                - name: name
+                  type_name:
+                    span:
+                      start: 649
+                      end: 655
+                    value: String
+              return_type:
+                span:
+                  start: 658
+                  end: 662
+                value: Void
+            body:
+              - Expr:
+                  span:
+                    start: 673
+                    end: 700
+                  value:
+                    Trace:
+                      span:
+                        start: 679
+                        end: 699
+                      value:
+                        BinaryOperator:
+                          - Add
+                          - span:
+                              start: 679
+                              end: 693
+                            value:
+                              BinaryOperator:
+                                - Add
+                                - span:
+                                    start: 679
+                                    end: 686
+                                  value:
+                                    Constant:
+                                      String: "Hey, "
+                                - span:
+                                    start: 689
+                                    end: 693
+                                  value:
+                                    Constant:
+                                      Identifier: name
+                          - span:
+                              start: 696
+                              end: 699
+                            value:
+                              Constant:
+                                String: "!"
+              - Expr:
+                  span:
+                    start: 710
+                    end: 727
+                  value:
+                    Call:
+                      name:
+                        span:
+                          start: 710
+                          end: 725
+                        value:
+                          Field:
+                            - span:
+                                start: 710
+                                end: 725
+                              value:
+                                Constant:
+                                  Identifier: ClassMembersTest
+                            - span:
+                                start: 710
+                                end: 725
+                              value:
+                                Constant:
+                                  String: shoutStatically
+                      args: []
+          is_static: false
+        shoutStatically:
+          function:
+            signature:
+              name:
+                span:
+                  start: 756
+                  end: 771
+                value: shoutStatically
+              args: []
+              return_type: ~
+            body:
+              - Expr:
+                  span:
+                    start: 784
+                    end: 797
+                  value:
+                    Trace:
+                      span:
+                        start: 790
+                        end: 796
+                      value:
+                        Field:
+                          - span:
+                              start: 790
+                              end: 796
+                            value:
+                              Constant:
+                                Identifier: ClassMembersTest
+                          - span:
+                              start: 790
+                              end: 796
+                            value:
+                              Constant:
+                                String: scream
+          is_static: true
+        maybeABitmapData:
+          function:
+            signature:
+              name:
+                span:
+                  start: 819
+                  end: 835
+                value: maybeABitmapData
+              args: []
+              return_type:
+                span:
+                  start: 839
+                  end: 849
+                value: flash.display.BitmapData
+            body:
+              - Return:
+                  - span:
+                      start: 867
+                      end: 871
+                    value:
+                      Constant:
+                        Identifier: "null"
+          is_static: false
+        secret:
+          function:
+            signature:
+              name:
+                span:
+                  start: 914
+                  end: 920
+                value: secret
+              args: []
+              return_type: ~
+            body: []
+          is_static: false
+        notASecret:
+          function:
+            signature:
+              name:
+                span:
+                  start: 947
+                  end: 957
+                value: notASecret
+              args: []
+              return_type: ~
+            body: []
+          is_static: false
+        __get__virtualProperty:
+          function:
+            signature:
+              name:
+                span:
+                  start: 981
+                  end: 996
+                value: virtualProperty
+              args: []
+              return_type: ~
+            body:
+              - Return:
+                  - span:
+                      start: 1016
+                      end: 1026
+                    value:
+                      Constant:
+                        String: virtual!
+          is_static: false
+        __get__onlyGetter:
+          function:
+            signature:
+              name:
+                span:
+                  start: 1052
+                  end: 1062
+                value: onlyGetter
+              args: []
+              return_type: ~
+            body:
+              - Return:
+                  - span:
+                      start: 1082
+                      end: 1090
+                    value:
+                      Constant:
+                        String: getter
+          is_static: false
+        __set__onlySetter:
+          function:
+            signature:
+              name:
+                span:
+                  start: 1116
+                  end: 1126
+                value: onlySetter
+              args:
+                - name: value
+                  type_name: ~
+              return_type: ~
+            body:
+              - Expr:
+                  span:
+                    start: 1144
+                    end: 1172
+                  value:
+                    Trace:
+                      span:
+                        start: 1150
+                        end: 1171
+                      value:
+                        BinaryOperator:
+                          - Add
+                          - span:
+                              start: 1150
+                              end: 1163
+                            value:
+                              Constant:
+                                String: "New value: "
+                          - span:
+                              start: 1166
+                              end: 1171
+                            value:
+                              Constant:
+                                Identifier: value
+              - Return:
+                  - span:
+                      start: 1116
+                      end: 1126
+                    value:
+                      Call:
+                        name:
+                          span:
+                            start: 1116
+                            end: 1126
+                          value:
+                            Field:
+                              - span:
+                                  start: 1116
+                                  end: 1126
+                                value:
+                                  Constant:
+                                    Identifier: this
+                              - span:
+                                  start: 1116
+                                  end: 1126
+                                value:
+                                  Constant:
+                                    String: __get__onlySetter
+                        args: []
+          is_static: false
+        __set__virtualProperty:
+          function:
+            signature:
+              name:
+                span:
+                  start: 1198
+                  end: 1213
+                value: virtualProperty
+              args:
+                - name: value
+                  type_name: ~
+              return_type: ~
+            body:
+              - Expr:
+                  span:
+                    start: 1231
+                    end: 1269
+                  value:
+                    Trace:
+                      span:
+                        start: 1237
+                        end: 1268
+                      value:
+                        BinaryOperator:
+                          - Add
+                          - span:
+                              start: 1237
+                              end: 1260
+                            value:
+                              Constant:
+                                String: "Virtually setting to "
+                          - span:
+                              start: 1263
+                              end: 1268
+                            value:
+                              Constant:
+                                Identifier: value
+              - Return:
+                  - span:
+                      start: 1198
+                      end: 1213
+                    value:
+                      Call:
+                        name:
+                          span:
+                            start: 1198
+                            end: 1213
+                          value:
+                            Field:
+                              - span:
+                                  start: 1198
+                                  end: 1213
+                                value:
+                                  Constant:
+                                    Identifier: this
+                              - span:
+                                  start: 1198
+                                  end: 1213
+                                value:
+                                  Constant:
+                                    String: __get__virtualProperty
+                        args: []
+          is_static: false
+        __get__virtualPropertyProbablyStatic:
+          function:
+            signature:
+              name:
+                span:
+                  start: 1302
+                  end: 1331
+                value: virtualPropertyProbablyStatic
+              args: []
+              return_type: ~
+            body:
+              - Return:
+                  - span:
+                      start: 1351
+                      end: 1360
+                    value:
+                      Constant:
+                        String: Static!
+          is_static: true
+        __set__virtualPropertyProbablyStatic:
+          function:
+            signature:
+              name:
+                span:
+                  start: 1386
+                  end: 1415
+                value: virtualPropertyProbablyStatic
+              args:
+                - name: value
+                  type_name: ~
+              return_type: ~
+            body:
+              - Expr:
+                  span:
+                    start: 1433
+                    end: 1461
+                  value:
+                    Trace:
+                      span:
+                        start: 1439
+                        end: 1460
+                      value:
+                        BinaryOperator:
+                          - Add
+                          - span:
+                              start: 1439
+                              end: 1452
+                            value:
+                              Constant:
+                                String: "New value: "
+                          - span:
+                              start: 1455
+                              end: 1460
+                            value:
+                              Constant:
+                                Identifier: value
+              - Return:
+                  - span:
+                      start: 1386
+                      end: 1415
+                    value:
+                      Call:
+                        name:
+                          span:
+                            start: 1386
+                            end: 1415
+                          value:
+                            Field:
+                              - span:
+                                  start: 1386
+                                  end: 1415
+                                value:
+                                  Constant:
+                                    Identifier: this
+                              - span:
+                                  start: 1386
+                                  end: 1415
+                                value:
+                                  Constant:
+                                    String: __get__virtualPropertyProbablyStatic
+                        args: []
+          is_static: false
+        __set__virtualPropertyProbablyNotStatic:
+          function:
+            signature:
+              name:
+                span:
+                  start: 1487
+                  end: 1519
+                value: virtualPropertyProbablyNotStatic
+              args:
+                - name: value
+                  type_name: ~
+              return_type: ~
+            body:
+              - Expr:
+                  span:
+                    start: 1537
+                    end: 1565
+                  value:
+                    Trace:
+                      span:
+                        start: 1543
+                        end: 1564
+                      value:
+                        BinaryOperator:
+                          - Add
+                          - span:
+                              start: 1543
+                              end: 1556
+                            value:
+                              Constant:
+                                String: "New value: "
+                          - span:
+                              start: 1559
+                              end: 1564
+                            value:
+                              Constant:
+                                Identifier: value
+              - Return:
+                  - span:
+                      start: 1487
+                      end: 1519
+                    value:
+                      Call:
+                        name:
+                          span:
+                            start: 1487
+                            end: 1519
+                          value:
+                            Field:
+                              - span:
+                                  start: 1487
+                                  end: 1519
+                                value:
+                                  Constant:
+                                    Identifier: this
+                              - span:
+                                  start: 1487
+                                  end: 1519
+                                value:
+                                  Constant:
+                                    String: __get__virtualPropertyProbablyNotStatic
+                        args: []
+          is_static: false
+        __get__virtualPropertyProbablyNotStatic:
+          function:
+            signature:
+              name:
+                span:
+                  start: 1598
+                  end: 1630
+                value: virtualPropertyProbablyNotStatic
+              args: []
+              return_type: ~
+            body:
+              - Return:
+                  - span:
+                      start: 1650
+                      end: 1659
+                    value:
+                      Constant:
+                        String: Static!
+          is_static: true
+      virtual_properties:
+        virtualProperty:
+          name: virtualProperty
+          getter: __get__virtualProperty
+          setter: __set__virtualProperty
+          is_static: false
+        onlyGetter:
+          name: onlyGetter
+          getter: __get__onlyGetter
+          setter: ~
+          is_static: false
+        onlySetter:
+          name: onlySetter
+          getter: ~
+          setter: __set__onlySetter
+          is_static: false
+        virtualPropertyProbablyStatic:
+          name: virtualPropertyProbablyStatic
+          getter: __get__virtualPropertyProbablyStatic
+          setter: __set__virtualPropertyProbablyStatic
+          is_static: true
+        virtualPropertyProbablyNotStatic:
+          name: virtualPropertyProbablyNotStatic
+          getter: __get__virtualPropertyProbablyNotStatic
+          setter: __set__virtualPropertyProbablyNotStatic
+          is_static: false
+      fields:
+        regularPropertyWithoutValue:
+          value: ~
+          type_name: ~
+          is_static: false
+        regularPropertySetToFive:
+          value:
+            span:
+              start: 188
+              end: 189
+            value:
+              Constant:
+                Integer: 5
+          type_name: ~
+          is_static: false
+        BitmapData:
+          value:
+            span:
+              start: 212
+              end: 234
+            value:
+              Constant:
+                String: BitmapData on class!
+          type_name: ~
+          is_static: false
+        scream:
+          value:
+            span:
+              start: 260
+              end: 267
+            value:
+              Constant:
+                String: Ahhh!
+          type_name: ~
+          is_static: true
+      constructor:
+        signature:
+          name:
+            span:
+              start: 336
+              end: 352
+            value: ClassMembersTest
+          args:
+            - name: name
+              type_name:
+                span:
+                  start: 359
+                  end: 365
+                value: String
+          return_type: ~
+        body:
+          - Expr:
+              span:
+                start: 377
+                end: 391
+              value:
+                Call:
+                  name:
+                    span:
+                      start: 377
+                      end: 382
+                    value:
+                      Field:
+                        - span:
+                            start: 377
+                            end: 382
+                          value:
+                            Constant: This
+                        - span:
+                            start: 377
+                            end: 382
+                          value:
+                            Constant:
+                              String: greet
+                  args:
+                    - span:
+                        start: 383
+                        end: 390
+                      value:
+                        Constant:
+                          String: world
+          - Expr:
+              span:
+                start: 401
+                end: 418
+              value:
+                Trace:
+                  span:
+                    start: 407
+                    end: 417
+                  value:
+                    Field:
+                      - span:
+                          start: 407
+                          end: 417
+                        value:
+                          Constant: This
+                      - span:
+                          start: 407
+                          end: 417
+                        value:
+                          Constant:
+                            String: BitmapData
+          - Expr:
+              span:
+                start: 428
+                end: 496
+              value:
+                Trace:
+                  span:
+                    start: 434
+                    end: 495
+                  value:
+                    BinaryOperator:
+                      - Add
+                      - span:
+                          start: 434
+                          end: 465
+                        value:
+                          Constant:
+                            String: "regularPropertyWithoutValue: "
+                      - span:
+                          start: 468
+                          end: 495
+                        value:
+                          Field:
+                            - span:
+                                start: 468
+                                end: 495
+                              value:
+                                Constant: This
+                            - span:
+                                start: 468
+                                end: 495
+                              value:
+                                Constant:
+                                  String: regularPropertyWithoutValue
+          - Expr:
+              span:
+                start: 507
+                end: 545
+              value:
+                Trace:
+                  span:
+                    start: 534
+                    end: 544
+                  value:
+                    Call:
+                      name:
+                        span:
+                          start: 534
+                          end: 542
+                        value:
+                          Field:
+                            - span:
+                                start: 525
+                                end: 534
+                              value:
+                                Call:
+                                  name:
+                                    span:
+                                      start: 525
+                                      end: 532
+                                    value:
+                                      Field:
+                                        - span:
+                                            start: 513
+                                            end: 525
+                                          value:
+                                            Field:
+                                              - span:
+                                                  start: 513
+                                                  end: 525
+                                                value:
+                                                  Field:
+                                                    - span:
+                                                        start: 513
+                                                        end: 525
+                                                      value:
+                                                        Constant:
+                                                          Identifier: path
+                                                    - span:
+                                                        start: 513
+                                                        end: 525
+                                                      value:
+                                                        Constant:
+                                                          String: to
+                                              - span:
+                                                  start: 513
+                                                  end: 525
+                                                value:
+                                                  Constant:
+                                                    String: ANestedClass
+                                        - span:
+                                            start: 526
+                                            end: 532
+                                          value:
+                                            Constant:
+                                              String: create
+                                  args: []
+                            - span:
+                                start: 535
+                                end: 542
+                              value:
+                                Constant:
+                                  String: success
+                      args: []
+          - Expr:
+              span:
+                start: 556
+                end: 583
+              value:
+                BinaryOperator:
+                  - Assign
+                  - span:
+                      start: 556
+                      end: 571
+                    value:
+                      Field:
+                        - span:
+                            start: 556
+                            end: 571
+                          value:
+                            Constant: This
+                        - span:
+                            start: 556
+                            end: 571
+                          value:
+                            Constant:
+                              String: virtualProperty
+                  - span:
+                      start: 574
+                      end: 583
+                    value:
+                      Constant:
+                        String: a value
+          - Expr:
+              span:
+                start: 593
+                end: 615
+              value:
+                Trace:
+                  span:
+                    start: 599
+                    end: 614
+                  value:
+                    Field:
+                      - span:
+                          start: 599
+                          end: 614
+                        value:
+                          Constant: This
+                      - span:
+                          start: 599
+                          end: 614
+                        value:
+                          Constant:
+                            String: virtualProperty
+    - name: path.to.ANestedClass
+      extends: path.to.ANestedBaseClass
+      implements:
+        - path.to.ANestedInterface
+      functions:
+        create:
+          function:
+            signature:
+              name:
+                span:
+                  start: 163
+                  end: 169
+                value: create
+              args: []
+              return_type:
+                span:
+                  start: 173
+                  end: 185
+                value: path.to.ANestedClass
+            body:
+              - Return:
+                  - span:
+                      start: 203
+                      end: 206
+                    value:
+                      New:
+                        name:
+                          span:
+                            start: 207
+                            end: 219
+                          value:
+                            Field:
+                              - span:
+                                  start: 207
+                                  end: 219
+                                value:
+                                  Field:
+                                    - span:
+                                        start: 207
+                                        end: 219
+                                      value:
+                                        Constant:
+                                          Identifier: path
+                                    - span:
+                                        start: 207
+                                        end: 219
+                                      value:
+                                        Constant:
+                                          String: to
+                              - span:
+                                  start: 207
+                                  end: 219
+                                value:
+                                  Constant:
+                                    String: ANestedClass
+                        args: []
+          is_static: true
+        success:
+          function:
+            signature:
+              name:
+                span:
+                  start: 250
+                  end: 257
+                value: success
+              args: []
+              return_type: ~
+            body:
+              - Expr:
+                  span:
+                    start: 270
+                    end: 297
+                  value:
+                    Trace:
+                      span:
+                        start: 288
+                        end: 296
+                      value:
+                        Field:
+                          - span:
+                              start: 276
+                              end: 288
+                            value:
+                              Field:
+                                - span:
+                                    start: 276
+                                    end: 288
+                                  value:
+                                    Field:
+                                      - span:
+                                          start: 276
+                                          end: 288
+                                        value:
+                                          Constant:
+                                            Identifier: path
+                                      - span:
+                                          start: 276
+                                          end: 288
+                                        value:
+                                          Constant:
+                                            String: to
+                                - span:
+                                    start: 276
+                                    end: 288
+                                  value:
+                                    Constant:
+                                      String: ANestedClass
+                          - span:
+                              start: 289
+                              end: 296
+                            value:
+                              Constant:
+                                String: message
+          is_static: false
+      virtual_properties: {}
+      fields:
+        message:
+          value:
+            span:
+              start: 123
+              end: 133
+            value:
+              Constant:
+                String: Success!
+          type_name: ~
+          is_static: true
+      constructor:
+        signature:
+          name:
+            span:
+              start: 6
+              end: 26
+            value: path.to.ANestedClass
+          args: []
+          return_type: ~
+        body: []
+    - name: path.to.ANestedBaseClass
+      extends: ~
+      implements: []
+      functions: {}
+      virtual_properties: {}
+      fields: {}
+      constructor:
+        signature:
+          name:
+            span:
+              start: 6
+              end: 30
+            value: path.to.ANestedBaseClass
+          args: []
+          return_type: ~
+        body: []

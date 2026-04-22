@@ -1,0 +1,50 @@
+---
+source: crates/rascal/src/tests.rs
+expression: result
+input_file: samples/as2/block.as
+---
+initializer:
+  actions:
+    - ConstantPool:
+        - outside
+        - visible
+        - inside
+        - "outside: "
+        - ", inside: "
+    - Push:
+        - Constant: 0
+        - Constant: 1
+    - DefineLocal
+    - Push:
+        - Constant: 2
+        - Constant: 1
+    - DefineLocal
+    - Push:
+        - Constant: 3
+        - Constant: 0
+    - GetVariable
+    - Add2
+    - Push:
+        - Constant: 4
+    - Add2
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 3
+        - Constant: 0
+    - GetVariable
+    - Add2
+    - Push:
+        - Constant: 4
+    - Add2
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Add2
+    - Trace
+  label_positions: {}
+extra_modules: []
+swf_version: 15

@@ -8,10 +8,8 @@ version.workspace = true
 [dependencies]
 anyhow = "1"
 clap = { version = "4", features = ["derive"] }
-rascal_as2 = { path = "../as2" }
-rascal_as2_pcode = { path = "../as2_pcode" }
-rascal_as2_codegen = { path = "../as2_codegen" }
+rascal = { path = "../rascal" }
 
 [features]
 default = []
-winnow-debug = ["rascal_as2/winnow-debug"]
+winnow-debug = ["rascal/winnow-debug"]

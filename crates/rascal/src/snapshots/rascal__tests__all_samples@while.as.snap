@@ -1,0 +1,102 @@
+---
+source: crates/rascal/src/tests.rs
+expression: result
+input_file: samples/as2/while.as
+---
+initializer:
+  actions:
+    - ConstantPool:
+        - x
+        - "--"
+        - end
+    - Push:
+        - Constant: 0
+        - Integer: 0
+    - DefineLocal
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Integer: 5
+    - Less2
+    - Not
+    - If: loc0001
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Trace
+    - Push:
+        - Constant: 0
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Integer: 1
+    - Add2
+    - SetVariable
+    - Jump: loc0000
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Integer: 0
+    - Less2
+    - Not
+    - Not
+    - If: loc0003
+    - Push:
+        - Constant: 0
+        - Constant: 0
+    - GetVariable
+    - Decrement
+    - SetVariable
+    - Jump: loc0002
+    - Push:
+        - Constant: 1
+    - Trace
+    - Push:
+        - "True"
+    - Not
+    - If: loc0005
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 0
+        - Constant: 0
+    - GetVariable
+    - Increment
+    - SetVariable
+    - Push:
+        - Integer: 2
+    - Equals2
+    - Not
+    - If: loc0006
+    - Jump: loc0004
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Integer: 5
+    - Equals2
+    - Not
+    - If: loc0007
+    - Jump: loc0005
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Trace
+    - Jump: loc0004
+    - Push:
+        - Constant: 2
+    - Trace
+  label_positions:
+    loc0000: 3
+    loc0001: 18
+    loc0002: 18
+    loc0003: 30
+    loc0004: 32
+    loc0006: 46
+    loc0007: 53
+    loc0005: 57
+extra_modules: []
+swf_version: 15

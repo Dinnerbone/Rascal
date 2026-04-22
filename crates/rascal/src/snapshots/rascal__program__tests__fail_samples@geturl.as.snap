@@ -1,0 +1,26 @@
+---
+source: crates/rascal/src/program.rs
+expression: parsed
+input_file: samples/as2_errors/special_functions/geturl.as
+---
+error: Wrong number of parameters; getURL requires between 1 and 3.
+  ╭▸ geturl.as:1:1
+  │
+1 │ getURL();
+  │ ━━━━━━━━
+  ╰╴
+error: Wrong number of parameters; getURL requires between 1 and 3.
+  ╭▸ geturl.as:2:1
+  │
+2 │ getURL("http://ruffle.rs", "window", "get", "foo");
+  ╰╴━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+error: Method name must be GET or POST.
+  ╭▸ geturl.as:3:38
+  │
+3 │ getURL("http://ruffle.rs", "window", x);
+  ╰╴                                     ━
+error: Method name must be GET or POST.
+  ╭▸ geturl.as:4:38
+  │
+4 │ getURL("http://ruffle.rs", "window", "foo");
+  ╰╴                                     ━━━━━

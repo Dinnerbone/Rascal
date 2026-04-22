@@ -588,7 +588,7 @@ pub enum Document {
 }
 
 impl Document {
-    pub(crate) fn simplify(&mut self) -> bool {
+    pub fn simplify(&mut self) -> bool {
         let mut anything_changed = false;
 
         match self {

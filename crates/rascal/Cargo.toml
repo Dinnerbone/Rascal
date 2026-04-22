@@ -1,0 +1,24 @@
+[package]
+name = "rascal"
+authors.workspace = true
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+rascal_as2 = { path = "../as2" }
+rascal_as2_pcode = { path = "../as2_pcode" }
+rascal_as2_codegen = { path = "../as2_codegen" }
+rascal_common = { path = "../common" }
+indexmap = { version = "2.14.0", features = ["serde"] }
+serde = { version = "1.0.228", features = ["derive"] }
+annotate-snippets = "0.12.12"
+byteorder = "1.5.0"
+swf = "0.2.2"
+
+[dev-dependencies]
+insta = { version = "1.47.2", features = ["yaml", "glob"] }
+
+[features]
+default = []
+winnow-debug = ["rascal_as2/winnow-debug"]

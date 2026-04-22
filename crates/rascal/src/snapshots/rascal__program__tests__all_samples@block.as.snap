@@ -1,0 +1,134 @@
+---
+source: crates/rascal/src/program.rs
+expression: parsed
+input_file: samples/as2/block.as
+---
+Ok:
+  initial_script:
+    - Declare:
+        - name:
+            span:
+              start: 97
+              end: 104
+            value: outside
+          value:
+            span:
+              start: 107
+              end: 116
+            value:
+              Constant:
+                String: visible
+          type_name: ~
+    - Block:
+        - Declare:
+            - name:
+                span:
+                  start: 128
+                  end: 134
+                value: inside
+              value:
+                span:
+                  start: 137
+                  end: 146
+                value:
+                  Constant:
+                    String: visible
+              type_name: ~
+        - Expr:
+            span:
+              start: 152
+              end: 204
+            value:
+              Trace:
+                span:
+                  start: 158
+                  end: 203
+                value:
+                  BinaryOperator:
+                    - Add
+                    - span:
+                        start: 158
+                        end: 194
+                      value:
+                        BinaryOperator:
+                          - Add
+                          - span:
+                              start: 158
+                              end: 179
+                            value:
+                              BinaryOperator:
+                                - Add
+                                - span:
+                                    start: 158
+                                    end: 169
+                                  value:
+                                    Constant:
+                                      String: "outside: "
+                                - span:
+                                    start: 172
+                                    end: 179
+                                  value:
+                                    Constant:
+                                      Identifier: outside
+                          - span:
+                              start: 182
+                              end: 194
+                            value:
+                              Constant:
+                                String: ", inside: "
+                    - span:
+                        start: 197
+                        end: 203
+                      value:
+                        Constant:
+                          Identifier: inside
+    - Expr:
+        span:
+          start: 208
+          end: 260
+        value:
+          Trace:
+            span:
+              start: 214
+              end: 259
+            value:
+              BinaryOperator:
+                - Add
+                - span:
+                    start: 214
+                    end: 250
+                  value:
+                    BinaryOperator:
+                      - Add
+                      - span:
+                          start: 214
+                          end: 235
+                        value:
+                          BinaryOperator:
+                            - Add
+                            - span:
+                                start: 214
+                                end: 225
+                              value:
+                                Constant:
+                                  String: "outside: "
+                            - span:
+                                start: 228
+                                end: 235
+                              value:
+                                Constant:
+                                  Identifier: outside
+                      - span:
+                          start: 238
+                          end: 250
+                        value:
+                          Constant:
+                            String: ", inside: "
+                - span:
+                    start: 253
+                    end: 259
+                  value:
+                    Constant:
+                      Identifier: inside
+  interfaces: []
+  classes: []

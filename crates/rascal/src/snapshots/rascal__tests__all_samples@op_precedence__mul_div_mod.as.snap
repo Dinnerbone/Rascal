@@ -1,0 +1,290 @@
+---
+source: crates/rascal/src/tests.rs
+expression: result
+input_file: samples/as2/op_precedence/mul_div_mod.as
+---
+initializer:
+  actions:
+    - ConstantPool:
+        - a
+        - b
+        - c
+        - a=
+        - ", b="
+        - ", c="
+        - "----"
+        - "a * b / c = "
+        - "(a * b) / c = "
+        - "---"
+        - "a / b * c = "
+        - "(a / b) * c = "
+        - "a % b * c = "
+        - "(a % b) * c = "
+        - "a * b % c = "
+        - "(a * b) % c = "
+        - "a % b / c = "
+        - "(a % b) / c = "
+        - "a / b % c = "
+        - "(a / b) % c = "
+        - "Nested: a * b / c * b = "
+        - "Nested reference: (((a * b) / c) * b) = "
+    - Push:
+        - Constant: 0
+        - Integer: 20
+    - DefineLocal
+    - Push:
+        - Constant: 1
+        - Integer: 6
+    - DefineLocal
+    - Push:
+        - Constant: 2
+        - Integer: 4
+    - DefineLocal
+    - Push:
+        - Constant: 3
+        - Constant: 0
+    - GetVariable
+    - Add2
+    - Push:
+        - Constant: 4
+    - Add2
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Add2
+    - Push:
+        - Constant: 5
+    - Add2
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 6
+    - Trace
+    - Push:
+        - Constant: 7
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Multiply
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Divide
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 8
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Multiply
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Divide
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 9
+    - Trace
+    - Push:
+        - Constant: 10
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Divide
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Multiply
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 11
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Divide
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Multiply
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 9
+    - Trace
+    - Push:
+        - Constant: 12
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Modulo
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Multiply
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 13
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Modulo
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Multiply
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 9
+    - Trace
+    - Push:
+        - Constant: 14
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Multiply
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Modulo
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 15
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Multiply
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Modulo
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 9
+    - Trace
+    - Push:
+        - Constant: 16
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Modulo
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Divide
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 17
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Modulo
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Divide
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 9
+    - Trace
+    - Push:
+        - Constant: 18
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Divide
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Modulo
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 19
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Divide
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Modulo
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 9
+    - Trace
+    - Push:
+        - Constant: 20
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Multiply
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Divide
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Multiply
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 21
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Multiply
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - Divide
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Multiply
+    - Add2
+    - Trace
+  label_positions: {}
+extra_modules: []
+swf_version: 15

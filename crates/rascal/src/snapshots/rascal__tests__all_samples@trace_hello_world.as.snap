@@ -1,0 +1,15 @@
+---
+source: crates/rascal/src/tests.rs
+expression: result
+input_file: samples/as2/trace_hello_world.as
+---
+initializer:
+  actions:
+    - ConstantPool:
+        - Hello World
+    - Push:
+        - Constant: 0
+    - Trace
+  label_positions: {}
+extra_modules: []
+swf_version: 15

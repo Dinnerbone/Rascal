@@ -1,0 +1,127 @@
+---
+source: crates/rascal/src/tests.rs
+expression: result
+input_file: samples/as2/switch_in_loop_break_continue.as
+---
+initializer:
+  actions:
+    - ConstantPool:
+        - i
+        - loop i=
+        - "  case 0 -> continue outer"
+        - "  case 1/2 -> fallthrough then break outer at 2"
+        - "  case 3 -> break switch only"
+        - "  case 4 -> continue outer from nested block"
+        - "  default -> normal work"
+        - "  after switch i="
+        - done
+    - Push:
+        - Constant: 0
+        - Integer: 0
+    - DefineLocal
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Integer: 6
+    - Less2
+    - Not
+    - If: loc0000
+    - Push:
+        - Constant: 1
+        - Constant: 0
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - StoreRegister: 0
+    - Push:
+        - Integer: 0
+    - StrictEquals
+    - If: loc0004
+    - Push:
+        - Register: 0
+        - Integer: 1
+    - StrictEquals
+    - If: loc0005
+    - Push:
+        - Register: 0
+        - Integer: 2
+    - StrictEquals
+    - If: loc0006
+    - Push:
+        - Register: 0
+        - Integer: 3
+    - StrictEquals
+    - If: loc0007
+    - Push:
+        - Register: 0
+        - Integer: 4
+    - StrictEquals
+    - If: loc0008
+    - Jump: loc0009
+    - Push:
+        - Constant: 2
+    - Trace
+    - Jump: loc0001
+    - Push:
+        - Constant: 3
+    - Trace
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Integer: 2
+    - Equals2
+    - Not
+    - If: loc000a
+    - Jump: loc0003
+    - Jump: loc0003
+    - Push:
+        - Constant: 4
+    - Trace
+    - Jump: loc0003
+    - Push:
+        - Constant: 5
+    - Trace
+    - Push:
+        - "True"
+    - Not
+    - If: loc000b
+    - Jump: loc0001
+    - Push:
+        - Constant: 6
+    - Trace
+    - Push:
+        - Constant: 7
+        - Constant: 0
+    - GetVariable
+    - Add2
+    - Trace
+    - Push:
+        - Constant: 0
+        - Constant: 0
+    - GetVariable
+    - Increment
+    - SetVariable
+    - Jump: loc0002
+    - Push:
+        - Constant: 8
+    - Trace
+  label_positions:
+    loc0002: 3
+    loc0004: 32
+    loc0005: 35
+    loc0006: 35
+    loc000a: 44
+    loc0007: 45
+    loc0008: 48
+    loc000b: 54
+    loc0009: 54
+    loc0003: 56
+    loc0001: 60
+    loc0000: 65
+extra_modules: []
+swf_version: 15

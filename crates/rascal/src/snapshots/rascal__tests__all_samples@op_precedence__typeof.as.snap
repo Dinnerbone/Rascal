@@ -1,0 +1,56 @@
+---
+source: crates/rascal/src/tests.rs
+expression: result
+input_file: samples/as2/op_precedence/typeof.as
+---
+initializer:
+  actions:
+    - ConstantPool:
+        - "1"
+        - toString
+        - valueOf
+    - Push:
+        - Integer: 5
+    - TypeOf
+    - Push:
+        - Integer: 1
+    - Add2
+    - Trace
+    - Push:
+        - Integer: 5
+    - TypeOf
+    - Push:
+        - Constant: 0
+    - Add2
+    - Trace
+    - Push:
+        - Integer: 0
+        - Integer: 5
+        - Constant: 1
+    - CallMethod
+    - TypeOf
+    - Trace
+    - Push:
+        - Integer: 0
+        - Integer: 5
+        - Constant: 2
+    - CallMethod
+    - TypeOf
+    - Trace
+    - Push:
+        - Integer: 0
+        - Integer: 5
+        - Constant: 1
+    - CallMethod
+    - TypeOf
+    - Trace
+    - Push:
+        - Integer: 0
+        - Integer: 5
+        - Constant: 2
+    - CallMethod
+    - TypeOf
+    - Trace
+  label_positions: {}
+extra_modules: []
+swf_version: 15
