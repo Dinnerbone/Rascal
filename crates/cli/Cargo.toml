@@ -12,7 +12,7 @@ categories = ["compilers", "parser-implementations", "command-line-utilities"]
 [dependencies]
 anyhow = "1"
 clap = { version = "4", features = ["derive"] }
-rascal = { path = "../rascal" }
+rascal = { path = "../rascal", version = "0.2.0" }
 
 [features]
 default = []
