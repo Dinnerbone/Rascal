@@ -16,7 +16,7 @@ struct Opt {
     ///
     /// It is valid to not specify any scripts - if so, the entry point of the program will be the first
     /// class (see `--class`) that contains a `static function main()` method.
-    #[arg(name = "SCRIPT")]
+    #[arg(name = "SCRIPT", help_heading = "Inputs")]
     script: Vec<PathBuf>,
 
     /// Output file path. This will be overwritten if it already exists.
@@ -24,7 +24,12 @@ struct Opt {
     /// If not specified:
     /// - If there are any scripts (see `SCRIPT`) specified, the first one will be used to determine the output path.
     /// - `output.swf` will be used if all else fails.
-    #[arg(short, long, verbatim_doc_comment)]
+    #[arg(
+        short,
+        long,
+        verbatim_doc_comment,
+        help_heading = "Generated SWF Options"
+    )]
     output: Option<PathBuf>,
 
     /// A name of a class to be added to the compiled program.
@@ -35,21 +40,26 @@ struct Opt {
     /// All classes will be loaded after any scripts (see `SCRIPT`).
     /// If no scripts are specified, one (and only one) class is expected to have an entry point in
     /// the form of a `static function main()` method.
-    #[arg(short, long)]
+    #[arg(short, long, help_heading = "Inputs")]
     class: Vec<String>,
 
     /// Adds a directory to be searched for classes.
     ///
     /// If no classpaths are specified, the current working directory will be used instead.
-    #[arg(long, long)]
+    #[arg(long, long, help_heading = "Inputs")]
     classpath: Vec<PathBuf>,
 
     /// SWF version to use.
-    #[arg(short = 'v', long, default_value_t = 15)]
+    #[arg(
+        short = 'v',
+        long,
+        default_value_t = 15,
+        help_heading = "Generated SWF Options"
+    )]
     swf_version: u8,
 
     /// Frame rate of the output SWF.
-    #[arg(long, default_value_t = 24.0)]
+    #[arg(long, default_value_t = 24.0, help_heading = "Generated SWF Options")]
     frame_rate: f32,
 }
 
