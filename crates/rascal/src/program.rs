@@ -14,6 +14,7 @@ pub struct Program {
     pub(crate) initial_script: Vec<hir::StatementKind>,
     pub(crate) interfaces: Vec<hir::Interface>,
     pub(crate) classes: Vec<hir::Class>,
+    pub(crate) custom_pcodes: Vec<Actions>,
 }
 
 impl Program {
@@ -36,6 +37,7 @@ impl Program {
             initializer,
             extra_modules,
             swf_version,
+            custom_pcodes: self.custom_pcodes.clone(),
         }
     }
 }
@@ -45,6 +47,7 @@ pub struct CompiledProgram {
     pub(crate) initializer: Option<Actions>,
     pub(crate) extra_modules: Vec<(String, Actions)>,
     pub(crate) swf_version: u8,
+    pub(crate) custom_pcodes: Vec<Actions>,
 }
 
 impl CompiledProgram {
@@ -56,12 +59,17 @@ impl CompiledProgram {
 pub struct ProgramBuilder<P> {
     provider: P,
     scripts: Vec<String>,
+    pcodes: Vec<String>,
     classes: Vec<String>,
 }
 
 impl<P> ProgramBuilder<P> {
     pub fn add_script(&mut self, path: &str) {
         self.scripts.push(path.to_owned());
+    }
+
+    pub fn add_pcode(&mut self, path: &str) {
+        self.pcodes.push(path.to_owned());
     }
 
     pub fn add_class(&mut self, path: &str) {
@@ -74,6 +82,7 @@ impl<P: SourceProvider> ProgramBuilder<P> {
         Self {
             provider,
             scripts: vec![],
+            pcodes: vec![],
             classes: vec![],
         }
     }
@@ -85,8 +94,9 @@ impl<P: SourceProvider> ProgramBuilder<P> {
         let mut errors = ErrorSet::new();
         let mut loaded_classes = IndexSet::new();
         let mut pending_classes = self.classes;
+        let mut custom_pcodes = vec![];
 
-        fn load_file<P: SourceProvider>(
+        fn load_actionscript<P: SourceProvider>(
             provider: &P,
             errors: &mut ErrorSet,
             loaded_classes: &mut IndexSet<String>,
@@ -126,8 +136,32 @@ impl<P: SourceProvider> ProgramBuilder<P> {
             Some(hir)
         }
 
+        fn load_pcode<P: SourceProvider>(
+            provider: &P,
+            errors: &mut ErrorSet,
+            path: &str,
+            custom_pcodes: &mut Vec<Actions>,
+        ) {
+            let source = match provider.load(path) {
+                Ok(source) => source,
+                Err(e) => {
+                    errors.add_io_error(path, e);
+                    return;
+                }
+            };
+            let tokens = crate::internal::as2_pcode::Lexer::new(&source).into_vec();
+            match crate::internal::as2_pcode::parse_actions(&tokens) {
+                Ok(actions) => custom_pcodes.push(actions),
+                Err(e) => errors.add_parsing_error(path, &source, e.into()),
+            }
+        }
+
+        for path in self.pcodes {
+            load_pcode(&self.provider, &mut errors, &path, &mut custom_pcodes);
+        }
+
         for path in self.scripts {
-            if let Some(document) = load_file(
+            if let Some(document) = load_actionscript(
                 &self.provider,
                 &mut errors,
                 &mut loaded_classes,
@@ -145,7 +179,7 @@ impl<P: SourceProvider> ProgramBuilder<P> {
 
         while let Some(type_name) = pending_classes.pop() {
             let filename = type_path_to_file_path(&type_name);
-            if let Some(document) = load_file(
+            if let Some(document) = load_actionscript(
                 &self.provider,
                 &mut errors,
                 &mut loaded_classes,
@@ -186,6 +220,7 @@ impl<P: SourceProvider> ProgramBuilder<P> {
             initial_script,
             interfaces,
             classes,
+            custom_pcodes,
         })
     }
 }

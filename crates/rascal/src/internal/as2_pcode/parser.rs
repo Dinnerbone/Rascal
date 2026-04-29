@@ -8,10 +8,10 @@ mod error;
 #[cfg(test)]
 mod tests;
 
-pub(crate) type Tokens<'i> = TokenSlice<'i, Token<'i>>;
+pub type Tokens<'i> = TokenSlice<'i, Token<'i>>;
 
 pub use crate::internal::as2_pcode::parser::error::PCodeError;
-use crate::internal::as2_pcode::pcode::Actions;
+pub use crate::internal::as2_pcode::pcode::Actions;
 
 pub fn parse_actions<'a>(
     source: &'a [Token],

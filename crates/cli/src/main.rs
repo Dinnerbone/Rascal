@@ -11,12 +11,22 @@ struct Opt {
     /// A loose script (not class file) to add to the compiled program.
     ///
     /// Multiple scripts may be added to one program.
-    /// Scripts will be executed in order that they are added, before any classes are loaded.
+    /// Scripts will be executed in order that they are added, before any classes are loaded and after any raw pcode.
     ///
     /// It is valid to not specify any scripts - if so, the entry point of the program will be the first
     /// class (see `--class`) that contains a `static function main()` method.
     #[arg(name = "SCRIPT", help_heading = "Inputs")]
     script: Vec<PathBuf>,
+
+    /// Path to some raw pcode to add to the compiled program.
+    ///
+    /// Multiple pcodes may be added to one program.
+    /// Pcodes will be executed in order that they are added, before any scripts are executed.
+    ///
+    /// It is valid to not specify any scripts - if so, the entry point of the program will be the first
+    /// class (see `--class`) that contains a `static function main()` method.
+    #[arg(long, help_heading = "Inputs")]
+    pcode: Vec<PathBuf>,
 
     /// Output file path. This will be overwritten if it already exists.
     ///
@@ -71,8 +81,11 @@ fn main() -> Result<()> {
     let provider = FileSystemSourceProvider::with_roots(opt.classpath);
     let mut builder = ProgramBuilder::new(provider);
 
+    for src in &opt.pcode {
+        builder.add_pcode(&src.to_string_lossy());
+    }
     for src in &opt.script {
-        builder.add_script(&src.file_name().unwrap().to_string_lossy());
+        builder.add_script(&src.to_string_lossy());
     }
     for class in &opt.class {
         builder.add_class(class);

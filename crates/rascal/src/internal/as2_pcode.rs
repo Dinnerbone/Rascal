@@ -1,6 +1,8 @@
-use crate::internal::as2_pcode::lexer::Lexer;
+pub use crate::internal::as2_pcode::lexer::Lexer;
 use crate::internal::as2_pcode::lexer::tokens::Token;
 use crate::internal::as2_pcode::parser::PCodeError;
+pub use crate::internal::as2_pcode::parser::Tokens;
+pub use crate::internal::as2_pcode::parser::parse_actions;
 pub use crate::internal::as2_pcode::pcode::Action;
 pub use crate::internal::as2_pcode::pcode::Actions;
 pub use crate::internal::as2_pcode::pcode::CatchTarget;
