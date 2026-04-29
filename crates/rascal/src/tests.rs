@@ -1,4 +1,5 @@
 use crate::ProgramBuilder;
+use crate::program::CompileOptions;
 use crate::provider::FileSystemSourceProvider;
 
 #[test]
@@ -10,7 +11,7 @@ fn test_all_samples() {
         ));
         builder.add_script(&filename);
         let parsed = builder.build().unwrap();
-        let result = parsed.compile(15);
+        let result = parsed.compile(CompileOptions::default().with_swf_version(15));
         insta::assert_yaml_snapshot!(result);
     });
     insta::glob!("../../../samples/as2_classes", "*.as", |path| {
@@ -20,7 +21,7 @@ fn test_all_samples() {
         ));
         builder.add_class(filename.strip_suffix(".as").unwrap());
         let parsed = builder.build().unwrap();
-        let result = parsed.compile(15);
+        let result = parsed.compile(CompileOptions::default().with_swf_version(15));
         insta::assert_yaml_snapshot!(result);
     });
 }

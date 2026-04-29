@@ -1,5 +1,5 @@
 use crate::internal::as2_pcode::{Action, Actions, CatchTarget, PushValue};
-use crate::program::CompiledProgram;
+use crate::program::{CompiledProgram, SwfOptions};
 use byteorder::{LittleEndian, WriteBytesExt};
 use indexmap::IndexMap;
 use std::collections::HashMap;
@@ -12,7 +12,7 @@ impl<'a> ActionEncoder<'a> {}
 
 pub(crate) fn pcode_to_swf(
     program: &CompiledProgram,
-    frame_rate: f32,
+    swf_options: &SwfOptions,
 ) -> swf::error::Result<Vec<u8>> {
     let mut initializers = vec![];
     for actions in &program.custom_pcodes {
@@ -64,14 +64,14 @@ pub(crate) fn pcode_to_swf(
     swf::write::write_swf(
         &swf::Header {
             compression: swf::Compression::None,
-            version: program.swf_version,
+            version: program.compile_options.swf_version,
             stage_size: swf::Rectangle {
                 x_min: Twips::ZERO,
                 x_max: Twips::from_pixels_i32(100),
                 y_min: Twips::ZERO,
                 y_max: Twips::from_pixels_i32(100),
             },
-            frame_rate: Fixed8::from_f32(frame_rate),
+            frame_rate: Fixed8::from_f32(swf_options.frame_rate),
             num_frames: 1,
         },
         &tags,
