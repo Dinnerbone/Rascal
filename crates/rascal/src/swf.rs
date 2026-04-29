@@ -14,15 +14,21 @@ pub(crate) fn pcode_to_swf(
     program: &CompiledProgram,
     frame_rate: f32,
 ) -> swf::error::Result<Vec<u8>> {
-    let initializer = if let Some(initializer) = &program.initializer {
+    let mut initializers = vec![];
+    for actions in &program.custom_pcodes {
+        let mut result = ActionEncoder::new();
+        result.write_actions(actions)?;
+        result.write_small_action(OpCode::End)?;
+        result.patch_labels();
+        initializers.push(result.output);
+    }
+    if let Some(initializer) = &program.initializer {
         let mut result = ActionEncoder::new();
         result.write_actions(initializer)?;
         result.write_small_action(OpCode::End)?;
         result.patch_labels();
-        Some(result.output)
-    } else {
-        None
-    };
+        initializers.push(result.output);
+    }
     let mut modules = vec![];
     for (name, actions) in &program.extra_modules {
         let mut result = ActionEncoder::new();
@@ -33,7 +39,7 @@ pub(crate) fn pcode_to_swf(
     }
 
     let mut tags = vec![Tag::SetBackgroundColor(swf::Color::WHITE)];
-    if let Some(initializer) = &initializer {
+    for initializer in &initializers {
         tags.push(Tag::DoAction(initializer))
     }
     for (i, (name, module)) in modules.iter().enumerate() {

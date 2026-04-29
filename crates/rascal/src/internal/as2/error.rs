@@ -31,3 +31,16 @@ impl From<ParseError<Tokens<'_>, ContextError>> for ParsingError {
         }
     }
 }
+
+impl From<ParseError<crate::internal::as2_pcode::Tokens<'_>, ContextError>> for ParsingError {
+    fn from(error: ParseError<crate::internal::as2_pcode::Tokens, ContextError>) -> Self {
+        Self {
+            error: error.inner().to_string(),
+            span: error
+                .input()
+                .get(error.offset())
+                .map(|t| t.span)
+                .unwrap_or_default(),
+        }
+    }
+}
