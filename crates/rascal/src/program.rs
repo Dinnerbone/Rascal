@@ -9,6 +9,42 @@ use crate::provider::SourceProvider;
 use indexmap::IndexSet;
 use serde::Serialize;
 
+#[derive(Debug, Clone, Serialize)]
+pub struct SwfOptions {
+    pub(crate) frame_rate: f32,
+}
+
+impl Default for SwfOptions {
+    fn default() -> Self {
+        Self { frame_rate: 24.0 }
+    }
+}
+
+impl SwfOptions {
+    pub fn with_frame_rate(mut self, frame_rate: f32) -> Self {
+        self.frame_rate = frame_rate;
+        self
+    }
+}
+
+#[derive(Debug, Clone, Serialize)]
+pub struct CompileOptions {
+    pub(crate) swf_version: u8,
+}
+
+impl Default for CompileOptions {
+    fn default() -> Self {
+        Self { swf_version: 15 }
+    }
+}
+
+impl CompileOptions {
+    pub fn with_swf_version(mut self, swf_version: u8) -> Self {
+        self.swf_version = swf_version;
+        self
+    }
+}
+
 #[derive(Debug, Serialize)]
 pub struct Program {
     pub(crate) initial_script: Vec<hir::StatementKind>,
@@ -18,7 +54,7 @@ pub struct Program {
 }
 
 impl Program {
-    pub fn compile(&self, swf_version: u8) -> CompiledProgram {
+    pub fn compile(&self, compile_options: CompileOptions) -> CompiledProgram {
         let initializer = if self.initial_script.is_empty() {
             None
         } else {
@@ -36,7 +72,7 @@ impl Program {
         CompiledProgram {
             initializer,
             extra_modules,
-            swf_version,
+            compile_options,
             custom_pcodes: self.custom_pcodes.clone(),
         }
     }
@@ -46,13 +82,13 @@ impl Program {
 pub struct CompiledProgram {
     pub(crate) initializer: Option<Actions>,
     pub(crate) extra_modules: Vec<(String, Actions)>,
-    pub(crate) swf_version: u8,
+    pub(crate) compile_options: CompileOptions,
     pub(crate) custom_pcodes: Vec<Actions>,
 }
 
 impl CompiledProgram {
-    pub fn to_swf(&self, frame_rate: f32) -> swf::error::Result<Vec<u8>> {
-        crate::swf::pcode_to_swf(self, frame_rate)
+    pub fn to_swf(&self, swf_options: &SwfOptions) -> swf::error::Result<Vec<u8>> {
+        crate::swf::pcode_to_swf(self, swf_options)
     }
 }
 

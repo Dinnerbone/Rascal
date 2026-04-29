@@ -6,5 +6,5 @@ mod swf;
 #[cfg(test)]
 mod tests;
 
-pub use program::{CompiledProgram, Program, ProgramBuilder};
+pub use program::{CompileOptions, CompiledProgram, Program, ProgramBuilder, SwfOptions};
 pub use provider::{FileSystemSourceProvider, SourceProvider};
