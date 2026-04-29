@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.2](https://github.com/Dinnerbone/Rascal/compare/rascal-v0.2.1...rascal-v0.2.2) - 2026-04-29
+
+### Other
+
+- Bump annotate-snippets from 0.12.12 to 0.12.15
+- Add SwfOptions::with_stage_size
+- Move swf_version and frame_rate into structs with builder style API, for less breakage
+- Add ProgramBuilder::add_pcode(path) and --pcode CLI
+
 ## [0.2.0](https://github.com/Dinnerbone/Rascal/compare/rascal-v0.1.2...rascal-v0.2.0) - 2026-04-22
 
 ### Other
