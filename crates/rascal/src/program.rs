@@ -12,17 +12,41 @@ use serde::Serialize;
 #[derive(Debug, Clone, Serialize)]
 pub struct SwfOptions {
     pub(crate) frame_rate: f32,
+    pub(crate) stage_x_min: f64,
+    pub(crate) stage_y_min: f64,
+    pub(crate) stage_x_max: f64,
+    pub(crate) stage_y_max: f64,
 }
 
 impl Default for SwfOptions {
     fn default() -> Self {
-        Self { frame_rate: 24.0 }
+        Self {
+            frame_rate: 24.0,
+            stage_x_min: 0.0,
+            stage_y_min: 0.0,
+            stage_x_max: 100.0,
+            stage_y_max: 100.0,
+        }
     }
 }
 
 impl SwfOptions {
     pub fn with_frame_rate(mut self, frame_rate: f32) -> Self {
         self.frame_rate = frame_rate;
+        self
+    }
+
+    pub fn with_stage_size(
+        mut self,
+        stage_x_min: f64,
+        stage_y_min: f64,
+        stage_x_max: f64,
+        stage_y_max: f64,
+    ) -> Self {
+        self.stage_x_min = stage_x_min;
+        self.stage_y_min = stage_y_min;
+        self.stage_x_max = stage_x_max;
+        self.stage_y_max = stage_y_max;
         self
     }
 }
