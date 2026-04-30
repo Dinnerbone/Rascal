@@ -70,6 +70,12 @@ struct Opt {
     /// Frame rate of the output SWF.
     #[arg(long, default_value_t = 24.0, help_heading = "Generated SWF Options")]
     frame_rate: f32,
+
+    /// Whether the SWF uses the network sandbox.
+    /// If set, the SWF is allowed to make network requests but cannot access local files.
+    /// If not set, the SWF can access local files but cannot make network requests.
+    #[arg(long, help_heading = "Generated SWF Options")]
+    use_network_sandbox: bool,
 }
 
 fn main() -> Result<()> {
@@ -97,7 +103,11 @@ fn main() -> Result<()> {
         .output
         .or_else(|| opt.script.first().map(|s| s.with_extension("swf")))
         .unwrap_or_else(|| PathBuf::from("output.swf"));
-    let swf = pcode.to_swf(&SwfOptions::default().with_frame_rate(opt.frame_rate))?;
+    let swf = pcode.to_swf(
+        &SwfOptions::default()
+            .with_frame_rate(opt.frame_rate)
+            .with_network_sandbox(opt.use_network_sandbox),
+    )?;
     fs::write(&output_path, swf)?;
     Ok(())
 }
