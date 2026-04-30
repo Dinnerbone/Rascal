@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.3](https://github.com/Dinnerbone/Rascal/compare/rascal-v0.2.2...rascal-v0.2.3) - 2026-04-30
+
+### Other
+
+- Support network_sandbox (FileAttributes swf tag) through API and CLI
+
 ## [0.2.2](https://github.com/Dinnerbone/Rascal/compare/rascal-v0.2.1...rascal-v0.2.2) - 2026-04-29
 
 ### Other
