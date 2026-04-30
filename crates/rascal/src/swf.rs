@@ -6,7 +6,7 @@ use std::collections::HashMap;
 use std::io::Result;
 use std::io::Write;
 use swf::write::SwfWriteExt;
-use swf::{CharacterId, ExportedAsset, Fixed8, Sprite, SwfStr, Tag, Twips};
+use swf::{CharacterId, ExportedAsset, FileAttributes, Fixed8, Sprite, SwfStr, Tag, Twips};
 
 impl<'a> ActionEncoder<'a> {}
 
@@ -38,7 +38,16 @@ pub(crate) fn pcode_to_swf(
         modules.push((format!("__Packages.{}", name), result.output));
     }
 
-    let mut tags = vec![Tag::SetBackgroundColor(swf::Color::WHITE)];
+    let mut file_attributes = FileAttributes::empty();
+    file_attributes.set(
+        FileAttributes::USE_NETWORK_SANDBOX,
+        swf_options.use_network_sandbox,
+    );
+
+    let mut tags = vec![
+        Tag::FileAttributes(file_attributes),
+        Tag::SetBackgroundColor(swf::Color::WHITE),
+    ];
     for initializer in &initializers {
         tags.push(Tag::DoAction(initializer))
     }

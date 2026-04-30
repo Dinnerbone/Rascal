@@ -16,6 +16,7 @@ pub struct SwfOptions {
     pub(crate) stage_y_min: f64,
     pub(crate) stage_x_max: f64,
     pub(crate) stage_y_max: f64,
+    pub(crate) use_network_sandbox: bool,
 }
 
 impl Default for SwfOptions {
@@ -26,6 +27,7 @@ impl Default for SwfOptions {
             stage_y_min: 0.0,
             stage_x_max: 100.0,
             stage_y_max: 100.0,
+            use_network_sandbox: false,
         }
     }
 }
@@ -47,6 +49,11 @@ impl SwfOptions {
         self.stage_y_min = stage_y_min;
         self.stage_x_max = stage_x_max;
         self.stage_y_max = stage_y_max;
+        self
+    }
+
+    pub fn with_network_sandbox(mut self, use_network_sandbox: bool) -> Self {
+        self.use_network_sandbox = use_network_sandbox;
         self
     }
 }
