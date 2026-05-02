@@ -6,6 +6,7 @@ pub use crate::internal::as2_pcode::parser::parse_actions;
 pub use crate::internal::as2_pcode::pcode::Action;
 pub use crate::internal::as2_pcode::pcode::Actions;
 pub use crate::internal::as2_pcode::pcode::CatchTarget;
+pub use crate::internal::as2_pcode::pcode::FunctionParam;
 pub use crate::internal::as2_pcode::pcode::PushValue;
 
 mod lexer;
