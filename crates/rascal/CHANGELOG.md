@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.4](https://github.com/Dinnerbone/Rascal/compare/rascal-v0.2.3...rascal-v0.2.4) - 2026-05-02
+
+### Other
+
+- Fix codegen for try-catch (jump to end after try statements)
+- Update try_catch test with (broken) try{/*no throw*/}catch(){} examples
+
 ## [0.2.3](https://github.com/Dinnerbone/Rascal/compare/rascal-v0.2.2...rascal-v0.2.3) - 2026-04-30
 
 ### Other
