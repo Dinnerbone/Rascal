@@ -697,9 +697,10 @@ fn gen_get_url(
 }
 
 fn gen_try_catch(context: &mut ScriptContext, builder: &mut CodeBuilder, try_catch: &TryCatch) {
-    let mut end_label: Option<String> = None;
+    let mut end_label: Option<String> = Some(context.create_label());
     let mut try_builder = CodeBuilder::new();
     gen_statements(context, &mut try_builder, &try_catch.try_body);
+    try_builder.action(Action::Jump(end_label.clone().unwrap()));
     let try_body = try_builder.into_actions();
 
     let catch_body = if try_catch.typed_catches.is_empty() && try_catch.catch_all.is_none() {
@@ -720,7 +721,6 @@ fn gen_try_catch(context: &mut ScriptContext, builder: &mut CodeBuilder, try_cat
         // Any number of typed catch blocks, with an optional catch-all block at the end
         let mut catch_builder = CodeBuilder::new();
         let catch_target = CatchTarget::Register(0);
-        end_label = Some(context.create_label());
         let mut first = true;
 
         for (type_name, catch) in &try_catch.typed_catches {

@@ -42,6 +42,7 @@ initializer:
                     - Add2
                     - Add2
                     - Return
+                    - Jump: loc0000
                   label_positions: {}
                 catch_body:
                   - Variable: e
@@ -57,7 +58,8 @@ initializer:
                       - Return
                     label_positions: {}
                 finally_body: ~
-          label_positions: {}
+          label_positions:
+            loc0000: 1
     - DefineLocal
     - Push:
         - Integer: 0
