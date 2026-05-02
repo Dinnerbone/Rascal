@@ -44,6 +44,7 @@ initializer:
                 - Constant: 2
             - GetVariable
             - Throw
+            - Jump: loc0000
           label_positions: {}
         catch_body:
           - Variable: e
@@ -61,7 +62,8 @@ initializer:
             - Push:
                 - Constant: 6
             - Trace
-          label_positions: {}
+          label_positions:
+            loc0000: 0
     - Push:
         - Constant: 7
     - Trace
@@ -74,6 +76,7 @@ initializer:
             - Push:
                 - Constant: 8
             - Throw
+            - Jump: loc0001
           label_positions: {}
         catch_body:
           - Variable: e
@@ -91,7 +94,8 @@ initializer:
     - Trace
     - Try:
         try_body:
-          actions: []
+          actions:
+            - Jump: loc0002
           label_positions: {}
         catch_body:
           - Variable: e
@@ -114,6 +118,7 @@ initializer:
                 - Constant: 2
                 - Constant: 2
             - DefineLocal
+            - Jump: loc0003
           label_positions: {}
         catch_body:
           - Variable: e
@@ -144,13 +149,14 @@ initializer:
             - Equals2
             - Not
             - Not
-            - If: loc0000
+            - If: loc0005
             - Push:
                 - Constant: 2
             - GetVariable
             - Throw
+            - Jump: loc0004
           label_positions:
-            loc0000: 12
+            loc0005: 12
         catch_body:
           - Variable: e
           - actions:
@@ -175,6 +181,7 @@ initializer:
                 - Constant: 14
             - GetVariable
             - Throw
+            - Jump: loc0006
           label_positions: {}
         catch_body:
           - Register: 0
@@ -189,7 +196,7 @@ initializer:
               - Push:
                   - "Null"
               - Equals2
-              - If: loc0002
+              - If: loc0007
               - Push:
                   - String: e
               - StackSwap
@@ -200,20 +207,20 @@ initializer:
               - GetVariable
               - Add2
               - Trace
-              - Jump: loc0001
+              - Jump: loc0006
               - Pop
               - Push:
                   - Register: 0
               - Throw
             label_positions:
-              loc0002: 16
+              loc0007: 16
         finally_body:
           actions:
             - Push:
                 - Constant: 6
             - Trace
           label_positions:
-            loc0001: 0
+            loc0006: 0
     - Push:
         - Constant: 15
     - Trace
@@ -227,6 +234,7 @@ initializer:
                 - Constant: 14
             - GetVariable
             - Throw
+            - Jump: loc0008
           label_positions: {}
         catch_body:
           - Register: 0
@@ -241,7 +249,7 @@ initializer:
               - Push:
                   - "Null"
               - Equals2
-              - If: loc0004
+              - If: loc0009
               - Push:
                   - String: e
               - StackSwap
@@ -249,7 +257,7 @@ initializer:
               - Push:
                   - Constant: 16
               - Trace
-              - Jump: loc0003
+              - Jump: loc0008
               - Pop
               - Push:
                   - String: Number
@@ -261,7 +269,7 @@ initializer:
               - Push:
                   - "Null"
               - Equals2
-              - If: loc0005
+              - If: loc000a
               - Push:
                   - String: e
               - StackSwap
@@ -269,7 +277,7 @@ initializer:
               - Push:
                   - Constant: 17
               - Trace
-              - Jump: loc0003
+              - Jump: loc0008
               - Pop
               - Push:
                   - Register: 0
@@ -280,8 +288,8 @@ initializer:
                   - Constant: 18
               - Trace
             label_positions:
-              loc0004: 14
-              loc0005: 29
+              loc0009: 14
+              loc000a: 29
         finally_body: ~
     - Push:
         - Constant: 19
@@ -295,6 +303,7 @@ initializer:
             - Push:
                 - "Null"
             - Throw
+            - Jump: loc000b
           label_positions: {}
         catch_body: ~
         finally_body:
@@ -302,12 +311,17 @@ initializer:
             - Push:
                 - Constant: 6
             - Trace
-          label_positions: {}
+          label_positions:
+            loc000b: 0
     - Push:
         - Constant: 20
     - Trace
   label_positions:
-    loc0003: 22
+    loc0001: 7
+    loc0002: 10
+    loc0003: 13
+    loc0004: 16
+    loc0008: 22
 extra_modules: []
 compile_options:
   swf_version: 15

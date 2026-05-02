@@ -50,7 +50,7 @@ initializer:
                 - Integer: 1
             - Equals2
             - Not
-            - If: loc0003
+            - If: loc0004
             - Jump: loc0001
             - Push:
                 - Constant: 0
@@ -59,7 +59,7 @@ initializer:
                 - Integer: 2
             - Equals2
             - Not
-            - If: loc0004
+            - If: loc0005
             - Push:
                 - Constant: 3
             - Throw
@@ -70,14 +70,15 @@ initializer:
                 - Integer: 4
             - Equals2
             - Not
-            - If: loc0005
+            - If: loc0006
             - Push:
                 - Constant: 4
             - Throw
+            - Jump: loc0003
           label_positions:
-            loc0003: 11
-            loc0004: 19
-            loc0005: 27
+            loc0004: 11
+            loc0005: 19
+            loc0006: 27
         catch_body:
           - Variable: e
           - actions:
@@ -94,7 +95,7 @@ initializer:
                   - Constant: 3
               - Equals2
               - Not
-              - If: loc0006
+              - If: loc0007
               - Jump: loc0000
               - Push:
                   - Constant: 6
@@ -103,11 +104,11 @@ initializer:
                   - Constant: 4
               - Equals2
               - Not
-              - If: loc0007
+              - If: loc0008
               - Jump: loc0001
             label_positions:
-              loc0006: 11
-              loc0007: 18
+              loc0007: 11
+              loc0008: 18
         finally_body:
           actions:
             - Push:
@@ -123,7 +124,7 @@ initializer:
                 - Integer: 3
             - Equals2
             - Not
-            - If: loc0008
+            - If: loc0009
             - Jump: loc0001
             - Push:
                 - Constant: 0
@@ -132,11 +133,12 @@ initializer:
                 - Integer: 5
             - Equals2
             - Not
-            - If: loc0009
+            - If: loc000a
             - Jump: loc0000
           label_positions:
-            loc0008: 11
-            loc0009: 18
+            loc0003: 0
+            loc0009: 11
+            loc000a: 18
     - Push:
         - Constant: 8
         - Constant: 0
