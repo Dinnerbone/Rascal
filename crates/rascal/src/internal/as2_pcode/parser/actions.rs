@@ -1,3 +1,4 @@
+use crate::internal::as2_pcode::FunctionParam;
 use crate::internal::as2_pcode::lexer::tokens::{ActionName, Token, TokenKind};
 use crate::internal::as2_pcode::parser::Tokens;
 use crate::internal::as2_pcode::pcode::{Action, Actions, CatchTarget, PushValue};
@@ -67,6 +68,7 @@ pub(crate) fn action(i: &mut Tokens<'_>) -> ModalResult<Action> {
         ActionName::ConstantPool => constant_pool.parse_next(i)?,
         ActionName::Decrement => Action::Decrement,
         ActionName::DefineFunction => define_function.parse_next(i)?,
+        ActionName::DefineFunction2 => define_function_2.parse_next(i)?,
         ActionName::DefineLocal => Action::DefineLocal,
         ActionName::DefineLocal2 => Action::DefineLocal2,
         ActionName::Delete => Action::Delete,
@@ -263,6 +265,64 @@ pub fn define_function(i: &mut Tokens<'_>) -> ModalResult<Action> {
     })
 }
 
+pub fn define_function_2(i: &mut Tokens<'_>) -> ModalResult<Action> {
+    let name = string.parse_next(i)?;
+    TokenKind::Comma.parse_next(i)?;
+    let num_args = integer.parse_next(i)?;
+    TokenKind::Comma.parse_next(i)?;
+    let register_count = u8.parse_next(i)?;
+    TokenKind::Comma.parse_next(i)?;
+    let preload_parent = bool.parse_next(i)?;
+    TokenKind::Comma.parse_next(i)?;
+    let preload_root = bool.parse_next(i)?;
+    TokenKind::Comma.parse_next(i)?;
+    let suppress_super = bool.parse_next(i)?;
+    TokenKind::Comma.parse_next(i)?;
+    let preload_super = bool.parse_next(i)?;
+    TokenKind::Comma.parse_next(i)?;
+    let suppress_arguments = bool.parse_next(i)?;
+    TokenKind::Comma.parse_next(i)?;
+    let preload_arguments = bool.parse_next(i)?;
+    TokenKind::Comma.parse_next(i)?;
+    let suppress_this = bool.parse_next(i)?;
+    TokenKind::Comma.parse_next(i)?;
+    let preload_this = bool.parse_next(i)?;
+    TokenKind::Comma.parse_next(i)?;
+    let preload_global = bool.parse_next(i)?;
+    let args = if num_args > 0 {
+        TokenKind::Comma.parse_next(i)?;
+        separated(
+            num_args as usize,
+            (u8, TokenKind::Comma, string).map(|(i, _, s)| FunctionParam {
+                register: i,
+                name: s,
+            }),
+            TokenKind::Comma,
+        )
+        .parse_next(i)?
+    } else {
+        vec![]
+    };
+    TokenKind::OpenBrace.parse_next(i)?;
+    let body = actions(true).parse_next(i)?;
+    TokenKind::CloseBrace.parse_next(i)?;
+    Ok(Action::DefineFunction2 {
+        name,
+        params: args,
+        actions: body,
+        register_count,
+        preload_this,
+        suppress_this,
+        preload_arguments,
+        suppress_arguments,
+        preload_super,
+        suppress_super,
+        preload_root,
+        preload_parent,
+        preload_global,
+    })
+}
+
 pub fn with(i: &mut Tokens<'_>) -> ModalResult<Action> {
     TokenKind::OpenBrace.parse_next(i)?;
     let body = actions(true).parse_next(i)?;
@@ -418,6 +478,7 @@ pub(crate) fn push_value(i: &mut Tokens<'_>) -> ModalResult<PushValue> {
 
 #[cfg(test)]
 mod tests {
+    use crate::internal::as2_pcode::FunctionParam;
     use crate::internal::as2_pcode::lexer::tokens::{ActionName, TokenKind};
     use crate::internal::as2_pcode::parser::parse_actions;
     use crate::internal::as2_pcode::parser::tests::build_tokens;
@@ -691,6 +752,90 @@ mod tests {
                         ],
                         label_positions: Default::default()
                     },
+                }],
+                label_positions: Default::default()
+            })
+        )
+    }
+
+    #[test]
+    fn test_define_function_2() {
+        let tokens = build_tokens(&[
+            (
+                TokenKind::ActionName(ActionName::DefineFunction2),
+                "DefineFunction2",
+            ),
+            (TokenKind::String, "foo"),
+            (TokenKind::Comma, ","),
+            (TokenKind::Integer, "2"),
+            (TokenKind::Comma, ","),
+            (TokenKind::Integer, "4"),
+            (TokenKind::Comma, ","),
+            (TokenKind::False, "false"),
+            (TokenKind::Comma, ","),
+            (TokenKind::False, "false"),
+            (TokenKind::Comma, ","),
+            (TokenKind::True, "true"),
+            (TokenKind::Comma, ","),
+            (TokenKind::False, "false"),
+            (TokenKind::Comma, ","),
+            (TokenKind::True, "true"),
+            (TokenKind::Comma, ","),
+            (TokenKind::False, "false"),
+            (TokenKind::Comma, ","),
+            (TokenKind::True, "true"),
+            (TokenKind::Comma, ","),
+            (TokenKind::False, "false"),
+            (TokenKind::Comma, ","),
+            (TokenKind::False, "false"),
+            (TokenKind::Comma, ","),
+            (TokenKind::Integer, "1"),
+            (TokenKind::Comma, ","),
+            (TokenKind::String, "a"),
+            (TokenKind::Comma, ","),
+            (TokenKind::Integer, "2"),
+            (TokenKind::Comma, ","),
+            (TokenKind::String, "b"),
+            (TokenKind::OpenBrace, "{"),
+            (TokenKind::ActionName(ActionName::Push), "push"),
+            (TokenKind::String, "a"),
+            (TokenKind::Newline, "\n"),
+            (TokenKind::ActionName(ActionName::Trace), "trace"),
+            (TokenKind::Newline, "\n"),
+            (TokenKind::CloseBrace, "}"),
+        ]);
+        assert_eq!(
+            parse_actions(&tokens),
+            Ok(Actions {
+                actions: vec![Action::DefineFunction2 {
+                    name: "foo".to_string(),
+                    params: vec![
+                        FunctionParam {
+                            register: 1,
+                            name: "a".to_string()
+                        },
+                        FunctionParam {
+                            register: 2,
+                            name: "b".to_string()
+                        }
+                    ],
+                    actions: Actions {
+                        actions: vec![
+                            Action::Push(vec![PushValue::String("a".to_owned())]),
+                            Action::Trace
+                        ],
+                        label_positions: Default::default()
+                    },
+                    register_count: 4,
+                    preload_this: false,
+                    suppress_this: true,
+                    preload_arguments: false,
+                    suppress_arguments: true,
+                    preload_super: false,
+                    suppress_super: true,
+                    preload_root: false,
+                    preload_parent: false,
+                    preload_global: false,
                 }],
                 label_positions: Default::default()
             })

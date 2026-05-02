@@ -78,6 +78,12 @@ impl std::fmt::Display for Actions {
 }
 
 #[derive(Debug, PartialEq, Serialize, Clone)]
+pub struct FunctionParam {
+    pub name: String,
+    pub register: u8,
+}
+
+#[derive(Debug, PartialEq, Serialize, Clone)]
 pub enum Action {
     Add,
     Add2,
@@ -101,6 +107,21 @@ pub enum Action {
         name: String,
         params: Vec<String>,
         actions: Actions,
+    },
+    DefineFunction2 {
+        name: String,
+        params: Vec<FunctionParam>,
+        actions: Actions,
+        register_count: u8,
+        preload_this: bool,
+        suppress_this: bool,
+        preload_arguments: bool,
+        suppress_arguments: bool,
+        preload_super: bool,
+        suppress_super: bool,
+        preload_root: bool,
+        preload_parent: bool,
+        preload_global: bool,
     },
     DefineLocal,
     DefineLocal2,
@@ -235,6 +256,13 @@ impl Action {
                     0
                 }
             }
+            Action::DefineFunction2 { name, .. } => {
+                if name.is_empty() {
+                    1
+                } else {
+                    0
+                }
+            }
             Action::DefineLocal => -2,
             Action::DefineLocal2 => -1,
             Action::Delete => -2,
@@ -360,6 +388,33 @@ impl std::fmt::Display for Action {
                 write!(f, "DefineFunction \"{}\", {}", name, params.len())?;
                 for param in params {
                     write!(f, ", \"{}\"", param)?;
+                }
+                writeln!(f, " {{")?;
+                write!(f, "{}", actions)?;
+                write!(f, "}}")
+            }
+            Action::DefineFunction2 {
+                name,
+                params,
+                actions,
+                register_count,
+                preload_this,
+                suppress_this,
+                preload_arguments,
+                suppress_arguments,
+                preload_super,
+                suppress_super,
+                preload_root,
+                preload_parent,
+                preload_global,
+            } => {
+                let num_params = params.len();
+                write!(
+                    f,
+                    "DefineFunction2 \"{name}\", {num_params}, {register_count}, {preload_parent}, {preload_root}, {suppress_super}, {preload_super}, {suppress_arguments}, {preload_arguments}, {suppress_this}, {preload_this}, {preload_global}",
+                )?;
+                for param in params {
+                    write!(f, ", {}, \"{}\"", param.register, param.name)?;
                 }
                 writeln!(f, " {{")?;
                 write!(f, "{}", actions)?;

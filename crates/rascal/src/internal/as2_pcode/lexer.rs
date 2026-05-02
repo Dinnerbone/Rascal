@@ -235,6 +235,7 @@ fn lex_identifier_or_action<'a>(stream: &mut Stream<'a>) -> Token<'a> {
         "constantpool" => TokenKind::ActionName(ActionName::ConstantPool),
         "decrement" => TokenKind::ActionName(ActionName::Decrement),
         "definefunction" => TokenKind::ActionName(ActionName::DefineFunction),
+        "definefunction2" => TokenKind::ActionName(ActionName::DefineFunction2),
         "definelocal" => TokenKind::ActionName(ActionName::DefineLocal),
         "definelocal2" => TokenKind::ActionName(ActionName::DefineLocal2),
         "delete" => TokenKind::ActionName(ActionName::Delete),

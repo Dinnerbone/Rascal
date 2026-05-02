@@ -1,4 +1,4 @@
-use crate::internal::as2_pcode::{Action, Actions, CatchTarget, PushValue};
+use crate::internal::as2_pcode::{Action, Actions, CatchTarget, FunctionParam, PushValue};
 use crate::program::{CompiledProgram, SwfOptions};
 use byteorder::{LittleEndian, WriteBytesExt};
 use indexmap::IndexMap;
@@ -225,7 +225,35 @@ impl<'a> ActionEncoder<'a> {
                 params,
                 actions,
             } => self.write_define_function(name, params, actions),
-            // Action::DefineFunction2(action) => self.write_define_function_2(action),
+            Action::DefineFunction2 {
+                name,
+                params,
+                actions,
+                register_count,
+                preload_this,
+                suppress_this,
+                preload_arguments,
+                suppress_arguments,
+                preload_super,
+                suppress_super,
+                preload_root,
+                preload_parent,
+                preload_global,
+            } => self.write_define_function_2(
+                name,
+                params,
+                actions,
+                *register_count,
+                *preload_this,
+                *suppress_this,
+                *preload_arguments,
+                *suppress_arguments,
+                *preload_super,
+                *suppress_super,
+                *preload_root,
+                *preload_parent,
+                *preload_global,
+            ),
             Action::DefineLocal => self.write_small_action(OpCode::DefineLocal),
             Action::DefineLocal2 => self.write_small_action(OpCode::DefineLocal2),
             Action::Divide => self.write_small_action(OpCode::Divide),
@@ -389,6 +417,72 @@ impl<'a> ActionEncoder<'a> {
         self.write_u16(params.len() as u16)?;
         for param in params {
             self.write_string(SwfStr::from_utf8_str(param))?;
+        }
+        let length_offset = self.output.len();
+        self.write_u16(0)?;
+        let length_before_function = self.output.len();
+        self.write_actions(actions)?;
+        let length_after_function = self.output.len();
+        self.output[length_offset..length_offset + 2].copy_from_slice(
+            &((length_after_function - length_before_function) as u16).to_le_bytes(),
+        );
+        Ok(())
+    }
+
+    #[expect(clippy::too_many_arguments)]
+    fn write_define_function_2(
+        &mut self,
+        name: &str,
+        params: &'a [FunctionParam],
+        actions: &'a Actions,
+        register_count: u8,
+        preload_this: bool,
+        suppress_this: bool,
+        preload_arguments: bool,
+        suppress_arguments: bool,
+        preload_super: bool,
+        suppress_super: bool,
+        preload_root: bool,
+        preload_parent: bool,
+        preload_global: bool,
+    ) -> Result<()> {
+        let len = name.len() + 1 + 3 + params.iter().map(|p| p.name.len() + 2).sum::<usize>() + 4;
+        self.write_action_header(OpCode::DefineFunction2, len)?;
+        self.write_string(SwfStr::from_utf8_str(name))?;
+        self.write_u16(params.len() as u16)?;
+        self.write_u8(register_count)?;
+        let mut flags = 0;
+        if preload_this {
+            flags |= 1 << 0;
+        }
+        if suppress_this {
+            flags |= 1 << 1;
+        }
+        if preload_arguments {
+            flags |= 1 << 2;
+        }
+        if suppress_arguments {
+            flags |= 1 << 3;
+        }
+        if preload_super {
+            flags |= 1 << 4;
+        }
+        if suppress_super {
+            flags |= 1 << 5;
+        }
+        if preload_root {
+            flags |= 1 << 6;
+        }
+        if preload_parent {
+            flags |= 1 << 7;
+        }
+        if preload_global {
+            flags |= 1 << 8;
+        }
+        self.write_u16(flags)?;
+        for param in params {
+            self.write_u8(param.register)?;
+            self.write_string(SwfStr::from_utf8_str(&param.name))?;
         }
         let length_offset = self.output.len();
         self.write_u16(0)?;
@@ -617,7 +711,6 @@ impl<'a> ActionEncoder<'a> {
 }
 
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
-#[expect(dead_code)]
 pub enum OpCode {
     End = 0x00,
 

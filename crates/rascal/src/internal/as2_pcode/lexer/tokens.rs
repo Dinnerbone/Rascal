@@ -105,6 +105,7 @@ pub enum ActionName {
     ConstantPool,
     Decrement,
     DefineFunction,
+    DefineFunction2,
     DefineLocal,
     DefineLocal2,
     Delete,
