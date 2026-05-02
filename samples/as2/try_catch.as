@@ -19,6 +19,29 @@ try {
 	trace("caught something! " + e);
 }
 
+trace(" -- empty try -- ");
+try {
+} catch(e) {
+	trace("caught something! " + e);
+}
+
+trace(" -- try with no throw -- ");
+try {
+    var message = "message";
+} catch(e) {
+	trace("caught something! " + e);
+}
+
+trace(" -- try with conditional throw -- ");
+try {
+    var message = "message";
+    if (message != "message") {
+        throw message;
+    }
+} catch(e) {
+	trace("caught something! " + e);
+}
+
 trace(" -- try catch(MovieClip) finally -- ");
 try {
 	trace("try!");

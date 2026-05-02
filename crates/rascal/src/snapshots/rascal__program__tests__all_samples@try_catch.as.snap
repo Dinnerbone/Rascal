@@ -166,12 +166,211 @@ Ok:
     - Expr:
         span:
           start: 308
-          end: 353
+          end: 334
         value:
           Trace:
             span:
               start: 314
-              end: 352
+              end: 333
+            value:
+              Constant:
+                String: " -- empty try -- "
+    - Try:
+        try_body: []
+        typed_catches: []
+        catch_all:
+          name:
+            span:
+              start: 350
+              end: 351
+            value: e
+          body:
+            - Expr:
+                span:
+                  start: 356
+                  end: 387
+                value:
+                  Trace:
+                    span:
+                      start: 362
+                      end: 386
+                    value:
+                      BinaryOperator:
+                        - Add
+                        - span:
+                            start: 362
+                            end: 382
+                          value:
+                            Constant:
+                              String: "caught something! "
+                        - span:
+                            start: 385
+                            end: 386
+                          value:
+                            Constant:
+                              Identifier: e
+        finally: []
+    - Expr:
+        span:
+          start: 392
+          end: 426
+        value:
+          Trace:
+            span:
+              start: 398
+              end: 425
+            value:
+              Constant:
+                String: " -- try with no throw -- "
+    - Try:
+        try_body:
+          - Declare:
+              - name:
+                  span:
+                    start: 442
+                    end: 449
+                  value: message
+                value:
+                  span:
+                    start: 452
+                    end: 461
+                  value:
+                    Constant:
+                      String: message
+                type_name: ~
+        typed_catches: []
+        catch_all:
+          name:
+            span:
+              start: 471
+              end: 472
+            value: e
+          body:
+            - Expr:
+                span:
+                  start: 477
+                  end: 508
+                value:
+                  Trace:
+                    span:
+                      start: 483
+                      end: 507
+                    value:
+                      BinaryOperator:
+                        - Add
+                        - span:
+                            start: 483
+                            end: 503
+                          value:
+                            Constant:
+                              String: "caught something! "
+                        - span:
+                            start: 506
+                            end: 507
+                          value:
+                            Constant:
+                              Identifier: e
+        finally: []
+    - Expr:
+        span:
+          start: 513
+          end: 556
+        value:
+          Trace:
+            span:
+              start: 519
+              end: 555
+            value:
+              Constant:
+                String: " -- try with conditional throw -- "
+    - Try:
+        try_body:
+          - Declare:
+              - name:
+                  span:
+                    start: 572
+                    end: 579
+                  value: message
+                value:
+                  span:
+                    start: 582
+                    end: 591
+                  value:
+                    Constant:
+                      String: message
+                type_name: ~
+          - If:
+              condition:
+                span:
+                  start: 601
+                  end: 621
+                value:
+                  BinaryOperator:
+                    - NotEqual
+                    - span:
+                        start: 601
+                        end: 608
+                      value:
+                        Constant:
+                          Identifier: message
+                    - span:
+                        start: 612
+                        end: 621
+                      value:
+                        Constant:
+                          String: message
+              "yes":
+                Block:
+                  - Throw:
+                      - span:
+                          start: 639
+                          end: 646
+                        value:
+                          Constant:
+                            Identifier: message
+              "no": ~
+        typed_catches: []
+        catch_all:
+          name:
+            span:
+              start: 662
+              end: 663
+            value: e
+          body:
+            - Expr:
+                span:
+                  start: 668
+                  end: 699
+                value:
+                  Trace:
+                    span:
+                      start: 674
+                      end: 698
+                    value:
+                      BinaryOperator:
+                        - Add
+                        - span:
+                            start: 674
+                            end: 694
+                          value:
+                            Constant:
+                              String: "caught something! "
+                        - span:
+                            start: 697
+                            end: 698
+                          value:
+                            Constant:
+                              Identifier: e
+        finally: []
+    - Expr:
+        span:
+          start: 704
+          end: 749
+        value:
+          Trace:
+            span:
+              start: 710
+              end: 748
             value:
               Constant:
                 String: " -- try catch(MovieClip) finally -- "
@@ -179,55 +378,55 @@ Ok:
         try_body:
           - Expr:
               span:
-                start: 362
-                end: 375
+                start: 758
+                end: 771
               value:
                 Trace:
                   span:
-                    start: 368
-                    end: 374
+                    start: 764
+                    end: 770
                   value:
                     Constant:
                       String: try!
           - Throw:
               - span:
-                  start: 384
-                  end: 388
+                  start: 780
+                  end: 784
                 value:
                   Constant:
                     Identifier: this
         typed_catches:
           - - span:
-                start: 401
-                end: 410
+                start: 797
+                end: 806
               value: MovieClip
             - name:
                 span:
-                  start: 398
-                  end: 399
+                  start: 794
+                  end: 795
                 value: e
               body:
                 - Expr:
                     span:
-                      start: 415
-                      end: 446
+                      start: 811
+                      end: 842
                     value:
                       Trace:
                         span:
-                          start: 421
-                          end: 445
+                          start: 817
+                          end: 841
                         value:
                           BinaryOperator:
                             - Add
                             - span:
-                                start: 421
-                                end: 441
+                                start: 817
+                                end: 837
                               value:
                                 Constant:
                                   String: "caught something! "
                             - span:
-                                start: 444
-                                end: 445
+                                start: 840
+                                end: 841
                               value:
                                 Constant:
                                   Identifier: e
@@ -235,25 +434,25 @@ Ok:
         finally:
           - Expr:
               span:
-                start: 464
-                end: 481
+                start: 860
+                end: 877
               value:
                 Trace:
                   span:
-                    start: 470
-                    end: 480
+                    start: 866
+                    end: 876
                   value:
                     Constant:
                       String: finally!
     - Expr:
         span:
-          start: 486
-          end: 536
+          start: 882
+          end: 932
         value:
           Trace:
             span:
-              start: 492
-              end: 535
+              start: 888
+              end: 931
             value:
               Constant:
                 String: " -- try catch(MovieClip) catch(Number) --"
@@ -261,97 +460,97 @@ Ok:
         try_body:
           - Expr:
               span:
-                start: 545
-                end: 558
+                start: 941
+                end: 954
               value:
                 Trace:
                   span:
-                    start: 551
-                    end: 557
+                    start: 947
+                    end: 953
                   value:
                     Constant:
                       String: try!
           - Throw:
               - span:
-                  start: 567
-                  end: 571
+                  start: 963
+                  end: 967
                 value:
                   Constant:
                     Identifier: this
         typed_catches:
           - - span:
-                start: 584
-                end: 593
+                start: 980
+                end: 989
               value: MovieClip
             - name:
                 span:
-                  start: 581
-                  end: 582
+                  start: 977
+                  end: 978
                 value: e
               body:
                 - Expr:
                     span:
-                      start: 598
-                      end: 636
+                      start: 994
+                      end: 1032
                     value:
                       Trace:
                         span:
-                          start: 604
-                          end: 635
+                          start: 1000
+                          end: 1031
                         value:
                           Constant:
                             String: catch something of MovieClip!
           - - span:
-                start: 649
-                end: 655
+                start: 1045
+                end: 1051
               value: Number
             - name:
                 span:
-                  start: 646
-                  end: 647
+                  start: 1042
+                  end: 1043
                 value: e
               body:
                 - Expr:
                     span:
-                      start: 660
-                      end: 695
+                      start: 1056
+                      end: 1091
                     value:
                       Trace:
                         span:
-                          start: 666
-                          end: 694
+                          start: 1062
+                          end: 1090
                         value:
                           Constant:
                             String: catch something of Number!
         catch_all:
           name:
             span:
-              start: 705
-              end: 706
+              start: 1101
+              end: 1102
             value: e
           body:
             - Expr:
                 span:
-                  start: 711
-                  end: 740
+                  start: 1107
+                  end: 1136
                 value:
                   Trace:
                     span:
-                      start: 717
-                      end: 739
+                      start: 1113
+                      end: 1135
                     value:
                       Constant:
                         String: catch anything else!
         finally: []
     - Expr:
         span:
-          start: 774
-          end: 802
+          start: 1170
+          end: 1198
         value:
           Trace:
             span:
-              start: 780
-              end: 801
+              start: 1176
+              end: 1197
             value:
               Constant:
                 String: " -- try finally -- "
@@ -359,20 +558,20 @@ Ok:
         try_body:
           - Expr:
               span:
-                start: 812
-                end: 825
+                start: 1208
+                end: 1221
               value:
                 Trace:
                   span:
-                    start: 818
-                    end: 824
+                    start: 1214
+                    end: 1220
                   value:
                     Constant:
                       String: try!
           - Throw:
               - span:
-                  start: 837
-                  end: 841
+                  start: 1233
+                  end: 1237
                 value:
                   Constant:
                     Identifier: "null"
@@ -381,25 +580,25 @@ Ok:
         finally:
           - Expr:
               span:
-                start: 856
-                end: 873
+                start: 1252
+                end: 1269
               value:
                 Trace:
                   span:
-                    start: 862
-                    end: 872
+                    start: 1258
+                    end: 1268
                   value:
                     Constant:
                       String: finally!
     - Expr:
         span:
-          start: 878
-          end: 923
+          start: 1274
+          end: 1319
         value:
           Trace:
             span:
-              start: 884
-              end: 922
+              start: 1280
+              end: 1318
             value:
               Constant:
                 String: "If you see this, it didn't throw! :("
