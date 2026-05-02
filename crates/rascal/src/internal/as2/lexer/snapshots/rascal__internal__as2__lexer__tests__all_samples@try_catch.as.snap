@@ -511,775 +511,1335 @@ input_file: samples/as2/try_catch.as
     String: Double
   span:
     start: 314
-    end: 352
-  raw: " -- try catch(MovieClip) finally -- "
+    end: 333
+  raw: " -- empty try -- "
 - kind: CloseParen
   span:
-    start: 352
-    end: 353
+    start: 333
+    end: 334
   raw: )
 - kind: Semicolon
   span:
+    start: 334
+    end: 335
+  raw: ;
+- kind: Newline
+  span:
+    start: 335
+    end: 336
+  raw: "\n"
+- kind:
+    Keyword: Try
+  span:
+    start: 336
+    end: 339
+  raw: try
+- kind: OpenBrace
+  span:
+    start: 340
+    end: 341
+  raw: "{"
+- kind: Newline
+  span:
+    start: 341
+    end: 342
+  raw: "\n"
+- kind: CloseBrace
+  span:
+    start: 342
+    end: 343
+  raw: "}"
+- kind:
+    Keyword: Catch
+  span:
+    start: 344
+    end: 349
+  raw: catch
+- kind: OpenParen
+  span:
+    start: 349
+    end: 350
+  raw: (
+- kind: Identifier
+  span:
+    start: 350
+    end: 351
+  raw: e
+- kind: CloseParen
+  span:
+    start: 351
+    end: 352
+  raw: )
+- kind: OpenBrace
+  span:
     start: 353
     end: 354
-  raw: ;
+  raw: "{"
 - kind: Newline
   span:
     start: 354
     end: 355
   raw: "\n"
-- kind:
-    Keyword: Try
-  span:
-    start: 355
-    end: 358
-  raw: try
-- kind: OpenBrace
-  span:
-    start: 359
-    end: 360
-  raw: "{"
-- kind: Newline
-  span:
-    start: 360
-    end: 361
-  raw: "\n"
 - kind: Identifier
   span:
-    start: 362
-    end: 367
+    start: 356
+    end: 361
   raw: trace
 - kind: OpenParen
   span:
-    start: 367
-    end: 368
+    start: 361
+    end: 362
   raw: (
 - kind:
     String: Double
   span:
-    start: 368
-    end: 374
-  raw: try!
+    start: 362
+    end: 382
+  raw: "caught something! "
+- kind:
+    Operator: Add
+  span:
+    start: 383
+    end: 384
+  raw: +
+- kind: Identifier
+  span:
+    start: 385
+    end: 386
+  raw: e
 - kind: CloseParen
   span:
-    start: 374
-    end: 375
+    start: 386
+    end: 387
   raw: )
 - kind: Semicolon
   span:
-    start: 375
-    end: 376
+    start: 387
+    end: 388
   raw: ;
 - kind: Newline
-  span:
-    start: 376
-    end: 377
-  raw: "\n"
-- kind:
-    Keyword: Throw
-  span:
-    start: 378
-    end: 383
-  raw: throw
-- kind: Identifier
-  span:
-    start: 384
-    end: 388
-  raw: this
-- kind: Semicolon
   span:
     start: 388
     end: 389
-  raw: ;
-- kind: Newline
-  span:
-    start: 389
-    end: 390
   raw: "\n"
 - kind: CloseBrace
   span:
+    start: 389
+    end: 390
+  raw: "}"
+- kind: Newline
+  span:
     start: 390
     end: 391
-  raw: "}"
-- kind:
-    Keyword: Catch
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 391
+    end: 392
+  raw: "\n"
+- kind: Identifier
   span:
     start: 392
     end: 397
-  raw: catch
+  raw: trace
 - kind: OpenParen
   span:
     start: 397
     end: 398
   raw: (
-- kind: Identifier
+- kind:
+    String: Double
   span:
     start: 398
-    end: 399
-  raw: e
-- kind: Colon
-  span:
-    start: 399
-    end: 400
-  raw: ":"
-- kind: Identifier
-  span:
-    start: 401
-    end: 410
-  raw: MovieClip
+    end: 425
+  raw: " -- try with no throw -- "
 - kind: CloseParen
   span:
-    start: 410
-    end: 411
+    start: 425
+    end: 426
   raw: )
+- kind: Semicolon
+  span:
+    start: 426
+    end: 427
+  raw: ;
+- kind: Newline
+  span:
+    start: 427
+    end: 428
+  raw: "\n"
+- kind:
+    Keyword: Try
+  span:
+    start: 428
+    end: 431
+  raw: try
 - kind: OpenBrace
   span:
-    start: 412
-    end: 413
+    start: 432
+    end: 433
   raw: "{"
 - kind: Newline
   span:
-    start: 413
-    end: 414
+    start: 433
+    end: 434
+  raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 438
+    end: 441
+  raw: var
+- kind: Identifier
+  span:
+    start: 442
+    end: 449
+  raw: message
+- kind:
+    Operator: Assign
+  span:
+    start: 450
+    end: 451
+  raw: "="
+- kind:
+    String: Double
+  span:
+    start: 452
+    end: 461
+  raw: message
+- kind: Semicolon
+  span:
+    start: 461
+    end: 462
+  raw: ;
+- kind: Newline
+  span:
+    start: 462
+    end: 463
+  raw: "\n"
+- kind: CloseBrace
+  span:
+    start: 463
+    end: 464
+  raw: "}"
+- kind:
+    Keyword: Catch
+  span:
+    start: 465
+    end: 470
+  raw: catch
+- kind: OpenParen
+  span:
+    start: 470
+    end: 471
+  raw: (
+- kind: Identifier
+  span:
+    start: 471
+    end: 472
+  raw: e
+- kind: CloseParen
+  span:
+    start: 472
+    end: 473
+  raw: )
+- kind: OpenBrace
+  span:
+    start: 474
+    end: 475
+  raw: "{"
+- kind: Newline
+  span:
+    start: 475
+    end: 476
   raw: "\n"
 - kind: Identifier
   span:
-    start: 415
-    end: 420
+    start: 477
+    end: 482
   raw: trace
 - kind: OpenParen
   span:
-    start: 420
-    end: 421
+    start: 482
+    end: 483
   raw: (
 - kind:
     String: Double
   span:
-    start: 421
-    end: 441
+    start: 483
+    end: 503
   raw: "caught something! "
 - kind:
     Operator: Add
   span:
-    start: 442
-    end: 443
+    start: 504
+    end: 505
   raw: +
 - kind: Identifier
   span:
-    start: 444
-    end: 445
+    start: 506
+    end: 507
   raw: e
 - kind: CloseParen
   span:
-    start: 445
-    end: 446
+    start: 507
+    end: 508
   raw: )
 - kind: Semicolon
   span:
-    start: 446
-    end: 447
+    start: 508
+    end: 509
   raw: ;
 - kind: Newline
   span:
-    start: 447
-    end: 448
+    start: 509
+    end: 510
   raw: "\n"
 - kind: CloseBrace
   span:
-    start: 448
-    end: 449
-  raw: "}"
-- kind:
-    Keyword: Finally
-  span:
-    start: 450
-    end: 457
-  raw: finally
-- kind: OpenBrace
-  span:
-    start: 458
-    end: 459
-  raw: "{"
-- kind: Newline
-  span:
-    start: 459
-    end: 460
-  raw: "\n"
-- kind: Identifier
-  span:
-    start: 464
-    end: 469
-  raw: trace
-- kind: OpenParen
-  span:
-    start: 469
-    end: 470
-  raw: (
-- kind:
-    String: Double
-  span:
-    start: 470
-    end: 480
-  raw: finally!
-- kind: CloseParen
-  span:
-    start: 480
-    end: 481
-  raw: )
-- kind: Semicolon
-  span:
-    start: 481
-    end: 482
-  raw: ;
-- kind: Newline
-  span:
-    start: 482
-    end: 483
-  raw: "\n"
-- kind: CloseBrace
-  span:
-    start: 483
-    end: 484
+    start: 510
+    end: 511
   raw: "}"
 - kind: Newline
   span:
-    start: 484
-    end: 485
+    start: 511
+    end: 512
   raw: "\n"
 - kind: Newline
   span:
-    start: 485
-    end: 486
+    start: 512
+    end: 513
   raw: "\n"
 - kind: Identifier
   span:
-    start: 486
-    end: 491
+    start: 513
+    end: 518
   raw: trace
 - kind: OpenParen
   span:
-    start: 491
-    end: 492
+    start: 518
+    end: 519
   raw: (
 - kind:
     String: Double
   span:
-    start: 492
-    end: 535
-  raw: " -- try catch(MovieClip) catch(Number) --"
+    start: 519
+    end: 555
+  raw: " -- try with conditional throw -- "
 - kind: CloseParen
   span:
-    start: 535
-    end: 536
+    start: 555
+    end: 556
   raw: )
 - kind: Semicolon
   span:
-    start: 536
-    end: 537
-  raw: ;
-- kind: Newline
-  span:
-    start: 537
-    end: 538
-  raw: "\n"
-- kind:
-    Keyword: Try
-  span:
-    start: 538
-    end: 541
-  raw: try
-- kind: OpenBrace
-  span:
-    start: 542
-    end: 543
-  raw: "{"
-- kind: Newline
-  span:
-    start: 543
-    end: 544
-  raw: "\n"
-- kind: Identifier
-  span:
-    start: 545
-    end: 550
-  raw: trace
-- kind: OpenParen
-  span:
-    start: 550
-    end: 551
-  raw: (
-- kind:
-    String: Double
-  span:
-    start: 551
+    start: 556
     end: 557
-  raw: try!
-- kind: CloseParen
+  raw: ;
+- kind: Newline
   span:
     start: 557
     end: 558
-  raw: )
-- kind: Semicolon
-  span:
-    start: 558
-    end: 559
-  raw: ;
-- kind: Newline
-  span:
-    start: 559
-    end: 560
-  raw: "\n"
-- kind:
-    Keyword: Throw
-  span:
-    start: 561
-    end: 566
-  raw: throw
-- kind: Identifier
-  span:
-    start: 567
-    end: 571
-  raw: this
-- kind: Semicolon
-  span:
-    start: 571
-    end: 572
-  raw: ;
-- kind: Newline
-  span:
-    start: 572
-    end: 573
-  raw: "\n"
-- kind: CloseBrace
-  span:
-    start: 573
-    end: 574
-  raw: "}"
-- kind:
-    Keyword: Catch
-  span:
-    start: 575
-    end: 580
-  raw: catch
-- kind: OpenParen
-  span:
-    start: 580
-    end: 581
-  raw: (
-- kind: Identifier
-  span:
-    start: 581
-    end: 582
-  raw: e
-- kind: Colon
-  span:
-    start: 582
-    end: 583
-  raw: ":"
-- kind: Identifier
-  span:
-    start: 584
-    end: 593
-  raw: MovieClip
-- kind: CloseParen
-  span:
-    start: 593
-    end: 594
-  raw: )
-- kind: OpenBrace
-  span:
-    start: 595
-    end: 596
-  raw: "{"
-- kind: Newline
-  span:
-    start: 596
-    end: 597
-  raw: "\n"
-- kind: Identifier
-  span:
-    start: 598
-    end: 603
-  raw: trace
-- kind: OpenParen
-  span:
-    start: 603
-    end: 604
-  raw: (
-- kind:
-    String: Double
-  span:
-    start: 604
-    end: 635
-  raw: catch something of MovieClip!
-- kind: CloseParen
-  span:
-    start: 635
-    end: 636
-  raw: )
-- kind: Semicolon
-  span:
-    start: 636
-    end: 637
-  raw: ;
-- kind: Newline
-  span:
-    start: 637
-    end: 638
-  raw: "\n"
-- kind: CloseBrace
-  span:
-    start: 638
-    end: 639
-  raw: "}"
-- kind:
-    Keyword: Catch
-  span:
-    start: 640
-    end: 645
-  raw: catch
-- kind: OpenParen
-  span:
-    start: 645
-    end: 646
-  raw: (
-- kind: Identifier
-  span:
-    start: 646
-    end: 647
-  raw: e
-- kind: Colon
-  span:
-    start: 647
-    end: 648
-  raw: ":"
-- kind: Identifier
-  span:
-    start: 649
-    end: 655
-  raw: Number
-- kind: CloseParen
-  span:
-    start: 655
-    end: 656
-  raw: )
-- kind: OpenBrace
-  span:
-    start: 657
-    end: 658
-  raw: "{"
-- kind: Newline
-  span:
-    start: 658
-    end: 659
-  raw: "\n"
-- kind: Identifier
-  span:
-    start: 660
-    end: 665
-  raw: trace
-- kind: OpenParen
-  span:
-    start: 665
-    end: 666
-  raw: (
-- kind:
-    String: Double
-  span:
-    start: 666
-    end: 694
-  raw: catch something of Number!
-- kind: CloseParen
-  span:
-    start: 694
-    end: 695
-  raw: )
-- kind: Semicolon
-  span:
-    start: 695
-    end: 696
-  raw: ;
-- kind: Newline
-  span:
-    start: 696
-    end: 697
-  raw: "\n"
-- kind: CloseBrace
-  span:
-    start: 697
-    end: 698
-  raw: "}"
-- kind:
-    Keyword: Catch
-  span:
-    start: 699
-    end: 704
-  raw: catch
-- kind: OpenParen
-  span:
-    start: 704
-    end: 705
-  raw: (
-- kind: Identifier
-  span:
-    start: 705
-    end: 706
-  raw: e
-- kind: CloseParen
-  span:
-    start: 706
-    end: 707
-  raw: )
-- kind: OpenBrace
-  span:
-    start: 708
-    end: 709
-  raw: "{"
-- kind: Newline
-  span:
-    start: 709
-    end: 710
-  raw: "\n"
-- kind: Identifier
-  span:
-    start: 711
-    end: 716
-  raw: trace
-- kind: OpenParen
-  span:
-    start: 716
-    end: 717
-  raw: (
-- kind:
-    String: Double
-  span:
-    start: 717
-    end: 739
-  raw: catch anything else!
-- kind: CloseParen
-  span:
-    start: 739
-    end: 740
-  raw: )
-- kind: Semicolon
-  span:
-    start: 740
-    end: 741
-  raw: ;
-- kind: Newline
-  span:
-    start: 741
-    end: 742
-  raw: "\n"
-- kind: CloseBrace
-  span:
-    start: 742
-    end: 743
-  raw: "}"
-- kind: Newline
-  span:
-    start: 743
-    end: 744
-  raw: "\n"
-- kind: Newline
-  span:
-    start: 744
-    end: 745
-  raw: "\n"
-- kind: Identifier
-  span:
-    start: 774
-    end: 779
-  raw: trace
-- kind: OpenParen
-  span:
-    start: 779
-    end: 780
-  raw: (
-- kind:
-    String: Double
-  span:
-    start: 780
-    end: 801
-  raw: " -- try finally -- "
-- kind: CloseParen
-  span:
-    start: 801
-    end: 802
-  raw: )
-- kind: Semicolon
-  span:
-    start: 802
-    end: 803
-  raw: ;
-- kind: Newline
-  span:
-    start: 803
-    end: 804
-  raw: "\n"
-- kind: Newline
-  span:
-    start: 804
-    end: 805
   raw: "\n"
 - kind:
     Keyword: Try
   span:
-    start: 805
-    end: 808
+    start: 558
+    end: 561
   raw: try
 - kind: OpenBrace
   span:
-    start: 809
-    end: 810
+    start: 562
+    end: 563
   raw: "{"
 - kind: Newline
   span:
-    start: 810
-    end: 811
+    start: 563
+    end: 564
   raw: "\n"
+- kind:
+    Keyword: Var
+  span:
+    start: 568
+    end: 571
+  raw: var
 - kind: Identifier
   span:
-    start: 812
-    end: 817
-  raw: trace
-- kind: OpenParen
+    start: 572
+    end: 579
+  raw: message
+- kind:
+    Operator: Assign
   span:
-    start: 817
-    end: 818
-  raw: (
+    start: 580
+    end: 581
+  raw: "="
 - kind:
     String: Double
   span:
-    start: 818
-    end: 824
-  raw: try!
-- kind: CloseParen
-  span:
-    start: 824
-    end: 825
-  raw: )
+    start: 582
+    end: 591
+  raw: message
 - kind: Semicolon
   span:
-    start: 825
-    end: 826
+    start: 591
+    end: 592
   raw: ;
 - kind: Newline
   span:
-    start: 826
-    end: 827
+    start: 592
+    end: 593
+  raw: "\n"
+- kind:
+    Keyword: If
+  span:
+    start: 597
+    end: 599
+  raw: if
+- kind: OpenParen
+  span:
+    start: 600
+    end: 601
+  raw: (
+- kind: Identifier
+  span:
+    start: 601
+    end: 608
+  raw: message
+- kind:
+    Operator: NotEqual
+  span:
+    start: 609
+    end: 611
+  raw: "!="
+- kind:
+    String: Double
+  span:
+    start: 612
+    end: 621
+  raw: message
+- kind: CloseParen
+  span:
+    start: 621
+    end: 622
+  raw: )
+- kind: OpenBrace
+  span:
+    start: 623
+    end: 624
+  raw: "{"
+- kind: Newline
+  span:
+    start: 624
+    end: 625
   raw: "\n"
 - kind:
     Keyword: Throw
   span:
-    start: 831
-    end: 836
+    start: 633
+    end: 638
   raw: throw
 - kind: Identifier
   span:
-    start: 837
-    end: 841
-  raw: "null"
+    start: 639
+    end: 646
+  raw: message
 - kind: Semicolon
   span:
-    start: 841
-    end: 842
+    start: 646
+    end: 647
   raw: ;
 - kind: Newline
   span:
-    start: 842
-    end: 843
+    start: 647
+    end: 648
   raw: "\n"
 - kind: CloseBrace
   span:
+    start: 652
+    end: 653
+  raw: "}"
+- kind: Newline
+  span:
+    start: 653
+    end: 654
+  raw: "\n"
+- kind: CloseBrace
+  span:
+    start: 654
+    end: 655
+  raw: "}"
+- kind:
+    Keyword: Catch
+  span:
+    start: 656
+    end: 661
+  raw: catch
+- kind: OpenParen
+  span:
+    start: 661
+    end: 662
+  raw: (
+- kind: Identifier
+  span:
+    start: 662
+    end: 663
+  raw: e
+- kind: CloseParen
+  span:
+    start: 663
+    end: 664
+  raw: )
+- kind: OpenBrace
+  span:
+    start: 665
+    end: 666
+  raw: "{"
+- kind: Newline
+  span:
+    start: 666
+    end: 667
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 668
+    end: 673
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 673
+    end: 674
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 674
+    end: 694
+  raw: "caught something! "
+- kind:
+    Operator: Add
+  span:
+    start: 695
+    end: 696
+  raw: +
+- kind: Identifier
+  span:
+    start: 697
+    end: 698
+  raw: e
+- kind: CloseParen
+  span:
+    start: 698
+    end: 699
+  raw: )
+- kind: Semicolon
+  span:
+    start: 699
+    end: 700
+  raw: ;
+- kind: Newline
+  span:
+    start: 700
+    end: 701
+  raw: "\n"
+- kind: CloseBrace
+  span:
+    start: 701
+    end: 702
+  raw: "}"
+- kind: Newline
+  span:
+    start: 702
+    end: 703
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 703
+    end: 704
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 704
+    end: 709
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 709
+    end: 710
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 710
+    end: 748
+  raw: " -- try catch(MovieClip) finally -- "
+- kind: CloseParen
+  span:
+    start: 748
+    end: 749
+  raw: )
+- kind: Semicolon
+  span:
+    start: 749
+    end: 750
+  raw: ;
+- kind: Newline
+  span:
+    start: 750
+    end: 751
+  raw: "\n"
+- kind:
+    Keyword: Try
+  span:
+    start: 751
+    end: 754
+  raw: try
+- kind: OpenBrace
+  span:
+    start: 755
+    end: 756
+  raw: "{"
+- kind: Newline
+  span:
+    start: 756
+    end: 757
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 758
+    end: 763
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 763
+    end: 764
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 764
+    end: 770
+  raw: try!
+- kind: CloseParen
+  span:
+    start: 770
+    end: 771
+  raw: )
+- kind: Semicolon
+  span:
+    start: 771
+    end: 772
+  raw: ;
+- kind: Newline
+  span:
+    start: 772
+    end: 773
+  raw: "\n"
+- kind:
+    Keyword: Throw
+  span:
+    start: 774
+    end: 779
+  raw: throw
+- kind: Identifier
+  span:
+    start: 780
+    end: 784
+  raw: this
+- kind: Semicolon
+  span:
+    start: 784
+    end: 785
+  raw: ;
+- kind: Newline
+  span:
+    start: 785
+    end: 786
+  raw: "\n"
+- kind: CloseBrace
+  span:
+    start: 786
+    end: 787
+  raw: "}"
+- kind:
+    Keyword: Catch
+  span:
+    start: 788
+    end: 793
+  raw: catch
+- kind: OpenParen
+  span:
+    start: 793
+    end: 794
+  raw: (
+- kind: Identifier
+  span:
+    start: 794
+    end: 795
+  raw: e
+- kind: Colon
+  span:
+    start: 795
+    end: 796
+  raw: ":"
+- kind: Identifier
+  span:
+    start: 797
+    end: 806
+  raw: MovieClip
+- kind: CloseParen
+  span:
+    start: 806
+    end: 807
+  raw: )
+- kind: OpenBrace
+  span:
+    start: 808
+    end: 809
+  raw: "{"
+- kind: Newline
+  span:
+    start: 809
+    end: 810
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 811
+    end: 816
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 816
+    end: 817
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 817
+    end: 837
+  raw: "caught something! "
+- kind:
+    Operator: Add
+  span:
+    start: 838
+    end: 839
+  raw: +
+- kind: Identifier
+  span:
+    start: 840
+    end: 841
+  raw: e
+- kind: CloseParen
+  span:
+    start: 841
+    end: 842
+  raw: )
+- kind: Semicolon
+  span:
+    start: 842
+    end: 843
+  raw: ;
+- kind: Newline
+  span:
     start: 843
     end: 844
+  raw: "\n"
+- kind: CloseBrace
+  span:
+    start: 844
+    end: 845
   raw: "}"
 - kind:
     Keyword: Finally
   span:
-    start: 845
-    end: 852
+    start: 846
+    end: 853
   raw: finally
 - kind: OpenBrace
   span:
-    start: 853
-    end: 854
+    start: 854
+    end: 855
   raw: "{"
 - kind: Newline
   span:
-    start: 854
-    end: 855
+    start: 855
+    end: 856
   raw: "\n"
 - kind: Identifier
   span:
-    start: 856
-    end: 861
+    start: 860
+    end: 865
   raw: trace
 - kind: OpenParen
   span:
-    start: 861
-    end: 862
+    start: 865
+    end: 866
   raw: (
 - kind:
     String: Double
   span:
-    start: 862
-    end: 872
+    start: 866
+    end: 876
   raw: finally!
 - kind: CloseParen
   span:
-    start: 872
-    end: 873
+    start: 876
+    end: 877
   raw: )
 - kind: Semicolon
   span:
-    start: 873
-    end: 874
+    start: 877
+    end: 878
   raw: ;
 - kind: Newline
   span:
-    start: 874
-    end: 875
+    start: 878
+    end: 879
   raw: "\n"
 - kind: CloseBrace
   span:
-    start: 875
-    end: 876
+    start: 879
+    end: 880
   raw: "}"
 - kind: Newline
   span:
-    start: 876
-    end: 877
+    start: 880
+    end: 881
   raw: "\n"
 - kind: Newline
   span:
-    start: 877
-    end: 878
+    start: 881
+    end: 882
   raw: "\n"
 - kind: Identifier
   span:
-    start: 878
-    end: 883
+    start: 882
+    end: 887
   raw: trace
 - kind: OpenParen
   span:
-    start: 883
-    end: 884
+    start: 887
+    end: 888
   raw: (
 - kind:
     String: Double
   span:
-    start: 884
-    end: 922
+    start: 888
+    end: 931
+  raw: " -- try catch(MovieClip) catch(Number) --"
+- kind: CloseParen
+  span:
+    start: 931
+    end: 932
+  raw: )
+- kind: Semicolon
+  span:
+    start: 932
+    end: 933
+  raw: ;
+- kind: Newline
+  span:
+    start: 933
+    end: 934
+  raw: "\n"
+- kind:
+    Keyword: Try
+  span:
+    start: 934
+    end: 937
+  raw: try
+- kind: OpenBrace
+  span:
+    start: 938
+    end: 939
+  raw: "{"
+- kind: Newline
+  span:
+    start: 939
+    end: 940
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 941
+    end: 946
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 946
+    end: 947
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 947
+    end: 953
+  raw: try!
+- kind: CloseParen
+  span:
+    start: 953
+    end: 954
+  raw: )
+- kind: Semicolon
+  span:
+    start: 954
+    end: 955
+  raw: ;
+- kind: Newline
+  span:
+    start: 955
+    end: 956
+  raw: "\n"
+- kind:
+    Keyword: Throw
+  span:
+    start: 957
+    end: 962
+  raw: throw
+- kind: Identifier
+  span:
+    start: 963
+    end: 967
+  raw: this
+- kind: Semicolon
+  span:
+    start: 967
+    end: 968
+  raw: ;
+- kind: Newline
+  span:
+    start: 968
+    end: 969
+  raw: "\n"
+- kind: CloseBrace
+  span:
+    start: 969
+    end: 970
+  raw: "}"
+- kind:
+    Keyword: Catch
+  span:
+    start: 971
+    end: 976
+  raw: catch
+- kind: OpenParen
+  span:
+    start: 976
+    end: 977
+  raw: (
+- kind: Identifier
+  span:
+    start: 977
+    end: 978
+  raw: e
+- kind: Colon
+  span:
+    start: 978
+    end: 979
+  raw: ":"
+- kind: Identifier
+  span:
+    start: 980
+    end: 989
+  raw: MovieClip
+- kind: CloseParen
+  span:
+    start: 989
+    end: 990
+  raw: )
+- kind: OpenBrace
+  span:
+    start: 991
+    end: 992
+  raw: "{"
+- kind: Newline
+  span:
+    start: 992
+    end: 993
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 994
+    end: 999
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 999
+    end: 1000
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1000
+    end: 1031
+  raw: catch something of MovieClip!
+- kind: CloseParen
+  span:
+    start: 1031
+    end: 1032
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1032
+    end: 1033
+  raw: ;
+- kind: Newline
+  span:
+    start: 1033
+    end: 1034
+  raw: "\n"
+- kind: CloseBrace
+  span:
+    start: 1034
+    end: 1035
+  raw: "}"
+- kind:
+    Keyword: Catch
+  span:
+    start: 1036
+    end: 1041
+  raw: catch
+- kind: OpenParen
+  span:
+    start: 1041
+    end: 1042
+  raw: (
+- kind: Identifier
+  span:
+    start: 1042
+    end: 1043
+  raw: e
+- kind: Colon
+  span:
+    start: 1043
+    end: 1044
+  raw: ":"
+- kind: Identifier
+  span:
+    start: 1045
+    end: 1051
+  raw: Number
+- kind: CloseParen
+  span:
+    start: 1051
+    end: 1052
+  raw: )
+- kind: OpenBrace
+  span:
+    start: 1053
+    end: 1054
+  raw: "{"
+- kind: Newline
+  span:
+    start: 1054
+    end: 1055
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1056
+    end: 1061
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1061
+    end: 1062
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1062
+    end: 1090
+  raw: catch something of Number!
+- kind: CloseParen
+  span:
+    start: 1090
+    end: 1091
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1091
+    end: 1092
+  raw: ;
+- kind: Newline
+  span:
+    start: 1092
+    end: 1093
+  raw: "\n"
+- kind: CloseBrace
+  span:
+    start: 1093
+    end: 1094
+  raw: "}"
+- kind:
+    Keyword: Catch
+  span:
+    start: 1095
+    end: 1100
+  raw: catch
+- kind: OpenParen
+  span:
+    start: 1100
+    end: 1101
+  raw: (
+- kind: Identifier
+  span:
+    start: 1101
+    end: 1102
+  raw: e
+- kind: CloseParen
+  span:
+    start: 1102
+    end: 1103
+  raw: )
+- kind: OpenBrace
+  span:
+    start: 1104
+    end: 1105
+  raw: "{"
+- kind: Newline
+  span:
+    start: 1105
+    end: 1106
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1107
+    end: 1112
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1112
+    end: 1113
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1113
+    end: 1135
+  raw: catch anything else!
+- kind: CloseParen
+  span:
+    start: 1135
+    end: 1136
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1136
+    end: 1137
+  raw: ;
+- kind: Newline
+  span:
+    start: 1137
+    end: 1138
+  raw: "\n"
+- kind: CloseBrace
+  span:
+    start: 1138
+    end: 1139
+  raw: "}"
+- kind: Newline
+  span:
+    start: 1139
+    end: 1140
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 1140
+    end: 1141
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1170
+    end: 1175
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1175
+    end: 1176
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1176
+    end: 1197
+  raw: " -- try finally -- "
+- kind: CloseParen
+  span:
+    start: 1197
+    end: 1198
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1198
+    end: 1199
+  raw: ;
+- kind: Newline
+  span:
+    start: 1199
+    end: 1200
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 1200
+    end: 1201
+  raw: "\n"
+- kind:
+    Keyword: Try
+  span:
+    start: 1201
+    end: 1204
+  raw: try
+- kind: OpenBrace
+  span:
+    start: 1205
+    end: 1206
+  raw: "{"
+- kind: Newline
+  span:
+    start: 1206
+    end: 1207
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1208
+    end: 1213
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1213
+    end: 1214
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1214
+    end: 1220
+  raw: try!
+- kind: CloseParen
+  span:
+    start: 1220
+    end: 1221
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1221
+    end: 1222
+  raw: ;
+- kind: Newline
+  span:
+    start: 1222
+    end: 1223
+  raw: "\n"
+- kind:
+    Keyword: Throw
+  span:
+    start: 1227
+    end: 1232
+  raw: throw
+- kind: Identifier
+  span:
+    start: 1233
+    end: 1237
+  raw: "null"
+- kind: Semicolon
+  span:
+    start: 1237
+    end: 1238
+  raw: ;
+- kind: Newline
+  span:
+    start: 1238
+    end: 1239
+  raw: "\n"
+- kind: CloseBrace
+  span:
+    start: 1239
+    end: 1240
+  raw: "}"
+- kind:
+    Keyword: Finally
+  span:
+    start: 1241
+    end: 1248
+  raw: finally
+- kind: OpenBrace
+  span:
+    start: 1249
+    end: 1250
+  raw: "{"
+- kind: Newline
+  span:
+    start: 1250
+    end: 1251
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1252
+    end: 1257
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1257
+    end: 1258
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1258
+    end: 1268
+  raw: finally!
+- kind: CloseParen
+  span:
+    start: 1268
+    end: 1269
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1269
+    end: 1270
+  raw: ;
+- kind: Newline
+  span:
+    start: 1270
+    end: 1271
+  raw: "\n"
+- kind: CloseBrace
+  span:
+    start: 1271
+    end: 1272
+  raw: "}"
+- kind: Newline
+  span:
+    start: 1272
+    end: 1273
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 1273
+    end: 1274
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1274
+    end: 1279
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1279
+    end: 1280
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1280
+    end: 1318
   raw: "If you see this, it didn't throw! :("
 - kind: CloseParen
   span:
-    start: 922
-    end: 923
+    start: 1318
+    end: 1319
   raw: )
 - kind: Newline
   span:
-    start: 923
-    end: 924
+    start: 1319
+    end: 1320
   raw: "\n"

@@ -16,6 +16,9 @@ Ok:
         - " -- try catch -- "
         - test
         - "caught something! "
+        - " -- empty try -- "
+        - " -- try with no throw -- "
+        - " -- try with conditional throw -- "
         - " -- try catch(MovieClip) finally -- "
         - this
         - MovieClip
@@ -93,11 +96,95 @@ Ok:
     - Try:
         try_body:
           actions:
+            - Jump: loc023c
+          label_positions: {}
+        catch_body:
+          - Variable: e
+          - actions:
+              - Push:
+                  - Constant: 9
+              - Push:
+                  - Constant: 5
+              - GetVariable
+              - Add2
+              - Trace
+            label_positions: {}
+        finally_body: ~
+    - Push:
+        - Constant: 11
+    - Trace
+    - Try:
+        try_body:
+          actions:
+            - Push:
+                - Constant: 2
+            - Push:
+                - Constant: 2
+            - DefineLocal
+            - Jump: loc026b
+          label_positions: {}
+        catch_body:
+          - Variable: e
+          - actions:
+              - Push:
+                  - Constant: 9
+              - Push:
+                  - Constant: 5
+              - GetVariable
+              - Add2
+              - Trace
+            label_positions: {}
+        finally_body: ~
+    - Push:
+        - Constant: 12
+    - Trace
+    - Try:
+        try_body:
+          actions:
+            - Push:
+                - Constant: 2
+            - Push:
+                - Constant: 2
+            - DefineLocal
+            - Push:
+                - Constant: 2
+            - GetVariable
+            - Push:
+                - Constant: 2
+            - Equals2
+            - Not
+            - Not
+            - If: loc02a2
+            - Push:
+                - Constant: 2
+            - GetVariable
+            - Throw
+            - Jump: loc02b4
+          label_positions:
+            loc02a2: 13
+        catch_body:
+          - Variable: e
+          - actions:
+              - Push:
+                  - Constant: 9
+              - Push:
+                  - Constant: 5
+              - GetVariable
+              - Add2
+              - Trace
+            label_positions: {}
+        finally_body: ~
+    - Push:
+        - Constant: 13
+    - Trace
+    - Try:
+        try_body:
+          actions:
             - Push:
                 - Constant: 1
             - Trace
             - Push:
-                - Constant: 11
+                - Constant: 14
             - GetVariable
             - Throw
           label_positions: {}
@@ -105,7 +192,7 @@ Ok:
           - Register: 0
           - actions:
               - Push:
-                  - Constant: 12
+                  - Constant: 15
               - GetVariable
               - Push:
                   - Register: 0
@@ -114,7 +201,7 @@ Ok:
               - Push:
                   - "Null"
               - Equals2
-              - If: loc0217
+              - If: loc0302
               - Push:
                   - Constant: 5
               - StackSwap
@@ -126,22 +213,22 @@ Ok:
               - GetVariable
               - Add2
               - Trace
-              - Jump: loc021e
+              - Jump: loc0309
               - Pop
               - Push:
                   - Register: 0
               - Throw
             label_positions:
-              loc0217: 17
+              loc0302: 17
         finally_body:
           actions:
             - Push:
                 - Constant: 6
             - Trace
           label_positions:
-            loc021e: 0
+            loc0309: 0
     - Push:
-        - Constant: 13
+        - Constant: 16
     - Trace
     - Try:
         try_body:
@@ -150,33 +237,13 @@ Ok:
                 - Constant: 1
             - Trace
             - Push:
-                - Constant: 11
+                - Constant: 14
             - GetVariable
             - Throw
           label_positions: {}
         catch_body:
           - Register: 0
           - actions:
-              - Push:
-                  - Constant: 12
-              - GetVariable
-              - Push:
-                  - Register: 0
-              - CastOp
-              - PushDuplicate
-              - Push:
-                  - "Null"
-              - Equals2
-              - If: loc026b
-              - Push:
-                  - Constant: 5
-              - StackSwap
-              - DefineLocal
-              - Push:
-                  - Constant: 14
-              - Trace
-              - Jump: loc02ad
-              - Pop
               - Push:
                   - Constant: 15
               - GetVariable
@@ -187,15 +254,35 @@ Ok:
               - Push:
                   - "Null"
               - Equals2
-              - If: loc0295
+              - If: loc0356
               - Push:
                   - Constant: 5
               - StackSwap
               - DefineLocal
               - Push:
-                  - Constant: 16
+                  - Constant: 17
               - Trace
-              - Jump: loc02ad
+              - Jump: loc0398
+              - Pop
+              - Push:
+                  - Constant: 18
+              - GetVariable
+              - Push:
+                  - Register: 0
+              - CastOp
+              - PushDuplicate
+              - Push:
+                  - "Null"
+              - Equals2
+              - If: loc0380
+              - Push:
+                  - Constant: 5
+              - StackSwap
+              - DefineLocal
+              - Push:
+                  - Constant: 19
+              - Trace
+              - Jump: loc0398
               - Pop
               - Push:
                   - Register: 0
@@ -204,15 +291,15 @@ Ok:
               - StackSwap
               - DefineLocal
               - Push:
-                  - Constant: 17
+                  - Constant: 20
               - Trace
-              - Jump: loc02ad
+              - Jump: loc0398
             label_positions:
-              loc026b: 14
-              loc0295: 29
+              loc0356: 14
+              loc0380: 29
         finally_body: ~
     - Push:
-        - Constant: 18
+        - Constant: 21
     - Trace
     - Try:
         try_body:
@@ -232,7 +319,10 @@ Ok:
             - Trace
           label_positions: {}
     - Push:
-        - Constant: 19
+        - Constant: 22
     - Trace
   label_positions:
-    loc02ad: 13
+    loc023c: 10
+    loc026b: 13
+    loc02b4: 16
+    loc0398: 22

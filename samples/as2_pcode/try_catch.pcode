@@ -1,4 +1,4 @@
-ConstantPool " -- try catch finally -- ", "try!", "message", "Hello World!", "catch!", "e", "finally!", " -- try catch -- ", "test", "caught something! ", " -- try catch(MovieClip) finally -- ", "this", "MovieClip", " -- try catch(MovieClip) catch(Number) --", "catch something of MovieClip!", "Number", "catch something of Number!", "catch anything else!", " -- try finally -- ", "If you see this, it didn\'t throw! :("
+ConstantPool " -- try catch finally -- ", "try!", "message", "Hello World!", "catch!", "e", "finally!", " -- try catch -- ", "test", "caught something! ", " -- empty try -- ", " -- try with no throw -- ", " -- try with conditional throw -- ", " -- try catch(MovieClip) finally -- ", "this", "MovieClip", " -- try catch(MovieClip) catch(Number) --", "catch something of MovieClip!", "Number", "catch something of Number!", "catch anything else!", " -- try finally -- ", "If you see this, it didn\'t throw! :("
 Push constant0
 Trace
 Try "e" {
@@ -39,22 +39,74 @@ Trace
 }
 Push constant10
 Trace
+Try "e" {
+Jump loc023c
+}
+Catch {
+Push constant9
+Push constant5
+GetVariable
+Add2
+Trace
+}
+loc023c:Push constant11
+Trace
+Try "e" {
+Push constant2
+Push constant2
+DefineLocal
+Jump loc026b
+}
+Catch {
+Push constant9
+Push constant5
+GetVariable
+Add2
+Trace
+}
+loc026b:Push constant12
+Trace
+Try "e" {
+Push constant2
+Push constant2
+DefineLocal
+Push constant2
+GetVariable
+Push constant2
+Equals2
+Not
+Not
+If loc02a2
+Push constant2
+GetVariable
+Throw
+loc02a2:Jump loc02b4
+}
+Catch {
+Push constant9
+Push constant5
+GetVariable
+Add2
+Trace
+}
+loc02b4:Push constant13
+Trace
 Try register0 {
 Push constant1
 Trace
-Push constant11
+Push constant14
 GetVariable
 Throw
 }
 Catch {
-Push constant12
+Push constant15
 GetVariable
 Push register0
 CastOp
 PushDuplicate
 Push null
 Equals2
-If loc0217
+If loc0302
 Push constant5
 StackSwap
 DefineLocal
@@ -63,40 +115,25 @@ Push constant5
 GetVariable
 Add2
 Trace
-Jump loc021e
-loc0217:Pop
+Jump loc0309
+loc0302:Pop
 Push register0
 Throw
 }
 Finally {
-loc021e:Push constant6
+loc0309:Push constant6
 Trace
 }
-Push constant13
+Push constant16
 Trace
 Try register0 {
 Push constant1
 Trace
-Push constant11
+Push constant14
 GetVariable
 Throw
 }
 Catch {
-Push constant12
-GetVariable
-Push register0
-CastOp
-PushDuplicate
-Push null
-Equals2
-If loc026b
-Push constant5
-StackSwap
-DefineLocal
-Push constant14
-Trace
-Jump loc02ad
-loc026b:Pop
 Push constant15
 GetVariable
 Push register0
@@ -104,23 +141,38 @@ CastOp
 PushDuplicate
 Push null
 Equals2
-If loc0295
-Push constant5
-StackSwap
-DefineLocal
-Push constant16
-Trace
-Jump loc02ad
-loc0295:Pop
-Push register0
+If loc0356
 Push constant5
 StackSwap
 DefineLocal
 Push constant17
 Trace
-Jump loc02ad
+Jump loc0398
+loc0356:Pop
+Push constant18
+GetVariable
+Push register0
+CastOp
+PushDuplicate
+Push null
+Equals2
+If loc0380
+Push constant5
+StackSwap
+DefineLocal
+Push constant19
+Trace
+Jump loc0398
+loc0380:Pop
+Push register0
+Push constant5
+StackSwap
+DefineLocal
+Push constant20
+Trace
+Jump loc0398
 }
-loc02ad:Push constant18
+loc0398:Push constant21
 Trace
 Try {
 Push constant1
@@ -132,5 +184,5 @@ Finally {
 Push constant6
 Trace
 }
-Push constant19
+Push constant22
 Trace

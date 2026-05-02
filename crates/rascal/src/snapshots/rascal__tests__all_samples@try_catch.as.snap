@@ -16,6 +16,9 @@ initializer:
         - " -- try catch -- "
         - test
         - "caught something! "
+        - " -- empty try -- "
+        - " -- try with no throw -- "
+        - " -- try with conditional throw -- "
         - " -- try catch(MovieClip) finally -- "
         - this
         - " -- try catch(MovieClip) catch(Number) --"
@@ -88,12 +91,88 @@ initializer:
     - Trace
     - Try:
         try_body:
+          actions: []
+          label_positions: {}
+        catch_body:
+          - Variable: e
+          - actions:
+              - Push:
+                  - Constant: 9
+                  - Constant: 5
+              - GetVariable
+              - Add2
+              - Trace
+            label_positions: {}
+        finally_body: ~
+    - Push:
+        - Constant: 11
+    - Trace
+    - Try:
+        try_body:
+          actions:
+            - Push:
+                - Constant: 2
+                - Constant: 2
+            - DefineLocal
+          label_positions: {}
+        catch_body:
+          - Variable: e
+          - actions:
+              - Push:
+                  - Constant: 9
+                  - Constant: 5
+              - GetVariable
+              - Add2
+              - Trace
+            label_positions: {}
+        finally_body: ~
+    - Push:
+        - Constant: 12
+    - Trace
+    - Try:
+        try_body:
+          actions:
+            - Push:
+                - Constant: 2
+                - Constant: 2
+            - DefineLocal
+            - Push:
+                - Constant: 2
+            - GetVariable
+            - Push:
+                - Constant: 2
+            - Equals2
+            - Not
+            - Not
+            - If: loc0000
+            - Push:
+                - Constant: 2
+            - GetVariable
+            - Throw
+          label_positions:
+            loc0000: 12
+        catch_body:
+          - Variable: e
+          - actions:
+              - Push:
+                  - Constant: 9
+                  - Constant: 5
+              - GetVariable
+              - Add2
+              - Trace
+            label_positions: {}
+        finally_body: ~
+    - Push:
+        - Constant: 13
+    - Trace
+    - Try:
+        try_body:
           actions:
             - Push:
                 - Constant: 1
             - Trace
             - Push:
-                - Constant: 11
+                - Constant: 14
             - GetVariable
             - Throw
           label_positions: {}
@@ -110,7 +189,7 @@ initializer:
               - Push:
                   - "Null"
               - Equals2
-              - If: loc0001
+              - If: loc0002
               - Push:
                   - String: e
               - StackSwap
@@ -121,22 +200,22 @@ initializer:
               - GetVariable
               - Add2
               - Trace
-              - Jump: loc0000
+              - Jump: loc0001
               - Pop
               - Push:
                   - Register: 0
               - Throw
             label_positions:
-              loc0001: 16
+              loc0002: 16
         finally_body:
           actions:
             - Push:
                 - Constant: 6
             - Trace
           label_positions:
-            loc0000: 0
+            loc0001: 0
     - Push:
-        - Constant: 12
+        - Constant: 15
     - Trace
     - Try:
         try_body:
@@ -145,7 +224,7 @@ initializer:
                 - Constant: 1
             - Trace
             - Push:
-                - Constant: 11
+                - Constant: 14
             - GetVariable
             - Throw
           label_positions: {}
@@ -154,26 +233,6 @@ initializer:
           - actions:
               - Push:
                   - String: MovieClip
-              - GetVariable
-              - Push:
-                  - Register: 0
-              - CastOp
-              - PushDuplicate
-              - Push:
-                  - "Null"
-              - Equals2
-              - If: loc0003
-              - Push:
-                  - String: e
-              - StackSwap
-              - DefineLocal
-              - Push:
-                  - Constant: 13
-              - Trace
-              - Jump: loc0002
-              - Pop
-              - Push:
-                  - String: Number
               - GetVariable
               - Push:
                   - Register: 0
@@ -188,9 +247,29 @@ initializer:
               - StackSwap
               - DefineLocal
               - Push:
-                  - Constant: 14
+                  - Constant: 16
               - Trace
-              - Jump: loc0002
+              - Jump: loc0003
+              - Pop
+              - Push:
+                  - String: Number
+              - GetVariable
+              - Push:
+                  - Register: 0
+              - CastOp
+              - PushDuplicate
+              - Push:
+                  - "Null"
+              - Equals2
+              - If: loc0005
+              - Push:
+                  - String: e
+              - StackSwap
+              - DefineLocal
+              - Push:
+                  - Constant: 17
+              - Trace
+              - Jump: loc0003
               - Pop
               - Push:
                   - Register: 0
@@ -198,14 +277,14 @@ initializer:
               - StackSwap
               - DefineLocal
               - Push:
-                  - Constant: 15
+                  - Constant: 18
               - Trace
             label_positions:
-              loc0003: 14
-              loc0004: 29
+              loc0004: 14
+              loc0005: 29
         finally_body: ~
     - Push:
-        - Constant: 16
+        - Constant: 19
     - Trace
     - Try:
         try_body:
@@ -225,10 +304,10 @@ initializer:
             - Trace
           label_positions: {}
     - Push:
-        - Constant: 17
+        - Constant: 20
     - Trace
   label_positions:
-    loc0002: 13
+    loc0003: 22
 extra_modules: []
 compile_options:
   swf_version: 15
