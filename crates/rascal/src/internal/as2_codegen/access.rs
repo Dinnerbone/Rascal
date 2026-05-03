@@ -57,7 +57,6 @@ impl VariableAccess {
             ConstantKind::Identifier(identifier) => {
                 Self::for_identifier(context, builder, identifier)
             }
-            ConstantKind::This => Self::for_identifier(context, builder, "this"),
             ConstantKind::Float(value) => {
                 builder.push(*value);
                 VariableAccess::Direct

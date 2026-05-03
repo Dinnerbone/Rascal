@@ -55,7 +55,7 @@ impl<'a> ModuleContext<'a> {
             } else {
                 Box::new(hir::Expr::new(
                     span,
-                    hir::ExprKind::Constant(hir::ConstantKind::This),
+                    hir::ExprKind::Constant(hir::ConstantKind::Identifier("this".to_owned())),
                 ))
             };
             return Some(hir::Expr::new(
