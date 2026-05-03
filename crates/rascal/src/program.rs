@@ -1,4 +1,5 @@
 use crate::error::{Error, ErrorSet};
+use crate::internal::as2::hir::simplifier::simplify;
 use crate::internal::as2::lexer::Lexer;
 use crate::internal::as2::resolver::resolve_hir;
 use crate::internal::as2::{hir, parser, type_path_to_file_path};
@@ -197,7 +198,7 @@ impl<P: SourceProvider> ProgramBuilder<P> {
                     pending_classes.push(name);
                 }
             }
-            while hir.simplify() {
+            while simplify(&mut hir) {
                 // Keep going until nothing changed
             }
             Some(hir)
