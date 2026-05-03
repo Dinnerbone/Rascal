@@ -326,7 +326,7 @@ fn call_main_method(class: &str) -> hir::StatementKind {
             name: Box::new(name),
             args: vec![hir::Expr::new(
                 Span::default(),
-                hir::ExprKind::Constant(hir::ConstantKind::This),
+                hir::ExprKind::Constant(hir::ConstantKind::Identifier("this".to_owned())),
             )],
         },
     ))
@@ -402,7 +402,7 @@ mod tests {
                     )),
                     args: vec![hir::Expr::new(
                         Span::default(),
-                        hir::ExprKind::Constant(hir::ConstantKind::This)
+                        hir::ExprKind::Constant(hir::ConstantKind::Identifier("this".to_owned()))
                     )]
                 }
             ))
@@ -457,7 +457,7 @@ mod tests {
                     )),
                     args: vec![hir::Expr::new(
                         Span::default(),
-                        hir::ExprKind::Constant(hir::ConstantKind::This)
+                        hir::ExprKind::Constant(hir::ConstantKind::Identifier("this".to_owned()))
                     )]
                 }
             ))
