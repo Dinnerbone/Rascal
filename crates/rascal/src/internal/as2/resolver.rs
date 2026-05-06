@@ -272,6 +272,7 @@ fn resolve_interface(
                         .map(|arg| hir::FunctionArgument {
                             name: arg.name.to_owned(),
                             type_name: resolve_opt_type_name(context, &arg.type_name),
+                            register: None,
                         })
                         .collect(),
                     return_type: resolve_opt_type_name(context, &function.return_type),
@@ -456,11 +457,10 @@ fn resolve_class(
         .unwrap_or_else(|| hir::Function {
             signature: hir::FunctionSignature {
                 name: Some(class_name.clone()),
-                args: vec![],
-                return_type: None,
+                ..Default::default()
             },
             body: vec![], // TODO super()
-            scope: Default::default(),
+            ..Default::default()
         });
 
     hir::Class {
@@ -868,6 +868,7 @@ fn resolve_function(
         .map(|arg| hir::FunctionArgument {
             name: arg.name.to_owned(),
             type_name: resolve_opt_type_name(context, &arg.type_name),
+            register: None,
         })
         .collect();
     let scope = Scope::for_function(&args, &mut body);
@@ -882,6 +883,7 @@ fn resolve_function(
         },
         body,
         scope,
+        ..Default::default()
     }
 }
 

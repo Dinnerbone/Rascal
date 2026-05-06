@@ -235,79 +235,89 @@ Ok:
                             value:
                               Constant:
                                 Identifier: _ymouse
-              - Declare:
-                  name:
-                    span:
-                      start: 527
-                      end: 532
-                    value: clips
+              - Expr:
+                  span:
+                    start: 0
+                    end: 0
                   value:
-                    span:
-                      start: 535
-                      end: 577
-                    value:
-                      InitArray:
-                        - span:
-                            start: 536
-                            end: 538
-                          value:
-                            Constant:
-                              Identifier: id
-                        - span:
-                            start: 540
-                            end: 542
-                          value:
-                            Constant:
-                              Identifier: zs
-                        - span:
-                            start: 544
-                            end: 546
-                          value:
-                            Constant:
-                              Identifier: ip
-                        - span:
-                            start: 548
-                            end: 550
-                          value:
-                            Constant:
-                              Identifier: fp
-                        - span:
-                            start: 552
-                            end: 557
-                          value:
-                            Constant:
-                              Identifier: s42fp
-                        - span:
-                            start: 559
-                            end: 565
-                          value:
-                            Constant:
-                              Identifier: s133fp
-                        - span:
-                            start: 567
-                            end: 576
-                          value:
-                            Constant:
-                              Identifier: s133fpr15
-                  type_name: ~
+                    BinaryOperator:
+                      - Assign
+                      - span:
+                          start: 0
+                          end: 0
+                        value:
+                          Constant:
+                            Register: 1
+                      - span:
+                          start: 535
+                          end: 577
+                        value:
+                          InitArray:
+                            - span:
+                                start: 536
+                                end: 538
+                              value:
+                                Constant:
+                                  Identifier: id
+                            - span:
+                                start: 540
+                                end: 542
+                              value:
+                                Constant:
+                                  Identifier: zs
+                            - span:
+                                start: 544
+                                end: 546
+                              value:
+                                Constant:
+                                  Identifier: ip
+                            - span:
+                                start: 548
+                                end: 550
+                              value:
+                                Constant:
+                                  Identifier: fp
+                            - span:
+                                start: 552
+                                end: 557
+                              value:
+                                Constant:
+                                  Identifier: s42fp
+                            - span:
+                                start: 559
+                                end: 565
+                              value:
+                                Constant:
+                                  Identifier: s133fp
+                            - span:
+                                start: 567
+                                end: 576
+                              value:
+                                Constant:
+                                  Identifier: s133fpr15
               - ForIn:
                   condition:
                     Classic:
                       initialize:
-                        Declare:
-                          name:
-                            span:
-                              start: 592
-                              end: 593
-                            value: i
+                        Expr:
+                          span:
+                            start: 0
+                            end: 0
                           value:
-                            span:
-                              start: 594
-                              end: 595
-                            value:
-                              Constant:
-                                Integer: 0
-                          type_name: ~
+                            BinaryOperator:
+                              - Assign
+                              - span:
+                                  start: 0
+                                  end: 0
+                                value:
+                                  Constant:
+                                    Register: 2
+                              - span:
+                                  start: 594
+                                  end: 595
+                                value:
+                                  Constant:
+                                    Integer: 0
                       condition:
                         - span:
                             start: 597
@@ -320,7 +330,7 @@ Ok:
                                   end: 598
                                 value:
                                   Constant:
-                                    Identifier: i
+                                    Register: 2
                               - span:
                                   start: 604
                                   end: 611
@@ -331,7 +341,7 @@ Ok:
                                         end: 604
                                       value:
                                         Constant:
-                                          Identifier: clips
+                                          Register: 1
                                     - span:
                                         start: 605
                                         end: 611
@@ -350,34 +360,39 @@ Ok:
                                   end: 614
                                 value:
                                   Constant:
-                                    Identifier: i
+                                    Register: 2
                   body:
                     Block:
-                      - Declare:
-                          name:
-                            span:
-                              start: 632
-                              end: 636
-                            value: clip
+                      - Expr:
+                          span:
+                            start: 0
+                            end: 0
                           value:
-                            span:
-                              start: 644
-                              end: 647
-                            value:
-                              Field:
-                                - span:
-                                    start: 639
-                                    end: 644
-                                  value:
-                                    Constant:
-                                      Identifier: clips
-                                - span:
-                                    start: 645
-                                    end: 646
-                                  value:
-                                    Constant:
-                                      Identifier: i
-                          type_name: ~
+                            BinaryOperator:
+                              - Assign
+                              - span:
+                                  start: 0
+                                  end: 0
+                                value:
+                                  Constant:
+                                    Register: 3
+                              - span:
+                                  start: 644
+                                  end: 647
+                                value:
+                                  Field:
+                                    - span:
+                                        start: 639
+                                        end: 644
+                                      value:
+                                        Constant:
+                                          Register: 1
+                                    - span:
+                                        start: 645
+                                        end: 646
+                                      value:
+                                        Constant:
+                                          Register: 2
                       - Expr:
                           span:
                             start: 657
@@ -418,7 +433,7 @@ Ok:
                                                               end: 667
                                                             value:
                                                               Constant:
-                                                                Identifier: clip
+                                                                Register: 3
                                                           - span:
                                                               start: 668
                                                               end: 673
@@ -441,7 +456,7 @@ Ok:
                                                         end: 682
                                                       value:
                                                         Constant:
-                                                          Identifier: clip
+                                                          Register: 3
                                                     - span:
                                                         start: 683
                                                         end: 690
@@ -464,7 +479,7 @@ Ok:
                                             end: 699
                                           value:
                                             Constant:
-                                              Identifier: clip
+                                              Register: 3
                                         - span:
                                             start: 700
                                             end: 707
@@ -488,7 +503,19 @@ Ok:
                 this:
                   used: false
                   used_in_inner_scope: false
+                arguments:
+                  used: false
+                  used_in_inner_scope: false
                 super:
+                  used: false
+                  used_in_inner_scope: false
+                _root:
+                  used: false
+                  used_in_inner_scope: false
+                _parent:
+                  used: false
+                  used_in_inner_scope: false
+                _global:
                   used: false
                   used_in_inner_scope: false
                 clips:
@@ -513,6 +540,16 @@ Ok:
                 - s133fp
                 - s133fpr15
               could_reference_anything: false
+            register_count: 4
+            preload_this: false
+            suppress_this: true
+            preload_arguments: false
+            suppress_arguments: true
+            preload_super: false
+            suppress_super: true
+            preload_root: false
+            preload_parent: false
+            preload_global: false
     - Expr:
         span:
           start: 734
@@ -547,12 +584,34 @@ Ok:
                 this:
                   used: false
                   used_in_inner_scope: false
+                arguments:
+                  used: false
+                  used_in_inner_scope: false
                 super:
+                  used: false
+                  used_in_inner_scope: false
+                _root:
+                  used: false
+                  used_in_inner_scope: false
+                _parent:
+                  used: false
+                  used_in_inner_scope: false
+                _global:
                   used: false
                   used_in_inner_scope: false
               referenced_variables:
                 - dump
               could_reference_anything: false
+            register_count: 1
+            preload_this: false
+            suppress_this: true
+            preload_arguments: false
+            suppress_arguments: true
+            preload_super: false
+            suppress_super: true
+            preload_root: false
+            preload_parent: false
+            preload_global: false
   interfaces: []
   classes: []
   custom_pcodes: []

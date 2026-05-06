@@ -5,7 +5,7 @@ use crate::internal::as2::hir::{
 use crate::internal::as2_codegen::access::VariableAccess;
 use crate::internal::as2_codegen::builder::CodeBuilder;
 use crate::internal::as2_codegen::context::ScriptContext;
-use crate::internal::as2_pcode::{Action, CatchTarget, PCode, PushValue};
+use crate::internal::as2_pcode::{Action, CatchTarget, FunctionParam, PCode, PushValue};
 
 pub(crate) fn gen_statements(
     context: &mut ScriptContext,
@@ -798,16 +798,42 @@ pub(crate) fn gen_function(
     } else {
         None
     };
-    builder.action(Action::DefineFunction {
-        name: name.unwrap_or_default(),
-        params: function
-            .signature
-            .args
-            .iter()
-            .map(|arg| arg.name.to_string())
-            .collect(),
-        actions,
-    });
+    if function.register_count <= 1 {
+        builder.action(Action::DefineFunction {
+            name: name.unwrap_or_default(),
+            params: function
+                .signature
+                .args
+                .iter()
+                .map(|arg| arg.name.to_string())
+                .collect(),
+            actions,
+        });
+    } else {
+        builder.action(Action::DefineFunction2 {
+            name: name.unwrap_or_default(),
+            params: function
+                .signature
+                .args
+                .iter()
+                .map(|arg| FunctionParam {
+                    name: arg.name.to_string(),
+                    register: arg.register.unwrap_or(0),
+                })
+                .collect(),
+            actions,
+            register_count: function.register_count,
+            preload_this: function.preload_this,
+            suppress_this: function.suppress_this,
+            preload_arguments: function.preload_arguments,
+            suppress_arguments: function.suppress_arguments,
+            preload_super: function.preload_super,
+            suppress_super: function.suppress_super,
+            preload_root: function.preload_root,
+            preload_parent: function.preload_parent,
+            preload_global: function.preload_global,
+        });
+    }
     context.set_break_label(old_break);
     context.set_continue_label(old_continue);
 }

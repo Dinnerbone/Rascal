@@ -1,3 +1,4 @@
+pub(crate) mod optimizer;
 pub(crate) mod scope;
 pub(crate) mod simplifier;
 pub(crate) mod visitor;
@@ -106,6 +107,7 @@ pub enum ConstantKind {
     Float(f64),
     Integer(i32),
     Boolean(bool),
+    Register(u8),
 }
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
@@ -180,14 +182,24 @@ pub struct Method {
     pub is_static: bool,
 }
 
-#[derive(Debug, Clone, Serialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, PartialEq, Default)]
 pub struct Function {
     pub signature: FunctionSignature,
     pub body: Vec<StatementKind>,
     pub scope: Scope,
+    pub register_count: u8,
+    pub preload_this: bool,
+    pub suppress_this: bool,
+    pub preload_arguments: bool,
+    pub suppress_arguments: bool,
+    pub preload_super: bool,
+    pub suppress_super: bool,
+    pub preload_root: bool,
+    pub preload_parent: bool,
+    pub preload_global: bool,
 }
 
-#[derive(Debug, Clone, Serialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, PartialEq, Default)]
 pub struct FunctionSignature {
     pub name: Option<Spanned<String>>,
     pub args: Vec<FunctionArgument>,
@@ -198,6 +210,7 @@ pub struct FunctionSignature {
 pub struct FunctionArgument {
     pub name: String,
     pub type_name: Option<Spanned<String>>,
+    pub register: Option<u8>,
 }
 
 #[derive(Debug, Clone, Serialize, PartialEq)]

@@ -9,7 +9,6 @@ initializer:
         - i
         - loop i=
         - decide
-        - v
         - continue
         - break
         - none
@@ -37,43 +36,50 @@ initializer:
     - Trace
     - Push:
         - Constant: 2
-    - DefineFunction:
+    - DefineFunction2:
         name: ""
         params:
-          - v
+          - name: v
+            register: 1
         actions:
           actions:
             - Push:
-                - Constant: 3
-            - GetVariable
-            - Push:
+                - Register: 1
                 - Integer: 1
             - Equals2
             - Not
             - If: loc0003
             - Push:
-                - Constant: 4
+                - Constant: 3
             - Return
             - Push:
-                - Constant: 3
-            - GetVariable
-            - Push:
+                - Register: 1
                 - Integer: 3
             - Equals2
             - Not
             - If: loc0004
             - Push:
-                - Constant: 5
+                - Constant: 4
             - Return
             - Push:
-                - Constant: 6
+                - Constant: 5
             - Return
           label_positions:
-            loc0003: 8
-            loc0004: 16
+            loc0003: 6
+            loc0004: 12
+        register_count: 2
+        preload_this: false
+        suppress_this: true
+        preload_arguments: false
+        suppress_arguments: true
+        preload_super: false
+        suppress_super: true
+        preload_root: false
+        preload_parent: false
+        preload_global: false
     - DefineLocal
     - Push:
-        - Constant: 7
+        - Constant: 6
     - DefineFunction:
         name: ""
         params: []
@@ -83,11 +89,11 @@ initializer:
     - DefineLocal
     - Push:
         - Integer: 0
-        - Constant: 7
+        - Constant: 6
     - CallFunction
     - Pop
     - Push:
-        - Constant: 8
+        - Constant: 7
         - Constant: 0
     - GetVariable
     - Push:
@@ -96,25 +102,25 @@ initializer:
     - CallFunction
     - DefineLocal
     - Push:
-        - Constant: 8
+        - Constant: 7
     - GetVariable
     - Push:
-        - Constant: 4
+        - Constant: 3
     - Equals2
     - Not
     - If: loc0005
     - Jump: loc0001
     - Push:
-        - Constant: 8
+        - Constant: 7
     - GetVariable
     - Push:
-        - Constant: 5
+        - Constant: 4
     - Equals2
     - Not
     - If: loc0006
     - Jump: loc0000
     - Push:
-        - Constant: 9
+        - Constant: 8
         - Constant: 0
     - GetVariable
     - Add2
@@ -127,7 +133,7 @@ initializer:
     - SetVariable
     - Jump: loc0002
     - Push:
-        - Constant: 10
+        - Constant: 9
     - Trace
   label_positions:
     loc0002: 3

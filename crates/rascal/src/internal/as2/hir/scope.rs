@@ -20,12 +20,25 @@ pub struct Scope {
 impl Scope {
     pub fn for_function(args: &Vec<FunctionArgument>, body: &mut Vec<StatementKind>) -> Self {
         let mut scope = Scope::default();
+        // These must be defined before any arguments, in this order: this arguments super _root _parent _global
         scope
             .defined_variables
             .insert("this".to_string(), Variable::default());
         scope
             .defined_variables
+            .insert("arguments".to_string(), Variable::default());
+        scope
+            .defined_variables
             .insert("super".to_string(), Variable::default());
+        scope
+            .defined_variables
+            .insert("_root".to_string(), Variable::default());
+        scope
+            .defined_variables
+            .insert("_parent".to_string(), Variable::default());
+        scope
+            .defined_variables
+            .insert("_global".to_string(), Variable::default());
         for arg in args {
             scope
                 .defined_variables
