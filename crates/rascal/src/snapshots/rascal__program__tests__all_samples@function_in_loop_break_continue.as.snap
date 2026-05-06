@@ -98,6 +98,7 @@ Ok:
                         args:
                           - name: v
                             type_name: ~
+                            register: 1
                         return_type: ~
                       body:
                         - If:
@@ -113,7 +114,7 @@ Ok:
                                       end: 150
                                     value:
                                       Constant:
-                                        Identifier: v
+                                        Register: 1
                                   - span:
                                       start: 154
                                       end: 155
@@ -143,7 +144,7 @@ Ok:
                                       end: 213
                                     value:
                                       Constant:
-                                        Identifier: v
+                                        Register: 1
                                   - span:
                                       start: 217
                                       end: 218
@@ -172,7 +173,19 @@ Ok:
                           this:
                             used: false
                             used_in_inner_scope: false
+                          arguments:
+                            used: false
+                            used_in_inner_scope: false
                           super:
+                            used: false
+                            used_in_inner_scope: false
+                          _root:
+                            used: false
+                            used_in_inner_scope: false
+                          _parent:
+                            used: false
+                            used_in_inner_scope: false
+                          _global:
                             used: false
                             used_in_inner_scope: false
                           v:
@@ -180,6 +193,16 @@ Ok:
                             used_in_inner_scope: false
                         referenced_variables: []
                         could_reference_anything: false
+                      register_count: 2
+                      preload_this: false
+                      suppress_this: true
+                      preload_arguments: false
+                      suppress_arguments: true
+                      preload_super: false
+                      suppress_super: true
+                      preload_root: false
+                      preload_parent: false
+                      preload_global: false
                 type_name: ~
             - Declare:
                 name:
@@ -204,11 +227,33 @@ Ok:
                           this:
                             used: false
                             used_in_inner_scope: false
+                          arguments:
+                            used: false
+                            used_in_inner_scope: false
                           super:
+                            used: false
+                            used_in_inner_scope: false
+                          _root:
+                            used: false
+                            used_in_inner_scope: false
+                          _parent:
+                            used: false
+                            used_in_inner_scope: false
+                          _global:
                             used: false
                             used_in_inner_scope: false
                         referenced_variables: []
                         could_reference_anything: false
+                      register_count: 1
+                      preload_this: false
+                      suppress_this: true
+                      preload_arguments: false
+                      suppress_arguments: true
+                      preload_super: false
+                      suppress_super: true
+                      preload_root: false
+                      preload_parent: false
+                      preload_global: false
                 type_name: ~
             - Expr:
                 span:

@@ -1,0 +1,143 @@
+---
+source: crates/rascal/src/tests.rs
+expression: result
+input_file: samples/as2/registers.as
+---
+initializer:
+  actions:
+    - ConstantPool:
+        - this
+        - arguments
+        - super
+        - _root
+        - _parent
+        - _global
+        - a
+        - ""
+        - c
+    - DefineFunction2:
+        name: ""
+        params:
+          - name: a
+            register: 7
+          - name: b
+            register: 0
+        actions:
+          actions:
+            - Push:
+                - Register: 1
+            - Trace
+            - Push:
+                - Register: 2
+            - Trace
+            - Push:
+                - Register: 3
+            - Trace
+            - Push:
+                - Register: 4
+            - Trace
+            - Push:
+                - Register: 5
+            - Trace
+            - Push:
+                - Register: 6
+            - Trace
+            - Push:
+                - Register: 7
+            - Trace
+          label_positions: {}
+        register_count: 8
+        preload_this: true
+        suppress_this: false
+        preload_arguments: true
+        suppress_arguments: false
+        preload_super: true
+        suppress_super: false
+        preload_root: true
+        preload_parent: true
+        preload_global: true
+    - Pop
+    - DefineFunction:
+        name: ""
+        params:
+          - a
+          - b
+        actions:
+          actions:
+            - Push:
+                - Constant: 0
+            - GetVariable
+            - Trace
+            - Push:
+                - Constant: 1
+            - GetVariable
+            - Trace
+            - Push:
+                - Constant: 2
+            - GetVariable
+            - Trace
+            - Push:
+                - Constant: 3
+            - GetVariable
+            - Trace
+            - Push:
+                - Constant: 4
+            - GetVariable
+            - Trace
+            - Push:
+                - Constant: 5
+            - GetVariable
+            - Trace
+            - Push:
+                - Constant: 6
+            - GetVariable
+            - Trace
+            - Push:
+                - Constant: 7
+            - GetVariable
+            - Pop
+          label_positions: {}
+    - Pop
+    - DefineFunction2:
+        name: ""
+        params:
+          - name: a
+            register: 0
+          - name: b
+            register: 0
+        actions:
+          actions: []
+          label_positions: {}
+        register_count: 2
+        preload_this: false
+        suppress_this: true
+        preload_arguments: false
+        suppress_arguments: true
+        preload_super: false
+        suppress_super: true
+        preload_root: false
+        preload_parent: false
+        preload_global: false
+    - Pop
+    - DefineFunction:
+        name: ""
+        params:
+          - a
+          - b
+        actions:
+          actions:
+            - Push:
+                - Constant: 8
+                - Integer: 2
+            - DefineLocal
+            - Push:
+                - Constant: 7
+            - GetVariable
+            - Pop
+          label_positions: {}
+    - Pop
+  label_positions: {}
+extra_modules: []
+compile_options:
+  swf_version: 15
+custom_pcodes: []

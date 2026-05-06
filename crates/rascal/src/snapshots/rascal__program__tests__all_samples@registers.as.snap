@@ -1,0 +1,443 @@
+---
+source: crates/rascal/src/program.rs
+expression: parsed
+input_file: samples/as2/registers.as
+---
+Ok:
+  initial_script:
+    - Expr:
+        span:
+          start: 0
+          end: 147
+        value:
+          Function:
+            signature:
+              name: ~
+              args:
+                - name: a
+                  type_name: ~
+                  register: 7
+                - name: b
+                  type_name: ~
+                  register: ~
+              return_type: ~
+            body:
+              - Expr:
+                  span:
+                    start: 21
+                    end: 32
+                  value:
+                    Trace:
+                      span:
+                        start: 27
+                        end: 31
+                      value:
+                        Constant:
+                          Register: 1
+              - Expr:
+                  span:
+                    start: 38
+                    end: 54
+                  value:
+                    Trace:
+                      span:
+                        start: 44
+                        end: 53
+                      value:
+                        Constant:
+                          Register: 2
+              - Expr:
+                  span:
+                    start: 60
+                    end: 72
+                  value:
+                    Trace:
+                      span:
+                        start: 66
+                        end: 71
+                      value:
+                        Constant:
+                          Register: 3
+              - Expr:
+                  span:
+                    start: 78
+                    end: 90
+                  value:
+                    Trace:
+                      span:
+                        start: 84
+                        end: 89
+                      value:
+                        Constant:
+                          Register: 4
+              - Expr:
+                  span:
+                    start: 96
+                    end: 110
+                  value:
+                    Trace:
+                      span:
+                        start: 102
+                        end: 109
+                      value:
+                        Constant:
+                          Register: 5
+              - Expr:
+                  span:
+                    start: 116
+                    end: 130
+                  value:
+                    Trace:
+                      span:
+                        start: 122
+                        end: 129
+                      value:
+                        Constant:
+                          Register: 6
+              - Expr:
+                  span:
+                    start: 136
+                    end: 144
+                  value:
+                    Trace:
+                      span:
+                        start: 142
+                        end: 143
+                      value:
+                        Constant:
+                          Register: 7
+            scope:
+              defined_variables:
+                this:
+                  used: true
+                  used_in_inner_scope: false
+                arguments:
+                  used: true
+                  used_in_inner_scope: false
+                super:
+                  used: true
+                  used_in_inner_scope: false
+                _root:
+                  used: true
+                  used_in_inner_scope: false
+                _parent:
+                  used: true
+                  used_in_inner_scope: false
+                _global:
+                  used: true
+                  used_in_inner_scope: false
+                a:
+                  used: true
+                  used_in_inner_scope: false
+                b:
+                  used: false
+                  used_in_inner_scope: false
+              referenced_variables: []
+              could_reference_anything: false
+            register_count: 8
+            preload_this: true
+            suppress_this: false
+            preload_arguments: true
+            suppress_arguments: false
+            preload_super: true
+            suppress_super: false
+            preload_root: true
+            preload_parent: true
+            preload_global: true
+    - Expr:
+        span:
+          start: 148
+          end: 334
+        value:
+          Function:
+            signature:
+              name: ~
+              args:
+                - name: a
+                  type_name: ~
+                  register: ~
+                - name: b
+                  type_name: ~
+                  register: ~
+              return_type: ~
+            body:
+              - Expr:
+                  span:
+                    start: 169
+                    end: 180
+                  value:
+                    Trace:
+                      span:
+                        start: 175
+                        end: 179
+                      value:
+                        Constant:
+                          Identifier: this
+              - Expr:
+                  span:
+                    start: 186
+                    end: 202
+                  value:
+                    Trace:
+                      span:
+                        start: 192
+                        end: 201
+                      value:
+                        Constant:
+                          Identifier: arguments
+              - Expr:
+                  span:
+                    start: 208
+                    end: 220
+                  value:
+                    Trace:
+                      span:
+                        start: 214
+                        end: 219
+                      value:
+                        Constant:
+                          Identifier: super
+              - Expr:
+                  span:
+                    start: 226
+                    end: 238
+                  value:
+                    Trace:
+                      span:
+                        start: 232
+                        end: 237
+                      value:
+                        Constant:
+                          Identifier: _root
+              - Expr:
+                  span:
+                    start: 244
+                    end: 258
+                  value:
+                    Trace:
+                      span:
+                        start: 250
+                        end: 257
+                      value:
+                        Constant:
+                          Identifier: _parent
+              - Expr:
+                  span:
+                    start: 264
+                    end: 278
+                  value:
+                    Trace:
+                      span:
+                        start: 270
+                        end: 277
+                      value:
+                        Constant:
+                          Identifier: _global
+              - Expr:
+                  span:
+                    start: 284
+                    end: 292
+                  value:
+                    Trace:
+                      span:
+                        start: 290
+                        end: 291
+                      value:
+                        Constant:
+                          Identifier: a
+              - Expr:
+                  span:
+                    start: 298
+                    end: 306
+                  value:
+                    GetVariable:
+                      span:
+                        start: 303
+                        end: 305
+                      value:
+                        Constant:
+                          String: ""
+            scope:
+              defined_variables:
+                this:
+                  used: true
+                  used_in_inner_scope: false
+                arguments:
+                  used: true
+                  used_in_inner_scope: false
+                super:
+                  used: true
+                  used_in_inner_scope: false
+                _root:
+                  used: true
+                  used_in_inner_scope: false
+                _parent:
+                  used: true
+                  used_in_inner_scope: false
+                _global:
+                  used: true
+                  used_in_inner_scope: false
+                a:
+                  used: true
+                  used_in_inner_scope: false
+                b:
+                  used: false
+                  used_in_inner_scope: false
+              referenced_variables: []
+              could_reference_anything: true
+            register_count: 0
+            preload_this: false
+            suppress_this: false
+            preload_arguments: false
+            suppress_arguments: false
+            preload_super: false
+            suppress_super: false
+            preload_root: false
+            preload_parent: false
+            preload_global: false
+    - Expr:
+        span:
+          start: 336
+          end: 365
+        value:
+          Function:
+            signature:
+              name: ~
+              args:
+                - name: a
+                  type_name: ~
+                  register: ~
+                - name: b
+                  type_name: ~
+                  register: ~
+              return_type: ~
+            body:
+              - Block: []
+            scope:
+              defined_variables:
+                this:
+                  used: false
+                  used_in_inner_scope: false
+                arguments:
+                  used: false
+                  used_in_inner_scope: false
+                super:
+                  used: false
+                  used_in_inner_scope: false
+                _root:
+                  used: false
+                  used_in_inner_scope: false
+                _parent:
+                  used: false
+                  used_in_inner_scope: false
+                _global:
+                  used: false
+                  used_in_inner_scope: false
+                a:
+                  used: false
+                  used_in_inner_scope: false
+                b:
+                  used: false
+                  used_in_inner_scope: false
+                c:
+                  used: true
+                  used_in_inner_scope: false
+              referenced_variables: []
+              could_reference_anything: false
+            register_count: 2
+            preload_this: false
+            suppress_this: true
+            preload_arguments: false
+            suppress_arguments: true
+            preload_super: false
+            suppress_super: true
+            preload_root: false
+            preload_parent: false
+            preload_global: false
+    - Expr:
+        span:
+          start: 367
+          end: 439
+        value:
+          Function:
+            signature:
+              name: ~
+              args:
+                - name: a
+                  type_name: ~
+                  register: ~
+                - name: b
+                  type_name: ~
+                  register: ~
+              return_type: ~
+            body:
+              - Declare:
+                  name:
+                    span:
+                      start: 392
+                      end: 393
+                    value: c
+                  value:
+                    span:
+                      start: 396
+                      end: 397
+                    value:
+                      Constant:
+                        Integer: 2
+                  type_name: ~
+              - Expr:
+                  span:
+                    start: 403
+                    end: 411
+                  value:
+                    GetVariable:
+                      span:
+                        start: 408
+                        end: 410
+                      value:
+                        Constant:
+                          String: ""
+            scope:
+              defined_variables:
+                this:
+                  used: false
+                  used_in_inner_scope: false
+                arguments:
+                  used: false
+                  used_in_inner_scope: false
+                super:
+                  used: false
+                  used_in_inner_scope: false
+                _root:
+                  used: false
+                  used_in_inner_scope: false
+                _parent:
+                  used: false
+                  used_in_inner_scope: false
+                _global:
+                  used: false
+                  used_in_inner_scope: false
+                a:
+                  used: false
+                  used_in_inner_scope: false
+                b:
+                  used: false
+                  used_in_inner_scope: false
+                c:
+                  used: true
+                  used_in_inner_scope: false
+              referenced_variables: []
+              could_reference_anything: true
+            register_count: 0
+            preload_this: false
+            suppress_this: false
+            preload_arguments: false
+            suppress_arguments: false
+            preload_super: false
+            suppress_super: false
+            preload_root: false
+            preload_parent: false
+            preload_global: false
+  interfaces: []
+  classes: []
+  custom_pcodes: []

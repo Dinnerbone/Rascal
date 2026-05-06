@@ -10,6 +10,7 @@ pub enum VariableAccess {
     Variable,
     Object,
     Direct,
+    Register(u8),
     SpecialProperty,
 }
 
@@ -69,6 +70,7 @@ impl VariableAccess {
                 builder.push(*value);
                 VariableAccess::Direct
             }
+            ConstantKind::Register(value) => VariableAccess::Register(*value),
         }
     }
 
@@ -105,6 +107,9 @@ impl VariableAccess {
             VariableAccess::SpecialProperty => {
                 builder.action(Action::GetProperty);
             }
+            VariableAccess::Register(register) => {
+                builder.push(PushValue::Register(*register));
+            }
         }
     }
 
@@ -121,6 +126,10 @@ impl VariableAccess {
             }
             VariableAccess::SpecialProperty => {
                 builder.action(Action::SetProperty);
+            }
+            VariableAccess::Register(register) => {
+                builder.action(Action::StoreRegister(*register));
+                builder.action(Action::Pop);
             }
         }
     }
@@ -145,6 +154,9 @@ impl VariableAccess {
                 builder.action(Action::SetProperty);
                 builder.push(PushValue::Register(0));
             }
+            VariableAccess::Register(register) => {
+                builder.action(Action::StoreRegister(*register));
+            }
         }
     }
 
@@ -162,6 +174,9 @@ impl VariableAccess {
             VariableAccess::SpecialProperty => {
                 // This actually generated invalid pcode in Flash... Not sure I care to replicate that.
                 unimplemented!("Cannot get-and-set a special property")
+            }
+            VariableAccess::Register(_) => {
+                builder.push(false);
             }
         }
     }
@@ -181,6 +196,11 @@ impl VariableAccess {
                 // This actually generated invalid pcode in Flash... Not sure I care to replicate that.
                 unimplemented!("Cannot call new on a special property")
             }
+            VariableAccess::Register(register) => {
+                builder.push(PushValue::Register(*register));
+                builder.push(PushValue::Undefined);
+                builder.action_with_stack_delta(Action::NewMethod, -num_args - 2);
+            }
         }
     }
 
@@ -198,6 +218,11 @@ impl VariableAccess {
             VariableAccess::SpecialProperty => {
                 // This actually generated invalid pcode in Flash... Not sure I care to replicate that.
                 unimplemented!("Cannot call a special property")
+            }
+            VariableAccess::Register(register) => {
+                builder.push(PushValue::Register(*register));
+                builder.push(PushValue::Undefined);
+                builder.action_with_stack_delta(Action::CallMethod, -num_args - 2);
             }
         }
     }

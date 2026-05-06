@@ -6,11 +6,8 @@ input_file: samples/as2/regressions/ruffle_avm1_movieclip_lockroot.as
 initializer:
   actions:
     - ConstantPool:
-        - valueLabel
-        - value
         - string
         - "\""
-        - this
         - _lockroot
         - "Parent: setting _lockroot to "
         - " sets it to true."
@@ -18,7 +15,6 @@ initializer:
         - " has no effect."
         - "Parent: level is "
         - ", root is "
-        - _root
         - ", _lockroot is "
         - testSet
         - "NaN"
@@ -42,246 +38,229 @@ initializer:
         - All tests done.
         - testSelf
         - testChildren
-    - DefineFunction:
+    - DefineFunction2:
         name: testSet
         params:
-          - value
+          - name: value
+            register: 2
         actions:
           actions:
             - Push:
-                - Constant: 0
-                - Constant: 1
-            - GetVariable
+                - Register: 2
             - TypeOf
             - Push:
-                - Constant: 2
+                - Constant: 0
             - Equals2
             - Not
             - If: loc0001
             - Push:
-                - Constant: 3
                 - Constant: 1
-            - GetVariable
+                - Register: 2
             - Add2
             - Push:
-                - Constant: 3
+                - Constant: 1
             - Add2
             - Jump: loc0000
             - Push:
-                - Constant: 1
-            - GetVariable
-            - DefineLocal
+                - Register: 2
+            - StoreRegister: 3
+            - Pop
             - Push:
-                - Constant: 4
-            - GetVariable
-            - Push:
-                - Constant: 5
+                - Register: 1
+                - Constant: 2
                 - "False"
             - SetMember
             - Push:
-                - Constant: 4
-            - GetVariable
-            - Push:
-                - Constant: 5
-                - Constant: 1
-            - GetVariable
+                - Register: 1
+                - Constant: 2
+                - Register: 2
             - SetMember
             - Push:
-                - Constant: 4
-            - GetVariable
-            - Push:
-                - Constant: 5
+                - Register: 1
+                - Constant: 2
             - GetMember
             - Not
             - If: loc0002
             - Push:
-                - Constant: 6
-                - Constant: 0
-            - GetVariable
+                - Constant: 3
+                - Register: 3
             - Add2
             - Push:
-                - Constant: 7
+                - Constant: 4
             - Add2
             - Trace
             - Push:
-                - Constant: 4
-            - GetVariable
-            - Push:
-                - Constant: 5
+                - Register: 1
+                - Constant: 2
                 - "False"
             - SetMember
             - Push:
                 - Undefined
             - Return
             - Push:
-                - Constant: 4
-            - GetVariable
-            - Push:
-                - Constant: 5
+                - Register: 1
+                - Constant: 2
                 - "True"
             - SetMember
             - Push:
-                - Constant: 4
-            - GetVariable
-            - Push:
-                - Constant: 5
-                - Constant: 1
-            - GetVariable
+                - Register: 1
+                - Constant: 2
+                - Register: 2
             - SetMember
             - Push:
-                - Constant: 4
-            - GetVariable
-            - Push:
-                - Constant: 5
+                - Register: 1
+                - Constant: 2
             - GetMember
             - Not
             - Not
             - If: loc0003
             - Push:
-                - Constant: 6
-                - Constant: 0
-            - GetVariable
+                - Constant: 3
+                - Register: 3
             - Add2
             - Push:
-                - Constant: 8
+                - Constant: 5
             - Add2
             - Trace
             - Push:
                 - Undefined
             - Return
             - Push:
-                - Constant: 4
-            - GetVariable
-            - Push:
-                - Constant: 5
+                - Register: 1
+                - Constant: 2
                 - "False"
             - SetMember
             - Push:
-                - Constant: 6
-                - Constant: 0
-            - GetVariable
+                - Constant: 3
+                - Register: 3
             - Add2
             - Push:
-                - Constant: 9
+                - Constant: 6
             - Add2
             - Trace
           label_positions:
-            loc0001: 13
-            loc0000: 15
-            loc0002: 43
-            loc0003: 67
-    - DefineFunction:
+            loc0001: 11
+            loc0000: 12
+            loc0002: 31
+            loc0003: 47
+        register_count: 4
+        preload_this: true
+        suppress_this: false
+        preload_arguments: false
+        suppress_arguments: true
+        preload_super: false
+        suppress_super: true
+        preload_root: false
+        preload_parent: false
+        preload_global: false
+    - DefineFunction2:
         name: testSelf
         params: []
         actions:
           actions:
             - Push:
-                - Constant: 10
-                - Constant: 4
-            - GetVariable
+                - Constant: 7
+                - Register: 1
             - Add2
             - Push:
-                - Constant: 11
+                - Constant: 8
             - Add2
             - Push:
-                - Constant: 12
-            - GetVariable
+                - Register: 2
             - Add2
             - Push:
-                - Constant: 13
+                - Constant: 9
             - Add2
             - Push:
-                - Constant: 4
-            - GetVariable
-            - Push:
-                - Constant: 5
+                - Register: 1
+                - Constant: 2
             - GetMember
             - Add2
             - Trace
             - Push:
                 - "True"
                 - Integer: 1
-                - Constant: 14
+                - Constant: 10
             - CallFunction
             - Pop
             - Push:
                 - "False"
                 - Integer: 1
-                - Constant: 14
+                - Constant: 10
             - CallFunction
             - Pop
             - Push:
                 - Undefined
                 - Integer: 1
-                - Constant: 14
+                - Constant: 10
             - CallFunction
             - Pop
             - Push:
                 - "Null"
                 - Integer: 1
-                - Constant: 14
+                - Constant: 10
             - CallFunction
             - Pop
             - Push:
-                - Constant: 15
+                - Constant: 11
             - GetVariable
             - Push:
                 - Integer: 1
-                - Constant: 14
+                - Constant: 10
             - CallFunction
             - Pop
             - Push:
                 - Integer: -1
                 - Integer: 1
-                - Constant: 14
+                - Constant: 10
             - CallFunction
             - Pop
             - Push:
                 - Integer: 0
                 - Integer: 1
-                - Constant: 14
+                - Constant: 10
             - CallFunction
             - Pop
             - Push:
                 - Integer: 1
                 - Integer: 1
-                - Constant: 14
+                - Constant: 10
             - CallFunction
             - Pop
             - Push:
                 - Integer: 1337
                 - Integer: 1
+                - Constant: 10
+            - CallFunction
+            - Pop
+            - Push:
+                - Constant: 12
+                - Integer: 1
+                - Constant: 10
+            - CallFunction
+            - Pop
+            - Push:
+                - Constant: 13
+                - Integer: 1
+                - Constant: 10
+            - CallFunction
+            - Pop
+            - Push:
                 - Constant: 14
+                - Integer: 1
+                - Constant: 10
+            - CallFunction
+            - Pop
+            - Push:
+                - Constant: 15
+                - Integer: 1
+                - Constant: 10
             - CallFunction
             - Pop
             - Push:
                 - Constant: 16
                 - Integer: 1
-                - Constant: 14
-            - CallFunction
-            - Pop
-            - Push:
-                - Constant: 17
-                - Integer: 1
-                - Constant: 14
-            - CallFunction
-            - Pop
-            - Push:
-                - Constant: 18
-                - Integer: 1
-                - Constant: 14
-            - CallFunction
-            - Pop
-            - Push:
-                - Constant: 19
-                - Integer: 1
-                - Constant: 14
-            - CallFunction
-            - Pop
-            - Push:
-                - Constant: 20
-                - Integer: 1
-                - Constant: 14
+                - Constant: 10
             - CallFunction
             - Pop
             - Push:
@@ -289,707 +268,663 @@ initializer:
             - InitObject
             - Push:
                 - Integer: 1
-                - Constant: 14
+                - Constant: 10
             - CallFunction
             - Pop
           label_positions: {}
+        register_count: 3
+        preload_this: true
+        suppress_this: false
+        preload_arguments: false
+        suppress_arguments: true
+        preload_super: false
+        suppress_super: true
+        preload_root: true
+        preload_parent: false
+        preload_global: false
     - DefineFunction:
         name: testChildren
         params: []
         actions:
           actions:
             - Push:
-                - Constant: 21
+                - Constant: 17
             - GetVariable
             - Push:
-                - Constant: 21
-                - Constant: 21
+                - Constant: 17
+                - Constant: 17
             - GetVariable
             - Increment
             - SetVariable
             - Push:
-                - Constant: 22
+                - Constant: 18
                 - Integer: 2
-                - Constant: 23
+                - Constant: 19
             - CallFunction
             - Pop
             - Push:
-                - Constant: 24
+                - Constant: 20
                 - Integer: 1
-                - Constant: 22
+                - Constant: 18
             - GetVariable
             - Push:
-                - Constant: 25
+                - Constant: 21
             - CallMethod
             - Pop
             - Push:
-                - Constant: 21
+                - Constant: 17
             - GetVariable
             - Push:
-                - Constant: 21
-                - Constant: 21
+                - Constant: 17
+                - Constant: 17
             - GetVariable
             - Increment
             - SetVariable
             - Push:
-                - Constant: 26
+                - Constant: 22
                 - Integer: 2
-                - Constant: 23
+                - Constant: 19
             - CallFunction
             - Pop
             - Push:
-                - Constant: 26
+                - Constant: 22
             - GetVariable
             - Push:
-                - Constant: 5
+                - Constant: 2
                 - "True"
             - SetMember
             - Push:
-                - Constant: 24
+                - Constant: 20
                 - Integer: 1
-                - Constant: 26
+                - Constant: 22
             - GetVariable
             - Push:
-                - Constant: 25
+                - Constant: 21
             - CallMethod
             - Pop
             - Push:
-                - Constant: 21
+                - Constant: 17
             - GetVariable
             - Push:
-                - Constant: 21
-                - Constant: 21
+                - Constant: 17
+                - Constant: 17
             - GetVariable
             - Increment
             - SetVariable
             - Push:
-                - Constant: 27
-                - Integer: 2
                 - Constant: 23
+                - Integer: 2
+                - Constant: 19
             - CallFunction
             - Pop
             - Push:
-                - Constant: 24
+                - Constant: 20
                 - Integer: 1
-                - Constant: 27
+                - Constant: 23
             - GetVariable
             - Push:
-                - Constant: 25
+                - Constant: 21
             - CallMethod
             - Pop
             - Push:
                 - Integer: 50
-                - Constant: 28
+                - Constant: 24
             - GetVariable
             - Push:
                 - Integer: 2
-                - Constant: 29
+                - Constant: 25
             - CallFunction
             - Pop
             - Push:
                 - Integer: 250
-                - Constant: 30
+                - Constant: 26
             - GetVariable
             - Push:
                 - Integer: 2
-                - Constant: 29
+                - Constant: 25
             - CallFunction
             - Pop
           label_positions: {}
-    - DefineFunction:
+    - DefineFunction2:
         name: createGrandChildren
         params: []
         actions:
           actions:
             - Push:
-                - Constant: 21
+                - Constant: 17
             - GetVariable
             - Push:
-                - Constant: 21
-                - Constant: 21
+                - Constant: 17
+                - Constant: 17
             - GetVariable
             - Increment
             - SetVariable
             - Push:
-                - Constant: 22
+                - Constant: 18
                 - Integer: 2
-                - Constant: 12
-            - GetVariable
-            - Push:
-                - Constant: 22
+                - Register: 1
+                - Constant: 18
             - GetMember
             - Push:
-                - Constant: 23
+                - Constant: 19
             - CallMethod
             - Pop
             - Push:
-                - Constant: 24
+                - Constant: 20
                 - Integer: 1
-                - Constant: 12
-            - GetVariable
-            - Push:
-                - Constant: 22
+                - Register: 1
+                - Constant: 18
             - GetMember
             - Push:
-                - Constant: 22
+                - Constant: 18
             - GetMember
             - Push:
-                - Constant: 25
+                - Constant: 21
             - CallMethod
             - Pop
             - Push:
-                - Constant: 21
+                - Constant: 17
             - GetVariable
             - Push:
-                - Constant: 21
-                - Constant: 21
+                - Constant: 17
+                - Constant: 17
             - GetVariable
             - Increment
             - SetVariable
             - Push:
-                - Constant: 26
-                - Integer: 2
-                - Constant: 12
-            - GetVariable
-            - Push:
                 - Constant: 22
+                - Integer: 2
+                - Register: 1
+                - Constant: 18
             - GetMember
             - Push:
-                - Constant: 23
+                - Constant: 19
             - CallMethod
             - Pop
             - Push:
-                - Constant: 12
-            - GetVariable
+                - Register: 1
+                - Constant: 18
+            - GetMember
             - Push:
                 - Constant: 22
             - GetMember
             - Push:
-                - Constant: 26
-            - GetMember
-            - Push:
-                - Constant: 5
+                - Constant: 2
                 - "True"
             - SetMember
             - Push:
-                - Constant: 24
+                - Constant: 20
                 - Integer: 1
-                - Constant: 12
-            - GetVariable
+                - Register: 1
+                - Constant: 18
+            - GetMember
             - Push:
                 - Constant: 22
             - GetMember
             - Push:
-                - Constant: 26
-            - GetMember
-            - Push:
-                - Constant: 25
+                - Constant: 21
             - CallMethod
             - Pop
             - Push:
-                - Constant: 21
+                - Constant: 17
             - GetVariable
             - Push:
-                - Constant: 21
-                - Constant: 21
+                - Constant: 17
+                - Constant: 17
             - GetVariable
             - Increment
             - SetVariable
             - Push:
-                - Constant: 27
+                - Constant: 23
                 - Integer: 2
-                - Constant: 12
-            - GetVariable
+                - Register: 1
+                - Constant: 18
+            - GetMember
             - Push:
-                - Constant: 22
+                - Constant: 19
+            - CallMethod
+            - Pop
+            - Push:
+                - Constant: 20
+                - Integer: 1
+                - Register: 1
+                - Constant: 18
             - GetMember
             - Push:
                 - Constant: 23
+            - GetMember
+            - Push:
+                - Constant: 21
             - CallMethod
             - Pop
             - Push:
-                - Constant: 24
-                - Integer: 1
-                - Constant: 12
+                - Constant: 17
             - GetVariable
             - Push:
+                - Constant: 17
+                - Constant: 17
+            - GetVariable
+            - Increment
+            - SetVariable
+            - Push:
+                - Constant: 18
+                - Integer: 2
+                - Register: 1
                 - Constant: 22
             - GetMember
             - Push:
-                - Constant: 27
-            - GetMember
-            - Push:
-                - Constant: 25
+                - Constant: 19
             - CallMethod
             - Pop
             - Push:
-                - Constant: 21
-            - GetVariable
+                - Constant: 20
+                - Integer: 1
+                - Register: 1
+                - Constant: 22
+            - GetMember
+            - Push:
+                - Constant: 18
+            - GetMember
             - Push:
                 - Constant: 21
-                - Constant: 21
+            - CallMethod
+            - Pop
+            - Push:
+                - Constant: 17
+            - GetVariable
+            - Push:
+                - Constant: 17
+                - Constant: 17
             - GetVariable
             - Increment
             - SetVariable
             - Push:
                 - Constant: 22
                 - Integer: 2
-                - Constant: 12
-            - GetVariable
-            - Push:
-                - Constant: 26
+                - Register: 1
+                - Constant: 22
             - GetMember
             - Push:
-                - Constant: 23
+                - Constant: 19
             - CallMethod
             - Pop
             - Push:
-                - Constant: 24
-                - Integer: 1
-                - Constant: 12
-            - GetVariable
-            - Push:
-                - Constant: 26
+                - Register: 1
+                - Constant: 22
             - GetMember
             - Push:
                 - Constant: 22
             - GetMember
             - Push:
-                - Constant: 25
-            - CallMethod
-            - Pop
-            - Push:
-                - Constant: 21
-            - GetVariable
-            - Push:
-                - Constant: 21
-                - Constant: 21
-            - GetVariable
-            - Increment
-            - SetVariable
-            - Push:
-                - Constant: 26
-                - Integer: 2
-                - Constant: 12
-            - GetVariable
-            - Push:
-                - Constant: 26
-            - GetMember
-            - Push:
-                - Constant: 23
-            - CallMethod
-            - Pop
-            - Push:
-                - Constant: 12
-            - GetVariable
-            - Push:
-                - Constant: 26
-            - GetMember
-            - Push:
-                - Constant: 26
-            - GetMember
-            - Push:
-                - Constant: 5
+                - Constant: 2
                 - "True"
             - SetMember
             - Push:
-                - Constant: 24
+                - Constant: 20
                 - Integer: 1
-                - Constant: 12
-            - GetVariable
-            - Push:
-                - Constant: 26
+                - Register: 1
+                - Constant: 22
             - GetMember
             - Push:
-                - Constant: 26
+                - Constant: 22
             - GetMember
             - Push:
-                - Constant: 25
+                - Constant: 21
             - CallMethod
             - Pop
             - Push:
-                - Constant: 21
+                - Constant: 17
             - GetVariable
             - Push:
-                - Constant: 21
-                - Constant: 21
+                - Constant: 17
+                - Constant: 17
             - GetVariable
             - Increment
             - SetVariable
             - Push:
-                - Constant: 27
+                - Constant: 23
                 - Integer: 2
-                - Constant: 12
-            - GetVariable
+                - Register: 1
+                - Constant: 22
+            - GetMember
             - Push:
-                - Constant: 26
+                - Constant: 19
+            - CallMethod
+            - Pop
+            - Push:
+                - Constant: 20
+                - Integer: 1
+                - Register: 1
+                - Constant: 22
             - GetMember
             - Push:
                 - Constant: 23
+            - GetMember
+            - Push:
+                - Constant: 21
             - CallMethod
             - Pop
             - Push:
-                - Constant: 24
+                - Constant: 17
+            - GetVariable
+            - Push:
+                - Constant: 17
+                - Constant: 17
+            - GetVariable
+            - Increment
+            - SetVariable
+            - Push:
+                - Constant: 18
+                - Integer: 2
+                - Register: 1
+                - Constant: 23
+            - GetMember
+            - Push:
+                - Constant: 19
+            - CallMethod
+            - Pop
+            - Push:
+                - Constant: 20
                 - Integer: 1
-                - Constant: 12
-            - GetVariable
-            - Push:
-                - Constant: 26
+                - Register: 1
+                - Constant: 23
             - GetMember
             - Push:
-                - Constant: 27
+                - Constant: 18
             - GetMember
             - Push:
-                - Constant: 25
+                - Constant: 21
             - CallMethod
             - Pop
             - Push:
-                - Constant: 21
+                - Constant: 17
             - GetVariable
             - Push:
-                - Constant: 21
-                - Constant: 21
+                - Constant: 17
+                - Constant: 17
             - GetVariable
             - Increment
             - SetVariable
             - Push:
                 - Constant: 22
                 - Integer: 2
-                - Constant: 12
-            - GetVariable
-            - Push:
-                - Constant: 27
+                - Register: 1
+                - Constant: 23
             - GetMember
             - Push:
-                - Constant: 23
+                - Constant: 19
             - CallMethod
             - Pop
             - Push:
-                - Constant: 24
-                - Integer: 1
-                - Constant: 12
-            - GetVariable
-            - Push:
-                - Constant: 27
+                - Register: 1
+                - Constant: 23
             - GetMember
             - Push:
                 - Constant: 22
             - GetMember
             - Push:
-                - Constant: 25
-            - CallMethod
-            - Pop
-            - Push:
-                - Constant: 21
-            - GetVariable
-            - Push:
-                - Constant: 21
-                - Constant: 21
-            - GetVariable
-            - Increment
-            - SetVariable
-            - Push:
-                - Constant: 26
-                - Integer: 2
-                - Constant: 12
-            - GetVariable
-            - Push:
-                - Constant: 27
-            - GetMember
-            - Push:
-                - Constant: 23
-            - CallMethod
-            - Pop
-            - Push:
-                - Constant: 12
-            - GetVariable
-            - Push:
-                - Constant: 27
-            - GetMember
-            - Push:
-                - Constant: 26
-            - GetMember
-            - Push:
-                - Constant: 5
+                - Constant: 2
                 - "True"
             - SetMember
             - Push:
-                - Constant: 24
+                - Constant: 20
                 - Integer: 1
-                - Constant: 12
-            - GetVariable
-            - Push:
-                - Constant: 27
+                - Register: 1
+                - Constant: 23
             - GetMember
             - Push:
-                - Constant: 26
+                - Constant: 22
             - GetMember
             - Push:
-                - Constant: 25
+                - Constant: 21
             - CallMethod
             - Pop
             - Push:
-                - Constant: 21
+                - Constant: 17
             - GetVariable
             - Push:
-                - Constant: 21
-                - Constant: 21
+                - Constant: 17
+                - Constant: 17
             - GetVariable
             - Increment
             - SetVariable
             - Push:
-                - Constant: 27
+                - Constant: 23
                 - Integer: 2
-                - Constant: 12
-            - GetVariable
-            - Push:
-                - Constant: 27
+                - Register: 1
+                - Constant: 23
             - GetMember
             - Push:
-                - Constant: 23
+                - Constant: 19
             - CallMethod
             - Pop
             - Push:
-                - Constant: 24
+                - Constant: 20
                 - Integer: 1
-                - Constant: 12
-            - GetVariable
-            - Push:
-                - Constant: 27
+                - Register: 1
+                - Constant: 23
             - GetMember
             - Push:
-                - Constant: 27
+                - Constant: 23
             - GetMember
             - Push:
-                - Constant: 25
+                - Constant: 21
             - CallMethod
             - Pop
           label_positions: {}
-    - DefineFunction:
+        register_count: 2
+        preload_this: false
+        suppress_this: true
+        preload_arguments: false
+        suppress_arguments: true
+        preload_super: false
+        suppress_super: true
+        preload_root: true
+        preload_parent: false
+        preload_global: false
+    - DefineFunction2:
         name: testAllChildren
         params: []
         actions:
           actions:
             - Push:
                 - Integer: 0
-                - Constant: 12
-            - GetVariable
-            - Push:
-                - Constant: 22
+                - Register: 1
+                - Constant: 18
             - GetMember
             - Push:
-                - Constant: 31
+                - Constant: 27
             - CallMethod
             - Pop
             - Push:
                 - Integer: 0
-                - Constant: 12
-            - GetVariable
-            - Push:
-                - Constant: 26
+                - Register: 1
+                - Constant: 22
             - GetMember
             - Push:
-                - Constant: 31
+                - Constant: 27
             - CallMethod
             - Pop
             - Push:
                 - "True"
                 - Integer: 1
-                - Constant: 12
-            - GetVariable
+                - Register: 1
+                - Constant: 23
+            - GetMember
+            - Push:
+                - Constant: 28
+            - CallMethod
+            - Pop
+            - Push:
+                - Integer: 0
+                - Register: 1
+                - Constant: 23
+            - GetMember
             - Push:
                 - Constant: 27
-            - GetMember
-            - Push:
-                - Constant: 32
             - CallMethod
             - Pop
             - Push:
                 - Integer: 0
-                - Constant: 12
-            - GetVariable
+                - Register: 1
+                - Constant: 18
+            - GetMember
+            - Push:
+                - Constant: 18
+            - GetMember
             - Push:
                 - Constant: 27
-            - GetMember
-            - Push:
-                - Constant: 31
             - CallMethod
             - Pop
             - Push:
                 - Integer: 0
-                - Constant: 12
-            - GetVariable
-            - Push:
-                - Constant: 22
+                - Register: 1
+                - Constant: 18
             - GetMember
             - Push:
                 - Constant: 22
             - GetMember
             - Push:
-                - Constant: 31
-            - CallMethod
-            - Pop
-            - Push:
-                - Integer: 0
-                - Constant: 12
-            - GetVariable
-            - Push:
-                - Constant: 22
-            - GetMember
-            - Push:
-                - Constant: 26
-            - GetMember
-            - Push:
-                - Constant: 31
+                - Constant: 27
             - CallMethod
             - Pop
             - Push:
                 - "True"
                 - Integer: 1
-                - Constant: 12
-            - GetVariable
+                - Register: 1
+                - Constant: 18
+            - GetMember
+            - Push:
+                - Constant: 23
+            - GetMember
+            - Push:
+                - Constant: 28
+            - CallMethod
+            - Pop
+            - Push:
+                - Integer: 0
+                - Register: 1
+                - Constant: 18
+            - GetMember
+            - Push:
+                - Constant: 23
+            - GetMember
+            - Push:
+                - Constant: 27
+            - CallMethod
+            - Pop
+            - Push:
+                - Integer: 0
+                - Register: 1
+                - Constant: 22
+            - GetMember
+            - Push:
+                - Constant: 18
+            - GetMember
+            - Push:
+                - Constant: 27
+            - CallMethod
+            - Pop
+            - Push:
+                - Integer: 0
+                - Register: 1
+                - Constant: 22
+            - GetMember
             - Push:
                 - Constant: 22
             - GetMember
             - Push:
                 - Constant: 27
-            - GetMember
-            - Push:
-                - Constant: 32
-            - CallMethod
-            - Pop
-            - Push:
-                - Integer: 0
-                - Constant: 12
-            - GetVariable
-            - Push:
-                - Constant: 22
-            - GetMember
-            - Push:
-                - Constant: 27
-            - GetMember
-            - Push:
-                - Constant: 31
-            - CallMethod
-            - Pop
-            - Push:
-                - Integer: 0
-                - Constant: 12
-            - GetVariable
-            - Push:
-                - Constant: 26
-            - GetMember
-            - Push:
-                - Constant: 22
-            - GetMember
-            - Push:
-                - Constant: 31
-            - CallMethod
-            - Pop
-            - Push:
-                - Integer: 0
-                - Constant: 12
-            - GetVariable
-            - Push:
-                - Constant: 26
-            - GetMember
-            - Push:
-                - Constant: 26
-            - GetMember
-            - Push:
-                - Constant: 31
             - CallMethod
             - Pop
             - Push:
                 - "True"
                 - Integer: 1
-                - Constant: 12
-            - GetVariable
-            - Push:
-                - Constant: 26
+                - Register: 1
+                - Constant: 22
             - GetMember
             - Push:
-                - Constant: 27
+                - Constant: 23
             - GetMember
             - Push:
-                - Constant: 32
+                - Constant: 28
             - CallMethod
             - Pop
             - Push:
                 - Integer: 0
-                - Constant: 12
-            - GetVariable
+                - Register: 1
+                - Constant: 22
+            - GetMember
             - Push:
-                - Constant: 26
+                - Constant: 23
             - GetMember
             - Push:
                 - Constant: 27
-            - GetMember
-            - Push:
-                - Constant: 31
             - CallMethod
             - Pop
             - Push:
                 - Integer: 0
-                - Constant: 12
-            - GetVariable
+                - Register: 1
+                - Constant: 23
+            - GetMember
+            - Push:
+                - Constant: 18
+            - GetMember
             - Push:
                 - Constant: 27
+            - CallMethod
+            - Pop
+            - Push:
+                - Integer: 0
+                - Register: 1
+                - Constant: 23
             - GetMember
             - Push:
                 - Constant: 22
             - GetMember
             - Push:
-                - Constant: 31
-            - CallMethod
-            - Pop
-            - Push:
-                - Integer: 0
-                - Constant: 12
-            - GetVariable
-            - Push:
                 - Constant: 27
-            - GetMember
-            - Push:
-                - Constant: 26
-            - GetMember
-            - Push:
-                - Constant: 31
             - CallMethod
             - Pop
             - Push:
                 - "True"
                 - Integer: 1
-                - Constant: 12
-            - GetVariable
-            - Push:
-                - Constant: 27
+                - Register: 1
+                - Constant: 23
             - GetMember
             - Push:
-                - Constant: 27
+                - Constant: 23
             - GetMember
             - Push:
-                - Constant: 32
+                - Constant: 28
             - CallMethod
             - Pop
             - Push:
                 - Integer: 0
-                - Constant: 12
-            - GetVariable
+                - Register: 1
+                - Constant: 23
+            - GetMember
             - Push:
-                - Constant: 27
+                - Constant: 23
             - GetMember
             - Push:
                 - Constant: 27
-            - GetMember
-            - Push:
-                - Constant: 31
             - CallMethod
             - Pop
             - Push:
-                - Constant: 33
+                - Constant: 29
             - Trace
           label_positions: {}
+        register_count: 2
+        preload_this: false
+        suppress_this: true
+        preload_arguments: false
+        suppress_arguments: true
+        preload_super: false
+        suppress_super: true
+        preload_root: true
+        preload_parent: false
+        preload_global: false
     - DefineFunction:
         name: test
         params: []
@@ -997,22 +932,22 @@ initializer:
           actions:
             - Push:
                 - Integer: 0
-                - Constant: 34
+                - Constant: 30
             - CallFunction
             - Pop
             - Push:
                 - Integer: 0
-                - Constant: 35
+                - Constant: 31
             - CallFunction
             - Pop
           label_positions: {}
     - Push:
-        - Constant: 21
+        - Constant: 17
         - Integer: 1
     - DefineLocal
     - Push:
         - Integer: 0
-        - Constant: 31
+        - Constant: 27
     - CallFunction
     - Pop
   label_positions: {}

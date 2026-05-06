@@ -37,12 +37,34 @@ Ok:
                 this:
                   used: false
                   used_in_inner_scope: false
+                arguments:
+                  used: false
+                  used_in_inner_scope: false
                 super:
+                  used: false
+                  used_in_inner_scope: false
+                _root:
+                  used: false
+                  used_in_inner_scope: false
+                _parent:
+                  used: false
+                  used_in_inner_scope: false
+                _global:
                   used: false
                   used_in_inner_scope: false
               referenced_variables:
                 - BitmapData
               could_reference_anything: false
+            register_count: 1
+            preload_this: false
+            suppress_this: true
+            preload_arguments: false
+            suppress_arguments: true
+            preload_super: false
+            suppress_super: true
+            preload_root: false
+            preload_parent: false
+            preload_global: false
     - Block: []
     - Expr:
         span:
@@ -98,12 +120,34 @@ Ok:
                 this:
                   used: false
                   used_in_inner_scope: false
+                arguments:
+                  used: false
+                  used_in_inner_scope: false
                 super:
+                  used: false
+                  used_in_inner_scope: false
+                _root:
+                  used: false
+                  used_in_inner_scope: false
+                _parent:
+                  used: false
+                  used_in_inner_scope: false
+                _global:
                   used: false
                   used_in_inner_scope: false
               referenced_variables:
                 - flash
               could_reference_anything: false
+            register_count: 1
+            preload_this: false
+            suppress_this: true
+            preload_arguments: false
+            suppress_arguments: true
+            preload_super: false
+            suppress_super: true
+            preload_root: false
+            preload_parent: false
+            preload_global: false
     - Expr:
         span:
           start: 128

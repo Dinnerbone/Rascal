@@ -6,23 +6,17 @@ input_file: samples/as2/typed_variables.as
 initializer:
   actions:
     - ConstantPool:
-        - a
-        - b
         - Test message
-        - data
         - name
         - age
         - valid
-        - isValid
-        - i
-        - arr
         - length
-        - callback
         - num
         - str
         - Hello
         - flag
         - obj
+        - arr
         - numbers
         - Array
         - strings
@@ -39,182 +33,213 @@ initializer:
         - String
         - User
         - scores
-    - DefineFunction:
+    - DefineFunction2:
         name: add
         params:
-          - a
-          - b
+          - name: a
+            register: 1
+          - name: b
+            register: 2
         actions:
           actions:
             - Push:
-                - Constant: 0
-            - GetVariable
-            - Push:
-                - Constant: 1
-            - GetVariable
+                - Register: 1
+                - Register: 2
             - Add2
             - Return
           label_positions: {}
+        register_count: 3
+        preload_this: false
+        suppress_this: true
+        preload_arguments: false
+        suppress_arguments: true
+        preload_super: false
+        suppress_super: true
+        preload_root: false
+        preload_parent: false
+        preload_global: false
     - DefineFunction:
         name: getMessage
         params: []
         actions:
           actions:
             - Push:
-                - Constant: 2
+                - Constant: 0
             - Return
           label_positions: {}
-    - DefineFunction:
+    - DefineFunction2:
         name: processData
         params:
-          - data
+          - name: data
+            register: 1
         actions:
           actions:
             - Push:
-                - Constant: 3
-            - GetVariable
+                - Register: 1
             - Trace
           label_positions: {}
-    - DefineFunction:
+        register_count: 2
+        preload_this: false
+        suppress_this: true
+        preload_arguments: false
+        suppress_arguments: true
+        preload_super: false
+        suppress_super: true
+        preload_root: false
+        preload_parent: false
+        preload_global: false
+    - DefineFunction2:
         name: complexFunc
         params:
-          - name
-          - age
-          - isValid
+          - name: name
+            register: 1
+          - name: age
+            register: 2
+          - name: isValid
+            register: 3
         actions:
           actions:
             - Push:
-                - Constant: 4
-                - Constant: 4
-            - GetVariable
-            - Push:
-                - Constant: 5
-                - Constant: 5
-            - GetVariable
-            - Push:
-                - Constant: 6
-                - Constant: 7
-            - GetVariable
-            - Push:
+                - Constant: 1
+                - Register: 1
+                - Constant: 2
+                - Register: 2
+                - Constant: 3
+                - Register: 3
                 - Integer: 3
             - InitObject
             - Return
           label_positions: {}
-    - DefineFunction:
+        register_count: 4
+        preload_this: false
+        suppress_this: true
+        preload_arguments: false
+        suppress_arguments: true
+        preload_super: false
+        suppress_super: true
+        preload_root: false
+        preload_parent: false
+        preload_global: false
+    - DefineFunction2:
         name: forEach
         params:
-          - arr
-          - callback
+          - name: arr
+            register: 1
+          - name: callback
+            register: 2
         actions:
           actions:
             - Push:
-                - Constant: 8
                 - Integer: 0
-            - DefineLocal
+            - StoreRegister: 3
+            - Pop
             - Push:
-                - Constant: 8
-            - GetVariable
-            - Push:
-                - Constant: 9
-            - GetVariable
-            - Push:
-                - Constant: 10
+                - Register: 3
+                - Register: 1
+                - Constant: 4
             - GetMember
             - Less2
             - Not
             - If: loc0000
             - Push:
-                - Constant: 9
-            - GetVariable
-            - Push:
-                - Constant: 8
-            - GetVariable
+                - Register: 1
+                - Register: 3
             - GetMember
             - Push:
                 - Integer: 1
-                - Constant: 11
-            - CallFunction
+                - Register: 2
+                - Undefined
+            - CallMethod
             - Pop
             - Push:
-                - Constant: 8
-                - Constant: 8
-            - GetVariable
+                - Register: 3
             - Increment
-            - SetVariable
+            - StoreRegister: 3
+            - Pop
             - Jump: loc0002
           label_positions:
-            loc0002: 2
-            loc0001: 19
-            loc0000: 24
+            loc0002: 3
+            loc0001: 13
+            loc0000: 18
+        register_count: 4
+        preload_this: false
+        suppress_this: true
+        preload_arguments: false
+        suppress_arguments: true
+        preload_super: false
+        suppress_super: true
+        preload_root: false
+        preload_parent: false
+        preload_global: false
     - Push:
-        - Constant: 12
+        - Constant: 5
         - Integer: 42
     - DefineLocal
     - Push:
-        - Constant: 13
-        - Constant: 14
+        - Constant: 6
+        - Constant: 7
     - DefineLocal
     - Push:
-        - Constant: 15
+        - Constant: 8
         - "True"
-    - DefineLocal
-    - Push:
-        - Constant: 16
-        - Integer: 0
-    - InitObject
     - DefineLocal
     - Push:
         - Constant: 9
         - Integer: 0
+    - InitObject
+    - DefineLocal
+    - Push:
+        - Constant: 10
+        - Integer: 0
     - InitArray
     - DefineLocal
     - Push:
-        - Constant: 17
+        - Constant: 11
         - Integer: 0
-        - Constant: 18
+        - Constant: 12
     - NewObject
     - DefineLocal
     - Push:
-        - Constant: 19
-        - Constant: 20
-        - Constant: 21
-        - Constant: 22
+        - Constant: 13
+        - Constant: 14
+        - Constant: 15
+        - Constant: 16
         - Integer: 3
     - InitArray
     - DefineLocal
     - Push:
-        - Constant: 23
-        - Constant: 24
+        - Constant: 17
+        - Constant: 18
     - DefineLocal
     - Push:
-        - Constant: 25
-        - Constant: 23
+        - Constant: 19
+        - Constant: 17
     - GetVariable
     - ToNumber
     - DefineLocal
     - Push:
-        - Constant: 26
+        - Constant: 20
         - Integer: 42
     - ToString
     - DefineLocal
     - Push:
-        - Constant: 27
-        - Constant: 28
-        - Constant: 29
+        - Constant: 21
+        - Constant: 22
+        - Constant: 23
         - Integer: 1
     - StoreRegister: 0
     - SetVariable
     - Push:
         - Register: 0
-        - Constant: 4
-        - Constant: 30
-        - Constant: 31
+        - Constant: 1
+        - Constant: 24
+        - Constant: 25
     - StoreRegister: 0
     - SetVariable
     - Push:
         - Register: 0
-        - Constant: 32
-        - Constant: 18
+        - Constant: 26
+        - Constant: 12
         - Integer: 3
         - Integer: 2
         - Integer: 1

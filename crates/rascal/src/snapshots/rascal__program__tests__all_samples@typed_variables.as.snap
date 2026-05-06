@@ -112,12 +112,14 @@ Ok:
                       start: 129
                       end: 135
                     value: Number
+                  register: 1
                 - name: b
                   type_name:
                     span:
                       start: 139
                       end: 145
                     value: Number
+                  register: 2
               return_type:
                 span:
                   start: 147
@@ -136,19 +138,31 @@ Ok:
                             end: 168
                           value:
                             Constant:
-                              Identifier: a
+                              Register: 1
                         - span:
                             start: 171
                             end: 172
                           value:
                             Constant:
-                              Identifier: b
+                              Register: 2
             scope:
               defined_variables:
                 this:
                   used: false
                   used_in_inner_scope: false
+                arguments:
+                  used: false
+                  used_in_inner_scope: false
                 super:
+                  used: false
+                  used_in_inner_scope: false
+                _root:
+                  used: false
+                  used_in_inner_scope: false
+                _parent:
+                  used: false
+                  used_in_inner_scope: false
+                _global:
                   used: false
                   used_in_inner_scope: false
                 a:
@@ -159,6 +173,16 @@ Ok:
                   used_in_inner_scope: false
               referenced_variables: []
               could_reference_anything: false
+            register_count: 3
+            preload_this: false
+            suppress_this: true
+            preload_arguments: false
+            suppress_arguments: true
+            preload_super: false
+            suppress_super: true
+            preload_root: false
+            preload_parent: false
+            preload_global: false
     - Expr:
         span:
           start: 177
@@ -190,11 +214,33 @@ Ok:
                 this:
                   used: false
                   used_in_inner_scope: false
+                arguments:
+                  used: false
+                  used_in_inner_scope: false
                 super:
+                  used: false
+                  used_in_inner_scope: false
+                _root:
+                  used: false
+                  used_in_inner_scope: false
+                _parent:
+                  used: false
+                  used_in_inner_scope: false
+                _global:
                   used: false
                   used_in_inner_scope: false
               referenced_variables: []
               could_reference_anything: false
+            register_count: 1
+            preload_this: false
+            suppress_this: true
+            preload_arguments: false
+            suppress_arguments: true
+            preload_super: false
+            suppress_super: true
+            preload_root: false
+            preload_parent: false
+            preload_global: false
     - Expr:
         span:
           start: 238
@@ -214,6 +260,7 @@ Ok:
                       start: 264
                       end: 270
                     value: Object
+                  register: 1
               return_type:
                 span:
                   start: 272
@@ -231,13 +278,25 @@ Ok:
                         end: 293
                       value:
                         Constant:
-                          Identifier: data
+                          Register: 1
             scope:
               defined_variables:
                 this:
                   used: false
                   used_in_inner_scope: false
+                arguments:
+                  used: false
+                  used_in_inner_scope: false
                 super:
+                  used: false
+                  used_in_inner_scope: false
+                _root:
+                  used: false
+                  used_in_inner_scope: false
+                _parent:
+                  used: false
+                  used_in_inner_scope: false
+                _global:
                   used: false
                   used_in_inner_scope: false
                 data:
@@ -245,6 +304,16 @@ Ok:
                   used_in_inner_scope: false
               referenced_variables: []
               could_reference_anything: false
+            register_count: 2
+            preload_this: false
+            suppress_this: true
+            preload_arguments: false
+            suppress_arguments: true
+            preload_super: false
+            suppress_super: true
+            preload_root: false
+            preload_parent: false
+            preload_global: false
     - Declare:
         name:
           span:
@@ -388,18 +457,21 @@ Ok:
                       start: 510
                       end: 516
                     value: String
+                  register: 1
                 - name: age
                   type_name:
                     span:
                       start: 522
                       end: 528
                     value: Number
+                  register: 2
                 - name: isValid
                   type_name:
                     span:
                       start: 538
                       end: 545
                     value: Boolean
+                  register: 3
               return_type:
                 span:
                   start: 547
@@ -418,27 +490,39 @@ Ok:
                               end: 578
                             value:
                               Constant:
-                                Identifier: name
+                                Register: 1
                         - - age
                           - span:
                               start: 585
                               end: 588
                             value:
                               Constant:
-                                Identifier: age
+                                Register: 2
                         - - valid
                           - span:
                               start: 597
                               end: 604
                             value:
                               Constant:
-                                Identifier: isValid
+                                Register: 3
             scope:
               defined_variables:
                 this:
                   used: false
                   used_in_inner_scope: false
+                arguments:
+                  used: false
+                  used_in_inner_scope: false
                 super:
+                  used: false
+                  used_in_inner_scope: false
+                _root:
+                  used: false
+                  used_in_inner_scope: false
+                _parent:
+                  used: false
+                  used_in_inner_scope: false
+                _global:
                   used: false
                   used_in_inner_scope: false
                 name:
@@ -452,6 +536,16 @@ Ok:
                   used_in_inner_scope: false
               referenced_variables: []
               could_reference_anything: false
+            register_count: 4
+            preload_this: false
+            suppress_this: true
+            preload_arguments: false
+            suppress_arguments: true
+            preload_super: false
+            suppress_super: true
+            preload_root: false
+            preload_parent: false
+            preload_global: false
     - Declare:
         name:
           span:
@@ -562,12 +656,14 @@ Ok:
                       start: 733
                       end: 738
                     value: Array
+                  register: 1
                 - name: callback
                   type_name:
                     span:
                       start: 749
                       end: 757
                     value: Function
+                  register: 2
               return_type:
                 span:
                   start: 759
@@ -578,24 +674,25 @@ Ok:
                   condition:
                     Classic:
                       initialize:
-                        Declare:
-                          name:
-                            span:
-                              start: 779
-                              end: 780
-                            value: i
+                        Expr:
+                          span:
+                            start: 0
+                            end: 0
                           value:
-                            span:
-                              start: 790
-                              end: 791
-                            value:
-                              Constant:
-                                Integer: 0
-                          type_name:
-                            span:
-                              start: 781
-                              end: 787
-                            value: Number
+                            BinaryOperator:
+                              - Assign
+                              - span:
+                                  start: 0
+                                  end: 0
+                                value:
+                                  Constant:
+                                    Register: 3
+                              - span:
+                                  start: 790
+                                  end: 791
+                                value:
+                                  Constant:
+                                    Integer: 0
                       condition:
                         - span:
                             start: 793
@@ -608,7 +705,7 @@ Ok:
                                   end: 794
                                 value:
                                   Constant:
-                                    Identifier: i
+                                    Register: 3
                               - span:
                                   start: 800
                                   end: 807
@@ -619,7 +716,7 @@ Ok:
                                         end: 800
                                       value:
                                         Constant:
-                                          Identifier: arr
+                                          Register: 1
                                     - span:
                                         start: 801
                                         end: 807
@@ -638,7 +735,7 @@ Ok:
                                   end: 810
                                 value:
                                   Constant:
-                                    Identifier: i
+                                    Register: 3
                   body:
                     Block:
                       - Expr:
@@ -653,7 +750,7 @@ Ok:
                                   end: 832
                                 value:
                                   Constant:
-                                    Identifier: callback
+                                    Register: 2
                               args:
                                 - span:
                                     start: 836
@@ -665,19 +762,31 @@ Ok:
                                           end: 836
                                         value:
                                           Constant:
-                                            Identifier: arr
+                                            Register: 1
                                       - span:
                                           start: 837
                                           end: 838
                                         value:
                                           Constant:
-                                            Identifier: i
+                                            Register: 3
             scope:
               defined_variables:
                 this:
                   used: false
                   used_in_inner_scope: false
+                arguments:
+                  used: false
+                  used_in_inner_scope: false
                 super:
+                  used: false
+                  used_in_inner_scope: false
+                _root:
+                  used: false
+                  used_in_inner_scope: false
+                _parent:
+                  used: false
+                  used_in_inner_scope: false
+                _global:
                   used: false
                   used_in_inner_scope: false
                 arr:
@@ -691,6 +800,16 @@ Ok:
                   used_in_inner_scope: false
               referenced_variables: []
               could_reference_anything: false
+            register_count: 4
+            preload_this: false
+            suppress_this: true
+            preload_arguments: false
+            suppress_arguments: true
+            preload_super: false
+            suppress_super: true
+            preload_root: false
+            preload_parent: false
+            preload_global: false
   interfaces: []
   classes: []
   custom_pcodes: []

@@ -8,24 +8,33 @@ initializer:
     - ConstantPool:
         - a
         - trc
-        - msg
     - Push:
         - Constant: 0
         - Integer: 10
     - DefineLocal
     - Push:
         - Constant: 1
-    - DefineFunction:
+    - DefineFunction2:
         name: ""
         params:
-          - msg
+          - name: msg
+            register: 1
         actions:
           actions:
             - Push:
-                - Constant: 2
-            - GetVariable
+                - Register: 1
             - Trace
           label_positions: {}
+        register_count: 2
+        preload_this: false
+        suppress_this: true
+        preload_arguments: false
+        suppress_arguments: true
+        preload_super: false
+        suppress_super: true
+        preload_root: false
+        preload_parent: false
+        preload_global: false
     - DefineLocal
     - Push:
         - Constant: 0

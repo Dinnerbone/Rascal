@@ -11,9 +11,7 @@ initializer:
         - anon
         - Anonymous function called!
         - "a = "
-        - a
         - ", b = "
-        - b
         - bb
         - aa
         - test
@@ -31,11 +29,13 @@ initializer:
           label_positions: {}
     - Push:
         - Constant: 2
-    - DefineFunction:
+    - DefineFunction2:
         name: ""
         params:
-          - a
-          - b
+          - name: a
+            register: 1
+          - name: b
+            register: 2
         actions:
           actions:
             - Push:
@@ -43,33 +43,41 @@ initializer:
             - Trace
             - Push:
                 - Constant: 4
+                - Register: 1
+            - Add2
+            - Push:
                 - Constant: 5
-            - GetVariable
             - Add2
             - Push:
-                - Constant: 6
-            - Add2
-            - Push:
-                - Constant: 7
-            - GetVariable
+                - Register: 2
             - Add2
             - Trace
           label_positions: {}
+        register_count: 3
+        preload_this: false
+        suppress_this: true
+        preload_arguments: false
+        suppress_arguments: true
+        preload_super: false
+        suppress_super: true
+        preload_root: false
+        preload_parent: false
+        preload_global: false
     - DefineLocal
     - Push:
-        - Constant: 8
-        - Constant: 9
+        - Constant: 6
+        - Constant: 7
         - Integer: 2
         - Constant: 2
     - CallFunction
     - Pop
     - Push:
         - Integer: 0
-        - Constant: 10
+        - Constant: 8
     - CallFunction
     - Push:
         - Integer: 0
-        - Constant: 10
+        - Constant: 8
     - CallFunction
     - Add2
     - Trace

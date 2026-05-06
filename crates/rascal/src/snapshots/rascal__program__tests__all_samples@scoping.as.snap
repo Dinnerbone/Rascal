@@ -16,48 +16,63 @@ Ok:
               args: []
               return_type: ~
             body:
-              - Declare:
-                  name:
-                    span:
-                      start: 18
-                      end: 19
-                    value: a
+              - Expr:
+                  span:
+                    start: 0
+                    end: 0
                   value:
-                    span:
-                      start: 22
-                      end: 31
-                    value:
-                      Constant:
-                        String: outer_a
-                  type_name: ~
-              - Declare:
-                  name:
-                    span:
-                      start: 38
-                      end: 39
-                    value: b
+                    BinaryOperator:
+                      - Assign
+                      - span:
+                          start: 0
+                          end: 0
+                        value:
+                          Constant:
+                            Register: 1
+                      - span:
+                          start: 22
+                          end: 31
+                        value:
+                          Constant:
+                            String: outer_a
+              - Expr:
+                  span:
+                    start: 0
+                    end: 0
                   value:
-                    span:
-                      start: 42
-                      end: 51
-                    value:
-                      Constant:
-                        String: outer_b
-                  type_name: ~
-              - Declare:
-                  name:
-                    span:
-                      start: 58
-                      end: 59
-                    value: c
+                    BinaryOperator:
+                      - Assign
+                      - span:
+                          start: 0
+                          end: 0
+                        value:
+                          Constant:
+                            Register: 2
+                      - span:
+                          start: 42
+                          end: 51
+                        value:
+                          Constant:
+                            String: outer_b
+              - Expr:
+                  span:
+                    start: 0
+                    end: 0
                   value:
-                    span:
-                      start: 62
-                      end: 71
-                    value:
-                      Constant:
-                        String: outer_c
-                  type_name: ~
+                    BinaryOperator:
+                      - Assign
+                      - span:
+                          start: 0
+                          end: 0
+                        value:
+                          Constant:
+                            Register: 3
+                      - span:
+                          start: 62
+                          end: 71
+                        value:
+                          Constant:
+                            String: outer_c
               - Block:
                   - Expr:
                       span:
@@ -71,33 +86,50 @@ Ok:
                               end: 79
                             value:
                               Constant:
-                                Identifier: a
+                                Register: 1
                           - span:
                               start: 82
                               end: 91
                             value:
                               Constant:
                                 String: inner_a
-                  - Declare:
-                      name:
-                        span:
-                          start: 99
-                          end: 100
-                        value: b
+                  - Expr:
+                      span:
+                        start: 0
+                        end: 0
                       value:
-                        span:
-                          start: 103
-                          end: 112
-                        value:
-                          Constant:
-                            String: inner_b
-                      type_name: ~
+                        BinaryOperator:
+                          - Assign
+                          - span:
+                              start: 0
+                              end: 0
+                            value:
+                              Constant:
+                                Register: 2
+                          - span:
+                              start: 103
+                              end: 112
+                            value:
+                              Constant:
+                                String: inner_b
             scope:
               defined_variables:
                 this:
                   used: false
                   used_in_inner_scope: false
+                arguments:
+                  used: false
+                  used_in_inner_scope: false
                 super:
+                  used: false
+                  used_in_inner_scope: false
+                _root:
+                  used: false
+                  used_in_inner_scope: false
+                _parent:
+                  used: false
+                  used_in_inner_scope: false
+                _global:
                   used: false
                   used_in_inner_scope: false
                 a:
@@ -111,6 +143,16 @@ Ok:
                   used_in_inner_scope: false
               referenced_variables: []
               could_reference_anything: false
+            register_count: 4
+            preload_this: false
+            suppress_this: true
+            preload_arguments: false
+            suppress_arguments: true
+            preload_super: false
+            suppress_super: true
+            preload_root: false
+            preload_parent: false
+            preload_global: false
     - Expr:
         span:
           start: 120
@@ -122,48 +164,63 @@ Ok:
               args: []
               return_type: ~
             body:
-              - Declare:
-                  name:
-                    span:
-                      start: 138
-                      end: 139
-                    value: a
+              - Expr:
+                  span:
+                    start: 0
+                    end: 0
                   value:
-                    span:
-                      start: 142
-                      end: 151
-                    value:
-                      Constant:
-                        String: outer_a
-                  type_name: ~
-              - Declare:
-                  name:
-                    span:
-                      start: 158
-                      end: 159
-                    value: b
+                    BinaryOperator:
+                      - Assign
+                      - span:
+                          start: 0
+                          end: 0
+                        value:
+                          Constant:
+                            Register: 1
+                      - span:
+                          start: 142
+                          end: 151
+                        value:
+                          Constant:
+                            String: outer_a
+              - Expr:
+                  span:
+                    start: 0
+                    end: 0
                   value:
-                    span:
-                      start: 162
-                      end: 171
-                    value:
-                      Constant:
-                        String: outer_b
-                  type_name: ~
-              - Declare:
-                  name:
-                    span:
-                      start: 178
-                      end: 179
-                    value: c
+                    BinaryOperator:
+                      - Assign
+                      - span:
+                          start: 0
+                          end: 0
+                        value:
+                          Constant:
+                            Register: 2
+                      - span:
+                          start: 162
+                          end: 171
+                        value:
+                          Constant:
+                            String: outer_b
+              - Expr:
+                  span:
+                    start: 0
+                    end: 0
                   value:
-                    span:
-                      start: 182
-                      end: 191
-                    value:
-                      Constant:
-                        String: outer_c
-                  type_name: ~
+                    BinaryOperator:
+                      - Assign
+                      - span:
+                          start: 0
+                          end: 0
+                        value:
+                          Constant:
+                            Register: 3
+                      - span:
+                          start: 182
+                          end: 191
+                        value:
+                          Constant:
+                            String: outer_c
               - If:
                   condition:
                     span:
@@ -186,34 +243,51 @@ Ok:
                                   end: 208
                                 value:
                                   Constant:
-                                    Identifier: a
+                                    Register: 1
                               - span:
                                   start: 211
                                   end: 220
                                 value:
                                   Constant:
                                     String: inner_a
-                      - Declare:
-                          name:
-                            span:
-                              start: 228
-                              end: 229
-                            value: b
+                      - Expr:
+                          span:
+                            start: 0
+                            end: 0
                           value:
-                            span:
-                              start: 232
-                              end: 241
-                            value:
-                              Constant:
-                                String: inner_b
-                          type_name: ~
+                            BinaryOperator:
+                              - Assign
+                              - span:
+                                  start: 0
+                                  end: 0
+                                value:
+                                  Constant:
+                                    Register: 2
+                              - span:
+                                  start: 232
+                                  end: 241
+                                value:
+                                  Constant:
+                                    String: inner_b
                   "no": ~
             scope:
               defined_variables:
                 this:
                   used: false
                   used_in_inner_scope: false
+                arguments:
+                  used: false
+                  used_in_inner_scope: false
                 super:
+                  used: false
+                  used_in_inner_scope: false
+                _root:
+                  used: false
+                  used_in_inner_scope: false
+                _parent:
+                  used: false
+                  used_in_inner_scope: false
+                _global:
                   used: false
                   used_in_inner_scope: false
                 a:
@@ -227,6 +301,16 @@ Ok:
                   used_in_inner_scope: false
               referenced_variables: []
               could_reference_anything: false
+            register_count: 4
+            preload_this: false
+            suppress_this: true
+            preload_arguments: false
+            suppress_arguments: true
+            preload_super: false
+            suppress_super: true
+            preload_root: false
+            preload_parent: false
+            preload_global: false
     - Expr:
         span:
           start: 249
@@ -238,48 +322,63 @@ Ok:
               args: []
               return_type: ~
             body:
-              - Declare:
-                  name:
-                    span:
-                      start: 267
-                      end: 268
-                    value: a
+              - Expr:
+                  span:
+                    start: 0
+                    end: 0
                   value:
-                    span:
-                      start: 271
-                      end: 280
-                    value:
-                      Constant:
-                        String: outer_a
-                  type_name: ~
-              - Declare:
-                  name:
-                    span:
-                      start: 287
-                      end: 288
-                    value: b
+                    BinaryOperator:
+                      - Assign
+                      - span:
+                          start: 0
+                          end: 0
+                        value:
+                          Constant:
+                            Register: 1
+                      - span:
+                          start: 271
+                          end: 280
+                        value:
+                          Constant:
+                            String: outer_a
+              - Expr:
+                  span:
+                    start: 0
+                    end: 0
                   value:
-                    span:
-                      start: 291
-                      end: 300
-                    value:
-                      Constant:
-                        String: outer_b
-                  type_name: ~
-              - Declare:
-                  name:
-                    span:
-                      start: 307
-                      end: 308
-                    value: c
+                    BinaryOperator:
+                      - Assign
+                      - span:
+                          start: 0
+                          end: 0
+                        value:
+                          Constant:
+                            Register: 2
+                      - span:
+                          start: 291
+                          end: 300
+                        value:
+                          Constant:
+                            String: outer_b
+              - Expr:
+                  span:
+                    start: 0
+                    end: 0
                   value:
-                    span:
-                      start: 311
-                      end: 320
-                    value:
-                      Constant:
-                        String: outer_c
-                  type_name: ~
+                    BinaryOperator:
+                      - Assign
+                      - span:
+                          start: 0
+                          end: 0
+                        value:
+                          Constant:
+                            Register: 3
+                      - span:
+                          start: 311
+                          end: 320
+                        value:
+                          Constant:
+                            String: outer_c
               - If:
                   condition:
                     span:
@@ -310,33 +409,50 @@ Ok:
                                   end: 348
                                 value:
                                   Constant:
-                                    Identifier: a
+                                    Register: 1
                               - span:
                                   start: 351
                                   end: 360
                                 value:
                                   Constant:
                                     String: inner_a
-                      - Declare:
-                          name:
-                            span:
-                              start: 368
-                              end: 369
-                            value: b
+                      - Expr:
+                          span:
+                            start: 0
+                            end: 0
                           value:
-                            span:
-                              start: 372
-                              end: 381
-                            value:
-                              Constant:
-                                String: inner_b
-                          type_name: ~
+                            BinaryOperator:
+                              - Assign
+                              - span:
+                                  start: 0
+                                  end: 0
+                                value:
+                                  Constant:
+                                    Register: 2
+                              - span:
+                                  start: 372
+                                  end: 381
+                                value:
+                                  Constant:
+                                    String: inner_b
             scope:
               defined_variables:
                 this:
                   used: false
                   used_in_inner_scope: false
+                arguments:
+                  used: false
+                  used_in_inner_scope: false
                 super:
+                  used: false
+                  used_in_inner_scope: false
+                _root:
+                  used: false
+                  used_in_inner_scope: false
+                _parent:
+                  used: false
+                  used_in_inner_scope: false
+                _global:
                   used: false
                   used_in_inner_scope: false
                 a:
@@ -350,6 +466,16 @@ Ok:
                   used_in_inner_scope: false
               referenced_variables: []
               could_reference_anything: false
+            register_count: 4
+            preload_this: false
+            suppress_this: true
+            preload_arguments: false
+            suppress_arguments: true
+            preload_super: false
+            suppress_super: true
+            preload_root: false
+            preload_parent: false
+            preload_global: false
     - Expr:
         span:
           start: 389
@@ -361,66 +487,86 @@ Ok:
               args: []
               return_type: ~
             body:
-              - Declare:
-                  name:
-                    span:
-                      start: 407
-                      end: 408
-                    value: a
+              - Expr:
+                  span:
+                    start: 0
+                    end: 0
                   value:
-                    span:
-                      start: 411
-                      end: 420
-                    value:
-                      Constant:
-                        String: outer_a
-                  type_name: ~
-              - Declare:
-                  name:
-                    span:
-                      start: 427
-                      end: 428
-                    value: b
+                    BinaryOperator:
+                      - Assign
+                      - span:
+                          start: 0
+                          end: 0
+                        value:
+                          Constant:
+                            Register: 1
+                      - span:
+                          start: 411
+                          end: 420
+                        value:
+                          Constant:
+                            String: outer_a
+              - Expr:
+                  span:
+                    start: 0
+                    end: 0
                   value:
-                    span:
-                      start: 431
-                      end: 440
-                    value:
-                      Constant:
-                        String: outer_b
-                  type_name: ~
-              - Declare:
-                  name:
-                    span:
-                      start: 447
-                      end: 448
-                    value: c
+                    BinaryOperator:
+                      - Assign
+                      - span:
+                          start: 0
+                          end: 0
+                        value:
+                          Constant:
+                            Register: 2
+                      - span:
+                          start: 431
+                          end: 440
+                        value:
+                          Constant:
+                            String: outer_b
+              - Expr:
+                  span:
+                    start: 0
+                    end: 0
                   value:
-                    span:
-                      start: 451
-                      end: 460
-                    value:
-                      Constant:
-                        String: outer_c
-                  type_name: ~
+                    BinaryOperator:
+                      - Assign
+                      - span:
+                          start: 0
+                          end: 0
+                        value:
+                          Constant:
+                            Register: 3
+                      - span:
+                          start: 451
+                          end: 460
+                        value:
+                          Constant:
+                            String: outer_c
               - ForIn:
                   condition:
                     Classic:
                       initialize:
-                        Declare:
-                          name:
-                            span:
-                              start: 472
-                              end: 473
-                            value: i
+                        Expr:
+                          span:
+                            start: 0
+                            end: 0
                           value:
-                            span:
-                              start: 476
-                              end: 477
-                            value:
-                              Constant:
-                                Integer: 0
-                          type_name: ~
+                            BinaryOperator:
+                              - Assign
+                              - span:
+                                  start: 0
+                                  end: 0
+                                value:
+                                  Constant:
+                                    Register: 4
+                              - span:
+                                  start: 476
+                                  end: 477
+                                value:
+                                  Constant:
+                                    Integer: 0
                       condition:
                         - span:
                             start: 479
@@ -433,7 +579,7 @@ Ok:
                                   end: 480
                                 value:
                                   Constant:
-                                    Identifier: i
+                                    Register: 4
                               - span:
                                   start: 483
                                   end: 484
@@ -452,7 +598,7 @@ Ok:
                                   end: 487
                                 value:
                                   Constant:
-                                    Identifier: i
+                                    Register: 4
                   body:
                     Block:
                       - Expr:
@@ -467,33 +613,50 @@ Ok:
                                   end: 496
                                 value:
                                   Constant:
-                                    Identifier: a
+                                    Register: 1
                               - span:
                                   start: 499
                                   end: 508
                                 value:
                                   Constant:
                                     String: inner_a
-                      - Declare:
-                          name:
-                            span:
-                              start: 516
-                              end: 517
-                            value: b
+                      - Expr:
+                          span:
+                            start: 0
+                            end: 0
                           value:
-                            span:
-                              start: 520
-                              end: 529
-                            value:
-                              Constant:
-                                String: inner_b
-                          type_name: ~
+                            BinaryOperator:
+                              - Assign
+                              - span:
+                                  start: 0
+                                  end: 0
+                                value:
+                                  Constant:
+                                    Register: 2
+                              - span:
+                                  start: 520
+                                  end: 529
+                                value:
+                                  Constant:
+                                    String: inner_b
             scope:
               defined_variables:
                 this:
                   used: false
                   used_in_inner_scope: false
+                arguments:
+                  used: false
+                  used_in_inner_scope: false
                 super:
+                  used: false
+                  used_in_inner_scope: false
+                _root:
+                  used: false
+                  used_in_inner_scope: false
+                _parent:
+                  used: false
+                  used_in_inner_scope: false
+                _global:
                   used: false
                   used_in_inner_scope: false
                 a:
@@ -510,6 +673,16 @@ Ok:
                   used_in_inner_scope: false
               referenced_variables: []
               could_reference_anything: false
+            register_count: 5
+            preload_this: false
+            suppress_this: true
+            preload_arguments: false
+            suppress_arguments: true
+            preload_super: false
+            suppress_super: true
+            preload_root: false
+            preload_parent: false
+            preload_global: false
     - Expr:
         span:
           start: 537
@@ -521,62 +694,82 @@ Ok:
               args: []
               return_type: ~
             body:
-              - Declare:
-                  name:
-                    span:
-                      start: 555
-                      end: 556
-                    value: a
+              - Expr:
+                  span:
+                    start: 0
+                    end: 0
                   value:
-                    span:
-                      start: 559
-                      end: 568
-                    value:
-                      Constant:
-                        String: outer_a
-                  type_name: ~
-              - Declare:
-                  name:
-                    span:
-                      start: 575
-                      end: 576
-                    value: b
+                    BinaryOperator:
+                      - Assign
+                      - span:
+                          start: 0
+                          end: 0
+                        value:
+                          Constant:
+                            Register: 1
+                      - span:
+                          start: 559
+                          end: 568
+                        value:
+                          Constant:
+                            String: outer_a
+              - Expr:
+                  span:
+                    start: 0
+                    end: 0
                   value:
-                    span:
-                      start: 579
-                      end: 588
-                    value:
-                      Constant:
-                        String: outer_b
-                  type_name: ~
-              - Declare:
-                  name:
-                    span:
-                      start: 595
-                      end: 596
-                    value: c
+                    BinaryOperator:
+                      - Assign
+                      - span:
+                          start: 0
+                          end: 0
+                        value:
+                          Constant:
+                            Register: 2
+                      - span:
+                          start: 579
+                          end: 588
+                        value:
+                          Constant:
+                            String: outer_b
+              - Expr:
+                  span:
+                    start: 0
+                    end: 0
                   value:
-                    span:
-                      start: 599
-                      end: 608
-                    value:
-                      Constant:
-                        String: outer_c
-                  type_name: ~
-              - Declare:
-                  name:
-                    span:
-                      start: 615
-                      end: 616
-                    value: i
+                    BinaryOperator:
+                      - Assign
+                      - span:
+                          start: 0
+                          end: 0
+                        value:
+                          Constant:
+                            Register: 3
+                      - span:
+                          start: 599
+                          end: 608
+                        value:
+                          Constant:
+                            String: outer_c
+              - Expr:
+                  span:
+                    start: 0
+                    end: 0
                   value:
-                    span:
-                      start: 619
-                      end: 620
-                    value:
-                      Constant:
-                        Integer: 0
-                  type_name: ~
+                    BinaryOperator:
+                      - Assign
+                      - span:
+                          start: 0
+                          end: 0
+                        value:
+                          Constant:
+                            Register: 4
+                      - span:
+                          start: 619
+                          end: 620
+                        value:
+                          Constant:
+                            Integer: 0
               - While:
                   condition:
                     span:
@@ -596,7 +789,7 @@ Ok:
                                   end: 631
                                 value:
                                   Constant:
-                                    Identifier: i
+                                    Register: 4
                         - span:
                             start: 636
                             end: 637
@@ -617,33 +810,50 @@ Ok:
                                   end: 644
                                 value:
                                   Constant:
-                                    Identifier: a
+                                    Register: 1
                               - span:
                                   start: 647
                                   end: 656
                                 value:
                                   Constant:
                                     String: inner_a
-                      - Declare:
-                          name:
-                            span:
-                              start: 664
-                              end: 665
-                            value: b
+                      - Expr:
+                          span:
+                            start: 0
+                            end: 0
                           value:
-                            span:
-                              start: 668
-                              end: 677
-                            value:
-                              Constant:
-                                String: inner_b
-                          type_name: ~
+                            BinaryOperator:
+                              - Assign
+                              - span:
+                                  start: 0
+                                  end: 0
+                                value:
+                                  Constant:
+                                    Register: 2
+                              - span:
+                                  start: 668
+                                  end: 677
+                                value:
+                                  Constant:
+                                    String: inner_b
             scope:
               defined_variables:
                 this:
                   used: false
                   used_in_inner_scope: false
+                arguments:
+                  used: false
+                  used_in_inner_scope: false
                 super:
+                  used: false
+                  used_in_inner_scope: false
+                _root:
+                  used: false
+                  used_in_inner_scope: false
+                _parent:
+                  used: false
+                  used_in_inner_scope: false
+                _global:
                   used: false
                   used_in_inner_scope: false
                 a:
@@ -660,6 +870,16 @@ Ok:
                   used_in_inner_scope: false
               referenced_variables: []
               could_reference_anything: false
+            register_count: 5
+            preload_this: false
+            suppress_this: true
+            preload_arguments: false
+            suppress_arguments: true
+            preload_super: false
+            suppress_super: true
+            preload_root: false
+            preload_parent: false
+            preload_global: false
     - Expr:
         span:
           start: 685
@@ -671,48 +891,63 @@ Ok:
               args: []
               return_type: ~
             body:
-              - Declare:
-                  name:
-                    span:
-                      start: 703
-                      end: 704
-                    value: a
+              - Expr:
+                  span:
+                    start: 0
+                    end: 0
                   value:
-                    span:
-                      start: 707
-                      end: 716
-                    value:
-                      Constant:
-                        String: outer_a
-                  type_name: ~
-              - Declare:
-                  name:
-                    span:
-                      start: 723
-                      end: 724
-                    value: b
+                    BinaryOperator:
+                      - Assign
+                      - span:
+                          start: 0
+                          end: 0
+                        value:
+                          Constant:
+                            Register: 1
+                      - span:
+                          start: 707
+                          end: 716
+                        value:
+                          Constant:
+                            String: outer_a
+              - Expr:
+                  span:
+                    start: 0
+                    end: 0
                   value:
-                    span:
-                      start: 727
-                      end: 736
-                    value:
-                      Constant:
-                        String: outer_b
-                  type_name: ~
-              - Declare:
-                  name:
-                    span:
-                      start: 743
-                      end: 744
-                    value: c
+                    BinaryOperator:
+                      - Assign
+                      - span:
+                          start: 0
+                          end: 0
+                        value:
+                          Constant:
+                            Register: 2
+                      - span:
+                          start: 727
+                          end: 736
+                        value:
+                          Constant:
+                            String: outer_b
+              - Expr:
+                  span:
+                    start: 0
+                    end: 0
                   value:
-                    span:
-                      start: 747
-                      end: 756
-                    value:
-                      Constant:
-                        String: outer_c
-                  type_name: ~
+                    BinaryOperator:
+                      - Assign
+                      - span:
+                          start: 0
+                          end: 0
+                        value:
+                          Constant:
+                            Register: 3
+                      - span:
+                          start: 747
+                          end: 756
+                        value:
+                          Constant:
+                            String: outer_c
               - Switch:
                   target:
                     span:
@@ -742,7 +977,7 @@ Ok:
                                   end: 786
                                 value:
                                   Constant:
-                                    Identifier: a
+                                    Register: 1
                               - span:
                                   start: 789
                                   end: 798
@@ -750,27 +985,44 @@ Ok:
                                   Constant:
                                     String: inner_a
                     - Statement:
-                        Declare:
-                          name:
-                            span:
-                              start: 807
-                              end: 808
-                            value: b
+                        Expr:
+                          span:
+                            start: 0
+                            end: 0
                           value:
-                            span:
-                              start: 811
-                              end: 820
-                            value:
-                              Constant:
-                                String: inner_b
-                          type_name: ~
+                            BinaryOperator:
+                              - Assign
+                              - span:
+                                  start: 0
+                                  end: 0
+                                value:
+                                  Constant:
+                                    Register: 2
+                              - span:
+                                  start: 811
+                                  end: 820
+                                value:
+                                  Constant:
+                                    String: inner_b
                     - Statement: Break
             scope:
               defined_variables:
                 this:
                   used: false
                   used_in_inner_scope: false
+                arguments:
+                  used: false
+                  used_in_inner_scope: false
                 super:
+                  used: false
+                  used_in_inner_scope: false
+                _root:
+                  used: false
+                  used_in_inner_scope: false
+                _parent:
+                  used: false
+                  used_in_inner_scope: false
+                _global:
                   used: false
                   used_in_inner_scope: false
                 a:
@@ -784,6 +1036,16 @@ Ok:
                   used_in_inner_scope: false
               referenced_variables: []
               could_reference_anything: false
+            register_count: 4
+            preload_this: false
+            suppress_this: true
+            preload_arguments: false
+            suppress_arguments: true
+            preload_super: false
+            suppress_super: true
+            preload_root: false
+            preload_parent: false
+            preload_global: false
     - Expr:
         span:
           start: 838
@@ -795,48 +1057,63 @@ Ok:
               args: []
               return_type: ~
             body:
-              - Declare:
-                  name:
-                    span:
-                      start: 856
-                      end: 857
-                    value: a
+              - Expr:
+                  span:
+                    start: 0
+                    end: 0
                   value:
-                    span:
-                      start: 860
-                      end: 869
-                    value:
-                      Constant:
-                        String: outer_a
-                  type_name: ~
-              - Declare:
-                  name:
-                    span:
-                      start: 876
-                      end: 877
-                    value: b
+                    BinaryOperator:
+                      - Assign
+                      - span:
+                          start: 0
+                          end: 0
+                        value:
+                          Constant:
+                            Register: 1
+                      - span:
+                          start: 860
+                          end: 869
+                        value:
+                          Constant:
+                            String: outer_a
+              - Expr:
+                  span:
+                    start: 0
+                    end: 0
                   value:
-                    span:
-                      start: 880
-                      end: 889
-                    value:
-                      Constant:
-                        String: outer_b
-                  type_name: ~
-              - Declare:
-                  name:
-                    span:
-                      start: 896
-                      end: 897
-                    value: c
+                    BinaryOperator:
+                      - Assign
+                      - span:
+                          start: 0
+                          end: 0
+                        value:
+                          Constant:
+                            Register: 2
+                      - span:
+                          start: 880
+                          end: 889
+                        value:
+                          Constant:
+                            String: outer_b
+              - Expr:
+                  span:
+                    start: 0
+                    end: 0
                   value:
-                    span:
-                      start: 900
-                      end: 909
-                    value:
-                      Constant:
-                        String: outer_c
-                  type_name: ~
+                    BinaryOperator:
+                      - Assign
+                      - span:
+                          start: 0
+                          end: 0
+                        value:
+                          Constant:
+                            Register: 3
+                      - span:
+                          start: 900
+                          end: 909
+                        value:
+                          Constant:
+                            String: outer_c
               - Try:
                   try_body:
                     - Throw:
@@ -866,34 +1143,51 @@ Ok:
                                   end: 951
                                 value:
                                   Constant:
-                                    Identifier: a
+                                    Register: 1
                               - span:
                                   start: 954
                                   end: 963
                                 value:
                                   Constant:
                                     String: inner_a
-                      - Declare:
-                          name:
-                            span:
-                              start: 971
-                              end: 972
-                            value: b
+                      - Expr:
+                          span:
+                            start: 0
+                            end: 0
                           value:
-                            span:
-                              start: 975
-                              end: 984
-                            value:
-                              Constant:
-                                String: inner_b
-                          type_name: ~
+                            BinaryOperator:
+                              - Assign
+                              - span:
+                                  start: 0
+                                  end: 0
+                                value:
+                                  Constant:
+                                    Register: 2
+                              - span:
+                                  start: 975
+                                  end: 984
+                                value:
+                                  Constant:
+                                    String: inner_b
                   finally: []
             scope:
               defined_variables:
                 this:
                   used: false
                   used_in_inner_scope: false
+                arguments:
+                  used: false
+                  used_in_inner_scope: false
                 super:
+                  used: false
+                  used_in_inner_scope: false
+                _root:
+                  used: false
+                  used_in_inner_scope: false
+                _parent:
+                  used: false
+                  used_in_inner_scope: false
+                _global:
                   used: false
                   used_in_inner_scope: false
                 a:
@@ -907,6 +1201,16 @@ Ok:
                   used_in_inner_scope: false
               referenced_variables: []
               could_reference_anything: false
+            register_count: 4
+            preload_this: false
+            suppress_this: true
+            preload_arguments: false
+            suppress_arguments: true
+            preload_super: false
+            suppress_super: true
+            preload_root: false
+            preload_parent: false
+            preload_global: false
     - Expr:
         span:
           start: 992
@@ -918,48 +1222,63 @@ Ok:
               args: []
               return_type: ~
             body:
-              - Declare:
-                  name:
-                    span:
-                      start: 1010
-                      end: 1011
-                    value: a
+              - Expr:
+                  span:
+                    start: 0
+                    end: 0
                   value:
-                    span:
-                      start: 1014
-                      end: 1023
-                    value:
-                      Constant:
-                        String: outer_a
-                  type_name: ~
-              - Declare:
-                  name:
-                    span:
-                      start: 1030
-                      end: 1031
-                    value: b
+                    BinaryOperator:
+                      - Assign
+                      - span:
+                          start: 0
+                          end: 0
+                        value:
+                          Constant:
+                            Register: 1
+                      - span:
+                          start: 1014
+                          end: 1023
+                        value:
+                          Constant:
+                            String: outer_a
+              - Expr:
+                  span:
+                    start: 0
+                    end: 0
                   value:
-                    span:
-                      start: 1034
-                      end: 1043
-                    value:
-                      Constant:
-                        String: outer_b
-                  type_name: ~
-              - Declare:
-                  name:
-                    span:
-                      start: 1050
-                      end: 1051
-                    value: c
+                    BinaryOperator:
+                      - Assign
+                      - span:
+                          start: 0
+                          end: 0
+                        value:
+                          Constant:
+                            Register: 2
+                      - span:
+                          start: 1034
+                          end: 1043
+                        value:
+                          Constant:
+                            String: outer_b
+              - Expr:
+                  span:
+                    start: 0
+                    end: 0
                   value:
-                    span:
-                      start: 1054
-                      end: 1063
-                    value:
-                      Constant:
-                        String: outer_c
-                  type_name: ~
+                    BinaryOperator:
+                      - Assign
+                      - span:
+                          start: 0
+                          end: 0
+                        value:
+                          Constant:
+                            Register: 3
+                      - span:
+                          start: 1054
+                          end: 1063
+                        value:
+                          Constant:
+                            String: outer_c
               - Try:
                   try_body:
                     - Expr:
@@ -974,27 +1293,32 @@ Ok:
                                 end: 1075
                               value:
                                 Constant:
-                                  Identifier: a
+                                  Register: 1
                             - span:
                                 start: 1078
                                 end: 1085
                               value:
                                 Constant:
                                   String: try_a
-                    - Declare:
-                        name:
-                          span:
-                            start: 1093
-                            end: 1094
-                          value: b
+                    - Expr:
+                        span:
+                          start: 0
+                          end: 0
                         value:
-                          span:
-                            start: 1097
-                            end: 1104
-                          value:
-                            Constant:
-                              String: try_b
-                        type_name: ~
+                          BinaryOperator:
+                            - Assign
+                            - span:
+                                start: 0
+                                end: 0
+                              value:
+                                Constant:
+                                  Register: 2
+                            - span:
+                                start: 1097
+                                end: 1104
+                              value:
+                                Constant:
+                                  String: try_b
                   typed_catches: []
                   catch_all: ~
                   finally:
@@ -1010,33 +1334,50 @@ Ok:
                                 end: 1122
                               value:
                                 Constant:
-                                  Identifier: a
+                                  Register: 1
                             - span:
                                 start: 1125
                                 end: 1136
                               value:
                                 Constant:
                                   String: finally_a
-                    - Declare:
-                        name:
-                          span:
-                            start: 1144
-                            end: 1145
-                          value: b
+                    - Expr:
+                        span:
+                          start: 0
+                          end: 0
                         value:
-                          span:
-                            start: 1148
-                            end: 1159
-                          value:
-                            Constant:
-                              String: finally_b
-                        type_name: ~
+                          BinaryOperator:
+                            - Assign
+                            - span:
+                                start: 0
+                                end: 0
+                              value:
+                                Constant:
+                                  Register: 2
+                            - span:
+                                start: 1148
+                                end: 1159
+                              value:
+                                Constant:
+                                  String: finally_b
             scope:
               defined_variables:
                 this:
                   used: false
                   used_in_inner_scope: false
+                arguments:
+                  used: false
+                  used_in_inner_scope: false
                 super:
+                  used: false
+                  used_in_inner_scope: false
+                _root:
+                  used: false
+                  used_in_inner_scope: false
+                _parent:
+                  used: false
+                  used_in_inner_scope: false
+                _global:
                   used: false
                   used_in_inner_scope: false
                 a:
@@ -1050,6 +1391,16 @@ Ok:
                   used_in_inner_scope: false
               referenced_variables: []
               could_reference_anything: false
+            register_count: 4
+            preload_this: false
+            suppress_this: true
+            preload_arguments: false
+            suppress_arguments: true
+            preload_super: false
+            suppress_super: true
+            preload_root: false
+            preload_parent: false
+            preload_global: false
     - Expr:
         span:
           start: 1167
@@ -1075,34 +1426,44 @@ Ok:
                       Constant:
                         String: outer_a
                   type_name: ~
-              - Declare:
-                  name:
-                    span:
-                      start: 1205
-                      end: 1206
-                    value: b
+              - Expr:
+                  span:
+                    start: 0
+                    end: 0
                   value:
-                    span:
-                      start: 1209
-                      end: 1218
-                    value:
-                      Constant:
-                        String: outer_b
-                  type_name: ~
-              - Declare:
-                  name:
-                    span:
-                      start: 1225
-                      end: 1226
-                    value: c
+                    BinaryOperator:
+                      - Assign
+                      - span:
+                          start: 0
+                          end: 0
+                        value:
+                          Constant:
+                            Register: 1
+                      - span:
+                          start: 1209
+                          end: 1218
+                        value:
+                          Constant:
+                            String: outer_b
+              - Expr:
+                  span:
+                    start: 0
+                    end: 0
                   value:
-                    span:
-                      start: 1229
-                      end: 1238
-                    value:
-                      Constant:
-                        String: outer_c
-                  type_name: ~
+                    BinaryOperator:
+                      - Assign
+                      - span:
+                          start: 0
+                          end: 0
+                        value:
+                          Constant:
+                            Register: 2
+                      - span:
+                          start: 1229
+                          end: 1238
+                        value:
+                          Constant:
+                            String: outer_c
               - Expr:
                   span:
                     start: 1241
@@ -1137,26 +1498,43 @@ Ok:
                                   value:
                                     Constant:
                                       String: inner_a
-                        - Declare:
-                            name:
-                              span:
-                                start: 1283
-                                end: 1284
-                              value: b
+                        - Expr:
+                            span:
+                              start: 0
+                              end: 0
                             value:
-                              span:
-                                start: 1287
-                                end: 1296
-                              value:
-                                Constant:
-                                  String: inner_b
-                            type_name: ~
+                              BinaryOperator:
+                                - Assign
+                                - span:
+                                    start: 0
+                                    end: 0
+                                  value:
+                                    Constant:
+                                      Register: 1
+                                - span:
+                                    start: 1287
+                                    end: 1296
+                                  value:
+                                    Constant:
+                                      String: inner_b
                       scope:
                         defined_variables:
                           this:
                             used: false
                             used_in_inner_scope: false
+                          arguments:
+                            used: false
+                            used_in_inner_scope: false
                           super:
+                            used: false
+                            used_in_inner_scope: false
+                          _root:
+                            used: false
+                            used_in_inner_scope: false
+                          _parent:
+                            used: false
+                            used_in_inner_scope: false
+                          _global:
                             used: false
                             used_in_inner_scope: false
                           b:
@@ -1165,6 +1543,16 @@ Ok:
                         referenced_variables:
                           - a
                         could_reference_anything: false
+                      register_count: 2
+                      preload_this: false
+                      suppress_this: true
+                      preload_arguments: false
+                      suppress_arguments: true
+                      preload_super: false
+                      suppress_super: true
+                      preload_root: false
+                      preload_parent: false
+                      preload_global: false
               - Expr:
                   span:
                     start: 1302
@@ -1184,7 +1572,19 @@ Ok:
                 this:
                   used: false
                   used_in_inner_scope: false
+                arguments:
+                  used: false
+                  used_in_inner_scope: false
                 super:
+                  used: false
+                  used_in_inner_scope: false
+                _root:
+                  used: false
+                  used_in_inner_scope: false
+                _parent:
+                  used: false
+                  used_in_inner_scope: false
+                _global:
                   used: false
                   used_in_inner_scope: false
                 a:
@@ -1199,6 +1599,16 @@ Ok:
               referenced_variables:
                 - inner
               could_reference_anything: false
+            register_count: 3
+            preload_this: false
+            suppress_this: true
+            preload_arguments: false
+            suppress_arguments: true
+            preload_super: false
+            suppress_super: true
+            preload_root: false
+            preload_parent: false
+            preload_global: false
     - Expr:
         span:
           start: 1314
@@ -1210,68 +1620,88 @@ Ok:
               args: []
               return_type: ~
             body:
-              - Declare:
-                  name:
-                    span:
-                      start: 1332
-                      end: 1333
-                    value: a
+              - Expr:
+                  span:
+                    start: 0
+                    end: 0
                   value:
-                    span:
-                      start: 1336
-                      end: 1345
-                    value:
-                      Constant:
-                        String: outer_a
-                  type_name: ~
-              - Declare:
-                  name:
-                    span:
-                      start: 1352
-                      end: 1353
-                    value: b
+                    BinaryOperator:
+                      - Assign
+                      - span:
+                          start: 0
+                          end: 0
+                        value:
+                          Constant:
+                            Register: 1
+                      - span:
+                          start: 1336
+                          end: 1345
+                        value:
+                          Constant:
+                            String: outer_a
+              - Expr:
+                  span:
+                    start: 0
+                    end: 0
                   value:
-                    span:
-                      start: 1356
-                      end: 1365
-                    value:
-                      Constant:
-                        String: outer_b
-                  type_name: ~
-              - Declare:
-                  name:
-                    span:
-                      start: 1372
-                      end: 1373
-                    value: c
+                    BinaryOperator:
+                      - Assign
+                      - span:
+                          start: 0
+                          end: 0
+                        value:
+                          Constant:
+                            Register: 2
+                      - span:
+                          start: 1356
+                          end: 1365
+                        value:
+                          Constant:
+                            String: outer_b
+              - Expr:
+                  span:
+                    start: 0
+                    end: 0
                   value:
-                    span:
-                      start: 1376
-                      end: 1385
-                    value:
-                      Constant:
-                        String: outer_c
-                  type_name: ~
-              - Declare:
-                  name:
-                    span:
-                      start: 1392
-                      end: 1395
-                    value: obj
+                    BinaryOperator:
+                      - Assign
+                      - span:
+                          start: 0
+                          end: 0
+                        value:
+                          Constant:
+                            Register: 3
+                      - span:
+                          start: 1376
+                          end: 1385
+                        value:
+                          Constant:
+                            String: outer_c
+              - Expr:
+                  span:
+                    start: 0
+                    end: 0
                   value:
-                    span:
-                      start: 1398
-                      end: 1406
-                    value:
-                      InitObject:
-                        - - x
-                          - span:
-                              start: 1403
-                              end: 1404
-                            value:
-                              Constant:
-                                Integer: 1
-                  type_name: ~
+                    BinaryOperator:
+                      - Assign
+                      - span:
+                          start: 0
+                          end: 0
+                        value:
+                          Constant:
+                            Register: 4
+                      - span:
+                          start: 1398
+                          end: 1406
+                        value:
+                          InitObject:
+                            - - x
+                              - span:
+                                  start: 1403
+                                  end: 1404
+                                value:
+                                  Constant:
+                                    Integer: 1
               - ForIn:
                   condition:
                     Enumerate:
@@ -1283,7 +1713,7 @@ Ok:
                           end: 1426
                         value:
                           Constant:
-                            Identifier: obj
+                            Register: 4
                   body:
                     Block:
                       - Expr:
@@ -1298,33 +1728,50 @@ Ok:
                                   end: 1433
                                 value:
                                   Constant:
-                                    Identifier: a
+                                    Register: 1
                               - span:
                                   start: 1436
                                   end: 1445
                                 value:
                                   Constant:
                                     String: inner_a
-                      - Declare:
-                          name:
-                            span:
-                              start: 1453
-                              end: 1454
-                            value: b
+                      - Expr:
+                          span:
+                            start: 0
+                            end: 0
                           value:
-                            span:
-                              start: 1457
-                              end: 1466
-                            value:
-                              Constant:
-                                String: inner_b
-                          type_name: ~
+                            BinaryOperator:
+                              - Assign
+                              - span:
+                                  start: 0
+                                  end: 0
+                                value:
+                                  Constant:
+                                    Register: 2
+                              - span:
+                                  start: 1457
+                                  end: 1466
+                                value:
+                                  Constant:
+                                    String: inner_b
             scope:
               defined_variables:
                 this:
                   used: false
                   used_in_inner_scope: false
+                arguments:
+                  used: false
+                  used_in_inner_scope: false
                 super:
+                  used: false
+                  used_in_inner_scope: false
+                _root:
+                  used: false
+                  used_in_inner_scope: false
+                _parent:
+                  used: false
+                  used_in_inner_scope: false
+                _global:
                   used: false
                   used_in_inner_scope: false
                 a:
@@ -1341,6 +1788,16 @@ Ok:
                   used_in_inner_scope: false
               referenced_variables: []
               could_reference_anything: false
+            register_count: 5
+            preload_this: false
+            suppress_this: true
+            preload_arguments: false
+            suppress_arguments: true
+            preload_super: false
+            suppress_super: true
+            preload_root: false
+            preload_parent: false
+            preload_global: false
     - Expr:
         span:
           start: 1474
@@ -1403,12 +1860,34 @@ Ok:
                           this:
                             used: false
                             used_in_inner_scope: false
+                          arguments:
+                            used: false
+                            used_in_inner_scope: false
                           super:
+                            used: false
+                            used_in_inner_scope: false
+                          _root:
+                            used: false
+                            used_in_inner_scope: false
+                          _parent:
+                            used: false
+                            used_in_inner_scope: false
+                          _global:
                             used: false
                             used_in_inner_scope: false
                         referenced_variables:
                           - a
                         could_reference_anything: true
+                      register_count: 0
+                      preload_this: false
+                      suppress_this: false
+                      preload_arguments: false
+                      suppress_arguments: false
+                      preload_super: false
+                      suppress_super: false
+                      preload_root: false
+                      preload_parent: false
+                      preload_global: false
               - Expr:
                   span:
                     start: 1636
@@ -1428,7 +1907,19 @@ Ok:
                 this:
                   used: false
                   used_in_inner_scope: false
+                arguments:
+                  used: false
+                  used_in_inner_scope: false
                 super:
+                  used: false
+                  used_in_inner_scope: false
+                _root:
+                  used: false
+                  used_in_inner_scope: false
+                _parent:
+                  used: false
+                  used_in_inner_scope: false
+                _global:
                   used: false
                   used_in_inner_scope: false
                 a:
@@ -1437,6 +1928,16 @@ Ok:
               referenced_variables:
                 - inner
               could_reference_anything: true
+            register_count: 0
+            preload_this: false
+            suppress_this: false
+            preload_arguments: false
+            suppress_arguments: false
+            preload_super: false
+            suppress_super: false
+            preload_root: false
+            preload_parent: false
+            preload_global: false
     - Expr:
         span:
           start: 1648
@@ -1488,26 +1989,68 @@ Ok:
                           this:
                             used: false
                             used_in_inner_scope: false
+                          arguments:
+                            used: false
+                            used_in_inner_scope: false
                           super:
                             used: false
                             used_in_inner_scope: false
-                        referenced_variables:
-                          - _global
+                          _root:
+                            used: false
+                            used_in_inner_scope: false
+                          _parent:
+                            used: false
+                            used_in_inner_scope: false
+                          _global:
+                            used: true
+                            used_in_inner_scope: false
+                        referenced_variables: []
                         could_reference_anything: true
+                      register_count: 0
+                      preload_this: false
+                      suppress_this: false
+                      preload_arguments: false
+                      suppress_arguments: false
+                      preload_super: false
+                      suppress_super: false
+                      preload_root: false
+                      preload_parent: false
+                      preload_global: false
             scope:
               defined_variables:
                 this:
                   used: false
                   used_in_inner_scope: false
+                arguments:
+                  used: false
+                  used_in_inner_scope: false
                 super:
+                  used: false
+                  used_in_inner_scope: false
+                _root:
+                  used: false
+                  used_in_inner_scope: false
+                _parent:
+                  used: false
+                  used_in_inner_scope: false
+                _global:
                   used: false
                   used_in_inner_scope: false
                 a:
                   used: true
                   used_in_inner_scope: false
-              referenced_variables:
-                - _global
+              referenced_variables: []
               could_reference_anything: true
+            register_count: 0
+            preload_this: false
+            suppress_this: false
+            preload_arguments: false
+            suppress_arguments: false
+            preload_super: false
+            suppress_super: false
+            preload_root: false
+            preload_parent: false
+            preload_global: false
   interfaces: []
   classes: []
   custom_pcodes: []

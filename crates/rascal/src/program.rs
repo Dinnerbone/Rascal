@@ -1,4 +1,5 @@
 use crate::error::{Error, ErrorSet};
+use crate::internal::as2::hir::optimizer::optimize_variables_to_registers;
 use crate::internal::as2::hir::scope::Scope;
 use crate::internal::as2::hir::simplifier::simplify;
 use crate::internal::as2::lexer::Lexer;
@@ -203,6 +204,7 @@ impl<P: SourceProvider> ProgramBuilder<P> {
             while simplify(&mut hir) {
                 // Keep going until nothing changed
             }
+            optimize_variables_to_registers(&mut hir);
             Some(hir)
         }
 

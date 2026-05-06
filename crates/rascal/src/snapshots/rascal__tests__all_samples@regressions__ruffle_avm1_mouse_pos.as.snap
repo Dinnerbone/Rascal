@@ -11,7 +11,6 @@ initializer:
         - oldY
         - _root
         - " "
-        - clips
         - s133fpr15
         - s133fp
         - s42fp
@@ -19,16 +18,14 @@ initializer:
         - ip
         - zs
         - id
-        - i
         - length
-        - clip
         - _name
         - _xmouse
         - _ymouse
         - dump
         - _xscale
         - _yscale
-    - DefineFunction:
+    - DefineFunction2:
         name: dump
         params: []
         actions:
@@ -90,6 +87,8 @@ initializer:
             - Trace
             - Push:
                 - Constant: 5
+            - GetVariable
+            - Push:
                 - Constant: 6
             - GetVariable
             - Push:
@@ -108,70 +107,54 @@ initializer:
                 - Constant: 11
             - GetVariable
             - Push:
-                - Constant: 12
-            - GetVariable
-            - Push:
                 - Integer: 7
             - InitArray
-            - DefineLocal
+            - StoreRegister: 1
+            - Pop
             - Push:
-                - Constant: 13
                 - Integer: 0
-            - DefineLocal
+            - StoreRegister: 2
+            - Pop
             - Push:
-                - Constant: 13
-            - GetVariable
-            - Push:
-                - Constant: 5
-            - GetVariable
-            - Push:
-                - Constant: 14
+                - Register: 2
+                - Register: 1
+                - Constant: 12
             - GetMember
             - Less2
             - Not
             - If: loc0002
             - Push:
-                - Constant: 15
-                - Constant: 5
-            - GetVariable
+                - Register: 1
+                - Register: 2
+            - GetMember
+            - StoreRegister: 3
+            - Pop
             - Push:
+                - Register: 3
                 - Constant: 13
-            - GetVariable
-            - GetMember
-            - DefineLocal
-            - Push:
-                - Constant: 15
-            - GetVariable
-            - Push:
-                - Constant: 16
             - GetMember
             - Push:
                 - Constant: 4
             - Add2
             - Push:
-                - Constant: 15
-            - GetVariable
-            - Push:
-                - Constant: 17
+                - Register: 3
+                - Constant: 14
             - GetMember
             - Add2
             - Push:
                 - Constant: 4
             - Add2
             - Push:
+                - Register: 3
                 - Constant: 15
-            - GetVariable
-            - Push:
-                - Constant: 18
             - GetMember
             - Add2
             - Trace
             - Push:
-                - Constant: 13
-                - Constant: 13
-            - GetVariable
+                - Register: 2
             - Increment
-            - SetVariable
+            - StoreRegister: 2
+            - Pop
             - Jump: loc0004
             - Push:
                 - Constant: 0
@@ -179,9 +162,19 @@ initializer:
           label_positions:
             loc0001: 14
             loc0000: 18
-            loc0004: 54
-            loc0003: 88
-            loc0002: 93
+            loc0004: 56
+            loc0003: 78
+            loc0002: 83
+        register_count: 4
+        preload_this: false
+        suppress_this: true
+        preload_arguments: false
+        suppress_arguments: true
+        preload_super: false
+        suppress_super: true
+        preload_root: false
+        preload_parent: false
+        preload_global: false
     - DefineFunction:
         name: onEnterFrame
         params: []
@@ -189,19 +182,19 @@ initializer:
           actions:
             - Push:
                 - Integer: 0
-                - Constant: 19
+                - Constant: 16
             - CallFunction
             - Pop
           label_positions: {}
     - Push:
-        - Constant: 11
+        - Constant: 10
     - GetVariable
     - Push:
-        - Constant: 20
-        - Constant: 11
+        - Constant: 17
+        - Constant: 10
     - GetVariable
     - Push:
-        - Constant: 21
+        - Constant: 18
         - Integer: 0
     - StoreRegister: 0
     - SetMember

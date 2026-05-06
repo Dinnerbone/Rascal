@@ -34,83 +34,89 @@ Ok:
               args:
                 - name: value
                   type_name: ~
+                  register: 2
               return_type: ~
             body:
-              - Declare:
-                  name:
-                    span:
-                      start: 48
-                      end: 58
-                    value: valueLabel
+              - Expr:
+                  span:
+                    start: 0
+                    end: 0
                   value:
-                    span:
-                      start: 61
-                      end: 115
-                    value:
-                      Ternary:
-                        condition:
-                          span:
-                            start: 68
-                            end: 85
-                          value:
-                            BinaryOperator:
-                              - Equal
-                              - span:
-                                  start: 61
-                                  end: 73
-                                value:
-                                  TypeOf:
-                                    span:
-                                      start: 68
+                    BinaryOperator:
+                      - Assign
+                      - span:
+                          start: 0
+                          end: 0
+                        value:
+                          Constant:
+                            Register: 3
+                      - span:
+                          start: 61
+                          end: 115
+                        value:
+                          Ternary:
+                            condition:
+                              span:
+                                start: 68
+                                end: 85
+                              value:
+                                BinaryOperator:
+                                  - Equal
+                                  - span:
+                                      start: 61
                                       end: 73
                                     value:
+                                      TypeOf:
+                                        span:
+                                          start: 68
+                                          end: 73
+                                        value:
+                                          Constant:
+                                            Register: 2
+                                  - span:
+                                      start: 77
+                                      end: 85
+                                    value:
                                       Constant:
-                                        Identifier: value
-                              - span:
-                                  start: 77
-                                  end: 85
-                                value:
-                                  Constant:
-                                    String: string
-                        "yes":
-                          span:
-                            start: 88
-                            end: 107
-                          value:
-                            BinaryOperator:
-                              - Add
-                              - span:
-                                  start: 88
-                                  end: 100
-                                value:
-                                  BinaryOperator:
-                                    - Add
-                                    - span:
-                                        start: 88
-                                        end: 92
-                                      value:
-                                        Constant:
-                                          String: "\""
-                                    - span:
-                                        start: 95
-                                        end: 100
-                                      value:
-                                        Constant:
-                                          Identifier: value
-                              - span:
-                                  start: 103
-                                  end: 107
-                                value:
-                                  Constant:
-                                    String: "\""
-                        "no":
-                          span:
-                            start: 110
-                            end: 115
-                          value:
-                            Constant:
-                              Identifier: value
-                  type_name: ~
+                                        String: string
+                            "yes":
+                              span:
+                                start: 88
+                                end: 107
+                              value:
+                                BinaryOperator:
+                                  - Add
+                                  - span:
+                                      start: 88
+                                      end: 100
+                                    value:
+                                      BinaryOperator:
+                                        - Add
+                                        - span:
+                                            start: 88
+                                            end: 92
+                                          value:
+                                            Constant:
+                                              String: "\""
+                                        - span:
+                                            start: 95
+                                            end: 100
+                                          value:
+                                            Constant:
+                                              Register: 2
+                                  - span:
+                                      start: 103
+                                      end: 107
+                                    value:
+                                      Constant:
+                                        String: "\""
+                            "no":
+                              span:
+                                start: 110
+                                end: 115
+                              value:
+                                Constant:
+                                  Register: 2
               - Expr:
                   span:
                     start: 122
@@ -128,7 +134,7 @@ Ok:
                                 end: 122
                               value:
                                 Constant:
-                                  Identifier: this
+                                  Register: 1
                             - span:
                                 start: 123
                                 end: 132
@@ -158,7 +164,7 @@ Ok:
                                 end: 147
                               value:
                                 Constant:
-                                  Identifier: this
+                                  Register: 1
                             - span:
                                 start: 148
                                 end: 157
@@ -170,7 +176,7 @@ Ok:
                           end: 165
                         value:
                           Constant:
-                            Identifier: value
+                            Register: 2
               - If:
                   condition:
                     span:
@@ -183,7 +189,7 @@ Ok:
                             end: 176
                           value:
                             Constant:
-                              Identifier: this
+                              Register: 1
                         - span:
                             start: 177
                             end: 186
@@ -221,7 +227,7 @@ Ok:
                                             end: 242
                                           value:
                                             Constant:
-                                              Identifier: valueLabel
+                                              Register: 3
                                   - span:
                                       start: 245
                                       end: 264
@@ -245,7 +251,7 @@ Ok:
                                         end: 273
                                       value:
                                         Constant:
-                                          Identifier: this
+                                          Register: 1
                                     - span:
                                         start: 274
                                         end: 283
@@ -277,7 +283,7 @@ Ok:
                                 end: 311
                               value:
                                 Constant:
-                                  Identifier: this
+                                  Register: 1
                             - span:
                                 start: 312
                                 end: 321
@@ -307,7 +313,7 @@ Ok:
                                 end: 335
                               value:
                                 Constant:
-                                  Identifier: this
+                                  Register: 1
                             - span:
                                 start: 336
                                 end: 345
@@ -319,7 +325,7 @@ Ok:
                           end: 353
                         value:
                           Constant:
-                            Identifier: value
+                            Register: 2
               - If:
                   condition:
                     span:
@@ -338,7 +344,7 @@ Ok:
                                   end: 365
                                 value:
                                   Constant:
-                                    Identifier: this
+                                    Register: 1
                               - span:
                                   start: 366
                                   end: 375
@@ -376,7 +382,7 @@ Ok:
                                             end: 431
                                           value:
                                             Constant:
-                                              Identifier: valueLabel
+                                              Register: 3
                                   - span:
                                       start: 434
                                       end: 454
@@ -402,7 +408,7 @@ Ok:
                                 end: 476
                               value:
                                 Constant:
-                                  Identifier: this
+                                  Register: 1
                             - span:
                                 start: 477
                                 end: 486
@@ -444,7 +450,7 @@ Ok:
                                     end: 547
                                   value:
                                     Constant:
-                                      Identifier: valueLabel
+                                      Register: 3
                           - span:
                               start: 550
                               end: 567
@@ -456,7 +462,19 @@ Ok:
                 this:
                   used: true
                   used_in_inner_scope: false
+                arguments:
+                  used: false
+                  used_in_inner_scope: false
                 super:
+                  used: false
+                  used_in_inner_scope: false
+                _root:
+                  used: false
+                  used_in_inner_scope: false
+                _parent:
+                  used: false
+                  used_in_inner_scope: false
+                _global:
                   used: false
                   used_in_inner_scope: false
                 value:
@@ -467,6 +485,16 @@ Ok:
                   used_in_inner_scope: false
               referenced_variables: []
               could_reference_anything: false
+            register_count: 4
+            preload_this: true
+            suppress_this: false
+            preload_arguments: false
+            suppress_arguments: true
+            preload_super: false
+            suppress_super: true
+            preload_root: false
+            preload_parent: false
+            preload_global: false
     - Expr:
         span:
           start: 573
@@ -529,7 +557,7 @@ Ok:
                                                       end: 663
                                                     value:
                                                       Constant:
-                                                        Identifier: this
+                                                        Register: 1
                                             - span:
                                                 start: 666
                                                 end: 678
@@ -541,7 +569,7 @@ Ok:
                                           end: 686
                                         value:
                                           Constant:
-                                            Identifier: _root
+                                            Register: 2
                                 - span:
                                     start: 689
                                     end: 706
@@ -558,7 +586,7 @@ Ok:
                                     end: 713
                                   value:
                                     Constant:
-                                      Identifier: this
+                                      Register: 1
                                 - span:
                                     start: 714
                                     end: 723
@@ -875,16 +903,37 @@ Ok:
                 this:
                   used: true
                   used_in_inner_scope: false
+                arguments:
+                  used: false
+                  used_in_inner_scope: false
                 super:
                   used: false
                   used_in_inner_scope: false
+                _root:
+                  used: true
+                  used_in_inner_scope: false
+                _parent:
+                  used: false
+                  used_in_inner_scope: false
+                _global:
+                  used: false
+                  used_in_inner_scope: false
               referenced_variables:
-                - _root
                 - testSet
                 - undefined
                 - "null"
                 - "NaN"
               could_reference_anything: false
+            register_count: 3
+            preload_this: true
+            suppress_this: false
+            preload_arguments: false
+            suppress_arguments: true
+            preload_super: false
+            suppress_super: true
+            preload_root: true
+            preload_parent: false
+            preload_global: false
     - Expr:
         span:
           start: 1114
@@ -1176,7 +1225,19 @@ Ok:
                 this:
                   used: false
                   used_in_inner_scope: false
+                arguments:
+                  used: false
+                  used_in_inner_scope: false
                 super:
+                  used: false
+                  used_in_inner_scope: false
+                _root:
+                  used: false
+                  used_in_inner_scope: false
+                _parent:
+                  used: false
+                  used_in_inner_scope: false
+                _global:
                   used: false
                   used_in_inner_scope: false
               referenced_variables:
@@ -1189,6 +1250,16 @@ Ok:
                 - createGrandChildren
                 - testAllChildren
               could_reference_anything: false
+            register_count: 1
+            preload_this: false
+            suppress_this: true
+            preload_arguments: false
+            suppress_arguments: true
+            preload_super: false
+            suppress_super: true
+            preload_root: false
+            preload_parent: false
+            preload_global: false
     - Expr:
         span:
           start: 1661
@@ -1226,7 +1297,7 @@ Ok:
                                       end: 1720
                                     value:
                                       Constant:
-                                        Identifier: _root
+                                        Register: 1
                                   - span:
                                       start: 1721
                                       end: 1727
@@ -1285,7 +1356,7 @@ Ok:
                                             end: 1776
                                           value:
                                             Constant:
-                                              Identifier: _root
+                                              Register: 1
                                         - span:
                                             start: 1777
                                             end: 1783
@@ -1333,7 +1404,7 @@ Ok:
                                       end: 1821
                                     value:
                                       Constant:
-                                        Identifier: _root
+                                        Register: 1
                                   - span:
                                       start: 1822
                                       end: 1828
@@ -1392,7 +1463,7 @@ Ok:
                                             end: 1877
                                           value:
                                             Constant:
-                                              Identifier: _root
+                                              Register: 1
                                         - span:
                                             start: 1878
                                             end: 1884
@@ -1444,7 +1515,7 @@ Ok:
                                             end: 1916
                                           value:
                                             Constant:
-                                              Identifier: _root
+                                              Register: 1
                                         - span:
                                             start: 1917
                                             end: 1923
@@ -1492,7 +1563,7 @@ Ok:
                                       end: 1961
                                     value:
                                       Constant:
-                                        Identifier: _root
+                                        Register: 1
                                   - span:
                                       start: 1962
                                       end: 1968
@@ -1551,7 +1622,7 @@ Ok:
                                             end: 2017
                                           value:
                                             Constant:
-                                              Identifier: _root
+                                              Register: 1
                                         - span:
                                             start: 2018
                                             end: 2024
@@ -1599,7 +1670,7 @@ Ok:
                                       end: 2063
                                     value:
                                       Constant:
-                                        Identifier: _root
+                                        Register: 1
                                   - span:
                                       start: 2064
                                       end: 2070
@@ -1658,7 +1729,7 @@ Ok:
                                             end: 2119
                                           value:
                                             Constant:
-                                              Identifier: _root
+                                              Register: 1
                                         - span:
                                             start: 2120
                                             end: 2126
@@ -1706,7 +1777,7 @@ Ok:
                                       end: 2164
                                     value:
                                       Constant:
-                                        Identifier: _root
+                                        Register: 1
                                   - span:
                                       start: 2165
                                       end: 2171
@@ -1765,7 +1836,7 @@ Ok:
                                             end: 2220
                                           value:
                                             Constant:
-                                              Identifier: _root
+                                              Register: 1
                                         - span:
                                             start: 2221
                                             end: 2227
@@ -1817,7 +1888,7 @@ Ok:
                                             end: 2259
                                           value:
                                             Constant:
-                                              Identifier: _root
+                                              Register: 1
                                         - span:
                                             start: 2260
                                             end: 2266
@@ -1865,7 +1936,7 @@ Ok:
                                       end: 2304
                                     value:
                                       Constant:
-                                        Identifier: _root
+                                        Register: 1
                                   - span:
                                       start: 2305
                                       end: 2311
@@ -1924,7 +1995,7 @@ Ok:
                                             end: 2360
                                           value:
                                             Constant:
-                                              Identifier: _root
+                                              Register: 1
                                         - span:
                                             start: 2361
                                             end: 2367
@@ -1972,7 +2043,7 @@ Ok:
                                       end: 2406
                                     value:
                                       Constant:
-                                        Identifier: _root
+                                        Register: 1
                                   - span:
                                       start: 2407
                                       end: 2413
@@ -2031,7 +2102,7 @@ Ok:
                                             end: 2462
                                           value:
                                             Constant:
-                                              Identifier: _root
+                                              Register: 1
                                         - span:
                                             start: 2463
                                             end: 2469
@@ -2079,7 +2150,7 @@ Ok:
                                       end: 2507
                                     value:
                                       Constant:
-                                        Identifier: _root
+                                        Register: 1
                                   - span:
                                       start: 2508
                                       end: 2514
@@ -2138,7 +2209,7 @@ Ok:
                                             end: 2563
                                           value:
                                             Constant:
-                                              Identifier: _root
+                                              Register: 1
                                         - span:
                                             start: 2564
                                             end: 2570
@@ -2190,7 +2261,7 @@ Ok:
                                             end: 2602
                                           value:
                                             Constant:
-                                              Identifier: _root
+                                              Register: 1
                                         - span:
                                             start: 2603
                                             end: 2609
@@ -2238,7 +2309,7 @@ Ok:
                                       end: 2647
                                     value:
                                       Constant:
-                                        Identifier: _root
+                                        Register: 1
                                   - span:
                                       start: 2648
                                       end: 2654
@@ -2297,7 +2368,7 @@ Ok:
                                             end: 2703
                                           value:
                                             Constant:
-                                              Identifier: _root
+                                              Register: 1
                                         - span:
                                             start: 2704
                                             end: 2710
@@ -2328,13 +2399,34 @@ Ok:
                 this:
                   used: false
                   used_in_inner_scope: false
+                arguments:
+                  used: false
+                  used_in_inner_scope: false
                 super:
                   used: false
                   used_in_inner_scope: false
+                _root:
+                  used: true
+                  used_in_inner_scope: false
+                _parent:
+                  used: false
+                  used_in_inner_scope: false
+                _global:
+                  used: false
+                  used_in_inner_scope: false
               referenced_variables:
-                - _root
                 - levels
               could_reference_anything: false
+            register_count: 2
+            preload_this: false
+            suppress_this: true
+            preload_arguments: false
+            suppress_arguments: true
+            preload_super: false
+            suppress_super: true
+            preload_root: true
+            preload_parent: false
+            preload_global: false
     - Expr:
         span:
           start: 2745
@@ -2372,7 +2464,7 @@ Ok:
                                       end: 2780
                                     value:
                                       Constant:
-                                        Identifier: _root
+                                        Register: 1
                                   - span:
                                       start: 2781
                                       end: 2787
@@ -2408,7 +2500,7 @@ Ok:
                                       end: 2837
                                     value:
                                       Constant:
-                                        Identifier: _root
+                                        Register: 1
                                   - span:
                                       start: 2838
                                       end: 2844
@@ -2444,7 +2536,7 @@ Ok:
                                       end: 2890
                                     value:
                                       Constant:
-                                        Identifier: _root
+                                        Register: 1
                                   - span:
                                       start: 2891
                                       end: 2897
@@ -2486,7 +2578,7 @@ Ok:
                                       end: 2919
                                     value:
                                       Constant:
-                                        Identifier: _root
+                                        Register: 1
                                   - span:
                                       start: 2920
                                       end: 2926
@@ -2527,7 +2619,7 @@ Ok:
                                             end: 2973
                                           value:
                                             Constant:
-                                              Identifier: _root
+                                              Register: 1
                                         - span:
                                             start: 2974
                                             end: 2980
@@ -2574,7 +2666,7 @@ Ok:
                                             end: 3037
                                           value:
                                             Constant:
-                                              Identifier: _root
+                                              Register: 1
                                         - span:
                                             start: 3038
                                             end: 3044
@@ -2621,7 +2713,7 @@ Ok:
                                             end: 3097
                                           value:
                                             Constant:
-                                              Identifier: _root
+                                              Register: 1
                                         - span:
                                             start: 3098
                                             end: 3104
@@ -2674,7 +2766,7 @@ Ok:
                                             end: 3133
                                           value:
                                             Constant:
-                                              Identifier: _root
+                                              Register: 1
                                         - span:
                                             start: 3134
                                             end: 3140
@@ -2721,7 +2813,7 @@ Ok:
                                             end: 3194
                                           value:
                                             Constant:
-                                              Identifier: _root
+                                              Register: 1
                                         - span:
                                             start: 3195
                                             end: 3201
@@ -2768,7 +2860,7 @@ Ok:
                                             end: 3257
                                           value:
                                             Constant:
-                                              Identifier: _root
+                                              Register: 1
                                         - span:
                                             start: 3258
                                             end: 3264
@@ -2815,7 +2907,7 @@ Ok:
                                             end: 3317
                                           value:
                                             Constant:
-                                              Identifier: _root
+                                              Register: 1
                                         - span:
                                             start: 3318
                                             end: 3324
@@ -2868,7 +2960,7 @@ Ok:
                                             end: 3353
                                           value:
                                             Constant:
-                                              Identifier: _root
+                                              Register: 1
                                         - span:
                                             start: 3354
                                             end: 3360
@@ -2915,7 +3007,7 @@ Ok:
                                             end: 3414
                                           value:
                                             Constant:
-                                              Identifier: _root
+                                              Register: 1
                                         - span:
                                             start: 3415
                                             end: 3421
@@ -2962,7 +3054,7 @@ Ok:
                                             end: 3477
                                           value:
                                             Constant:
-                                              Identifier: _root
+                                              Register: 1
                                         - span:
                                             start: 3478
                                             end: 3484
@@ -3009,7 +3101,7 @@ Ok:
                                             end: 3537
                                           value:
                                             Constant:
-                                              Identifier: _root
+                                              Register: 1
                                         - span:
                                             start: 3538
                                             end: 3544
@@ -3062,7 +3154,7 @@ Ok:
                                             end: 3573
                                           value:
                                             Constant:
-                                              Identifier: _root
+                                              Register: 1
                                         - span:
                                             start: 3574
                                             end: 3580
@@ -3099,12 +3191,33 @@ Ok:
                 this:
                   used: false
                   used_in_inner_scope: false
+                arguments:
+                  used: false
+                  used_in_inner_scope: false
                 super:
                   used: false
                   used_in_inner_scope: false
-              referenced_variables:
-                - _root
+                _root:
+                  used: true
+                  used_in_inner_scope: false
+                _parent:
+                  used: false
+                  used_in_inner_scope: false
+                _global:
+                  used: false
+                  used_in_inner_scope: false
+              referenced_variables: []
               could_reference_anything: false
+            register_count: 2
+            preload_this: false
+            suppress_this: true
+            preload_arguments: false
+            suppress_arguments: true
+            preload_super: false
+            suppress_super: true
+            preload_root: true
+            preload_parent: false
+            preload_global: false
     - Expr:
         span:
           start: 3658
@@ -3153,13 +3266,35 @@ Ok:
                 this:
                   used: false
                   used_in_inner_scope: false
+                arguments:
+                  used: false
+                  used_in_inner_scope: false
                 super:
+                  used: false
+                  used_in_inner_scope: false
+                _root:
+                  used: false
+                  used_in_inner_scope: false
+                _parent:
+                  used: false
+                  used_in_inner_scope: false
+                _global:
                   used: false
                   used_in_inner_scope: false
               referenced_variables:
                 - testSelf
                 - testChildren
               could_reference_anything: false
+            register_count: 1
+            preload_this: false
+            suppress_this: true
+            preload_arguments: false
+            suppress_arguments: true
+            preload_super: false
+            suppress_super: true
+            preload_root: false
+            preload_parent: false
+            preload_global: false
     - Expr:
         span:
           start: 3709
