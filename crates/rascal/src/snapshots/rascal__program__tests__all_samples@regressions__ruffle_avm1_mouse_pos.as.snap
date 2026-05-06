@@ -481,6 +481,36 @@ Ok:
                       value:
                         Constant:
                           String: ""
+            scope:
+              defined_variables:
+                this:
+                  used: false
+                  used_in_inner_scope: false
+                super:
+                  used: false
+                  used_in_inner_scope: false
+                clips:
+                  used: true
+                  used_in_inner_scope: false
+                i:
+                  used: true
+                  used_in_inner_scope: false
+                clip:
+                  used: true
+                  used_in_inner_scope: false
+              referenced_variables:
+                - _xmouse
+                - oldX
+                - _ymouse
+                - oldY
+                - id
+                - zs
+                - ip
+                - fp
+                - s42fp
+                - s133fp
+                - s133fpr15
+              could_reference_anything: false
     - Expr:
         span:
           start: 734
@@ -510,6 +540,17 @@ Ok:
                           Constant:
                             Identifier: dump
                       args: []
+            scope:
+              defined_variables:
+                this:
+                  used: false
+                  used_in_inner_scope: false
+                super:
+                  used: false
+                  used_in_inner_scope: false
+              referenced_variables:
+                - dump
+              could_reference_anything: false
   interfaces: []
   classes: []
   custom_pcodes: []

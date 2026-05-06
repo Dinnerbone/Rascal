@@ -1,3 +1,4 @@
+pub(crate) mod scope;
 pub(crate) mod simplifier;
 pub(crate) mod visitor;
 
@@ -7,6 +8,7 @@ use serde::Serialize;
 
 pub type Expr = Spanned<ExprKind>;
 pub use crate::internal::as2::ast::{Affix, BinaryOperator, UnaryOperator};
+use crate::internal::as2::hir::scope::Scope;
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
 pub enum ExprKind {
@@ -41,7 +43,7 @@ pub enum ExprKind {
     TypeOf(Box<Expr>),
     Delete(Box<Expr>),
     Void(Box<Expr>),
-    Function(Function),
+    Function(Box<Function>),
     GetVariable(Box<Expr>),
     SetVariable(Box<Expr>, Box<Expr>),
     GotoFrame(Box<Expr>, bool),
@@ -182,6 +184,7 @@ pub struct Method {
 pub struct Function {
     pub signature: FunctionSignature,
     pub body: Vec<StatementKind>,
+    pub scope: Scope,
 }
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
@@ -253,7 +256,10 @@ pub struct VirtualProperty {
 
 #[derive(Debug, Serialize)]
 pub enum Document {
-    Script { statements: Vec<StatementKind> },
+    Script {
+        statements: Vec<StatementKind>,
+        scope: Scope,
+    },
     Interface(Interface),
     Class(Box<Class>),
     Invalid,

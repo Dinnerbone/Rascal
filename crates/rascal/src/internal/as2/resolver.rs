@@ -4,6 +4,7 @@ mod special_properties;
 use crate::internal::as2::error::ParsingError;
 use crate::internal::as2::global_types::GLOBAL_TYPES;
 use crate::internal::as2::hir;
+use crate::internal::as2::hir::scope::Scope;
 use crate::internal::as2::resolver::special_functions::resolve_special_call;
 use crate::internal::as2::{ast, type_path_to_file_path};
 use crate::internal::span::{Span, Spanned};
@@ -135,9 +136,9 @@ pub fn resolve_hir<P: SourceProvider>(
 ) -> (hir::Document, Vec<ParsingError>, IndexSet<String>) {
     let mut context = ModuleContext::new(provider, is_script, expected_name.to_owned());
     let document = if is_script {
-        hir::Document::Script {
-            statements: resolve_statement_vec(&mut context, &ast.statements),
-        }
+        let mut statements = resolve_statement_vec(&mut context, &ast.statements);
+        let scope = Scope::for_root(&mut statements);
+        hir::Document::Script { statements, scope }
     } else {
         resolve_class_or_interface(&mut context, &ast.statements, expected_name)
     };
@@ -459,6 +460,7 @@ fn resolve_class(
                 return_type: None,
             },
             body: vec![], // TODO super()
+            scope: Default::default(),
         });
 
     hir::Class {
@@ -739,7 +741,7 @@ fn resolve_expr(context: &mut ModuleContext, input: &ast::Expr) -> hir::Expr {
                     input.span,
                 );
             }
-            hir::ExprKind::Function(resolve_function(context, function, false))
+            hir::ExprKind::Function(Box::new(resolve_function(context, function, false)))
         }
         ast::ExprKind::GetVariable(name) => {
             hir::ExprKind::GetVariable(resolve_expr_box(context, name))
@@ -849,24 +851,27 @@ fn resolve_function(
             ),
         )]))
     }
+    let args = input
+        .signature
+        .args
+        .iter()
+        .map(|arg| hir::FunctionArgument {
+            name: arg.name.to_owned(),
+            type_name: resolve_opt_type_name(context, &arg.type_name),
+        })
+        .collect();
+    let scope = Scope::for_function(&args, &mut body);
     hir::Function {
         signature: hir::FunctionSignature {
             name: input
                 .signature
                 .name
                 .map(|name| Spanned::new(name.span, name.value.to_owned())),
-            args: input
-                .signature
-                .args
-                .iter()
-                .map(|arg| hir::FunctionArgument {
-                    name: arg.name.to_owned(),
-                    type_name: resolve_opt_type_name(context, &arg.type_name),
-                })
-                .collect(),
+            args,
             return_type: resolve_opt_type_name(context, &input.signature.return_type),
         },
         body,
+        scope,
     }
 }
 

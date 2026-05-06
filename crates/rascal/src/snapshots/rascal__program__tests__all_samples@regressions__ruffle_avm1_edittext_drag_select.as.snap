@@ -130,6 +130,17 @@ Ok:
                                         value:
                                           Constant:
                                             String: _ymouse
+                  scope:
+                    defined_variables:
+                      this:
+                        used: false
+                        used_in_inner_scope: false
+                      super:
+                        used: false
+                        used_in_inner_scope: false
+                    referenced_variables:
+                      - _root
+                    could_reference_anything: false
     - Expr:
         span:
           start: 140
@@ -396,6 +407,18 @@ Ok:
                                           value:
                                             Constant:
                                               String: "\\n"
+                  scope:
+                    defined_variables:
+                      this:
+                        used: false
+                        used_in_inner_scope: false
+                      super:
+                        used: false
+                        used_in_inner_scope: false
+                    referenced_variables:
+                      - _root
+                      - text
+                    could_reference_anything: false
     - Expr:
         span:
           start: 351

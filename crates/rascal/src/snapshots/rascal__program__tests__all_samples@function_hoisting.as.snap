@@ -163,6 +163,29 @@ Ok:
                                 value:
                                   Constant:
                                     String: function within a function!
+                      scope:
+                        defined_variables:
+                          this:
+                            used: false
+                            used_in_inner_scope: false
+                          super:
+                            used: false
+                            used_in_inner_scope: false
+                        referenced_variables: []
+                        could_reference_anything: false
+            scope:
+              defined_variables:
+                this:
+                  used: false
+                  used_in_inner_scope: false
+                super:
+                  used: false
+                  used_in_inner_scope: false
+              referenced_variables:
+                - functionWithinAFunction
+                - firstVar
+                - secondVar
+              could_reference_anything: false
     - Declare:
         - name:
             span:
@@ -280,6 +303,18 @@ Ok:
                             value:
                               Constant:
                                 Identifier: secondVar
+            scope:
+              defined_variables:
+                this:
+                  used: false
+                  used_in_inner_scope: false
+                super:
+                  used: false
+                  used_in_inner_scope: false
+              referenced_variables:
+                - firstVar
+                - secondVar
+              could_reference_anything: false
     - Expr:
         span:
           start: 461
@@ -383,6 +418,18 @@ Ok:
                             value:
                               Constant:
                                 Identifier: secondVar
+            scope:
+              defined_variables:
+                this:
+                  used: false
+                  used_in_inner_scope: false
+                super:
+                  used: false
+                  used_in_inner_scope: false
+              referenced_variables:
+                - firstVar
+                - secondVar
+              could_reference_anything: false
     - Expr:
         span:
           start: 636
@@ -452,6 +499,16 @@ Ok:
                       value:
                         Constant:
                           String: third function!
+            scope:
+              defined_variables:
+                this:
+                  used: false
+                  used_in_inner_scope: false
+                super:
+                  used: false
+                  used_in_inner_scope: false
+              referenced_variables: []
+              could_reference_anything: false
     - Expr:
         span:
           start: 754
@@ -493,6 +550,16 @@ Ok:
                       value:
                         Constant:
                           String: Unused function!
+            scope:
+              defined_variables:
+                this:
+                  used: false
+                  used_in_inner_scope: false
+                super:
+                  used: false
+                  used_in_inner_scope: false
+              referenced_variables: []
+              could_reference_anything: false
   interfaces: []
   classes: []
   custom_pcodes: []

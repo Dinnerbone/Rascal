@@ -167,6 +167,19 @@ Ok:
                                 value:
                                   Constant:
                                     String: none
+                        scope:
+                          defined_variables:
+                            this:
+                              used: false
+                              used_in_inner_scope: false
+                            super:
+                              used: false
+                              used_in_inner_scope: false
+                            v:
+                              used: true
+                              used_in_inner_scope: false
+                          referenced_variables: []
+                          could_reference_anything: false
                   type_name: ~
             - Declare:
                 - name:
@@ -186,6 +199,16 @@ Ok:
                           return_type: ~
                         body:
                           - Break
+                        scope:
+                          defined_variables:
+                            this:
+                              used: false
+                              used_in_inner_scope: false
+                            super:
+                              used: false
+                              used_in_inner_scope: false
+                          referenced_variables: []
+                          could_reference_anything: false
                   type_name: ~
             - Expr:
                 span:

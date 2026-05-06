@@ -451,6 +451,22 @@ Ok:
                             value:
                               Constant:
                                 String: " has no effect."
+            scope:
+              defined_variables:
+                this:
+                  used: true
+                  used_in_inner_scope: false
+                super:
+                  used: false
+                  used_in_inner_scope: false
+                value:
+                  used: true
+                  used_in_inner_scope: false
+                valueLabel:
+                  used: true
+                  used_in_inner_scope: false
+              referenced_variables: []
+              could_reference_anything: false
     - Expr:
         span:
           start: 573
@@ -854,6 +870,21 @@ Ok:
                             end: 1100
                           value:
                             InitObject: []
+            scope:
+              defined_variables:
+                this:
+                  used: true
+                  used_in_inner_scope: false
+                super:
+                  used: false
+                  used_in_inner_scope: false
+              referenced_variables:
+                - _root
+                - testSet
+                - undefined
+                - "null"
+                - "NaN"
+              could_reference_anything: false
     - Expr:
         span:
           start: 1114
@@ -1140,6 +1171,24 @@ Ok:
                           value:
                             Constant:
                               Integer: 250
+            scope:
+              defined_variables:
+                this:
+                  used: false
+                  used_in_inner_scope: false
+                super:
+                  used: false
+                  used_in_inner_scope: false
+              referenced_variables:
+                - createEmptyMovieClip
+                - levels
+                - child1
+                - child2
+                - child3
+                - setTimeout
+                - createGrandChildren
+                - testAllChildren
+              could_reference_anything: false
     - Expr:
         span:
           start: 1661
@@ -2274,6 +2323,18 @@ Ok:
                           value:
                             Constant:
                               String: child.swf
+            scope:
+              defined_variables:
+                this:
+                  used: false
+                  used_in_inner_scope: false
+                super:
+                  used: false
+                  used_in_inner_scope: false
+              referenced_variables:
+                - _root
+                - levels
+              could_reference_anything: false
     - Expr:
         span:
           start: 2745
@@ -3033,6 +3094,17 @@ Ok:
                       value:
                         Constant:
                           String: All tests done.
+            scope:
+              defined_variables:
+                this:
+                  used: false
+                  used_in_inner_scope: false
+                super:
+                  used: false
+                  used_in_inner_scope: false
+              referenced_variables:
+                - _root
+              could_reference_anything: false
     - Expr:
         span:
           start: 3658
@@ -3076,6 +3148,18 @@ Ok:
                           Constant:
                             Identifier: testChildren
                       args: []
+            scope:
+              defined_variables:
+                this:
+                  used: false
+                  used_in_inner_scope: false
+                super:
+                  used: false
+                  used_in_inner_scope: false
+              referenced_variables:
+                - testSelf
+                - testChildren
+              could_reference_anything: false
     - Expr:
         span:
           start: 3709
