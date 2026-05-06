@@ -49,6 +49,16 @@ Ok:
                       value:
                         Constant:
                           String: test!
+            scope:
+              defined_variables:
+                this:
+                  used: false
+                  used_in_inner_scope: false
+                super:
+                  used: false
+                  used_in_inner_scope: false
+              referenced_variables: []
+              could_reference_anything: false
           is_static: false
         greet:
           function:
@@ -132,6 +142,20 @@ Ok:
                                 Constant:
                                   String: shoutStatically
                       args: []
+            scope:
+              defined_variables:
+                this:
+                  used: false
+                  used_in_inner_scope: false
+                super:
+                  used: false
+                  used_in_inner_scope: false
+                name:
+                  used: true
+                  used_in_inner_scope: false
+              referenced_variables:
+                - ClassMembersTest
+              could_reference_anything: false
           is_static: false
         shoutStatically:
           function:
@@ -167,6 +191,17 @@ Ok:
                             value:
                               Constant:
                                 String: scream
+            scope:
+              defined_variables:
+                this:
+                  used: false
+                  used_in_inner_scope: false
+                super:
+                  used: false
+                  used_in_inner_scope: false
+              referenced_variables:
+                - ClassMembersTest
+              could_reference_anything: false
           is_static: true
         maybeABitmapData:
           function:
@@ -190,6 +225,17 @@ Ok:
                     value:
                       Constant:
                         Identifier: "null"
+            scope:
+              defined_variables:
+                this:
+                  used: false
+                  used_in_inner_scope: false
+                super:
+                  used: false
+                  used_in_inner_scope: false
+              referenced_variables:
+                - "null"
+              could_reference_anything: false
           is_static: false
         secret:
           function:
@@ -202,6 +248,16 @@ Ok:
               args: []
               return_type: ~
             body: []
+            scope:
+              defined_variables:
+                this:
+                  used: false
+                  used_in_inner_scope: false
+                super:
+                  used: false
+                  used_in_inner_scope: false
+              referenced_variables: []
+              could_reference_anything: false
           is_static: false
         notASecret:
           function:
@@ -214,6 +270,16 @@ Ok:
               args: []
               return_type: ~
             body: []
+            scope:
+              defined_variables:
+                this:
+                  used: false
+                  used_in_inner_scope: false
+                super:
+                  used: false
+                  used_in_inner_scope: false
+              referenced_variables: []
+              could_reference_anything: false
           is_static: false
         __get__virtualProperty:
           function:
@@ -233,6 +299,16 @@ Ok:
                     value:
                       Constant:
                         String: virtual!
+            scope:
+              defined_variables:
+                this:
+                  used: false
+                  used_in_inner_scope: false
+                super:
+                  used: false
+                  used_in_inner_scope: false
+              referenced_variables: []
+              could_reference_anything: false
           is_static: false
         __get__onlyGetter:
           function:
@@ -252,6 +328,16 @@ Ok:
                     value:
                       Constant:
                         String: getter
+            scope:
+              defined_variables:
+                this:
+                  used: false
+                  used_in_inner_scope: false
+                super:
+                  used: false
+                  used_in_inner_scope: false
+              referenced_variables: []
+              could_reference_anything: false
           is_static: false
         __set__onlySetter:
           function:
@@ -315,6 +401,19 @@ Ok:
                                   Constant:
                                     String: __get__onlySetter
                         args: []
+            scope:
+              defined_variables:
+                this:
+                  used: true
+                  used_in_inner_scope: false
+                super:
+                  used: false
+                  used_in_inner_scope: false
+                value:
+                  used: true
+                  used_in_inner_scope: false
+              referenced_variables: []
+              could_reference_anything: false
           is_static: false
         __set__virtualProperty:
           function:
@@ -378,6 +477,19 @@ Ok:
                                   Constant:
                                     String: __get__virtualProperty
                         args: []
+            scope:
+              defined_variables:
+                this:
+                  used: true
+                  used_in_inner_scope: false
+                super:
+                  used: false
+                  used_in_inner_scope: false
+                value:
+                  used: true
+                  used_in_inner_scope: false
+              referenced_variables: []
+              could_reference_anything: false
           is_static: false
         __get__virtualPropertyProbablyStatic:
           function:
@@ -397,6 +509,16 @@ Ok:
                     value:
                       Constant:
                         String: Static!
+            scope:
+              defined_variables:
+                this:
+                  used: false
+                  used_in_inner_scope: false
+                super:
+                  used: false
+                  used_in_inner_scope: false
+              referenced_variables: []
+              could_reference_anything: false
           is_static: true
         __set__virtualPropertyProbablyStatic:
           function:
@@ -460,6 +582,19 @@ Ok:
                                   Constant:
                                     String: __get__virtualPropertyProbablyStatic
                         args: []
+            scope:
+              defined_variables:
+                this:
+                  used: true
+                  used_in_inner_scope: false
+                super:
+                  used: false
+                  used_in_inner_scope: false
+                value:
+                  used: true
+                  used_in_inner_scope: false
+              referenced_variables: []
+              could_reference_anything: false
           is_static: false
         __set__virtualPropertyProbablyNotStatic:
           function:
@@ -523,6 +658,19 @@ Ok:
                                   Constant:
                                     String: __get__virtualPropertyProbablyNotStatic
                         args: []
+            scope:
+              defined_variables:
+                this:
+                  used: true
+                  used_in_inner_scope: false
+                super:
+                  used: false
+                  used_in_inner_scope: false
+                value:
+                  used: true
+                  used_in_inner_scope: false
+              referenced_variables: []
+              could_reference_anything: false
           is_static: false
         __get__virtualPropertyProbablyNotStatic:
           function:
@@ -542,6 +690,16 @@ Ok:
                     value:
                       Constant:
                         String: Static!
+            scope:
+              defined_variables:
+                this:
+                  used: false
+                  used_in_inner_scope: false
+                super:
+                  used: false
+                  used_in_inner_scope: false
+              referenced_variables: []
+              could_reference_anything: false
           is_static: true
       virtual_properties:
         virtualProperty:
@@ -832,6 +990,20 @@ Ok:
                         value:
                           Constant:
                             String: virtualProperty
+        scope:
+          defined_variables:
+            this:
+              used: true
+              used_in_inner_scope: false
+            super:
+              used: false
+              used_in_inner_scope: false
+            name:
+              used: false
+              used_in_inner_scope: false
+          referenced_variables:
+            - path
+          could_reference_anything: false
     - name: path.to.ANestedClass
       extends: path.to.ANestedBaseClass
       implements:
@@ -888,6 +1060,17 @@ Ok:
                                   Constant:
                                     String: ANestedClass
                         args: []
+            scope:
+              defined_variables:
+                this:
+                  used: false
+                  used_in_inner_scope: false
+                super:
+                  used: false
+                  used_in_inner_scope: false
+              referenced_variables:
+                - path
+              could_reference_anything: false
           is_static: true
         success:
           function:
@@ -945,6 +1128,17 @@ Ok:
                             value:
                               Constant:
                                 String: message
+            scope:
+              defined_variables:
+                this:
+                  used: false
+                  used_in_inner_scope: false
+                super:
+                  used: false
+                  used_in_inner_scope: false
+              referenced_variables:
+                - path
+              could_reference_anything: false
           is_static: false
       virtual_properties: {}
       fields:
@@ -968,6 +1162,10 @@ Ok:
           args: []
           return_type: ~
         body: []
+        scope:
+          defined_variables: {}
+          referenced_variables: []
+          could_reference_anything: false
     - name: path.to.ANestedBaseClass
       extends: ~
       implements: []
@@ -984,4 +1182,8 @@ Ok:
           args: []
           return_type: ~
         body: []
+        scope:
+          defined_variables: {}
+          referenced_variables: []
+          could_reference_anything: false
   custom_pcodes: []

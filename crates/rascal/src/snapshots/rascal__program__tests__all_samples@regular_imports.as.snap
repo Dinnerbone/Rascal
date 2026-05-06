@@ -340,6 +340,17 @@ Ok:
                             value:
                               Constant:
                                 Integer: 5
+            scope:
+              defined_variables:
+                this:
+                  used: false
+                  used_in_inner_scope: false
+                super:
+                  used: false
+                  used_in_inner_scope: false
+              referenced_variables:
+                - flash
+              could_reference_anything: false
     - Expr:
         span:
           start: 305

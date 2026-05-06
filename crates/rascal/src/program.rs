@@ -1,4 +1,5 @@
 use crate::error::{Error, ErrorSet};
+use crate::internal::as2::hir::scope::Scope;
 use crate::internal::as2::hir::simplifier::simplify;
 use crate::internal::as2::lexer::Lexer;
 use crate::internal::as2::resolver::resolve_hir;
@@ -156,6 +157,7 @@ impl<P: SourceProvider> ProgramBuilder<P> {
     }
 
     pub fn build(self) -> Result<Program, Error> {
+        let mut root_scope = Scope::default();
         let mut initial_script = vec![];
         let mut interfaces = vec![];
         let mut classes = vec![];
@@ -237,8 +239,13 @@ impl<P: SourceProvider> ProgramBuilder<P> {
                 &path,
                 "",
                 true,
-            ) && let hir::Document::Script { statements } = document
+            ) && let hir::Document::Script { statements, scope } = document
             {
+                root_scope.defined_variables.extend(scope.defined_variables);
+                root_scope
+                    .referenced_variables
+                    .extend(scope.referenced_variables);
+                root_scope.could_reference_anything |= scope.could_reference_anything;
                 initial_script.extend(statements);
             }
         }

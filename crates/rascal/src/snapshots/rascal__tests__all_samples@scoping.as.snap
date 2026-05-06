@@ -1,0 +1,486 @@
+---
+source: crates/rascal/src/tests.rs
+expression: result
+input_file: samples/as2/scoping.as
+---
+initializer:
+  actions:
+    - ConstantPool:
+        - a
+        - outer_a
+        - b
+        - outer_b
+        - c
+        - outer_c
+        - inner_a
+        - inner_b
+        - i
+        - err
+        - try_a
+        - try_b
+        - finally_a
+        - finally_b
+        - inner
+        - obj
+        - x
+        - k
+        - _global
+    - DefineFunction:
+        name: ""
+        params: []
+        actions:
+          actions:
+            - Push:
+                - Constant: 0
+                - Constant: 1
+            - DefineLocal
+            - Push:
+                - Constant: 2
+                - Constant: 3
+            - DefineLocal
+            - Push:
+                - Constant: 4
+                - Constant: 5
+            - DefineLocal
+            - Push:
+                - Constant: 0
+                - Constant: 6
+            - SetVariable
+            - Push:
+                - Constant: 2
+                - Constant: 7
+            - DefineLocal
+          label_positions: {}
+    - Pop
+    - DefineFunction:
+        name: ""
+        params: []
+        actions:
+          actions:
+            - Push:
+                - Constant: 0
+                - Constant: 1
+            - DefineLocal
+            - Push:
+                - Constant: 2
+                - Constant: 3
+            - DefineLocal
+            - Push:
+                - Constant: 4
+                - Constant: 5
+            - DefineLocal
+            - Push:
+                - Constant: 0
+            - Not
+            - If: loc0000
+            - Push:
+                - Constant: 0
+                - Constant: 6
+            - SetVariable
+            - Push:
+                - Constant: 2
+                - Constant: 7
+            - DefineLocal
+          label_positions:
+            loc0000: 13
+    - Pop
+    - DefineFunction:
+        name: ""
+        params: []
+        actions:
+          actions:
+            - Push:
+                - Constant: 0
+                - Constant: 1
+            - DefineLocal
+            - Push:
+                - Constant: 2
+                - Constant: 3
+            - DefineLocal
+            - Push:
+                - Constant: 4
+                - Constant: 5
+            - DefineLocal
+            - Push:
+                - Constant: 0
+            - Not
+            - Not
+            - If: loc0002
+            - Jump: loc0001
+            - Push:
+                - Constant: 0
+                - Constant: 6
+            - SetVariable
+            - Push:
+                - Constant: 2
+                - Constant: 7
+            - DefineLocal
+          label_positions:
+            loc0002: 11
+            loc0001: 15
+    - Pop
+    - DefineFunction:
+        name: ""
+        params: []
+        actions:
+          actions:
+            - Push:
+                - Constant: 0
+                - Constant: 1
+            - DefineLocal
+            - Push:
+                - Constant: 2
+                - Constant: 3
+            - DefineLocal
+            - Push:
+                - Constant: 4
+                - Constant: 5
+            - DefineLocal
+            - Push:
+                - Constant: 8
+                - Integer: 0
+            - DefineLocal
+            - Push:
+                - Constant: 8
+            - GetVariable
+            - Push:
+                - Integer: 1
+            - Less2
+            - Not
+            - If: loc0003
+            - Push:
+                - Constant: 0
+                - Constant: 6
+            - SetVariable
+            - Push:
+                - Constant: 2
+                - Constant: 7
+            - DefineLocal
+            - Push:
+                - Constant: 8
+                - Constant: 8
+            - GetVariable
+            - Increment
+            - SetVariable
+            - Jump: loc0005
+          label_positions:
+            loc0005: 8
+            loc0004: 18
+            loc0003: 23
+    - Pop
+    - DefineFunction:
+        name: ""
+        params: []
+        actions:
+          actions:
+            - Push:
+                - Constant: 0
+                - Constant: 1
+            - DefineLocal
+            - Push:
+                - Constant: 2
+                - Constant: 3
+            - DefineLocal
+            - Push:
+                - Constant: 4
+                - Constant: 5
+            - DefineLocal
+            - Push:
+                - Constant: 8
+                - Integer: 0
+            - DefineLocal
+            - Push:
+                - Constant: 8
+            - GetVariable
+            - Push:
+                - Constant: 8
+                - Constant: 8
+            - GetVariable
+            - Increment
+            - SetVariable
+            - Push:
+                - Integer: 1
+            - Less2
+            - Not
+            - If: loc0007
+            - Push:
+                - Constant: 0
+                - Constant: 6
+            - SetVariable
+            - Push:
+                - Constant: 2
+                - Constant: 7
+            - DefineLocal
+            - Jump: loc0006
+          label_positions:
+            loc0006: 8
+            loc0007: 23
+    - Pop
+    - DefineFunction:
+        name: ""
+        params: []
+        actions:
+          actions:
+            - Push:
+                - Constant: 0
+                - Constant: 1
+            - DefineLocal
+            - Push:
+                - Constant: 2
+                - Constant: 3
+            - DefineLocal
+            - Push:
+                - Constant: 4
+                - Constant: 5
+            - DefineLocal
+            - Push:
+                - Integer: 1
+            - StoreRegister: 0
+            - Push:
+                - Integer: 1
+            - StrictEquals
+            - If: loc0009
+            - Jump: loc0008
+            - Push:
+                - Constant: 0
+                - Constant: 6
+            - SetVariable
+            - Push:
+                - Constant: 2
+                - Constant: 7
+            - DefineLocal
+            - Jump: loc0008
+          label_positions:
+            loc0009: 12
+            loc0008: 17
+    - Pop
+    - DefineFunction:
+        name: ""
+        params: []
+        actions:
+          actions:
+            - Push:
+                - Constant: 0
+                - Constant: 1
+            - DefineLocal
+            - Push:
+                - Constant: 2
+                - Constant: 3
+            - DefineLocal
+            - Push:
+                - Constant: 4
+                - Constant: 5
+            - DefineLocal
+            - Try:
+                try_body:
+                  actions:
+                    - Push:
+                        - Constant: 9
+                    - Throw
+                    - Jump: loc000a
+                  label_positions: {}
+                catch_body:
+                  - Variable: e
+                  - actions:
+                      - Push:
+                          - Constant: 0
+                          - Constant: 6
+                      - SetVariable
+                      - Push:
+                          - Constant: 2
+                          - Constant: 7
+                      - DefineLocal
+                    label_positions: {}
+                finally_body: ~
+          label_positions:
+            loc000a: 7
+    - Pop
+    - DefineFunction:
+        name: ""
+        params: []
+        actions:
+          actions:
+            - Push:
+                - Constant: 0
+                - Constant: 1
+            - DefineLocal
+            - Push:
+                - Constant: 2
+                - Constant: 3
+            - DefineLocal
+            - Push:
+                - Constant: 4
+                - Constant: 5
+            - DefineLocal
+            - Try:
+                try_body:
+                  actions:
+                    - Push:
+                        - Constant: 0
+                        - Constant: 10
+                    - SetVariable
+                    - Push:
+                        - Constant: 2
+                        - Constant: 11
+                    - DefineLocal
+                    - Jump: loc000b
+                  label_positions: {}
+                catch_body: ~
+                finally_body:
+                  actions:
+                    - Push:
+                        - Constant: 0
+                        - Constant: 12
+                    - SetVariable
+                    - Push:
+                        - Constant: 2
+                        - Constant: 13
+                    - DefineLocal
+                  label_positions:
+                    loc000b: 0
+          label_positions: {}
+    - Pop
+    - DefineFunction:
+        name: ""
+        params: []
+        actions:
+          actions:
+            - DefineFunction:
+                name: inner
+                params: []
+                actions:
+                  actions:
+                    - Push:
+                        - Constant: 0
+                        - Constant: 6
+                    - SetVariable
+                    - Push:
+                        - Constant: 2
+                        - Constant: 7
+                    - DefineLocal
+                  label_positions: {}
+            - Push:
+                - Constant: 0
+                - Constant: 1
+            - DefineLocal
+            - Push:
+                - Constant: 2
+                - Constant: 3
+            - DefineLocal
+            - Push:
+                - Constant: 4
+                - Constant: 5
+            - DefineLocal
+            - Push:
+                - Integer: 0
+                - Constant: 14
+            - CallFunction
+            - Pop
+          label_positions: {}
+    - Pop
+    - DefineFunction:
+        name: ""
+        params: []
+        actions:
+          actions:
+            - Push:
+                - Constant: 0
+                - Constant: 1
+            - DefineLocal
+            - Push:
+                - Constant: 2
+                - Constant: 3
+            - DefineLocal
+            - Push:
+                - Constant: 4
+                - Constant: 5
+            - DefineLocal
+            - Push:
+                - Constant: 15
+                - Constant: 16
+                - Integer: 1
+                - Integer: 1
+            - InitObject
+            - DefineLocal
+            - Push:
+                - Constant: 15
+            - GetVariable
+            - Enumerate2
+            - StoreRegister: 0
+            - Push:
+                - "Null"
+            - Equals2
+            - If: loc000c
+            - Push:
+                - Constant: 17
+                - Register: 0
+            - DefineLocal
+            - Push:
+                - Constant: 0
+                - Constant: 6
+            - SetVariable
+            - Push:
+                - Constant: 2
+                - Constant: 7
+            - DefineLocal
+            - Jump: loc000d
+          label_positions:
+            loc000d: 12
+            loc000c: 23
+    - Pop
+    - DefineFunction:
+        name: ""
+        params: []
+        actions:
+          actions:
+            - DefineFunction:
+                name: inner
+                params: []
+                actions:
+                  actions:
+                    - Push:
+                        - Constant: 0
+                    - GetVariable
+                    - GetVariable
+                    - Trace
+                  label_positions: {}
+            - Push:
+                - Constant: 0
+                - Constant: 1
+            - DefineLocal
+            - Push:
+                - Integer: 0
+                - Constant: 14
+            - CallFunction
+            - Pop
+          label_positions: {}
+    - Pop
+    - DefineFunction:
+        name: ""
+        params: []
+        actions:
+          actions:
+            - Push:
+                - Constant: 0
+                - Constant: 0
+            - DefineLocal
+            - DefineFunction:
+                name: ""
+                params: []
+                actions:
+                  actions:
+                    - Push:
+                        - Constant: 18
+                    - GetVariable
+                    - With:
+                        actions: []
+                        label_positions: {}
+                  label_positions: {}
+            - Pop
+          label_positions: {}
+    - Pop
+  label_positions: {}
+extra_modules: []
+compile_options:
+  swf_version: 15
+custom_pcodes: []

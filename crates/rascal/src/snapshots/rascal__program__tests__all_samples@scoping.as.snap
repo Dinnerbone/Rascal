@@ -1,0 +1,1513 @@
+---
+source: crates/rascal/src/program.rs
+expression: parsed
+input_file: samples/as2/scoping.as
+---
+Ok:
+  initial_script:
+    - Expr:
+        span:
+          start: 0
+          end: 118
+        value:
+          Function:
+            signature:
+              name: ~
+              args: []
+              return_type: ~
+            body:
+              - Declare:
+                  - name:
+                      span:
+                        start: 18
+                        end: 19
+                      value: a
+                    value:
+                      span:
+                        start: 22
+                        end: 31
+                      value:
+                        Constant:
+                          String: outer_a
+                    type_name: ~
+              - Declare:
+                  - name:
+                      span:
+                        start: 38
+                        end: 39
+                      value: b
+                    value:
+                      span:
+                        start: 42
+                        end: 51
+                      value:
+                        Constant:
+                          String: outer_b
+                    type_name: ~
+              - Declare:
+                  - name:
+                      span:
+                        start: 58
+                        end: 59
+                      value: c
+                    value:
+                      span:
+                        start: 62
+                        end: 71
+                      value:
+                        Constant:
+                          String: outer_c
+                    type_name: ~
+              - Block:
+                  - Expr:
+                      span:
+                        start: 78
+                        end: 91
+                      value:
+                        BinaryOperator:
+                          - Assign
+                          - span:
+                              start: 78
+                              end: 79
+                            value:
+                              Constant:
+                                Identifier: a
+                          - span:
+                              start: 82
+                              end: 91
+                            value:
+                              Constant:
+                                String: inner_a
+                  - Declare:
+                      - name:
+                          span:
+                            start: 99
+                            end: 100
+                          value: b
+                        value:
+                          span:
+                            start: 103
+                            end: 112
+                          value:
+                            Constant:
+                              String: inner_b
+                        type_name: ~
+            scope:
+              defined_variables:
+                this:
+                  used: false
+                  used_in_inner_scope: false
+                super:
+                  used: false
+                  used_in_inner_scope: false
+                a:
+                  used: true
+                  used_in_inner_scope: false
+                b:
+                  used: true
+                  used_in_inner_scope: false
+                c:
+                  used: true
+                  used_in_inner_scope: false
+              referenced_variables: []
+              could_reference_anything: false
+    - Expr:
+        span:
+          start: 120
+          end: 247
+        value:
+          Function:
+            signature:
+              name: ~
+              args: []
+              return_type: ~
+            body:
+              - Declare:
+                  - name:
+                      span:
+                        start: 138
+                        end: 139
+                      value: a
+                    value:
+                      span:
+                        start: 142
+                        end: 151
+                      value:
+                        Constant:
+                          String: outer_a
+                    type_name: ~
+              - Declare:
+                  - name:
+                      span:
+                        start: 158
+                        end: 159
+                      value: b
+                    value:
+                      span:
+                        start: 162
+                        end: 171
+                      value:
+                        Constant:
+                          String: outer_b
+                    type_name: ~
+              - Declare:
+                  - name:
+                      span:
+                        start: 178
+                        end: 179
+                      value: c
+                    value:
+                      span:
+                        start: 182
+                        end: 191
+                      value:
+                        Constant:
+                          String: outer_c
+                    type_name: ~
+              - If:
+                  condition:
+                    span:
+                      start: 198
+                      end: 201
+                    value:
+                      Constant:
+                        String: a
+                  "yes":
+                    Block:
+                      - Expr:
+                          span:
+                            start: 207
+                            end: 220
+                          value:
+                            BinaryOperator:
+                              - Assign
+                              - span:
+                                  start: 207
+                                  end: 208
+                                value:
+                                  Constant:
+                                    Identifier: a
+                              - span:
+                                  start: 211
+                                  end: 220
+                                value:
+                                  Constant:
+                                    String: inner_a
+                      - Declare:
+                          - name:
+                              span:
+                                start: 228
+                                end: 229
+                              value: b
+                            value:
+                              span:
+                                start: 232
+                                end: 241
+                              value:
+                                Constant:
+                                  String: inner_b
+                            type_name: ~
+                  "no": ~
+            scope:
+              defined_variables:
+                this:
+                  used: false
+                  used_in_inner_scope: false
+                super:
+                  used: false
+                  used_in_inner_scope: false
+                a:
+                  used: true
+                  used_in_inner_scope: false
+                b:
+                  used: true
+                  used_in_inner_scope: false
+                c:
+                  used: true
+                  used_in_inner_scope: false
+              referenced_variables: []
+              could_reference_anything: false
+    - Expr:
+        span:
+          start: 249
+          end: 387
+        value:
+          Function:
+            signature:
+              name: ~
+              args: []
+              return_type: ~
+            body:
+              - Declare:
+                  - name:
+                      span:
+                        start: 267
+                        end: 268
+                      value: a
+                    value:
+                      span:
+                        start: 271
+                        end: 280
+                      value:
+                        Constant:
+                          String: outer_a
+                    type_name: ~
+              - Declare:
+                  - name:
+                      span:
+                        start: 287
+                        end: 288
+                      value: b
+                    value:
+                      span:
+                        start: 291
+                        end: 300
+                      value:
+                        Constant:
+                          String: outer_b
+                    type_name: ~
+              - Declare:
+                  - name:
+                      span:
+                        start: 307
+                        end: 308
+                      value: c
+                    value:
+                      span:
+                        start: 311
+                        end: 320
+                      value:
+                        Constant:
+                          String: outer_c
+                    type_name: ~
+              - If:
+                  condition:
+                    span:
+                      start: 327
+                      end: 331
+                    value:
+                      UnaryOperator:
+                        - LogicalNot
+                        - span:
+                            start: 328
+                            end: 331
+                          value:
+                            Constant:
+                              String: a
+                  "yes":
+                    Block: []
+                  "no":
+                    Block:
+                      - Expr:
+                          span:
+                            start: 347
+                            end: 360
+                          value:
+                            BinaryOperator:
+                              - Assign
+                              - span:
+                                  start: 347
+                                  end: 348
+                                value:
+                                  Constant:
+                                    Identifier: a
+                              - span:
+                                  start: 351
+                                  end: 360
+                                value:
+                                  Constant:
+                                    String: inner_a
+                      - Declare:
+                          - name:
+                              span:
+                                start: 368
+                                end: 369
+                              value: b
+                            value:
+                              span:
+                                start: 372
+                                end: 381
+                              value:
+                                Constant:
+                                  String: inner_b
+                            type_name: ~
+            scope:
+              defined_variables:
+                this:
+                  used: false
+                  used_in_inner_scope: false
+                super:
+                  used: false
+                  used_in_inner_scope: false
+                a:
+                  used: true
+                  used_in_inner_scope: false
+                b:
+                  used: true
+                  used_in_inner_scope: false
+                c:
+                  used: true
+                  used_in_inner_scope: false
+              referenced_variables: []
+              could_reference_anything: false
+    - Expr:
+        span:
+          start: 389
+          end: 535
+        value:
+          Function:
+            signature:
+              name: ~
+              args: []
+              return_type: ~
+            body:
+              - Declare:
+                  - name:
+                      span:
+                        start: 407
+                        end: 408
+                      value: a
+                    value:
+                      span:
+                        start: 411
+                        end: 420
+                      value:
+                        Constant:
+                          String: outer_a
+                    type_name: ~
+              - Declare:
+                  - name:
+                      span:
+                        start: 427
+                        end: 428
+                      value: b
+                    value:
+                      span:
+                        start: 431
+                        end: 440
+                      value:
+                        Constant:
+                          String: outer_b
+                    type_name: ~
+              - Declare:
+                  - name:
+                      span:
+                        start: 447
+                        end: 448
+                      value: c
+                    value:
+                      span:
+                        start: 451
+                        end: 460
+                      value:
+                        Constant:
+                          String: outer_c
+                    type_name: ~
+              - ForIn:
+                  condition:
+                    Classic:
+                      initialize:
+                        Declare:
+                          - name:
+                              span:
+                                start: 472
+                                end: 473
+                              value: i
+                            value:
+                              span:
+                                start: 476
+                                end: 477
+                              value:
+                                Constant:
+                                  Integer: 0
+                            type_name: ~
+                      condition:
+                        - span:
+                            start: 479
+                            end: 484
+                          value:
+                            BinaryOperator:
+                              - LessThan
+                              - span:
+                                  start: 479
+                                  end: 480
+                                value:
+                                  Constant:
+                                    Identifier: i
+                              - span:
+                                  start: 483
+                                  end: 484
+                                value:
+                                  Constant:
+                                    Integer: 1
+                      update:
+                        - span:
+                            start: 487
+                            end: 489
+                          value:
+                            UnaryOperator:
+                              - Increment: Postfix
+                              - span:
+                                  start: 486
+                                  end: 487
+                                value:
+                                  Constant:
+                                    Identifier: i
+                  body:
+                    Block:
+                      - Expr:
+                          span:
+                            start: 495
+                            end: 508
+                          value:
+                            BinaryOperator:
+                              - Assign
+                              - span:
+                                  start: 495
+                                  end: 496
+                                value:
+                                  Constant:
+                                    Identifier: a
+                              - span:
+                                  start: 499
+                                  end: 508
+                                value:
+                                  Constant:
+                                    String: inner_a
+                      - Declare:
+                          - name:
+                              span:
+                                start: 516
+                                end: 517
+                              value: b
+                            value:
+                              span:
+                                start: 520
+                                end: 529
+                              value:
+                                Constant:
+                                  String: inner_b
+                            type_name: ~
+            scope:
+              defined_variables:
+                this:
+                  used: false
+                  used_in_inner_scope: false
+                super:
+                  used: false
+                  used_in_inner_scope: false
+                a:
+                  used: true
+                  used_in_inner_scope: false
+                b:
+                  used: true
+                  used_in_inner_scope: false
+                c:
+                  used: true
+                  used_in_inner_scope: false
+                i:
+                  used: true
+                  used_in_inner_scope: false
+              referenced_variables: []
+              could_reference_anything: false
+    - Expr:
+        span:
+          start: 537
+          end: 683
+        value:
+          Function:
+            signature:
+              name: ~
+              args: []
+              return_type: ~
+            body:
+              - Declare:
+                  - name:
+                      span:
+                        start: 555
+                        end: 556
+                      value: a
+                    value:
+                      span:
+                        start: 559
+                        end: 568
+                      value:
+                        Constant:
+                          String: outer_a
+                    type_name: ~
+              - Declare:
+                  - name:
+                      span:
+                        start: 575
+                        end: 576
+                      value: b
+                    value:
+                      span:
+                        start: 579
+                        end: 588
+                      value:
+                        Constant:
+                          String: outer_b
+                    type_name: ~
+              - Declare:
+                  - name:
+                      span:
+                        start: 595
+                        end: 596
+                      value: c
+                    value:
+                      span:
+                        start: 599
+                        end: 608
+                      value:
+                        Constant:
+                          String: outer_c
+                    type_name: ~
+              - Declare:
+                  - name:
+                      span:
+                        start: 615
+                        end: 616
+                      value: i
+                    value:
+                      span:
+                        start: 619
+                        end: 620
+                      value:
+                        Constant:
+                          Integer: 0
+                    type_name: ~
+              - While:
+                  condition:
+                    span:
+                      start: 631
+                      end: 637
+                    value:
+                      BinaryOperator:
+                        - LessThan
+                        - span:
+                            start: 631
+                            end: 633
+                          value:
+                            UnaryOperator:
+                              - Increment: Postfix
+                              - span:
+                                  start: 630
+                                  end: 631
+                                value:
+                                  Constant:
+                                    Identifier: i
+                        - span:
+                            start: 636
+                            end: 637
+                          value:
+                            Constant:
+                              Integer: 1
+                  body:
+                    Block:
+                      - Expr:
+                          span:
+                            start: 643
+                            end: 656
+                          value:
+                            BinaryOperator:
+                              - Assign
+                              - span:
+                                  start: 643
+                                  end: 644
+                                value:
+                                  Constant:
+                                    Identifier: a
+                              - span:
+                                  start: 647
+                                  end: 656
+                                value:
+                                  Constant:
+                                    String: inner_a
+                      - Declare:
+                          - name:
+                              span:
+                                start: 664
+                                end: 665
+                              value: b
+                            value:
+                              span:
+                                start: 668
+                                end: 677
+                              value:
+                                Constant:
+                                  String: inner_b
+                            type_name: ~
+            scope:
+              defined_variables:
+                this:
+                  used: false
+                  used_in_inner_scope: false
+                super:
+                  used: false
+                  used_in_inner_scope: false
+                a:
+                  used: true
+                  used_in_inner_scope: false
+                b:
+                  used: true
+                  used_in_inner_scope: false
+                c:
+                  used: true
+                  used_in_inner_scope: false
+                i:
+                  used: true
+                  used_in_inner_scope: false
+              referenced_variables: []
+              could_reference_anything: false
+    - Expr:
+        span:
+          start: 685
+          end: 836
+        value:
+          Function:
+            signature:
+              name: ~
+              args: []
+              return_type: ~
+            body:
+              - Declare:
+                  - name:
+                      span:
+                        start: 703
+                        end: 704
+                      value: a
+                    value:
+                      span:
+                        start: 707
+                        end: 716
+                      value:
+                        Constant:
+                          String: outer_a
+                    type_name: ~
+              - Declare:
+                  - name:
+                      span:
+                        start: 723
+                        end: 724
+                      value: b
+                    value:
+                      span:
+                        start: 727
+                        end: 736
+                      value:
+                        Constant:
+                          String: outer_b
+                    type_name: ~
+              - Declare:
+                  - name:
+                      span:
+                        start: 743
+                        end: 744
+                      value: c
+                    value:
+                      span:
+                        start: 747
+                        end: 756
+                      value:
+                        Constant:
+                          String: outer_c
+                    type_name: ~
+              - Switch:
+                  target:
+                    span:
+                      start: 767
+                      end: 768
+                    value:
+                      Constant:
+                        Integer: 1
+                  elements:
+                    - Case:
+                        span:
+                          start: 779
+                          end: 780
+                        value:
+                          Constant:
+                            Integer: 1
+                    - Statement:
+                        Expr:
+                          span:
+                            start: 785
+                            end: 798
+                          value:
+                            BinaryOperator:
+                              - Assign
+                              - span:
+                                  start: 785
+                                  end: 786
+                                value:
+                                  Constant:
+                                    Identifier: a
+                              - span:
+                                  start: 789
+                                  end: 798
+                                value:
+                                  Constant:
+                                    String: inner_a
+                    - Statement:
+                        Declare:
+                          - name:
+                              span:
+                                start: 807
+                                end: 808
+                              value: b
+                            value:
+                              span:
+                                start: 811
+                                end: 820
+                              value:
+                                Constant:
+                                  String: inner_b
+                            type_name: ~
+                    - Statement: Break
+            scope:
+              defined_variables:
+                this:
+                  used: false
+                  used_in_inner_scope: false
+                super:
+                  used: false
+                  used_in_inner_scope: false
+                a:
+                  used: true
+                  used_in_inner_scope: false
+                b:
+                  used: true
+                  used_in_inner_scope: false
+                c:
+                  used: true
+                  used_in_inner_scope: false
+              referenced_variables: []
+              could_reference_anything: false
+    - Expr:
+        span:
+          start: 838
+          end: 990
+        value:
+          Function:
+            signature:
+              name: ~
+              args: []
+              return_type: ~
+            body:
+              - Declare:
+                  - name:
+                      span:
+                        start: 856
+                        end: 857
+                      value: a
+                    value:
+                      span:
+                        start: 860
+                        end: 869
+                      value:
+                        Constant:
+                          String: outer_a
+                    type_name: ~
+              - Declare:
+                  - name:
+                      span:
+                        start: 876
+                        end: 877
+                      value: b
+                    value:
+                      span:
+                        start: 880
+                        end: 889
+                      value:
+                        Constant:
+                          String: outer_b
+                    type_name: ~
+              - Declare:
+                  - name:
+                      span:
+                        start: 896
+                        end: 897
+                      value: c
+                    value:
+                      span:
+                        start: 900
+                        end: 909
+                      value:
+                        Constant:
+                          String: outer_c
+                    type_name: ~
+              - Try:
+                  try_body:
+                    - Throw:
+                        - span:
+                            start: 926
+                            end: 931
+                          value:
+                            Constant:
+                              String: err
+                  typed_catches: []
+                  catch_all:
+                    name:
+                      span:
+                        start: 943
+                        end: 944
+                      value: e
+                    body:
+                      - Expr:
+                          span:
+                            start: 950
+                            end: 963
+                          value:
+                            BinaryOperator:
+                              - Assign
+                              - span:
+                                  start: 950
+                                  end: 951
+                                value:
+                                  Constant:
+                                    Identifier: a
+                              - span:
+                                  start: 954
+                                  end: 963
+                                value:
+                                  Constant:
+                                    String: inner_a
+                      - Declare:
+                          - name:
+                              span:
+                                start: 971
+                                end: 972
+                              value: b
+                            value:
+                              span:
+                                start: 975
+                                end: 984
+                              value:
+                                Constant:
+                                  String: inner_b
+                            type_name: ~
+                  finally: []
+            scope:
+              defined_variables:
+                this:
+                  used: false
+                  used_in_inner_scope: false
+                super:
+                  used: false
+                  used_in_inner_scope: false
+                a:
+                  used: true
+                  used_in_inner_scope: false
+                b:
+                  used: true
+                  used_in_inner_scope: false
+                c:
+                  used: true
+                  used_in_inner_scope: false
+              referenced_variables: []
+              could_reference_anything: false
+    - Expr:
+        span:
+          start: 992
+          end: 1165
+        value:
+          Function:
+            signature:
+              name: ~
+              args: []
+              return_type: ~
+            body:
+              - Declare:
+                  - name:
+                      span:
+                        start: 1010
+                        end: 1011
+                      value: a
+                    value:
+                      span:
+                        start: 1014
+                        end: 1023
+                      value:
+                        Constant:
+                          String: outer_a
+                    type_name: ~
+              - Declare:
+                  - name:
+                      span:
+                        start: 1030
+                        end: 1031
+                      value: b
+                    value:
+                      span:
+                        start: 1034
+                        end: 1043
+                      value:
+                        Constant:
+                          String: outer_b
+                    type_name: ~
+              - Declare:
+                  - name:
+                      span:
+                        start: 1050
+                        end: 1051
+                      value: c
+                    value:
+                      span:
+                        start: 1054
+                        end: 1063
+                      value:
+                        Constant:
+                          String: outer_c
+                    type_name: ~
+              - Try:
+                  try_body:
+                    - Expr:
+                        span:
+                          start: 1074
+                          end: 1085
+                        value:
+                          BinaryOperator:
+                            - Assign
+                            - span:
+                                start: 1074
+                                end: 1075
+                              value:
+                                Constant:
+                                  Identifier: a
+                            - span:
+                                start: 1078
+                                end: 1085
+                              value:
+                                Constant:
+                                  String: try_a
+                    - Declare:
+                        - name:
+                            span:
+                              start: 1093
+                              end: 1094
+                            value: b
+                          value:
+                            span:
+                              start: 1097
+                              end: 1104
+                            value:
+                              Constant:
+                                String: try_b
+                          type_name: ~
+                  typed_catches: []
+                  catch_all: ~
+                  finally:
+                    - Expr:
+                        span:
+                          start: 1121
+                          end: 1136
+                        value:
+                          BinaryOperator:
+                            - Assign
+                            - span:
+                                start: 1121
+                                end: 1122
+                              value:
+                                Constant:
+                                  Identifier: a
+                            - span:
+                                start: 1125
+                                end: 1136
+                              value:
+                                Constant:
+                                  String: finally_a
+                    - Declare:
+                        - name:
+                            span:
+                              start: 1144
+                              end: 1145
+                            value: b
+                          value:
+                            span:
+                              start: 1148
+                              end: 1159
+                            value:
+                              Constant:
+                                String: finally_b
+                          type_name: ~
+            scope:
+              defined_variables:
+                this:
+                  used: false
+                  used_in_inner_scope: false
+                super:
+                  used: false
+                  used_in_inner_scope: false
+                a:
+                  used: true
+                  used_in_inner_scope: false
+                b:
+                  used: true
+                  used_in_inner_scope: false
+                c:
+                  used: true
+                  used_in_inner_scope: false
+              referenced_variables: []
+              could_reference_anything: false
+    - Expr:
+        span:
+          start: 1167
+          end: 1312
+        value:
+          Function:
+            signature:
+              name: ~
+              args: []
+              return_type: ~
+            body:
+              - Declare:
+                  - name:
+                      span:
+                        start: 1185
+                        end: 1186
+                      value: a
+                    value:
+                      span:
+                        start: 1189
+                        end: 1198
+                      value:
+                        Constant:
+                          String: outer_a
+                    type_name: ~
+              - Declare:
+                  - name:
+                      span:
+                        start: 1205
+                        end: 1206
+                      value: b
+                    value:
+                      span:
+                        start: 1209
+                        end: 1218
+                      value:
+                        Constant:
+                          String: outer_b
+                    type_name: ~
+              - Declare:
+                  - name:
+                      span:
+                        start: 1225
+                        end: 1226
+                      value: c
+                    value:
+                      span:
+                        start: 1229
+                        end: 1238
+                      value:
+                        Constant:
+                          String: outer_c
+                    type_name: ~
+              - Expr:
+                  span:
+                    start: 1241
+                    end: 1300
+                  value:
+                    Function:
+                      signature:
+                        name:
+                          span:
+                            start: 1250
+                            end: 1255
+                          value: inner
+                        args: []
+                        return_type: ~
+                      body:
+                        - Expr:
+                            span:
+                              start: 1262
+                              end: 1275
+                            value:
+                              BinaryOperator:
+                                - Assign
+                                - span:
+                                    start: 1262
+                                    end: 1263
+                                  value:
+                                    Constant:
+                                      Identifier: a
+                                - span:
+                                    start: 1266
+                                    end: 1275
+                                  value:
+                                    Constant:
+                                      String: inner_a
+                        - Declare:
+                            - name:
+                                span:
+                                  start: 1283
+                                  end: 1284
+                                value: b
+                              value:
+                                span:
+                                  start: 1287
+                                  end: 1296
+                                value:
+                                  Constant:
+                                    String: inner_b
+                              type_name: ~
+                      scope:
+                        defined_variables:
+                          this:
+                            used: false
+                            used_in_inner_scope: false
+                          super:
+                            used: false
+                            used_in_inner_scope: false
+                          b:
+                            used: true
+                            used_in_inner_scope: false
+                        referenced_variables:
+                          - a
+                        could_reference_anything: false
+              - Expr:
+                  span:
+                    start: 1302
+                    end: 1309
+                  value:
+                    Call:
+                      name:
+                        span:
+                          start: 1302
+                          end: 1307
+                        value:
+                          Constant:
+                            Identifier: inner
+                      args: []
+            scope:
+              defined_variables:
+                this:
+                  used: false
+                  used_in_inner_scope: false
+                super:
+                  used: false
+                  used_in_inner_scope: false
+                a:
+                  used: true
+                  used_in_inner_scope: true
+                b:
+                  used: true
+                  used_in_inner_scope: false
+                c:
+                  used: true
+                  used_in_inner_scope: false
+              referenced_variables:
+                - inner
+              could_reference_anything: false
+    - Expr:
+        span:
+          start: 1314
+          end: 1472
+        value:
+          Function:
+            signature:
+              name: ~
+              args: []
+              return_type: ~
+            body:
+              - Declare:
+                  - name:
+                      span:
+                        start: 1332
+                        end: 1333
+                      value: a
+                    value:
+                      span:
+                        start: 1336
+                        end: 1345
+                      value:
+                        Constant:
+                          String: outer_a
+                    type_name: ~
+              - Declare:
+                  - name:
+                      span:
+                        start: 1352
+                        end: 1353
+                      value: b
+                    value:
+                      span:
+                        start: 1356
+                        end: 1365
+                      value:
+                        Constant:
+                          String: outer_b
+                    type_name: ~
+              - Declare:
+                  - name:
+                      span:
+                        start: 1372
+                        end: 1373
+                      value: c
+                    value:
+                      span:
+                        start: 1376
+                        end: 1385
+                      value:
+                        Constant:
+                          String: outer_c
+                    type_name: ~
+              - Declare:
+                  - name:
+                      span:
+                        start: 1392
+                        end: 1395
+                      value: obj
+                    value:
+                      span:
+                        start: 1398
+                        end: 1406
+                      value:
+                        InitObject:
+                          - - x
+                            - span:
+                                start: 1403
+                                end: 1404
+                              value:
+                                Constant:
+                                  Integer: 1
+                    type_name: ~
+              - ForIn:
+                  condition:
+                    Enumerate:
+                      variable: k
+                      declare: true
+                      object:
+                        span:
+                          start: 1423
+                          end: 1426
+                        value:
+                          Constant:
+                            Identifier: obj
+                  body:
+                    Block:
+                      - Expr:
+                          span:
+                            start: 1432
+                            end: 1445
+                          value:
+                            BinaryOperator:
+                              - Assign
+                              - span:
+                                  start: 1432
+                                  end: 1433
+                                value:
+                                  Constant:
+                                    Identifier: a
+                              - span:
+                                  start: 1436
+                                  end: 1445
+                                value:
+                                  Constant:
+                                    String: inner_a
+                      - Declare:
+                          - name:
+                              span:
+                                start: 1453
+                                end: 1454
+                              value: b
+                            value:
+                              span:
+                                start: 1457
+                                end: 1466
+                              value:
+                                Constant:
+                                  String: inner_b
+                            type_name: ~
+            scope:
+              defined_variables:
+                this:
+                  used: false
+                  used_in_inner_scope: false
+                super:
+                  used: false
+                  used_in_inner_scope: false
+                a:
+                  used: true
+                  used_in_inner_scope: false
+                b:
+                  used: true
+                  used_in_inner_scope: false
+                c:
+                  used: true
+                  used_in_inner_scope: false
+                obj:
+                  used: true
+                  used_in_inner_scope: false
+              referenced_variables: []
+              could_reference_anything: false
+    - Expr:
+        span:
+          start: 1474
+          end: 1646
+        value:
+          Function:
+            signature:
+              name: ~
+              args: []
+              return_type: ~
+            body:
+              - Declare:
+                  - name:
+                      span:
+                        start: 1492
+                        end: 1493
+                      value: a
+                    value:
+                      span:
+                        start: 1496
+                        end: 1505
+                      value:
+                        Constant:
+                          String: outer_a
+                    type_name: ~
+              - Expr:
+                  span:
+                    start: 1508
+                    end: 1634
+                  value:
+                    Function:
+                      signature:
+                        name:
+                          span:
+                            start: 1517
+                            end: 1522
+                          value: inner
+                        args: []
+                        return_type: ~
+                      body:
+                        - Expr:
+                            span:
+                              start: 1616
+                              end: 1630
+                            value:
+                              Trace:
+                                span:
+                                  start: 1622
+                                  end: 1629
+                                value:
+                                  GetVariable:
+                                    span:
+                                      start: 1627
+                                      end: 1628
+                                    value:
+                                      Constant:
+                                        Identifier: a
+                      scope:
+                        defined_variables:
+                          this:
+                            used: false
+                            used_in_inner_scope: false
+                          super:
+                            used: false
+                            used_in_inner_scope: false
+                        referenced_variables:
+                          - a
+                        could_reference_anything: true
+              - Expr:
+                  span:
+                    start: 1636
+                    end: 1643
+                  value:
+                    Call:
+                      name:
+                        span:
+                          start: 1636
+                          end: 1641
+                        value:
+                          Constant:
+                            Identifier: inner
+                      args: []
+            scope:
+              defined_variables:
+                this:
+                  used: false
+                  used_in_inner_scope: false
+                super:
+                  used: false
+                  used_in_inner_scope: false
+                a:
+                  used: true
+                  used_in_inner_scope: true
+              referenced_variables:
+                - inner
+              could_reference_anything: true
+    - Expr:
+        span:
+          start: 1648
+          end: 1799
+        value:
+          Function:
+            signature:
+              name: ~
+              args: []
+              return_type: ~
+            body:
+              - Declare:
+                  - name:
+                      span:
+                        start: 1666
+                        end: 1667
+                      value: a
+                    value:
+                      span:
+                        start: 1670
+                        end: 1673
+                      value:
+                        Constant:
+                          String: a
+                    type_name: ~
+              - Expr:
+                  span:
+                    start: 1763
+                    end: 1797
+                  value:
+                    Function:
+                      signature:
+                        name: ~
+                        args: []
+                        return_type: ~
+                      body:
+                        - With:
+                            target:
+                              span:
+                                start: 1783
+                                end: 1790
+                              value:
+                                Constant:
+                                  Identifier: _global
+                            body:
+                              Block: []
+                      scope:
+                        defined_variables:
+                          this:
+                            used: false
+                            used_in_inner_scope: false
+                          super:
+                            used: false
+                            used_in_inner_scope: false
+                        referenced_variables:
+                          - _global
+                        could_reference_anything: true
+            scope:
+              defined_variables:
+                this:
+                  used: false
+                  used_in_inner_scope: false
+                super:
+                  used: false
+                  used_in_inner_scope: false
+                a:
+                  used: true
+                  used_in_inner_scope: false
+              referenced_variables:
+                - _global
+              could_reference_anything: true
+  interfaces: []
+  classes: []
+  custom_pcodes: []

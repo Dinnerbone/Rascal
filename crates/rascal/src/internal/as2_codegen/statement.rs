@@ -18,12 +18,12 @@ pub(crate) fn gen_statements(
         if matches!(
             statement,
             StatementKind::Expr(Expr {
-                value: ExprKind::Function(Function {
+                value: ExprKind::Function(func),
+                ..
+            }) if matches!(func.as_ref(), Function {
                     signature: FunctionSignature { name: Some(_), .. },
                     ..
-                }),
-                ..
-            })
+                })
         ) {
             hoisted.push(statement);
         } else {

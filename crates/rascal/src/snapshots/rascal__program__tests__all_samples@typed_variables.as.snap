@@ -143,6 +143,22 @@ Ok:
                           value:
                             Constant:
                               Identifier: b
+            scope:
+              defined_variables:
+                this:
+                  used: false
+                  used_in_inner_scope: false
+                super:
+                  used: false
+                  used_in_inner_scope: false
+                a:
+                  used: true
+                  used_in_inner_scope: false
+                b:
+                  used: true
+                  used_in_inner_scope: false
+              referenced_variables: []
+              could_reference_anything: false
     - Expr:
         span:
           start: 177
@@ -169,6 +185,16 @@ Ok:
                     value:
                       Constant:
                         String: Test message
+            scope:
+              defined_variables:
+                this:
+                  used: false
+                  used_in_inner_scope: false
+                super:
+                  used: false
+                  used_in_inner_scope: false
+              referenced_variables: []
+              could_reference_anything: false
     - Expr:
         span:
           start: 238
@@ -206,6 +232,19 @@ Ok:
                       value:
                         Constant:
                           Identifier: data
+            scope:
+              defined_variables:
+                this:
+                  used: false
+                  used_in_inner_scope: false
+                super:
+                  used: false
+                  used_in_inner_scope: false
+                data:
+                  used: true
+                  used_in_inner_scope: false
+              referenced_variables: []
+              could_reference_anything: false
     - Declare:
         - name:
             span:
@@ -394,6 +433,25 @@ Ok:
                             value:
                               Constant:
                                 Identifier: isValid
+            scope:
+              defined_variables:
+                this:
+                  used: false
+                  used_in_inner_scope: false
+                super:
+                  used: false
+                  used_in_inner_scope: false
+                name:
+                  used: true
+                  used_in_inner_scope: false
+                age:
+                  used: true
+                  used_in_inner_scope: false
+                isValid:
+                  used: true
+                  used_in_inner_scope: false
+              referenced_variables: []
+              could_reference_anything: false
     - Declare:
         - name:
             span:
@@ -614,6 +672,25 @@ Ok:
                                         value:
                                           Constant:
                                             Identifier: i
+            scope:
+              defined_variables:
+                this:
+                  used: false
+                  used_in_inner_scope: false
+                super:
+                  used: false
+                  used_in_inner_scope: false
+                arr:
+                  used: true
+                  used_in_inner_scope: false
+                callback:
+                  used: true
+                  used_in_inner_scope: false
+                i:
+                  used: true
+                  used_in_inner_scope: false
+              referenced_variables: []
+              could_reference_anything: false
   interfaces: []
   classes: []
   custom_pcodes: []

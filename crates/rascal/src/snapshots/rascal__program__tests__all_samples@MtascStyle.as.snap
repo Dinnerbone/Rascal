@@ -65,6 +65,16 @@ Ok:
                       value:
                         Constant:
                           String: Main method!
+            scope:
+              defined_variables:
+                this:
+                  used: false
+                  used_in_inner_scope: false
+                super:
+                  used: false
+                  used_in_inner_scope: false
+              referenced_variables: []
+              could_reference_anything: false
           is_static: true
       virtual_properties: {}
       fields: {}
@@ -78,4 +88,8 @@ Ok:
           args: []
           return_type: ~
         body: []
+        scope:
+          defined_variables: {}
+          referenced_variables: []
+          could_reference_anything: false
   custom_pcodes: []
