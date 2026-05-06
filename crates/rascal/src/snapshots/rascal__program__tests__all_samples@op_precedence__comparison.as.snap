@@ -6,47 +6,47 @@ input_file: samples/as2/op_precedence/comparison.as
 Ok:
   initial_script:
     - Declare:
-        - name:
-            span:
-              start: 17
-              end: 18
-            value: a
+        name:
+          span:
+            start: 17
+            end: 18
+          value: a
+        value:
+          span:
+            start: 21
+            end: 23
           value:
-            span:
-              start: 21
-              end: 23
-            value:
-              Constant:
-                Integer: 10
-          type_name: ~
+            Constant:
+              Integer: 10
+        type_name: ~
     - Declare:
-        - name:
-            span:
-              start: 29
-              end: 30
-            value: b
+        name:
+          span:
+            start: 29
+            end: 30
+          value: b
+        value:
+          span:
+            start: 33
+            end: 34
           value:
-            span:
-              start: 33
-              end: 34
-            value:
-              Constant:
-                Integer: 5
-          type_name: ~
+            Constant:
+              Integer: 5
+        type_name: ~
     - Declare:
-        - name:
-            span:
-              start: 40
-              end: 41
-            value: c
+        name:
+          span:
+            start: 40
+            end: 41
+          value: c
+        value:
+          span:
+            start: 44
+            end: 45
           value:
-            span:
-              start: 44
-              end: 45
-            value:
-              Constant:
-                Integer: 7
-          type_name: ~
+            Constant:
+              Integer: 7
+        type_name: ~
     - Expr:
         span:
           start: 48

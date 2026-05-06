@@ -6,47 +6,47 @@ input_file: samples/as2/op_precedence/bit_shifts.as
 Ok:
   initial_script:
     - Declare:
-        - name:
-            span:
-              start: 4
-              end: 5
-            value: a
+        name:
+          span:
+            start: 4
+            end: 5
+          value: a
+        value:
+          span:
+            start: 8
+            end: 10
           value:
-            span:
-              start: 8
-              end: 10
-            value:
-              Constant:
-                Integer: 16
-          type_name: ~
+            Constant:
+              Integer: 16
+        type_name: ~
     - Declare:
-        - name:
-            span:
-              start: 32
-              end: 33
-            value: b
+        name:
+          span:
+            start: 32
+            end: 33
+          value: b
+        value:
+          span:
+            start: 36
+            end: 37
           value:
-            span:
-              start: 36
-              end: 37
-            value:
-              Constant:
-                Integer: 2
-          type_name: ~
+            Constant:
+              Integer: 2
+        type_name: ~
     - Declare:
-        - name:
-            span:
-              start: 43
-              end: 44
-            value: c
+        name:
+          span:
+            start: 43
+            end: 44
+          value: c
+        value:
+          span:
+            start: 47
+            end: 48
           value:
-            span:
-              start: 47
-              end: 48
-            value:
-              Constant:
-                Integer: 1
-          type_name: ~
+            Constant:
+              Integer: 1
+        type_name: ~
     - Expr:
         span:
           start: 51

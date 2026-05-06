@@ -76,60 +76,60 @@ Ok:
                     Constant:
                       String: Point
     - Declare:
-        - name:
-            span:
-              start: 97
-              end: 105
-            value: myBitmap
+        name:
+          span:
+            start: 97
+            end: 105
+          value: myBitmap
+        value:
+          span:
+            start: 108
+            end: 131
           value:
-            span:
-              start: 108
-              end: 131
-            value:
-              New:
-                name:
-                  span:
-                    start: 112
-                    end: 122
+            New:
+              name:
+                span:
+                  start: 112
+                  end: 122
+                value:
+                  Field:
+                    - span:
+                        start: 112
+                        end: 122
+                      value:
+                        Field:
+                          - span:
+                              start: 112
+                              end: 122
+                            value:
+                              Constant:
+                                Identifier: flash
+                          - span:
+                              start: 112
+                              end: 122
+                            value:
+                              Constant:
+                                String: display
+                    - span:
+                        start: 112
+                        end: 122
+                      value:
+                        Constant:
+                          String: BitmapData
+              args:
+                - span:
+                    start: 123
+                    end: 126
                   value:
-                    Field:
-                      - span:
-                          start: 112
-                          end: 122
-                        value:
-                          Field:
-                            - span:
-                                start: 112
-                                end: 122
-                              value:
-                                Constant:
-                                  Identifier: flash
-                            - span:
-                                start: 112
-                                end: 122
-                              value:
-                                Constant:
-                                  String: display
-                      - span:
-                          start: 112
-                          end: 122
-                        value:
-                          Constant:
-                            String: BitmapData
-                args:
-                  - span:
-                      start: 123
-                      end: 126
-                    value:
-                      Constant:
-                        Integer: 100
-                  - span:
-                      start: 128
-                      end: 131
-                    value:
-                      Constant:
-                        Integer: 100
-          type_name: ~
+                    Constant:
+                      Integer: 100
+                - span:
+                    start: 128
+                    end: 131
+                  value:
+                    Constant:
+                      Integer: 100
+        type_name: ~
     - Expr:
         span:
           start: 134
@@ -143,60 +143,60 @@ Ok:
               Constant:
                 Identifier: myBitmap
     - Declare:
-        - name:
-            span:
-              start: 156
-              end: 163
-            value: myPoint
+        name:
+          span:
+            start: 156
+            end: 163
+          value: myPoint
+        value:
+          span:
+            start: 166
+            end: 182
           value:
-            span:
-              start: 166
-              end: 182
-            value:
-              New:
-                name:
-                  span:
-                    start: 170
-                    end: 175
+            New:
+              name:
+                span:
+                  start: 170
+                  end: 175
+                value:
+                  Field:
+                    - span:
+                        start: 170
+                        end: 175
+                      value:
+                        Field:
+                          - span:
+                              start: 170
+                              end: 175
+                            value:
+                              Constant:
+                                Identifier: flash
+                          - span:
+                              start: 170
+                              end: 175
+                            value:
+                              Constant:
+                                String: geom
+                    - span:
+                        start: 170
+                        end: 175
+                      value:
+                        Constant:
+                          String: Point
+              args:
+                - span:
+                    start: 176
+                    end: 178
                   value:
-                    Field:
-                      - span:
-                          start: 170
-                          end: 175
-                        value:
-                          Field:
-                            - span:
-                                start: 170
-                                end: 175
-                              value:
-                                Constant:
-                                  Identifier: flash
-                            - span:
-                                start: 170
-                                end: 175
-                              value:
-                                Constant:
-                                  String: geom
-                      - span:
-                          start: 170
-                          end: 175
-                        value:
-                          Constant:
-                            String: Point
-                args:
-                  - span:
-                      start: 176
-                      end: 178
-                    value:
-                      Constant:
-                        Integer: 10
-                  - span:
-                      start: 180
-                      end: 182
-                    value:
-                      Constant:
-                        Integer: 20
-          type_name: ~
+                    Constant:
+                      Integer: 10
+                - span:
+                    start: 180
+                    end: 182
+                  value:
+                    Constant:
+                      Integer: 20
+        type_name: ~
     - Expr:
         span:
           start: 185

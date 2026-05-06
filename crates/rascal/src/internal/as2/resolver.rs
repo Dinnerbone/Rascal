@@ -483,12 +483,22 @@ fn resolve_statement_box(
 
 fn resolve_statement(context: &mut ModuleContext, input: &ast::Statement) -> hir::StatementKind {
     match &input.value {
-        ast::StatementKind::Declare(declarations) => hir::StatementKind::Declare(
-            declarations
-                .iter()
-                .map(|d| resolve_declaration(context, d))
-                .collect(),
-        ),
+        ast::StatementKind::Declare(declarations) => {
+            if let Some(declaration) = declarations.first()
+                && declarations.len() == 1
+            {
+                hir::StatementKind::Declare(Box::new(resolve_declaration(context, declaration)))
+            } else {
+                hir::StatementKind::Block(
+                    declarations
+                        .iter()
+                        .map(|d| {
+                            hir::StatementKind::Declare(Box::new(resolve_declaration(context, d)))
+                        })
+                        .collect(),
+                )
+            }
+        }
         ast::StatementKind::Return(values) => {
             hir::StatementKind::Return(resolve_expr_vec(context, values))
         }

@@ -6,46 +6,46 @@ input_file: samples/as2/typeof.as
 Ok:
   initial_script:
     - Declare:
-        - name:
-            span:
-              start: 4
-              end: 7
-            value: num
+        name:
+          span:
+            start: 4
+            end: 7
+          value: num
+        value:
+          span:
+            start: 10
+            end: 11
           value:
-            span:
-              start: 10
-              end: 11
-            value:
-              Constant:
-                Integer: 1
-          type_name: ~
+            Constant:
+              Integer: 1
+        type_name: ~
     - Declare:
-        - name:
-            span:
-              start: 17
-              end: 20
-            value: obj
+        name:
+          span:
+            start: 17
+            end: 20
+          value: obj
+        value:
+          span:
+            start: 23
+            end: 45
           value:
-            span:
-              start: 23
-              end: 45
-            value:
-              InitObject:
-                - - num
-                  - span:
-                      start: 29
-                      end: 30
-                    value:
-                      Constant:
-                        Integer: 1
-                - - trace
-                  - span:
-                      start: 39
-                      end: 44
-                    value:
-                      Constant:
-                        Identifier: trace
-          type_name: ~
+            InitObject:
+              - - num
+                - span:
+                    start: 29
+                    end: 30
+                  value:
+                    Constant:
+                      Integer: 1
+              - - trace
+                - span:
+                    start: 39
+                    end: 44
+                  value:
+                    Constant:
+                      Identifier: trace
+        type_name: ~
     - Expr:
         span:
           start: 47

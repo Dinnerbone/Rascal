@@ -44,8 +44,8 @@ pub(crate) fn gen_statement(
     statement: &StatementKind,
 ) {
     match statement {
-        StatementKind::Declare(declarations) => {
-            gen_declarations(context, builder, declarations);
+        StatementKind::Declare(declaration) => {
+            gen_declaration(context, builder, declaration);
         }
         StatementKind::Return(exprs) => {
             for expr in exprs {
@@ -416,20 +416,18 @@ fn gen_ternary(
     builder.assume_stack_delta(-1);
 }
 
-fn gen_declarations(
+fn gen_declaration(
     context: &mut ScriptContext,
     builder: &mut CodeBuilder,
-    declarations: &[Declaration],
+    declaration: &Declaration,
 ) {
-    for declaration in declarations {
-        let value = context.constants.add(&declaration.name);
-        builder.push(value);
-        if let Some(value) = &declaration.value {
-            gen_expr(context, builder, value, false);
-            builder.action(Action::DefineLocal);
-        } else {
-            builder.action(Action::DefineLocal2);
-        }
+    let value = context.constants.add(&declaration.name);
+    builder.push(value);
+    if let Some(value) = &declaration.value {
+        gen_expr(context, builder, value, false);
+        builder.action(Action::DefineLocal);
+    } else {
+        builder.action(Action::DefineLocal2);
     }
 }
 

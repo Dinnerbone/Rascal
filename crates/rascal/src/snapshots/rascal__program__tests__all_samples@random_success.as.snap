@@ -6,19 +6,19 @@ input_file: samples/as2/random_success.as
 Ok:
   initial_script:
     - Declare:
-        - name:
-            span:
-              start: 4
-              end: 11
-            value: success
+        name:
+          span:
+            start: 4
+            end: 11
+          value: success
+        value:
+          span:
+            start: 14
+            end: 18
           value:
-            span:
-              start: 14
-              end: 18
-            value:
-              Constant:
-                Boolean: true
-          type_name: ~
+            Constant:
+              Boolean: true
+        type_name: ~
     - If:
         condition:
           span:

@@ -6,53 +6,53 @@ input_file: samples/as2/if_else.as
 Ok:
   initial_script:
     - Declare:
-        - name:
-            span:
-              start: 4
-              end: 13
-            value: condition
+        name:
+          span:
+            start: 4
+            end: 13
+          value: condition
+        value:
+          span:
+            start: 16
+            end: 20
           value:
-            span:
-              start: 16
-              end: 20
-            value:
-              Constant:
-                Boolean: true
-          type_name: ~
+            Constant:
+              Boolean: true
+        type_name: ~
     - Declare:
-        - name:
-            span:
-              start: 26
-              end: 27
-            value: x
+        name:
+          span:
+            start: 26
+            end: 27
+          value: x
+        value:
+          span:
+            start: 30
+            end: 31
           value:
-            span:
-              start: 30
-              end: 31
-            value:
-              Constant:
-                Integer: 1
-          type_name: ~
+            Constant:
+              Integer: 1
+        type_name: ~
     - Declare:
-        - name:
-            span:
-              start: 37
-              end: 38
-            value: y
+        name:
+          span:
+            start: 37
+            end: 38
+          value: y
+        value:
+          span:
+            start: 41
+            end: 43
           value:
-            span:
-              start: 41
-              end: 43
-            value:
-              UnaryOperator:
-                - Sub
-                - span:
-                    start: 42
-                    end: 43
-                  value:
-                    Constant:
-                      Integer: 1
-          type_name: ~
+            UnaryOperator:
+              - Sub
+              - span:
+                  start: 42
+                  end: 43
+                value:
+                  Constant:
+                    Integer: 1
+        type_name: ~
     - If:
         condition:
           span:

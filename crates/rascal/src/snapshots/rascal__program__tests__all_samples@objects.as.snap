@@ -6,32 +6,32 @@ input_file: samples/as2/objects.as
 Ok:
   initial_script:
     - Declare:
-        - name:
-            span:
-              start: 4
-              end: 5
-            value: o
+        name:
+          span:
+            start: 4
+            end: 5
+          value: o
+        value:
+          span:
+            start: 8
+            end: 25
           value:
-            span:
-              start: 8
-              end: 25
-            value:
-              InitObject:
-                - - a
-                  - span:
-                      start: 12
-                      end: 13
-                    value:
-                      Constant:
-                        Integer: 1
-                - - b
-                  - span:
-                      start: 18
-                      end: 24
-                    value:
-                      Constant:
-                        Identifier: Object
-          type_name: ~
+            InitObject:
+              - - a
+                - span:
+                    start: 12
+                    end: 13
+                  value:
+                    Constant:
+                      Integer: 1
+              - - b
+                - span:
+                    start: 18
+                    end: 24
+                  value:
+                    Constant:
+                      Identifier: Object
+        type_name: ~
     - Expr:
         span:
           start: 27

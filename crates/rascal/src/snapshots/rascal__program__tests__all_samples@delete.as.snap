@@ -6,39 +6,39 @@ input_file: samples/as2/delete.as
 Ok:
   initial_script:
     - Declare:
-        - name:
-            span:
-              start: 4
-              end: 7
-            value: num
+        name:
+          span:
+            start: 4
+            end: 7
+          value: num
+        value:
+          span:
+            start: 10
+            end: 11
           value:
-            span:
-              start: 10
-              end: 11
-            value:
-              Constant:
-                Integer: 1
-          type_name: ~
+            Constant:
+              Integer: 1
+        type_name: ~
     - Declare:
-        - name:
-            span:
-              start: 17
-              end: 20
-            value: obj
+        name:
+          span:
+            start: 17
+            end: 20
+          value: obj
+        value:
+          span:
+            start: 23
+            end: 31
           value:
-            span:
-              start: 23
-              end: 31
-            value:
-              InitObject:
-                - - num
-                  - span:
-                      start: 29
-                      end: 30
-                    value:
-                      Constant:
-                        Integer: 1
-          type_name: ~
+            InitObject:
+              - - num
+                - span:
+                    start: 29
+                    end: 30
+                  value:
+                    Constant:
+                      Integer: 1
+        type_name: ~
     - Expr:
         span:
           start: 33
@@ -98,25 +98,25 @@ Ok:
                         Constant:
                           Identifier: obj
     - Declare:
-        - name:
-            span:
-              start: 129
-              end: 132
-            value: obj
+        name:
+          span:
+            start: 129
+            end: 132
+          value: obj
+        value:
+          span:
+            start: 135
+            end: 143
           value:
-            span:
-              start: 135
-              end: 143
-            value:
-              InitObject:
-                - - num
-                  - span:
-                      start: 141
-                      end: 142
-                    value:
-                      Constant:
-                        Integer: 1
-          type_name: ~
+            InitObject:
+              - - num
+                - span:
+                    start: 141
+                    end: 142
+                  value:
+                    Constant:
+                      Integer: 1
+        type_name: ~
     - Expr:
         span:
           start: 145
@@ -158,25 +158,25 @@ Ok:
                               Constant:
                                 String: num
     - Declare:
-        - name:
-            span:
-              start: 203
-              end: 206
-            value: obj
+        name:
+          span:
+            start: 203
+            end: 206
+          value: obj
+        value:
+          span:
+            start: 209
+            end: 217
           value:
-            span:
-              start: 209
-              end: 217
-            value:
-              InitObject:
-                - - num
-                  - span:
-                      start: 215
-                      end: 216
-                    value:
-                      Constant:
-                        Integer: 1
-          type_name: ~
+            InitObject:
+              - - num
+                - span:
+                    start: 215
+                    end: 216
+                  value:
+                    Constant:
+                      Integer: 1
+        type_name: ~
     - Expr:
         span:
           start: 219
@@ -230,25 +230,25 @@ Ok:
                           Constant:
                             Integer: 1
     - Declare:
-        - name:
-            span:
-              start: 282
-              end: 285
-            value: obj
+        name:
+          span:
+            start: 282
+            end: 285
+          value: obj
+        value:
+          span:
+            start: 288
+            end: 296
           value:
-            span:
-              start: 288
-              end: 296
-            value:
-              InitObject:
-                - - num
-                  - span:
-                      start: 294
-                      end: 295
-                    value:
-                      Constant:
-                        Integer: 1
-          type_name: ~
+            InitObject:
+              - - num
+                - span:
+                    start: 294
+                    end: 295
+                  value:
+                    Constant:
+                      Integer: 1
+        type_name: ~
     - Expr:
         span:
           start: 298
@@ -310,25 +310,25 @@ Ok:
                           Constant:
                             String: ":("
     - Declare:
-        - name:
-            span:
-              start: 400
-              end: 403
-            value: obj
+        name:
+          span:
+            start: 400
+            end: 403
+          value: obj
+        value:
+          span:
+            start: 406
+            end: 414
           value:
-            span:
-              start: 406
-              end: 414
-            value:
-              InitObject:
-                - - num
-                  - span:
-                      start: 412
-                      end: 413
-                    value:
-                      Constant:
-                        Integer: 1
-          type_name: ~
+            InitObject:
+              - - num
+                - span:
+                    start: 412
+                    end: 413
+                  value:
+                    Constant:
+                      Integer: 1
+        type_name: ~
     - Expr:
         span:
           start: 416
@@ -398,32 +398,32 @@ Ok:
                                     Constant:
                                       String: num
     - Declare:
-        - name:
-            span:
-              start: 505
-              end: 508
-            value: obj
+        name:
+          span:
+            start: 505
+            end: 508
+          value: obj
+        value:
+          span:
+            start: 511
+            end: 533
           value:
-            span:
-              start: 511
-              end: 533
-            value:
-              InitObject:
-                - - num
-                  - span:
-                      start: 517
-                      end: 518
-                    value:
-                      Constant:
-                        Integer: 1
-                - - trace
-                  - span:
-                      start: 527
-                      end: 532
-                    value:
-                      Constant:
-                        Identifier: trace
-          type_name: ~
+            InitObject:
+              - - num
+                - span:
+                    start: 517
+                    end: 518
+                  value:
+                    Constant:
+                      Integer: 1
+              - - trace
+                - span:
+                    start: 527
+                    end: 532
+                  value:
+                    Constant:
+                      Identifier: trace
+        type_name: ~
     - Expr:
         span:
           start: 535
@@ -465,32 +465,32 @@ Ok:
                               Constant:
                                 String: trace
     - Declare:
-        - name:
-            span:
-              start: 597
-              end: 600
-            value: obj
+        name:
+          span:
+            start: 597
+            end: 600
+          value: obj
+        value:
+          span:
+            start: 603
+            end: 625
           value:
-            span:
-              start: 603
-              end: 625
-            value:
-              InitObject:
-                - - num
-                  - span:
-                      start: 609
-                      end: 610
-                    value:
-                      Constant:
-                        Integer: 1
-                - - trace
-                  - span:
-                      start: 619
-                      end: 624
-                    value:
-                      Constant:
-                        Identifier: trace
-          type_name: ~
+            InitObject:
+              - - num
+                - span:
+                    start: 609
+                    end: 610
+                  value:
+                    Constant:
+                      Integer: 1
+              - - trace
+                - span:
+                    start: 619
+                    end: 624
+                  value:
+                    Constant:
+                      Identifier: trace
+        type_name: ~
     - Expr:
         span:
           start: 627
