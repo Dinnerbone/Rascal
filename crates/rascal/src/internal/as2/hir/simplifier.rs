@@ -54,7 +54,7 @@ pub fn simplify(document: &mut Document) -> bool {
     };
 
     match document {
-        Document::Script(statements) => {
+        Document::Script { statements } => {
             for statement in statements {
                 simplifier.visit_statement(statement);
             }

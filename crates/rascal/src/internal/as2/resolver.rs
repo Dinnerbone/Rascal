@@ -135,7 +135,9 @@ pub fn resolve_hir<P: SourceProvider>(
 ) -> (hir::Document, Vec<ParsingError>, IndexSet<String>) {
     let mut context = ModuleContext::new(provider, is_script, expected_name.to_owned());
     let document = if is_script {
-        hir::Document::Script(resolve_statement_vec(&mut context, &ast.statements))
+        hir::Document::Script {
+            statements: resolve_statement_vec(&mut context, &ast.statements),
+        }
     } else {
         resolve_class_or_interface(&mut context, &ast.statements, expected_name)
     };

@@ -237,7 +237,7 @@ impl<P: SourceProvider> ProgramBuilder<P> {
                 &path,
                 "",
                 true,
-            ) && let hir::Document::Script(statements) = document
+            ) && let hir::Document::Script { statements } = document
             {
                 initial_script.extend(statements);
             }

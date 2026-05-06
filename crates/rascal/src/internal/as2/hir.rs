@@ -253,7 +253,7 @@ pub struct VirtualProperty {
 
 #[derive(Debug, Serialize)]
 pub enum Document {
-    Script(Vec<StatementKind>),
+    Script { statements: Vec<StatementKind> },
     Interface(Interface),
     Class(Box<Class>),
     Invalid,
