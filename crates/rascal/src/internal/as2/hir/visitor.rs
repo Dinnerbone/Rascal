@@ -26,10 +26,8 @@ pub trait MutVisitor {
 
 pub fn walk_statement<V: MutVisitor + ?Sized>(visitor: &mut V, statement: &mut StatementKind) {
     match statement {
-        StatementKind::Declare(declarations) => {
-            for declaration in declarations {
-                visitor.visit_declaration(declaration);
-            }
+        StatementKind::Declare(declaration) => {
+            visitor.visit_declaration(declaration);
         }
         StatementKind::Return(exprs) => {
             for expr in exprs {

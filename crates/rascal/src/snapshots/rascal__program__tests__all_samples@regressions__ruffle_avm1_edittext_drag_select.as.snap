@@ -6,26 +6,26 @@ input_file: samples/as2/regressions/ruffle_avm1_edittext_drag_select.as
 Ok:
   initial_script:
     - Declare:
-        - name:
-            span:
-              start: 4
-              end: 12
-            value: listener
+        name:
+          span:
+            start: 4
+            end: 12
+          value: listener
+        value:
+          span:
+            start: 15
+            end: 18
           value:
-            span:
-              start: 15
-              end: 18
-            value:
-              New:
-                name:
-                  span:
-                    start: 19
-                    end: 25
-                  value:
-                    Constant:
-                      Identifier: Object
-                args: []
-          type_name: ~
+            New:
+              name:
+                span:
+                  start: 19
+                  end: 25
+                value:
+                  Constant:
+                    Identifier: Object
+              args: []
+        type_name: ~
     - Expr:
         span:
           start: 37

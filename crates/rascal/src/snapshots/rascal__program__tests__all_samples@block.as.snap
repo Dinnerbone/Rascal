@@ -6,34 +6,34 @@ input_file: samples/as2/block.as
 Ok:
   initial_script:
     - Declare:
-        - name:
-            span:
-              start: 97
-              end: 104
-            value: outside
+        name:
+          span:
+            start: 97
+            end: 104
+          value: outside
+        value:
+          span:
+            start: 107
+            end: 116
           value:
-            span:
-              start: 107
-              end: 116
-            value:
-              Constant:
-                String: visible
-          type_name: ~
+            Constant:
+              String: visible
+        type_name: ~
     - Block:
         - Declare:
-            - name:
-                span:
-                  start: 128
-                  end: 134
-                value: inside
+            name:
+              span:
+                start: 128
+                end: 134
+              value: inside
+            value:
+              span:
+                start: 137
+                end: 146
               value:
-                span:
-                  start: 137
-                  end: 146
-                value:
-                  Constant:
-                    String: visible
-              type_name: ~
+                Constant:
+                  String: visible
+            type_name: ~
         - Expr:
             span:
               start: 152

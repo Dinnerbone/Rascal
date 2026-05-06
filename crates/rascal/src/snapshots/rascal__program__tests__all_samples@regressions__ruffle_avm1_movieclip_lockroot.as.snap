@@ -6,19 +6,19 @@ input_file: samples/as2/regressions/ruffle_avm1_movieclip_lockroot.as
 Ok:
   initial_script:
     - Declare:
-        - name:
-            span:
-              start: 4
-              end: 10
-            value: levels
+        name:
+          span:
+            start: 4
+            end: 10
+          value: levels
+        value:
+          span:
+            start: 13
+            end: 14
           value:
-            span:
-              start: 13
-              end: 14
-            value:
-              Constant:
-                Integer: 1
-          type_name: ~
+            Constant:
+              Integer: 1
+        type_name: ~
     - Expr:
         span:
           start: 17
@@ -37,80 +37,80 @@ Ok:
               return_type: ~
             body:
               - Declare:
-                  - name:
-                      span:
-                        start: 48
-                        end: 58
-                      value: valueLabel
+                  name:
+                    span:
+                      start: 48
+                      end: 58
+                    value: valueLabel
+                  value:
+                    span:
+                      start: 61
+                      end: 115
                     value:
-                      span:
-                        start: 61
-                        end: 115
-                      value:
-                        Ternary:
-                          condition:
-                            span:
-                              start: 68
-                              end: 85
-                            value:
-                              BinaryOperator:
-                                - Equal
-                                - span:
-                                    start: 61
-                                    end: 73
-                                  value:
-                                    TypeOf:
-                                      span:
-                                        start: 68
-                                        end: 73
+                      Ternary:
+                        condition:
+                          span:
+                            start: 68
+                            end: 85
+                          value:
+                            BinaryOperator:
+                              - Equal
+                              - span:
+                                  start: 61
+                                  end: 73
+                                value:
+                                  TypeOf:
+                                    span:
+                                      start: 68
+                                      end: 73
+                                    value:
+                                      Constant:
+                                        Identifier: value
+                              - span:
+                                  start: 77
+                                  end: 85
+                                value:
+                                  Constant:
+                                    String: string
+                        "yes":
+                          span:
+                            start: 88
+                            end: 107
+                          value:
+                            BinaryOperator:
+                              - Add
+                              - span:
+                                  start: 88
+                                  end: 100
+                                value:
+                                  BinaryOperator:
+                                    - Add
+                                    - span:
+                                        start: 88
+                                        end: 92
+                                      value:
+                                        Constant:
+                                          String: "\""
+                                    - span:
+                                        start: 95
+                                        end: 100
                                       value:
                                         Constant:
                                           Identifier: value
-                                - span:
-                                    start: 77
-                                    end: 85
-                                  value:
-                                    Constant:
-                                      String: string
-                          "yes":
-                            span:
-                              start: 88
-                              end: 107
-                            value:
-                              BinaryOperator:
-                                - Add
-                                - span:
-                                    start: 88
-                                    end: 100
-                                  value:
-                                    BinaryOperator:
-                                      - Add
-                                      - span:
-                                          start: 88
-                                          end: 92
-                                        value:
-                                          Constant:
-                                            String: "\""
-                                      - span:
-                                          start: 95
-                                          end: 100
-                                        value:
-                                          Constant:
-                                            Identifier: value
-                                - span:
-                                    start: 103
-                                    end: 107
-                                  value:
-                                    Constant:
-                                      String: "\""
-                          "no":
-                            span:
-                              start: 110
-                              end: 115
-                            value:
-                              Constant:
-                                Identifier: value
-                    type_name: ~
+                              - span:
+                                  start: 103
+                                  end: 107
+                                value:
+                                  Constant:
+                                    String: "\""
+                        "no":
+                          span:
+                            start: 110
+                            end: 115
+                          value:
+                            Constant:
+                              Identifier: value
+                  type_name: ~
               - Expr:
                   span:
                     start: 122

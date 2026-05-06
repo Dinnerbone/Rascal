@@ -6,33 +6,33 @@ input_file: samples/as2/operators.as
 Ok:
   initial_script:
     - Declare:
-        - name:
-            span:
-              start: 109
-              end: 110
-            value: a
+        name:
+          span:
+            start: 109
+            end: 110
+          value: a
+        value:
+          span:
+            start: 113
+            end: 115
           value:
-            span:
-              start: 113
-              end: 115
-            value:
-              Constant:
-                Integer: 10
-          type_name: ~
+            Constant:
+              Integer: 10
+        type_name: ~
     - Declare:
-        - name:
-            span:
-              start: 121
-              end: 122
-            value: b
+        name:
+          span:
+            start: 121
+            end: 122
+          value: b
+        value:
+          span:
+            start: 125
+            end: 126
           value:
-            span:
-              start: 125
-              end: 126
-            value:
-              Constant:
-                Integer: 3
-          type_name: ~
+            Constant:
+              Integer: 3
+        type_name: ~
     - Expr:
         span:
           start: 129
@@ -334,33 +334,33 @@ Ok:
                           Constant:
                             Identifier: a
     - Declare:
-        - name:
-            span:
-              start: 466
-              end: 471
-            value: hello
+        name:
+          span:
+            start: 466
+            end: 471
+          value: hello
+        value:
+          span:
+            start: 474
+            end: 481
           value:
-            span:
-              start: 474
-              end: 481
-            value:
-              Constant:
-                String: Hello
-          type_name: ~
+            Constant:
+              String: Hello
+        type_name: ~
     - Declare:
-        - name:
-            span:
-              start: 487
-              end: 492
-            value: world
+        name:
+          span:
+            start: 487
+            end: 492
+          value: world
+        value:
+          span:
+            start: 495
+            end: 502
           value:
-            span:
-              start: 495
-              end: 502
-            value:
-              Constant:
-                String: World
-          type_name: ~
+            Constant:
+              String: World
+        type_name: ~
     - Expr:
         span:
           start: 504
@@ -410,19 +410,19 @@ Ok:
                           Constant:
                             Identifier: world
     - Declare:
-        - name:
-            span:
-              start: 605
-              end: 606
-            value: x
+        name:
+          span:
+            start: 605
+            end: 606
+          value: x
+        value:
+          span:
+            start: 609
+            end: 610
           value:
-            span:
-              start: 609
-              end: 610
-            value:
-              Constant:
-                Integer: 5
-          type_name: ~
+            Constant:
+              Integer: 5
+        type_name: ~
     - Expr:
         span:
           start: 612
@@ -628,33 +628,33 @@ Ok:
                           Constant:
                             Integer: 2
     - Declare:
-        - name:
-            span:
-              start: 848
-              end: 852
-            value: five
+        name:
+          span:
+            start: 848
+            end: 852
+          value: five
+        value:
+          span:
+            start: 855
+            end: 856
           value:
-            span:
-              start: 855
-              end: 856
-            value:
-              Constant:
-                Integer: 5
-          type_name: ~
+            Constant:
+              Integer: 5
+        type_name: ~
     - Declare:
-        - name:
-            span:
-              start: 862
-              end: 867
-            value: three
+        name:
+          span:
+            start: 862
+            end: 867
+          value: three
+        value:
+          span:
+            start: 870
+            end: 871
           value:
-            span:
-              start: 870
-              end: 871
-            value:
-              Constant:
-                Integer: 3
-          type_name: ~
+            Constant:
+              Integer: 3
+        type_name: ~
     - Expr:
         span:
           start: 873
@@ -1274,47 +1274,47 @@ Ok:
                     Constant:
                       Identifier: five
     - Declare:
-        - name:
-            span:
-              start: 1650
-              end: 1653
-            value: six
+        name:
+          span:
+            start: 1650
+            end: 1653
+          value: six
+        value:
+          span:
+            start: 1656
+            end: 1657
           value:
-            span:
-              start: 1656
-              end: 1657
-            value:
-              Constant:
-                Integer: 6
-          type_name: ~
+            Constant:
+              Integer: 6
+        type_name: ~
     - Declare:
-        - name:
-            span:
-              start: 1663
-              end: 1668
-            value: seven
+        name:
+          span:
+            start: 1663
+            end: 1668
+          value: seven
+        value:
+          span:
+            start: 1671
+            end: 1672
           value:
-            span:
-              start: 1671
-              end: 1672
-            value:
-              Constant:
-                Integer: 7
-          type_name: ~
+            Constant:
+              Integer: 7
+        type_name: ~
     - Declare:
-        - name:
-            span:
-              start: 1678
-              end: 1686
-            value: sevenStr
+        name:
+          span:
+            start: 1678
+            end: 1686
+          value: sevenStr
+        value:
+          span:
+            start: 1689
+            end: 1692
           value:
-            span:
-              start: 1689
-              end: 1692
-            value:
-              Constant:
-                String: "7"
-          type_name: ~
+            Constant:
+              String: "7"
+        type_name: ~
     - Expr:
         span:
           start: 1694
@@ -1640,33 +1640,33 @@ Ok:
                           Constant:
                             Identifier: seven
     - Declare:
-        - name:
-            span:
-              start: 2204
-              end: 2205
-            value: t
+        name:
+          span:
+            start: 2204
+            end: 2205
+          value: t
+        value:
+          span:
+            start: 2208
+            end: 2212
           value:
-            span:
-              start: 2208
-              end: 2212
-            value:
-              Constant:
-                Boolean: true
-          type_name: ~
+            Constant:
+              Boolean: true
+        type_name: ~
     - Declare:
-        - name:
-            span:
-              start: 2218
-              end: 2219
-            value: f
+        name:
+          span:
+            start: 2218
+            end: 2219
+          value: f
+        value:
+          span:
+            start: 2222
+            end: 2227
           value:
-            span:
-              start: 2222
-              end: 2227
-            value:
-              Constant:
-                Boolean: false
-          type_name: ~
+            Constant:
+              Boolean: false
+        type_name: ~
     - Expr:
         span:
           start: 2229
@@ -1770,51 +1770,51 @@ Ok:
                           Constant:
                             Identifier: t
     - Declare:
-        - name:
-            span:
-              start: 2362
-              end: 2365
-            value: max
+        name:
+          span:
+            start: 2362
+            end: 2365
+          value: max
+        value:
+          span:
+            start: 2368
+            end: 2383
           value:
-            span:
-              start: 2368
-              end: 2383
-            value:
-              Ternary:
-                condition:
-                  span:
-                    start: 2369
-                    end: 2374
-                  value:
-                    BinaryOperator:
-                      - GreaterThan
-                      - span:
-                          start: 2369
-                          end: 2370
-                        value:
-                          Constant:
-                            Identifier: a
-                      - span:
-                          start: 2373
-                          end: 2374
-                        value:
-                          Constant:
-                            Identifier: b
-                "yes":
-                  span:
-                    start: 2378
-                    end: 2379
-                  value:
-                    Constant:
-                      Identifier: a
-                "no":
-                  span:
-                    start: 2382
-                    end: 2383
-                  value:
-                    Constant:
-                      Identifier: b
-          type_name: ~
+            Ternary:
+              condition:
+                span:
+                  start: 2369
+                  end: 2374
+                value:
+                  BinaryOperator:
+                    - GreaterThan
+                    - span:
+                        start: 2369
+                        end: 2370
+                      value:
+                        Constant:
+                          Identifier: a
+                    - span:
+                        start: 2373
+                        end: 2374
+                      value:
+                        Constant:
+                          Identifier: b
+              "yes":
+                span:
+                  start: 2378
+                  end: 2379
+                value:
+                  Constant:
+                    Identifier: a
+              "no":
+                span:
+                  start: 2382
+                  end: 2383
+                value:
+                  Constant:
+                    Identifier: b
+        type_name: ~
     - Expr:
         span:
           start: 2385
@@ -1840,25 +1840,25 @@ Ok:
                     Constant:
                       Identifier: max
     - Declare:
-        - name:
-            span:
-              start: 2458
-              end: 2461
-            value: obj
+        name:
+          span:
+            start: 2458
+            end: 2461
+          value: obj
+        value:
+          span:
+            start: 2464
+            end: 2478
           value:
-            span:
-              start: 2464
-              end: 2478
-            value:
-              InitObject:
-                - - key
-                  - span:
-                      start: 2470
-                      end: 2477
-                    value:
-                      Constant:
-                        String: value
-          type_name: ~
+            InitObject:
+              - - key
+                - span:
+                    start: 2470
+                    end: 2477
+                  value:
+                    Constant:
+                      String: value
+        type_name: ~
     - Expr:
         span:
           start: 2480

@@ -110,7 +110,7 @@ pub enum ConstantKind {
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
 pub enum StatementKind {
-    Declare(Vec<Declaration>),
+    Declare(Box<Declaration>),
     Return(Vec<Expr>),
     Throw(Vec<Expr>),
     Expr(Expr),

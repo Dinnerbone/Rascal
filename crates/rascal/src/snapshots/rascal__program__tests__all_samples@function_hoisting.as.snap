@@ -6,19 +6,19 @@ input_file: samples/as2/function_hoisting.as
 Ok:
   initial_script:
     - Declare:
-        - name:
-            span:
-              start: 4
-              end: 12
-            value: firstVar
+        name:
+          span:
+            start: 4
+            end: 12
+          value: firstVar
+        value:
+          span:
+            start: 15
+            end: 16
           value:
-            span:
-              start: 15
-              end: 16
-            value:
-              Constant:
-                Integer: 1
-          type_name: ~
+            Constant:
+              Integer: 1
+        type_name: ~
     - Expr:
         span:
           start: 18
@@ -187,19 +187,19 @@ Ok:
                 - secondVar
               could_reference_anything: false
     - Declare:
-        - name:
-            span:
-              start: 288
-              end: 297
-            value: secondVar
+        name:
+          span:
+            start: 288
+            end: 297
+          value: secondVar
+        value:
+          span:
+            start: 300
+            end: 301
           value:
-            span:
-              start: 300
-              end: 301
-            value:
-              Constant:
-                Integer: 2
-          type_name: ~
+            Constant:
+              Integer: 2
+        type_name: ~
     - Expr:
         span:
           start: 303

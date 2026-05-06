@@ -10,19 +10,19 @@ Ok:
           Classic:
             initialize:
               Declare:
-                - name:
-                    span:
-                      start: 9
-                      end: 10
-                    value: i
+                name:
+                  span:
+                    start: 9
+                    end: 10
+                  value: i
+                value:
+                  span:
+                    start: 13
+                    end: 14
                   value:
-                    span:
-                      start: 13
-                      end: 14
-                    value:
-                      Constant:
-                        Integer: 0
-                  type_name: ~
+                    Constant:
+                      Integer: 0
+                type_name: ~
             condition:
               - span:
                   start: 16
@@ -82,134 +82,134 @@ Ok:
                             Constant:
                               Identifier: i
             - Declare:
-                - name:
-                    span:
-                      start: 114
-                      end: 120
-                    value: decide
+                name:
+                  span:
+                    start: 114
+                    end: 120
+                  value: decide
+                value:
+                  span:
+                    start: 123
+                    end: 288
                   value:
-                    span:
-                      start: 123
-                      end: 288
-                    value:
-                      Function:
-                        signature:
-                          name: ~
-                          args:
-                            - name: v
-                              type_name: ~
-                          return_type: ~
-                        body:
-                          - If:
-                              condition:
-                                span:
-                                  start: 149
-                                  end: 155
-                                value:
-                                  BinaryOperator:
-                                    - Equal
+                    Function:
+                      signature:
+                        name: ~
+                        args:
+                          - name: v
+                            type_name: ~
+                        return_type: ~
+                      body:
+                        - If:
+                            condition:
+                              span:
+                                start: 149
+                                end: 155
+                              value:
+                                BinaryOperator:
+                                  - Equal
+                                  - span:
+                                      start: 149
+                                      end: 150
+                                    value:
+                                      Constant:
+                                        Identifier: v
+                                  - span:
+                                      start: 154
+                                      end: 155
+                                    value:
+                                      Constant:
+                                        Integer: 1
+                            "yes":
+                              Block:
+                                - Return:
                                     - span:
-                                        start: 149
-                                        end: 150
+                                        start: 178
+                                        end: 188
                                       value:
                                         Constant:
-                                          Identifier: v
+                                          String: continue
+                            "no": ~
+                        - If:
+                            condition:
+                              span:
+                                start: 212
+                                end: 218
+                              value:
+                                BinaryOperator:
+                                  - Equal
+                                  - span:
+                                      start: 212
+                                      end: 213
+                                    value:
+                                      Constant:
+                                        Identifier: v
+                                  - span:
+                                      start: 217
+                                      end: 218
+                                    value:
+                                      Constant:
+                                        Integer: 3
+                            "yes":
+                              Block:
+                                - Return:
                                     - span:
-                                        start: 154
-                                        end: 155
+                                        start: 241
+                                        end: 248
                                       value:
                                         Constant:
-                                          Integer: 1
-                              "yes":
-                                Block:
-                                  - Return:
-                                      - span:
-                                          start: 178
-                                          end: 188
-                                        value:
-                                          Constant:
-                                            String: continue
-                              "no": ~
-                          - If:
-                              condition:
-                                span:
-                                  start: 212
-                                  end: 218
-                                value:
-                                  BinaryOperator:
-                                    - Equal
-                                    - span:
-                                        start: 212
-                                        end: 213
-                                      value:
-                                        Constant:
-                                          Identifier: v
-                                    - span:
-                                        start: 217
-                                        end: 218
-                                      value:
-                                        Constant:
-                                          Integer: 3
-                              "yes":
-                                Block:
-                                  - Return:
-                                      - span:
-                                          start: 241
-                                          end: 248
-                                        value:
-                                          Constant:
-                                            String: break
-                              "no": ~
-                          - Return:
-                              - span:
-                                  start: 275
-                                  end: 281
-                                value:
-                                  Constant:
-                                    String: none
-                        scope:
-                          defined_variables:
-                            this:
-                              used: false
-                              used_in_inner_scope: false
-                            super:
-                              used: false
-                              used_in_inner_scope: false
-                            v:
-                              used: true
-                              used_in_inner_scope: false
-                          referenced_variables: []
-                          could_reference_anything: false
-                  type_name: ~
+                                          String: break
+                            "no": ~
+                        - Return:
+                            - span:
+                                start: 275
+                                end: 281
+                              value:
+                                Constant:
+                                  String: none
+                      scope:
+                        defined_variables:
+                          this:
+                            used: false
+                            used_in_inner_scope: false
+                          super:
+                            used: false
+                            used_in_inner_scope: false
+                          v:
+                            used: true
+                            used_in_inner_scope: false
+                        referenced_variables: []
+                        could_reference_anything: false
+                type_name: ~
             - Declare:
-                - name:
-                    span:
-                      start: 371
-                      end: 378
-                    value: naughty
+                name:
+                  span:
+                    start: 371
+                    end: 378
+                  value: naughty
+                value:
+                  span:
+                    start: 381
+                    end: 414
                   value:
-                    span:
-                      start: 381
-                      end: 414
-                    value:
-                      Function:
-                        signature:
-                          name: ~
-                          args: []
-                          return_type: ~
-                        body:
-                          - Break
-                        scope:
-                          defined_variables:
-                            this:
-                              used: false
-                              used_in_inner_scope: false
-                            super:
-                              used: false
-                              used_in_inner_scope: false
-                          referenced_variables: []
-                          could_reference_anything: false
-                  type_name: ~
+                    Function:
+                      signature:
+                        name: ~
+                        args: []
+                        return_type: ~
+                      body:
+                        - Break
+                      scope:
+                        defined_variables:
+                          this:
+                            used: false
+                            used_in_inner_scope: false
+                          super:
+                            used: false
+                            used_in_inner_scope: false
+                        referenced_variables: []
+                        could_reference_anything: false
+                type_name: ~
             - Expr:
                 span:
                   start: 420
@@ -225,32 +225,32 @@ Ok:
                           Identifier: naughty
                     args: []
             - Declare:
-                - name:
-                    span:
-                      start: 440
-                      end: 446
-                    value: action
+                name:
+                  span:
+                    start: 440
+                    end: 446
+                  value: action
+                value:
+                  span:
+                    start: 449
+                    end: 458
                   value:
-                    span:
-                      start: 449
-                      end: 458
-                    value:
-                      Call:
-                        name:
-                          span:
-                            start: 449
-                            end: 455
+                    Call:
+                      name:
+                        span:
+                          start: 449
+                          end: 455
+                        value:
+                          Constant:
+                            Identifier: decide
+                      args:
+                        - span:
+                            start: 456
+                            end: 457
                           value:
                             Constant:
-                              Identifier: decide
-                        args:
-                          - span:
-                              start: 456
-                              end: 457
-                            value:
-                              Constant:
-                                Identifier: i
-                  type_name: ~
+                              Identifier: i
+                type_name: ~
             - If:
                 condition:
                   span:

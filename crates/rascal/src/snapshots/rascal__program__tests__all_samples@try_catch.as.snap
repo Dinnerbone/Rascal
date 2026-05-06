@@ -32,19 +32,19 @@ Ok:
                     Constant:
                       String: try!
           - Declare:
-              - name:
-                  span:
-                    start: 67
-                    end: 74
-                  value: message
+              name:
+                span:
+                  start: 67
+                  end: 74
+                value: message
+              value:
+                span:
+                  start: 77
+                  end: 91
                 value:
-                  span:
-                    start: 77
-                    end: 91
-                  value:
-                    Constant:
-                      String: Hello World!
-                type_name: ~
+                  Constant:
+                    String: Hello World!
+              type_name: ~
           - Throw:
               - span:
                   start: 103
@@ -225,19 +225,19 @@ Ok:
     - Try:
         try_body:
           - Declare:
-              - name:
-                  span:
-                    start: 442
-                    end: 449
-                  value: message
+              name:
+                span:
+                  start: 442
+                  end: 449
+                value: message
+              value:
+                span:
+                  start: 452
+                  end: 461
                 value:
-                  span:
-                    start: 452
-                    end: 461
-                  value:
-                    Constant:
-                      String: message
-                type_name: ~
+                  Constant:
+                    String: message
+              type_name: ~
         typed_catches: []
         catch_all:
           name:
@@ -286,19 +286,19 @@ Ok:
     - Try:
         try_body:
           - Declare:
-              - name:
-                  span:
-                    start: 572
-                    end: 579
-                  value: message
+              name:
+                span:
+                  start: 572
+                  end: 579
+                value: message
+              value:
+                span:
+                  start: 582
+                  end: 591
                 value:
-                  span:
-                    start: 582
-                    end: 591
-                  value:
-                    Constant:
-                      String: message
-                type_name: ~
+                  Constant:
+                    String: message
+              type_name: ~
           - If:
               condition:
                 span:

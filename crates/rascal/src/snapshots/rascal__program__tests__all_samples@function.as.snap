@@ -50,103 +50,103 @@ Ok:
               referenced_variables: []
               could_reference_anything: false
     - Declare:
-        - name:
-            span:
-              start: 69
-              end: 73
-            value: anon
+        name:
+          span:
+            start: 69
+            end: 73
+          value: anon
+        value:
+          span:
+            start: 76
+            end: 172
           value:
-            span:
-              start: 76
-              end: 172
-            value:
-              Function:
-                signature:
-                  name: ~
-                  args:
-                    - name: a
-                      type_name: ~
-                    - name: b
-                      type_name: ~
-                  return_type: ~
-                body:
-                  - Expr:
-                      span:
-                        start: 96
-                        end: 131
-                      value:
-                        Trace:
-                          span:
-                            start: 102
-                            end: 130
-                          value:
-                            Constant:
-                              String: Anonymous function called!
-                  - Expr:
-                      span:
-                        start: 137
-                        end: 169
-                      value:
-                        Trace:
-                          span:
-                            start: 143
-                            end: 168
-                          value:
-                            BinaryOperator:
-                              - Add
-                              - span:
-                                  start: 143
-                                  end: 164
-                                value:
-                                  BinaryOperator:
-                                    - Add
-                                    - span:
-                                        start: 143
-                                        end: 153
-                                      value:
-                                        BinaryOperator:
-                                          - Add
-                                          - span:
-                                              start: 143
-                                              end: 149
-                                            value:
-                                              Constant:
-                                                String: "a = "
-                                          - span:
-                                              start: 152
-                                              end: 153
-                                            value:
-                                              Constant:
-                                                Identifier: a
-                                    - span:
-                                        start: 156
-                                        end: 164
-                                      value:
-                                        Constant:
-                                          String: ", b = "
-                              - span:
-                                  start: 167
-                                  end: 168
-                                value:
-                                  Constant:
-                                    Identifier: b
-                scope:
-                  defined_variables:
-                    this:
-                      used: false
-                      used_in_inner_scope: false
-                    super:
-                      used: false
-                      used_in_inner_scope: false
-                    a:
-                      used: true
-                      used_in_inner_scope: false
-                    b:
-                      used: true
-                      used_in_inner_scope: false
-                  referenced_variables: []
-                  could_reference_anything: false
-          type_name: ~
+            Function:
+              signature:
+                name: ~
+                args:
+                  - name: a
+                    type_name: ~
+                  - name: b
+                    type_name: ~
+                return_type: ~
+              body:
+                - Expr:
+                    span:
+                      start: 96
+                      end: 131
+                    value:
+                      Trace:
+                        span:
+                          start: 102
+                          end: 130
+                        value:
+                          Constant:
+                            String: Anonymous function called!
+                - Expr:
+                    span:
+                      start: 137
+                      end: 169
+                    value:
+                      Trace:
+                        span:
+                          start: 143
+                          end: 168
+                        value:
+                          BinaryOperator:
+                            - Add
+                            - span:
+                                start: 143
+                                end: 164
+                              value:
+                                BinaryOperator:
+                                  - Add
+                                  - span:
+                                      start: 143
+                                      end: 153
+                                    value:
+                                      BinaryOperator:
+                                        - Add
+                                        - span:
+                                            start: 143
+                                            end: 149
+                                          value:
+                                            Constant:
+                                              String: "a = "
+                                        - span:
+                                            start: 152
+                                            end: 153
+                                          value:
+                                            Constant:
+                                              Identifier: a
+                                  - span:
+                                      start: 156
+                                      end: 164
+                                    value:
+                                      Constant:
+                                        String: ", b = "
+                            - span:
+                                start: 167
+                                end: 168
+                              value:
+                                Constant:
+                                  Identifier: b
+              scope:
+                defined_variables:
+                  this:
+                    used: false
+                    used_in_inner_scope: false
+                  super:
+                    used: false
+                    used_in_inner_scope: false
+                  a:
+                    used: true
+                    used_in_inner_scope: false
+                  b:
+                    used: true
+                    used_in_inner_scope: false
+                referenced_variables: []
+                could_reference_anything: false
+        type_name: ~
     - Expr:
         span:
           start: 174

@@ -17,47 +17,47 @@ Ok:
               return_type: ~
             body:
               - Declare:
-                  - name:
-                      span:
-                        start: 18
-                        end: 19
-                      value: a
+                  name:
+                    span:
+                      start: 18
+                      end: 19
+                    value: a
+                  value:
+                    span:
+                      start: 22
+                      end: 31
                     value:
-                      span:
-                        start: 22
-                        end: 31
-                      value:
-                        Constant:
-                          String: outer_a
-                    type_name: ~
+                      Constant:
+                        String: outer_a
+                  type_name: ~
               - Declare:
-                  - name:
-                      span:
-                        start: 38
-                        end: 39
-                      value: b
+                  name:
+                    span:
+                      start: 38
+                      end: 39
+                    value: b
+                  value:
+                    span:
+                      start: 42
+                      end: 51
                     value:
-                      span:
-                        start: 42
-                        end: 51
-                      value:
-                        Constant:
-                          String: outer_b
-                    type_name: ~
+                      Constant:
+                        String: outer_b
+                  type_name: ~
               - Declare:
-                  - name:
-                      span:
-                        start: 58
-                        end: 59
-                      value: c
+                  name:
+                    span:
+                      start: 58
+                      end: 59
+                    value: c
+                  value:
+                    span:
+                      start: 62
+                      end: 71
                     value:
-                      span:
-                        start: 62
-                        end: 71
-                      value:
-                        Constant:
-                          String: outer_c
-                    type_name: ~
+                      Constant:
+                        String: outer_c
+                  type_name: ~
               - Block:
                   - Expr:
                       span:
@@ -79,19 +79,19 @@ Ok:
                               Constant:
                                 String: inner_a
                   - Declare:
-                      - name:
-                          span:
-                            start: 99
-                            end: 100
-                          value: b
+                      name:
+                        span:
+                          start: 99
+                          end: 100
+                        value: b
+                      value:
+                        span:
+                          start: 103
+                          end: 112
                         value:
-                          span:
-                            start: 103
-                            end: 112
-                          value:
-                            Constant:
-                              String: inner_b
-                        type_name: ~
+                          Constant:
+                            String: inner_b
+                      type_name: ~
             scope:
               defined_variables:
                 this:
@@ -123,47 +123,47 @@ Ok:
               return_type: ~
             body:
               - Declare:
-                  - name:
-                      span:
-                        start: 138
-                        end: 139
-                      value: a
+                  name:
+                    span:
+                      start: 138
+                      end: 139
+                    value: a
+                  value:
+                    span:
+                      start: 142
+                      end: 151
                     value:
-                      span:
-                        start: 142
-                        end: 151
-                      value:
-                        Constant:
-                          String: outer_a
-                    type_name: ~
+                      Constant:
+                        String: outer_a
+                  type_name: ~
               - Declare:
-                  - name:
-                      span:
-                        start: 158
-                        end: 159
-                      value: b
+                  name:
+                    span:
+                      start: 158
+                      end: 159
+                    value: b
+                  value:
+                    span:
+                      start: 162
+                      end: 171
                     value:
-                      span:
-                        start: 162
-                        end: 171
-                      value:
-                        Constant:
-                          String: outer_b
-                    type_name: ~
+                      Constant:
+                        String: outer_b
+                  type_name: ~
               - Declare:
-                  - name:
-                      span:
-                        start: 178
-                        end: 179
-                      value: c
+                  name:
+                    span:
+                      start: 178
+                      end: 179
+                    value: c
+                  value:
+                    span:
+                      start: 182
+                      end: 191
                     value:
-                      span:
-                        start: 182
-                        end: 191
-                      value:
-                        Constant:
-                          String: outer_c
-                    type_name: ~
+                      Constant:
+                        String: outer_c
+                  type_name: ~
               - If:
                   condition:
                     span:
@@ -194,19 +194,19 @@ Ok:
                                   Constant:
                                     String: inner_a
                       - Declare:
-                          - name:
-                              span:
-                                start: 228
-                                end: 229
-                              value: b
+                          name:
+                            span:
+                              start: 228
+                              end: 229
+                            value: b
+                          value:
+                            span:
+                              start: 232
+                              end: 241
                             value:
-                              span:
-                                start: 232
-                                end: 241
-                              value:
-                                Constant:
-                                  String: inner_b
-                            type_name: ~
+                              Constant:
+                                String: inner_b
+                          type_name: ~
                   "no": ~
             scope:
               defined_variables:
@@ -239,47 +239,47 @@ Ok:
               return_type: ~
             body:
               - Declare:
-                  - name:
-                      span:
-                        start: 267
-                        end: 268
-                      value: a
+                  name:
+                    span:
+                      start: 267
+                      end: 268
+                    value: a
+                  value:
+                    span:
+                      start: 271
+                      end: 280
                     value:
-                      span:
-                        start: 271
-                        end: 280
-                      value:
-                        Constant:
-                          String: outer_a
-                    type_name: ~
+                      Constant:
+                        String: outer_a
+                  type_name: ~
               - Declare:
-                  - name:
-                      span:
-                        start: 287
-                        end: 288
-                      value: b
+                  name:
+                    span:
+                      start: 287
+                      end: 288
+                    value: b
+                  value:
+                    span:
+                      start: 291
+                      end: 300
                     value:
-                      span:
-                        start: 291
-                        end: 300
-                      value:
-                        Constant:
-                          String: outer_b
-                    type_name: ~
+                      Constant:
+                        String: outer_b
+                  type_name: ~
               - Declare:
-                  - name:
-                      span:
-                        start: 307
-                        end: 308
-                      value: c
+                  name:
+                    span:
+                      start: 307
+                      end: 308
+                    value: c
+                  value:
+                    span:
+                      start: 311
+                      end: 320
                     value:
-                      span:
-                        start: 311
-                        end: 320
-                      value:
-                        Constant:
-                          String: outer_c
-                    type_name: ~
+                      Constant:
+                        String: outer_c
+                  type_name: ~
               - If:
                   condition:
                     span:
@@ -318,19 +318,19 @@ Ok:
                                   Constant:
                                     String: inner_a
                       - Declare:
-                          - name:
-                              span:
-                                start: 368
-                                end: 369
-                              value: b
+                          name:
+                            span:
+                              start: 368
+                              end: 369
+                            value: b
+                          value:
+                            span:
+                              start: 372
+                              end: 381
                             value:
-                              span:
-                                start: 372
-                                end: 381
-                              value:
-                                Constant:
-                                  String: inner_b
-                            type_name: ~
+                              Constant:
+                                String: inner_b
+                          type_name: ~
             scope:
               defined_variables:
                 this:
@@ -362,65 +362,65 @@ Ok:
               return_type: ~
             body:
               - Declare:
-                  - name:
-                      span:
-                        start: 407
-                        end: 408
-                      value: a
+                  name:
+                    span:
+                      start: 407
+                      end: 408
+                    value: a
+                  value:
+                    span:
+                      start: 411
+                      end: 420
                     value:
-                      span:
-                        start: 411
-                        end: 420
-                      value:
-                        Constant:
-                          String: outer_a
-                    type_name: ~
+                      Constant:
+                        String: outer_a
+                  type_name: ~
               - Declare:
-                  - name:
-                      span:
-                        start: 427
-                        end: 428
-                      value: b
+                  name:
+                    span:
+                      start: 427
+                      end: 428
+                    value: b
+                  value:
+                    span:
+                      start: 431
+                      end: 440
                     value:
-                      span:
-                        start: 431
-                        end: 440
-                      value:
-                        Constant:
-                          String: outer_b
-                    type_name: ~
+                      Constant:
+                        String: outer_b
+                  type_name: ~
               - Declare:
-                  - name:
-                      span:
-                        start: 447
-                        end: 448
-                      value: c
+                  name:
+                    span:
+                      start: 447
+                      end: 448
+                    value: c
+                  value:
+                    span:
+                      start: 451
+                      end: 460
                     value:
-                      span:
-                        start: 451
-                        end: 460
-                      value:
-                        Constant:
-                          String: outer_c
-                    type_name: ~
+                      Constant:
+                        String: outer_c
+                  type_name: ~
               - ForIn:
                   condition:
                     Classic:
                       initialize:
                         Declare:
-                          - name:
-                              span:
-                                start: 472
-                                end: 473
-                              value: i
+                          name:
+                            span:
+                              start: 472
+                              end: 473
+                            value: i
+                          value:
+                            span:
+                              start: 476
+                              end: 477
                             value:
-                              span:
-                                start: 476
-                                end: 477
-                              value:
-                                Constant:
-                                  Integer: 0
-                            type_name: ~
+                              Constant:
+                                Integer: 0
+                          type_name: ~
                       condition:
                         - span:
                             start: 479
@@ -475,19 +475,19 @@ Ok:
                                   Constant:
                                     String: inner_a
                       - Declare:
-                          - name:
-                              span:
-                                start: 516
-                                end: 517
-                              value: b
+                          name:
+                            span:
+                              start: 516
+                              end: 517
+                            value: b
+                          value:
+                            span:
+                              start: 520
+                              end: 529
                             value:
-                              span:
-                                start: 520
-                                end: 529
-                              value:
-                                Constant:
-                                  String: inner_b
-                            type_name: ~
+                              Constant:
+                                String: inner_b
+                          type_name: ~
             scope:
               defined_variables:
                 this:
@@ -522,61 +522,61 @@ Ok:
               return_type: ~
             body:
               - Declare:
-                  - name:
-                      span:
-                        start: 555
-                        end: 556
-                      value: a
+                  name:
+                    span:
+                      start: 555
+                      end: 556
+                    value: a
+                  value:
+                    span:
+                      start: 559
+                      end: 568
                     value:
-                      span:
-                        start: 559
-                        end: 568
-                      value:
-                        Constant:
-                          String: outer_a
-                    type_name: ~
+                      Constant:
+                        String: outer_a
+                  type_name: ~
               - Declare:
-                  - name:
-                      span:
-                        start: 575
-                        end: 576
-                      value: b
+                  name:
+                    span:
+                      start: 575
+                      end: 576
+                    value: b
+                  value:
+                    span:
+                      start: 579
+                      end: 588
                     value:
-                      span:
-                        start: 579
-                        end: 588
-                      value:
-                        Constant:
-                          String: outer_b
-                    type_name: ~
+                      Constant:
+                        String: outer_b
+                  type_name: ~
               - Declare:
-                  - name:
-                      span:
-                        start: 595
-                        end: 596
-                      value: c
+                  name:
+                    span:
+                      start: 595
+                      end: 596
+                    value: c
+                  value:
+                    span:
+                      start: 599
+                      end: 608
                     value:
-                      span:
-                        start: 599
-                        end: 608
-                      value:
-                        Constant:
-                          String: outer_c
-                    type_name: ~
+                      Constant:
+                        String: outer_c
+                  type_name: ~
               - Declare:
-                  - name:
-                      span:
-                        start: 615
-                        end: 616
-                      value: i
+                  name:
+                    span:
+                      start: 615
+                      end: 616
+                    value: i
+                  value:
+                    span:
+                      start: 619
+                      end: 620
                     value:
-                      span:
-                        start: 619
-                        end: 620
-                      value:
-                        Constant:
-                          Integer: 0
-                    type_name: ~
+                      Constant:
+                        Integer: 0
+                  type_name: ~
               - While:
                   condition:
                     span:
@@ -625,19 +625,19 @@ Ok:
                                   Constant:
                                     String: inner_a
                       - Declare:
-                          - name:
-                              span:
-                                start: 664
-                                end: 665
-                              value: b
+                          name:
+                            span:
+                              start: 664
+                              end: 665
+                            value: b
+                          value:
+                            span:
+                              start: 668
+                              end: 677
                             value:
-                              span:
-                                start: 668
-                                end: 677
-                              value:
-                                Constant:
-                                  String: inner_b
-                            type_name: ~
+                              Constant:
+                                String: inner_b
+                          type_name: ~
             scope:
               defined_variables:
                 this:
@@ -672,47 +672,47 @@ Ok:
               return_type: ~
             body:
               - Declare:
-                  - name:
-                      span:
-                        start: 703
-                        end: 704
-                      value: a
+                  name:
+                    span:
+                      start: 703
+                      end: 704
+                    value: a
+                  value:
+                    span:
+                      start: 707
+                      end: 716
                     value:
-                      span:
-                        start: 707
-                        end: 716
-                      value:
-                        Constant:
-                          String: outer_a
-                    type_name: ~
+                      Constant:
+                        String: outer_a
+                  type_name: ~
               - Declare:
-                  - name:
-                      span:
-                        start: 723
-                        end: 724
-                      value: b
+                  name:
+                    span:
+                      start: 723
+                      end: 724
+                    value: b
+                  value:
+                    span:
+                      start: 727
+                      end: 736
                     value:
-                      span:
-                        start: 727
-                        end: 736
-                      value:
-                        Constant:
-                          String: outer_b
-                    type_name: ~
+                      Constant:
+                        String: outer_b
+                  type_name: ~
               - Declare:
-                  - name:
-                      span:
-                        start: 743
-                        end: 744
-                      value: c
+                  name:
+                    span:
+                      start: 743
+                      end: 744
+                    value: c
+                  value:
+                    span:
+                      start: 747
+                      end: 756
                     value:
-                      span:
-                        start: 747
-                        end: 756
-                      value:
-                        Constant:
-                          String: outer_c
-                    type_name: ~
+                      Constant:
+                        String: outer_c
+                  type_name: ~
               - Switch:
                   target:
                     span:
@@ -751,19 +751,19 @@ Ok:
                                     String: inner_a
                     - Statement:
                         Declare:
-                          - name:
-                              span:
-                                start: 807
-                                end: 808
-                              value: b
+                          name:
+                            span:
+                              start: 807
+                              end: 808
+                            value: b
+                          value:
+                            span:
+                              start: 811
+                              end: 820
                             value:
-                              span:
-                                start: 811
-                                end: 820
-                              value:
-                                Constant:
-                                  String: inner_b
-                            type_name: ~
+                              Constant:
+                                String: inner_b
+                          type_name: ~
                     - Statement: Break
             scope:
               defined_variables:
@@ -796,47 +796,47 @@ Ok:
               return_type: ~
             body:
               - Declare:
-                  - name:
-                      span:
-                        start: 856
-                        end: 857
-                      value: a
+                  name:
+                    span:
+                      start: 856
+                      end: 857
+                    value: a
+                  value:
+                    span:
+                      start: 860
+                      end: 869
                     value:
-                      span:
-                        start: 860
-                        end: 869
-                      value:
-                        Constant:
-                          String: outer_a
-                    type_name: ~
+                      Constant:
+                        String: outer_a
+                  type_name: ~
               - Declare:
-                  - name:
-                      span:
-                        start: 876
-                        end: 877
-                      value: b
+                  name:
+                    span:
+                      start: 876
+                      end: 877
+                    value: b
+                  value:
+                    span:
+                      start: 880
+                      end: 889
                     value:
-                      span:
-                        start: 880
-                        end: 889
-                      value:
-                        Constant:
-                          String: outer_b
-                    type_name: ~
+                      Constant:
+                        String: outer_b
+                  type_name: ~
               - Declare:
-                  - name:
-                      span:
-                        start: 896
-                        end: 897
-                      value: c
+                  name:
+                    span:
+                      start: 896
+                      end: 897
+                    value: c
+                  value:
+                    span:
+                      start: 900
+                      end: 909
                     value:
-                      span:
-                        start: 900
-                        end: 909
-                      value:
-                        Constant:
-                          String: outer_c
-                    type_name: ~
+                      Constant:
+                        String: outer_c
+                  type_name: ~
               - Try:
                   try_body:
                     - Throw:
@@ -874,19 +874,19 @@ Ok:
                                   Constant:
                                     String: inner_a
                       - Declare:
-                          - name:
-                              span:
-                                start: 971
-                                end: 972
-                              value: b
+                          name:
+                            span:
+                              start: 971
+                              end: 972
+                            value: b
+                          value:
+                            span:
+                              start: 975
+                              end: 984
                             value:
-                              span:
-                                start: 975
-                                end: 984
-                              value:
-                                Constant:
-                                  String: inner_b
-                            type_name: ~
+                              Constant:
+                                String: inner_b
+                          type_name: ~
                   finally: []
             scope:
               defined_variables:
@@ -919,47 +919,47 @@ Ok:
               return_type: ~
             body:
               - Declare:
-                  - name:
-                      span:
-                        start: 1010
-                        end: 1011
-                      value: a
+                  name:
+                    span:
+                      start: 1010
+                      end: 1011
+                    value: a
+                  value:
+                    span:
+                      start: 1014
+                      end: 1023
                     value:
-                      span:
-                        start: 1014
-                        end: 1023
-                      value:
-                        Constant:
-                          String: outer_a
-                    type_name: ~
+                      Constant:
+                        String: outer_a
+                  type_name: ~
               - Declare:
-                  - name:
-                      span:
-                        start: 1030
-                        end: 1031
-                      value: b
+                  name:
+                    span:
+                      start: 1030
+                      end: 1031
+                    value: b
+                  value:
+                    span:
+                      start: 1034
+                      end: 1043
                     value:
-                      span:
-                        start: 1034
-                        end: 1043
-                      value:
-                        Constant:
-                          String: outer_b
-                    type_name: ~
+                      Constant:
+                        String: outer_b
+                  type_name: ~
               - Declare:
-                  - name:
-                      span:
-                        start: 1050
-                        end: 1051
-                      value: c
+                  name:
+                    span:
+                      start: 1050
+                      end: 1051
+                    value: c
+                  value:
+                    span:
+                      start: 1054
+                      end: 1063
                     value:
-                      span:
-                        start: 1054
-                        end: 1063
-                      value:
-                        Constant:
-                          String: outer_c
-                    type_name: ~
+                      Constant:
+                        String: outer_c
+                  type_name: ~
               - Try:
                   try_body:
                     - Expr:
@@ -982,19 +982,19 @@ Ok:
                                 Constant:
                                   String: try_a
                     - Declare:
-                        - name:
-                            span:
-                              start: 1093
-                              end: 1094
-                            value: b
+                        name:
+                          span:
+                            start: 1093
+                            end: 1094
+                          value: b
+                        value:
+                          span:
+                            start: 1097
+                            end: 1104
                           value:
-                            span:
-                              start: 1097
-                              end: 1104
-                            value:
-                              Constant:
-                                String: try_b
-                          type_name: ~
+                            Constant:
+                              String: try_b
+                        type_name: ~
                   typed_catches: []
                   catch_all: ~
                   finally:
@@ -1018,19 +1018,19 @@ Ok:
                                 Constant:
                                   String: finally_a
                     - Declare:
-                        - name:
-                            span:
-                              start: 1144
-                              end: 1145
-                            value: b
+                        name:
+                          span:
+                            start: 1144
+                            end: 1145
+                          value: b
+                        value:
+                          span:
+                            start: 1148
+                            end: 1159
                           value:
-                            span:
-                              start: 1148
-                              end: 1159
-                            value:
-                              Constant:
-                                String: finally_b
-                          type_name: ~
+                            Constant:
+                              String: finally_b
+                        type_name: ~
             scope:
               defined_variables:
                 this:
@@ -1062,47 +1062,47 @@ Ok:
               return_type: ~
             body:
               - Declare:
-                  - name:
-                      span:
-                        start: 1185
-                        end: 1186
-                      value: a
+                  name:
+                    span:
+                      start: 1185
+                      end: 1186
+                    value: a
+                  value:
+                    span:
+                      start: 1189
+                      end: 1198
                     value:
-                      span:
-                        start: 1189
-                        end: 1198
-                      value:
-                        Constant:
-                          String: outer_a
-                    type_name: ~
+                      Constant:
+                        String: outer_a
+                  type_name: ~
               - Declare:
-                  - name:
-                      span:
-                        start: 1205
-                        end: 1206
-                      value: b
+                  name:
+                    span:
+                      start: 1205
+                      end: 1206
+                    value: b
+                  value:
+                    span:
+                      start: 1209
+                      end: 1218
                     value:
-                      span:
-                        start: 1209
-                        end: 1218
-                      value:
-                        Constant:
-                          String: outer_b
-                    type_name: ~
+                      Constant:
+                        String: outer_b
+                  type_name: ~
               - Declare:
-                  - name:
-                      span:
-                        start: 1225
-                        end: 1226
-                      value: c
+                  name:
+                    span:
+                      start: 1225
+                      end: 1226
+                    value: c
+                  value:
+                    span:
+                      start: 1229
+                      end: 1238
                     value:
-                      span:
-                        start: 1229
-                        end: 1238
-                      value:
-                        Constant:
-                          String: outer_c
-                    type_name: ~
+                      Constant:
+                        String: outer_c
+                  type_name: ~
               - Expr:
                   span:
                     start: 1241
@@ -1138,19 +1138,19 @@ Ok:
                                     Constant:
                                       String: inner_a
                         - Declare:
-                            - name:
-                                span:
-                                  start: 1283
-                                  end: 1284
-                                value: b
+                            name:
+                              span:
+                                start: 1283
+                                end: 1284
+                              value: b
+                            value:
+                              span:
+                                start: 1287
+                                end: 1296
                               value:
-                                span:
-                                  start: 1287
-                                  end: 1296
-                                value:
-                                  Constant:
-                                    String: inner_b
-                              type_name: ~
+                                Constant:
+                                  String: inner_b
+                            type_name: ~
                       scope:
                         defined_variables:
                           this:
@@ -1211,67 +1211,67 @@ Ok:
               return_type: ~
             body:
               - Declare:
-                  - name:
-                      span:
-                        start: 1332
-                        end: 1333
-                      value: a
+                  name:
+                    span:
+                      start: 1332
+                      end: 1333
+                    value: a
+                  value:
+                    span:
+                      start: 1336
+                      end: 1345
                     value:
-                      span:
-                        start: 1336
-                        end: 1345
-                      value:
-                        Constant:
-                          String: outer_a
-                    type_name: ~
+                      Constant:
+                        String: outer_a
+                  type_name: ~
               - Declare:
-                  - name:
-                      span:
-                        start: 1352
-                        end: 1353
-                      value: b
+                  name:
+                    span:
+                      start: 1352
+                      end: 1353
+                    value: b
+                  value:
+                    span:
+                      start: 1356
+                      end: 1365
                     value:
-                      span:
-                        start: 1356
-                        end: 1365
-                      value:
-                        Constant:
-                          String: outer_b
-                    type_name: ~
+                      Constant:
+                        String: outer_b
+                  type_name: ~
               - Declare:
-                  - name:
-                      span:
-                        start: 1372
-                        end: 1373
-                      value: c
+                  name:
+                    span:
+                      start: 1372
+                      end: 1373
+                    value: c
+                  value:
+                    span:
+                      start: 1376
+                      end: 1385
                     value:
-                      span:
-                        start: 1376
-                        end: 1385
-                      value:
-                        Constant:
-                          String: outer_c
-                    type_name: ~
+                      Constant:
+                        String: outer_c
+                  type_name: ~
               - Declare:
-                  - name:
-                      span:
-                        start: 1392
-                        end: 1395
-                      value: obj
+                  name:
+                    span:
+                      start: 1392
+                      end: 1395
+                    value: obj
+                  value:
+                    span:
+                      start: 1398
+                      end: 1406
                     value:
-                      span:
-                        start: 1398
-                        end: 1406
-                      value:
-                        InitObject:
-                          - - x
-                            - span:
-                                start: 1403
-                                end: 1404
-                              value:
-                                Constant:
-                                  Integer: 1
-                    type_name: ~
+                      InitObject:
+                        - - x
+                          - span:
+                              start: 1403
+                              end: 1404
+                            value:
+                              Constant:
+                                Integer: 1
+                  type_name: ~
               - ForIn:
                   condition:
                     Enumerate:
@@ -1306,19 +1306,19 @@ Ok:
                                   Constant:
                                     String: inner_a
                       - Declare:
-                          - name:
-                              span:
-                                start: 1453
-                                end: 1454
-                              value: b
+                          name:
+                            span:
+                              start: 1453
+                              end: 1454
+                            value: b
+                          value:
+                            span:
+                              start: 1457
+                              end: 1466
                             value:
-                              span:
-                                start: 1457
-                                end: 1466
-                              value:
-                                Constant:
-                                  String: inner_b
-                            type_name: ~
+                              Constant:
+                                String: inner_b
+                          type_name: ~
             scope:
               defined_variables:
                 this:
@@ -1353,19 +1353,19 @@ Ok:
               return_type: ~
             body:
               - Declare:
-                  - name:
-                      span:
-                        start: 1492
-                        end: 1493
-                      value: a
+                  name:
+                    span:
+                      start: 1492
+                      end: 1493
+                    value: a
+                  value:
+                    span:
+                      start: 1496
+                      end: 1505
                     value:
-                      span:
-                        start: 1496
-                        end: 1505
-                      value:
-                        Constant:
-                          String: outer_a
-                    type_name: ~
+                      Constant:
+                        String: outer_a
+                  type_name: ~
               - Expr:
                   span:
                     start: 1508
@@ -1449,19 +1449,19 @@ Ok:
               return_type: ~
             body:
               - Declare:
-                  - name:
-                      span:
-                        start: 1666
-                        end: 1667
-                      value: a
+                  name:
+                    span:
+                      start: 1666
+                      end: 1667
+                    value: a
+                  value:
+                    span:
+                      start: 1670
+                      end: 1673
                     value:
-                      span:
-                        start: 1670
-                        end: 1673
-                      value:
-                        Constant:
-                          String: a
-                    type_name: ~
+                      Constant:
+                        String: a
+                  type_name: ~
               - Expr:
                   span:
                     start: 1763

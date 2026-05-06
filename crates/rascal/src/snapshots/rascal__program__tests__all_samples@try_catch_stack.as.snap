@@ -6,150 +6,150 @@ input_file: samples/as2/try_catch_stack.as
 Ok:
   initial_script:
     - Declare:
-        - name:
-            span:
-              start: 4
-              end: 7
-            value: bad
+        name:
+          span:
+            start: 4
+            end: 7
+          value: bad
+        value:
+          span:
+            start: 10
+            end: 46
           value:
-            span:
-              start: 10
-              end: 46
-            value:
-              Function:
-                signature:
-                  name: ~
-                  args: []
-                  return_type: ~
-                body:
-                  - Throw:
-                      - span:
-                          start: 33
-                          end: 43
-                        value:
-                          Constant:
-                            String: oh noes!
-                scope:
-                  defined_variables:
-                    this:
-                      used: false
-                      used_in_inner_scope: false
-                    super:
-                      used: false
-                      used_in_inner_scope: false
-                  referenced_variables: []
-                  could_reference_anything: false
-          type_name: ~
+            Function:
+              signature:
+                name: ~
+                args: []
+                return_type: ~
+              body:
+                - Throw:
+                    - span:
+                        start: 33
+                        end: 43
+                      value:
+                        Constant:
+                          String: oh noes!
+              scope:
+                defined_variables:
+                  this:
+                    used: false
+                    used_in_inner_scope: false
+                  super:
+                    used: false
+                    used_in_inner_scope: false
+                referenced_variables: []
+                could_reference_anything: false
+        type_name: ~
     - Declare:
-        - name:
-            span:
-              start: 53
-              end: 56
-            value: foo
+        name:
+          span:
+            start: 53
+            end: 56
+          value: foo
+        value:
+          span:
+            start: 59
+            end: 188
           value:
-            span:
-              start: 59
-              end: 188
-            value:
-              Function:
-                signature:
-                  name: ~
-                  args: []
-                  return_type: ~
-                body:
-                  - Try:
-                      try_body:
-                        - Return:
-                            - span:
-                                start: 97
-                                end: 112
-                              value:
-                                BinaryOperator:
-                                  - Add
-                                  - span:
-                                      start: 97
-                                      end: 98
-                                    value:
-                                      Constant:
-                                        Integer: 1
-                                  - span:
-                                      start: 102
-                                      end: 111
-                                    value:
-                                      BinaryOperator:
-                                        - Add
-                                        - span:
-                                            start: 102
-                                            end: 103
-                                          value:
-                                            Constant:
-                                              Integer: 1
-                                        - span:
-                                            start: 106
-                                            end: 111
-                                          value:
-                                            Call:
-                                              name:
-                                                span:
-                                                  start: 106
-                                                  end: 109
-                                                value:
-                                                  Constant:
-                                                    Identifier: bad
-                                              args: []
-                      typed_catches: []
-                      catch_all:
-                        name:
-                          span:
-                            start: 127
-                            end: 128
-                          value: e
-                        body:
-                          - Expr:
-                              span:
-                                start: 140
-                                end: 161
-                              value:
-                                Trace:
-                                  span:
-                                    start: 146
-                                    end: 160
+            Function:
+              signature:
+                name: ~
+                args: []
+                return_type: ~
+              body:
+                - Try:
+                    try_body:
+                      - Return:
+                          - span:
+                              start: 97
+                              end: 112
+                            value:
+                              BinaryOperator:
+                                - Add
+                                - span:
+                                    start: 97
+                                    end: 98
+                                  value:
+                                    Constant:
+                                      Integer: 1
+                                - span:
+                                    start: 102
+                                    end: 111
                                   value:
                                     BinaryOperator:
                                       - Add
                                       - span:
-                                          start: 146
-                                          end: 156
+                                          start: 102
+                                          end: 103
                                         value:
                                           Constant:
-                                            String: "caught: "
+                                            Integer: 1
                                       - span:
-                                          start: 159
-                                          end: 160
+                                          start: 106
+                                          end: 111
                                         value:
-                                          Constant:
-                                            Identifier: e
-                          - Return:
-                              - span:
-                                  start: 178
-                                  end: 179
+                                          Call:
+                                            name:
+                                              span:
+                                                start: 106
+                                                end: 109
+                                              value:
+                                                Constant:
+                                                  Identifier: bad
+                                            args: []
+                    typed_catches: []
+                    catch_all:
+                      name:
+                        span:
+                          start: 127
+                          end: 128
+                        value: e
+                      body:
+                        - Expr:
+                            span:
+                              start: 140
+                              end: 161
+                            value:
+                              Trace:
+                                span:
+                                  start: 146
+                                  end: 160
                                 value:
-                                  Constant:
-                                    Integer: 5
-                      finally: []
-                scope:
-                  defined_variables:
-                    this:
-                      used: false
-                      used_in_inner_scope: false
-                    super:
-                      used: false
-                      used_in_inner_scope: false
-                  referenced_variables:
-                    - bad
-                    - e
-                  could_reference_anything: false
-          type_name: ~
+                                  BinaryOperator:
+                                    - Add
+                                    - span:
+                                        start: 146
+                                        end: 156
+                                      value:
+                                        Constant:
+                                          String: "caught: "
+                                    - span:
+                                        start: 159
+                                        end: 160
+                                      value:
+                                        Constant:
+                                          Identifier: e
+                        - Return:
+                            - span:
+                                start: 178
+                                end: 179
+                              value:
+                                Constant:
+                                  Integer: 5
+                    finally: []
+              scope:
+                defined_variables:
+                  this:
+                    used: false
+                    used_in_inner_scope: false
+                  super:
+                    used: false
+                    used_in_inner_scope: false
+                referenced_variables:
+                  - bad
+                  - e
+                could_reference_anything: false
+        type_name: ~
     - Expr:
         span:
           start: 191

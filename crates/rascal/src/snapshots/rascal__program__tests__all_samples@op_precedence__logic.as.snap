@@ -6,47 +6,47 @@ input_file: samples/as2/op_precedence/logic.as
 Ok:
   initial_script:
     - Declare:
-        - name:
-            span:
-              start: 17
-              end: 18
-            value: a
+        name:
+          span:
+            start: 17
+            end: 18
+          value: a
+        value:
+          span:
+            start: 21
+            end: 25
           value:
-            span:
-              start: 21
-              end: 25
-            value:
-              Constant:
-                Boolean: true
-          type_name: ~
+            Constant:
+              Boolean: true
+        type_name: ~
     - Declare:
-        - name:
-            span:
-              start: 31
-              end: 32
-            value: b
+        name:
+          span:
+            start: 31
+            end: 32
+          value: b
+        value:
+          span:
+            start: 35
+            end: 40
           value:
-            span:
-              start: 35
-              end: 40
-            value:
-              Constant:
-                Boolean: false
-          type_name: ~
+            Constant:
+              Boolean: false
+        type_name: ~
     - Declare:
-        - name:
-            span:
-              start: 46
-              end: 47
-            value: c
+        name:
+          span:
+            start: 46
+            end: 47
+          value: c
+        value:
+          span:
+            start: 50
+            end: 54
           value:
-            span:
-              start: 50
-              end: 54
-            value:
-              Constant:
-                Boolean: true
-          type_name: ~
+            Constant:
+              Boolean: true
+        type_name: ~
     - Expr:
         span:
           start: 57
@@ -624,47 +624,47 @@ Ok:
               Constant:
                 String: "---"
     - Declare:
-        - name:
-            span:
-              start: 825
-              end: 826
-            value: x
+        name:
+          span:
+            start: 825
+            end: 826
+          value: x
+        value:
+          span:
+            start: 829
+            end: 834
           value:
-            span:
-              start: 829
-              end: 834
-            value:
-              Constant:
-                Boolean: false
-          type_name: ~
+            Constant:
+              Boolean: false
+        type_name: ~
     - Declare:
-        - name:
-            span:
-              start: 840
-              end: 841
-            value: y
+        name:
+          span:
+            start: 840
+            end: 841
+          value: y
+        value:
+          span:
+            start: 844
+            end: 848
           value:
-            span:
-              start: 844
-              end: 848
-            value:
-              Constant:
-                Boolean: true
-          type_name: ~
+            Constant:
+              Boolean: true
+        type_name: ~
     - Declare:
-        - name:
-            span:
-              start: 854
-              end: 855
-            value: z
+        name:
+          span:
+            start: 854
+            end: 855
+          value: z
+        value:
+          span:
+            start: 858
+            end: 863
           value:
-            span:
-              start: 858
-              end: 863
-            value:
-              Constant:
-                Boolean: false
-          type_name: ~
+            Constant:
+              Boolean: false
+        type_name: ~
     - Expr:
         span:
           start: 865

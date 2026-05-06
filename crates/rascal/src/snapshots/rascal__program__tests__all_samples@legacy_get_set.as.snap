@@ -6,33 +6,33 @@ input_file: samples/as2/legacy_get_set.as
 Ok:
   initial_script:
     - Declare:
-        - name:
-            span:
-              start: 4
-              end: 5
-            value: y
+        name:
+          span:
+            start: 4
+            end: 5
+          value: y
+        value:
+          span:
+            start: 8
+            end: 9
           value:
-            span:
-              start: 8
-              end: 9
-            value:
-              Constant:
-                Integer: 5
-          type_name: ~
+            Constant:
+              Integer: 5
+        type_name: ~
     - Declare:
-        - name:
-            span:
-              start: 15
-              end: 16
-            value: x
+        name:
+          span:
+            start: 15
+            end: 16
+          value: x
+        value:
+          span:
+            start: 19
+            end: 22
           value:
-            span:
-              start: 19
-              end: 22
-            value:
-              Constant:
-                String: y
-          type_name: ~
+            Constant:
+              String: y
+        type_name: ~
     - Expr:
         span:
           start: 24

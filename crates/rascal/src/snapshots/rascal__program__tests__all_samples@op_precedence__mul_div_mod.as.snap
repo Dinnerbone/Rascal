@@ -6,47 +6,47 @@ input_file: samples/as2/op_precedence/mul_div_mod.as
 Ok:
   initial_script:
     - Declare:
-        - name:
-            span:
-              start: 75
-              end: 76
-            value: a
+        name:
+          span:
+            start: 75
+            end: 76
+          value: a
+        value:
+          span:
+            start: 79
+            end: 81
           value:
-            span:
-              start: 79
-              end: 81
-            value:
-              Constant:
-                Integer: 20
-          type_name: ~
+            Constant:
+              Integer: 20
+        type_name: ~
     - Declare:
-        - name:
-            span:
-              start: 87
-              end: 88
-            value: b
+        name:
+          span:
+            start: 87
+            end: 88
+          value: b
+        value:
+          span:
+            start: 91
+            end: 92
           value:
-            span:
-              start: 91
-              end: 92
-            value:
-              Constant:
-                Integer: 6
-          type_name: ~
+            Constant:
+              Integer: 6
+        type_name: ~
     - Declare:
-        - name:
-            span:
-              start: 98
-              end: 99
-            value: c
+        name:
+          span:
+            start: 98
+            end: 99
+          value: c
+        value:
+          span:
+            start: 102
+            end: 103
           value:
-            span:
-              start: 102
-              end: 103
-            value:
-              Constant:
-                Integer: 4
-          type_name: ~
+            Constant:
+              Integer: 4
+        type_name: ~
     - Expr:
         span:
           start: 131

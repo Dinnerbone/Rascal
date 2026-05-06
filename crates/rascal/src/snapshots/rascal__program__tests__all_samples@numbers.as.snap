@@ -6,497 +6,497 @@ input_file: samples/as2/numbers.as
 Ok:
   initial_script:
     - Declare:
-        - name:
-            span:
-              start: 24
-              end: 26
-            value: i0
+        name:
+          span:
+            start: 24
+            end: 26
+          value: i0
+        value:
+          span:
+            start: 29
+            end: 30
           value:
-            span:
-              start: 29
-              end: 30
-            value:
-              Constant:
-                Integer: 0
-          type_name: ~
+            Constant:
+              Integer: 0
+        type_name: ~
     - Declare:
-        - name:
-            span:
-              start: 36
-              end: 38
-            value: i1
+        name:
+          span:
+            start: 36
+            end: 38
+          value: i1
+        value:
+          span:
+            start: 41
+            end: 42
           value:
-            span:
-              start: 41
-              end: 42
-            value:
-              Constant:
-                Integer: 1
-          type_name: ~
+            Constant:
+              Integer: 1
+        type_name: ~
     - Declare:
-        - name:
-            span:
-              start: 48
-              end: 51
-            value: i42
+        name:
+          span:
+            start: 48
+            end: 51
+          value: i42
+        value:
+          span:
+            start: 54
+            end: 56
           value:
-            span:
-              start: 54
-              end: 56
-            value:
-              Constant:
-                Integer: 42
-          type_name: ~
+            Constant:
+              Integer: 42
+        type_name: ~
     - Declare:
-        - name:
-            span:
-              start: 62
-              end: 68
-            value: iLarge
+        name:
+          span:
+            start: 62
+            end: 68
+          value: iLarge
+        value:
+          span:
+            start: 71
+            end: 81
           value:
-            span:
-              start: 71
-              end: 81
-            value:
-              Constant:
-                Integer: 2147483647
-          type_name: ~
+            Constant:
+              Integer: 2147483647
+        type_name: ~
     - Declare:
-        - name:
-            span:
-              start: 98
-              end: 111
-            value: iLargePlusOne
+        name:
+          span:
+            start: 98
+            end: 111
+          value: iLargePlusOne
+        value:
+          span:
+            start: 114
+            end: 124
           value:
-            span:
-              start: 114
-              end: 124
-            value:
-              Constant:
-                Float: 2147483648
-          type_name: ~
+            Constant:
+              Float: 2147483648
+        type_name: ~
     - Declare:
-        - name:
-            span:
-              start: 175
-              end: 177
-            value: f0
+        name:
+          span:
+            start: 175
+            end: 177
+          value: f0
+        value:
+          span:
+            start: 180
+            end: 183
           value:
-            span:
-              start: 180
-              end: 183
-            value:
-              Constant:
-                Float: 0
-          type_name: ~
+            Constant:
+              Float: 0
+        type_name: ~
     - Declare:
-        - name:
-            span:
-              start: 189
-              end: 191
-            value: f1
+        name:
+          span:
+            start: 189
+            end: 191
+          value: f1
+        value:
+          span:
+            start: 194
+            end: 198
           value:
-            span:
-              start: 194
-              end: 198
-            value:
-              Constant:
-                Float: 1.23
-          type_name: ~
+            Constant:
+              Float: 1.23
+        type_name: ~
     - Declare:
-        - name:
-            span:
-              start: 204
-              end: 215
-            value: fLeadingDot
+        name:
+          span:
+            start: 204
+            end: 215
+          value: fLeadingDot
+        value:
+          span:
+            start: 218
+            end: 220
           value:
-            span:
-              start: 218
-              end: 220
-            value:
-              Constant:
-                Float: 0.5
-          type_name: ~
+            Constant:
+              Float: 0.5
+        type_name: ~
     - Declare:
-        - name:
-            span:
-              start: 242
-              end: 254
-            value: fTrailingDot
+        name:
+          span:
+            start: 242
+            end: 254
+          value: fTrailingDot
+        value:
+          span:
+            start: 257
+            end: 259
           value:
-            span:
-              start: 257
-              end: 259
-            value:
-              Constant:
-                Float: 5
-          type_name: ~
+            Constant:
+              Float: 5
+        type_name: ~
     - Declare:
-        - name:
-            span:
-              start: 328
-              end: 330
-            value: h0
+        name:
+          span:
+            start: 328
+            end: 330
+          value: h0
+        value:
+          span:
+            start: 333
+            end: 336
           value:
-            span:
-              start: 333
-              end: 336
-            value:
-              Constant:
-                Integer: 0
-          type_name: ~
+            Constant:
+              Integer: 0
+        type_name: ~
     - Declare:
-        - name:
-            span:
-              start: 342
-              end: 346
-            value: hMix
+        name:
+          span:
+            start: 342
+            end: 346
+          value: hMix
+        value:
+          span:
+            start: 349
+            end: 355
           value:
-            span:
-              start: 349
-              end: 355
-            value:
-              Constant:
-                Integer: 6699
-          type_name: ~
+            Constant:
+              Integer: 6699
+        type_name: ~
     - Declare:
-        - name:
-            span:
-              start: 361
-              end: 369
-            value: hMaxByte
+        name:
+          span:
+            start: 361
+            end: 369
+          value: hMaxByte
+        value:
+          span:
+            start: 372
+            end: 376
           value:
-            span:
-              start: 372
-              end: 376
-            value:
-              Constant:
-                Integer: 255
-          type_name: ~
+            Constant:
+              Integer: 255
+        type_name: ~
     - Declare:
-        - name:
-            span:
-              start: 404
-              end: 408
-            value: eBig
+        name:
+          span:
+            start: 404
+            end: 408
+          value: eBig
+        value:
+          span:
+            start: 411
+            end: 415
           value:
-            span:
-              start: 411
-              end: 415
-            value:
-              Constant:
-                Float: 10000000000
-          type_name: ~
+            Constant:
+              Float: 10000000000
+        type_name: ~
     - Declare:
-        - name:
-            span:
-              start: 421
-              end: 427
-            value: eSmall
+        name:
+          span:
+            start: 421
+            end: 427
+          value: eSmall
+        value:
+          span:
+            start: 430
+            end: 435
           value:
-            span:
-              start: 430
-              end: 435
-            value:
-              Constant:
-                Float: 0.0000000001
-          type_name: ~
+            Constant:
+              Float: 0.0000000001
+        type_name: ~
     - Declare:
-        - name:
-            span:
-              start: 441
-              end: 446
-            value: ePlus
+        name:
+          span:
+            start: 441
+            end: 446
+          value: ePlus
+        value:
+          span:
+            start: 449
+            end: 455
           value:
-            span:
-              start: 449
-              end: 455
-            value:
-              Constant:
-                Float: 2500
-          type_name: ~
+            Constant:
+              Float: 2500
+        type_name: ~
     - Declare:
-        - name:
-            span:
-              start: 461
-              end: 472
-            value: eLeadingDot
+        name:
+          span:
+            start: 461
+            end: 472
+          value: eLeadingDot
+        value:
+          span:
+            start: 475
+            end: 479
           value:
-            span:
-              start: 475
-              end: 479
-            value:
-              Constant:
-                Float: 50
-          type_name: ~
+            Constant:
+              Float: 50
+        type_name: ~
     - Declare:
-        - name:
-            span:
-              start: 485
-              end: 497
-            value: eTrailingDot
+        name:
+          span:
+            start: 485
+            end: 497
+          value: eTrailingDot
+        value:
+          span:
+            start: 500
+            end: 504
           value:
-            span:
-              start: 500
-              end: 504
-            value:
-              Constant:
-                Float: 5000
-          type_name: ~
+            Constant:
+              Float: 5000
+        type_name: ~
     - Declare:
-        - name:
-            span:
-              start: 510
-              end: 514
-            value: eSci
+        name:
+          span:
+            start: 510
+            end: 514
+          value: eSci
+        value:
+          span:
+            start: 517
+            end: 525
           value:
-            span:
-              start: 517
-              end: 525
-            value:
-              Constant:
-                Float: 602200000000000000000000
-          type_name: ~
+            Constant:
+              Float: 602200000000000000000000
+        type_name: ~
     - Declare:
-        - name:
-            span:
-              start: 570
-              end: 574
-            value: nDec
+        name:
+          span:
+            start: 570
+            end: 574
+          value: nDec
+        value:
+          span:
+            start: 577
+            end: 581
           value:
-            span:
-              start: 577
-              end: 581
-            value:
-              UnaryOperator:
-                - Sub
-                - span:
-                    start: 578
-                    end: 581
-                  value:
-                    Constant:
-                      Integer: 123
-          type_name: ~
+            UnaryOperator:
+              - Sub
+              - span:
+                  start: 578
+                  end: 581
+                value:
+                  Constant:
+                    Integer: 123
+        type_name: ~
     - Declare:
-        - name:
-            span:
-              start: 587
-              end: 591
-            value: nHex
+        name:
+          span:
+            start: 587
+            end: 591
+          value: nHex
+        value:
+          span:
+            start: 594
+            end: 599
           value:
-            span:
-              start: 594
-              end: 599
-            value:
-              UnaryOperator:
-                - Sub
-                - span:
-                    start: 595
-                    end: 599
-                  value:
-                    Constant:
-                      Integer: 255
-          type_name: ~
+            UnaryOperator:
+              - Sub
+              - span:
+                  start: 595
+                  end: 599
+                value:
+                  Constant:
+                    Integer: 255
+        type_name: ~
     - Declare:
-        - name:
-            span:
-              start: 605
-              end: 611
-            value: nFloat
+        name:
+          span:
+            start: 605
+            end: 611
+          value: nFloat
+        value:
+          span:
+            start: 614
+            end: 619
           value:
-            span:
-              start: 614
-              end: 619
-            value:
-              UnaryOperator:
-                - Sub
-                - span:
-                    start: 615
-                    end: 619
-                  value:
-                    Constant:
-                      Float: 3.14
-          type_name: ~
+            UnaryOperator:
+              - Sub
+              - span:
+                  start: 615
+                  end: 619
+                value:
+                  Constant:
+                    Float: 3.14
+        type_name: ~
     - Declare:
-        - name:
-            span:
-              start: 625
-              end: 629
-            value: pDec
+        name:
+          span:
+            start: 625
+            end: 629
+          value: pDec
+        value:
+          span:
+            start: 633
+            end: 634
           value:
-            span:
-              start: 633
-              end: 634
-            value:
-              Constant:
-                Integer: 7
-          type_name: ~
+            Constant:
+              Integer: 7
+        type_name: ~
     - Declare:
-        - name:
-            span:
-              start: 684
-              end: 687
-            value: sum
+        name:
+          span:
+            start: 684
+            end: 687
+          value: sum
+        value:
+          span:
+            start: 690
+            end: 699
           value:
-            span:
-              start: 690
-              end: 699
-            value:
-              BinaryOperator:
-                - Add
-                - span:
-                    start: 690
-                    end: 695
-                  value:
-                    BinaryOperator:
-                      - Add
-                      - span:
-                          start: 690
-                          end: 691
-                        value:
-                          Constant:
-                            Integer: 1
-                      - span:
-                          start: 694
-                          end: 695
-                        value:
-                          Constant:
-                            Integer: 2
-                - span:
-                    start: 698
-                    end: 699
-                  value:
-                    Constant:
-                      Integer: 3
-          type_name: ~
+            BinaryOperator:
+              - Add
+              - span:
+                  start: 690
+                  end: 695
+                value:
+                  BinaryOperator:
+                    - Add
+                    - span:
+                        start: 690
+                        end: 691
+                      value:
+                        Constant:
+                          Integer: 1
+                    - span:
+                        start: 694
+                        end: 695
+                      value:
+                        Constant:
+                          Integer: 2
+              - span:
+                  start: 698
+                  end: 699
+                value:
+                  Constant:
+                    Integer: 3
+        type_name: ~
     - Declare:
-        - name:
-            span:
-              start: 705
-              end: 709
-            value: diff
+        name:
+          span:
+            start: 705
+            end: 709
+          value: diff
+        value:
+          span:
+            start: 712
+            end: 718
           value:
-            span:
-              start: 712
-              end: 718
-            value:
-              BinaryOperator:
-                - Sub
-                - span:
-                    start: 712
-                    end: 714
-                  value:
-                    Constant:
-                      Integer: 10
-                - span:
-                    start: 717
-                    end: 718
-                  value:
-                    Constant:
-                      Integer: 4
-          type_name: ~
+            BinaryOperator:
+              - Sub
+              - span:
+                  start: 712
+                  end: 714
+                value:
+                  Constant:
+                    Integer: 10
+              - span:
+                  start: 717
+                  end: 718
+                value:
+                  Constant:
+                    Integer: 4
+        type_name: ~
     - Declare:
-        - name:
-            span:
-              start: 724
-              end: 728
-            value: prod
+        name:
+          span:
+            start: 724
+            end: 728
+          value: prod
+        value:
+          span:
+            start: 731
+            end: 736
           value:
-            span:
-              start: 731
-              end: 736
-            value:
-              BinaryOperator:
-                - Multiply
-                - span:
-                    start: 731
-                    end: 732
-                  value:
-                    Constant:
-                      Integer: 6
-                - span:
-                    start: 735
-                    end: 736
-                  value:
-                    Constant:
-                      Integer: 7
-          type_name: ~
+            BinaryOperator:
+              - Multiply
+              - span:
+                  start: 731
+                  end: 732
+                value:
+                  Constant:
+                    Integer: 6
+              - span:
+                  start: 735
+                  end: 736
+                value:
+                  Constant:
+                    Integer: 7
+        type_name: ~
     - Declare:
-        - name:
-            span:
-              start: 742
-              end: 746
-            value: quot
+        name:
+          span:
+            start: 742
+            end: 746
+          value: quot
+        value:
+          span:
+            start: 749
+            end: 755
           value:
-            span:
-              start: 749
-              end: 755
-            value:
-              BinaryOperator:
-                - Divide
-                - span:
-                    start: 749
-                    end: 751
-                  value:
-                    Constant:
-                      Integer: 22
-                - span:
-                    start: 754
-                    end: 755
-                  value:
-                    Constant:
-                      Integer: 7
-          type_name: ~
+            BinaryOperator:
+              - Divide
+              - span:
+                  start: 749
+                  end: 751
+                value:
+                  Constant:
+                    Integer: 22
+              - span:
+                  start: 754
+                  end: 755
+                value:
+                  Constant:
+                    Integer: 7
+        type_name: ~
     - Declare:
-        - name:
-            span:
-              start: 761
-              end: 766
-            value: combo
+        name:
+          span:
+            start: 761
+            end: 766
+          value: combo
+        value:
+          span:
+            start: 769
+            end: 794
           value:
-            span:
-              start: 769
-              end: 794
-            value:
-              BinaryOperator:
-                - Sub
-                - span:
-                    start: 769
-                    end: 788
-                  value:
-                    BinaryOperator:
-                      - Multiply
-                      - span:
-                          start: 770
-                          end: 779
-                        value:
-                          BinaryOperator:
-                            - Add
-                            - span:
-                                start: 770
-                                end: 774
-                              value:
-                                Constant:
-                                  Integer: 16
-                            - span:
-                                start: 777
-                                end: 779
-                              value:
-                                Constant:
-                                  Integer: 15
-                      - span:
-                          start: 783
-                          end: 788
-                        value:
-                          Constant:
-                            Float: 25
-                - span:
-                    start: 791
-                    end: 794
-                  value:
-                    Constant:
-                      Float: 0.75
-          type_name: ~
+            BinaryOperator:
+              - Sub
+              - span:
+                  start: 769
+                  end: 788
+                value:
+                  BinaryOperator:
+                    - Multiply
+                    - span:
+                        start: 770
+                        end: 779
+                      value:
+                        BinaryOperator:
+                          - Add
+                          - span:
+                              start: 770
+                              end: 774
+                            value:
+                              Constant:
+                                Integer: 16
+                          - span:
+                              start: 777
+                              end: 779
+                            value:
+                              Constant:
+                                Integer: 15
+                    - span:
+                        start: 783
+                        end: 788
+                      value:
+                        Constant:
+                          Float: 25
+              - span:
+                  start: 791
+                  end: 794
+                value:
+                  Constant:
+                    Float: 0.75
+        type_name: ~
     - Expr:
         span:
           start: 797
