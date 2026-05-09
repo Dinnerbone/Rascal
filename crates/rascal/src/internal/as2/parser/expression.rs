@@ -1328,6 +1328,40 @@ mod tests {
     }
 
     #[test]
+    fn test_instanceof_and_equality_precedence() {
+        let tokens = build_tokens(&[
+            (TokenKind::Identifier, "toCompare"),
+            (TokenKind::Keyword(Keyword::InstanceOf), "instanceof"),
+            (TokenKind::Identifier, "Foo"),
+            (TokenKind::Operator(Operator::LogicalAnd), "&&"),
+            (TokenKind::Identifier, "toCompare"),
+            (TokenKind::Period, "."),
+            (TokenKind::Identifier, "x"),
+            (TokenKind::Operator(Operator::Equal), "=="),
+            (TokenKind::Integer, "123"),
+        ]);
+        assert_eq!(
+            parse_expr(&tokens),
+            Ok(ex(ExprKind::BinaryOperator(
+                BinaryOperator::LogicalAnd,
+                Box::new(ex(ExprKind::BinaryOperator(
+                    BinaryOperator::InstanceOf,
+                    Box::new(id("toCompare")),
+                    Box::new(id("Foo")),
+                ))),
+                Box::new(ex(ExprKind::BinaryOperator(
+                    BinaryOperator::Equal,
+                    Box::new(ex(ExprKind::Field(
+                        Box::new(id("toCompare")),
+                        Box::new(s("x"))
+                    ))),
+                    Box::new(ex(ExprKind::Constant(ConstantKind::Integer(123)))),
+                ))),
+            )))
+        )
+    }
+
+    #[test]
     fn test_parenthesis() {
         let tokens = build_tokens(&[
             (TokenKind::OpenParen, "("),

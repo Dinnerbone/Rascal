@@ -1,0 +1,80 @@
+---
+source: crates/rascal/src/internal/as2/lexer/tests.rs
+expression: tokens
+input_file: samples/as2/op_precedence/instanceof.as
+---
+- kind:
+    Keyword: Var
+  span:
+    start: 0
+    end: 3
+  raw: var
+- kind: Identifier
+  span:
+    start: 4
+    end: 5
+  raw: x
+- kind:
+    Operator: Assign
+  span:
+    start: 6
+    end: 7
+  raw: "="
+- kind: Identifier
+  span:
+    start: 8
+    end: 17
+  raw: toCompare
+- kind:
+    Keyword: InstanceOf
+  span:
+    start: 18
+    end: 28
+  raw: instanceof
+- kind: Identifier
+  span:
+    start: 29
+    end: 32
+  raw: Foo
+- kind:
+    Operator: LogicalAnd
+  span:
+    start: 33
+    end: 35
+  raw: "&&"
+- kind: Identifier
+  span:
+    start: 36
+    end: 45
+  raw: toCompare
+- kind: Period
+  span:
+    start: 45
+    end: 46
+  raw: "."
+- kind: Identifier
+  span:
+    start: 46
+    end: 47
+  raw: x
+- kind:
+    Operator: Equal
+  span:
+    start: 48
+    end: 50
+  raw: "=="
+- kind: Integer
+  span:
+    start: 51
+    end: 54
+  raw: "123"
+- kind: Semicolon
+  span:
+    start: 54
+    end: 55
+  raw: ;
+- kind: Newline
+  span:
+    start: 55
+    end: 56
+  raw: "\n"
