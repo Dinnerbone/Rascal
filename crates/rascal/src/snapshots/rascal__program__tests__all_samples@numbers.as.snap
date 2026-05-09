@@ -307,11 +307,17 @@ Ok:
           value: pDec
         value:
           span:
-            start: 633
+            start: 632
             end: 634
           value:
-            Constant:
-              Integer: 7
+            UnaryOperator:
+              - Add
+              - span:
+                  start: 633
+                  end: 634
+                value:
+                  Constant:
+                    Integer: 7
         type_name: ~
     - Declare:
         name:

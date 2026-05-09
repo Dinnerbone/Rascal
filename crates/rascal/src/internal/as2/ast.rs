@@ -113,6 +113,7 @@ impl BinaryOperator {
 #[derive(Debug, Clone, Copy, Serialize, PartialEq)]
 pub enum UnaryOperator {
     Sub,
+    Add,
     BitNot,
     Increment(Affix),
     Decrement(Affix),
