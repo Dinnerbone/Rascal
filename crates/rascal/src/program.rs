@@ -1,6 +1,6 @@
 use crate::error::{Error, ErrorSet};
 use crate::internal::as2::hir::constant_folder::fold_constants;
-use crate::internal::as2::hir::optimizer::optimize_variables_to_registers;
+use crate::internal::as2::hir::register_promoter::promote_variables_to_registers;
 use crate::internal::as2::hir::scope::Scope;
 use crate::internal::as2::lexer::Lexer;
 use crate::internal::as2::resolver::resolve_hir;
@@ -204,7 +204,7 @@ impl<P: SourceProvider> ProgramBuilder<P> {
             while fold_constants(&mut hir) {
                 // Keep going until nothing changed
             }
-            optimize_variables_to_registers(&mut hir);
+            promote_variables_to_registers(&mut hir);
             Some(hir)
         }
 
