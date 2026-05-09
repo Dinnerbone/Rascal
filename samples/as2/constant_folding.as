@@ -114,3 +114,28 @@ trace(1 - 2.0)
 trace(1.0 - 2);
 trace(true - false);
 trace(true - "false");
+
+// -- Int cast
+// Bools
+trace(int(true));
+trace(int(false));
+// Ints
+trace(int(0));
+trace(int(1));
+trace(int((-1)));
+trace(int(5));
+// Floats
+trace(int(0.0));
+trace(int(0.1));
+trace(int(5.2));
+// Strings
+trace(int("123"));
+trace(int("2.5"));
+trace(int("0"));
+trace(int(""));
+trace(int("true"));
+trace(int("false"));
+// Confirm anything else isn't touched
+trace(int(null));
+trace(int(undefined));
+trace(int(foo));

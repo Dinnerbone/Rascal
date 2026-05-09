@@ -288,6 +288,64 @@ initializer:
     - Push:
         - Float: NaN
     - Trace
+    - Push:
+        - Integer: 1
+    - Trace
+    - Push:
+        - Integer: 0
+    - Trace
+    - Push:
+        - Integer: 0
+    - Trace
+    - Push:
+        - Integer: 1
+    - Trace
+    - Push:
+        - Integer: -1
+    - Trace
+    - Push:
+        - Integer: 5
+    - Trace
+    - Push:
+        - Integer: 0
+    - Trace
+    - Push:
+        - Integer: 0
+    - Trace
+    - Push:
+        - Integer: 5
+    - Trace
+    - Push:
+        - Integer: 123
+    - Trace
+    - Push:
+        - Integer: 2
+    - Trace
+    - Push:
+        - Integer: 0
+    - Trace
+    - Push:
+        - Integer: -2147483648
+    - Trace
+    - Push:
+        - Integer: -2147483648
+    - Trace
+    - Push:
+        - Integer: -2147483648
+    - Trace
+    - Push:
+        - "Null"
+    - ToInteger
+    - Trace
+    - Push:
+        - Undefined
+    - ToInteger
+    - Trace
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - ToInteger
+    - Trace
   label_positions: {}
 extra_modules: []
 compile_options:
