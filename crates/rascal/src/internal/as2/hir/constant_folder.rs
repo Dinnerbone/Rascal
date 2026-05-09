@@ -2,11 +2,11 @@ use crate::internal::as2::ast::{BinaryOperator, UnaryOperator};
 use crate::internal::as2::hir::visitor::{MutVisitor, walk_expr};
 use crate::internal::as2::hir::{ConstantKind, Document, Expr, ExprKind};
 
-struct Simplifier {
+struct ConstantFolder {
     anything_changed: bool,
 }
 
-impl MutVisitor for Simplifier {
+impl MutVisitor for ConstantFolder {
     fn visit_expr(&mut self, expr: &mut Expr) {
         walk_expr(self, expr);
         match &mut expr.value {
@@ -48,15 +48,15 @@ impl MutVisitor for Simplifier {
     }
 }
 
-pub fn simplify(document: &mut Document) -> bool {
-    let mut simplifier = Simplifier {
+pub fn fold_constants(document: &mut Document) -> bool {
+    let mut folder = ConstantFolder {
         anything_changed: false,
     };
 
     match document {
         Document::Script { statements, .. } => {
             for statement in statements {
-                simplifier.visit_statement(statement);
+                folder.visit_statement(statement);
             }
         }
         Document::Interface(_interface) => {}
@@ -64,5 +64,5 @@ pub fn simplify(document: &mut Document) -> bool {
         Document::Invalid => {}
     }
 
-    simplifier.anything_changed
+    folder.anything_changed
 }
