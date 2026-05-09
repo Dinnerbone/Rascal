@@ -28,6 +28,13 @@ impl MutVisitor for ConstantFolder {
                     self.anything_changed = true;
                 }
             }
+            ExprKind::CastToInteger(value) => {
+                if let ExprKind::Constant(value) = &value.value
+                    && let Some(value) = as_int(value, i32::MIN) {
+                        expr.value = ExprKind::Constant(ConstantKind::Integer(value));
+                        self.anything_changed = true;
+                    }
+            }
             _ => {}
         }
     }
@@ -68,11 +75,11 @@ fn as_float(value: &'_ ConstantKind) -> Option<f64> {
     }
 }
 
-fn as_int(value: &'_ ConstantKind) -> Option<i32> {
+fn as_int(value: &'_ ConstantKind, nan: i32) -> Option<i32> {
     match value {
         ConstantKind::String(_) => {
             let value = as_float(value).unwrap_or_default();
-            Some(if value.is_nan() { 0 } else { value as i32 })
+            Some(if value.is_nan() { nan } else { value as i32 })
         }
         ConstantKind::Boolean(true) => Some(1),
         ConstantKind::Boolean(false) => Some(0),
@@ -155,7 +162,7 @@ fn evaluate_unary_operator(op: UnaryOperator, value: &ConstantKind) -> Option<Co
             }
         }
         UnaryOperator::BitNot => {
-            if let Some(value) = as_int(value) {
+            if let Some(value) = as_int(value, 0) {
                 ConstantKind::Integer(!value)
             } else {
                 return None;
