@@ -5,149 +5,680 @@ input_file: samples/as2/constant_folding.as
 ---
 - kind: Identifier
   span:
-    start: 0
-    end: 5
+    start: 9
+    end: 14
   raw: trace
 - kind: OpenParen
   span:
-    start: 5
-    end: 6
+    start: 14
+    end: 15
   raw: (
 - kind:
     Operator: LogicalNot
   span:
-    start: 6
-    end: 7
+    start: 15
+    end: 16
+  raw: "!"
+- kind:
+    Operator: LogicalNot
+  span:
+    start: 16
+    end: 17
   raw: "!"
 - kind: Identifier
   span:
-    start: 7
-    end: 11
+    start: 17
+    end: 21
   raw: "true"
 - kind: CloseParen
   span:
-    start: 11
-    end: 12
+    start: 21
+    end: 22
   raw: )
 - kind: Semicolon
   span:
-    start: 12
-    end: 13
+    start: 22
+    end: 23
   raw: ;
 - kind: Newline
   span:
-    start: 13
-    end: 14
+    start: 23
+    end: 24
   raw: "\n"
 - kind: Identifier
   span:
-    start: 14
-    end: 19
+    start: 24
+    end: 29
   raw: trace
 - kind: OpenParen
   span:
-    start: 19
-    end: 20
+    start: 29
+    end: 30
   raw: (
 - kind:
     Operator: LogicalNot
   span:
-    start: 20
-    end: 21
+    start: 30
+    end: 31
+  raw: "!"
+- kind:
+    Operator: LogicalNot
+  span:
+    start: 31
+    end: 32
   raw: "!"
 - kind: Identifier
   span:
-    start: 21
-    end: 26
+    start: 32
+    end: 37
   raw: "false"
 - kind: CloseParen
   span:
-    start: 26
-    end: 27
+    start: 37
+    end: 38
   raw: )
 - kind: Semicolon
   span:
-    start: 27
-    end: 28
+    start: 38
+    end: 39
   raw: ;
 - kind: Newline
   span:
-    start: 28
-    end: 29
+    start: 39
+    end: 40
   raw: "\n"
 - kind: Identifier
   span:
-    start: 29
-    end: 34
+    start: 48
+    end: 53
   raw: trace
 - kind: OpenParen
   span:
-    start: 34
-    end: 35
+    start: 53
+    end: 54
+  raw: (
+- kind:
+    Operator: LogicalNot
+  span:
+    start: 54
+    end: 55
+  raw: "!"
+- kind:
+    Operator: LogicalNot
+  span:
+    start: 55
+    end: 56
+  raw: "!"
+- kind: Integer
+  span:
+    start: 56
+    end: 57
+  raw: "0"
+- kind: CloseParen
+  span:
+    start: 57
+    end: 58
+  raw: )
+- kind: Semicolon
+  span:
+    start: 58
+    end: 59
+  raw: ;
+- kind: Newline
+  span:
+    start: 59
+    end: 60
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 60
+    end: 65
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 65
+    end: 66
+  raw: (
+- kind:
+    Operator: LogicalNot
+  span:
+    start: 66
+    end: 67
+  raw: "!"
+- kind:
+    Operator: LogicalNot
+  span:
+    start: 67
+    end: 68
+  raw: "!"
+- kind: Integer
+  span:
+    start: 68
+    end: 69
+  raw: "1"
+- kind: CloseParen
+  span:
+    start: 69
+    end: 70
+  raw: )
+- kind: Semicolon
+  span:
+    start: 70
+    end: 71
+  raw: ;
+- kind: Newline
+  span:
+    start: 71
+    end: 72
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 72
+    end: 77
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 77
+    end: 78
+  raw: (
+- kind:
+    Operator: LogicalNot
+  span:
+    start: 78
+    end: 79
+  raw: "!"
+- kind:
+    Operator: LogicalNot
+  span:
+    start: 79
+    end: 80
+  raw: "!"
+- kind:
+    Operator: Sub
+  span:
+    start: 80
+    end: 81
+  raw: "-"
+- kind: Integer
+  span:
+    start: 81
+    end: 82
+  raw: "1"
+- kind: CloseParen
+  span:
+    start: 82
+    end: 83
+  raw: )
+- kind: Semicolon
+  span:
+    start: 83
+    end: 84
+  raw: ;
+- kind: Newline
+  span:
+    start: 84
+    end: 85
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 95
+    end: 100
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 100
+    end: 101
+  raw: (
+- kind:
+    Operator: LogicalNot
+  span:
+    start: 101
+    end: 102
+  raw: "!"
+- kind:
+    Operator: LogicalNot
+  span:
+    start: 102
+    end: 103
+  raw: "!"
+- kind: Float
+  span:
+    start: 103
+    end: 106
+  raw: "0.0"
+- kind: CloseParen
+  span:
+    start: 106
+    end: 107
+  raw: )
+- kind: Semicolon
+  span:
+    start: 107
+    end: 108
+  raw: ;
+- kind: Newline
+  span:
+    start: 108
+    end: 109
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 109
+    end: 114
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 114
+    end: 115
+  raw: (
+- kind:
+    Operator: LogicalNot
+  span:
+    start: 115
+    end: 116
+  raw: "!"
+- kind:
+    Operator: LogicalNot
+  span:
+    start: 116
+    end: 117
+  raw: "!"
+- kind: Float
+  span:
+    start: 117
+    end: 120
+  raw: "0.1"
+- kind: CloseParen
+  span:
+    start: 120
+    end: 121
+  raw: )
+- kind: Semicolon
+  span:
+    start: 121
+    end: 122
+  raw: ;
+- kind: Newline
+  span:
+    start: 122
+    end: 123
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 134
+    end: 139
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 139
+    end: 140
+  raw: (
+- kind:
+    Operator: LogicalNot
+  span:
+    start: 140
+    end: 141
+  raw: "!"
+- kind:
+    Operator: LogicalNot
+  span:
+    start: 141
+    end: 142
+  raw: "!"
+- kind:
+    String: Double
+  span:
+    start: 142
+    end: 145
+  raw: a
+- kind: CloseParen
+  span:
+    start: 145
+    end: 146
+  raw: )
+- kind: Semicolon
+  span:
+    start: 146
+    end: 147
+  raw: ;
+- kind: Newline
+  span:
+    start: 147
+    end: 148
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 148
+    end: 153
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 153
+    end: 154
+  raw: (
+- kind:
+    Operator: LogicalNot
+  span:
+    start: 154
+    end: 155
+  raw: "!"
+- kind:
+    Operator: LogicalNot
+  span:
+    start: 155
+    end: 156
+  raw: "!"
+- kind:
+    String: Double
+  span:
+    start: 156
+    end: 158
+  raw: ""
+- kind: CloseParen
+  span:
+    start: 158
+    end: 159
+  raw: )
+- kind: Semicolon
+  span:
+    start: 159
+    end: 160
+  raw: ;
+- kind: Newline
+  span:
+    start: 160
+    end: 161
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 161
+    end: 166
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 166
+    end: 167
+  raw: (
+- kind:
+    Operator: LogicalNot
+  span:
+    start: 167
+    end: 168
+  raw: "!"
+- kind:
+    Operator: LogicalNot
+  span:
+    start: 168
+    end: 169
+  raw: "!"
+- kind:
+    String: Double
+  span:
+    start: 169
+    end: 175
+  raw: "true"
+- kind: CloseParen
+  span:
+    start: 175
+    end: 176
+  raw: )
+- kind: Semicolon
+  span:
+    start: 176
+    end: 177
+  raw: ;
+- kind: Newline
+  span:
+    start: 177
+    end: 178
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 178
+    end: 183
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 183
+    end: 184
+  raw: (
+- kind:
+    Operator: LogicalNot
+  span:
+    start: 184
+    end: 185
+  raw: "!"
+- kind:
+    Operator: LogicalNot
+  span:
+    start: 185
+    end: 186
+  raw: "!"
+- kind:
+    String: Double
+  span:
+    start: 186
+    end: 193
+  raw: "false"
+- kind: CloseParen
+  span:
+    start: 193
+    end: 194
+  raw: )
+- kind: Semicolon
+  span:
+    start: 194
+    end: 195
+  raw: ;
+- kind: Newline
+  span:
+    start: 195
+    end: 196
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 235
+    end: 240
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 240
+    end: 241
+  raw: (
+- kind:
+    Operator: LogicalNot
+  span:
+    start: 241
+    end: 242
+  raw: "!"
+- kind:
+    Operator: LogicalNot
+  span:
+    start: 242
+    end: 243
+  raw: "!"
+- kind: Identifier
+  span:
+    start: 243
+    end: 247
+  raw: "null"
+- kind: CloseParen
+  span:
+    start: 247
+    end: 248
+  raw: )
+- kind: Semicolon
+  span:
+    start: 248
+    end: 249
+  raw: ;
+- kind: Newline
+  span:
+    start: 249
+    end: 250
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 250
+    end: 255
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 255
+    end: 256
+  raw: (
+- kind:
+    Operator: LogicalNot
+  span:
+    start: 256
+    end: 257
+  raw: "!"
+- kind:
+    Operator: LogicalNot
+  span:
+    start: 257
+    end: 258
+  raw: "!"
+- kind: Identifier
+  span:
+    start: 258
+    end: 267
+  raw: undefined
+- kind: CloseParen
+  span:
+    start: 267
+    end: 268
+  raw: )
+- kind: Semicolon
+  span:
+    start: 268
+    end: 269
+  raw: ;
+- kind: Newline
+  span:
+    start: 269
+    end: 270
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 270
+    end: 275
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 275
+    end: 276
+  raw: (
+- kind:
+    Operator: LogicalNot
+  span:
+    start: 276
+    end: 277
+  raw: "!"
+- kind:
+    Operator: LogicalNot
+  span:
+    start: 277
+    end: 278
+  raw: "!"
+- kind: Identifier
+  span:
+    start: 278
+    end: 281
+  raw: foo
+- kind: CloseParen
+  span:
+    start: 281
+    end: 282
+  raw: )
+- kind: Semicolon
+  span:
+    start: 282
+    end: 283
+  raw: ;
+- kind: Newline
+  span:
+    start: 283
+    end: 284
+  raw: "\n"
+- kind: Newline
+  span:
+    start: 284
+    end: 285
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 285
+    end: 290
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 290
+    end: 291
   raw: (
 - kind:
     String: Double
   span:
-    start: 35
-    end: 38
+    start: 291
+    end: 294
   raw: a
 - kind:
     Operator: Add
   span:
-    start: 39
-    end: 40
+    start: 295
+    end: 296
   raw: +
 - kind:
     String: Double
   span:
-    start: 41
-    end: 44
+    start: 297
+    end: 300
   raw: b
 - kind:
     Operator: Add
   span:
-    start: 45
-    end: 46
+    start: 301
+    end: 302
   raw: +
 - kind: Integer
   span:
-    start: 47
-    end: 48
+    start: 303
+    end: 304
   raw: "3"
 - kind:
     Operator: Add
   span:
-    start: 49
-    end: 50
+    start: 305
+    end: 306
   raw: +
 - kind: Identifier
   span:
-    start: 51
-    end: 55
+    start: 307
+    end: 311
   raw: "true"
 - kind:
     Operator: Add
   span:
-    start: 56
-    end: 57
+    start: 312
+    end: 313
   raw: +
 - kind: Float
   span:
-    start: 58
-    end: 64
+    start: 314
+    end: 320
   raw: "123.45"
 - kind: CloseParen
   span:
-    start: 64
-    end: 65
+    start: 320
+    end: 321
   raw: )
 - kind: Semicolon
   span:
-    start: 65
-    end: 66
+    start: 321
+    end: 322
   raw: ;
 - kind: Newline
   span:
-    start: 66
-    end: 67
+    start: 322
+    end: 323
   raw: "\n"
