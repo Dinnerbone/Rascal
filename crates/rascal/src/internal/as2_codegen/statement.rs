@@ -910,7 +910,7 @@ fn gen_unary_op(
         },
         UnaryOperator::BitNot => {
             gen_expr(context, builder, expr, false);
-            builder.push(-1);
+            builder.push(u32::MAX as f64);
             builder.action(Action::BitXor);
         }
         UnaryOperator::Increment(affix) => {
