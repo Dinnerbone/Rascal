@@ -7,235 +7,475 @@ Ok:
   initial_script:
     - Expr:
         span:
-          start: 9
-          end: 22
-        value:
-          Trace:
-            span:
-              start: 15
-              end: 21
-            value:
-              Constant:
-                Boolean: true
-    - Expr:
-        span:
-          start: 24
+          start: 25
           end: 38
         value:
           Trace:
             span:
-              start: 30
+              start: 31
               end: 37
             value:
               Constant:
-                Boolean: false
+                Boolean: true
     - Expr:
         span:
-          start: 48
-          end: 58
+          start: 40
+          end: 54
         value:
           Trace:
             span:
-              start: 54
-              end: 57
+              start: 46
+              end: 53
             value:
               Constant:
                 Boolean: false
     - Expr:
         span:
-          start: 60
-          end: 70
+          start: 64
+          end: 74
         value:
           Trace:
             span:
-              start: 66
-              end: 69
+              start: 70
+              end: 73
+            value:
+              Constant:
+                Boolean: false
+    - Expr:
+        span:
+          start: 76
+          end: 86
+        value:
+          Trace:
+            span:
+              start: 82
+              end: 85
             value:
               Constant:
                 Boolean: true
     - Expr:
         span:
-          start: 72
-          end: 83
+          start: 88
+          end: 99
         value:
           Trace:
             span:
-              start: 78
-              end: 82
-            value:
-              UnaryOperator:
-                - LogicalNot
-                - span:
-                    start: 79
-                    end: 82
-                  value:
-                    UnaryOperator:
-                      - LogicalNot
-                      - span:
-                          start: 80
-                          end: 82
-                        value:
-                          UnaryOperator:
-                            - Sub
-                            - span:
-                                start: 81
-                                end: 82
-                              value:
-                                Constant:
-                                  Integer: 1
-    - Expr:
-        span:
-          start: 95
-          end: 107
-        value:
-          Trace:
-            span:
-              start: 101
-              end: 106
-            value:
-              Constant:
-                Boolean: false
-    - Expr:
-        span:
-          start: 109
-          end: 121
-        value:
-          Trace:
-            span:
-              start: 115
-              end: 120
+              start: 94
+              end: 98
             value:
               Constant:
                 Boolean: true
     - Expr:
         span:
-          start: 134
-          end: 146
+          start: 111
+          end: 123
         value:
           Trace:
             span:
-              start: 140
-              end: 145
+              start: 117
+              end: 122
             value:
               Constant:
                 Boolean: false
     - Expr:
         span:
-          start: 148
-          end: 159
+          start: 125
+          end: 137
         value:
           Trace:
             span:
-              start: 154
-              end: 158
+              start: 131
+              end: 136
             value:
               Constant:
-                Boolean: false
+                Boolean: true
     - Expr:
         span:
-          start: 161
-          end: 176
+          start: 150
+          end: 164
         value:
           Trace:
             span:
-              start: 167
-              end: 175
+              start: 156
+              end: 163
             value:
               Constant:
-                Boolean: false
+                Boolean: true
     - Expr:
         span:
-          start: 178
+          start: 166
+          end: 180
+        value:
+          Trace:
+            span:
+              start: 172
+              end: 179
+            value:
+              Constant:
+                Boolean: true
+    - Expr:
+        span:
+          start: 182
           end: 194
         value:
           Trace:
             span:
-              start: 184
+              start: 188
               end: 193
             value:
               Constant:
                 Boolean: false
     - Expr:
         span:
-          start: 235
-          end: 248
+          start: 196
+          end: 209
         value:
           Trace:
             span:
-              start: 241
-              end: 247
+              start: 202
+              end: 208
+            value:
+              Constant:
+                Boolean: false
+    - Expr:
+        span:
+          start: 211
+          end: 222
+        value:
+          Trace:
+            span:
+              start: 217
+              end: 221
+            value:
+              Constant:
+                Boolean: false
+    - Expr:
+        span:
+          start: 224
+          end: 239
+        value:
+          Trace:
+            span:
+              start: 230
+              end: 238
+            value:
+              Constant:
+                Boolean: false
+    - Expr:
+        span:
+          start: 241
+          end: 257
+        value:
+          Trace:
+            span:
+              start: 247
+              end: 256
+            value:
+              Constant:
+                Boolean: false
+    - Expr:
+        span:
+          start: 298
+          end: 311
+        value:
+          Trace:
+            span:
+              start: 304
+              end: 310
             value:
               UnaryOperator:
                 - LogicalNot
                 - span:
-                    start: 242
-                    end: 247
+                    start: 305
+                    end: 310
                   value:
                     UnaryOperator:
                       - LogicalNot
                       - span:
-                          start: 243
-                          end: 247
+                          start: 306
+                          end: 310
                         value:
                           Constant:
                             Identifier: "null"
     - Expr:
         span:
-          start: 250
-          end: 268
+          start: 313
+          end: 331
         value:
           Trace:
             span:
-              start: 256
-              end: 267
+              start: 319
+              end: 330
             value:
               UnaryOperator:
                 - LogicalNot
                 - span:
-                    start: 257
-                    end: 267
+                    start: 320
+                    end: 330
                   value:
                     UnaryOperator:
                       - LogicalNot
                       - span:
-                          start: 258
-                          end: 267
+                          start: 321
+                          end: 330
                         value:
                           Constant:
                             Identifier: undefined
     - Expr:
         span:
-          start: 270
-          end: 282
+          start: 333
+          end: 345
         value:
           Trace:
             span:
-              start: 276
-              end: 281
+              start: 339
+              end: 344
             value:
               UnaryOperator:
                 - LogicalNot
                 - span:
-                    start: 277
-                    end: 281
+                    start: 340
+                    end: 344
                   value:
                     UnaryOperator:
                       - LogicalNot
                       - span:
-                          start: 278
-                          end: 281
+                          start: 341
+                          end: 344
                         value:
                           Constant:
                             Identifier: foo
     - Expr:
         span:
-          start: 285
-          end: 321
+          start: 378
+          end: 390
         value:
           Trace:
             span:
-              start: 291
-              end: 320
+              start: 384
+              end: 389
+            value:
+              Constant:
+                Integer: -1
+    - Expr:
+        span:
+          start: 392
+          end: 405
+        value:
+          Trace:
+            span:
+              start: 398
+              end: 404
+            value:
+              Constant:
+                Integer: 0
+    - Expr:
+        span:
+          start: 415
+          end: 424
+        value:
+          Trace:
+            span:
+              start: 421
+              end: 423
+            value:
+              Constant:
+                Integer: 0
+    - Expr:
+        span:
+          start: 426
+          end: 435
+        value:
+          Trace:
+            span:
+              start: 432
+              end: 434
+            value:
+              Constant:
+                Integer: -1
+    - Expr:
+        span:
+          start: 437
+          end: 449
+        value:
+          Trace:
+            span:
+              start: 443
+              end: 448
+            value:
+              Constant:
+                Integer: 1
+    - Expr:
+        span:
+          start: 461
+          end: 472
+        value:
+          Trace:
+            span:
+              start: 467
+              end: 471
+            value:
+              Constant:
+                Integer: 0
+    - Expr:
+        span:
+          start: 474
+          end: 485
+        value:
+          Trace:
+            span:
+              start: 480
+              end: 484
+            value:
+              Constant:
+                Float: -0.1
+    - Expr:
+        span:
+          start: 498
+          end: 511
+        value:
+          Trace:
+            span:
+              start: 504
+              end: 510
+            value:
+              Constant:
+                Integer: -123
+    - Expr:
+        span:
+          start: 513
+          end: 526
+        value:
+          Trace:
+            span:
+              start: 519
+              end: 525
+            value:
+              Constant:
+                Float: -2.5
+    - Expr:
+        span:
+          start: 528
+          end: 539
+        value:
+          Trace:
+            span:
+              start: 534
+              end: 538
+            value:
+              Constant:
+                Integer: 0
+    - Expr:
+        span:
+          start: 541
+          end: 553
+        value:
+          Trace:
+            span:
+              start: 547
+              end: 552
+            value:
+              Constant:
+                Float: NaN
+    - Expr:
+        span:
+          start: 555
+          end: 565
+        value:
+          Trace:
+            span:
+              start: 561
+              end: 564
+            value:
+              Constant:
+                Float: NaN
+    - Expr:
+        span:
+          start: 567
+          end: 581
+        value:
+          Trace:
+            span:
+              start: 573
+              end: 580
+            value:
+              Constant:
+                Float: NaN
+    - Expr:
+        span:
+          start: 583
+          end: 598
+        value:
+          Trace:
+            span:
+              start: 589
+              end: 597
+            value:
+              Constant:
+                Float: NaN
+    - Expr:
+        span:
+          start: 639
+          end: 651
+        value:
+          Trace:
+            span:
+              start: 645
+              end: 650
+            value:
+              UnaryOperator:
+                - Sub
+                - span:
+                    start: 646
+                    end: 650
+                  value:
+                    Constant:
+                      Identifier: "null"
+    - Expr:
+        span:
+          start: 653
+          end: 670
+        value:
+          Trace:
+            span:
+              start: 659
+              end: 669
+            value:
+              UnaryOperator:
+                - Sub
+                - span:
+                    start: 660
+                    end: 669
+                  value:
+                    Constant:
+                      Identifier: undefined
+    - Expr:
+        span:
+          start: 672
+          end: 683
+        value:
+          Trace:
+            span:
+              start: 678
+              end: 682
+            value:
+              UnaryOperator:
+                - Sub
+                - span:
+                    start: 679
+                    end: 682
+                  value:
+                    Constant:
+                      Identifier: foo
+    - Expr:
+        span:
+          start: 686
+          end: 722
+        value:
+          Trace:
+            span:
+              start: 692
+              end: 721
             value:
               Constant:
                 String: ab3true123.45

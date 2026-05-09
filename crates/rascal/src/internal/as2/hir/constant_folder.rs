@@ -46,11 +46,37 @@ fn as_string(value: &'_ ConstantKind) -> Option<Cow<'_, str>> {
 
 fn as_bool(value: &'_ ConstantKind) -> Option<bool> {
     match value {
-        ConstantKind::String(_) => Some(false),
+        ConstantKind::String(_) => {
+            let value = as_float(value).unwrap_or_default();
+            Some(value != 0.0 && !value.is_nan())
+        }
         ConstantKind::Boolean(value) => Some(*value),
         ConstantKind::Integer(value) => Some(*value != 0),
         ConstantKind::Float(value) => Some(*value != 0.0),
         _ => None,
+    }
+}
+
+fn as_float(value: &'_ ConstantKind) -> Option<f64> {
+    match value {
+        ConstantKind::String(value) => Some(value.parse().unwrap_or(f64::NAN)),
+        ConstantKind::Boolean(true) => Some(1.0),
+        ConstantKind::Boolean(false) => Some(0.0),
+        ConstantKind::Integer(value) => Some(*value as f64),
+        ConstantKind::Float(value) => Some(*value),
+        _ => None,
+    }
+}
+
+fn float_as_constant(value: f64) -> ConstantKind {
+    if value.is_finite()
+        && value.fract() == 0.0
+        && value >= i32::MIN as f64
+        && value <= i32::MAX as f64
+    {
+        ConstantKind::Integer(value as i32)
+    } else {
+        ConstantKind::Float(value)
     }
 }
 
@@ -78,6 +104,13 @@ fn evaluate_unary_operator(op: UnaryOperator, value: &ConstantKind) -> Option<Co
         UnaryOperator::LogicalNot => {
             if let Some(value) = as_bool(value) {
                 ConstantKind::Boolean(!value)
+            } else {
+                return None;
+            }
+        }
+        UnaryOperator::Sub => {
+            if let Some(value) = as_float(value) {
+                float_as_constant(-value)
             } else {
                 return None;
             }
