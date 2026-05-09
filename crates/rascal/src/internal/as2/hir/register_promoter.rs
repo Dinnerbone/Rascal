@@ -5,11 +5,11 @@ use crate::internal::span::Span;
 use indexmap::IndexMap;
 
 #[derive(Default)]
-struct Optimizer {
+struct RegisterPromoter {
     registers: IndexMap<String, u8>,
 }
 
-impl MutVisitor for Optimizer {
+impl MutVisitor for RegisterPromoter {
     fn visit_expr(&mut self, expr: &mut Expr) {
         walk_expr(self, expr);
 
@@ -102,13 +102,13 @@ impl MutVisitor for Optimizer {
     }
 }
 
-pub fn optimize_variables_to_registers(document: &mut Document) {
-    let mut simplifier = Optimizer::default();
+pub fn promote_variables_to_registers(document: &mut Document) {
+    let mut promoter = RegisterPromoter::default();
 
     match document {
         Document::Script { statements, .. } => {
             for statement in statements {
-                simplifier.visit_statement(statement);
+                promoter.visit_statement(statement);
             }
         }
         Document::Interface(_interface) => {}

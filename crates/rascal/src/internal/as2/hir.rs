@@ -1,5 +1,5 @@
 pub(crate) mod constant_folder;
-pub(crate) mod optimizer;
+pub(crate) mod register_promoter;
 pub(crate) mod scope;
 pub(crate) mod visitor;
 
