@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.5](https://github.com/Dinnerbone/Rascal/compare/rascal-v0.2.4...rascal-v0.2.5) - 2026-05-09
+
+### Other
+
+- Fix `x instanceof Foo && otherExpr`
+- Store variables and parameters in registers; implements DefineFunction2 properly
+- Resolve ast Vec<Declaration> to single declarations
+- Added function level scoping
+- Change hir::Script(Vec<StatementKind>) to {statements: ...}
+- Introduce MutVisitor, switch simplifying to use it
+- Remove hir::ConstantKind::This
+- Support reading and writing of DefineFunction2
+
 ## [0.2.4](https://github.com/Dinnerbone/Rascal/compare/rascal-v0.2.3...rascal-v0.2.4) - 2026-05-02
 
 ### Other
