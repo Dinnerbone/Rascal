@@ -13,39 +13,43 @@ impl MutVisitor for ConstantFolder {
             ExprKind::BinaryOperator(op, left, right) => {
                 if let ExprKind::Constant(left) = &left.value
                     && let ExprKind::Constant(right) = &right.value
+                    && let Some(result) = evaluate_binary_operator(*op, left, right)
                 {
-                    #[expect(clippy::single_match)]
-                    match (op, left, right) {
-                        (
-                            BinaryOperator::StringAdd,
-                            ConstantKind::String(left),
-                            ConstantKind::String(right),
-                        ) => {
-                            expr.value = ExprKind::Constant(ConstantKind::String(format!(
-                                "{}{}",
-                                left, right
-                            )));
-                            self.anything_changed = true;
-                        }
-                        _ => {}
-                    }
+                    expr.value = ExprKind::Constant(result);
+                    self.anything_changed = true;
                 }
             }
             ExprKind::UnaryOperator(op, inner) => {
-                if let ExprKind::Constant(value) = &inner.value {
-                    #[expect(clippy::single_match)]
-                    match (op, value) {
-                        (UnaryOperator::LogicalNot, ConstantKind::Boolean(value)) => {
-                            expr.value = ExprKind::Constant(ConstantKind::Boolean(!value));
-                            self.anything_changed = true;
-                        }
-                        _ => {}
-                    }
+                if let ExprKind::Constant(value) = &inner.value
+                    && let Some(result) = evaluate_unary_operator(*op, value)
+                {
+                    expr.value = ExprKind::Constant(result);
+                    self.anything_changed = true;
                 }
             }
             _ => {}
         }
     }
+}
+
+fn evaluate_binary_operator(
+    op: BinaryOperator,
+    left: &ConstantKind,
+    right: &ConstantKind,
+) -> Option<ConstantKind> {
+    Some(match (op, left, right) {
+        (BinaryOperator::StringAdd, ConstantKind::String(left), ConstantKind::String(right)) => {
+            ConstantKind::String(format!("{}{}", left, right))
+        }
+        _ => return None,
+    })
+}
+
+fn evaluate_unary_operator(op: UnaryOperator, value: &ConstantKind) -> Option<ConstantKind> {
+    Some(match (op, value) {
+        (UnaryOperator::LogicalNot, ConstantKind::Boolean(value)) => ConstantKind::Boolean(!value),
+        _ => return None,
+    })
 }
 
 pub fn fold_constants(document: &mut Document) -> bool {
