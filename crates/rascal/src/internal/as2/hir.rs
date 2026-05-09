@@ -1,6 +1,6 @@
+pub(crate) mod constant_folder;
 pub(crate) mod optimizer;
 pub(crate) mod scope;
-pub(crate) mod simplifier;
 pub(crate) mod visitor;
 
 use crate::internal::span::Spanned;

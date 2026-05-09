@@ -1,7 +1,7 @@
 use crate::error::{Error, ErrorSet};
+use crate::internal::as2::hir::constant_folder::fold_constants;
 use crate::internal::as2::hir::optimizer::optimize_variables_to_registers;
 use crate::internal::as2::hir::scope::Scope;
-use crate::internal::as2::hir::simplifier::simplify;
 use crate::internal::as2::lexer::Lexer;
 use crate::internal::as2::resolver::resolve_hir;
 use crate::internal::as2::{hir, parser, type_path_to_file_path};
@@ -201,7 +201,7 @@ impl<P: SourceProvider> ProgramBuilder<P> {
                     pending_classes.push(name);
                 }
             }
-            while simplify(&mut hir) {
+            while fold_constants(&mut hir) {
                 // Keep going until nothing changed
             }
             optimize_variables_to_registers(&mut hir);
