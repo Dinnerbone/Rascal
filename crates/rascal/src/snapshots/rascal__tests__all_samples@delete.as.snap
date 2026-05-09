@@ -13,8 +13,8 @@ initializer:
         - "delete obj.num: "
         - "delete obj.num + 1: "
         - "delete obj.num == \"number\" ? \":)\" : \":(\": "
-        - ":)"
         - ":("
+        - ":)"
         - "delete obj.num + delete obj.num: "
         - trace
         - "delete obj.trace: "
@@ -91,7 +91,6 @@ initializer:
     - Push:
         - Constant: 0
     - Delete
-    - Not
     - If: loc0001
     - Push:
         - Constant: 7
@@ -166,8 +165,8 @@ initializer:
     - Add2
     - Trace
   label_positions:
-    loc0001: 45
-    loc0000: 46
+    loc0001: 44
+    loc0000: 45
 extra_modules: []
 compile_options:
   swf_version: 15

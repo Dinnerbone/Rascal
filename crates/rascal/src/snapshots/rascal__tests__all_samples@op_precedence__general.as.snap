@@ -549,14 +549,13 @@ initializer:
         - Constant: 1
     - GetVariable
     - Less2
-    - Not
     - If: loc0004
     - Push:
-        - Constant: 4
+        - Constant: 5
     - GetVariable
     - Jump: loc0003
     - Push:
-        - Constant: 5
+        - Constant: 4
     - GetVariable
     - Add2
     - Trace
@@ -572,14 +571,13 @@ initializer:
         - Constant: 2
     - GetVariable
     - Less2
-    - Not
     - If: loc0006
     - Push:
-        - Constant: 4
+        - Constant: 5
     - GetVariable
     - Jump: loc0005
     - Push:
-        - Constant: 5
+        - Constant: 4
     - GetVariable
     - Add2
     - Trace
@@ -709,14 +707,13 @@ initializer:
         - Constant: 10
     - GetVariable
     - Greater
-    - Not
     - If: loc0008
     - Push:
-        - Constant: 9
+        - Constant: 10
     - GetVariable
     - Jump: loc0007
     - Push:
-        - Constant: 10
+        - Constant: 9
     - GetVariable
     - SetVariable
     - Push:
@@ -777,14 +774,13 @@ initializer:
     - GetVariable
     - BitAnd
     - Equals2
-    - Not
     - If: loc000a
     - Push:
-        - Constant: 4
+        - Constant: 5
     - GetVariable
     - Jump: loc0009
     - Push:
-        - Constant: 5
+        - Constant: 4
     - GetVariable
     - Add2
     - Trace
@@ -862,14 +858,14 @@ initializer:
     loc0000: 294
     loc0001: 309
     loc0002: 325
-    loc0004: 337
-    loc0003: 339
-    loc0006: 354
-    loc0005: 356
-    loc0008: 440
-    loc0007: 442
-    loc000a: 487
-    loc0009: 489
+    loc0004: 336
+    loc0003: 338
+    loc0006: 352
+    loc0005: 354
+    loc0008: 437
+    loc0007: 439
+    loc000a: 483
+    loc0009: 485
 extra_modules: []
 compile_options:
   swf_version: 15

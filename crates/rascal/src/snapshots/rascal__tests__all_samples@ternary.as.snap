@@ -1,0 +1,95 @@
+---
+source: crates/rascal/src/tests.rs
+expression: result
+input_file: samples/as2/ternary.as
+---
+initializer:
+  actions:
+    - ConstantPool:
+        - a
+        - b
+        - a >= b
+        - a < b
+        - a <= b
+        - a > b
+        - b > a
+        - b < a
+    - Push:
+        - Constant: 0
+        - Integer: 1
+    - DefineLocal
+    - Push:
+        - Constant: 1
+        - Integer: 2
+    - DefineLocal
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Less2
+    - If: loc0001
+    - Push:
+        - Constant: 2
+    - Jump: loc0000
+    - Push:
+        - Constant: 3
+    - Trace
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Greater
+    - If: loc0003
+    - Push:
+        - Constant: 4
+    - Jump: loc0002
+    - Push:
+        - Constant: 5
+    - Trace
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Greater
+    - Not
+    - If: loc0005
+    - Push:
+        - Constant: 6
+    - Jump: loc0004
+    - Push:
+        - Constant: 4
+    - Trace
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Less2
+    - Not
+    - If: loc0007
+    - Push:
+        - Constant: 7
+    - Jump: loc0006
+    - Push:
+        - Constant: 2
+    - Trace
+  label_positions:
+    loc0001: 13
+    loc0000: 14
+    loc0003: 23
+    loc0002: 24
+    loc0005: 34
+    loc0004: 35
+    loc0007: 45
+    loc0006: 46
+extra_modules: []
+compile_options:
+  swf_version: 15
+custom_pcodes: []

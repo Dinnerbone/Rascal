@@ -1,0 +1,214 @@
+---
+source: crates/rascal/src/program.rs
+expression: parsed
+input_file: samples/as2/ternary.as
+---
+Ok:
+  initial_script:
+    - Declare:
+        name:
+          span:
+            start: 4
+            end: 5
+          value: a
+        value:
+          span:
+            start: 8
+            end: 9
+          value:
+            Constant:
+              Integer: 1
+        type_name: ~
+    - Declare:
+        name:
+          span:
+            start: 15
+            end: 16
+          value: b
+        value:
+          span:
+            start: 19
+            end: 20
+          value:
+            Constant:
+              Integer: 2
+        type_name: ~
+    - Expr:
+        span:
+          start: 22
+          end: 55
+        value:
+          Trace:
+            span:
+              start: 32
+              end: 54
+            value:
+              Ternary:
+                condition:
+                  span:
+                    start: 28
+                    end: 33
+                  value:
+                    BinaryOperator:
+                      - LessThan
+                      - span:
+                          start: 28
+                          end: 29
+                        value:
+                          Constant:
+                            Identifier: a
+                      - span:
+                          start: 32
+                          end: 33
+                        value:
+                          Constant:
+                            Identifier: b
+                "yes":
+                  span:
+                    start: 36
+                    end: 43
+                  value:
+                    Constant:
+                      String: a < b
+                "no":
+                  span:
+                    start: 46
+                    end: 54
+                  value:
+                    Constant:
+                      String: a >= b
+    - Expr:
+        span:
+          start: 57
+          end: 90
+        value:
+          Trace:
+            span:
+              start: 67
+              end: 89
+            value:
+              Ternary:
+                condition:
+                  span:
+                    start: 63
+                    end: 68
+                  value:
+                    BinaryOperator:
+                      - GreaterThan
+                      - span:
+                          start: 63
+                          end: 64
+                        value:
+                          Constant:
+                            Identifier: a
+                      - span:
+                          start: 67
+                          end: 68
+                        value:
+                          Constant:
+                            Identifier: b
+                "yes":
+                  span:
+                    start: 71
+                    end: 78
+                  value:
+                    Constant:
+                      String: a > b
+                "no":
+                  span:
+                    start: 81
+                    end: 89
+                  value:
+                    Constant:
+                      String: a <= b
+    - Expr:
+        span:
+          start: 92
+          end: 126
+        value:
+          Trace:
+            span:
+              start: 103
+              end: 125
+            value:
+              Ternary:
+                condition:
+                  span:
+                    start: 98
+                    end: 104
+                  value:
+                    BinaryOperator:
+                      - LessThanEqual
+                      - span:
+                          start: 98
+                          end: 99
+                        value:
+                          Constant:
+                            Identifier: a
+                      - span:
+                          start: 103
+                          end: 104
+                        value:
+                          Constant:
+                            Identifier: b
+                "yes":
+                  span:
+                    start: 107
+                    end: 115
+                  value:
+                    Constant:
+                      String: a <= b
+                "no":
+                  span:
+                    start: 118
+                    end: 125
+                  value:
+                    Constant:
+                      String: b > a
+    - Expr:
+        span:
+          start: 128
+          end: 162
+        value:
+          Trace:
+            span:
+              start: 139
+              end: 161
+            value:
+              Ternary:
+                condition:
+                  span:
+                    start: 134
+                    end: 140
+                  value:
+                    BinaryOperator:
+                      - GreaterThanEqual
+                      - span:
+                          start: 134
+                          end: 135
+                        value:
+                          Constant:
+                            Identifier: a
+                      - span:
+                          start: 139
+                          end: 140
+                        value:
+                          Constant:
+                            Identifier: b
+                "yes":
+                  span:
+                    start: 143
+                    end: 151
+                  value:
+                    Constant:
+                      String: a >= b
+                "no":
+                  span:
+                    start: 154
+                    end: 161
+                  value:
+                    Constant:
+                      String: b < a
+  interfaces: []
+  classes: []
+  custom_pcodes: []

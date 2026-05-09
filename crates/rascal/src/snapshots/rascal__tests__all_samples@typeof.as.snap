@@ -15,8 +15,8 @@ initializer:
         - "typeof obj.num + 1: "
         - "typeof obj.num == \"number\" ? \":)\" : \":(\": "
         - number
-        - ":)"
         - ":("
+        - ":)"
         - "typeof obj.num + typeof obj.num: "
         - "typeof obj.trace: "
         - "typeof obj.trace(): "
@@ -83,7 +83,6 @@ initializer:
     - Push:
         - Constant: 8
     - Equals2
-    - Not
     - If: loc0001
     - Push:
         - Constant: 9
@@ -132,8 +131,8 @@ initializer:
     - Add2
     - Trace
   label_positions:
-    loc0001: 45
-    loc0000: 46
+    loc0001: 44
+    loc0000: 45
 extra_modules: []
 compile_options:
   swf_version: 15

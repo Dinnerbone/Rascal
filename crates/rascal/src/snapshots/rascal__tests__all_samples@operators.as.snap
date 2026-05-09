@@ -616,14 +616,13 @@ initializer:
         - Constant: 1
     - GetVariable
     - Greater
-    - Not
     - If: loc0003
     - Push:
-        - Constant: 0
+        - Constant: 1
     - GetVariable
     - Jump: loc0002
     - Push:
-        - Constant: 1
+        - Constant: 0
     - GetVariable
     - DefineLocal
     - Push:
@@ -652,8 +651,8 @@ initializer:
   label_positions:
     loc0000: 339
     loc0001: 348
-    loc0003: 365
-    loc0002: 367
+    loc0003: 364
+    loc0002: 366
 extra_modules: []
 compile_options:
   swf_version: 15

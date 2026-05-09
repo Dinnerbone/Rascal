@@ -51,18 +51,17 @@ initializer:
             - Push:
                 - Constant: 0
             - Equals2
-            - Not
             - If: loc0001
             - Push:
-                - Constant: 1
                 - Register: 2
-            - Add2
-            - Push:
-                - Constant: 1
-            - Add2
             - Jump: loc0000
             - Push:
+                - Constant: 1
                 - Register: 2
+            - Add2
+            - Push:
+                - Constant: 1
+            - Add2
             - StoreRegister: 3
             - Pop
             - Push:
@@ -139,10 +138,10 @@ initializer:
             - Add2
             - Trace
           label_positions:
-            loc0001: 11
-            loc0000: 12
-            loc0002: 31
-            loc0003: 47
+            loc0001: 7
+            loc0000: 11
+            loc0002: 30
+            loc0003: 46
         register_count: 4
         preload_this: true
         suppress_this: false
