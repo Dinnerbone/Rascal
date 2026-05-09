@@ -2655,77 +2655,385 @@ input_file: samples/as2/constant_folding.as
   raw: "\n"
 - kind: Identifier
   span:
-    start: 1352
-    end: 1357
+    start: 1369
+    end: 1374
   raw: trace
 - kind: OpenParen
   span:
-    start: 1357
-    end: 1358
+    start: 1374
+    end: 1375
   raw: (
 - kind:
     String: Double
   span:
-    start: 1358
-    end: 1361
-  raw: a
-- kind:
-    Operator: Add
-  span:
-    start: 1362
-    end: 1363
-  raw: +
-- kind:
-    String: Double
-  span:
-    start: 1364
-    end: 1367
-  raw: b
-- kind:
-    Operator: Add
-  span:
-    start: 1368
-    end: 1369
-  raw: +
-- kind: Integer
-  span:
-    start: 1370
-    end: 1371
-  raw: "3"
-- kind:
-    Operator: Add
-  span:
-    start: 1372
-    end: 1373
-  raw: +
-- kind: Identifier
-  span:
-    start: 1374
+    start: 1375
     end: 1378
-  raw: "true"
+  raw: a
 - kind:
     Operator: Add
   span:
     start: 1379
     end: 1380
   raw: +
-- kind: Float
+- kind:
+    String: Double
   span:
     start: 1381
-    end: 1387
-  raw: "123.45"
-- kind: CloseParen
+    end: 1384
+  raw: b
+- kind:
+    Operator: Add
+  span:
+    start: 1385
+    end: 1386
+  raw: +
+- kind: Integer
   span:
     start: 1387
     end: 1388
-  raw: )
-- kind: Semicolon
-  span:
-    start: 1388
-    end: 1389
-  raw: ;
-- kind: Newline
+  raw: "3"
+- kind:
+    Operator: Add
   span:
     start: 1389
     end: 1390
+  raw: +
+- kind: Identifier
+  span:
+    start: 1391
+    end: 1395
+  raw: "true"
+- kind:
+    Operator: Add
+  span:
+    start: 1396
+    end: 1397
+  raw: +
+- kind: Float
+  span:
+    start: 1398
+    end: 1404
+  raw: "123.45"
+- kind: CloseParen
+  span:
+    start: 1404
+    end: 1405
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1405
+    end: 1406
+  raw: ;
+- kind: Newline
+  span:
+    start: 1406
+    end: 1407
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1407
+    end: 1412
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1412
+    end: 1413
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1413
+    end: 1416
+  raw: "1"
+- kind:
+    Operator: Add
+  span:
+    start: 1417
+    end: 1418
+  raw: +
+- kind:
+    String: Double
+  span:
+    start: 1419
+    end: 1422
+  raw: "2"
+- kind: CloseParen
+  span:
+    start: 1422
+    end: 1423
+  raw: )
+- kind: Newline
+  span:
+    start: 1423
+    end: 1424
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1424
+    end: 1429
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1429
+    end: 1430
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 1430
+    end: 1433
+  raw: "1"
+- kind:
+    Operator: Add
+  span:
+    start: 1434
+    end: 1435
+  raw: +
+- kind: Integer
+  span:
+    start: 1436
+    end: 1437
+  raw: "2"
+- kind: CloseParen
+  span:
+    start: 1437
+    end: 1438
+  raw: )
+- kind: Newline
+  span:
+    start: 1438
+    end: 1439
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1439
+    end: 1444
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1444
+    end: 1445
+  raw: (
+- kind: Integer
+  span:
+    start: 1445
+    end: 1446
+  raw: "1"
+- kind:
+    Operator: Add
+  span:
+    start: 1447
+    end: 1448
+  raw: +
+- kind:
+    String: Double
+  span:
+    start: 1449
+    end: 1452
+  raw: "2"
+- kind: CloseParen
+  span:
+    start: 1452
+    end: 1453
+  raw: )
+- kind: Newline
+  span:
+    start: 1453
+    end: 1454
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1454
+    end: 1459
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1459
+    end: 1460
+  raw: (
+- kind: Integer
+  span:
+    start: 1460
+    end: 1461
+  raw: "1"
+- kind:
+    Operator: Add
+  span:
+    start: 1462
+    end: 1463
+  raw: +
+- kind: Integer
+  span:
+    start: 1464
+    end: 1465
+  raw: "2"
+- kind: CloseParen
+  span:
+    start: 1465
+    end: 1466
+  raw: )
+- kind: Newline
+  span:
+    start: 1466
+    end: 1467
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1467
+    end: 1472
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1472
+    end: 1473
+  raw: (
+- kind: Integer
+  span:
+    start: 1473
+    end: 1474
+  raw: "1"
+- kind:
+    Operator: Add
+  span:
+    start: 1475
+    end: 1476
+  raw: +
+- kind: Float
+  span:
+    start: 1477
+    end: 1480
+  raw: "2.0"
+- kind: CloseParen
+  span:
+    start: 1480
+    end: 1481
+  raw: )
+- kind: Newline
+  span:
+    start: 1481
+    end: 1482
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1482
+    end: 1487
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1487
+    end: 1488
+  raw: (
+- kind: Float
+  span:
+    start: 1488
+    end: 1491
+  raw: "1.0"
+- kind:
+    Operator: Add
+  span:
+    start: 1492
+    end: 1493
+  raw: +
+- kind: Integer
+  span:
+    start: 1494
+    end: 1495
+  raw: "2"
+- kind: CloseParen
+  span:
+    start: 1495
+    end: 1496
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1496
+    end: 1497
+  raw: ;
+- kind: Newline
+  span:
+    start: 1497
+    end: 1498
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1498
+    end: 1503
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1503
+    end: 1504
+  raw: (
+- kind: Identifier
+  span:
+    start: 1504
+    end: 1508
+  raw: "true"
+- kind:
+    Operator: Add
+  span:
+    start: 1509
+    end: 1510
+  raw: +
+- kind: Identifier
+  span:
+    start: 1511
+    end: 1516
+  raw: "false"
+- kind: CloseParen
+  span:
+    start: 1516
+    end: 1517
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1517
+    end: 1518
+  raw: ;
+- kind: Newline
+  span:
+    start: 1518
+    end: 1519
+  raw: "\n"
+- kind: Identifier
+  span:
+    start: 1519
+    end: 1524
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 1524
+    end: 1525
+  raw: (
+- kind: Identifier
+  span:
+    start: 1525
+    end: 1529
+  raw: "true"
+- kind:
+    Operator: Add
+  span:
+    start: 1530
+    end: 1531
+  raw: +
+- kind:
+    String: Double
+  span:
+    start: 1532
+    end: 1539
+  raw: "false"
+- kind: CloseParen
+  span:
+    start: 1539
+    end: 1540
+  raw: )
+- kind: Semicolon
+  span:
+    start: 1540
+    end: 1541
+  raw: ;
+- kind: Newline
+  span:
+    start: 1541
+    end: 1542
   raw: "\n"
