@@ -75,3 +75,79 @@ input_file: samples/as2/constant_folding.as
     start: 28
     end: 29
   raw: "\n"
+- kind: Identifier
+  span:
+    start: 29
+    end: 34
+  raw: trace
+- kind: OpenParen
+  span:
+    start: 34
+    end: 35
+  raw: (
+- kind:
+    String: Double
+  span:
+    start: 35
+    end: 38
+  raw: a
+- kind:
+    Operator: Add
+  span:
+    start: 39
+    end: 40
+  raw: +
+- kind:
+    String: Double
+  span:
+    start: 41
+    end: 44
+  raw: b
+- kind:
+    Operator: Add
+  span:
+    start: 45
+    end: 46
+  raw: +
+- kind: Integer
+  span:
+    start: 47
+    end: 48
+  raw: "3"
+- kind:
+    Operator: Add
+  span:
+    start: 49
+    end: 50
+  raw: +
+- kind: Identifier
+  span:
+    start: 51
+    end: 55
+  raw: "true"
+- kind:
+    Operator: Add
+  span:
+    start: 56
+    end: 57
+  raw: +
+- kind: Float
+  span:
+    start: 58
+    end: 64
+  raw: "123.45"
+- kind: CloseParen
+  span:
+    start: 64
+    end: 65
+  raw: )
+- kind: Semicolon
+  span:
+    start: 65
+    end: 66
+  raw: ;
+- kind: Newline
+  span:
+    start: 66
+    end: 67
+  raw: "\n"

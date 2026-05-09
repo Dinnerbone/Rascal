@@ -1,6 +1,7 @@
 use crate::internal::as2::ast::{BinaryOperator, UnaryOperator};
 use crate::internal::as2::hir::visitor::{MutVisitor, walk_expr};
 use crate::internal::as2::hir::{ConstantKind, Document, Expr, ExprKind};
+use std::borrow::Cow;
 
 struct ConstantFolder {
     anything_changed: bool,
@@ -32,14 +33,31 @@ impl MutVisitor for ConstantFolder {
     }
 }
 
+fn as_string(value: &'_ ConstantKind) -> Option<Cow<'_, str>> {
+    match value {
+        ConstantKind::String(value) => Some(Cow::Borrowed(value)),
+        ConstantKind::Boolean(true) => Some(Cow::Borrowed("true")),
+        ConstantKind::Boolean(false) => Some(Cow::Borrowed("false")),
+        ConstantKind::Integer(value) => Some(Cow::Owned(value.to_string())),
+        ConstantKind::Float(value) => Some(Cow::Owned(value.to_string())),
+        _ => None,
+    }
+}
+
 fn evaluate_binary_operator(
     op: BinaryOperator,
     left: &ConstantKind,
     right: &ConstantKind,
 ) -> Option<ConstantKind> {
-    Some(match (op, left, right) {
-        (BinaryOperator::StringAdd, ConstantKind::String(left), ConstantKind::String(right)) => {
-            ConstantKind::String(format!("{}{}", left, right))
+    Some(match op {
+        BinaryOperator::StringAdd | BinaryOperator::Add => {
+            if let Some(left) = as_string(left)
+                && let Some(right) = as_string(right)
+            {
+                ConstantKind::String(format!("{}{}", left, right))
+            } else {
+                return None;
+            }
         }
         _ => return None,
     })

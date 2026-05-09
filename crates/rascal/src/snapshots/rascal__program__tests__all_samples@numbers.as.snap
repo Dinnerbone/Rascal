@@ -342,32 +342,8 @@ Ok:
             start: 690
             end: 699
           value:
-            BinaryOperator:
-              - Add
-              - span:
-                  start: 690
-                  end: 695
-                value:
-                  BinaryOperator:
-                    - Add
-                    - span:
-                        start: 690
-                        end: 691
-                      value:
-                        Constant:
-                          Integer: 1
-                    - span:
-                        start: 694
-                        end: 695
-                      value:
-                        Constant:
-                          Integer: 2
-              - span:
-                  start: 698
-                  end: 699
-                value:
-                  Constant:
-                    Integer: 3
+            Constant:
+              String: "123"
         type_name: ~
     - Declare:
         name:
@@ -470,20 +446,8 @@ Ok:
                         start: 770
                         end: 779
                       value:
-                        BinaryOperator:
-                          - Add
-                          - span:
-                              start: 770
-                              end: 774
-                            value:
-                              Constant:
-                                Integer: 16
-                          - span:
-                              start: 777
-                              end: 779
-                            value:
-                              Constant:
-                                Integer: 15
+                        Constant:
+                          String: "1615"
                     - span:
                         start: 783
                         end: 788

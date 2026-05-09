@@ -18,6 +18,7 @@ initializer:
         - "/:$version"
         - url
         - target
+        - _level12
         - _level
         - abc
         - "print:#bframe"
@@ -182,27 +183,19 @@ initializer:
         load_variables: false
         load_target: true
         method: 1
+    - GetUrl:
+        url: url
+        target: _level12
     - Push:
         - Constant: 10
         - Constant: 12
-        - Integer: 12
-    - StringAdd
-    - GetUrl2:
-        load_variables: false
-        load_target: false
-        method: 0
-    - Push:
-        - Constant: 10
-        - Constant: 12
-        - Integer: 12
-    - StringAdd
     - GetUrl2:
         load_variables: false
         load_target: false
         method: 1
     - Push:
         - Constant: 10
-        - Constant: 12
+        - Constant: 13
         - Constant: 0
     - GetVariable
     - StringAdd
@@ -235,8 +228,6 @@ initializer:
     - Push:
         - Constant: 10
         - Constant: 12
-        - Integer: 12
-    - StringAdd
     - GetUrl2:
         load_variables: true
         load_target: false
@@ -244,15 +235,13 @@ initializer:
     - Push:
         - Constant: 10
         - Constant: 12
-        - Integer: 12
-    - StringAdd
     - GetUrl2:
         load_variables: true
         load_target: false
         method: 1
     - Push:
         - Constant: 10
-        - Constant: 12
+        - Constant: 13
         - Constant: 0
     - GetVariable
     - StringAdd
@@ -276,14 +265,14 @@ initializer:
     - MBCharToAscii
     - Pop
     - Push:
-        - Constant: 13
-        - Constant: 13
+        - Constant: 14
+        - Constant: 14
         - Integer: -1
     - MBStringExtract
     - Pop
     - Push:
-        - Constant: 13
-        - Constant: 13
+        - Constant: 14
+        - Constant: 14
         - Integer: 2
     - MBStringExtract
     - Pop
@@ -306,7 +295,7 @@ initializer:
         url: "print:#bmax"
         target: foo
     - Push:
-        - Constant: 14
+        - Constant: 15
         - Constant: 3
     - GetVariable
     - GetUrl2:
@@ -314,8 +303,8 @@ initializer:
         load_target: false
         method: 0
     - Push:
-        - Constant: 15
         - Constant: 16
+        - Constant: 17
     - GetVariable
     - GetUrl2:
         load_variables: false
@@ -325,7 +314,7 @@ initializer:
         url: "printasbitmap:#bmax"
         target: foo
     - Push:
-        - Constant: 17
+        - Constant: 18
         - Constant: 3
     - GetVariable
     - GetUrl2:
@@ -333,8 +322,8 @@ initializer:
         load_target: false
         method: 0
     - Push:
-        - Constant: 18
-        - Constant: 16
+        - Constant: 19
+        - Constant: 17
     - GetVariable
     - GetUrl2:
         load_variables: false
@@ -344,8 +333,8 @@ initializer:
         url: "printasbitmap:#bmax"
         target: "_level:123"
     - Push:
-        - Constant: 17
-        - Constant: 19
+        - Constant: 18
+        - Constant: 20
         - Constant: 0
     - GetVariable
     - StringAdd
@@ -354,8 +343,8 @@ initializer:
         load_target: false
         method: 0
     - Push:
-        - Constant: 18
         - Constant: 19
+        - Constant: 20
         - Constant: 0
     - GetVariable
     - StringAdd
@@ -367,8 +356,8 @@ initializer:
         url: "print:#bmax"
         target: "_level:123"
     - Push:
-        - Constant: 14
-        - Constant: 19
+        - Constant: 15
+        - Constant: 20
         - Constant: 0
     - GetVariable
     - StringAdd
@@ -377,8 +366,8 @@ initializer:
         load_target: false
         method: 0
     - Push:
-        - Constant: 15
-        - Constant: 19
+        - Constant: 16
+        - Constant: 20
         - Constant: 0
     - GetVariable
     - StringAdd
@@ -457,10 +446,10 @@ initializer:
     - Pop
     - ToggleQuality
     - Push:
-        - Constant: 20
+        - Constant: 21
     - Trace
     - Push:
-        - Constant: 21
+        - Constant: 22
         - Constant: 0
     - GetVariable
     - GetUrl2:
@@ -468,8 +457,8 @@ initializer:
         load_target: true
         method: 0
     - Push:
-        - Constant: 21
-        - Constant: 12
+        - Constant: 22
+        - Constant: 13
         - Constant: 0
     - GetVariable
     - StringAdd
@@ -477,15 +466,9 @@ initializer:
         load_variables: false
         load_target: false
         method: 0
-    - Push:
-        - Constant: 21
-        - Constant: 12
-        - Integer: 123
-    - StringAdd
-    - GetUrl2:
-        load_variables: false
-        load_target: false
-        method: 0
+    - GetUrl:
+        url: ""
+        target: _level123
   label_positions: {}
 extra_modules: []
 compile_options:

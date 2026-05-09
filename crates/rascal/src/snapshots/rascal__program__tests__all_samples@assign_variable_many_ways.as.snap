@@ -16,20 +16,8 @@ Ok:
             start: 14
             end: 27
           value:
-            BinaryOperator:
-              - Add
-              - span:
-                  start: 14
-                  end: 21
-                value:
-                  Constant:
-                    String: Hello
-              - span:
-                  start: 24
-                  end: 27
-                value:
-                  Constant:
-                    String: " "
+            Constant:
+              String: "Hello "
         type_name: ~
     - Expr:
         span:

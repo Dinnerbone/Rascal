@@ -5,12 +5,16 @@ input_file: samples/as2/constant_folding.as
 ---
 initializer:
   actions:
-    - ConstantPool: []
+    - ConstantPool:
+        - ab3true123.45
     - Push:
         - "False"
     - Trace
     - Push:
         - "True"
+    - Trace
+    - Push:
+        - Constant: 0
     - Trace
   label_positions: {}
 extra_modules: []
