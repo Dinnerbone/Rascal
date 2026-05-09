@@ -126,11 +126,55 @@ impl CompiledProgram {
     }
 }
 
+#[derive(Debug, Clone)]
+pub struct OptimizationOptions {
+    fold_constants: bool,
+    promote_variables_to_registers: bool,
+}
+
+impl OptimizationOptions {
+    pub fn full() -> Self {
+        Self {
+            fold_constants: true,
+            promote_variables_to_registers: true,
+        }
+    }
+
+    pub fn none() -> Self {
+        Self {
+            fold_constants: false,
+            promote_variables_to_registers: false,
+        }
+    }
+
+    pub fn with_fold_constants(mut self, fold_constants: bool) -> Self {
+        self.fold_constants = fold_constants;
+        self
+    }
+
+    pub fn fold_constants(&self) -> bool {
+        self.fold_constants
+    }
+
+    pub fn with_promote_variables_to_registers(
+        mut self,
+        promote_variables_to_registers: bool,
+    ) -> Self {
+        self.promote_variables_to_registers = promote_variables_to_registers;
+        self
+    }
+
+    pub fn promote_variables_to_registers(&self) -> bool {
+        self.promote_variables_to_registers
+    }
+}
+
 pub struct ProgramBuilder<P> {
     provider: P,
     scripts: Vec<String>,
     pcodes: Vec<String>,
     classes: Vec<String>,
+    optimizations: OptimizationOptions,
 }
 
 impl<P> ProgramBuilder<P> {
@@ -145,6 +189,11 @@ impl<P> ProgramBuilder<P> {
     pub fn add_class(&mut self, path: &str) {
         self.classes.push(path.to_owned());
     }
+
+    pub fn with_optimizations(mut self, optimizations: OptimizationOptions) -> Self {
+        self.optimizations = optimizations;
+        self
+    }
 }
 
 impl<P: SourceProvider> ProgramBuilder<P> {
@@ -154,6 +203,7 @@ impl<P: SourceProvider> ProgramBuilder<P> {
             scripts: vec![],
             pcodes: vec![],
             classes: vec![],
+            optimizations: OptimizationOptions::full(),
         }
     }
 
@@ -167,6 +217,7 @@ impl<P: SourceProvider> ProgramBuilder<P> {
         let mut pending_classes = self.classes;
         let mut custom_pcodes = vec![];
 
+        #[expect(clippy::too_many_arguments)]
         fn load_actionscript<P: SourceProvider>(
             provider: &P,
             errors: &mut ErrorSet,
@@ -175,6 +226,7 @@ impl<P: SourceProvider> ProgramBuilder<P> {
             path: &str,
             type_name: &str,
             is_script: bool,
+            optimizations: &OptimizationOptions,
         ) -> Option<hir::Document> {
             let source = match provider.load(path) {
                 Ok(source) => source,
@@ -201,10 +253,14 @@ impl<P: SourceProvider> ProgramBuilder<P> {
                     pending_classes.push(name);
                 }
             }
-            while fold_constants(&mut hir) {
-                // Keep going until nothing changed
+            if optimizations.fold_constants {
+                while fold_constants(&mut hir) {
+                    // Keep going until nothing changed
+                }
             }
-            promote_variables_to_registers(&mut hir);
+            if optimizations.promote_variables_to_registers {
+                promote_variables_to_registers(&mut hir);
+            }
             Some(hir)
         }
 
@@ -241,6 +297,7 @@ impl<P: SourceProvider> ProgramBuilder<P> {
                 &path,
                 "",
                 true,
+                &self.optimizations,
             ) && let hir::Document::Script { statements, scope } = document
             {
                 root_scope.defined_variables.extend(scope.defined_variables);
@@ -264,6 +321,7 @@ impl<P: SourceProvider> ProgramBuilder<P> {
                 &filename,
                 &type_name,
                 false,
+                &self.optimizations,
             ) {
                 match document {
                     hir::Document::Interface(interface) => {
