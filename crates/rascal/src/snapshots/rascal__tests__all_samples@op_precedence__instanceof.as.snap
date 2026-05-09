@@ -1,0 +1,39 @@
+---
+source: crates/rascal/src/tests.rs
+expression: result
+input_file: samples/as2/op_precedence/instanceof.as
+---
+initializer:
+  actions:
+    - ConstantPool:
+        - x
+        - toCompare
+        - Foo
+    - Push:
+        - Constant: 0
+        - Constant: 1
+    - GetVariable
+    - Push:
+        - Constant: 2
+    - GetVariable
+    - InstanceOf
+    - PushDuplicate
+    - Not
+    - If: loc0000
+    - Pop
+    - Push:
+        - Constant: 1
+    - GetVariable
+    - Push:
+        - Constant: 0
+    - GetMember
+    - Push:
+        - Integer: 123
+    - Equals2
+    - DefineLocal
+  label_positions:
+    loc0000: 16
+extra_modules: []
+compile_options:
+  swf_version: 15
+custom_pcodes: []

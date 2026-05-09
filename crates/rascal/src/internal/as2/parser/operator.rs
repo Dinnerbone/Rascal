@@ -77,7 +77,7 @@ impl BinaryOperator {
             | BinaryOperator::BitShiftLeftAssign
             | BinaryOperator::BitShiftRightAssign
             | BinaryOperator::BitShiftRightUnsignedAssign => OperatorPrecedence::Assignment,
-            BinaryOperator::InstanceOf => OperatorPrecedence::Other,
+            BinaryOperator::InstanceOf => OperatorPrecedence::Comparison,
         }
     }
 }
