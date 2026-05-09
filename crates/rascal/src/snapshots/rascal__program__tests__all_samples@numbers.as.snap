@@ -268,14 +268,8 @@ Ok:
             start: 577
             end: 581
           value:
-            UnaryOperator:
-              - Sub
-              - span:
-                  start: 578
-                  end: 581
-                value:
-                  Constant:
-                    Integer: 123
+            Constant:
+              Integer: -123
         type_name: ~
     - Declare:
         name:
@@ -288,14 +282,8 @@ Ok:
             start: 594
             end: 599
           value:
-            UnaryOperator:
-              - Sub
-              - span:
-                  start: 595
-                  end: 599
-                value:
-                  Constant:
-                    Integer: 255
+            Constant:
+              Integer: -255
         type_name: ~
     - Declare:
         name:
@@ -308,14 +296,8 @@ Ok:
             start: 614
             end: 619
           value:
-            UnaryOperator:
-              - Sub
-              - span:
-                  start: 615
-                  end: 619
-                value:
-                  Constant:
-                    Float: 3.14
+            Constant:
+              Float: -3.14
         type_name: ~
     - Declare:
         name:

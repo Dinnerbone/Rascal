@@ -21,15 +21,22 @@ initializer:
         - "True"
     - Trace
     - Push:
-        - Integer: -1
-    - Not
-    - Not
+        - "True"
     - Trace
     - Push:
         - "False"
     - Trace
     - Push:
         - "True"
+    - Trace
+    - Push:
+        - "True"
+    - Trace
+    - Push:
+        - "True"
+    - Trace
+    - Push:
+        - "False"
     - Trace
     - Push:
         - "False"
@@ -58,6 +65,64 @@ initializer:
     - GetVariable
     - Not
     - Not
+    - Trace
+    - Push:
+        - Integer: -1
+    - Trace
+    - Push:
+        - Integer: 0
+    - Trace
+    - Push:
+        - Integer: 0
+    - Trace
+    - Push:
+        - Integer: -1
+    - Trace
+    - Push:
+        - Integer: 1
+    - Trace
+    - Push:
+        - Integer: 0
+    - Trace
+    - Push:
+        - Float: -0.1
+    - Trace
+    - Push:
+        - Integer: -123
+    - Trace
+    - Push:
+        - Float: -2.5
+    - Trace
+    - Push:
+        - Integer: 0
+    - Trace
+    - Push:
+        - Float: NaN
+    - Trace
+    - Push:
+        - Float: NaN
+    - Trace
+    - Push:
+        - Float: NaN
+    - Trace
+    - Push:
+        - Float: NaN
+    - Trace
+    - Push:
+        - Integer: 0
+        - "Null"
+    - Subtract
+    - Trace
+    - Push:
+        - Integer: 0
+        - Undefined
+    - Subtract
+    - Trace
+    - Push:
+        - Integer: 0
+        - Constant: 0
+    - GetVariable
+    - Subtract
     - Trace
     - Push:
         - Constant: 1
