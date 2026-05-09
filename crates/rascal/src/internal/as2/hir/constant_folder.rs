@@ -44,6 +44,16 @@ fn as_string(value: &'_ ConstantKind) -> Option<Cow<'_, str>> {
     }
 }
 
+fn as_bool(value: &'_ ConstantKind) -> Option<bool> {
+    match value {
+        ConstantKind::String(_) => Some(false),
+        ConstantKind::Boolean(value) => Some(*value),
+        ConstantKind::Integer(value) => Some(*value != 0),
+        ConstantKind::Float(value) => Some(*value != 0.0),
+        _ => None,
+    }
+}
+
 fn evaluate_binary_operator(
     op: BinaryOperator,
     left: &ConstantKind,
@@ -64,8 +74,14 @@ fn evaluate_binary_operator(
 }
 
 fn evaluate_unary_operator(op: UnaryOperator, value: &ConstantKind) -> Option<ConstantKind> {
-    Some(match (op, value) {
-        (UnaryOperator::LogicalNot, ConstantKind::Boolean(value)) => ConstantKind::Boolean(!value),
+    Some(match op {
+        UnaryOperator::LogicalNot => {
+            if let Some(value) = as_bool(value) {
+                ConstantKind::Boolean(!value)
+            } else {
+                return None;
+            }
+        }
         _ => return None,
     })
 }

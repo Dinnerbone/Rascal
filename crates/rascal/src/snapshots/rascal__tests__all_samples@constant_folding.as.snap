@@ -6,7 +6,14 @@ input_file: samples/as2/constant_folding.as
 initializer:
   actions:
     - ConstantPool:
+        - foo
         - ab3true123.45
+    - Push:
+        - "True"
+    - Trace
+    - Push:
+        - "False"
+    - Trace
     - Push:
         - "False"
     - Trace
@@ -14,7 +21,46 @@ initializer:
         - "True"
     - Trace
     - Push:
+        - Integer: -1
+    - Not
+    - Not
+    - Trace
+    - Push:
+        - "False"
+    - Trace
+    - Push:
+        - "True"
+    - Trace
+    - Push:
+        - "False"
+    - Trace
+    - Push:
+        - "False"
+    - Trace
+    - Push:
+        - "False"
+    - Trace
+    - Push:
+        - "False"
+    - Trace
+    - Push:
+        - "Null"
+    - Not
+    - Not
+    - Trace
+    - Push:
+        - Undefined
+    - Not
+    - Not
+    - Trace
+    - Push:
         - Constant: 0
+    - GetVariable
+    - Not
+    - Not
+    - Trace
+    - Push:
+        - Constant: 1
     - Trace
   label_positions: {}
 extra_modules: []

@@ -118,8 +118,7 @@ initializer:
             - StoreRegister: 3
             - Pop
             - Push:
-                - Constant: 5
-            - Not
+                - "True"
             - Not
             - If: loc0002
             - Jump: loc0001
@@ -132,8 +131,8 @@ initializer:
             - StoreRegister: 2
             - Pop
           label_positions:
-            loc0002: 14
-            loc0001: 20
+            loc0002: 13
+            loc0001: 19
         register_count: 4
         preload_this: false
         suppress_this: true
