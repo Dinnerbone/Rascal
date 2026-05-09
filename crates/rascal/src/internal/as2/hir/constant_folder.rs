@@ -68,6 +68,20 @@ fn as_float(value: &'_ ConstantKind) -> Option<f64> {
     }
 }
 
+fn as_int(value: &'_ ConstantKind) -> Option<i32> {
+    match value {
+        ConstantKind::String(_) => {
+            let value = as_float(value).unwrap_or_default();
+            Some(if value.is_nan() { 0 } else { value as i32 })
+        }
+        ConstantKind::Boolean(true) => Some(1),
+        ConstantKind::Boolean(false) => Some(0),
+        ConstantKind::Integer(value) => Some(*value),
+        ConstantKind::Float(value) => Some(*value as i32),
+        _ => None,
+    }
+}
+
 fn float_as_constant(value: f64) -> ConstantKind {
     if value.is_finite()
         && value.fract() == 0.0
@@ -118,6 +132,13 @@ fn evaluate_unary_operator(op: UnaryOperator, value: &ConstantKind) -> Option<Co
         UnaryOperator::Add => {
             if let Some(value) = as_float(value) {
                 float_as_constant(value)
+            } else {
+                return None;
+            }
+        }
+        UnaryOperator::BitNot => {
+            if let Some(value) = as_int(value) {
+                ConstantKind::Integer(!value)
             } else {
                 return None;
             }

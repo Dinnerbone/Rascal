@@ -679,13 +679,247 @@ Ok:
                       Identifier: foo
     - Expr:
         span:
-          start: 1005
-          end: 1041
+          start: 1034
+          end: 1046
         value:
           Trace:
             span:
-              start: 1011
-              end: 1040
+              start: 1040
+              end: 1045
+            value:
+              Constant:
+                Integer: -2
+    - Expr:
+        span:
+          start: 1048
+          end: 1061
+        value:
+          Trace:
+            span:
+              start: 1054
+              end: 1060
+            value:
+              Constant:
+                Integer: -1
+    - Expr:
+        span:
+          start: 1071
+          end: 1080
+        value:
+          Trace:
+            span:
+              start: 1077
+              end: 1079
+            value:
+              Constant:
+                Integer: -1
+    - Expr:
+        span:
+          start: 1082
+          end: 1091
+        value:
+          Trace:
+            span:
+              start: 1088
+              end: 1090
+            value:
+              Constant:
+                Integer: -2
+    - Expr:
+        span:
+          start: 1093
+          end: 1105
+        value:
+          Trace:
+            span:
+              start: 1099
+              end: 1104
+            value:
+              Constant:
+                Integer: 0
+    - Expr:
+        span:
+          start: 1107
+          end: 1116
+        value:
+          Trace:
+            span:
+              start: 1113
+              end: 1115
+            value:
+              Constant:
+                Integer: -6
+    - Expr:
+        span:
+          start: 1128
+          end: 1139
+        value:
+          Trace:
+            span:
+              start: 1134
+              end: 1138
+            value:
+              Constant:
+                Integer: -1
+    - Expr:
+        span:
+          start: 1141
+          end: 1152
+        value:
+          Trace:
+            span:
+              start: 1147
+              end: 1151
+            value:
+              Constant:
+                Integer: -1
+    - Expr:
+        span:
+          start: 1154
+          end: 1165
+        value:
+          Trace:
+            span:
+              start: 1160
+              end: 1164
+            value:
+              Constant:
+                Integer: -6
+    - Expr:
+        span:
+          start: 1178
+          end: 1191
+        value:
+          Trace:
+            span:
+              start: 1184
+              end: 1190
+            value:
+              Constant:
+                Integer: -124
+    - Expr:
+        span:
+          start: 1193
+          end: 1206
+        value:
+          Trace:
+            span:
+              start: 1199
+              end: 1205
+            value:
+              Constant:
+                Integer: -3
+    - Expr:
+        span:
+          start: 1208
+          end: 1219
+        value:
+          Trace:
+            span:
+              start: 1214
+              end: 1218
+            value:
+              Constant:
+                Integer: -1
+    - Expr:
+        span:
+          start: 1221
+          end: 1231
+        value:
+          Trace:
+            span:
+              start: 1227
+              end: 1230
+            value:
+              Constant:
+                Integer: -1
+    - Expr:
+        span:
+          start: 1233
+          end: 1247
+        value:
+          Trace:
+            span:
+              start: 1239
+              end: 1246
+            value:
+              Constant:
+                Integer: -1
+    - Expr:
+        span:
+          start: 1249
+          end: 1264
+        value:
+          Trace:
+            span:
+              start: 1255
+              end: 1263
+            value:
+              Constant:
+                Integer: -1
+    - Expr:
+        span:
+          start: 1305
+          end: 1317
+        value:
+          Trace:
+            span:
+              start: 1311
+              end: 1316
+            value:
+              UnaryOperator:
+                - BitNot
+                - span:
+                    start: 1312
+                    end: 1316
+                  value:
+                    Constant:
+                      Identifier: "null"
+    - Expr:
+        span:
+          start: 1319
+          end: 1336
+        value:
+          Trace:
+            span:
+              start: 1325
+              end: 1335
+            value:
+              UnaryOperator:
+                - BitNot
+                - span:
+                    start: 1326
+                    end: 1335
+                  value:
+                    Constant:
+                      Identifier: undefined
+    - Expr:
+        span:
+          start: 1338
+          end: 1349
+        value:
+          Trace:
+            span:
+              start: 1344
+              end: 1348
+            value:
+              UnaryOperator:
+                - BitNot
+                - span:
+                    start: 1345
+                    end: 1348
+                  value:
+                    Constant:
+                      Identifier: foo
+    - Expr:
+        span:
+          start: 1352
+          end: 1388
+        value:
+          Trace:
+            span:
+              start: 1358
+              end: 1387
             value:
               Constant:
                 String: ab3true123.45

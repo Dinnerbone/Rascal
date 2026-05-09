@@ -174,6 +174,68 @@ initializer:
     - GetVariable
     - Trace
     - Push:
+        - Integer: -2
+    - Trace
+    - Push:
+        - Integer: -1
+    - Trace
+    - Push:
+        - Integer: -1
+    - Trace
+    - Push:
+        - Integer: -2
+    - Trace
+    - Push:
+        - Integer: 0
+    - Trace
+    - Push:
+        - Integer: -6
+    - Trace
+    - Push:
+        - Integer: -1
+    - Trace
+    - Push:
+        - Integer: -1
+    - Trace
+    - Push:
+        - Integer: -6
+    - Trace
+    - Push:
+        - Integer: -124
+    - Trace
+    - Push:
+        - Integer: -3
+    - Trace
+    - Push:
+        - Integer: -1
+    - Trace
+    - Push:
+        - Integer: -1
+    - Trace
+    - Push:
+        - Integer: -1
+    - Trace
+    - Push:
+        - Integer: -1
+    - Trace
+    - Push:
+        - "Null"
+        - Float: 4294967295
+    - BitXor
+    - Trace
+    - Push:
+        - Undefined
+        - Float: 4294967295
+    - BitXor
+    - Trace
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Float: 4294967295
+    - BitXor
+    - Trace
+    - Push:
         - Constant: 1
     - Trace
   label_positions: {}
