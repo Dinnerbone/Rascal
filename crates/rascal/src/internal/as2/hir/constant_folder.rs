@@ -115,6 +115,13 @@ fn evaluate_unary_operator(op: UnaryOperator, value: &ConstantKind) -> Option<Co
                 return None;
             }
         }
+        UnaryOperator::Add => {
+            if let Some(value) = as_float(value) {
+                float_as_constant(value)
+            } else {
+                return None;
+            }
+        }
         _ => return None,
     })
 }
