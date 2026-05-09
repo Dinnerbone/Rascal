@@ -8,6 +8,8 @@ initializer:
     - ConstantPool:
         - foo
         - ab3true123.45
+        - "12"
+        - truefalse
     - Push:
         - "True"
     - Trace
@@ -237,6 +239,30 @@ initializer:
     - Trace
     - Push:
         - Constant: 1
+    - Trace
+    - Push:
+        - Constant: 2
+    - Trace
+    - Push:
+        - Constant: 2
+    - Trace
+    - Push:
+        - Constant: 2
+    - Trace
+    - Push:
+        - Integer: 3
+    - Trace
+    - Push:
+        - Integer: 3
+    - Trace
+    - Push:
+        - Integer: 3
+    - Trace
+    - Push:
+        - Integer: 1
+    - Trace
+    - Push:
+        - Constant: 3
     - Trace
   label_positions: {}
 extra_modules: []

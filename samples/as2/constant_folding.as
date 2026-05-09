@@ -94,4 +94,13 @@ trace(~null);
 trace(~undefined);
 trace(~foo);
 
+// -- Binary add
 trace("a" + "b" + 3 + true + 123.45);
+trace("1" + "2")
+trace("1" + 2)
+trace(1 + "2")
+trace(1 + 2)
+trace(1 + 2.0)
+trace(1.0 + 2);
+trace(true + false);
+trace(true + "false");

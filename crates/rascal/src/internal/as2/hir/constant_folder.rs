@@ -100,11 +100,22 @@ fn evaluate_binary_operator(
     right: &ConstantKind,
 ) -> Option<ConstantKind> {
     Some(match op {
-        BinaryOperator::StringAdd | BinaryOperator::Add => {
-            if let Some(left) = as_string(left)
-                && let Some(right) = as_string(right)
-            {
+        BinaryOperator::StringAdd => {
+            if let (Some(left), Some(right)) = (as_string(left), as_string(right)) {
                 ConstantKind::String(format!("{}{}", left, right))
+            } else {
+                return None;
+            }
+        }
+        BinaryOperator::Add => {
+            if matches!(left, ConstantKind::String(_)) || matches!(right, ConstantKind::String(_)) {
+                if let (Some(left), Some(right)) = (as_string(left), as_string(right)) {
+                    ConstantKind::String(format!("{}{}", left, right))
+                } else {
+                    return None;
+                }
+            } else if let (Some(left), Some(right)) = (as_float(left), as_float(right)) {
+                float_as_constant(left + right)
             } else {
                 return None;
             }
