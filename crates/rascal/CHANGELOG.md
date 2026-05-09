@@ -7,6 +7,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.7](https://github.com/Dinnerbone/Rascal/compare/rascal-v0.2.6...rascal-v0.2.7) - 2026-05-09
+
+### Added
+
+- *(codegen)* Fold constants to ints with int() special function
+- *(codegen)* Fold constants to numbers with - binary operator
+- *(codegen)* Fold constants to numbers or strings with + binary operator
+- *(codegen)* Fold constants to numbers with ~ unary operator
+- *(codegen)* Fold constants to numbers with + unary operator
+- *(codegen)* Fold constants to numbers with - unary operator
+- *(codegen)* Fold constants to bools with ! unary operator
+- *(codegen)* Fold "a" + "b" into "ab"
+- *(api)* Add OptimizationOptions to control which optimization passes get applied
+
+### Fixed
+
+- *(parser)* Parse +foo as a unary add, as it'll later convert things to float
+
+### Other
+
+- *(codegen)* Slightly refactor constant folding to make it easier to implement more
+- *(codegen)* Rename Optimizer to RegisterPromoter
+- *(codegen)* Rename simplifier.as to constant_folding.as
+- *(codegen)* Rename Simplifier to ConstantFolder
+
 ## [0.2.6](https://github.com/Dinnerbone/Rascal/compare/rascal-v0.2.5...rascal-v0.2.6) - 2026-05-09
 
 ### Other
