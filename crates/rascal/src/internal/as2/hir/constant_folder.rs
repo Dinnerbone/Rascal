@@ -120,6 +120,13 @@ fn evaluate_binary_operator(
                 return None;
             }
         }
+        BinaryOperator::Sub => {
+            if let (Some(left), Some(right)) = (as_float(left), as_float(right)) {
+                float_as_constant(left - right)
+            } else {
+                return None;
+            }
+        }
         _ => return None,
     })
 }

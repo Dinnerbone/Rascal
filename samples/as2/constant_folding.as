@@ -104,3 +104,13 @@ trace(1 + 2.0)
 trace(1.0 + 2);
 trace(true + false);
 trace(true + "false");
+
+// -- Binary sub
+trace("1" - "2")
+trace("1" - 2)
+trace(1 - "2")
+trace(1 - 2)
+trace(1 - 2.0)
+trace(1.0 - 2);
+trace(true - false);
+trace(true - "false");
