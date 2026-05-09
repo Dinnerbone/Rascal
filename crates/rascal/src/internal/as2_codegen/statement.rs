@@ -401,15 +401,14 @@ fn gen_ternary(
     no: &Expr,
 ) {
     let end_label = context.create_label();
-    let no_label = context.create_label();
+    let yes_label = context.create_label();
 
     gen_expr(context, builder, condition, false);
-    builder.action(Action::Not);
-    builder.action(Action::If(no_label.clone()));
-    gen_expr(context, builder, yes, false);
-    builder.action(Action::Jump(end_label.clone()));
-    builder.mark_label(no_label);
+    builder.action(Action::If(yes_label.clone()));
     gen_expr(context, builder, no, false);
+    builder.action(Action::Jump(end_label.clone()));
+    builder.mark_label(yes_label);
+    gen_expr(context, builder, yes, false);
     builder.mark_label(end_label);
 
     // -1 because we'll have assumed the stack grew twice, but the player will skip one of the expressions
