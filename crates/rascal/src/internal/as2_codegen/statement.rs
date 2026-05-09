@@ -908,6 +908,7 @@ fn gen_unary_op(
                 builder.action(Action::Subtract);
             }
         },
+        UnaryOperator::Add => gen_expr(context, builder, expr, will_discard_result),
         UnaryOperator::BitNot => {
             gen_expr(context, builder, expr, false);
             builder.push(u32::MAX as f64);

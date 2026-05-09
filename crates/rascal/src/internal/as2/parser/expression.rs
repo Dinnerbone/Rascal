@@ -67,6 +67,7 @@ pub(crate) fn expression<'i>(i: &mut Tokens<'i>) -> ModalResult<Expr<'i>> {
         TokenKind::Operator(Operator::Add) => {
             TokenKind::Operator(Operator::Add).parse_next(i)?;
             expression
+                .map(|e| expr_for_unary_operator(UnaryOperator::Add, Box::new(e), start))
                 .context(StrContext::Label("expression"))
                 .parse_next(i)
         }
@@ -1015,7 +1016,10 @@ mod tests {
             parse_expr(&tokens),
             Ok(ex(ExprKind::BinaryOperator(
                 BinaryOperator::Add,
-                Box::new(id("a")),
+                Box::new(ex(ExprKind::UnaryOperator(
+                    UnaryOperator::Add,
+                    Box::new(id("a"))
+                ))),
                 Box::new(id("b"))
             )))
         )
@@ -1027,7 +1031,13 @@ mod tests {
             (TokenKind::Operator(Operator::Add), "+"),
             (TokenKind::Identifier, "a"),
         ]);
-        assert_eq!(parse_expr(&tokens), Ok(id("a")));
+        assert_eq!(
+            parse_expr(&tokens),
+            Ok(ex(ExprKind::UnaryOperator(
+                UnaryOperator::Add,
+                Box::new(id("a"))
+            ))),
+        );
     }
 
     #[test]

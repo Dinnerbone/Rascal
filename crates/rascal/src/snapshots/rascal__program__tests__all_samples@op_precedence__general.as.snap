@@ -2448,23 +2448,35 @@ Ok:
                     Constant:
                       String: "+one + +two = "
                 - span:
-                    start: 5204
+                    start: 5203
                     end: 5214
                   value:
                     BinaryOperator:
                       - Add
                       - span:
-                          start: 5204
+                          start: 5203
                           end: 5207
                         value:
-                          Constant:
-                            Identifier: one
+                          UnaryOperator:
+                            - Add
+                            - span:
+                                start: 5204
+                                end: 5207
+                              value:
+                                Constant:
+                                  Identifier: one
                       - span:
-                          start: 5211
+                          start: 5210
                           end: 5214
                         value:
-                          Constant:
-                            Identifier: two
+                          UnaryOperator:
+                            - Add
+                            - span:
+                                start: 5211
+                                end: 5214
+                              value:
+                                Constant:
+                                  Identifier: two
     - Expr:
         span:
           start: 5254
