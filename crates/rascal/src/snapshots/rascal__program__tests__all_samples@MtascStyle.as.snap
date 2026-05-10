@@ -36,7 +36,21 @@ Ok:
                 value:
                   Constant:
                     Identifier: this
-  interfaces: []
+  interfaces:
+    - name: path.to.ANestedInterface
+      extends: ~
+      functions:
+        success:
+          name:
+            span:
+              start: 47
+              end: 54
+            value: success
+          args: []
+          return_type: ~
+    - name: AnEmptyInterface
+      extends: ~
+      functions: {}
   classes:
     - name: MtascStyle
       extends: ~
@@ -65,6 +79,103 @@ Ok:
                       value:
                         Constant:
                           String: Main method!
+              - Expr:
+                  span:
+                    start: 94
+                    end: 122
+                  value:
+                    Trace:
+                      span:
+                        start: 100
+                        end: 121
+                      value:
+                        CastToObject:
+                          class:
+                            span:
+                              start: 100
+                              end: 116
+                            value:
+                              Constant:
+                                Identifier: AnEmptyInterface
+                          object:
+                            span:
+                              start: 117
+                              end: 120
+                            value:
+                              Constant:
+                                Identifier: foo
+              - Expr:
+                  span:
+                    start: 132
+                    end: 158
+                  value:
+                    Trace:
+                      span:
+                        start: 138
+                        end: 157
+                      value:
+                        Call:
+                          name:
+                            span:
+                              start: 138
+                              end: 152
+                            value:
+                              Constant:
+                                Identifier: NotAnInterface
+                          args:
+                            - span:
+                                start: 153
+                                end: 156
+                              value:
+                                Constant:
+                                  Identifier: foo
+              - Expr:
+                  span:
+                    start: 168
+                    end: 204
+                  value:
+                    Trace:
+                      span:
+                        start: 181
+                        end: 203
+                      value:
+                        CastToObject:
+                          class:
+                            span:
+                              start: 181
+                              end: 198
+                            value:
+                              Field:
+                                - span:
+                                    start: 178
+                                    end: 181
+                                  value:
+                                    Field:
+                                      - span:
+                                          start: 174
+                                          end: 178
+                                        value:
+                                          Constant:
+                                            Identifier: path
+                                      - span:
+                                          start: 179
+                                          end: 181
+                                        value:
+                                          Constant:
+                                            String: to
+                                - span:
+                                    start: 182
+                                    end: 198
+                                  value:
+                                    Constant:
+                                      String: ANestedInterface
+                          object:
+                            span:
+                              start: 199
+                              end: 202
+                            value:
+                              Constant:
+                                Identifier: foo
             scope:
               defined_variables:
                 this:
@@ -85,7 +196,11 @@ Ok:
                 _global:
                   used: false
                   used_in_inner_scope: false
-              referenced_variables: []
+              referenced_variables:
+                - AnEmptyInterface
+                - foo
+                - NotAnInterface
+                - path
               could_reference_anything: false
             register_count: 1
             preload_this: false

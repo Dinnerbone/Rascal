@@ -216,6 +216,7 @@ impl<P: SourceProvider> ProgramBuilder<P> {
         let mut loaded_classes = IndexSet::new();
         let mut pending_classes = self.classes;
         let mut custom_pcodes = vec![];
+        let known_script_paths = self.scripts.iter().cloned().collect();
 
         #[expect(clippy::too_many_arguments)]
         fn load_actionscript<P: SourceProvider>(
@@ -227,6 +228,7 @@ impl<P: SourceProvider> ProgramBuilder<P> {
             type_name: &str,
             is_script: bool,
             optimizations: &OptimizationOptions,
+            known_script_paths: &IndexSet<String>,
         ) -> Option<hir::Document> {
             let source = match provider.load(path) {
                 Ok(source) => source,
@@ -244,7 +246,7 @@ impl<P: SourceProvider> ProgramBuilder<P> {
                 }
             };
             let (mut hir, hir_errors, dependencies) =
-                resolve_hir(provider, ast, is_script, type_name);
+                resolve_hir(provider, ast, is_script, type_name, known_script_paths);
             for error in hir_errors {
                 errors.add_parsing_error(path, &source, error);
             }
@@ -298,6 +300,7 @@ impl<P: SourceProvider> ProgramBuilder<P> {
                 "",
                 true,
                 &self.optimizations,
+                &known_script_paths,
             ) && let hir::Document::Script { statements, scope } = document
             {
                 root_scope.defined_variables.extend(scope.defined_variables);
@@ -322,6 +325,7 @@ impl<P: SourceProvider> ProgramBuilder<P> {
                 &type_name,
                 false,
                 &self.optimizations,
+                &known_script_paths,
             ) {
                 match document {
                     hir::Document::Interface(interface) => {

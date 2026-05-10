@@ -203,6 +203,10 @@ pub fn walk_expr<V: MutVisitor + ?Sized>(visitor: &mut V, expr: &mut Expr) {
         ExprKind::CastToInteger(value) => visitor.visit_expr(value),
         ExprKind::CastToNumber(value) => visitor.visit_expr(value),
         ExprKind::CastToString(value) => visitor.visit_expr(value),
+        ExprKind::CastToObject { class, object } => {
+            visitor.visit_expr(class);
+            visitor.visit_expr(object);
+        }
         ExprKind::StringLength(value) => visitor.visit_expr(value),
         ExprKind::MBStringLength(value) => visitor.visit_expr(value),
         ExprKind::CharToAscii(value) => visitor.visit_expr(value),
