@@ -563,6 +563,11 @@ pub fn gen_expr(
             gen_expr(context, builder, value, false);
             builder.action(Action::ToString);
         }
+        ExprKind::CastToObject { class, object } => {
+            gen_expr(context, builder, class, false);
+            gen_expr(context, builder, object, false);
+            builder.action(Action::CastOp);
+        }
         ExprKind::StringLength(value) => {
             gen_expr(context, builder, value, false);
             builder.action(Action::StringLength);

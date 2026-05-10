@@ -58,6 +58,10 @@ pub enum ExprKind {
     CastToInteger(Box<Expr>),
     CastToNumber(Box<Expr>),
     CastToString(Box<Expr>),
+    CastToObject {
+        class: Box<Expr>,
+        object: Box<Expr>,
+    },
     StringLength(Box<Expr>),
     MBStringLength(Box<Expr>),
     CharToAscii(Box<Expr>),

@@ -22,10 +22,128 @@ initializer:
     - Pop
   label_positions: {}
 extra_modules:
+  - - AnEmptyInterface
+    - actions:
+        - ConstantPool: []
+        - Push:
+            - String: _global
+        - GetVariable
+        - Push:
+            - String: AnEmptyInterface
+        - GetMember
+        - Not
+        - Not
+        - If: loc0000
+        - Push:
+            - String: _global
+        - GetVariable
+        - Push:
+            - String: AnEmptyInterface
+        - DefineFunction:
+            name: ""
+            params: []
+            actions:
+              actions: []
+              label_positions: {}
+        - SetMember
+        - Pop
+      label_positions:
+        loc0000: 13
+  - - path.to.ANestedInterface
+    - actions:
+        - ConstantPool: []
+        - Push:
+            - String: _global
+        - GetVariable
+        - Push:
+            - String: path
+        - GetMember
+        - Not
+        - Not
+        - If: loc0000
+        - Push:
+            - String: _global
+        - GetVariable
+        - Push:
+            - String: path
+            - Integer: 0
+            - String: Object
+        - NewObject
+        - SetMember
+        - Pop
+        - Push:
+            - String: _global
+        - GetVariable
+        - Push:
+            - String: path
+        - GetMember
+        - Push:
+            - String: to
+        - GetMember
+        - Not
+        - Not
+        - If: loc0001
+        - Push:
+            - String: _global
+        - GetVariable
+        - Push:
+            - String: path
+        - GetMember
+        - Push:
+            - String: to
+            - Integer: 0
+            - String: Object
+        - NewObject
+        - SetMember
+        - Pop
+        - Push:
+            - String: _global
+        - GetVariable
+        - Push:
+            - String: path
+        - GetMember
+        - Push:
+            - String: to
+        - GetMember
+        - Push:
+            - String: ANestedInterface
+        - GetMember
+        - Not
+        - Not
+        - If: loc0002
+        - Push:
+            - String: _global
+        - GetVariable
+        - Push:
+            - String: path
+        - GetMember
+        - Push:
+            - String: to
+        - GetMember
+        - Push:
+            - String: ANestedInterface
+        - DefineFunction:
+            name: ""
+            params: []
+            actions:
+              actions: []
+              label_positions: {}
+        - SetMember
+        - Pop
+      label_positions:
+        loc0000: 13
+        loc0001: 30
+        loc0002: 51
   - - MtascStyle
     - actions:
         - ConstantPool:
             - Main method!
+            - AnEmptyInterface
+            - foo
+            - NotAnInterface
+            - path
+            - to
+            - ANestedInterface
         - Push:
             - String: _global
         - GetVariable
@@ -64,6 +182,36 @@ extra_modules:
               actions:
                 - Push:
                     - Constant: 0
+                - Trace
+                - Push:
+                    - Constant: 1
+                - GetVariable
+                - Push:
+                    - Constant: 2
+                - GetVariable
+                - CastOp
+                - Trace
+                - Push:
+                    - Constant: 2
+                - GetVariable
+                - Push:
+                    - Integer: 1
+                    - Constant: 3
+                - CallFunction
+                - Trace
+                - Push:
+                    - Constant: 4
+                - GetVariable
+                - Push:
+                    - Constant: 5
+                - GetMember
+                - Push:
+                    - Constant: 6
+                - GetMember
+                - Push:
+                    - Constant: 2
+                - GetVariable
+                - CastOp
                 - Trace
               label_positions: {}
         - SetMember

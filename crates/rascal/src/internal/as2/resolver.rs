@@ -19,13 +19,19 @@ struct ModuleContext<'a> {
     errors: Vec<ParsingError>,
     dependencies: IndexSet<String>,
     provider: &'a dyn SourceProvider,
+    known_script_paths: &'a IndexSet<String>,
     is_script: bool,
     class_name: String,
     class_members: HashMap<String, bool>,
 }
 
 impl<'a> ModuleContext<'a> {
-    fn new(provider: &'a dyn SourceProvider, is_script: bool, class_name: String) -> Self {
+    fn new(
+        provider: &'a dyn SourceProvider,
+        is_script: bool,
+        class_name: String,
+        known_script_paths: &'a IndexSet<String>,
+    ) -> Self {
         Self {
             imports: HashMap::new(),
             errors: vec![],
@@ -34,6 +40,7 @@ impl<'a> ModuleContext<'a> {
             is_script,
             class_name,
             class_members: HashMap::new(),
+            known_script_paths,
         }
     }
 
@@ -116,20 +123,30 @@ impl<'a> ModuleContext<'a> {
         }
     }
 
-    fn add_dependency(&mut self, span: Span, name: &str, required: bool) {
+    fn add_dependency(&mut self, span: Span, name: &str, required: bool) -> bool {
         if GLOBAL_TYPES.contains(&name) {
-            return;
+            return true;
         }
-        if !self.provider.is_file(&type_path_to_file_path(name)) {
+        let path = type_path_to_file_path(name);
+        if self.known_script_paths.contains(&path) || !self.provider.is_file(&path) {
             if required {
                 self.error(
                     format!("The class or interface `{}` could not be loaded.", name),
                     span,
                 );
             }
-            return;
+            return false;
         }
         self.dependencies.insert(name.to_owned());
+        true
+    }
+
+    fn add_dependency_by_path(&mut self, expr: &hir::Expr, required: bool) -> bool {
+        if let Ok(path) = identifiers_to_path(expr) {
+            self.add_dependency(expr.span, &path, required)
+        } else {
+            false
+        }
     }
 
     fn add_class_member(&mut self, name: &str, is_static: bool) {
@@ -137,13 +154,47 @@ impl<'a> ModuleContext<'a> {
     }
 }
 
+/// Turns `foo.bar.baz` (Field{parent=Field{parent=foo, child={bar}}, child=baz}) into `"foo.bar.baz"`
+fn identifiers_to_path(mut expr: &hir::ExprKind) -> Result<String, ()> {
+    let mut path = vec![];
+
+    loop {
+        match expr {
+            hir::ExprKind::Constant(hir::ConstantKind::Identifier(identifier)) => {
+                path.push(identifier.as_str());
+                break;
+            }
+            hir::ExprKind::Field(parent, child) => {
+                match &child.value {
+                    hir::ExprKind::Constant(hir::ConstantKind::String(identifier)) => {
+                        path.push(identifier.as_str());
+                    }
+                    _ => return Err(()),
+                }
+
+                expr = &parent.value;
+            }
+            _ => return Err(()),
+        }
+    }
+
+    path.reverse();
+    Ok(path.join("."))
+}
+
 pub fn resolve_hir<P: SourceProvider>(
     provider: &P,
     ast: ast::Document,
     is_script: bool,
     expected_name: &str,
+    known_script_paths: &IndexSet<String>,
 ) -> (hir::Document, Vec<ParsingError>, IndexSet<String>) {
-    let mut context = ModuleContext::new(provider, is_script, expected_name.to_owned());
+    let mut context = ModuleContext::new(
+        provider,
+        is_script,
+        expected_name.to_owned(),
+        known_script_paths,
+    );
     let document = if is_script {
         let mut statements = resolve_statement_vec(&mut context, &ast.statements);
         let scope = Scope::for_root(&mut statements);
@@ -826,10 +877,20 @@ fn resolve_call(
     {
         return special;
     }
-    hir::ExprKind::Call {
-        name: resolve_expr_box(context, name),
-        args: resolve_expr_vec(context, args),
+    let name = resolve_expr_box(context, name);
+    let mut args = resolve_expr_vec(context, args);
+    // Casts are kinda indistinguishable from function calls in terms of syntax;
+    // If we've loaded a class or interface with the given name, then that's a cast. Probably.
+    if context.add_dependency_by_path(&name, false)
+        && args.len() == 1
+        && let Some(object) = args.pop()
+    {
+        return hir::ExprKind::CastToObject {
+            class: name,
+            object: Box::new(object),
+        };
     }
+    hir::ExprKind::Call { name, args }
 }
 
 fn resolve_function(
