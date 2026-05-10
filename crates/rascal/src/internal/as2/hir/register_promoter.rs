@@ -1,6 +1,8 @@
 use crate::internal::as2::ast::BinaryOperator;
 use crate::internal::as2::hir::visitor::{MutVisitor, walk_expr, walk_statement};
-use crate::internal::as2::hir::{ConstantKind, Document, Expr, ExprKind, Function, StatementKind};
+use crate::internal::as2::hir::{
+    ConstantKind, Document, EnumeratorTarget, Expr, ExprKind, ForCondition, Function, StatementKind,
+};
 use crate::internal::span::Span;
 use indexmap::IndexMap;
 
@@ -43,6 +45,15 @@ impl MutVisitor for RegisterPromoter {
             } else {
                 *statement = StatementKind::Block(vec![]);
             }
+        }
+        if let StatementKind::ForIn {
+            condition: ForCondition::Enumerate { target, .. },
+            ..
+        } = statement
+            && let EnumeratorTarget::Variable { name, .. } = target
+            && let Some(register) = self.registers.get(name).copied()
+        {
+            *target = EnumeratorTarget::Register(register);
         }
         walk_statement(self, statement);
     }

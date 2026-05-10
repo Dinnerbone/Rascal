@@ -1700,9 +1700,7 @@ Ok:
                   condition:
                     Enumerate:
                       target:
-                        Variable:
-                          name: k
-                          declare: true
+                        Register: 5
                       object:
                         span:
                           start: 1423
@@ -1782,9 +1780,12 @@ Ok:
                 obj:
                   used: true
                   used_in_inner_scope: false
+                k:
+                  used: true
+                  used_in_inner_scope: false
               referenced_variables: []
               could_reference_anything: false
-            register_count: 5
+            register_count: 6
             preload_this: false
             suppress_this: true
             preload_arguments: false
