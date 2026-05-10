@@ -38,7 +38,11 @@ impl<'a> ModuleContext<'a> {
     }
 
     fn import(&mut self, span: Span, path: Vec<String>, name: String) {
-        self.add_dependency(span, &format!("{}.{}", path.join("."), name), true);
+        if path.is_empty() {
+            self.add_dependency(span, &name, true);
+        } else {
+            self.add_dependency(span, &format!("{}.{}", path.join("."), name), true);
+        }
         self.imports.insert(name, path);
     }
 
@@ -102,7 +106,11 @@ impl<'a> ModuleContext<'a> {
 
     fn expand_typename(&self, name: &str) -> String {
         if let Some(path) = self.imports.get(name) {
-            format!("{}.{name}", path.join("."))
+            if path.is_empty() {
+                name.to_string()
+            } else {
+                format!("{}.{name}", path.join("."))
+            }
         } else {
             name.to_owned()
         }
