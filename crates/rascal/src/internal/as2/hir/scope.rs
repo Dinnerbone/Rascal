@@ -1,6 +1,7 @@
 use crate::internal::as2::hir::visitor::{MutVisitor, walk_expr, walk_statement};
 use crate::internal::as2::hir::{
-    ConstantKind, Declaration, Expr, ExprKind, Function, FunctionArgument, StatementKind,
+    ConstantKind, Declaration, EnumeratorTarget, Expr, ExprKind, ForCondition, Function,
+    FunctionArgument, StatementKind,
 };
 use indexmap::{IndexMap, IndexSet};
 use serde::Serialize;
@@ -113,8 +114,25 @@ impl MutVisitor for VariableFinder {
     }
 
     fn visit_statement(&mut self, statement: &mut StatementKind) {
-        if let StatementKind::With { .. } = statement {
-            self.0.could_reference_anything = true;
+        match statement {
+            StatementKind::With { .. } => {
+                self.0.could_reference_anything = true;
+            }
+            StatementKind::ForIn {
+                condition:
+                    ForCondition::Enumerate {
+                        target: EnumeratorTarget::Variable { name, declare },
+                        ..
+                    },
+                ..
+            } => {
+                if *declare {
+                    self.declare_new_variable(name.clone());
+                } else {
+                    self.mark_variable_used(name, false);
+                }
+            }
+            _ => {}
         }
         walk_statement(self, statement);
     }

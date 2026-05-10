@@ -19,7 +19,6 @@ initializer:
         - finally_b
         - inner
         - x
-        - k
         - _global
     - DefineFunction2:
         name: ""
@@ -500,9 +499,9 @@ initializer:
             - Equals2
             - If: loc000c
             - Push:
-                - Constant: 13
                 - Register: 0
-            - DefineLocal
+            - StoreRegister: 5
+            - Pop
             - Push:
                 - Constant: 3
             - StoreRegister: 1
@@ -514,8 +513,8 @@ initializer:
             - Jump: loc000d
           label_positions:
             loc000d: 15
-            loc000c: 28
-        register_count: 5
+            loc000c: 29
+        register_count: 6
         preload_this: false
         suppress_this: true
         preload_arguments: false
@@ -568,7 +567,7 @@ initializer:
                 actions:
                   actions:
                     - Push:
-                        - Constant: 14
+                        - Constant: 13
                     - GetVariable
                     - With:
                         actions: []
