@@ -1,0 +1,6 @@
+---
+source: crates/rascal/src/internal/as2_pcode/parser/tests.rs
+expression: "parsed.unwrap_or_else(|_| Actions::empty())"
+input_file: samples/as2_pcode/push_nan.pcode
+---
+Push NaN, Infinity
