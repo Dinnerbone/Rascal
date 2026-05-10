@@ -437,6 +437,12 @@ pub(crate) fn push_value(i: &mut Tokens<'_>) -> ModalResult<PushValue> {
             i.reset(&checkpoint);
             string.parse_next(i).map(PushValue::String)
         }
+        TokenKind::Identifier if token.raw.eq_ignore_ascii_case("infinity") => {
+            Ok(PushValue::Float(f64::INFINITY))
+        }
+        TokenKind::Identifier if token.raw.eq_ignore_ascii_case("nan") => {
+            Ok(PushValue::Float(f64::NAN))
+        }
         TokenKind::Register(n) => Ok(PushValue::Register(n)),
         TokenKind::Constant(n) => Ok(PushValue::Constant(n)),
         TokenKind::False => Ok(PushValue::False),

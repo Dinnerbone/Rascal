@@ -481,7 +481,11 @@ impl std::fmt::Display for Action {
                     if i > 0 {
                         write!(f, ", ")?;
                     }
-                    write!(f, "{}", value)?;
+                    match value {
+                        PushValue::Float(v) if v.is_nan() => write!(f, "NaN")?,
+                        PushValue::Float(v) if v.is_infinite() => write!(f, "Infinity")?,
+                        _ => write!(f, "{}", value)?,
+                    }
                 }
                 Ok(())
             }
