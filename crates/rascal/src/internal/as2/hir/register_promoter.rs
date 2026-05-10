@@ -1,5 +1,5 @@
 use crate::internal::as2::ast::BinaryOperator;
-use crate::internal::as2::hir::visitor::{MutVisitor, walk_expr, walk_statement};
+use crate::internal::as2::hir::visitor::{MutVisitor, walk_document, walk_expr, walk_statement};
 use crate::internal::as2::hir::{
     ConstantKind, Document, EnumeratorTarget, Expr, ExprKind, ForCondition, Function, StatementKind,
 };
@@ -116,14 +116,5 @@ impl MutVisitor for RegisterPromoter {
 pub fn promote_variables_to_registers(document: &mut Document) {
     let mut promoter = RegisterPromoter::default();
 
-    match document {
-        Document::Script { statements, .. } => {
-            for statement in statements {
-                promoter.visit_statement(statement);
-            }
-        }
-        Document::Interface(_interface) => {}
-        Document::Class(_class) => {}
-        Document::Invalid => {}
-    }
+    walk_document(&mut promoter, document);
 }

@@ -71,13 +71,13 @@ Ok:
                   used_in_inner_scope: false
               referenced_variables: []
               could_reference_anything: false
-            register_count: 0
+            register_count: 1
             preload_this: false
-            suppress_this: false
+            suppress_this: true
             preload_arguments: false
-            suppress_arguments: false
+            suppress_arguments: true
             preload_super: false
-            suppress_super: false
+            suppress_super: true
             preload_root: false
             preload_parent: false
             preload_global: false
@@ -97,7 +97,7 @@ Ok:
                       start: 649
                       end: 655
                     value: String
-                  register: ~
+                  register: 1
               return_type:
                 span:
                   start: 658
@@ -133,7 +133,7 @@ Ok:
                                     end: 693
                                   value:
                                     Constant:
-                                      Identifier: name
+                                      Register: 1
                           - span:
                               start: 696
                               end: 699
@@ -191,13 +191,13 @@ Ok:
               referenced_variables:
                 - ClassMembersTest
               could_reference_anything: false
-            register_count: 0
+            register_count: 2
             preload_this: false
-            suppress_this: false
+            suppress_this: true
             preload_arguments: false
-            suppress_arguments: false
+            suppress_arguments: true
             preload_super: false
-            suppress_super: false
+            suppress_super: true
             preload_root: false
             preload_parent: false
             preload_global: false
@@ -259,13 +259,13 @@ Ok:
               referenced_variables:
                 - ClassMembersTest
               could_reference_anything: false
-            register_count: 0
+            register_count: 1
             preload_this: false
-            suppress_this: false
+            suppress_this: true
             preload_arguments: false
-            suppress_arguments: false
+            suppress_arguments: true
             preload_super: false
-            suppress_super: false
+            suppress_super: true
             preload_root: false
             preload_parent: false
             preload_global: false
@@ -315,13 +315,13 @@ Ok:
               referenced_variables:
                 - "null"
               could_reference_anything: false
-            register_count: 0
+            register_count: 1
             preload_this: false
-            suppress_this: false
+            suppress_this: true
             preload_arguments: false
-            suppress_arguments: false
+            suppress_arguments: true
             preload_super: false
-            suppress_super: false
+            suppress_super: true
             preload_root: false
             preload_parent: false
             preload_global: false
@@ -359,13 +359,13 @@ Ok:
                   used_in_inner_scope: false
               referenced_variables: []
               could_reference_anything: false
-            register_count: 0
+            register_count: 1
             preload_this: false
-            suppress_this: false
+            suppress_this: true
             preload_arguments: false
-            suppress_arguments: false
+            suppress_arguments: true
             preload_super: false
-            suppress_super: false
+            suppress_super: true
             preload_root: false
             preload_parent: false
             preload_global: false
@@ -403,13 +403,13 @@ Ok:
                   used_in_inner_scope: false
               referenced_variables: []
               could_reference_anything: false
-            register_count: 0
+            register_count: 1
             preload_this: false
-            suppress_this: false
+            suppress_this: true
             preload_arguments: false
-            suppress_arguments: false
+            suppress_arguments: true
             preload_super: false
-            suppress_super: false
+            suppress_super: true
             preload_root: false
             preload_parent: false
             preload_global: false
@@ -454,13 +454,13 @@ Ok:
                   used_in_inner_scope: false
               referenced_variables: []
               could_reference_anything: false
-            register_count: 0
+            register_count: 1
             preload_this: false
-            suppress_this: false
+            suppress_this: true
             preload_arguments: false
-            suppress_arguments: false
+            suppress_arguments: true
             preload_super: false
-            suppress_super: false
+            suppress_super: true
             preload_root: false
             preload_parent: false
             preload_global: false
@@ -505,13 +505,13 @@ Ok:
                   used_in_inner_scope: false
               referenced_variables: []
               could_reference_anything: false
-            register_count: 0
+            register_count: 1
             preload_this: false
-            suppress_this: false
+            suppress_this: true
             preload_arguments: false
-            suppress_arguments: false
+            suppress_arguments: true
             preload_super: false
-            suppress_super: false
+            suppress_super: true
             preload_root: false
             preload_parent: false
             preload_global: false
@@ -527,7 +527,7 @@ Ok:
               args:
                 - name: value
                   type_name: ~
-                  register: ~
+                  register: 2
               return_type: ~
             body:
               - Expr:
@@ -553,7 +553,7 @@ Ok:
                               end: 1171
                             value:
                               Constant:
-                                Identifier: value
+                                Register: 2
               - Return:
                   - span:
                       start: 1116
@@ -571,7 +571,7 @@ Ok:
                                   end: 1126
                                 value:
                                   Constant:
-                                    Identifier: this
+                                    Register: 1
                               - span:
                                   start: 1116
                                   end: 1126
@@ -604,13 +604,13 @@ Ok:
                   used_in_inner_scope: false
               referenced_variables: []
               could_reference_anything: false
-            register_count: 0
-            preload_this: false
+            register_count: 3
+            preload_this: true
             suppress_this: false
             preload_arguments: false
-            suppress_arguments: false
+            suppress_arguments: true
             preload_super: false
-            suppress_super: false
+            suppress_super: true
             preload_root: false
             preload_parent: false
             preload_global: false
@@ -626,7 +626,7 @@ Ok:
               args:
                 - name: value
                   type_name: ~
-                  register: ~
+                  register: 2
               return_type: ~
             body:
               - Expr:
@@ -652,7 +652,7 @@ Ok:
                               end: 1268
                             value:
                               Constant:
-                                Identifier: value
+                                Register: 2
               - Return:
                   - span:
                       start: 1198
@@ -670,7 +670,7 @@ Ok:
                                   end: 1213
                                 value:
                                   Constant:
-                                    Identifier: this
+                                    Register: 1
                               - span:
                                   start: 1198
                                   end: 1213
@@ -703,13 +703,13 @@ Ok:
                   used_in_inner_scope: false
               referenced_variables: []
               could_reference_anything: false
-            register_count: 0
-            preload_this: false
+            register_count: 3
+            preload_this: true
             suppress_this: false
             preload_arguments: false
-            suppress_arguments: false
+            suppress_arguments: true
             preload_super: false
-            suppress_super: false
+            suppress_super: true
             preload_root: false
             preload_parent: false
             preload_global: false
@@ -754,13 +754,13 @@ Ok:
                   used_in_inner_scope: false
               referenced_variables: []
               could_reference_anything: false
-            register_count: 0
+            register_count: 1
             preload_this: false
-            suppress_this: false
+            suppress_this: true
             preload_arguments: false
-            suppress_arguments: false
+            suppress_arguments: true
             preload_super: false
-            suppress_super: false
+            suppress_super: true
             preload_root: false
             preload_parent: false
             preload_global: false
@@ -776,7 +776,7 @@ Ok:
               args:
                 - name: value
                   type_name: ~
-                  register: ~
+                  register: 2
               return_type: ~
             body:
               - Expr:
@@ -802,7 +802,7 @@ Ok:
                               end: 1460
                             value:
                               Constant:
-                                Identifier: value
+                                Register: 2
               - Return:
                   - span:
                       start: 1386
@@ -820,7 +820,7 @@ Ok:
                                   end: 1415
                                 value:
                                   Constant:
-                                    Identifier: this
+                                    Register: 1
                               - span:
                                   start: 1386
                                   end: 1415
@@ -853,13 +853,13 @@ Ok:
                   used_in_inner_scope: false
               referenced_variables: []
               could_reference_anything: false
-            register_count: 0
-            preload_this: false
+            register_count: 3
+            preload_this: true
             suppress_this: false
             preload_arguments: false
-            suppress_arguments: false
+            suppress_arguments: true
             preload_super: false
-            suppress_super: false
+            suppress_super: true
             preload_root: false
             preload_parent: false
             preload_global: false
@@ -875,7 +875,7 @@ Ok:
               args:
                 - name: value
                   type_name: ~
-                  register: ~
+                  register: 2
               return_type: ~
             body:
               - Expr:
@@ -901,7 +901,7 @@ Ok:
                               end: 1564
                             value:
                               Constant:
-                                Identifier: value
+                                Register: 2
               - Return:
                   - span:
                       start: 1487
@@ -919,7 +919,7 @@ Ok:
                                   end: 1519
                                 value:
                                   Constant:
-                                    Identifier: this
+                                    Register: 1
                               - span:
                                   start: 1487
                                   end: 1519
@@ -952,13 +952,13 @@ Ok:
                   used_in_inner_scope: false
               referenced_variables: []
               could_reference_anything: false
-            register_count: 0
-            preload_this: false
+            register_count: 3
+            preload_this: true
             suppress_this: false
             preload_arguments: false
-            suppress_arguments: false
+            suppress_arguments: true
             preload_super: false
-            suppress_super: false
+            suppress_super: true
             preload_root: false
             preload_parent: false
             preload_global: false
@@ -1003,13 +1003,13 @@ Ok:
                   used_in_inner_scope: false
               referenced_variables: []
               could_reference_anything: false
-            register_count: 0
+            register_count: 1
             preload_this: false
-            suppress_this: false
+            suppress_this: true
             preload_arguments: false
-            suppress_arguments: false
+            suppress_arguments: true
             preload_super: false
-            suppress_super: false
+            suppress_super: true
             preload_root: false
             preload_parent: false
             preload_global: false
@@ -1109,7 +1109,7 @@ Ok:
                             end: 382
                           value:
                             Constant:
-                              Identifier: this
+                              Register: 1
                         - span:
                             start: 377
                             end: 382
@@ -1139,7 +1139,7 @@ Ok:
                           end: 417
                         value:
                           Constant:
-                            Identifier: this
+                            Register: 1
                       - span:
                           start: 407
                           end: 417
@@ -1174,7 +1174,7 @@ Ok:
                                 end: 495
                               value:
                                 Constant:
-                                  Identifier: this
+                                  Register: 1
                             - span:
                                 start: 468
                                 end: 495
@@ -1268,7 +1268,7 @@ Ok:
                             end: 571
                           value:
                             Constant:
-                              Identifier: this
+                              Register: 1
                         - span:
                             start: 556
                             end: 571
@@ -1297,7 +1297,7 @@ Ok:
                           end: 614
                         value:
                           Constant:
-                            Identifier: this
+                            Register: 1
                       - span:
                           start: 599
                           end: 614
@@ -1330,13 +1330,13 @@ Ok:
           referenced_variables:
             - path
           could_reference_anything: false
-        register_count: 0
-        preload_this: false
+        register_count: 2
+        preload_this: true
         suppress_this: false
         preload_arguments: false
-        suppress_arguments: false
+        suppress_arguments: true
         preload_super: false
-        suppress_super: false
+        suppress_super: true
         preload_root: false
         preload_parent: false
         preload_global: false
@@ -1419,13 +1419,13 @@ Ok:
               referenced_variables:
                 - path
               could_reference_anything: false
-            register_count: 0
+            register_count: 1
             preload_this: false
-            suppress_this: false
+            suppress_this: true
             preload_arguments: false
-            suppress_arguments: false
+            suppress_arguments: true
             preload_super: false
-            suppress_super: false
+            suppress_super: true
             preload_root: false
             preload_parent: false
             preload_global: false
@@ -1509,13 +1509,13 @@ Ok:
               referenced_variables:
                 - path
               could_reference_anything: false
-            register_count: 0
+            register_count: 1
             preload_this: false
-            suppress_this: false
+            suppress_this: true
             preload_arguments: false
-            suppress_arguments: false
+            suppress_arguments: true
             preload_super: false
-            suppress_super: false
+            suppress_super: true
             preload_root: false
             preload_parent: false
             preload_global: false
@@ -1546,13 +1546,13 @@ Ok:
           defined_variables: {}
           referenced_variables: []
           could_reference_anything: false
-        register_count: 0
+        register_count: 1
         preload_this: false
-        suppress_this: false
+        suppress_this: true
         preload_arguments: false
-        suppress_arguments: false
+        suppress_arguments: true
         preload_super: false
-        suppress_super: false
+        suppress_super: true
         preload_root: false
         preload_parent: false
         preload_global: false
@@ -1576,13 +1576,13 @@ Ok:
           defined_variables: {}
           referenced_variables: []
           could_reference_anything: false
-        register_count: 0
+        register_count: 1
         preload_this: false
-        suppress_this: false
+        suppress_this: true
         preload_arguments: false
-        suppress_arguments: false
+        suppress_arguments: true
         preload_super: false
-        suppress_super: false
+        suppress_super: true
         preload_root: false
         preload_parent: false
         preload_global: false

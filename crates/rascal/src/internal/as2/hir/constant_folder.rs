@@ -1,5 +1,5 @@
 use crate::internal::as2::ast::{BinaryOperator, UnaryOperator};
-use crate::internal::as2::hir::visitor::{MutVisitor, walk_expr};
+use crate::internal::as2::hir::visitor::{MutVisitor, walk_document, walk_expr};
 use crate::internal::as2::hir::{ConstantKind, Document, Expr, ExprKind};
 use std::borrow::Cow;
 
@@ -178,16 +178,7 @@ pub fn fold_constants(document: &mut Document) -> bool {
         anything_changed: false,
     };
 
-    match document {
-        Document::Script { statements, .. } => {
-            for statement in statements {
-                folder.visit_statement(statement);
-            }
-        }
-        Document::Interface(_interface) => {}
-        Document::Class(_class) => {}
-        Document::Invalid => {}
-    }
+    walk_document(&mut folder, document);
 
     folder.anything_changed
 }
