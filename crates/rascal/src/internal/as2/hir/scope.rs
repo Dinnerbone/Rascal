@@ -62,15 +62,32 @@ impl Scope {
 
 struct VariableFinder(Scope);
 
+impl VariableFinder {
+    fn mark_variable_used(&mut self, name: &str, from_inner: bool) {
+        if let Some(variable) = self.0.defined_variables.get_mut(name) {
+            variable.used = true;
+            variable.used_in_inner_scope |= from_inner;
+        } else {
+            self.0.referenced_variables.insert(name.to_string());
+        }
+    }
+
+    fn declare_new_variable(&mut self, name: String) {
+        self.0.defined_variables.insert(
+            name,
+            Variable {
+                used: true,
+                ..Default::default()
+            },
+        );
+    }
+}
+
 impl MutVisitor for VariableFinder {
     fn visit_expr(&mut self, expr: &mut Expr) {
         match &mut expr.value {
             ExprKind::Constant(ConstantKind::Identifier(name)) => {
-                if let Some(variable) = self.0.defined_variables.get_mut(name) {
-                    variable.used = true;
-                } else {
-                    self.0.referenced_variables.insert(name.clone());
-                }
+                self.mark_variable_used(name, false);
             }
             ExprKind::GetVariable(_) => {
                 self.0.could_reference_anything = true;
@@ -84,23 +101,12 @@ impl MutVisitor for VariableFinder {
         // A totally different scope! We don't need to walk it, we can just inspect it.
         self.0.could_reference_anything |= function.scope.could_reference_anything;
         for name in &function.scope.referenced_variables {
-            if let Some(variable) = self.0.defined_variables.get_mut(name) {
-                variable.used = true;
-                variable.used_in_inner_scope = true;
-            } else {
-                self.0.referenced_variables.insert(name.clone());
-            }
+            self.mark_variable_used(name, true);
         }
     }
 
     fn visit_declaration(&mut self, declaration: &mut Declaration) {
-        self.0.defined_variables.insert(
-            declaration.name.value.clone(),
-            Variable {
-                used: true,
-                ..Default::default()
-            },
-        );
+        self.declare_new_variable(declaration.name.value.clone());
         if let Some(value) = &mut declaration.value {
             self.visit_expr(value);
         }
