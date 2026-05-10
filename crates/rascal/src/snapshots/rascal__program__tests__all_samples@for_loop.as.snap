@@ -523,8 +523,10 @@ Ok:
     - ForIn:
         condition:
           Enumerate:
-            variable: key
-            declare: true
+            target:
+              Variable:
+                name: key
+                declare: true
             object:
               span:
                 start: 903
@@ -635,8 +637,10 @@ Ok:
     - ForIn:
         condition:
           Enumerate:
-            variable: idx
-            declare: false
+            target:
+              Variable:
+                name: idx
+                declare: false
             object:
               span:
                 start: 1076

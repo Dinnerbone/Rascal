@@ -1699,8 +1699,10 @@ Ok:
               - ForIn:
                   condition:
                     Enumerate:
-                      variable: k
-                      declare: true
+                      target:
+                        Variable:
+                          name: k
+                          declare: true
                       object:
                         span:
                           start: 1423
