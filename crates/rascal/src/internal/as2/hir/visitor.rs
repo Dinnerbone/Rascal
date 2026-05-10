@@ -1,5 +1,5 @@
 use crate::internal::as2::hir::{
-    Declaration, Expr, ExprKind, ForCondition, Function, StatementKind, SwitchElement,
+    Declaration, Document, Expr, ExprKind, ForCondition, Function, StatementKind, SwitchElement,
 };
 
 pub trait MutVisitor {
@@ -254,5 +254,23 @@ pub fn walk_expr<V: MutVisitor + ?Sized>(visitor: &mut V, expr: &mut Expr) {
             visitor.visit_expr(value);
         }
         ExprKind::ToggleQuality => {}
+    }
+}
+
+pub fn walk_document<V: MutVisitor + ?Sized>(visitor: &mut V, document: &mut Document) {
+    match document {
+        Document::Script { statements, .. } => {
+            for statement in statements {
+                visitor.visit_statement(statement);
+            }
+        }
+        Document::Interface(_interface) => {}
+        Document::Class(class) => {
+            for function in class.functions.values_mut() {
+                visitor.visit_function(&mut function.function);
+            }
+            visitor.visit_function(&mut class.constructor);
+        }
+        Document::Invalid => {}
     }
 }
