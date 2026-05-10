@@ -4,6 +4,7 @@ mod special_properties;
 use crate::internal::as2::error::ParsingError;
 use crate::internal::as2::global_types::GLOBAL_TYPES;
 use crate::internal::as2::hir;
+use crate::internal::as2::hir::EnumeratorTarget;
 use crate::internal::as2::hir::scope::Scope;
 use crate::internal::as2::resolver::special_functions::resolve_special_call;
 use crate::internal::as2::{ast, type_path_to_file_path};
@@ -607,8 +608,10 @@ fn resolve_for_condition(
             declare,
             object,
         } => hir::ForCondition::Enumerate {
-            variable: (*variable).to_owned(),
-            declare: *declare,
+            target: EnumeratorTarget::Variable {
+                name: (*variable).to_owned(),
+                declare: *declare,
+            },
             object: resolve_expr(context, object),
         },
         ast::ForCondition::Classic {

@@ -161,10 +161,15 @@ pub enum SwitchElement {
 }
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
+pub enum EnumeratorTarget {
+    Variable { name: String, declare: bool },
+    Register(u8),
+}
+
+#[derive(Debug, Clone, Serialize, PartialEq)]
 pub enum ForCondition {
     Enumerate {
-        variable: String,
-        declare: bool,
+        target: EnumeratorTarget,
         object: Expr,
     },
     Classic {

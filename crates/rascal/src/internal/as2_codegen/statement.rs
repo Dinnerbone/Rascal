@@ -1,6 +1,7 @@
 use crate::internal::as2::hir::{
-    Affix, BinaryOperator, ConstantKind, Declaration, Expr, ExprKind, ForCondition, Function,
-    FunctionSignature, GetUrlMethod, StatementKind, SwitchElement, TryCatch, UnaryOperator,
+    Affix, BinaryOperator, ConstantKind, Declaration, EnumeratorTarget, Expr, ExprKind,
+    ForCondition, Function, FunctionSignature, GetUrlMethod, StatementKind, SwitchElement,
+    TryCatch, UnaryOperator,
 };
 use crate::internal::as2_codegen::access::VariableAccess;
 use crate::internal::as2_codegen::builder::CodeBuilder;
@@ -301,11 +302,7 @@ fn gen_for_loop(
     let old_continue = context.set_continue_label(Some(continue_label.clone()));
 
     match condition {
-        ForCondition::Enumerate {
-            variable,
-            declare,
-            object,
-        } => {
+        ForCondition::Enumerate { target, object } => {
             gen_expr(context, builder, object, false);
             builder.action(Action::Enumerate2);
             builder.mark_label(continue_label.clone());
@@ -314,15 +311,24 @@ fn gen_for_loop(
             builder.action(Action::Equals2);
             builder.action(Action::If(end_label.clone()));
 
-            if *declare {
-                let value = context.constants.add(variable);
-                builder.push(value);
-                builder.push(PushValue::Register(0));
-                builder.action(Action::DefineLocal);
-            } else {
-                let access = VariableAccess::for_identifier(context, builder, variable);
-                builder.push(PushValue::Register(0));
-                access.set_value(builder);
+            match target {
+                EnumeratorTarget::Variable { name, declare } => {
+                    if *declare {
+                        let value = context.constants.add(name);
+                        builder.push(value);
+                        builder.push(PushValue::Register(0));
+                        builder.action(Action::DefineLocal);
+                    } else {
+                        let access = VariableAccess::for_identifier(context, builder, name);
+                        builder.push(PushValue::Register(0));
+                        access.set_value(builder);
+                    }
+                }
+                EnumeratorTarget::Register(register) => {
+                    builder.push(PushValue::Register(0));
+                    builder.action(Action::StoreRegister(*register));
+                    builder.action(Action::Pop);
+                }
             }
 
             gen_statement(context, builder, body);
