@@ -70,4 +70,12 @@ class ClassMembersTest implements AnEmptyInterface {
     static function get virtualPropertyProbablyNotStatic() {
         return "Static!";
     }
+
+    static function main() {
+        var x = new ClassMembersTest("");
+        x.virtualProperty = "foo";
+        var y: ClassMembersTest = x;
+        y.virtualProperty = "foo";
+        trace(y.virtualProperty);
+    }
 }

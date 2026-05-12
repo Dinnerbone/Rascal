@@ -3,7 +3,24 @@ source: crates/rascal/src/tests.rs
 expression: result
 input_file: samples/as2_classes/ClassMembersTest.as
 ---
-initializer: ~
+initializer:
+  actions:
+    - ConstantPool:
+        - this
+        - ClassMembersTest
+        - main
+    - Push:
+        - Constant: 0
+    - GetVariable
+    - Push:
+        - Integer: 1
+        - Constant: 1
+    - GetVariable
+    - Push:
+        - Constant: 2
+    - CallMethod
+    - Pop
+  label_positions: {}
 extra_modules:
   - - path.to.ANestedInterface
     - actions:
@@ -466,6 +483,8 @@ extra_modules:
             - Static!
             - __get__virtualPropertyProbablyStatic
             - __get__virtualPropertyProbablyNotStatic
+            - ""
+            - foo
             - BitmapData on class!
             - Ahhh!
         - Push:
@@ -855,6 +874,52 @@ extra_modules:
               label_positions: {}
         - SetMember
         - Push:
+            - Register: 1
+            - String: main
+        - DefineFunction2:
+            name: ""
+            params: []
+            actions:
+              actions:
+                - Push:
+                    - Constant: 27
+                    - Integer: 1
+                    - Constant: 15
+                - NewObject
+                - StoreRegister: 1
+                - Pop
+                - Push:
+                    - Register: 1
+                    - Constant: 10
+                    - Constant: 28
+                - SetMember
+                - Push:
+                    - Register: 1
+                - StoreRegister: 2
+                - Pop
+                - Push:
+                    - Register: 2
+                    - Constant: 10
+                    - Constant: 28
+                - SetMember
+                - Push:
+                    - Register: 2
+                    - Constant: 10
+                - GetMember
+                - Trace
+              label_positions: {}
+            register_count: 3
+            preload_this: false
+            suppress_this: true
+            preload_arguments: false
+            suppress_arguments: true
+            preload_super: false
+            suppress_super: true
+            preload_root: false
+            preload_parent: false
+            preload_global: false
+        - SetMember
+        - Push:
             - Register: 2
             - String: regularPropertySetToFive
             - Integer: 5
@@ -862,12 +927,12 @@ extra_modules:
         - Push:
             - Register: 2
             - String: BitmapData
-            - Constant: 27
+            - Constant: 29
         - SetMember
         - Push:
             - Register: 1
             - String: scream
-            - Constant: 28
+            - Constant: 30
         - SetMember
         - Push:
             - Register: 2
@@ -957,7 +1022,7 @@ extra_modules:
         - CallFunction
         - Pop
       label_positions:
-        loc0000: 109
+        loc0000: 112
 compile_options:
   swf_version: 15
   optimizations:
