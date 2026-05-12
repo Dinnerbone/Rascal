@@ -85,10 +85,11 @@ pub struct Program {
     pub(crate) interfaces: Vec<hir::Interface>,
     pub(crate) classes: Vec<hir::Class>,
     pub(crate) custom_pcodes: Vec<Actions>,
+    pub(crate) compile_options: CompileOptions,
 }
 
 impl Program {
-    pub fn compile(&self, compile_options: CompileOptions) -> CompiledProgram {
+    pub fn compile(&self) -> CompiledProgram {
         let initializer = if self.initial_script.is_empty() {
             None
         } else {
@@ -106,7 +107,7 @@ impl Program {
         CompiledProgram {
             initializer,
             extra_modules,
-            compile_options,
+            compile_options: self.compile_options.clone(),
             custom_pcodes: self.custom_pcodes.clone(),
         }
     }
@@ -175,6 +176,7 @@ pub struct ProgramBuilder<P> {
     pcodes: Vec<String>,
     classes: Vec<String>,
     optimizations: OptimizationOptions,
+    compile_options: CompileOptions,
 }
 
 impl<P> ProgramBuilder<P> {
@@ -194,6 +196,11 @@ impl<P> ProgramBuilder<P> {
         self.optimizations = optimizations;
         self
     }
+
+    pub fn with_compile_options(mut self, compile_options: CompileOptions) -> Self {
+        self.compile_options = compile_options;
+        self
+    }
 }
 
 impl<P: SourceProvider> ProgramBuilder<P> {
@@ -204,6 +211,7 @@ impl<P: SourceProvider> ProgramBuilder<P> {
             pcodes: vec![],
             classes: vec![],
             optimizations: OptimizationOptions::full(),
+            compile_options: CompileOptions::default(),
         }
     }
 
@@ -229,6 +237,7 @@ impl<P: SourceProvider> ProgramBuilder<P> {
             is_script: bool,
             optimizations: &OptimizationOptions,
             known_script_paths: &IndexSet<String>,
+            compile_options: &CompileOptions,
         ) -> Option<hir::Document> {
             let source = match provider.load(path) {
                 Ok(source) => source,
@@ -260,7 +269,7 @@ impl<P: SourceProvider> ProgramBuilder<P> {
                     // Keep going until nothing changed
                 }
             }
-            if optimizations.promote_variables_to_registers {
+            if optimizations.promote_variables_to_registers && compile_options.swf_version >= 7 {
                 promote_variables_to_registers(&mut hir);
             }
             Some(hir)
@@ -301,6 +310,7 @@ impl<P: SourceProvider> ProgramBuilder<P> {
                 true,
                 &self.optimizations,
                 &known_script_paths,
+                &self.compile_options,
             ) && let hir::Document::Script { statements, scope } = document
             {
                 root_scope.defined_variables.extend(scope.defined_variables);
@@ -326,6 +336,7 @@ impl<P: SourceProvider> ProgramBuilder<P> {
                 false,
                 &self.optimizations,
                 &known_script_paths,
+                &self.compile_options,
             ) {
                 match document {
                     hir::Document::Interface(interface) => {
@@ -360,6 +371,7 @@ impl<P: SourceProvider> ProgramBuilder<P> {
             interfaces,
             classes,
             custom_pcodes,
+            compile_options: self.compile_options,
         })
     }
 }
