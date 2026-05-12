@@ -123,7 +123,7 @@ impl Program {
             extra_modules.push((interface.name, actions));
         }
         for class in self.classes.into_iter().rev() {
-            let actions = class_to_actions(&class);
+            let actions = class_to_actions(&self.compile_options, &class);
             extra_modules.push((class.name, actions));
         }
         CompiledProgram {

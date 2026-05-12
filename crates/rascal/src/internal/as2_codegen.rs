@@ -1,3 +1,4 @@
+use crate::CompileOptions;
 use crate::internal::as2::hir::{Class, Interface, StatementKind};
 use crate::internal::as2_codegen::builder::CodeBuilder;
 use crate::internal::as2_codegen::context::ScriptContext;
@@ -38,9 +39,9 @@ pub fn interface_to_actions(interface: &Interface) -> Actions {
 
                     // If we extend something, set that association too
                     if let Some(extends) = &interface.extends {
-                        get_type_path(builder, extends, true);
+                        get_type_path(builder, extends, true, true);
                         builder.push(1);
-                        get_type_path(builder, &interface.name, true);
+                        get_type_path(builder, &interface.name, true, true);
                         builder.action_with_stack_delta(Action::ImplementsOp, -3);
                     }
                 }
@@ -84,7 +85,7 @@ fn create_if_not_exists<F>(
     builder.action(Action::Pop);
 }
 
-pub fn class_to_actions(class: &Class) -> Actions {
+pub fn class_to_actions(compile_options: &CompileOptions, class: &Class) -> Actions {
     generate_actions(|context, builder| {
         let segments: Vec<&str> = class.name.split(".").collect();
         for i in 1..=segments.len() {
@@ -100,29 +101,44 @@ pub fn class_to_actions(class: &Class) -> Actions {
                     builder.action(Action::StoreRegister(1));
                     builder.action(Action::SetMember);
 
-                    // If we extend something, set that association too
-                    // TODO: This doesn't handle paths yet ("foo.bar.Baz")
-                    if let Some(extends) = &class.extends {
-                        get_type_path(builder, &class.name, false);
-                        get_type_path(builder, extends, false);
-                        builder.action(Action::Extends);
+                    let needs_prototype_setup = if let Some(extends) = &class.extends {
+                        // If we extend something, set that association too
+                        if compile_options.swf_version >= 7 {
+                            // Extends opcode was added in SWF 7
+                            get_type_path(builder, &class.name, false, true);
+                            get_type_path(builder, extends, false, true);
+                            builder.action(Action::Extends);
+                            true
+                        } else {
+                            // ThisClass.prototype = new SuperClass();
+                            get_type_path(builder, &class.name, true, true);
+                            builder.push("prototype");
+                            builder.push(0);
+                            get_type_path(builder, extends, false, false);
+                            builder.action(Action::NewObject);
+                            builder.action(Action::StoreRegister(2));
+                            builder.action(Action::SetMember);
+                            false
+                        }
+                    } else {
+                        true
+                    };
+
+                    if needs_prototype_setup {
+                        builder.push(PushValue::Register(1));
+                        builder.push("prototype");
+                        builder.action(Action::GetMember);
+                        builder.action(Action::StoreRegister(2));
+                        builder.action(Action::Pop);
                     }
 
-                    // Set up the prototype
-                    builder.push(PushValue::Register(1));
-                    builder.push("prototype");
-                    builder.action(Action::GetMember);
-                    builder.action(Action::StoreRegister(2));
-                    builder.action(Action::Pop);
-
                     // If we implement some interfaces, set those associations too
-                    // TODO: This doesn't handle paths yet ("foo.bar.Baz")
                     if !class.implements.is_empty() {
                         for name in &class.implements {
-                            get_type_path(builder, name, true);
+                            get_type_path(builder, name, true, true);
                         }
                         builder.push(class.implements.len() as i32);
-                        get_type_path(builder, &class.name, true);
+                        get_type_path(builder, &class.name, true, true);
                         builder.action_with_stack_delta(
                             Action::ImplementsOp,
                             -2 - class.implements.len() as i32,
@@ -194,7 +210,7 @@ pub fn class_to_actions(class: &Class) -> Actions {
                     // Make the prototype not enumerable
                     builder.push(1);
                     builder.push(PushValue::Null);
-                    get_type_path(builder, &class.name, false);
+                    get_type_path(builder, &class.name, false, true);
                     builder.push("prototype");
                     builder.action(Action::GetMember);
                     builder.push(3);
@@ -206,7 +222,12 @@ pub fn class_to_actions(class: &Class) -> Actions {
     })
 }
 
-fn get_type_path(builder: &mut CodeBuilder, type_name: &str, from_global: bool) {
+fn get_type_path(
+    builder: &mut CodeBuilder,
+    type_name: &str,
+    from_global: bool,
+    and_get_value: bool,
+) {
     let segments: Vec<&str> = type_name.split(".").collect();
     let mut first = true;
     if from_global {
@@ -217,9 +238,11 @@ fn get_type_path(builder: &mut CodeBuilder, type_name: &str, from_global: bool) 
     for segment in segments {
         builder.push(segment);
         if first {
-            builder.action(Action::GetVariable);
+            if and_get_value {
+                builder.action(Action::GetVariable);
+            }
             first = false;
-        } else {
+        } else if and_get_value {
             builder.action(Action::GetMember);
         }
     }
