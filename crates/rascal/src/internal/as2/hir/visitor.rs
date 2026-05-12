@@ -1,3 +1,4 @@
+use crate::Program;
 use crate::internal::as2::hir::{
     Declaration, Document, Expr, ExprKind, ForCondition, Function, StatementKind, SwitchElement,
 };
@@ -276,5 +277,17 @@ pub fn walk_document<V: MutVisitor + ?Sized>(visitor: &mut V, document: &mut Doc
             visitor.visit_function(&mut class.constructor);
         }
         Document::Invalid => {}
+    }
+}
+
+pub fn walk_program<V: MutVisitor + ?Sized>(visitor: &mut V, program: &mut Program) {
+    for class in &mut program.classes {
+        for method in class.functions.values_mut() {
+            visitor.visit_function(&mut method.function);
+        }
+        visitor.visit_function(&mut class.constructor);
+    }
+    for statement in &mut program.initial_script {
+        visitor.visit_statement(statement);
     }
 }

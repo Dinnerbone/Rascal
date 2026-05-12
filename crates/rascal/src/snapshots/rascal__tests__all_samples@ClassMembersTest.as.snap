@@ -466,8 +466,9 @@ extra_modules:
             - ANestedClass
             - create
             - success
-            - virtualProperty
             - a value
+            - __set__virtualProperty
+            - __get__virtualProperty
             - test!
             - "Hey, "
             - "!"
@@ -479,11 +480,11 @@ extra_modules:
             - "New value: "
             - __get__onlySetter
             - "Virtually setting to "
-            - __get__virtualProperty
             - Static!
             - __get__virtualPropertyProbablyStatic
             - __get__virtualPropertyProbablyNotStatic
             - ""
+            - virtualProperty
             - foo
             - BitmapData on class!
             - Ahhh!
@@ -546,14 +547,17 @@ extra_modules:
                 - CallMethod
                 - Trace
                 - Push:
-                    - Register: 1
                     - Constant: 10
+                    - Integer: 1
+                    - Register: 1
                     - Constant: 11
-                - SetMember
+                - CallMethod
+                - Pop
                 - Push:
+                    - Integer: 0
                     - Register: 1
-                    - Constant: 10
-                - GetMember
+                    - Constant: 12
+                - CallMethod
                 - Trace
               label_positions: {}
             register_count: 2
@@ -597,7 +601,7 @@ extra_modules:
             actions:
               actions:
                 - Push:
-                    - Constant: 12
+                    - Constant: 13
                 - Trace
               label_positions: {}
         - SetMember
@@ -612,19 +616,19 @@ extra_modules:
             actions:
               actions:
                 - Push:
-                    - Constant: 13
+                    - Constant: 14
                     - Register: 1
                 - Add2
                 - Push:
-                    - Constant: 14
+                    - Constant: 15
                 - Add2
                 - Trace
                 - Push:
                     - Integer: 0
-                    - Constant: 15
+                    - Constant: 16
                 - GetVariable
                 - Push:
-                    - Constant: 16
+                    - Constant: 17
                 - CallMethod
                 - Pop
               label_positions: {}
@@ -648,10 +652,10 @@ extra_modules:
             actions:
               actions:
                 - Push:
-                    - Constant: 15
+                    - Constant: 16
                 - GetVariable
                 - Push:
-                    - Constant: 17
+                    - Constant: 18
                 - GetMember
                 - Trace
               label_positions: {}
@@ -698,7 +702,7 @@ extra_modules:
             actions:
               actions:
                 - Push:
-                    - Constant: 18
+                    - Constant: 19
                 - Return
               label_positions: {}
         - SetMember
@@ -711,7 +715,7 @@ extra_modules:
             actions:
               actions:
                 - Push:
-                    - Constant: 19
+                    - Constant: 20
                 - Return
               label_positions: {}
         - SetMember
@@ -726,14 +730,14 @@ extra_modules:
             actions:
               actions:
                 - Push:
-                    - Constant: 20
+                    - Constant: 21
                     - Register: 2
                 - Add2
                 - Trace
                 - Push:
                     - Integer: 0
                     - Register: 1
-                    - Constant: 21
+                    - Constant: 22
                 - CallMethod
                 - Return
               label_positions: {}
@@ -759,14 +763,14 @@ extra_modules:
             actions:
               actions:
                 - Push:
-                    - Constant: 22
+                    - Constant: 23
                     - Register: 2
                 - Add2
                 - Trace
                 - Push:
                     - Integer: 0
                     - Register: 1
-                    - Constant: 23
+                    - Constant: 12
                 - CallMethod
                 - Return
               label_positions: {}
@@ -805,7 +809,7 @@ extra_modules:
             actions:
               actions:
                 - Push:
-                    - Constant: 20
+                    - Constant: 21
                     - Register: 2
                 - Add2
                 - Trace
@@ -838,7 +842,7 @@ extra_modules:
             actions:
               actions:
                 - Push:
-                    - Constant: 20
+                    - Constant: 21
                     - Register: 2
                 - Add2
                 - Trace
@@ -884,28 +888,31 @@ extra_modules:
                 - Push:
                     - Constant: 27
                     - Integer: 1
-                    - Constant: 15
+                    - Constant: 16
                 - NewObject
                 - StoreRegister: 1
                 - Pop
                 - Push:
                     - Register: 1
-                    - Constant: 10
                     - Constant: 28
+                    - Constant: 29
                 - SetMember
                 - Push:
                     - Register: 1
                 - StoreRegister: 2
                 - Pop
                 - Push:
+                    - Constant: 29
+                    - Integer: 1
                     - Register: 2
-                    - Constant: 10
-                    - Constant: 28
-                - SetMember
+                    - Constant: 11
+                - CallMethod
+                - Pop
                 - Push:
+                    - Integer: 0
                     - Register: 2
-                    - Constant: 10
-                - GetMember
+                    - Constant: 12
+                - CallMethod
                 - Trace
               label_positions: {}
             register_count: 3
@@ -927,12 +934,12 @@ extra_modules:
         - Push:
             - Register: 2
             - String: BitmapData
-            - Constant: 29
+            - Constant: 30
         - SetMember
         - Push:
             - Register: 1
             - String: scream
-            - Constant: 30
+            - Constant: 31
         - SetMember
         - Push:
             - Register: 2
