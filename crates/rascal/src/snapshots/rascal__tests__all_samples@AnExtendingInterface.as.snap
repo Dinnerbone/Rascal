@@ -75,4 +75,7 @@ extra_modules:
         loc0000: 22
 compile_options:
   swf_version: 15
+  optimizations:
+    fold_constants: true
+    promote_variables_to_registers: true
 custom_pcodes: []

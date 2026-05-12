@@ -64,17 +64,26 @@ impl SwfOptions {
 #[derive(Debug, Clone, Serialize)]
 pub struct CompileOptions {
     pub(crate) swf_version: u8,
+    pub(crate) optimizations: OptimizationOptions,
 }
 
 impl Default for CompileOptions {
     fn default() -> Self {
-        Self { swf_version: 15 }
+        Self {
+            swf_version: 15,
+            optimizations: OptimizationOptions::full(),
+        }
     }
 }
 
 impl CompileOptions {
     pub fn with_swf_version(mut self, swf_version: u8) -> Self {
         self.swf_version = swf_version;
+        self
+    }
+
+    pub fn with_optimizations(mut self, optimizations: OptimizationOptions) -> Self {
+        self.optimizations = optimizations;
         self
     }
 }
@@ -127,7 +136,7 @@ impl CompiledProgram {
     }
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize)]
 pub struct OptimizationOptions {
     fold_constants: bool,
     promote_variables_to_registers: bool,
@@ -190,11 +199,6 @@ impl<P> ProgramBuilder<P> {
 
     pub fn add_class(&mut self, path: &str) {
         self.classes.push(path.to_owned());
-    }
-
-    pub fn with_optimizations(mut self, optimizations: OptimizationOptions) -> Self {
-        self.optimizations = optimizations;
-        self
     }
 
     pub fn with_compile_options(mut self, compile_options: CompileOptions) -> Self {
