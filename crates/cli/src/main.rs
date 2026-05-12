@@ -85,7 +85,8 @@ fn main() -> Result<()> {
         opt.classpath.push(PathBuf::from("."));
     }
     let provider = FileSystemSourceProvider::with_roots(opt.classpath);
-    let mut builder = ProgramBuilder::new(provider);
+    let mut builder = ProgramBuilder::new(provider)
+        .with_compile_options(CompileOptions::default().with_swf_version(opt.swf_version));
 
     for src in &opt.pcode {
         builder.add_pcode(&src.to_string_lossy());
@@ -98,7 +99,7 @@ fn main() -> Result<()> {
     }
 
     let parsed = builder.build().unwrap_or_else(|e| panic!("{}", e));
-    let pcode = parsed.compile(CompileOptions::default().with_swf_version(opt.swf_version));
+    let pcode = parsed.compile();
     let output_path = opt
         .output
         .or_else(|| opt.script.first().map(|s| s.with_extension("swf")))
