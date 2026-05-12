@@ -1287,11 +1287,11 @@ Ok:
                     start: 1820
                     end: 1844
                   value:
-                    BinaryOperator:
-                      - Assign
-                      - span:
+                    Call:
+                      name:
+                        span:
                           start: 1820
-                          end: 1836
+                          end: 1844
                         value:
                           Field:
                             - span:
@@ -1301,17 +1301,18 @@ Ok:
                                 Constant:
                                   Register: 2
                             - span:
-                                start: 1821
-                                end: 1836
+                                start: 1820
+                                end: 1844
                               value:
                                 Constant:
-                                  String: virtualProperty
-                      - span:
-                          start: 1839
-                          end: 1844
-                        value:
-                          Constant:
-                            String: foo
+                                  String: __set__virtualProperty
+                      args:
+                        - span:
+                            start: 1839
+                            end: 1844
+                          value:
+                            Constant:
+                              String: foo
               - Expr:
                   span:
                     start: 1854
@@ -1322,19 +1323,26 @@ Ok:
                         start: 1861
                         end: 1877
                       value:
-                        Field:
-                          - span:
-                              start: 1860
-                              end: 1861
-                            value:
-                              Constant:
-                                Register: 2
-                          - span:
-                              start: 1862
+                        Call:
+                          name:
+                            span:
+                              start: 1861
                               end: 1877
                             value:
-                              Constant:
-                                String: virtualProperty
+                              Field:
+                                - span:
+                                    start: 1860
+                                    end: 1861
+                                  value:
+                                    Constant:
+                                      Register: 2
+                                - span:
+                                    start: 1861
+                                    end: 1877
+                                  value:
+                                    Constant:
+                                      String: __get__virtualProperty
+                          args: []
             scope:
               defined_variables:
                 this:
@@ -1633,11 +1641,11 @@ Ok:
                 start: 556
                 end: 583
               value:
-                BinaryOperator:
-                  - Assign
-                  - span:
+                Call:
+                  name:
+                    span:
                       start: 556
-                      end: 571
+                      end: 583
                     value:
                       Field:
                         - span:
@@ -1648,16 +1656,17 @@ Ok:
                               Register: 1
                         - span:
                             start: 556
-                            end: 571
+                            end: 583
                           value:
                             Constant:
-                              String: virtualProperty
-                  - span:
-                      start: 574
-                      end: 583
-                    value:
-                      Constant:
-                        String: a value
+                              String: __set__virtualProperty
+                  args:
+                    - span:
+                        start: 574
+                        end: 583
+                      value:
+                        Constant:
+                          String: a value
           - Expr:
               span:
                 start: 593
@@ -1668,19 +1677,26 @@ Ok:
                     start: 599
                     end: 614
                   value:
-                    Field:
-                      - span:
+                    Call:
+                      name:
+                        span:
                           start: 599
                           end: 614
                         value:
-                          Constant:
-                            Register: 1
-                      - span:
-                          start: 599
-                          end: 614
-                        value:
-                          Constant:
-                            String: virtualProperty
+                          Field:
+                            - span:
+                                start: 599
+                                end: 614
+                              value:
+                                Constant:
+                                  Register: 1
+                            - span:
+                                start: 599
+                                end: 614
+                              value:
+                                Constant:
+                                  String: __get__virtualProperty
+                      args: []
         scope:
           defined_variables:
             this:

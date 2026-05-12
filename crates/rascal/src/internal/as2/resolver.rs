@@ -153,7 +153,7 @@ impl<'a> ModuleContext<'a> {
 
     fn add_dependency_by_path(&mut self, expr: &hir::Expr, required: bool) -> bool {
         if let Ok(path) = identifiers_to_path(expr) {
-            self.add_dependency(expr.span, &path, required)
+            self.add_dependency(expr.span, &path.join("."), required)
         } else {
             false
         }
@@ -165,7 +165,7 @@ impl<'a> ModuleContext<'a> {
 }
 
 /// Turns `foo.bar.baz` (Field{parent=Field{parent=foo, child={bar}}, child=baz}) into `"foo.bar.baz"`
-fn identifiers_to_path(mut expr: &hir::ExprKind) -> Result<String, ()> {
+pub fn identifiers_to_path(mut expr: &hir::ExprKind) -> Result<Vec<&str>, ()> {
     let mut path = vec![];
 
     loop {
@@ -189,7 +189,7 @@ fn identifiers_to_path(mut expr: &hir::ExprKind) -> Result<String, ()> {
     }
 
     path.reverse();
-    Ok(path.join("."))
+    Ok(path)
 }
 
 pub fn resolve_hir<P: SourceProvider>(

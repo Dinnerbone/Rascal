@@ -1,5 +1,6 @@
 use crate::error::{Error, ErrorSet};
 use crate::internal::as2::hir::constant_folder::fold_constants;
+use crate::internal::as2::hir::optimize_virtual_properties::optimize_virtual_properties;
 use crate::internal::as2::hir::register_promoter::promote_variables_to_registers;
 use crate::internal::as2::hir::scope::Scope;
 use crate::internal::as2::lexer::Lexer;
@@ -98,6 +99,18 @@ pub struct Program {
 }
 
 impl Program {
+    pub(crate) fn optimize(&mut self) {
+        optimize_virtual_properties(self);
+        if self
+            .compile_options
+            .optimizations
+            .promote_variables_to_registers
+            && self.compile_options.swf_version >= 7
+        {
+            promote_variables_to_registers(self);
+        }
+    }
+
     pub fn compile(self) -> CompiledProgram {
         let initializer = if self.initial_script.is_empty() {
             None
@@ -241,7 +254,7 @@ impl<P: SourceProvider> ProgramBuilder<P> {
             is_script: bool,
             optimizations: &OptimizationOptions,
             known_script_paths: &IndexSet<String>,
-            compile_options: &CompileOptions,
+            _compile_options: &CompileOptions,
         ) -> Option<hir::Document> {
             let source = match provider.load(path) {
                 Ok(source) => source,
@@ -272,9 +285,6 @@ impl<P: SourceProvider> ProgramBuilder<P> {
                 while fold_constants(&mut hir) {
                     // Keep going until nothing changed
                 }
-            }
-            if optimizations.promote_variables_to_registers && compile_options.swf_version >= 7 {
-                promote_variables_to_registers(&mut hir);
             }
             Some(hir)
         }
@@ -370,13 +380,15 @@ impl<P: SourceProvider> ProgramBuilder<P> {
 
         errors.error_unless_empty()?;
 
-        Ok(Program {
+        let mut program = Program {
             initial_script,
             interfaces,
             classes,
             custom_pcodes,
             compile_options: self.compile_options,
-        })
+        };
+        program.optimize();
+        Ok(program)
     }
 }
 
