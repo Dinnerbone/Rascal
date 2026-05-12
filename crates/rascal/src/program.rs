@@ -98,26 +98,26 @@ pub struct Program {
 }
 
 impl Program {
-    pub fn compile(&self) -> CompiledProgram {
+    pub fn compile(self) -> CompiledProgram {
         let initializer = if self.initial_script.is_empty() {
             None
         } else {
             Some(script_to_actions(&self.initial_script))
         };
         let mut extra_modules = vec![];
-        for interface in self.interfaces.iter().rev() {
-            let actions = interface_to_actions(interface);
-            extra_modules.push((interface.name.to_owned(), actions));
+        for interface in self.interfaces.into_iter().rev() {
+            let actions = interface_to_actions(&interface);
+            extra_modules.push((interface.name, actions));
         }
-        for class in self.classes.iter().rev() {
-            let actions = class_to_actions(class);
-            extra_modules.push((class.name.to_owned(), actions));
+        for class in self.classes.into_iter().rev() {
+            let actions = class_to_actions(&class);
+            extra_modules.push((class.name, actions));
         }
         CompiledProgram {
             initializer,
             extra_modules,
-            compile_options: self.compile_options.clone(),
-            custom_pcodes: self.custom_pcodes.clone(),
+            compile_options: self.compile_options,
+            custom_pcodes: self.custom_pcodes,
         }
     }
 }
