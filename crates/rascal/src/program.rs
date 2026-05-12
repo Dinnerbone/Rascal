@@ -225,7 +225,7 @@ impl<P: SourceProvider> ProgramBuilder<P> {
         let mut interfaces = vec![];
         let mut classes = vec![];
         let mut errors = ErrorSet::new();
-        let mut loaded_classes = IndexSet::new();
+        let mut loaded_classes = self.classes.iter().cloned().collect();
         let mut pending_classes = self.classes;
         let mut custom_pcodes = vec![];
         let known_script_paths = self.scripts.iter().cloned().collect();

@@ -4,7 +4,38 @@ expression: parsed
 input_file: samples/as2_classes/ClassMembersTest.as
 ---
 Ok:
-  initial_script: []
+  initial_script:
+    - Expr:
+        span:
+          start: 0
+          end: 0
+        value:
+          Call:
+            name:
+              span:
+                start: 0
+                end: 0
+              value:
+                Field:
+                  - span:
+                      start: 0
+                      end: 0
+                    value:
+                      Constant:
+                        Identifier: ClassMembersTest
+                  - span:
+                      start: 0
+                      end: 0
+                    value:
+                      Constant:
+                        String: main
+            args:
+              - span:
+                  start: 0
+                  end: 0
+                value:
+                  Constant:
+                    Identifier: this
   interfaces:
     - name: AnEmptyInterface
       extends: ~
@@ -1004,6 +1035,191 @@ Ok:
               referenced_variables: []
               could_reference_anything: false
             register_count: 1
+            preload_this: false
+            suppress_this: true
+            preload_arguments: false
+            suppress_arguments: true
+            preload_super: false
+            suppress_super: true
+            preload_root: false
+            preload_parent: false
+            preload_global: false
+          is_static: true
+        main:
+          function:
+            signature:
+              name:
+                span:
+                  start: 1688
+                  end: 1692
+                value: main
+              args: []
+              return_type: ~
+            body:
+              - Expr:
+                  span:
+                    start: 0
+                    end: 0
+                  value:
+                    BinaryOperator:
+                      - Assign
+                      - span:
+                          start: 0
+                          end: 0
+                        value:
+                          Constant:
+                            Register: 1
+                      - span:
+                          start: 1713
+                          end: 1736
+                        value:
+                          New:
+                            name:
+                              span:
+                                start: 1717
+                                end: 1733
+                              value:
+                                Constant:
+                                  Identifier: ClassMembersTest
+                            args:
+                              - span:
+                                  start: 1734
+                                  end: 1736
+                                value:
+                                  Constant:
+                                    String: ""
+              - Expr:
+                  span:
+                    start: 1748
+                    end: 1772
+                  value:
+                    BinaryOperator:
+                      - Assign
+                      - span:
+                          start: 1748
+                          end: 1764
+                        value:
+                          Field:
+                            - span:
+                                start: 1747
+                                end: 1748
+                              value:
+                                Constant:
+                                  Register: 1
+                            - span:
+                                start: 1749
+                                end: 1764
+                              value:
+                                Constant:
+                                  String: virtualProperty
+                      - span:
+                          start: 1767
+                          end: 1772
+                        value:
+                          Constant:
+                            String: foo
+              - Expr:
+                  span:
+                    start: 0
+                    end: 0
+                  value:
+                    BinaryOperator:
+                      - Assign
+                      - span:
+                          start: 0
+                          end: 0
+                        value:
+                          Constant:
+                            Register: 2
+                      - span:
+                          start: 1808
+                          end: 1809
+                        value:
+                          Constant:
+                            Register: 1
+              - Expr:
+                  span:
+                    start: 1820
+                    end: 1844
+                  value:
+                    BinaryOperator:
+                      - Assign
+                      - span:
+                          start: 1820
+                          end: 1836
+                        value:
+                          Field:
+                            - span:
+                                start: 1819
+                                end: 1820
+                              value:
+                                Constant:
+                                  Register: 2
+                            - span:
+                                start: 1821
+                                end: 1836
+                              value:
+                                Constant:
+                                  String: virtualProperty
+                      - span:
+                          start: 1839
+                          end: 1844
+                        value:
+                          Constant:
+                            String: foo
+              - Expr:
+                  span:
+                    start: 1854
+                    end: 1878
+                  value:
+                    Trace:
+                      span:
+                        start: 1861
+                        end: 1877
+                      value:
+                        Field:
+                          - span:
+                              start: 1860
+                              end: 1861
+                            value:
+                              Constant:
+                                Register: 2
+                          - span:
+                              start: 1862
+                              end: 1877
+                            value:
+                              Constant:
+                                String: virtualProperty
+            scope:
+              defined_variables:
+                this:
+                  used: false
+                  used_in_inner_scope: false
+                arguments:
+                  used: false
+                  used_in_inner_scope: false
+                super:
+                  used: false
+                  used_in_inner_scope: false
+                _root:
+                  used: false
+                  used_in_inner_scope: false
+                _parent:
+                  used: false
+                  used_in_inner_scope: false
+                _global:
+                  used: false
+                  used_in_inner_scope: false
+                x:
+                  used: true
+                  used_in_inner_scope: false
+                y:
+                  used: true
+                  used_in_inner_scope: false
+              referenced_variables:
+                - ClassMembersTest
+              could_reference_anything: false
+            register_count: 3
             preload_this: false
             suppress_this: true
             preload_arguments: false
