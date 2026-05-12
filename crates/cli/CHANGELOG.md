@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0](https://github.com/Dinnerbone/Rascal/compare/rascal_cli-v0.2.7...rascal_cli-v0.3.0) - 2026-05-12
+
+### Added
+
+- *(api)* [**breaking**] Support having compile options on the builder directly, as that's where most of the actual "compiling" happens
+
 ## [0.2.3](https://github.com/Dinnerbone/Rascal/compare/rascal_cli-v0.2.2...rascal_cli-v0.2.3) - 2026-04-30
 
 ### Other
