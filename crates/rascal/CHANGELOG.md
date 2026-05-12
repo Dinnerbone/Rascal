@@ -7,6 +7,32 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0](https://github.com/Dinnerbone/Rascal/compare/rascal-v0.2.7...rascal-v0.3.0) - 2026-05-12
+
+### Added
+
+- *(api)* [**breaking**] Move optimizations into compile options
+- *(api)* [**breaking**] Support having compile options on the builder directly, as that's where most of the actual "compiling" happens
+
+### Fixed
+
+- *(codegen)* Don't use Extends opcode below swf 7
+- *(codegen)* Replace virtual properties with `__set__X`/`__get__X` where appropriate
+- *(codegen)* Support casting objects using `ClassName(obj)`
+- *(resolving)* Fix looking up paths relative to the root (e.g. `Foo` as opposed to `foo.Bar`)
+- *(codegen)* Allow optimization passes on class functions
+- *(codegen)* Allow register promotion for `for (var foo : obj)`
+- *(pcode)* Fix parsing `Push NaN` and `Push Infinity`
+
+### Other
+
+- *(codegen)* Track type names of variables
+- *(api)* [**breaking**] Make Program::compile() consume self
+- *(tests)* Add more tests for virtual properties
+- Bump annotate-snippets from 0.12.15 to 0.12.16
+- *(codegen)* Extract out convenient methods for scope finding
+- *(codegen)* Split up for enumerator into an enum so that we can have registers too
+
 ## [0.2.7](https://github.com/Dinnerbone/Rascal/compare/rascal-v0.2.6...rascal-v0.2.7) - 2026-05-09
 
 ### Added
