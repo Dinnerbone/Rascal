@@ -3,6 +3,7 @@ use crate::internal::as2::hir::{
     ConstantKind, Declaration, EnumeratorTarget, Expr, ExprKind, ForCondition, Function,
     FunctionArgument, StatementKind,
 };
+use crate::internal::span::Spanned;
 use indexmap::{IndexMap, IndexSet};
 use serde::Serialize;
 
@@ -10,6 +11,7 @@ use serde::Serialize;
 pub struct Variable {
     pub used: bool,
     pub used_in_inner_scope: bool,
+    pub type_name: Option<Spanned<String>>,
 }
 #[derive(Debug, Clone, Serialize, PartialEq, Default)]
 pub struct Scope {
@@ -19,18 +21,31 @@ pub struct Scope {
 }
 
 impl Scope {
-    pub fn for_function(args: &Vec<FunctionArgument>, body: &mut Vec<StatementKind>) -> Self {
+    pub fn for_function(
+        args: &Vec<FunctionArgument>,
+        body: &mut Vec<StatementKind>,
+        this_type: Option<Spanned<String>>,
+        super_type: Option<Spanned<String>>,
+    ) -> Self {
         let mut scope = Scope::default();
         // These must be defined before any arguments, in this order: this arguments super _root _parent _global
-        scope
-            .defined_variables
-            .insert("this".to_string(), Variable::default());
+        scope.defined_variables.insert(
+            "this".to_string(),
+            Variable {
+                type_name: this_type,
+                ..Default::default()
+            },
+        );
         scope
             .defined_variables
             .insert("arguments".to_string(), Variable::default());
-        scope
-            .defined_variables
-            .insert("super".to_string(), Variable::default());
+        scope.defined_variables.insert(
+            "super".to_string(),
+            Variable {
+                type_name: super_type,
+                ..Default::default()
+            },
+        );
         scope
             .defined_variables
             .insert("_root".to_string(), Variable::default());
@@ -73,11 +88,12 @@ impl VariableFinder {
         }
     }
 
-    fn declare_new_variable(&mut self, name: String) {
+    fn declare_new_variable(&mut self, name: String, type_name: Option<Spanned<String>>) {
         self.0.defined_variables.insert(
             name,
             Variable {
                 used: true,
+                type_name,
                 ..Default::default()
             },
         );
@@ -107,7 +123,10 @@ impl MutVisitor for VariableFinder {
     }
 
     fn visit_declaration(&mut self, declaration: &mut Declaration) {
-        self.declare_new_variable(declaration.name.value.clone());
+        self.declare_new_variable(
+            declaration.name.value.clone(),
+            declaration.type_name.clone(),
+        );
         if let Some(value) = &mut declaration.value {
             self.visit_expr(value);
         }
@@ -127,7 +146,7 @@ impl MutVisitor for VariableFinder {
                 ..
             } => {
                 if *declare {
-                    self.declare_new_variable(name.clone());
+                    self.declare_new_variable(name.clone(), None);
                 } else {
                     self.mark_variable_used(name, false);
                 }

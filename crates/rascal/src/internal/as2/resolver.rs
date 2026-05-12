@@ -21,7 +21,8 @@ struct ModuleContext<'a> {
     provider: &'a dyn SourceProvider,
     known_script_paths: &'a IndexSet<String>,
     is_script: bool,
-    class_name: String,
+    class_name: Option<Spanned<String>>,
+    super_name: Option<Spanned<String>>,
     class_members: HashMap<String, bool>,
 }
 
@@ -29,7 +30,7 @@ impl<'a> ModuleContext<'a> {
     fn new(
         provider: &'a dyn SourceProvider,
         is_script: bool,
-        class_name: String,
+        class_name: Option<Spanned<String>>,
         known_script_paths: &'a IndexSet<String>,
     ) -> Self {
         Self {
@@ -39,9 +40,14 @@ impl<'a> ModuleContext<'a> {
             provider,
             is_script,
             class_name,
+            super_name: None,
             class_members: HashMap::new(),
             known_script_paths,
         }
+    }
+
+    fn set_super_name(&mut self, name: Option<Spanned<String>>) {
+        self.super_name = name;
     }
 
     fn import(&mut self, span: Span, path: Vec<String>, name: String) {
@@ -59,11 +65,15 @@ impl<'a> ModuleContext<'a> {
     }
 
     fn expand_identifier(&self, name: String, span: Span) -> Option<hir::Expr> {
-        if let Some(is_static) = self.class_members.get(&name) {
+        if let Some(is_static) = self.class_members.get(&name)
+            && let Some(class_name) = &self.class_name
+        {
             let parent = if *is_static {
                 Box::new(hir::Expr::new(
                     span,
-                    hir::ExprKind::Constant(hir::ConstantKind::Identifier(self.class_name.clone())),
+                    hir::ExprKind::Constant(hir::ConstantKind::Identifier(
+                        class_name.value.clone(),
+                    )),
                 ))
             } else {
                 Box::new(hir::Expr::new(
@@ -192,7 +202,11 @@ pub fn resolve_hir<P: SourceProvider>(
     let mut context = ModuleContext::new(
         provider,
         is_script,
-        expected_name.to_owned(),
+        if expected_name.is_empty() {
+            None
+        } else {
+            Some(Spanned::new(Span::default(), expected_name.to_owned()))
+        },
         known_script_paths,
     );
     let document = if is_script {
@@ -235,6 +249,7 @@ fn resolve_class_or_interface(
                 extends,
                 body,
             } => {
+                context.set_super_name(extends.clone());
                 if name.value == expected_name {
                     if result.is_some() {
                         context.error(
@@ -261,6 +276,7 @@ fn resolve_class_or_interface(
                 implements,
                 members,
             } => {
+                context.set_super_name(extends.clone());
                 if name.value == expected_name {
                     if result.is_some() {
                         context.error(
@@ -943,7 +959,12 @@ fn resolve_function(
             register: None,
         })
         .collect();
-    let scope = Scope::for_function(&args, &mut body);
+    let scope = Scope::for_function(
+        &args,
+        &mut body,
+        context.class_name.clone(),
+        context.super_name.clone(),
+    );
     hir::Function {
         signature: hir::FunctionSignature {
             name: input
