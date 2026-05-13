@@ -3,8 +3,8 @@ use crate::program::{CompiledProgram, SwfOptions};
 use byteorder::{LittleEndian, WriteBytesExt};
 use indexmap::IndexMap;
 use std::collections::HashMap;
-use std::io::{self, Result, Write};
 use std::fmt;
+use std::io::{self, Result, Write};
 use swf::write::SwfWriteExt;
 use swf::{CharacterId, ExportedAsset, FileAttributes, Fixed8, Sprite, SwfStr, Tag, Twips};
 
@@ -17,14 +17,14 @@ pub(crate) fn pcode_to_swf(
         let mut result = ActionEncoder::new();
         result.write_actions(actions)?;
         result.write_small_action(OpCode::End)?;
-        result.patch_labels();
+        result.patch_labels()?;
         initializers.push(result.output);
     }
     if let Some(initializer) = &program.initializer {
         let mut result = ActionEncoder::new();
         result.write_actions(initializer)?;
         result.write_small_action(OpCode::End)?;
-        result.patch_labels();
+        result.patch_labels()?;
         initializers.push(result.output);
     }
     let mut modules = vec![];
@@ -32,7 +32,7 @@ pub(crate) fn pcode_to_swf(
         let mut result = ActionEncoder::new();
         result.write_actions(actions)?;
         result.write_small_action(OpCode::End)?;
-        result.patch_labels();
+        result.patch_labels()?;
         modules.push((format!("__Packages.{}", name), result.output));
     }
 
@@ -157,12 +157,24 @@ impl SwfWriteExt for ActionEncoder<'_> {
 #[derive(Debug)]
 enum EncoderError {
     NulByteInString,
+    JumpOffsetOverflow(isize),
+    ActionLenOverflow(usize),
+    BlockLenOverflow(usize),
 }
 
 impl fmt::Display for EncoderError {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match self {
-            Self::NulByteInString => f.write_str("invalid NUL byte in string"),
+            Self::NulByteInString => write!(f, "invalid NUL byte in string"),
+            Self::JumpOffsetOverflow(off) => {
+                write!(f, "jump offset ({off} bytes) cannot fit in i16")
+            }
+            Self::ActionLenOverflow(size) => {
+                write!(f, "action length ({size} bytes) cannot fit in u16")
+            }
+            Self::BlockLenOverflow(size) => {
+                write!(f, "block length ({size} bytes) cannot fit in u16")
+            }
         }
     }
 }
@@ -184,14 +196,17 @@ impl<'a> ActionEncoder<'a> {
         }
     }
 
-    fn patch_labels(&mut self) {
+    fn patch_labels(&mut self) -> Result<()> {
         for write in &self.pending_label_writes {
             if let Some(position) = self.label_positions.get(write.label) {
-                let offset = (*position as isize - (write.offset_pos + 2) as isize) as i16;
+                let offset = *position as isize - (write.offset_pos + 2) as isize;
+                let offset =
+                    i16::try_from(offset).map_err(|_| EncoderError::JumpOffsetOverflow(offset))?;
                 self.output[write.offset_pos..write.offset_pos + 2]
                     .copy_from_slice(&offset.to_le_bytes());
             }
         }
+        Ok(())
     }
 
     #[inline]
@@ -381,7 +396,8 @@ impl<'a> ActionEncoder<'a> {
             "Opcodes less than 0x80 must have length 0"
         );
         if opcode >= 0x80 {
-            self.write_u16(length as u16)?;
+            let len = u16::try_from(length).map_err(|_| EncoderError::ActionLenOverflow(length))?;
+            self.write_u16(len)?;
         }
         Ok(())
     }
@@ -416,12 +432,27 @@ impl<'a> ActionEncoder<'a> {
     }
 
     fn write_constant_pool(&mut self, strings: &'a [String]) -> Result<()> {
-        let len = 2 + strings.iter().map(|c| c.len() + 1).sum::<usize>();
+        let len = strings
+            .iter()
+            .fold(2usize, |sum, c| sum.saturating_add(c.len() + 1));
         self.write_action_header(OpCode::ConstantPool, len)?;
+        // The potential overflow is already caught by the action length
         self.write_u16(strings.len() as u16)?;
         for string in strings {
             self.write_string(SwfStr::from_utf8_str(string))?;
         }
+        Ok(())
+    }
+
+    fn write_block_length_at(
+        &mut self,
+        at: usize,
+        block_start: usize,
+        block_end: usize,
+    ) -> Result<()> {
+        let len = block_end - block_start;
+        let len = u16::try_from(len).map_err(|_| EncoderError::BlockLenOverflow(len))?;
+        self.output[at..(at + 2)].copy_from_slice(&len.to_le_bytes());
         Ok(())
     }
 
@@ -433,9 +464,12 @@ impl<'a> ActionEncoder<'a> {
     ) -> Result<()> {
         // 1 zero byte for string name, 1 zero byte per param, 2 bytes for # of params,
         // 2 bytes for code length
-        let len = name.len() + 1 + 2 + params.iter().map(|p| p.len() + 1).sum::<usize>() + 2;
+        let len = params.iter().fold(name.len() + 1 + 2 + 2, |sum, p| {
+            sum.saturating_add(p.len() + 1)
+        });
         self.write_action_header(OpCode::DefineFunction, len)?;
         self.write_string(SwfStr::from_utf8_str(name))?;
+        // The potential overflow is already caught by the action length
         self.write_u16(params.len() as u16)?;
         for param in params {
             self.write_string(SwfStr::from_utf8_str(param))?;
@@ -445,9 +479,7 @@ impl<'a> ActionEncoder<'a> {
         let length_before_function = self.output.len();
         self.write_actions(actions)?;
         let length_after_function = self.output.len();
-        self.output[length_offset..length_offset + 2].copy_from_slice(
-            &((length_after_function - length_before_function) as u16).to_le_bytes(),
-        );
+        self.write_block_length_at(length_offset, length_before_function, length_after_function)?;
         Ok(())
     }
 
@@ -468,9 +500,12 @@ impl<'a> ActionEncoder<'a> {
         preload_parent: bool,
         preload_global: bool,
     ) -> Result<()> {
-        let len = name.len() + 1 + 3 + params.iter().map(|p| p.name.len() + 2).sum::<usize>() + 4;
+        let len = params.iter().fold(name.len() + 1 + 3 + 4, |sum, p| {
+            sum.saturating_add(p.name.len() + 2)
+        });
         self.write_action_header(OpCode::DefineFunction2, len)?;
         self.write_string(SwfStr::from_utf8_str(name))?;
+        // The potential overflow is already caught by the action length
         self.write_u16(params.len() as u16)?;
         self.write_u8(register_count)?;
         let mut flags = 0;
@@ -511,9 +546,7 @@ impl<'a> ActionEncoder<'a> {
         let length_before_function = self.output.len();
         self.write_actions(actions)?;
         let length_after_function = self.output.len();
-        self.output[length_offset..length_offset + 2].copy_from_slice(
-            &((length_after_function - length_before_function) as u16).to_le_bytes(),
-        );
+        self.write_block_length_at(length_offset, length_before_function, length_after_function)?;
         Ok(())
     }
 
@@ -524,8 +557,7 @@ impl<'a> ActionEncoder<'a> {
         let length_before = self.output.len();
         self.write_actions(actions)?;
         let length_after = self.output.len();
-        self.output[length_offset..length_offset + 2]
-            .copy_from_slice(&((length_after - length_before) as u16).to_le_bytes());
+        self.write_block_length_at(length_offset, length_before, length_after)?;
         Ok(())
     }
 
@@ -584,12 +616,9 @@ impl<'a> ActionEncoder<'a> {
         let len_at_end = self.output.len();
 
         // Patch the sizes we allocated earlier
-        self.output[try_offset..try_offset + 2]
-            .copy_from_slice(&((len_before_catch - len_before_try) as u16).to_le_bytes());
-        self.output[catch_offset..catch_offset + 2]
-            .copy_from_slice(&((len_before_finally - len_before_catch) as u16).to_le_bytes());
-        self.output[finally_offset..finally_offset + 2]
-            .copy_from_slice(&((len_at_end - len_before_finally) as u16).to_le_bytes());
+        self.write_block_length_at(try_offset, len_before_try, len_before_catch)?;
+        self.write_block_length_at(catch_offset, len_before_catch, len_before_finally)?;
+        self.write_block_length_at(finally_offset, len_before_finally, len_at_end)?;
 
         Ok(())
     }
