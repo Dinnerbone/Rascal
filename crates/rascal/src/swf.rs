@@ -49,6 +49,11 @@ pub(crate) fn pcode_to_swf(
     for initializer in &initializers {
         tags.push(Tag::DoAction(initializer))
     }
+
+    if (modules.len() + 1) > CharacterId::MAX as usize {
+        return Err(swf::error::Error::from(io::Error::from(EncoderError::TooManyModules)));
+    }
+
     for (i, (name, module)) in modules.iter().enumerate() {
         let id = (i + 1) as CharacterId;
         tags.push(Tag::DefineSprite(Sprite {
@@ -156,6 +161,7 @@ impl SwfWriteExt for ActionEncoder<'_> {
 
 #[derive(Debug)]
 enum EncoderError {
+    TooManyModules,
     NulByteInString,
     JumpOffsetOverflow(isize),
     ActionLenOverflow(usize),
@@ -165,6 +171,7 @@ enum EncoderError {
 impl fmt::Display for EncoderError {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match self {
+            Self::TooManyModules => write!(f, "too many modules"),
             Self::NulByteInString => write!(f, "invalid NUL byte in string"),
             Self::JumpOffsetOverflow(off) => {
                 write!(f, "jump offset ({off} bytes) cannot fit in i16")
