@@ -3,12 +3,10 @@ use crate::program::{CompiledProgram, SwfOptions};
 use byteorder::{LittleEndian, WriteBytesExt};
 use indexmap::IndexMap;
 use std::collections::HashMap;
-use std::io::Result;
-use std::io::Write;
+use std::io::{self, Result, Write};
+use std::fmt;
 use swf::write::SwfWriteExt;
 use swf::{CharacterId, ExportedAsset, FileAttributes, Fixed8, Sprite, SwfStr, Tag, Twips};
-
-impl<'a> ActionEncoder<'a> {}
 
 pub(crate) fn pcode_to_swf(
     program: &CompiledProgram,
@@ -146,10 +144,34 @@ impl SwfWriteExt for ActionEncoder<'_> {
         self.output.write_f64::<LittleEndian>(n)
     }
 
-    #[inline]
     fn write_string(&mut self, s: &'_ SwfStr) -> Result<()> {
-        self.output.write_all(s.as_bytes())?;
+        let bytes = s.as_bytes();
+        if bytes.contains(&0) {
+            return Err(EncoderError::NulByteInString.into());
+        }
+        self.output.write_all(bytes)?;
         self.write_u8(0)
+    }
+}
+
+#[derive(Debug)]
+enum EncoderError {
+    NulByteInString,
+}
+
+impl fmt::Display for EncoderError {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        match self {
+            Self::NulByteInString => f.write_str("invalid NUL byte in string"),
+        }
+    }
+}
+
+impl std::error::Error for EncoderError {}
+
+impl From<EncoderError> for io::Error {
+    fn from(e: EncoderError) -> io::Error {
+        io::Error::new(io::ErrorKind::InvalidData, e)
     }
 }
 
