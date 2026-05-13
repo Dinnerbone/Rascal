@@ -51,7 +51,9 @@ pub(crate) fn pcode_to_swf(
     }
 
     if (modules.len() + 1) > CharacterId::MAX as usize {
-        return Err(swf::error::Error::from(io::Error::from(EncoderError::TooManyModules)));
+        return Err(swf::error::Error::from(io::Error::from(
+            EncoderError::TooManyModules,
+        )));
     }
 
     for (i, (name, module)) in modules.iter().enumerate() {
