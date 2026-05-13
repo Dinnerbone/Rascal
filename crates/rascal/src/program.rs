@@ -197,7 +197,6 @@ pub struct ProgramBuilder<P> {
     scripts: Vec<String>,
     pcodes: Vec<String>,
     classes: Vec<String>,
-    optimizations: OptimizationOptions,
     compile_options: CompileOptions,
 }
 
@@ -227,7 +226,6 @@ impl<P: SourceProvider> ProgramBuilder<P> {
             scripts: vec![],
             pcodes: vec![],
             classes: vec![],
-            optimizations: OptimizationOptions::full(),
             compile_options: CompileOptions::default(),
         }
     }
@@ -252,9 +250,8 @@ impl<P: SourceProvider> ProgramBuilder<P> {
             path: &str,
             type_name: &str,
             is_script: bool,
-            optimizations: &OptimizationOptions,
             known_script_paths: &IndexSet<String>,
-            _compile_options: &CompileOptions,
+            compile_options: &CompileOptions,
         ) -> Option<hir::Document> {
             let source = match provider.load(path) {
                 Ok(source) => source,
@@ -281,7 +278,7 @@ impl<P: SourceProvider> ProgramBuilder<P> {
                     pending_classes.push(name);
                 }
             }
-            if optimizations.fold_constants {
+            if compile_options.optimizations.fold_constants {
                 while fold_constants(&mut hir) {
                     // Keep going until nothing changed
                 }
@@ -322,7 +319,6 @@ impl<P: SourceProvider> ProgramBuilder<P> {
                 &path,
                 "",
                 true,
-                &self.optimizations,
                 &known_script_paths,
                 &self.compile_options,
             ) && let hir::Document::Script { statements, scope } = document
@@ -348,7 +344,6 @@ impl<P: SourceProvider> ProgramBuilder<P> {
                 &filename,
                 &type_name,
                 false,
-                &self.optimizations,
                 &known_script_paths,
                 &self.compile_options,
             ) {
