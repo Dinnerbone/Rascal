@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.2](https://github.com/Dinnerbone/Rascal/compare/rascal-v0.3.1...rascal-v0.3.2) - 2026-05-13
+
+### Fixed
+
+- *(codegen)* guard against CharacterId overflow
+- *(codegen)* guard against overflow in action and block lengths
+- *(codegen)* guard against NUL bytes in strings
+
+### Other
+
+- `cargo fmt` was missed
+
 ## [0.3.1](https://github.com/Dinnerbone/Rascal/compare/rascal-v0.3.0...rascal-v0.3.1) - 2026-05-13
 
 ### Fixed
