@@ -72,7 +72,7 @@ where
     }
 }
 
-#[derive(Copy, Clone, PartialEq, Eq, Hash, Serialize)]
+#[derive(Debug, Copy, Clone, PartialEq, Eq, Hash, Serialize)]
 pub struct FileId(pub(crate) usize);
 
 impl FileId {

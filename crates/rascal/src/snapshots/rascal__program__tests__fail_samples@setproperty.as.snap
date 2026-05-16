@@ -3,34 +3,18 @@ source: crates/rascal/src/program.rs
 expression: parsed
 input_file: samples/as2_errors/special_functions/setproperty.as
 ---
-error: Wrong number of parameters; setProperty requires exactly 3.
+error: Compile error
   ╭▸ setproperty.as:1:1
   │
 1 │ setProperty();
-  │ ━━━━━━━━━━━━━
-  ╰╴
-error: Wrong number of parameters; setProperty requires exactly 3.
-  ╭▸ setproperty.as:2:1
-  │
+  │ ━━━━━━━━━━━━━ Wrong number of parameters; setProperty requires exactly 3.
 2 │ setProperty(x);
-  ╰╴━━━━━━━━━━━━━━
-error: Wrong number of parameters; setProperty requires exactly 3.
-  ╭▸ setproperty.as:3:1
-  │
+  │ ━━━━━━━━━━━━━━ Wrong number of parameters; setProperty requires exactly 3.
 3 │ setProperty(x, y);
-  ╰╴━━━━━━━━━━━━━━━━━
-error: Property name expected in SetProperty.
-  ╭▸ setproperty.as:4:16
-  │
+  │ ━━━━━━━━━━━━━━━━━ Wrong number of parameters; setProperty requires exactly 3.
 4 │ setProperty(x, y, z);
-  ╰╴               ━
-error: Property name expected in SetProperty.
-  ╭▸ setproperty.as:5:16
-  │
+  │                ━ Property name expected in SetProperty.
 5 │ setProperty(x, "_alpha", z);
-  ╰╴               ━━━━━━━━
-error: Wrong number of parameters; setProperty requires exactly 3.
-  ╭▸ setproperty.as:6:1
-  │
+  │                ━━━━━━━━ Property name expected in SetProperty.
 6 │ setProperty(x, "_alpha", z, w);
-  ╰╴━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  ╰╴━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Wrong number of parameters; setProperty requires exactly 3.

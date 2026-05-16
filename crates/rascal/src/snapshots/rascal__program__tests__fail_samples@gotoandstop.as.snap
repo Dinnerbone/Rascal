@@ -3,19 +3,12 @@ source: crates/rascal/src/program.rs
 expression: parsed
 input_file: samples/as2_errors/special_functions/gotoandstop.as
 ---
-error: Wrong number of parameters; gotoAndStop requires between 1 and 2.
+error: Compile error
   ╭▸ gotoandstop.as:1:1
   │
 1 │ gotoAndStop();
-  │ ━━━━━━━━━━━━━
-  ╰╴
-error: Scene name must be quoted string.
-  ╭▸ gotoandstop.as:2:13
-  │
+  │ ━━━━━━━━━━━━━ Wrong number of parameters; gotoAndStop requires between 1 and 2.
 2 │ gotoAndStop(x, 123);
-  ╰╴            ━
-error: Wrong number of parameters; gotoAndStop requires between 1 and 2.
-  ╭▸ gotoandstop.as:3:1
-  │
+  │             ━ Scene name must be quoted string.
 3 │ gotoAndStop("foo", 123, true);
-  ╰╴━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  ╰╴━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Wrong number of parameters; gotoAndStop requires between 1 and 2.

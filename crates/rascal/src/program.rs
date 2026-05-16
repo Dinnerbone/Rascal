@@ -8,8 +8,9 @@ use crate::internal::as2::resolver::resolve_hir;
 use crate::internal::as2::{hir, parser, type_path_to_file_path};
 use crate::internal::as2_codegen::{class_to_actions, interface_to_actions, script_to_actions};
 use crate::internal::as2_pcode::Actions;
-use crate::internal::span::{FileId, Span};
+use crate::internal::span::Span;
 use crate::provider::SourceProvider;
+use crate::sources::SourceSet;
 use indexmap::IndexSet;
 use serde::Serialize;
 
@@ -240,7 +241,7 @@ impl<P: SourceProvider> ProgramBuilder<P> {
         let mut pending_classes = self.classes;
         let mut custom_pcodes = vec![];
         let known_script_paths = self.scripts.iter().cloned().collect();
-        let mut next_file_id = 0;
+        let mut source_set = SourceSet::new();
 
         #[expect(clippy::too_many_arguments)]
         fn load_actionscript<P: SourceProvider>(
@@ -253,29 +254,27 @@ impl<P: SourceProvider> ProgramBuilder<P> {
             is_script: bool,
             known_script_paths: &IndexSet<String>,
             compile_options: &CompileOptions,
-            next_file_id: &mut usize,
+            source_set: &mut SourceSet,
         ) -> Option<hir::Document> {
-            let source = match provider.load(path) {
+            let source = match source_set.get_or_load(path.to_owned(), provider) {
                 Ok(source) => source,
                 Err(e) => {
                     errors.add_io_error(path, e);
                     return None;
                 }
             };
-            let file_id = FileId::new(*next_file_id);
-            *next_file_id += 1;
-            let tokens = Lexer::new(&source, file_id).into_vec();
+            let tokens = Lexer::new(&source.source, source.file_id).into_vec();
             let ast = match parser::parse_document(&tokens) {
                 Ok(ast) => ast,
                 Err(e) => {
-                    errors.add_parsing_error(path, &source, e.into());
+                    errors.add_parsing_error(e.into());
                     return None;
                 }
             };
             let (mut hir, hir_errors, dependencies) =
                 resolve_hir(provider, ast, is_script, type_name, known_script_paths);
             for error in hir_errors {
-                errors.add_parsing_error(path, &source, error);
+                errors.add_parsing_error(error);
             }
             for name in dependencies {
                 if loaded_classes.insert(name.to_owned()) {
@@ -295,21 +294,20 @@ impl<P: SourceProvider> ProgramBuilder<P> {
             errors: &mut ErrorSet,
             path: &str,
             custom_pcodes: &mut Vec<Actions>,
-            next_file_id: &mut usize,
+            source_set: &mut SourceSet,
         ) {
-            let source = match provider.load(path) {
+            let source = match source_set.get_or_load(path.to_owned(), provider) {
                 Ok(source) => source,
                 Err(e) => {
                     errors.add_io_error(path, e);
                     return;
                 }
             };
-            let file_id = FileId::new(*next_file_id);
-            *next_file_id += 1;
-            let tokens = crate::internal::as2_pcode::Lexer::new(&source, file_id).into_vec();
+            let tokens =
+                crate::internal::as2_pcode::Lexer::new(&source.source, source.file_id).into_vec();
             match crate::internal::as2_pcode::parse_actions(&tokens) {
                 Ok(actions) => custom_pcodes.push(actions),
-                Err(e) => errors.add_parsing_error(path, &source, e.into()),
+                Err(e) => errors.add_parsing_error(e.into()),
             }
         }
 
@@ -319,7 +317,7 @@ impl<P: SourceProvider> ProgramBuilder<P> {
                 &mut errors,
                 &path,
                 &mut custom_pcodes,
-                &mut next_file_id,
+                &mut source_set,
             );
         }
 
@@ -334,7 +332,7 @@ impl<P: SourceProvider> ProgramBuilder<P> {
                 true,
                 &known_script_paths,
                 &self.compile_options,
-                &mut next_file_id,
+                &mut source_set,
             ) && let hir::Document::Script { statements, scope } = document
             {
                 root_scope.defined_variables.extend(scope.defined_variables);
@@ -360,7 +358,7 @@ impl<P: SourceProvider> ProgramBuilder<P> {
                 false,
                 &known_script_paths,
                 &self.compile_options,
-                &mut next_file_id,
+                &mut source_set,
             ) {
                 match document {
                     hir::Document::Interface(interface) => {
@@ -388,7 +386,7 @@ impl<P: SourceProvider> ProgramBuilder<P> {
             )),
         };
 
-        errors.error_unless_empty()?;
+        errors.error_unless_empty(source_set)?;
 
         let mut program = Program {
             initial_script,

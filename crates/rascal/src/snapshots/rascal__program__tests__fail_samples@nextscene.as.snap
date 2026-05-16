@@ -3,8 +3,8 @@ source: crates/rascal/src/program.rs
 expression: parsed
 input_file: samples/as2_errors/special_functions/nextscene.as
 ---
-error: Wrong number of parameters; nextScene requires exactly 0.
+error: Compile error
   ╭▸ nextscene.as:1:1
   │
 1 │ nextScene(1);
-  ╰╴━━━━━━━━━━━━
+  ╰╴━━━━━━━━━━━━ Wrong number of parameters; nextScene requires exactly 0.

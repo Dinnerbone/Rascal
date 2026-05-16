@@ -3,8 +3,8 @@ source: crates/rascal/src/program.rs
 expression: parsed
 input_file: samples/as2_errors/special_functions/prevframe.as
 ---
-error: Wrong number of parameters; prevFrame requires exactly 0.
+error: Compile error
   ╭▸ prevframe.as:1:1
   │
 1 │ prevFrame(true);
-  ╰╴━━━━━━━━━━━━━━━
+  ╰╴━━━━━━━━━━━━━━━ Wrong number of parameters; prevFrame requires exactly 0.

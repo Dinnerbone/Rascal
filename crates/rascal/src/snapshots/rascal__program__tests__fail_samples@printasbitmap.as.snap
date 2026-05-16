@@ -3,29 +3,16 @@ source: crates/rascal/src/program.rs
 expression: parsed
 input_file: samples/as2_errors/special_functions/printasbitmap.as
 ---
-error: Wrong number of parameters; printAsBitmap requires exactly 2.
+error: Compile error
   ╭▸ printasbitmap.as:1:1
   │
 1 │ printAsBitmap();
-  │ ━━━━━━━━━━━━━━━
-  ╰╴
-error: Wrong number of parameters; printAsBitmap requires exactly 2.
-  ╭▸ printasbitmap.as:2:1
-  │
+  │ ━━━━━━━━━━━━━━━ Wrong number of parameters; printAsBitmap requires exactly 2.
 2 │ printAsBitmap(this);
-  ╰╴━━━━━━━━━━━━━━━━━━━
-error: Bounds type must be bmovie, bframe or bmax.
-  ╭▸ printasbitmap.as:3:21
-  │
+  │ ━━━━━━━━━━━━━━━━━━━ Wrong number of parameters; printAsBitmap requires exactly 2.
 3 │ printAsBitmap(this, "foo");
-  ╰╴                    ━━━━━
-error: Bounds type must be bmovie, bframe or bmax.
-  ╭▸ printasbitmap.as:4:21
-  │
+  │                     ━━━━━ Bounds type must be bmovie, bframe or bmax.
 4 │ printAsBitmap(this, foo);
-  ╰╴                    ━━━
-error: Wrong number of parameters; printAsBitmap requires exactly 2.
-  ╭▸ printasbitmap.as:5:1
-  │
+  │                     ━━━ Bounds type must be bmovie, bframe or bmax.
 5 │ printAsBitmap(this, "bmax", true);
-  ╰╴━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  ╰╴━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Wrong number of parameters; printAsBitmap requires exactly 2.
