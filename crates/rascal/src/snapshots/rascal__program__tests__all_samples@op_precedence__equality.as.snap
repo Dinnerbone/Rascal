@@ -10,11 +10,13 @@ Ok:
           span:
             start: 17
             end: 18
+            file: 0
           value: a
         value:
           span:
             start: 21
             end: 23
+            file: 0
           value:
             Constant:
               Integer: 10
@@ -24,11 +26,13 @@ Ok:
           span:
             start: 29
             end: 30
+            file: 0
           value: b
         value:
           span:
             start: 33
             end: 37
+            file: 0
           value:
             Constant:
               String: "10"
@@ -38,11 +42,13 @@ Ok:
           span:
             start: 43
             end: 44
+            file: 0
           value: c
         value:
           span:
             start: 47
             end: 48
+            file: 0
           value:
             Constant:
               Integer: 5
@@ -51,71 +57,83 @@ Ok:
         span:
           start: 51
           end: 92
+          file: 0
         value:
           Trace:
             span:
               start: 57
               end: 91
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 57
                     end: 87
+                    file: 0
                   value:
                     BinaryOperator:
                       - Add
                       - span:
                           start: 57
                           end: 78
+                          file: 0
                         value:
                           BinaryOperator:
                             - Add
                             - span:
                                 start: 57
                                 end: 74
+                                file: 0
                               value:
                                 BinaryOperator:
                                   - Add
                                   - span:
                                       start: 57
                                       end: 65
+                                      file: 0
                                     value:
                                       BinaryOperator:
                                         - Add
                                         - span:
                                             start: 57
                                             end: 61
+                                            file: 0
                                           value:
                                             Constant:
                                               String: a=
                                         - span:
                                             start: 64
                                             end: 65
+                                            file: 0
                                           value:
                                             Constant:
                                               Identifier: a
                                   - span:
                                       start: 68
                                       end: 74
+                                      file: 0
                                     value:
                                       Constant:
                                         String: ", b="
                             - span:
                                 start: 77
                                 end: 78
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: b
                       - span:
                           start: 81
                           end: 87
+                          file: 0
                         value:
                           Constant:
                             String: ", c="
                 - span:
                     start: 90
                     end: 91
+                    file: 0
                   value:
                     Constant:
                       Identifier: c
@@ -123,11 +141,13 @@ Ok:
         span:
           start: 94
           end: 107
+          file: 0
         value:
           Trace:
             span:
               start: 100
               end: 106
+              file: 0
             value:
               Constant:
                 String: "----"
@@ -135,35 +155,41 @@ Ok:
         span:
           start: 144
           end: 173
+          file: 0
         value:
           Trace:
             span:
               start: 150
               end: 172
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 150
                     end: 161
+                    file: 0
                   value:
                     Constant:
                       String: "a == b = "
                 - span:
                     start: 165
                     end: 171
+                    file: 0
                   value:
                     BinaryOperator:
                       - Equal
                       - span:
                           start: 165
                           end: 166
+                          file: 0
                         value:
                           Constant:
                             Identifier: a
                       - span:
                           start: 170
                           end: 171
+                          file: 0
                         value:
                           Constant:
                             Identifier: b
@@ -171,35 +197,41 @@ Ok:
         span:
           start: 217
           end: 246
+          file: 0
         value:
           Trace:
             span:
               start: 223
               end: 245
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 223
                     end: 234
+                    file: 0
                   value:
                     Constant:
                       String: "a != b = "
                 - span:
                     start: 238
                     end: 244
+                    file: 0
                   value:
                     BinaryOperator:
                       - NotEqual
                       - span:
                           start: 238
                           end: 239
+                          file: 0
                         value:
                           Constant:
                             Identifier: a
                       - span:
                           start: 243
                           end: 244
+                          file: 0
                         value:
                           Constant:
                             Identifier: b
@@ -207,11 +239,13 @@ Ok:
         span:
           start: 259
           end: 271
+          file: 0
         value:
           Trace:
             span:
               start: 265
               end: 270
+              file: 0
             value:
               Constant:
                 String: "---"
@@ -219,35 +253,41 @@ Ok:
         span:
           start: 307
           end: 338
+          file: 0
         value:
           Trace:
             span:
               start: 313
               end: 337
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 313
                     end: 325
+                    file: 0
                   value:
                     Constant:
                       String: "a === b = "
                 - span:
                     start: 329
                     end: 336
+                    file: 0
                   value:
                     BinaryOperator:
                       - StrictEqual
                       - span:
                           start: 329
                           end: 330
+                          file: 0
                         value:
                           Constant:
                             Identifier: a
                       - span:
                           start: 335
                           end: 336
+                          file: 0
                         value:
                           Constant:
                             Identifier: b
@@ -255,35 +295,41 @@ Ok:
         span:
           start: 349
           end: 380
+          file: 0
         value:
           Trace:
             span:
               start: 355
               end: 379
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 355
                     end: 367
+                    file: 0
                   value:
                     Constant:
                       String: "a !== b = "
                 - span:
                     start: 371
                     end: 378
+                    file: 0
                   value:
                     BinaryOperator:
                       - StrictNotEqual
                       - span:
                           start: 371
                           end: 372
+                          file: 0
                         value:
                           Constant:
                             Identifier: a
                       - span:
                           start: 377
                           end: 378
+                          file: 0
                         value:
                           Constant:
                             Identifier: b
@@ -291,11 +337,13 @@ Ok:
         span:
           start: 390
           end: 402
+          file: 0
         value:
           Trace:
             span:
               start: 396
               end: 401
+              file: 0
             value:
               Constant:
                 String: "---"
@@ -303,47 +351,55 @@ Ok:
         span:
           start: 433
           end: 472
+          file: 0
         value:
           Trace:
             span:
               start: 439
               end: 471
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 439
                     end: 455
+                    file: 0
                   value:
                     Constant:
                       String: "a == b == c = "
                 - span:
                     start: 459
                     end: 470
+                    file: 0
                   value:
                     BinaryOperator:
                       - Equal
                       - span:
                           start: 459
                           end: 465
+                          file: 0
                         value:
                           BinaryOperator:
                             - Equal
                             - span:
                                 start: 459
                                 end: 460
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: a
                             - span:
                                 start: 464
                                 end: 465
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: b
                       - span:
                           start: 469
                           end: 470
+                          file: 0
                         value:
                           Constant:
                             Identifier: c
@@ -351,47 +407,55 @@ Ok:
         span:
           start: 483
           end: 528
+          file: 0
         value:
           Trace:
             span:
               start: 489
               end: 527
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 489
                     end: 509
+                    file: 0
                   value:
                     Constant:
                       String: "((a == b) == c) = "
                 - span:
                     start: 513
                     end: 526
+                    file: 0
                   value:
                     BinaryOperator:
                       - Equal
                       - span:
                           start: 514
                           end: 520
+                          file: 0
                         value:
                           BinaryOperator:
                             - Equal
                             - span:
                                 start: 514
                                 end: 515
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: a
                             - span:
                                 start: 519
                                 end: 520
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: b
                       - span:
                           start: 525
                           end: 526
+                          file: 0
                         value:
                           Constant:
                             Identifier: c
@@ -399,47 +463,55 @@ Ok:
         span:
           start: 540
           end: 583
+          file: 0
         value:
           Trace:
             span:
               start: 546
               end: 582
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 546
                     end: 564
+                    file: 0
                   value:
                     Constant:
                       String: "a !== b !== c = "
                 - span:
                     start: 568
                     end: 581
+                    file: 0
                   value:
                     BinaryOperator:
                       - StrictNotEqual
                       - span:
                           start: 568
                           end: 575
+                          file: 0
                         value:
                           BinaryOperator:
                             - StrictNotEqual
                             - span:
                                 start: 568
                                 end: 569
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: a
                             - span:
                                 start: 574
                                 end: 575
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: b
                       - span:
                           start: 580
                           end: 581
+                          file: 0
                         value:
                           Constant:
                             Identifier: c
@@ -447,47 +519,55 @@ Ok:
         span:
           start: 593
           end: 642
+          file: 0
         value:
           Trace:
             span:
               start: 599
               end: 641
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 599
                     end: 621
+                    file: 0
                   value:
                     Constant:
                       String: "((a !== b) !== c) = "
                 - span:
                     start: 625
                     end: 640
+                    file: 0
                   value:
                     BinaryOperator:
                       - StrictNotEqual
                       - span:
                           start: 626
                           end: 633
+                          file: 0
                         value:
                           BinaryOperator:
                             - StrictNotEqual
                             - span:
                                 start: 626
                                 end: 627
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: a
                             - span:
                                 start: 632
                                 end: 633
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: b
                       - span:
                           start: 639
                           end: 640
+                          file: 0
                         value:
                           Constant:
                             Identifier: c
@@ -495,11 +575,13 @@ Ok:
         span:
           start: 652
           end: 664
+          file: 0
         value:
           Trace:
             span:
               start: 658
               end: 663
+              file: 0
             value:
               Constant:
                 String: "---"
@@ -507,47 +589,55 @@ Ok:
         span:
           start: 703
           end: 740
+          file: 0
         value:
           Trace:
             span:
               start: 709
               end: 739
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 709
                     end: 724
+                    file: 0
                   value:
                     Constant:
                       String: "a == b > c = "
                 - span:
                     start: 728
                     end: 738
+                    file: 0
                   value:
                     BinaryOperator:
                       - Equal
                       - span:
                           start: 728
                           end: 729
+                          file: 0
                         value:
                           Constant:
                             Identifier: a
                       - span:
                           start: 733
                           end: 738
+                          file: 0
                         value:
                           BinaryOperator:
                             - GreaterThan
                             - span:
                                 start: 733
                                 end: 734
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: b
                             - span:
                                 start: 737
                                 end: 738
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: c
@@ -555,47 +645,55 @@ Ok:
         span:
           start: 751
           end: 794
+          file: 0
         value:
           Trace:
             span:
               start: 757
               end: 793
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 757
                     end: 776
+                    file: 0
                   value:
                     Constant:
                       String: "(a == (b > c)) = "
                 - span:
                     start: 780
                     end: 792
+                    file: 0
                   value:
                     BinaryOperator:
                       - Equal
                       - span:
                           start: 780
                           end: 781
+                          file: 0
                         value:
                           Constant:
                             Identifier: a
                       - span:
                           start: 786
                           end: 791
+                          file: 0
                         value:
                           BinaryOperator:
                             - GreaterThan
                             - span:
                                 start: 786
                                 end: 787
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: b
                             - span:
                                 start: 790
                                 end: 791
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: c

@@ -8,2897 +8,3433 @@ input_file: samples/as2_pcode/try_catch.pcode
   span:
     start: 0
     end: 12
+    file: 0
   raw: ConstantPool
 - kind: String
   span:
     start: 13
     end: 40
+    file: 0
   raw: " -- try catch finally -- "
 - kind: Comma
   span:
     start: 40
     end: 41
+    file: 0
   raw: ","
 - kind: String
   span:
     start: 42
     end: 48
+    file: 0
   raw: try!
 - kind: Comma
   span:
     start: 48
     end: 49
+    file: 0
   raw: ","
 - kind: String
   span:
     start: 50
     end: 59
+    file: 0
   raw: message
 - kind: Comma
   span:
     start: 59
     end: 60
+    file: 0
   raw: ","
 - kind: String
   span:
     start: 61
     end: 75
+    file: 0
   raw: Hello World!
 - kind: Comma
   span:
     start: 75
     end: 76
+    file: 0
   raw: ","
 - kind: String
   span:
     start: 77
     end: 85
+    file: 0
   raw: catch!
 - kind: Comma
   span:
     start: 85
     end: 86
+    file: 0
   raw: ","
 - kind: String
   span:
     start: 87
     end: 90
+    file: 0
   raw: e
 - kind: Comma
   span:
     start: 90
     end: 91
+    file: 0
   raw: ","
 - kind: String
   span:
     start: 92
     end: 102
+    file: 0
   raw: finally!
 - kind: Comma
   span:
     start: 102
     end: 103
+    file: 0
   raw: ","
 - kind: String
   span:
     start: 104
     end: 123
+    file: 0
   raw: " -- try catch -- "
 - kind: Comma
   span:
     start: 123
     end: 124
+    file: 0
   raw: ","
 - kind: String
   span:
     start: 125
     end: 131
+    file: 0
   raw: test
 - kind: Comma
   span:
     start: 131
     end: 132
+    file: 0
   raw: ","
 - kind: String
   span:
     start: 133
     end: 153
+    file: 0
   raw: "caught something! "
 - kind: Comma
   span:
     start: 153
     end: 154
+    file: 0
   raw: ","
 - kind: String
   span:
     start: 155
     end: 174
+    file: 0
   raw: " -- empty try -- "
 - kind: Comma
   span:
     start: 174
     end: 175
+    file: 0
   raw: ","
 - kind: String
   span:
     start: 176
     end: 203
+    file: 0
   raw: " -- try with no throw -- "
 - kind: Comma
   span:
     start: 203
     end: 204
+    file: 0
   raw: ","
 - kind: String
   span:
     start: 205
     end: 241
+    file: 0
   raw: " -- try with conditional throw -- "
 - kind: Comma
   span:
     start: 241
     end: 242
+    file: 0
   raw: ","
 - kind: String
   span:
     start: 243
     end: 281
+    file: 0
   raw: " -- try catch(MovieClip) finally -- "
 - kind: Comma
   span:
     start: 281
     end: 282
+    file: 0
   raw: ","
 - kind: String
   span:
     start: 283
     end: 289
+    file: 0
   raw: this
 - kind: Comma
   span:
     start: 289
     end: 290
+    file: 0
   raw: ","
 - kind: String
   span:
     start: 291
     end: 302
+    file: 0
   raw: MovieClip
 - kind: Comma
   span:
     start: 302
     end: 303
+    file: 0
   raw: ","
 - kind: String
   span:
     start: 304
     end: 347
+    file: 0
   raw: " -- try catch(MovieClip) catch(Number) --"
 - kind: Comma
   span:
     start: 347
     end: 348
+    file: 0
   raw: ","
 - kind: String
   span:
     start: 349
     end: 380
+    file: 0
   raw: catch something of MovieClip!
 - kind: Comma
   span:
     start: 380
     end: 381
+    file: 0
   raw: ","
 - kind: String
   span:
     start: 382
     end: 390
+    file: 0
   raw: Number
 - kind: Comma
   span:
     start: 390
     end: 391
+    file: 0
   raw: ","
 - kind: String
   span:
     start: 392
     end: 420
+    file: 0
   raw: catch something of Number!
 - kind: Comma
   span:
     start: 420
     end: 421
+    file: 0
   raw: ","
 - kind: String
   span:
     start: 422
     end: 444
+    file: 0
   raw: catch anything else!
 - kind: Comma
   span:
     start: 444
     end: 445
+    file: 0
   raw: ","
 - kind: String
   span:
     start: 446
     end: 467
+    file: 0
   raw: " -- try finally -- "
 - kind: Comma
   span:
     start: 467
     end: 468
+    file: 0
   raw: ","
 - kind: String
   span:
     start: 469
     end: 508
+    file: 0
   raw: "If you see this, it didn\\'t throw! :("
 - kind: Newline
   span:
     start: 508
     end: 509
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 509
     end: 513
+    file: 0
   raw: Push
 - kind:
     Constant: 0
   span:
     start: 514
     end: 523
+    file: 0
   raw: constant0
 - kind: Newline
   span:
     start: 523
     end: 524
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Trace
   span:
     start: 524
     end: 529
+    file: 0
   raw: Trace
 - kind: Newline
   span:
     start: 529
     end: 530
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Try
   span:
     start: 530
     end: 533
+    file: 0
   raw: Try
 - kind: String
   span:
     start: 534
     end: 537
+    file: 0
   raw: e
 - kind: OpenBrace
   span:
     start: 538
     end: 539
+    file: 0
   raw: "{"
 - kind: Newline
   span:
     start: 539
     end: 540
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 540
     end: 544
+    file: 0
   raw: Push
 - kind:
     Constant: 1
   span:
     start: 545
     end: 554
+    file: 0
   raw: constant1
 - kind: Newline
   span:
     start: 554
     end: 555
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Trace
   span:
     start: 555
     end: 560
+    file: 0
   raw: Trace
 - kind: Newline
   span:
     start: 560
     end: 561
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 561
     end: 565
+    file: 0
   raw: Push
 - kind:
     Constant: 2
   span:
     start: 566
     end: 575
+    file: 0
   raw: constant2
 - kind: Newline
   span:
     start: 575
     end: 576
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 576
     end: 580
+    file: 0
   raw: Push
 - kind:
     Constant: 3
   span:
     start: 581
     end: 590
+    file: 0
   raw: constant3
 - kind: Newline
   span:
     start: 590
     end: 591
+    file: 0
   raw: "\n"
 - kind:
     ActionName: DefineLocal
   span:
     start: 591
     end: 602
+    file: 0
   raw: DefineLocal
 - kind: Newline
   span:
     start: 602
     end: 603
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 603
     end: 607
+    file: 0
   raw: Push
 - kind:
     Constant: 2
   span:
     start: 608
     end: 617
+    file: 0
   raw: constant2
 - kind: Newline
   span:
     start: 617
     end: 618
+    file: 0
   raw: "\n"
 - kind:
     ActionName: GetVariable
   span:
     start: 618
     end: 629
+    file: 0
   raw: GetVariable
 - kind: Newline
   span:
     start: 629
     end: 630
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Throw
   span:
     start: 630
     end: 635
+    file: 0
   raw: Throw
 - kind: Newline
   span:
     start: 635
     end: 636
+    file: 0
   raw: "\n"
 - kind: CloseBrace
   span:
     start: 636
     end: 637
+    file: 0
   raw: "}"
 - kind: Newline
   span:
     start: 637
     end: 638
+    file: 0
   raw: "\n"
 - kind: Catch
   span:
     start: 638
     end: 643
+    file: 0
   raw: Catch
 - kind: OpenBrace
   span:
     start: 644
     end: 645
+    file: 0
   raw: "{"
 - kind: Newline
   span:
     start: 645
     end: 646
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 646
     end: 650
+    file: 0
   raw: Push
 - kind:
     Constant: 4
   span:
     start: 651
     end: 660
+    file: 0
   raw: constant4
 - kind: Newline
   span:
     start: 660
     end: 661
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Trace
   span:
     start: 661
     end: 666
+    file: 0
   raw: Trace
 - kind: Newline
   span:
     start: 666
     end: 667
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 667
     end: 671
+    file: 0
   raw: Push
 - kind:
     Constant: 5
   span:
     start: 672
     end: 681
+    file: 0
   raw: constant5
 - kind: Newline
   span:
     start: 681
     end: 682
+    file: 0
   raw: "\n"
 - kind:
     ActionName: GetVariable
   span:
     start: 682
     end: 693
+    file: 0
   raw: GetVariable
 - kind: Newline
   span:
     start: 693
     end: 694
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Trace
   span:
     start: 694
     end: 699
+    file: 0
   raw: Trace
 - kind: Newline
   span:
     start: 699
     end: 700
+    file: 0
   raw: "\n"
 - kind: CloseBrace
   span:
     start: 700
     end: 701
+    file: 0
   raw: "}"
 - kind: Newline
   span:
     start: 701
     end: 702
+    file: 0
   raw: "\n"
 - kind: Finally
   span:
     start: 702
     end: 709
+    file: 0
   raw: Finally
 - kind: OpenBrace
   span:
     start: 710
     end: 711
+    file: 0
   raw: "{"
 - kind: Newline
   span:
     start: 711
     end: 712
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 712
     end: 716
+    file: 0
   raw: Push
 - kind:
     Constant: 6
   span:
     start: 717
     end: 726
+    file: 0
   raw: constant6
 - kind: Newline
   span:
     start: 726
     end: 727
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Trace
   span:
     start: 727
     end: 732
+    file: 0
   raw: Trace
 - kind: Newline
   span:
     start: 732
     end: 733
+    file: 0
   raw: "\n"
 - kind: CloseBrace
   span:
     start: 733
     end: 734
+    file: 0
   raw: "}"
 - kind: Newline
   span:
     start: 734
     end: 735
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 735
     end: 739
+    file: 0
   raw: Push
 - kind:
     Constant: 7
   span:
     start: 740
     end: 749
+    file: 0
   raw: constant7
 - kind: Newline
   span:
     start: 749
     end: 750
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Trace
   span:
     start: 750
     end: 755
+    file: 0
   raw: Trace
 - kind: Newline
   span:
     start: 755
     end: 756
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Try
   span:
     start: 756
     end: 759
+    file: 0
   raw: Try
 - kind: String
   span:
     start: 760
     end: 763
+    file: 0
   raw: e
 - kind: OpenBrace
   span:
     start: 764
     end: 765
+    file: 0
   raw: "{"
 - kind: Newline
   span:
     start: 765
     end: 766
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 766
     end: 770
+    file: 0
   raw: Push
 - kind:
     Constant: 1
   span:
     start: 771
     end: 780
+    file: 0
   raw: constant1
 - kind: Newline
   span:
     start: 780
     end: 781
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Trace
   span:
     start: 781
     end: 786
+    file: 0
   raw: Trace
 - kind: Newline
   span:
     start: 786
     end: 787
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 787
     end: 791
+    file: 0
   raw: Push
 - kind:
     Constant: 8
   span:
     start: 792
     end: 801
+    file: 0
   raw: constant8
 - kind: Newline
   span:
     start: 801
     end: 802
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Throw
   span:
     start: 802
     end: 807
+    file: 0
   raw: Throw
 - kind: Newline
   span:
     start: 807
     end: 808
+    file: 0
   raw: "\n"
 - kind: CloseBrace
   span:
     start: 808
     end: 809
+    file: 0
   raw: "}"
 - kind: Newline
   span:
     start: 809
     end: 810
+    file: 0
   raw: "\n"
 - kind: Catch
   span:
     start: 810
     end: 815
+    file: 0
   raw: Catch
 - kind: OpenBrace
   span:
     start: 816
     end: 817
+    file: 0
   raw: "{"
 - kind: Newline
   span:
     start: 817
     end: 818
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 818
     end: 822
+    file: 0
   raw: Push
 - kind:
     Constant: 9
   span:
     start: 823
     end: 832
+    file: 0
   raw: constant9
 - kind: Newline
   span:
     start: 832
     end: 833
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 833
     end: 837
+    file: 0
   raw: Push
 - kind:
     Constant: 5
   span:
     start: 838
     end: 847
+    file: 0
   raw: constant5
 - kind: Newline
   span:
     start: 847
     end: 848
+    file: 0
   raw: "\n"
 - kind:
     ActionName: GetVariable
   span:
     start: 848
     end: 859
+    file: 0
   raw: GetVariable
 - kind: Newline
   span:
     start: 859
     end: 860
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Add2
   span:
     start: 860
     end: 864
+    file: 0
   raw: Add2
 - kind: Newline
   span:
     start: 864
     end: 865
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Trace
   span:
     start: 865
     end: 870
+    file: 0
   raw: Trace
 - kind: Newline
   span:
     start: 870
     end: 871
+    file: 0
   raw: "\n"
 - kind: CloseBrace
   span:
     start: 871
     end: 872
+    file: 0
   raw: "}"
 - kind: Newline
   span:
     start: 872
     end: 873
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 873
     end: 877
+    file: 0
   raw: Push
 - kind:
     Constant: 10
   span:
     start: 878
     end: 888
+    file: 0
   raw: constant10
 - kind: Newline
   span:
     start: 888
     end: 889
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Trace
   span:
     start: 889
     end: 894
+    file: 0
   raw: Trace
 - kind: Newline
   span:
     start: 894
     end: 895
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Try
   span:
     start: 895
     end: 898
+    file: 0
   raw: Try
 - kind: String
   span:
     start: 899
     end: 902
+    file: 0
   raw: e
 - kind: OpenBrace
   span:
     start: 903
     end: 904
+    file: 0
   raw: "{"
 - kind: Newline
   span:
     start: 904
     end: 905
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Jump
   span:
     start: 905
     end: 909
+    file: 0
   raw: Jump
 - kind: Identifier
   span:
     start: 910
     end: 917
+    file: 0
   raw: loc023c
 - kind: Newline
   span:
     start: 917
     end: 918
+    file: 0
   raw: "\n"
 - kind: CloseBrace
   span:
     start: 918
     end: 919
+    file: 0
   raw: "}"
 - kind: Newline
   span:
     start: 919
     end: 920
+    file: 0
   raw: "\n"
 - kind: Catch
   span:
     start: 920
     end: 925
+    file: 0
   raw: Catch
 - kind: OpenBrace
   span:
     start: 926
     end: 927
+    file: 0
   raw: "{"
 - kind: Newline
   span:
     start: 927
     end: 928
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 928
     end: 932
+    file: 0
   raw: Push
 - kind:
     Constant: 9
   span:
     start: 933
     end: 942
+    file: 0
   raw: constant9
 - kind: Newline
   span:
     start: 942
     end: 943
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 943
     end: 947
+    file: 0
   raw: Push
 - kind:
     Constant: 5
   span:
     start: 948
     end: 957
+    file: 0
   raw: constant5
 - kind: Newline
   span:
     start: 957
     end: 958
+    file: 0
   raw: "\n"
 - kind:
     ActionName: GetVariable
   span:
     start: 958
     end: 969
+    file: 0
   raw: GetVariable
 - kind: Newline
   span:
     start: 969
     end: 970
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Add2
   span:
     start: 970
     end: 974
+    file: 0
   raw: Add2
 - kind: Newline
   span:
     start: 974
     end: 975
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Trace
   span:
     start: 975
     end: 980
+    file: 0
   raw: Trace
 - kind: Newline
   span:
     start: 980
     end: 981
+    file: 0
   raw: "\n"
 - kind: CloseBrace
   span:
     start: 981
     end: 982
+    file: 0
   raw: "}"
 - kind: Newline
   span:
     start: 982
     end: 983
+    file: 0
   raw: "\n"
 - kind: Identifier
   span:
     start: 983
     end: 990
+    file: 0
   raw: loc023c
 - kind: Colon
   span:
     start: 990
     end: 991
+    file: 0
   raw: ":"
 - kind:
     ActionName: Push
   span:
     start: 991
     end: 995
+    file: 0
   raw: Push
 - kind:
     Constant: 11
   span:
     start: 996
     end: 1006
+    file: 0
   raw: constant11
 - kind: Newline
   span:
     start: 1006
     end: 1007
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Trace
   span:
     start: 1007
     end: 1012
+    file: 0
   raw: Trace
 - kind: Newline
   span:
     start: 1012
     end: 1013
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Try
   span:
     start: 1013
     end: 1016
+    file: 0
   raw: Try
 - kind: String
   span:
     start: 1017
     end: 1020
+    file: 0
   raw: e
 - kind: OpenBrace
   span:
     start: 1021
     end: 1022
+    file: 0
   raw: "{"
 - kind: Newline
   span:
     start: 1022
     end: 1023
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 1023
     end: 1027
+    file: 0
   raw: Push
 - kind:
     Constant: 2
   span:
     start: 1028
     end: 1037
+    file: 0
   raw: constant2
 - kind: Newline
   span:
     start: 1037
     end: 1038
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 1038
     end: 1042
+    file: 0
   raw: Push
 - kind:
     Constant: 2
   span:
     start: 1043
     end: 1052
+    file: 0
   raw: constant2
 - kind: Newline
   span:
     start: 1052
     end: 1053
+    file: 0
   raw: "\n"
 - kind:
     ActionName: DefineLocal
   span:
     start: 1053
     end: 1064
+    file: 0
   raw: DefineLocal
 - kind: Newline
   span:
     start: 1064
     end: 1065
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Jump
   span:
     start: 1065
     end: 1069
+    file: 0
   raw: Jump
 - kind: Identifier
   span:
     start: 1070
     end: 1077
+    file: 0
   raw: loc026b
 - kind: Newline
   span:
     start: 1077
     end: 1078
+    file: 0
   raw: "\n"
 - kind: CloseBrace
   span:
     start: 1078
     end: 1079
+    file: 0
   raw: "}"
 - kind: Newline
   span:
     start: 1079
     end: 1080
+    file: 0
   raw: "\n"
 - kind: Catch
   span:
     start: 1080
     end: 1085
+    file: 0
   raw: Catch
 - kind: OpenBrace
   span:
     start: 1086
     end: 1087
+    file: 0
   raw: "{"
 - kind: Newline
   span:
     start: 1087
     end: 1088
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 1088
     end: 1092
+    file: 0
   raw: Push
 - kind:
     Constant: 9
   span:
     start: 1093
     end: 1102
+    file: 0
   raw: constant9
 - kind: Newline
   span:
     start: 1102
     end: 1103
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 1103
     end: 1107
+    file: 0
   raw: Push
 - kind:
     Constant: 5
   span:
     start: 1108
     end: 1117
+    file: 0
   raw: constant5
 - kind: Newline
   span:
     start: 1117
     end: 1118
+    file: 0
   raw: "\n"
 - kind:
     ActionName: GetVariable
   span:
     start: 1118
     end: 1129
+    file: 0
   raw: GetVariable
 - kind: Newline
   span:
     start: 1129
     end: 1130
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Add2
   span:
     start: 1130
     end: 1134
+    file: 0
   raw: Add2
 - kind: Newline
   span:
     start: 1134
     end: 1135
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Trace
   span:
     start: 1135
     end: 1140
+    file: 0
   raw: Trace
 - kind: Newline
   span:
     start: 1140
     end: 1141
+    file: 0
   raw: "\n"
 - kind: CloseBrace
   span:
     start: 1141
     end: 1142
+    file: 0
   raw: "}"
 - kind: Newline
   span:
     start: 1142
     end: 1143
+    file: 0
   raw: "\n"
 - kind: Identifier
   span:
     start: 1143
     end: 1150
+    file: 0
   raw: loc026b
 - kind: Colon
   span:
     start: 1150
     end: 1151
+    file: 0
   raw: ":"
 - kind:
     ActionName: Push
   span:
     start: 1151
     end: 1155
+    file: 0
   raw: Push
 - kind:
     Constant: 12
   span:
     start: 1156
     end: 1166
+    file: 0
   raw: constant12
 - kind: Newline
   span:
     start: 1166
     end: 1167
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Trace
   span:
     start: 1167
     end: 1172
+    file: 0
   raw: Trace
 - kind: Newline
   span:
     start: 1172
     end: 1173
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Try
   span:
     start: 1173
     end: 1176
+    file: 0
   raw: Try
 - kind: String
   span:
     start: 1177
     end: 1180
+    file: 0
   raw: e
 - kind: OpenBrace
   span:
     start: 1181
     end: 1182
+    file: 0
   raw: "{"
 - kind: Newline
   span:
     start: 1182
     end: 1183
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 1183
     end: 1187
+    file: 0
   raw: Push
 - kind:
     Constant: 2
   span:
     start: 1188
     end: 1197
+    file: 0
   raw: constant2
 - kind: Newline
   span:
     start: 1197
     end: 1198
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 1198
     end: 1202
+    file: 0
   raw: Push
 - kind:
     Constant: 2
   span:
     start: 1203
     end: 1212
+    file: 0
   raw: constant2
 - kind: Newline
   span:
     start: 1212
     end: 1213
+    file: 0
   raw: "\n"
 - kind:
     ActionName: DefineLocal
   span:
     start: 1213
     end: 1224
+    file: 0
   raw: DefineLocal
 - kind: Newline
   span:
     start: 1224
     end: 1225
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 1225
     end: 1229
+    file: 0
   raw: Push
 - kind:
     Constant: 2
   span:
     start: 1230
     end: 1239
+    file: 0
   raw: constant2
 - kind: Newline
   span:
     start: 1239
     end: 1240
+    file: 0
   raw: "\n"
 - kind:
     ActionName: GetVariable
   span:
     start: 1240
     end: 1251
+    file: 0
   raw: GetVariable
 - kind: Newline
   span:
     start: 1251
     end: 1252
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 1252
     end: 1256
+    file: 0
   raw: Push
 - kind:
     Constant: 2
   span:
     start: 1257
     end: 1266
+    file: 0
   raw: constant2
 - kind: Newline
   span:
     start: 1266
     end: 1267
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Equals2
   span:
     start: 1267
     end: 1274
+    file: 0
   raw: Equals2
 - kind: Newline
   span:
     start: 1274
     end: 1275
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Not
   span:
     start: 1275
     end: 1278
+    file: 0
   raw: Not
 - kind: Newline
   span:
     start: 1278
     end: 1279
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Not
   span:
     start: 1279
     end: 1282
+    file: 0
   raw: Not
 - kind: Newline
   span:
     start: 1282
     end: 1283
+    file: 0
   raw: "\n"
 - kind:
     ActionName: If
   span:
     start: 1283
     end: 1285
+    file: 0
   raw: If
 - kind: Identifier
   span:
     start: 1286
     end: 1293
+    file: 0
   raw: loc02a2
 - kind: Newline
   span:
     start: 1293
     end: 1294
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 1294
     end: 1298
+    file: 0
   raw: Push
 - kind:
     Constant: 2
   span:
     start: 1299
     end: 1308
+    file: 0
   raw: constant2
 - kind: Newline
   span:
     start: 1308
     end: 1309
+    file: 0
   raw: "\n"
 - kind:
     ActionName: GetVariable
   span:
     start: 1309
     end: 1320
+    file: 0
   raw: GetVariable
 - kind: Newline
   span:
     start: 1320
     end: 1321
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Throw
   span:
     start: 1321
     end: 1326
+    file: 0
   raw: Throw
 - kind: Newline
   span:
     start: 1326
     end: 1327
+    file: 0
   raw: "\n"
 - kind: Identifier
   span:
     start: 1327
     end: 1334
+    file: 0
   raw: loc02a2
 - kind: Colon
   span:
     start: 1334
     end: 1335
+    file: 0
   raw: ":"
 - kind:
     ActionName: Jump
   span:
     start: 1335
     end: 1339
+    file: 0
   raw: Jump
 - kind: Identifier
   span:
     start: 1340
     end: 1347
+    file: 0
   raw: loc02b4
 - kind: Newline
   span:
     start: 1347
     end: 1348
+    file: 0
   raw: "\n"
 - kind: CloseBrace
   span:
     start: 1348
     end: 1349
+    file: 0
   raw: "}"
 - kind: Newline
   span:
     start: 1349
     end: 1350
+    file: 0
   raw: "\n"
 - kind: Catch
   span:
     start: 1350
     end: 1355
+    file: 0
   raw: Catch
 - kind: OpenBrace
   span:
     start: 1356
     end: 1357
+    file: 0
   raw: "{"
 - kind: Newline
   span:
     start: 1357
     end: 1358
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 1358
     end: 1362
+    file: 0
   raw: Push
 - kind:
     Constant: 9
   span:
     start: 1363
     end: 1372
+    file: 0
   raw: constant9
 - kind: Newline
   span:
     start: 1372
     end: 1373
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 1373
     end: 1377
+    file: 0
   raw: Push
 - kind:
     Constant: 5
   span:
     start: 1378
     end: 1387
+    file: 0
   raw: constant5
 - kind: Newline
   span:
     start: 1387
     end: 1388
+    file: 0
   raw: "\n"
 - kind:
     ActionName: GetVariable
   span:
     start: 1388
     end: 1399
+    file: 0
   raw: GetVariable
 - kind: Newline
   span:
     start: 1399
     end: 1400
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Add2
   span:
     start: 1400
     end: 1404
+    file: 0
   raw: Add2
 - kind: Newline
   span:
     start: 1404
     end: 1405
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Trace
   span:
     start: 1405
     end: 1410
+    file: 0
   raw: Trace
 - kind: Newline
   span:
     start: 1410
     end: 1411
+    file: 0
   raw: "\n"
 - kind: CloseBrace
   span:
     start: 1411
     end: 1412
+    file: 0
   raw: "}"
 - kind: Newline
   span:
     start: 1412
     end: 1413
+    file: 0
   raw: "\n"
 - kind: Identifier
   span:
     start: 1413
     end: 1420
+    file: 0
   raw: loc02b4
 - kind: Colon
   span:
     start: 1420
     end: 1421
+    file: 0
   raw: ":"
 - kind:
     ActionName: Push
   span:
     start: 1421
     end: 1425
+    file: 0
   raw: Push
 - kind:
     Constant: 13
   span:
     start: 1426
     end: 1436
+    file: 0
   raw: constant13
 - kind: Newline
   span:
     start: 1436
     end: 1437
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Trace
   span:
     start: 1437
     end: 1442
+    file: 0
   raw: Trace
 - kind: Newline
   span:
     start: 1442
     end: 1443
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Try
   span:
     start: 1443
     end: 1446
+    file: 0
   raw: Try
 - kind:
     Register: 0
   span:
     start: 1447
     end: 1456
+    file: 0
   raw: register0
 - kind: OpenBrace
   span:
     start: 1457
     end: 1458
+    file: 0
   raw: "{"
 - kind: Newline
   span:
     start: 1458
     end: 1459
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 1459
     end: 1463
+    file: 0
   raw: Push
 - kind:
     Constant: 1
   span:
     start: 1464
     end: 1473
+    file: 0
   raw: constant1
 - kind: Newline
   span:
     start: 1473
     end: 1474
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Trace
   span:
     start: 1474
     end: 1479
+    file: 0
   raw: Trace
 - kind: Newline
   span:
     start: 1479
     end: 1480
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 1480
     end: 1484
+    file: 0
   raw: Push
 - kind:
     Constant: 14
   span:
     start: 1485
     end: 1495
+    file: 0
   raw: constant14
 - kind: Newline
   span:
     start: 1495
     end: 1496
+    file: 0
   raw: "\n"
 - kind:
     ActionName: GetVariable
   span:
     start: 1496
     end: 1507
+    file: 0
   raw: GetVariable
 - kind: Newline
   span:
     start: 1507
     end: 1508
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Throw
   span:
     start: 1508
     end: 1513
+    file: 0
   raw: Throw
 - kind: Newline
   span:
     start: 1513
     end: 1514
+    file: 0
   raw: "\n"
 - kind: CloseBrace
   span:
     start: 1514
     end: 1515
+    file: 0
   raw: "}"
 - kind: Newline
   span:
     start: 1515
     end: 1516
+    file: 0
   raw: "\n"
 - kind: Catch
   span:
     start: 1516
     end: 1521
+    file: 0
   raw: Catch
 - kind: OpenBrace
   span:
     start: 1522
     end: 1523
+    file: 0
   raw: "{"
 - kind: Newline
   span:
     start: 1523
     end: 1524
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 1524
     end: 1528
+    file: 0
   raw: Push
 - kind:
     Constant: 15
   span:
     start: 1529
     end: 1539
+    file: 0
   raw: constant15
 - kind: Newline
   span:
     start: 1539
     end: 1540
+    file: 0
   raw: "\n"
 - kind:
     ActionName: GetVariable
   span:
     start: 1540
     end: 1551
+    file: 0
   raw: GetVariable
 - kind: Newline
   span:
     start: 1551
     end: 1552
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 1552
     end: 1556
+    file: 0
   raw: Push
 - kind:
     Register: 0
   span:
     start: 1557
     end: 1566
+    file: 0
   raw: register0
 - kind: Newline
   span:
     start: 1566
     end: 1567
+    file: 0
   raw: "\n"
 - kind:
     ActionName: CastOp
   span:
     start: 1567
     end: 1573
+    file: 0
   raw: CastOp
 - kind: Newline
   span:
     start: 1573
     end: 1574
+    file: 0
   raw: "\n"
 - kind:
     ActionName: PushDuplicate
   span:
     start: 1574
     end: 1587
+    file: 0
   raw: PushDuplicate
 - kind: Newline
   span:
     start: 1587
     end: 1588
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 1588
     end: 1592
+    file: 0
   raw: Push
 - kind: "Null"
   span:
     start: 1593
     end: 1597
+    file: 0
   raw: "null"
 - kind: Newline
   span:
     start: 1597
     end: 1598
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Equals2
   span:
     start: 1598
     end: 1605
+    file: 0
   raw: Equals2
 - kind: Newline
   span:
     start: 1605
     end: 1606
+    file: 0
   raw: "\n"
 - kind:
     ActionName: If
   span:
     start: 1606
     end: 1608
+    file: 0
   raw: If
 - kind: Identifier
   span:
     start: 1609
     end: 1616
+    file: 0
   raw: loc0302
 - kind: Newline
   span:
     start: 1616
     end: 1617
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 1617
     end: 1621
+    file: 0
   raw: Push
 - kind:
     Constant: 5
   span:
     start: 1622
     end: 1631
+    file: 0
   raw: constant5
 - kind: Newline
   span:
     start: 1631
     end: 1632
+    file: 0
   raw: "\n"
 - kind:
     ActionName: StackSwap
   span:
     start: 1632
     end: 1641
+    file: 0
   raw: StackSwap
 - kind: Newline
   span:
     start: 1641
     end: 1642
+    file: 0
   raw: "\n"
 - kind:
     ActionName: DefineLocal
   span:
     start: 1642
     end: 1653
+    file: 0
   raw: DefineLocal
 - kind: Newline
   span:
     start: 1653
     end: 1654
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 1654
     end: 1658
+    file: 0
   raw: Push
 - kind:
     Constant: 9
   span:
     start: 1659
     end: 1668
+    file: 0
   raw: constant9
 - kind: Newline
   span:
     start: 1668
     end: 1669
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 1669
     end: 1673
+    file: 0
   raw: Push
 - kind:
     Constant: 5
   span:
     start: 1674
     end: 1683
+    file: 0
   raw: constant5
 - kind: Newline
   span:
     start: 1683
     end: 1684
+    file: 0
   raw: "\n"
 - kind:
     ActionName: GetVariable
   span:
     start: 1684
     end: 1695
+    file: 0
   raw: GetVariable
 - kind: Newline
   span:
     start: 1695
     end: 1696
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Add2
   span:
     start: 1696
     end: 1700
+    file: 0
   raw: Add2
 - kind: Newline
   span:
     start: 1700
     end: 1701
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Trace
   span:
     start: 1701
     end: 1706
+    file: 0
   raw: Trace
 - kind: Newline
   span:
     start: 1706
     end: 1707
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Jump
   span:
     start: 1707
     end: 1711
+    file: 0
   raw: Jump
 - kind: Identifier
   span:
     start: 1712
     end: 1719
+    file: 0
   raw: loc0309
 - kind: Newline
   span:
     start: 1719
     end: 1720
+    file: 0
   raw: "\n"
 - kind: Identifier
   span:
     start: 1720
     end: 1727
+    file: 0
   raw: loc0302
 - kind: Colon
   span:
     start: 1727
     end: 1728
+    file: 0
   raw: ":"
 - kind:
     ActionName: Pop
   span:
     start: 1728
     end: 1731
+    file: 0
   raw: Pop
 - kind: Newline
   span:
     start: 1731
     end: 1732
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 1732
     end: 1736
+    file: 0
   raw: Push
 - kind:
     Register: 0
   span:
     start: 1737
     end: 1746
+    file: 0
   raw: register0
 - kind: Newline
   span:
     start: 1746
     end: 1747
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Throw
   span:
     start: 1747
     end: 1752
+    file: 0
   raw: Throw
 - kind: Newline
   span:
     start: 1752
     end: 1753
+    file: 0
   raw: "\n"
 - kind: CloseBrace
   span:
     start: 1753
     end: 1754
+    file: 0
   raw: "}"
 - kind: Newline
   span:
     start: 1754
     end: 1755
+    file: 0
   raw: "\n"
 - kind: Finally
   span:
     start: 1755
     end: 1762
+    file: 0
   raw: Finally
 - kind: OpenBrace
   span:
     start: 1763
     end: 1764
+    file: 0
   raw: "{"
 - kind: Newline
   span:
     start: 1764
     end: 1765
+    file: 0
   raw: "\n"
 - kind: Identifier
   span:
     start: 1765
     end: 1772
+    file: 0
   raw: loc0309
 - kind: Colon
   span:
     start: 1772
     end: 1773
+    file: 0
   raw: ":"
 - kind:
     ActionName: Push
   span:
     start: 1773
     end: 1777
+    file: 0
   raw: Push
 - kind:
     Constant: 6
   span:
     start: 1778
     end: 1787
+    file: 0
   raw: constant6
 - kind: Newline
   span:
     start: 1787
     end: 1788
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Trace
   span:
     start: 1788
     end: 1793
+    file: 0
   raw: Trace
 - kind: Newline
   span:
     start: 1793
     end: 1794
+    file: 0
   raw: "\n"
 - kind: CloseBrace
   span:
     start: 1794
     end: 1795
+    file: 0
   raw: "}"
 - kind: Newline
   span:
     start: 1795
     end: 1796
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 1796
     end: 1800
+    file: 0
   raw: Push
 - kind:
     Constant: 16
   span:
     start: 1801
     end: 1811
+    file: 0
   raw: constant16
 - kind: Newline
   span:
     start: 1811
     end: 1812
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Trace
   span:
     start: 1812
     end: 1817
+    file: 0
   raw: Trace
 - kind: Newline
   span:
     start: 1817
     end: 1818
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Try
   span:
     start: 1818
     end: 1821
+    file: 0
   raw: Try
 - kind:
     Register: 0
   span:
     start: 1822
     end: 1831
+    file: 0
   raw: register0
 - kind: OpenBrace
   span:
     start: 1832
     end: 1833
+    file: 0
   raw: "{"
 - kind: Newline
   span:
     start: 1833
     end: 1834
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 1834
     end: 1838
+    file: 0
   raw: Push
 - kind:
     Constant: 1
   span:
     start: 1839
     end: 1848
+    file: 0
   raw: constant1
 - kind: Newline
   span:
     start: 1848
     end: 1849
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Trace
   span:
     start: 1849
     end: 1854
+    file: 0
   raw: Trace
 - kind: Newline
   span:
     start: 1854
     end: 1855
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 1855
     end: 1859
+    file: 0
   raw: Push
 - kind:
     Constant: 14
   span:
     start: 1860
     end: 1870
+    file: 0
   raw: constant14
 - kind: Newline
   span:
     start: 1870
     end: 1871
+    file: 0
   raw: "\n"
 - kind:
     ActionName: GetVariable
   span:
     start: 1871
     end: 1882
+    file: 0
   raw: GetVariable
 - kind: Newline
   span:
     start: 1882
     end: 1883
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Throw
   span:
     start: 1883
     end: 1888
+    file: 0
   raw: Throw
 - kind: Newline
   span:
     start: 1888
     end: 1889
+    file: 0
   raw: "\n"
 - kind: CloseBrace
   span:
     start: 1889
     end: 1890
+    file: 0
   raw: "}"
 - kind: Newline
   span:
     start: 1890
     end: 1891
+    file: 0
   raw: "\n"
 - kind: Catch
   span:
     start: 1891
     end: 1896
+    file: 0
   raw: Catch
 - kind: OpenBrace
   span:
     start: 1897
     end: 1898
+    file: 0
   raw: "{"
 - kind: Newline
   span:
     start: 1898
     end: 1899
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 1899
     end: 1903
+    file: 0
   raw: Push
 - kind:
     Constant: 15
   span:
     start: 1904
     end: 1914
+    file: 0
   raw: constant15
 - kind: Newline
   span:
     start: 1914
     end: 1915
+    file: 0
   raw: "\n"
 - kind:
     ActionName: GetVariable
   span:
     start: 1915
     end: 1926
+    file: 0
   raw: GetVariable
 - kind: Newline
   span:
     start: 1926
     end: 1927
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 1927
     end: 1931
+    file: 0
   raw: Push
 - kind:
     Register: 0
   span:
     start: 1932
     end: 1941
+    file: 0
   raw: register0
 - kind: Newline
   span:
     start: 1941
     end: 1942
+    file: 0
   raw: "\n"
 - kind:
     ActionName: CastOp
   span:
     start: 1942
     end: 1948
+    file: 0
   raw: CastOp
 - kind: Newline
   span:
     start: 1948
     end: 1949
+    file: 0
   raw: "\n"
 - kind:
     ActionName: PushDuplicate
   span:
     start: 1949
     end: 1962
+    file: 0
   raw: PushDuplicate
 - kind: Newline
   span:
     start: 1962
     end: 1963
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 1963
     end: 1967
+    file: 0
   raw: Push
 - kind: "Null"
   span:
     start: 1968
     end: 1972
+    file: 0
   raw: "null"
 - kind: Newline
   span:
     start: 1972
     end: 1973
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Equals2
   span:
     start: 1973
     end: 1980
+    file: 0
   raw: Equals2
 - kind: Newline
   span:
     start: 1980
     end: 1981
+    file: 0
   raw: "\n"
 - kind:
     ActionName: If
   span:
     start: 1981
     end: 1983
+    file: 0
   raw: If
 - kind: Identifier
   span:
     start: 1984
     end: 1991
+    file: 0
   raw: loc0356
 - kind: Newline
   span:
     start: 1991
     end: 1992
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 1992
     end: 1996
+    file: 0
   raw: Push
 - kind:
     Constant: 5
   span:
     start: 1997
     end: 2006
+    file: 0
   raw: constant5
 - kind: Newline
   span:
     start: 2006
     end: 2007
+    file: 0
   raw: "\n"
 - kind:
     ActionName: StackSwap
   span:
     start: 2007
     end: 2016
+    file: 0
   raw: StackSwap
 - kind: Newline
   span:
     start: 2016
     end: 2017
+    file: 0
   raw: "\n"
 - kind:
     ActionName: DefineLocal
   span:
     start: 2017
     end: 2028
+    file: 0
   raw: DefineLocal
 - kind: Newline
   span:
     start: 2028
     end: 2029
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 2029
     end: 2033
+    file: 0
   raw: Push
 - kind:
     Constant: 17
   span:
     start: 2034
     end: 2044
+    file: 0
   raw: constant17
 - kind: Newline
   span:
     start: 2044
     end: 2045
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Trace
   span:
     start: 2045
     end: 2050
+    file: 0
   raw: Trace
 - kind: Newline
   span:
     start: 2050
     end: 2051
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Jump
   span:
     start: 2051
     end: 2055
+    file: 0
   raw: Jump
 - kind: Identifier
   span:
     start: 2056
     end: 2063
+    file: 0
   raw: loc0398
 - kind: Newline
   span:
     start: 2063
     end: 2064
+    file: 0
   raw: "\n"
 - kind: Identifier
   span:
     start: 2064
     end: 2071
+    file: 0
   raw: loc0356
 - kind: Colon
   span:
     start: 2071
     end: 2072
+    file: 0
   raw: ":"
 - kind:
     ActionName: Pop
   span:
     start: 2072
     end: 2075
+    file: 0
   raw: Pop
 - kind: Newline
   span:
     start: 2075
     end: 2076
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 2076
     end: 2080
+    file: 0
   raw: Push
 - kind:
     Constant: 18
   span:
     start: 2081
     end: 2091
+    file: 0
   raw: constant18
 - kind: Newline
   span:
     start: 2091
     end: 2092
+    file: 0
   raw: "\n"
 - kind:
     ActionName: GetVariable
   span:
     start: 2092
     end: 2103
+    file: 0
   raw: GetVariable
 - kind: Newline
   span:
     start: 2103
     end: 2104
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 2104
     end: 2108
+    file: 0
   raw: Push
 - kind:
     Register: 0
   span:
     start: 2109
     end: 2118
+    file: 0
   raw: register0
 - kind: Newline
   span:
     start: 2118
     end: 2119
+    file: 0
   raw: "\n"
 - kind:
     ActionName: CastOp
   span:
     start: 2119
     end: 2125
+    file: 0
   raw: CastOp
 - kind: Newline
   span:
     start: 2125
     end: 2126
+    file: 0
   raw: "\n"
 - kind:
     ActionName: PushDuplicate
   span:
     start: 2126
     end: 2139
+    file: 0
   raw: PushDuplicate
 - kind: Newline
   span:
     start: 2139
     end: 2140
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 2140
     end: 2144
+    file: 0
   raw: Push
 - kind: "Null"
   span:
     start: 2145
     end: 2149
+    file: 0
   raw: "null"
 - kind: Newline
   span:
     start: 2149
     end: 2150
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Equals2
   span:
     start: 2150
     end: 2157
+    file: 0
   raw: Equals2
 - kind: Newline
   span:
     start: 2157
     end: 2158
+    file: 0
   raw: "\n"
 - kind:
     ActionName: If
   span:
     start: 2158
     end: 2160
+    file: 0
   raw: If
 - kind: Identifier
   span:
     start: 2161
     end: 2168
+    file: 0
   raw: loc0380
 - kind: Newline
   span:
     start: 2168
     end: 2169
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 2169
     end: 2173
+    file: 0
   raw: Push
 - kind:
     Constant: 5
   span:
     start: 2174
     end: 2183
+    file: 0
   raw: constant5
 - kind: Newline
   span:
     start: 2183
     end: 2184
+    file: 0
   raw: "\n"
 - kind:
     ActionName: StackSwap
   span:
     start: 2184
     end: 2193
+    file: 0
   raw: StackSwap
 - kind: Newline
   span:
     start: 2193
     end: 2194
+    file: 0
   raw: "\n"
 - kind:
     ActionName: DefineLocal
   span:
     start: 2194
     end: 2205
+    file: 0
   raw: DefineLocal
 - kind: Newline
   span:
     start: 2205
     end: 2206
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 2206
     end: 2210
+    file: 0
   raw: Push
 - kind:
     Constant: 19
   span:
     start: 2211
     end: 2221
+    file: 0
   raw: constant19
 - kind: Newline
   span:
     start: 2221
     end: 2222
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Trace
   span:
     start: 2222
     end: 2227
+    file: 0
   raw: Trace
 - kind: Newline
   span:
     start: 2227
     end: 2228
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Jump
   span:
     start: 2228
     end: 2232
+    file: 0
   raw: Jump
 - kind: Identifier
   span:
     start: 2233
     end: 2240
+    file: 0
   raw: loc0398
 - kind: Newline
   span:
     start: 2240
     end: 2241
+    file: 0
   raw: "\n"
 - kind: Identifier
   span:
     start: 2241
     end: 2248
+    file: 0
   raw: loc0380
 - kind: Colon
   span:
     start: 2248
     end: 2249
+    file: 0
   raw: ":"
 - kind:
     ActionName: Pop
   span:
     start: 2249
     end: 2252
+    file: 0
   raw: Pop
 - kind: Newline
   span:
     start: 2252
     end: 2253
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 2253
     end: 2257
+    file: 0
   raw: Push
 - kind:
     Register: 0
   span:
     start: 2258
     end: 2267
+    file: 0
   raw: register0
 - kind: Newline
   span:
     start: 2267
     end: 2268
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 2268
     end: 2272
+    file: 0
   raw: Push
 - kind:
     Constant: 5
   span:
     start: 2273
     end: 2282
+    file: 0
   raw: constant5
 - kind: Newline
   span:
     start: 2282
     end: 2283
+    file: 0
   raw: "\n"
 - kind:
     ActionName: StackSwap
   span:
     start: 2283
     end: 2292
+    file: 0
   raw: StackSwap
 - kind: Newline
   span:
     start: 2292
     end: 2293
+    file: 0
   raw: "\n"
 - kind:
     ActionName: DefineLocal
   span:
     start: 2293
     end: 2304
+    file: 0
   raw: DefineLocal
 - kind: Newline
   span:
     start: 2304
     end: 2305
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 2305
     end: 2309
+    file: 0
   raw: Push
 - kind:
     Constant: 20
   span:
     start: 2310
     end: 2320
+    file: 0
   raw: constant20
 - kind: Newline
   span:
     start: 2320
     end: 2321
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Trace
   span:
     start: 2321
     end: 2326
+    file: 0
   raw: Trace
 - kind: Newline
   span:
     start: 2326
     end: 2327
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Jump
   span:
     start: 2327
     end: 2331
+    file: 0
   raw: Jump
 - kind: Identifier
   span:
     start: 2332
     end: 2339
+    file: 0
   raw: loc0398
 - kind: Newline
   span:
     start: 2339
     end: 2340
+    file: 0
   raw: "\n"
 - kind: CloseBrace
   span:
     start: 2340
     end: 2341
+    file: 0
   raw: "}"
 - kind: Newline
   span:
     start: 2341
     end: 2342
+    file: 0
   raw: "\n"
 - kind: Identifier
   span:
     start: 2342
     end: 2349
+    file: 0
   raw: loc0398
 - kind: Colon
   span:
     start: 2349
     end: 2350
+    file: 0
   raw: ":"
 - kind:
     ActionName: Push
   span:
     start: 2350
     end: 2354
+    file: 0
   raw: Push
 - kind:
     Constant: 21
   span:
     start: 2355
     end: 2365
+    file: 0
   raw: constant21
 - kind: Newline
   span:
     start: 2365
     end: 2366
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Trace
   span:
     start: 2366
     end: 2371
+    file: 0
   raw: Trace
 - kind: Newline
   span:
     start: 2371
     end: 2372
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Try
   span:
     start: 2372
     end: 2375
+    file: 0
   raw: Try
 - kind: OpenBrace
   span:
     start: 2376
     end: 2377
+    file: 0
   raw: "{"
 - kind: Newline
   span:
     start: 2377
     end: 2378
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 2378
     end: 2382
+    file: 0
   raw: Push
 - kind:
     Constant: 1
   span:
     start: 2383
     end: 2392
+    file: 0
   raw: constant1
 - kind: Newline
   span:
     start: 2392
     end: 2393
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Trace
   span:
     start: 2393
     end: 2398
+    file: 0
   raw: Trace
 - kind: Newline
   span:
     start: 2398
     end: 2399
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 2399
     end: 2403
+    file: 0
   raw: Push
 - kind: "Null"
   span:
     start: 2404
     end: 2408
+    file: 0
   raw: "null"
 - kind: Newline
   span:
     start: 2408
     end: 2409
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Throw
   span:
     start: 2409
     end: 2414
+    file: 0
   raw: Throw
 - kind: Newline
   span:
     start: 2414
     end: 2415
+    file: 0
   raw: "\n"
 - kind: CloseBrace
   span:
     start: 2415
     end: 2416
+    file: 0
   raw: "}"
 - kind: Newline
   span:
     start: 2416
     end: 2417
+    file: 0
   raw: "\n"
 - kind: Finally
   span:
     start: 2417
     end: 2424
+    file: 0
   raw: Finally
 - kind: OpenBrace
   span:
     start: 2425
     end: 2426
+    file: 0
   raw: "{"
 - kind: Newline
   span:
     start: 2426
     end: 2427
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 2427
     end: 2431
+    file: 0
   raw: Push
 - kind:
     Constant: 6
   span:
     start: 2432
     end: 2441
+    file: 0
   raw: constant6
 - kind: Newline
   span:
     start: 2441
     end: 2442
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Trace
   span:
     start: 2442
     end: 2447
+    file: 0
   raw: Trace
 - kind: Newline
   span:
     start: 2447
     end: 2448
+    file: 0
   raw: "\n"
 - kind: CloseBrace
   span:
     start: 2448
     end: 2449
+    file: 0
   raw: "}"
 - kind: Newline
   span:
     start: 2449
     end: 2450
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 2450
     end: 2454
+    file: 0
   raw: Push
 - kind:
     Constant: 22
   span:
     start: 2455
     end: 2465
+    file: 0
   raw: constant22
 - kind: Newline
   span:
     start: 2465
     end: 2466
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Trace
   span:
     start: 2466
     end: 2471
+    file: 0
   raw: Trace
 - kind: Newline
   span:
     start: 2471
     end: 2472
+    file: 0
   raw: "\n"

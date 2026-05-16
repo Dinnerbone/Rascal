@@ -8,25 +8,30 @@ input_file: samples/as2_pcode/trace_hello_world.pcode
   span:
     start: 0
     end: 4
+    file: 0
   raw: Push
 - kind: String
   span:
     start: 5
     end: 18
+    file: 0
   raw: Hello World
 - kind: Newline
   span:
     start: 18
     end: 19
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Trace
   span:
     start: 19
     end: 24
+    file: 0
   raw: Trace
 - kind: Newline
   span:
     start: 24
     end: 25
+    file: 0
   raw: "\n"

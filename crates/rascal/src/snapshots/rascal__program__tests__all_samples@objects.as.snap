@@ -10,17 +10,20 @@ Ok:
           span:
             start: 4
             end: 5
+            file: 0
           value: o
         value:
           span:
             start: 8
             end: 25
+            file: 0
           value:
             InitObject:
               - - a
                 - span:
                     start: 12
                     end: 13
+                    file: 0
                   value:
                     Constant:
                       Integer: 1
@@ -28,6 +31,7 @@ Ok:
                 - span:
                     start: 18
                     end: 24
+                    file: 0
                   value:
                     Constant:
                       Identifier: Object
@@ -36,34 +40,40 @@ Ok:
         span:
           start: 27
           end: 47
+          file: 0
         value:
           Trace:
             span:
               start: 33
               end: 46
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 33
                     end: 40
+                    file: 0
                   value:
                     Constant:
                       String: "o.a: "
                 - span:
                     start: 44
                     end: 46
+                    file: 0
                   value:
                     Field:
                       - span:
                           start: 43
                           end: 44
+                          file: 0
                         value:
                           Constant:
                             Identifier: o
                       - span:
                           start: 45
                           end: 46
+                          file: 0
                         value:
                           Constant:
                             String: a
@@ -71,34 +81,40 @@ Ok:
         span:
           start: 49
           end: 69
+          file: 0
         value:
           Trace:
             span:
               start: 55
               end: 68
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 55
                     end: 62
+                    file: 0
                   value:
                     Constant:
                       String: "o.b: "
                 - span:
                     start: 66
                     end: 68
+                    file: 0
                   value:
                     Field:
                       - span:
                           start: 65
                           end: 66
+                          file: 0
                         value:
                           Constant:
                             Identifier: o
                       - span:
                           start: 67
                           end: 68
+                          file: 0
                         value:
                           Constant:
                             String: b
@@ -106,29 +122,34 @@ Ok:
         span:
           start: 71
           end: 109
+          file: 0
         value:
           Trace:
             span:
               start: 77
               end: 99
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 77
                     end: 93
+                    file: 0
                   value:
                     Constant:
                       String: "new Object(): "
                 - span:
                     start: 96
                     end: 99
+                    file: 0
                   value:
                     New:
                       name:
                         span:
                           start: 100
                           end: 106
+                          file: 0
                         value:
                           Constant:
                             Identifier: Object
@@ -137,29 +158,34 @@ Ok:
         span:
           start: 111
           end: 179
+          file: 0
         value:
           Trace:
             span:
               start: 117
               end: 177
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 117
                     end: 148
+                    file: 0
                   value:
                     Constant:
                       String: "new Object(1, 2, {}, false): "
                 - span:
                     start: 151
                     end: 177
+                    file: 0
                   value:
                     New:
                       name:
                         span:
                           start: 155
                           end: 161
+                          file: 0
                         value:
                           Constant:
                             Identifier: Object
@@ -167,23 +193,27 @@ Ok:
                         - span:
                             start: 162
                             end: 163
+                            file: 0
                           value:
                             Constant:
                               Integer: 1
                         - span:
                             start: 165
                             end: 166
+                            file: 0
                           value:
                             Constant:
                               Integer: 2
                         - span:
                             start: 168
                             end: 170
+                            file: 0
                           value:
                             InitObject: []
                         - span:
                             start: 172
                             end: 177
+                            file: 0
                           value:
                             Constant:
                               Boolean: false
@@ -191,29 +221,34 @@ Ok:
         span:
           start: 181
           end: 215
+          file: 0
         value:
           Trace:
             span:
               start: 187
               end: 214
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 187
                     end: 201
+                    file: 0
                   value:
                     Constant:
                       String: "new Object: "
                 - span:
                     start: 204
                     end: 214
+                    file: 0
                   value:
                     New:
                       name:
                         span:
                           start: 208
                           end: 214
+                          file: 0
                         value:
                           Constant:
                             Identifier: Object
@@ -222,40 +257,47 @@ Ok:
         span:
           start: 217
           end: 249
+          file: 0
         value:
           Trace:
             span:
               start: 223
               end: 242
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 223
                     end: 236
+                    file: 0
                   value:
                     Constant:
                       String: "new o.b(): "
                 - span:
                     start: 239
                     end: 242
+                    file: 0
                   value:
                     New:
                       name:
                         span:
                           start: 244
                           end: 246
+                          file: 0
                         value:
                           Field:
                             - span:
                                 start: 243
                                 end: 244
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: o
                             - span:
                                 start: 245
                                 end: 246
+                                file: 0
                               value:
                                 Constant:
                                   String: b

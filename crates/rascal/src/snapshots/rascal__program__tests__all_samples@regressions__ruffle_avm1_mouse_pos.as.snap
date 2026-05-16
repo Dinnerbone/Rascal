@@ -9,52 +9,61 @@ Ok:
         span:
           start: 309
           end: 334
+          file: 0
         value:
           BinaryOperator:
             - Assign
             - span:
                 start: 309
                 end: 317
+                file: 0
               value:
                 Field:
                   - span:
                       start: 307
                       end: 309
+                      file: 0
                     value:
                       Constant:
                         Identifier: zs
                   - span:
                       start: 310
                       end: 317
+                      file: 0
                     value:
                       Constant:
                         String: _xscale
             - span:
                 start: 322
                 end: 334
+                file: 0
               value:
                 BinaryOperator:
                   - Assign
                   - span:
                       start: 322
                       end: 330
+                      file: 0
                     value:
                       Field:
                         - span:
                             start: 320
                             end: 322
+                            file: 0
                           value:
                             Constant:
                               Identifier: zs
                         - span:
                             start: 323
                             end: 330
+                            file: 0
                           value:
                             Constant:
                               String: _yscale
                   - span:
                       start: 333
                       end: 334
+                      file: 0
                     value:
                       Constant:
                         Integer: 0
@@ -64,6 +73,7 @@ Ok:
               span:
                 start: 340
                 end: 344
+                file: 0
               value: oldX
             value: ~
             type_name: ~
@@ -72,6 +82,7 @@ Ok:
               span:
                 start: 346
                 end: 350
+                file: 0
               value: oldY
             value: ~
             type_name: ~
@@ -79,6 +90,7 @@ Ok:
         span:
           start: 353
           end: 732
+          file: 0
         value:
           Function:
             signature:
@@ -86,6 +98,7 @@ Ok:
                 span:
                   start: 362
                   end: 366
+                  file: 0
                 value: dump
               args: []
               return_type: ~
@@ -95,42 +108,49 @@ Ok:
                     span:
                       start: 380
                       end: 414
+                      file: 0
                     value:
                       BinaryOperator:
                         - LogicalAnd
                         - span:
                             start: 380
                             end: 395
+                            file: 0
                           value:
                             BinaryOperator:
                               - Equal
                               - span:
                                   start: 380
                                   end: 387
+                                  file: 0
                                 value:
                                   Constant:
                                     Identifier: _xmouse
                               - span:
                                   start: 391
                                   end: 395
+                                  file: 0
                                 value:
                                   Constant:
                                     Identifier: oldX
                         - span:
                             start: 399
                             end: 414
+                            file: 0
                           value:
                             BinaryOperator:
                               - Equal
                               - span:
                                   start: 399
                                   end: 406
+                                  file: 0
                                 value:
                                   Constant:
                                     Identifier: _ymouse
                               - span:
                                   start: 410
                                   end: 414
+                                  file: 0
                                 value:
                                   Constant:
                                     Identifier: oldY
@@ -141,18 +161,21 @@ Ok:
                   span:
                     start: 437
                     end: 451
+                    file: 0
                   value:
                     BinaryOperator:
                       - Assign
                       - span:
                           start: 437
                           end: 441
+                          file: 0
                         value:
                           Constant:
                             Identifier: oldX
                       - span:
                           start: 444
                           end: 451
+                          file: 0
                         value:
                           Constant:
                             Identifier: _xmouse
@@ -160,18 +183,21 @@ Ok:
                   span:
                     start: 457
                     end: 471
+                    file: 0
                   value:
                     BinaryOperator:
                       - Assign
                       - span:
                           start: 457
                           end: 461
+                          file: 0
                         value:
                           Constant:
                             Identifier: oldY
                       - span:
                           start: 464
                           end: 471
+                          file: 0
                         value:
                           Constant:
                             Identifier: _ymouse
@@ -179,47 +205,55 @@ Ok:
                   span:
                     start: 478
                     end: 517
+                    file: 0
                   value:
                     Trace:
                       span:
                         start: 484
                         end: 516
+                        file: 0
                       value:
                         BinaryOperator:
                           - Add
                           - span:
                               start: 484
                               end: 507
+                              file: 0
                             value:
                               BinaryOperator:
                                 - Add
                                 - span:
                                     start: 484
                                     end: 503
+                                    file: 0
                                   value:
                                     BinaryOperator:
                                       - Add
                                       - span:
                                           start: 484
                                           end: 495
+                                          file: 0
                                         value:
                                           Constant:
                                             String: "_root "
                                       - span:
                                           start: 496
                                           end: 503
+                                          file: 0
                                         value:
                                           Constant:
                                             Identifier: _xmouse
                                 - span:
                                     start: 504
                                     end: 507
+                                    file: 0
                                   value:
                                     Constant:
                                       String: " "
                           - span:
                               start: 509
                               end: 516
+                              file: 0
                             value:
                               Constant:
                                 Identifier: _ymouse
@@ -227,59 +261,69 @@ Ok:
                   span:
                     start: 0
                     end: 0
+                    file: ~
                   value:
                     BinaryOperator:
                       - Assign
                       - span:
                           start: 0
                           end: 0
+                          file: ~
                         value:
                           Constant:
                             Register: 1
                       - span:
                           start: 535
                           end: 577
+                          file: 0
                         value:
                           InitArray:
                             - span:
                                 start: 536
                                 end: 538
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: id
                             - span:
                                 start: 540
                                 end: 542
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: zs
                             - span:
                                 start: 544
                                 end: 546
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: ip
                             - span:
                                 start: 548
                                 end: 550
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: fp
                             - span:
                                 start: 552
                                 end: 557
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: s42fp
                             - span:
                                 start: 559
                                 end: 565
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: s133fp
                             - span:
                                 start: 567
                                 end: 576
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: s133fpr15
@@ -291,18 +335,21 @@ Ok:
                           span:
                             start: 0
                             end: 0
+                            file: ~
                           value:
                             BinaryOperator:
                               - Assign
                               - span:
                                   start: 0
                                   end: 0
+                                  file: ~
                                 value:
                                   Constant:
                                     Register: 2
                               - span:
                                   start: 594
                                   end: 595
+                                  file: 0
                                 value:
                                   Constant:
                                     Integer: 0
@@ -310,29 +357,34 @@ Ok:
                         - span:
                             start: 597
                             end: 611
+                            file: 0
                           value:
                             BinaryOperator:
                               - LessThan
                               - span:
                                   start: 597
                                   end: 598
+                                  file: 0
                                 value:
                                   Constant:
                                     Register: 2
                               - span:
                                   start: 604
                                   end: 611
+                                  file: 0
                                 value:
                                   Field:
                                     - span:
                                         start: 599
                                         end: 604
+                                        file: 0
                                       value:
                                         Constant:
                                           Register: 1
                                     - span:
                                         start: 605
                                         end: 611
+                                        file: 0
                                       value:
                                         Constant:
                                           String: length
@@ -340,12 +392,14 @@ Ok:
                         - span:
                             start: 614
                             end: 616
+                            file: 0
                           value:
                             UnaryOperator:
                               - Increment: Postfix
                               - span:
                                   start: 613
                                   end: 614
+                                  file: 0
                                 value:
                                   Constant:
                                     Register: 2
@@ -355,29 +409,34 @@ Ok:
                           span:
                             start: 0
                             end: 0
+                            file: ~
                           value:
                             BinaryOperator:
                               - Assign
                               - span:
                                   start: 0
                                   end: 0
+                                  file: ~
                                 value:
                                   Constant:
                                     Register: 3
                               - span:
                                   start: 644
                                   end: 647
+                                  file: 0
                                 value:
                                   Field:
                                     - span:
                                         start: 639
                                         end: 644
+                                        file: 0
                                       value:
                                         Constant:
                                           Register: 1
                                     - span:
                                         start: 645
                                         end: 646
+                                        file: 0
                                       value:
                                         Constant:
                                           Register: 2
@@ -385,92 +444,108 @@ Ok:
                           span:
                             start: 657
                             end: 708
+                            file: 0
                           value:
                             Trace:
                               span:
                                 start: 667
                                 end: 707
+                                file: 0
                               value:
                                 BinaryOperator:
                                   - Add
                                   - span:
                                       start: 667
                                       end: 694
+                                      file: 0
                                     value:
                                       BinaryOperator:
                                         - Add
                                         - span:
                                             start: 667
                                             end: 690
+                                            file: 0
                                           value:
                                             BinaryOperator:
                                               - Add
                                               - span:
                                                   start: 667
                                                   end: 677
+                                                  file: 0
                                                 value:
                                                   BinaryOperator:
                                                     - Add
                                                     - span:
                                                         start: 667
                                                         end: 673
+                                                        file: 0
                                                       value:
                                                         Field:
                                                           - span:
                                                               start: 663
                                                               end: 667
+                                                              file: 0
                                                             value:
                                                               Constant:
                                                                 Register: 3
                                                           - span:
                                                               start: 668
                                                               end: 673
+                                                              file: 0
                                                             value:
                                                               Constant:
                                                                 String: _name
                                                     - span:
                                                         start: 674
                                                         end: 677
+                                                        file: 0
                                                       value:
                                                         Constant:
                                                           String: " "
                                               - span:
                                                   start: 682
                                                   end: 690
+                                                  file: 0
                                                 value:
                                                   Field:
                                                     - span:
                                                         start: 678
                                                         end: 682
+                                                        file: 0
                                                       value:
                                                         Constant:
                                                           Register: 3
                                                     - span:
                                                         start: 683
                                                         end: 690
+                                                        file: 0
                                                       value:
                                                         Constant:
                                                           String: _xmouse
                                         - span:
                                             start: 691
                                             end: 694
+                                            file: 0
                                           value:
                                             Constant:
                                               String: " "
                                   - span:
                                       start: 699
                                       end: 707
+                                      file: 0
                                     value:
                                       Field:
                                         - span:
                                             start: 695
                                             end: 699
+                                            file: 0
                                           value:
                                             Constant:
                                               Register: 3
                                         - span:
                                             start: 700
                                             end: 707
+                                            file: 0
                                           value:
                                             Constant:
                                               String: _ymouse
@@ -478,11 +553,13 @@ Ok:
                   span:
                     start: 720
                     end: 729
+                    file: 0
                   value:
                     Trace:
                       span:
                         start: 726
                         end: 728
+                        file: 0
                       value:
                         Constant:
                           String: ""
@@ -551,6 +628,7 @@ Ok:
         span:
           start: 734
           end: 773
+          file: 0
         value:
           Function:
             signature:
@@ -558,6 +636,7 @@ Ok:
                 span:
                   start: 743
                   end: 755
+                  file: 0
                 value: onEnterFrame
               args: []
               return_type: ~
@@ -566,12 +645,14 @@ Ok:
                   span:
                     start: 764
                     end: 770
+                    file: 0
                   value:
                     Call:
                       name:
                         span:
                           start: 764
                           end: 768
+                          file: 0
                         value:
                           Constant:
                             Identifier: dump

@@ -8,73 +8,87 @@ input_file: samples/as2/op_precedence/instanceof.as
   span:
     start: 0
     end: 3
+    file: 0
   raw: var
 - kind: Identifier
   span:
     start: 4
     end: 5
+    file: 0
   raw: x
 - kind:
     Operator: Assign
   span:
     start: 6
     end: 7
+    file: 0
   raw: "="
 - kind: Identifier
   span:
     start: 8
     end: 17
+    file: 0
   raw: toCompare
 - kind:
     Keyword: InstanceOf
   span:
     start: 18
     end: 28
+    file: 0
   raw: instanceof
 - kind: Identifier
   span:
     start: 29
     end: 32
+    file: 0
   raw: Foo
 - kind:
     Operator: LogicalAnd
   span:
     start: 33
     end: 35
+    file: 0
   raw: "&&"
 - kind: Identifier
   span:
     start: 36
     end: 45
+    file: 0
   raw: toCompare
 - kind: Period
   span:
     start: 45
     end: 46
+    file: 0
   raw: "."
 - kind: Identifier
   span:
     start: 46
     end: 47
+    file: 0
   raw: x
 - kind:
     Operator: Equal
   span:
     start: 48
     end: 50
+    file: 0
   raw: "=="
 - kind: Integer
   span:
     start: 51
     end: 54
+    file: 0
   raw: "123"
 - kind: Semicolon
   span:
     start: 54
     end: 55
+    file: 0
   raw: ;
 - kind: Newline
   span:
     start: 55
     end: 56
+    file: 0
   raw: "\n"

@@ -10,17 +10,20 @@ Ok:
           span:
             start: 4
             end: 12
+            file: 0
           value: listener
         value:
           span:
             start: 15
             end: 18
+            file: 0
           value:
             New:
               name:
                 span:
                   start: 19
                   end: 25
+                  file: 0
                 value:
                   Constant:
                     Identifier: Object
@@ -30,29 +33,34 @@ Ok:
         span:
           start: 37
           end: 130
+          file: 0
         value:
           BinaryOperator:
             - Assign
             - span:
                 start: 37
                 end: 49
+                file: 0
               value:
                 Field:
                   - span:
                       start: 29
                       end: 37
+                      file: 0
                     value:
                       Constant:
                         Identifier: listener
                   - span:
                       start: 38
                       end: 49
+                      file: 0
                     value:
                       Constant:
                         String: onMouseDown
             - span:
                 start: 52
                 end: 130
+                file: 0
               value:
                 Function:
                   signature:
@@ -64,69 +72,81 @@ Ok:
                         span:
                           start: 69
                           end: 128
+                          file: 0
                         value:
                           Trace:
                             span:
                               start: 75
                               end: 127
+                              file: 0
                             value:
                               BinaryOperator:
                                 - Add
                                 - span:
                                     start: 75
                                     end: 111
+                                    file: 0
                                   value:
                                     BinaryOperator:
                                       - Add
                                       - span:
                                           start: 75
                                           end: 105
+                                          file: 0
                                         value:
                                           BinaryOperator:
                                             - Add
                                             - span:
                                                 start: 75
                                                 end: 89
+                                                file: 0
                                               value:
                                                 Constant:
                                                   String: "Mouse down: "
                                             - span:
                                                 start: 97
                                                 end: 105
+                                                file: 0
                                               value:
                                                 Field:
                                                   - span:
                                                       start: 92
                                                       end: 97
+                                                      file: 0
                                                     value:
                                                       Constant:
                                                         Register: 1
                                                   - span:
                                                       start: 98
                                                       end: 105
+                                                      file: 0
                                                     value:
                                                       Constant:
                                                         String: _xmouse
                                       - span:
                                           start: 108
                                           end: 111
+                                          file: 0
                                         value:
                                           Constant:
                                             String: ","
                                 - span:
                                     start: 119
                                     end: 127
+                                    file: 0
                                   value:
                                     Field:
                                       - span:
                                           start: 114
                                           end: 119
+                                          file: 0
                                         value:
                                           Constant:
                                             Register: 1
                                       - span:
                                           start: 120
                                           end: 127
+                                          file: 0
                                         value:
                                           Constant:
                                             String: _ymouse
@@ -172,29 +192,34 @@ Ok:
         span:
           start: 140
           end: 346
+          file: 0
         value:
           BinaryOperator:
             - Assign
             - span:
                 start: 140
                 end: 150
+                file: 0
               value:
                 Field:
                   - span:
                       start: 132
                       end: 140
+                      file: 0
                     value:
                       Constant:
                         Identifier: listener
                   - span:
                       start: 141
                       end: 150
+                      file: 0
                     value:
                       Constant:
                         String: onMouseUp
             - span:
                 start: 153
                 end: 346
+                file: 0
               value:
                 Function:
                   signature:
@@ -206,69 +231,81 @@ Ok:
                         span:
                           start: 170
                           end: 227
+                          file: 0
                         value:
                           Trace:
                             span:
                               start: 176
                               end: 226
+                              file: 0
                             value:
                               BinaryOperator:
                                 - Add
                                 - span:
                                     start: 176
                                     end: 210
+                                    file: 0
                                   value:
                                     BinaryOperator:
                                       - Add
                                       - span:
                                           start: 176
                                           end: 204
+                                          file: 0
                                         value:
                                           BinaryOperator:
                                             - Add
                                             - span:
                                                 start: 176
                                                 end: 188
+                                                file: 0
                                               value:
                                                 Constant:
                                                   String: "Mouse up: "
                                             - span:
                                                 start: 196
                                                 end: 204
+                                                file: 0
                                               value:
                                                 Field:
                                                   - span:
                                                       start: 191
                                                       end: 196
+                                                      file: 0
                                                     value:
                                                       Constant:
                                                         Register: 1
                                                   - span:
                                                       start: 197
                                                       end: 204
+                                                      file: 0
                                                     value:
                                                       Constant:
                                                         String: _xmouse
                                       - span:
                                           start: 207
                                           end: 210
+                                          file: 0
                                         value:
                                           Constant:
                                             String: ","
                                 - span:
                                     start: 218
                                     end: 226
+                                    file: 0
                                   value:
                                     Field:
                                       - span:
                                           start: 213
                                           end: 218
+                                          file: 0
                                         value:
                                           Constant:
                                             Register: 1
                                       - span:
                                           start: 219
                                           end: 226
+                                          file: 0
                                         value:
                                           Constant:
                                             String: _ymouse
@@ -276,23 +313,27 @@ Ok:
                         span:
                           start: 236
                           end: 262
+                          file: 0
                         value:
                           Call:
                             name:
                               span:
                                 start: 236
                                 end: 247
+                                file: 0
                               value:
                                 Field:
                                   - span:
                                       start: 232
                                       end: 236
+                                      file: 0
                                     value:
                                       Constant:
                                         Identifier: text
                                   - span:
                                       start: 237
                                       end: 247
+                                      file: 0
                                     value:
                                       Constant:
                                         String: replaceSel
@@ -300,6 +341,7 @@ Ok:
                               - span:
                                   start: 248
                                   end: 261
+                                  file: 0
                                 value:
                                   Constant:
                                     String: "<selection>"
@@ -307,84 +349,99 @@ Ok:
                         span:
                           start: 268
                           end: 343
+                          file: 0
                         value:
                           Trace:
                             span:
                               start: 274
                               end: 342
+                              file: 0
                             value:
                               BinaryOperator:
                                 - Add
                                 - span:
                                     start: 274
                                     end: 282
+                                    file: 0
                                   value:
                                     Constant:
                                       String: "Text: "
                                 - span:
                                     start: 330
                                     end: 342
+                                    file: 0
                                   value:
                                     Call:
                                       name:
                                         span:
                                           start: 330
                                           end: 335
+                                          file: 0
                                         value:
                                           Field:
                                             - span:
                                                 start: 318
                                                 end: 330
+                                                file: 0
                                               value:
                                                 Call:
                                                   name:
                                                     span:
                                                       start: 318
                                                       end: 324
+                                                      file: 0
                                                     value:
                                                       Field:
                                                         - span:
                                                             start: 306
                                                             end: 318
+                                                            file: 0
                                                           value:
                                                             Call:
                                                               name:
                                                                 span:
                                                                   start: 306
                                                                   end: 311
+                                                                  file: 0
                                                                 value:
                                                                   Field:
                                                                     - span:
                                                                         start: 294
                                                                         end: 306
+                                                                        file: 0
                                                                       value:
                                                                         Call:
                                                                           name:
                                                                             span:
                                                                               start: 294
                                                                               end: 300
+                                                                              file: 0
                                                                             value:
                                                                               Field:
                                                                                 - span:
                                                                                     start: 289
                                                                                     end: 294
+                                                                                    file: 0
                                                                                   value:
                                                                                     Field:
                                                                                       - span:
                                                                                           start: 285
                                                                                           end: 289
+                                                                                          file: 0
                                                                                         value:
                                                                                           Constant:
                                                                                             Identifier: text
                                                                                       - span:
                                                                                           start: 290
                                                                                           end: 294
+                                                                                          file: 0
                                                                                         value:
                                                                                           Constant:
                                                                                             String: text
                                                                                 - span:
                                                                                     start: 295
                                                                                     end: 300
+                                                                                    file: 0
                                                                                   value:
                                                                                     Constant:
                                                                                       String: split
@@ -392,12 +449,14 @@ Ok:
                                                                             - span:
                                                                                 start: 301
                                                                                 end: 305
+                                                                                file: 0
                                                                               value:
                                                                                 Constant:
                                                                                   String: "\r"
                                                                     - span:
                                                                         start: 307
                                                                         end: 311
+                                                                        file: 0
                                                                       value:
                                                                         Constant:
                                                                           String: join
@@ -405,12 +464,14 @@ Ok:
                                                                 - span:
                                                                     start: 312
                                                                     end: 317
+                                                                    file: 0
                                                                   value:
                                                                     Constant:
                                                                       String: "\\n"
                                                         - span:
                                                             start: 319
                                                             end: 324
+                                                            file: 0
                                                           value:
                                                             Constant:
                                                               String: split
@@ -418,12 +479,14 @@ Ok:
                                                     - span:
                                                         start: 325
                                                         end: 329
+                                                        file: 0
                                                       value:
                                                         Constant:
                                                           String: "\n"
                                             - span:
                                                 start: 331
                                                 end: 335
+                                                file: 0
                                               value:
                                                 Constant:
                                                   String: join
@@ -431,6 +494,7 @@ Ok:
                                         - span:
                                             start: 336
                                             end: 341
+                                            file: 0
                                           value:
                                             Constant:
                                               String: "\\n"
@@ -477,23 +541,27 @@ Ok:
         span:
           start: 351
           end: 373
+          file: 0
         value:
           Call:
             name:
               span:
                 start: 351
                 end: 363
+                file: 0
               value:
                 Field:
                   - span:
                       start: 348
                       end: 351
+                      file: 0
                     value:
                       Constant:
                         Identifier: Key
                   - span:
                       start: 352
                       end: 363
+                      file: 0
                     value:
                       Constant:
                         String: addListener
@@ -501,6 +569,7 @@ Ok:
               - span:
                   start: 364
                   end: 372
+                  file: 0
                 value:
                   Constant:
                     Identifier: listener
@@ -508,23 +577,27 @@ Ok:
         span:
           start: 380
           end: 402
+          file: 0
         value:
           Call:
             name:
               span:
                 start: 380
                 end: 392
+                file: 0
               value:
                 Field:
                   - span:
                       start: 375
                       end: 380
+                      file: 0
                     value:
                       Constant:
                         Identifier: Mouse
                   - span:
                       start: 381
                       end: 392
+                      file: 0
                     value:
                       Constant:
                         String: addListener
@@ -532,6 +605,7 @@ Ok:
               - span:
                   start: 393
                   end: 401
+                  file: 0
                 value:
                   Constant:
                     Identifier: listener

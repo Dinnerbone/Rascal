@@ -72,19 +72,45 @@ where
     }
 }
 
-#[derive(Copy, Clone, Default, PartialEq, Eq, PartialOrd, Ord, Hash, Serialize)]
+#[derive(Copy, Clone, PartialEq, Eq, Hash, Serialize)]
+pub struct FileId(pub(crate) usize);
+
+impl FileId {
+    pub const fn new(value: usize) -> Self {
+        Self(value)
+    }
+}
+
+impl From<usize> for FileId {
+    fn from(value: usize) -> Self {
+        Self(value)
+    }
+}
+
+#[derive(Copy, Clone, Default, PartialEq, Eq, Hash, Serialize)]
 pub struct Span {
     pub start: usize,
     pub end: usize,
+    pub file: Option<FileId>,
 }
 
 impl Span {
-    pub fn new_unchecked(start: usize, end: usize) -> Self {
-        Self { start, end }
+    pub fn new_unchecked(start: usize, end: usize, file: FileId) -> Self {
+        Self {
+            start,
+            end,
+            file: Some(file),
+        }
     }
 
     pub fn encompassing(a: Span, b: Span) -> Self {
-        Span::new_unchecked(a.start.min(b.start), a.end.max(b.end))
+        if a.file != b.file {
+            panic!("Cannot encompass spans from different files");
+        }
+        let start = a.start.min(b.start);
+        let end = a.end.max(b.end);
+        let file = a.file;
+        Self { start, end, file }
     }
 }
 

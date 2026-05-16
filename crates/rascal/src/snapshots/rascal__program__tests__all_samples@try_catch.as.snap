@@ -9,11 +9,13 @@ Ok:
         span:
           start: 0
           end: 34
+          file: 0
         value:
           Trace:
             span:
               start: 6
               end: 33
+              file: 0
             value:
               Constant:
                 String: " -- try catch finally -- "
@@ -23,11 +25,13 @@ Ok:
               span:
                 start: 44
                 end: 57
+                file: 0
               value:
                 Trace:
                   span:
                     start: 50
                     end: 56
+                    file: 0
                   value:
                     Constant:
                       String: try!
@@ -36,11 +40,13 @@ Ok:
                 span:
                   start: 67
                   end: 74
+                  file: 0
                 value: message
               value:
                 span:
                   start: 77
                   end: 91
+                  file: 0
                 value:
                   Constant:
                     String: Hello World!
@@ -49,6 +55,7 @@ Ok:
               - span:
                   start: 103
                   end: 110
+                  file: 0
                 value:
                   Constant:
                     Identifier: message
@@ -58,17 +65,20 @@ Ok:
             span:
               start: 121
               end: 122
+              file: 0
             value: e
           body:
             - Expr:
                 span:
                   start: 127
                   end: 142
+                  file: 0
                 value:
                   Trace:
                     span:
                       start: 133
                       end: 141
+                      file: 0
                     value:
                       Constant:
                         String: catch!
@@ -76,11 +86,13 @@ Ok:
                 span:
                   start: 148
                   end: 156
+                  file: 0
                 value:
                   Trace:
                     span:
                       start: 154
                       end: 155
+                      file: 0
                     value:
                       Constant:
                         Identifier: e
@@ -89,11 +101,13 @@ Ok:
               span:
                 start: 171
                 end: 188
+                file: 0
               value:
                 Trace:
                   span:
                     start: 177
                     end: 187
+                    file: 0
                   value:
                     Constant:
                       String: finally!
@@ -101,11 +115,13 @@ Ok:
         span:
           start: 193
           end: 219
+          file: 0
         value:
           Trace:
             span:
               start: 199
               end: 218
+              file: 0
             value:
               Constant:
                 String: " -- try catch -- "
@@ -115,11 +131,13 @@ Ok:
               span:
                 start: 228
                 end: 241
+                file: 0
               value:
                 Trace:
                   span:
                     start: 234
                     end: 240
+                    file: 0
                   value:
                     Constant:
                       String: try!
@@ -127,6 +145,7 @@ Ok:
               - span:
                   start: 250
                   end: 256
+                  file: 0
                 value:
                   Constant:
                     String: test
@@ -136,29 +155,34 @@ Ok:
             span:
               start: 266
               end: 267
+              file: 0
             value: e
           body:
             - Expr:
                 span:
                   start: 272
                   end: 303
+                  file: 0
                 value:
                   Trace:
                     span:
                       start: 278
                       end: 302
+                      file: 0
                     value:
                       BinaryOperator:
                         - Add
                         - span:
                             start: 278
                             end: 298
+                            file: 0
                           value:
                             Constant:
                               String: "caught something! "
                         - span:
                             start: 301
                             end: 302
+                            file: 0
                           value:
                             Constant:
                               Identifier: e
@@ -167,11 +191,13 @@ Ok:
         span:
           start: 308
           end: 334
+          file: 0
         value:
           Trace:
             span:
               start: 314
               end: 333
+              file: 0
             value:
               Constant:
                 String: " -- empty try -- "
@@ -183,29 +209,34 @@ Ok:
             span:
               start: 350
               end: 351
+              file: 0
             value: e
           body:
             - Expr:
                 span:
                   start: 356
                   end: 387
+                  file: 0
                 value:
                   Trace:
                     span:
                       start: 362
                       end: 386
+                      file: 0
                     value:
                       BinaryOperator:
                         - Add
                         - span:
                             start: 362
                             end: 382
+                            file: 0
                           value:
                             Constant:
                               String: "caught something! "
                         - span:
                             start: 385
                             end: 386
+                            file: 0
                           value:
                             Constant:
                               Identifier: e
@@ -214,11 +245,13 @@ Ok:
         span:
           start: 392
           end: 426
+          file: 0
         value:
           Trace:
             span:
               start: 398
               end: 425
+              file: 0
             value:
               Constant:
                 String: " -- try with no throw -- "
@@ -229,11 +262,13 @@ Ok:
                 span:
                   start: 442
                   end: 449
+                  file: 0
                 value: message
               value:
                 span:
                   start: 452
                   end: 461
+                  file: 0
                 value:
                   Constant:
                     String: message
@@ -244,29 +279,34 @@ Ok:
             span:
               start: 471
               end: 472
+              file: 0
             value: e
           body:
             - Expr:
                 span:
                   start: 477
                   end: 508
+                  file: 0
                 value:
                   Trace:
                     span:
                       start: 483
                       end: 507
+                      file: 0
                     value:
                       BinaryOperator:
                         - Add
                         - span:
                             start: 483
                             end: 503
+                            file: 0
                           value:
                             Constant:
                               String: "caught something! "
                         - span:
                             start: 506
                             end: 507
+                            file: 0
                           value:
                             Constant:
                               Identifier: e
@@ -275,11 +315,13 @@ Ok:
         span:
           start: 513
           end: 556
+          file: 0
         value:
           Trace:
             span:
               start: 519
               end: 555
+              file: 0
             value:
               Constant:
                 String: " -- try with conditional throw -- "
@@ -290,11 +332,13 @@ Ok:
                 span:
                   start: 572
                   end: 579
+                  file: 0
                 value: message
               value:
                 span:
                   start: 582
                   end: 591
+                  file: 0
                 value:
                   Constant:
                     String: message
@@ -304,18 +348,21 @@ Ok:
                 span:
                   start: 601
                   end: 621
+                  file: 0
                 value:
                   BinaryOperator:
                     - NotEqual
                     - span:
                         start: 601
                         end: 608
+                        file: 0
                       value:
                         Constant:
                           Identifier: message
                     - span:
                         start: 612
                         end: 621
+                        file: 0
                       value:
                         Constant:
                           String: message
@@ -325,6 +372,7 @@ Ok:
                       - span:
                           start: 639
                           end: 646
+                          file: 0
                         value:
                           Constant:
                             Identifier: message
@@ -335,29 +383,34 @@ Ok:
             span:
               start: 662
               end: 663
+              file: 0
             value: e
           body:
             - Expr:
                 span:
                   start: 668
                   end: 699
+                  file: 0
                 value:
                   Trace:
                     span:
                       start: 674
                       end: 698
+                      file: 0
                     value:
                       BinaryOperator:
                         - Add
                         - span:
                             start: 674
                             end: 694
+                            file: 0
                           value:
                             Constant:
                               String: "caught something! "
                         - span:
                             start: 697
                             end: 698
+                            file: 0
                           value:
                             Constant:
                               Identifier: e
@@ -366,11 +419,13 @@ Ok:
         span:
           start: 704
           end: 749
+          file: 0
         value:
           Trace:
             span:
               start: 710
               end: 748
+              file: 0
             value:
               Constant:
                 String: " -- try catch(MovieClip) finally -- "
@@ -380,11 +435,13 @@ Ok:
               span:
                 start: 758
                 end: 771
+                file: 0
               value:
                 Trace:
                   span:
                     start: 764
                     end: 770
+                    file: 0
                   value:
                     Constant:
                       String: try!
@@ -392,6 +449,7 @@ Ok:
               - span:
                   start: 780
                   end: 784
+                  file: 0
                 value:
                   Constant:
                     Identifier: this
@@ -399,34 +457,40 @@ Ok:
           - - span:
                 start: 797
                 end: 806
+                file: 0
               value: MovieClip
             - name:
                 span:
                   start: 794
                   end: 795
+                  file: 0
                 value: e
               body:
                 - Expr:
                     span:
                       start: 811
                       end: 842
+                      file: 0
                     value:
                       Trace:
                         span:
                           start: 817
                           end: 841
+                          file: 0
                         value:
                           BinaryOperator:
                             - Add
                             - span:
                                 start: 817
                                 end: 837
+                                file: 0
                               value:
                                 Constant:
                                   String: "caught something! "
                             - span:
                                 start: 840
                                 end: 841
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: e
@@ -436,11 +500,13 @@ Ok:
               span:
                 start: 860
                 end: 877
+                file: 0
               value:
                 Trace:
                   span:
                     start: 866
                     end: 876
+                    file: 0
                   value:
                     Constant:
                       String: finally!
@@ -448,11 +514,13 @@ Ok:
         span:
           start: 882
           end: 932
+          file: 0
         value:
           Trace:
             span:
               start: 888
               end: 931
+              file: 0
             value:
               Constant:
                 String: " -- try catch(MovieClip) catch(Number) --"
@@ -462,11 +530,13 @@ Ok:
               span:
                 start: 941
                 end: 954
+                file: 0
               value:
                 Trace:
                   span:
                     start: 947
                     end: 953
+                    file: 0
                   value:
                     Constant:
                       String: try!
@@ -474,6 +544,7 @@ Ok:
               - span:
                   start: 963
                   end: 967
+                  file: 0
                 value:
                   Constant:
                     Identifier: this
@@ -481,44 +552,52 @@ Ok:
           - - span:
                 start: 980
                 end: 989
+                file: 0
               value: MovieClip
             - name:
                 span:
                   start: 977
                   end: 978
+                  file: 0
                 value: e
               body:
                 - Expr:
                     span:
                       start: 994
                       end: 1032
+                      file: 0
                     value:
                       Trace:
                         span:
                           start: 1000
                           end: 1031
+                          file: 0
                         value:
                           Constant:
                             String: catch something of MovieClip!
           - - span:
                 start: 1045
                 end: 1051
+                file: 0
               value: Number
             - name:
                 span:
                   start: 1042
                   end: 1043
+                  file: 0
                 value: e
               body:
                 - Expr:
                     span:
                       start: 1056
                       end: 1091
+                      file: 0
                     value:
                       Trace:
                         span:
                           start: 1062
                           end: 1090
+                          file: 0
                         value:
                           Constant:
                             String: catch something of Number!
@@ -527,17 +606,20 @@ Ok:
             span:
               start: 1101
               end: 1102
+              file: 0
             value: e
           body:
             - Expr:
                 span:
                   start: 1107
                   end: 1136
+                  file: 0
                 value:
                   Trace:
                     span:
                       start: 1113
                       end: 1135
+                      file: 0
                     value:
                       Constant:
                         String: catch anything else!
@@ -546,11 +628,13 @@ Ok:
         span:
           start: 1170
           end: 1198
+          file: 0
         value:
           Trace:
             span:
               start: 1176
               end: 1197
+              file: 0
             value:
               Constant:
                 String: " -- try finally -- "
@@ -560,11 +644,13 @@ Ok:
               span:
                 start: 1208
                 end: 1221
+                file: 0
               value:
                 Trace:
                   span:
                     start: 1214
                     end: 1220
+                    file: 0
                   value:
                     Constant:
                       String: try!
@@ -572,6 +658,7 @@ Ok:
               - span:
                   start: 1233
                   end: 1237
+                  file: 0
                 value:
                   Constant:
                     Identifier: "null"
@@ -582,11 +669,13 @@ Ok:
               span:
                 start: 1252
                 end: 1269
+                file: 0
               value:
                 Trace:
                   span:
                     start: 1258
                     end: 1268
+                    file: 0
                   value:
                     Constant:
                       String: finally!
@@ -594,11 +683,13 @@ Ok:
         span:
           start: 1274
           end: 1319
+          file: 0
         value:
           Trace:
             span:
               start: 1280
               end: 1318
+              file: 0
             value:
               Constant:
                 String: "If you see this, it didn't throw! :("

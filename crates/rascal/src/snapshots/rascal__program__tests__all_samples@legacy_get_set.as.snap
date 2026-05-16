@@ -10,11 +10,13 @@ Ok:
           span:
             start: 4
             end: 5
+            file: 0
           value: y
         value:
           span:
             start: 8
             end: 9
+            file: 0
           value:
             Constant:
               Integer: 5
@@ -24,11 +26,13 @@ Ok:
           span:
             start: 15
             end: 16
+            file: 0
           value: x
         value:
           span:
             start: 19
             end: 22
+            file: 0
           value:
             Constant:
               String: y
@@ -37,28 +41,33 @@ Ok:
         span:
           start: 24
           end: 56
+          file: 0
         value:
           Trace:
             span:
               start: 30
               end: 55
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 30
                     end: 44
+                    file: 0
                   value:
                     Constant:
                       String: "get(\"x\"): "
                 - span:
                     start: 47
                     end: 55
+                    file: 0
                   value:
                     GetVariable:
                       span:
                         start: 51
                         end: 54
+                        file: 0
                       value:
                         Constant:
                           String: x
@@ -66,28 +75,33 @@ Ok:
         span:
           start: 58
           end: 84
+          file: 0
         value:
           Trace:
             span:
               start: 64
               end: 83
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 64
                     end: 74
+                    file: 0
                   value:
                     Constant:
                       String: "get(x): "
                 - span:
                     start: 77
                     end: 83
+                    file: 0
                   value:
                     GetVariable:
                       span:
                         start: 81
                         end: 82
+                        file: 0
                       value:
                         Constant:
                           Identifier: x
@@ -95,11 +109,13 @@ Ok:
         span:
           start: 86
           end: 106
+          file: 0
         value:
           Trace:
             span:
               start: 92
               end: 105
+              file: 0
             value:
               Constant:
                 String: "set(x, 15);"
@@ -107,17 +123,20 @@ Ok:
         span:
           start: 108
           end: 118
+          file: 0
         value:
           SetVariable:
             - span:
                 start: 112
                 end: 113
+                file: 0
               value:
                 Constant:
                   Identifier: x
             - span:
                 start: 115
                 end: 117
+                file: 0
               value:
                 Constant:
                   Integer: 15
@@ -125,23 +144,27 @@ Ok:
         span:
           start: 120
           end: 137
+          file: 0
         value:
           Trace:
             span:
               start: 126
               end: 136
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 126
                     end: 132
+                    file: 0
                   value:
                     Constant:
                       String: "x = "
                 - span:
                     start: 135
                     end: 136
+                    file: 0
                   value:
                     Constant:
                       Identifier: x
@@ -149,23 +172,27 @@ Ok:
         span:
           start: 139
           end: 156
+          file: 0
         value:
           Trace:
             span:
               start: 145
               end: 155
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 145
                     end: 151
+                    file: 0
                   value:
                     Constant:
                       String: "y = "
                 - span:
                     start: 154
                     end: 155
+                    file: 0
                   value:
                     Constant:
                       Identifier: y

@@ -8,61 +8,73 @@ input_file: samples/as2/assign_variable_and_trace.as
   span:
     start: 0
     end: 3
+    file: 0
   raw: var
 - kind: Identifier
   span:
     start: 4
     end: 11
+    file: 0
   raw: message
 - kind:
     Operator: Assign
   span:
     start: 12
     end: 13
+    file: 0
   raw: "="
 - kind:
     String: Double
   span:
     start: 14
     end: 27
+    file: 0
   raw: Hello World
 - kind: Semicolon
   span:
     start: 27
     end: 28
+    file: 0
   raw: ;
 - kind: Newline
   span:
     start: 28
     end: 29
+    file: 0
   raw: "\n"
 - kind: Identifier
   span:
     start: 29
     end: 34
+    file: 0
   raw: trace
 - kind: OpenParen
   span:
     start: 34
     end: 35
+    file: 0
   raw: (
 - kind: Identifier
   span:
     start: 35
     end: 42
+    file: 0
   raw: message
 - kind: CloseParen
   span:
     start: 42
     end: 43
+    file: 0
   raw: )
 - kind: Semicolon
   span:
     start: 43
     end: 44
+    file: 0
   raw: ;
 - kind: Newline
   span:
     start: 44
     end: 45
+    file: 0
   raw: "\n"

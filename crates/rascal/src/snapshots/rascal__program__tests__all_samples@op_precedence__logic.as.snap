@@ -10,11 +10,13 @@ Ok:
           span:
             start: 17
             end: 18
+            file: 0
           value: a
         value:
           span:
             start: 21
             end: 25
+            file: 0
           value:
             Constant:
               Boolean: true
@@ -24,11 +26,13 @@ Ok:
           span:
             start: 31
             end: 32
+            file: 0
           value: b
         value:
           span:
             start: 35
             end: 40
+            file: 0
           value:
             Constant:
               Boolean: false
@@ -38,11 +42,13 @@ Ok:
           span:
             start: 46
             end: 47
+            file: 0
           value: c
         value:
           span:
             start: 50
             end: 54
+            file: 0
           value:
             Constant:
               Boolean: true
@@ -51,71 +57,83 @@ Ok:
         span:
           start: 57
           end: 98
+          file: 0
         value:
           Trace:
             span:
               start: 63
               end: 97
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 63
                     end: 93
+                    file: 0
                   value:
                     BinaryOperator:
                       - Add
                       - span:
                           start: 63
                           end: 84
+                          file: 0
                         value:
                           BinaryOperator:
                             - Add
                             - span:
                                 start: 63
                                 end: 80
+                                file: 0
                               value:
                                 BinaryOperator:
                                   - Add
                                   - span:
                                       start: 63
                                       end: 71
+                                      file: 0
                                     value:
                                       BinaryOperator:
                                         - Add
                                         - span:
                                             start: 63
                                             end: 67
+                                            file: 0
                                           value:
                                             Constant:
                                               String: a=
                                         - span:
                                             start: 70
                                             end: 71
+                                            file: 0
                                           value:
                                             Constant:
                                               Identifier: a
                                   - span:
                                       start: 74
                                       end: 80
+                                      file: 0
                                     value:
                                       Constant:
                                         String: ", b="
                             - span:
                                 start: 83
                                 end: 84
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: b
                       - span:
                           start: 87
                           end: 93
+                          file: 0
                         value:
                           Constant:
                             String: ", c="
                 - span:
                     start: 96
                     end: 97
+                    file: 0
                   value:
                     Constant:
                       Identifier: c
@@ -123,11 +141,13 @@ Ok:
         span:
           start: 100
           end: 113
+          file: 0
         value:
           Trace:
             span:
               start: 106
               end: 112
+              file: 0
             value:
               Constant:
                 String: "----"
@@ -135,35 +155,41 @@ Ok:
         span:
           start: 137
           end: 166
+          file: 0
         value:
           Trace:
             span:
               start: 143
               end: 165
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 143
                     end: 154
+                    file: 0
                   value:
                     Constant:
                       String: "a && b = "
                 - span:
                     start: 158
                     end: 164
+                    file: 0
                   value:
                     BinaryOperator:
                       - LogicalAnd
                       - span:
                           start: 158
                           end: 159
+                          file: 0
                         value:
                           Constant:
                             Identifier: a
                       - span:
                           start: 163
                           end: 164
+                          file: 0
                         value:
                           Constant:
                             Identifier: b
@@ -171,35 +197,41 @@ Ok:
         span:
           start: 177
           end: 206
+          file: 0
         value:
           Trace:
             span:
               start: 183
               end: 205
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 183
                     end: 194
+                    file: 0
                   value:
                     Constant:
                       String: "b && c = "
                 - span:
                     start: 198
                     end: 204
+                    file: 0
                   value:
                     BinaryOperator:
                       - LogicalAnd
                       - span:
                           start: 198
                           end: 199
+                          file: 0
                         value:
                           Constant:
                             Identifier: b
                       - span:
                           start: 203
                           end: 204
+                          file: 0
                         value:
                           Constant:
                             Identifier: c
@@ -207,11 +239,13 @@ Ok:
         span:
           start: 217
           end: 229
+          file: 0
         value:
           Trace:
             span:
               start: 223
               end: 228
+              file: 0
             value:
               Constant:
                 String: "---"
@@ -219,35 +253,41 @@ Ok:
         span:
           start: 252
           end: 281
+          file: 0
         value:
           Trace:
             span:
               start: 258
               end: 280
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 258
                     end: 269
+                    file: 0
                   value:
                     Constant:
                       String: "a || b = "
                 - span:
                     start: 273
                     end: 279
+                    file: 0
                   value:
                     BinaryOperator:
                       - LogicalOr
                       - span:
                           start: 273
                           end: 274
+                          file: 0
                         value:
                           Constant:
                             Identifier: a
                       - span:
                           start: 278
                           end: 279
+                          file: 0
                         value:
                           Constant:
                             Identifier: b
@@ -255,35 +295,41 @@ Ok:
         span:
           start: 291
           end: 320
+          file: 0
         value:
           Trace:
             span:
               start: 297
               end: 319
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 297
                     end: 308
+                    file: 0
                   value:
                     Constant:
                       String: "b || c = "
                 - span:
                     start: 312
                     end: 318
+                    file: 0
                   value:
                     BinaryOperator:
                       - LogicalOr
                       - span:
                           start: 312
                           end: 313
+                          file: 0
                         value:
                           Constant:
                             Identifier: b
                       - span:
                           start: 317
                           end: 318
+                          file: 0
                         value:
                           Constant:
                             Identifier: c
@@ -291,11 +337,13 @@ Ok:
         span:
           start: 330
           end: 342
+          file: 0
         value:
           Trace:
             span:
               start: 336
               end: 341
+              file: 0
             value:
               Constant:
                 String: "---"
@@ -303,47 +351,55 @@ Ok:
         span:
           start: 392
           end: 431
+          file: 0
         value:
           Trace:
             span:
               start: 398
               end: 430
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 398
                     end: 414
+                    file: 0
                   value:
                     Constant:
                       String: "a && c && b = "
                 - span:
                     start: 418
                     end: 429
+                    file: 0
                   value:
                     BinaryOperator:
                       - LogicalAnd
                       - span:
                           start: 418
                           end: 424
+                          file: 0
                         value:
                           BinaryOperator:
                             - LogicalAnd
                             - span:
                                 start: 418
                                 end: 419
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: a
                             - span:
                                 start: 423
                                 end: 424
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: c
                       - span:
                           start: 428
                           end: 429
+                          file: 0
                         value:
                           Constant:
                             Identifier: b
@@ -351,47 +407,55 @@ Ok:
         span:
           start: 443
           end: 488
+          file: 0
         value:
           Trace:
             span:
               start: 449
               end: 487
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 449
                     end: 469
+                    file: 0
                   value:
                     Constant:
                       String: "((a && c) && b) = "
                 - span:
                     start: 473
                     end: 486
+                    file: 0
                   value:
                     BinaryOperator:
                       - LogicalAnd
                       - span:
                           start: 474
                           end: 480
+                          file: 0
                         value:
                           BinaryOperator:
                             - LogicalAnd
                             - span:
                                 start: 474
                                 end: 475
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: a
                             - span:
                                 start: 479
                                 end: 480
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: c
                       - span:
                           start: 485
                           end: 486
+                          file: 0
                         value:
                           Constant:
                             Identifier: b
@@ -399,11 +463,13 @@ Ok:
         span:
           start: 499
           end: 511
+          file: 0
         value:
           Trace:
             span:
               start: 505
               end: 510
+              file: 0
             value:
               Constant:
                 String: "---"
@@ -411,47 +477,55 @@ Ok:
         span:
           start: 514
           end: 553
+          file: 0
         value:
           Trace:
             span:
               start: 520
               end: 552
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 520
                     end: 536
+                    file: 0
                   value:
                     Constant:
                       String: "a || b || c = "
                 - span:
                     start: 540
                     end: 551
+                    file: 0
                   value:
                     BinaryOperator:
                       - LogicalOr
                       - span:
                           start: 540
                           end: 546
+                          file: 0
                         value:
                           BinaryOperator:
                             - LogicalOr
                             - span:
                                 start: 540
                                 end: 541
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: a
                             - span:
                                 start: 545
                                 end: 546
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: b
                       - span:
                           start: 550
                           end: 551
+                          file: 0
                         value:
                           Constant:
                             Identifier: c
@@ -459,47 +533,55 @@ Ok:
         span:
           start: 563
           end: 608
+          file: 0
         value:
           Trace:
             span:
               start: 569
               end: 607
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 569
                     end: 589
+                    file: 0
                   value:
                     Constant:
                       String: "((a || b) || c) = "
                 - span:
                     start: 593
                     end: 606
+                    file: 0
                   value:
                     BinaryOperator:
                       - LogicalOr
                       - span:
                           start: 594
                           end: 600
+                          file: 0
                         value:
                           BinaryOperator:
                             - LogicalOr
                             - span:
                                 start: 594
                                 end: 595
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: a
                             - span:
                                 start: 599
                                 end: 600
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: b
                       - span:
                           start: 605
                           end: 606
+                          file: 0
                         value:
                           Constant:
                             Identifier: c
@@ -507,11 +589,13 @@ Ok:
         span:
           start: 618
           end: 630
+          file: 0
         value:
           Trace:
             span:
               start: 624
               end: 629
+              file: 0
             value:
               Constant:
                 String: "---"
@@ -519,47 +603,55 @@ Ok:
         span:
           start: 681
           end: 720
+          file: 0
         value:
           Trace:
             span:
               start: 687
               end: 719
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 687
                     end: 703
+                    file: 0
                   value:
                     Constant:
                       String: "a || b && c = "
                 - span:
                     start: 707
                     end: 718
+                    file: 0
                   value:
                     BinaryOperator:
                       - LogicalAnd
                       - span:
                           start: 707
                           end: 713
+                          file: 0
                         value:
                           BinaryOperator:
                             - LogicalOr
                             - span:
                                 start: 707
                                 end: 708
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: a
                             - span:
                                 start: 712
                                 end: 713
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: b
                       - span:
                           start: 717
                           end: 718
+                          file: 0
                         value:
                           Constant:
                             Identifier: c
@@ -567,47 +659,55 @@ Ok:
         span:
           start: 731
           end: 776
+          file: 0
         value:
           Trace:
             span:
               start: 737
               end: 775
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 737
                     end: 757
+                    file: 0
                   value:
                     Constant:
                       String: "(a || (b && c)) = "
                 - span:
                     start: 761
                     end: 774
+                    file: 0
                   value:
                     BinaryOperator:
                       - LogicalOr
                       - span:
                           start: 761
                           end: 762
+                          file: 0
                         value:
                           Constant:
                             Identifier: a
                       - span:
                           start: 767
                           end: 773
+                          file: 0
                         value:
                           BinaryOperator:
                             - LogicalAnd
                             - span:
                                 start: 767
                                 end: 768
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: b
                             - span:
                                 start: 772
                                 end: 773
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: c
@@ -615,11 +715,13 @@ Ok:
         span:
           start: 786
           end: 798
+          file: 0
         value:
           Trace:
             span:
               start: 792
               end: 797
+              file: 0
             value:
               Constant:
                 String: "---"
@@ -628,11 +730,13 @@ Ok:
           span:
             start: 825
             end: 826
+            file: 0
           value: x
         value:
           span:
             start: 829
             end: 834
+            file: 0
           value:
             Constant:
               Boolean: false
@@ -642,11 +746,13 @@ Ok:
           span:
             start: 840
             end: 841
+            file: 0
           value: y
         value:
           span:
             start: 844
             end: 848
+            file: 0
           value:
             Constant:
               Boolean: true
@@ -656,11 +762,13 @@ Ok:
           span:
             start: 854
             end: 855
+            file: 0
           value: z
         value:
           span:
             start: 858
             end: 863
+            file: 0
           value:
             Constant:
               Boolean: false
@@ -669,47 +777,55 @@ Ok:
         span:
           start: 865
           end: 904
+          file: 0
         value:
           Trace:
             span:
               start: 871
               end: 903
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 871
                     end: 887
+                    file: 0
                   value:
                     Constant:
                       String: "x && y || z = "
                 - span:
                     start: 891
                     end: 902
+                    file: 0
                   value:
                     BinaryOperator:
                       - LogicalOr
                       - span:
                           start: 891
                           end: 897
+                          file: 0
                         value:
                           BinaryOperator:
                             - LogicalAnd
                             - span:
                                 start: 891
                                 end: 892
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: x
                             - span:
                                 start: 896
                                 end: 897
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: y
                       - span:
                           start: 901
                           end: 902
+                          file: 0
                         value:
                           Constant:
                             Identifier: z
@@ -717,47 +833,55 @@ Ok:
         span:
           start: 915
           end: 960
+          file: 0
         value:
           Trace:
             span:
               start: 921
               end: 959
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 921
                     end: 941
+                    file: 0
                   value:
                     Constant:
                       String: "((x && y) || z) = "
                 - span:
                     start: 945
                     end: 958
+                    file: 0
                   value:
                     BinaryOperator:
                       - LogicalOr
                       - span:
                           start: 946
                           end: 952
+                          file: 0
                         value:
                           BinaryOperator:
                             - LogicalAnd
                             - span:
                                 start: 946
                                 end: 947
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: x
                             - span:
                                 start: 951
                                 end: 952
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: y
                       - span:
                           start: 957
                           end: 958
+                          file: 0
                         value:
                           Constant:
                             Identifier: z

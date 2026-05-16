@@ -8,1653 +8,1958 @@ input_file: samples/as2_pcode/function_hoisting.pcode
   span:
     start: 0
     end: 12
+    file: 0
   raw: ConstantPool
 - kind: String
   span:
     start: 13
     end: 42
+    file: 0
   raw: function within a function!
 - kind: Comma
   span:
     start: 42
     end: 43
+    file: 0
   raw: ","
 - kind: String
   span:
     start: 44
     end: 61
+    file: 0
   raw: first function!
 - kind: Comma
   span:
     start: 61
     end: 62
+    file: 0
   raw: ","
 - kind: String
   span:
     start: 63
     end: 88
+    file: 0
   raw: functionWithinAFunction
 - kind: Comma
   span:
     start: 88
     end: 89
+    file: 0
   raw: ","
 - kind: String
   span:
     start: 90
     end: 103
+    file: 0
   raw: "firstVar = "
 - kind: Comma
   span:
     start: 103
     end: 104
+    file: 0
   raw: ","
 - kind: String
   span:
     start: 105
     end: 115
+    file: 0
   raw: firstVar
 - kind: Comma
   span:
     start: 115
     end: 116
+    file: 0
   raw: ","
 - kind: String
   span:
     start: 117
     end: 133
+    file: 0
   raw: ", secondVar = "
 - kind: Comma
   span:
     start: 133
     end: 134
+    file: 0
   raw: ","
 - kind: String
   span:
     start: 135
     end: 146
+    file: 0
   raw: secondVar
 - kind: Comma
   span:
     start: 146
     end: 147
+    file: 0
   raw: ","
 - kind: String
   span:
     start: 148
     end: 166
+    file: 0
   raw: second function!
 - kind: Comma
   span:
     start: 166
     end: 167
+    file: 0
   raw: ","
 - kind: String
   span:
     start: 168
     end: 203
+    file: 0
   raw: second function! (but redefined!)
 - kind: Comma
   span:
     start: 203
     end: 204
+    file: 0
   raw: ","
 - kind: String
   span:
     start: 205
     end: 222
+    file: 0
   raw: third function!
 - kind: Comma
   span:
     start: 222
     end: 223
+    file: 0
   raw: ","
 - kind: String
   span:
     start: 224
     end: 242
+    file: 0
   raw: Unused function!
 - kind: Comma
   span:
     start: 242
     end: 243
+    file: 0
   raw: ","
 - kind: String
   span:
     start: 244
     end: 259
+    file: 0
   raw: firstFunction
 - kind: Comma
   span:
     start: 259
     end: 260
+    file: 0
   raw: ","
 - kind: String
   span:
     start: 261
     end: 277
+    file: 0
   raw: secondFunction
 - kind: Comma
   span:
     start: 277
     end: 278
+    file: 0
   raw: ","
 - kind: String
   span:
     start: 279
     end: 294
+    file: 0
   raw: thirdFunction
 - kind: Newline
   span:
     start: 294
     end: 295
+    file: 0
   raw: "\n"
 - kind:
     ActionName: DefineFunction
   span:
     start: 295
     end: 309
+    file: 0
   raw: DefineFunction
 - kind: String
   span:
     start: 310
     end: 325
+    file: 0
   raw: firstFunction
 - kind: Comma
   span:
     start: 325
     end: 326
+    file: 0
   raw: ","
 - kind: Integer
   span:
     start: 327
     end: 328
+    file: 0
   raw: "0"
 - kind: OpenBrace
   span:
     start: 329
     end: 330
+    file: 0
   raw: "{"
 - kind: Newline
   span:
     start: 330
     end: 331
+    file: 0
   raw: "\n"
 - kind:
     ActionName: DefineFunction
   span:
     start: 331
     end: 345
+    file: 0
   raw: DefineFunction
 - kind: String
   span:
     start: 346
     end: 371
+    file: 0
   raw: functionWithinAFunction
 - kind: Comma
   span:
     start: 371
     end: 372
+    file: 0
   raw: ","
 - kind: Integer
   span:
     start: 373
     end: 374
+    file: 0
   raw: "0"
 - kind: OpenBrace
   span:
     start: 375
     end: 376
+    file: 0
   raw: "{"
 - kind: Newline
   span:
     start: 376
     end: 377
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 377
     end: 381
+    file: 0
   raw: Push
 - kind:
     Constant: 0
   span:
     start: 382
     end: 391
+    file: 0
   raw: constant0
 - kind: Newline
   span:
     start: 391
     end: 392
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Trace
   span:
     start: 392
     end: 397
+    file: 0
   raw: Trace
 - kind: Newline
   span:
     start: 397
     end: 398
+    file: 0
   raw: "\n"
 - kind: CloseBrace
   span:
     start: 398
     end: 399
+    file: 0
   raw: "}"
 - kind: Newline
   span:
     start: 399
     end: 400
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 400
     end: 404
+    file: 0
   raw: Push
 - kind:
     Constant: 1
   span:
     start: 405
     end: 414
+    file: 0
   raw: constant1
 - kind: Newline
   span:
     start: 414
     end: 415
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Trace
   span:
     start: 415
     end: 420
+    file: 0
   raw: Trace
 - kind: Newline
   span:
     start: 420
     end: 421
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 421
     end: 425
+    file: 0
   raw: Push
 - kind: Integer
   span:
     start: 426
     end: 427
+    file: 0
   raw: "0"
 - kind: Newline
   span:
     start: 427
     end: 428
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 428
     end: 432
+    file: 0
   raw: Push
 - kind:
     Constant: 2
   span:
     start: 433
     end: 442
+    file: 0
   raw: constant2
 - kind: Newline
   span:
     start: 442
     end: 443
+    file: 0
   raw: "\n"
 - kind:
     ActionName: CallFunction
   span:
     start: 443
     end: 455
+    file: 0
   raw: CallFunction
 - kind: Newline
   span:
     start: 455
     end: 456
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Pop
   span:
     start: 456
     end: 459
+    file: 0
   raw: Pop
 - kind: Newline
   span:
     start: 459
     end: 460
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 460
     end: 464
+    file: 0
   raw: Push
 - kind:
     Constant: 3
   span:
     start: 465
     end: 474
+    file: 0
   raw: constant3
 - kind: Newline
   span:
     start: 474
     end: 475
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 475
     end: 479
+    file: 0
   raw: Push
 - kind:
     Constant: 4
   span:
     start: 480
     end: 489
+    file: 0
   raw: constant4
 - kind: Newline
   span:
     start: 489
     end: 490
+    file: 0
   raw: "\n"
 - kind:
     ActionName: GetVariable
   span:
     start: 490
     end: 501
+    file: 0
   raw: GetVariable
 - kind: Newline
   span:
     start: 501
     end: 502
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Add2
   span:
     start: 502
     end: 506
+    file: 0
   raw: Add2
 - kind: Newline
   span:
     start: 506
     end: 507
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 507
     end: 511
+    file: 0
   raw: Push
 - kind:
     Constant: 5
   span:
     start: 512
     end: 521
+    file: 0
   raw: constant5
 - kind: Newline
   span:
     start: 521
     end: 522
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Add2
   span:
     start: 522
     end: 526
+    file: 0
   raw: Add2
 - kind: Newline
   span:
     start: 526
     end: 527
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 527
     end: 531
+    file: 0
   raw: Push
 - kind:
     Constant: 6
   span:
     start: 532
     end: 541
+    file: 0
   raw: constant6
 - kind: Newline
   span:
     start: 541
     end: 542
+    file: 0
   raw: "\n"
 - kind:
     ActionName: GetVariable
   span:
     start: 542
     end: 553
+    file: 0
   raw: GetVariable
 - kind: Newline
   span:
     start: 553
     end: 554
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Add2
   span:
     start: 554
     end: 558
+    file: 0
   raw: Add2
 - kind: Newline
   span:
     start: 558
     end: 559
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Trace
   span:
     start: 559
     end: 564
+    file: 0
   raw: Trace
 - kind: Newline
   span:
     start: 564
     end: 565
+    file: 0
   raw: "\n"
 - kind: CloseBrace
   span:
     start: 565
     end: 566
+    file: 0
   raw: "}"
 - kind: Newline
   span:
     start: 566
     end: 567
+    file: 0
   raw: "\n"
 - kind:
     ActionName: DefineFunction
   span:
     start: 567
     end: 581
+    file: 0
   raw: DefineFunction
 - kind: String
   span:
     start: 582
     end: 598
+    file: 0
   raw: secondFunction
 - kind: Comma
   span:
     start: 598
     end: 599
+    file: 0
   raw: ","
 - kind: Integer
   span:
     start: 600
     end: 601
+    file: 0
   raw: "0"
 - kind: OpenBrace
   span:
     start: 602
     end: 603
+    file: 0
   raw: "{"
 - kind: Newline
   span:
     start: 603
     end: 604
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 604
     end: 608
+    file: 0
   raw: Push
 - kind:
     Constant: 7
   span:
     start: 609
     end: 618
+    file: 0
   raw: constant7
 - kind: Newline
   span:
     start: 618
     end: 619
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Trace
   span:
     start: 619
     end: 624
+    file: 0
   raw: Trace
 - kind: Newline
   span:
     start: 624
     end: 625
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 625
     end: 629
+    file: 0
   raw: Push
 - kind:
     Constant: 3
   span:
     start: 630
     end: 639
+    file: 0
   raw: constant3
 - kind: Newline
   span:
     start: 639
     end: 640
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 640
     end: 644
+    file: 0
   raw: Push
 - kind:
     Constant: 4
   span:
     start: 645
     end: 654
+    file: 0
   raw: constant4
 - kind: Newline
   span:
     start: 654
     end: 655
+    file: 0
   raw: "\n"
 - kind:
     ActionName: GetVariable
   span:
     start: 655
     end: 666
+    file: 0
   raw: GetVariable
 - kind: Newline
   span:
     start: 666
     end: 667
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Add2
   span:
     start: 667
     end: 671
+    file: 0
   raw: Add2
 - kind: Newline
   span:
     start: 671
     end: 672
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 672
     end: 676
+    file: 0
   raw: Push
 - kind:
     Constant: 5
   span:
     start: 677
     end: 686
+    file: 0
   raw: constant5
 - kind: Newline
   span:
     start: 686
     end: 687
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Add2
   span:
     start: 687
     end: 691
+    file: 0
   raw: Add2
 - kind: Newline
   span:
     start: 691
     end: 692
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 692
     end: 696
+    file: 0
   raw: Push
 - kind:
     Constant: 6
   span:
     start: 697
     end: 706
+    file: 0
   raw: constant6
 - kind: Newline
   span:
     start: 706
     end: 707
+    file: 0
   raw: "\n"
 - kind:
     ActionName: GetVariable
   span:
     start: 707
     end: 718
+    file: 0
   raw: GetVariable
 - kind: Newline
   span:
     start: 718
     end: 719
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Add2
   span:
     start: 719
     end: 723
+    file: 0
   raw: Add2
 - kind: Newline
   span:
     start: 723
     end: 724
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Trace
   span:
     start: 724
     end: 729
+    file: 0
   raw: Trace
 - kind: Newline
   span:
     start: 729
     end: 730
+    file: 0
   raw: "\n"
 - kind: CloseBrace
   span:
     start: 730
     end: 731
+    file: 0
   raw: "}"
 - kind: Newline
   span:
     start: 731
     end: 732
+    file: 0
   raw: "\n"
 - kind:
     ActionName: DefineFunction
   span:
     start: 732
     end: 746
+    file: 0
   raw: DefineFunction
 - kind: String
   span:
     start: 747
     end: 763
+    file: 0
   raw: secondFunction
 - kind: Comma
   span:
     start: 763
     end: 764
+    file: 0
   raw: ","
 - kind: Integer
   span:
     start: 765
     end: 766
+    file: 0
   raw: "0"
 - kind: OpenBrace
   span:
     start: 767
     end: 768
+    file: 0
   raw: "{"
 - kind: Newline
   span:
     start: 768
     end: 769
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 769
     end: 773
+    file: 0
   raw: Push
 - kind:
     Constant: 8
   span:
     start: 774
     end: 783
+    file: 0
   raw: constant8
 - kind: Newline
   span:
     start: 783
     end: 784
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Trace
   span:
     start: 784
     end: 789
+    file: 0
   raw: Trace
 - kind: Newline
   span:
     start: 789
     end: 790
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 790
     end: 794
+    file: 0
   raw: Push
 - kind:
     Constant: 3
   span:
     start: 795
     end: 804
+    file: 0
   raw: constant3
 - kind: Newline
   span:
     start: 804
     end: 805
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 805
     end: 809
+    file: 0
   raw: Push
 - kind:
     Constant: 4
   span:
     start: 810
     end: 819
+    file: 0
   raw: constant4
 - kind: Newline
   span:
     start: 819
     end: 820
+    file: 0
   raw: "\n"
 - kind:
     ActionName: GetVariable
   span:
     start: 820
     end: 831
+    file: 0
   raw: GetVariable
 - kind: Newline
   span:
     start: 831
     end: 832
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Add2
   span:
     start: 832
     end: 836
+    file: 0
   raw: Add2
 - kind: Newline
   span:
     start: 836
     end: 837
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 837
     end: 841
+    file: 0
   raw: Push
 - kind:
     Constant: 5
   span:
     start: 842
     end: 851
+    file: 0
   raw: constant5
 - kind: Newline
   span:
     start: 851
     end: 852
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Add2
   span:
     start: 852
     end: 856
+    file: 0
   raw: Add2
 - kind: Newline
   span:
     start: 856
     end: 857
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 857
     end: 861
+    file: 0
   raw: Push
 - kind:
     Constant: 6
   span:
     start: 862
     end: 871
+    file: 0
   raw: constant6
 - kind: Newline
   span:
     start: 871
     end: 872
+    file: 0
   raw: "\n"
 - kind:
     ActionName: GetVariable
   span:
     start: 872
     end: 883
+    file: 0
   raw: GetVariable
 - kind: Newline
   span:
     start: 883
     end: 884
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Add2
   span:
     start: 884
     end: 888
+    file: 0
   raw: Add2
 - kind: Newline
   span:
     start: 888
     end: 889
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Trace
   span:
     start: 889
     end: 894
+    file: 0
   raw: Trace
 - kind: Newline
   span:
     start: 894
     end: 895
+    file: 0
   raw: "\n"
 - kind: CloseBrace
   span:
     start: 895
     end: 896
+    file: 0
   raw: "}"
 - kind: Newline
   span:
     start: 896
     end: 897
+    file: 0
   raw: "\n"
 - kind:
     ActionName: DefineFunction
   span:
     start: 897
     end: 911
+    file: 0
   raw: DefineFunction
 - kind: String
   span:
     start: 912
     end: 927
+    file: 0
   raw: thirdFunction
 - kind: Comma
   span:
     start: 927
     end: 928
+    file: 0
   raw: ","
 - kind: Integer
   span:
     start: 929
     end: 930
+    file: 0
   raw: "0"
 - kind: OpenBrace
   span:
     start: 931
     end: 932
+    file: 0
   raw: "{"
 - kind: Newline
   span:
     start: 932
     end: 933
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 933
     end: 937
+    file: 0
   raw: Push
 - kind:
     Constant: 9
   span:
     start: 938
     end: 947
+    file: 0
   raw: constant9
 - kind: Newline
   span:
     start: 947
     end: 948
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Trace
   span:
     start: 948
     end: 953
+    file: 0
   raw: Trace
 - kind: Newline
   span:
     start: 953
     end: 954
+    file: 0
   raw: "\n"
 - kind: CloseBrace
   span:
     start: 954
     end: 955
+    file: 0
   raw: "}"
 - kind: Newline
   span:
     start: 955
     end: 956
+    file: 0
   raw: "\n"
 - kind:
     ActionName: DefineFunction
   span:
     start: 956
     end: 970
+    file: 0
   raw: DefineFunction
 - kind: String
   span:
     start: 971
     end: 987
+    file: 0
   raw: unusedFunction
 - kind: Comma
   span:
     start: 987
     end: 988
+    file: 0
   raw: ","
 - kind: Integer
   span:
     start: 989
     end: 990
+    file: 0
   raw: "0"
 - kind: OpenBrace
   span:
     start: 991
     end: 992
+    file: 0
   raw: "{"
 - kind: Newline
   span:
     start: 992
     end: 993
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 993
     end: 997
+    file: 0
   raw: Push
 - kind:
     Constant: 10
   span:
     start: 998
     end: 1008
+    file: 0
   raw: constant10
 - kind: Newline
   span:
     start: 1008
     end: 1009
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Trace
   span:
     start: 1009
     end: 1014
+    file: 0
   raw: Trace
 - kind: Newline
   span:
     start: 1014
     end: 1015
+    file: 0
   raw: "\n"
 - kind: CloseBrace
   span:
     start: 1015
     end: 1016
+    file: 0
   raw: "}"
 - kind: Newline
   span:
     start: 1016
     end: 1017
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 1017
     end: 1021
+    file: 0
   raw: Push
 - kind:
     Constant: 4
   span:
     start: 1022
     end: 1031
+    file: 0
   raw: constant4
 - kind: Newline
   span:
     start: 1031
     end: 1032
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 1032
     end: 1036
+    file: 0
   raw: Push
 - kind: Integer
   span:
     start: 1037
     end: 1038
+    file: 0
   raw: "1"
 - kind: Newline
   span:
     start: 1038
     end: 1039
+    file: 0
   raw: "\n"
 - kind:
     ActionName: DefineLocal
   span:
     start: 1039
     end: 1050
+    file: 0
   raw: DefineLocal
 - kind: Newline
   span:
     start: 1050
     end: 1051
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 1051
     end: 1055
+    file: 0
   raw: Push
 - kind: Integer
   span:
     start: 1056
     end: 1057
+    file: 0
   raw: "0"
 - kind: Newline
   span:
     start: 1057
     end: 1058
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 1058
     end: 1062
+    file: 0
   raw: Push
 - kind:
     Constant: 11
   span:
     start: 1063
     end: 1073
+    file: 0
   raw: constant11
 - kind: Newline
   span:
     start: 1073
     end: 1074
+    file: 0
   raw: "\n"
 - kind:
     ActionName: CallFunction
   span:
     start: 1074
     end: 1086
+    file: 0
   raw: CallFunction
 - kind: Newline
   span:
     start: 1086
     end: 1087
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Pop
   span:
     start: 1087
     end: 1090
+    file: 0
   raw: Pop
 - kind: Newline
   span:
     start: 1090
     end: 1091
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 1091
     end: 1095
+    file: 0
   raw: Push
 - kind: Integer
   span:
     start: 1096
     end: 1097
+    file: 0
   raw: "0"
 - kind: Newline
   span:
     start: 1097
     end: 1098
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 1098
     end: 1102
+    file: 0
   raw: Push
 - kind:
     Constant: 12
   span:
     start: 1103
     end: 1113
+    file: 0
   raw: constant12
 - kind: Newline
   span:
     start: 1113
     end: 1114
+    file: 0
   raw: "\n"
 - kind:
     ActionName: CallFunction
   span:
     start: 1114
     end: 1126
+    file: 0
   raw: CallFunction
 - kind: Newline
   span:
     start: 1126
     end: 1127
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Pop
   span:
     start: 1127
     end: 1130
+    file: 0
   raw: Pop
 - kind: Newline
   span:
     start: 1130
     end: 1131
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 1131
     end: 1135
+    file: 0
   raw: Push
 - kind:
     Constant: 6
   span:
     start: 1136
     end: 1145
+    file: 0
   raw: constant6
 - kind: Newline
   span:
     start: 1145
     end: 1146
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 1146
     end: 1150
+    file: 0
   raw: Push
 - kind: Integer
   span:
     start: 1151
     end: 1152
+    file: 0
   raw: "2"
 - kind: Newline
   span:
     start: 1152
     end: 1153
+    file: 0
   raw: "\n"
 - kind:
     ActionName: DefineLocal
   span:
     start: 1153
     end: 1164
+    file: 0
   raw: DefineLocal
 - kind: Newline
   span:
     start: 1164
     end: 1165
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 1165
     end: 1169
+    file: 0
   raw: Push
 - kind: Integer
   span:
     start: 1170
     end: 1171
+    file: 0
   raw: "0"
 - kind: Newline
   span:
     start: 1171
     end: 1172
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 1172
     end: 1176
+    file: 0
   raw: Push
 - kind:
     Constant: 11
   span:
     start: 1177
     end: 1187
+    file: 0
   raw: constant11
 - kind: Newline
   span:
     start: 1187
     end: 1188
+    file: 0
   raw: "\n"
 - kind:
     ActionName: CallFunction
   span:
     start: 1188
     end: 1200
+    file: 0
   raw: CallFunction
 - kind: Newline
   span:
     start: 1200
     end: 1201
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Pop
   span:
     start: 1201
     end: 1204
+    file: 0
   raw: Pop
 - kind: Newline
   span:
     start: 1204
     end: 1205
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 1205
     end: 1209
+    file: 0
   raw: Push
 - kind: Integer
   span:
     start: 1210
     end: 1211
+    file: 0
   raw: "0"
 - kind: Newline
   span:
     start: 1211
     end: 1212
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 1212
     end: 1216
+    file: 0
   raw: Push
 - kind:
     Constant: 12
   span:
     start: 1217
     end: 1227
+    file: 0
   raw: constant12
 - kind: Newline
   span:
     start: 1227
     end: 1228
+    file: 0
   raw: "\n"
 - kind:
     ActionName: CallFunction
   span:
     start: 1228
     end: 1240
+    file: 0
   raw: CallFunction
 - kind: Newline
   span:
     start: 1240
     end: 1241
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Pop
   span:
     start: 1241
     end: 1244
+    file: 0
   raw: Pop
 - kind: Newline
   span:
     start: 1244
     end: 1245
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 1245
     end: 1249
+    file: 0
   raw: Push
 - kind: Integer
   span:
     start: 1250
     end: 1251
+    file: 0
   raw: "0"
 - kind: Newline
   span:
     start: 1251
     end: 1252
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 1252
     end: 1256
+    file: 0
   raw: Push
 - kind:
     Constant: 11
   span:
     start: 1257
     end: 1267
+    file: 0
   raw: constant11
 - kind: Newline
   span:
     start: 1267
     end: 1268
+    file: 0
   raw: "\n"
 - kind:
     ActionName: CallFunction
   span:
     start: 1268
     end: 1280
+    file: 0
   raw: CallFunction
 - kind: Newline
   span:
     start: 1280
     end: 1281
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Pop
   span:
     start: 1281
     end: 1284
+    file: 0
   raw: Pop
 - kind: Newline
   span:
     start: 1284
     end: 1285
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 1285
     end: 1289
+    file: 0
   raw: Push
 - kind: Integer
   span:
     start: 1290
     end: 1291
+    file: 0
   raw: "0"
 - kind: Newline
   span:
     start: 1291
     end: 1292
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 1292
     end: 1296
+    file: 0
   raw: Push
 - kind:
     Constant: 12
   span:
     start: 1297
     end: 1307
+    file: 0
   raw: constant12
 - kind: Newline
   span:
     start: 1307
     end: 1308
+    file: 0
   raw: "\n"
 - kind:
     ActionName: CallFunction
   span:
     start: 1308
     end: 1320
+    file: 0
   raw: CallFunction
 - kind: Newline
   span:
     start: 1320
     end: 1321
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Pop
   span:
     start: 1321
     end: 1324
+    file: 0
   raw: Pop
 - kind: Newline
   span:
     start: 1324
     end: 1325
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 1325
     end: 1329
+    file: 0
   raw: Push
 - kind: Integer
   span:
     start: 1330
     end: 1331
+    file: 0
   raw: "0"
 - kind: Newline
   span:
     start: 1331
     end: 1332
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 1332
     end: 1336
+    file: 0
   raw: Push
 - kind:
     Constant: 11
   span:
     start: 1337
     end: 1347
+    file: 0
   raw: constant11
 - kind: Newline
   span:
     start: 1347
     end: 1348
+    file: 0
   raw: "\n"
 - kind:
     ActionName: CallFunction
   span:
     start: 1348
     end: 1360
+    file: 0
   raw: CallFunction
 - kind: Newline
   span:
     start: 1360
     end: 1361
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Pop
   span:
     start: 1361
     end: 1364
+    file: 0
   raw: Pop
 - kind: Newline
   span:
     start: 1364
     end: 1365
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 1365
     end: 1369
+    file: 0
   raw: Push
 - kind: Integer
   span:
     start: 1370
     end: 1371
+    file: 0
   raw: "0"
 - kind: Newline
   span:
     start: 1371
     end: 1372
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 1372
     end: 1376
+    file: 0
   raw: Push
 - kind:
     Constant: 12
   span:
     start: 1377
     end: 1387
+    file: 0
   raw: constant12
 - kind: Newline
   span:
     start: 1387
     end: 1388
+    file: 0
   raw: "\n"
 - kind:
     ActionName: CallFunction
   span:
     start: 1388
     end: 1400
+    file: 0
   raw: CallFunction
 - kind: Newline
   span:
     start: 1400
     end: 1401
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Pop
   span:
     start: 1401
     end: 1404
+    file: 0
   raw: Pop
 - kind: Newline
   span:
     start: 1404
     end: 1405
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 1405
     end: 1409
+    file: 0
   raw: Push
 - kind: Integer
   span:
     start: 1410
     end: 1411
+    file: 0
   raw: "0"
 - kind: Newline
   span:
     start: 1411
     end: 1412
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 1412
     end: 1416
+    file: 0
   raw: Push
 - kind:
     Constant: 2
   span:
     start: 1417
     end: 1426
+    file: 0
   raw: constant2
 - kind: Newline
   span:
     start: 1426
     end: 1427
+    file: 0
   raw: "\n"
 - kind:
     ActionName: CallFunction
   span:
     start: 1427
     end: 1439
+    file: 0
   raw: CallFunction
 - kind: Newline
   span:
     start: 1439
     end: 1440
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Pop
   span:
     start: 1440
     end: 1443
+    file: 0
   raw: Pop
 - kind: Newline
   span:
     start: 1443
     end: 1444
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 1444
     end: 1448
+    file: 0
   raw: Push
 - kind: Integer
   span:
     start: 1449
     end: 1450
+    file: 0
   raw: "0"
 - kind: Newline
   span:
     start: 1450
     end: 1451
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Push
   span:
     start: 1451
     end: 1455
+    file: 0
   raw: Push
 - kind:
     Constant: 13
   span:
     start: 1456
     end: 1466
+    file: 0
   raw: constant13
 - kind: Newline
   span:
     start: 1466
     end: 1467
+    file: 0
   raw: "\n"
 - kind:
     ActionName: CallFunction
   span:
     start: 1467
     end: 1479
+    file: 0
   raw: CallFunction
 - kind: Newline
   span:
     start: 1479
     end: 1480
+    file: 0
   raw: "\n"
 - kind:
     ActionName: Pop
   span:
     start: 1480
     end: 1483
+    file: 0
   raw: Pop
 - kind: Newline
   span:
     start: 1483
     end: 1484
+    file: 0
   raw: "\n"

@@ -5,19 +5,21 @@ pub(crate) mod tokens;
 
 use crate::internal::as2::lexer::operator::lex_operator;
 use crate::internal::as2::lexer::tokens::{Keyword, QuoteKind, Token, TokenKind};
-use crate::internal::span::Span;
+use crate::internal::span::{FileId, Span};
 use winnow::stream::{AsBStr, AsChar, FindSlice, Location, Stream as _};
 
 pub(crate) type Stream<'i> = winnow::stream::LocatingSlice<&'i str>;
 
 pub struct Lexer<'i> {
     stream: Stream<'i>,
+    file_id: FileId,
 }
 
 impl<'i> Lexer<'i> {
-    pub fn new(input: &'i str) -> Self {
+    pub fn new(input: &'i str, file_id: FileId) -> Self {
         Self {
             stream: Stream::new(input.strip_prefix('\u{FEFF}').unwrap_or(input)),
+            file_id,
         }
     }
 
@@ -35,55 +37,55 @@ impl<'a> Iterator for Lexer<'a> {
     fn next(&mut self) -> Option<Self::Item> {
         loop {
             let peek_byte = self.stream.as_bstr().first()?;
-            if let Some(token) = process_token(*peek_byte, &mut self.stream) {
+            if let Some(token) = process_token(*peek_byte, &mut self.stream, self.file_id) {
                 return Some(token);
             }
         }
     }
 }
 
-fn process_token<'a>(peek_byte: u8, stream: &mut Stream<'a>) -> Option<Token<'a>> {
+fn process_token<'a>(peek_byte: u8, stream: &mut Stream<'a>, file_id: FileId) -> Option<Token<'a>> {
     match peek_byte {
         b' ' | b'\t' => {
             stream.next_slice(1);
             None
         }
-        b'/' => lex_comment_or_divide(stream),
-        b'(' => Some(lex_ascii_char(stream, TokenKind::OpenParen)),
-        b',' => Some(lex_ascii_char(stream, TokenKind::Comma)),
-        b')' => Some(lex_ascii_char(stream, TokenKind::CloseParen)),
-        b'{' => Some(lex_ascii_char(stream, TokenKind::OpenBrace)),
-        b'}' => Some(lex_ascii_char(stream, TokenKind::CloseBrace)),
-        b'[' => Some(lex_ascii_char(stream, TokenKind::OpenBracket)),
-        b']' => Some(lex_ascii_char(stream, TokenKind::CloseBracket)),
-        b';' => Some(lex_ascii_char(stream, TokenKind::Semicolon)),
+        b'/' => lex_comment_or_divide(stream, file_id),
+        b'(' => Some(lex_ascii_char(stream, TokenKind::OpenParen, file_id)),
+        b',' => Some(lex_ascii_char(stream, TokenKind::Comma, file_id)),
+        b')' => Some(lex_ascii_char(stream, TokenKind::CloseParen, file_id)),
+        b'{' => Some(lex_ascii_char(stream, TokenKind::OpenBrace, file_id)),
+        b'}' => Some(lex_ascii_char(stream, TokenKind::CloseBrace, file_id)),
+        b'[' => Some(lex_ascii_char(stream, TokenKind::OpenBracket, file_id)),
+        b']' => Some(lex_ascii_char(stream, TokenKind::CloseBracket, file_id)),
+        b';' => Some(lex_ascii_char(stream, TokenKind::Semicolon, file_id)),
         b'=' | b'+' | b'-' | b'*' | b'%' | b'&' | b'^' | b'|' | b'~' | b'>' | b'<' | b'!' => {
-            Some(lex_operator(stream))
+            Some(lex_operator(stream, file_id))
         }
-        b'\r' => Some(lex_crlf(stream)),
-        b'\n' => Some(lex_ascii_char(stream, TokenKind::Newline)),
-        b'"' => Some(lex_string(stream, QuoteKind::Double)),
-        b'\'' => Some(lex_string(stream, QuoteKind::Single)),
-        b'?' => Some(lex_ascii_char(stream, TokenKind::Question)),
-        b':' => Some(lex_ascii_char(stream, TokenKind::Colon)),
-        b'a'..=b'z' | b'A'..=b'Z' | b'_' | b'$' => Some(lex_identifier_or_keyword(stream)),
-        b'0'..=b'9' | b'.' => Some(lex_integer_or_float(stream)),
-        b'@' => Some(lex_pcode(stream)),
-        b'#' => Some(lex_ascii_char(stream, TokenKind::Hash)),
+        b'\r' => Some(lex_crlf(stream, file_id)),
+        b'\n' => Some(lex_ascii_char(stream, TokenKind::Newline, file_id)),
+        b'"' => Some(lex_string(stream, QuoteKind::Double, file_id)),
+        b'\'' => Some(lex_string(stream, QuoteKind::Single, file_id)),
+        b'?' => Some(lex_ascii_char(stream, TokenKind::Question, file_id)),
+        b':' => Some(lex_ascii_char(stream, TokenKind::Colon, file_id)),
+        b'a'..=b'z' | b'A'..=b'Z' | b'_' | b'$' => Some(lex_identifier_or_keyword(stream, file_id)),
+        b'0'..=b'9' | b'.' => Some(lex_integer_or_float(stream, file_id)),
+        b'@' => Some(lex_pcode(stream, file_id)),
+        b'#' => Some(lex_ascii_char(stream, TokenKind::Hash, file_id)),
         _ => {
             let start = stream.current_token_start();
             let raw = stream.next_slice(stream.eof_offset());
             let end = stream.previous_token_end();
             Some(Token::new(
                 TokenKind::Unknown,
-                Span::new_unchecked(start, end),
+                Span::new_unchecked(start, end, file_id),
                 raw,
             ))
         }
     }
 }
 
-fn lex_comment_or_divide<'a>(stream: &mut Stream<'a>) -> Option<Token<'a>> {
+fn lex_comment_or_divide<'a>(stream: &mut Stream<'a>, file_id: FileId) -> Option<Token<'a>> {
     let next = stream.as_bstr().get(1);
     match next {
         Some(b'/') => {
@@ -94,7 +96,7 @@ fn lex_comment_or_divide<'a>(stream: &mut Stream<'a>) -> Option<Token<'a>> {
             skip_block_comment(stream);
             None
         }
-        _ => Some(lex_operator(stream)),
+        _ => Some(lex_operator(stream, file_id)),
     }
 }
 
@@ -123,18 +125,18 @@ fn skip_block_comment(stream: &mut Stream<'_>) {
     }
 }
 
-fn lex_ascii_char<'a>(stream: &mut Stream<'a>, kind: TokenKind) -> Token<'a> {
+fn lex_ascii_char<'a>(stream: &mut Stream<'a>, kind: TokenKind, file_id: FileId) -> Token<'a> {
     let start = stream.current_token_start();
 
     let offset = 1; // an ascii character
     let raw = stream.next_slice(offset);
 
     let end = stream.previous_token_end();
-    let span = Span::new_unchecked(start, end);
+    let span = Span::new_unchecked(start, end, file_id);
     Token::new(kind, span, raw)
 }
 
-fn lex_integer_or_float<'a>(stream: &mut Stream<'a>) -> Token<'a> {
+fn lex_integer_or_float<'a>(stream: &mut Stream<'a>, file_id: FileId) -> Token<'a> {
     let start = stream.current_token_start();
     let start_checkpoint = stream.checkpoint();
 
@@ -185,15 +187,15 @@ fn lex_integer_or_float<'a>(stream: &mut Stream<'a>) -> Token<'a> {
     if raw.starts_with('.') && !raw.contains(|c: char| c.is_ascii_digit()) {
         // Super special case: No digits and starts with a period? Let's just treat it as a period
         stream.reset(&start_checkpoint);
-        return lex_ascii_char(stream, TokenKind::Period);
+        return lex_ascii_char(stream, TokenKind::Period, file_id);
     }
 
     let end = stream.previous_token_end();
-    let span = Span::new_unchecked(start, end);
+    let span = Span::new_unchecked(start, end, file_id);
     Token::new(kind, span, raw)
 }
 
-fn lex_crlf<'a>(stream: &mut Stream<'a>) -> Token<'a> {
+fn lex_crlf<'a>(stream: &mut Stream<'a>, file_id: FileId) -> Token<'a> {
     let start = stream.current_token_start();
 
     let mut offset = '\r'.len_utf8();
@@ -204,12 +206,12 @@ fn lex_crlf<'a>(stream: &mut Stream<'a>) -> Token<'a> {
 
     let raw = stream.next_slice(offset);
     let end = stream.previous_token_end();
-    let span = Span::new_unchecked(start, end);
+    let span = Span::new_unchecked(start, end, file_id);
 
     Token::new(TokenKind::Newline, span, raw)
 }
 
-fn lex_pcode<'a>(stream: &mut Stream<'a>) -> Token<'a> {
+fn lex_pcode<'a>(stream: &mut Stream<'a>, file_id: FileId) -> Token<'a> {
     if !stream.as_bstr().starts_with(b"@PCode {") {
         // TODO, lexing should be able to throw errors
         panic!("Invalid @PCode token! Syntax must be \"@PCode {{\" pcode here \"}}");
@@ -243,12 +245,12 @@ fn lex_pcode<'a>(stream: &mut Stream<'a>) -> Token<'a> {
     let raw = stream.next_slice(end - start - 1);
     stream.next_slice(1);
 
-    let span = Span::new_unchecked(start, end);
+    let span = Span::new_unchecked(start, end, file_id);
     Token::new(TokenKind::PCode, span, raw)
 }
 
 pub(crate) const ESCAPE: u8 = b'\\';
-fn lex_string<'a>(stream: &mut Stream<'a>, kind: QuoteKind) -> Token<'a> {
+fn lex_string<'a>(stream: &mut Stream<'a>, kind: QuoteKind, file_id: FileId) -> Token<'a> {
     let start = stream.current_token_start();
 
     let offset = 1; // quotation mark
@@ -293,11 +295,11 @@ fn lex_string<'a>(stream: &mut Stream<'a>, kind: QuoteKind) -> Token<'a> {
     let raw = stream.next_slice(end - start - 2);
     stream.next_slice(1);
 
-    let span = Span::new_unchecked(start, end);
+    let span = Span::new_unchecked(start, end, file_id);
     Token::new(TokenKind::String(kind), span, raw)
 }
 
-fn lex_identifier_or_keyword<'a>(stream: &mut Stream<'a>) -> Token<'a> {
+fn lex_identifier_or_keyword<'a>(stream: &mut Stream<'a>, file_id: FileId) -> Token<'a> {
     let start = stream.current_token_start();
     let offset = stream
         .as_bstr()
@@ -306,7 +308,7 @@ fn lex_identifier_or_keyword<'a>(stream: &mut Stream<'a>) -> Token<'a> {
     let raw = stream.next_slice(offset);
 
     let end = stream.previous_token_end();
-    let span = Span::new_unchecked(start, end);
+    let span = Span::new_unchecked(start, end, file_id);
 
     let kind = match raw {
         "var" => TokenKind::Keyword(Keyword::Var),

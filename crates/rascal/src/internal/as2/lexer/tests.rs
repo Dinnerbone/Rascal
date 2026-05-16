@@ -1,9 +1,12 @@
 use crate::internal::as2::lexer::Lexer;
 use crate::internal::as2::lexer::operator::Operator;
 use crate::internal::as2::lexer::tokens::{Keyword, QuoteKind, Token, TokenKind};
+use crate::internal::span::FileId;
+
+const TEST_FILE_ID: FileId = FileId::new(0);
 
 fn kinds(input: &str) -> Vec<TokenKind> {
-    Lexer::new(input)
+    Lexer::new(input, TEST_FILE_ID)
         .into_vec()
         .into_iter()
         .map(|t| t.kind)
@@ -11,7 +14,7 @@ fn kinds(input: &str) -> Vec<TokenKind> {
 }
 
 fn raws(input: &str) -> Vec<String> {
-    Lexer::new(input)
+    Lexer::new(input, TEST_FILE_ID)
         .into_vec()
         .into_iter()
         .map(|t| t.raw.to_string())
@@ -22,7 +25,7 @@ fn raws(input: &str) -> Vec<String> {
 fn test_all_samples() {
     insta::glob!("../../../../../../samples/as2", "**/*.as", |path| {
         let src = std::fs::read_to_string(path).expect("failed to read sample");
-        let tokens = Lexer::new(&src).into_vec();
+        let tokens = Lexer::new(&src, TEST_FILE_ID).into_vec();
         insta::assert_yaml_snapshot!(tokens);
     });
 }
@@ -30,25 +33,37 @@ fn test_all_samples() {
 #[test]
 fn test_line_comment() {
     let input = "// this is a line comment\n";
-    assert_eq!(Lexer::new(input).into_vec(), Vec::<Token>::new());
+    assert_eq!(
+        Lexer::new(input, TEST_FILE_ID).into_vec(),
+        Vec::<Token>::new()
+    );
 }
 
 #[test]
 fn test_empty_line_comment() {
     let input = "//";
-    assert_eq!(Lexer::new(input).into_vec(), Vec::<Token>::new());
+    assert_eq!(
+        Lexer::new(input, TEST_FILE_ID).into_vec(),
+        Vec::<Token>::new()
+    );
 }
 
 #[test]
 fn test_block_comment() {
     let input = "/* this is a block comment */";
-    assert_eq!(Lexer::new(input).into_vec(), Vec::<Token>::new());
+    assert_eq!(
+        Lexer::new(input, TEST_FILE_ID).into_vec(),
+        Vec::<Token>::new()
+    );
 }
 
 #[test]
 fn test_non_ending_block_comment() {
     let input = "/*";
-    assert_eq!(Lexer::new(input).into_vec(), Vec::<Token>::new());
+    assert_eq!(
+        Lexer::new(input, TEST_FILE_ID).into_vec(),
+        Vec::<Token>::new()
+    );
 }
 
 #[test]

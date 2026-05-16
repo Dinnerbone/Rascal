@@ -10,11 +10,13 @@ Ok:
           span:
             start: 4
             end: 5
+            file: 0
           value: a
         value:
           span:
             start: 8
             end: 10
+            file: 0
           value:
             Constant:
               Integer: 16
@@ -24,11 +26,13 @@ Ok:
           span:
             start: 32
             end: 33
+            file: 0
           value: b
         value:
           span:
             start: 36
             end: 37
+            file: 0
           value:
             Constant:
               Integer: 2
@@ -38,11 +42,13 @@ Ok:
           span:
             start: 43
             end: 44
+            file: 0
           value: c
         value:
           span:
             start: 47
             end: 48
+            file: 0
           value:
             Constant:
               Integer: 1
@@ -51,71 +57,83 @@ Ok:
         span:
           start: 51
           end: 92
+          file: 0
         value:
           Trace:
             span:
               start: 57
               end: 91
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 57
                     end: 87
+                    file: 0
                   value:
                     BinaryOperator:
                       - Add
                       - span:
                           start: 57
                           end: 78
+                          file: 0
                         value:
                           BinaryOperator:
                             - Add
                             - span:
                                 start: 57
                                 end: 74
+                                file: 0
                               value:
                                 BinaryOperator:
                                   - Add
                                   - span:
                                       start: 57
                                       end: 65
+                                      file: 0
                                     value:
                                       BinaryOperator:
                                         - Add
                                         - span:
                                             start: 57
                                             end: 61
+                                            file: 0
                                           value:
                                             Constant:
                                               String: a=
                                         - span:
                                             start: 64
                                             end: 65
+                                            file: 0
                                           value:
                                             Constant:
                                               Identifier: a
                                   - span:
                                       start: 68
                                       end: 74
+                                      file: 0
                                     value:
                                       Constant:
                                         String: ", b="
                             - span:
                                 start: 77
                                 end: 78
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: b
                       - span:
                           start: 81
                           end: 87
+                          file: 0
                         value:
                           Constant:
                             String: ", c="
                 - span:
                     start: 90
                     end: 91
+                    file: 0
                   value:
                     Constant:
                       Identifier: c
@@ -123,11 +141,13 @@ Ok:
         span:
           start: 94
           end: 107
+          file: 0
         value:
           Trace:
             span:
               start: 100
               end: 106
+              file: 0
             value:
               Constant:
                 String: "----"
@@ -135,47 +155,55 @@ Ok:
         span:
           start: 138
           end: 177
+          file: 0
         value:
           Trace:
             span:
               start: 144
               end: 176
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 144
                     end: 160
+                    file: 0
                   value:
                     Constant:
                       String: "a << b >> c = "
                 - span:
                     start: 164
                     end: 175
+                    file: 0
                   value:
                     BinaryOperator:
                       - BitShiftRight
                       - span:
                           start: 164
                           end: 170
+                          file: 0
                         value:
                           BinaryOperator:
                             - BitShiftLeft
                             - span:
                                 start: 164
                                 end: 165
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: a
                             - span:
                                 start: 169
                                 end: 170
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: b
                       - span:
                           start: 174
                           end: 175
+                          file: 0
                         value:
                           Constant:
                             Identifier: c
@@ -183,47 +211,55 @@ Ok:
         span:
           start: 185
           end: 230
+          file: 0
         value:
           Trace:
             span:
               start: 191
               end: 229
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 191
                     end: 211
+                    file: 0
                   value:
                     Constant:
                       String: "((a << b) >> c) = "
                 - span:
                     start: 215
                     end: 228
+                    file: 0
                   value:
                     BinaryOperator:
                       - BitShiftRight
                       - span:
                           start: 216
                           end: 222
+                          file: 0
                         value:
                           BinaryOperator:
                             - BitShiftLeft
                             - span:
                                 start: 216
                                 end: 217
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: a
                             - span:
                                 start: 221
                                 end: 222
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: b
                       - span:
                           start: 227
                           end: 228
+                          file: 0
                         value:
                           Constant:
                             Identifier: c
@@ -231,11 +267,13 @@ Ok:
         span:
           start: 238
           end: 250
+          file: 0
         value:
           Trace:
             span:
               start: 244
               end: 249
+              file: 0
             value:
               Constant:
                 String: "---"
@@ -243,47 +281,55 @@ Ok:
         span:
           start: 253
           end: 292
+          file: 0
         value:
           Trace:
             span:
               start: 259
               end: 291
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 259
                     end: 275
+                    file: 0
                   value:
                     Constant:
                       String: "a >> b << c = "
                 - span:
                     start: 279
                     end: 290
+                    file: 0
                   value:
                     BinaryOperator:
                       - BitShiftLeft
                       - span:
                           start: 279
                           end: 285
+                          file: 0
                         value:
                           BinaryOperator:
                             - BitShiftRight
                             - span:
                                 start: 279
                                 end: 280
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: a
                             - span:
                                 start: 284
                                 end: 285
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: b
                       - span:
                           start: 289
                           end: 290
+                          file: 0
                         value:
                           Constant:
                             Identifier: c
@@ -291,47 +337,55 @@ Ok:
         span:
           start: 299
           end: 344
+          file: 0
         value:
           Trace:
             span:
               start: 305
               end: 343
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 305
                     end: 325
+                    file: 0
                   value:
                     Constant:
                       String: "((a >> b) << c) = "
                 - span:
                     start: 329
                     end: 342
+                    file: 0
                   value:
                     BinaryOperator:
                       - BitShiftLeft
                       - span:
                           start: 330
                           end: 336
+                          file: 0
                         value:
                           BinaryOperator:
                             - BitShiftRight
                             - span:
                                 start: 330
                                 end: 331
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: a
                             - span:
                                 start: 335
                                 end: 336
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: b
                       - span:
                           start: 341
                           end: 342
+                          file: 0
                         value:
                           Constant:
                             Identifier: c
@@ -339,11 +393,13 @@ Ok:
         span:
           start: 351
           end: 363
+          file: 0
         value:
           Trace:
             span:
               start: 357
               end: 362
+              file: 0
             value:
               Constant:
                 String: "---"
@@ -351,47 +407,55 @@ Ok:
         span:
           start: 366
           end: 407
+          file: 0
         value:
           Trace:
             span:
               start: 372
               end: 406
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 372
                     end: 389
+                    file: 0
                   value:
                     Constant:
                       String: "a >>> b >> c = "
                 - span:
                     start: 393
                     end: 405
+                    file: 0
                   value:
                     BinaryOperator:
                       - BitShiftRight
                       - span:
                           start: 393
                           end: 400
+                          file: 0
                         value:
                           BinaryOperator:
                             - BitShiftRightUnsigned
                             - span:
                                 start: 393
                                 end: 394
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: a
                             - span:
                                 start: 399
                                 end: 400
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: b
                       - span:
                           start: 404
                           end: 405
+                          file: 0
                         value:
                           Constant:
                             Identifier: c
@@ -399,47 +463,55 @@ Ok:
         span:
           start: 414
           end: 461
+          file: 0
         value:
           Trace:
             span:
               start: 420
               end: 460
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 420
                     end: 441
+                    file: 0
                   value:
                     Constant:
                       String: "((a >>> b) >> c) = "
                 - span:
                     start: 445
                     end: 459
+                    file: 0
                   value:
                     BinaryOperator:
                       - BitShiftRight
                       - span:
                           start: 446
                           end: 453
+                          file: 0
                         value:
                           BinaryOperator:
                             - BitShiftRightUnsigned
                             - span:
                                 start: 446
                                 end: 447
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: a
                             - span:
                                 start: 452
                                 end: 453
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: b
                       - span:
                           start: 458
                           end: 459
+                          file: 0
                         value:
                           Constant:
                             Identifier: c
@@ -447,11 +519,13 @@ Ok:
         span:
           start: 468
           end: 480
+          file: 0
         value:
           Trace:
             span:
               start: 474
               end: 479
+              file: 0
             value:
               Constant:
                 String: "---"
@@ -459,59 +533,69 @@ Ok:
         span:
           start: 500
           end: 551
+          file: 0
         value:
           Trace:
             span:
               start: 506
               end: 550
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 506
                     end: 528
+                    file: 0
                   value:
                     Constant:
                       String: "a << b >> c >>> b = "
                 - span:
                     start: 532
                     end: 549
+                    file: 0
                   value:
                     BinaryOperator:
                       - BitShiftRightUnsigned
                       - span:
                           start: 532
                           end: 543
+                          file: 0
                         value:
                           BinaryOperator:
                             - BitShiftRight
                             - span:
                                 start: 532
                                 end: 538
+                                file: 0
                               value:
                                 BinaryOperator:
                                   - BitShiftLeft
                                   - span:
                                       start: 532
                                       end: 533
+                                      file: 0
                                     value:
                                       Constant:
                                         Identifier: a
                                   - span:
                                       start: 537
                                       end: 538
+                                      file: 0
                                     value:
                                       Constant:
                                         Identifier: b
                             - span:
                                 start: 542
                                 end: 543
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: c
                       - span:
                           start: 548
                           end: 549
+                          file: 0
                         value:
                           Constant:
                             Identifier: b
@@ -519,59 +603,69 @@ Ok:
         span:
           start: 558
           end: 619
+          file: 0
         value:
           Trace:
             span:
               start: 564
               end: 618
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 564
                     end: 592
+                    file: 0
                   value:
                     Constant:
                       String: "(((a << b) >> c) >>> b) = "
                 - span:
                     start: 596
                     end: 617
+                    file: 0
                   value:
                     BinaryOperator:
                       - BitShiftRightUnsigned
                       - span:
                           start: 597
                           end: 610
+                          file: 0
                         value:
                           BinaryOperator:
                             - BitShiftRight
                             - span:
                                 start: 598
                                 end: 604
+                                file: 0
                               value:
                                 BinaryOperator:
                                   - BitShiftLeft
                                   - span:
                                       start: 598
                                       end: 599
+                                      file: 0
                                     value:
                                       Constant:
                                         Identifier: a
                                   - span:
                                       start: 603
                                       end: 604
+                                      file: 0
                                     value:
                                       Constant:
                                         Identifier: b
                             - span:
                                 start: 609
                                 end: 610
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: c
                       - span:
                           start: 616
                           end: 617
+                          file: 0
                         value:
                           Constant:
                             Identifier: b
@@ -579,11 +673,13 @@ Ok:
         span:
           start: 626
           end: 638
+          file: 0
         value:
           Trace:
             span:
               start: 632
               end: 637
+              file: 0
             value:
               Constant:
                 String: "---"
@@ -591,47 +687,55 @@ Ok:
         span:
           start: 694
           end: 731
+          file: 0
         value:
           Trace:
             span:
               start: 700
               end: 730
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 700
                     end: 715
+                    file: 0
                   value:
                     Constant:
                       String: "a << b + c = "
                 - span:
                     start: 719
                     end: 729
+                    file: 0
                   value:
                     BinaryOperator:
                       - BitShiftLeft
                       - span:
                           start: 719
                           end: 720
+                          file: 0
                         value:
                           Constant:
                             Identifier: a
                       - span:
                           start: 724
                           end: 729
+                          file: 0
                         value:
                           BinaryOperator:
                             - Add
                             - span:
                                 start: 724
                                 end: 725
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: b
                             - span:
                                 start: 728
                                 end: 729
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: c
@@ -639,47 +743,55 @@ Ok:
         span:
           start: 739
           end: 780
+          file: 0
         value:
           Trace:
             span:
               start: 745
               end: 779
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 745
                     end: 762
+                    file: 0
                   value:
                     Constant:
                       String: "a << (b + c) = "
                 - span:
                     start: 766
                     end: 778
+                    file: 0
                   value:
                     BinaryOperator:
                       - BitShiftLeft
                       - span:
                           start: 766
                           end: 767
+                          file: 0
                         value:
                           Constant:
                             Identifier: a
                       - span:
                           start: 772
                           end: 777
+                          file: 0
                         value:
                           BinaryOperator:
                             - Add
                             - span:
                                 start: 772
                                 end: 773
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: b
                             - span:
                                 start: 776
                                 end: 777
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: c
@@ -687,11 +799,13 @@ Ok:
         span:
           start: 823
           end: 835
+          file: 0
         value:
           Trace:
             span:
               start: 829
               end: 834
+              file: 0
             value:
               Constant:
                 String: "---"
@@ -699,47 +813,55 @@ Ok:
         span:
           start: 837
           end: 874
+          file: 0
         value:
           Trace:
             span:
               start: 843
               end: 873
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 843
                     end: 858
+                    file: 0
                   value:
                     Constant:
                       String: "a * b << c = "
                 - span:
                     start: 862
                     end: 872
+                    file: 0
                   value:
                     BinaryOperator:
                       - BitShiftLeft
                       - span:
                           start: 862
                           end: 867
+                          file: 0
                         value:
                           BinaryOperator:
                             - Multiply
                             - span:
                                 start: 862
                                 end: 863
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: a
                             - span:
                                 start: 866
                                 end: 867
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: b
                       - span:
                           start: 871
                           end: 872
+                          file: 0
                         value:
                           Constant:
                             Identifier: c
@@ -747,47 +869,55 @@ Ok:
         span:
           start: 882
           end: 923
+          file: 0
         value:
           Trace:
             span:
               start: 888
               end: 922
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 888
                     end: 905
+                    file: 0
                   value:
                     Constant:
                       String: "(a * b) << c = "
                 - span:
                     start: 909
                     end: 921
+                    file: 0
                   value:
                     BinaryOperator:
                       - BitShiftLeft
                       - span:
                           start: 910
                           end: 915
+                          file: 0
                         value:
                           BinaryOperator:
                             - Multiply
                             - span:
                                 start: 910
                                 end: 911
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: a
                             - span:
                                 start: 914
                                 end: 915
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: b
                       - span:
                           start: 920
                           end: 921
+                          file: 0
                         value:
                           Constant:
                             Identifier: c

@@ -10,11 +10,13 @@ Ok:
           span:
             start: 4
             end: 11
+            file: 0
           value: message
         value:
           span:
             start: 14
             end: 27
+            file: 0
           value:
             Constant:
               String: "Hello "
@@ -23,18 +25,21 @@ Ok:
         span:
           start: 29
           end: 47
+          file: 0
         value:
           BinaryOperator:
             - AddAssign
             - span:
                 start: 29
                 end: 36
+                file: 0
               value:
                 Constant:
                   Identifier: message
             - span:
                 start: 40
                 end: 47
+                file: 0
               value:
                 Constant:
                   String: World
@@ -42,30 +47,35 @@ Ok:
         span:
           start: 49
           end: 72
+          file: 0
         value:
           BinaryOperator:
             - Assign
             - span:
                 start: 49
                 end: 56
+                file: 0
               value:
                 Constant:
                   Identifier: message
             - span:
                 start: 59
                 end: 72
+                file: 0
               value:
                 BinaryOperator:
                   - Add
                   - span:
                       start: 59
                       end: 66
+                      file: 0
                     value:
                       Constant:
                         Identifier: message
                   - span:
                       start: 69
                       end: 72
+                      file: 0
                     value:
                       Constant:
                         String: "!"
@@ -73,11 +83,13 @@ Ok:
         span:
           start: 74
           end: 88
+          file: 0
         value:
           Trace:
             span:
               start: 80
               end: 87
+              file: 0
             value:
               Constant:
                 Identifier: message
@@ -87,11 +99,13 @@ Ok:
               span:
                 start: 95
                 end: 96
+                file: 0
               value: a
             value:
               span:
                 start: 97
                 end: 98
+                file: 0
               value:
                 Constant:
                   Integer: 1
@@ -101,6 +115,7 @@ Ok:
               span:
                 start: 100
                 end: 101
+                file: 0
               value: b
             value: ~
             type_name: ~
@@ -109,11 +124,13 @@ Ok:
               span:
                 start: 103
                 end: 104
+                file: 0
               value: c
             value:
               span:
                 start: 105
                 end: 106
+                file: 0
               value:
                 Constant:
                   Integer: 3
@@ -122,23 +139,27 @@ Ok:
         span:
           start: 108
           end: 124
+          file: 0
         value:
           Trace:
             span:
               start: 114
               end: 123
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 114
                     end: 119
+                    file: 0
                   value:
                     Constant:
                       String: "a: "
                 - span:
                     start: 122
                     end: 123
+                    file: 0
                   value:
                     Constant:
                       Identifier: a
@@ -146,23 +167,27 @@ Ok:
         span:
           start: 131
           end: 147
+          file: 0
         value:
           Trace:
             span:
               start: 137
               end: 146
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 137
                     end: 142
+                    file: 0
                   value:
                     Constant:
                       String: "b: "
                 - span:
                     start: 145
                     end: 146
+                    file: 0
                   value:
                     Constant:
                       Identifier: b
@@ -170,23 +195,27 @@ Ok:
         span:
           start: 162
           end: 178
+          file: 0
         value:
           Trace:
             span:
               start: 168
               end: 177
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 168
                     end: 173
+                    file: 0
                   value:
                     Constant:
                       String: "c: "
                 - span:
                     start: 176
                     end: 177
+                    file: 0
                   value:
                     Constant:
                       Identifier: c

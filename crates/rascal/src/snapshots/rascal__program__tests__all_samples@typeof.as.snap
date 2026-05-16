@@ -10,11 +10,13 @@ Ok:
           span:
             start: 4
             end: 7
+            file: 0
           value: num
         value:
           span:
             start: 10
             end: 11
+            file: 0
           value:
             Constant:
               Integer: 1
@@ -24,17 +26,20 @@ Ok:
           span:
             start: 17
             end: 20
+            file: 0
           value: obj
         value:
           span:
             start: 23
             end: 45
+            file: 0
           value:
             InitObject:
               - - num
                 - span:
                     start: 29
                     end: 30
+                    file: 0
                   value:
                     Constant:
                       Integer: 1
@@ -42,6 +47,7 @@ Ok:
                 - span:
                     start: 39
                     end: 44
+                    file: 0
                   value:
                     Constant:
                       Identifier: trace
@@ -50,28 +56,33 @@ Ok:
         span:
           start: 47
           end: 83
+          file: 0
         value:
           Trace:
             span:
               start: 53
               end: 82
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 53
                     end: 67
+                    file: 0
                   value:
                     Constant:
                       String: "typeof num: "
                 - span:
                     start: 71
                     end: 81
+                    file: 0
                   value:
                     TypeOf:
                       span:
                         start: 78
                         end: 81
+                        file: 0
                       value:
                         Constant:
                           Identifier: num
@@ -79,28 +90,33 @@ Ok:
         span:
           start: 95
           end: 131
+          file: 0
         value:
           Trace:
             span:
               start: 101
               end: 130
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 101
                     end: 115
+                    file: 0
                   value:
                     Constant:
                       String: "typeof obj: "
                 - span:
                     start: 119
                     end: 129
+                    file: 0
                   value:
                     TypeOf:
                       span:
                         start: 126
                         end: 129
+                        file: 0
                       value:
                         Constant:
                           Identifier: obj
@@ -108,39 +124,46 @@ Ok:
         span:
           start: 143
           end: 187
+          file: 0
         value:
           Trace:
             span:
               start: 149
               end: 186
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 149
                     end: 167
+                    file: 0
                   value:
                     Constant:
                       String: "typeof obj.num: "
                 - span:
                     start: 171
                     end: 185
+                    file: 0
                   value:
                     TypeOf:
                       span:
                         start: 181
                         end: 185
+                        file: 0
                       value:
                         Field:
                           - span:
                               start: 178
                               end: 181
+                              file: 0
                             value:
                               Constant:
                                 Identifier: obj
                           - span:
                               start: 182
                               end: 185
+                              file: 0
                             value:
                               Constant:
                                 String: num
@@ -148,51 +171,60 @@ Ok:
         span:
           start: 199
           end: 251
+          file: 0
         value:
           Trace:
             span:
               start: 205
               end: 250
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 205
                     end: 227
+                    file: 0
                   value:
                     Constant:
                       String: "typeof obj.num + 1: "
                 - span:
                     start: 231
                     end: 249
+                    file: 0
                   value:
                     BinaryOperator:
                       - Add
                       - span:
                           start: 231
                           end: 245
+                          file: 0
                         value:
                           TypeOf:
                             span:
                               start: 241
                               end: 245
+                              file: 0
                             value:
                               Field:
                                 - span:
                                     start: 238
                                     end: 241
+                                    file: 0
                                   value:
                                     Constant:
                                       Identifier: obj
                                 - span:
                                     start: 242
                                     end: 245
+                                    file: 0
                                   value:
                                     Constant:
                                       String: num
                       - span:
                           start: 248
                           end: 249
+                          file: 0
                         value:
                           Constant:
                             Integer: 1
@@ -200,57 +232,67 @@ Ok:
         span:
           start: 264
           end: 366
+          file: 0
         value:
           Trace:
             span:
               start: 270
               end: 365
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 270
                     end: 320
+                    file: 0
                   value:
                     Constant:
                       String: "typeof obj.num == \"number\" ? \":)\" : \":(\": "
                 - span:
                     start: 324
                     end: 364
+                    file: 0
                   value:
                     Ternary:
                       condition:
                         span:
                           start: 334
                           end: 350
+                          file: 0
                         value:
                           BinaryOperator:
                             - Equal
                             - span:
                                 start: 324
                                 end: 338
+                                file: 0
                               value:
                                 TypeOf:
                                   span:
                                     start: 334
                                     end: 338
+                                    file: 0
                                   value:
                                     Field:
                                       - span:
                                           start: 331
                                           end: 334
+                                          file: 0
                                         value:
                                           Constant:
                                             Identifier: obj
                                       - span:
                                           start: 335
                                           end: 338
+                                          file: 0
                                         value:
                                           Constant:
                                             String: num
                             - span:
                                 start: 342
                                 end: 350
+                                file: 0
                               value:
                                 Constant:
                                   String: number
@@ -258,6 +300,7 @@ Ok:
                         span:
                           start: 353
                           end: 357
+                          file: 0
                         value:
                           Constant:
                             String: ":)"
@@ -265,6 +308,7 @@ Ok:
                         span:
                           start: 360
                           end: 364
+                          file: 0
                         value:
                           Constant:
                             String: ":("
@@ -272,67 +316,79 @@ Ok:
         span:
           start: 374
           end: 452
+          file: 0
         value:
           Trace:
             span:
               start: 380
               end: 451
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 380
                     end: 415
+                    file: 0
                   value:
                     Constant:
                       String: "typeof obj.num + typeof obj.num: "
                 - span:
                     start: 419
                     end: 450
+                    file: 0
                   value:
                     BinaryOperator:
                       - Add
                       - span:
                           start: 419
                           end: 433
+                          file: 0
                         value:
                           TypeOf:
                             span:
                               start: 429
                               end: 433
+                              file: 0
                             value:
                               Field:
                                 - span:
                                     start: 426
                                     end: 429
+                                    file: 0
                                   value:
                                     Constant:
                                       Identifier: obj
                                 - span:
                                     start: 430
                                     end: 433
+                                    file: 0
                                   value:
                                     Constant:
                                       String: num
                       - span:
                           start: 436
                           end: 450
+                          file: 0
                         value:
                           TypeOf:
                             span:
                               start: 446
                               end: 450
+                              file: 0
                             value:
                               Field:
                                 - span:
                                     start: 443
                                     end: 446
+                                    file: 0
                                   value:
                                     Constant:
                                       Identifier: obj
                                 - span:
                                     start: 447
                                     end: 450
+                                    file: 0
                                   value:
                                     Constant:
                                       String: num
@@ -340,39 +396,46 @@ Ok:
         span:
           start: 470
           end: 518
+          file: 0
         value:
           Trace:
             span:
               start: 476
               end: 517
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 476
                     end: 496
+                    file: 0
                   value:
                     Constant:
                       String: "typeof obj.trace: "
                 - span:
                     start: 500
                     end: 516
+                    file: 0
                   value:
                     TypeOf:
                       span:
                         start: 510
                         end: 516
+                        file: 0
                       value:
                         Field:
                           - span:
                               start: 507
                               end: 510
+                              file: 0
                             value:
                               Constant:
                                 Identifier: obj
                           - span:
                               start: 511
                               end: 516
+                              file: 0
                             value:
                               Constant:
                                 String: trace
@@ -380,45 +443,53 @@ Ok:
         span:
           start: 532
           end: 584
+          file: 0
         value:
           Trace:
             span:
               start: 538
               end: 583
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 538
                     end: 560
+                    file: 0
                   value:
                     Constant:
                       String: "typeof obj.trace(): "
                 - span:
                     start: 564
                     end: 582
+                    file: 0
                   value:
                     TypeOf:
                       span:
                         start: 574
                         end: 582
+                        file: 0
                       value:
                         Call:
                           name:
                             span:
                               start: 574
                               end: 580
+                              file: 0
                             value:
                               Field:
                                 - span:
                                     start: 571
                                     end: 574
+                                    file: 0
                                   value:
                                     Constant:
                                       Identifier: obj
                                 - span:
                                     start: 575
                                     end: 580
+                                    file: 0
                                   value:
                                     Constant:
                                       String: trace

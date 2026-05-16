@@ -1,6 +1,6 @@
 use crate::internal::as2::lexer::Stream;
 use crate::internal::as2::lexer::tokens::{Token, TokenKind};
-use crate::internal::span::Span;
+use crate::internal::span::{FileId, Span};
 use serde::Serialize;
 use winnow::stream::{AsBStr, Location, Stream as _};
 
@@ -89,7 +89,7 @@ impl Operator {
     }
 }
 
-pub(crate) fn lex_operator<'a>(stream: &mut Stream<'a>) -> Token<'a> {
+pub(crate) fn lex_operator<'a>(stream: &mut Stream<'a>, file_id: FileId) -> Token<'a> {
     // Operator lookup table: (pattern, operator)
     const OPERATORS: &[(&[u8], Operator)] = &[
         // 4 char operators
@@ -142,17 +142,22 @@ pub(crate) fn lex_operator<'a>(stream: &mut Stream<'a>) -> Token<'a> {
         .find_map(|&(pattern, operator)| {
             let len = pattern.len();
             (available >= len && stream.as_bstr().peek_slice(len) == pattern)
-                .then(|| lex_ascii_chars(stream, TokenKind::Operator(operator), len))
+                .then(|| lex_ascii_chars(stream, TokenKind::Operator(operator), len, file_id))
         })
         .expect("operator must match one of the patterns")
 }
 
-fn lex_ascii_chars<'a>(stream: &mut Stream<'a>, kind: TokenKind, len: usize) -> Token<'a> {
+fn lex_ascii_chars<'a>(
+    stream: &mut Stream<'a>,
+    kind: TokenKind,
+    len: usize,
+    file_id: FileId,
+) -> Token<'a> {
     let start = stream.current_token_start();
     let offset = len;
     let raw = stream.next_slice(offset);
 
     let end = stream.previous_token_end();
-    let span = Span::new_unchecked(start, end);
+    let span = Span::new_unchecked(start, end, file_id);
     Token::new(kind, span, raw)
 }
