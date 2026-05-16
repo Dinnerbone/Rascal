@@ -457,7 +457,7 @@ pub(crate) fn switch<'i>(i: &mut Tokens<'i>) -> ModalResult<Statement<'i>> {
                         )))
                         .parse_next(i)?
                 };
-                elements.push(SwitchElement::Statement(statement));
+                elements.push(SwitchElement::Statement(Box::new(statement)));
             }
         }
         next = peek(any).parse_next(i)?;
@@ -1256,15 +1256,15 @@ mod stmt_tests {
                     target: id("a"),
                     elements: vec![
                         SwitchElement::Case(ex(ExprKind::Constant(ConstantKind::Integer(1)))),
-                        SwitchElement::Statement(Statement::new(
+                        SwitchElement::Statement(Box::new(Statement::new(
                             Span::default(),
                             StatementKind::Return(vec![])
-                        )),
+                        ))),
                         SwitchElement::Default,
-                        SwitchElement::Statement(Statement::new(
+                        SwitchElement::Statement(Box::new(Statement::new(
                             Span::default(),
                             StatementKind::Throw(vec![id("e")])
-                        )),
+                        ))),
                     ]
                 }
             ))
