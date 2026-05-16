@@ -9,6 +9,7 @@ Ok:
         span:
           start: 0
           end: 63
+          file: 0
         value:
           Function:
             signature:
@@ -16,6 +17,7 @@ Ok:
                 span:
                   start: 9
                   end: 13
+                  file: 0
                 value: test
               args: []
               return_type: ~
@@ -24,11 +26,13 @@ Ok:
                   span:
                     start: 22
                     end: 43
+                    file: 0
                   value:
                     Trace:
                       span:
                         start: 28
                         end: 42
+                        file: 0
                       value:
                         Constant:
                           String: Test called!
@@ -36,6 +40,7 @@ Ok:
                   - span:
                       start: 56
                       end: 60
+                      file: 0
                     value:
                       Constant:
                         String: ":)"
@@ -82,11 +87,13 @@ Ok:
           span:
             start: 69
             end: 73
+            file: 0
           value: anon
         value:
           span:
             start: 76
             end: 172
+            file: 0
           value:
             Function:
               signature:
@@ -104,11 +111,13 @@ Ok:
                     span:
                       start: 96
                       end: 131
+                      file: 0
                     value:
                       Trace:
                         span:
                           start: 102
                           end: 130
+                          file: 0
                         value:
                           Constant:
                             String: Anonymous function called!
@@ -116,47 +125,55 @@ Ok:
                     span:
                       start: 137
                       end: 169
+                      file: 0
                     value:
                       Trace:
                         span:
                           start: 143
                           end: 168
+                          file: 0
                         value:
                           BinaryOperator:
                             - Add
                             - span:
                                 start: 143
                                 end: 164
+                                file: 0
                               value:
                                 BinaryOperator:
                                   - Add
                                   - span:
                                       start: 143
                                       end: 153
+                                      file: 0
                                     value:
                                       BinaryOperator:
                                         - Add
                                         - span:
                                             start: 143
                                             end: 149
+                                            file: 0
                                           value:
                                             Constant:
                                               String: "a = "
                                         - span:
                                             start: 152
                                             end: 153
+                                            file: 0
                                           value:
                                             Constant:
                                               Register: 1
                                   - span:
                                       start: 156
                                       end: 164
+                                      file: 0
                                     value:
                                       Constant:
                                         String: ", b = "
                             - span:
                                 start: 167
                                 end: 168
+                                file: 0
                               value:
                                 Constant:
                                   Register: 2
@@ -211,12 +228,14 @@ Ok:
         span:
           start: 174
           end: 190
+          file: 0
         value:
           Call:
             name:
               span:
                 start: 174
                 end: 178
+                file: 0
               value:
                 Constant:
                   Identifier: anon
@@ -224,12 +243,14 @@ Ok:
               - span:
                   start: 179
                   end: 183
+                  file: 0
                 value:
                   Constant:
                     String: aa
               - span:
                   start: 185
                   end: 189
+                  file: 0
                 value:
                   Constant:
                     String: bb
@@ -237,23 +258,27 @@ Ok:
         span:
           start: 193
           end: 215
+          file: 0
         value:
           Trace:
             span:
               start: 199
               end: 214
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 199
                     end: 205
+                    file: 0
                   value:
                     Call:
                       name:
                         span:
                           start: 199
                           end: 203
+                          file: 0
                         value:
                           Constant:
                             Identifier: test
@@ -261,12 +286,14 @@ Ok:
                 - span:
                     start: 208
                     end: 214
+                    file: 0
                   value:
                     Call:
                       name:
                         span:
                           start: 208
                           end: 212
+                          file: 0
                         value:
                           Constant:
                             Identifier: test
@@ -275,6 +302,7 @@ Ok:
         span:
           start: 218
           end: 231
+          file: 0
         value:
           Function:
             signature:

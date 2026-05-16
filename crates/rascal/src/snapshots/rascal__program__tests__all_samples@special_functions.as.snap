@@ -9,11 +9,13 @@ Ok:
         span:
           start: 0
           end: 9
+          file: 0
         value:
           CallFrame:
             span:
               start: 5
               end: 8
+              file: 0
             value:
               Constant:
                 Integer: 123
@@ -21,11 +23,13 @@ Ok:
         span:
           start: 11
           end: 17
+          file: 0
         value:
           AsciiToChar:
             span:
               start: 15
               end: 16
+              file: 0
             value:
               Constant:
                 Identifier: x
@@ -33,11 +37,13 @@ Ok:
         span:
           start: 19
           end: 26
+          file: 0
         value:
           GetVariable:
             span:
               start: 24
               end: 25
+              file: 0
             value:
               Constant:
                 Identifier: x
@@ -45,11 +51,13 @@ Ok:
         span:
           start: 28
           end: 37
+          file: 0
         value:
           GetVariable:
             span:
               start: 33
               end: 36
+              file: 0
             value:
               Constant:
                 String: x
@@ -57,12 +65,14 @@ Ok:
         span:
           start: 39
           end: 101
+          file: 0
         value:
           DuplicateMovieClip:
             source:
               span:
                 start: 58
                 end: 61
+                file: 0
               value:
                 Constant:
                   Identifier: foo
@@ -70,6 +80,7 @@ Ok:
               span:
                 start: 63
                 end: 72
+                file: 0
               value:
                 Constant:
                   String: newname
@@ -77,23 +88,27 @@ Ok:
               span:
                 start: 78
                 end: 100
+                file: 0
               value:
                 Call:
                   name:
                     span:
                       start: 78
                       end: 98
+                      file: 0
                     value:
                       Field:
                         - span:
                             start: 74
                             end: 78
+                            file: 0
                           value:
                             Constant:
                               Identifier: this
                         - span:
                             start: 79
                             end: 98
+                            file: 0
                           value:
                             Constant:
                               String: getNextHighestDepth
@@ -102,12 +117,14 @@ Ok:
         span:
           start: 103
           end: 121
+          file: 0
         value:
           GetUrl:
             target:
               span:
                 start: 116
                 end: 120
+                file: 0
               value:
                 Constant:
                   Boolean: true
@@ -115,18 +132,21 @@ Ok:
               span:
                 start: 103
                 end: 121
+                file: 0
               value:
                 BinaryOperator:
                   - StringAdd
                   - span:
                       start: 103
                       end: 121
+                      file: 0
                     value:
                       Constant:
                         String: "FSCommand:"
                   - span:
                       start: 113
                       end: 114
+                      file: 0
                     value:
                       Constant:
                         Identifier: x
@@ -137,12 +157,14 @@ Ok:
         span:
           start: 123
           end: 144
+          file: 0
         value:
           GetUrl:
             target:
               span:
                 start: 138
                 end: 143
+                file: 0
               value:
                 Constant:
                   Boolean: false
@@ -150,6 +172,7 @@ Ok:
               span:
                 start: 123
                 end: 144
+                file: 0
               value:
                 Constant:
                   String: "FSCommand:x"
@@ -160,12 +183,14 @@ Ok:
         span:
           start: 146
           end: 160
+          file: 0
         value:
           GetUrl:
             target:
               span:
                 start: 146
                 end: 160
+                file: 0
               value:
                 Constant:
                   String: ""
@@ -173,6 +198,7 @@ Ok:
               span:
                 start: 146
                 end: 160
+                file: 0
               value:
                 Constant:
                   String: "FSCommand:x"
@@ -183,12 +209,14 @@ Ok:
         span:
           start: 162
           end: 183
+          file: 0
         value:
           GetUrl:
             target:
               span:
                 start: 177
                 end: 182
+                file: 0
               value:
                 Constant:
                   String: foo
@@ -196,6 +224,7 @@ Ok:
               span:
                 start: 162
                 end: 183
+                file: 0
               value:
                 Constant:
                   String: "FSCommand:x"
@@ -206,17 +235,20 @@ Ok:
         span:
           start: 185
           end: 195
+          file: 0
         value: GetTime
     - Expr:
         span:
           start: 197
           end: 223
+          file: 0
         value:
           GetUrl:
             target:
               span:
                 start: 197
                 end: 223
+                file: 0
               value:
                 Constant:
                   String: ""
@@ -224,6 +256,7 @@ Ok:
               span:
                 start: 204
                 end: 222
+                file: 0
               value:
                 Constant:
                   String: "http://ruffle.rs"
@@ -234,12 +267,14 @@ Ok:
         span:
           start: 225
           end: 261
+          file: 0
         value:
           GetUrl:
             target:
               span:
                 start: 252
                 end: 260
+                file: 0
               value:
                 Constant:
                   String: window
@@ -247,6 +282,7 @@ Ok:
               span:
                 start: 232
                 end: 250
+                file: 0
               value:
                 Constant:
                   String: "http://ruffle.rs"
@@ -257,12 +293,14 @@ Ok:
         span:
           start: 263
           end: 306
+          file: 0
         value:
           GetUrl:
             target:
               span:
                 start: 290
                 end: 298
+                file: 0
               value:
                 Constant:
                   String: window
@@ -270,6 +308,7 @@ Ok:
               span:
                 start: 270
                 end: 288
+                file: 0
               value:
                 Constant:
                   String: "http://ruffle.rs"
@@ -280,11 +319,13 @@ Ok:
         span:
           start: 308
           end: 320
+          file: 0
         value:
           GetVariable:
             span:
               start: 308
               end: 320
+              file: 0
             value:
               Constant:
                 String: "/:$version"
@@ -292,11 +333,13 @@ Ok:
         span:
           start: 322
           end: 338
+          file: 0
         value:
           GotoFrame:
             - span:
                 start: 334
                 end: 337
+                file: 0
               value:
                 Constant:
                   Integer: 123
@@ -305,11 +348,13 @@ Ok:
         span:
           start: 340
           end: 358
+          file: 0
         value:
           GotoFrame:
             - span:
                 start: 352
                 end: 357
+                file: 0
               value:
                 Constant:
                   String: "123"
@@ -318,11 +363,13 @@ Ok:
         span:
           start: 360
           end: 374
+          file: 0
         value:
           GotoFrame:
             - span:
                 start: 372
                 end: 373
+                file: 0
               value:
                 Constant:
                   Identifier: x
@@ -331,11 +378,13 @@ Ok:
         span:
           start: 376
           end: 401
+          file: 0
         value:
           GotoFrame:
             - span:
                 start: 397
                 end: 400
+                file: 0
               value:
                 Constant:
                   Integer: 123
@@ -344,11 +393,13 @@ Ok:
         span:
           start: 403
           end: 430
+          file: 0
         value:
           GotoFrame:
             - span:
                 start: 424
                 end: 429
+                file: 0
               value:
                 Constant:
                   String: "123"
@@ -357,11 +408,13 @@ Ok:
         span:
           start: 432
           end: 455
+          file: 0
         value:
           GotoFrame:
             - span:
                 start: 453
                 end: 454
+                file: 0
               value:
                 Constant:
                   Identifier: x
@@ -370,11 +423,13 @@ Ok:
         span:
           start: 457
           end: 471
+          file: 0
         value:
           GotoFrame:
             - span:
                 start: 469
                 end: 470
+                file: 0
               value:
                 Constant:
                   Identifier: x
@@ -383,11 +438,13 @@ Ok:
         span:
           start: 473
           end: 491
+          file: 0
         value:
           GotoFrame:
             - span:
                 start: 485
                 end: 490
+                file: 0
               value:
                 Constant:
                   Integer: 65536
@@ -396,11 +453,13 @@ Ok:
         span:
           start: 493
           end: 511
+          file: 0
         value:
           GotoFrame:
             - span:
                 start: 505
                 end: 510
+                file: 0
               value:
                 Constant:
                   Integer: 65537
@@ -409,11 +468,13 @@ Ok:
         span:
           start: 513
           end: 531
+          file: 0
         value:
           GotoFrame:
             - span:
                 start: 525
                 end: 530
+                file: 0
               value:
                 Constant:
                   Integer: 65538
@@ -422,11 +483,13 @@ Ok:
         span:
           start: 533
           end: 547
+          file: 0
         value:
           GotoFrame:
             - span:
                 start: 545
                 end: 546
+                file: 0
               value:
                 Constant:
                   Integer: 0
@@ -435,11 +498,13 @@ Ok:
         span:
           start: 549
           end: 565
+          file: 0
         value:
           GotoFrame:
             - span:
                 start: 561
                 end: 564
+                file: 0
               value:
                 Constant:
                   Integer: 123
@@ -448,11 +513,13 @@ Ok:
         span:
           start: 567
           end: 585
+          file: 0
         value:
           GotoFrame:
             - span:
                 start: 579
                 end: 584
+                file: 0
               value:
                 Constant:
                   String: "123"
@@ -461,11 +528,13 @@ Ok:
         span:
           start: 587
           end: 601
+          file: 0
         value:
           GotoFrame:
             - span:
                 start: 599
                 end: 600
+                file: 0
               value:
                 Constant:
                   Identifier: x
@@ -474,11 +543,13 @@ Ok:
         span:
           start: 603
           end: 628
+          file: 0
         value:
           GotoFrame:
             - span:
                 start: 624
                 end: 627
+                file: 0
               value:
                 Constant:
                   Integer: 123
@@ -487,11 +558,13 @@ Ok:
         span:
           start: 630
           end: 657
+          file: 0
         value:
           GotoFrame:
             - span:
                 start: 651
                 end: 656
+                file: 0
               value:
                 Constant:
                   String: "123"
@@ -500,11 +573,13 @@ Ok:
         span:
           start: 659
           end: 682
+          file: 0
         value:
           GotoFrame:
             - span:
                 start: 680
                 end: 681
+                file: 0
               value:
                 Constant:
                   Identifier: x
@@ -513,11 +588,13 @@ Ok:
         span:
           start: 684
           end: 698
+          file: 0
         value:
           GotoFrame:
             - span:
                 start: 696
                 end: 697
+                file: 0
               value:
                 Constant:
                   Identifier: x
@@ -526,11 +603,13 @@ Ok:
         span:
           start: 700
           end: 706
+          file: 0
         value:
           CastToInteger:
             span:
               start: 704
               end: 705
+              file: 0
             value:
               Constant:
                 Identifier: x
@@ -538,11 +617,13 @@ Ok:
         span:
           start: 708
           end: 717
+          file: 0
         value:
           StringLength:
             span:
               start: 715
               end: 716
+              file: 0
             value:
               Constant:
                 Identifier: x
@@ -550,12 +631,14 @@ Ok:
         span:
           start: 719
           end: 745
+          file: 0
         value:
           GetUrl:
             target:
               span:
                 start: 736
                 end: 744
+                file: 0
               value:
                 Constant:
                   String: target
@@ -563,6 +646,7 @@ Ok:
               span:
                 start: 729
                 end: 734
+                file: 0
               value:
                 Constant:
                   String: url
@@ -573,12 +657,14 @@ Ok:
         span:
           start: 747
           end: 780
+          file: 0
         value:
           GetUrl:
             target:
               span:
                 start: 764
                 end: 772
+                file: 0
               value:
                 Constant:
                   String: target
@@ -586,6 +672,7 @@ Ok:
               span:
                 start: 757
                 end: 762
+                file: 0
               value:
                 Constant:
                   String: url
@@ -596,12 +683,14 @@ Ok:
         span:
           start: 782
           end: 805
+          file: 0
         value:
           GetUrl:
             target:
               span:
                 start: 782
                 end: 805
+                file: 0
               value:
                 Constant:
                   String: _level12
@@ -609,6 +698,7 @@ Ok:
               span:
                 start: 795
                 end: 800
+                file: 0
               value:
                 Constant:
                   String: url
@@ -619,12 +709,14 @@ Ok:
         span:
           start: 807
           end: 837
+          file: 0
         value:
           GetUrl:
             target:
               span:
                 start: 807
                 end: 837
+                file: 0
               value:
                 Constant:
                   String: _level12
@@ -632,6 +724,7 @@ Ok:
               span:
                 start: 820
                 end: 825
+                file: 0
               value:
                 Constant:
                   String: url
@@ -642,24 +735,28 @@ Ok:
         span:
           start: 839
           end: 868
+          file: 0
         value:
           GetUrl:
             target:
               span:
                 start: 839
                 end: 868
+                file: 0
               value:
                 BinaryOperator:
                   - StringAdd
                   - span:
                       start: 839
                       end: 868
+                      file: 0
                     value:
                       Constant:
                         String: _level
                   - span:
                       start: 859
                       end: 860
+                      file: 0
                     value:
                       Constant:
                         Identifier: x
@@ -667,6 +764,7 @@ Ok:
               span:
                 start: 852
                 end: 857
+                file: 0
               value:
                 Constant:
                   String: url
@@ -677,12 +775,14 @@ Ok:
         span:
           start: 870
           end: 900
+          file: 0
         value:
           GetUrl:
             target:
               span:
                 start: 891
                 end: 899
+                file: 0
               value:
                 Constant:
                   String: target
@@ -690,6 +790,7 @@ Ok:
               span:
                 start: 884
                 end: 889
+                file: 0
               value:
                 Constant:
                   String: url
@@ -700,12 +801,14 @@ Ok:
         span:
           start: 902
           end: 925
+          file: 0
         value:
           GetUrl:
             target:
               span:
                 start: 923
                 end: 924
+                file: 0
               value:
                 Constant:
                   Identifier: x
@@ -713,6 +816,7 @@ Ok:
               span:
                 start: 916
                 end: 921
+                file: 0
               value:
                 Constant:
                   String: url
@@ -723,12 +827,14 @@ Ok:
         span:
           start: 927
           end: 964
+          file: 0
         value:
           GetUrl:
             target:
               span:
                 start: 948
                 end: 956
+                file: 0
               value:
                 Constant:
                   String: target
@@ -736,6 +842,7 @@ Ok:
               span:
                 start: 941
                 end: 946
+                file: 0
               value:
                 Constant:
                   String: url
@@ -746,12 +853,14 @@ Ok:
         span:
           start: 966
           end: 993
+          file: 0
         value:
           GetUrl:
             target:
               span:
                 start: 966
                 end: 993
+                file: 0
               value:
                 Constant:
                   String: _level12
@@ -759,6 +868,7 @@ Ok:
               span:
                 start: 983
                 end: 988
+                file: 0
               value:
                 Constant:
                   String: url
@@ -769,12 +879,14 @@ Ok:
         span:
           start: 995
           end: 1029
+          file: 0
         value:
           GetUrl:
             target:
               span:
                 start: 995
                 end: 1029
+                file: 0
               value:
                 Constant:
                   String: _level12
@@ -782,6 +894,7 @@ Ok:
               span:
                 start: 1012
                 end: 1017
+                file: 0
               value:
                 Constant:
                   String: url
@@ -792,24 +905,28 @@ Ok:
         span:
           start: 1031
           end: 1064
+          file: 0
         value:
           GetUrl:
             target:
               span:
                 start: 1031
                 end: 1064
+                file: 0
               value:
                 BinaryOperator:
                   - StringAdd
                   - span:
                       start: 1031
                       end: 1064
+                      file: 0
                     value:
                       Constant:
                         String: _level
                   - span:
                       start: 1055
                       end: 1056
+                      file: 0
                     value:
                       Constant:
                         Identifier: x
@@ -817,6 +934,7 @@ Ok:
               span:
                 start: 1048
                 end: 1053
+                file: 0
               value:
                 Constant:
                   String: url
@@ -827,11 +945,13 @@ Ok:
         span:
           start: 1066
           end: 1074
+          file: 0
         value:
           MBAsciiToChar:
             span:
               start: 1072
               end: 1073
+              file: 0
             value:
               Constant:
                 Identifier: x
@@ -839,11 +959,13 @@ Ok:
         span:
           start: 1076
           end: 1087
+          file: 0
         value:
           MBStringLength:
             span:
               start: 1085
               end: 1086
+              file: 0
             value:
               Constant:
                 Identifier: x
@@ -851,11 +973,13 @@ Ok:
         span:
           start: 1089
           end: 1097
+          file: 0
         value:
           MBCharToAscii:
             span:
               start: 1095
               end: 1096
+              file: 0
             value:
               Constant:
                 Identifier: x
@@ -863,12 +987,14 @@ Ok:
         span:
           start: 1099
           end: 1120
+          file: 0
         value:
           MBSubstring:
             string:
               span:
                 start: 1111
                 end: 1116
+                file: 0
               value:
                 Constant:
                   String: abc
@@ -876,6 +1002,7 @@ Ok:
               span:
                 start: 1111
                 end: 1116
+                file: 0
               value:
                 Constant:
                   String: abc
@@ -883,6 +1010,7 @@ Ok:
               span:
                 start: 1099
                 end: 1120
+                file: 0
               value:
                 Constant:
                   Integer: -1
@@ -890,12 +1018,14 @@ Ok:
         span:
           start: 1122
           end: 1146
+          file: 0
         value:
           MBSubstring:
             string:
               span:
                 start: 1134
                 end: 1139
+                file: 0
               value:
                 Constant:
                   String: abc
@@ -903,6 +1033,7 @@ Ok:
               span:
                 start: 1134
                 end: 1139
+                file: 0
               value:
                 Constant:
                   String: abc
@@ -910,6 +1041,7 @@ Ok:
               span:
                 start: 1144
                 end: 1145
+                file: 0
               value:
                 Constant:
                   Integer: 2
@@ -917,16 +1049,19 @@ Ok:
         span:
           start: 1148
           end: 1159
+          file: 0
         value: NextFrame
     - Expr:
         span:
           start: 1161
           end: 1172
+          file: 0
         value:
           GotoFrame:
             - span:
                 start: 1161
                 end: 1172
+                file: 0
               value:
                 Constant:
                   Integer: 0
@@ -935,11 +1070,13 @@ Ok:
         span:
           start: 1174
           end: 1183
+          file: 0
         value:
           CastToNumber:
             span:
               start: 1181
               end: 1182
+              file: 0
             value:
               Constant:
                 Identifier: x
@@ -947,11 +1084,13 @@ Ok:
         span:
           start: 1185
           end: 1191
+          file: 0
         value:
           CharToAscii:
             span:
               start: 1189
               end: 1190
+              file: 0
             value:
               Constant:
                 Identifier: x
@@ -959,21 +1098,25 @@ Ok:
         span:
           start: 1193
           end: 1199
+          file: 0
         value: Play
     - Expr:
         span:
           start: 1201
           end: 1212
+          file: 0
         value: PreviousFrame
     - Expr:
         span:
           start: 1214
           end: 1225
+          file: 0
         value:
           GotoFrame:
             - span:
                 start: 1214
                 end: 1225
+                file: 0
               value:
                 Constant:
                   Integer: 0
@@ -982,12 +1125,14 @@ Ok:
         span:
           start: 1227
           end: 1247
+          file: 0
         value:
           GetUrl:
             target:
               span:
                 start: 1233
                 end: 1238
+                file: 0
               value:
                 Constant:
                   String: foo
@@ -995,6 +1140,7 @@ Ok:
               span:
                 start: 1240
                 end: 1246
+                file: 0
               value:
                 Constant:
                   String: "print:#bmax"
@@ -1005,12 +1151,14 @@ Ok:
         span:
           start: 1249
           end: 1270
+          file: 0
         value:
           GetUrl:
             target:
               span:
                 start: 1255
                 end: 1259
+                file: 0
               value:
                 Constant:
                   Identifier: this
@@ -1018,6 +1166,7 @@ Ok:
               span:
                 start: 1261
                 end: 1269
+                file: 0
               value:
                 Constant:
                   String: "print:#bframe"
@@ -1028,12 +1177,14 @@ Ok:
         span:
           start: 1272
           end: 1294
+          file: 0
         value:
           GetUrl:
             target:
               span:
                 start: 1278
                 end: 1283
+                file: 0
               value:
                 Constant:
                   Identifier: _root
@@ -1041,6 +1192,7 @@ Ok:
               span:
                 start: 1285
                 end: 1293
+                file: 0
               value:
                 Constant:
                   String: "print:"
@@ -1051,12 +1203,14 @@ Ok:
         span:
           start: 1296
           end: 1324
+          file: 0
         value:
           GetUrl:
             target:
               span:
                 start: 1310
                 end: 1315
+                file: 0
               value:
                 Constant:
                   String: foo
@@ -1064,6 +1218,7 @@ Ok:
               span:
                 start: 1317
                 end: 1323
+                file: 0
               value:
                 Constant:
                   String: "printasbitmap:#bmax"
@@ -1074,12 +1229,14 @@ Ok:
         span:
           start: 1326
           end: 1355
+          file: 0
         value:
           GetUrl:
             target:
               span:
                 start: 1340
                 end: 1344
+                file: 0
               value:
                 Constant:
                   Identifier: this
@@ -1087,6 +1244,7 @@ Ok:
               span:
                 start: 1346
                 end: 1354
+                file: 0
               value:
                 Constant:
                   String: "printasbitmap:#bframe"
@@ -1097,12 +1255,14 @@ Ok:
         span:
           start: 1357
           end: 1387
+          file: 0
         value:
           GetUrl:
             target:
               span:
                 start: 1371
                 end: 1376
+                file: 0
               value:
                 Constant:
                   Identifier: _root
@@ -1110,6 +1270,7 @@ Ok:
               span:
                 start: 1378
                 end: 1386
+                file: 0
               value:
                 Constant:
                   String: "printasbitmap:"
@@ -1120,12 +1281,14 @@ Ok:
         span:
           start: 1389
           end: 1420
+          file: 0
         value:
           GetUrl:
             target:
               span:
                 start: 1389
                 end: 1420
+                file: 0
               value:
                 Constant:
                   String: "_level:123"
@@ -1133,6 +1296,7 @@ Ok:
               span:
                 start: 1413
                 end: 1419
+                file: 0
               value:
                 Constant:
                   String: "printasbitmap:#bmax"
@@ -1143,24 +1307,28 @@ Ok:
         span:
           start: 1422
           end: 1451
+          file: 0
         value:
           GetUrl:
             target:
               span:
                 start: 1422
                 end: 1451
+                file: 0
               value:
                 BinaryOperator:
                   - StringAdd
                   - span:
                       start: 1422
                       end: 1451
+                      file: 0
                     value:
                       Constant:
                         String: "_level:"
                   - span:
                       start: 1439
                       end: 1440
+                      file: 0
                     value:
                       Constant:
                         Identifier: x
@@ -1168,6 +1336,7 @@ Ok:
               span:
                 start: 1442
                 end: 1450
+                file: 0
               value:
                 Constant:
                   String: "printasbitmap:#bframe"
@@ -1178,24 +1347,28 @@ Ok:
         span:
           start: 1453
           end: 1482
+          file: 0
         value:
           GetUrl:
             target:
               span:
                 start: 1453
                 end: 1482
+                file: 0
               value:
                 BinaryOperator:
                   - StringAdd
                   - span:
                       start: 1453
                       end: 1482
+                      file: 0
                     value:
                       Constant:
                         String: "_level:"
                   - span:
                       start: 1470
                       end: 1471
+                      file: 0
                     value:
                       Constant:
                         Identifier: x
@@ -1203,6 +1376,7 @@ Ok:
               span:
                 start: 1473
                 end: 1481
+                file: 0
               value:
                 Constant:
                   String: "printasbitmap:"
@@ -1213,12 +1387,14 @@ Ok:
         span:
           start: 1484
           end: 1507
+          file: 0
         value:
           GetUrl:
             target:
               span:
                 start: 1484
                 end: 1507
+                file: 0
               value:
                 Constant:
                   String: "_level:123"
@@ -1226,6 +1402,7 @@ Ok:
               span:
                 start: 1500
                 end: 1506
+                file: 0
               value:
                 Constant:
                   String: "print:#bmax"
@@ -1236,24 +1413,28 @@ Ok:
         span:
           start: 1509
           end: 1530
+          file: 0
         value:
           GetUrl:
             target:
               span:
                 start: 1509
                 end: 1530
+                file: 0
               value:
                 BinaryOperator:
                   - StringAdd
                   - span:
                       start: 1509
                       end: 1530
+                      file: 0
                     value:
                       Constant:
                         String: "_level:"
                   - span:
                       start: 1518
                       end: 1519
+                      file: 0
                     value:
                       Constant:
                         Identifier: x
@@ -1261,6 +1442,7 @@ Ok:
               span:
                 start: 1521
                 end: 1529
+                file: 0
               value:
                 Constant:
                   String: "print:#bframe"
@@ -1271,24 +1453,28 @@ Ok:
         span:
           start: 1532
           end: 1553
+          file: 0
         value:
           GetUrl:
             target:
               span:
                 start: 1532
                 end: 1553
+                file: 0
               value:
                 BinaryOperator:
                   - StringAdd
                   - span:
                       start: 1532
                       end: 1553
+                      file: 0
                     value:
                       Constant:
                         String: "_level:"
                   - span:
                       start: 1541
                       end: 1542
+                      file: 0
                     value:
                       Constant:
                         Identifier: x
@@ -1296,6 +1482,7 @@ Ok:
               span:
                 start: 1544
                 end: 1552
+                file: 0
               value:
                 Constant:
                   String: "print:"
@@ -1306,11 +1493,13 @@ Ok:
         span:
           start: 1555
           end: 1566
+          file: 0
         value:
           GetRandomNumber:
             span:
               start: 1562
               end: 1565
+              file: 0
             value:
               Constant:
                 Integer: 123
@@ -1318,11 +1507,13 @@ Ok:
         span:
           start: 1568
           end: 1586
+          file: 0
         value:
           RemoveSprite:
             span:
               start: 1584
               end: 1585
+              file: 0
             value:
               Constant:
                 Identifier: x
@@ -1330,12 +1521,14 @@ Ok:
         span:
           start: 1588
           end: 1600
+          file: 0
         value:
           StartDrag:
             target:
               span:
                 start: 1598
                 end: 1599
+                file: 0
               value:
                 Constant:
                   Identifier: x
@@ -1345,12 +1538,14 @@ Ok:
         span:
           start: 1602
           end: 1620
+          file: 0
         value:
           StartDrag:
             target:
               span:
                 start: 1612
                 end: 1613
+                file: 0
               value:
                 Constant:
                   Identifier: x
@@ -1360,12 +1555,14 @@ Ok:
         span:
           start: 1622
           end: 1641
+          file: 0
         value:
           StartDrag:
             target:
               span:
                 start: 1632
                 end: 1633
+                file: 0
               value:
                 Constant:
                   Identifier: x
@@ -1375,12 +1572,14 @@ Ok:
         span:
           start: 1643
           end: 1673
+          file: 0
         value:
           StartDrag:
             target:
               span:
                 start: 1653
                 end: 1654
+                file: 0
               value:
                 Constant:
                   Identifier: x
@@ -1389,24 +1588,28 @@ Ok:
               - span:
                   start: 1662
                   end: 1663
+                  file: 0
                 value:
                   Constant:
                     Integer: 1
               - span:
                   start: 1665
                   end: 1666
+                  file: 0
                 value:
                   Constant:
                     Integer: 2
               - span:
                   start: 1668
                   end: 1669
+                  file: 0
                 value:
                   Constant:
                     Integer: 3
               - span:
                   start: 1671
                   end: 1672
+                  file: 0
                 value:
                   Constant:
                     Integer: 4
@@ -1414,26 +1617,31 @@ Ok:
         span:
           start: 1675
           end: 1681
+          file: 0
         value: Stop
     - Expr:
         span:
           start: 1683
           end: 1698
+          file: 0
         value: StopSounds
     - Expr:
         span:
           start: 1700
           end: 1710
+          file: 0
         value: EndDrag
     - Expr:
         span:
           start: 1712
           end: 1721
+          file: 0
         value:
           CastToString:
             span:
               start: 1719
               end: 1720
+              file: 0
             value:
               Constant:
                 Identifier: x
@@ -1441,12 +1649,14 @@ Ok:
         span:
           start: 1723
           end: 1738
+          file: 0
         value:
           Substring:
             string:
               span:
                 start: 1733
                 end: 1734
+                file: 0
               value:
                 Constant:
                   Identifier: x
@@ -1454,6 +1664,7 @@ Ok:
               span:
                 start: 1733
                 end: 1734
+                file: 0
               value:
                 Constant:
                   Identifier: x
@@ -1461,6 +1672,7 @@ Ok:
               span:
                 start: 1723
                 end: 1738
+                file: 0
               value:
                 Constant:
                   Integer: -1
@@ -1468,12 +1680,14 @@ Ok:
         span:
           start: 1740
           end: 1758
+          file: 0
         value:
           Substring:
             string:
               span:
                 start: 1750
                 end: 1751
+                file: 0
               value:
                 Constant:
                   Identifier: x
@@ -1481,6 +1695,7 @@ Ok:
               span:
                 start: 1750
                 end: 1751
+                file: 0
               value:
                 Constant:
                   Identifier: x
@@ -1488,6 +1703,7 @@ Ok:
               span:
                 start: 1756
                 end: 1757
+                file: 0
               value:
                 Constant:
                   Integer: 2
@@ -1495,11 +1711,13 @@ Ok:
         span:
           start: 1760
           end: 1773
+          file: 0
         value:
           GetTargetPath:
             span:
               start: 1771
               end: 1772
+              file: 0
             value:
               Constant:
                 Identifier: x
@@ -1507,16 +1725,19 @@ Ok:
         span:
           start: 1775
           end: 1794
+          file: 0
         value: ToggleQuality
     - Expr:
         span:
           start: 1796
           end: 1812
+          file: 0
         value:
           Trace:
             span:
               start: 1802
               end: 1811
+              file: 0
             value:
               Constant:
                 String: message
@@ -1524,12 +1745,14 @@ Ok:
         span:
           start: 1814
           end: 1828
+          file: 0
         value:
           GetUrl:
             target:
               span:
                 start: 1826
                 end: 1827
+                file: 0
               value:
                 Constant:
                   Identifier: x
@@ -1537,6 +1760,7 @@ Ok:
               span:
                 start: 1814
                 end: 1828
+                file: 0
               value:
                 Constant:
                   String: ""
@@ -1547,24 +1771,28 @@ Ok:
         span:
           start: 1830
           end: 1847
+          file: 0
         value:
           GetUrl:
             target:
               span:
                 start: 1830
                 end: 1847
+                file: 0
               value:
                 BinaryOperator:
                   - StringAdd
                   - span:
                       start: 1830
                       end: 1847
+                      file: 0
                     value:
                       Constant:
                         String: _level
                   - span:
                       start: 1845
                       end: 1846
+                      file: 0
                     value:
                       Constant:
                         Identifier: x
@@ -1572,6 +1800,7 @@ Ok:
               span:
                 start: 1830
                 end: 1847
+                file: 0
               value:
                 Constant:
                   String: ""
@@ -1582,12 +1811,14 @@ Ok:
         span:
           start: 1849
           end: 1868
+          file: 0
         value:
           GetUrl:
             target:
               span:
                 start: 1849
                 end: 1868
+                file: 0
               value:
                 Constant:
                   String: _level123
@@ -1595,6 +1826,7 @@ Ok:
               span:
                 start: 1849
                 end: 1868
+                file: 0
               value:
                 Constant:
                   String: ""

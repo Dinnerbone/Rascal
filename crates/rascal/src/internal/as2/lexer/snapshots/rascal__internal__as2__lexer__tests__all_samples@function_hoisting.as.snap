@@ -8,969 +8,1157 @@ input_file: samples/as2/function_hoisting.as
   span:
     start: 0
     end: 3
+    file: 0
   raw: var
 - kind: Identifier
   span:
     start: 4
     end: 12
+    file: 0
   raw: firstVar
 - kind:
     Operator: Assign
   span:
     start: 13
     end: 14
+    file: 0
   raw: "="
 - kind: Integer
   span:
     start: 15
     end: 16
+    file: 0
   raw: "1"
 - kind: Semicolon
   span:
     start: 16
     end: 17
+    file: 0
   raw: ;
 - kind: Newline
   span:
     start: 17
     end: 18
+    file: 0
   raw: "\n"
 - kind: Identifier
   span:
     start: 18
     end: 31
+    file: 0
   raw: firstFunction
 - kind: OpenParen
   span:
     start: 31
     end: 32
+    file: 0
   raw: (
 - kind: CloseParen
   span:
     start: 32
     end: 33
+    file: 0
   raw: )
 - kind: Semicolon
   span:
     start: 33
     end: 34
+    file: 0
   raw: ;
 - kind: Newline
   span:
     start: 34
     end: 35
+    file: 0
   raw: "\n"
 - kind: Identifier
   span:
     start: 35
     end: 49
+    file: 0
   raw: secondFunction
 - kind: OpenParen
   span:
     start: 49
     end: 50
+    file: 0
   raw: (
 - kind: CloseParen
   span:
     start: 50
     end: 51
+    file: 0
   raw: )
 - kind: Semicolon
   span:
     start: 51
     end: 52
+    file: 0
   raw: ;
 - kind: Newline
   span:
     start: 52
     end: 53
+    file: 0
   raw: "\n"
 - kind:
     Keyword: Function
   span:
     start: 53
     end: 61
+    file: 0
   raw: function
 - kind: Identifier
   span:
     start: 62
     end: 75
+    file: 0
   raw: firstFunction
 - kind: OpenParen
   span:
     start: 75
     end: 76
+    file: 0
   raw: (
 - kind: CloseParen
   span:
     start: 76
     end: 77
+    file: 0
   raw: )
 - kind: OpenBrace
   span:
     start: 78
     end: 79
+    file: 0
   raw: "{"
 - kind: Newline
   span:
     start: 79
     end: 80
+    file: 0
   raw: "\n"
 - kind: Identifier
   span:
     start: 81
     end: 86
+    file: 0
   raw: trace
 - kind: OpenParen
   span:
     start: 86
     end: 87
+    file: 0
   raw: (
 - kind:
     String: Double
   span:
     start: 87
     end: 104
+    file: 0
   raw: first function!
 - kind: CloseParen
   span:
     start: 104
     end: 105
+    file: 0
   raw: )
 - kind: Semicolon
   span:
     start: 105
     end: 106
+    file: 0
   raw: ;
 - kind: Newline
   span:
     start: 106
     end: 107
+    file: 0
   raw: "\n"
 - kind: Identifier
   span:
     start: 108
     end: 131
+    file: 0
   raw: functionWithinAFunction
 - kind: OpenParen
   span:
     start: 131
     end: 132
+    file: 0
   raw: (
 - kind: CloseParen
   span:
     start: 132
     end: 133
+    file: 0
   raw: )
 - kind: Semicolon
   span:
     start: 133
     end: 134
+    file: 0
   raw: ;
 - kind: Newline
   span:
     start: 134
     end: 135
+    file: 0
   raw: "\n"
 - kind: Identifier
   span:
     start: 136
     end: 141
+    file: 0
   raw: trace
 - kind: OpenParen
   span:
     start: 141
     end: 142
+    file: 0
   raw: (
 - kind:
     String: Double
   span:
     start: 142
     end: 155
+    file: 0
   raw: "firstVar = "
 - kind:
     Operator: Add
   span:
     start: 156
     end: 157
+    file: 0
   raw: +
 - kind: Identifier
   span:
     start: 158
     end: 166
+    file: 0
   raw: firstVar
 - kind:
     Operator: Add
   span:
     start: 167
     end: 168
+    file: 0
   raw: +
 - kind:
     String: Double
   span:
     start: 169
     end: 185
+    file: 0
   raw: ", secondVar = "
 - kind:
     Operator: Add
   span:
     start: 186
     end: 187
+    file: 0
   raw: +
 - kind: Identifier
   span:
     start: 188
     end: 197
+    file: 0
   raw: secondVar
 - kind: CloseParen
   span:
     start: 197
     end: 198
+    file: 0
   raw: )
 - kind: Semicolon
   span:
     start: 198
     end: 199
+    file: 0
   raw: ;
 - kind: Newline
   span:
     start: 199
     end: 200
+    file: 0
   raw: "\n"
 - kind: Newline
   span:
     start: 200
     end: 201
+    file: 0
   raw: "\n"
 - kind:
     Keyword: Function
   span:
     start: 202
     end: 210
+    file: 0
   raw: function
 - kind: Identifier
   span:
     start: 211
     end: 234
+    file: 0
   raw: functionWithinAFunction
 - kind: OpenParen
   span:
     start: 234
     end: 235
+    file: 0
   raw: (
 - kind: CloseParen
   span:
     start: 235
     end: 236
+    file: 0
   raw: )
 - kind: OpenBrace
   span:
     start: 237
     end: 238
+    file: 0
   raw: "{"
 - kind: Newline
   span:
     start: 238
     end: 239
+    file: 0
   raw: "\n"
 - kind: Identifier
   span:
     start: 241
     end: 246
+    file: 0
   raw: trace
 - kind: OpenParen
   span:
     start: 246
     end: 247
+    file: 0
   raw: (
 - kind:
     String: Double
   span:
     start: 247
     end: 276
+    file: 0
   raw: function within a function!
 - kind: CloseParen
   span:
     start: 276
     end: 277
+    file: 0
   raw: )
 - kind: Semicolon
   span:
     start: 277
     end: 278
+    file: 0
   raw: ;
 - kind: Newline
   span:
     start: 278
     end: 279
+    file: 0
   raw: "\n"
 - kind: CloseBrace
   span:
     start: 280
     end: 281
+    file: 0
   raw: "}"
 - kind: Newline
   span:
     start: 281
     end: 282
+    file: 0
   raw: "\n"
 - kind: CloseBrace
   span:
     start: 282
     end: 283
+    file: 0
   raw: "}"
 - kind: Newline
   span:
     start: 283
     end: 284
+    file: 0
   raw: "\n"
 - kind:
     Keyword: Var
   span:
     start: 284
     end: 287
+    file: 0
   raw: var
 - kind: Identifier
   span:
     start: 288
     end: 297
+    file: 0
   raw: secondVar
 - kind:
     Operator: Assign
   span:
     start: 298
     end: 299
+    file: 0
   raw: "="
 - kind: Integer
   span:
     start: 300
     end: 301
+    file: 0
   raw: "2"
 - kind: Semicolon
   span:
     start: 301
     end: 302
+    file: 0
   raw: ;
 - kind: Newline
   span:
     start: 302
     end: 303
+    file: 0
   raw: "\n"
 - kind: Identifier
   span:
     start: 303
     end: 316
+    file: 0
   raw: firstFunction
 - kind: OpenParen
   span:
     start: 316
     end: 317
+    file: 0
   raw: (
 - kind: CloseParen
   span:
     start: 317
     end: 318
+    file: 0
   raw: )
 - kind: Semicolon
   span:
     start: 318
     end: 319
+    file: 0
   raw: ;
 - kind: Newline
   span:
     start: 319
     end: 320
+    file: 0
   raw: "\n"
 - kind: Identifier
   span:
     start: 320
     end: 334
+    file: 0
   raw: secondFunction
 - kind: OpenParen
   span:
     start: 334
     end: 335
+    file: 0
   raw: (
 - kind: CloseParen
   span:
     start: 335
     end: 336
+    file: 0
   raw: )
 - kind: Semicolon
   span:
     start: 336
     end: 337
+    file: 0
   raw: ;
 - kind: Newline
   span:
     start: 337
     end: 338
+    file: 0
   raw: "\n"
 - kind:
     Keyword: Function
   span:
     start: 338
     end: 346
+    file: 0
   raw: function
 - kind: Identifier
   span:
     start: 347
     end: 361
+    file: 0
   raw: secondFunction
 - kind: OpenParen
   span:
     start: 361
     end: 362
+    file: 0
   raw: (
 - kind: CloseParen
   span:
     start: 362
     end: 363
+    file: 0
   raw: )
 - kind: OpenBrace
   span:
     start: 364
     end: 365
+    file: 0
   raw: "{"
 - kind: Newline
   span:
     start: 365
     end: 366
+    file: 0
   raw: "\n"
 - kind: Identifier
   span:
     start: 367
     end: 372
+    file: 0
   raw: trace
 - kind: OpenParen
   span:
     start: 372
     end: 373
+    file: 0
   raw: (
 - kind:
     String: Double
   span:
     start: 373
     end: 391
+    file: 0
   raw: second function!
 - kind: CloseParen
   span:
     start: 391
     end: 392
+    file: 0
   raw: )
 - kind: Semicolon
   span:
     start: 392
     end: 393
+    file: 0
   raw: ;
 - kind: Newline
   span:
     start: 393
     end: 394
+    file: 0
   raw: "\n"
 - kind: Identifier
   span:
     start: 395
     end: 400
+    file: 0
   raw: trace
 - kind: OpenParen
   span:
     start: 400
     end: 401
+    file: 0
   raw: (
 - kind:
     String: Double
   span:
     start: 401
     end: 414
+    file: 0
   raw: "firstVar = "
 - kind:
     Operator: Add
   span:
     start: 415
     end: 416
+    file: 0
   raw: +
 - kind: Identifier
   span:
     start: 417
     end: 425
+    file: 0
   raw: firstVar
 - kind:
     Operator: Add
   span:
     start: 426
     end: 427
+    file: 0
   raw: +
 - kind:
     String: Double
   span:
     start: 428
     end: 444
+    file: 0
   raw: ", secondVar = "
 - kind:
     Operator: Add
   span:
     start: 445
     end: 446
+    file: 0
   raw: +
 - kind: Identifier
   span:
     start: 447
     end: 456
+    file: 0
   raw: secondVar
 - kind: CloseParen
   span:
     start: 456
     end: 457
+    file: 0
   raw: )
 - kind: Semicolon
   span:
     start: 457
     end: 458
+    file: 0
   raw: ;
 - kind: Newline
   span:
     start: 458
     end: 459
+    file: 0
   raw: "\n"
 - kind: CloseBrace
   span:
     start: 459
     end: 460
+    file: 0
   raw: "}"
 - kind: Newline
   span:
     start: 460
     end: 461
+    file: 0
   raw: "\n"
 - kind: Identifier
   span:
     start: 461
     end: 474
+    file: 0
   raw: firstFunction
 - kind: OpenParen
   span:
     start: 474
     end: 475
+    file: 0
   raw: (
 - kind: CloseParen
   span:
     start: 475
     end: 476
+    file: 0
   raw: )
 - kind: Semicolon
   span:
     start: 476
     end: 477
+    file: 0
   raw: ;
 - kind: Newline
   span:
     start: 477
     end: 478
+    file: 0
   raw: "\n"
 - kind: Identifier
   span:
     start: 478
     end: 492
+    file: 0
   raw: secondFunction
 - kind: OpenParen
   span:
     start: 492
     end: 493
+    file: 0
   raw: (
 - kind: CloseParen
   span:
     start: 493
     end: 494
+    file: 0
   raw: )
 - kind: Semicolon
   span:
     start: 494
     end: 495
+    file: 0
   raw: ;
 - kind: Newline
   span:
     start: 495
     end: 496
+    file: 0
   raw: "\n"
 - kind:
     Keyword: Function
   span:
     start: 496
     end: 504
+    file: 0
   raw: function
 - kind: Identifier
   span:
     start: 505
     end: 519
+    file: 0
   raw: secondFunction
 - kind: OpenParen
   span:
     start: 519
     end: 520
+    file: 0
   raw: (
 - kind: CloseParen
   span:
     start: 520
     end: 521
+    file: 0
   raw: )
 - kind: OpenBrace
   span:
     start: 522
     end: 523
+    file: 0
   raw: "{"
 - kind: Newline
   span:
     start: 523
     end: 524
+    file: 0
   raw: "\n"
 - kind: Identifier
   span:
     start: 525
     end: 530
+    file: 0
   raw: trace
 - kind: OpenParen
   span:
     start: 530
     end: 531
+    file: 0
   raw: (
 - kind:
     String: Double
   span:
     start: 531
     end: 566
+    file: 0
   raw: second function! (but redefined!)
 - kind: CloseParen
   span:
     start: 566
     end: 567
+    file: 0
   raw: )
 - kind: Semicolon
   span:
     start: 567
     end: 568
+    file: 0
   raw: ;
 - kind: Newline
   span:
     start: 568
     end: 569
+    file: 0
   raw: "\n"
 - kind: Identifier
   span:
     start: 570
     end: 575
+    file: 0
   raw: trace
 - kind: OpenParen
   span:
     start: 575
     end: 576
+    file: 0
   raw: (
 - kind:
     String: Double
   span:
     start: 576
     end: 589
+    file: 0
   raw: "firstVar = "
 - kind:
     Operator: Add
   span:
     start: 590
     end: 591
+    file: 0
   raw: +
 - kind: Identifier
   span:
     start: 592
     end: 600
+    file: 0
   raw: firstVar
 - kind:
     Operator: Add
   span:
     start: 601
     end: 602
+    file: 0
   raw: +
 - kind:
     String: Double
   span:
     start: 603
     end: 619
+    file: 0
   raw: ", secondVar = "
 - kind:
     Operator: Add
   span:
     start: 620
     end: 621
+    file: 0
   raw: +
 - kind: Identifier
   span:
     start: 622
     end: 631
+    file: 0
   raw: secondVar
 - kind: CloseParen
   span:
     start: 631
     end: 632
+    file: 0
   raw: )
 - kind: Semicolon
   span:
     start: 632
     end: 633
+    file: 0
   raw: ;
 - kind: Newline
   span:
     start: 633
     end: 634
+    file: 0
   raw: "\n"
 - kind: CloseBrace
   span:
     start: 634
     end: 635
+    file: 0
   raw: "}"
 - kind: Newline
   span:
     start: 635
     end: 636
+    file: 0
   raw: "\n"
 - kind: Identifier
   span:
     start: 636
     end: 649
+    file: 0
   raw: firstFunction
 - kind: OpenParen
   span:
     start: 649
     end: 650
+    file: 0
   raw: (
 - kind: CloseParen
   span:
     start: 650
     end: 651
+    file: 0
   raw: )
 - kind: Semicolon
   span:
     start: 651
     end: 652
+    file: 0
   raw: ;
 - kind: Newline
   span:
     start: 652
     end: 653
+    file: 0
   raw: "\n"
 - kind: Identifier
   span:
     start: 653
     end: 667
+    file: 0
   raw: secondFunction
 - kind: OpenParen
   span:
     start: 667
     end: 668
+    file: 0
   raw: (
 - kind: CloseParen
   span:
     start: 668
     end: 669
+    file: 0
   raw: )
 - kind: Semicolon
   span:
     start: 669
     end: 670
+    file: 0
   raw: ;
 - kind: Newline
   span:
     start: 670
     end: 671
+    file: 0
   raw: "\n"
 - kind: Identifier
   span:
     start: 671
     end: 694
+    file: 0
   raw: functionWithinAFunction
 - kind: OpenParen
   span:
     start: 694
     end: 695
+    file: 0
   raw: (
 - kind: CloseParen
   span:
     start: 695
     end: 696
+    file: 0
   raw: )
 - kind: Semicolon
   span:
     start: 696
     end: 697
+    file: 0
   raw: ;
 - kind: Newline
   span:
     start: 697
     end: 698
+    file: 0
   raw: "\n"
 - kind:
     Keyword: Function
   span:
     start: 698
     end: 706
+    file: 0
   raw: function
 - kind: Identifier
   span:
     start: 707
     end: 720
+    file: 0
   raw: thirdFunction
 - kind: OpenParen
   span:
     start: 720
     end: 721
+    file: 0
   raw: (
 - kind: CloseParen
   span:
     start: 721
     end: 722
+    file: 0
   raw: )
 - kind: OpenBrace
   span:
     start: 723
     end: 724
+    file: 0
   raw: "{"
 - kind: Newline
   span:
     start: 724
     end: 725
+    file: 0
   raw: "\n"
 - kind: Identifier
   span:
     start: 726
     end: 731
+    file: 0
   raw: trace
 - kind: OpenParen
   span:
     start: 731
     end: 732
+    file: 0
   raw: (
 - kind:
     String: Double
   span:
     start: 732
     end: 749
+    file: 0
   raw: third function!
 - kind: CloseParen
   span:
     start: 749
     end: 750
+    file: 0
   raw: )
 - kind: Semicolon
   span:
     start: 750
     end: 751
+    file: 0
   raw: ;
 - kind: Newline
   span:
     start: 751
     end: 752
+    file: 0
   raw: "\n"
 - kind: CloseBrace
   span:
     start: 752
     end: 753
+    file: 0
   raw: "}"
 - kind: Newline
   span:
     start: 753
     end: 754
+    file: 0
   raw: "\n"
 - kind: Identifier
   span:
     start: 754
     end: 767
+    file: 0
   raw: thirdFunction
 - kind: OpenParen
   span:
     start: 767
     end: 768
+    file: 0
   raw: (
 - kind: CloseParen
   span:
     start: 768
     end: 769
+    file: 0
   raw: )
 - kind: Semicolon
   span:
     start: 769
     end: 770
+    file: 0
   raw: ;
 - kind: Newline
   span:
     start: 770
     end: 771
+    file: 0
   raw: "\n"
 - kind:
     Keyword: Function
   span:
     start: 771
     end: 779
+    file: 0
   raw: function
 - kind: Identifier
   span:
     start: 780
     end: 794
+    file: 0
   raw: unusedFunction
 - kind: OpenParen
   span:
     start: 794
     end: 795
+    file: 0
   raw: (
 - kind: CloseParen
   span:
     start: 795
     end: 796
+    file: 0
   raw: )
 - kind: OpenBrace
   span:
     start: 797
     end: 798
+    file: 0
   raw: "{"
 - kind: Newline
   span:
     start: 798
     end: 799
+    file: 0
   raw: "\n"
 - kind: Identifier
   span:
     start: 800
     end: 805
+    file: 0
   raw: trace
 - kind: OpenParen
   span:
     start: 805
     end: 806
+    file: 0
   raw: (
 - kind:
     String: Double
   span:
     start: 806
     end: 824
+    file: 0
   raw: Unused function!
 - kind: CloseParen
   span:
     start: 824
     end: 825
+    file: 0
   raw: )
 - kind: Semicolon
   span:
     start: 825
     end: 826
+    file: 0
   raw: ;
 - kind: Newline
   span:
     start: 826
     end: 827
+    file: 0
   raw: "\n"
 - kind: CloseBrace
   span:
     start: 827
     end: 828
+    file: 0
   raw: "}"
 - kind: Newline
   span:
     start: 828
     end: 829
+    file: 0
   raw: "\n"

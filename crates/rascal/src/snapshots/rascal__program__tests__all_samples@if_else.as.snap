@@ -10,11 +10,13 @@ Ok:
           span:
             start: 4
             end: 13
+            file: 0
           value: condition
         value:
           span:
             start: 16
             end: 20
+            file: 0
           value:
             Constant:
               Boolean: true
@@ -24,11 +26,13 @@ Ok:
           span:
             start: 26
             end: 27
+            file: 0
           value: x
         value:
           span:
             start: 30
             end: 31
+            file: 0
           value:
             Constant:
               Integer: 1
@@ -38,11 +42,13 @@ Ok:
           span:
             start: 37
             end: 38
+            file: 0
           value: y
         value:
           span:
             start: 41
             end: 43
+            file: 0
           value:
             Constant:
               Integer: -1
@@ -52,6 +58,7 @@ Ok:
           span:
             start: 85
             end: 94
+            file: 0
           value:
             Constant:
               Identifier: condition
@@ -60,12 +67,14 @@ Ok:
             span:
               start: 96
               end: 109
+              file: 0
             value:
               Call:
                 name:
                   span:
                     start: 96
                     end: 107
+                    file: 0
                   value:
                     Constant:
                       Identifier: doSomething
@@ -76,18 +85,21 @@ Ok:
           span:
             start: 115
             end: 120
+            file: 0
           value:
             BinaryOperator:
               - GreaterThan
               - span:
                   start: 115
                   end: 116
+                  file: 0
                 value:
                   Constant:
                     Identifier: x
               - span:
                   start: 119
                   end: 120
+                  file: 0
                 value:
                   Constant:
                     Integer: 0
@@ -96,11 +108,13 @@ Ok:
             span:
               start: 122
               end: 139
+              file: 0
             value:
               Trace:
                 span:
                   start: 128
                   end: 138
+                  file: 0
                 value:
                   Constant:
                     String: positive
@@ -109,11 +123,13 @@ Ok:
             span:
               start: 146
               end: 163
+              file: 0
             value:
               Trace:
                 span:
                   start: 152
                   end: 162
+                  file: 0
                 value:
                   Constant:
                     String: negative
@@ -122,18 +138,21 @@ Ok:
           span:
             start: 196
             end: 201
+            file: 0
           value:
             BinaryOperator:
               - LessThan
               - span:
                   start: 196
                   end: 197
+                  file: 0
                 value:
                   Constant:
                     Identifier: x
               - span:
                   start: 200
                   end: 201
+                  file: 0
                 value:
                   Constant:
                     Integer: 0
@@ -143,11 +162,13 @@ Ok:
                 span:
                   start: 209
                   end: 226
+                  file: 0
                 value:
                   Trace:
                     span:
                       start: 215
                       end: 225
+                      file: 0
                     value:
                       Constant:
                         String: negative
@@ -157,18 +178,21 @@ Ok:
               span:
                 start: 239
                 end: 244
+                file: 0
               value:
                 BinaryOperator:
                   - GreaterThan
                   - span:
                       start: 239
                       end: 240
+                      file: 0
                     value:
                       Constant:
                         Identifier: x
                   - span:
                       start: 243
                       end: 244
+                      file: 0
                     value:
                       Constant:
                         Integer: 0
@@ -178,11 +202,13 @@ Ok:
                     span:
                       start: 252
                       end: 269
+                      file: 0
                     value:
                       Trace:
                         span:
                           start: 258
                           end: 268
+                          file: 0
                         value:
                           Constant:
                             String: positive
@@ -192,18 +218,21 @@ Ok:
                   span:
                     start: 282
                     end: 288
+                    file: 0
                   value:
                     BinaryOperator:
                       - Equal
                       - span:
                           start: 282
                           end: 283
+                          file: 0
                         value:
                           Constant:
                             Identifier: x
                       - span:
                           start: 287
                           end: 288
+                          file: 0
                         value:
                           Constant:
                             Integer: 0
@@ -213,11 +242,13 @@ Ok:
                         span:
                           start: 296
                           end: 309
+                          file: 0
                         value:
                           Trace:
                             span:
                               start: 302
                               end: 308
+                              file: 0
                             value:
                               Constant:
                                 String: zero
@@ -227,11 +258,13 @@ Ok:
                         span:
                           start: 324
                           end: 342
+                          file: 0
                         value:
                           Trace:
                             span:
                               start: 330
                               end: 341
+                              file: 0
                             value:
                               Constant:
                                 String: undefined
@@ -240,6 +273,7 @@ Ok:
           span:
             start: 389
             end: 398
+            file: 0
           value:
             Constant:
               Identifier: condition
@@ -251,6 +285,7 @@ Ok:
           span:
             start: 407
             end: 416
+            file: 0
           value:
             Constant:
               Identifier: condition
@@ -263,6 +298,7 @@ Ok:
           span:
             start: 433
             end: 442
+            file: 0
           value:
             Constant:
               Identifier: condition
@@ -271,11 +307,13 @@ Ok:
             span:
               start: 444
               end: 459
+              file: 0
             value:
               Trace:
                 span:
                   start: 450
                   end: 458
+                  file: 0
                 value:
                   Constant:
                     String: single
@@ -286,18 +324,21 @@ Ok:
           span:
             start: 510
             end: 515
+            file: 0
           value:
             BinaryOperator:
               - GreaterThan
               - span:
                   start: 510
                   end: 511
+                  file: 0
                 value:
                   Constant:
                     Identifier: x
               - span:
                   start: 514
                   end: 515
+                  file: 0
                 value:
                   Constant:
                     Integer: 0
@@ -307,18 +348,21 @@ Ok:
               span:
                 start: 525
                 end: 530
+                file: 0
               value:
                 BinaryOperator:
                   - GreaterThan
                   - span:
                       start: 525
                       end: 526
+                      file: 0
                     value:
                       Constant:
                         Identifier: y
                   - span:
                       start: 529
                       end: 530
+                      file: 0
                     value:
                       Constant:
                         Integer: 0
@@ -327,11 +371,13 @@ Ok:
                 span:
                   start: 540
                   end: 562
+                  file: 0
                 value:
                   Trace:
                     span:
                       start: 546
                       end: 561
+                      file: 0
                     value:
                       Constant:
                         String: both positive
@@ -341,18 +387,21 @@ Ok:
                   span:
                     start: 577
                     end: 582
+                    file: 0
                   value:
                     BinaryOperator:
                       - LessThan
                       - span:
                           start: 577
                           end: 578
+                          file: 0
                         value:
                           Constant:
                             Identifier: y
                       - span:
                           start: 581
                           end: 582
+                          file: 0
                         value:
                           Constant:
                             Integer: 0
@@ -361,11 +410,13 @@ Ok:
                     span:
                       start: 592
                       end: 623
+                      file: 0
                     value:
                       Trace:
                         span:
                           start: 598
                           end: 622
+                          file: 0
                         value:
                           Constant:
                             String: "x positive, y negative"
@@ -374,11 +425,13 @@ Ok:
                     span:
                       start: 642
                       end: 669
+                      file: 0
                     value:
                       Trace:
                         span:
                           start: 648
                           end: 668
+                          file: 0
                         value:
                           Constant:
                             String: "x positive, y zero"
@@ -388,6 +441,7 @@ Ok:
           span:
             start: 706
             end: 715
+            file: 0
           value:
             Constant:
               Identifier: condition
@@ -397,12 +451,14 @@ Ok:
                 span:
                   start: 723
                   end: 736
+                  file: 0
                 value:
                   Call:
                     name:
                       span:
                         start: 723
                         end: 734
+                        file: 0
                       value:
                         Constant:
                           Identifier: doSomething
@@ -413,6 +469,7 @@ Ok:
               span:
                 start: 749
                 end: 763
+                file: 0
               value:
                 Constant:
                   Identifier: otherCondition
@@ -421,12 +478,14 @@ Ok:
                 span:
                   start: 769
                   end: 786
+                  file: 0
                 value:
                   Call:
                     name:
                       span:
                         start: 769
                         end: 784
+                        file: 0
                       value:
                         Constant:
                           Identifier: doSomethingElse
@@ -437,12 +496,14 @@ Ok:
                     span:
                       start: 799
                       end: 808
+                      file: 0
                     value:
                       Call:
                         name:
                           span:
                             start: 799
                             end: 806
+                            file: 0
                           value:
                             Constant:
                               Identifier: doFinal
@@ -452,6 +513,7 @@ Ok:
           span:
             start: 902
             end: 911
+            file: 0
           value:
             Constant:
               Identifier: condition
@@ -460,12 +522,14 @@ Ok:
             span:
               start: 917
               end: 929
+              file: 0
             value:
               Call:
                 name:
                   span:
                     start: 917
                     end: 927
+                    file: 0
                   value:
                     Constant:
                       Identifier: statement1
@@ -475,12 +539,14 @@ Ok:
         span:
           start: 935
           end: 947
+          file: 0
         value:
           Call:
             name:
               span:
                 start: 935
                 end: 945
+                file: 0
               value:
                 Constant:
                   Identifier: statement2
@@ -490,6 +556,7 @@ Ok:
           span:
             start: 1007
             end: 1008
+            file: 0
           value:
             Constant:
               Identifier: x
@@ -499,6 +566,7 @@ Ok:
               span:
                 start: 1018
                 end: 1019
+                file: 0
               value:
                 Constant:
                   Identifier: y
@@ -507,11 +575,13 @@ Ok:
                 span:
                   start: 1029
                   end: 1039
+                  file: 0
                 value:
                   Trace:
                     span:
                       start: 1035
                       end: 1038
+                      file: 0
                     value:
                       Constant:
                         String: y
@@ -520,11 +590,13 @@ Ok:
                 span:
                   start: 1050
                   end: 1073
+                  file: 0
                 value:
                   Trace:
                     span:
                       start: 1056
                       end: 1072
+                      file: 0
                     value:
                       Constant:
                         String: ambiguous else

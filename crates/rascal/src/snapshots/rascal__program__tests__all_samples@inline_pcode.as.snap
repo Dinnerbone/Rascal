@@ -9,6 +9,7 @@ Ok:
         span:
           start: 0
           end: 207
+          file: 0
         value:
           Function:
             signature:
@@ -16,6 +17,7 @@ Ok:
                 span:
                   start: 9
                   end: 26
+                  file: 0
                 value: traceThroughPcode
               args:
                 - name: message
@@ -27,11 +29,13 @@ Ok:
                   span:
                     start: 42
                     end: 88
+                    file: 0
                   value:
                     Trace:
                       span:
                         start: 48
                         end: 87
+                        file: 0
                       value:
                         Constant:
                           String: "-- start of a very special message --"
@@ -40,11 +44,13 @@ Ok:
                   span:
                     start: 170
                     end: 204
+                    file: 0
                   value:
                     Trace:
                       span:
                         start: 176
                         end: 203
+                        file: 0
                       value:
                         Constant:
                           String: "-- end special message --"
@@ -94,12 +100,14 @@ Ok:
         span:
           start: 209
           end: 243
+          file: 0
         value:
           Call:
             name:
               span:
                 start: 209
                 end: 226
+                file: 0
               value:
                 Constant:
                   Identifier: traceThroughPcode
@@ -107,6 +115,7 @@ Ok:
               - span:
                   start: 227
                   end: 242
+                  file: 0
                 value:
                   Constant:
                     String: "Hello, world!"

@@ -10,11 +10,13 @@ Ok:
           span:
             start: 4
             end: 7
+            file: 0
           value: num
         value:
           span:
             start: 17
             end: 19
+            file: 0
           value:
             Constant:
               Integer: 42
@@ -22,17 +24,20 @@ Ok:
           span:
             start: 8
             end: 14
+            file: 0
           value: Number
     - Declare:
         name:
           span:
             start: 25
             end: 28
+            file: 0
           value: str
         value:
           span:
             start: 38
             end: 45
+            file: 0
           value:
             Constant:
               String: Hello
@@ -40,17 +45,20 @@ Ok:
           span:
             start: 29
             end: 35
+            file: 0
           value: String
     - Declare:
         name:
           span:
             start: 51
             end: 55
+            file: 0
           value: flag
         value:
           span:
             start: 66
             end: 70
+            file: 0
           value:
             Constant:
               Boolean: true
@@ -58,45 +66,53 @@ Ok:
           span:
             start: 56
             end: 63
+            file: 0
           value: Boolean
     - Declare:
         name:
           span:
             start: 76
             end: 79
+            file: 0
           value: obj
         value:
           span:
             start: 89
             end: 91
+            file: 0
           value:
             InitObject: []
         type_name:
           span:
             start: 80
             end: 86
+            file: 0
           value: Object
     - Declare:
         name:
           span:
             start: 97
             end: 100
+            file: 0
           value: arr
         value:
           span:
             start: 109
             end: 111
+            file: 0
           value:
             InitArray: []
         type_name:
           span:
             start: 101
             end: 106
+            file: 0
           value: Array
     - Expr:
         span:
           start: 114
           end: 175
+          file: 0
         value:
           Function:
             signature:
@@ -104,6 +120,7 @@ Ok:
                 span:
                   start: 123
                   end: 126
+                  file: 0
                 value: add
               args:
                 - name: a
@@ -111,6 +128,7 @@ Ok:
                     span:
                       start: 129
                       end: 135
+                      file: 0
                     value: Number
                   register: 1
                 - name: b
@@ -118,30 +136,35 @@ Ok:
                     span:
                       start: 139
                       end: 145
+                      file: 0
                     value: Number
                   register: 2
               return_type:
                 span:
                   start: 147
                   end: 153
+                  file: 0
                 value: Number
             body:
               - Return:
                   - span:
                       start: 167
                       end: 172
+                      file: 0
                     value:
                       BinaryOperator:
                         - Add
                         - span:
                             start: 167
                             end: 168
+                            file: 0
                           value:
                             Constant:
                               Register: 1
                         - span:
                             start: 171
                             end: 172
+                            file: 0
                           value:
                             Constant:
                               Register: 2
@@ -195,6 +218,7 @@ Ok:
         span:
           start: 177
           end: 236
+          file: 0
         value:
           Function:
             signature:
@@ -202,18 +226,21 @@ Ok:
                 span:
                   start: 186
                   end: 196
+                  file: 0
                 value: getMessage
               args: []
               return_type:
                 span:
                   start: 199
                   end: 205
+                  file: 0
                 value: String
             body:
               - Return:
                   - span:
                       start: 219
                       end: 233
+                      file: 0
                     value:
                       Constant:
                         String: Test message
@@ -259,6 +286,7 @@ Ok:
         span:
           start: 238
           end: 297
+          file: 0
         value:
           Function:
             signature:
@@ -266,6 +294,7 @@ Ok:
                 span:
                   start: 247
                   end: 258
+                  file: 0
                 value: processData
               args:
                 - name: data
@@ -273,23 +302,27 @@ Ok:
                     span:
                       start: 264
                       end: 270
+                      file: 0
                     value: Object
                   register: 1
               return_type:
                 span:
                   start: 272
                   end: 276
+                  file: 0
                 value: Void
             body:
               - Expr:
                   span:
                     start: 283
                     end: 294
+                    file: 0
                   value:
                     Trace:
                       span:
                         start: 289
                         end: 293
+                        file: 0
                       value:
                         Constant:
                           Register: 1
@@ -340,17 +373,20 @@ Ok:
           span:
             start: 303
             end: 310
+            file: 0
           value: numbers
         value:
           span:
             start: 319
             end: 322
+            file: 0
           value:
             New:
               name:
                 span:
                   start: 323
                   end: 328
+                  file: 0
                 value:
                   Constant:
                     Identifier: Array
@@ -359,34 +395,40 @@ Ok:
           span:
             start: 311
             end: 316
+            file: 0
           value: Array
     - Declare:
         name:
           span:
             start: 336
             end: 343
+            file: 0
           value: strings
         value:
           span:
             start: 352
             end: 375
+            file: 0
           value:
             InitArray:
               - span:
                   start: 353
                   end: 358
+                  file: 0
                 value:
                   Constant:
                     String: one
               - span:
                   start: 360
                   end: 365
+                  file: 0
                 value:
                   Constant:
                     String: two
               - span:
                   start: 367
                   end: 374
+                  file: 0
                 value:
                   Constant:
                     String: three
@@ -394,17 +436,20 @@ Ok:
           span:
             start: 344
             end: 349
+            file: 0
           value: Array
     - Declare:
         name:
           span:
             start: 382
             end: 391
+            file: 0
           value: someValue
         value:
           span:
             start: 401
             end: 406
+            file: 0
           value:
             Constant:
               String: "123"
@@ -412,22 +457,26 @@ Ok:
           span:
             start: 392
             end: 398
+            file: 0
           value: Object
     - Declare:
         name:
           span:
             start: 412
             end: 420
+            file: 0
           value: numValue
         value:
           span:
             start: 430
             end: 447
+            file: 0
           value:
             CastToNumber:
               span:
                 start: 437
                 end: 446
+                file: 0
               value:
                 Constant:
                   Identifier: someValue
@@ -435,22 +484,26 @@ Ok:
           span:
             start: 421
             end: 427
+            file: 0
           value: Number
     - Declare:
         name:
           span:
             start: 453
             end: 461
+            file: 0
           value: strValue
         value:
           span:
             start: 471
             end: 481
+            file: 0
           value:
             CastToString:
               span:
                 start: 478
                 end: 480
+                file: 0
               value:
                 Constant:
                   Integer: 42
@@ -458,11 +511,13 @@ Ok:
           span:
             start: 462
             end: 468
+            file: 0
           value: String
     - Expr:
         span:
           start: 484
           end: 608
+          file: 0
         value:
           Function:
             signature:
@@ -470,6 +525,7 @@ Ok:
                 span:
                   start: 493
                   end: 504
+                  file: 0
                 value: complexFunc
               args:
                 - name: name
@@ -477,6 +533,7 @@ Ok:
                     span:
                       start: 510
                       end: 516
+                      file: 0
                     value: String
                   register: 1
                 - name: age
@@ -484,6 +541,7 @@ Ok:
                     span:
                       start: 522
                       end: 528
+                      file: 0
                     value: Number
                   register: 2
                 - name: isValid
@@ -491,24 +549,28 @@ Ok:
                     span:
                       start: 538
                       end: 545
+                      file: 0
                     value: Boolean
                   register: 3
               return_type:
                 span:
                   start: 547
                   end: 553
+                  file: 0
                 value: Object
             body:
               - Return:
                   - span:
                       start: 567
                       end: 605
+                      file: 0
                     value:
                       InitObject:
                         - - name
                           - span:
                               start: 574
                               end: 578
+                              file: 0
                             value:
                               Constant:
                                 Register: 1
@@ -516,6 +578,7 @@ Ok:
                           - span:
                               start: 585
                               end: 588
+                              file: 0
                             value:
                               Constant:
                                 Register: 2
@@ -523,6 +586,7 @@ Ok:
                           - span:
                               start: 597
                               end: 604
+                              file: 0
                             value:
                               Constant:
                                 Register: 3
@@ -581,29 +645,34 @@ Ok:
           span:
             start: 614
             end: 622
+            file: 0
           value: userData
         value:
           span:
             start: 632
             end: 709
+            file: 0
           value:
             InitObject:
               - - id
                 - span:
                     start: 641
                     end: 651
+                    file: 0
                   value:
                     BinaryOperator:
                       - Assign
                       - span:
                           start: 641
                           end: 647
+                          file: 0
                         value:
                           Constant:
                             Identifier: Number
                       - span:
                           start: 650
                           end: 651
+                          file: 0
                         value:
                           Constant:
                             Integer: 1
@@ -611,18 +680,21 @@ Ok:
                 - span:
                     start: 662
                     end: 677
+                    file: 0
                   value:
                     BinaryOperator:
                       - Assign
                       - span:
                           start: 662
                           end: 668
+                          file: 0
                         value:
                           Constant:
                             Identifier: String
                       - span:
                           start: 671
                           end: 677
+                          file: 0
                         value:
                           Constant:
                             String: User
@@ -630,35 +702,41 @@ Ok:
                 - span:
                     start: 690
                     end: 707
+                    file: 0
                   value:
                     BinaryOperator:
                       - Assign
                       - span:
                           start: 690
                           end: 695
+                          file: 0
                         value:
                           Constant:
                             Identifier: Array
                       - span:
                           start: 698
                           end: 707
+                          file: 0
                         value:
                           InitArray:
                             - span:
                                 start: 699
                                 end: 700
+                                file: 0
                               value:
                                 Constant:
                                   Integer: 1
                             - span:
                                 start: 702
                                 end: 703
+                                file: 0
                               value:
                                 Constant:
                                   Integer: 2
                             - span:
                                 start: 705
                                 end: 706
+                                file: 0
                               value:
                                 Constant:
                                   Integer: 3
@@ -666,11 +744,13 @@ Ok:
           span:
             start: 623
             end: 629
+            file: 0
           value: Object
     - Expr:
         span:
           start: 712
           end: 849
+          file: 0
         value:
           Function:
             signature:
@@ -678,6 +758,7 @@ Ok:
                 span:
                   start: 721
                   end: 728
+                  file: 0
                 value: forEach
               args:
                 - name: arr
@@ -685,6 +766,7 @@ Ok:
                     span:
                       start: 733
                       end: 738
+                      file: 0
                     value: Array
                   register: 1
                 - name: callback
@@ -692,12 +774,14 @@ Ok:
                     span:
                       start: 749
                       end: 757
+                      file: 0
                     value: Function
                   register: 2
               return_type:
                 span:
                   start: 759
                   end: 763
+                  file: 0
                 value: Void
             body:
               - ForIn:
@@ -708,18 +792,21 @@ Ok:
                           span:
                             start: 0
                             end: 0
+                            file: ~
                           value:
                             BinaryOperator:
                               - Assign
                               - span:
                                   start: 0
                                   end: 0
+                                  file: ~
                                 value:
                                   Constant:
                                     Register: 3
                               - span:
                                   start: 790
                                   end: 791
+                                  file: 0
                                 value:
                                   Constant:
                                     Integer: 0
@@ -727,29 +814,34 @@ Ok:
                         - span:
                             start: 793
                             end: 807
+                            file: 0
                           value:
                             BinaryOperator:
                               - LessThan
                               - span:
                                   start: 793
                                   end: 794
+                                  file: 0
                                 value:
                                   Constant:
                                     Register: 3
                               - span:
                                   start: 800
                                   end: 807
+                                  file: 0
                                 value:
                                   Field:
                                     - span:
                                         start: 797
                                         end: 800
+                                        file: 0
                                       value:
                                         Constant:
                                           Register: 1
                                     - span:
                                         start: 801
                                         end: 807
+                                        file: 0
                                       value:
                                         Constant:
                                           String: length
@@ -757,12 +849,14 @@ Ok:
                         - span:
                             start: 810
                             end: 812
+                            file: 0
                           value:
                             UnaryOperator:
                               - Increment: Postfix
                               - span:
                                   start: 809
                                   end: 810
+                                  file: 0
                                 value:
                                   Constant:
                                     Register: 3
@@ -772,12 +866,14 @@ Ok:
                           span:
                             start: 824
                             end: 840
+                            file: 0
                           value:
                             Call:
                               name:
                                 span:
                                   start: 824
                                   end: 832
+                                  file: 0
                                 value:
                                   Constant:
                                     Register: 2
@@ -785,17 +881,20 @@ Ok:
                                 - span:
                                     start: 836
                                     end: 839
+                                    file: 0
                                   value:
                                     Field:
                                       - span:
                                           start: 833
                                           end: 836
+                                          file: 0
                                         value:
                                           Constant:
                                             Register: 1
                                       - span:
                                           start: 837
                                           end: 838
+                                          file: 0
                                         value:
                                           Constant:
                                             Register: 3
@@ -840,6 +939,7 @@ Ok:
                     span:
                       start: 781
                       end: 787
+                      file: 0
                     value: Number
               referenced_variables: []
               could_reference_anything: false

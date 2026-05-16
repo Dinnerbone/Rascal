@@ -10,11 +10,13 @@ Ok:
           span:
             start: 4
             end: 11
+            file: 0
           value: success
         value:
           span:
             start: 14
             end: 18
+            file: 0
           value:
             Constant:
               Boolean: true
@@ -24,23 +26,27 @@ Ok:
           span:
             start: 24
             end: 38
+            file: 0
           value:
             BinaryOperator:
               - Equal
               - span:
                   start: 24
                   end: 33
+                  file: 0
                 value:
                   GetRandomNumber:
                     span:
                       start: 31
                       end: 32
+                      file: 0
                     value:
                       Constant:
                         Integer: 2
               - span:
                   start: 37
                   end: 38
+                  file: 0
                 value:
                   Constant:
                     Integer: 0
@@ -50,18 +56,21 @@ Ok:
                 span:
                   start: 45
                   end: 60
+                  file: 0
                 value:
                   BinaryOperator:
                     - Assign
                     - span:
                         start: 45
                         end: 52
+                        file: 0
                       value:
                         Constant:
                           Identifier: success
                     - span:
                         start: 55
                         end: 60
+                        file: 0
                       value:
                         Constant:
                           Boolean: false
@@ -71,6 +80,7 @@ Ok:
           span:
             start: 68
             end: 75
+            file: 0
           value:
             Constant:
               Identifier: success
@@ -80,11 +90,13 @@ Ok:
                 span:
                   start: 82
                   end: 107
+                  file: 0
                 value:
                   Trace:
                     span:
                       start: 88
                       end: 106
+                      file: 0
                     value:
                       Constant:
                         String: Success! Hurrah!
@@ -94,11 +106,13 @@ Ok:
                 span:
                   start: 121
                   end: 139
+                  file: 0
                 value:
                   Trace:
                     span:
                       start: 127
                       end: 138
+                      file: 0
                     value:
                       Constant:
                         String: "Failed :("
@@ -106,11 +120,13 @@ Ok:
         span:
           start: 143
           end: 161
+          file: 0
         value:
           Trace:
             span:
               start: 149
               end: 160
+              file: 0
             value:
               Constant:
                 String: "-- end --"

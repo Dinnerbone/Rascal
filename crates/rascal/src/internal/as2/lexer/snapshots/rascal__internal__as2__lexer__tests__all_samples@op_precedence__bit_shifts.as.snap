@@ -8,1313 +8,1562 @@ input_file: samples/as2/op_precedence/bit_shifts.as
   span:
     start: 0
     end: 3
+    file: 0
   raw: var
 - kind: Identifier
   span:
     start: 4
     end: 5
+    file: 0
   raw: a
 - kind:
     Operator: Assign
   span:
     start: 6
     end: 7
+    file: 0
   raw: "="
 - kind: Integer
   span:
     start: 8
     end: 10
+    file: 0
   raw: "16"
 - kind: Semicolon
   span:
     start: 10
     end: 11
+    file: 0
   raw: ;
 - kind:
     Keyword: Var
   span:
     start: 28
     end: 31
+    file: 0
   raw: var
 - kind: Identifier
   span:
     start: 32
     end: 33
+    file: 0
   raw: b
 - kind:
     Operator: Assign
   span:
     start: 34
     end: 35
+    file: 0
   raw: "="
 - kind: Integer
   span:
     start: 36
     end: 37
+    file: 0
   raw: "2"
 - kind: Semicolon
   span:
     start: 37
     end: 38
+    file: 0
   raw: ;
 - kind: Newline
   span:
     start: 38
     end: 39
+    file: 0
   raw: "\n"
 - kind:
     Keyword: Var
   span:
     start: 39
     end: 42
+    file: 0
   raw: var
 - kind: Identifier
   span:
     start: 43
     end: 44
+    file: 0
   raw: c
 - kind:
     Operator: Assign
   span:
     start: 45
     end: 46
+    file: 0
   raw: "="
 - kind: Integer
   span:
     start: 47
     end: 48
+    file: 0
   raw: "1"
 - kind: Semicolon
   span:
     start: 48
     end: 49
+    file: 0
   raw: ;
 - kind: Newline
   span:
     start: 49
     end: 50
+    file: 0
   raw: "\n"
 - kind: Newline
   span:
     start: 50
     end: 51
+    file: 0
   raw: "\n"
 - kind: Identifier
   span:
     start: 51
     end: 56
+    file: 0
   raw: trace
 - kind: OpenParen
   span:
     start: 56
     end: 57
+    file: 0
   raw: (
 - kind:
     String: Double
   span:
     start: 57
     end: 61
+    file: 0
   raw: a=
 - kind:
     Operator: Add
   span:
     start: 62
     end: 63
+    file: 0
   raw: +
 - kind: Identifier
   span:
     start: 64
     end: 65
+    file: 0
   raw: a
 - kind:
     Operator: Add
   span:
     start: 66
     end: 67
+    file: 0
   raw: +
 - kind:
     String: Double
   span:
     start: 68
     end: 74
+    file: 0
   raw: ", b="
 - kind:
     Operator: Add
   span:
     start: 75
     end: 76
+    file: 0
   raw: +
 - kind: Identifier
   span:
     start: 77
     end: 78
+    file: 0
   raw: b
 - kind:
     Operator: Add
   span:
     start: 79
     end: 80
+    file: 0
   raw: +
 - kind:
     String: Double
   span:
     start: 81
     end: 87
+    file: 0
   raw: ", c="
 - kind:
     Operator: Add
   span:
     start: 88
     end: 89
+    file: 0
   raw: +
 - kind: Identifier
   span:
     start: 90
     end: 91
+    file: 0
   raw: c
 - kind: CloseParen
   span:
     start: 91
     end: 92
+    file: 0
   raw: )
 - kind: Semicolon
   span:
     start: 92
     end: 93
+    file: 0
   raw: ;
 - kind: Newline
   span:
     start: 93
     end: 94
+    file: 0
   raw: "\n"
 - kind: Identifier
   span:
     start: 94
     end: 99
+    file: 0
   raw: trace
 - kind: OpenParen
   span:
     start: 99
     end: 100
+    file: 0
   raw: (
 - kind:
     String: Double
   span:
     start: 100
     end: 106
+    file: 0
   raw: "----"
 - kind: CloseParen
   span:
     start: 106
     end: 107
+    file: 0
   raw: )
 - kind: Semicolon
   span:
     start: 107
     end: 108
+    file: 0
   raw: ;
 - kind: Newline
   span:
     start: 108
     end: 109
+    file: 0
   raw: "\n"
 - kind: Newline
   span:
     start: 109
     end: 110
+    file: 0
   raw: "\n"
 - kind: Identifier
   span:
     start: 138
     end: 143
+    file: 0
   raw: trace
 - kind: OpenParen
   span:
     start: 143
     end: 144
+    file: 0
   raw: (
 - kind:
     String: Double
   span:
     start: 144
     end: 160
+    file: 0
   raw: "a << b >> c = "
 - kind:
     Operator: Add
   span:
     start: 161
     end: 162
+    file: 0
   raw: +
 - kind: OpenParen
   span:
     start: 163
     end: 164
+    file: 0
   raw: (
 - kind: Identifier
   span:
     start: 164
     end: 165
+    file: 0
   raw: a
 - kind:
     Operator: BitShiftLeft
   span:
     start: 166
     end: 168
+    file: 0
   raw: "<<"
 - kind: Identifier
   span:
     start: 169
     end: 170
+    file: 0
   raw: b
 - kind:
     Operator: BitShiftRight
   span:
     start: 171
     end: 173
+    file: 0
   raw: ">>"
 - kind: Identifier
   span:
     start: 174
     end: 175
+    file: 0
   raw: c
 - kind: CloseParen
   span:
     start: 175
     end: 176
+    file: 0
   raw: )
 - kind: CloseParen
   span:
     start: 176
     end: 177
+    file: 0
   raw: )
 - kind: Semicolon
   span:
     start: 177
     end: 178
+    file: 0
   raw: ;
 - kind: Identifier
   span:
     start: 185
     end: 190
+    file: 0
   raw: trace
 - kind: OpenParen
   span:
     start: 190
     end: 191
+    file: 0
   raw: (
 - kind:
     String: Double
   span:
     start: 191
     end: 211
+    file: 0
   raw: "((a << b) >> c) = "
 - kind:
     Operator: Add
   span:
     start: 212
     end: 213
+    file: 0
   raw: +
 - kind: OpenParen
   span:
     start: 214
     end: 215
+    file: 0
   raw: (
 - kind: OpenParen
   span:
     start: 215
     end: 216
+    file: 0
   raw: (
 - kind: Identifier
   span:
     start: 216
     end: 217
+    file: 0
   raw: a
 - kind:
     Operator: BitShiftLeft
   span:
     start: 218
     end: 220
+    file: 0
   raw: "<<"
 - kind: Identifier
   span:
     start: 221
     end: 222
+    file: 0
   raw: b
 - kind: CloseParen
   span:
     start: 222
     end: 223
+    file: 0
   raw: )
 - kind:
     Operator: BitShiftRight
   span:
     start: 224
     end: 226
+    file: 0
   raw: ">>"
 - kind: Identifier
   span:
     start: 227
     end: 228
+    file: 0
   raw: c
 - kind: CloseParen
   span:
     start: 228
     end: 229
+    file: 0
   raw: )
 - kind: CloseParen
   span:
     start: 229
     end: 230
+    file: 0
   raw: )
 - kind: Semicolon
   span:
     start: 230
     end: 231
+    file: 0
   raw: ;
 - kind: Identifier
   span:
     start: 238
     end: 243
+    file: 0
   raw: trace
 - kind: OpenParen
   span:
     start: 243
     end: 244
+    file: 0
   raw: (
 - kind:
     String: Double
   span:
     start: 244
     end: 249
+    file: 0
   raw: "---"
 - kind: CloseParen
   span:
     start: 249
     end: 250
+    file: 0
   raw: )
 - kind: Semicolon
   span:
     start: 250
     end: 251
+    file: 0
   raw: ;
 - kind: Newline
   span:
     start: 251
     end: 252
+    file: 0
   raw: "\n"
 - kind: Newline
   span:
     start: 252
     end: 253
+    file: 0
   raw: "\n"
 - kind: Identifier
   span:
     start: 253
     end: 258
+    file: 0
   raw: trace
 - kind: OpenParen
   span:
     start: 258
     end: 259
+    file: 0
   raw: (
 - kind:
     String: Double
   span:
     start: 259
     end: 275
+    file: 0
   raw: "a >> b << c = "
 - kind:
     Operator: Add
   span:
     start: 276
     end: 277
+    file: 0
   raw: +
 - kind: OpenParen
   span:
     start: 278
     end: 279
+    file: 0
   raw: (
 - kind: Identifier
   span:
     start: 279
     end: 280
+    file: 0
   raw: a
 - kind:
     Operator: BitShiftRight
   span:
     start: 281
     end: 283
+    file: 0
   raw: ">>"
 - kind: Identifier
   span:
     start: 284
     end: 285
+    file: 0
   raw: b
 - kind:
     Operator: BitShiftLeft
   span:
     start: 286
     end: 288
+    file: 0
   raw: "<<"
 - kind: Identifier
   span:
     start: 289
     end: 290
+    file: 0
   raw: c
 - kind: CloseParen
   span:
     start: 290
     end: 291
+    file: 0
   raw: )
 - kind: CloseParen
   span:
     start: 291
     end: 292
+    file: 0
   raw: )
 - kind: Semicolon
   span:
     start: 292
     end: 293
+    file: 0
   raw: ;
 - kind: Identifier
   span:
     start: 299
     end: 304
+    file: 0
   raw: trace
 - kind: OpenParen
   span:
     start: 304
     end: 305
+    file: 0
   raw: (
 - kind:
     String: Double
   span:
     start: 305
     end: 325
+    file: 0
   raw: "((a >> b) << c) = "
 - kind:
     Operator: Add
   span:
     start: 326
     end: 327
+    file: 0
   raw: +
 - kind: OpenParen
   span:
     start: 328
     end: 329
+    file: 0
   raw: (
 - kind: OpenParen
   span:
     start: 329
     end: 330
+    file: 0
   raw: (
 - kind: Identifier
   span:
     start: 330
     end: 331
+    file: 0
   raw: a
 - kind:
     Operator: BitShiftRight
   span:
     start: 332
     end: 334
+    file: 0
   raw: ">>"
 - kind: Identifier
   span:
     start: 335
     end: 336
+    file: 0
   raw: b
 - kind: CloseParen
   span:
     start: 336
     end: 337
+    file: 0
   raw: )
 - kind:
     Operator: BitShiftLeft
   span:
     start: 338
     end: 340
+    file: 0
   raw: "<<"
 - kind: Identifier
   span:
     start: 341
     end: 342
+    file: 0
   raw: c
 - kind: CloseParen
   span:
     start: 342
     end: 343
+    file: 0
   raw: )
 - kind: CloseParen
   span:
     start: 343
     end: 344
+    file: 0
   raw: )
 - kind: Semicolon
   span:
     start: 344
     end: 345
+    file: 0
   raw: ;
 - kind: Identifier
   span:
     start: 351
     end: 356
+    file: 0
   raw: trace
 - kind: OpenParen
   span:
     start: 356
     end: 357
+    file: 0
   raw: (
 - kind:
     String: Double
   span:
     start: 357
     end: 362
+    file: 0
   raw: "---"
 - kind: CloseParen
   span:
     start: 362
     end: 363
+    file: 0
   raw: )
 - kind: Semicolon
   span:
     start: 363
     end: 364
+    file: 0
   raw: ;
 - kind: Newline
   span:
     start: 364
     end: 365
+    file: 0
   raw: "\n"
 - kind: Newline
   span:
     start: 365
     end: 366
+    file: 0
   raw: "\n"
 - kind: Identifier
   span:
     start: 366
     end: 371
+    file: 0
   raw: trace
 - kind: OpenParen
   span:
     start: 371
     end: 372
+    file: 0
   raw: (
 - kind:
     String: Double
   span:
     start: 372
     end: 389
+    file: 0
   raw: "a >>> b >> c = "
 - kind:
     Operator: Add
   span:
     start: 390
     end: 391
+    file: 0
   raw: +
 - kind: OpenParen
   span:
     start: 392
     end: 393
+    file: 0
   raw: (
 - kind: Identifier
   span:
     start: 393
     end: 394
+    file: 0
   raw: a
 - kind:
     Operator: BitShiftRightUnsigned
   span:
     start: 395
     end: 398
+    file: 0
   raw: ">>>"
 - kind: Identifier
   span:
     start: 399
     end: 400
+    file: 0
   raw: b
 - kind:
     Operator: BitShiftRight
   span:
     start: 401
     end: 403
+    file: 0
   raw: ">>"
 - kind: Identifier
   span:
     start: 404
     end: 405
+    file: 0
   raw: c
 - kind: CloseParen
   span:
     start: 405
     end: 406
+    file: 0
   raw: )
 - kind: CloseParen
   span:
     start: 406
     end: 407
+    file: 0
   raw: )
 - kind: Semicolon
   span:
     start: 407
     end: 408
+    file: 0
   raw: ;
 - kind: Identifier
   span:
     start: 414
     end: 419
+    file: 0
   raw: trace
 - kind: OpenParen
   span:
     start: 419
     end: 420
+    file: 0
   raw: (
 - kind:
     String: Double
   span:
     start: 420
     end: 441
+    file: 0
   raw: "((a >>> b) >> c) = "
 - kind:
     Operator: Add
   span:
     start: 442
     end: 443
+    file: 0
   raw: +
 - kind: OpenParen
   span:
     start: 444
     end: 445
+    file: 0
   raw: (
 - kind: OpenParen
   span:
     start: 445
     end: 446
+    file: 0
   raw: (
 - kind: Identifier
   span:
     start: 446
     end: 447
+    file: 0
   raw: a
 - kind:
     Operator: BitShiftRightUnsigned
   span:
     start: 448
     end: 451
+    file: 0
   raw: ">>>"
 - kind: Identifier
   span:
     start: 452
     end: 453
+    file: 0
   raw: b
 - kind: CloseParen
   span:
     start: 453
     end: 454
+    file: 0
   raw: )
 - kind:
     Operator: BitShiftRight
   span:
     start: 455
     end: 457
+    file: 0
   raw: ">>"
 - kind: Identifier
   span:
     start: 458
     end: 459
+    file: 0
   raw: c
 - kind: CloseParen
   span:
     start: 459
     end: 460
+    file: 0
   raw: )
 - kind: CloseParen
   span:
     start: 460
     end: 461
+    file: 0
   raw: )
 - kind: Semicolon
   span:
     start: 461
     end: 462
+    file: 0
   raw: ;
 - kind: Identifier
   span:
     start: 468
     end: 473
+    file: 0
   raw: trace
 - kind: OpenParen
   span:
     start: 473
     end: 474
+    file: 0
   raw: (
 - kind:
     String: Double
   span:
     start: 474
     end: 479
+    file: 0
   raw: "---"
 - kind: CloseParen
   span:
     start: 479
     end: 480
+    file: 0
   raw: )
 - kind: Semicolon
   span:
     start: 480
     end: 481
+    file: 0
   raw: ;
 - kind: Newline
   span:
     start: 481
     end: 482
+    file: 0
   raw: "\n"
 - kind: Newline
   span:
     start: 482
     end: 483
+    file: 0
   raw: "\n"
 - kind: Identifier
   span:
     start: 500
     end: 505
+    file: 0
   raw: trace
 - kind: OpenParen
   span:
     start: 505
     end: 506
+    file: 0
   raw: (
 - kind:
     String: Double
   span:
     start: 506
     end: 528
+    file: 0
   raw: "a << b >> c >>> b = "
 - kind:
     Operator: Add
   span:
     start: 529
     end: 530
+    file: 0
   raw: +
 - kind: OpenParen
   span:
     start: 531
     end: 532
+    file: 0
   raw: (
 - kind: Identifier
   span:
     start: 532
     end: 533
+    file: 0
   raw: a
 - kind:
     Operator: BitShiftLeft
   span:
     start: 534
     end: 536
+    file: 0
   raw: "<<"
 - kind: Identifier
   span:
     start: 537
     end: 538
+    file: 0
   raw: b
 - kind:
     Operator: BitShiftRight
   span:
     start: 539
     end: 541
+    file: 0
   raw: ">>"
 - kind: Identifier
   span:
     start: 542
     end: 543
+    file: 0
   raw: c
 - kind:
     Operator: BitShiftRightUnsigned
   span:
     start: 544
     end: 547
+    file: 0
   raw: ">>>"
 - kind: Identifier
   span:
     start: 548
     end: 549
+    file: 0
   raw: b
 - kind: CloseParen
   span:
     start: 549
     end: 550
+    file: 0
   raw: )
 - kind: CloseParen
   span:
     start: 550
     end: 551
+    file: 0
   raw: )
 - kind: Semicolon
   span:
     start: 551
     end: 552
+    file: 0
   raw: ;
 - kind: Identifier
   span:
     start: 558
     end: 563
+    file: 0
   raw: trace
 - kind: OpenParen
   span:
     start: 563
     end: 564
+    file: 0
   raw: (
 - kind:
     String: Double
   span:
     start: 564
     end: 592
+    file: 0
   raw: "(((a << b) >> c) >>> b) = "
 - kind:
     Operator: Add
   span:
     start: 593
     end: 594
+    file: 0
   raw: +
 - kind: OpenParen
   span:
     start: 595
     end: 596
+    file: 0
   raw: (
 - kind: OpenParen
   span:
     start: 596
     end: 597
+    file: 0
   raw: (
 - kind: OpenParen
   span:
     start: 597
     end: 598
+    file: 0
   raw: (
 - kind: Identifier
   span:
     start: 598
     end: 599
+    file: 0
   raw: a
 - kind:
     Operator: BitShiftLeft
   span:
     start: 600
     end: 602
+    file: 0
   raw: "<<"
 - kind: Identifier
   span:
     start: 603
     end: 604
+    file: 0
   raw: b
 - kind: CloseParen
   span:
     start: 604
     end: 605
+    file: 0
   raw: )
 - kind:
     Operator: BitShiftRight
   span:
     start: 606
     end: 608
+    file: 0
   raw: ">>"
 - kind: Identifier
   span:
     start: 609
     end: 610
+    file: 0
   raw: c
 - kind: CloseParen
   span:
     start: 610
     end: 611
+    file: 0
   raw: )
 - kind:
     Operator: BitShiftRightUnsigned
   span:
     start: 612
     end: 615
+    file: 0
   raw: ">>>"
 - kind: Identifier
   span:
     start: 616
     end: 617
+    file: 0
   raw: b
 - kind: CloseParen
   span:
     start: 617
     end: 618
+    file: 0
   raw: )
 - kind: CloseParen
   span:
     start: 618
     end: 619
+    file: 0
   raw: )
 - kind: Semicolon
   span:
     start: 619
     end: 620
+    file: 0
   raw: ;
 - kind: Identifier
   span:
     start: 626
     end: 631
+    file: 0
   raw: trace
 - kind: OpenParen
   span:
     start: 631
     end: 632
+    file: 0
   raw: (
 - kind:
     String: Double
   span:
     start: 632
     end: 637
+    file: 0
   raw: "---"
 - kind: CloseParen
   span:
     start: 637
     end: 638
+    file: 0
   raw: )
 - kind: Semicolon
   span:
     start: 638
     end: 639
+    file: 0
   raw: ;
 - kind: Newline
   span:
     start: 639
     end: 640
+    file: 0
   raw: "\n"
 - kind: Newline
   span:
     start: 640
     end: 641
+    file: 0
   raw: "\n"
 - kind: Identifier
   span:
     start: 694
     end: 699
+    file: 0
   raw: trace
 - kind: OpenParen
   span:
     start: 699
     end: 700
+    file: 0
   raw: (
 - kind:
     String: Double
   span:
     start: 700
     end: 715
+    file: 0
   raw: "a << b + c = "
 - kind:
     Operator: Add
   span:
     start: 716
     end: 717
+    file: 0
   raw: +
 - kind: OpenParen
   span:
     start: 718
     end: 719
+    file: 0
   raw: (
 - kind: Identifier
   span:
     start: 719
     end: 720
+    file: 0
   raw: a
 - kind:
     Operator: BitShiftLeft
   span:
     start: 721
     end: 723
+    file: 0
   raw: "<<"
 - kind: Identifier
   span:
     start: 724
     end: 725
+    file: 0
   raw: b
 - kind:
     Operator: Add
   span:
     start: 726
     end: 727
+    file: 0
   raw: +
 - kind: Identifier
   span:
     start: 728
     end: 729
+    file: 0
   raw: c
 - kind: CloseParen
   span:
     start: 729
     end: 730
+    file: 0
   raw: )
 - kind: CloseParen
   span:
     start: 730
     end: 731
+    file: 0
   raw: )
 - kind: Semicolon
   span:
     start: 731
     end: 732
+    file: 0
   raw: ;
 - kind: Identifier
   span:
     start: 739
     end: 744
+    file: 0
   raw: trace
 - kind: OpenParen
   span:
     start: 744
     end: 745
+    file: 0
   raw: (
 - kind:
     String: Double
   span:
     start: 745
     end: 762
+    file: 0
   raw: "a << (b + c) = "
 - kind:
     Operator: Add
   span:
     start: 763
     end: 764
+    file: 0
   raw: +
 - kind: OpenParen
   span:
     start: 765
     end: 766
+    file: 0
   raw: (
 - kind: Identifier
   span:
     start: 766
     end: 767
+    file: 0
   raw: a
 - kind:
     Operator: BitShiftLeft
   span:
     start: 768
     end: 770
+    file: 0
   raw: "<<"
 - kind: OpenParen
   span:
     start: 771
     end: 772
+    file: 0
   raw: (
 - kind: Identifier
   span:
     start: 772
     end: 773
+    file: 0
   raw: b
 - kind:
     Operator: Add
   span:
     start: 774
     end: 775
+    file: 0
   raw: +
 - kind: Identifier
   span:
     start: 776
     end: 777
+    file: 0
   raw: c
 - kind: CloseParen
   span:
     start: 777
     end: 778
+    file: 0
   raw: )
 - kind: CloseParen
   span:
     start: 778
     end: 779
+    file: 0
   raw: )
 - kind: CloseParen
   span:
     start: 779
     end: 780
+    file: 0
   raw: )
 - kind: Semicolon
   span:
     start: 780
     end: 781
+    file: 0
   raw: ;
 - kind: Identifier
   span:
     start: 823
     end: 828
+    file: 0
   raw: trace
 - kind: OpenParen
   span:
     start: 828
     end: 829
+    file: 0
   raw: (
 - kind:
     String: Double
   span:
     start: 829
     end: 834
+    file: 0
   raw: "---"
 - kind: CloseParen
   span:
     start: 834
     end: 835
+    file: 0
   raw: )
 - kind: Semicolon
   span:
     start: 835
     end: 836
+    file: 0
   raw: ;
 - kind: Newline
   span:
     start: 836
     end: 837
+    file: 0
   raw: "\n"
 - kind: Identifier
   span:
     start: 837
     end: 842
+    file: 0
   raw: trace
 - kind: OpenParen
   span:
     start: 842
     end: 843
+    file: 0
   raw: (
 - kind:
     String: Double
   span:
     start: 843
     end: 858
+    file: 0
   raw: "a * b << c = "
 - kind:
     Operator: Add
   span:
     start: 859
     end: 860
+    file: 0
   raw: +
 - kind: OpenParen
   span:
     start: 861
     end: 862
+    file: 0
   raw: (
 - kind: Identifier
   span:
     start: 862
     end: 863
+    file: 0
   raw: a
 - kind:
     Operator: Multiply
   span:
     start: 864
     end: 865
+    file: 0
   raw: "*"
 - kind: Identifier
   span:
     start: 866
     end: 867
+    file: 0
   raw: b
 - kind:
     Operator: BitShiftLeft
   span:
     start: 868
     end: 870
+    file: 0
   raw: "<<"
 - kind: Identifier
   span:
     start: 871
     end: 872
+    file: 0
   raw: c
 - kind: CloseParen
   span:
     start: 872
     end: 873
+    file: 0
   raw: )
 - kind: CloseParen
   span:
     start: 873
     end: 874
+    file: 0
   raw: )
 - kind: Semicolon
   span:
     start: 874
     end: 875
+    file: 0
   raw: ;
 - kind: Identifier
   span:
     start: 882
     end: 887
+    file: 0
   raw: trace
 - kind: OpenParen
   span:
     start: 887
     end: 888
+    file: 0
   raw: (
 - kind:
     String: Double
   span:
     start: 888
     end: 905
+    file: 0
   raw: "(a * b) << c = "
 - kind:
     Operator: Add
   span:
     start: 906
     end: 907
+    file: 0
   raw: +
 - kind: OpenParen
   span:
     start: 908
     end: 909
+    file: 0
   raw: (
 - kind: OpenParen
   span:
     start: 909
     end: 910
+    file: 0
   raw: (
 - kind: Identifier
   span:
     start: 910
     end: 911
+    file: 0
   raw: a
 - kind:
     Operator: Multiply
   span:
     start: 912
     end: 913
+    file: 0
   raw: "*"
 - kind: Identifier
   span:
     start: 914
     end: 915
+    file: 0
   raw: b
 - kind: CloseParen
   span:
     start: 915
     end: 916
+    file: 0
   raw: )
 - kind:
     Operator: BitShiftLeft
   span:
     start: 917
     end: 919
+    file: 0
   raw: "<<"
 - kind: Identifier
   span:
     start: 920
     end: 921
+    file: 0
   raw: c
 - kind: CloseParen
   span:
     start: 921
     end: 922
+    file: 0
   raw: )
 - kind: CloseParen
   span:
     start: 922
     end: 923
+    file: 0
   raw: )
 - kind: Semicolon
   span:
     start: 923
     end: 924
+    file: 0
   raw: ;

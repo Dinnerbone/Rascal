@@ -5,7 +5,7 @@ use winnow::Parser;
 use winnow::error::{ContextError, ErrMode};
 use winnow::token::literal;
 
-#[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Debug, Serialize)]
+#[derive(Copy, Clone, PartialEq, Eq, Hash, Debug, Serialize)]
 pub struct Token<'a> {
     pub(crate) kind: TokenKind,
     pub(crate) span: Span,

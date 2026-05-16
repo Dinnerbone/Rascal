@@ -10,11 +10,13 @@ Ok:
           span:
             start: 4
             end: 5
+            file: 0
           value: x
         value:
           span:
             start: 8
             end: 9
+            file: 0
           value:
             Constant:
               Integer: 0
@@ -24,18 +26,21 @@ Ok:
           span:
             start: 18
             end: 23
+            file: 0
           value:
             BinaryOperator:
               - LessThan
               - span:
                   start: 18
                   end: 19
+                  file: 0
                 value:
                   Constant:
                     Identifier: x
               - span:
                   start: 22
                   end: 23
+                  file: 0
                 value:
                   Constant:
                     Integer: 5
@@ -45,11 +50,13 @@ Ok:
                 span:
                   start: 28
                   end: 36
+                  file: 0
                 value:
                   Trace:
                     span:
                       start: 34
                       end: 35
+                      file: 0
                     value:
                       Constant:
                         Identifier: x
@@ -57,18 +64,21 @@ Ok:
                 span:
                   start: 39
                   end: 45
+                  file: 0
                 value:
                   BinaryOperator:
                     - AddAssign
                     - span:
                         start: 39
                         end: 40
+                        file: 0
                       value:
                         Constant:
                           Identifier: x
                     - span:
                         start: 44
                         end: 45
+                        file: 0
                       value:
                         Constant:
                           Integer: 1
@@ -77,18 +87,21 @@ Ok:
           span:
             start: 57
             end: 63
+            file: 0
           value:
             BinaryOperator:
               - GreaterThanEqual
               - span:
                   start: 57
                   end: 58
+                  file: 0
                 value:
                   Constant:
                     Identifier: x
               - span:
                   start: 62
                   end: 63
+                  file: 0
                 value:
                   Constant:
                     Integer: 0
@@ -97,12 +110,14 @@ Ok:
             span:
               start: 66
               end: 68
+              file: 0
             value:
               UnaryOperator:
                 - Decrement: Postfix
                 - span:
                     start: 65
                     end: 66
+                    file: 0
                   value:
                     Constant:
                       Identifier: x
@@ -110,11 +125,13 @@ Ok:
         span:
           start: 71
           end: 82
+          file: 0
         value:
           Trace:
             span:
               start: 77
               end: 81
+              file: 0
             value:
               Constant:
                 String: "--"
@@ -123,6 +140,7 @@ Ok:
           span:
             start: 92
             end: 96
+            file: 0
           value:
             Constant:
               Boolean: true
@@ -133,24 +151,28 @@ Ok:
                   span:
                     start: 106
                     end: 113
+                    file: 0
                   value:
                     BinaryOperator:
                       - Equal
                       - span:
                           start: 106
                           end: 108
+                          file: 0
                         value:
                           UnaryOperator:
                             - Increment: Postfix
                             - span:
                                 start: 105
                                 end: 106
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: x
                       - span:
                           start: 112
                           end: 113
+                          file: 0
                         value:
                           Constant:
                             Integer: 2
@@ -163,18 +185,21 @@ Ok:
                   span:
                     start: 137
                     end: 143
+                    file: 0
                   value:
                     BinaryOperator:
                       - Equal
                       - span:
                           start: 137
                           end: 138
+                          file: 0
                         value:
                           Constant:
                             Identifier: x
                       - span:
                           start: 142
                           end: 143
+                          file: 0
                         value:
                           Constant:
                             Integer: 5
@@ -186,11 +211,13 @@ Ok:
                 span:
                   start: 160
                   end: 168
+                  file: 0
                 value:
                   Trace:
                     span:
                       start: 166
                       end: 167
+                      file: 0
                     value:
                       Constant:
                         Identifier: x
@@ -198,11 +225,13 @@ Ok:
         span:
           start: 172
           end: 184
+          file: 0
         value:
           Trace:
             span:
               start: 178
               end: 183
+              file: 0
             value:
               Constant:
                 String: end

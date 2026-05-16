@@ -8,750 +8,893 @@ input_file: samples/as2/function_in_loop_break_continue.as
   span:
     start: 0
     end: 3
+    file: 0
   raw: for
 - kind: OpenParen
   span:
     start: 4
     end: 5
+    file: 0
   raw: (
 - kind:
     Keyword: Var
   span:
     start: 5
     end: 8
+    file: 0
   raw: var
 - kind: Identifier
   span:
     start: 9
     end: 10
+    file: 0
   raw: i
 - kind:
     Operator: Assign
   span:
     start: 11
     end: 12
+    file: 0
   raw: "="
 - kind: Integer
   span:
     start: 13
     end: 14
+    file: 0
   raw: "0"
 - kind: Semicolon
   span:
     start: 14
     end: 15
+    file: 0
   raw: ;
 - kind: Identifier
   span:
     start: 16
     end: 17
+    file: 0
   raw: i
 - kind:
     Operator: LessThan
   span:
     start: 18
     end: 19
+    file: 0
   raw: "<"
 - kind: Integer
   span:
     start: 20
     end: 21
+    file: 0
   raw: "5"
 - kind: Semicolon
   span:
     start: 21
     end: 22
+    file: 0
   raw: ;
 - kind: Identifier
   span:
     start: 23
     end: 24
+    file: 0
   raw: i
 - kind:
     Operator: Increment
   span:
     start: 24
     end: 26
+    file: 0
   raw: ++
 - kind: CloseParen
   span:
     start: 26
     end: 27
+    file: 0
   raw: )
 - kind: OpenBrace
   span:
     start: 28
     end: 29
+    file: 0
   raw: "{"
 - kind: Newline
   span:
     start: 29
     end: 30
+    file: 0
   raw: "\n"
 - kind: Identifier
   span:
     start: 34
     end: 39
+    file: 0
   raw: trace
 - kind: OpenParen
   span:
     start: 39
     end: 40
+    file: 0
   raw: (
 - kind:
     String: Double
   span:
     start: 40
     end: 49
+    file: 0
   raw: loop i=
 - kind:
     Operator: Add
   span:
     start: 50
     end: 51
+    file: 0
   raw: +
 - kind: Identifier
   span:
     start: 52
     end: 53
+    file: 0
   raw: i
 - kind: CloseParen
   span:
     start: 53
     end: 54
+    file: 0
   raw: )
 - kind: Semicolon
   span:
     start: 54
     end: 55
+    file: 0
   raw: ;
 - kind: Newline
   span:
     start: 55
     end: 56
+    file: 0
   raw: "\n"
 - kind: Newline
   span:
     start: 56
     end: 57
+    file: 0
   raw: "\n"
 - kind:
     Keyword: Var
   span:
     start: 110
     end: 113
+    file: 0
   raw: var
 - kind: Identifier
   span:
     start: 114
     end: 120
+    file: 0
   raw: decide
 - kind:
     Operator: Assign
   span:
     start: 121
     end: 122
+    file: 0
   raw: "="
 - kind:
     Keyword: Function
   span:
     start: 123
     end: 131
+    file: 0
   raw: function
 - kind: OpenParen
   span:
     start: 131
     end: 132
+    file: 0
   raw: (
 - kind: Identifier
   span:
     start: 132
     end: 133
+    file: 0
   raw: v
 - kind: CloseParen
   span:
     start: 133
     end: 134
+    file: 0
   raw: )
 - kind: OpenBrace
   span:
     start: 135
     end: 136
+    file: 0
   raw: "{"
 - kind: Newline
   span:
     start: 136
     end: 137
+    file: 0
   raw: "\n"
 - kind:
     Keyword: If
   span:
     start: 145
     end: 147
+    file: 0
   raw: if
 - kind: OpenParen
   span:
     start: 148
     end: 149
+    file: 0
   raw: (
 - kind: Identifier
   span:
     start: 149
     end: 150
+    file: 0
   raw: v
 - kind:
     Operator: Equal
   span:
     start: 151
     end: 153
+    file: 0
   raw: "=="
 - kind: Integer
   span:
     start: 154
     end: 155
+    file: 0
   raw: "1"
 - kind: CloseParen
   span:
     start: 155
     end: 156
+    file: 0
   raw: )
 - kind: OpenBrace
   span:
     start: 157
     end: 158
+    file: 0
   raw: "{"
 - kind: Newline
   span:
     start: 158
     end: 159
+    file: 0
   raw: "\n"
 - kind:
     Keyword: Return
   span:
     start: 171
     end: 177
+    file: 0
   raw: return
 - kind:
     String: Double
   span:
     start: 178
     end: 188
+    file: 0
   raw: continue
 - kind: Semicolon
   span:
     start: 188
     end: 189
+    file: 0
   raw: ;
 - kind: Newline
   span:
     start: 189
     end: 190
+    file: 0
   raw: "\n"
 - kind: CloseBrace
   span:
     start: 198
     end: 199
+    file: 0
   raw: "}"
 - kind: Newline
   span:
     start: 199
     end: 200
+    file: 0
   raw: "\n"
 - kind:
     Keyword: If
   span:
     start: 208
     end: 210
+    file: 0
   raw: if
 - kind: OpenParen
   span:
     start: 211
     end: 212
+    file: 0
   raw: (
 - kind: Identifier
   span:
     start: 212
     end: 213
+    file: 0
   raw: v
 - kind:
     Operator: Equal
   span:
     start: 214
     end: 216
+    file: 0
   raw: "=="
 - kind: Integer
   span:
     start: 217
     end: 218
+    file: 0
   raw: "3"
 - kind: CloseParen
   span:
     start: 218
     end: 219
+    file: 0
   raw: )
 - kind: OpenBrace
   span:
     start: 220
     end: 221
+    file: 0
   raw: "{"
 - kind: Newline
   span:
     start: 221
     end: 222
+    file: 0
   raw: "\n"
 - kind:
     Keyword: Return
   span:
     start: 234
     end: 240
+    file: 0
   raw: return
 - kind:
     String: Double
   span:
     start: 241
     end: 248
+    file: 0
   raw: break
 - kind: Semicolon
   span:
     start: 248
     end: 249
+    file: 0
   raw: ;
 - kind: Newline
   span:
     start: 249
     end: 250
+    file: 0
   raw: "\n"
 - kind: CloseBrace
   span:
     start: 258
     end: 259
+    file: 0
   raw: "}"
 - kind: Newline
   span:
     start: 259
     end: 260
+    file: 0
   raw: "\n"
 - kind:
     Keyword: Return
   span:
     start: 268
     end: 274
+    file: 0
   raw: return
 - kind:
     String: Double
   span:
     start: 275
     end: 281
+    file: 0
   raw: none
 - kind: Semicolon
   span:
     start: 281
     end: 282
+    file: 0
   raw: ;
 - kind: Newline
   span:
     start: 282
     end: 283
+    file: 0
   raw: "\n"
 - kind: CloseBrace
   span:
     start: 287
     end: 288
+    file: 0
   raw: "}"
 - kind: Semicolon
   span:
     start: 288
     end: 289
+    file: 0
   raw: ;
 - kind: Newline
   span:
     start: 289
     end: 290
+    file: 0
   raw: "\n"
 - kind: Newline
   span:
     start: 290
     end: 291
+    file: 0
   raw: "\n"
 - kind:
     Keyword: Var
   span:
     start: 367
     end: 370
+    file: 0
   raw: var
 - kind: Identifier
   span:
     start: 371
     end: 378
+    file: 0
   raw: naughty
 - kind:
     Operator: Assign
   span:
     start: 379
     end: 380
+    file: 0
   raw: "="
 - kind:
     Keyword: Function
   span:
     start: 381
     end: 389
+    file: 0
   raw: function
 - kind: OpenParen
   span:
     start: 389
     end: 390
+    file: 0
   raw: (
 - kind: CloseParen
   span:
     start: 390
     end: 391
+    file: 0
   raw: )
 - kind: OpenBrace
   span:
     start: 392
     end: 393
+    file: 0
   raw: "{"
 - kind: Newline
   span:
     start: 393
     end: 394
+    file: 0
   raw: "\n"
 - kind:
     Keyword: Break
   span:
     start: 402
     end: 407
+    file: 0
   raw: break
 - kind: Semicolon
   span:
     start: 407
     end: 408
+    file: 0
   raw: ;
 - kind: Newline
   span:
     start: 408
     end: 409
+    file: 0
   raw: "\n"
 - kind: CloseBrace
   span:
     start: 413
     end: 414
+    file: 0
   raw: "}"
 - kind: Semicolon
   span:
     start: 414
     end: 415
+    file: 0
   raw: ;
 - kind: Newline
   span:
     start: 415
     end: 416
+    file: 0
   raw: "\n"
 - kind: Identifier
   span:
     start: 420
     end: 427
+    file: 0
   raw: naughty
 - kind: OpenParen
   span:
     start: 427
     end: 428
+    file: 0
   raw: (
 - kind: CloseParen
   span:
     start: 428
     end: 429
+    file: 0
   raw: )
 - kind: Semicolon
   span:
     start: 429
     end: 430
+    file: 0
   raw: ;
 - kind: Newline
   span:
     start: 430
     end: 431
+    file: 0
   raw: "\n"
 - kind: Newline
   span:
     start: 431
     end: 432
+    file: 0
   raw: "\n"
 - kind:
     Keyword: Var
   span:
     start: 436
     end: 439
+    file: 0
   raw: var
 - kind: Identifier
   span:
     start: 440
     end: 446
+    file: 0
   raw: action
 - kind:
     Operator: Assign
   span:
     start: 447
     end: 448
+    file: 0
   raw: "="
 - kind: Identifier
   span:
     start: 449
     end: 455
+    file: 0
   raw: decide
 - kind: OpenParen
   span:
     start: 455
     end: 456
+    file: 0
   raw: (
 - kind: Identifier
   span:
     start: 456
     end: 457
+    file: 0
   raw: i
 - kind: CloseParen
   span:
     start: 457
     end: 458
+    file: 0
   raw: )
 - kind: Semicolon
   span:
     start: 458
     end: 459
+    file: 0
   raw: ;
 - kind: Newline
   span:
     start: 459
     end: 460
+    file: 0
   raw: "\n"
 - kind:
     Keyword: If
   span:
     start: 464
     end: 466
+    file: 0
   raw: if
 - kind: OpenParen
   span:
     start: 467
     end: 468
+    file: 0
   raw: (
 - kind: Identifier
   span:
     start: 468
     end: 474
+    file: 0
   raw: action
 - kind:
     Operator: Equal
   span:
     start: 475
     end: 477
+    file: 0
   raw: "=="
 - kind:
     String: Double
   span:
     start: 478
     end: 488
+    file: 0
   raw: continue
 - kind: CloseParen
   span:
     start: 488
     end: 489
+    file: 0
   raw: )
 - kind: OpenBrace
   span:
     start: 490
     end: 491
+    file: 0
   raw: "{"
 - kind: Newline
   span:
     start: 491
     end: 492
+    file: 0
   raw: "\n"
 - kind:
     Keyword: Continue
   span:
     start: 500
     end: 508
+    file: 0
   raw: continue
 - kind: Semicolon
   span:
     start: 508
     end: 509
+    file: 0
   raw: ;
 - kind: Newline
   span:
     start: 509
     end: 510
+    file: 0
   raw: "\n"
 - kind: CloseBrace
   span:
     start: 514
     end: 515
+    file: 0
   raw: "}"
 - kind: Newline
   span:
     start: 515
     end: 516
+    file: 0
   raw: "\n"
 - kind:
     Keyword: If
   span:
     start: 520
     end: 522
+    file: 0
   raw: if
 - kind: OpenParen
   span:
     start: 523
     end: 524
+    file: 0
   raw: (
 - kind: Identifier
   span:
     start: 524
     end: 530
+    file: 0
   raw: action
 - kind:
     Operator: Equal
   span:
     start: 531
     end: 533
+    file: 0
   raw: "=="
 - kind:
     String: Double
   span:
     start: 534
     end: 541
+    file: 0
   raw: break
 - kind: CloseParen
   span:
     start: 541
     end: 542
+    file: 0
   raw: )
 - kind: OpenBrace
   span:
     start: 543
     end: 544
+    file: 0
   raw: "{"
 - kind: Newline
   span:
     start: 544
     end: 545
+    file: 0
   raw: "\n"
 - kind:
     Keyword: Break
   span:
     start: 553
     end: 558
+    file: 0
   raw: break
 - kind: Semicolon
   span:
     start: 558
     end: 559
+    file: 0
   raw: ;
 - kind: Newline
   span:
     start: 559
     end: 560
+    file: 0
   raw: "\n"
 - kind: CloseBrace
   span:
     start: 564
     end: 565
+    file: 0
   raw: "}"
 - kind: Newline
   span:
     start: 565
     end: 566
+    file: 0
   raw: "\n"
 - kind: Newline
   span:
     start: 566
     end: 567
+    file: 0
   raw: "\n"
 - kind: Identifier
   span:
     start: 571
     end: 576
+    file: 0
   raw: trace
 - kind: OpenParen
   span:
     start: 576
     end: 577
+    file: 0
   raw: (
 - kind:
     String: Double
   span:
     start: 577
     end: 588
+    file: 0
   raw: "  work i="
 - kind:
     Operator: Add
   span:
     start: 589
     end: 590
+    file: 0
   raw: +
 - kind: Identifier
   span:
     start: 591
     end: 592
+    file: 0
   raw: i
 - kind: CloseParen
   span:
     start: 592
     end: 593
+    file: 0
   raw: )
 - kind: Semicolon
   span:
     start: 593
     end: 594
+    file: 0
   raw: ;
 - kind: Newline
   span:
     start: 594
     end: 595
+    file: 0
   raw: "\n"
 - kind: CloseBrace
   span:
     start: 595
     end: 596
+    file: 0
   raw: "}"
 - kind: Newline
   span:
     start: 596
     end: 597
+    file: 0
   raw: "\n"
 - kind: Newline
   span:
     start: 597
     end: 598
+    file: 0
   raw: "\n"
 - kind: Identifier
   span:
     start: 598
     end: 603
+    file: 0
   raw: trace
 - kind: OpenParen
   span:
     start: 603
     end: 604
+    file: 0
   raw: (
 - kind:
     String: Double
   span:
     start: 604
     end: 609
+    file: 0
   raw: end
 - kind: CloseParen
   span:
     start: 609
     end: 610
+    file: 0
   raw: )
 - kind: Semicolon
   span:
     start: 610
     end: 611
+    file: 0
   raw: ;
 - kind: Newline
   span:
     start: 611
     end: 612
+    file: 0
   raw: "\n"

@@ -8,6 +8,7 @@ pub use crate::internal::as2_pcode::pcode::Actions;
 pub use crate::internal::as2_pcode::pcode::CatchTarget;
 pub use crate::internal::as2_pcode::pcode::FunctionParam;
 pub use crate::internal::as2_pcode::pcode::PushValue;
+use crate::internal::span::FileId;
 
 mod lexer;
 mod parser;
@@ -21,7 +22,7 @@ pub struct PCode<'a> {
 
 impl<'a> PCode<'a> {
     pub fn new(filename: &'a str, source: &'a str) -> Self {
-        let tokens = Lexer::new(source).into_vec();
+        let tokens = Lexer::new(source, FileId::new(1)).into_vec();
         Self {
             filename,
             source,

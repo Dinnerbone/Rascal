@@ -10,58 +10,68 @@ Ok:
           span:
             start: 4
             end: 5
+            file: 0
           value: x
         value:
           span:
             start: 8
             end: 54
+            file: 0
           value:
             BinaryOperator:
               - LogicalAnd
               - span:
                   start: 8
                   end: 32
+                  file: 0
                 value:
                   BinaryOperator:
                     - InstanceOf
                     - span:
                         start: 8
                         end: 17
+                        file: 0
                       value:
                         Constant:
                           Identifier: toCompare
                     - span:
                         start: 29
                         end: 32
+                        file: 0
                       value:
                         Constant:
                           Identifier: Foo
               - span:
                   start: 45
                   end: 54
+                  file: 0
                 value:
                   BinaryOperator:
                     - Equal
                     - span:
                         start: 45
                         end: 47
+                        file: 0
                       value:
                         Field:
                           - span:
                               start: 36
                               end: 45
+                              file: 0
                             value:
                               Constant:
                                 Identifier: toCompare
                           - span:
                               start: 46
                               end: 47
+                              file: 0
                             value:
                               Constant:
                                 String: x
                     - span:
                         start: 51
                         end: 54
+                        file: 0
                       value:
                         Constant:
                           Integer: 123

@@ -10,11 +10,13 @@ Ok:
           span:
             start: 97
             end: 104
+            file: 0
           value: outside
         value:
           span:
             start: 107
             end: 116
+            file: 0
           value:
             Constant:
               String: visible
@@ -25,11 +27,13 @@ Ok:
               span:
                 start: 128
                 end: 134
+                file: 0
               value: inside
             value:
               span:
                 start: 137
                 end: 146
+                file: 0
               value:
                 Constant:
                   String: visible
@@ -38,47 +42,55 @@ Ok:
             span:
               start: 152
               end: 204
+              file: 0
             value:
               Trace:
                 span:
                   start: 158
                   end: 203
+                  file: 0
                 value:
                   BinaryOperator:
                     - Add
                     - span:
                         start: 158
                         end: 194
+                        file: 0
                       value:
                         BinaryOperator:
                           - Add
                           - span:
                               start: 158
                               end: 179
+                              file: 0
                             value:
                               BinaryOperator:
                                 - Add
                                 - span:
                                     start: 158
                                     end: 169
+                                    file: 0
                                   value:
                                     Constant:
                                       String: "outside: "
                                 - span:
                                     start: 172
                                     end: 179
+                                    file: 0
                                   value:
                                     Constant:
                                       Identifier: outside
                           - span:
                               start: 182
                               end: 194
+                              file: 0
                             value:
                               Constant:
                                 String: ", inside: "
                     - span:
                         start: 197
                         end: 203
+                        file: 0
                       value:
                         Constant:
                           Identifier: inside
@@ -86,47 +98,55 @@ Ok:
         span:
           start: 208
           end: 260
+          file: 0
         value:
           Trace:
             span:
               start: 214
               end: 259
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 214
                     end: 250
+                    file: 0
                   value:
                     BinaryOperator:
                       - Add
                       - span:
                           start: 214
                           end: 235
+                          file: 0
                         value:
                           BinaryOperator:
                             - Add
                             - span:
                                 start: 214
                                 end: 225
+                                file: 0
                               value:
                                 Constant:
                                   String: "outside: "
                             - span:
                                 start: 228
                                 end: 235
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: outside
                       - span:
                           start: 238
                           end: 250
+                          file: 0
                         value:
                           Constant:
                             String: ", inside: "
                 - span:
                     start: 253
                     end: 259
+                    file: 0
                   value:
                     Constant:
                       Identifier: inside

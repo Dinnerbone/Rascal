@@ -14,11 +14,13 @@ Ok:
                   span:
                     start: 9
                     end: 10
+                    file: 0
                   value: i
                 value:
                   span:
                     start: 13
                     end: 14
+                    file: 0
                   value:
                     Constant:
                       Integer: 0
@@ -27,18 +29,21 @@ Ok:
               - span:
                   start: 16
                   end: 21
+                  file: 0
                 value:
                   BinaryOperator:
                     - LessThan
                     - span:
                         start: 16
                         end: 17
+                        file: 0
                       value:
                         Constant:
                           Identifier: i
                     - span:
                         start: 20
                         end: 21
+                        file: 0
                       value:
                         Constant:
                           Integer: 4
@@ -46,12 +51,14 @@ Ok:
               - span:
                   start: 24
                   end: 26
+                  file: 0
                 value:
                   UnaryOperator:
                     - Increment: Postfix
                     - span:
                         start: 23
                         end: 24
+                        file: 0
                       value:
                         Constant:
                           Identifier: i
@@ -61,23 +68,27 @@ Ok:
                 span:
                   start: 31
                   end: 48
+                  file: 0
                 value:
                   Trace:
                     span:
                       start: 37
                       end: 47
+                      file: 0
                     value:
                       BinaryOperator:
                         - Add
                         - span:
                             start: 37
                             end: 43
+                            file: 0
                           value:
                             Constant:
                               String: "i = "
                         - span:
                             start: 46
                             end: 47
+                            file: 0
                           value:
                             Constant:
                               Identifier: i
@@ -90,11 +101,13 @@ Ok:
                           span:
                             start: 60
                             end: 61
+                            file: 0
                           value: j
                         value:
                           span:
                             start: 64
                             end: 65
+                            file: 0
                           value:
                             Constant:
                               Integer: 0
@@ -103,18 +116,21 @@ Ok:
                       - span:
                           start: 67
                           end: 72
+                          file: 0
                         value:
                           BinaryOperator:
                             - LessThan
                             - span:
                                 start: 67
                                 end: 68
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: j
                             - span:
                                 start: 71
                                 end: 72
+                                file: 0
                               value:
                                 Constant:
                                   Integer: 4
@@ -122,12 +138,14 @@ Ok:
                       - span:
                           start: 75
                           end: 77
+                          file: 0
                         value:
                           UnaryOperator:
                             - Increment: Postfix
                             - span:
                                 start: 74
                                 end: 75
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: j
@@ -138,11 +156,13 @@ Ok:
                           span:
                             start: 87
                             end: 89
+                            file: 0
                           value: fn
                         value:
                           span:
                             start: 92
                             end: 155
+                            file: 0
                           value:
                             Function:
                               signature:
@@ -154,11 +174,13 @@ Ok:
                                     span:
                                       start: 108
                                       end: 140
+                                      file: 0
                                     value:
                                       Trace:
                                         span:
                                           start: 114
                                           end: 139
+                                          file: 0
                                         value:
                                           Constant:
                                             String: trying to break from fn
@@ -206,23 +228,27 @@ Ok:
                         span:
                           start: 158
                           end: 175
+                          file: 0
                         value:
                           Trace:
                             span:
                               start: 164
                               end: 174
+                              file: 0
                             value:
                               BinaryOperator:
                                 - Add
                                 - span:
                                     start: 164
                                     end: 170
+                                    file: 0
                                   value:
                                     Constant:
                                       String: "j = "
                                 - span:
                                     start: 173
                                     end: 174
+                                    file: 0
                                   value:
                                     Constant:
                                       Identifier: j
@@ -231,18 +257,21 @@ Ok:
                           span:
                             start: 183
                             end: 189
+                            file: 0
                           value:
                             BinaryOperator:
                               - Equal
                               - span:
                                   start: 183
                                   end: 184
+                                  file: 0
                                 value:
                                   Constant:
                                     Identifier: j
                               - span:
                                   start: 188
                                   end: 189
+                                  file: 0
                                 value:
                                   Constant:
                                     Integer: 1
@@ -252,12 +281,14 @@ Ok:
                                 span:
                                   start: 196
                                   end: 200
+                                  file: 0
                                 value:
                                   Call:
                                     name:
                                       span:
                                         start: 196
                                         end: 198
+                                        file: 0
                                       value:
                                         Constant:
                                           Identifier: fn
@@ -269,18 +300,21 @@ Ok:
                           span:
                             start: 225
                             end: 231
+                            file: 0
                           value:
                             BinaryOperator:
                               - Equal
                               - span:
                                   start: 225
                                   end: 226
+                                  file: 0
                                 value:
                                   Constant:
                                     Identifier: j
                               - span:
                                   start: 230
                                   end: 231
+                                  file: 0
                                 value:
                                   Constant:
                                     Integer: 2
@@ -293,18 +327,21 @@ Ok:
                   span:
                     start: 257
                     end: 263
+                    file: 0
                   value:
                     BinaryOperator:
                       - Equal
                       - span:
                           start: 257
                           end: 258
+                          file: 0
                         value:
                           Constant:
                             Identifier: i
                       - span:
                           start: 262
                           end: 263
+                          file: 0
                         value:
                           Constant:
                             Integer: 1
@@ -317,18 +354,21 @@ Ok:
                   span:
                     start: 287
                     end: 293
+                    file: 0
                   value:
                     BinaryOperator:
                       - Equal
                       - span:
                           start: 287
                           end: 288
+                          file: 0
                         value:
                           Constant:
                             Identifier: i
                       - span:
                           start: 292
                           end: 293
+                          file: 0
                         value:
                           Constant:
                             Integer: 2

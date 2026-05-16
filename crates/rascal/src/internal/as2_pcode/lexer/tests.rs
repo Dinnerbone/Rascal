@@ -1,8 +1,11 @@
 use crate::internal::as2_pcode::lexer::Lexer;
 use crate::internal::as2_pcode::lexer::tokens::{ActionName, TokenKind};
+use crate::internal::span::FileId;
+
+const TEST_FILE_ID: FileId = FileId::new(0);
 
 fn kinds(input: &str) -> Vec<TokenKind> {
-    Lexer::new(input)
+    Lexer::new(input, TEST_FILE_ID)
         .into_vec()
         .into_iter()
         .map(|t| t.kind)
@@ -10,7 +13,7 @@ fn kinds(input: &str) -> Vec<TokenKind> {
 }
 
 fn raws(input: &str) -> Vec<String> {
-    Lexer::new(input)
+    Lexer::new(input, TEST_FILE_ID)
         .into_vec()
         .into_iter()
         .map(|t| t.raw.to_string())
@@ -24,7 +27,7 @@ fn test_all_samples() {
         "**/*.pcode",
         |path| {
             let src = std::fs::read_to_string(path).expect("failed to read sample");
-            let tokens = Lexer::new(&src).into_vec();
+            let tokens = Lexer::new(&src, TEST_FILE_ID).into_vec();
             insta::assert_yaml_snapshot!(tokens);
         }
     );

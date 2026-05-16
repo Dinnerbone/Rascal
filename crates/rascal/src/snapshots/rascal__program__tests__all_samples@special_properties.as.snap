@@ -9,11 +9,13 @@ Ok:
         span:
           start: 0
           end: 17
+          file: 0
         value:
           Trace:
             span:
               start: 6
               end: 16
+              file: 0
             value:
               Constant:
                 String: "-- _x --"
@@ -21,11 +23,13 @@ Ok:
         span:
           start: 19
           end: 28
+          file: 0
         value:
           Trace:
             span:
               start: 25
               end: 27
+              file: 0
             value:
               Constant:
                 Identifier: _x
@@ -33,22 +37,26 @@ Ok:
         span:
           start: 30
           end: 43
+          file: 0
         value:
           Trace:
             span:
               start: 39
               end: 42
+              file: 0
             value:
               Field:
                 - span:
                     start: 36
                     end: 39
+                    file: 0
                   value:
                     Constant:
                       Identifier: foo
                 - span:
                     start: 40
                     end: 42
+                    file: 0
                   value:
                     Constant:
                       String: _x
@@ -56,22 +64,26 @@ Ok:
         span:
           start: 45
           end: 61
+          file: 0
         value:
           Trace:
             span:
               start: 54
               end: 60
+              file: 0
             value:
               Field:
                 - span:
                     start: 51
                     end: 54
+                    file: 0
                   value:
                     Constant:
                       Identifier: foo
                 - span:
                     start: 55
                     end: 59
+                    file: 0
                   value:
                     Constant:
                       String: _x
@@ -79,16 +91,19 @@ Ok:
         span:
           start: 63
           end: 91
+          file: 0
         value:
           Trace:
             span:
               start: 69
               end: 90
+              file: 0
             value:
               GetProperty:
                 - span:
                     start: 81
                     end: 85
+                    file: 0
                   value:
                     Constant:
                       Identifier: this
@@ -97,11 +112,13 @@ Ok:
         span:
           start: 93
           end: 121
+          file: 0
         value:
           SetProperty:
             - span:
                 start: 105
                 end: 111
+                file: 0
               value:
                 Constant:
                   Identifier: foobar
@@ -109,6 +126,7 @@ Ok:
             - span:
                 start: 117
                 end: 120
+                file: 0
               value:
                 Constant:
                   Integer: 123
@@ -116,18 +134,21 @@ Ok:
         span:
           start: 123
           end: 131
+          file: 0
         value:
           BinaryOperator:
             - Assign
             - span:
                 start: 123
                 end: 125
+                file: 0
               value:
                 Constant:
                   Identifier: _x
             - span:
                 start: 128
                 end: 131
+                file: 0
               value:
                 Constant:
                   Integer: 123
@@ -135,11 +156,13 @@ Ok:
         span:
           start: 135
           end: 152
+          file: 0
         value:
           Trace:
             span:
               start: 141
               end: 151
+              file: 0
             value:
               Constant:
                 String: "-- _y --"
@@ -147,11 +170,13 @@ Ok:
         span:
           start: 154
           end: 163
+          file: 0
         value:
           Trace:
             span:
               start: 160
               end: 162
+              file: 0
             value:
               Constant:
                 Identifier: _y
@@ -159,22 +184,26 @@ Ok:
         span:
           start: 165
           end: 178
+          file: 0
         value:
           Trace:
             span:
               start: 174
               end: 177
+              file: 0
             value:
               Field:
                 - span:
                     start: 171
                     end: 174
+                    file: 0
                   value:
                     Constant:
                       Identifier: foo
                 - span:
                     start: 175
                     end: 177
+                    file: 0
                   value:
                     Constant:
                       String: _y
@@ -182,22 +211,26 @@ Ok:
         span:
           start: 180
           end: 196
+          file: 0
         value:
           Trace:
             span:
               start: 189
               end: 195
+              file: 0
             value:
               Field:
                 - span:
                     start: 186
                     end: 189
+                    file: 0
                   value:
                     Constant:
                       Identifier: foo
                 - span:
                     start: 190
                     end: 194
+                    file: 0
                   value:
                     Constant:
                       String: _y
@@ -205,16 +238,19 @@ Ok:
         span:
           start: 198
           end: 226
+          file: 0
         value:
           Trace:
             span:
               start: 204
               end: 225
+              file: 0
             value:
               GetProperty:
                 - span:
                     start: 216
                     end: 220
+                    file: 0
                   value:
                     Constant:
                       Identifier: this
@@ -223,11 +259,13 @@ Ok:
         span:
           start: 228
           end: 256
+          file: 0
         value:
           SetProperty:
             - span:
                 start: 240
                 end: 246
+                file: 0
               value:
                 Constant:
                   Identifier: foobar
@@ -235,6 +273,7 @@ Ok:
             - span:
                 start: 252
                 end: 255
+                file: 0
               value:
                 Constant:
                   Integer: 123
@@ -242,18 +281,21 @@ Ok:
         span:
           start: 258
           end: 266
+          file: 0
         value:
           BinaryOperator:
             - Assign
             - span:
                 start: 258
                 end: 260
+                file: 0
               value:
                 Constant:
                   Identifier: _y
             - span:
                 start: 263
                 end: 266
+                file: 0
               value:
                 Constant:
                   Integer: 123
@@ -261,11 +303,13 @@ Ok:
         span:
           start: 270
           end: 292
+          file: 0
         value:
           Trace:
             span:
               start: 276
               end: 291
+              file: 0
             value:
               Constant:
                 String: "-- _xscale --"
@@ -273,11 +317,13 @@ Ok:
         span:
           start: 294
           end: 308
+          file: 0
         value:
           Trace:
             span:
               start: 300
               end: 307
+              file: 0
             value:
               Constant:
                 Identifier: _xscale
@@ -285,22 +331,26 @@ Ok:
         span:
           start: 310
           end: 328
+          file: 0
         value:
           Trace:
             span:
               start: 319
               end: 327
+              file: 0
             value:
               Field:
                 - span:
                     start: 316
                     end: 319
+                    file: 0
                   value:
                     Constant:
                       Identifier: foo
                 - span:
                     start: 320
                     end: 327
+                    file: 0
                   value:
                     Constant:
                       String: _xscale
@@ -308,22 +358,26 @@ Ok:
         span:
           start: 330
           end: 351
+          file: 0
         value:
           Trace:
             span:
               start: 339
               end: 350
+              file: 0
             value:
               Field:
                 - span:
                     start: 336
                     end: 339
+                    file: 0
                   value:
                     Constant:
                       Identifier: foo
                 - span:
                     start: 340
                     end: 349
+                    file: 0
                   value:
                     Constant:
                       String: _xscale
@@ -331,16 +385,19 @@ Ok:
         span:
           start: 353
           end: 386
+          file: 0
         value:
           Trace:
             span:
               start: 359
               end: 385
+              file: 0
             value:
               GetProperty:
                 - span:
                     start: 371
                     end: 375
+                    file: 0
                   value:
                     Constant:
                       Identifier: this
@@ -349,11 +406,13 @@ Ok:
         span:
           start: 388
           end: 421
+          file: 0
         value:
           SetProperty:
             - span:
                 start: 400
                 end: 406
+                file: 0
               value:
                 Constant:
                   Identifier: foobar
@@ -361,6 +420,7 @@ Ok:
             - span:
                 start: 417
                 end: 420
+                file: 0
               value:
                 Constant:
                   Integer: 123
@@ -368,18 +428,21 @@ Ok:
         span:
           start: 423
           end: 436
+          file: 0
         value:
           BinaryOperator:
             - Assign
             - span:
                 start: 423
                 end: 430
+                file: 0
               value:
                 Constant:
                   Identifier: _xscale
             - span:
                 start: 433
                 end: 436
+                file: 0
               value:
                 Constant:
                   Integer: 123
@@ -387,11 +450,13 @@ Ok:
         span:
           start: 440
           end: 462
+          file: 0
         value:
           Trace:
             span:
               start: 446
               end: 461
+              file: 0
             value:
               Constant:
                 String: "-- _yscale --"
@@ -399,11 +464,13 @@ Ok:
         span:
           start: 464
           end: 478
+          file: 0
         value:
           Trace:
             span:
               start: 470
               end: 477
+              file: 0
             value:
               Constant:
                 Identifier: _yscale
@@ -411,22 +478,26 @@ Ok:
         span:
           start: 480
           end: 498
+          file: 0
         value:
           Trace:
             span:
               start: 489
               end: 497
+              file: 0
             value:
               Field:
                 - span:
                     start: 486
                     end: 489
+                    file: 0
                   value:
                     Constant:
                       Identifier: foo
                 - span:
                     start: 490
                     end: 497
+                    file: 0
                   value:
                     Constant:
                       String: _yscale
@@ -434,22 +505,26 @@ Ok:
         span:
           start: 500
           end: 521
+          file: 0
         value:
           Trace:
             span:
               start: 509
               end: 520
+              file: 0
             value:
               Field:
                 - span:
                     start: 506
                     end: 509
+                    file: 0
                   value:
                     Constant:
                       Identifier: foo
                 - span:
                     start: 510
                     end: 519
+                    file: 0
                   value:
                     Constant:
                       String: _yscale
@@ -457,16 +532,19 @@ Ok:
         span:
           start: 523
           end: 556
+          file: 0
         value:
           Trace:
             span:
               start: 529
               end: 555
+              file: 0
             value:
               GetProperty:
                 - span:
                     start: 541
                     end: 545
+                    file: 0
                   value:
                     Constant:
                       Identifier: this
@@ -475,11 +553,13 @@ Ok:
         span:
           start: 558
           end: 591
+          file: 0
         value:
           SetProperty:
             - span:
                 start: 570
                 end: 576
+                file: 0
               value:
                 Constant:
                   Identifier: foobar
@@ -487,6 +567,7 @@ Ok:
             - span:
                 start: 587
                 end: 590
+                file: 0
               value:
                 Constant:
                   Integer: 123
@@ -494,18 +575,21 @@ Ok:
         span:
           start: 593
           end: 606
+          file: 0
         value:
           BinaryOperator:
             - Assign
             - span:
                 start: 593
                 end: 600
+                file: 0
               value:
                 Constant:
                   Identifier: _yscale
             - span:
                 start: 603
                 end: 606
+                file: 0
               value:
                 Constant:
                   Integer: 123
@@ -513,11 +597,13 @@ Ok:
         span:
           start: 610
           end: 638
+          file: 0
         value:
           Trace:
             span:
               start: 616
               end: 637
+              file: 0
             value:
               Constant:
                 String: "-- _currentframe --"
@@ -525,11 +611,13 @@ Ok:
         span:
           start: 640
           end: 660
+          file: 0
         value:
           Trace:
             span:
               start: 646
               end: 659
+              file: 0
             value:
               Constant:
                 Identifier: _currentframe
@@ -537,22 +625,26 @@ Ok:
         span:
           start: 662
           end: 686
+          file: 0
         value:
           Trace:
             span:
               start: 671
               end: 685
+              file: 0
             value:
               Field:
                 - span:
                     start: 668
                     end: 671
+                    file: 0
                   value:
                     Constant:
                       Identifier: foo
                 - span:
                     start: 672
                     end: 685
+                    file: 0
                   value:
                     Constant:
                       String: _currentframe
@@ -560,22 +652,26 @@ Ok:
         span:
           start: 688
           end: 715
+          file: 0
         value:
           Trace:
             span:
               start: 697
               end: 714
+              file: 0
             value:
               Field:
                 - span:
                     start: 694
                     end: 697
+                    file: 0
                   value:
                     Constant:
                       Identifier: foo
                 - span:
                     start: 698
                     end: 713
+                    file: 0
                   value:
                     Constant:
                       String: _currentframe
@@ -583,16 +679,19 @@ Ok:
         span:
           start: 717
           end: 756
+          file: 0
         value:
           Trace:
             span:
               start: 723
               end: 755
+              file: 0
             value:
               GetProperty:
                 - span:
                     start: 735
                     end: 739
+                    file: 0
                   value:
                     Constant:
                       Identifier: this
@@ -601,11 +700,13 @@ Ok:
         span:
           start: 758
           end: 797
+          file: 0
         value:
           SetProperty:
             - span:
                 start: 770
                 end: 776
+                file: 0
               value:
                 Constant:
                   Identifier: foobar
@@ -613,6 +714,7 @@ Ok:
             - span:
                 start: 793
                 end: 796
+                file: 0
               value:
                 Constant:
                   Integer: 123
@@ -620,18 +722,21 @@ Ok:
         span:
           start: 799
           end: 818
+          file: 0
         value:
           BinaryOperator:
             - Assign
             - span:
                 start: 799
                 end: 812
+                file: 0
               value:
                 Constant:
                   Identifier: _currentframe
             - span:
                 start: 815
                 end: 818
+                file: 0
               value:
                 Constant:
                   Integer: 123
@@ -639,11 +744,13 @@ Ok:
         span:
           start: 822
           end: 849
+          file: 0
         value:
           Trace:
             span:
               start: 828
               end: 848
+              file: 0
             value:
               Constant:
                 String: "-- _totalframes --"
@@ -651,11 +758,13 @@ Ok:
         span:
           start: 851
           end: 870
+          file: 0
         value:
           Trace:
             span:
               start: 857
               end: 869
+              file: 0
             value:
               Constant:
                 Identifier: _totalframes
@@ -663,22 +772,26 @@ Ok:
         span:
           start: 872
           end: 895
+          file: 0
         value:
           Trace:
             span:
               start: 881
               end: 894
+              file: 0
             value:
               Field:
                 - span:
                     start: 878
                     end: 881
+                    file: 0
                   value:
                     Constant:
                       Identifier: foo
                 - span:
                     start: 882
                     end: 894
+                    file: 0
                   value:
                     Constant:
                       String: _totalframes
@@ -686,22 +799,26 @@ Ok:
         span:
           start: 897
           end: 923
+          file: 0
         value:
           Trace:
             span:
               start: 906
               end: 922
+              file: 0
             value:
               Field:
                 - span:
                     start: 903
                     end: 906
+                    file: 0
                   value:
                     Constant:
                       Identifier: foo
                 - span:
                     start: 907
                     end: 921
+                    file: 0
                   value:
                     Constant:
                       String: _totalframes
@@ -709,16 +826,19 @@ Ok:
         span:
           start: 925
           end: 963
+          file: 0
         value:
           Trace:
             span:
               start: 931
               end: 962
+              file: 0
             value:
               GetProperty:
                 - span:
                     start: 943
                     end: 947
+                    file: 0
                   value:
                     Constant:
                       Identifier: this
@@ -727,11 +847,13 @@ Ok:
         span:
           start: 965
           end: 1003
+          file: 0
         value:
           SetProperty:
             - span:
                 start: 977
                 end: 983
+                file: 0
               value:
                 Constant:
                   Identifier: foobar
@@ -739,6 +861,7 @@ Ok:
             - span:
                 start: 999
                 end: 1002
+                file: 0
               value:
                 Constant:
                   Integer: 123
@@ -746,18 +869,21 @@ Ok:
         span:
           start: 1005
           end: 1023
+          file: 0
         value:
           BinaryOperator:
             - Assign
             - span:
                 start: 1005
                 end: 1017
+                file: 0
               value:
                 Constant:
                   Identifier: _totalframes
             - span:
                 start: 1020
                 end: 1023
+                file: 0
               value:
                 Constant:
                   Integer: 123
@@ -765,11 +891,13 @@ Ok:
         span:
           start: 1027
           end: 1048
+          file: 0
         value:
           Trace:
             span:
               start: 1033
               end: 1047
+              file: 0
             value:
               Constant:
                 String: "-- _alpha --"
@@ -777,11 +905,13 @@ Ok:
         span:
           start: 1050
           end: 1063
+          file: 0
         value:
           Trace:
             span:
               start: 1056
               end: 1062
+              file: 0
             value:
               Constant:
                 Identifier: _alpha
@@ -789,22 +919,26 @@ Ok:
         span:
           start: 1065
           end: 1082
+          file: 0
         value:
           Trace:
             span:
               start: 1074
               end: 1081
+              file: 0
             value:
               Field:
                 - span:
                     start: 1071
                     end: 1074
+                    file: 0
                   value:
                     Constant:
                       Identifier: foo
                 - span:
                     start: 1075
                     end: 1081
+                    file: 0
                   value:
                     Constant:
                       String: _alpha
@@ -812,22 +946,26 @@ Ok:
         span:
           start: 1084
           end: 1104
+          file: 0
         value:
           Trace:
             span:
               start: 1093
               end: 1103
+              file: 0
             value:
               Field:
                 - span:
                     start: 1090
                     end: 1093
+                    file: 0
                   value:
                     Constant:
                       Identifier: foo
                 - span:
                     start: 1094
                     end: 1102
+                    file: 0
                   value:
                     Constant:
                       String: _alpha
@@ -835,16 +973,19 @@ Ok:
         span:
           start: 1106
           end: 1138
+          file: 0
         value:
           Trace:
             span:
               start: 1112
               end: 1137
+              file: 0
             value:
               GetProperty:
                 - span:
                     start: 1124
                     end: 1128
+                    file: 0
                   value:
                     Constant:
                       Identifier: this
@@ -853,11 +994,13 @@ Ok:
         span:
           start: 1140
           end: 1172
+          file: 0
         value:
           SetProperty:
             - span:
                 start: 1152
                 end: 1158
+                file: 0
               value:
                 Constant:
                   Identifier: foobar
@@ -865,6 +1008,7 @@ Ok:
             - span:
                 start: 1168
                 end: 1171
+                file: 0
               value:
                 Constant:
                   Integer: 123
@@ -872,18 +1016,21 @@ Ok:
         span:
           start: 1174
           end: 1186
+          file: 0
         value:
           BinaryOperator:
             - Assign
             - span:
                 start: 1174
                 end: 1180
+                file: 0
               value:
                 Constant:
                   Identifier: _alpha
             - span:
                 start: 1183
                 end: 1186
+                file: 0
               value:
                 Constant:
                   Integer: 123
@@ -891,11 +1038,13 @@ Ok:
         span:
           start: 1190
           end: 1213
+          file: 0
         value:
           Trace:
             span:
               start: 1196
               end: 1212
+              file: 0
             value:
               Constant:
                 String: "-- _visible --"
@@ -903,11 +1052,13 @@ Ok:
         span:
           start: 1215
           end: 1230
+          file: 0
         value:
           Trace:
             span:
               start: 1221
               end: 1229
+              file: 0
             value:
               Constant:
                 Identifier: _visible
@@ -915,22 +1066,26 @@ Ok:
         span:
           start: 1232
           end: 1251
+          file: 0
         value:
           Trace:
             span:
               start: 1241
               end: 1250
+              file: 0
             value:
               Field:
                 - span:
                     start: 1238
                     end: 1241
+                    file: 0
                   value:
                     Constant:
                       Identifier: foo
                 - span:
                     start: 1242
                     end: 1250
+                    file: 0
                   value:
                     Constant:
                       String: _visible
@@ -938,22 +1093,26 @@ Ok:
         span:
           start: 1253
           end: 1275
+          file: 0
         value:
           Trace:
             span:
               start: 1262
               end: 1274
+              file: 0
             value:
               Field:
                 - span:
                     start: 1259
                     end: 1262
+                    file: 0
                   value:
                     Constant:
                       Identifier: foo
                 - span:
                     start: 1263
                     end: 1273
+                    file: 0
                   value:
                     Constant:
                       String: _visible
@@ -961,16 +1120,19 @@ Ok:
         span:
           start: 1277
           end: 1311
+          file: 0
         value:
           Trace:
             span:
               start: 1283
               end: 1310
+              file: 0
             value:
               GetProperty:
                 - span:
                     start: 1295
                     end: 1299
+                    file: 0
                   value:
                     Constant:
                       Identifier: this
@@ -979,11 +1141,13 @@ Ok:
         span:
           start: 1313
           end: 1349
+          file: 0
         value:
           SetProperty:
             - span:
                 start: 1325
                 end: 1331
+                file: 0
               value:
                 Constant:
                   Identifier: foobar
@@ -991,6 +1155,7 @@ Ok:
             - span:
                 start: 1343
                 end: 1348
+                file: 0
               value:
                 Constant:
                   Boolean: false
@@ -998,18 +1163,21 @@ Ok:
         span:
           start: 1351
           end: 1367
+          file: 0
         value:
           BinaryOperator:
             - Assign
             - span:
                 start: 1351
                 end: 1359
+                file: 0
               value:
                 Constant:
                   Identifier: _visible
             - span:
                 start: 1362
                 end: 1367
+                file: 0
               value:
                 Constant:
                   Boolean: false
@@ -1017,11 +1185,13 @@ Ok:
         span:
           start: 1371
           end: 1392
+          file: 0
         value:
           Trace:
             span:
               start: 1377
               end: 1391
+              file: 0
             value:
               Constant:
                 String: "-- _width --"
@@ -1029,11 +1199,13 @@ Ok:
         span:
           start: 1394
           end: 1407
+          file: 0
         value:
           Trace:
             span:
               start: 1400
               end: 1406
+              file: 0
             value:
               Constant:
                 Identifier: _width
@@ -1041,22 +1213,26 @@ Ok:
         span:
           start: 1409
           end: 1426
+          file: 0
         value:
           Trace:
             span:
               start: 1418
               end: 1425
+              file: 0
             value:
               Field:
                 - span:
                     start: 1415
                     end: 1418
+                    file: 0
                   value:
                     Constant:
                       Identifier: foo
                 - span:
                     start: 1419
                     end: 1425
+                    file: 0
                   value:
                     Constant:
                       String: _width
@@ -1064,22 +1240,26 @@ Ok:
         span:
           start: 1428
           end: 1448
+          file: 0
         value:
           Trace:
             span:
               start: 1437
               end: 1447
+              file: 0
             value:
               Field:
                 - span:
                     start: 1434
                     end: 1437
+                    file: 0
                   value:
                     Constant:
                       Identifier: foo
                 - span:
                     start: 1438
                     end: 1446
+                    file: 0
                   value:
                     Constant:
                       String: _width
@@ -1087,16 +1267,19 @@ Ok:
         span:
           start: 1450
           end: 1482
+          file: 0
         value:
           Trace:
             span:
               start: 1456
               end: 1481
+              file: 0
             value:
               GetProperty:
                 - span:
                     start: 1468
                     end: 1472
+                    file: 0
                   value:
                     Constant:
                       Identifier: this
@@ -1105,11 +1288,13 @@ Ok:
         span:
           start: 1484
           end: 1516
+          file: 0
         value:
           SetProperty:
             - span:
                 start: 1496
                 end: 1502
+                file: 0
               value:
                 Constant:
                   Identifier: foobar
@@ -1117,6 +1302,7 @@ Ok:
             - span:
                 start: 1512
                 end: 1515
+                file: 0
               value:
                 Constant:
                   Integer: 123
@@ -1124,18 +1310,21 @@ Ok:
         span:
           start: 1518
           end: 1530
+          file: 0
         value:
           BinaryOperator:
             - Assign
             - span:
                 start: 1518
                 end: 1524
+                file: 0
               value:
                 Constant:
                   Identifier: _width
             - span:
                 start: 1527
                 end: 1530
+                file: 0
               value:
                 Constant:
                   Integer: 123
@@ -1143,11 +1332,13 @@ Ok:
         span:
           start: 1534
           end: 1556
+          file: 0
         value:
           Trace:
             span:
               start: 1540
               end: 1555
+              file: 0
             value:
               Constant:
                 String: "-- _height --"
@@ -1155,11 +1346,13 @@ Ok:
         span:
           start: 1558
           end: 1572
+          file: 0
         value:
           Trace:
             span:
               start: 1564
               end: 1571
+              file: 0
             value:
               Constant:
                 Identifier: _height
@@ -1167,22 +1360,26 @@ Ok:
         span:
           start: 1574
           end: 1592
+          file: 0
         value:
           Trace:
             span:
               start: 1583
               end: 1591
+              file: 0
             value:
               Field:
                 - span:
                     start: 1580
                     end: 1583
+                    file: 0
                   value:
                     Constant:
                       Identifier: foo
                 - span:
                     start: 1584
                     end: 1591
+                    file: 0
                   value:
                     Constant:
                       String: _height
@@ -1190,22 +1387,26 @@ Ok:
         span:
           start: 1594
           end: 1615
+          file: 0
         value:
           Trace:
             span:
               start: 1603
               end: 1614
+              file: 0
             value:
               Field:
                 - span:
                     start: 1600
                     end: 1603
+                    file: 0
                   value:
                     Constant:
                       Identifier: foo
                 - span:
                     start: 1604
                     end: 1613
+                    file: 0
                   value:
                     Constant:
                       String: _height
@@ -1213,16 +1414,19 @@ Ok:
         span:
           start: 1617
           end: 1650
+          file: 0
         value:
           Trace:
             span:
               start: 1623
               end: 1649
+              file: 0
             value:
               GetProperty:
                 - span:
                     start: 1635
                     end: 1639
+                    file: 0
                   value:
                     Constant:
                       Identifier: this
@@ -1231,11 +1435,13 @@ Ok:
         span:
           start: 1652
           end: 1685
+          file: 0
         value:
           SetProperty:
             - span:
                 start: 1664
                 end: 1670
+                file: 0
               value:
                 Constant:
                   Identifier: foobar
@@ -1243,6 +1449,7 @@ Ok:
             - span:
                 start: 1681
                 end: 1684
+                file: 0
               value:
                 Constant:
                   Integer: 123
@@ -1250,18 +1457,21 @@ Ok:
         span:
           start: 1687
           end: 1700
+          file: 0
         value:
           BinaryOperator:
             - Assign
             - span:
                 start: 1687
                 end: 1694
+                file: 0
               value:
                 Constant:
                   Identifier: _height
             - span:
                 start: 1697
                 end: 1700
+                file: 0
               value:
                 Constant:
                   Integer: 123
@@ -1269,11 +1479,13 @@ Ok:
         span:
           start: 1704
           end: 1728
+          file: 0
         value:
           Trace:
             span:
               start: 1710
               end: 1727
+              file: 0
             value:
               Constant:
                 String: "-- _rotation --"
@@ -1281,11 +1493,13 @@ Ok:
         span:
           start: 1730
           end: 1746
+          file: 0
         value:
           Trace:
             span:
               start: 1736
               end: 1745
+              file: 0
             value:
               Constant:
                 Identifier: _rotation
@@ -1293,22 +1507,26 @@ Ok:
         span:
           start: 1748
           end: 1768
+          file: 0
         value:
           Trace:
             span:
               start: 1757
               end: 1767
+              file: 0
             value:
               Field:
                 - span:
                     start: 1754
                     end: 1757
+                    file: 0
                   value:
                     Constant:
                       Identifier: foo
                 - span:
                     start: 1758
                     end: 1767
+                    file: 0
                   value:
                     Constant:
                       String: _rotation
@@ -1316,22 +1534,26 @@ Ok:
         span:
           start: 1770
           end: 1793
+          file: 0
         value:
           Trace:
             span:
               start: 1779
               end: 1792
+              file: 0
             value:
               Field:
                 - span:
                     start: 1776
                     end: 1779
+                    file: 0
                   value:
                     Constant:
                       Identifier: foo
                 - span:
                     start: 1780
                     end: 1791
+                    file: 0
                   value:
                     Constant:
                       String: _rotation
@@ -1339,16 +1561,19 @@ Ok:
         span:
           start: 1795
           end: 1830
+          file: 0
         value:
           Trace:
             span:
               start: 1801
               end: 1829
+              file: 0
             value:
               GetProperty:
                 - span:
                     start: 1813
                     end: 1817
+                    file: 0
                   value:
                     Constant:
                       Identifier: this
@@ -1357,11 +1582,13 @@ Ok:
         span:
           start: 1832
           end: 1867
+          file: 0
         value:
           SetProperty:
             - span:
                 start: 1844
                 end: 1850
+                file: 0
               value:
                 Constant:
                   Identifier: foobar
@@ -1369,6 +1596,7 @@ Ok:
             - span:
                 start: 1863
                 end: 1866
+                file: 0
               value:
                 Constant:
                   Integer: 123
@@ -1376,18 +1604,21 @@ Ok:
         span:
           start: 1869
           end: 1884
+          file: 0
         value:
           BinaryOperator:
             - Assign
             - span:
                 start: 1869
                 end: 1878
+                file: 0
               value:
                 Constant:
                   Identifier: _rotation
             - span:
                 start: 1881
                 end: 1884
+                file: 0
               value:
                 Constant:
                   Integer: 123
@@ -1395,11 +1626,13 @@ Ok:
         span:
           start: 1888
           end: 1910
+          file: 0
         value:
           Trace:
             span:
               start: 1894
               end: 1909
+              file: 0
             value:
               Constant:
                 String: "-- _target --"
@@ -1407,11 +1640,13 @@ Ok:
         span:
           start: 1912
           end: 1926
+          file: 0
         value:
           Trace:
             span:
               start: 1918
               end: 1925
+              file: 0
             value:
               Constant:
                 Identifier: _target
@@ -1419,22 +1654,26 @@ Ok:
         span:
           start: 1928
           end: 1946
+          file: 0
         value:
           Trace:
             span:
               start: 1937
               end: 1945
+              file: 0
             value:
               Field:
                 - span:
                     start: 1934
                     end: 1937
+                    file: 0
                   value:
                     Constant:
                       Identifier: foo
                 - span:
                     start: 1938
                     end: 1945
+                    file: 0
                   value:
                     Constant:
                       String: _target
@@ -1442,22 +1681,26 @@ Ok:
         span:
           start: 1948
           end: 1969
+          file: 0
         value:
           Trace:
             span:
               start: 1957
               end: 1968
+              file: 0
             value:
               Field:
                 - span:
                     start: 1954
                     end: 1957
+                    file: 0
                   value:
                     Constant:
                       Identifier: foo
                 - span:
                     start: 1958
                     end: 1967
+                    file: 0
                   value:
                     Constant:
                       String: _target
@@ -1465,16 +1708,19 @@ Ok:
         span:
           start: 1971
           end: 2004
+          file: 0
         value:
           Trace:
             span:
               start: 1977
               end: 2003
+              file: 0
             value:
               GetProperty:
                 - span:
                     start: 1989
                     end: 1993
+                    file: 0
                   value:
                     Constant:
                       Identifier: this
@@ -1483,11 +1729,13 @@ Ok:
         span:
           start: 2006
           end: 2043
+          file: 0
         value:
           SetProperty:
             - span:
                 start: 2018
                 end: 2024
+                file: 0
               value:
                 Constant:
                   Identifier: foobar
@@ -1495,6 +1743,7 @@ Ok:
             - span:
                 start: 2035
                 end: 2042
+                file: 0
               value:
                 Constant:
                   String: value
@@ -1502,18 +1751,21 @@ Ok:
         span:
           start: 2045
           end: 2062
+          file: 0
         value:
           BinaryOperator:
             - Assign
             - span:
                 start: 2045
                 end: 2052
+                file: 0
               value:
                 Constant:
                   Identifier: _target
             - span:
                 start: 2055
                 end: 2062
+                file: 0
               value:
                 Constant:
                   String: value
@@ -1521,11 +1773,13 @@ Ok:
         span:
           start: 2066
           end: 2094
+          file: 0
         value:
           Trace:
             span:
               start: 2072
               end: 2093
+              file: 0
             value:
               Constant:
                 String: "-- _framesloaded --"
@@ -1533,11 +1787,13 @@ Ok:
         span:
           start: 2096
           end: 2116
+          file: 0
         value:
           Trace:
             span:
               start: 2102
               end: 2115
+              file: 0
             value:
               Constant:
                 Identifier: _framesloaded
@@ -1545,22 +1801,26 @@ Ok:
         span:
           start: 2118
           end: 2142
+          file: 0
         value:
           Trace:
             span:
               start: 2127
               end: 2141
+              file: 0
             value:
               Field:
                 - span:
                     start: 2124
                     end: 2127
+                    file: 0
                   value:
                     Constant:
                       Identifier: foo
                 - span:
                     start: 2128
                     end: 2141
+                    file: 0
                   value:
                     Constant:
                       String: _framesloaded
@@ -1568,22 +1828,26 @@ Ok:
         span:
           start: 2144
           end: 2171
+          file: 0
         value:
           Trace:
             span:
               start: 2153
               end: 2170
+              file: 0
             value:
               Field:
                 - span:
                     start: 2150
                     end: 2153
+                    file: 0
                   value:
                     Constant:
                       Identifier: foo
                 - span:
                     start: 2154
                     end: 2169
+                    file: 0
                   value:
                     Constant:
                       String: _framesloaded
@@ -1591,16 +1855,19 @@ Ok:
         span:
           start: 2173
           end: 2212
+          file: 0
         value:
           Trace:
             span:
               start: 2179
               end: 2211
+              file: 0
             value:
               GetProperty:
                 - span:
                     start: 2191
                     end: 2195
+                    file: 0
                   value:
                     Constant:
                       Identifier: this
@@ -1609,11 +1876,13 @@ Ok:
         span:
           start: 2214
           end: 2253
+          file: 0
         value:
           SetProperty:
             - span:
                 start: 2226
                 end: 2232
+                file: 0
               value:
                 Constant:
                   Identifier: foobar
@@ -1621,6 +1890,7 @@ Ok:
             - span:
                 start: 2249
                 end: 2252
+                file: 0
               value:
                 Constant:
                   Integer: 123
@@ -1628,18 +1898,21 @@ Ok:
         span:
           start: 2255
           end: 2274
+          file: 0
         value:
           BinaryOperator:
             - Assign
             - span:
                 start: 2255
                 end: 2268
+                file: 0
               value:
                 Constant:
                   Identifier: _framesloaded
             - span:
                 start: 2271
                 end: 2274
+                file: 0
               value:
                 Constant:
                   Integer: 123
@@ -1647,11 +1920,13 @@ Ok:
         span:
           start: 2278
           end: 2298
+          file: 0
         value:
           Trace:
             span:
               start: 2284
               end: 2297
+              file: 0
             value:
               Constant:
                 String: "-- _name --"
@@ -1659,11 +1934,13 @@ Ok:
         span:
           start: 2300
           end: 2312
+          file: 0
         value:
           Trace:
             span:
               start: 2306
               end: 2311
+              file: 0
             value:
               Constant:
                 Identifier: _name
@@ -1671,22 +1948,26 @@ Ok:
         span:
           start: 2314
           end: 2330
+          file: 0
         value:
           Trace:
             span:
               start: 2323
               end: 2329
+              file: 0
             value:
               Field:
                 - span:
                     start: 2320
                     end: 2323
+                    file: 0
                   value:
                     Constant:
                       Identifier: foo
                 - span:
                     start: 2324
                     end: 2329
+                    file: 0
                   value:
                     Constant:
                       String: _name
@@ -1694,22 +1975,26 @@ Ok:
         span:
           start: 2332
           end: 2351
+          file: 0
         value:
           Trace:
             span:
               start: 2341
               end: 2350
+              file: 0
             value:
               Field:
                 - span:
                     start: 2338
                     end: 2341
+                    file: 0
                   value:
                     Constant:
                       Identifier: foo
                 - span:
                     start: 2342
                     end: 2349
+                    file: 0
                   value:
                     Constant:
                       String: _name
@@ -1717,16 +2002,19 @@ Ok:
         span:
           start: 2353
           end: 2384
+          file: 0
         value:
           Trace:
             span:
               start: 2359
               end: 2383
+              file: 0
             value:
               GetProperty:
                 - span:
                     start: 2371
                     end: 2375
+                    file: 0
                   value:
                     Constant:
                       Identifier: this
@@ -1735,11 +2023,13 @@ Ok:
         span:
           start: 2386
           end: 2421
+          file: 0
         value:
           SetProperty:
             - span:
                 start: 2398
                 end: 2404
+                file: 0
               value:
                 Constant:
                   Identifier: foobar
@@ -1747,6 +2037,7 @@ Ok:
             - span:
                 start: 2413
                 end: 2420
+                file: 0
               value:
                 Constant:
                   String: value
@@ -1754,18 +2045,21 @@ Ok:
         span:
           start: 2423
           end: 2438
+          file: 0
         value:
           BinaryOperator:
             - Assign
             - span:
                 start: 2423
                 end: 2428
+                file: 0
               value:
                 Constant:
                   Identifier: _name
             - span:
                 start: 2431
                 end: 2438
+                file: 0
               value:
                 Constant:
                   String: value
@@ -1773,11 +2067,13 @@ Ok:
         span:
           start: 2442
           end: 2468
+          file: 0
         value:
           Trace:
             span:
               start: 2448
               end: 2467
+              file: 0
             value:
               Constant:
                 String: "-- _droptarget --"
@@ -1785,11 +2081,13 @@ Ok:
         span:
           start: 2470
           end: 2488
+          file: 0
         value:
           Trace:
             span:
               start: 2476
               end: 2487
+              file: 0
             value:
               Constant:
                 Identifier: _droptarget
@@ -1797,22 +2095,26 @@ Ok:
         span:
           start: 2490
           end: 2512
+          file: 0
         value:
           Trace:
             span:
               start: 2499
               end: 2511
+              file: 0
             value:
               Field:
                 - span:
                     start: 2496
                     end: 2499
+                    file: 0
                   value:
                     Constant:
                       Identifier: foo
                 - span:
                     start: 2500
                     end: 2511
+                    file: 0
                   value:
                     Constant:
                       String: _droptarget
@@ -1820,22 +2122,26 @@ Ok:
         span:
           start: 2514
           end: 2539
+          file: 0
         value:
           Trace:
             span:
               start: 2523
               end: 2538
+              file: 0
             value:
               Field:
                 - span:
                     start: 2520
                     end: 2523
+                    file: 0
                   value:
                     Constant:
                       Identifier: foo
                 - span:
                     start: 2524
                     end: 2537
+                    file: 0
                   value:
                     Constant:
                       String: _droptarget
@@ -1843,16 +2149,19 @@ Ok:
         span:
           start: 2541
           end: 2578
+          file: 0
         value:
           Trace:
             span:
               start: 2547
               end: 2577
+              file: 0
             value:
               GetProperty:
                 - span:
                     start: 2559
                     end: 2563
+                    file: 0
                   value:
                     Constant:
                       Identifier: this
@@ -1861,11 +2170,13 @@ Ok:
         span:
           start: 2580
           end: 2621
+          file: 0
         value:
           SetProperty:
             - span:
                 start: 2592
                 end: 2598
+                file: 0
               value:
                 Constant:
                   Identifier: foobar
@@ -1873,6 +2184,7 @@ Ok:
             - span:
                 start: 2613
                 end: 2620
+                file: 0
               value:
                 Constant:
                   String: value
@@ -1880,18 +2192,21 @@ Ok:
         span:
           start: 2623
           end: 2644
+          file: 0
         value:
           BinaryOperator:
             - Assign
             - span:
                 start: 2623
                 end: 2634
+                file: 0
               value:
                 Constant:
                   Identifier: _droptarget
             - span:
                 start: 2637
                 end: 2644
+                file: 0
               value:
                 Constant:
                   String: value
@@ -1899,11 +2214,13 @@ Ok:
         span:
           start: 2648
           end: 2667
+          file: 0
         value:
           Trace:
             span:
               start: 2654
               end: 2666
+              file: 0
             value:
               Constant:
                 String: "-- _url --"
@@ -1911,11 +2228,13 @@ Ok:
         span:
           start: 2669
           end: 2680
+          file: 0
         value:
           Trace:
             span:
               start: 2675
               end: 2679
+              file: 0
             value:
               Constant:
                 Identifier: _url
@@ -1923,22 +2242,26 @@ Ok:
         span:
           start: 2682
           end: 2697
+          file: 0
         value:
           Trace:
             span:
               start: 2691
               end: 2696
+              file: 0
             value:
               Field:
                 - span:
                     start: 2688
                     end: 2691
+                    file: 0
                   value:
                     Constant:
                       Identifier: foo
                 - span:
                     start: 2692
                     end: 2696
+                    file: 0
                   value:
                     Constant:
                       String: _url
@@ -1946,22 +2269,26 @@ Ok:
         span:
           start: 2699
           end: 2717
+          file: 0
         value:
           Trace:
             span:
               start: 2708
               end: 2716
+              file: 0
             value:
               Field:
                 - span:
                     start: 2705
                     end: 2708
+                    file: 0
                   value:
                     Constant:
                       Identifier: foo
                 - span:
                     start: 2709
                     end: 2715
+                    file: 0
                   value:
                     Constant:
                       String: _url
@@ -1969,16 +2296,19 @@ Ok:
         span:
           start: 2719
           end: 2749
+          file: 0
         value:
           Trace:
             span:
               start: 2725
               end: 2748
+              file: 0
             value:
               GetProperty:
                 - span:
                     start: 2737
                     end: 2741
+                    file: 0
                   value:
                     Constant:
                       Identifier: this
@@ -1987,11 +2317,13 @@ Ok:
         span:
           start: 2751
           end: 2785
+          file: 0
         value:
           SetProperty:
             - span:
                 start: 2763
                 end: 2769
+                file: 0
               value:
                 Constant:
                   Identifier: foobar
@@ -1999,6 +2331,7 @@ Ok:
             - span:
                 start: 2777
                 end: 2784
+                file: 0
               value:
                 Constant:
                   String: value
@@ -2006,18 +2339,21 @@ Ok:
         span:
           start: 2787
           end: 2801
+          file: 0
         value:
           BinaryOperator:
             - Assign
             - span:
                 start: 2787
                 end: 2791
+                file: 0
               value:
                 Constant:
                   Identifier: _url
             - span:
                 start: 2794
                 end: 2801
+                file: 0
               value:
                 Constant:
                   String: value
@@ -2025,11 +2361,13 @@ Ok:
         span:
           start: 2805
           end: 2832
+          file: 0
         value:
           Trace:
             span:
               start: 2811
               end: 2831
+              file: 0
             value:
               Constant:
                 String: "-- _highquality --"
@@ -2037,11 +2375,13 @@ Ok:
         span:
           start: 2834
           end: 2853
+          file: 0
         value:
           Trace:
             span:
               start: 2840
               end: 2852
+              file: 0
             value:
               Constant:
                 Identifier: _highquality
@@ -2049,22 +2389,26 @@ Ok:
         span:
           start: 2855
           end: 2878
+          file: 0
         value:
           Trace:
             span:
               start: 2864
               end: 2877
+              file: 0
             value:
               Field:
                 - span:
                     start: 2861
                     end: 2864
+                    file: 0
                   value:
                     Constant:
                       Identifier: foo
                 - span:
                     start: 2865
                     end: 2877
+                    file: 0
                   value:
                     Constant:
                       String: _highquality
@@ -2072,22 +2416,26 @@ Ok:
         span:
           start: 2880
           end: 2906
+          file: 0
         value:
           Trace:
             span:
               start: 2889
               end: 2905
+              file: 0
             value:
               Field:
                 - span:
                     start: 2886
                     end: 2889
+                    file: 0
                   value:
                     Constant:
                       Identifier: foo
                 - span:
                     start: 2890
                     end: 2904
+                    file: 0
                   value:
                     Constant:
                       String: _highquality
@@ -2095,16 +2443,19 @@ Ok:
         span:
           start: 2908
           end: 2946
+          file: 0
         value:
           Trace:
             span:
               start: 2914
               end: 2945
+              file: 0
             value:
               GetProperty:
                 - span:
                     start: 2926
                     end: 2930
+                    file: 0
                   value:
                     Constant:
                       Identifier: this
@@ -2113,11 +2464,13 @@ Ok:
         span:
           start: 2948
           end: 2986
+          file: 0
         value:
           SetProperty:
             - span:
                 start: 2960
                 end: 2966
+                file: 0
               value:
                 Constant:
                   Identifier: foobar
@@ -2125,6 +2478,7 @@ Ok:
             - span:
                 start: 2982
                 end: 2985
+                file: 0
               value:
                 Constant:
                   Integer: 123
@@ -2132,18 +2486,21 @@ Ok:
         span:
           start: 2988
           end: 3006
+          file: 0
         value:
           BinaryOperator:
             - Assign
             - span:
                 start: 2988
                 end: 3000
+                file: 0
               value:
                 Constant:
                   Identifier: _highquality
             - span:
                 start: 3003
                 end: 3006
+                file: 0
               value:
                 Constant:
                   Integer: 123
@@ -2151,11 +2508,13 @@ Ok:
         span:
           start: 3010
           end: 3035
+          file: 0
         value:
           Trace:
             span:
               start: 3016
               end: 3034
+              file: 0
             value:
               Constant:
                 String: "-- _focusrect --"
@@ -2163,11 +2522,13 @@ Ok:
         span:
           start: 3037
           end: 3054
+          file: 0
         value:
           Trace:
             span:
               start: 3043
               end: 3053
+              file: 0
             value:
               Constant:
                 Identifier: _focusrect
@@ -2175,22 +2536,26 @@ Ok:
         span:
           start: 3056
           end: 3077
+          file: 0
         value:
           Trace:
             span:
               start: 3065
               end: 3076
+              file: 0
             value:
               Field:
                 - span:
                     start: 3062
                     end: 3065
+                    file: 0
                   value:
                     Constant:
                       Identifier: foo
                 - span:
                     start: 3066
                     end: 3076
+                    file: 0
                   value:
                     Constant:
                       String: _focusrect
@@ -2198,22 +2563,26 @@ Ok:
         span:
           start: 3079
           end: 3103
+          file: 0
         value:
           Trace:
             span:
               start: 3088
               end: 3102
+              file: 0
             value:
               Field:
                 - span:
                     start: 3085
                     end: 3088
+                    file: 0
                   value:
                     Constant:
                       Identifier: foo
                 - span:
                     start: 3089
                     end: 3101
+                    file: 0
                   value:
                     Constant:
                       String: _focusrect
@@ -2221,16 +2590,19 @@ Ok:
         span:
           start: 3105
           end: 3141
+          file: 0
         value:
           Trace:
             span:
               start: 3111
               end: 3140
+              file: 0
             value:
               GetProperty:
                 - span:
                     start: 3123
                     end: 3127
+                    file: 0
                   value:
                     Constant:
                       Identifier: this
@@ -2239,11 +2611,13 @@ Ok:
         span:
           start: 3143
           end: 3179
+          file: 0
         value:
           SetProperty:
             - span:
                 start: 3155
                 end: 3161
+                file: 0
               value:
                 Constant:
                   Identifier: foobar
@@ -2251,6 +2625,7 @@ Ok:
             - span:
                 start: 3175
                 end: 3178
+                file: 0
               value:
                 Constant:
                   Integer: 123
@@ -2258,18 +2633,21 @@ Ok:
         span:
           start: 3181
           end: 3198
+          file: 0
         value:
           BinaryOperator:
             - Assign
             - span:
                 start: 3181
                 end: 3191
+                file: 0
               value:
                 Constant:
                   Identifier: _focusrect
             - span:
                 start: 3194
                 end: 3198
+                file: 0
               value:
                 Constant:
                   Boolean: true
@@ -2277,11 +2655,13 @@ Ok:
         span:
           start: 3202
           end: 3230
+          file: 0
         value:
           Trace:
             span:
               start: 3208
               end: 3229
+              file: 0
             value:
               Constant:
                 String: "-- _soundbuftime --"
@@ -2289,11 +2669,13 @@ Ok:
         span:
           start: 3232
           end: 3252
+          file: 0
         value:
           Trace:
             span:
               start: 3238
               end: 3251
+              file: 0
             value:
               Constant:
                 Identifier: _soundbuftime
@@ -2301,22 +2683,26 @@ Ok:
         span:
           start: 3254
           end: 3278
+          file: 0
         value:
           Trace:
             span:
               start: 3263
               end: 3277
+              file: 0
             value:
               Field:
                 - span:
                     start: 3260
                     end: 3263
+                    file: 0
                   value:
                     Constant:
                       Identifier: foo
                 - span:
                     start: 3264
                     end: 3277
+                    file: 0
                   value:
                     Constant:
                       String: _soundbuftime
@@ -2324,22 +2710,26 @@ Ok:
         span:
           start: 3280
           end: 3307
+          file: 0
         value:
           Trace:
             span:
               start: 3289
               end: 3306
+              file: 0
             value:
               Field:
                 - span:
                     start: 3286
                     end: 3289
+                    file: 0
                   value:
                     Constant:
                       Identifier: foo
                 - span:
                     start: 3290
                     end: 3305
+                    file: 0
                   value:
                     Constant:
                       String: _soundbuftime
@@ -2347,16 +2737,19 @@ Ok:
         span:
           start: 3309
           end: 3348
+          file: 0
         value:
           Trace:
             span:
               start: 3315
               end: 3347
+              file: 0
             value:
               GetProperty:
                 - span:
                     start: 3327
                     end: 3331
+                    file: 0
                   value:
                     Constant:
                       Identifier: this
@@ -2365,11 +2758,13 @@ Ok:
         span:
           start: 3350
           end: 3389
+          file: 0
         value:
           SetProperty:
             - span:
                 start: 3362
                 end: 3368
+                file: 0
               value:
                 Constant:
                   Identifier: foobar
@@ -2377,6 +2772,7 @@ Ok:
             - span:
                 start: 3385
                 end: 3388
+                file: 0
               value:
                 Constant:
                   Integer: 123
@@ -2384,18 +2780,21 @@ Ok:
         span:
           start: 3391
           end: 3410
+          file: 0
         value:
           BinaryOperator:
             - Assign
             - span:
                 start: 3391
                 end: 3404
+                file: 0
               value:
                 Constant:
                   Identifier: _soundbuftime
             - span:
                 start: 3407
                 end: 3410
+                file: 0
               value:
                 Constant:
                   Integer: 123
@@ -2403,11 +2802,13 @@ Ok:
         span:
           start: 3414
           end: 3437
+          file: 0
         value:
           Trace:
             span:
               start: 3420
               end: 3436
+              file: 0
             value:
               Constant:
                 String: "-- _quality --"
@@ -2415,11 +2816,13 @@ Ok:
         span:
           start: 3439
           end: 3454
+          file: 0
         value:
           Trace:
             span:
               start: 3445
               end: 3453
+              file: 0
             value:
               Constant:
                 Identifier: _quality
@@ -2427,22 +2830,26 @@ Ok:
         span:
           start: 3456
           end: 3475
+          file: 0
         value:
           Trace:
             span:
               start: 3465
               end: 3474
+              file: 0
             value:
               Field:
                 - span:
                     start: 3462
                     end: 3465
+                    file: 0
                   value:
                     Constant:
                       Identifier: foo
                 - span:
                     start: 3466
                     end: 3474
+                    file: 0
                   value:
                     Constant:
                       String: _quality
@@ -2450,22 +2857,26 @@ Ok:
         span:
           start: 3477
           end: 3499
+          file: 0
         value:
           Trace:
             span:
               start: 3486
               end: 3498
+              file: 0
             value:
               Field:
                 - span:
                     start: 3483
                     end: 3486
+                    file: 0
                   value:
                     Constant:
                       Identifier: foo
                 - span:
                     start: 3487
                     end: 3497
+                    file: 0
                   value:
                     Constant:
                       String: _quality
@@ -2473,16 +2884,19 @@ Ok:
         span:
           start: 3501
           end: 3535
+          file: 0
         value:
           Trace:
             span:
               start: 3507
               end: 3534
+              file: 0
             value:
               GetProperty:
                 - span:
                     start: 3519
                     end: 3523
+                    file: 0
                   value:
                     Constant:
                       Identifier: this
@@ -2491,11 +2905,13 @@ Ok:
         span:
           start: 3537
           end: 3575
+          file: 0
         value:
           SetProperty:
             - span:
                 start: 3549
                 end: 3555
+                file: 0
               value:
                 Constant:
                   Identifier: foobar
@@ -2503,6 +2919,7 @@ Ok:
             - span:
                 start: 3567
                 end: 3574
+                file: 0
               value:
                 Constant:
                   String: value
@@ -2510,18 +2927,21 @@ Ok:
         span:
           start: 3577
           end: 3595
+          file: 0
         value:
           BinaryOperator:
             - Assign
             - span:
                 start: 3577
                 end: 3585
+                file: 0
               value:
                 Constant:
                   Identifier: _quality
             - span:
                 start: 3588
                 end: 3595
+                file: 0
               value:
                 Constant:
                   String: value
@@ -2529,11 +2949,13 @@ Ok:
         span:
           start: 3599
           end: 3621
+          file: 0
         value:
           Trace:
             span:
               start: 3605
               end: 3620
+              file: 0
             value:
               Constant:
                 String: "-- _xmouse --"
@@ -2541,11 +2963,13 @@ Ok:
         span:
           start: 3623
           end: 3637
+          file: 0
         value:
           Trace:
             span:
               start: 3629
               end: 3636
+              file: 0
             value:
               Constant:
                 Identifier: _xmouse
@@ -2553,22 +2977,26 @@ Ok:
         span:
           start: 3639
           end: 3657
+          file: 0
         value:
           Trace:
             span:
               start: 3648
               end: 3656
+              file: 0
             value:
               Field:
                 - span:
                     start: 3645
                     end: 3648
+                    file: 0
                   value:
                     Constant:
                       Identifier: foo
                 - span:
                     start: 3649
                     end: 3656
+                    file: 0
                   value:
                     Constant:
                       String: _xmouse
@@ -2576,22 +3004,26 @@ Ok:
         span:
           start: 3659
           end: 3680
+          file: 0
         value:
           Trace:
             span:
               start: 3668
               end: 3679
+              file: 0
             value:
               Field:
                 - span:
                     start: 3665
                     end: 3668
+                    file: 0
                   value:
                     Constant:
                       Identifier: foo
                 - span:
                     start: 3669
                     end: 3678
+                    file: 0
                   value:
                     Constant:
                       String: _xmouse
@@ -2599,16 +3031,19 @@ Ok:
         span:
           start: 3682
           end: 3715
+          file: 0
         value:
           Trace:
             span:
               start: 3688
               end: 3714
+              file: 0
             value:
               GetProperty:
                 - span:
                     start: 3700
                     end: 3704
+                    file: 0
                   value:
                     Constant:
                       Identifier: this
@@ -2617,11 +3052,13 @@ Ok:
         span:
           start: 3717
           end: 3750
+          file: 0
         value:
           SetProperty:
             - span:
                 start: 3729
                 end: 3735
+                file: 0
               value:
                 Constant:
                   Identifier: foobar
@@ -2629,6 +3066,7 @@ Ok:
             - span:
                 start: 3746
                 end: 3749
+                file: 0
               value:
                 Constant:
                   Integer: 123
@@ -2636,18 +3074,21 @@ Ok:
         span:
           start: 3752
           end: 3765
+          file: 0
         value:
           BinaryOperator:
             - Assign
             - span:
                 start: 3752
                 end: 3759
+                file: 0
               value:
                 Constant:
                   Identifier: _xmouse
             - span:
                 start: 3762
                 end: 3765
+                file: 0
               value:
                 Constant:
                   Integer: 123
@@ -2655,11 +3096,13 @@ Ok:
         span:
           start: 3769
           end: 3791
+          file: 0
         value:
           Trace:
             span:
               start: 3775
               end: 3790
+              file: 0
             value:
               Constant:
                 String: "-- _ymouse --"
@@ -2667,11 +3110,13 @@ Ok:
         span:
           start: 3793
           end: 3807
+          file: 0
         value:
           Trace:
             span:
               start: 3799
               end: 3806
+              file: 0
             value:
               Constant:
                 Identifier: _ymouse
@@ -2679,22 +3124,26 @@ Ok:
         span:
           start: 3809
           end: 3827
+          file: 0
         value:
           Trace:
             span:
               start: 3818
               end: 3826
+              file: 0
             value:
               Field:
                 - span:
                     start: 3815
                     end: 3818
+                    file: 0
                   value:
                     Constant:
                       Identifier: foo
                 - span:
                     start: 3819
                     end: 3826
+                    file: 0
                   value:
                     Constant:
                       String: _ymouse
@@ -2702,22 +3151,26 @@ Ok:
         span:
           start: 3829
           end: 3850
+          file: 0
         value:
           Trace:
             span:
               start: 3838
               end: 3849
+              file: 0
             value:
               Field:
                 - span:
                     start: 3835
                     end: 3838
+                    file: 0
                   value:
                     Constant:
                       Identifier: foo
                 - span:
                     start: 3839
                     end: 3848
+                    file: 0
                   value:
                     Constant:
                       String: _ymouse
@@ -2725,16 +3178,19 @@ Ok:
         span:
           start: 3852
           end: 3885
+          file: 0
         value:
           Trace:
             span:
               start: 3858
               end: 3884
+              file: 0
             value:
               GetProperty:
                 - span:
                     start: 3870
                     end: 3874
+                    file: 0
                   value:
                     Constant:
                       Identifier: this
@@ -2743,11 +3199,13 @@ Ok:
         span:
           start: 3887
           end: 3920
+          file: 0
         value:
           SetProperty:
             - span:
                 start: 3899
                 end: 3905
+                file: 0
               value:
                 Constant:
                   Identifier: foobar
@@ -2755,6 +3213,7 @@ Ok:
             - span:
                 start: 3916
                 end: 3919
+                file: 0
               value:
                 Constant:
                   Integer: 123
@@ -2762,18 +3221,21 @@ Ok:
         span:
           start: 3922
           end: 3935
+          file: 0
         value:
           BinaryOperator:
             - Assign
             - span:
                 start: 3922
                 end: 3929
+                file: 0
               value:
                 Constant:
                   Identifier: _ymouse
             - span:
                 start: 3932
                 end: 3935
+                file: 0
               value:
                 Constant:
                   Integer: 123
@@ -2781,11 +3243,13 @@ Ok:
         span:
           start: 3939
           end: 3958
+          file: 0
         value:
           Trace:
             span:
               start: 3945
               end: 3957
+              file: 0
             value:
               Constant:
                 String: "-- misc --"
@@ -2793,11 +3257,13 @@ Ok:
         span:
           start: 3960
           end: 3975
+          file: 0
         value:
           Trace:
             span:
               start: 3966
               end: 3974
+              file: 0
             value:
               Constant:
                 Identifier: _QUALity
@@ -2805,23 +3271,27 @@ Ok:
         span:
           start: 3977
           end: 3997
+          file: 0
         value:
           Trace:
             span:
               start: 3983
               end: 3996
+              file: 0
             value:
               BinaryOperator:
                 - AddAssign
                 - span:
                     start: 3983
                     end: 3989
+                    file: 0
                   value:
                     Constant:
                       Identifier: _alpha
                 - span:
                     start: 3993
                     end: 3996
+                    file: 0
                   value:
                     Constant:
                       Float: 1

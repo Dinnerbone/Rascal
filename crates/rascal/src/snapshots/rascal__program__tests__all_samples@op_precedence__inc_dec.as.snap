@@ -10,11 +10,13 @@ Ok:
           span:
             start: 4
             end: 5
+            file: 0
           value: a
         value:
           span:
             start: 8
             end: 10
+            file: 0
           value:
             Constant:
               Integer: 10
@@ -24,11 +26,13 @@ Ok:
           span:
             start: 126
             end: 129
+            file: 0
           value: trc
         value:
           span:
             start: 132
             end: 165
+            file: 0
           value:
             Function:
               signature:
@@ -43,11 +47,13 @@ Ok:
                     span:
                       start: 152
                       end: 162
+                      file: 0
                     value:
                       Trace:
                         span:
                           start: 158
                           end: 161
+                          file: 0
                         value:
                           Constant:
                             Register: 1
@@ -98,12 +104,14 @@ Ok:
         span:
           start: 167
           end: 175
+          file: 0
         value:
           Call:
             name:
               span:
                 start: 167
                 end: 170
+                file: 0
               value:
                 Constant:
                   Identifier: trc
@@ -111,12 +119,14 @@ Ok:
               - span:
                   start: 172
                   end: 174
+                  file: 0
                 value:
                   UnaryOperator:
                     - Increment: Postfix
                     - span:
                         start: 171
                         end: 172
+                        file: 0
                       value:
                         Constant:
                           Identifier: a
@@ -124,12 +134,14 @@ Ok:
         span:
           start: 177
           end: 185
+          file: 0
         value:
           Call:
             name:
               span:
                 start: 177
                 end: 180
+                file: 0
               value:
                 Constant:
                   Identifier: trc
@@ -137,12 +149,14 @@ Ok:
               - span:
                   start: 182
                   end: 184
+                  file: 0
                 value:
                   UnaryOperator:
                     - Decrement: Postfix
                     - span:
                         start: 181
                         end: 182
+                        file: 0
                       value:
                         Constant:
                           Identifier: a
@@ -150,12 +164,14 @@ Ok:
         span:
           start: 187
           end: 195
+          file: 0
         value:
           Call:
             name:
               span:
                 start: 187
                 end: 190
+                file: 0
               value:
                 Constant:
                   Identifier: trc
@@ -163,12 +179,14 @@ Ok:
               - span:
                   start: 191
                   end: 194
+                  file: 0
                 value:
                   UnaryOperator:
                     - Increment: Prefix
                     - span:
                         start: 193
                         end: 194
+                        file: 0
                       value:
                         Constant:
                           Identifier: a
@@ -176,12 +194,14 @@ Ok:
         span:
           start: 197
           end: 205
+          file: 0
         value:
           Call:
             name:
               span:
                 start: 197
                 end: 200
+                file: 0
               value:
                 Constant:
                   Identifier: trc
@@ -189,12 +209,14 @@ Ok:
               - span:
                   start: 201
                   end: 204
+                  file: 0
                 value:
                   UnaryOperator:
                     - Decrement: Prefix
                     - span:
                         start: 203
                         end: 204
+                        file: 0
                       value:
                         Constant:
                           Identifier: a

@@ -10,11 +10,13 @@ Ok:
           span:
             start: 109
             end: 110
+            file: 0
           value: a
         value:
           span:
             start: 113
             end: 115
+            file: 0
           value:
             Constant:
               Integer: 10
@@ -24,11 +26,13 @@ Ok:
           span:
             start: 121
             end: 122
+            file: 0
           value: b
         value:
           span:
             start: 125
             end: 126
+            file: 0
           value:
             Constant:
               Integer: 3
@@ -37,35 +41,41 @@ Ok:
         span:
           start: 129
           end: 156
+          file: 0
         value:
           Trace:
             span:
               start: 135
               end: 155
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 135
                     end: 145
+                    file: 0
                   value:
                     Constant:
                       String: "a + b = "
                 - span:
                     start: 149
                     end: 154
+                    file: 0
                   value:
                     BinaryOperator:
                       - Add
                       - span:
                           start: 149
                           end: 150
+                          file: 0
                         value:
                           Constant:
                             Identifier: a
                       - span:
                           start: 153
                           end: 154
+                          file: 0
                         value:
                           Constant:
                             Identifier: b
@@ -73,35 +83,41 @@ Ok:
         span:
           start: 164
           end: 191
+          file: 0
         value:
           Trace:
             span:
               start: 170
               end: 190
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 170
                     end: 180
+                    file: 0
                   value:
                     Constant:
                       String: "a - b = "
                 - span:
                     start: 184
                     end: 189
+                    file: 0
                   value:
                     BinaryOperator:
                       - Sub
                       - span:
                           start: 184
                           end: 185
+                          file: 0
                         value:
                           Constant:
                             Identifier: a
                       - span:
                           start: 188
                           end: 189
+                          file: 0
                         value:
                           Constant:
                             Identifier: b
@@ -109,35 +125,41 @@ Ok:
         span:
           start: 198
           end: 225
+          file: 0
         value:
           Trace:
             span:
               start: 204
               end: 224
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 204
                     end: 214
+                    file: 0
                   value:
                     Constant:
                       String: "a * b = "
                 - span:
                     start: 218
                     end: 223
+                    file: 0
                   value:
                     BinaryOperator:
                       - Multiply
                       - span:
                           start: 218
                           end: 219
+                          file: 0
                         value:
                           Constant:
                             Identifier: a
                       - span:
                           start: 222
                           end: 223
+                          file: 0
                         value:
                           Constant:
                             Identifier: b
@@ -145,35 +167,41 @@ Ok:
         span:
           start: 233
           end: 260
+          file: 0
         value:
           Trace:
             span:
               start: 239
               end: 259
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 239
                     end: 249
+                    file: 0
                   value:
                     Constant:
                       String: "a / b = "
                 - span:
                     start: 253
                     end: 258
+                    file: 0
                   value:
                     BinaryOperator:
                       - Divide
                       - span:
                           start: 253
                           end: 254
+                          file: 0
                         value:
                           Constant:
                             Identifier: a
                       - span:
                           start: 257
                           end: 258
+                          file: 0
                         value:
                           Constant:
                             Identifier: b
@@ -181,35 +209,41 @@ Ok:
         span:
           start: 278
           end: 305
+          file: 0
         value:
           Trace:
             span:
               start: 284
               end: 304
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 284
                     end: 294
+                    file: 0
                   value:
                     Constant:
                       String: "a % b = "
                 - span:
                     start: 298
                     end: 303
+                    file: 0
                   value:
                     BinaryOperator:
                       - Modulo
                       - span:
                           start: 298
                           end: 299
+                          file: 0
                         value:
                           Constant:
                             Identifier: a
                       - span:
                           start: 302
                           end: 303
+                          file: 0
                         value:
                           Constant:
                             Identifier: b
@@ -217,29 +251,34 @@ Ok:
         span:
           start: 313
           end: 336
+          file: 0
         value:
           Trace:
             span:
               start: 319
               end: 335
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 319
                     end: 327
+                    file: 0
                   value:
                     Constant:
                       String: "++a = "
                 - span:
                     start: 331
                     end: 334
+                    file: 0
                   value:
                     UnaryOperator:
                       - Increment: Prefix
                       - span:
                           start: 333
                           end: 334
+                          file: 0
                         value:
                           Constant:
                             Identifier: a
@@ -247,29 +286,34 @@ Ok:
         span:
           start: 344
           end: 367
+          file: 0
         value:
           Trace:
             span:
               start: 350
               end: 366
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 350
                     end: 358
+                    file: 0
                   value:
                     Constant:
                       String: "--a = "
                 - span:
                     start: 362
                     end: 365
+                    file: 0
                   value:
                     UnaryOperator:
                       - Decrement: Prefix
                       - span:
                           start: 364
                           end: 365
+                          file: 0
                         value:
                           Constant:
                             Identifier: a
@@ -277,29 +321,34 @@ Ok:
         span:
           start: 375
           end: 398
+          file: 0
         value:
           Trace:
             span:
               start: 381
               end: 397
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 381
                     end: 389
+                    file: 0
                   value:
                     Constant:
                       String: "a++ = "
                 - span:
                     start: 394
                     end: 396
+                    file: 0
                   value:
                     UnaryOperator:
                       - Increment: Postfix
                       - span:
                           start: 393
                           end: 394
+                          file: 0
                         value:
                           Constant:
                             Identifier: a
@@ -307,29 +356,34 @@ Ok:
         span:
           start: 418
           end: 441
+          file: 0
         value:
           Trace:
             span:
               start: 424
               end: 440
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 424
                     end: 432
+                    file: 0
                   value:
                     Constant:
                       String: "a-- = "
                 - span:
                     start: 437
                     end: 439
+                    file: 0
                   value:
                     UnaryOperator:
                       - Decrement: Postfix
                       - span:
                           start: 436
                           end: 437
+                          file: 0
                         value:
                           Constant:
                             Identifier: a
@@ -338,11 +392,13 @@ Ok:
           span:
             start: 466
             end: 471
+            file: 0
           value: hello
         value:
           span:
             start: 474
             end: 481
+            file: 0
           value:
             Constant:
               String: Hello
@@ -352,11 +408,13 @@ Ok:
           span:
             start: 487
             end: 492
+            file: 0
           value: world
         value:
           span:
             start: 495
             end: 502
+            file: 0
           value:
             Constant:
               String: World
@@ -365,47 +423,55 @@ Ok:
         span:
           start: 504
           end: 559
+          file: 0
         value:
           Trace:
             span:
               start: 510
               end: 558
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 510
                     end: 534
+                    file: 0
                   value:
                     Constant:
                       String: "hello + \" \" + world = "
                 - span:
                     start: 538
                     end: 557
+                    file: 0
                   value:
                     BinaryOperator:
                       - Add
                       - span:
                           start: 538
                           end: 549
+                          file: 0
                         value:
                           BinaryOperator:
                             - Add
                             - span:
                                 start: 538
                                 end: 543
+                                file: 0
                               value:
                                 Constant:
                                   Identifier: hello
                             - span:
                                 start: 546
                                 end: 549
+                                file: 0
                               value:
                                 Constant:
                                   String: " "
                       - span:
                           start: 552
                           end: 557
+                          file: 0
                         value:
                           Constant:
                             Identifier: world
@@ -414,11 +480,13 @@ Ok:
           span:
             start: 605
             end: 606
+            file: 0
           value: x
         value:
           span:
             start: 609
             end: 610
+            file: 0
           value:
             Constant:
               Integer: 5
@@ -427,23 +495,27 @@ Ok:
         span:
           start: 612
           end: 629
+          file: 0
         value:
           Trace:
             span:
               start: 618
               end: 628
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 618
                     end: 624
+                    file: 0
                   value:
                     Constant:
                       String: "x = "
                 - span:
                     start: 627
                     end: 628
+                    file: 0
                   value:
                     Constant:
                       Identifier: x
@@ -451,35 +523,41 @@ Ok:
         span:
           start: 636
           end: 666
+          file: 0
         value:
           Trace:
             span:
               start: 642
               end: 665
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 642
                     end: 654
+                    file: 0
                   value:
                     Constant:
                       String: "x += 2 => "
                 - span:
                     start: 658
                     end: 664
+                    file: 0
                   value:
                     BinaryOperator:
                       - AddAssign
                       - span:
                           start: 658
                           end: 659
+                          file: 0
                         value:
                           Constant:
                             Identifier: x
                       - span:
                           start: 663
                           end: 664
+                          file: 0
                         value:
                           Constant:
                             Integer: 2
@@ -487,35 +565,41 @@ Ok:
         span:
           start: 673
           end: 703
+          file: 0
         value:
           Trace:
             span:
               start: 679
               end: 702
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 679
                     end: 691
+                    file: 0
                   value:
                     Constant:
                       String: "x -= 2 => "
                 - span:
                     start: 695
                     end: 701
+                    file: 0
                   value:
                     BinaryOperator:
                       - SubAssign
                       - span:
                           start: 695
                           end: 696
+                          file: 0
                         value:
                           Constant:
                             Identifier: x
                       - span:
                           start: 700
                           end: 701
+                          file: 0
                         value:
                           Constant:
                             Integer: 2
@@ -523,35 +607,41 @@ Ok:
         span:
           start: 710
           end: 740
+          file: 0
         value:
           Trace:
             span:
               start: 716
               end: 739
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 716
                     end: 728
+                    file: 0
                   value:
                     Constant:
                       String: "x *= 3 => "
                 - span:
                     start: 732
                     end: 738
+                    file: 0
                   value:
                     BinaryOperator:
                       - MultiplyAssign
                       - span:
                           start: 732
                           end: 733
+                          file: 0
                         value:
                           Constant:
                             Identifier: x
                       - span:
                           start: 737
                           end: 738
+                          file: 0
                         value:
                           Constant:
                             Integer: 3
@@ -559,35 +649,41 @@ Ok:
         span:
           start: 748
           end: 778
+          file: 0
         value:
           Trace:
             span:
               start: 754
               end: 777
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 754
                     end: 766
+                    file: 0
                   value:
                     Constant:
                       String: "x /= 5 => "
                 - span:
                     start: 770
                     end: 776
+                    file: 0
                   value:
                     BinaryOperator:
                       - DivideAssign
                       - span:
                           start: 770
                           end: 771
+                          file: 0
                         value:
                           Constant:
                             Identifier: x
                       - span:
                           start: 775
                           end: 776
+                          file: 0
                         value:
                           Constant:
                             Integer: 5
@@ -595,35 +691,41 @@ Ok:
         span:
           start: 785
           end: 815
+          file: 0
         value:
           Trace:
             span:
               start: 791
               end: 814
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 791
                     end: 803
+                    file: 0
                   value:
                     Constant:
                       String: "x %= 2 => "
                 - span:
                     start: 807
                     end: 813
+                    file: 0
                   value:
                     BinaryOperator:
                       - ModuloAssign
                       - span:
                           start: 807
                           end: 808
+                          file: 0
                         value:
                           Constant:
                             Identifier: x
                       - span:
                           start: 812
                           end: 813
+                          file: 0
                         value:
                           Constant:
                             Integer: 2
@@ -632,11 +734,13 @@ Ok:
           span:
             start: 848
             end: 852
+            file: 0
           value: five
         value:
           span:
             start: 855
             end: 856
+            file: 0
           value:
             Constant:
               Integer: 5
@@ -646,11 +750,13 @@ Ok:
           span:
             start: 862
             end: 867
+            file: 0
           value: three
         value:
           span:
             start: 870
             end: 871
+            file: 0
           value:
             Constant:
               Integer: 3
@@ -659,35 +765,41 @@ Ok:
         span:
           start: 873
           end: 914
+          file: 0
         value:
           Trace:
             span:
               start: 879
               end: 913
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 879
                     end: 896
+                    file: 0
                   value:
                     Constant:
                       String: "five & three = "
                 - span:
                     start: 900
                     end: 912
+                    file: 0
                   value:
                     BinaryOperator:
                       - BitAnd
                       - span:
                           start: 900
                           end: 904
+                          file: 0
                         value:
                           Constant:
                             Identifier: five
                       - span:
                           start: 907
                           end: 912
+                          file: 0
                         value:
                           Constant:
                             Identifier: three
@@ -695,35 +807,41 @@ Ok:
         span:
           start: 921
           end: 962
+          file: 0
         value:
           Trace:
             span:
               start: 927
               end: 961
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 927
                     end: 944
+                    file: 0
                   value:
                     Constant:
                       String: "five | three = "
                 - span:
                     start: 948
                     end: 960
+                    file: 0
                   value:
                     BinaryOperator:
                       - BitOr
                       - span:
                           start: 948
                           end: 952
+                          file: 0
                         value:
                           Constant:
                             Identifier: five
                       - span:
                           start: 955
                           end: 960
+                          file: 0
                         value:
                           Constant:
                             Identifier: three
@@ -731,35 +849,41 @@ Ok:
         span:
           start: 969
           end: 1010
+          file: 0
         value:
           Trace:
             span:
               start: 975
               end: 1009
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 975
                     end: 992
+                    file: 0
                   value:
                     Constant:
                       String: "five ^ three = "
                 - span:
                     start: 996
                     end: 1008
+                    file: 0
                   value:
                     BinaryOperator:
                       - BitXor
                       - span:
                           start: 996
                           end: 1000
+                          file: 0
                         value:
                           Constant:
                             Identifier: five
                       - span:
                           start: 1003
                           end: 1008
+                          file: 0
                         value:
                           Constant:
                             Identifier: three
@@ -767,29 +891,34 @@ Ok:
         span:
           start: 1017
           end: 1044
+          file: 0
         value:
           Trace:
             span:
               start: 1023
               end: 1043
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 1023
                     end: 1033
+                    file: 0
                   value:
                     Constant:
                       String: "~five = "
                 - span:
                     start: 1037
                     end: 1042
+                    file: 0
                   value:
                     UnaryOperator:
                       - BitNot
                       - span:
                           start: 1038
                           end: 1042
+                          file: 0
                         value:
                           Constant:
                             Identifier: five
@@ -797,35 +926,41 @@ Ok:
         span:
           start: 1052
           end: 1087
+          file: 0
         value:
           Trace:
             span:
               start: 1058
               end: 1086
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 1058
                     end: 1072
+                    file: 0
                   value:
                     Constant:
                       String: "five << 1 = "
                 - span:
                     start: 1076
                     end: 1085
+                    file: 0
                   value:
                     BinaryOperator:
                       - BitShiftLeft
                       - span:
                           start: 1076
                           end: 1080
+                          file: 0
                         value:
                           Constant:
                             Identifier: five
                       - span:
                           start: 1084
                           end: 1085
+                          file: 0
                         value:
                           Constant:
                             Integer: 1
@@ -833,35 +968,41 @@ Ok:
         span:
           start: 1095
           end: 1130
+          file: 0
         value:
           Trace:
             span:
               start: 1101
               end: 1129
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 1101
                     end: 1115
+                    file: 0
                   value:
                     Constant:
                       String: "five >> 1 = "
                 - span:
                     start: 1119
                     end: 1128
+                    file: 0
                   value:
                     BinaryOperator:
                       - BitShiftRight
                       - span:
                           start: 1119
                           end: 1123
+                          file: 0
                         value:
                           Constant:
                             Identifier: five
                       - span:
                           start: 1127
                           end: 1128
+                          file: 0
                         value:
                           Constant:
                             Integer: 1
@@ -869,35 +1010,41 @@ Ok:
         span:
           start: 1137
           end: 1174
+          file: 0
         value:
           Trace:
             span:
               start: 1143
               end: 1173
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 1143
                     end: 1158
+                    file: 0
                   value:
                     Constant:
                       String: "five >>> 1 = "
                 - span:
                     start: 1162
                     end: 1172
+                    file: 0
                   value:
                     BinaryOperator:
                       - BitShiftRightUnsigned
                       - span:
                           start: 1162
                           end: 1166
+                          file: 0
                         value:
                           Constant:
                             Identifier: five
                       - span:
                           start: 1171
                           end: 1172
+                          file: 0
                         value:
                           Constant:
                             Integer: 1
@@ -905,18 +1052,21 @@ Ok:
         span:
           start: 1214
           end: 1222
+          file: 0
         value:
           BinaryOperator:
             - Assign
             - span:
                 start: 1214
                 end: 1218
+                file: 0
               value:
                 Constant:
                   Identifier: five
             - span:
                 start: 1221
                 end: 1222
+                file: 0
               value:
                 Constant:
                   Integer: 5
@@ -924,18 +1074,21 @@ Ok:
         span:
           start: 1224
           end: 1237
+          file: 0
         value:
           BinaryOperator:
             - BitAndAssign
             - span:
                 start: 1224
                 end: 1228
+                file: 0
               value:
                 Constant:
                   Identifier: five
             - span:
                 start: 1232
                 end: 1237
+                file: 0
               value:
                 Constant:
                   Identifier: three
@@ -943,23 +1096,27 @@ Ok:
         span:
           start: 1239
           end: 1272
+          file: 0
         value:
           Trace:
             span:
               start: 1245
               end: 1271
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 1245
                     end: 1264
+                    file: 0
                   value:
                     Constant:
                       String: "five &= three => "
                 - span:
                     start: 1267
                     end: 1271
+                    file: 0
                   value:
                     Constant:
                       Identifier: five
@@ -967,18 +1124,21 @@ Ok:
         span:
           start: 1280
           end: 1288
+          file: 0
         value:
           BinaryOperator:
             - Assign
             - span:
                 start: 1280
                 end: 1284
+                file: 0
               value:
                 Constant:
                   Identifier: five
             - span:
                 start: 1287
                 end: 1288
+                file: 0
               value:
                 Constant:
                   Integer: 5
@@ -986,18 +1146,21 @@ Ok:
         span:
           start: 1290
           end: 1303
+          file: 0
         value:
           BinaryOperator:
             - BitOrAssign
             - span:
                 start: 1290
                 end: 1294
+                file: 0
               value:
                 Constant:
                   Identifier: five
             - span:
                 start: 1298
                 end: 1303
+                file: 0
               value:
                 Constant:
                   Identifier: three
@@ -1005,23 +1168,27 @@ Ok:
         span:
           start: 1305
           end: 1338
+          file: 0
         value:
           Trace:
             span:
               start: 1311
               end: 1337
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 1311
                     end: 1330
+                    file: 0
                   value:
                     Constant:
                       String: "five |= three => "
                 - span:
                     start: 1333
                     end: 1337
+                    file: 0
                   value:
                     Constant:
                       Identifier: five
@@ -1029,18 +1196,21 @@ Ok:
         span:
           start: 1346
           end: 1354
+          file: 0
         value:
           BinaryOperator:
             - Assign
             - span:
                 start: 1346
                 end: 1350
+                file: 0
               value:
                 Constant:
                   Identifier: five
             - span:
                 start: 1353
                 end: 1354
+                file: 0
               value:
                 Constant:
                   Integer: 5
@@ -1048,18 +1218,21 @@ Ok:
         span:
           start: 1356
           end: 1369
+          file: 0
         value:
           BinaryOperator:
             - BitXorAssign
             - span:
                 start: 1356
                 end: 1360
+                file: 0
               value:
                 Constant:
                   Identifier: five
             - span:
                 start: 1364
                 end: 1369
+                file: 0
               value:
                 Constant:
                   Identifier: three
@@ -1067,23 +1240,27 @@ Ok:
         span:
           start: 1371
           end: 1404
+          file: 0
         value:
           Trace:
             span:
               start: 1377
               end: 1403
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 1377
                     end: 1396
+                    file: 0
                   value:
                     Constant:
                       String: "five ^= three => "
                 - span:
                     start: 1399
                     end: 1403
+                    file: 0
                   value:
                     Constant:
                       Identifier: five
@@ -1091,18 +1268,21 @@ Ok:
         span:
           start: 1412
           end: 1420
+          file: 0
         value:
           BinaryOperator:
             - Assign
             - span:
                 start: 1412
                 end: 1416
+                file: 0
               value:
                 Constant:
                   Identifier: five
             - span:
                 start: 1419
                 end: 1420
+                file: 0
               value:
                 Constant:
                   Integer: 5
@@ -1110,18 +1290,21 @@ Ok:
         span:
           start: 1431
           end: 1441
+          file: 0
         value:
           BinaryOperator:
             - BitShiftLeftAssign
             - span:
                 start: 1431
                 end: 1435
+                file: 0
               value:
                 Constant:
                   Identifier: five
             - span:
                 start: 1440
                 end: 1441
+                file: 0
               value:
                 Constant:
                   Integer: 1
@@ -1129,23 +1312,27 @@ Ok:
         span:
           start: 1443
           end: 1473
+          file: 0
         value:
           Trace:
             span:
               start: 1449
               end: 1472
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 1449
                     end: 1465
+                    file: 0
                   value:
                     Constant:
                       String: "five <<= 1 => "
                 - span:
                     start: 1468
                     end: 1472
+                    file: 0
                   value:
                     Constant:
                       Identifier: five
@@ -1153,18 +1340,21 @@ Ok:
         span:
           start: 1482
           end: 1490
+          file: 0
         value:
           BinaryOperator:
             - Assign
             - span:
                 start: 1482
                 end: 1486
+                file: 0
               value:
                 Constant:
                   Identifier: five
             - span:
                 start: 1489
                 end: 1490
+                file: 0
               value:
                 Constant:
                   Integer: 5
@@ -1172,18 +1362,21 @@ Ok:
         span:
           start: 1501
           end: 1511
+          file: 0
         value:
           BinaryOperator:
             - BitShiftRightAssign
             - span:
                 start: 1501
                 end: 1505
+                file: 0
               value:
                 Constant:
                   Identifier: five
             - span:
                 start: 1510
                 end: 1511
+                file: 0
               value:
                 Constant:
                   Integer: 1
@@ -1191,23 +1384,27 @@ Ok:
         span:
           start: 1513
           end: 1543
+          file: 0
         value:
           Trace:
             span:
               start: 1519
               end: 1542
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 1519
                     end: 1535
+                    file: 0
                   value:
                     Constant:
                       String: "five >>= 1 => "
                 - span:
                     start: 1538
                     end: 1542
+                    file: 0
                   value:
                     Constant:
                       Identifier: five
@@ -1215,18 +1412,21 @@ Ok:
         span:
           start: 1551
           end: 1559
+          file: 0
         value:
           BinaryOperator:
             - Assign
             - span:
                 start: 1551
                 end: 1555
+                file: 0
               value:
                 Constant:
                   Identifier: five
             - span:
                 start: 1558
                 end: 1559
+                file: 0
               value:
                 Constant:
                   Integer: 5
@@ -1234,18 +1434,21 @@ Ok:
         span:
           start: 1570
           end: 1581
+          file: 0
         value:
           BinaryOperator:
             - BitShiftRightUnsignedAssign
             - span:
                 start: 1570
                 end: 1574
+                file: 0
               value:
                 Constant:
                   Identifier: five
             - span:
                 start: 1580
                 end: 1581
+                file: 0
               value:
                 Constant:
                   Integer: 1
@@ -1253,23 +1456,27 @@ Ok:
         span:
           start: 1583
           end: 1614
+          file: 0
         value:
           Trace:
             span:
               start: 1589
               end: 1613
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 1589
                     end: 1606
+                    file: 0
                   value:
                     Constant:
                       String: "five >>>= 1 => "
                 - span:
                     start: 1609
                     end: 1613
+                    file: 0
                   value:
                     Constant:
                       Identifier: five
@@ -1278,11 +1485,13 @@ Ok:
           span:
             start: 1650
             end: 1653
+            file: 0
           value: six
         value:
           span:
             start: 1656
             end: 1657
+            file: 0
           value:
             Constant:
               Integer: 6
@@ -1292,11 +1501,13 @@ Ok:
           span:
             start: 1663
             end: 1668
+            file: 0
           value: seven
         value:
           span:
             start: 1671
             end: 1672
+            file: 0
           value:
             Constant:
               Integer: 7
@@ -1306,11 +1517,13 @@ Ok:
           span:
             start: 1678
             end: 1686
+            file: 0
           value: sevenStr
         value:
           span:
             start: 1689
             end: 1692
+            file: 0
           value:
             Constant:
               String: "7"
@@ -1319,35 +1532,41 @@ Ok:
         span:
           start: 1694
           end: 1734
+          file: 0
         value:
           Trace:
             span:
               start: 1700
               end: 1733
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 1700
                     end: 1716
+                    file: 0
                   value:
                     Constant:
                       String: "six == seven: "
                 - span:
                     start: 1720
                     end: 1732
+                    file: 0
                   value:
                     BinaryOperator:
                       - Equal
                       - span:
                           start: 1720
                           end: 1723
+                          file: 0
                         value:
                           Constant:
                             Identifier: six
                       - span:
                           start: 1727
                           end: 1732
+                          file: 0
                         value:
                           Constant:
                             Identifier: seven
@@ -1355,35 +1574,41 @@ Ok:
         span:
           start: 1745
           end: 1785
+          file: 0
         value:
           Trace:
             span:
               start: 1751
               end: 1784
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 1751
                     end: 1767
+                    file: 0
                   value:
                     Constant:
                       String: "six != seven: "
                 - span:
                     start: 1771
                     end: 1783
+                    file: 0
                   value:
                     BinaryOperator:
                       - NotEqual
                       - span:
                           start: 1771
                           end: 1774
+                          file: 0
                         value:
                           Constant:
                             Identifier: six
                       - span:
                           start: 1778
                           end: 1783
+                          file: 0
                         value:
                           Constant:
                             Identifier: seven
@@ -1391,35 +1616,41 @@ Ok:
         span:
           start: 1795
           end: 1833
+          file: 0
         value:
           Trace:
             span:
               start: 1801
               end: 1832
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 1801
                     end: 1816
+                    file: 0
                   value:
                     Constant:
                       String: "six < seven: "
                 - span:
                     start: 1820
                     end: 1831
+                    file: 0
                   value:
                     BinaryOperator:
                       - LessThan
                       - span:
                           start: 1820
                           end: 1823
+                          file: 0
                         value:
                           Constant:
                             Identifier: six
                       - span:
                           start: 1826
                           end: 1831
+                          file: 0
                         value:
                           Constant:
                             Identifier: seven
@@ -1427,35 +1658,41 @@ Ok:
         span:
           start: 1843
           end: 1883
+          file: 0
         value:
           Trace:
             span:
               start: 1849
               end: 1882
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 1849
                     end: 1865
+                    file: 0
                   value:
                     Constant:
                       String: "six <= seven: "
                 - span:
                     start: 1869
                     end: 1881
+                    file: 0
                   value:
                     BinaryOperator:
                       - LessThanEqual
                       - span:
                           start: 1869
                           end: 1872
+                          file: 0
                         value:
                           Constant:
                             Identifier: six
                       - span:
                           start: 1876
                           end: 1881
+                          file: 0
                         value:
                           Constant:
                             Identifier: seven
@@ -1463,35 +1700,41 @@ Ok:
         span:
           start: 1893
           end: 1931
+          file: 0
         value:
           Trace:
             span:
               start: 1899
               end: 1930
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 1899
                     end: 1914
+                    file: 0
                   value:
                     Constant:
                       String: "six > seven: "
                 - span:
                     start: 1918
                     end: 1929
+                    file: 0
                   value:
                     BinaryOperator:
                       - GreaterThan
                       - span:
                           start: 1918
                           end: 1921
+                          file: 0
                         value:
                           Constant:
                             Identifier: six
                       - span:
                           start: 1924
                           end: 1929
+                          file: 0
                         value:
                           Constant:
                             Identifier: seven
@@ -1499,35 +1742,41 @@ Ok:
         span:
           start: 1942
           end: 1982
+          file: 0
         value:
           Trace:
             span:
               start: 1948
               end: 1981
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 1948
                     end: 1964
+                    file: 0
                   value:
                     Constant:
                       String: "six >= seven: "
                 - span:
                     start: 1968
                     end: 1980
+                    file: 0
                   value:
                     BinaryOperator:
                       - GreaterThanEqual
                       - span:
                           start: 1968
                           end: 1971
+                          file: 0
                         value:
                           Constant:
                             Identifier: six
                       - span:
                           start: 1975
                           end: 1980
+                          file: 0
                         value:
                           Constant:
                             Identifier: seven
@@ -1535,35 +1784,41 @@ Ok:
         span:
           start: 1993
           end: 2043
+          file: 0
         value:
           Trace:
             span:
               start: 1999
               end: 2042
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 1999
                     end: 2020
+                    file: 0
                   value:
                     Constant:
                       String: "sevenStr == seven: "
                 - span:
                     start: 2024
                     end: 2041
+                    file: 0
                   value:
                     BinaryOperator:
                       - Equal
                       - span:
                           start: 2024
                           end: 2032
+                          file: 0
                         value:
                           Constant:
                             Identifier: sevenStr
                       - span:
                           start: 2036
                           end: 2041
+                          file: 0
                         value:
                           Constant:
                             Identifier: seven
@@ -1571,35 +1826,41 @@ Ok:
         span:
           start: 2053
           end: 2105
+          file: 0
         value:
           Trace:
             span:
               start: 2059
               end: 2104
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 2059
                     end: 2081
+                    file: 0
                   value:
                     Constant:
                       String: "sevenStr === seven: "
                 - span:
                     start: 2085
                     end: 2103
+                    file: 0
                   value:
                     BinaryOperator:
                       - StrictEqual
                       - span:
                           start: 2085
                           end: 2093
+                          file: 0
                         value:
                           Constant:
                             Identifier: sevenStr
                       - span:
                           start: 2098
                           end: 2103
+                          file: 0
                         value:
                           Constant:
                             Identifier: seven
@@ -1607,35 +1868,41 @@ Ok:
         span:
           start: 2116
           end: 2168
+          file: 0
         value:
           Trace:
             span:
               start: 2122
               end: 2167
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 2122
                     end: 2144
+                    file: 0
                   value:
                     Constant:
                       String: "sevenStr !== seven: "
                 - span:
                     start: 2148
                     end: 2166
+                    file: 0
                   value:
                     BinaryOperator:
                       - StrictNotEqual
                       - span:
                           start: 2148
                           end: 2156
+                          file: 0
                         value:
                           Constant:
                             Identifier: sevenStr
                       - span:
                           start: 2161
                           end: 2166
+                          file: 0
                         value:
                           Constant:
                             Identifier: seven
@@ -1644,11 +1911,13 @@ Ok:
           span:
             start: 2204
             end: 2205
+            file: 0
           value: t
         value:
           span:
             start: 2208
             end: 2212
+            file: 0
           value:
             Constant:
               Boolean: true
@@ -1658,11 +1927,13 @@ Ok:
           span:
             start: 2218
             end: 2219
+            file: 0
           value: f
         value:
           span:
             start: 2222
             end: 2227
+            file: 0
           value:
             Constant:
               Boolean: false
@@ -1671,35 +1942,41 @@ Ok:
         span:
           start: 2229
           end: 2257
+          file: 0
         value:
           Trace:
             span:
               start: 2235
               end: 2256
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 2235
                     end: 2245
+                    file: 0
                   value:
                     Constant:
                       String: "t && f: "
                 - span:
                     start: 2249
                     end: 2255
+                    file: 0
                   value:
                     BinaryOperator:
                       - LogicalAnd
                       - span:
                           start: 2249
                           end: 2250
+                          file: 0
                         value:
                           Constant:
                             Identifier: t
                       - span:
                           start: 2254
                           end: 2255
+                          file: 0
                         value:
                           Constant:
                             Identifier: f
@@ -1707,35 +1984,41 @@ Ok:
         span:
           start: 2268
           end: 2296
+          file: 0
         value:
           Trace:
             span:
               start: 2274
               end: 2295
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 2274
                     end: 2284
+                    file: 0
                   value:
                     Constant:
                       String: "t || f: "
                 - span:
                     start: 2288
                     end: 2294
+                    file: 0
                   value:
                     BinaryOperator:
                       - LogicalOr
                       - span:
                           start: 2288
                           end: 2289
+                          file: 0
                         value:
                           Constant:
                             Identifier: t
                       - span:
                           start: 2293
                           end: 2294
+                          file: 0
                         value:
                           Constant:
                             Identifier: f
@@ -1743,29 +2026,34 @@ Ok:
         span:
           start: 2306
           end: 2326
+          file: 0
         value:
           Trace:
             span:
               start: 2312
               end: 2325
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 2312
                     end: 2318
+                    file: 0
                   value:
                     Constant:
                       String: "!t: "
                 - span:
                     start: 2322
                     end: 2324
+                    file: 0
                   value:
                     UnaryOperator:
                       - LogicalNot
                       - span:
                           start: 2323
                           end: 2324
+                          file: 0
                         value:
                           Constant:
                             Identifier: t
@@ -1774,29 +2062,34 @@ Ok:
           span:
             start: 2362
             end: 2365
+            file: 0
           value: max
         value:
           span:
             start: 2368
             end: 2383
+            file: 0
           value:
             Ternary:
               condition:
                 span:
                   start: 2369
                   end: 2374
+                  file: 0
                 value:
                   BinaryOperator:
                     - GreaterThan
                     - span:
                         start: 2369
                         end: 2370
+                        file: 0
                       value:
                         Constant:
                           Identifier: a
                     - span:
                         start: 2373
                         end: 2374
+                        file: 0
                       value:
                         Constant:
                           Identifier: b
@@ -1804,6 +2097,7 @@ Ok:
                 span:
                   start: 2378
                   end: 2379
+                  file: 0
                 value:
                   Constant:
                     Identifier: a
@@ -1811,6 +2105,7 @@ Ok:
                 span:
                   start: 2382
                   end: 2383
+                  file: 0
                 value:
                   Constant:
                     Identifier: b
@@ -1819,23 +2114,27 @@ Ok:
         span:
           start: 2385
           end: 2418
+          file: 0
         value:
           Trace:
             span:
               start: 2391
               end: 2417
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 2391
                     end: 2411
+                    file: 0
                   value:
                     Constant:
                       String: "(a > b) ? a : b = "
                 - span:
                     start: 2414
                     end: 2417
+                    file: 0
                   value:
                     Constant:
                       Identifier: max
@@ -1844,17 +2143,20 @@ Ok:
           span:
             start: 2458
             end: 2461
+            file: 0
           value: obj
         value:
           span:
             start: 2464
             end: 2478
+            file: 0
           value:
             InitObject:
               - - key
                 - span:
                     start: 2470
                     end: 2477
+                    file: 0
                   value:
                     Constant:
                       String: value
@@ -1863,35 +2165,41 @@ Ok:
         span:
           start: 2480
           end: 2538
+          file: 0
         value:
           Trace:
             span:
               start: 2486
               end: 2537
+              file: 0
             value:
               BinaryOperator:
                 - Add
                 - span:
                     start: 2486
                     end: 2511
+                    file: 0
                   value:
                     Constant:
                       String: "obj instanceof Object: "
                 - span:
                     start: 2515
                     end: 2536
+                    file: 0
                   value:
                     BinaryOperator:
                       - InstanceOf
                       - span:
                           start: 2515
                           end: 2518
+                          file: 0
                         value:
                           Constant:
                             Identifier: obj
                       - span:
                           start: 2530
                           end: 2536
+                          file: 0
                         value:
                           Constant:
                             Identifier: Object
