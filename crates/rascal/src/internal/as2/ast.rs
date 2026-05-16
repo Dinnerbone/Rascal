@@ -207,7 +207,7 @@ pub enum ClassMemberAttribute {
 pub enum SwitchElement<'a> {
     Case(Expr<'a>),
     Default,
-    Statement(Statement<'a>),
+    Statement(Box<Statement<'a>>),
 }
 
 #[derive(Debug, Clone, Serialize, PartialEq)]
