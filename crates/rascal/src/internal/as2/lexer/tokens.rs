@@ -75,6 +75,7 @@ pub enum TokenKind {
     OpenBracket,
     CloseBracket,
     PCode,
+    Hash,
 }
 
 impl TokenKind {
@@ -100,6 +101,7 @@ impl TokenKind {
             TokenKind::OpenBracket => StrContextValue::CharLiteral('['),
             TokenKind::CloseBracket => StrContextValue::CharLiteral(']'),
             TokenKind::PCode => StrContextValue::Description("@PCode"),
+            TokenKind::Hash => StrContextValue::CharLiteral('#'),
         }
     }
 }

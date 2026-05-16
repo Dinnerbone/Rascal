@@ -357,6 +357,13 @@ fn test_pcode() {
 }
 
 #[test]
+fn test_directive() {
+    let input = "#include";
+    assert_eq!(kinds(input), vec![TokenKind::Hash, TokenKind::Identifier]);
+    assert_eq!(raws(input), vec!["#".to_string(), "include".to_string()]);
+}
+
+#[test]
 fn test_pcode_nested_braces() {
     let input = "continue @PCode {{{}}} continue";
     assert_eq!(
