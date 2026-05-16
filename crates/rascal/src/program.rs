@@ -271,8 +271,14 @@ impl<P: SourceProvider> ProgramBuilder<P> {
                     return None;
                 }
             };
-            let (mut hir, hir_errors, dependencies) =
-                resolve_hir(provider, ast, is_script, type_name, known_script_paths);
+            let (mut hir, hir_errors, dependencies) = resolve_hir(
+                provider,
+                source_set,
+                ast,
+                is_script,
+                type_name,
+                known_script_paths,
+            );
             for error in hir_errors {
                 errors.add_parsing_error(error);
             }

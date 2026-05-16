@@ -1,0 +1,30 @@
+---
+source: crates/rascal/src/program.rs
+expression: parsed
+input_file: samples/as2/include.as
+---
+Ok:
+  initial_script:
+    - Block:
+        - Expr:
+            span:
+              start: 0
+              end: 20
+              file: 1
+            value:
+              Trace:
+                span:
+                  start: 6
+                  end: 19
+                  file: 1
+                value:
+                  Constant:
+                    String: Hello World
+  interfaces: []
+  classes: []
+  custom_pcodes: []
+  compile_options:
+    swf_version: 15
+    optimizations:
+      fold_constants: true
+      promote_variables_to_registers: true

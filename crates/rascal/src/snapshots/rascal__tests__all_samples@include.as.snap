@@ -1,0 +1,20 @@
+---
+source: crates/rascal/src/tests.rs
+expression: result
+input_file: samples/as2/include.as
+---
+initializer:
+  actions:
+    - ConstantPool:
+        - Hello World
+    - Push:
+        - Constant: 0
+    - Trace
+  label_positions: {}
+extra_modules: []
+compile_options:
+  swf_version: 15
+  optimizations:
+    fold_constants: true
+    promote_variables_to_registers: true
+custom_pcodes: []

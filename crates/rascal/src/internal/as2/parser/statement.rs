@@ -6,7 +6,7 @@ use crate::internal::as2::lexer::operator::Operator;
 use crate::internal::as2::lexer::tokens::{Keyword, TokenKind};
 use crate::internal::as2::parser::class::class;
 use crate::internal::as2::parser::expression::{expr_list, expression, type_name};
-use crate::internal::as2::parser::{Tokens, identifier, skip_newlines};
+use crate::internal::as2::parser::{Tokens, identifier, skip_newlines, string};
 use crate::internal::span::{Span, Spanned};
 use winnow::combinator::{alt, cond, cut_err, fail, opt, peek, separated};
 use winnow::error::{ContextError, ErrMode, StrContext, StrContextValue};
@@ -114,6 +114,23 @@ pub(crate) fn statement<'i>(i: &mut Tokens<'i>) -> ModalResult<Statement<'i>> {
                 Span::encompassing(start, result.span),
                 StatementKind::Import(result.value),
             )
+        }
+        TokenKind::Hash => {
+            // Only #include "foo" is supported right now
+            let directive = identifier.parse_next(i)?;
+            if directive.value == "include" {
+                let path = string.parse_next(i)?;
+                Statement::new(
+                    Span::encompassing(start, path.span),
+                    StatementKind::Include(path.value),
+                )
+            } else {
+                return fail
+                    .context(StrContext::Expected(StrContextValue::StringLiteral(
+                        "include",
+                    )))
+                    .parse_next(i);
+            }
         }
         TokenKind::OpenBrace => {
             let statements = statement_list(true).parse_next(i)?;
