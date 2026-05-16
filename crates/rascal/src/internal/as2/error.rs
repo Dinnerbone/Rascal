@@ -15,7 +15,9 @@ impl ParsingError {
     }
 
     pub fn annotation<'a>(&'a self) -> Annotation<'a> {
-        AnnotationKind::Primary.span(self.span.start..self.span.end)
+        AnnotationKind::Primary
+            .span(self.span.start..self.span.end)
+            .label(&self.error)
     }
 }
 

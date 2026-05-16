@@ -3,29 +3,16 @@ source: crates/rascal/src/program.rs
 expression: parsed
 input_file: samples/as2_errors/special_functions/getproperty.as
 ---
-error: Wrong number of parameters; getProperty requires exactly 2.
+error: Compile error
   ╭▸ getproperty.as:1:1
   │
 1 │ getProperty();
-  │ ━━━━━━━━━━━━━
-  ╰╴
-error: Wrong number of parameters; getProperty requires exactly 2.
-  ╭▸ getproperty.as:2:1
-  │
+  │ ━━━━━━━━━━━━━ Wrong number of parameters; getProperty requires exactly 2.
 2 │ getProperty(x);
-  ╰╴━━━━━━━━━━━━━━
-error: Property name expected in GetProperty.
-  ╭▸ getproperty.as:3:16
-  │
+  │ ━━━━━━━━━━━━━━ Wrong number of parameters; getProperty requires exactly 2.
 3 │ getProperty(x, y);
-  ╰╴               ━
-error: Wrong number of parameters; getProperty requires exactly 2.
-  ╭▸ getproperty.as:4:1
-  │
+  │                ━ Property name expected in GetProperty.
 4 │ getProperty(x, y, z);
-  ╰╴━━━━━━━━━━━━━━━━━━━━
-error: Property name expected in GetProperty.
-  ╭▸ getproperty.as:5:16
-  │
+  │ ━━━━━━━━━━━━━━━━━━━━ Wrong number of parameters; getProperty requires exactly 2.
 5 │ getProperty(x, "_alpha");
-  ╰╴               ━━━━━━━━
+  ╰╴               ━━━━━━━━ Property name expected in GetProperty.

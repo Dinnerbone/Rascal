@@ -1,11 +1,13 @@
 use crate::internal::as2::error::ParsingError;
+use crate::internal::span::FileId;
+use crate::sources::SourceSet;
 use annotate_snippets::renderer::DecorStyle;
 use annotate_snippets::{Group, Renderer};
 use indexmap::IndexMap;
 
 #[derive(Debug)]
 pub(crate) struct ErrorSet {
-    files: IndexMap<String, (String, Vec<ParsingError>)>,
+    parsing_errors: IndexMap<Option<FileId>, Vec<ParsingError>>,
     io_errors: Vec<(String, std::io::Error)>,
     misc_errors: Vec<String>,
 }
@@ -13,17 +15,16 @@ pub(crate) struct ErrorSet {
 impl ErrorSet {
     pub fn new() -> Self {
         Self {
-            files: IndexMap::new(),
+            parsing_errors: IndexMap::new(),
             io_errors: vec![],
             misc_errors: vec![],
         }
     }
 
-    pub fn add_parsing_error(&mut self, filename: &str, source: &str, error: ParsingError) {
-        self.files
-            .entry(filename.to_owned())
-            .or_insert_with(|| (source.to_owned(), vec![]))
-            .1
+    pub fn add_parsing_error(&mut self, error: ParsingError) {
+        self.parsing_errors
+            .entry(error.span.file)
+            .or_default()
             .push(error);
     }
 
@@ -35,19 +36,33 @@ impl ErrorSet {
         self.misc_errors.push(error);
     }
 
-    pub fn report<'a>(&'a self) -> Vec<Group<'a>> {
+    pub fn report<'a>(&'a self, source_set: &'a SourceSet) -> Vec<Group<'a>> {
         let mut report = vec![];
-        for (filename, (source, errors)) in &self.files {
-            for error in errors {
-                let mut source = annotate_snippets::Snippet::source(source).path(filename);
-                source = source.annotation(error.annotation());
+        for (file_id, errors) in &self.parsing_errors {
+            let source_file = file_id.and_then(|id| source_set.get_source(id));
+
+            if let Some(source_file) = source_file {
+                let mut source =
+                    annotate_snippets::Snippet::source(&source_file.source).path(&source_file.path);
+                for error in errors {
+                    source = source.annotation(error.annotation());
+                }
                 report.push(
                     annotate_snippets::Level::ERROR
-                        .primary_title(error.error.to_string())
+                        .primary_title("Compile error")
                         .element(source),
                 )
+            } else {
+                let mut group = Group::with_title(
+                    annotate_snippets::Level::ERROR.primary_title("Compile error"),
+                );
+                for error in errors {
+                    group = group.element(annotate_snippets::Level::ERROR.message(&error.error));
+                }
+                report.push(group);
             }
         }
+
         for (filename, error) in &self.io_errors {
             report.push(
                 annotate_snippets::Level::ERROR
@@ -65,26 +80,35 @@ impl ErrorSet {
         report
     }
 
-    pub fn error_unless_empty(self) -> Result<(), Error> {
-        if self.io_errors.is_empty() && self.files.is_empty() && self.misc_errors.is_empty() {
+    pub fn error_unless_empty(self, source_set: SourceSet) -> Result<(), Error> {
+        if self.io_errors.is_empty()
+            && self.parsing_errors.is_empty()
+            && self.misc_errors.is_empty()
+        {
             return Ok(());
         }
-        Err(Error(self))
+        Err(Error {
+            error_set: Box::new(self),
+            source_set: Box::new(source_set),
+        })
     }
 }
 
 #[derive(Debug)]
-pub struct Error(pub(crate) ErrorSet);
+pub struct Error {
+    pub(crate) error_set: Box<ErrorSet>,
+    pub(crate) source_set: Box<SourceSet>,
+}
 
 impl Error {
     pub fn to_string_plain(&self) -> String {
-        let report = self.0.report();
+        let report = self.error_set.report(&self.source_set);
         let renderer = Renderer::plain().decor_style(DecorStyle::Unicode);
         renderer.render(&report)
     }
 
     pub fn to_string_styled(&self) -> String {
-        let report = self.0.report();
+        let report = self.error_set.report(&self.source_set);
         let renderer = Renderer::styled().decor_style(DecorStyle::Unicode);
         renderer.render(&report)
     }

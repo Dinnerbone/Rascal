@@ -2,6 +2,7 @@ mod error;
 mod internal;
 mod program;
 mod provider;
+mod sources;
 mod swf;
 #[cfg(test)]
 mod tests;

@@ -3,29 +3,16 @@ source: crates/rascal/src/program.rs
 expression: parsed
 input_file: samples/as2_errors/special_functions/printnum.as
 ---
-error: Wrong number of parameters; printNum requires exactly 2.
+error: Compile error
   ╭▸ printnum.as:1:1
   │
 1 │ printNum();
-  │ ━━━━━━━━━━
-  ╰╴
-error: Wrong number of parameters; printNum requires exactly 2.
-  ╭▸ printnum.as:2:1
-  │
+  │ ━━━━━━━━━━ Wrong number of parameters; printNum requires exactly 2.
 2 │ printNum(x);
-  ╰╴━━━━━━━━━━━
-error: Bounds type must be bmovie, bframe or bmax.
-  ╭▸ printnum.as:3:13
-  │
+  │ ━━━━━━━━━━━ Wrong number of parameters; printNum requires exactly 2.
 3 │ printNum(x, "foo");
-  ╰╴            ━━━━━
-error: Bounds type must be bmovie, bframe or bmax.
-  ╭▸ printnum.as:4:13
-  │
+  │             ━━━━━ Bounds type must be bmovie, bframe or bmax.
 4 │ printNum(x, foo);
-  ╰╴            ━━━
-error: Wrong number of parameters; printNum requires exactly 2.
-  ╭▸ printnum.as:5:1
-  │
+  │             ━━━ Bounds type must be bmovie, bframe or bmax.
 5 │ printNum(x, "bmax", true);
-  ╰╴━━━━━━━━━━━━━━━━━━━━━━━━━
+  ╰╴━━━━━━━━━━━━━━━━━━━━━━━━━ Wrong number of parameters; printNum requires exactly 2.
