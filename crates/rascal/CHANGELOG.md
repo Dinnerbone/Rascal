@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.3](https://github.com/Dinnerbone/Rascal/compare/rascal-v0.3.2...rascal-v0.3.3) - 2026-05-16
+
+### Added
+
+- Support #include "foo.as"
+- *(lexer)* Lex # tokens (will be used for preprocessor, e.g. #include)
+
+### Other
+
+- Made error handling a little cleaner and work by span's `file_id` rather than a fixed file name
+- *(ast)* Box ast::SwitchElement::Statement as it's three times bigger than Case
+- Add file id to Span
+
 ## [0.3.2](https://github.com/Dinnerbone/Rascal/compare/rascal-v0.3.1...rascal-v0.3.2) - 2026-05-13
 
 ### Fixed
