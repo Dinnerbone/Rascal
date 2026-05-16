@@ -3,13 +3,15 @@ mod special_properties;
 
 use crate::internal::as2::error::ParsingError;
 use crate::internal::as2::global_types::GLOBAL_TYPES;
-use crate::internal::as2::hir;
 use crate::internal::as2::hir::EnumeratorTarget;
 use crate::internal::as2::hir::scope::Scope;
+use crate::internal::as2::lexer::Lexer;
 use crate::internal::as2::resolver::special_functions::resolve_special_call;
 use crate::internal::as2::{ast, type_path_to_file_path};
+use crate::internal::as2::{hir, parser};
 use crate::internal::span::{Span, Spanned};
 use crate::provider::SourceProvider;
+use crate::sources::SourceSet;
 use indexmap::{IndexMap, IndexSet};
 use std::borrow::Cow;
 use std::collections::{HashMap, HashSet};
@@ -19,6 +21,7 @@ struct ModuleContext<'a> {
     errors: Vec<ParsingError>,
     dependencies: IndexSet<String>,
     provider: &'a dyn SourceProvider,
+    source_set: &'a mut SourceSet,
     known_script_paths: &'a IndexSet<String>,
     is_script: bool,
     class_name: Option<Spanned<String>>,
@@ -29,6 +32,7 @@ struct ModuleContext<'a> {
 impl<'a> ModuleContext<'a> {
     fn new(
         provider: &'a dyn SourceProvider,
+        source_set: &'a mut SourceSet,
         is_script: bool,
         class_name: Option<Spanned<String>>,
         known_script_paths: &'a IndexSet<String>,
@@ -38,6 +42,7 @@ impl<'a> ModuleContext<'a> {
             errors: vec![],
             dependencies: IndexSet::new(),
             provider,
+            source_set,
             is_script,
             class_name,
             super_name: None,
@@ -194,6 +199,7 @@ pub fn identifiers_to_path(mut expr: &hir::ExprKind) -> Result<Vec<&str>, ()> {
 
 pub fn resolve_hir<P: SourceProvider>(
     provider: &P,
+    source_set: &mut SourceSet,
     ast: ast::Document,
     is_script: bool,
     expected_name: &str,
@@ -201,6 +207,7 @@ pub fn resolve_hir<P: SourceProvider>(
 ) -> (hir::Document, Vec<ParsingError>, IndexSet<String>) {
     let mut context = ModuleContext::new(
         provider,
+        source_set,
         is_script,
         if expected_name.is_empty() {
             None
@@ -559,6 +566,30 @@ fn resolve_statement_box(
 
 fn resolve_statement(context: &mut ModuleContext, input: &ast::Statement) -> hir::StatementKind {
     match &input.value {
+        ast::StatementKind::Include(path) => {
+            let source_file = match context
+                .source_set
+                .get_or_load(path.to_string(), context.provider)
+            {
+                Ok(source_file) => source_file,
+                Err(e) => {
+                    context.errors.push(ParsingError::new(
+                        format!("Could not load file '{}': {}", path, e),
+                        input.span,
+                    ));
+                    return hir::StatementKind::Block(vec![]);
+                }
+            };
+            let tokens = Lexer::new(&source_file.source, source_file.file_id).into_vec();
+            let ast = match parser::parse_document(&tokens) {
+                Ok(ast) => ast,
+                Err(e) => {
+                    context.errors.push(e.into());
+                    return hir::StatementKind::Block(vec![]);
+                }
+            };
+            hir::StatementKind::Block(resolve_statement_vec(context, &ast.statements))
+        }
         ast::StatementKind::Declare(declarations) => {
             if let Some(declaration) = declarations.first()
                 && declarations.len() == 1

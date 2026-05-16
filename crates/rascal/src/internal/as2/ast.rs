@@ -182,6 +182,7 @@ pub enum StatementKind<'a> {
             HashMap<ClassMemberAttribute, Span>,
         )>,
     },
+    Include(Cow<'a, str>),
 }
 
 #[derive(Debug, Clone, Serialize, PartialEq)]

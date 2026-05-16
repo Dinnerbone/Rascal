@@ -1,10 +1,11 @@
 use crate::SourceProvider;
 use crate::internal::span::FileId;
 use std::fmt::Debug;
+use std::rc::Rc;
 
 #[derive(Debug, Default)]
 pub(crate) struct SourceSet {
-    sources: Vec<SourceFile>,
+    sources: Vec<Rc<SourceFile>>,
 }
 
 impl SourceSet {
@@ -12,27 +13,27 @@ impl SourceSet {
         Self::default()
     }
 
-    pub fn get_or_load<P: SourceProvider>(
+    pub fn get_or_load<P: SourceProvider + ?Sized>(
         &mut self,
         path: String,
         provider: &P,
-    ) -> Result<&SourceFile, std::io::Error> {
+    ) -> Result<Rc<SourceFile>, std::io::Error> {
         if let Some(id) = self.sources.iter().position(|source| source.path == path) {
-            return Ok(&self.sources[id]);
+            return Ok(self.sources[id].clone());
         }
 
         let source = provider.load(&path)?;
         let file_id = FileId::new(self.sources.len());
-        self.sources.push(SourceFile {
+        let source_file = Rc::new(SourceFile {
             path,
             file_id,
             source,
         });
-        let last = self.sources.len() - 1;
-        Ok(&self.sources[last])
+        self.sources.push(source_file.clone());
+        Ok(source_file)
     }
 
-    pub fn get_source(&self, file_id: FileId) -> Option<&SourceFile> {
+    pub fn get_source(&self, file_id: FileId) -> Option<&Rc<SourceFile>> {
         self.sources.get(file_id.0)
     }
 }
