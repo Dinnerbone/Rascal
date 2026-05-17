@@ -1,11 +1,11 @@
 use crate::SourceProvider;
 use crate::internal::span::FileId;
 use std::fmt::Debug;
-use std::rc::Rc;
+use std::sync::Arc;
 
 #[derive(Debug, Default)]
 pub(crate) struct SourceSet {
-    sources: Vec<Rc<SourceFile>>,
+    sources: Vec<Arc<SourceFile>>,
 }
 
 impl SourceSet {
@@ -17,14 +17,14 @@ impl SourceSet {
         &mut self,
         path: String,
         provider: &P,
-    ) -> Result<Rc<SourceFile>, std::io::Error> {
+    ) -> Result<Arc<SourceFile>, std::io::Error> {
         if let Some(id) = self.sources.iter().position(|source| source.path == path) {
             return Ok(self.sources[id].clone());
         }
 
         let source = provider.load(&path)?;
         let file_id = FileId::new(self.sources.len());
-        let source_file = Rc::new(SourceFile {
+        let source_file = Arc::new(SourceFile {
             path,
             file_id,
             source,
@@ -33,7 +33,7 @@ impl SourceSet {
         Ok(source_file)
     }
 
-    pub fn get_source(&self, file_id: FileId) -> Option<&Rc<SourceFile>> {
+    pub fn get_source(&self, file_id: FileId) -> Option<&Arc<SourceFile>> {
         self.sources.get(file_id.0)
     }
 }
