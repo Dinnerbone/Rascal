@@ -1,10 +1,21 @@
 use crate::internal::as2_pcode::PushValue;
 use std::collections::HashMap;
 
-#[derive(Debug, Default)]
+#[derive(Debug)]
 pub struct Constants {
     strings: Vec<String>,
     lookup: HashMap<String, u16>,
+    tag_length: u16,
+}
+
+impl Default for Constants {
+    fn default() -> Self {
+        Self {
+            strings: Vec::new(),
+            lookup: HashMap::new(),
+            tag_length: 2, // We start off with 2 for the length of strings (as u16)
+        }
+    }
 }
 
 impl Constants {
@@ -16,12 +27,17 @@ impl Constants {
         if let Some(index) = self.lookup.get(string) {
             return PushValue::Constant(*index);
         }
-        if self.strings.len() < u16::MAX as usize {
+        if let Ok(str_length_with_null) = u16::try_from(string.len() + 1)
+            && let Some(potential_length) = self.tag_length.checked_add(str_length_with_null)
+            && self.strings.len() < u16::MAX as usize
+        {
+            self.tag_length = potential_length;
             let index = self.strings.len() as u16;
             self.strings.push(string.to_owned());
             self.lookup.insert(string.to_owned(), index);
             return PushValue::Constant(index);
         }
+
         PushValue::String(string.to_owned())
     }
 }
@@ -55,9 +71,14 @@ mod tests {
     #[test]
     fn test_none_after_full() {
         let mut constants = Constants::empty();
-        for i in 0..u16::MAX {
-            assert_eq!(constants.add(&format!("foo{}", i)), PushValue::Constant(i));
+        let num_chars_per_string = 5;
+        let limit = (u16::MAX - 2) / (num_chars_per_string + 1);
+        for i in 0..limit {
+            assert_eq!(constants.add(&format!("{i:05}")), PushValue::Constant(i));
         }
-        assert_eq!(constants.add("foo"), PushValue::String("foo".to_owned()));
+        assert_eq!(
+            constants.add("foobar"),
+            PushValue::String("foobar".to_owned())
+        );
     }
 }
