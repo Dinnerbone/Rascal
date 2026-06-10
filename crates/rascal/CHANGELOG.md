@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.5](https://github.com/Dinnerbone/Rascal/compare/rascal-v0.3.4...rascal-v0.3.5) - 2026-06-10
+
+### Fixed
+
+- *(codegen)* Stop adding to constants if the constants tag will become full.
+
+### Other
+
+- *(deps)* bump log from 0.4.28 to 0.4.31
+- release v0.3.3
+
 ## [0.3.4](https://github.com/Dinnerbone/Rascal/compare/rascal-v0.3.2...rascal-v0.3.4) - 2026-05-17
 
 ### Added
