@@ -32,14 +32,13 @@ impl VirtualPropertyOptimizer {
 
         path.reverse(); // turn [foo, bar, baz] into [baz, bar, foo] for easy iteration
         while let Some(segment) = path.pop() {
-            if let Some(type_definition) = self.definition.get_field(type_name, segment) {
+            {
+                let type_definition = self.definition.get_field(type_name, segment)?;
                 if let Some(next_name) = &type_definition.type_name {
                     type_name = next_name;
                 } else {
                     return None;
                 }
-            } else {
-                return None;
             }
         }
 
