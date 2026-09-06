@@ -1,6 +1,5 @@
 use crate::internal::as2_pcode::{Action, Actions, CatchTarget, FunctionParam, PushValue};
 use crate::program::{CompiledProgram, SwfOptions};
-use byteorder::{LittleEndian, WriteBytesExt};
 use indexmap::IndexMap;
 use std::collections::HashMap;
 use std::fmt;
@@ -109,66 +108,11 @@ impl SwfWriteExt for ActionEncoder<'_> {
     fn as_writer(&mut self) -> &mut impl Write {
         &mut self.output
     }
-
-    #[inline]
-    fn write_u8(&mut self, n: u8) -> Result<()> {
-        self.output.write_u8(n)
-    }
-
-    #[inline]
-    fn write_u16(&mut self, n: u16) -> Result<()> {
-        self.output.write_u16::<LittleEndian>(n)
-    }
-
-    #[inline]
-    fn write_u32(&mut self, n: u32) -> Result<()> {
-        self.output.write_u32::<LittleEndian>(n)
-    }
-
-    #[inline]
-    fn write_u64(&mut self, n: u64) -> Result<()> {
-        self.output.write_u64::<LittleEndian>(n)
-    }
-
-    #[inline]
-    fn write_i8(&mut self, n: i8) -> Result<()> {
-        self.output.write_i8(n)
-    }
-
-    #[inline]
-    fn write_i16(&mut self, n: i16) -> Result<()> {
-        self.output.write_i16::<LittleEndian>(n)
-    }
-
-    #[inline]
-    fn write_i32(&mut self, n: i32) -> Result<()> {
-        self.output.write_i32::<LittleEndian>(n)
-    }
-
-    #[inline]
-    fn write_f32(&mut self, n: f32) -> Result<()> {
-        self.output.write_f32::<LittleEndian>(n)
-    }
-
-    #[inline]
-    fn write_f64(&mut self, n: f64) -> Result<()> {
-        self.output.write_f64::<LittleEndian>(n)
-    }
-
-    fn write_string(&mut self, s: &'_ SwfStr) -> Result<()> {
-        let bytes = s.as_bytes();
-        if bytes.contains(&0) {
-            return Err(EncoderError::NulByteInString.into());
-        }
-        self.output.write_all(bytes)?;
-        self.write_u8(0)
-    }
 }
 
 #[derive(Debug)]
 enum EncoderError {
     TooManyModules,
-    NulByteInString,
     JumpOffsetOverflow(isize),
     ActionLenOverflow(usize),
     BlockLenOverflow(usize),
@@ -178,7 +122,6 @@ impl fmt::Display for EncoderError {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match self {
             Self::TooManyModules => write!(f, "too many modules"),
-            Self::NulByteInString => write!(f, "invalid NUL byte in string"),
             Self::JumpOffsetOverflow(off) => {
                 write!(f, "jump offset ({off} bytes) cannot fit in i16")
             }
