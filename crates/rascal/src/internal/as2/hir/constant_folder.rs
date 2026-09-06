@@ -142,32 +142,20 @@ fn evaluate_binary_operator(
 fn evaluate_unary_operator(op: UnaryOperator, value: &ConstantKind) -> Option<ConstantKind> {
     Some(match op {
         UnaryOperator::LogicalNot => {
-            if let Some(value) = as_bool(value) {
-                ConstantKind::Boolean(!value)
-            } else {
-                return None;
-            }
+            let value = as_bool(value)?;
+            ConstantKind::Boolean(!value)
         }
         UnaryOperator::Sub => {
-            if let Some(value) = as_float(value) {
-                float_as_constant(-value)
-            } else {
-                return None;
-            }
+            let value = as_float(value)?;
+            float_as_constant(-value)
         }
         UnaryOperator::Add => {
-            if let Some(value) = as_float(value) {
-                float_as_constant(value)
-            } else {
-                return None;
-            }
+            let value = as_float(value)?;
+            float_as_constant(value)
         }
         UnaryOperator::BitNot => {
-            if let Some(value) = as_int(value, 0) {
-                ConstantKind::Integer(!value)
-            } else {
-                return None;
-            }
+            let value = as_int(value, 0)?;
+            ConstantKind::Integer(!value)
         }
         _ => return None,
     })
