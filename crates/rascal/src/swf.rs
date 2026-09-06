@@ -106,6 +106,10 @@ struct ActionEncoder<'a> {
 }
 
 impl SwfWriteExt for ActionEncoder<'_> {
+    fn as_writer(&mut self) -> &mut impl Write {
+        &mut self.output
+    }
+
     #[inline]
     fn write_u8(&mut self, n: u8) -> Result<()> {
         self.output.write_u8(n)
